@@ -4,7 +4,6 @@
 <li><a href=../../guide/hello.md.html class ="notranslate">hello, world</a></li>
 <li><a href=../../guide/test.md.html>美好生活从测试开始</a></li>
 <li><a href=../../guide/profiler.md.html>找出性能杀手</a></li>
-<li><a href=../../guide/desktop.md.html>快速开发桌面应用</a></li>
 <li><a href=../../guide/server-hot-update.md.html>服务端模块热更新</a></li>
 <li><a href=../../guide/host-routes.md.html>域名路由</a></li>
 <li><a href=../../guide/x509.md.html>fibjs 中 X509 证书的使用</a></li>
@@ -13,6 +12,7 @@
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_module" aria-controls="collapse_module"> 基础模块 </a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby=headingOne><div class=panel-body> <ul>
 <li><a href=../../manual/module/ifs/assert.md.html class ="notranslate">assert</a></li>
 <li><a href=../../manual/module/ifs/base32.md.html class ="notranslate">base32</a></li>
+<li><a href=../../manual/module/ifs/base58.md.html class ="notranslate">base58</a></li>
 <li><a href=../../manual/module/ifs/base64.md.html class ="notranslate">base64</a></li>
 <li><a href=../../manual/module/ifs/child_process.md.html class ="notranslate">child_process</a></li>
 <li><a href=../../manual/module/ifs/console.md.html class ="notranslate">console</a></li>
@@ -36,6 +36,7 @@
 <li><a href=../../manual/module/ifs/json.md.html class ="notranslate">json</a></li>
 <li><a href=../../manual/module/ifs/mq.md.html class ="notranslate">mq</a></li>
 <li><a href=../../manual/module/ifs/msgpack.md.html class ="notranslate">msgpack</a></li>
+<li><a href=../../manual/module/ifs/multibase.md.html class ="notranslate">multibase</a></li>
 <li><a href=../../manual/module/ifs/net.md.html class ="notranslate">net</a></li>
 <li><a href=../../manual/module/ifs/os.md.html class ="notranslate">os</a></li>
 <li><a href=../../manual/module/ifs/path.md.html class ="notranslate">path</a></li>
@@ -131,6 +132,8 @@
 <li><a href=../../manual/object/ifs/ttyinputstream.md.html class ="notranslate">TTYInputStream</a></li>
 <li><a href=../../manual/object/ifs/ttyoutputstream.md.html class ="notranslate">TTYOutputStream</a></li>
 <li><a href=../../manual/object/ifs/tcpserver.md.html class ="notranslate">TcpServer</a></li>
+<li><a href=../../manual/object/ifs/textdecoder.md.html class ="notranslate">TextDecoder</a></li>
+<li><a href=../../manual/object/ifs/textencoder.md.html class ="notranslate">TextEncoder</a></li>
 <li><a href=../../manual/object/ifs/timer.md.html class ="notranslate">Timer</a></li>
 <li><a href=../../manual/object/ifs/urlobject.md.html class ="notranslate">UrlObject</a></li>
 <li><a href=../../manual/object/ifs/websocket.md.html class ="notranslate">WebSocket</a></li>
@@ -613,10 +616,10 @@ The example input below will remain changed after beautification</p>
 useful or working for you but you must keep the copyright notice and license. (MIT)</p>
 <h1 id="Credits">Credits</h1>
 <ul>
-<li>Created by Einar Lielmanis, <a href="mailto:&#101;&#105;&#x6e;&#97;&#x72;&#x40;&#x6a;&#115;&#x62;&#x65;&#97;&#x75;&#x74;&#105;&#102;&#105;&#x65;&#x72;&#x2e;&#111;&#x72;&#103;">&#101;&#105;&#x6e;&#97;&#x72;&#x40;&#x6a;&#115;&#x62;&#x65;&#97;&#x75;&#x74;&#105;&#102;&#105;&#x65;&#x72;&#x2e;&#111;&#x72;&#103;</a></li>
-<li>Python version flourished by Stefano Sanfilippo <a href="mailto:&#97;&#x2e;&#x6c;&#105;&#x74;&#x74;&#108;&#101;&#x2e;&#x63;&#x6f;&#x64;&#x65;&#x72;&#x40;&#103;&#109;&#x61;&#x69;&#x6c;&#46;&#99;&#111;&#109;">&#97;&#x2e;&#x6c;&#105;&#x74;&#x74;&#108;&#101;&#x2e;&#x63;&#x6f;&#x64;&#x65;&#x72;&#x40;&#103;&#109;&#x61;&#x69;&#x6c;&#46;&#99;&#111;&#109;</a></li>
-<li>Command-line for node.js by Daniel Stockman <a href="mailto:&#x64;&#x61;&#110;&#x69;&#x65;&#108;&#46;&#x73;&#x74;&#x6f;&#99;&#107;&#x6d;&#97;&#x6e;&#x40;&#x67;&#109;&#97;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;">&#x64;&#x61;&#110;&#x69;&#x65;&#108;&#46;&#x73;&#x74;&#x6f;&#99;&#107;&#x6d;&#97;&#x6e;&#x40;&#x67;&#109;&#97;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;</a></li>
-<li>Maintained and expanded by Liam Newman <a href="mailto:&#x62;&#x69;&#116;&#x77;&#x69;&#x73;&#x65;&#109;&#x61;&#x6e;&#x40;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;">&#x62;&#x69;&#116;&#x77;&#x69;&#x73;&#x65;&#109;&#x61;&#x6e;&#x40;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;</a></li>
+<li>Created by Einar Lielmanis, <a href="mailto:&#x65;&#x69;&#110;&#x61;&#114;&#64;&#x6a;&#x73;&#x62;&#x65;&#97;&#117;&#x74;&#x69;&#102;&#x69;&#x65;&#x72;&#46;&#111;&#114;&#103;">&#x65;&#x69;&#110;&#x61;&#114;&#64;&#x6a;&#x73;&#x62;&#x65;&#97;&#117;&#x74;&#x69;&#102;&#x69;&#x65;&#x72;&#46;&#111;&#114;&#103;</a></li>
+<li>Python version flourished by Stefano Sanfilippo <a href="mailto:&#97;&#x2e;&#x6c;&#105;&#x74;&#x74;&#108;&#101;&#46;&#99;&#111;&#100;&#101;&#114;&#64;&#x67;&#109;&#97;&#105;&#108;&#x2e;&#99;&#x6f;&#x6d;">&#97;&#x2e;&#x6c;&#105;&#x74;&#x74;&#108;&#101;&#46;&#99;&#111;&#100;&#101;&#114;&#64;&#x67;&#109;&#97;&#105;&#108;&#x2e;&#99;&#x6f;&#x6d;</a></li>
+<li>Command-line for node.js by Daniel Stockman <a href="mailto:&#100;&#x61;&#110;&#105;&#101;&#108;&#46;&#115;&#x74;&#111;&#99;&#x6b;&#x6d;&#x61;&#110;&#x40;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;">&#100;&#x61;&#110;&#105;&#101;&#108;&#46;&#115;&#x74;&#111;&#99;&#x6b;&#x6d;&#x61;&#110;&#x40;&#103;&#109;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;</a></li>
+<li>Maintained and expanded by Liam Newman <a href="mailto:&#x62;&#x69;&#x74;&#119;&#105;&#115;&#101;&#109;&#97;&#110;&#64;&#x67;&#x6d;&#x61;&#x69;&#108;&#x2e;&#99;&#x6f;&#109;">&#x62;&#x69;&#x74;&#119;&#105;&#115;&#101;&#109;&#97;&#110;&#64;&#x67;&#x6d;&#x61;&#x69;&#108;&#x2e;&#99;&#x6f;&#109;</a></li>
 </ul>
 <p>Thanks also to Jason Diamond, Patrick Hof, Nochum Sossonko, Andreas Schneider, Dave
 Vasilevsky, Vital Batmanov, Ron Baldwin, Gabriel Harrison, Chris J. Shull,

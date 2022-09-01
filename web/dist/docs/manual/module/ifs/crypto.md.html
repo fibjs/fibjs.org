@@ -4,7 +4,6 @@
 <li><a href=../../../guide/hello.md.html class ="notranslate">hello, world</a></li>
 <li><a href=../../../guide/test.md.html>美好生活从测试开始</a></li>
 <li><a href=../../../guide/profiler.md.html>找出性能杀手</a></li>
-<li><a href=../../../guide/desktop.md.html>快速开发桌面应用</a></li>
 <li><a href=../../../guide/server-hot-update.md.html>服务端模块热更新</a></li>
 <li><a href=../../../guide/host-routes.md.html>域名路由</a></li>
 <li><a href=../../../guide/x509.md.html>fibjs 中 X509 证书的使用</a></li>
@@ -13,6 +12,7 @@
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_module" aria-controls="collapse_module"> 基础模块 </a></h4></div><div id="collapse_module" class="panel-collapse collapse in" aria-labelledby=headingOne><div class=panel-body> <ul>
 <li><a href=assert.md.html class ="notranslate">assert</a></li>
 <li><a href=base32.md.html class ="notranslate">base32</a></li>
+<li><a href=base58.md.html class ="notranslate">base58</a></li>
 <li><a href=base64.md.html class ="notranslate">base64</a></li>
 <li><a href=child_process.md.html class ="notranslate">child_process</a></li>
 <li><a href=console.md.html class ="notranslate">console</a></li>
@@ -36,6 +36,7 @@
 <li><a href=json.md.html class ="notranslate">json</a></li>
 <li><a href=mq.md.html class ="notranslate">mq</a></li>
 <li><a href=msgpack.md.html class ="notranslate">msgpack</a></li>
+<li><a href=multibase.md.html class ="notranslate">multibase</a></li>
 <li><a href=net.md.html class ="notranslate">net</a></li>
 <li><a href=os.md.html class ="notranslate">os</a></li>
 <li><a href=path.md.html class ="notranslate">path</a></li>
@@ -131,6 +132,8 @@
 <li><a href=../../object/ifs/ttyinputstream.md.html class ="notranslate">TTYInputStream</a></li>
 <li><a href=../../object/ifs/ttyoutputstream.md.html class ="notranslate">TTYOutputStream</a></li>
 <li><a href=../../object/ifs/tcpserver.md.html class ="notranslate">TcpServer</a></li>
+<li><a href=../../object/ifs/textdecoder.md.html class ="notranslate">TextDecoder</a></li>
+<li><a href=../../object/ifs/textencoder.md.html class ="notranslate">TextEncoder</a></li>
 <li><a href=../../object/ifs/timer.md.html class ="notranslate">Timer</a></li>
 <li><a href=../../object/ifs/urlobject.md.html class ="notranslate">UrlObject</a></li>
 <li><a href=../../object/ifs/websocket.md.html class ="notranslate">WebSocket</a></li>
@@ -257,22 +260,6 @@
 <li><a href=../../object/ifs/digest.md.html class ="notranslate">Digest</a>, 返回信息摘要对象</li>
 </ul>
 <hr>
-<h3 id="loadPKey" class ="notranslate">loadPKey</h3>
-<p><strong>加载一个 PEM/DER 格式的密钥文件</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">static</span> PKey crypto.loadPKey(<span class="hljs-built_in">String</span> filename,
-    <span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li><span class="notranslate">filename</span>: String, 密钥文件名</li>
-<li><span class="notranslate">password</span>: String, 解密密码</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li><a href=../../object/ifs/pkey.md.html class ="notranslate">PKey</a>, 返回包含密钥的对象</li>
-</ul>
-<hr>
 <h3 id="loadCert" class ="notranslate">loadCert</h3>
 <p><strong>加载一个 CRT/PEM/DER/TXT 格式的证书，可多次调用</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> X509Cert crypto.loadCert(<span class="hljs-built_in">String</span> filename);
@@ -352,6 +339,25 @@
 <li><a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 返回生成的随机数</li>
 </ul>
 <hr>
+<h3 id="randomFill" class ="notranslate">randomFill</h3>
+<p><strong>使用随机数填充指定的 <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>，使用 havege 生成器</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> Buffer crypto.randomFill(Buffer buffer,
+    Integer offset = <span class="hljs-number">0</span>,
+    Integer size = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">buffer</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 指定生成的 <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a></li>
+<li><span class="notranslate">offset</span>: Integer, 指定起始偏移，缺省为 0</li>
+<li><span class="notranslate">size</span>: Integer, 指定生成的随机数尺寸，缺省为 buffer.length - offset</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 返回生成的随机数</li>
+</ul>
+<hr>
 <h3 id="randomArt" class ="notranslate">randomArt</h3>
 <p><strong>生成给定数据的可视化字符图像</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
@@ -371,9 +377,9 @@
 <li><span class="notranslate">String</span>, 返回生成的可视化字符串图像</li>
 </ul>
 <hr>
-<h3 id="genRsaKey" class ="notranslate">genRsaKey</h3>
+<h3 id="generateKey" class ="notranslate">generateKey</h3>
 <p><strong>生成一个 RSA 私钥</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> PKey crypto.genRsaKey(Integer size) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> PKey crypto.generateKey(Integer size) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -384,27 +390,51 @@
 <li><a href=../../object/ifs/pkey.md.html class ="notranslate">PKey</a>, 返回包含生成私钥的对象</li>
 </ul>
 <hr>
-<h3 id="genEcKey" class ="notranslate">genEcKey</h3>
-<p><strong>生成一个 EC 私钥</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> PKey crypto.genEcKey(<span class="hljs-built_in">String</span> curve = <span class="hljs-string">"secp521r1"</span>) <span class="hljs-keyword">async</span>;
+<p><strong>生成一个椭圆曲线私钥</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> PKey crypto.generateKey(<span class="hljs-built_in">String</span> curve = <span class="hljs-string">"secp521r1"</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li><span class="notranslate">curve</span>: String, 指定预置椭圆曲线，可选值为：&quot;secp521r1&quot;, &quot;brainpoolP512r1&quot;, &quot;secp384r1&quot;, &quot;brainpoolP384r1&quot;, &quot;secp256r1&quot;, &quot;secp256k1&quot;, &quot;brainpoolP256r1&quot;, &quot;secp224r1&quot;, &quot;secp224k1&quot;, &quot;secp192r1&quot;, &quot;secp192k1&quot;</li>
+<li><span class="notranslate">curve</span>: String, 指定预置椭圆曲线，缺省为 &#39;secp256r1&#39;</li>
 </ul>
 <p>返回结果:</p>
 <ul>
 <li><a href=../../object/ifs/pkey.md.html class ="notranslate">PKey</a>, 返回包含生成私钥的对象</li>
 </ul>
-<hr>
-<h3 id="genSm2Key" class ="notranslate">genSm2Key</h3>
-<p><strong>生成一个 SM2 私钥</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> PKey crypto.genSm2Key() <span class="hljs-keyword">async</span>;
-</code></pre>
-<p>返回结果:</p>
-<ul>
-<li><a href=../../object/ifs/pkey.md.html class ="notranslate">PKey</a>, 返回包含生成私钥的对象</li>
-</ul>
+<p>curve 可选的曲线包含 NIST 曲线和别名如下：</p>
+<table>
+<thead>
+<tr>
+<th>曲线</th>
+<th>别名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NIST P-192</td>
+<td>&#39;NIST P-192&#39;, &#39;p192&#39;, &#39;P-192&#39;, &#39;prime192v1&#39;, &#39;secp192r1&#39;</td>
+</tr>
+<tr>
+<td>NIST P-224</td>
+<td>&#39;NIST P-224&#39;, &#39;p224&#39;, &#39;P-224&#39;, &#39;prime224v1&#39;, &#39;secp224r1&#39;</td>
+</tr>
+<tr>
+<td>NIST P-256</td>
+<td>&#39;NIST P-256&#39;, &#39;p256&#39;, &#39;P-256&#39;, &#39;prime256v1&#39;, &#39;secp256r1&#39;</td>
+</tr>
+<tr>
+<td>NIST P-384</td>
+<td>&#39;NIST P-384&#39;, &#39;p384&#39;, &#39;P-384&#39;, &#39;prime384v1&#39;, &#39;secp384r1&#39;</td>
+</tr>
+<tr>
+<td>NIST P-521</td>
+<td>&#39;NIST P-521&#39;, &#39;p521&#39;, &#39;P-521&#39;, &#39;prime521v1&#39;, &#39;secp521r1&#39;</td>
+</tr>
+</tbody>
+</table>
+<p>其它支持的曲线包括：
+&quot;brainpoolP512r1&quot;, &quot;brainpoolP384r1&quot;, &quot;secp256k1&quot;, &quot;P-256K&quot;, &quot;brainpoolP256r1&quot;,
+&quot;sm2p256r1&quot;, &quot;SM2&quot;, &quot;Ed25519&quot;, &quot;BLS12381_G1&quot;, &quot;BLS12381_G2&quot;</p>
 <hr>
 <h3 id="pbkdf1" class ="notranslate">pbkdf1</h3>
 <p><strong>依据 pbkdf1 根据明文 password 生成要求的二进制钥匙</strong></p>
@@ -518,49 +548,34 @@
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.AES = <span class="hljs-number">1</span>;
 </code></pre>
 <hr>
-<h3 id="CAMELLIA" class ="notranslate">CAMELLIA</h3>
-<p><strong>指定对称加密算法 CAMELLIA，支持 128, 192, 256 位 key，分组密码工作模式支持 ECB, CBC, CFB128, CTR, GCM，CCM</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.CAMELLIA = <span class="hljs-number">2</span>;
-</code></pre>
-<hr>
 <h3 id="DES" class ="notranslate">DES</h3>
 <p><strong>指定对称加密算法 DES，支持 64 位 key，分组密码工作模式支持 ECB, CBC</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.DES = <span class="hljs-number">3</span>;
-</code></pre>
-<hr>
-<h3 id="DES_EDE" class ="notranslate">DES_EDE</h3>
-<p><strong>指定对称加密算法 DES-EDE，支持 128 位 key，分组密码工作模式支持 ECB, CBC</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.DES_EDE = <span class="hljs-number">4</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.DES = <span class="hljs-number">2</span>;
 </code></pre>
 <hr>
 <h3 id="DES_EDE3" class ="notranslate">DES_EDE3</h3>
 <p><strong>指定对称加密算法 DES-EDE3，支持 192 位 key，分组密码工作模式支持 ECB, CBC</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.DES_EDE3 = <span class="hljs-number">5</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.DES_EDE3 = <span class="hljs-number">3</span>;
 </code></pre>
 <hr>
-<h3 id="BLOWFISH" class ="notranslate">BLOWFISH</h3>
-<p><strong>指定对称加密算法 BLOWFISH，支持 192 位 key，分组密码工作模式支持 ECB, CBC, CFB64, CTR</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.BLOWFISH = <span class="hljs-number">6</span>;
-</code></pre>
-<hr>
-<h3 id="ARC4" class ="notranslate">ARC4</h3>
-<p><strong>指定对称加密算法 ARC4，支持 40, 56, 64, 128 位 key</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.ARC4 = <span class="hljs-number">7</span>;
+<h3 id="CAMELLIA" class ="notranslate">CAMELLIA</h3>
+<p><strong>指定对称加密算法 CAMELLIA，支持 128, 192, 256 位 key，分组密码工作模式支持 ECB, CBC, CFB128, CTR, GCM，CCM</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.CAMELLIA = <span class="hljs-number">4</span>;
 </code></pre>
 <hr>
 <h3 id="ARIA" class ="notranslate">ARIA</h3>
 <p><strong>指定对称加密算法 ARIA，支持 128, 192, 256 位 key，分组密码工作模式支持 ECB, CBC, CFB128, CTR, GCM，CCM</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.ARIA = <span class="hljs-number">8</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.ARIA = <span class="hljs-number">5</span>;
 </code></pre>
 <hr>
 <h3 id="CHACHA20" class ="notranslate">CHACHA20</h3>
 <p><strong>指定对称加密算法 CHACHA20，支持 256 位 key，分组密码工作模式支持 POLY1305</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.CHACHA20 = <span class="hljs-number">9</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.CHACHA20 = <span class="hljs-number">6</span>;
 </code></pre>
 <hr>
 <h3 id="SM4" class ="notranslate">SM4</h3>
 <p><strong>指定对称加密算法 SM4, 分组密码工作模式支持 ECB, CBC</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.SM4 = <span class="hljs-number">10</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.SM4 = <span class="hljs-number">7</span>;
 </code></pre>
 <hr>
 <h3 id="ECB" class ="notranslate">ECB</h3>

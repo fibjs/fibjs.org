@@ -148,6 +148,104 @@ static Digest hash.sm3(PKey pubKey,
 * [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
 
 --------------------------
+### keccak256
+**创建一个 KECCAK256 信息摘要运算对象**
+
+```JavaScript
+static Digest hash.keccak256(Buffer data = NULL);
+```
+
+调用参数:
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
+
+返回结果:
+* [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
+
+--------------------------
+### keccak384
+**创建一个 KECCAK384 信息摘要运算对象**
+
+```JavaScript
+static Digest hash.keccak384(Buffer data = NULL);
+```
+
+调用参数:
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
+
+返回结果:
+* [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
+
+--------------------------
+### keccak512
+**创建一个 KECCAK512 信息摘要运算对象**
+
+```JavaScript
+static Digest hash.keccak512(Buffer data = NULL);
+```
+
+调用参数:
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
+
+返回结果:
+* [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
+
+--------------------------
+### blake2s
+**创建一个 BLAKE2S 信息摘要运算对象**
+
+```JavaScript
+static Digest hash.blake2s(Buffer data = NULL);
+```
+
+调用参数:
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
+
+返回结果:
+* [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
+
+--------------------------
+### blake2b
+**创建一个 BLAKE2B 信息摘要运算对象**
+
+```JavaScript
+static Digest hash.blake2b(Buffer data = NULL);
+```
+
+调用参数:
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
+
+返回结果:
+* [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
+
+--------------------------
+### blake2sp
+**创建一个 BLAKE2SP 信息摘要运算对象**
+
+```JavaScript
+static Digest hash.blake2sp(Buffer data = NULL);
+```
+
+调用参数:
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
+
+返回结果:
+* [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
+
+--------------------------
+### blake2bp
+**创建一个 BLAKE2BP 信息摘要运算对象**
+
+```JavaScript
+static Digest hash.blake2bp(Buffer data = NULL);
+```
+
+调用参数:
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
+
+返回结果:
+* [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
+
+--------------------------
 ### hmac
 **根据指定的算法标识创建一个信息摘要签名运算对象**
 
@@ -312,6 +410,118 @@ static Digest hash.hmac_sm3(PKey pubKey,
 返回结果:
 * [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
 
+--------------------------
+### hmac_keccak256
+**创建一个 KECCAK256 信息摘要签名运算对象**
+
+```JavaScript
+static Digest hash.hmac_keccak256(Buffer key,
+    Buffer data = NULL);
+```
+
+调用参数:
+* key: [Buffer](../../object/ifs/Buffer.md), 二进制签名密钥
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
+
+返回结果:
+* [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
+
+--------------------------
+### hmac_keccak384
+**创建一个 KECCAK384 信息摘要签名运算对象**
+
+```JavaScript
+static Digest hash.hmac_keccak384(Buffer key,
+    Buffer data = NULL);
+```
+
+调用参数:
+* key: [Buffer](../../object/ifs/Buffer.md), 二进制签名密钥
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
+
+返回结果:
+* [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
+
+--------------------------
+### hmac_keccak512
+**创建一个 KECCAK512 信息摘要签名运算对象**
+
+```JavaScript
+static Digest hash.hmac_keccak512(Buffer key,
+    Buffer data = NULL);
+```
+
+调用参数:
+* key: [Buffer](../../object/ifs/Buffer.md), 二进制签名密钥
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
+
+返回结果:
+* [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
+
+--------------------------
+### hmac_blake2s
+**创建一个 BLAKE2S 信息摘要签名运算对象**
+
+```JavaScript
+static Digest hash.hmac_blake2s(Buffer key,
+    Buffer data = NULL);
+```
+
+调用参数:
+* key: [Buffer](../../object/ifs/Buffer.md), 二进制签名密钥
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
+
+返回结果:
+* [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
+
+--------------------------
+### hmac_blake2b
+**创建一个 BLAKE2B 信息摘要签名运算对象**
+
+```JavaScript
+static Digest hash.hmac_blake2b(Buffer key,
+    Buffer data = NULL);
+```
+
+调用参数:
+* key: [Buffer](../../object/ifs/Buffer.md), 二进制签名密钥
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
+
+返回结果:
+* [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
+
+--------------------------
+### hmac_blake2sp
+**创建一个 BLAKE2SP 信息摘要签名运算对象**
+
+```JavaScript
+static Digest hash.hmac_blake2sp(Buffer key,
+    Buffer data = NULL);
+```
+
+调用参数:
+* key: [Buffer](../../object/ifs/Buffer.md), 二进制签名密钥
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
+
+返回结果:
+* [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
+
+--------------------------
+### hmac_blake2bp
+**创建一个 BLAKE2BP 信息摘要签名运算对象**
+
+```JavaScript
+static Digest hash.hmac_blake2bp(Buffer key,
+    Buffer data = NULL);
+```
+
+调用参数:
+* key: [Buffer](../../object/ifs/Buffer.md), 二进制签名密钥
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
+
+返回结果:
+* [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
+
 ## 常量
         
 ### MD5
@@ -375,5 +585,61 @@ const hash.RIPEMD160 = 7;
 
 ```JavaScript
 const hash.SM3 = 8;
+```
+
+--------------------------
+### KECCAK256
+**KECCAK256 信息摘要算法标识常量**
+
+```JavaScript
+const hash.KECCAK256 = 9;
+```
+
+--------------------------
+### KECCAK384
+**KECCAK384 信息摘要算法标识常量**
+
+```JavaScript
+const hash.KECCAK384 = 10;
+```
+
+--------------------------
+### KECCAK512
+**KECCAK512 信息摘要算法标识常量**
+
+```JavaScript
+const hash.KECCAK512 = 11;
+```
+
+--------------------------
+### BLAKE2S
+**BLAKE2S 信息摘要算法标识常量**
+
+```JavaScript
+const hash.BLAKE2S = 12;
+```
+
+--------------------------
+### BLAKE2B
+**BLAKE2B 信息摘要算法标识常量**
+
+```JavaScript
+const hash.BLAKE2B = 13;
+```
+
+--------------------------
+### BLAKE2SP
+**BLAKE2SP 信息摘要算法标识常量**
+
+```JavaScript
+const hash.BLAKE2SP = 14;
+```
+
+--------------------------
+### BLAKE2BP
+**BLAKE2BP 信息摘要算法标识常量**
+
+```JavaScript
+const hash.BLAKE2BP = 15;
 ```
 

@@ -1,18 +1,18 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Mòdul process-JavaScript en Fiber</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Commuta la navegació</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../readme.md.html">MODULE</a></li><li><a href="../../object/readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/module/ifs/process.md.html">中文</a> <a href="../../../../../ca/docs/manual/module/ifs/process.md.html">Catalan</a> <a href="../../../../../de/docs/manual/module/ifs/process.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/module/ifs/process.md.html">English</a> <a href="../../../../../es/docs/manual/module/ifs/process.md.html">Español</a> <a href="../../../../../fr/docs/manual/module/ifs/process.md.html">Français</a> <a href="../../../../../gl/docs/manual/module/ifs/process.md.html">Galego</a> <a href="../../../../../it/docs/manual/module/ifs/process.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/module/ifs/process.md.html">Русский</a> <a href="../../../../../ja/docs/manual/module/ifs/process.md.html">日本語</a> <a href="../../../../../ko/docs/manual/module/ifs/process.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/module/ifs/process.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Mòdul mòdul bàsic </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Cerca" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="entrada de cerca" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">portada</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Mòdul bàsic </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Procés de mòduls </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Guia de desenvolupament </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Procés del mòdul - JavaScript a la fibra</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Canvia la navegació</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../readme.md.html">MODULE</a></li><li><a href="../../object/readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/module/ifs/process.md.html">中文</a> <a href="../../../../../ca/docs/manual/module/ifs/process.md.html">Catalan</a> <a href="../../../../../de/docs/manual/module/ifs/process.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/module/ifs/process.md.html">English</a> <a href="../../../../../es/docs/manual/module/ifs/process.md.html">Español</a> <a href="../../../../../fr/docs/manual/module/ifs/process.md.html">Français</a> <a href="../../../../../gl/docs/manual/module/ifs/process.md.html">Galego</a> <a href="../../../../../it/docs/manual/module/ifs/process.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/module/ifs/process.md.html">Русский</a> <a href="../../../../../ja/docs/manual/module/ifs/process.md.html">日本語</a> <a href="../../../../../ko/docs/manual/module/ifs/process.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/module/ifs/process.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mòdul base mòdul</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Cerca" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="entrada de cerca" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">portada</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mòdul bàsic</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">procés del mòdul</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Guia de desenvolupament</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Què és fibjs?</font></font></a></li>
-<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instal·lació i entorn operatiu</font></font></a></li>
+<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instal·leu l'entorn d'execució</font></font></a></li>
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
-<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Una bona vida comença amb la prova</font></font></a></li>
+<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Una bona vida comença amb una prova</font></font></a></li>
 <li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Troba l'assassí del rendiment</font></font></a></li>
-<li><a href="../../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Desenvolupeu ràpidament aplicacions d'escriptori</font></font></a></li>
-<li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Actualització actualitzada del mòdul de servidor</font></font></a></li>
+<li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Actualització en calent del mòdul del servidor</font></font></a></li>
 <li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Encaminament de noms de domini</font></font></a></li>
-<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ús del certificat X509 a fibjs</font></font></a></li>
-<li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Afegeix un mòdul natiu</font></font></a></li>
+<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ús de certificats X509 en fibjs</font></font></a></li>
+<li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">afegir un mòdul natiu</font></font></a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Mòdul bàsic </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mòdul bàsic</font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="assert.md.html" class="notranslate">assert</a></li>
 <li><a href="base32.md.html" class="notranslate">base32</a></li>
+<li><a href="base58.md.html" class="notranslate">base58</a></li>
 <li><a href="base64.md.html" class="notranslate">base64</a></li>
 <li><a href="child_process.md.html" class="notranslate">child_process</a></li>
 <li><a href="console.md.html" class="notranslate">console</a></li>
@@ -36,6 +36,7 @@
 <li><a href="json.md.html" class="notranslate">json</a></li>
 <li><a href="mq.md.html" class="notranslate">mq</a></li>
 <li><a href="msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="multibase.md.html" class="notranslate">multibase</a></li>
 <li><a href="net.md.html" class="notranslate">net</a></li>
 <li><a href="os.md.html" class="notranslate">os</a></li>
 <li><a href="path.md.html" class="notranslate">path</a></li>
@@ -63,7 +64,7 @@
 <li><a href="zip.md.html" class="notranslate">zip</a></li>
 <li><a href="zlib.md.html" class="notranslate">zlib</a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Objectes incorporats </font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">objectes incorporats</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a></li>
 <li><a href="../../object/ifs/bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
 <li><a href="../../object/ifs/chain.md.html" class="notranslate">Chain</a></li>
@@ -131,6 +132,8 @@
 <li><a href="../../object/ifs/ttyinputstream.md.html" class="notranslate">TTYInputStream</a></li>
 <li><a href="../../object/ifs/ttyoutputstream.md.html" class="notranslate">TTYOutputStream</a></li>
 <li><a href="../../object/ifs/tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="../../object/ifs/textdecoder.md.html" class="notranslate">TextDecoder</a></li>
+<li><a href="../../object/ifs/textencoder.md.html" class="notranslate">TextEncoder</a></li>
 <li><a href="../../object/ifs/timer.md.html" class="notranslate">Timer</a></li>
 <li><a href="../../object/ifs/urlobject.md.html" class="notranslate">UrlObject</a></li>
 <li><a href="../../object/ifs/websocket.md.html" class="notranslate">WebSocket</a></li>
@@ -155,7 +158,7 @@
 <li><a href="../../object/ifs/zipfile.md.html" class="notranslate">ZipFile</a></li>
 <li><a href="../../object/ifs/object.md.html" class="notranslate">object</a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Mòdul de comunitat </font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mòdul comunitari</font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../../awesome/module/fib-session.md.html" class="notranslate">fib-session</a></li>
 <li><a href="../../../awesome/module/fib-pool.md.html" class="notranslate">fib-pool</a></li>
 <li><a href="../../../awesome/module/fib-orm.md.html" class="notranslate">fib-orm</a></li>
@@ -197,27 +200,27 @@
 <li><a href="../../../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
 <li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
 </ul>
- </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="模块-process" data-unique="模块-process"></div><h1 id="模块-process"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Procés de mòduls</font></font></h1>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="模块-process" data-unique="模块-process"></div><h1 id="模块-process"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">procés del mòdul</font></font></h1>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mòdul de processament de processos per gestionar els recursos del procés actual</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mètode de referència:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> process = <span class="hljs-built_in">require</span>(<span class="hljs-string">'process'</span>);
 </code></pre>
-<div name="进程事件" data-unique="进程事件"></div><h2 id="进程事件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Esdeveniment de procés</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">L'objecte del mòdul de procés és </font></font><a href="../../object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Per exemple, podeu respondre a esdeveniments a nivell de procés registrant oients d'esdeveniments.</font></font></p>
+<div name="进程事件" data-unique="进程事件"></div><h2 id="进程事件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">esdeveniment del procés</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">L'objecte del mòdul de procés és</font></font><a href="../../object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Les instàncies poden respondre als esdeveniments a nivell de procés registrant els oients d'esdeveniments.</font></font></p>
 <div name="beforeExit-事件" data-unique="beforeExit-事件"></div><h3 id="beforeExit-事件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">esdeveniment beforeExit</font></font></h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Quan la missió fibjs ha estat buida i no s'afegeix cap treball addicional, l'esdeveniment </font></font><code>beforeExit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">es desencadena</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">L'esdeveniment s'activarà quan la tasca </font></font><code>beforeExit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>process.on(<span class="hljs-string">'beforeExit'</span>, exitCode =&gt; {});
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">En circumstàncies normals, si no s'afegeix cap treball addicional a la cua de tasques, el procés fibjs finalitzarà. </font><font style="vertical-align: inherit;">Però si els </font></font><code>beforeExit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">enllaços d'esdeveniments d'escolta de devolució de trucada comencen una nova tasca, com ara obrir una fibra, el procés fibjs continuarà executant-se.</font></font></p>
-<p><a href="process.md.html#exitCode" class="notranslate">process.exitCode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Com a únic paràmetre passat al valor de </font></font><code>beforeExit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">l'oient d'esdeveniments de funció de devolució de trucada. </font><font style="vertical-align: inherit;">Si el procés està a punt de finalitzar per motius explícits, com ara trucar directament</font></font><a href="process.md.html#exit" class="notranslate">process.exit</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">O feu una excepció sense capturar, l' </font></font><code>beforeExit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">esdeveniment no s'activarà.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Normalment, el procés fibjs acaba si no s'afegeix cap treball addicional a la cua de tasques. </font><font style="vertical-align: inherit;">Tanmateix, si s'inicia una tasca nova a la funció de devolució de trucada de l'oient vinculat a l' </font></font><code>beforeExit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">esdeveniment , com ara obrir una fibra, el procés fibjs continuarà executant-se.</font></font></p>
+<p><a href="process.md.html#exitCode" class="notranslate">process.exitCode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La funció de devolució de trucada s'ha passat com a únic valor de paràmetre a l'oient d' </font></font><code>beforeExit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">esdeveniments . </font><font style="vertical-align: inherit;">Si el procés està a punt de finalitzar per un motiu explícit, com ara trucar directament</font></font><a href="process.md.html#exit" class="notranslate">process.exit</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">O llenceu una excepció no detectada, l' </font></font><code>beforeExit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">esdeveniment no es dispararà.</font></font></p>
 <div name="exit-事件" data-unique="exit-事件"></div><h3 id="exit-事件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">esdeveniment de sortida</font></font></h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Quan surt fibjs, l'esdeveniment </font></font><code>exit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">s'activarà un cop s'hagi completat l' </font></font><code>exit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">execució de l'oient de vinculació d'esdeveniments, el procés finalitzarà</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Quan fibjs surt, l' </font></font><code>exit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">esdeveniment s'activarà i, un cop </font></font><code>exit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">s'executin tots els oients vinculats a l'esdeveniment, el procés finalitzarà</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>process.on(<span class="hljs-string">'exit'</span>, exitCode =&gt; {});
 </code></pre>
-<p><code>exit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> La funció de devolució de trucada de l'oient d'esdeveniments només té un paràmetre d'entrada. El valor d'aquest paràmetre pot ser </font></font><a href="process.md.html#exitCode" class="notranslate">process.exitCode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> El valor de l'atribut o trucada </font></font><a href="process.md.html#exit" class="notranslate">process.exit</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Quan el mètode ha passat el </font></font><code>exitCode</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">valor.</font></font></p>
+<p><code>exit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La funció de devolució de trucada de l'oient d'esdeveniments, amb només un paràmetre d'entrada, el valor d'aquest paràmetre pot ser</font></font><a href="process.md.html#exitCode" class="notranslate">process.exitCode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">valor de propietat de , o trucada</font></font><a href="process.md.html#exit" class="notranslate">process.exit</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El </font></font><code>exitCode</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">valor .</font></font></p>
 <div name="Signal-事件" data-unique="Signal-事件"></div><h3 id="Signal-事件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Esdeveniment de senyal</font></font></h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Quan el procés fibjs rep un senyal, activarà un esdeveniment de senyal. Els senyals actualment admesos són SIGINT i SIGTERM. </font><font style="vertical-align: inherit;">Cada nom d'esdeveniment està representat per la majúscula del nom del senyal (per exemple, l'esdeveniment "SIGINT" correspon al senyal SIGINT).</font></font></strong></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Els esdeveniments de senyal són diferents dels altres esdeveniments de procés. Els esdeveniments de senyal estan previnguts. Quan es produeix un senyal, independentment del corrent </font></font><a href="io.md.html" class="notranslate">io</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">L'operació o operació JavaScript activarà l'esdeveniment corresponent tan aviat com sigui possible. </font><font style="vertical-align: inherit;">Per exemple, podeu utilitzar el codi següent per interrompre l'aplicació actual i generar l'estat de funcionament:</font></font></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Quan el procés fibjs rep un senyal, activarà un esdeveniment de senyal. Els senyals admesos actualment són SIGINT i SIGTERM. </font><font style="vertical-align: inherit;">Cada nom d'esdeveniment, en majúscules del nom del senyal (per exemple, l'esdeveniment 'SIGINT' per al senyal SIGINT).</font></font></strong></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Els esdeveniments de senyal són diferents d'altres esdeveniments de procés. Els esdeveniments de senyal són preventius. Quan es produeix un senyal, independentment de l'actual</font></font><a href="io.md.html" class="notranslate">io</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Les accions, o operacions de JavaScript, activaran els esdeveniments corresponents tan aviat com sigui possible. </font><font style="vertical-align: inherit;">Per exemple, podeu utilitzar el codi següent per interrompre l'aplicació actual i mostrar l'estat d'execució:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -232,76 +235,76 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Els noms dels senyals i el seu significat són els següents:</font></font></p>
 <ul>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SIGINT: quan el terminal s’executa, pot ser compatible amb totes les plataformes i normalment es pot activar mitjançant CTRL + C.</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SIGTERM: aquest senyal s’activa quan s’acaba el procés. </font><font style="vertical-align: inherit;">No és compatible amb Windows.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SIGINT: suportat per totes les plataformes quan el terminal està en execució, normalment activat per CTRL+C.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SIGTERM: aquest senyal es dispara quan el procés s'acaba. </font><font style="vertical-align: inherit;">No és compatible amb Windows.</font></font></li>
 </ul>
-<div name="静态函数" data-unique="静态函数"></div><h2 id="静态函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Funció estàtica</font></font></h2>
+<div name="静态函数" data-unique="静态函数"></div><h2 id="静态函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">funció estàtica</font></font></h2>
 <div name="umask" data-unique="umask"></div><h3 id="umask" class="notranslate">umask</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Canvieu la màscara actual, Windows no admet aquest mètode</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Canvieu l'umask actual, Windows no admet aquest mètode</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer process.umask(Integer mask);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
 <ul>
-<li><span class="notranslate">mask</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu una nova màscara</font></font></li>
+<li><span class="notranslate">mask</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifiqueu la màscara nova</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
 <ul>
-<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Torneu a la màscara anterior</font></font></li>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna la màscara anterior</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Canvieu la màscara actual, Windows no admet aquest mètode</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Canvieu l'umask actual, Windows no admet aquest mètode</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer process.umask(<span class="hljs-built_in">String</span> mask);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
 <ul>
-<li><span class="notranslate">mask</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifiqueu una nova màscara, tipus de cadena octal (per exemple: "0664")</font></font></li>
+<li><span class="notranslate">mask</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, especifica la màscara nova, tipus de cadena octal (per exemple: "0664")</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
 <ul>
-<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Torneu a la màscara anterior</font></font></li>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna la màscara anterior</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retorna la màscara actual, Windows no admet aquest mètode</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retorna l'umask actual, aquest mètode no és compatible amb Windows</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer process.umask();
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
 <ul>
-<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna el valor de la màscara actual</font></font></li>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna el valor de la màscara actual</font></font></li>
 </ul>
 <hr>
 <div name="hrtime" data-unique="hrtime"></div><h3 id="hrtime" class="notranslate">hrtime</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retorna l'hora d'alta precisió del sistema. Aquesta vegada no té res a veure amb l'hora actual i només s'utilitza per a la sincronització d'alta precisió</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retorna l'hora d'alta precisió del sistema, que no té res a veure amb l'hora actual i només s'utilitza per al cronometratge d'alta precisió.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Array</span> process.hrtime(<span class="hljs-built_in">Array</span> diff = []);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
 <ul>
-<li><span class="notranslate">diff</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Matriu, el moment inicial de comparació</font></font></li>
+<li><span class="notranslate">diff</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Matriu, temps inicial per a la comparació</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
 <ul>
-<li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna el temps de sincronització, el format és de [segons, nanosegons]</font></font></li>
+<li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna el temps en el format [segons, nanosegons]</font></font></li>
 </ul>
 <hr>
 <div name="exit" data-unique="exit"></div><h3 id="exit" class="notranslate">exit</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sortiu del procés actual i torneu exitCode com a resultat del procés</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sortiu del procés actual i retorneu exitCode com a resultat del procés</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> process.exit();
 </code></pre>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sortiu del procés actual i torneu el resultat</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sortiu del procés actual i retorneu el resultat</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> process.exit(Integer code);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
 <ul>
-<li><span class="notranslate">code</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, torna el resultat del procés</font></font></li>
+<li><span class="notranslate">code</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, retorna el resultat del procés</font></font></li>
 </ul>
 <hr>
 <div name="cwd" data-unique="cwd"></div><h3 id="cwd" class="notranslate">cwd</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retorna el camí de treball actual del sistema operatiu</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retorna la ruta de treball actual del sistema operatiu</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> process.cwd();
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
 <ul>
-<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna la ruta del sistema actual</font></font></li>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna la ruta actual del sistema</font></font></li>
 </ul>
 <hr>
 <div name="chdir" data-unique="chdir"></div><h3 id="chdir" class="notranslate">chdir</h3>
@@ -310,31 +313,31 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
 <ul>
-<li><span class="notranslate">directory</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifiqueu el camí nou que cal establir</font></font></li>
+<li><span class="notranslate">directory</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica el camí nou a establir</font></font></li>
 </ul>
 <hr>
 <div name="uptime" data-unique="uptime"></div><h3 id="uptime" class="notranslate">uptime</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Consulteu el temps d'execució de l'entorn en execució, en segons</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Consulta el temps d'execució de l'entorn d'execució, en segons</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Number</span> process.uptime();
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
 <ul>
-<li><span class="notranslate">Number</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna el valor que representa l'hora</font></font></li>
+<li><span class="notranslate">Number</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna un valor que representa el temps</font></font></li>
 </ul>
 <hr>
 <div name="cpuUsage" data-unique="cpuUsage"></div><h3 id="cpuUsage" class="notranslate">cpuUsage</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Consulteu el temps que passa el procés actual al codi d'usuari i de sistema, el valor del qual és un valor de microsegon (una milionèsima de segon)</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Consulta el temps invertit pel procés actual en codi d'usuari i sistema com a valor de microsegons (milionèsimes de segon)</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Object</span> process.cpuUsage(<span class="hljs-built_in">Object</span> previousValue = {});
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
 <ul>
-<li><span class="notranslate">previousValue</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objecte, especifiqueu l'hora de l'última consulta</font></font></li>
+<li><span class="notranslate">previousValue</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objecte, especifica l'hora de la darrera consulta</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Informe de devolució amb temps</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna un informe amb el temps</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">L'informe de memòria genera resultats similars als següents:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">L'informe de memòria produeix resultats similars als següents:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -345,8 +348,8 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">a:</font></font></p>
 <ul>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">l'usuari retorna el temps passat pel procés al codi d'usuari</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sistema retorna el temps que passa el procés al codi del sistema</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">usuari retorna el temps que el procés ha passat en codi d'usuari</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sistema retorna el temps que el procés ha passat al codi del sistema</font></font></li>
 </ul>
 <hr>
 <div name="memoryUsage" data-unique="memoryUsage"></div><h3 id="memoryUsage" class="notranslate">memoryUsage</h3>
@@ -355,9 +358,9 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorn conté un informe de memòria</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna un informe que conté memòria</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">L'informe de memòria genera resultats similars als següents:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">L'informe de memòria produeix resultats similars als següents:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -370,21 +373,21 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">a:</font></font></p>
 <ul>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">rss retorna la mida de la memòria física que ocupa actualment el procés</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">heapTotal retorna la mida de la memòria dinàmica del motor v8</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">heapUsed retorna la mida de la memòria heap que utilitza el motor v8</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">rss retorna la mida de memòria física que ocupa actualment el procés</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">heapTotal retorna la mida de memòria del munt del motor v8</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">heapUsed retorna la mida de memòria de pila que està utilitzant el motor v8</font></font></li>
 </ul>
 <hr>
 <div name="nextTick" data-unique="nextTick"></div><h3 id="nextTick" class="notranslate">nextTick</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Inicieu una fibra</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">iniciar una fibra</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> process.nextTick(<span class="hljs-built_in">Function</span> func,<font></font>
     ...args);<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
 <ul>
-<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Funció, especifiqueu la funció que ha d'executar la fibra</font></font></li>
-<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., seqüència de paràmetres variables, aquesta seqüència es passarà a la funció de la fibra</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Funció, especifica la funció que ha d'executar la fibra</font></font></li>
+<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., una seqüència d'arguments variàdics que es passaran a la funció dins de la fibra</font></font></li>
 </ul>
 <hr>
 <div name="binding" data-unique="binding"></div><h3 id="binding" class="notranslate">binding</h3>
@@ -393,35 +396,49 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
 <ul>
-<li><span class="notranslate">name</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifiqueu el nom del mòdul intern a consultar</font></font></li>
+<li><span class="notranslate">name</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica el nom del mòdul intern a consultar</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
 <ul>
-<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Retorna el mòdul intern especificat</font></font></li>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna el mòdul intern especificat</font></font></li>
 </ul>
-<div name="静态属性" data-unique="静态属性"></div><h2 id="静态属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Propietats estàtiques</font></font></h2>
+<hr>
+<div name="disconnect" data-unique="disconnect"></div><h3 id="disconnect" class="notranslate">disconnect</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">tanqueu la canonada ipc amb el procés pare</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> process.disconnect();
+</code></pre>
+<hr>
+<div name="send" data-unique="send"></div><h3 id="send" class="notranslate">send</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Envieu un missatge al procés principal</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> process.send(Value msg);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
+<ul>
+<li><span class="notranslate">msg</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, especifica el missatge a enviar</font></font></li>
+</ul>
+<div name="静态属性" data-unique="静态属性"></div><h2 id="静态属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">propietats estàtiques</font></font></h2>
 <div name="argv" data-unique="argv"></div><h3 id="argv" class="notranslate">argv</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Array, retorna els paràmetres de la línia d'ordres del procés actual</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Matriu, retorna els arguments de la línia d'ordres del procés actual</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Array</span> process.argv;
 </code></pre>
 <hr>
 <div name="execArgv" data-unique="execArgv"></div><h3 id="execArgv" class="notranslate">execArgv</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Array, retorna els paràmetres especials de la línia d'ordres del procés actual, aquests paràmetres els utilitzen fibjs per establir l'entorn operatiu</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Array, retorna els paràmetres especials de la línia d'ordres del procés actual, que són utilitzats per fibjs per configurar l'entorn en execució</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Array</span> process.execArgv;
 </code></pre>
 <hr>
 <div name="version" data-unique="version"></div><h3 id="version" class="notranslate">version</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cadena, retorna la cadena de versió de fibjs</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">String, retorna la cadena de versió fibjs</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">String</span> process.version;
 </code></pre>
 <hr>
 <div name="versions" data-unique="versions"></div><h3 id="versions" class="notranslate">versions</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objecte, retorna la informació de la versió de fibjs i components</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Object, retorna la informació de la versió de fibjs i components</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Object</span> process.versions;
 </code></pre>
 <hr>
 <div name="execPath" data-unique="execPath"></div><h3 id="execPath" class="notranslate">execPath</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cadena, consulteu el camí d'accés complet del fitxer d'execució en execució</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">String, consulta la ruta completa del fitxer d'execució en execució actual</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">String</span> process.execPath;
 </code></pre>
 <hr>
@@ -431,37 +448,37 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {<font></font>
 </code></pre>
 <hr>
 <div name="arch" data-unique="arch"></div><h3 id="arch" class="notranslate">arch</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cadena, consulteu l'entorn actual de la CPU, els possibles resultats són "amd64", "arm", "arm64", "ia32"</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">String, consulteu l'entorn de la CPU actual, els resultats possibles són 'amd64', 'arm', 'arm64', 'ia32'</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">String</span> process.arch;
 </code></pre>
 <hr>
 <div name="platform" data-unique="platform"></div><h3 id="platform" class="notranslate">platform</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cadena, consulteu el nom de la plataforma actual, els possibles resultats són "winwin "," freebsd "," linux "o" win32 "</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cadena, consulteu el nom de la plataforma actual, els resultats possibles són 'darwin', 'freebsd', 'linux' o 'win32'</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">String</span> process.platform;
 </code></pre>
 <hr>
 <div name="pid" data-unique="pid"></div><h3 id="pid" class="notranslate">pid</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enter, llegiu l'identificador del procés que assenyala l'objecte actual</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enter, llegiu l'identificador del procés al qual apunta l'objecte actual</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly Integer process.pid;
 </code></pre>
 <hr>
 <div name="ppid" data-unique="ppid"></div><h3 id="ppid" class="notranslate">ppid</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enter, llegiu l'identificador del procés pare que assenyala l'objecte actual</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enter, llegiu l'identificador del procés pare al qual apunta l'objecte actual</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly Integer process.ppid;
 </code></pre>
 <hr>
 <div name="stdin" data-unique="stdin"></div><h3 id="stdin" class="notranslate">stdin</h3>
-<p><strong><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Consulteu l'objecte d'entrada estàndard del procés actual, a </font></font><a href="tty.md.html" class="notranslate">tty</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> En </font></font><a href="../../object/ifs/ttyinputstream.md.html" class="notranslate">TTYInputStream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, D'una altra manera </font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a></strong></p>
+<p><strong><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, consulteu l'objecte d'entrada estàndard del procés actual, a</font></font><a href="tty.md.html" class="notranslate">tty</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Zhongwei</font></font><a href="../../object/ifs/ttyinputstream.md.html" class="notranslate">TTYInputStream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, d'una altra manera</font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly Stream process.stdin;
 </code></pre>
 <hr>
 <div name="stdout" data-unique="stdout"></div><h3 id="stdout" class="notranslate">stdout</h3>
-<p><strong><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Consulteu l'objecte de sortida estàndard del procés actual, a </font></font><a href="tty.md.html" class="notranslate">tty</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> En </font></font><a href="../../object/ifs/ttyoutputstream.md.html" class="notranslate">TTYOutputStream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, D'una altra manera </font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a></strong></p>
+<p><strong><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, consulteu l'objecte de sortida estàndard del procés actual, a</font></font><a href="tty.md.html" class="notranslate">tty</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Zhongwei</font></font><a href="../../object/ifs/ttyoutputstream.md.html" class="notranslate">TTYOutputStream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, d'una altra manera</font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly Stream process.stdout;
 </code></pre>
 <hr>
 <div name="stderr" data-unique="stderr"></div><h3 id="stderr" class="notranslate">stderr</h3>
-<p><strong><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Consulteu l'objecte de sortida d'error estàndard del procés actual, a </font></font><a href="tty.md.html" class="notranslate">tty</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> En </font></font><a href="../../object/ifs/ttyoutputstream.md.html" class="notranslate">TTYOutputStream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, D'una altra manera </font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a></strong></p>
+<p><strong><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, consulteu l'objecte de sortida d'error estàndard del procés actual, a</font></font><a href="tty.md.html" class="notranslate">tty</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Zhongwei</font></font><a href="../../object/ifs/ttyoutputstream.md.html" class="notranslate">TTYOutputStream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, d'una altra manera</font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly Stream process.stderr;
 </code></pre>
 <hr>
@@ -469,4 +486,9 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {<font></font>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enter, consulteu i configureu el codi de sortida del procés actual</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer process.exitCode;
 </code></pre>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Doneu-nos suport</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip267794"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip267794" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Feu clic per tornar a la pàgina superior</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+<hr>
+<div name="connected" data-unique="connected"></div><h3 id="connected" class="notranslate">connected</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Booleà, consulta si la canonada al procés pare està connectada normalment</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Boolean</span> process.connected;
+</code></pre>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | Doneu- </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">nos suport</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip515717"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip515717" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Feu clic per tornar a la pàgina superior</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

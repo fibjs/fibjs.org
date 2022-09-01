@@ -41,6 +41,14 @@ hex encoding.hex;
 ```
 
 --------------------------
+### multibase
+**[multibase](multibase.md) 编码与解码模块**
+
+```JavaScript
+multibase encoding.multibase;
+```
+
+--------------------------
 ### iconv
 **[iconv](iconv.md) 编码与解码模块**
 

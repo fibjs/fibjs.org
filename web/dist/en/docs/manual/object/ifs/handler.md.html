@@ -1,18 +1,18 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Object Handler-JavaScript on Fiber</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Toggle navigation</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/handler.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/handler.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/handler.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/handler.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/handler.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/handler.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/handler.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/handler.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/handler.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/handler.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/handler.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/handler.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Object built-in object </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Search" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="search input" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">front page</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Built-in objects </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Object Handler </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Development Guide </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Object Handler - JavaScript on Fiber</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Toggle navigation</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/handler.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/handler.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/handler.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/handler.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/handler.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/handler.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/handler.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/handler.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/handler.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/handler.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/handler.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/handler.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Object built-in object</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Search" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="search input" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">front page</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">built-in objects</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ObjectHandler</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Development Guide</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">What is fibjs?</font></font></a></li>
-<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Installation and operating environment</font></font></a></li>
+<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Install the runtime environment</font></font></a></li>
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
-<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A good life starts with the test</font></font></a></li>
+<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A good life starts with a test</font></font></a></li>
 <li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Find the performance killer</font></font></a></li>
-<li><a href="../../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Quickly develop desktop applications</font></font></a></li>
 <li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Server module hot update</font></font></a></li>
 <li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Domain name routing</font></font></a></li>
-<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Use of X509 certificate in fibjs</font></font></a></li>
-<li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Add native module</font></font></a></li>
+<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Use of X509 certificates in fibjs</font></font></a></li>
+<li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">add native module</font></font></a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Basic module </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">basic module</font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../module/ifs/assert.md.html" class="notranslate">assert</a></li>
 <li><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a></li>
+<li><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a></li>
 <li><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a></li>
 <li><a href="../../module/ifs/child_process.md.html" class="notranslate">child_process</a></li>
 <li><a href="../../module/ifs/console.md.html" class="notranslate">console</a></li>
@@ -36,6 +36,7 @@
 <li><a href="../../module/ifs/json.md.html" class="notranslate">json</a></li>
 <li><a href="../../module/ifs/mq.md.html" class="notranslate">mq</a></li>
 <li><a href="../../module/ifs/msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="../../module/ifs/multibase.md.html" class="notranslate">multibase</a></li>
 <li><a href="../../module/ifs/net.md.html" class="notranslate">net</a></li>
 <li><a href="../../module/ifs/os.md.html" class="notranslate">os</a></li>
 <li><a href="../../module/ifs/path.md.html" class="notranslate">path</a></li>
@@ -63,7 +64,7 @@
 <li><a href="../../module/ifs/zip.md.html" class="notranslate">zip</a></li>
 <li><a href="../../module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Built-in objects </font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">built-in objects</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="buffer.md.html" class="notranslate">Buffer</a></li>
 <li><a href="bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
 <li><a href="chain.md.html" class="notranslate">Chain</a></li>
@@ -131,6 +132,8 @@
 <li><a href="ttyinputstream.md.html" class="notranslate">TTYInputStream</a></li>
 <li><a href="ttyoutputstream.md.html" class="notranslate">TTYOutputStream</a></li>
 <li><a href="tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="textdecoder.md.html" class="notranslate">TextDecoder</a></li>
+<li><a href="textencoder.md.html" class="notranslate">TextEncoder</a></li>
 <li><a href="timer.md.html" class="notranslate">Timer</a></li>
 <li><a href="urlobject.md.html" class="notranslate">UrlObject</a></li>
 <li><a href="websocket.md.html" class="notranslate">WebSocket</a></li>
@@ -155,7 +158,7 @@
 <li><a href="zipfile.md.html" class="notranslate">ZipFile</a></li>
 <li><a href="object.md.html" class="notranslate">object</a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Community module </font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">community module</font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../../awesome/module/fib-session.md.html" class="notranslate">fib-session</a></li>
 <li><a href="../../../awesome/module/fib-pool.md.html" class="notranslate">fib-pool</a></li>
 <li><a href="../../../awesome/module/fib-orm.md.html" class="notranslate">fib-orm</a></li>
@@ -197,127 +200,215 @@
 <li><a href="../../../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
 <li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
 </ul>
- </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="对象-Handler" data-unique="对象-Handler"></div><h1 id="对象-Handler"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Object Handler</font></font></h1>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Message processor interface</font></font></p>
-<div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Inheritance</font></font></h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="623" height="344" viewBox="0 0 623 344" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:bold  10pt Helvetica,sans-Serif, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
-  <desc>
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="对象-Handler" data-unique="对象-Handler"></div><h1 id="对象-Handler"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ObjectHandler</font></font></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">message handler interface</font></font></p>
+<div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">inheritance relationship</font></font></h2>
+<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="623.0" height="344.0" viewBox="0 0 623 344" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
+    <desc>
+    #lineWidth: 1.5
+    #font: Helvetica,sans-Serif
+    #fontSize: 10
+    #leading: 1.6
+    #.this: fill=lightgray
+    #.class: fill=white
 
-[&lt;class&gt;object|toString();toJSON()]
-[&lt;this&gt;Handler|new Handler()|invoke()]
-[&lt;class&gt;Chain]
-[&lt;class&gt;HttpHandler]
-[&lt;class&gt;HttpRepeater]
-[&lt;class&gt;Routing]
-[&lt;class&gt;SslHandler]
+    [&lt;class&gt;object|toString();toJSON()]
+    [&lt;this&gt;Handler|new Handler()|invoke()]
+    [&lt;class&gt;Chain]
+    [&lt;class&gt;HttpHandler]
+    [&lt;class&gt;HttpRepeater]
+    [&lt;class&gt;Routing]
+    [&lt;class&gt;SslHandler]
 
-[object] &lt;:- [Handler]
-[Handler] &lt;:- [Chain]
-[Handler] &lt;:- [HttpHandler]
-[Handler] &lt;:- [HttpRepeater]
-[Handler] &lt;:- [Routing]
-[Handler] &lt;:- [SslHandler]
-</desc>
-  <rect x="0" y="0" height="344" width="623" style="stroke:none; fill:transparent;"></rect>
-  <path d="M308 121.3 L308 128 L308 148 L308 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M313.3 121.3 L308 121.3 L302.7 121.3 L308 108 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M240.6 214.1 L55 264 L55 284 L55 284 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M242 219.3 L240.6 214.1 L239.2 209 L253.5 210.6 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M241.5 228.5 L169 264 L169 284 L169 284 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M243.9 233.3 L241.5 228.5 L239.2 223.7 L253.5 222.7 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M308 257.3 L308 264 L308 284 L308 284 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M313.3 257.3 L308 257.3 L302.7 257.3 L308 244 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M374.2 231.9 L433.5 264 L433.5 284 L433.5 284 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M376.8 227.2 L374.2 231.9 L371.7 236.6 L362.5 225.5 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M375.3 214.8 L551 264 L551 284 L551 284 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M376.8 209.7 L375.3 214.8 L373.9 220 L362.5 211.3 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <rect x="254" y="148" height="96" width="109" data-name="Handler" style="stroke:#33322E;fill:lightgray;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <path d="M254 180 L363 180" data-name="Handler" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M254 212 L363 212" data-name="Handler" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <text x="308.5" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Handler">Handler</text>
-  <text x="262" y="201" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Handler">new Handler()</text>
-  <text x="262" y="233" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Handler">invoke()</text>
-  <rect x="270" y="28" height="80" width="77" data-name="object" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <path d="M270 60 L347 60" data-name="object" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <text x="308.5" y="49" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="object">object</text>
-  <text x="278" y="81" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toString()</text>
-  <text x="278" y="97" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toJSON()</text>
-  <rect x="28" y="284" height="32" width="54" data-name="Chain" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="55" y="305" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Chain">Chain</text>
-  <rect x="122" y="284" height="32" width="94" data-name="HttpHandler" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="169" y="305" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="HttpHandler">HttpHandler</text>
-  <rect x="256" y="284" height="32" width="104" data-name="HttpRepeater" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="308" y="305" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="HttpRepeater">HttpRepeater</text>
-  <rect x="400" y="284" height="32" width="67" data-name="Routing" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="433.5" y="305" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Routing">Routing</text>
-  <rect x="507" y="284" height="32" width="88" data-name="SslHandler" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="551" y="305" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="SslHandler">SslHandler</text>
+    [object] &lt;:- [Handler]
+    [Handler] &lt;:- [Chain]
+    [Handler] &lt;:- [HttpHandler]
+    [Handler] &lt;:- [HttpRepeater]
+    [Handler] &lt;:- [Routing]
+    [Handler] &lt;:- [SslHandler]
+    </desc>
+    <g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="10pt" font-family="Helvetica,sans-Serif" font-weight="bold" font-style="normal">
+        <g font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="bold" font-style="normal" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
+            <g stroke="transparent" fill="transparent">
+                <rect x="0.0" y="0.0" height="344.0" width="623.0" stroke="none"></rect>
+            </g>
+            <g transform="translate(8, 8)" fill="#33322E">
+                <g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal">
+                    <path d="M280.0 93.3 L280 100 L280 120 L280.0 120.0 " fill="none"></path>
+                    <path d="M285.3 93.3 L280.0 93.3 L274.7 93.3 L280.0 80.0 Z"></path>
+                    <path d="M212.6 186.1 L27 236 L27 256 L27.0 256.0 " fill="none"></path>
+                    <path d="M214.0 191.3 L212.6 186.1 L211.2 181.0 L225.5 182.6 Z"></path>
+                    <path d="M213.5 200.5 L141 236 L141 256 L141.0 256.0 " fill="none"></path>
+                    <path d="M215.9 205.3 L213.5 200.5 L211.2 195.7 L225.5 194.7 Z"></path>
+                    <path d="M280.0 229.3 L280 236 L280 256 L280.0 256.0 " fill="none"></path>
+                    <path d="M285.3 229.3 L280.0 229.3 L274.7 229.3 L280.0 216.0 Z"></path>
+                    <path d="M346.2 203.9 L405.5 236 L405.5 256 L405.5 256.0 " fill="none"></path>
+                    <path d="M348.8 199.2 L346.2 203.9 L343.7 208.6 L334.5 197.5 Z"></path>
+                    <path d="M347.3 186.8 L523 236 L523 256 L523.0 256.0 " fill="none"></path>
+                    <path d="M348.8 181.7 L347.3 186.8 L345.9 192.0 L334.5 183.3 Z"></path>
+                    <g data-name="Handler">
+                        <g fill="lightgray" stroke="#33322E" data-name="Handler">
+                            <rect x="226.0" y="120.0" height="96.0" width="109.0" data-name="Handler"></rect>
+                            <path d="M226.0 152.0 L335.0 152.0" fill="none" data-name="Handler"></path>
+                            <path d="M226.0 184.0 L335.0 184.0" fill="none" data-name="Handler"></path>
+                        </g>
+                        <g transform="translate(226, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Handler">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Handler">
+                                <text x="46.5" y="13.0" stroke="none" text-anchor="middle" data-name="Handler">Handler</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(226, 152)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Handler">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Handler">
+                                <text x="0.0" y="13.0" stroke="none" data-name="Handler">new Handler()</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(226, 184)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Handler">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Handler">
+                                <text x="0.0" y="13.0" stroke="none" data-name="Handler">invoke()</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="object">
+                        <g fill="white" stroke="#33322E" data-name="object">
+                            <rect x="242.0" y="0.0" height="80.0" width="77.0" data-name="object"></rect>
+                            <path d="M242.0 32.0 L319.0 32.0" fill="none" data-name="object"></path>
+                        </g>
+                        <g transform="translate(242, 0)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="object">
+                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="object">object</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(242, 32)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="object">
+                                <text x="0.0" y="13.0" stroke="none" data-name="object">toString()</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="object">toJSON()</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="Chain">
+                        <g fill="white" stroke="#33322E" data-name="Chain">
+                            <rect x="0.0" y="256.0" height="32.0" width="54.0" data-name="Chain"></rect>
+                        </g>
+                        <g transform="translate(0, 256)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Chain">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Chain">
+                                <text x="19.0" y="13.0" stroke="none" text-anchor="middle" data-name="Chain">Chain</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="HttpHandler">
+                        <g fill="white" stroke="#33322E" data-name="HttpHandler">
+                            <rect x="94.0" y="256.0" height="32.0" width="94.0" data-name="HttpHandler"></rect>
+                        </g>
+                        <g transform="translate(94, 256)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="HttpHandler">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="HttpHandler">
+                                <text x="39.0" y="13.0" stroke="none" text-anchor="middle" data-name="HttpHandler">HttpHandler</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="HttpRepeater">
+                        <g fill="white" stroke="#33322E" data-name="HttpRepeater">
+                            <rect x="228.0" y="256.0" height="32.0" width="104.0" data-name="HttpRepeater"></rect>
+                        </g>
+                        <g transform="translate(228, 256)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="HttpRepeater">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="HttpRepeater">
+                                <text x="44.0" y="13.0" stroke="none" text-anchor="middle" data-name="HttpRepeater">HttpRepeater</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="Routing">
+                        <g fill="white" stroke="#33322E" data-name="Routing">
+                            <rect x="372.0" y="256.0" height="32.0" width="67.0" data-name="Routing"></rect>
+                        </g>
+                        <g transform="translate(372, 256)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Routing">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Routing">
+                                <text x="25.5" y="13.0" stroke="none" text-anchor="middle" data-name="Routing">Routing</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="SslHandler">
+                        <g fill="white" stroke="#33322E" data-name="SslHandler">
+                            <rect x="479.0" y="256.0" height="32.0" width="88.0" data-name="SslHandler"></rect>
+                        </g>
+                        <g transform="translate(479, 256)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="SslHandler">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="SslHandler">
+                                <text x="36.0" y="13.0" stroke="none" text-anchor="middle" data-name="SslHandler">SslHandler</text>
+
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
 </svg></div>
 
 <div name="构造函数" data-unique="构造函数"></div><h2 id="构造函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Constructor</font></font></h2>
 <div name="Handler" data-unique="Handler"></div><h3 id="Handler" class="notranslate">Handler</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Construct a message processor chain processing object</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Constructs a message handler chain processing object</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> Handler(<span class="hljs-built_in">Array</span> hdlrs);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">hdlrs</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Array, processor array</font></font></li>
+<li><span class="notranslate">hdlrs</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Array, array of handlers</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Create a message handler routing object</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Create a message handler route object</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> Handler(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, initialize routing parameters</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, initialize route parameters</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Create a JavaSvript message processor</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Create a JavaSvript message handler</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> Handler(<span class="hljs-built_in">Function</span> hdlr);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">hdlr</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function, JavaScript processor function</font></font></li>
+<li><span class="notranslate">hdlr</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function, JavaScript handler function</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Construct a fileHandler or </font></font><a href="httprepeater.md.html" class="notranslate">HttpRepeater</a></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">construct a fileHandler or</font></font><a href="httprepeater.md.html" class="notranslate">HttpRepeater</a></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> Handler(<span class="hljs-built_in">String</span> hdlr);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">hdlr</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, the address parameter of the processor</font></font></li>
+<li><span class="notranslate">hdlr</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, the address parameter of the handler</font></font></li>
 </ul>
-<div name="成员函数" data-unique="成员函数"></div><h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Member function</font></font></h2>
+<div name="成员函数" data-unique="成员函数"></div><h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">member function</font></font></h2>
 <div name="invoke" data-unique="invoke"></div><h3 id="invoke" class="notranslate">invoke</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Process a message or object</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">handle a message or object</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Handler Handler.invoke(object v) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="object.md.html" class="notranslate">object</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Specify the message or object to be processed</font></font></li>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="object.md.html" class="notranslate">object</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, specifies the message or object to process</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
 <ul>
-<li><span class="notranslate">Handler</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Return to the next processor</font></font></li>
+<li><span class="notranslate">Handler</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, return to the next handler</font></font></li>
 </ul>
 <hr>
 <div name="toString" data-unique="toString"></div><h3 id="toString" class="notranslate">toString</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Returns the string representation of the object, generally returns "[Native Object]", the object can be re-implemented according to its own characteristics</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Returns the string representation of the object, generally returns "[Native Object]", the object can be reimplemented according to its own characteristics</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Handler.toString();
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
 <ul>
-<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Returns the string representation of the object</font></font></li>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns the string representation of the object</font></font></li>
 </ul>
 <hr>
 <div name="toJSON" data-unique="toJSON"></div><h3 id="toJSON" class="notranslate">toJSON</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Returns the JSON format representation of the object, generally returns a collection of readable attributes defined by the object</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Returns the JSON format representation of the object, generally returns the set of readable properties defined by the object</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value Handler.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
@@ -326,6 +417,6 @@
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
 <ul>
-<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Returns a value containing JSON serializable</font></font></li>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns a value containing JSON serializable</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Support us</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip774406"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip774406" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Support us</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip885944"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip885944" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

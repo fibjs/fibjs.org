@@ -63,7 +63,7 @@ index.html 的内容如下：
 
 [<class>object|toString();toJSON()]
 [<class>EventEmitter|new EventEmitter()|EventEmitter|defaultMaxListeners|on();addListener();prependListener();once();prependOnceListener();off();removeListener();removeAllListeners();setMaxListeners();getMaxListeners();listeners();listenerCount();eventNames();emit()]
-[<this>WebView|type;dev;onopen;onload;onaddress;ontitle;onmove;onresize;onclosed;onmessage;ondownload|loadUrl();getUrl();setHtml();reload();goBack();goForward();print();printToPDF();executeJavaScript();executeDevToolsMethod();close();postMessage()]
+[<this>WebView|onopen;onload;onaddress;ontitle;onmove;onresize;onclosed;onmessage;ondownload|loadUrl();getUrl();setHtml();reload();goBack();goForward();print();executeJavaScript();close();postMessage()]
 
 [object] <:- [EventEmitter]
 [EventEmitter] <:- [WebView]
@@ -80,22 +80,6 @@ static Integer WebView.defaultMaxListeners;
 
 ## 成员属性
         
-### type
-**String, 当前窗口的 WebView 引擎**
-
-```JavaScript
-readonly String WebView.type;
-```
-
---------------------------
-### dev
-**Value, DevTools 访问对象，调用接口参见：https://chromedevtools.github.io/devtools-protocol/**
-
-```JavaScript
-readonly Value WebView.dev;
-```
-
---------------------------
 ### onopen
 **Function, 查询和绑定加载成功事件，相当于 on("open", func);**
 
@@ -255,17 +239,6 @@ WebView.print(Integer mode = 1) async;
 * mode: Integer, 打印参数，0: 快速打印; 1: 标准打印; 2: 打印预览。缺省为 1
 
 --------------------------
-### printToPDF
-**打印当前窗口文档到 PDF 文件**
-
-```JavaScript
-WebView.printToPDF(String file) async;
-```
-
-调用参数:
-* file: String, 指定 pdf 路径
-
---------------------------
 ### executeJavaScript
 **在当前窗口运行一段 JavaScript 代码**
 
@@ -275,22 +248,6 @@ WebView.executeJavaScript(String code) async;
 
 调用参数:
 * code: String, 指定要执行的 JavaScript 代码
-
---------------------------
-### executeDevToolsMethod
-**在当前窗口执行 DevTools 命令，并返回结果**
-
-```JavaScript
-Variant WebView.executeDevToolsMethod(String method,
-    Object params = {}) async;
-```
-
-调用参数:
-* method: String, 指定要执行的 DevTools 命令
-* params: Object, 指定命令的参数
-
-返回结果:
-* Variant, 返回执行的结果
 
 --------------------------
 ### close

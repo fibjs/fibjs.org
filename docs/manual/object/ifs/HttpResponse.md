@@ -13,7 +13,7 @@
 [<class>object|toString();toJSON()]
 [<class>Message|new Message()|TEXT;BINARY|value;params;type;data;body;length;stream;lastError|read();readAll();write();json();pack();end();isEnded();clear();sendTo();readFrom()]
 [<class>HttpMessage|protocol;headers;keepAlive;upgrade;maxHeadersCount;maxBodySize;socket|hasHeader();firstHeader();allHeader();addHeader();setHeader();removeHeader()]
-[<this>HttpResponse|new HttpResponse()|statusCode;statusMessage;cookies|writeHead();addCookie();redirect();sendHeader()]
+[<this>HttpResponse|new HttpResponse()|statusCode;statusMessage;ok;cookies|writeHead();addCookie();redirect();sendHeader()]
 
 [object] <:- [Message]
 [Message] <:- [HttpMessage]
@@ -61,6 +61,14 @@ Integer HttpResponse.statusCode;
 
 ```JavaScript
 String HttpResponse.statusMessage;
+```
+
+--------------------------
+### ok
+**Boolean, 查询当前响应是否正常**
+
+```JavaScript
+readonly Boolean HttpResponse.ok;
 ```
 
 --------------------------

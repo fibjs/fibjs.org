@@ -1,18 +1,18 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Módulo child_process-JavaScript en Fiber</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Navegación de palanca</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../readme.md.html">MODULE</a></li><li><a href="../../object/readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/module/ifs/child_process.md.html">中文</a> <a href="../../../../../ca/docs/manual/module/ifs/child_process.md.html">Catalan</a> <a href="../../../../../de/docs/manual/module/ifs/child_process.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/module/ifs/child_process.md.html">English</a> <a href="../../../../../es/docs/manual/module/ifs/child_process.md.html">Español</a> <a href="../../../../../fr/docs/manual/module/ifs/child_process.md.html">Français</a> <a href="../../../../../gl/docs/manual/module/ifs/child_process.md.html">Galego</a> <a href="../../../../../it/docs/manual/module/ifs/child_process.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/module/ifs/child_process.md.html">Русский</a> <a href="../../../../../ja/docs/manual/module/ifs/child_process.md.html">日本語</a> <a href="../../../../../ko/docs/manual/module/ifs/child_process.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/module/ifs/child_process.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Módulo módulo básico </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Buscar" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="entrada de búsqueda" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">página delantera</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Módulo básico </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Módulo child_process </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Guía de desarrollo </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Módulo child_process - JavaScript en fibra</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Navegación de palanca</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../readme.md.html">MODULE</a></li><li><a href="../../object/readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/module/ifs/child_process.md.html">中文</a> <a href="../../../../../ca/docs/manual/module/ifs/child_process.md.html">Catalan</a> <a href="../../../../../de/docs/manual/module/ifs/child_process.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/module/ifs/child_process.md.html">English</a> <a href="../../../../../es/docs/manual/module/ifs/child_process.md.html">Español</a> <a href="../../../../../fr/docs/manual/module/ifs/child_process.md.html">Français</a> <a href="../../../../../gl/docs/manual/module/ifs/child_process.md.html">Galego</a> <a href="../../../../../it/docs/manual/module/ifs/child_process.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/module/ifs/child_process.md.html">Русский</a> <a href="../../../../../ja/docs/manual/module/ifs/child_process.md.html">日本語</a> <a href="../../../../../ko/docs/manual/module/ifs/child_process.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/module/ifs/child_process.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Módulo base del módulo</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Búsqueda" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="entrada de búsqueda" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">página delantera</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">módulo básico</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">módulo child_process</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Guía de desarrollo</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¿Qué es fibjs?</font></font></a></li>
-<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entorno operativo y de instalación</font></font></a></li>
+<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instalar el entorno de tiempo de ejecución</font></font></a></li>
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
-<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Una buena vida comienza con la prueba.</font></font></a></li>
+<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Una buena vida comienza con una prueba</font></font></a></li>
 <li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Encuentra al asesino del rendimiento</font></font></a></li>
-<li><a href="../../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Desarrolle rápidamente aplicaciones de escritorio</font></font></a></li>
-<li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Actualización en caliente del módulo de servidor</font></font></a></li>
+<li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Actualización en caliente del módulo del servidor</font></font></a></li>
 <li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enrutamiento de nombres de dominio</font></font></a></li>
-<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Uso del certificado X509 en fibjs</font></font></a></li>
-<li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Agregar módulo nativo</font></font></a></li>
+<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Uso de certificados X509 en fibjs</font></font></a></li>
+<li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">añadir módulo nativo</font></font></a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Módulo básico </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">módulo básico</font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="assert.md.html" class="notranslate">assert</a></li>
 <li><a href="base32.md.html" class="notranslate">base32</a></li>
+<li><a href="base58.md.html" class="notranslate">base58</a></li>
 <li><a href="base64.md.html" class="notranslate">base64</a></li>
 <li class="active"><a href="child_process.md.html" class="notranslate">child_process</a></li>
 <li><a href="console.md.html" class="notranslate">console</a></li>
@@ -36,6 +36,7 @@
 <li><a href="json.md.html" class="notranslate">json</a></li>
 <li><a href="mq.md.html" class="notranslate">mq</a></li>
 <li><a href="msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="multibase.md.html" class="notranslate">multibase</a></li>
 <li><a href="net.md.html" class="notranslate">net</a></li>
 <li><a href="os.md.html" class="notranslate">os</a></li>
 <li><a href="path.md.html" class="notranslate">path</a></li>
@@ -63,7 +64,7 @@
 <li><a href="zip.md.html" class="notranslate">zip</a></li>
 <li><a href="zlib.md.html" class="notranslate">zlib</a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Objetos incorporados </font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">objetos integrados</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a></li>
 <li><a href="../../object/ifs/bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
 <li><a href="../../object/ifs/chain.md.html" class="notranslate">Chain</a></li>
@@ -131,6 +132,8 @@
 <li><a href="../../object/ifs/ttyinputstream.md.html" class="notranslate">TTYInputStream</a></li>
 <li><a href="../../object/ifs/ttyoutputstream.md.html" class="notranslate">TTYOutputStream</a></li>
 <li><a href="../../object/ifs/tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="../../object/ifs/textdecoder.md.html" class="notranslate">TextDecoder</a></li>
+<li><a href="../../object/ifs/textencoder.md.html" class="notranslate">TextEncoder</a></li>
 <li><a href="../../object/ifs/timer.md.html" class="notranslate">Timer</a></li>
 <li><a href="../../object/ifs/urlobject.md.html" class="notranslate">UrlObject</a></li>
 <li><a href="../../object/ifs/websocket.md.html" class="notranslate">WebSocket</a></li>
@@ -155,7 +158,7 @@
 <li><a href="../../object/ifs/zipfile.md.html" class="notranslate">ZipFile</a></li>
 <li><a href="../../object/ifs/object.md.html" class="notranslate">object</a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Módulo de comunidad </font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">modulo comunitario</font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../../awesome/module/fib-session.md.html" class="notranslate">fib-session</a></li>
 <li><a href="../../../awesome/module/fib-pool.md.html" class="notranslate">fib-pool</a></li>
 <li><a href="../../../awesome/module/fib-orm.md.html" class="notranslate">fib-orm</a></li>
@@ -197,29 +200,29 @@
 <li><a href="../../../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
 <li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
 </ul>
- </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="模块-child_process" data-unique="模块-child_process"></div><h1 id="模块-child_process"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Módulo child_process</font></font></h1>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Módulo de gestión de procesos secundarios</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Método de referencia:</font></font></p>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="模块-child_process" data-unique="模块-child_process"></div><h1 id="模块-child_process"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">módulo child_process</font></font></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Módulo de gestión de subprocesos</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Citación:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">var</span> child_process = <span class="hljs-built_in">require</span>(<span class="hljs-string">"child_process"</span>);
 <span class="hljs-keyword">var</span> child = child_process.spawn(<span class="hljs-string">"ls"</span>);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Al crear un proceso hijo, la opción options.stdio se utiliza para configurar la canalización establecida entre el proceso padre y el proceso hijo. </font><font style="vertical-align: inherit;">De forma predeterminada, stdin, stdout y stderr del proceso hijo se redirigirán a</font></font><a href="../../object/ifs/childprocess.md.html" class="notranslate">ChildProcess</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Los flujos stdin, stdout y stderr correspondientes en el objeto. </font><font style="vertical-align: inherit;">Esto es equivalente a configurar options.stdio en ['pipe', 'pipe', 'pipe'].</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Al crear un proceso hijo, la opción options.stdio se usa para configurar la tubería establecida entre los procesos padre e hijo. </font><font style="vertical-align: inherit;">De forma predeterminada, stdin, stdout y stderr del proceso secundario se redireccionan a</font></font><a href="../../object/ifs/childprocess.md.html" class="notranslate">ChildProcess</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Los flujos stdin, stdout y stderr correspondientes en el objeto. </font><font style="vertical-align: inherit;">Esto es equivalente a establecer options.stdio en ['tubería', 'tubería', 'tubería'].</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Para mayor comodidad, options.stdio puede ser una de las siguientes cadenas:</font></font></p>
 <ul>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'pipe': equivalente a ['pipe', 'pipe', 'pipe'] (valor predeterminado).</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'ignorar': equivalente a ['ignorar', 'ignorar', 'ignorar'].</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'heredar': equivalente a ['heredar', 'heredar', 'heredar'] o [0, 1, 2].</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'pty': equivalente a ['pty', 'pty', 'pty']. </font><font style="vertical-align: inherit;">Windows no es compatible.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'tubería': Equivalente a ['tubería', 'tubería', 'tubería'] (predeterminado).</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'ignorar': Equivalente a ['ignorar', 'ignorar', 'ignorar'].</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'heredar': Equivalente a ['heredar', 'heredar', 'heredar'] o [0, 1, 2].</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'pty': Equivalente a ['pty', 'pty', 'pty']. </font><font style="vertical-align: inherit;">Windows no es compatible.</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">De lo contrario, el valor de options.stdio debe ser una matriz (donde cada índice corresponde a un descriptor de archivo en el proceso hijo). </font><font style="vertical-align: inherit;">Los descriptores de archivo 0, 1 y 2 corresponden a stdin, stdout y stderr, respectivamente. </font><font style="vertical-align: inherit;">Se pueden designar otros descriptores de archivo para crear otras canalizaciones entre el proceso padre y el proceso hijo. </font><font style="vertical-align: inherit;">El valor puede ser uno de los siguientes:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">De lo contrario, el valor de options.stdio debe ser una matriz (donde cada índice corresponde a un descriptor de archivo en el proceso secundario). </font><font style="vertical-align: inherit;">Los descriptores de archivo 0, 1 y 2 corresponden a stdin, stdout y stderr, respectivamente. </font><font style="vertical-align: inherit;">Se pueden especificar otros descriptores de archivo para crear conductos adicionales entre los procesos principal y secundario. </font><font style="vertical-align: inherit;">El valor puede ser uno de los siguientes:</font></font></p>
 <ol>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'pipe': crea una tubería entre el proceso hijo y el proceso padre. </font><font style="vertical-align: inherit;">El padre de la tubería está expuesto al proceso padre como el atributo stdio [fd] en el objeto child_process. </font><font style="vertical-align: inherit;">Las canalizaciones creadas para los descriptores de archivo 0, 1 y 2 también se pueden usar como stdin, stdout y stderr, respectivamente.</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'ignore': Indique a fibjs que ignore el descriptor de archivo en el proceso hijo. </font><font style="vertical-align: inherit;">Aunque fibjs siempre abrirá los descriptores de archivo 0, 1 y 2 para sus procesos generados, configurar el descriptor de archivo en 'ignorar' permite a fibjs abrir / dev / null y adjuntarlo al descriptor de archivo del proceso hijo.</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'heredar': pasa el stdio correspondiente hacia o desde el proceso padre. </font><font style="vertical-align: inherit;">En las tres primeras posiciones, esto equivale a</font></font><a href="process.md.html#stdin" class="notranslate">process.stdin</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="process.md.html#stdout" class="notranslate">process.stdout</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> con </font></font><a href="process.md.html#stderr" class="notranslate">process.stderr</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. </font><font style="vertical-align: inherit;">En cualquier otra posición, equivale a "ignorar".</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'pty': El proceso hijo se ejecutará en una terminal virtual. </font><font style="vertical-align: inherit;">En este momento, solo stdin y stdout son válidos.</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entero positivo: el valor entero se interpretará como el descriptor de archivo actualmente abierto en el proceso principal. </font><font style="vertical-align: inherit;">Se comparte con el proceso hijo, similar a compartir &lt;</font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">&gt; El camino del objeto. </font><font style="vertical-align: inherit;">Los sockets entrantes no son compatibles con Windows.</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">nulo o indefinido: use el valor predeterminado. </font><font style="vertical-align: inherit;">Para los descriptores de archivos stdio 0, 1 y 2 (en otras palabras, stdin, stdout y stderr), se crearán tuberías. </font><font style="vertical-align: inherit;">Para el descriptor de archivo 3 y superior, el valor predeterminado es 'ignorar'.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'tubería': crea una tubería entre el proceso secundario y el proceso principal. </font><font style="vertical-align: inherit;">El extremo principal de la canalización se expone al proceso principal como el atributo stdio[fd] en el objeto child_process. </font><font style="vertical-align: inherit;">Las canalizaciones creadas para los descriptores de archivo 0, 1 y 2 también están disponibles como stdin, stdout y stderr, respectivamente.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'ignorar': indica a fibjs que ignore los descriptores de archivo en los procesos secundarios. </font><font style="vertical-align: inherit;">Si bien fibjs siempre tendrá los descriptores de archivo 0, 1 y 2 abiertos para su proceso generado, establecer los descriptores de archivo en "ignorar" hace que fibjs abra /dev/null y lo agregue al descriptor de archivo del proceso secundario.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'heredar': transmita el stdio correspondiente hacia o desde el proceso principal. </font><font style="vertical-align: inherit;">En las tres primeras posiciones, esto equivale a</font></font><a href="process.md.html#stdin" class="notranslate">process.stdin</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">,</font></font><a href="process.md.html#stdout" class="notranslate">process.stdout</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">y</font></font><a href="process.md.html#stderr" class="notranslate">process.stderr</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">. </font><font style="vertical-align: inherit;">En cualquier otra posición, equivale a 'ignorar'.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'pty': El subproceso se ejecutará en una terminal virtual. </font><font style="vertical-align: inherit;">Solo stdin y stdout son válidos en este momento.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entero positivo: el valor entero se interpreta como el descriptor de archivo actualmente abierto en el proceso principal. </font><font style="vertical-align: inherit;">Se comparte con el proceso hijo, similar a compartir&lt;</font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">&gt; forma de objeto. </font><font style="vertical-align: inherit;">Los sockets entrantes no son compatibles con Windows.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">nulo o indefinido: utilice el valor predeterminado. </font><font style="vertical-align: inherit;">Para los descriptores de archivo 0, 1 y 2 de stdio (en otras palabras, stdin, stdout y stderr), se crearán conductos. </font><font style="vertical-align: inherit;">Para los descriptores de archivo 3 y superiores, el valor predeterminado es 'ignorar'.</font></font></li>
 </ol>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -247,20 +250,20 @@ spawn(<span class="hljs-string">'prg'</span>, [], {
     <span class="hljs-attr">stdio</span>: [<span class="hljs-string">'pipe'</span>, <span class="hljs-string">'pipe'</span>, process.stderr]<font></font>
 });<font></font>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Para los usuarios que usan nodejs al mismo tiempo, preste atención</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Para los usuarios que usan nodejs al mismo tiempo, presten atención</font></font></p>
 <ul>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs el </font></font><code>child_process.exec(command, args)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mismo nombre api nodejs funciones similares, pero en Windows, no automáticamente el comando cmd.exe como parámetro del entorno de ejecución;</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El child_process. [Spawn | exec | execFile | run] de fibjs es una función de estilo asíncrono integrada de sincronización / devolución de llamada:</font></font><ul>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Si el último parámetro no es una función, es síncrono</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Si se pasa una función como último parámetro, es asincrónica;</font></font></li>
+<li><font style="vertical-align: inherit;"></font><code>child_process.exec(command, args)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La api de</font><font style="vertical-align: inherit;"> fibjs es similar a la api del mismo nombre de nodejs, pero en Windows, no toma automáticamente cmd.exe como entorno de ejecución del parámetro de comando;</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">child_process.[spawn|exec|execFile|run] de fibjs es una función de estilo asincrónico integrada de sincronización/devolución de llamada:</font></font><ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Síncrono si el último argumento no es una función</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Asincrónico si se pasa una función como último argumento;</font></font></li>
 </ul>
 </li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El resultado de retorno de fibjs child_process. [Exec | execFile] es un objeto, que es </font><strong><font style="vertical-align: inherit;">completamente diferente</font></strong><font style="vertical-align: inherit;"> del objeto devuelto por la API de nodejs con el mismo nombre</font></font><strong><font style="vertical-align: inherit;"></font></strong></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs </font></font><code>child_process.run</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">no </font><font style="vertical-align: inherit;">es </font><font style="vertical-align: inherit;">una API correspondiente en nodejs</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El resultado de retorno de child_process.[exec|execFile] de fibjs es un objeto, que es </font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">completamente diferente del objeto devuelto por la api del mismo nombre de nodejs</font></font></strong></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">No hay una API correspondiente para fibjs </font></font><code>child_process.run</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">en nodejs</font></font></li>
 </ul>
-<div name="静态函数" data-unique="静态函数"></div><h2 id="静态函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Función estática</font></font></h2>
+<div name="静态函数" data-unique="静态函数"></div><h2 id="静态函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">función estática</font></font></h2>
 <div name="spawn" data-unique="spawn"></div><h3 id="spawn" class="notranslate">spawn</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Liberar un proceso hijo con el comando dado</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Publicar un proceso hijo con el comando dado</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">static</span> ChildProcess child_process.spawn(<span class="hljs-built_in">String</span> command,
@@ -269,13 +272,13 @@ spawn(<span class="hljs-string">'prg'</span>, [], {
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">command</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el comando para ejecutar</font></font></li>
-<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Matriz, especifique la lista de parámetros de cadena</font></font></li>
-<li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objeto, especificar parámetros de creación</font></font></li>
+<li><span class="notranslate">command</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica el comando a ejecutar</font></font></li>
+<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Matriz, especifica una lista de argumentos de cadena</font></font></li>
+<li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objeto, especifica los parámetros de creación</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado devuelto:</font></font></p>
 <ul>
-<li><a href="../../object/ifs/childprocess.md.html" class="notranslate">ChildProcess</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Devuelve el objeto de proceso hijo</font></font></li>
+<li><a href="../../object/ifs/childprocess.md.html" class="notranslate">ChildProcess</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de proceso secundario</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El contenido admitido por las opciones es el siguiente:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
@@ -299,19 +302,19 @@ spawn(<span class="hljs-string">'prg'</span>, [], {
 }<font></font>
 </code></pre>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Liberar un proceso hijo con el comando dado</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Publicar un proceso hijo con el comando dado</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> ChildProcess child_process.spawn(<span class="hljs-built_in">String</span> command,
     <span class="hljs-built_in">Object</span> options = {});
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">command</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el comando para ejecutar</font></font></li>
-<li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objeto, especificar parámetros de creación</font></font></li>
+<li><span class="notranslate">command</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica el comando a ejecutar</font></font></li>
+<li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objeto, especifica los parámetros de creación</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado devuelto:</font></font></p>
 <ul>
-<li><a href="../../object/ifs/childprocess.md.html" class="notranslate">ChildProcess</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Devuelve el objeto de proceso hijo</font></font></li>
+<li><a href="../../object/ifs/childprocess.md.html" class="notranslate">ChildProcess</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de proceso secundario</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El contenido admitido por las opciones es el siguiente:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
@@ -336,19 +339,19 @@ spawn(<span class="hljs-string">'prg'</span>, [], {
 </code></pre>
 <hr>
 <div name="exec" data-unique="exec"></div><h3 id="exec" class="notranslate">exec</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ejecuta un comando en el shell y almacena en búfer la salida. Cuando se ejecuta en modo de devolución de llamada, la función devolverá el objeto de proceso secundario</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ejecute un comando en el shell y almacene en búfer la salida, cuando se ejecuta como devolución de llamada, la función devolverá el objeto de subproceso</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> (Variant stdout, Variant stderr) child_process.exec(<span class="hljs-built_in">String</span> command,
     <span class="hljs-built_in">Object</span> options = {}) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">command</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el comando para ejecutar</font></font></li>
-<li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objeto, especificar parámetros de creación</font></font></li>
+<li><span class="notranslate">command</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica el comando a ejecutar</font></font></li>
+<li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objeto, especifica los parámetros de creación</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado devuelto:</font></font></p>
 <ul>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(Variant stdout, Variant stderr), devuelve el contenido de salida stdio del proceso hijo</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(Variant stdout, Variant stderr), devuelve la salida stdio del proceso secundario</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El contenido admitido por las opciones es el siguiente:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
@@ -382,13 +385,13 @@ spawn(<span class="hljs-string">'prg'</span>, [], {
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">command</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el comando para ejecutar</font></font></li>
-<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Matriz, especifique la lista de parámetros de cadena</font></font></li>
-<li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objeto, especificar parámetros de creación</font></font></li>
+<li><span class="notranslate">command</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica el comando a ejecutar</font></font></li>
+<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Matriz, especifica una lista de argumentos de cadena</font></font></li>
+<li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objeto, especifica los parámetros de creación</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado devuelto:</font></font></p>
 <ul>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(Variant stdout, Variant stderr), devuelve el contenido de salida stdio del proceso hijo</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(Variant stdout, Variant stderr), devuelve la salida stdio del proceso secundario</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El contenido admitido por las opciones es el siguiente:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
@@ -419,12 +422,12 @@ spawn(<span class="hljs-string">'prg'</span>, [], {
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">command</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el comando para ejecutar</font></font></li>
-<li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objeto, especificar parámetros de creación</font></font></li>
+<li><span class="notranslate">command</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica el comando a ejecutar</font></font></li>
+<li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objeto, especifica los parámetros de creación</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado devuelto:</font></font></p>
 <ul>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(Variant stdout, Variant stderr), devuelve el contenido de salida stdio del proceso hijo</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(Variant stdout, Variant stderr), devuelve la salida stdio del proceso secundario</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El contenido admitido por las opciones es el siguiente:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
@@ -449,7 +452,7 @@ spawn(<span class="hljs-string">'prg'</span>, [], {
 </code></pre>
 <hr>
 <div name="fork" data-unique="fork"></div><h3 id="fork" class="notranslate">fork</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ejecutar un módulo en el proceso hijo</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ejecutar un módulo en un proceso hijo</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">static</span> ChildProcess child_process.fork(<span class="hljs-built_in">String</span> <span class="hljs-built_in">module</span>,
@@ -458,13 +461,13 @@ spawn(<span class="hljs-string">'prg'</span>, [], {
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">module</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el comando para ejecutar</font></font></li>
-<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Matriz, especifique la lista de parámetros de cadena</font></font></li>
-<li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objeto, especificar parámetros de creación</font></font></li>
+<li><span class="notranslate">module</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica el comando a ejecutar</font></font></li>
+<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Matriz, especifica una lista de argumentos de cadena</font></font></li>
+<li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objeto, especifica los parámetros de creación</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado devuelto:</font></font></p>
 <ul>
-<li><a href="../../object/ifs/childprocess.md.html" class="notranslate">ChildProcess</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Devuelve el objeto de proceso hijo</font></font></li>
+<li><a href="../../object/ifs/childprocess.md.html" class="notranslate">ChildProcess</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de proceso secundario</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El contenido admitido por las opciones es el siguiente:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
@@ -488,19 +491,19 @@ spawn(<span class="hljs-string">'prg'</span>, [], {
 }<font></font>
 </code></pre>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ejecutar un módulo en el proceso hijo</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ejecutar un módulo en un proceso hijo</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> ChildProcess child_process.fork(<span class="hljs-built_in">String</span> <span class="hljs-built_in">module</span>,
     <span class="hljs-built_in">Object</span> options = {});
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">module</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el comando para ejecutar</font></font></li>
-<li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objeto, especificar parámetros de creación</font></font></li>
+<li><span class="notranslate">module</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica el comando a ejecutar</font></font></li>
+<li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objeto, especifica los parámetros de creación</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado devuelto:</font></font></p>
 <ul>
-<li><a href="../../object/ifs/childprocess.md.html" class="notranslate">ChildProcess</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Devuelve el objeto de proceso hijo</font></font></li>
+<li><a href="../../object/ifs/childprocess.md.html" class="notranslate">ChildProcess</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de proceso secundario</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El contenido admitido por las opciones es el siguiente:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
@@ -525,7 +528,7 @@ spawn(<span class="hljs-string">'prg'</span>, [], {
 </code></pre>
 <hr>
 <div name="run" data-unique="run"></div><h3 id="run" class="notranslate">run</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ejecuta el archivo especificado directamente y devuelve exitCode. Cuando se ejecuta en modo de devolución de llamada, la función devolverá el objeto de proceso hijo</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ejecute directamente el archivo especificado y devuelva exitCode, cuando se ejecuta en modo de devolución de llamada, la función devolverá el objeto de proceso secundario</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">static</span> Integer child_process.run(<span class="hljs-built_in">String</span> command,
@@ -534,13 +537,13 @@ spawn(<span class="hljs-string">'prg'</span>, [], {
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">command</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el comando para ejecutar</font></font></li>
-<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Matriz, especifique la lista de parámetros de cadena</font></font></li>
-<li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objeto, especificar parámetros de creación</font></font></li>
+<li><span class="notranslate">command</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica el comando a ejecutar</font></font></li>
+<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Matriz, especifica una lista de argumentos de cadena</font></font></li>
+<li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objeto, especifica los parámetros de creación</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado devuelto:</font></font></p>
 <ul>
-<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Devuelve el exitCode del proceso hijo</font></font></li>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el código de salida del proceso hijo</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El contenido admitido por las opciones es el siguiente:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
@@ -562,19 +565,19 @@ spawn(<span class="hljs-string">'prg'</span>, [], {
 }<font></font>
 </code></pre>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ejecuta el archivo especificado directamente y devuelve exitCode. Cuando se ejecuta en modo de devolución de llamada, la función devolverá el objeto de proceso hijo</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ejecute directamente el archivo especificado y devuelva exitCode, cuando se ejecuta en modo de devolución de llamada, la función devolverá el objeto de proceso secundario</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> Integer child_process.run(<span class="hljs-built_in">String</span> command,
     <span class="hljs-built_in">Object</span> options = {}) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">command</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifique el comando para ejecutar</font></font></li>
-<li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objeto, especificar parámetros de creación</font></font></li>
+<li><span class="notranslate">command</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica el comando a ejecutar</font></font></li>
+<li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objeto, especifica los parámetros de creación</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolver resultado:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado devuelto:</font></font></p>
 <ul>
-<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Devuelve el exitCode del proceso hijo</font></font></li>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el código de salida del proceso hijo</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El contenido admitido por las opciones es el siguiente:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
@@ -595,4 +598,4 @@ spawn(<span class="hljs-string">'prg'</span>, [], {
     <span class="hljs-string">"windowsHide"</span>: <span class="hljs-literal">false</span> <span class="hljs-comment">// 隐藏通常在Windows系统上创建的子进程控制台窗口，缺省为 false</span><font></font>
 }<font></font>
 </code></pre>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Copyright © 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nos apoyan</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip847788"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip847788" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Haga clic para volver a la página superior</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apóyanos</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip840156"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip840156" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Haga clic para volver a la página superior</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

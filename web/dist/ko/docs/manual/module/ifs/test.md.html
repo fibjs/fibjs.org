@@ -1,18 +1,18 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Fiber의 모듈 테스트-JavaScript</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">탐색 전환</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../readme.md.html">MODULE</a></li><li><a href="../../object/readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/module/ifs/test.md.html">中文</a> <a href="../../../../../ca/docs/manual/module/ifs/test.md.html">Catalan</a> <a href="../../../../../de/docs/manual/module/ifs/test.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/module/ifs/test.md.html">English</a> <a href="../../../../../es/docs/manual/module/ifs/test.md.html">Español</a> <a href="../../../../../fr/docs/manual/module/ifs/test.md.html">Français</a> <a href="../../../../../gl/docs/manual/module/ifs/test.md.html">Galego</a> <a href="../../../../../it/docs/manual/module/ifs/test.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/module/ifs/test.md.html">Русский</a> <a href="../../../../../ja/docs/manual/module/ifs/test.md.html">日本語</a> <a href="../../../../../ko/docs/manual/module/ifs/test.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/module/ifs/test.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 모듈 기본 모듈 </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="찾다" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="검색 입력" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">첫 장</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 기본 모듈 </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 모듈 테스트 </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 개발 가이드 </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>모듈 테스트 - Fiber의 JavaScript</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">탐색 전환</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../readme.md.html">MODULE</a></li><li><a href="../../object/readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/module/ifs/test.md.html">中文</a> <a href="../../../../../ca/docs/manual/module/ifs/test.md.html">Catalan</a> <a href="../../../../../de/docs/manual/module/ifs/test.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/module/ifs/test.md.html">English</a> <a href="../../../../../es/docs/manual/module/ifs/test.md.html">Español</a> <a href="../../../../../fr/docs/manual/module/ifs/test.md.html">Français</a> <a href="../../../../../gl/docs/manual/module/ifs/test.md.html">Galego</a> <a href="../../../../../it/docs/manual/module/ifs/test.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/module/ifs/test.md.html">Русский</a> <a href="../../../../../ja/docs/manual/module/ifs/test.md.html">日本語</a> <a href="../../../../../ko/docs/manual/module/ifs/test.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/module/ifs/test.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">모듈 기본 모듈</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="검색" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="검색 입력" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">첫 장</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">기본 모듈</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">모듈 테스트</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개발 가이드</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 란 무엇입니까?</font></font></a></li>
-<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">설치 및 운영 환경</font></font></a></li>
+<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">런타임 환경 설치</font></font></a></li>
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
 <li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">좋은 삶은 시험에서 시작된다</font></font></a></li>
 <li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">성능 킬러 찾기</font></font></a></li>
-<li><a href="../../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">데스크탑 애플리케이션을 빠르게 개발</font></font></a></li>
 <li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">서버 모듈 핫 업데이트</font></font></a></li>
 <li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">도메인 이름 라우팅</font></font></a></li>
 <li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs에서 X509 인증서 사용</font></font></a></li>
 <li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">네이티브 모듈 추가</font></font></a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 기본 모듈 </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">기본 모듈</font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="assert.md.html" class="notranslate">assert</a></li>
 <li><a href="base32.md.html" class="notranslate">base32</a></li>
+<li><a href="base58.md.html" class="notranslate">base58</a></li>
 <li><a href="base64.md.html" class="notranslate">base64</a></li>
 <li><a href="child_process.md.html" class="notranslate">child_process</a></li>
 <li><a href="console.md.html" class="notranslate">console</a></li>
@@ -36,6 +36,7 @@
 <li><a href="json.md.html" class="notranslate">json</a></li>
 <li><a href="mq.md.html" class="notranslate">mq</a></li>
 <li><a href="msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="multibase.md.html" class="notranslate">multibase</a></li>
 <li><a href="net.md.html" class="notranslate">net</a></li>
 <li><a href="os.md.html" class="notranslate">os</a></li>
 <li><a href="path.md.html" class="notranslate">path</a></li>
@@ -63,7 +64,7 @@
 <li><a href="zip.md.html" class="notranslate">zip</a></li>
 <li><a href="zlib.md.html" class="notranslate">zlib</a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 내장 객체 </font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">내장 객체</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a></li>
 <li><a href="../../object/ifs/bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
 <li><a href="../../object/ifs/chain.md.html" class="notranslate">Chain</a></li>
@@ -131,6 +132,8 @@
 <li><a href="../../object/ifs/ttyinputstream.md.html" class="notranslate">TTYInputStream</a></li>
 <li><a href="../../object/ifs/ttyoutputstream.md.html" class="notranslate">TTYOutputStream</a></li>
 <li><a href="../../object/ifs/tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="../../object/ifs/textdecoder.md.html" class="notranslate">TextDecoder</a></li>
+<li><a href="../../object/ifs/textencoder.md.html" class="notranslate">TextEncoder</a></li>
 <li><a href="../../object/ifs/timer.md.html" class="notranslate">Timer</a></li>
 <li><a href="../../object/ifs/urlobject.md.html" class="notranslate">UrlObject</a></li>
 <li><a href="../../object/ifs/websocket.md.html" class="notranslate">WebSocket</a></li>
@@ -155,7 +158,7 @@
 <li><a href="../../object/ifs/zipfile.md.html" class="notranslate">ZipFile</a></li>
 <li><a href="../../object/ifs/object.md.html" class="notranslate">object</a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 커뮤니티 모듈 </font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">커뮤니티 모듈</font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../../awesome/module/fib-session.md.html" class="notranslate">fib-session</a></li>
 <li><a href="../../../awesome/module/fib-pool.md.html" class="notranslate">fib-pool</a></li>
 <li><a href="../../../awesome/module/fib-orm.md.html" class="notranslate">fib-orm</a></li>
@@ -366,12 +369,12 @@ process.exit(-test.run(<span class="hljs-built_in">console</span>.DEBUG));
 </code></pre>
 <div name="对象" data-unique="对象"></div><h2 id="对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">물체</font></font></h2>
 <div name="assert" data-unique="assert"></div><h3 id="assert" class="notranslate">assert</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">테스트 모듈을 확인하고 테스트 값이 false이면 오류가 보고되고 오류 동작이 계속 실행되거나 오류가 발생하도록 설정할 수 있습니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">테스트 모듈을 확인하고 테스트 값이 false이면 오류를 보고하고 오류 보고 동작을 계속 실행하거나 오류를 발생하도록 설정할 수 있습니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>assert test.assert;
 </code></pre>
 <div name="静态函数" data-unique="静态函数"></div><h2 id="静态函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">정적 함수</font></font></h2>
 <div name="describe" data-unique="describe"></div><h3 id="describe" class="notranslate">describe</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">테스트 모듈 정의, 중첩 정의 가능</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">중첩될 수 있는 테스트 모듈 정의</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> test.describe(<span class="hljs-built_in">String</span> name,
     <span class="hljs-built_in">Function</span> block);
@@ -383,7 +386,7 @@ process.exit(-test.run(<span class="hljs-built_in">console</span>.DEBUG));
 </ul>
 <hr>
 <div name="xdescribe" data-unique="xdescribe"></div><h3 id="xdescribe" class="notranslate">xdescribe</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">테스트를 일시 중단하는 모듈의 정의,</font></font><a href="test.md.html#setup" class="notranslate">test.setup</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 그런 다음 describe.skip을 사용하여 호출할 수 있습니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">테스트를 일시 중지하는 모듈 정의,</font></font><a href="test.md.html#setup" class="notranslate">test.setup</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">그런 다음 describe.skip을 사용하여 호출할 수 있습니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> test.xdescribe(<span class="hljs-built_in">String</span> name,
     <span class="hljs-built_in">Function</span> block);
@@ -395,7 +398,7 @@ process.exit(-test.run(<span class="hljs-built_in">console</span>.DEBUG));
 </ul>
 <hr>
 <div name="odescribe" data-unique="odescribe"></div><h3 id="odescribe" class="notranslate">odescribe</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">독립적인 테스트를 위한 모듈 정의,</font></font><a href="test.md.html#setup" class="notranslate">test.setup</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> describe.only를 사용하여 나중에 호출할 수 있습니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">독립적인 테스트를 위한 모듈 정의,</font></font><a href="test.md.html#setup" class="notranslate">test.setup</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">그런 다음 describe.only를 사용하여 호출할 수 있습니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> test.odescribe(<span class="hljs-built_in">String</span> name,
     <span class="hljs-built_in">Function</span> block);
@@ -419,7 +422,7 @@ process.exit(-test.run(<span class="hljs-built_in">console</span>.DEBUG));
 </ul>
 <hr>
 <div name="xit" data-unique="xit"></div><h3 id="xit" class="notranslate">xit</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">테스트를 중단하는 프로젝트의 정의,</font></font><a href="test.md.html#setup" class="notranslate">test.setup</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 나중에 it.skip을 사용하여 호출할 수 있습니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">일시 중지된 테스트에 대한 프로젝트 정의,</font></font><a href="test.md.html#setup" class="notranslate">test.setup</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">그런 다음 it.skip을 사용하여 호출할 수 있습니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> test.xit(<span class="hljs-built_in">String</span> name,
     <span class="hljs-built_in">Function</span> block);
@@ -431,7 +434,7 @@ process.exit(-test.run(<span class="hljs-built_in">console</span>.DEBUG));
 </ul>
 <hr>
 <div name="oit" data-unique="oit"></div><h3 id="oit" class="notranslate">oit</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">독립적인 테스트를 위한 프로젝트 정의,</font></font><a href="test.md.html#setup" class="notranslate">test.setup</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 나중에 그것을 사용하여 호출할 수 있습니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">독립적인 테스트를 위한 프로젝트 정의,</font></font><a href="test.md.html#setup" class="notranslate">test.setup</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">그런 다음 그것으로 호출할 수 있습니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> test.oit(<span class="hljs-built_in">String</span> name,
     <span class="hljs-built_in">Function</span> block);
@@ -452,7 +455,7 @@ process.exit(-test.run(<span class="hljs-built_in">console</span>.DEBUG));
 </ul>
 <hr>
 <div name="after" data-unique="after"></div><h3 id="after" class="notranslate">after</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">현재 테스트 모듈의 종료 이벤트 정의</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">현재 테스트 모듈 종료 이벤트 정의</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> test.after(<span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
@@ -461,7 +464,7 @@ process.exit(-test.run(<span class="hljs-built_in">console</span>.DEBUG));
 </ul>
 <hr>
 <div name="beforeEach" data-unique="beforeEach"></div><h3 id="beforeEach" class="notranslate">beforeEach</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">현재 테스트 모듈의 테스트 항목 입력 이벤트 정의</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">현재 테스트 모듈 테스트 프로젝트 진입 이벤트 정의</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> test.beforeEach(<span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
@@ -470,7 +473,7 @@ process.exit(-test.run(<span class="hljs-built_in">console</span>.DEBUG));
 </ul>
 <hr>
 <div name="afterEach" data-unique="afterEach"></div><h3 id="afterEach" class="notranslate">afterEach</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">현재 테스트 모듈 테스트 프로젝트의 종료 이벤트 정의</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">현재 테스트 모듈 테스트 프로젝트 종료 이벤트 정의</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> test.afterEach(<span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
@@ -484,7 +487,7 @@ process.exit(-test.run(<span class="hljs-built_in">console</span>.DEBUG));
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">loglevel</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 테스트 중 로그 출력 레벨을 지정 ERROR일 경우 보고서 이후에 프로젝트 오류 정보 표시 ERROR미만일 경우 출력 정보 항시 출력 ERROR이상일 경우 출력 보고서만 표시됩니다.</font></font></li>
+<li><span class="notranslate">loglevel</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 테스트 시 로그 출력 레벨 지정 ERROR일 경우 보고서 이후에 프로젝트 오류 정보 출력 ERROR 미만일 경우 출력 정보 항시 출력 ERROR 초과일 경우에만 출력 보고서가 표시됩니다.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
@@ -492,7 +495,7 @@ process.exit(-test.run(<span class="hljs-built_in">console</span>.DEBUG));
 </ul>
 <hr>
 <div name="setup" data-unique="setup"></div><h3 id="setup" class="notranslate">setup</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">현재 스크립트의 테스트 환경 초기화, 테스트 모듈 메소드를 현재 스크립트의 전역 변수에 복사</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">현재 스크립트의 테스트 환경 초기화, 테스트 모듈 메소드를 현재 스크립트 전역 변수로 복사</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> test.setup();
 </code></pre>
 <div name="静态属性" data-unique="静态属性"></div><h2 id="静态属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">정적 속성</font></font></h2>
@@ -500,4 +503,4 @@ process.exit(-test.run(<span class="hljs-built_in">console</span>.DEBUG));
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">정수, 느린 테스트 경고 임계값 설정 및 쿼리, ms 단위, 기본값은 75입니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer test.slow;
 </code></pre>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지원</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip836537"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip836537" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">클릭하면 톱 페이지로 돌아갑니다</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지원</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip672439"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip672439" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">클릭하면 톱 페이지로 돌아갑니다</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

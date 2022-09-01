@@ -4,7 +4,6 @@
 <li><a href=hello.md.html class ="notranslate">hello, world</a></li>
 <li><a href=test.md.html>美好生活从测试开始</a></li>
 <li><a href=profiler.md.html>找出性能杀手</a></li>
-<li><a href=desktop.md.html>快速开发桌面应用</a></li>
 <li><a href=server-hot-update.md.html>服务端模块热更新</a></li>
 <li><a href=host-routes.md.html>域名路由</a></li>
 <li><a href=x509.md.html>fibjs 中 X509 证书的使用</a></li>
@@ -13,6 +12,7 @@
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_module" aria-controls="collapse_module"> 基础模块 </a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby=headingOne><div class=panel-body> <ul>
 <li><a href=../manual/module/ifs/assert.md.html class ="notranslate">assert</a></li>
 <li><a href=../manual/module/ifs/base32.md.html class ="notranslate">base32</a></li>
+<li><a href=../manual/module/ifs/base58.md.html class ="notranslate">base58</a></li>
 <li><a href=../manual/module/ifs/base64.md.html class ="notranslate">base64</a></li>
 <li><a href=../manual/module/ifs/child_process.md.html class ="notranslate">child_process</a></li>
 <li><a href=../manual/module/ifs/console.md.html class ="notranslate">console</a></li>
@@ -36,6 +36,7 @@
 <li><a href=../manual/module/ifs/json.md.html class ="notranslate">json</a></li>
 <li><a href=../manual/module/ifs/mq.md.html class ="notranslate">mq</a></li>
 <li><a href=../manual/module/ifs/msgpack.md.html class ="notranslate">msgpack</a></li>
+<li><a href=../manual/module/ifs/multibase.md.html class ="notranslate">multibase</a></li>
 <li><a href=../manual/module/ifs/net.md.html class ="notranslate">net</a></li>
 <li><a href=../manual/module/ifs/os.md.html class ="notranslate">os</a></li>
 <li><a href=../manual/module/ifs/path.md.html class ="notranslate">path</a></li>
@@ -131,6 +132,8 @@
 <li><a href=../manual/object/ifs/ttyinputstream.md.html class ="notranslate">TTYInputStream</a></li>
 <li><a href=../manual/object/ifs/ttyoutputstream.md.html class ="notranslate">TTYOutputStream</a></li>
 <li><a href=../manual/object/ifs/tcpserver.md.html class ="notranslate">TcpServer</a></li>
+<li><a href=../manual/object/ifs/textdecoder.md.html class ="notranslate">TextDecoder</a></li>
+<li><a href=../manual/object/ifs/textencoder.md.html class ="notranslate">TextEncoder</a></li>
 <li><a href=../manual/object/ifs/timer.md.html class ="notranslate">Timer</a></li>
 <li><a href=../manual/object/ifs/urlobject.md.html class ="notranslate">UrlObject</a></li>
 <li><a href=../manual/object/ifs/websocket.md.html class ="notranslate">WebSocket</a></li>
@@ -208,7 +211,7 @@
 <p>如果你想随时拥有开发中的最新特性，或者你可能需要自行开发自己的分支，也可以自己编译最新的版本。</p>
 <h2 id="Windows-下自己编译">Windows 下自己编译</h2>
 <h3 id="准备编译环境">准备编译环境</h3>
-<p>Windows 下需要安装 VS2017。如果你希望编译兼容 xp 的 fibjs， 还需要在安装时选择安装 <code>Windows XP support for C++</code>。</p>
+<p>Windows 下需要安装 VS2019。</p>
 <h3 id="获取代码">获取代码</h3>
 <p>fibjs 当前 github 地址为: <a href="https://github.com/fibjs/fibjs">https://github.com/fibjs/fibjs</a></p>
 <p>在工作目录下执行以下命令:</p>
@@ -230,34 +233,17 @@ git submodule update --init --recursive
 <li><span class="notranslate">debug</span>: 以调试方式编译</li>
 <li><span class="notranslate">i386</span>: 以 32 位发布方式编译</li>
 <li><span class="notranslate">amd64</span>: 以 64 位发布方式编译</li>
-<li><span class="notranslate">noxp</span>: 禁用 xp 兼容模式</li>
 </ul>
 <p>例如 release 模式编译命令如下:</p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>build release
 </code></pre>
-<p>fibjs build 工具支持兼容 xp 模式，编译时需要手动开启：</p>
-<pre><code class="lang-sh"><div class="line-numbers">1</div>build xp
-</code></pre>
 <h2 id="UNIX-下自己编译">UNIX 下自己编译</h2>
 <h3 id="准备编译环境">准备编译环境</h3>
-<p>在 UNIX 下编译需要依赖以下工具:</p>
-<pre><code><div class="line-numbers">1
-2
-3
-4
-5</div>CLANG <span class="hljs-number">3.8</span> or <span class="hljs-keyword">new</span><span class="hljs-type">er</span>
-GCC <span class="hljs-number">4.8</span> or <span class="hljs-keyword">new</span><span class="hljs-type">er</span>
-CMake <span class="hljs-number">2.6</span> or <span class="hljs-keyword">new</span><span class="hljs-type">er</span>
-GNU Make <span class="hljs-number">3.81</span> or <span class="hljs-keyword">new</span><span class="hljs-type">er</span>
-libexecinfo (FreeBSD and OpenBSD only)
-</code></pre><p>Mac OS X 下，除需要安装 Xcode 及命令行工具外，以 brew 为例，准备环境命令如下:</p>
+<p>Mac OS X 下，除需要安装 Xcode 及命令行工具外，以 brew 为例，准备环境命令如下:</p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>brew install cmake git ccache
 </code></pre>
 <p>Ubuntu 准备环境命令如下:</p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>apt install clang g++ make cmake git ccache libx11-dev
-</code></pre>
-<p>如果要编译 32 位版本，另需要安装 multilib:</p>
-<pre><code class="lang-sh"><div class="line-numbers">1</div>apt install g++-multilib
 </code></pre>
 <p>ARM on Ubuntu 准备环境命令如下:</p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>apt install g++-arm-linux-gnueabihf
@@ -274,27 +260,14 @@ libexecinfo (FreeBSD and OpenBSD only)
 <p>如果要在 Ubuntu 上编译 MIPS 64 位版本，准备环境命令如下:</p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>apt install g++-mips64-linux-gnuabi64
 </code></pre>
-<p>fix:</p>
-<pre><code class="lang-sh"><div class="line-numbers">1
-2
-3
-4
-5
-6</div>rm -f /usr/include/asm
-rm -f /usr/include/i386-linux-gnu
-rm -f /usr/include/x86_64-linux-gnux32
-
-ln -s x86_64-linux-gnu /usr/include/i386-linux-gnu
-ln -s x86_64-linux-gnu /usr/include/x86_64-linux-gnux32
-</code></pre>
 <p>Fedora 准备环境命令如下:</p>
-<pre><code class="lang-sh"><div class="line-numbers">1</div>yum install gcc-c++ libstdc++-static make cmake git
+<pre><code class="lang-sh"><div class="line-numbers">1</div>yum install clang gcc-c++ libstdc++-static make cmake git
 </code></pre>
 <p>如果要编译 32 位版本，准备环境命令如下:</p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>yum install glibc-devel.i686 libstdc++-static.i686
 </code></pre>
 <p>Alpine 准备环境命令如下:</p>
-<pre><code class="lang-sh"><div class="line-numbers">1</div>apk add g++ linux-headers make cmake git libexecinfo-dev
+<pre><code class="lang-sh"><div class="line-numbers">1</div>apk add clang g++ linux-headers make cmake git libx11-dev
 </code></pre>
 <p>FreeBSD (8,9) 准备环境命令如下:</p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>pkg_add -r cmake libexecinfo git
@@ -314,7 +287,7 @@ git submodule update --init --recursive
 </code></pre>
 <h3 id="编译命令及说明">编译命令及说明</h3>
 <p>UNIX 环境，在 fibjs 项目根目录，有一个 build 的 shell 脚本，可用于 fibjs 编译。 执行编译命令:</p>
-<pre><code class="lang-sh"><div class="line-numbers">1</div>sh build [options] [-jn] [-v] [-h]
+<pre><code class="lang-sh"><div class="line-numbers">1</div>bash build [options] [-jn] [-v] [-h]
 </code></pre>
 <p>options 的选项:</p>
 <ul>
@@ -332,7 +305,7 @@ git submodule update --init --recursive
 <li><span class="notranslate">ppc64</span>: 交叉编译 64 位 PowerPC 版本</li>
 </ul>
 <p>例如 release 模式编译命令如下:</p>
-<pre><code class="lang-sh"><div class="line-numbers">1</div>sh build release
+<pre><code class="lang-sh"><div class="line-numbers">1</div>bash build release
 </code></pre>
 <h2 id="测试全部用例">测试全部用例</h2>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>bin/{<span class="hljs-variable">$OS</span>}_{<span class="hljs-variable">$arch</span>}_release/fibjs <span class="hljs-built_in">test</span>

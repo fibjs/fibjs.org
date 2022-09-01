@@ -4,7 +4,6 @@
 <li><a href=../../../guide/hello.md.html class ="notranslate">hello, world</a></li>
 <li><a href=../../../guide/test.md.html>美好生活从测试开始</a></li>
 <li><a href=../../../guide/profiler.md.html>找出性能杀手</a></li>
-<li><a href=../../../guide/desktop.md.html>快速开发桌面应用</a></li>
 <li><a href=../../../guide/server-hot-update.md.html>服务端模块热更新</a></li>
 <li><a href=../../../guide/host-routes.md.html>域名路由</a></li>
 <li><a href=../../../guide/x509.md.html>fibjs 中 X509 证书的使用</a></li>
@@ -13,6 +12,7 @@
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_module" aria-controls="collapse_module"> 基础模块 </a></h4></div><div id="collapse_module" class="panel-collapse collapse in" aria-labelledby=headingOne><div class=panel-body> <ul>
 <li><a href=assert.md.html class ="notranslate">assert</a></li>
 <li><a href=base32.md.html class ="notranslate">base32</a></li>
+<li><a href=base58.md.html class ="notranslate">base58</a></li>
 <li><a href=base64.md.html class ="notranslate">base64</a></li>
 <li><a href=child_process.md.html class ="notranslate">child_process</a></li>
 <li><a href=console.md.html class ="notranslate">console</a></li>
@@ -36,6 +36,7 @@
 <li><a href=json.md.html class ="notranslate">json</a></li>
 <li><a href=mq.md.html class ="notranslate">mq</a></li>
 <li><a href=msgpack.md.html class ="notranslate">msgpack</a></li>
+<li><a href=multibase.md.html class ="notranslate">multibase</a></li>
 <li><a href=net.md.html class ="notranslate">net</a></li>
 <li><a href=os.md.html class ="notranslate">os</a></li>
 <li><a href=path.md.html class ="notranslate">path</a></li>
@@ -131,6 +132,8 @@
 <li><a href=../../object/ifs/ttyinputstream.md.html class ="notranslate">TTYInputStream</a></li>
 <li><a href=../../object/ifs/ttyoutputstream.md.html class ="notranslate">TTYOutputStream</a></li>
 <li><a href=../../object/ifs/tcpserver.md.html class ="notranslate">TcpServer</a></li>
+<li><a href=../../object/ifs/textdecoder.md.html class ="notranslate">TextDecoder</a></li>
+<li><a href=../../object/ifs/textencoder.md.html class ="notranslate">TextEncoder</a></li>
 <li><a href=../../object/ifs/timer.md.html class ="notranslate">Timer</a></li>
 <li><a href=../../object/ifs/urlobject.md.html class ="notranslate">UrlObject</a></li>
 <li><a href=../../object/ifs/websocket.md.html class ="notranslate">WebSocket</a></li>
@@ -209,32 +212,6 @@
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">algo</span>: Integer, 指定摘要运算算法</li>
-<li><span class="notranslate">data</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 创建同时更新的二进制数据，缺省为 null，不更新数据</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li><a href=../../object/ifs/digest.md.html class ="notranslate">Digest</a>, 返回构造的信息摘要对象</li>
-</ul>
-<hr>
-<h3 id="md2" class ="notranslate">md2</h3>
-<p><strong>创建一个 MD2 信息摘要运算对象</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Digest hash.md2(Buffer data = NULL);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li><span class="notranslate">data</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 创建同时更新的二进制数据，缺省为 null，不更新数据</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li><a href=../../object/ifs/digest.md.html class ="notranslate">Digest</a>, 返回构造的信息摘要对象</li>
-</ul>
-<hr>
-<h3 id="md4" class ="notranslate">md4</h3>
-<p><strong>创建一个 MD4 信息摘要运算对象</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Digest hash.md4(Buffer data = NULL);
-</code></pre>
-<p>调用参数:</p>
-<ul>
 <li><span class="notranslate">data</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 创建同时更新的二进制数据，缺省为 null，不更新数据</li>
 </ul>
 <p>返回结果:</p>
@@ -364,6 +341,97 @@
 <li><a href=../../object/ifs/digest.md.html class ="notranslate">Digest</a>, 返回构造的信息摘要对象</li>
 </ul>
 <hr>
+<h3 id="keccak256" class ="notranslate">keccak256</h3>
+<p><strong>创建一个 KECCAK256 信息摘要运算对象</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Digest hash.keccak256(Buffer data = NULL);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">data</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 创建同时更新的二进制数据，缺省为 null，不更新数据</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/digest.md.html class ="notranslate">Digest</a>, 返回构造的信息摘要对象</li>
+</ul>
+<hr>
+<h3 id="keccak384" class ="notranslate">keccak384</h3>
+<p><strong>创建一个 KECCAK384 信息摘要运算对象</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Digest hash.keccak384(Buffer data = NULL);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">data</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 创建同时更新的二进制数据，缺省为 null，不更新数据</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/digest.md.html class ="notranslate">Digest</a>, 返回构造的信息摘要对象</li>
+</ul>
+<hr>
+<h3 id="keccak512" class ="notranslate">keccak512</h3>
+<p><strong>创建一个 KECCAK512 信息摘要运算对象</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Digest hash.keccak512(Buffer data = NULL);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">data</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 创建同时更新的二进制数据，缺省为 null，不更新数据</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/digest.md.html class ="notranslate">Digest</a>, 返回构造的信息摘要对象</li>
+</ul>
+<hr>
+<h3 id="blake2s" class ="notranslate">blake2s</h3>
+<p><strong>创建一个 BLAKE2S 信息摘要运算对象</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Digest hash.blake2s(Buffer data = NULL);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">data</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 创建同时更新的二进制数据，缺省为 null，不更新数据</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/digest.md.html class ="notranslate">Digest</a>, 返回构造的信息摘要对象</li>
+</ul>
+<hr>
+<h3 id="blake2b" class ="notranslate">blake2b</h3>
+<p><strong>创建一个 BLAKE2B 信息摘要运算对象</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Digest hash.blake2b(Buffer data = NULL);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">data</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 创建同时更新的二进制数据，缺省为 null，不更新数据</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/digest.md.html class ="notranslate">Digest</a>, 返回构造的信息摘要对象</li>
+</ul>
+<hr>
+<h3 id="blake2sp" class ="notranslate">blake2sp</h3>
+<p><strong>创建一个 BLAKE2SP 信息摘要运算对象</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Digest hash.blake2sp(Buffer data = NULL);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">data</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 创建同时更新的二进制数据，缺省为 null，不更新数据</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/digest.md.html class ="notranslate">Digest</a>, 返回构造的信息摘要对象</li>
+</ul>
+<hr>
+<h3 id="blake2bp" class ="notranslate">blake2bp</h3>
+<p><strong>创建一个 BLAKE2BP 信息摘要运算对象</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Digest hash.blake2bp(Buffer data = NULL);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">data</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 创建同时更新的二进制数据，缺省为 null，不更新数据</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/digest.md.html class ="notranslate">Digest</a>, 返回构造的信息摘要对象</li>
+</ul>
+<hr>
 <h3 id="hmac" class ="notranslate">hmac</h3>
 <p><strong>根据指定的算法标识创建一个信息摘要签名运算对象</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
@@ -375,38 +443,6 @@
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">algo</span>: Integer, 指定摘要运算算法</li>
-<li><span class="notranslate">key</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 二进制签名密钥</li>
-<li><span class="notranslate">data</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 创建同时更新的二进制数据，缺省为 null，不更新数据</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li><a href=../../object/ifs/digest.md.html class ="notranslate">Digest</a>, 返回构造的信息摘要对象</li>
-</ul>
-<hr>
-<h3 id="hmac_md2" class ="notranslate">hmac_md2</h3>
-<p><strong>创建一个 MD2 信息摘要签名运算对象</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">static</span> Digest hash.hmac_md2(Buffer key,
-    Buffer data = NULL);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li><span class="notranslate">key</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 二进制签名密钥</li>
-<li><span class="notranslate">data</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 创建同时更新的二进制数据，缺省为 null，不更新数据</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li><a href=../../object/ifs/digest.md.html class ="notranslate">Digest</a>, 返回构造的信息摘要对象</li>
-</ul>
-<hr>
-<h3 id="hmac_md4" class ="notranslate">hmac_md4</h3>
-<p><strong>创建一个 MD4 信息摘要签名运算对象</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">static</span> Digest hash.hmac_md4(Buffer key,
-    Buffer data = NULL);
-</code></pre>
-<p>调用参数:</p>
-<ul>
 <li><span class="notranslate">key</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 二进制签名密钥</li>
 <li><span class="notranslate">data</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 创建同时更新的二进制数据，缺省为 null，不更新数据</li>
 </ul>
@@ -563,54 +599,191 @@
 <ul>
 <li><a href=../../object/ifs/digest.md.html class ="notranslate">Digest</a>, 返回构造的信息摘要对象</li>
 </ul>
+<hr>
+<h3 id="hmac_keccak256" class ="notranslate">hmac_keccak256</h3>
+<p><strong>创建一个 KECCAK256 信息摘要签名运算对象</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Digest hash.hmac_keccak256(Buffer key,
+    Buffer data = NULL);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">key</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 二进制签名密钥</li>
+<li><span class="notranslate">data</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 创建同时更新的二进制数据，缺省为 null，不更新数据</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/digest.md.html class ="notranslate">Digest</a>, 返回构造的信息摘要对象</li>
+</ul>
+<hr>
+<h3 id="hmac_keccak384" class ="notranslate">hmac_keccak384</h3>
+<p><strong>创建一个 KECCAK384 信息摘要签名运算对象</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Digest hash.hmac_keccak384(Buffer key,
+    Buffer data = NULL);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">key</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 二进制签名密钥</li>
+<li><span class="notranslate">data</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 创建同时更新的二进制数据，缺省为 null，不更新数据</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/digest.md.html class ="notranslate">Digest</a>, 返回构造的信息摘要对象</li>
+</ul>
+<hr>
+<h3 id="hmac_keccak512" class ="notranslate">hmac_keccak512</h3>
+<p><strong>创建一个 KECCAK512 信息摘要签名运算对象</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Digest hash.hmac_keccak512(Buffer key,
+    Buffer data = NULL);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">key</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 二进制签名密钥</li>
+<li><span class="notranslate">data</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 创建同时更新的二进制数据，缺省为 null，不更新数据</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/digest.md.html class ="notranslate">Digest</a>, 返回构造的信息摘要对象</li>
+</ul>
+<hr>
+<h3 id="hmac_blake2s" class ="notranslate">hmac_blake2s</h3>
+<p><strong>创建一个 BLAKE2S 信息摘要签名运算对象</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Digest hash.hmac_blake2s(Buffer key,
+    Buffer data = NULL);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">key</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 二进制签名密钥</li>
+<li><span class="notranslate">data</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 创建同时更新的二进制数据，缺省为 null，不更新数据</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/digest.md.html class ="notranslate">Digest</a>, 返回构造的信息摘要对象</li>
+</ul>
+<hr>
+<h3 id="hmac_blake2b" class ="notranslate">hmac_blake2b</h3>
+<p><strong>创建一个 BLAKE2B 信息摘要签名运算对象</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Digest hash.hmac_blake2b(Buffer key,
+    Buffer data = NULL);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">key</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 二进制签名密钥</li>
+<li><span class="notranslate">data</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 创建同时更新的二进制数据，缺省为 null，不更新数据</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/digest.md.html class ="notranslate">Digest</a>, 返回构造的信息摘要对象</li>
+</ul>
+<hr>
+<h3 id="hmac_blake2sp" class ="notranslate">hmac_blake2sp</h3>
+<p><strong>创建一个 BLAKE2SP 信息摘要签名运算对象</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Digest hash.hmac_blake2sp(Buffer key,
+    Buffer data = NULL);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">key</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 二进制签名密钥</li>
+<li><span class="notranslate">data</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 创建同时更新的二进制数据，缺省为 null，不更新数据</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/digest.md.html class ="notranslate">Digest</a>, 返回构造的信息摘要对象</li>
+</ul>
+<hr>
+<h3 id="hmac_blake2bp" class ="notranslate">hmac_blake2bp</h3>
+<p><strong>创建一个 BLAKE2BP 信息摘要签名运算对象</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Digest hash.hmac_blake2bp(Buffer key,
+    Buffer data = NULL);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">key</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 二进制签名密钥</li>
+<li><span class="notranslate">data</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 创建同时更新的二进制数据，缺省为 null，不更新数据</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/digest.md.html class ="notranslate">Digest</a>, 返回构造的信息摘要对象</li>
+</ul>
 <h2 id="常量">常量</h2>
-<h3 id="MD2" class ="notranslate">MD2</h3>
-<p><strong>MD2 信息摘要算法标识常量</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> hash.MD2 = <span class="hljs-number">1</span>;
-</code></pre>
-<hr>
-<h3 id="MD4" class ="notranslate">MD4</h3>
-<p><strong>MD4 信息摘要算法标识常量</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> hash.MD4 = <span class="hljs-number">2</span>;
-</code></pre>
-<hr>
 <h3 id="MD5" class ="notranslate">MD5</h3>
 <p><strong>MD5 信息摘要算法标识常量</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> hash.MD5 = <span class="hljs-number">3</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> hash.MD5 = <span class="hljs-number">1</span>;
 </code></pre>
 <hr>
 <h3 id="SHA1" class ="notranslate">SHA1</h3>
 <p><strong>SHA1 信息摘要算法标识常量</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> hash.SHA1 = <span class="hljs-number">4</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> hash.SHA1 = <span class="hljs-number">2</span>;
 </code></pre>
 <hr>
 <h3 id="SHA224" class ="notranslate">SHA224</h3>
 <p><strong>SHA224 信息摘要算法标识常量</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> hash.SHA224 = <span class="hljs-number">5</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> hash.SHA224 = <span class="hljs-number">3</span>;
 </code></pre>
 <hr>
 <h3 id="SHA256" class ="notranslate">SHA256</h3>
 <p><strong>SHA256 信息摘要算法标识常量</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> hash.SHA256 = <span class="hljs-number">6</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> hash.SHA256 = <span class="hljs-number">4</span>;
 </code></pre>
 <hr>
 <h3 id="SHA384" class ="notranslate">SHA384</h3>
 <p><strong>SHA384 信息摘要算法标识常量</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> hash.SHA384 = <span class="hljs-number">7</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> hash.SHA384 = <span class="hljs-number">5</span>;
 </code></pre>
 <hr>
 <h3 id="SHA512" class ="notranslate">SHA512</h3>
 <p><strong>SHA512 信息摘要算法标识常量</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> hash.SHA512 = <span class="hljs-number">8</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> hash.SHA512 = <span class="hljs-number">6</span>;
 </code></pre>
 <hr>
 <h3 id="RIPEMD160" class ="notranslate">RIPEMD160</h3>
 <p><strong>RIPEMD160 信息摘要算法标识常量</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> hash.RIPEMD160 = <span class="hljs-number">9</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> hash.RIPEMD160 = <span class="hljs-number">7</span>;
 </code></pre>
 <hr>
 <h3 id="SM3" class ="notranslate">SM3</h3>
 <p><strong>SM3 信息摘要算法标识常量</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> hash.SM3 = <span class="hljs-number">10</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> hash.SM3 = <span class="hljs-number">8</span>;
+</code></pre>
+<hr>
+<h3 id="KECCAK256" class ="notranslate">KECCAK256</h3>
+<p><strong>KECCAK256 信息摘要算法标识常量</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> hash.KECCAK256 = <span class="hljs-number">9</span>;
+</code></pre>
+<hr>
+<h3 id="KECCAK384" class ="notranslate">KECCAK384</h3>
+<p><strong>KECCAK384 信息摘要算法标识常量</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> hash.KECCAK384 = <span class="hljs-number">10</span>;
+</code></pre>
+<hr>
+<h3 id="KECCAK512" class ="notranslate">KECCAK512</h3>
+<p><strong>KECCAK512 信息摘要算法标识常量</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> hash.KECCAK512 = <span class="hljs-number">11</span>;
+</code></pre>
+<hr>
+<h3 id="BLAKE2S" class ="notranslate">BLAKE2S</h3>
+<p><strong>BLAKE2S 信息摘要算法标识常量</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> hash.BLAKE2S = <span class="hljs-number">12</span>;
+</code></pre>
+<hr>
+<h3 id="BLAKE2B" class ="notranslate">BLAKE2B</h3>
+<p><strong>BLAKE2B 信息摘要算法标识常量</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> hash.BLAKE2B = <span class="hljs-number">13</span>;
+</code></pre>
+<hr>
+<h3 id="BLAKE2SP" class ="notranslate">BLAKE2SP</h3>
+<p><strong>BLAKE2SP 信息摘要算法标识常量</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> hash.BLAKE2SP = <span class="hljs-number">14</span>;
+</code></pre>
+<hr>
+<h3 id="BLAKE2BP" class ="notranslate">BLAKE2BP</h3>
+<p><strong>BLAKE2BP 信息摘要算法标识常量</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> hash.BLAKE2BP = <span class="hljs-number">15</span>;
 </code></pre>
  </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

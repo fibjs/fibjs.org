@@ -4,7 +4,6 @@
 <li><a href=../../../guide/hello.md.html class ="notranslate">hello, world</a></li>
 <li><a href=../../../guide/test.md.html>美好生活从测试开始</a></li>
 <li><a href=../../../guide/profiler.md.html>找出性能杀手</a></li>
-<li><a href=../../../guide/desktop.md.html>快速开发桌面应用</a></li>
 <li><a href=../../../guide/server-hot-update.md.html>服务端模块热更新</a></li>
 <li><a href=../../../guide/host-routes.md.html>域名路由</a></li>
 <li><a href=../../../guide/x509.md.html>fibjs 中 X509 证书的使用</a></li>
@@ -13,6 +12,7 @@
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_module" aria-controls="collapse_module"> 基础模块 </a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby=headingOne><div class=panel-body> <ul>
 <li><a href=../../module/ifs/assert.md.html class ="notranslate">assert</a></li>
 <li><a href=../../module/ifs/base32.md.html class ="notranslate">base32</a></li>
+<li><a href=../../module/ifs/base58.md.html class ="notranslate">base58</a></li>
 <li><a href=../../module/ifs/base64.md.html class ="notranslate">base64</a></li>
 <li><a href=../../module/ifs/child_process.md.html class ="notranslate">child_process</a></li>
 <li><a href=../../module/ifs/console.md.html class ="notranslate">console</a></li>
@@ -36,6 +36,7 @@
 <li><a href=../../module/ifs/json.md.html class ="notranslate">json</a></li>
 <li><a href=../../module/ifs/mq.md.html class ="notranslate">mq</a></li>
 <li><a href=../../module/ifs/msgpack.md.html class ="notranslate">msgpack</a></li>
+<li><a href=../../module/ifs/multibase.md.html class ="notranslate">multibase</a></li>
 <li><a href=../../module/ifs/net.md.html class ="notranslate">net</a></li>
 <li><a href=../../module/ifs/os.md.html class ="notranslate">os</a></li>
 <li><a href=../../module/ifs/path.md.html class ="notranslate">path</a></li>
@@ -131,6 +132,8 @@
 <li><a href=ttyinputstream.md.html class ="notranslate">TTYInputStream</a></li>
 <li><a href=ttyoutputstream.md.html class ="notranslate">TTYOutputStream</a></li>
 <li><a href=tcpserver.md.html class ="notranslate">TcpServer</a></li>
+<li><a href=textdecoder.md.html class ="notranslate">TextDecoder</a></li>
+<li><a href=textencoder.md.html class ="notranslate">TextEncoder</a></li>
 <li><a href=timer.md.html class ="notranslate">Timer</a></li>
 <li><a href=urlobject.md.html class ="notranslate">UrlObject</a></li>
 <li><a href=websocket.md.html class ="notranslate">WebSocket</a></li>
@@ -203,41 +206,89 @@
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> c = <span class="hljs-keyword">new</span> crypto.Cipher(crypto.AES, crypto.ECB, ...);
 </code></pre>
 <h2 id="继承关系">继承关系</h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="172" height="384" viewbox="0 0 172 384" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
-  <desc >
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="172.0" height="384.0" viewbox="0 0 172 384" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
+    <desc >
+    #lineWidth: 1.5
+    #font: Helvetica,sans-Serif
+    #fontSize: 10
+    #leading: 1.6
+    #.this: fill=lightgray
+    #.class: fill=white
 
-[&lt;class&gt;object|toString();toJSON()]
-[&lt;this&gt;Cipher|new Cipher()|name;keySize;ivSize;blockSize|paddingMode();encrypt();decrypt()]
+    [&lt;class&gt;object|toString();toJSON()]
+    [&lt;this&gt;Cipher|new Cipher()|name;keySize;ivSize;blockSize|paddingMode();encrypt();decrypt()]
 
-[object] &lt;:- [Cipher]
-</desc>
-  <rect x="0" y="0" height="384" width="172" style="stroke:none; fill:transparent;"></rect>
-  <path d="M86 121.3 L86 128 L86 148 L86 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M91.3 121.3 L86 121.3 L80.7 121.3 L86 108 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <rect x="28" y="148" height="208" width="116" data-name="Cipher" style="stroke:#33322E;fill:lightgray;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <path d="M28 180 L144 180" data-name="Cipher" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M28 212 L144 212" data-name="Cipher" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M28 292 L144 292" data-name="Cipher" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <text x="86" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Cipher">Cipher</text>
-  <text x="36" y="201" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Cipher">new Cipher()</text>
-  <text x="36" y="233" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Cipher">name</text>
-  <text x="36" y="249" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Cipher">keySize</text>
-  <text x="36" y="265" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Cipher">ivSize</text>
-  <text x="36" y="281" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Cipher">blockSize</text>
-  <text x="36" y="313" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Cipher">paddingMode()</text>
-  <text x="36" y="329" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Cipher">encrypt()</text>
-  <text x="36" y="345" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Cipher">decrypt()</text>
-  <rect x="48" y="28" height="80" width="77" data-name="object" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <path d="M48 60 L125 60" data-name="object" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <text x="86.5" y="49" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="object">object</text>
-  <text x="56" y="81" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toString()</text>
-  <text x="56" y="97" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toJSON()</text>
+    [object] &lt;:- [Cipher]
+    </desc>
+    <g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="10pt" font-family="Helvetica,sans-Serif" font-weight="normal" font-style="normal">
+        <g font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="bold" font-style="normal" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
+            <g stroke="transparent" fill="transparent">
+                <rect x="0.0" y="0.0" height="384.0" width="172.0" stroke="none"></rect>
+            </g>
+            <g transform="translate(8, 8)" fill="#33322E">
+                <g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal">
+                    <path d="M58.0 93.3 L58 100 L58 120 L58.0 120.0 " fill="none"></path>
+                    <path d="M63.3 93.3 L58.0 93.3 L52.7 93.3 L58.0 80.0 Z"></path>
+                    <g data-name="Cipher">
+                        <g fill="lightgray" stroke="#33322E" data-name="Cipher">
+                            <rect x="0.0" y="120.0" height="208.0" width="116.0" data-name="Cipher"></rect>
+                            <path d="M0.0 152.0 L116.0 152.0" fill="none" data-name="Cipher"></path>
+                            <path d="M0.0 184.0 L116.0 184.0" fill="none" data-name="Cipher"></path>
+                            <path d="M0.0 264.0 L116.0 264.0" fill="none" data-name="Cipher"></path>
+                        </g>
+                        <g transform="translate(0, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Cipher">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Cipher">
+                                <text x="50.0" y="13.0" stroke="none" text-anchor="middle" data-name="Cipher">Cipher</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(0, 152)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Cipher">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Cipher">
+                                <text x="0.0" y="13.0" stroke="none" data-name="Cipher">new Cipher()</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(0, 184)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Cipher">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Cipher">
+                                <text x="0.0" y="13.0" stroke="none" data-name="Cipher">name</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="Cipher">keySize</text>
+                                <text x="0.0" y="45.0" stroke="none" data-name="Cipher">ivSize</text>
+                                <text x="0.0" y="61.0" stroke="none" data-name="Cipher">blockSize</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(0, 264)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Cipher">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Cipher">
+                                <text x="0.0" y="13.0" stroke="none" data-name="Cipher">paddingMode()</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="Cipher">encrypt()</text>
+                                <text x="0.0" y="45.0" stroke="none" data-name="Cipher">decrypt()</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="object">
+                        <g fill="white" stroke="#33322E" data-name="object">
+                            <rect x="20.0" y="0.0" height="80.0" width="77.0" data-name="object"></rect>
+                            <path d="M20.0 32.0 L97.0 32.0" fill="none" data-name="object"></path>
+                        </g>
+                        <g transform="translate(20, 0)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="object">
+                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="object">object</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(20, 32)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="object">
+                                <text x="0.0" y="13.0" stroke="none" data-name="object">toString()</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="object">toJSON()</text>
+
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
 </svg></div>
 
 <h2 id="构造函数">构造函数</h2>

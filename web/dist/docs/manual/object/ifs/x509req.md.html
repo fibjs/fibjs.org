@@ -4,7 +4,6 @@
 <li><a href=../../../guide/hello.md.html class ="notranslate">hello, world</a></li>
 <li><a href=../../../guide/test.md.html>美好生活从测试开始</a></li>
 <li><a href=../../../guide/profiler.md.html>找出性能杀手</a></li>
-<li><a href=../../../guide/desktop.md.html>快速开发桌面应用</a></li>
 <li><a href=../../../guide/server-hot-update.md.html>服务端模块热更新</a></li>
 <li><a href=../../../guide/host-routes.md.html>域名路由</a></li>
 <li><a href=../../../guide/x509.md.html>fibjs 中 X509 证书的使用</a></li>
@@ -13,6 +12,7 @@
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_module" aria-controls="collapse_module"> 基础模块 </a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby=headingOne><div class=panel-body> <ul>
 <li><a href=../../module/ifs/assert.md.html class ="notranslate">assert</a></li>
 <li><a href=../../module/ifs/base32.md.html class ="notranslate">base32</a></li>
+<li><a href=../../module/ifs/base58.md.html class ="notranslate">base58</a></li>
 <li><a href=../../module/ifs/base64.md.html class ="notranslate">base64</a></li>
 <li><a href=../../module/ifs/child_process.md.html class ="notranslate">child_process</a></li>
 <li><a href=../../module/ifs/console.md.html class ="notranslate">console</a></li>
@@ -36,6 +36,7 @@
 <li><a href=../../module/ifs/json.md.html class ="notranslate">json</a></li>
 <li><a href=../../module/ifs/mq.md.html class ="notranslate">mq</a></li>
 <li><a href=../../module/ifs/msgpack.md.html class ="notranslate">msgpack</a></li>
+<li><a href=../../module/ifs/multibase.md.html class ="notranslate">multibase</a></li>
 <li><a href=../../module/ifs/net.md.html class ="notranslate">net</a></li>
 <li><a href=../../module/ifs/os.md.html class ="notranslate">os</a></li>
 <li><a href=../../module/ifs/path.md.html class ="notranslate">path</a></li>
@@ -131,6 +132,8 @@
 <li><a href=ttyinputstream.md.html class ="notranslate">TTYInputStream</a></li>
 <li><a href=ttyoutputstream.md.html class ="notranslate">TTYOutputStream</a></li>
 <li><a href=tcpserver.md.html class ="notranslate">TcpServer</a></li>
+<li><a href=textdecoder.md.html class ="notranslate">TextDecoder</a></li>
+<li><a href=textencoder.md.html class ="notranslate">TextEncoder</a></li>
 <li><a href=timer.md.html class ="notranslate">Timer</a></li>
 <li><a href=urlobject.md.html class ="notranslate">UrlObject</a></li>
 <li><a href=websocket.md.html class ="notranslate">WebSocket</a></li>
@@ -203,43 +206,90 @@
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> k = <span class="hljs-keyword">new</span> crypto.X509Req();
 </code></pre>
 <h2 id="继承关系">继承关系</h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="174" height="416" viewbox="0 0 174 416" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
-  <desc >
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="174.0" height="400.0" viewbox="0 0 174 400" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
+    <desc >
+    #lineWidth: 1.5
+    #font: Helvetica,sans-Serif
+    #fontSize: 10
+    #leading: 1.6
+    #.this: fill=lightgray
+    #.class: fill=white
 
-[&lt;class&gt;object|toString();toJSON()]
-[&lt;this&gt;X509Req|new X509Req()|subject;publicKey;sig_md;sig_pk|load();loadFile();exportPem();exportDer();sign()]
+    [&lt;class&gt;object|toString();toJSON()]
+    [&lt;this&gt;X509Req|new X509Req()|subject;publicKey;sig_md;sig_pk|import();pem();der();sign()]
 
-[object] &lt;:- [X509Req]
-</desc>
-  <rect x="0" y="0" height="416" width="174" style="stroke:none; fill:transparent;"></rect>
-  <path d="M87 121.3 L87 128 L87 148 L87 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M92.3 121.3 L87 121.3 L81.7 121.3 L87 108 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <rect x="28" y="148" height="240" width="118" data-name="X509Req" style="stroke:#33322E;fill:lightgray;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <path d="M28 180 L146 180" data-name="X509Req" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M28 212 L146 212" data-name="X509Req" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M28 292 L146 292" data-name="X509Req" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <text x="87" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="X509Req">X509Req</text>
-  <text x="36" y="201" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Req">new X509Req()</text>
-  <text x="36" y="233" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Req">subject</text>
-  <text x="36" y="249" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Req">publicKey</text>
-  <text x="36" y="265" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Req">sig_md</text>
-  <text x="36" y="281" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Req">sig_pk</text>
-  <text x="36" y="313" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Req">load()</text>
-  <text x="36" y="329" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Req">loadFile()</text>
-  <text x="36" y="345" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Req">exportPem()</text>
-  <text x="36" y="361" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Req">exportDer()</text>
-  <text x="36" y="377" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="X509Req">sign()</text>
-  <rect x="49" y="28" height="80" width="77" data-name="object" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <path d="M49 60 L126 60" data-name="object" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <text x="87.5" y="49" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="object">object</text>
-  <text x="57" y="81" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toString()</text>
-  <text x="57" y="97" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toJSON()</text>
+    [object] &lt;:- [X509Req]
+    </desc>
+    <g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="10pt" font-family="Helvetica,sans-Serif" font-weight="normal" font-style="normal">
+        <g font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="bold" font-style="normal" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
+            <g stroke="transparent" fill="transparent">
+                <rect x="0.0" y="0.0" height="400.0" width="174.0" stroke="none"></rect>
+            </g>
+            <g transform="translate(8, 8)" fill="#33322E">
+                <g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal">
+                    <path d="M59.0 93.3 L59 100 L59 120 L59.0 120.0 " fill="none"></path>
+                    <path d="M64.3 93.3 L59.0 93.3 L53.7 93.3 L59.0 80.0 Z"></path>
+                    <g data-name="X509Req">
+                        <g fill="lightgray" stroke="#33322E" data-name="X509Req">
+                            <rect x="0.0" y="120.0" height="224.0" width="118.0" data-name="X509Req"></rect>
+                            <path d="M0.0 152.0 L118.0 152.0" fill="none" data-name="X509Req"></path>
+                            <path d="M0.0 184.0 L118.0 184.0" fill="none" data-name="X509Req"></path>
+                            <path d="M0.0 264.0 L118.0 264.0" fill="none" data-name="X509Req"></path>
+                        </g>
+                        <g transform="translate(0, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="X509Req">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="X509Req">
+                                <text x="51.0" y="13.0" stroke="none" text-anchor="middle" data-name="X509Req">X509Req</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(0, 152)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="X509Req">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="X509Req">
+                                <text x="0.0" y="13.0" stroke="none" data-name="X509Req">new X509Req()</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(0, 184)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="X509Req">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="X509Req">
+                                <text x="0.0" y="13.0" stroke="none" data-name="X509Req">subject</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="X509Req">publicKey</text>
+                                <text x="0.0" y="45.0" stroke="none" data-name="X509Req">sig_md</text>
+                                <text x="0.0" y="61.0" stroke="none" data-name="X509Req">sig_pk</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(0, 264)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="X509Req">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="X509Req">
+                                <text x="0.0" y="13.0" stroke="none" data-name="X509Req">import()</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="X509Req">pem()</text>
+                                <text x="0.0" y="45.0" stroke="none" data-name="X509Req">der()</text>
+                                <text x="0.0" y="61.0" stroke="none" data-name="X509Req">sign()</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="object">
+                        <g fill="white" stroke="#33322E" data-name="object">
+                            <rect x="21.0" y="0.0" height="80.0" width="77.0" data-name="object"></rect>
+                            <path d="M21.0 32.0 L98.0 32.0" fill="none" data-name="object"></path>
+                        </g>
+                        <g transform="translate(21, 0)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="object">
+                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="object">object</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(21, 32)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="object">
+                                <text x="0.0" y="13.0" stroke="none" data-name="object">toString()</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="object">toJSON()</text>
+
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
 </svg></div>
 
 <h2 id="构造函数">构造函数</h2>
@@ -253,13 +303,13 @@
 2
 3</div><span class="hljs-keyword">new</span> X509Req(<span class="hljs-built_in">String</span> subject,
     PKey key,
-    Integer hash = hash.SHA1);
+    Integer hash = hash.SHA256);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">subject</span>: String, 证书的主题可分辨名称</li>
 <li><span class="notranslate">key</span>: <a href=pkey.md.html class ="notranslate">PKey</a>, 证书的公钥</li>
-<li><span class="notranslate">hash</span>: Integer, 证书摘要算法，缺省为 <a href=../../module/ifs/hash.md.html#SHA1 class ="notranslate">hash.SHA1</a></li>
+<li><span class="notranslate">hash</span>: Integer, 证书摘要算法，缺省为 <a href=../../module/ifs/hash.md.html#SHA256 class ="notranslate">hash.SHA256</a></li>
 </ul>
 <hr>
 <p><strong>X509Req 构造函数，加载一个 DER 格式的证书请求</strong></p>
@@ -298,9 +348,9 @@
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer X509Req.sig_pk;
 </code></pre>
 <h2 id="成员函数">成员函数</h2>
-<h3 id="load" class ="notranslate">load</h3>
+<h3 id="import" class ="notranslate">import</h3>
 <p><strong>加载一个 DER 格式的证书请求</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>X509Req.load(Buffer derReq);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>X509Req.import(Buffer derReq);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -308,34 +358,25 @@
 </ul>
 <hr>
 <p><strong>加载一个 PEM 格式的证书请求</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>X509Req.load(<span class="hljs-built_in">String</span> pemReq);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>X509Req.import(<span class="hljs-built_in">String</span> pemReq);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">pemReq</span>: String, PEM 格式的证书请求</li>
 </ul>
 <hr>
-<h3 id="loadFile" class ="notranslate">loadFile</h3>
-<p><strong>加载一个 PEM/DER 格式的证书请求，可多次调用</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>X509Req.loadFile(<span class="hljs-built_in">String</span> filename);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li><span class="notranslate">filename</span>: String, 证书请求文件名</li>
-</ul>
-<hr>
-<h3 id="exportPem" class ="notranslate">exportPem</h3>
+<h3 id="pem" class ="notranslate">pem</h3>
 <p><strong>返回当前证书请求的 PEM 格式编码</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> X509Req.exportPem();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> X509Req.pem();
 </code></pre>
 <p>返回结果:</p>
 <ul>
 <li><span class="notranslate">String</span>, 当前证书请求的 PEM 格式编码</li>
 </ul>
 <hr>
-<h3 id="exportDer" class ="notranslate">exportDer</h3>
+<h3 id="der" class ="notranslate">der</h3>
 <p><strong>返回当前证书请求的 DER 格式编码</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer X509Req.exportDer();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer X509Req.der();
 </code></pre>
 <p>返回结果:</p>
 <ul>

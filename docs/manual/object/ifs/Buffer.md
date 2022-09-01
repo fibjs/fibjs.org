@@ -17,7 +17,7 @@ var buf = new Buffer();
 #.class: fill=white
 
 [<class>object|toString();toJSON()]
-[<this>Buffer|new Buffer()|operator\[\];@iterator()|Buffer|isBuffer();from();concat();alloc();allocUnsafe();allocUnsafeSlow();byteLength();compare();isEncoding()|length;buffer|resize();append();write();fill();indexOf();compare();copy();set();readUInt8();readUInt16LE();readUInt16BE();readUInt32LE();readUInt32BE();readUIntLE();readUIntBE();readInt64LE();readInt64BE();readInt8();readInt16LE();readInt16BE();readInt32LE();readInt32BE();readIntLE();readIntBE();writeInt64LE();writeInt64BE();readFloatLE();readFloatBE();readDoubleLE();readDoubleBE();writeUInt8();writeUInt16LE();writeUInt16BE();writeUInt32LE();writeUInt32BE();writeUIntLE();writeUIntBE();writeInt8();writeInt16LE();writeInt16BE();writeInt32LE();writeInt32BE();writeIntLE();writeIntBE();writeFloatLE();writeFloatBE();writeDoubleLE();writeDoubleBE();slice();join();reverse();equals();hex();base64();keys();values();entries();toArray();toString()]
+[<this>Buffer|new Buffer()|operator\[\];@iterator()|Buffer|isBuffer();from();concat();alloc();allocUnsafe();allocUnsafeSlow();byteLength();compare();isEncoding()|length;byteOffset;buffer|resize();append();write();fill();indexOf();compare();copy();set();readUInt8();readUInt16LE();readUInt16BE();readUInt32LE();readUInt32BE();readUIntLE();readUIntBE();readInt64LE();readInt64BE();readInt8();readInt16LE();readInt16BE();readInt32LE();readInt32BE();readIntLE();readIntBE();writeInt64LE();writeInt64BE();readFloatLE();readFloatBE();readDoubleLE();readDoubleBE();writeUInt8();writeUInt16LE();writeUInt16BE();writeUInt32LE();writeUInt32BE();writeUIntLE();writeUIntBE();writeInt8();writeInt16LE();writeInt16BE();writeInt32LE();writeInt32BE();writeIntLE();writeIntBE();writeFloatLE();writeFloatBE();writeDoubleLE();writeDoubleBE();slice();join();reverse();equals();hex();base32();base58();base64();keys();values();entries();forEach();toArray();toString()]
 
 [object] <:- [Buffer]
 ```
@@ -84,7 +84,7 @@ new Buffer(String str,
 
 调用参数:
 * str: String, 初始化字符串，字符串将以 utf-8 格式写入，缺省则创建一个空对象
-* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base32](../../module/ifs/base32.md)", "[base58](../../module/ifs/base58.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
 
 --------------------------
 **缓存对象构造函数**
@@ -185,7 +185,7 @@ static Buffer Buffer.from(String str,
 
 调用参数:
 * str: String, 初始化字符串，字符串将以 utf-8 格式写入，缺省则创建一个空对象
-* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base32](../../module/ifs/base32.md)", "[base58](../../module/ifs/base58.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
 
 返回结果:
 * Buffer, 返回 Buffer 实例
@@ -219,7 +219,7 @@ static Buffer Buffer.alloc(Integer size,
 调用参数:
 * size: Integer, 缓冲区的所需长度
 * fill: Integer, 预先填充新缓冲区的值，可使用 string/buffer/integer 值类型。 默认值：0
-* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base32](../../module/ifs/base32.md)", "[base58](../../module/ifs/base58.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
 
 返回结果:
 * Buffer, 填充好的新 Buffer 对象
@@ -236,7 +236,7 @@ static Buffer Buffer.alloc(Integer size,
 调用参数:
 * size: Integer, 缓冲区的所需长度
 * fill: String, 预先填充新缓冲区的值，可使用 string/buffer/integer 值类型。 默认值：0
-* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base32](../../module/ifs/base32.md)", "[base58](../../module/ifs/base58.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
 
 返回结果:
 * Buffer, 填充好的新 Buffer 对象
@@ -253,7 +253,7 @@ static Buffer Buffer.alloc(Integer size,
 调用参数:
 * size: Integer, 缓冲区的所需长度
 * fill: Buffer, 预先填充新缓冲区的值，可使用 string/buffer/integer 值类型。 默认值：0
-* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base32](../../module/ifs/base32.md)", "[base58](../../module/ifs/base58.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
 
 返回结果:
 * Buffer, 填充好的新 Buffer 对象
@@ -297,7 +297,7 @@ static Integer Buffer.byteLength(String str,
 
 调用参数:
 * str: String, 待取字节的字符串，如果str为 ArrayBuffer/TypedArray/DataView/Buffer 对象，则返回它们的实际长度
-* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base32](../../module/ifs/base32.md)", "[base58](../../module/ifs/base58.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
 
 返回结果:
 * Integer, 返回实际字节长度
@@ -312,7 +312,7 @@ static Integer Buffer.byteLength(ArrayBuffer str,
 
 调用参数:
 * str: ArrayBuffer, 待取字节的字符串，如果str为 ArrayBuffer/TypedArray/DataView/Buffer 对象，则返回它们的实际长度
-* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base32](../../module/ifs/base32.md)", "[base58](../../module/ifs/base58.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
 
 返回结果:
 * Integer, 返回实际字节长度
@@ -327,7 +327,7 @@ static Integer Buffer.byteLength(ArrayBufferView str,
 
 调用参数:
 * str: ArrayBufferView, 待取字节的字符串，如果 str 为 ArrayBuffer/TypedArray/DataView/Buffer 对象，则返回它们的实际长度
-* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base32](../../module/ifs/base32.md)", "[base58](../../module/ifs/base58.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
 
 返回结果:
 * Integer, 返回实际字节长度
@@ -342,7 +342,7 @@ static Integer Buffer.byteLength(Buffer str,
 
 调用参数:
 * str: Buffer, 待取字节的字符串，如果str为 ArrayBuffer/TypedArray/DataView/Buffer 对象，则返回它们的实际长度
-* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base32](../../module/ifs/base32.md)", "[base58](../../module/ifs/base58.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
 
 返回结果:
 * Integer, 返回实际字节长度
@@ -387,6 +387,14 @@ readonly Integer Buffer.length;
 ```
 
 --------------------------
+### byteOffset
+**Integer, 获取缓存对象的偏移值**
+
+```JavaScript
+readonly Integer Buffer.byteOffset;
+```
+
+--------------------------
 ### buffer
 **ArrayBuffer, 以 ArrayBuffer 格式返回缓存数据**
 
@@ -427,7 +435,7 @@ Buffer.append(String str,
 
 调用参数:
 * str: String, 要写入的字符串
-* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base32](../../module/ifs/base32.md)", "[base58](../../module/ifs/base58.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
 
 --------------------------
 ### write
@@ -444,7 +452,7 @@ Integer Buffer.write(String str,
 * str: String, 待写入的字符串
 * offset: Integer, 写入起始位置
 * length: Integer, 写入长度（单位字节，默认值-1），未指定时为待写入字符串的长度
-* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base32](../../module/ifs/base32.md)", "[base58](../../module/ifs/base58.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
 
 返回结果:
 * Integer, 写入的数据字节长度
@@ -461,7 +469,7 @@ Integer Buffer.write(String str,
 调用参数:
 * str: String, 待写入的字符串
 * offset: Integer, 写入起始位置
-* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base32](../../module/ifs/base32.md)", "[base58](../../module/ifs/base58.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
 
 返回结果:
 * Integer, 写入的数据字节长度
@@ -476,7 +484,7 @@ Integer Buffer.write(String str,
 
 调用参数:
 * str: String, 待写入的字符串
-* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base32](../../module/ifs/base32.md)", "[base58](../../module/ifs/base58.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
 
 返回结果:
 * Integer, 写入的数据字节长度
@@ -1325,6 +1333,28 @@ String Buffer.hex();
 * String, 返回编码字符串
 
 --------------------------
+### base32
+**使用 [base32](../../module/ifs/base32.md) 编码缓存对象内容**
+
+```JavaScript
+String Buffer.base32();
+```
+
+返回结果:
+* String, 返回编码字符串
+
+--------------------------
+### base58
+**使用 [base58](../../module/ifs/base58.md) 编码缓存对象内容**
+
+```JavaScript
+String Buffer.base58();
+```
+
+返回结果:
+* String, 返回编码字符串
+
+--------------------------
 ### base64
 **使用 [base64](../../module/ifs/base64.md) 编码缓存对象内容**
 
@@ -1369,6 +1399,19 @@ Iterator Buffer.entries();
 * [Iterator](Iterator.md), [index, byte] 对的迭代器
 
 --------------------------
+### forEach
+**对对象的每个元素执行一次给定的函数**
+
+```JavaScript
+Buffer.forEach(Function callback,
+    Value thisArg = undefined);
+```
+
+调用参数:
+* callback: Function, 为数组中每个元素执行的函数，该函数接收一至三个参数：currentValue，index，array
+* thisArg: Value, 当执行回调函数 callback 时，用作 this 的值
+
+--------------------------
 ### toArray
 **返回全部二进制数据的数组**
 
@@ -1390,7 +1433,7 @@ String Buffer.toString(String codec,
 ```
 
 调用参数:
-* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base32](../../module/ifs/base32.md)", "[base58](../../module/ifs/base58.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
 * offset: Integer, 读取起始位置
 * end: Integer, 读取终止位置
 
@@ -1406,7 +1449,7 @@ String Buffer.toString(String codec,
 ```
 
 调用参数:
-* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
+* codec: String, 指定编码格式，允许值为："[hex](../../module/ifs/hex.md)", "[base32](../../module/ifs/base32.md)", "[base58](../../module/ifs/base58.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
 * offset: Integer, 读取起始位置
 
 返回结果:

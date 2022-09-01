@@ -1,18 +1,18 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>對象Buffer - JavaScript on Fiber</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Toggle navigation</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/buffer.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/buffer.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/buffer.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/buffer.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/buffer.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/buffer.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/buffer.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/buffer.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/buffer.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/buffer.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/buffer.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/buffer.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Object 內置對象 </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Search" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="search input" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">首頁</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 內置對象 </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 對象Buffer </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 開髮指南 </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>對象Buffer - JavaScript on Fiber</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Toggle navigation</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/buffer.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/buffer.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/buffer.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/buffer.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/buffer.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/buffer.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/buffer.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/buffer.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/buffer.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/buffer.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/buffer.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/buffer.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Object 內置對象</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Search" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="search input" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">首頁</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">內置對象</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對象Buffer</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">開髮指南</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 是什麼？</font></font></a></li>
 <li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安裝運行環境</font></font></a></li>
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
 <li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">美好生活從測試開始</font></font></a></li>
 <li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">找出性能殺手</font></font></a></li>
-<li><a href="../../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">快速開發桌面應用</font></font></a></li>
 <li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服務端模塊熱更新</font></font></a></li>
 <li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">域名路由</font></font></a></li>
 <li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 中X509 證書的使用</font></font></a></li>
 <li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加native 模塊</font></font></a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 基礎模塊 </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">基礎模塊</font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../module/ifs/assert.md.html" class="notranslate">assert</a></li>
 <li><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a></li>
+<li><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a></li>
 <li><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a></li>
 <li><a href="../../module/ifs/child_process.md.html" class="notranslate">child_process</a></li>
 <li><a href="../../module/ifs/console.md.html" class="notranslate">console</a></li>
@@ -36,6 +36,7 @@
 <li><a href="../../module/ifs/json.md.html" class="notranslate">json</a></li>
 <li><a href="../../module/ifs/mq.md.html" class="notranslate">mq</a></li>
 <li><a href="../../module/ifs/msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="../../module/ifs/multibase.md.html" class="notranslate">multibase</a></li>
 <li><a href="../../module/ifs/net.md.html" class="notranslate">net</a></li>
 <li><a href="../../module/ifs/os.md.html" class="notranslate">os</a></li>
 <li><a href="../../module/ifs/path.md.html" class="notranslate">path</a></li>
@@ -63,7 +64,7 @@
 <li><a href="../../module/ifs/zip.md.html" class="notranslate">zip</a></li>
 <li><a href="../../module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 內置對象 </font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">內置對象</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li class="active"><a href="buffer.md.html" class="notranslate">Buffer</a></li>
 <li><a href="bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
 <li><a href="chain.md.html" class="notranslate">Chain</a></li>
@@ -131,6 +132,8 @@
 <li><a href="ttyinputstream.md.html" class="notranslate">TTYInputStream</a></li>
 <li><a href="ttyoutputstream.md.html" class="notranslate">TTYOutputStream</a></li>
 <li><a href="tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="textdecoder.md.html" class="notranslate">TextDecoder</a></li>
+<li><a href="textencoder.md.html" class="notranslate">TextEncoder</a></li>
 <li><a href="timer.md.html" class="notranslate">Timer</a></li>
 <li><a href="urlobject.md.html" class="notranslate">UrlObject</a></li>
 <li><a href="websocket.md.html" class="notranslate">WebSocket</a></li>
@@ -155,7 +158,7 @@
 <li><a href="zipfile.md.html" class="notranslate">ZipFile</a></li>
 <li><a href="object.md.html" class="notranslate">object</a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 社區模塊 </font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社區模塊</font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../../awesome/module/fib-session.md.html" class="notranslate">fib-session</a></li>
 <li><a href="../../../awesome/module/fib-pool.md.html" class="notranslate">fib-pool</a></li>
 <li><a href="../../../awesome/module/fib-orm.md.html" class="notranslate">fib-orm</a></li>
@@ -198,115 +201,182 @@
 <li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="对象-Buffer" data-unique="对象-Buffer"></div><h1 id="对象-Buffer"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對象Buffer</font></font></h1>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">二進制數據緩存對象，用於 </font></font><a href="../../module/ifs/io.md.html" class="notranslate">io</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 讀寫的數據處理</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">二進制數據緩存對象，用於</font></font><a href="../../module/ifs/io.md.html" class="notranslate">io</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">讀寫的數據處理</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buffer 對象為全局基礎類，在任何時候都可以直接以new Buffer(...) 創建：</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> buf = <span class="hljs-keyword">new</span> Buffer();
 </code></pre>
 <div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">繼承關係</font></font></h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="190" height="1488" viewBox="0 0 190 1488" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
-  <desc>
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="190.0" height="1552.0" viewBox="0 0 190 1552" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
+    <desc>
+    #lineWidth: 1.5
+    #font: Helvetica,sans-Serif
+    #fontSize: 10
+    #leading: 1.6
+    #.this: fill=lightgray
+    #.class: fill=white
 
-[&lt;class&gt;object|toString();toJSON()]
-[&lt;this&gt;Buffer|new Buffer()|operator[];@iterator()|Buffer|isBuffer();from();concat();alloc();allocUnsafe();allocUnsafeSlow();byteLength();compare();isEncoding()|length;buffer|resize();append();write();fill();indexOf();compare();copy();set();readUInt8();readUInt16LE();readUInt16BE();readUInt32LE();readUInt32BE();readUIntLE();readUIntBE();readInt64LE();readInt64BE();readInt8();readInt16LE();readInt16BE();readInt32LE();readInt32BE();readIntLE();readIntBE();writeInt64LE();writeInt64BE();readFloatLE();readFloatBE();readDoubleLE();readDoubleBE();writeUInt8();writeUInt16LE();writeUInt16BE();writeUInt32LE();writeUInt32BE();writeUIntLE();writeUIntBE();writeInt8();writeInt16LE();writeInt16BE();writeInt32LE();writeInt32BE();writeIntLE();writeIntBE();writeFloatLE();writeFloatBE();writeDoubleLE();writeDoubleBE();slice();join();reverse();equals();hex();base64();keys();values();entries();toArray();toString()]
+    [&lt;class&gt;object|toString();toJSON()]
+    [&lt;this&gt;Buffer|new Buffer()|operator[];@iterator()|Buffer|isBuffer();from();concat();alloc();allocUnsafe();allocUnsafeSlow();byteLength();compare();isEncoding()|length;byteOffset;buffer|resize();append();write();fill();indexOf();compare();copy();set();readUInt8();readUInt16LE();readUInt16BE();readUInt32LE();readUInt32BE();readUIntLE();readUIntBE();readInt64LE();readInt64BE();readInt8();readInt16LE();readInt16BE();readInt32LE();readInt32BE();readIntLE();readIntBE();writeInt64LE();writeInt64BE();readFloatLE();readFloatBE();readDoubleLE();readDoubleBE();writeUInt8();writeUInt16LE();writeUInt16BE();writeUInt32LE();writeUInt32BE();writeUIntLE();writeUIntBE();writeInt8();writeInt16LE();writeInt16BE();writeInt32LE();writeInt32BE();writeIntLE();writeIntBE();writeFloatLE();writeFloatBE();writeDoubleLE();writeDoubleBE();slice();join();reverse();equals();hex();base32();base58();base64();keys();values();entries();forEach();toArray();toString()]
 
-[object] &lt;:- [Buffer]
-</desc>
-  <rect x="0" y="0" height="1488" width="190" style="stroke:none; fill:transparent;"></rect>
-  <path d="M95 121.3 L95 128 L95 148 L95 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M100.3 121.3 L95 121.3 L89.7 121.3 L95 108 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <rect x="28" y="148" height="1312" width="134" data-name="Buffer" style="stroke:#33322E;fill:lightgray;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <path d="M28 180 L162 180" data-name="Buffer" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M28 212 L162 212" data-name="Buffer" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M28 260 L162 260" data-name="Buffer" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M28 292 L162 292" data-name="Buffer" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M28 452 L162 452" data-name="Buffer" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M28 500 L162 500" data-name="Buffer" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <text x="95" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Buffer">Buffer</text>
-  <text x="36" y="201" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">new Buffer()</text>
-  <text x="36" y="233" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">operator[]</text>
-  <text x="36" y="249" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">@iterator()</text>
-  <text x="36" y="281" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">Buffer</text>
-  <text x="36" y="313" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">isBuffer()</text>
-  <text x="36" y="329" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">from()</text>
-  <text x="36" y="345" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">concat()</text>
-  <text x="36" y="361" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">alloc()</text>
-  <text x="36" y="377" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">allocUnsafe()</text>
-  <text x="36" y="393" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">allocUnsafeSlow()</text>
-  <text x="36" y="409" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">byteLength()</text>
-  <text x="36" y="425" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">compare()</text>
-  <text x="36" y="441" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">isEncoding()</text>
-  <text x="36" y="473" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">length</text>
-  <text x="36" y="489" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">buffer</text>
-  <text x="36" y="521" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">resize()</text>
-  <text x="36" y="537" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">append()</text>
-  <text x="36" y="553" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">write()</text>
-  <text x="36" y="569" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">fill()</text>
-  <text x="36" y="585" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">indexOf()</text>
-  <text x="36" y="601" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">compare()</text>
-  <text x="36" y="617" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">copy()</text>
-  <text x="36" y="633" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">set()</text>
-  <text x="36" y="649" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readUInt8()</text>
-  <text x="36" y="665" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readUInt16LE()</text>
-  <text x="36" y="681" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readUInt16BE()</text>
-  <text x="36" y="697" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readUInt32LE()</text>
-  <text x="36" y="713" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readUInt32BE()</text>
-  <text x="36" y="729" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readUIntLE()</text>
-  <text x="36" y="745" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readUIntBE()</text>
-  <text x="36" y="761" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readInt64LE()</text>
-  <text x="36" y="777" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readInt64BE()</text>
-  <text x="36" y="793" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readInt8()</text>
-  <text x="36" y="809" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readInt16LE()</text>
-  <text x="36" y="825" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readInt16BE()</text>
-  <text x="36" y="841" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readInt32LE()</text>
-  <text x="36" y="857" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readInt32BE()</text>
-  <text x="36" y="873" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readIntLE()</text>
-  <text x="36" y="889" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readIntBE()</text>
-  <text x="36" y="905" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeInt64LE()</text>
-  <text x="36" y="921" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeInt64BE()</text>
-  <text x="36" y="937" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readFloatLE()</text>
-  <text x="36" y="953" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readFloatBE()</text>
-  <text x="36" y="969" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readDoubleLE()</text>
-  <text x="36" y="985" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readDoubleBE()</text>
-  <text x="36" y="1001" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeUInt8()</text>
-  <text x="36" y="1017" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeUInt16LE()</text>
-  <text x="36" y="1033" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeUInt16BE()</text>
-  <text x="36" y="1049" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeUInt32LE()</text>
-  <text x="36" y="1065" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeUInt32BE()</text>
-  <text x="36" y="1081" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeUIntLE()</text>
-  <text x="36" y="1097" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeUIntBE()</text>
-  <text x="36" y="1113" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeInt8()</text>
-  <text x="36" y="1129" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeInt16LE()</text>
-  <text x="36" y="1145" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeInt16BE()</text>
-  <text x="36" y="1161" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeInt32LE()</text>
-  <text x="36" y="1177" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeInt32BE()</text>
-  <text x="36" y="1193" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeIntLE()</text>
-  <text x="36" y="1209" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeIntBE()</text>
-  <text x="36" y="1225" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeFloatLE()</text>
-  <text x="36" y="1241" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeFloatBE()</text>
-  <text x="36" y="1257" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeDoubleLE()</text>
-  <text x="36" y="1273" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeDoubleBE()</text>
-  <text x="36" y="1289" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">slice()</text>
-  <text x="36" y="1305" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">join()</text>
-  <text x="36" y="1321" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">reverse()</text>
-  <text x="36" y="1337" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">equals()</text>
-  <text x="36" y="1353" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">hex()</text>
-  <text x="36" y="1369" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">base64()</text>
-  <text x="36" y="1385" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">keys()</text>
-  <text x="36" y="1401" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">values()</text>
-  <text x="36" y="1417" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">entries()</text>
-  <text x="36" y="1433" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">toArray()</text>
-  <text x="36" y="1449" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">toString()</text>
-  <rect x="57" y="28" height="80" width="77" data-name="object" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <path d="M57 60 L134 60" data-name="object" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <text x="95.5" y="49" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="object">object</text>
-  <text x="65" y="81" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toString()</text>
-  <text x="65" y="97" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toJSON()</text>
+    [object] &lt;:- [Buffer]
+    </desc>
+    <g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="10pt" font-family="Helvetica,sans-Serif" font-weight="normal" font-style="normal">
+        <g font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="bold" font-style="normal" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
+            <g stroke="transparent" fill="transparent">
+                <rect x="0.0" y="0.0" height="1552.0" width="190.0" stroke="none"></rect>
+            </g>
+            <g transform="translate(8, 8)" fill="#33322E">
+                <g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal">
+                    <path d="M67.0 93.3 L67 100 L67 120 L67.0 120.0 " fill="none"></path>
+                    <path d="M72.3 93.3 L67.0 93.3 L61.7 93.3 L67.0 80.0 Z"></path>
+                    <g data-name="Buffer">
+                        <g fill="lightgray" stroke="#33322E" data-name="Buffer">
+                            <rect x="0.0" y="120.0" height="1376.0" width="134.0" data-name="Buffer"></rect>
+                            <path d="M0.0 152.0 L134.0 152.0" fill="none" data-name="Buffer"></path>
+                            <path d="M0.0 184.0 L134.0 184.0" fill="none" data-name="Buffer"></path>
+                            <path d="M0.0 232.0 L134.0 232.0" fill="none" data-name="Buffer"></path>
+                            <path d="M0.0 264.0 L134.0 264.0" fill="none" data-name="Buffer"></path>
+                            <path d="M0.0 424.0 L134.0 424.0" fill="none" data-name="Buffer"></path>
+                            <path d="M0.0 488.0 L134.0 488.0" fill="none" data-name="Buffer"></path>
+                        </g>
+                        <g transform="translate(0, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Buffer">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Buffer">
+                                <text x="59.0" y="13.0" stroke="none" text-anchor="middle" data-name="Buffer">Buffer</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(0, 152)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Buffer">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Buffer">
+                                <text x="0.0" y="13.0" stroke="none" data-name="Buffer">new Buffer()</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(0, 184)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Buffer">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Buffer">
+                                <text x="0.0" y="13.0" stroke="none" data-name="Buffer">operator[]</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="Buffer">@iterator()</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(0, 232)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Buffer">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Buffer">
+                                <text x="0.0" y="13.0" stroke="none" data-name="Buffer">Buffer</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(0, 264)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Buffer">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Buffer">
+                                <text x="0.0" y="13.0" stroke="none" data-name="Buffer">isBuffer()</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="Buffer">from()</text>
+                                <text x="0.0" y="45.0" stroke="none" data-name="Buffer">concat()</text>
+                                <text x="0.0" y="61.0" stroke="none" data-name="Buffer">alloc()</text>
+                                <text x="0.0" y="77.0" stroke="none" data-name="Buffer">allocUnsafe()</text>
+                                <text x="0.0" y="93.0" stroke="none" data-name="Buffer">allocUnsafeSlow()</text>
+                                <text x="0.0" y="109.0" stroke="none" data-name="Buffer">byteLength()</text>
+                                <text x="0.0" y="125.0" stroke="none" data-name="Buffer">compare()</text>
+                                <text x="0.0" y="141.0" stroke="none" data-name="Buffer">isEncoding()</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(0, 424)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Buffer">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Buffer">
+                                <text x="0.0" y="13.0" stroke="none" data-name="Buffer">length</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="Buffer">byteOffset</text>
+                                <text x="0.0" y="45.0" stroke="none" data-name="Buffer">buffer</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(0, 488)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Buffer">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Buffer">
+                                <text x="0.0" y="13.0" stroke="none" data-name="Buffer">resize()</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="Buffer">append()</text>
+                                <text x="0.0" y="45.0" stroke="none" data-name="Buffer">write()</text>
+                                <text x="0.0" y="61.0" stroke="none" data-name="Buffer">fill()</text>
+                                <text x="0.0" y="77.0" stroke="none" data-name="Buffer">indexOf()</text>
+                                <text x="0.0" y="93.0" stroke="none" data-name="Buffer">compare()</text>
+                                <text x="0.0" y="109.0" stroke="none" data-name="Buffer">copy()</text>
+                                <text x="0.0" y="125.0" stroke="none" data-name="Buffer">set()</text>
+                                <text x="0.0" y="141.0" stroke="none" data-name="Buffer">readUInt8()</text>
+                                <text x="0.0" y="157.0" stroke="none" data-name="Buffer">readUInt16LE()</text>
+                                <text x="0.0" y="173.0" stroke="none" data-name="Buffer">readUInt16BE()</text>
+                                <text x="0.0" y="189.0" stroke="none" data-name="Buffer">readUInt32LE()</text>
+                                <text x="0.0" y="205.0" stroke="none" data-name="Buffer">readUInt32BE()</text>
+                                <text x="0.0" y="221.0" stroke="none" data-name="Buffer">readUIntLE()</text>
+                                <text x="0.0" y="237.0" stroke="none" data-name="Buffer">readUIntBE()</text>
+                                <text x="0.0" y="253.0" stroke="none" data-name="Buffer">readInt64LE()</text>
+                                <text x="0.0" y="269.0" stroke="none" data-name="Buffer">readInt64BE()</text>
+                                <text x="0.0" y="285.0" stroke="none" data-name="Buffer">readInt8()</text>
+                                <text x="0.0" y="301.0" stroke="none" data-name="Buffer">readInt16LE()</text>
+                                <text x="0.0" y="317.0" stroke="none" data-name="Buffer">readInt16BE()</text>
+                                <text x="0.0" y="333.0" stroke="none" data-name="Buffer">readInt32LE()</text>
+                                <text x="0.0" y="349.0" stroke="none" data-name="Buffer">readInt32BE()</text>
+                                <text x="0.0" y="365.0" stroke="none" data-name="Buffer">readIntLE()</text>
+                                <text x="0.0" y="381.0" stroke="none" data-name="Buffer">readIntBE()</text>
+                                <text x="0.0" y="397.0" stroke="none" data-name="Buffer">writeInt64LE()</text>
+                                <text x="0.0" y="413.0" stroke="none" data-name="Buffer">writeInt64BE()</text>
+                                <text x="0.0" y="429.0" stroke="none" data-name="Buffer">readFloatLE()</text>
+                                <text x="0.0" y="445.0" stroke="none" data-name="Buffer">readFloatBE()</text>
+                                <text x="0.0" y="461.0" stroke="none" data-name="Buffer">readDoubleLE()</text>
+                                <text x="0.0" y="477.0" stroke="none" data-name="Buffer">readDoubleBE()</text>
+                                <text x="0.0" y="493.0" stroke="none" data-name="Buffer">writeUInt8()</text>
+                                <text x="0.0" y="509.0" stroke="none" data-name="Buffer">writeUInt16LE()</text>
+                                <text x="0.0" y="525.0" stroke="none" data-name="Buffer">writeUInt16BE()</text>
+                                <text x="0.0" y="541.0" stroke="none" data-name="Buffer">writeUInt32LE()</text>
+                                <text x="0.0" y="557.0" stroke="none" data-name="Buffer">writeUInt32BE()</text>
+                                <text x="0.0" y="573.0" stroke="none" data-name="Buffer">writeUIntLE()</text>
+                                <text x="0.0" y="589.0" stroke="none" data-name="Buffer">writeUIntBE()</text>
+                                <text x="0.0" y="605.0" stroke="none" data-name="Buffer">writeInt8()</text>
+                                <text x="0.0" y="621.0" stroke="none" data-name="Buffer">writeInt16LE()</text>
+                                <text x="0.0" y="637.0" stroke="none" data-name="Buffer">writeInt16BE()</text>
+                                <text x="0.0" y="653.0" stroke="none" data-name="Buffer">writeInt32LE()</text>
+                                <text x="0.0" y="669.0" stroke="none" data-name="Buffer">writeInt32BE()</text>
+                                <text x="0.0" y="685.0" stroke="none" data-name="Buffer">writeIntLE()</text>
+                                <text x="0.0" y="701.0" stroke="none" data-name="Buffer">writeIntBE()</text>
+                                <text x="0.0" y="717.0" stroke="none" data-name="Buffer">writeFloatLE()</text>
+                                <text x="0.0" y="733.0" stroke="none" data-name="Buffer">writeFloatBE()</text>
+                                <text x="0.0" y="749.0" stroke="none" data-name="Buffer">writeDoubleLE()</text>
+                                <text x="0.0" y="765.0" stroke="none" data-name="Buffer">writeDoubleBE()</text>
+                                <text x="0.0" y="781.0" stroke="none" data-name="Buffer">slice()</text>
+                                <text x="0.0" y="797.0" stroke="none" data-name="Buffer">join()</text>
+                                <text x="0.0" y="813.0" stroke="none" data-name="Buffer">reverse()</text>
+                                <text x="0.0" y="829.0" stroke="none" data-name="Buffer">equals()</text>
+                                <text x="0.0" y="845.0" stroke="none" data-name="Buffer">hex()</text>
+                                <text x="0.0" y="861.0" stroke="none" data-name="Buffer">base32()</text>
+                                <text x="0.0" y="877.0" stroke="none" data-name="Buffer">base58()</text>
+                                <text x="0.0" y="893.0" stroke="none" data-name="Buffer">base64()</text>
+                                <text x="0.0" y="909.0" stroke="none" data-name="Buffer">keys()</text>
+                                <text x="0.0" y="925.0" stroke="none" data-name="Buffer">values()</text>
+                                <text x="0.0" y="941.0" stroke="none" data-name="Buffer">entries()</text>
+                                <text x="0.0" y="957.0" stroke="none" data-name="Buffer">forEach()</text>
+                                <text x="0.0" y="973.0" stroke="none" data-name="Buffer">toArray()</text>
+                                <text x="0.0" y="989.0" stroke="none" data-name="Buffer">toString()</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="object">
+                        <g fill="white" stroke="#33322E" data-name="object">
+                            <rect x="29.0" y="0.0" height="80.0" width="77.0" data-name="object"></rect>
+                            <path d="M29.0 32.0 L106.0 32.0" fill="none" data-name="object"></path>
+                        </g>
+                        <g transform="translate(29, 0)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="object">
+                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="object">object</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(29, 32)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="object">
+                                <text x="0.0" y="13.0" stroke="none" data-name="object">toString()</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="object">toJSON()</text>
+
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
 </svg></div>
 
 <div name="构造函数" data-unique="构造函数"></div><h2 id="构造函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">構造函數</font></font></h2>
@@ -359,7 +429,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
 <ul>
 <li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 初始化字符串，字符串將以utf-8 格式寫入，缺省則創建一個空對象</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定編碼格式，允許值為："</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8", 或者 </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 模塊支持的字符集</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定編碼格式，允許值為："</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8", 或者</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模塊支持的字符集</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">緩存對象構造函數</font></font></strong></p>
@@ -385,7 +455,7 @@
 </ul>
 <div name="对象" data-unique="对象"></div><h2 id="对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對象</font></font></h2>
 <div name="Buffer8" data-unique="Buffer8"></div><h3 id="Buffer" class="notranslate">Buffer</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">二進制數據緩存對象，用於 </font></font><a href="../../module/ifs/io.md.html" class="notranslate">io</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 讀寫的數據處理</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">二進制數據緩存對象，用於</font></font><a href="../../module/ifs/io.md.html" class="notranslate">io</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">讀寫的數據處理</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer <span class="hljs-keyword">new</span> Buffer;
 </code></pre>
 <div name="静态函数" data-unique="静态函数"></div><h2 id="静态函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">靜態函數</font></font></h2>
@@ -447,7 +517,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
 <ul>
 <li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 初始化字符串，字符串將以utf-8 格式寫入，缺省則創建一個空對象</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定編碼格式，允許值為："</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8", 或者 </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 模塊支持的字符集</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定編碼格式，允許值為："</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8", 或者</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模塊支持的字符集</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
 <ul>
@@ -482,7 +552,7 @@
 <ul>
 <li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, 緩衝區的所需長度</font></font></li>
 <li><span class="notranslate">fill</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, 預先填充新緩衝區的值，可使用string/buffer/integer 值類型。</font><font style="vertical-align: inherit;">默認值：0</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定編碼格式，允許值為："</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8", 或者 </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 模塊支持的字符集</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定編碼格式，允許值為："</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8", 或者</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模塊支持的字符集</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
 <ul>
@@ -500,7 +570,7 @@
 <ul>
 <li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, 緩衝區的所需長度</font></font></li>
 <li><span class="notranslate">fill</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 預先填充新緩衝區的值，可使用string/buffer/integer 值類型。</font><font style="vertical-align: inherit;">默認值：0</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定編碼格式，允許值為："</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8", 或者 </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 模塊支持的字符集</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定編碼格式，允許值為："</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8", 或者</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模塊支持的字符集</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
 <ul>
@@ -518,7 +588,7 @@
 <ul>
 <li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, 緩衝區的所需長度</font></font></li>
 <li><span class="notranslate">fill</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Buffer, 預先填充新緩衝區的值，可使用string/buffer/integer 值類型。</font><font style="vertical-align: inherit;">默認值：0</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定編碼格式，允許值為："</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8", 或者 </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 模塊支持的字符集</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定編碼格式，允許值為："</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8", 或者</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模塊支持的字符集</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
 <ul>
@@ -560,7 +630,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
 <ul>
 <li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 待取字節的字符串，如果str為ArrayBuffer/TypedArray/DataView/Buffer 對象，則返回它們的實際長度</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定編碼格式，允許值為："</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8", 或者 </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 模塊支持的字符集</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定編碼格式，允許值為："</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8", 或者</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模塊支持的字符集</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
 <ul>
@@ -575,7 +645,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
 <ul>
 <li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ArrayBuffer, 待取字節的字符串，如果str為ArrayBuffer/TypedArray/DataView/Buffer 對象，則返回它們的實際長度</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定編碼格式，允許值為："</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8", 或者 </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 模塊支持的字符集</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定編碼格式，允許值為："</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8", 或者</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模塊支持的字符集</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
 <ul>
@@ -590,7 +660,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
 <ul>
 <li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ArrayBufferView, 待取字節的字符串，如果str 為ArrayBuffer/TypedArray/DataView/Buffer 對象，則返回它們的實際長度</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定編碼格式，允許值為："</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8", 或者 </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 模塊支持的字符集</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定編碼格式，允許值為："</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8", 或者</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模塊支持的字符集</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
 <ul>
@@ -605,7 +675,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
 <ul>
 <li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Buffer, 待取字節的字符串，如果str為ArrayBuffer/TypedArray/DataView/Buffer 對象，則返回它們的實際長度</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定編碼格式，允許值為："</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8", 或者 </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 模塊支持的字符集</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定編碼格式，允許值為："</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8", 或者</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模塊支持的字符集</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
 <ul>
@@ -646,6 +716,11 @@
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer Buffer.length;
 </code></pre>
 <hr>
+<div name="byteOffset" data-unique="byteOffset"></div><h3 id="byteOffset" class="notranslate">byteOffset</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Integer, 獲取緩存對象的偏移值</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer Buffer.byteOffset;
+</code></pre>
+<hr>
 <div name="buffer" data-unique="buffer"></div><h3 id="buffer" class="notranslate">buffer</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ArrayBuffer, 以ArrayBuffer 格式返回緩存數據</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly <span class="hljs-built_in">ArrayBuffer</span> Buffer.buffer;
@@ -677,7 +752,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
 <ul>
 <li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 要寫入的字符串</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定編碼格式，允許值為："</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8", 或者 </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 模塊支持的字符集</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定編碼格式，允許值為："</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8", 或者</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模塊支持的字符集</font></font></li>
 </ul>
 <hr>
 <div name="write" data-unique="write"></div><h3 id="write" class="notranslate">write</h3>
@@ -695,7 +770,7 @@
 <li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 待寫入的字符串</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, 寫入起始位置</font></font></li>
 <li><span class="notranslate">length</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, 寫入長度（單位字節，默認值-1），未指定時為待寫入字符串的長度</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定編碼格式，允許值為："</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8", 或者 </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 模塊支持的字符集</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定編碼格式，允許值為："</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8", 或者</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模塊支持的字符集</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
 <ul>
@@ -713,7 +788,7 @@
 <ul>
 <li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 待寫入的字符串</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, 寫入起始位置</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定編碼格式，允許值為："</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8", 或者 </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 模塊支持的字符集</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定編碼格式，允許值為："</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8", 或者</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模塊支持的字符集</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
 <ul>
@@ -728,7 +803,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
 <ul>
 <li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 待寫入的字符串</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定編碼格式，允許值為："</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8", 或者 </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 模塊支持的字符集</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定編碼格式，允許值為："</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8", 或者</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模塊支持的字符集</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
 <ul>
@@ -836,7 +911,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回查找到的位置，未找到返回-1</font></font></li>
 </ul>
 <hr>
-<div name="compare28" data-unique="compare28"></div><h3 id="compare" class="notranslate">compare</h3>
+<div name="compare29" data-unique="compare29"></div><h3 id="compare" class="notranslate">compare</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">比較緩存區的內容</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.compare(Buffer buf);
 </code></pre>
@@ -1547,7 +1622,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
 <ul>
-<li><span class="notranslate">expected</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="object.md.html" class="notranslate">object</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 制定比較的目標對象</font></font></li>
+<li><span class="notranslate">expected</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="object.md.html" class="notranslate">object</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 制定比較的目標對象</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
 <ul>
@@ -1563,8 +1638,26 @@
 <li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回編碼字符串</font></font></li>
 </ul>
 <hr>
+<div name="base32" data-unique="base32"></div><h3 id="base32" class="notranslate">base32</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">編碼緩存對象內容</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Buffer.base32();
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
+<ul>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回編碼字符串</font></font></li>
+</ul>
+<hr>
+<div name="base58" data-unique="base58"></div><h3 id="base58" class="notranslate">base58</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">編碼緩存對象內容</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Buffer.base58();
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
+<ul>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回編碼字符串</font></font></li>
+</ul>
+<hr>
 <div name="base64" data-unique="base64"></div><h3 id="base64" class="notranslate">base64</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用 </font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 編碼緩存對象內容</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">編碼緩存對象內容</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Buffer.base64();
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
@@ -1599,6 +1692,18 @@
 <li><a href="iterator.md.html" class="notranslate">Iterator</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, [index, byte] 對的迭代器</font></font></li>
 </ul>
 <hr>
+<div name="forEach" data-unique="forEach"></div><h3 id="forEach" class="notranslate">forEach</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對對象的每個元素執行一次給定的函數</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Buffer.forEach(<span class="hljs-built_in">Function</span> callback,<font></font>
+    Value thisArg = <span class="hljs-literal">undefined</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
+<ul>
+<li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function, 為數組中每個元素執行的函數，該函數接收一至三個參數：currentValue，index，array</font></font></li>
+<li><span class="notranslate">thisArg</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Value, 當執行回調函數callback 時，用作this 的值</font></font></li>
+</ul>
+<hr>
 <div name="toArray" data-unique="toArray"></div><h3 id="toArray" class="notranslate">toArray</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回全部二進制數據的數組</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Array</span> Buffer.toArray();
@@ -1618,7 +1723,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
 <ul>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定編碼格式，允許值為："</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8", 或者 </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 模塊支持的字符集</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定編碼格式，允許值為："</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8", 或者</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模塊支持的字符集</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, 讀取起始位置</font></font></li>
 <li><span class="notranslate">end</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, 讀取終止位置</font></font></li>
 </ul>
@@ -1634,7 +1739,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
 <ul>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定編碼格式，允許值為："</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8", 或者 </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 模塊支持的字符集</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定編碼格式，允許值為："</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8", 或者</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模塊支持的字符集</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, 讀取起始位置</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
@@ -1670,4 +1775,4 @@
 <ul>
 <li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回包含可JSON 序列化的值</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip180857"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip180857" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip772975"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip772975" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

@@ -76,21 +76,6 @@ static ssl.setClientCert(X509Cert crt,
 * key: [PKey](../../object/ifs/PKey.md), 私钥，用于与客户端会话
 
 --------------------------
-### loadClientCertFile
-**从文件中加载缺省客户端证书**
-
-```JavaScript
-static ssl.loadClientCertFile(String crtFile,
-    String keyFile,
-    String password = "");
-```
-
-调用参数:
-* crtFile: String, 证书文件，用于客户端验证服务器
-* keyFile: String, 私钥文件，用于与客户端会话
-* password: String, 解密密码
-
---------------------------
 ### loadRootCerts
 **加载自带的缺省根证书，等同于 [ssl.ca](ssl.md#ca).loadRootCerts**
 

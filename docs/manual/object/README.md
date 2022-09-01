@@ -66,6 +66,8 @@
 * [TTYInputStream](ifs/TTYInputStream.md) - tty 读流对象, 用于对 tty 进行读取, 写入
 * [TTYOutputStream](ifs/TTYOutputStream.md) - tty 写流对象, 用于处理 tty 输出
 * [TcpServer](ifs/TcpServer.md) - tcp 服务器对象，可方便创建一个标准多纤程 tcp 服务器
+* [TextDecoder](ifs/TextDecoder.md) - TextDecoder 解码对象
+* [TextEncoder](ifs/TextEncoder.md) - TextEncoder 编码对象
 * [Timer](ifs/Timer.md) - 定时器处理器对象
 * [UrlObject](ifs/UrlObject.md) - Url 处理对象
 * [WebSocket](ifs/WebSocket.md) - WebSocket 包协议转换处理器

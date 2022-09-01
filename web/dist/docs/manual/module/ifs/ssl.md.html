@@ -4,7 +4,6 @@
 <li><a href=../../../guide/hello.md.html class ="notranslate">hello, world</a></li>
 <li><a href=../../../guide/test.md.html>美好生活从测试开始</a></li>
 <li><a href=../../../guide/profiler.md.html>找出性能杀手</a></li>
-<li><a href=../../../guide/desktop.md.html>快速开发桌面应用</a></li>
 <li><a href=../../../guide/server-hot-update.md.html>服务端模块热更新</a></li>
 <li><a href=../../../guide/host-routes.md.html>域名路由</a></li>
 <li><a href=../../../guide/x509.md.html>fibjs 中 X509 证书的使用</a></li>
@@ -13,6 +12,7 @@
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_module" aria-controls="collapse_module"> 基础模块 </a></h4></div><div id="collapse_module" class="panel-collapse collapse in" aria-labelledby=headingOne><div class=panel-body> <ul>
 <li><a href=assert.md.html class ="notranslate">assert</a></li>
 <li><a href=base32.md.html class ="notranslate">base32</a></li>
+<li><a href=base58.md.html class ="notranslate">base58</a></li>
 <li><a href=base64.md.html class ="notranslate">base64</a></li>
 <li><a href=child_process.md.html class ="notranslate">child_process</a></li>
 <li><a href=console.md.html class ="notranslate">console</a></li>
@@ -36,6 +36,7 @@
 <li><a href=json.md.html class ="notranslate">json</a></li>
 <li><a href=mq.md.html class ="notranslate">mq</a></li>
 <li><a href=msgpack.md.html class ="notranslate">msgpack</a></li>
+<li><a href=multibase.md.html class ="notranslate">multibase</a></li>
 <li><a href=net.md.html class ="notranslate">net</a></li>
 <li><a href=os.md.html class ="notranslate">os</a></li>
 <li><a href=path.md.html class ="notranslate">path</a></li>
@@ -131,6 +132,8 @@
 <li><a href=../../object/ifs/ttyinputstream.md.html class ="notranslate">TTYInputStream</a></li>
 <li><a href=../../object/ifs/ttyoutputstream.md.html class ="notranslate">TTYOutputStream</a></li>
 <li><a href=../../object/ifs/tcpserver.md.html class ="notranslate">TcpServer</a></li>
+<li><a href=../../object/ifs/textdecoder.md.html class ="notranslate">TextDecoder</a></li>
+<li><a href=../../object/ifs/textencoder.md.html class ="notranslate">TextEncoder</a></li>
 <li><a href=../../object/ifs/timer.md.html class ="notranslate">Timer</a></li>
 <li><a href=../../object/ifs/urlobject.md.html class ="notranslate">UrlObject</a></li>
 <li><a href=../../object/ifs/websocket.md.html class ="notranslate">WebSocket</a></li>
@@ -264,21 +267,6 @@
 <li><span class="notranslate">key</span>: <a href=../../object/ifs/pkey.md.html class ="notranslate">PKey</a>, 私钥，用于与客户端会话</li>
 </ul>
 <hr>
-<h3 id="loadClientCertFile" class ="notranslate">loadClientCertFile</h3>
-<p><strong>从文件中加载缺省客户端证书</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3</div><span class="hljs-keyword">static</span> ssl.loadClientCertFile(<span class="hljs-built_in">String</span> crtFile,
-    <span class="hljs-built_in">String</span> keyFile,
-    <span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li><span class="notranslate">crtFile</span>: String, 证书文件，用于客户端验证服务器</li>
-<li><span class="notranslate">keyFile</span>: String, 私钥文件，用于与客户端会话</li>
-<li><span class="notranslate">password</span>: String, 解密密码</li>
-</ul>
-<hr>
 <h3 id="loadRootCerts" class ="notranslate">loadRootCerts</h3>
 <p><strong>加载自带的缺省根证书，等同于 <a href=ssl.md.html#ca class ="notranslate">ssl.ca</a>.loadRootCerts</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> ssl.loadRootCerts();
@@ -293,16 +281,6 @@
 <h3 id="verification" class ="notranslate">verification</h3>
 <p><strong>Integer, 设定证书验证模式，缺省为 VERIFY_REQUIRED</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer ssl.verification;
-</code></pre>
-<hr>
-<h3 id="min_version" class ="notranslate">min_version</h3>
-<p><strong>Integer, 设定最低版本支持，缺省 ssl3</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer ssl.min_version;
-</code></pre>
-<hr>
-<h3 id="max_version" class ="notranslate">max_version</h3>
-<p><strong>Integer, 设定最高版本支持，缺省 tls1_1</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer ssl.max_version;
 </code></pre>
 <h2 id="常量">常量</h2>
 <h3 id="VERIFY_NONE" class ="notranslate">VERIFY_NONE</h3>
@@ -338,25 +316,5 @@
 <h3 id="BADCERT_NOT_TRUSTED" class ="notranslate">BADCERT_NOT_TRUSTED</h3>
 <p><strong>证书验证结果，证书不可信</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ssl.BADCERT_NOT_TRUSTED = <span class="hljs-number">8</span>;
-</code></pre>
-<hr>
-<h3 id="ssl3" class ="notranslate">ssl3</h3>
-<p><strong>ssl 协议版本 ssl 3.0</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ssl.ssl3 = <span class="hljs-number">0</span>;
-</code></pre>
-<hr>
-<h3 id="tls1" class ="notranslate">tls1</h3>
-<p><strong>ssl 协议版本 tls 1.0</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ssl.tls1 = <span class="hljs-number">1</span>;
-</code></pre>
-<hr>
-<h3 id="tls1_1" class ="notranslate">tls1_1</h3>
-<p><strong>ssl 协议版本 tls 1.1</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ssl.tls1_1 = <span class="hljs-number">2</span>;
-</code></pre>
-<hr>
-<h3 id="tls1_2" class ="notranslate">tls1_2</h3>
-<p><strong>ssl 协议版本 tls 1.2</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ssl.tls1_2 = <span class="hljs-number">3</span>;
 </code></pre>
  </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

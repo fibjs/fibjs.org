@@ -11,6 +11,22 @@ Buffer global.Buffer;
 ```
 
 --------------------------
+### TextDecoder
+**[TextDecoder](../../object/ifs/TextDecoder.md) 解码对象，参见 [TextDecoder](../../object/ifs/TextDecoder.md) 对象。**
+
+```JavaScript
+TextDecoder global.TextDecoder;
+```
+
+--------------------------
+### TextEncoder
+**[TextEncoder](../../object/ifs/TextEncoder.md) 编码对象，参见 [TextEncoder](../../object/ifs/TextEncoder.md) 对象。**
+
+```JavaScript
+TextEncoder global.TextEncoder;
+```
+
+--------------------------
 ### console
 **控制台访问对象**
 
@@ -238,6 +254,36 @@ static global.clearImmediate(Value t);
 
 调用参数:
 * t: Value, 指定要清除的定时器
+
+--------------------------
+### btoa
+**以 [base64](base64.md) 方式编码数据**
+
+```JavaScript
+static String global.btoa(Buffer data,
+    Boolean url = false);
+```
+
+调用参数:
+* data: [Buffer](../../object/ifs/Buffer.md), 要编码的数据
+* url: Boolean, 指定是否使用 [url](url.md) 安全字符编码
+
+返回结果:
+* String, 返回编码的字符串
+
+--------------------------
+### atob
+**以 [base64](base64.md) 方式解码字符串为二进制数据**
+
+```JavaScript
+static Buffer global.atob(String data);
+```
+
+调用参数:
+* data: String, 要解码的字符串
+
+返回结果:
+* [Buffer](../../object/ifs/Buffer.md), 返回解码的二进制数据
 
 --------------------------
 ### GC

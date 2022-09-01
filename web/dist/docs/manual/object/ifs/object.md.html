@@ -4,7 +4,6 @@
 <li><a href=../../../guide/hello.md.html class ="notranslate">hello, world</a></li>
 <li><a href=../../../guide/test.md.html>美好生活从测试开始</a></li>
 <li><a href=../../../guide/profiler.md.html>找出性能杀手</a></li>
-<li><a href=../../../guide/desktop.md.html>快速开发桌面应用</a></li>
 <li><a href=../../../guide/server-hot-update.md.html>服务端模块热更新</a></li>
 <li><a href=../../../guide/host-routes.md.html>域名路由</a></li>
 <li><a href=../../../guide/x509.md.html>fibjs 中 X509 证书的使用</a></li>
@@ -13,6 +12,7 @@
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_module" aria-controls="collapse_module"> 基础模块 </a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby=headingOne><div class=panel-body> <ul>
 <li><a href=../../module/ifs/assert.md.html class ="notranslate">assert</a></li>
 <li><a href=../../module/ifs/base32.md.html class ="notranslate">base32</a></li>
+<li><a href=../../module/ifs/base58.md.html class ="notranslate">base58</a></li>
 <li><a href=../../module/ifs/base64.md.html class ="notranslate">base64</a></li>
 <li><a href=../../module/ifs/child_process.md.html class ="notranslate">child_process</a></li>
 <li><a href=../../module/ifs/console.md.html class ="notranslate">console</a></li>
@@ -36,6 +36,7 @@
 <li><a href=../../module/ifs/json.md.html class ="notranslate">json</a></li>
 <li><a href=../../module/ifs/mq.md.html class ="notranslate">mq</a></li>
 <li><a href=../../module/ifs/msgpack.md.html class ="notranslate">msgpack</a></li>
+<li><a href=../../module/ifs/multibase.md.html class ="notranslate">multibase</a></li>
 <li><a href=../../module/ifs/net.md.html class ="notranslate">net</a></li>
 <li><a href=../../module/ifs/os.md.html class ="notranslate">os</a></li>
 <li><a href=../../module/ifs/path.md.html class ="notranslate">path</a></li>
@@ -131,6 +132,8 @@
 <li><a href=ttyinputstream.md.html class ="notranslate">TTYInputStream</a></li>
 <li><a href=ttyoutputstream.md.html class ="notranslate">TTYOutputStream</a></li>
 <li><a href=tcpserver.md.html class ="notranslate">TcpServer</a></li>
+<li><a href=textdecoder.md.html class ="notranslate">TextDecoder</a></li>
+<li><a href=textencoder.md.html class ="notranslate">TextEncoder</a></li>
 <li><a href=timer.md.html class ="notranslate">Timer</a></li>
 <li><a href=urlobject.md.html class ="notranslate">UrlObject</a></li>
 <li><a href=websocket.md.html class ="notranslate">WebSocket</a></li>
@@ -200,558 +203,1413 @@
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="对象-object">对象 object</h1>
 <p>基础对象，所有对象均继承于此</p>
 <h2 id="继承关系">继承关系</h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="7106" height="424" viewbox="0 0 7106 424" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:bold  10pt Helvetica,sans-Serif, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
-  <desc >
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="7385.0" height="424.0" viewbox="0 0 7385 424" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
+    <desc >
+    #lineWidth: 1.5
+    #font: Helvetica,sans-Serif
+    #fontSize: 10
+    #leading: 1.6
+    #.this: fill=lightgray
+    #.class: fill=white
 
-[&lt;this&gt;object|toString();toJSON()]
-[&lt;class&gt;Buffer]
-[&lt;class&gt;Cipher]
-[&lt;class&gt;DbConnection]
-[&lt;class&gt;MySQL]
-[&lt;class&gt;Odbc]
-[&lt;class&gt;SQLite]
-[&lt;class&gt;Digest]
-[&lt;class&gt;EventEmitter]
-[&lt;class&gt;ChildProcess]
-[&lt;class&gt;DgramSocket]
-[&lt;class&gt;FSWatcher]
-[&lt;class&gt;LruCache]
-[&lt;class&gt;Service]
-[&lt;class&gt;StatsWatcher]
-[&lt;class&gt;WebSocket]
-[&lt;class&gt;WebView]
-[&lt;class&gt;Worker]
-[&lt;class&gt;Fiber]
-[&lt;class&gt;Handler]
-[&lt;class&gt;Chain]
-[&lt;class&gt;HttpHandler]
-[&lt;class&gt;HttpRepeater]
-[&lt;class&gt;Routing]
-[&lt;class&gt;SslHandler]
-[&lt;class&gt;HeapGraphEdge]
-[&lt;class&gt;HeapGraphNode]
-[&lt;class&gt;HeapSnapshot]
-[&lt;class&gt;HttpClient]
-[&lt;class&gt;HttpCollection]
-[&lt;class&gt;HttpCookie]
-[&lt;class&gt;HttpUploadData]
-[&lt;class&gt;Image]
-[&lt;class&gt;Iterator]
-[&lt;class&gt;LevelDB]
-[&lt;class&gt;Lock]
-[&lt;class&gt;Condition]
-[&lt;class&gt;Event]
-[&lt;class&gt;Semaphore]
-[&lt;class&gt;Message]
-[&lt;class&gt;HttpMessage]
-[&lt;class&gt;HttpRequest]
-[&lt;class&gt;HttpResponse]
-[&lt;class&gt;WebSocketMessage]
-[&lt;class&gt;MongoCollection]
-[&lt;class&gt;MongoCursor]
-[&lt;class&gt;MongoDB]
-[&lt;class&gt;MongoID]
-[&lt;class&gt;PKey]
-[&lt;class&gt;Redis]
-[&lt;class&gt;RedisHash]
-[&lt;class&gt;RedisList]
-[&lt;class&gt;RedisSet]
-[&lt;class&gt;RedisSortedSet]
-[&lt;class&gt;SandBox]
-[&lt;class&gt;Smtp]
-[&lt;class&gt;Stat]
-[&lt;class&gt;Stream]
-[&lt;class&gt;BufferedStream]
-[&lt;class&gt;SeekableStream]
-[&lt;class&gt;File]
-[&lt;class&gt;MemoryStream]
-[&lt;class&gt;RangeStream]
-[&lt;class&gt;Socket]
-[&lt;class&gt;SslSocket]
-[&lt;class&gt;TTYInputStream]
-[&lt;class&gt;TTYOutputStream]
-[&lt;class&gt;StringDecoder]
-[&lt;class&gt;TcpServer]
-[&lt;class&gt;HttpServer]
-[&lt;class&gt;HttpsServer]
-[&lt;class&gt;SslServer]
-[&lt;class&gt;Timer]
-[&lt;class&gt;UrlObject]
-[&lt;class&gt;X509Cert]
-[&lt;class&gt;X509Crl]
-[&lt;class&gt;X509Req]
-[&lt;class&gt;XmlAttr]
-[&lt;class&gt;XmlNamedNodeMap]
-[&lt;class&gt;XmlNode]
-[&lt;class&gt;XmlCharacterData]
-[&lt;class&gt;XmlComment]
-[&lt;class&gt;XmlText]
-[&lt;class&gt;XmlCDATASection]
-[&lt;class&gt;XmlDocument]
-[&lt;class&gt;XmlDocumentType]
-[&lt;class&gt;XmlElement]
-[&lt;class&gt;XmlProcessingInstruction]
-[&lt;class&gt;XmlNodeList]
-[&lt;class&gt;ZipFile]
+    [&lt;this&gt;object|toString();toJSON()]
+    [&lt;class&gt;Buffer]
+    [&lt;class&gt;Cipher]
+    [&lt;class&gt;DbConnection]
+    [&lt;class&gt;MySQL]
+    [&lt;class&gt;Odbc]
+    [&lt;class&gt;SQLite]
+    [&lt;class&gt;Digest]
+    [&lt;class&gt;EventEmitter]
+    [&lt;class&gt;ChildProcess]
+    [&lt;class&gt;DgramSocket]
+    [&lt;class&gt;FSWatcher]
+    [&lt;class&gt;LruCache]
+    [&lt;class&gt;Service]
+    [&lt;class&gt;StatsWatcher]
+    [&lt;class&gt;WebSocket]
+    [&lt;class&gt;WebView]
+    [&lt;class&gt;Worker]
+    [&lt;class&gt;Fiber]
+    [&lt;class&gt;Handler]
+    [&lt;class&gt;Chain]
+    [&lt;class&gt;HttpHandler]
+    [&lt;class&gt;HttpRepeater]
+    [&lt;class&gt;Routing]
+    [&lt;class&gt;SslHandler]
+    [&lt;class&gt;HeapGraphEdge]
+    [&lt;class&gt;HeapGraphNode]
+    [&lt;class&gt;HeapSnapshot]
+    [&lt;class&gt;HttpClient]
+    [&lt;class&gt;HttpCollection]
+    [&lt;class&gt;HttpCookie]
+    [&lt;class&gt;HttpUploadData]
+    [&lt;class&gt;Image]
+    [&lt;class&gt;Iterator]
+    [&lt;class&gt;LevelDB]
+    [&lt;class&gt;Lock]
+    [&lt;class&gt;Condition]
+    [&lt;class&gt;Event]
+    [&lt;class&gt;Semaphore]
+    [&lt;class&gt;Message]
+    [&lt;class&gt;HttpMessage]
+    [&lt;class&gt;HttpRequest]
+    [&lt;class&gt;HttpResponse]
+    [&lt;class&gt;WebSocketMessage]
+    [&lt;class&gt;MongoCollection]
+    [&lt;class&gt;MongoCursor]
+    [&lt;class&gt;MongoDB]
+    [&lt;class&gt;MongoID]
+    [&lt;class&gt;PKey]
+    [&lt;class&gt;Redis]
+    [&lt;class&gt;RedisHash]
+    [&lt;class&gt;RedisList]
+    [&lt;class&gt;RedisSet]
+    [&lt;class&gt;RedisSortedSet]
+    [&lt;class&gt;SandBox]
+    [&lt;class&gt;Smtp]
+    [&lt;class&gt;Stat]
+    [&lt;class&gt;Stream]
+    [&lt;class&gt;BufferedStream]
+    [&lt;class&gt;SeekableStream]
+    [&lt;class&gt;File]
+    [&lt;class&gt;MemoryStream]
+    [&lt;class&gt;RangeStream]
+    [&lt;class&gt;Socket]
+    [&lt;class&gt;SslSocket]
+    [&lt;class&gt;TTYInputStream]
+    [&lt;class&gt;TTYOutputStream]
+    [&lt;class&gt;StringDecoder]
+    [&lt;class&gt;TcpServer]
+    [&lt;class&gt;HttpServer]
+    [&lt;class&gt;HttpsServer]
+    [&lt;class&gt;SslServer]
+    [&lt;class&gt;TextDecoder]
+    [&lt;class&gt;TextEncoder]
+    [&lt;class&gt;Timer]
+    [&lt;class&gt;UrlObject]
+    [&lt;class&gt;X509Cert]
+    [&lt;class&gt;X509Crl]
+    [&lt;class&gt;X509Req]
+    [&lt;class&gt;XmlAttr]
+    [&lt;class&gt;XmlNamedNodeMap]
+    [&lt;class&gt;XmlNode]
+    [&lt;class&gt;XmlCharacterData]
+    [&lt;class&gt;XmlComment]
+    [&lt;class&gt;XmlText]
+    [&lt;class&gt;XmlCDATASection]
+    [&lt;class&gt;XmlDocument]
+    [&lt;class&gt;XmlDocumentType]
+    [&lt;class&gt;XmlElement]
+    [&lt;class&gt;XmlProcessingInstruction]
+    [&lt;class&gt;XmlNodeList]
+    [&lt;class&gt;ZipFile]
 
-[object] &lt;:- [Buffer]
-[object] &lt;:- [Cipher]
-[object] &lt;:- [DbConnection]
-[DbConnection] &lt;:- [MySQL]
-[DbConnection] &lt;:- [Odbc]
-[DbConnection] &lt;:- [SQLite]
-[object] &lt;:- [Digest]
-[object] &lt;:- [EventEmitter]
-[EventEmitter] &lt;:- [ChildProcess]
-[EventEmitter] &lt;:- [DgramSocket]
-[EventEmitter] &lt;:- [FSWatcher]
-[EventEmitter] &lt;:- [LruCache]
-[EventEmitter] &lt;:- [Service]
-[EventEmitter] &lt;:- [StatsWatcher]
-[EventEmitter] &lt;:- [WebSocket]
-[EventEmitter] &lt;:- [WebView]
-[EventEmitter] &lt;:- [Worker]
-[object] &lt;:- [Fiber]
-[object] &lt;:- [Handler]
-[Handler] &lt;:- [Chain]
-[Handler] &lt;:- [HttpHandler]
-[Handler] &lt;:- [HttpRepeater]
-[Handler] &lt;:- [Routing]
-[Handler] &lt;:- [SslHandler]
-[object] &lt;:- [HeapGraphEdge]
-[object] &lt;:- [HeapGraphNode]
-[object] &lt;:- [HeapSnapshot]
-[object] &lt;:- [HttpClient]
-[object] &lt;:- [HttpCollection]
-[object] &lt;:- [HttpCookie]
-[object] &lt;:- [HttpUploadData]
-[object] &lt;:- [Image]
-[object] &lt;:- [Iterator]
-[object] &lt;:- [LevelDB]
-[object] &lt;:- [Lock]
-[Lock] &lt;:- [Condition]
-[Lock] &lt;:- [Event]
-[Lock] &lt;:- [Semaphore]
-[object] &lt;:- [Message]
-[Message] &lt;:- [HttpMessage]
-[HttpMessage] &lt;:- [HttpRequest]
-[HttpMessage] &lt;:- [HttpResponse]
-[Message] &lt;:- [WebSocketMessage]
-[object] &lt;:- [MongoCollection]
-[object] &lt;:- [MongoCursor]
-[object] &lt;:- [MongoDB]
-[object] &lt;:- [MongoID]
-[object] &lt;:- [PKey]
-[object] &lt;:- [Redis]
-[object] &lt;:- [RedisHash]
-[object] &lt;:- [RedisList]
-[object] &lt;:- [RedisSet]
-[object] &lt;:- [RedisSortedSet]
-[object] &lt;:- [SandBox]
-[object] &lt;:- [Smtp]
-[object] &lt;:- [Stat]
-[object] &lt;:- [Stream]
-[Stream] &lt;:- [BufferedStream]
-[Stream] &lt;:- [SeekableStream]
-[SeekableStream] &lt;:- [File]
-[SeekableStream] &lt;:- [MemoryStream]
-[SeekableStream] &lt;:- [RangeStream]
-[Stream] &lt;:- [Socket]
-[Stream] &lt;:- [SslSocket]
-[Stream] &lt;:- [TTYInputStream]
-[Stream] &lt;:- [TTYOutputStream]
-[object] &lt;:- [StringDecoder]
-[object] &lt;:- [TcpServer]
-[TcpServer] &lt;:- [HttpServer]
-[HttpServer] &lt;:- [HttpsServer]
-[TcpServer] &lt;:- [SslServer]
-[object] &lt;:- [Timer]
-[object] &lt;:- [UrlObject]
-[object] &lt;:- [X509Cert]
-[object] &lt;:- [X509Crl]
-[object] &lt;:- [X509Req]
-[object] &lt;:- [XmlAttr]
-[object] &lt;:- [XmlNamedNodeMap]
-[object] &lt;:- [XmlNode]
-[XmlNode] &lt;:- [XmlCharacterData]
-[XmlCharacterData] &lt;:- [XmlComment]
-[XmlCharacterData] &lt;:- [XmlText]
-[XmlText] &lt;:- [XmlCDATASection]
-[XmlNode] &lt;:- [XmlDocument]
-[XmlNode] &lt;:- [XmlDocumentType]
-[XmlNode] &lt;:- [XmlElement]
-[XmlNode] &lt;:- [XmlProcessingInstruction]
-[object] &lt;:- [XmlNodeList]
-[object] &lt;:- [ZipFile]
-</desc>
-  <rect x="0" y="0" height="424" width="7106" style="stroke:none; fill:transparent;"></rect>
-  <path d="M3959.9 68.8 L55.5 128 L55.5 148 L55.5 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3960 74.1 L3959.9 68.8 L3959.8 63.5 L3973.3 68.6 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3959.9 68.8 L152.5 128 L152.5 148 L152.5 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3960 74.1 L3959.9 68.8 L3959.8 63.5 L3973.3 68.6 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3959.9 68.8 L276.5 128 L276.5 148 L276.5 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3960 74.2 L3959.9 68.8 L3959.8 63.5 L3973.3 68.6 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M209.1 180.7 L131.3 200 L131.3 220 L131.3 220 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M210.3 185.9 L209.1 180.7 L207.8 175.5 L222 177.5 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M244.6 188 L228.8 200 L228.8 220 L228.8 220 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M247.8 192.3 L244.6 188 L241.4 183.8 L255.3 180 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M308.4 188 L324.3 200 L324.3 220 L324.3 220 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M311.6 183.8 L308.4 188 L305.2 192.3 L297.7 180 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3959.9 68.9 L436.3 128 L436.3 148 L436.3 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3960 74.2 L3959.9 68.9 L3959.8 63.5 L3973.3 68.6 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3959.9 69 L828.8 128 L828.8 148 L828.8 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3960 74.3 L3959.9 69 L3959.8 63.6 L3973.3 68.7 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M766 169.9 L445.8 200 L445.8 220 L445.8 220 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M766.5 175.2 L766 169.9 L765.5 164.6 L779.3 168.7 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M766.1 173.4 L589.3 200 L589.3 220 L589.3 220 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M766.9 178.7 L766.1 173.4 L765.3 168.1 L779.3 171.4 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M770.4 184.4 L725.8 200 L725.8 220 L725.8 220 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M772.1 189.4 L770.4 184.4 L768.6 179.4 L783 180 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M845.1 191.4 L850.3 200 L850.3 220 L850.3 220 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M849.7 188.7 L845.1 191.4 L840.6 194.2 L838.3 180 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M891.1 180.8 L962.8 200 L962.8 220 L962.8 220 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M892.5 175.6 L891.1 180.8 L889.7 185.9 L878.3 177.3 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M891.5 172.7 L1087.3 200 L1087.3 220 L1087.3 220 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M892.2 167.5 L891.5 172.7 L890.7 178 L878.3 170.9 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M891.5 169.7 L1224.8 200 L1224.8 220 L1224.8 220 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M892 164.4 L891.5 169.7 L891 175 L878.3 168.5 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M891.6 168.3 L1348.8 200 L1348.8 220 L1348.8 220 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M891.9 163 L891.6 168.3 L891.2 173.7 L878.3 167.4 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M891.6 167.6 L1459.3 200 L1459.3 220 L1459.3 220 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M891.9 162.3 L891.6 167.6 L891.3 172.9 L878.3 166.8 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3959.9 69.3 L1565.3 128 L1565.3 148 L1565.3 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3960.1 74.6 L3959.9 69.3 L3959.8 63.9 L3973.3 68.9 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3959.9 69.4 L1781.3 128 L1781.3 148 L1781.3 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3960.1 74.7 L3959.9 69.4 L3959.8 64.1 L3973.3 69 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M1734.1 171.6 L1558.3 200 L1558.3 220 L1558.3 220 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M1734.9 176.9 L1734.1 171.6 L1733.2 166.3 L1747.3 169.5 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M1734.6 179.4 L1672.3 200 L1672.3 220 L1672.3 220 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M1736.3 184.5 L1734.6 179.4 L1732.9 174.3 L1747.3 175.2 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M1803.1 190.2 L1811.3 200 L1811.3 220 L1811.3 220 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M1807.2 186.8 L1803.1 190.2 L1799 193.7 L1794.6 180 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M1828.6 166.7 L2402.8 200 L2402.8 220 L2402.8 220 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M1828.9 161.4 L1828.6 166.7 L1828.3 172.1 L1815.3 166 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M1828.6 166.3 L2520.3 200 L2520.3 220 L2520.3 220 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M1828.8 161 L1828.6 166.3 L1828.3 171.6 L1815.3 165.7 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3959.9 69.5 L1918.3 128 L1918.3 148 L1918.3 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3960.1 74.8 L3959.9 69.5 L3959.8 64.2 L3973.3 69.1 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3959.9 69.6 L2084.8 128 L2084.8 148 L2084.8 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3960.1 74.9 L3959.9 69.6 L3959.8 64.3 L3973.3 69.2 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3959.9 69.8 L2245.3 128 L2245.3 148 L2245.3 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3960.1 75.1 L3959.9 69.8 L3959.7 64.4 L3973.3 69.3 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3959.9 69.9 L2382.3 128 L2382.3 148 L2382.3 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3960.1 75.2 L3959.9 69.9 L3959.7 64.6 L3973.3 69.4 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3959.9 70.1 L2516.3 128 L2516.3 148 L2516.3 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3960.1 75.4 L3959.9 70.1 L3959.7 64.8 L3973.3 69.5 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3959.9 70.3 L2654.8 128 L2654.8 148 L2654.8 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3960.2 75.6 L3959.9 70.3 L3959.7 65 L3973.3 69.7 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3959.9 70.6 L2799.3 128 L2799.3 148 L2799.3 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3960.2 75.9 L3959.9 70.6 L3959.7 65.2 L3973.3 69.9 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3959.9 70.9 L2927.8 128 L2927.8 148 L2927.8 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3960.2 76.2 L3959.9 70.9 L3959.6 65.5 L3973.3 70.1 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3959.9 71.2 L3028.3 128 L3028.3 148 L3028.3 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3960.3 76.5 L3959.9 71.2 L3959.6 65.8 L3973.3 70.3 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3959.9 71.5 L3135.8 128 L3135.8 148 L3135.8 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3960.3 76.9 L3959.9 71.5 L3959.6 66.2 L3973.3 70.6 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3960 72 L3235.3 128 L3235.3 148 L3235.3 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3960.4 77.3 L3960 72 L3959.5 66.7 L3973.3 71 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3197.9 166.3 L2643.8 200 L2643.8 220 L2643.8 220 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3198.3 171.6 L3197.9 166.3 L3197.6 160.9 L3211.3 165.5 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3198.4 174.3 L3106.8 200 L3106.8 220 L3106.8 220 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3199.8 179.5 L3198.4 174.3 L3197 169.2 L3211.3 170.7 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3272.3 172 L3401.5 200 L3401.5 220 L3401.5 220 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3273.4 166.8 L3272.3 172 L3271.2 177.2 L3259.3 169.2 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3960 74.6 L3539 128 L3539 148 L3539 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3960.7 79.9 L3960 74.6 L3959.4 69.3 L3973.3 72.9 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3539 193.3 L3539 200 L3539 220 L3539 220 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3544.3 193.3 L3539 193.3 L3533.7 193.3 L3539 180 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3503.7 259.3 L3484.5 272 L3484.5 292 L3484.5 292 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3506.6 263.8 L3503.7 259.3 L3500.7 254.9 L3514.8 252 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3603.8 239.4 L4221.3 272 L4221.3 292 L4221.3 292 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3604.1 234.1 L3603.8 239.4 L3603.5 244.7 L3590.5 238.7 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3590.3 166.6 L4252 200 L4252 220 L4252 220 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3590.6 161.3 L3590.3 166.6 L3590 171.9 L3577 165.9 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3960.1 77.3 L3680 128 L3680 148 L3680 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3961.1 82.6 L3960.1 77.3 L3959.2 72.1 L3973.3 75 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3960.6 85.4 L3835.5 128 L3835.5 148 L3835.5 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3962.3 90.5 L3960.6 85.4 L3958.9 80.4 L3973.3 81.1 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3974.7 118.8 L3968 128 L3968 148 L3968 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M3979 121.9 L3974.7 118.8 L3970.4 115.6 L3982.6 108 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4060.6 107.7 L4085.5 128 L4085.5 148 L4085.5 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4064 103.6 L4060.6 107.7 L4057.2 111.9 L4050.3 99.3 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4062.9 85.4 L4188 128 L4188 148 L4188 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4064.6 80.4 L4062.9 85.4 L4061.2 90.5 L4050.3 81.1 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4063.3 79.5 L4280 128 L4280 148 L4280 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4064.4 74.3 L4063.3 79.5 L4062.1 84.7 L4050.3 76.6 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4063.4 76.2 L4391 128 L4391 148 L4391 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4064.3 70.9 L4063.4 76.2 L4062.6 81.4 L4050.3 74.1 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4063.5 74.2 L4513.5 128 L4513.5 148 L4513.5 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4064.1 68.9 L4063.5 74.2 L4062.9 79.5 L4050.3 72.6 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4063.5 73 L4629.5 128 L4629.5 148 L4629.5 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4064 67.7 L4063.5 73 L4063 78.3 L4050.3 71.7 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4063.5 72.1 L4766.5 128 L4766.5 148 L4766.5 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4064 66.8 L4063.5 72.1 L4063.1 77.4 L4050.3 71.1 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4063.6 71.5 L4903.5 128 L4903.5 148 L4903.5 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4063.9 66.2 L4063.6 71.5 L4063.2 76.8 L4050.3 70.6 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4063.6 71.1 L5005.5 128 L5005.5 148 L5005.5 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4063.9 65.8 L4063.6 71.1 L4063.2 76.5 L4050.3 70.3 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4063.6 70.9 L5091 128 L5091 148 L5091 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4063.9 65.6 L4063.6 70.9 L4063.3 76.2 L4050.3 70.1 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4063.6 70.7 L5183.5 128 L5183.5 148 L5183.5 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4063.8 65.3 L4063.6 70.7 L4063.3 76 L4050.3 70 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M5138.7 166.1 L4427 200 L4427 220 L4427 220 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M5138.9 171.5 L5138.7 166.1 L5138.4 160.8 L5152 165.5 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M5138.7 166.7 L4588.5 200 L4588.5 220 L4588.5 220 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M5139 172 L5138.7 166.7 L5138.4 161.4 L5152 165.9 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4513.3 246.7 L4335.3 272 L4335.3 292 L4335.3 292 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4514 252 L4513.3 246.7 L4512.5 241.4 L4526.5 244.8 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4515.1 255.4 L4452.3 272 L4452.3 292 L4452.3 292 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4516.4 260.6 L4515.1 255.4 L4513.7 250.2 L4527.9 252 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4663.7 245.6 L4869.5 272 L4869.5 292 L4869.5 292 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4664.4 240.3 L4663.7 245.6 L4663 250.9 L4650.5 243.9 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M5138.7 167.5 L4721 200 L4721 220 L4721 220 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M5139.1 172.8 L5138.7 167.5 L5138.3 162.2 L5152 166.5 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M5169.4 191.9 L5165.3 200 L5165.3 220 L5165.3 220 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M5174.1 194.3 L5169.4 191.9 L5164.6 189.5 L5175.4 180 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M5227.8 176.9 L5306.8 200 L5306.8 220 L5306.8 220 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M5229.3 171.8 L5227.8 176.9 L5226.3 182.1 L5215 173.2 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M5228.3 168.8 L5518.8 200 L5518.8 220 L5518.8 220 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M5228.8 163.5 L5228.3 168.8 L5227.7 174.1 L5215 167.4 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4063.6 70 L5588.3 128 L5588.3 148 L5588.3 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4063.8 64.6 L4063.6 70 L4063.4 75.3 L4050.3 69.5 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4063.6 69.8 L5729.5 128 L5729.5 148 L5729.5 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4063.8 64.5 L4063.6 69.8 L4063.4 75.1 L4050.3 69.3 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M5690.8 186.8 L5668.3 200 L5668.3 220 L5668.3 220 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M5693.5 191.4 L5690.8 186.8 L5688.1 182.2 L5702.3 180 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M5668.3 265.3 L5668.3 272 L5668.3 292 L5668.3 292 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M5673.6 265.3 L5668.3 265.3 L5662.9 265.3 L5668.3 252 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M5768.2 186.8 L5790.8 200 L5790.8 220 L5790.8 220 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M5770.9 182.2 L5768.2 186.8 L5765.5 191.4 L5756.7 180 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4063.6 69.7 L5838 128 L5838 148 L5838 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4063.8 64.4 L4063.6 69.7 L4063.4 75 L4050.3 69.3 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4063.6 69.6 L5943 128 L5943 148 L5943 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4063.7 64.3 L4063.6 69.6 L4063.4 74.9 L4050.3 69.2 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4063.6 69.5 L6060.5 128 L6060.5 148 L6060.5 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4063.7 64.2 L4063.6 69.5 L4063.4 74.8 L4050.3 69.1 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4063.6 69.4 L6174 128 L6174 148 L6174 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4063.7 64.1 L4063.6 69.4 L4063.4 74.8 L4050.3 69.1 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4063.6 69.4 L6287 128 L6287 148 L6287 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4063.7 64 L4063.6 69.4 L4063.4 74.7 L4050.3 69 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4063.6 69.3 L6397 128 L6397 148 L6397 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4063.7 64 L4063.6 69.3 L4063.4 74.6 L4050.3 69 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4063.6 69.2 L6543.5 128 L6543.5 148 L6543.5 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4063.7 63.9 L4063.6 69.2 L4063.5 74.6 L4050.3 68.9 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4063.6 69.2 L6696 128 L6696 148 L6696 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4063.7 63.8 L4063.6 69.2 L4063.5 74.5 L4050.3 68.9 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M6645.2 166.4 L5938.3 200 L5938.3 220 L5938.3 220 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M6645.4 171.7 L6645.2 166.4 L6644.9 161.1 L6658.5 165.8 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M5897.3 258.4 L5872.5 272 L5872.5 292 L5872.5 292 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M5899.9 263.1 L5897.3 258.4 L5894.8 253.7 L5909 252 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M5977.8 258.6 L6001.3 272 L6001.3 292 L6001.3 292 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M5980.5 254 L5977.8 258.6 L5975.2 263.2 L5966.3 252 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M6001.3 337.3 L6001.3 344 L6001.3 364 L6001.3 364 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M6006.6 337.3 L6001.3 337.3 L5995.9 337.3 L6001.3 324 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M6645.2 168.5 L6285.8 200 L6285.8 220 L6285.8 220 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M6645.7 173.8 L6645.2 168.5 L6644.8 163.1 L6658.5 167.3 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M6665.9 188.4 L6651.5 200 L6651.5 220 L6651.5 220 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M6669.2 192.5 L6665.9 188.4 L6662.5 184.2 L6676.2 180 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M6746.2 180.1 L6808 200 L6808 220 L6808 220 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M6747.8 175.1 L6746.2 180.1 L6744.6 185.2 L6733.5 176.1 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M6746.7 170.3 L6986.5 200 L6986.5 220 L6986.5 220 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M6747.4 165 L6746.7 170.3 L6746.1 175.6 L6733.5 168.6 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4063.6 69.1 L6823 128 L6823 148 L6823 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4063.7 63.8 L4063.6 69.1 L4063.5 74.4 L4050.3 68.8 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4063.6 69.1 L6942 128 L6942 148 L6942 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M4063.7 63.7 L4063.6 69.1 L4063.5 74.4 L4050.3 68.8 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <rect x="3973" y="28" height="80" width="77" data-name="object" style="stroke:#33322E;fill:lightgray;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <path d="M3973 60 L4050 60" data-name="object" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <text x="4011.5" y="49" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="object">object</text>
-  <text x="3981" y="81" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toString()</text>
-  <text x="3981" y="97" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toJSON()</text>
-  <rect x="28" y="148" height="32" width="55" data-name="Buffer" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="55.5" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Buffer">Buffer</text>
-  <rect x="123" y="148" height="32" width="59" data-name="Cipher" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="152.5" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Cipher">Cipher</text>
-  <rect x="222" y="148" height="32" width="109" data-name="DbConnection" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="276.5" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="DbConnection">DbConnection</text>
-  <rect x="99" y="220" height="32" width="64" data-name="MySQL" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="131" y="241" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="MySQL">MySQL</text>
-  <rect x="203" y="220" height="32" width="51" data-name="Odbc" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="228.5" y="241" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Odbc">Odbc</text>
-  <rect x="294" y="220" height="32" width="60" data-name="SQLite" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="324" y="241" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="SQLite">SQLite</text>
-  <rect x="407" y="148" height="32" width="58" data-name="Digest" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="436" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Digest">Digest</text>
-  <rect x="779" y="148" height="32" width="99" data-name="EventEmitter" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="828.5" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="EventEmitter">EventEmitter</text>
-  <rect x="394" y="220" height="32" width="103" data-name="ChildProcess" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="445.5" y="241" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="ChildProcess">ChildProcess</text>
-  <rect x="537" y="220" height="32" width="104" data-name="DgramSocket" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="589" y="241" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="DgramSocket">DgramSocket</text>
-  <rect x="681" y="220" height="32" width="89" data-name="FSWatcher" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="725.5" y="241" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="FSWatcher">FSWatcher</text>
-  <rect x="810" y="220" height="32" width="80" data-name="LruCache" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="850" y="241" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="LruCache">LruCache</text>
-  <rect x="930" y="220" height="32" width="65" data-name="Service" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="962.5" y="241" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Service">Service</text>
-  <rect x="1035" y="220" height="32" width="104" data-name="StatsWatcher" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="1087" y="241" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="StatsWatcher">StatsWatcher</text>
-  <rect x="1179" y="220" height="32" width="91" data-name="WebSocket" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="1224.5" y="241" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="WebSocket">WebSocket</text>
-  <rect x="1310" y="220" height="32" width="77" data-name="WebView" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="1348.5" y="241" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="WebView">WebView</text>
-  <rect x="1427" y="220" height="32" width="64" data-name="Worker" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="1459" y="241" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Worker">Worker</text>
-  <rect x="1541" y="148" height="32" width="49" data-name="Fiber" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="1565.5" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Fiber">Fiber</text>
-  <rect x="1747" y="148" height="32" width="68" data-name="Handler" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="1781" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Handler">Handler</text>
-  <rect x="1531" y="220" height="32" width="54" data-name="Chain" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="1558" y="241" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Chain">Chain</text>
-  <rect x="1625" y="220" height="32" width="94" data-name="HttpHandler" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="1672" y="241" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="HttpHandler">HttpHandler</text>
-  <rect x="1759" y="220" height="32" width="104" data-name="HttpRepeater" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="1811" y="241" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="HttpRepeater">HttpRepeater</text>
-  <rect x="2369" y="220" height="32" width="67" data-name="Routing" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="2402.5" y="241" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Routing">Routing</text>
-  <rect x="2476" y="220" height="32" width="88" data-name="SslHandler" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="2520" y="241" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="SslHandler">SslHandler</text>
-  <rect x="1855" y="148" height="32" width="126" data-name="HeapGraphEdge" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="1918" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="HeapGraphEdge">HeapGraphEdge</text>
-  <rect x="2021" y="148" height="32" width="127" data-name="HeapGraphNode" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="2084.5" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="HeapGraphNode">HeapGraphNode</text>
-  <rect x="2188" y="148" height="32" width="114" data-name="HeapSnapshot" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="2245" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="HeapSnapshot">HeapSnapshot</text>
-  <rect x="2342" y="148" height="32" width="80" data-name="HttpClient" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="2382" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="HttpClient">HttpClient</text>
-  <rect x="2462" y="148" height="32" width="108" data-name="HttpCollection" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="2516" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="HttpCollection">HttpCollection</text>
-  <rect x="2610" y="148" height="32" width="89" data-name="HttpCookie" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="2654.5" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="HttpCookie">HttpCookie</text>
-  <rect x="2739" y="148" height="32" width="120" data-name="HttpUploadData" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="2799" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="HttpUploadData">HttpUploadData</text>
-  <rect x="2899" y="148" height="32" width="57" data-name="Image" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="2927.5" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Image">Image</text>
-  <rect x="2996" y="148" height="32" width="64" data-name="Iterator" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="3028" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Iterator">Iterator</text>
-  <rect x="3100" y="148" height="32" width="71" data-name="LevelDB" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="3135.5" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="LevelDB">LevelDB</text>
-  <rect x="3211" y="148" height="32" width="48" data-name="Lock" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="3235" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Lock">Lock</text>
-  <rect x="2604" y="220" height="32" width="79" data-name="Condition" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="2643.5" y="241" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Condition">Condition</text>
-  <rect x="3080" y="220" height="32" width="54" data-name="Event" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="3107" y="241" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Event">Event</text>
-  <rect x="3356" y="220" height="32" width="92" data-name="Semaphore" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="3402" y="241" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Semaphore">Semaphore</text>
-  <rect x="3501" y="148" height="32" width="76" data-name="Message" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="3539" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Message">Message</text>
-  <rect x="3488" y="220" height="32" width="103" data-name="HttpMessage" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="3539.5" y="241" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="HttpMessage">HttpMessage</text>
-  <rect x="3436" y="292" height="32" width="98" data-name="HttpRequest" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="3485" y="313" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="HttpRequest">HttpRequest</text>
-  <rect x="4167" y="292" height="32" width="109" data-name="HttpResponse" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="4221.5" y="313" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="HttpResponse">HttpResponse</text>
-  <rect x="4177" y="220" height="32" width="151" data-name="WebSocketMessage" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="4252.5" y="241" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="WebSocketMessage">WebSocketMessage</text>
-  <rect x="3617" y="148" height="32" width="126" data-name="MongoCollection" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="3680" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="MongoCollection">MongoCollection</text>
-  <rect x="3783" y="148" height="32" width="105" data-name="MongoCursor" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="3835.5" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="MongoCursor">MongoCursor</text>
-  <rect x="3928" y="148" height="32" width="80" data-name="MongoDB" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="3968" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="MongoDB">MongoDB</text>
-  <rect x="4048" y="148" height="32" width="75" data-name="MongoID" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="4085.5" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="MongoID">MongoID</text>
-  <rect x="4163" y="148" height="32" width="50" data-name="PKey" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="4188" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="PKey">PKey</text>
-  <rect x="4253" y="148" height="32" width="54" data-name="Redis" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="4280" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Redis">Redis</text>
-  <rect x="4347" y="148" height="32" width="88" data-name="RedisHash" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="4391" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="RedisHash">RedisHash</text>
-  <rect x="4475" y="148" height="32" width="77" data-name="RedisList" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="4513.5" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="RedisList">RedisList</text>
-  <rect x="4592" y="148" height="32" width="75" data-name="RedisSet" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="4629.5" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="RedisSet">RedisSet</text>
-  <rect x="4707" y="148" height="32" width="119" data-name="RedisSortedSet" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="4766.5" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="RedisSortedSet">RedisSortedSet</text>
-  <rect x="4866" y="148" height="32" width="75" data-name="SandBox" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="4903.5" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="SandBox">SandBox</text>
-  <rect x="4981" y="148" height="32" width="49" data-name="Smtp" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="5005.5" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Smtp">Smtp</text>
-  <rect x="5070" y="148" height="32" width="42" data-name="Stat" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="5091" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Stat">Stat</text>
-  <rect x="5152" y="148" height="32" width="63" data-name="Stream" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="5183.5" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Stream">Stream</text>
-  <rect x="4368" y="220" height="32" width="119" data-name="BufferedStream" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="4427.5" y="241" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="BufferedStream">BufferedStream</text>
-  <rect x="4527" y="220" height="32" width="124" data-name="SeekableStream" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="4589" y="241" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="SeekableStream">SeekableStream</text>
-  <rect x="4316" y="292" height="32" width="39" data-name="File" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="4335.5" y="313" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="File">File</text>
-  <rect x="4395" y="292" height="32" width="115" data-name="MemoryStream" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="4452.5" y="313" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="MemoryStream">MemoryStream</text>
-  <rect x="4817" y="292" height="32" width="106" data-name="RangeStream" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="4870" y="313" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="RangeStream">RangeStream</text>
-  <rect x="4691" y="220" height="32" width="61" data-name="Socket" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="4721.5" y="241" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Socket">Socket</text>
-  <rect x="5125" y="220" height="32" width="81" data-name="SslSocket" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="5165.5" y="241" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="SslSocket">SslSocket</text>
-  <rect x="5246" y="220" height="32" width="122" data-name="TTYInputStream" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="5307" y="241" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="TTYInputStream">TTYInputStream</text>
-  <rect x="5452" y="220" height="32" width="133" data-name="TTYOutputStream" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="5518.5" y="241" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="TTYOutputStream">TTYOutputStream</text>
-  <rect x="5533" y="148" height="32" width="110" data-name="StringDecoder" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="5588" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="StringDecoder">StringDecoder</text>
-  <rect x="5688" y="148" height="32" width="84" data-name="TcpServer" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="5730" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="TcpServer">TcpServer</text>
-  <rect x="5625" y="220" height="32" width="86" data-name="HttpServer" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="5668" y="241" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="HttpServer">HttpServer</text>
-  <rect x="5621" y="292" height="32" width="94" data-name="HttpsServer" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="5668" y="313" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="HttpsServer">HttpsServer</text>
-  <rect x="5751" y="220" height="32" width="79" data-name="SslServer" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="5790.5" y="241" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="SslServer">SslServer</text>
-  <rect x="5812" y="148" height="32" width="53" data-name="Timer" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="5838.5" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Timer">Timer</text>
-  <rect x="5905" y="148" height="32" width="77" data-name="UrlObject" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="5943.5" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="UrlObject">UrlObject</text>
-  <rect x="6022" y="148" height="32" width="78" data-name="X509Cert" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="6061" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="X509Cert">X509Cert</text>
-  <rect x="6140" y="148" height="32" width="69" data-name="X509Crl" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="6174.5" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="X509Crl">X509Crl</text>
-  <rect x="6249" y="148" height="32" width="77" data-name="X509Req" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="6287.5" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="X509Req">X509Req</text>
-  <rect x="6366" y="148" height="32" width="63" data-name="XmlAttr" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="6397.5" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="XmlAttr">XmlAttr</text>
-  <rect x="6469" y="148" height="32" width="150" data-name="XmlNamedNodeMap" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="6544" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="XmlNamedNodeMap">XmlNamedNodeMap</text>
-  <rect x="6659" y="148" height="32" width="75" data-name="XmlNode" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="6696.5" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="XmlNode">XmlNode</text>
-  <rect x="5870" y="220" height="32" width="136" data-name="XmlCharacterData" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="5938" y="241" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="XmlCharacterData">XmlCharacterData</text>
-  <rect x="5821" y="292" height="32" width="103" data-name="XmlComment" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="5872.5" y="313" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="XmlComment">XmlComment</text>
-  <rect x="5967" y="292" height="32" width="69" data-name="XmlText" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="6001.5" y="313" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="XmlText">XmlText</text>
-  <rect x="5933" y="364" height="32" width="136" data-name="XmlCDATASection" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="6001" y="385" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="XmlCDATASection">XmlCDATASection</text>
-  <rect x="6232" y="220" height="32" width="107" data-name="XmlDocument" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="6285.5" y="241" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="XmlDocument">XmlDocument</text>
-  <rect x="6582" y="220" height="32" width="139" data-name="XmlDocumentType" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="6651.5" y="241" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="XmlDocumentType">XmlDocumentType</text>
-  <rect x="6761" y="220" height="32" width="94" data-name="XmlElement" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="6808" y="241" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="XmlElement">XmlElement</text>
-  <rect x="6895" y="220" height="32" width="183" data-name="XmlProcessingInstruction" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="6986.5" y="241" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="XmlProcessingInstruction">XmlProcessingInstruction</text>
-  <rect x="6774" y="148" height="32" width="99" data-name="XmlNodeList" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="6823.5" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="XmlNodeList">XmlNodeList</text>
-  <rect x="6913" y="148" height="32" width="59" data-name="ZipFile" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="6942.5" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="ZipFile">ZipFile</text>
+    [object] &lt;:- [Buffer]
+    [object] &lt;:- [Cipher]
+    [object] &lt;:- [DbConnection]
+    [DbConnection] &lt;:- [MySQL]
+    [DbConnection] &lt;:- [Odbc]
+    [DbConnection] &lt;:- [SQLite]
+    [object] &lt;:- [Digest]
+    [object] &lt;:- [EventEmitter]
+    [EventEmitter] &lt;:- [ChildProcess]
+    [EventEmitter] &lt;:- [DgramSocket]
+    [EventEmitter] &lt;:- [FSWatcher]
+    [EventEmitter] &lt;:- [LruCache]
+    [EventEmitter] &lt;:- [Service]
+    [EventEmitter] &lt;:- [StatsWatcher]
+    [EventEmitter] &lt;:- [WebSocket]
+    [EventEmitter] &lt;:- [WebView]
+    [EventEmitter] &lt;:- [Worker]
+    [object] &lt;:- [Fiber]
+    [object] &lt;:- [Handler]
+    [Handler] &lt;:- [Chain]
+    [Handler] &lt;:- [HttpHandler]
+    [Handler] &lt;:- [HttpRepeater]
+    [Handler] &lt;:- [Routing]
+    [Handler] &lt;:- [SslHandler]
+    [object] &lt;:- [HeapGraphEdge]
+    [object] &lt;:- [HeapGraphNode]
+    [object] &lt;:- [HeapSnapshot]
+    [object] &lt;:- [HttpClient]
+    [object] &lt;:- [HttpCollection]
+    [object] &lt;:- [HttpCookie]
+    [object] &lt;:- [HttpUploadData]
+    [object] &lt;:- [Image]
+    [object] &lt;:- [Iterator]
+    [object] &lt;:- [LevelDB]
+    [object] &lt;:- [Lock]
+    [Lock] &lt;:- [Condition]
+    [Lock] &lt;:- [Event]
+    [Lock] &lt;:- [Semaphore]
+    [object] &lt;:- [Message]
+    [Message] &lt;:- [HttpMessage]
+    [HttpMessage] &lt;:- [HttpRequest]
+    [HttpMessage] &lt;:- [HttpResponse]
+    [Message] &lt;:- [WebSocketMessage]
+    [object] &lt;:- [MongoCollection]
+    [object] &lt;:- [MongoCursor]
+    [object] &lt;:- [MongoDB]
+    [object] &lt;:- [MongoID]
+    [object] &lt;:- [PKey]
+    [object] &lt;:- [Redis]
+    [object] &lt;:- [RedisHash]
+    [object] &lt;:- [RedisList]
+    [object] &lt;:- [RedisSet]
+    [object] &lt;:- [RedisSortedSet]
+    [object] &lt;:- [SandBox]
+    [object] &lt;:- [Smtp]
+    [object] &lt;:- [Stat]
+    [object] &lt;:- [Stream]
+    [Stream] &lt;:- [BufferedStream]
+    [Stream] &lt;:- [SeekableStream]
+    [SeekableStream] &lt;:- [File]
+    [SeekableStream] &lt;:- [MemoryStream]
+    [SeekableStream] &lt;:- [RangeStream]
+    [Stream] &lt;:- [Socket]
+    [Stream] &lt;:- [SslSocket]
+    [Stream] &lt;:- [TTYInputStream]
+    [Stream] &lt;:- [TTYOutputStream]
+    [object] &lt;:- [StringDecoder]
+    [object] &lt;:- [TcpServer]
+    [TcpServer] &lt;:- [HttpServer]
+    [HttpServer] &lt;:- [HttpsServer]
+    [TcpServer] &lt;:- [SslServer]
+    [object] &lt;:- [TextDecoder]
+    [object] &lt;:- [TextEncoder]
+    [object] &lt;:- [Timer]
+    [object] &lt;:- [UrlObject]
+    [object] &lt;:- [X509Cert]
+    [object] &lt;:- [X509Crl]
+    [object] &lt;:- [X509Req]
+    [object] &lt;:- [XmlAttr]
+    [object] &lt;:- [XmlNamedNodeMap]
+    [object] &lt;:- [XmlNode]
+    [XmlNode] &lt;:- [XmlCharacterData]
+    [XmlCharacterData] &lt;:- [XmlComment]
+    [XmlCharacterData] &lt;:- [XmlText]
+    [XmlText] &lt;:- [XmlCDATASection]
+    [XmlNode] &lt;:- [XmlDocument]
+    [XmlNode] &lt;:- [XmlDocumentType]
+    [XmlNode] &lt;:- [XmlElement]
+    [XmlNode] &lt;:- [XmlProcessingInstruction]
+    [object] &lt;:- [XmlNodeList]
+    [object] &lt;:- [ZipFile]
+    </desc>
+    <g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="10pt" font-family="Helvetica,sans-Serif" font-weight="bold" font-style="normal">
+        <g font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="bold" font-style="normal" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
+            <g stroke="transparent" fill="transparent">
+                <rect x="0.0" y="0.0" height="424.0" width="7385.0" stroke="none"></rect>
+            </g>
+            <g transform="translate(8, 8)" fill="#33322E">
+                <g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal">
+                    <path d="M4034.4 40.8 L27.5 100 L27.5 120 L27.5 120.0 " fill="none"></path>
+                    <path d="M4034.5 46.1 L4034.4 40.8 L4034.3 35.4 L4047.8 40.6 Z"></path>
+                    <path d="M4034.4 40.8 L124.5 100 L124.5 120 L124.5 120.0 " fill="none"></path>
+                    <path d="M4034.5 46.1 L4034.4 40.8 L4034.3 35.5 L4047.8 40.6 Z"></path>
+                    <path d="M4034.4 40.8 L248.5 100 L248.5 120 L248.5 120.0 " fill="none"></path>
+                    <path d="M4034.5 46.1 L4034.4 40.8 L4034.3 35.5 L4047.8 40.6 Z"></path>
+                    <path d="M181.1 152.7 L103.25 172 L103.25 192 L103.3 192.0 " fill="none"></path>
+                    <path d="M182.3 157.9 L181.1 152.7 L179.8 147.5 L194.0 149.5 Z"></path>
+                    <path d="M216.6 160.0 L200.75 172 L200.75 192 L200.8 192.0 " fill="none"></path>
+                    <path d="M219.8 164.3 L216.6 160.0 L213.4 155.8 L227.3 152.0 Z"></path>
+                    <path d="M280.4 160.0 L296.25 172 L296.25 192 L296.3 192.0 " fill="none"></path>
+                    <path d="M283.6 155.8 L280.4 160.0 L277.2 164.3 L269.7 152.0 Z"></path>
+                    <path d="M4034.4 40.8 L408.25 100 L408.25 120 L408.3 120.0 " fill="none"></path>
+                    <path d="M4034.5 46.2 L4034.4 40.8 L4034.3 35.5 L4047.8 40.6 Z"></path>
+                    <path d="M4034.4 40.9 L800.75 100 L800.75 120 L800.8 120.0 " fill="none"></path>
+                    <path d="M4034.5 46.3 L4034.4 40.9 L4034.3 35.6 L4047.8 40.7 Z"></path>
+                    <path d="M738.0 141.9 L417.75 172 L417.75 192 L417.8 192.0 " fill="none"></path>
+                    <path d="M738.5 147.2 L738.0 141.9 L737.5 136.6 L751.3 140.7 Z"></path>
+                    <path d="M738.1 145.4 L561.25 172 L561.25 192 L561.3 192.0 " fill="none"></path>
+                    <path d="M738.9 150.7 L738.1 145.4 L737.3 140.1 L751.3 143.4 Z"></path>
+                    <path d="M742.4 156.4 L697.75 172 L697.75 192 L697.8 192.0 " fill="none"></path>
+                    <path d="M744.1 161.4 L742.4 156.4 L740.6 151.4 L755.0 152.0 Z"></path>
+                    <path d="M817.1 163.4 L822.25 172 L822.25 192 L822.3 192.0 " fill="none"></path>
+                    <path d="M821.7 160.7 L817.1 163.4 L812.6 166.2 L810.3 152.0 Z"></path>
+                    <path d="M863.1 152.8 L934.75 172 L934.75 192 L934.8 192.0 " fill="none"></path>
+                    <path d="M864.5 147.6 L863.1 152.8 L861.7 157.9 L850.3 149.3 Z"></path>
+                    <path d="M863.5 144.7 L1059.25 172 L1059.25 192 L1059.3 192.0 " fill="none"></path>
+                    <path d="M864.2 139.5 L863.5 144.7 L862.7 150.0 L850.3 142.9 Z"></path>
+                    <path d="M863.5 141.7 L1196.75 172 L1196.75 192 L1196.8 192.0 " fill="none"></path>
+                    <path d="M864.0 136.4 L863.5 141.7 L863.0 147.0 L850.3 140.5 Z"></path>
+                    <path d="M863.6 140.3 L1320.75 172 L1320.75 192 L1320.8 192.0 " fill="none"></path>
+                    <path d="M863.9 135.0 L863.6 140.3 L863.2 145.7 L850.3 139.4 Z"></path>
+                    <path d="M863.6 139.6 L1431.25 172 L1431.25 192 L1431.3 192.0 " fill="none"></path>
+                    <path d="M863.9 134.3 L863.6 139.6 L863.3 144.9 L850.3 138.8 Z"></path>
+                    <path d="M4034.4 41.2 L1537.25 100 L1537.25 120 L1537.3 120.0 " fill="none"></path>
+                    <path d="M4034.5 46.6 L4034.4 41.2 L4034.3 35.9 L4047.8 40.9 Z"></path>
+                    <path d="M4034.4 41.3 L1753.25 100 L1753.25 120 L1753.3 120.0 " fill="none"></path>
+                    <path d="M4034.6 46.7 L4034.4 41.3 L4034.3 36.0 L4047.8 41.0 Z"></path>
+                    <path d="M1706.1 143.6 L1530.25 172 L1530.25 192 L1530.3 192.0 " fill="none"></path>
+                    <path d="M1706.9 148.9 L1706.1 143.6 L1705.2 138.3 L1719.3 141.5 Z"></path>
+                    <path d="M1706.6 151.4 L1644.25 172 L1644.25 192 L1644.3 192.0 " fill="none"></path>
+                    <path d="M1708.3 156.5 L1706.6 151.4 L1704.9 146.3 L1719.3 147.2 Z"></path>
+                    <path d="M1775.1 162.2 L1783.25 172 L1783.25 192 L1783.3 192.0 " fill="none"></path>
+                    <path d="M1779.2 158.8 L1775.1 162.2 L1771.0 165.7 L1766.6 152.0 Z"></path>
+                    <path d="M1800.6 138.7 L2374.75 172 L2374.75 192 L2374.8 192.0 " fill="none"></path>
+                    <path d="M1800.9 133.4 L1800.6 138.7 L1800.3 144.1 L1787.3 138.0 Z"></path>
+                    <path d="M1800.6 138.3 L2492.25 172 L2492.25 192 L2492.3 192.0 " fill="none"></path>
+                    <path d="M1800.8 133.0 L1800.6 138.3 L1800.3 143.6 L1787.3 137.7 Z"></path>
+                    <path d="M4034.4 41.4 L1890.25 100 L1890.25 120 L1890.3 120.0 " fill="none"></path>
+                    <path d="M4034.6 46.7 L4034.4 41.4 L4034.3 36.1 L4047.8 41.1 Z"></path>
+                    <path d="M4034.4 41.5 L2056.75 100 L2056.75 120 L2056.8 120.0 " fill="none"></path>
+                    <path d="M4034.6 46.9 L4034.4 41.5 L4034.3 36.2 L4047.8 41.1 Z"></path>
+                    <path d="M4034.4 41.7 L2217.25 100 L2217.25 120 L2217.3 120.0 " fill="none"></path>
+                    <path d="M4034.6 47.0 L4034.4 41.7 L4034.3 36.3 L4047.8 41.2 Z"></path>
+                    <path d="M4034.4 41.8 L2354.25 100 L2354.25 120 L2354.3 120.0 " fill="none"></path>
+                    <path d="M4034.6 47.1 L4034.4 41.8 L4034.2 36.5 L4047.8 41.3 Z"></path>
+                    <path d="M4034.4 41.9 L2488.25 100 L2488.25 120 L2488.3 120.0 " fill="none"></path>
+                    <path d="M4034.6 47.3 L4034.4 41.9 L4034.2 36.6 L4047.8 41.4 Z"></path>
+                    <path d="M4034.4 42.1 L2626.75 100 L2626.75 120 L2626.8 120.0 " fill="none"></path>
+                    <path d="M4034.6 47.5 L4034.4 42.1 L4034.2 36.8 L4047.8 41.6 Z"></path>
+                    <path d="M4034.4 42.4 L2771.25 100 L2771.25 120 L2771.3 120.0 " fill="none"></path>
+                    <path d="M4034.7 47.7 L4034.4 42.4 L4034.2 37.0 L4047.8 41.8 Z"></path>
+                    <path d="M4034.4 42.6 L2899.75 100 L2899.75 120 L2899.8 120.0 " fill="none"></path>
+                    <path d="M4034.7 47.9 L4034.4 42.6 L4034.2 37.3 L4047.8 41.9 Z"></path>
+                    <path d="M4034.4 42.9 L3000.25 100 L3000.25 120 L3000.3 120.0 " fill="none"></path>
+                    <path d="M4034.7 48.2 L4034.4 42.9 L4034.1 37.5 L4047.8 42.1 Z"></path>
+                    <path d="M4034.4 43.2 L3107.75 100 L3107.75 120 L3107.8 120.0 " fill="none"></path>
+                    <path d="M4034.8 48.5 L4034.4 43.2 L4034.1 37.9 L4047.8 42.4 Z"></path>
+                    <path d="M4034.4 43.5 L3207.25 100 L3207.25 120 L3207.3 120.0 " fill="none"></path>
+                    <path d="M4034.8 48.9 L4034.4 43.5 L4034.1 38.2 L4047.8 42.6 Z"></path>
+                    <path d="M3169.9 138.3 L2615.75 172 L2615.75 192 L2615.8 192.0 " fill="none"></path>
+                    <path d="M3170.3 143.6 L3169.9 138.3 L3169.6 132.9 L3183.3 137.5 Z"></path>
+                    <path d="M3170.4 146.3 L3078.75 172 L3078.75 192 L3078.8 192.0 " fill="none"></path>
+                    <path d="M3171.8 151.5 L3170.4 146.3 L3169.0 141.2 L3183.3 142.7 Z"></path>
+                    <path d="M3244.3 144.0 L3373.5 172 L3373.5 192 L3373.5 192.0 " fill="none"></path>
+                    <path d="M3245.4 138.8 L3244.3 144.0 L3243.2 149.2 L3231.3 141.2 Z"></path>
+                    <path d="M4034.5 45.4 L3511 100 L3511 120 L3511.0 120.0 " fill="none"></path>
+                    <path d="M4035.0 50.7 L4034.5 45.4 L4033.9 40.1 L4047.8 44.0 Z"></path>
+                    <path d="M3511.0 165.3 L3511 172 L3511 192 L3511.0 192.0 " fill="none"></path>
+                    <path d="M3516.3 165.3 L3511.0 165.3 L3505.7 165.3 L3511.0 152.0 Z"></path>
+                    <path d="M3475.7 231.3 L3456.5 244 L3456.5 264 L3456.5 264.0 " fill="none"></path>
+                    <path d="M3478.6 235.8 L3475.7 231.3 L3472.7 226.9 L3486.8 224.0 Z"></path>
+                    <path d="M3575.8 211.4 L4193.25 244 L4193.25 264 L4193.3 264.0 " fill="none"></path>
+                    <path d="M3576.1 206.1 L3575.8 211.4 L3575.5 216.7 L3562.5 210.7 Z"></path>
+                    <path d="M3562.3 138.6 L4224 172 L4224 192 L4224.0 192.0 " fill="none"></path>
+                    <path d="M3562.6 133.3 L3562.3 138.6 L3562.0 143.9 L3549.0 137.9 Z"></path>
+                    <path d="M4034.5 47.1 L3652 100 L3652 120 L3652.0 120.0 " fill="none"></path>
+                    <path d="M4035.3 52.4 L4034.5 47.1 L4033.8 41.9 L4047.8 45.3 Z"></path>
+                    <path d="M4034.7 51.1 L3807.5 100 L3807.5 120 L3807.5 120.0 " fill="none"></path>
+                    <path d="M4035.8 56.3 L4034.7 51.1 L4033.6 45.9 L4047.8 48.3 Z"></path>
+                    <path d="M4035.4 60.9 L3940 100 L3940 120 L3940.0 120.0 " fill="none"></path>
+                    <path d="M4037.4 65.8 L4035.4 60.9 L4033.4 55.9 L4047.8 55.8 Z"></path>
+                    <path d="M4061.3 92.0 L4057.5 100 L4057.5 120 L4057.5 120.0 " fill="none"></path>
+                    <path d="M4066.1 94.3 L4061.3 92.0 L4056.5 89.7 L4067.1 80.0 Z"></path>
+                    <path d="M4135.1 79.7 L4160 100 L4160 120 L4160.0 120.0 " fill="none"></path>
+                    <path d="M4138.5 75.6 L4135.1 79.7 L4131.7 83.9 L4124.8 71.3 Z"></path>
+                    <path d="M4137.3 58.5 L4252 100 L4252 120 L4252.0 120.0 " fill="none"></path>
+                    <path d="M4139.1 53.5 L4137.3 58.5 L4135.5 63.5 L4124.8 53.9 Z"></path>
+                    <path d="M4137.8 51.2 L4363 100 L4363 120 L4363.0 120.0 " fill="none"></path>
+                    <path d="M4138.9 46.0 L4137.8 51.2 L4136.7 56.4 L4124.8 48.3 Z"></path>
+                    <path d="M4137.9 47.8 L4485.5 100 L4485.5 120 L4485.5 120.0 " fill="none"></path>
+                    <path d="M4138.7 42.5 L4137.9 47.8 L4137.1 53.0 L4124.8 45.8 Z"></path>
+                    <path d="M4138.0 46.0 L4601.5 100 L4601.5 120 L4601.5 120.0 " fill="none"></path>
+                    <path d="M4138.6 40.7 L4138.0 46.0 L4137.4 51.3 L4124.8 44.5 Z"></path>
+                    <path d="M4138.0 44.8 L4738.5 100 L4738.5 120 L4738.5 120.0 " fill="none"></path>
+                    <path d="M4138.5 39.5 L4138.0 44.8 L4137.5 50.1 L4124.8 43.5 Z"></path>
+                    <path d="M4138.0 43.9 L4875.5 100 L4875.5 120 L4875.5 120.0 " fill="none"></path>
+                    <path d="M4138.4 38.6 L4138.0 43.9 L4137.6 49.3 L4124.8 42.9 Z"></path>
+                    <path d="M4138.1 43.5 L4977.5 100 L4977.5 120 L4977.5 120.0 " fill="none"></path>
+                    <path d="M4138.4 38.2 L4138.1 43.5 L4137.7 48.8 L4124.8 42.6 Z"></path>
+                    <path d="M4138.1 43.2 L5063 100 L5063 120 L5063.0 120.0 " fill="none"></path>
+                    <path d="M4138.4 37.9 L4138.1 43.2 L4137.7 48.5 L4124.8 42.4 Z"></path>
+                    <path d="M4138.1 42.9 L5155.5 100 L5155.5 120 L5155.5 120.0 " fill="none"></path>
+                    <path d="M4138.4 37.6 L4138.1 42.9 L4137.8 48.2 L4124.8 42.2 Z"></path>
+                    <path d="M5110.7 138.1 L4399 172 L4399 192 L4399.0 192.0 " fill="none"></path>
+                    <path d="M5110.9 143.5 L5110.7 138.1 L5110.4 132.8 L5124.0 137.5 Z"></path>
+                    <path d="M5110.7 138.7 L4560.5 172 L4560.5 192 L4560.5 192.0 " fill="none"></path>
+                    <path d="M5111.0 144.0 L5110.7 138.7 L5110.4 133.4 L5124.0 137.9 Z"></path>
+                    <path d="M4485.3 218.7 L4307.25 244 L4307.25 264 L4307.3 264.0 " fill="none"></path>
+                    <path d="M4486.0 224.0 L4485.3 218.7 L4484.5 213.4 L4498.5 216.8 Z"></path>
+                    <path d="M4487.1 227.4 L4424.25 244 L4424.25 264 L4424.3 264.0 " fill="none"></path>
+                    <path d="M4488.4 232.6 L4487.1 227.4 L4485.7 222.2 L4499.9 224.0 Z"></path>
+                    <path d="M4635.7 217.6 L4841.5 244 L4841.5 264 L4841.5 264.0 " fill="none"></path>
+                    <path d="M4636.4 212.3 L4635.7 217.6 L4635.0 222.9 L4622.5 215.9 Z"></path>
+                    <path d="M5110.7 139.5 L4693 172 L4693 192 L4693.0 192.0 " fill="none"></path>
+                    <path d="M5111.1 144.8 L5110.7 139.5 L5110.3 134.2 L5124.0 138.5 Z"></path>
+                    <path d="M5141.4 163.9 L5137.25 172 L5137.25 192 L5137.3 192.0 " fill="none"></path>
+                    <path d="M5146.1 166.3 L5141.4 163.9 L5136.6 161.5 L5147.4 152.0 Z"></path>
+                    <path d="M5199.8 148.9 L5278.75 172 L5278.75 192 L5278.8 192.0 " fill="none"></path>
+                    <path d="M5201.3 143.8 L5199.8 148.9 L5198.3 154.1 L5187.0 145.2 Z"></path>
+                    <path d="M5200.3 140.8 L5490.75 172 L5490.75 192 L5490.8 192.0 " fill="none"></path>
+                    <path d="M5200.8 135.5 L5200.3 140.8 L5199.7 146.1 L5187.0 139.4 Z"></path>
+                    <path d="M4138.1 42.1 L5560.25 100 L5560.25 120 L5560.3 120.0 " fill="none"></path>
+                    <path d="M4138.3 36.8 L4138.1 42.1 L4137.9 47.4 L4124.8 41.6 Z"></path>
+                    <path d="M4138.1 41.9 L5701.5 100 L5701.5 120 L5701.5 120.0 " fill="none"></path>
+                    <path d="M4138.3 36.6 L4138.1 41.9 L4137.9 47.3 L4124.8 41.4 Z"></path>
+                    <path d="M5662.8 158.8 L5640.25 172 L5640.25 192 L5640.3 192.0 " fill="none"></path>
+                    <path d="M5665.5 163.4 L5662.8 158.8 L5660.1 154.2 L5674.3 152.0 Z"></path>
+                    <path d="M5640.3 237.3 L5640.25 244 L5640.25 264 L5640.3 264.0 " fill="none"></path>
+                    <path d="M5645.6 237.3 L5640.3 237.3 L5634.9 237.3 L5640.3 224.0 Z"></path>
+                    <path d="M5740.2 158.8 L5762.75 172 L5762.75 192 L5762.8 192.0 " fill="none"></path>
+                    <path d="M5742.9 154.2 L5740.2 158.8 L5737.5 163.4 L5728.7 152.0 Z"></path>
+                    <path d="M4138.1 41.8 L5833.5 100 L5833.5 120 L5833.5 120.0 " fill="none"></path>
+                    <path d="M4138.3 36.4 L4138.1 41.8 L4137.9 47.1 L4124.8 41.3 Z"></path>
+                    <path d="M4138.1 41.6 L5973 100 L5973 120 L5973.0 120.0 " fill="none"></path>
+                    <path d="M4138.2 36.3 L4138.1 41.6 L4137.9 47.0 L4124.8 41.2 Z"></path>
+                    <path d="M4138.1 41.6 L6089 100 L6089 120 L6089.0 120.0 " fill="none"></path>
+                    <path d="M4138.2 36.2 L4138.1 41.6 L4137.9 46.9 L4124.8 41.2 Z"></path>
+                    <path d="M4138.1 41.5 L6194 100 L6194 120 L6194.0 120.0 " fill="none"></path>
+                    <path d="M4138.2 36.1 L4138.1 41.5 L4137.9 46.8 L4124.8 41.1 Z"></path>
+                    <path d="M4138.1 41.4 L6311.5 100 L6311.5 120 L6311.5 120.0 " fill="none"></path>
+                    <path d="M4138.2 36.1 L4138.1 41.4 L4137.9 46.7 L4124.8 41.0 Z"></path>
+                    <path d="M4138.1 41.3 L6425 100 L6425 120 L6425.0 120.0 " fill="none"></path>
+                    <path d="M4138.2 36.0 L4138.1 41.3 L4137.9 46.7 L4124.8 41.0 Z"></path>
+                    <path d="M4138.1 41.3 L6538 100 L6538 120 L6538.0 120.0 " fill="none"></path>
+                    <path d="M4138.2 35.9 L4138.1 41.3 L4137.9 46.6 L4124.8 40.9 Z"></path>
+                    <path d="M4138.1 41.2 L6648 100 L6648 120 L6648.0 120.0 " fill="none"></path>
+                    <path d="M4138.2 35.9 L4138.1 41.2 L4138.0 46.5 L4124.8 40.9 Z"></path>
+                    <path d="M4138.1 41.1 L6794.5 100 L6794.5 120 L6794.5 120.0 " fill="none"></path>
+                    <path d="M4138.2 35.8 L4138.1 41.1 L4138.0 46.5 L4124.8 40.9 Z"></path>
+                    <path d="M4138.1 41.1 L6947 100 L6947 120 L6947.0 120.0 " fill="none"></path>
+                    <path d="M4138.2 35.8 L4138.1 41.1 L4138.0 46.4 L4124.8 40.8 Z"></path>
+                    <path d="M6896.2 137.8 L5910.25 172 L5910.25 192 L5910.3 192.0 " fill="none"></path>
+                    <path d="M6896.4 143.1 L6896.2 137.8 L6896.0 132.4 L6909.5 137.3 Z"></path>
+                    <path d="M5869.3 230.4 L5844.5 244 L5844.5 264 L5844.5 264.0 " fill="none"></path>
+                    <path d="M5871.9 235.1 L5869.3 230.4 L5866.8 225.7 L5881.0 224.0 Z"></path>
+                    <path d="M5949.8 230.6 L5973.25 244 L5973.25 264 L5973.3 264.0 " fill="none"></path>
+                    <path d="M5952.5 226.0 L5949.8 230.6 L5947.2 235.2 L5938.3 224.0 Z"></path>
+                    <path d="M5973.3 309.3 L5973.25 316 L5973.25 336 L5973.3 336.0 " fill="none"></path>
+                    <path d="M5978.6 309.3 L5973.3 309.3 L5967.9 309.3 L5973.3 296.0 Z"></path>
+                    <path d="M6896.2 139.3 L6397.25 172 L6397.25 192 L6397.3 192.0 " fill="none"></path>
+                    <path d="M6896.5 144.6 L6896.2 139.3 L6895.8 134.0 L6909.5 138.5 Z"></path>
+                    <path d="M6916.9 160.4 L6902.5 172 L6902.5 192 L6902.5 192.0 " fill="none"></path>
+                    <path d="M6920.2 164.5 L6916.9 160.4 L6913.5 156.2 L6927.2 152.0 Z"></path>
+                    <path d="M6997.2 152.1 L7059 172 L7059 192 L7059.0 192.0 " fill="none"></path>
+                    <path d="M6998.8 147.1 L6997.2 152.1 L6995.6 157.2 L6984.5 148.1 Z"></path>
+                    <path d="M6997.7 142.3 L7237.5 172 L7237.5 192 L7237.5 192.0 " fill="none"></path>
+                    <path d="M6998.4 137.0 L6997.7 142.3 L6997.1 147.6 L6984.5 140.6 Z"></path>
+                    <path d="M4138.1 41.0 L7074 100 L7074 120 L7074.0 120.0 " fill="none"></path>
+                    <path d="M4138.2 35.7 L4138.1 41.0 L4138.0 46.4 L4124.8 40.8 Z"></path>
+                    <path d="M4138.1 41.0 L7193 100 L7193 120 L7193.0 120.0 " fill="none"></path>
+                    <path d="M4138.2 35.7 L4138.1 41.0 L4138.0 46.3 L4124.8 40.7 Z"></path>
+                    <g data-name="object">
+                        <g fill="lightgray" stroke="#33322E" data-name="object">
+                            <rect x="4048.0" y="0.0" height="80.0" width="77.0" data-name="object"></rect>
+                            <path d="M4048.0 32.0 L4125.0 32.0" fill="none" data-name="object"></path>
+                        </g>
+                        <g transform="translate(4048, 0)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="object">
+                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="object">object</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(4048, 32)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="object">
+                                <text x="0.0" y="13.0" stroke="none" data-name="object">toString()</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="object">toJSON()</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="Buffer">
+                        <g fill="white" stroke="#33322E" data-name="Buffer">
+                            <rect x="0.0" y="120.0" height="32.0" width="55.0" data-name="Buffer"></rect>
+                        </g>
+                        <g transform="translate(0, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Buffer">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Buffer">
+                                <text x="19.5" y="13.0" stroke="none" text-anchor="middle" data-name="Buffer">Buffer</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="Cipher">
+                        <g fill="white" stroke="#33322E" data-name="Cipher">
+                            <rect x="95.0" y="120.0" height="32.0" width="59.0" data-name="Cipher"></rect>
+                        </g>
+                        <g transform="translate(95, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Cipher">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Cipher">
+                                <text x="21.5" y="13.0" stroke="none" text-anchor="middle" data-name="Cipher">Cipher</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="DbConnection">
+                        <g fill="white" stroke="#33322E" data-name="DbConnection">
+                            <rect x="194.0" y="120.0" height="32.0" width="109.0" data-name="DbConnection"></rect>
+                        </g>
+                        <g transform="translate(194, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="DbConnection">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="DbConnection">
+                                <text x="46.5" y="13.0" stroke="none" text-anchor="middle" data-name="DbConnection">DbConnection</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="MySQL">
+                        <g fill="white" stroke="#33322E" data-name="MySQL">
+                            <rect x="71.0" y="192.0" height="32.0" width="64.0" data-name="MySQL"></rect>
+                        </g>
+                        <g transform="translate(71, 192)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="MySQL">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="MySQL">
+                                <text x="24.0" y="13.0" stroke="none" text-anchor="middle" data-name="MySQL">MySQL</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="Odbc">
+                        <g fill="white" stroke="#33322E" data-name="Odbc">
+                            <rect x="175.0" y="192.0" height="32.0" width="51.0" data-name="Odbc"></rect>
+                        </g>
+                        <g transform="translate(175, 192)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Odbc">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Odbc">
+                                <text x="17.5" y="13.0" stroke="none" text-anchor="middle" data-name="Odbc">Odbc</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="SQLite">
+                        <g fill="white" stroke="#33322E" data-name="SQLite">
+                            <rect x="266.0" y="192.0" height="32.0" width="60.0" data-name="SQLite"></rect>
+                        </g>
+                        <g transform="translate(266, 192)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="SQLite">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="SQLite">
+                                <text x="22.0" y="13.0" stroke="none" text-anchor="middle" data-name="SQLite">SQLite</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="Digest">
+                        <g fill="white" stroke="#33322E" data-name="Digest">
+                            <rect x="379.0" y="120.0" height="32.0" width="58.0" data-name="Digest"></rect>
+                        </g>
+                        <g transform="translate(379, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Digest">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Digest">
+                                <text x="21.0" y="13.0" stroke="none" text-anchor="middle" data-name="Digest">Digest</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="EventEmitter">
+                        <g fill="white" stroke="#33322E" data-name="EventEmitter">
+                            <rect x="751.0" y="120.0" height="32.0" width="99.0" data-name="EventEmitter"></rect>
+                        </g>
+                        <g transform="translate(751, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="EventEmitter">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="EventEmitter">
+                                <text x="41.5" y="13.0" stroke="none" text-anchor="middle" data-name="EventEmitter">EventEmitter</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="ChildProcess">
+                        <g fill="white" stroke="#33322E" data-name="ChildProcess">
+                            <rect x="366.0" y="192.0" height="32.0" width="103.0" data-name="ChildProcess"></rect>
+                        </g>
+                        <g transform="translate(366, 192)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="ChildProcess">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="ChildProcess">
+                                <text x="43.5" y="13.0" stroke="none" text-anchor="middle" data-name="ChildProcess">ChildProcess</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="DgramSocket">
+                        <g fill="white" stroke="#33322E" data-name="DgramSocket">
+                            <rect x="509.0" y="192.0" height="32.0" width="104.0" data-name="DgramSocket"></rect>
+                        </g>
+                        <g transform="translate(509, 192)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="DgramSocket">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="DgramSocket">
+                                <text x="44.0" y="13.0" stroke="none" text-anchor="middle" data-name="DgramSocket">DgramSocket</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="FSWatcher">
+                        <g fill="white" stroke="#33322E" data-name="FSWatcher">
+                            <rect x="653.0" y="192.0" height="32.0" width="89.0" data-name="FSWatcher"></rect>
+                        </g>
+                        <g transform="translate(653, 192)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="FSWatcher">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="FSWatcher">
+                                <text x="36.5" y="13.0" stroke="none" text-anchor="middle" data-name="FSWatcher">FSWatcher</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="LruCache">
+                        <g fill="white" stroke="#33322E" data-name="LruCache">
+                            <rect x="782.0" y="192.0" height="32.0" width="80.0" data-name="LruCache"></rect>
+                        </g>
+                        <g transform="translate(782, 192)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="LruCache">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="LruCache">
+                                <text x="32.0" y="13.0" stroke="none" text-anchor="middle" data-name="LruCache">LruCache</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="Service">
+                        <g fill="white" stroke="#33322E" data-name="Service">
+                            <rect x="902.0" y="192.0" height="32.0" width="65.0" data-name="Service"></rect>
+                        </g>
+                        <g transform="translate(902, 192)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Service">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Service">
+                                <text x="24.5" y="13.0" stroke="none" text-anchor="middle" data-name="Service">Service</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="StatsWatcher">
+                        <g fill="white" stroke="#33322E" data-name="StatsWatcher">
+                            <rect x="1007.0" y="192.0" height="32.0" width="104.0" data-name="StatsWatcher"></rect>
+                        </g>
+                        <g transform="translate(1007, 192)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="StatsWatcher">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="StatsWatcher">
+                                <text x="44.0" y="13.0" stroke="none" text-anchor="middle" data-name="StatsWatcher">StatsWatcher</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="WebSocket">
+                        <g fill="white" stroke="#33322E" data-name="WebSocket">
+                            <rect x="1151.0" y="192.0" height="32.0" width="91.0" data-name="WebSocket"></rect>
+                        </g>
+                        <g transform="translate(1151, 192)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="WebSocket">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="WebSocket">
+                                <text x="37.5" y="13.0" stroke="none" text-anchor="middle" data-name="WebSocket">WebSocket</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="WebView">
+                        <g fill="white" stroke="#33322E" data-name="WebView">
+                            <rect x="1282.0" y="192.0" height="32.0" width="77.0" data-name="WebView"></rect>
+                        </g>
+                        <g transform="translate(1282, 192)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="WebView">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="WebView">
+                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="WebView">WebView</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="Worker">
+                        <g fill="white" stroke="#33322E" data-name="Worker">
+                            <rect x="1399.0" y="192.0" height="32.0" width="64.0" data-name="Worker"></rect>
+                        </g>
+                        <g transform="translate(1399, 192)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Worker">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Worker">
+                                <text x="24.0" y="13.0" stroke="none" text-anchor="middle" data-name="Worker">Worker</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="Fiber">
+                        <g fill="white" stroke="#33322E" data-name="Fiber">
+                            <rect x="1513.0" y="120.0" height="32.0" width="49.0" data-name="Fiber"></rect>
+                        </g>
+                        <g transform="translate(1513, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Fiber">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Fiber">
+                                <text x="16.5" y="13.0" stroke="none" text-anchor="middle" data-name="Fiber">Fiber</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="Handler">
+                        <g fill="white" stroke="#33322E" data-name="Handler">
+                            <rect x="1719.0" y="120.0" height="32.0" width="68.0" data-name="Handler"></rect>
+                        </g>
+                        <g transform="translate(1719, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Handler">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Handler">
+                                <text x="26.0" y="13.0" stroke="none" text-anchor="middle" data-name="Handler">Handler</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="Chain">
+                        <g fill="white" stroke="#33322E" data-name="Chain">
+                            <rect x="1503.0" y="192.0" height="32.0" width="54.0" data-name="Chain"></rect>
+                        </g>
+                        <g transform="translate(1503, 192)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Chain">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Chain">
+                                <text x="19.0" y="13.0" stroke="none" text-anchor="middle" data-name="Chain">Chain</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="HttpHandler">
+                        <g fill="white" stroke="#33322E" data-name="HttpHandler">
+                            <rect x="1597.0" y="192.0" height="32.0" width="94.0" data-name="HttpHandler"></rect>
+                        </g>
+                        <g transform="translate(1597, 192)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="HttpHandler">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="HttpHandler">
+                                <text x="39.0" y="13.0" stroke="none" text-anchor="middle" data-name="HttpHandler">HttpHandler</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="HttpRepeater">
+                        <g fill="white" stroke="#33322E" data-name="HttpRepeater">
+                            <rect x="1731.0" y="192.0" height="32.0" width="104.0" data-name="HttpRepeater"></rect>
+                        </g>
+                        <g transform="translate(1731, 192)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="HttpRepeater">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="HttpRepeater">
+                                <text x="44.0" y="13.0" stroke="none" text-anchor="middle" data-name="HttpRepeater">HttpRepeater</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="Routing">
+                        <g fill="white" stroke="#33322E" data-name="Routing">
+                            <rect x="2341.0" y="192.0" height="32.0" width="67.0" data-name="Routing"></rect>
+                        </g>
+                        <g transform="translate(2341, 192)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Routing">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Routing">
+                                <text x="25.5" y="13.0" stroke="none" text-anchor="middle" data-name="Routing">Routing</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="SslHandler">
+                        <g fill="white" stroke="#33322E" data-name="SslHandler">
+                            <rect x="2448.0" y="192.0" height="32.0" width="88.0" data-name="SslHandler"></rect>
+                        </g>
+                        <g transform="translate(2448, 192)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="SslHandler">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="SslHandler">
+                                <text x="36.0" y="13.0" stroke="none" text-anchor="middle" data-name="SslHandler">SslHandler</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="HeapGraphEdge">
+                        <g fill="white" stroke="#33322E" data-name="HeapGraphEdge">
+                            <rect x="1827.0" y="120.0" height="32.0" width="126.0" data-name="HeapGraphEdge"></rect>
+                        </g>
+                        <g transform="translate(1827, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="HeapGraphEdge">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="HeapGraphEdge">
+                                <text x="55.0" y="13.0" stroke="none" text-anchor="middle" data-name="HeapGraphEdge">HeapGraphEdge</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="HeapGraphNode">
+                        <g fill="white" stroke="#33322E" data-name="HeapGraphNode">
+                            <rect x="1993.0" y="120.0" height="32.0" width="127.0" data-name="HeapGraphNode"></rect>
+                        </g>
+                        <g transform="translate(1993, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="HeapGraphNode">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="HeapGraphNode">
+                                <text x="55.5" y="13.0" stroke="none" text-anchor="middle" data-name="HeapGraphNode">HeapGraphNode</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="HeapSnapshot">
+                        <g fill="white" stroke="#33322E" data-name="HeapSnapshot">
+                            <rect x="2160.0" y="120.0" height="32.0" width="114.0" data-name="HeapSnapshot"></rect>
+                        </g>
+                        <g transform="translate(2160, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="HeapSnapshot">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="HeapSnapshot">
+                                <text x="49.0" y="13.0" stroke="none" text-anchor="middle" data-name="HeapSnapshot">HeapSnapshot</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="HttpClient">
+                        <g fill="white" stroke="#33322E" data-name="HttpClient">
+                            <rect x="2314.0" y="120.0" height="32.0" width="80.0" data-name="HttpClient"></rect>
+                        </g>
+                        <g transform="translate(2314, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="HttpClient">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="HttpClient">
+                                <text x="32.0" y="13.0" stroke="none" text-anchor="middle" data-name="HttpClient">HttpClient</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="HttpCollection">
+                        <g fill="white" stroke="#33322E" data-name="HttpCollection">
+                            <rect x="2434.0" y="120.0" height="32.0" width="108.0" data-name="HttpCollection"></rect>
+                        </g>
+                        <g transform="translate(2434, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="HttpCollection">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="HttpCollection">
+                                <text x="46.0" y="13.0" stroke="none" text-anchor="middle" data-name="HttpCollection">HttpCollection</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="HttpCookie">
+                        <g fill="white" stroke="#33322E" data-name="HttpCookie">
+                            <rect x="2582.0" y="120.0" height="32.0" width="89.0" data-name="HttpCookie"></rect>
+                        </g>
+                        <g transform="translate(2582, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="HttpCookie">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="HttpCookie">
+                                <text x="36.5" y="13.0" stroke="none" text-anchor="middle" data-name="HttpCookie">HttpCookie</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="HttpUploadData">
+                        <g fill="white" stroke="#33322E" data-name="HttpUploadData">
+                            <rect x="2711.0" y="120.0" height="32.0" width="120.0" data-name="HttpUploadData"></rect>
+                        </g>
+                        <g transform="translate(2711, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="HttpUploadData">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="HttpUploadData">
+                                <text x="52.0" y="13.0" stroke="none" text-anchor="middle" data-name="HttpUploadData">HttpUploadData</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="Image">
+                        <g fill="white" stroke="#33322E" data-name="Image">
+                            <rect x="2871.0" y="120.0" height="32.0" width="57.0" data-name="Image"></rect>
+                        </g>
+                        <g transform="translate(2871, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Image">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Image">
+                                <text x="20.5" y="13.0" stroke="none" text-anchor="middle" data-name="Image">Image</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="Iterator">
+                        <g fill="white" stroke="#33322E" data-name="Iterator">
+                            <rect x="2968.0" y="120.0" height="32.0" width="64.0" data-name="Iterator"></rect>
+                        </g>
+                        <g transform="translate(2968, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Iterator">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Iterator">
+                                <text x="24.0" y="13.0" stroke="none" text-anchor="middle" data-name="Iterator">Iterator</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="LevelDB">
+                        <g fill="white" stroke="#33322E" data-name="LevelDB">
+                            <rect x="3072.0" y="120.0" height="32.0" width="71.0" data-name="LevelDB"></rect>
+                        </g>
+                        <g transform="translate(3072, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="LevelDB">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="LevelDB">
+                                <text x="27.5" y="13.0" stroke="none" text-anchor="middle" data-name="LevelDB">LevelDB</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="Lock">
+                        <g fill="white" stroke="#33322E" data-name="Lock">
+                            <rect x="3183.0" y="120.0" height="32.0" width="48.0" data-name="Lock"></rect>
+                        </g>
+                        <g transform="translate(3183, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Lock">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Lock">
+                                <text x="16.0" y="13.0" stroke="none" text-anchor="middle" data-name="Lock">Lock</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="Condition">
+                        <g fill="white" stroke="#33322E" data-name="Condition">
+                            <rect x="2576.0" y="192.0" height="32.0" width="79.0" data-name="Condition"></rect>
+                        </g>
+                        <g transform="translate(2576, 192)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Condition">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Condition">
+                                <text x="31.5" y="13.0" stroke="none" text-anchor="middle" data-name="Condition">Condition</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="Event">
+                        <g fill="white" stroke="#33322E" data-name="Event">
+                            <rect x="3052.0" y="192.0" height="32.0" width="54.0" data-name="Event"></rect>
+                        </g>
+                        <g transform="translate(3052, 192)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Event">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Event">
+                                <text x="19.0" y="13.0" stroke="none" text-anchor="middle" data-name="Event">Event</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="Semaphore">
+                        <g fill="white" stroke="#33322E" data-name="Semaphore">
+                            <rect x="3328.0" y="192.0" height="32.0" width="92.0" data-name="Semaphore"></rect>
+                        </g>
+                        <g transform="translate(3328, 192)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Semaphore">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Semaphore">
+                                <text x="38.0" y="13.0" stroke="none" text-anchor="middle" data-name="Semaphore">Semaphore</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="Message">
+                        <g fill="white" stroke="#33322E" data-name="Message">
+                            <rect x="3473.0" y="120.0" height="32.0" width="76.0" data-name="Message"></rect>
+                        </g>
+                        <g transform="translate(3473, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Message">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Message">
+                                <text x="30.0" y="13.0" stroke="none" text-anchor="middle" data-name="Message">Message</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="HttpMessage">
+                        <g fill="white" stroke="#33322E" data-name="HttpMessage">
+                            <rect x="3460.0" y="192.0" height="32.0" width="103.0" data-name="HttpMessage"></rect>
+                        </g>
+                        <g transform="translate(3460, 192)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="HttpMessage">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="HttpMessage">
+                                <text x="43.5" y="13.0" stroke="none" text-anchor="middle" data-name="HttpMessage">HttpMessage</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="HttpRequest">
+                        <g fill="white" stroke="#33322E" data-name="HttpRequest">
+                            <rect x="3408.0" y="264.0" height="32.0" width="98.0" data-name="HttpRequest"></rect>
+                        </g>
+                        <g transform="translate(3408, 264)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="HttpRequest">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="HttpRequest">
+                                <text x="41.0" y="13.0" stroke="none" text-anchor="middle" data-name="HttpRequest">HttpRequest</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="HttpResponse">
+                        <g fill="white" stroke="#33322E" data-name="HttpResponse">
+                            <rect x="4139.0" y="264.0" height="32.0" width="109.0" data-name="HttpResponse"></rect>
+                        </g>
+                        <g transform="translate(4139, 264)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="HttpResponse">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="HttpResponse">
+                                <text x="46.5" y="13.0" stroke="none" text-anchor="middle" data-name="HttpResponse">HttpResponse</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="WebSocketMessage">
+                        <g fill="white" stroke="#33322E" data-name="WebSocketMessage">
+                            <rect x="4149.0" y="192.0" height="32.0" width="151.0" data-name="WebSocketMessage"></rect>
+                        </g>
+                        <g transform="translate(4149, 192)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="WebSocketMessage">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="WebSocketMessage">
+                                <text x="67.5" y="13.0" stroke="none" text-anchor="middle" data-name="WebSocketMessage">WebSocketMessage</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="MongoCollection">
+                        <g fill="white" stroke="#33322E" data-name="MongoCollection">
+                            <rect x="3589.0" y="120.0" height="32.0" width="126.0" data-name="MongoCollection"></rect>
+                        </g>
+                        <g transform="translate(3589, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="MongoCollection">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="MongoCollection">
+                                <text x="55.0" y="13.0" stroke="none" text-anchor="middle" data-name="MongoCollection">MongoCollection</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="MongoCursor">
+                        <g fill="white" stroke="#33322E" data-name="MongoCursor">
+                            <rect x="3755.0" y="120.0" height="32.0" width="105.0" data-name="MongoCursor"></rect>
+                        </g>
+                        <g transform="translate(3755, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="MongoCursor">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="MongoCursor">
+                                <text x="44.5" y="13.0" stroke="none" text-anchor="middle" data-name="MongoCursor">MongoCursor</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="MongoDB">
+                        <g fill="white" stroke="#33322E" data-name="MongoDB">
+                            <rect x="3900.0" y="120.0" height="32.0" width="80.0" data-name="MongoDB"></rect>
+                        </g>
+                        <g transform="translate(3900, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="MongoDB">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="MongoDB">
+                                <text x="32.0" y="13.0" stroke="none" text-anchor="middle" data-name="MongoDB">MongoDB</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="MongoID">
+                        <g fill="white" stroke="#33322E" data-name="MongoID">
+                            <rect x="4020.0" y="120.0" height="32.0" width="75.0" data-name="MongoID"></rect>
+                        </g>
+                        <g transform="translate(4020, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="MongoID">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="MongoID">
+                                <text x="29.5" y="13.0" stroke="none" text-anchor="middle" data-name="MongoID">MongoID</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="PKey">
+                        <g fill="white" stroke="#33322E" data-name="PKey">
+                            <rect x="4135.0" y="120.0" height="32.0" width="50.0" data-name="PKey"></rect>
+                        </g>
+                        <g transform="translate(4135, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="PKey">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="PKey">
+                                <text x="17.0" y="13.0" stroke="none" text-anchor="middle" data-name="PKey">PKey</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="Redis">
+                        <g fill="white" stroke="#33322E" data-name="Redis">
+                            <rect x="4225.0" y="120.0" height="32.0" width="54.0" data-name="Redis"></rect>
+                        </g>
+                        <g transform="translate(4225, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Redis">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Redis">
+                                <text x="19.0" y="13.0" stroke="none" text-anchor="middle" data-name="Redis">Redis</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="RedisHash">
+                        <g fill="white" stroke="#33322E" data-name="RedisHash">
+                            <rect x="4319.0" y="120.0" height="32.0" width="88.0" data-name="RedisHash"></rect>
+                        </g>
+                        <g transform="translate(4319, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="RedisHash">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="RedisHash">
+                                <text x="36.0" y="13.0" stroke="none" text-anchor="middle" data-name="RedisHash">RedisHash</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="RedisList">
+                        <g fill="white" stroke="#33322E" data-name="RedisList">
+                            <rect x="4447.0" y="120.0" height="32.0" width="77.0" data-name="RedisList"></rect>
+                        </g>
+                        <g transform="translate(4447, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="RedisList">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="RedisList">
+                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="RedisList">RedisList</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="RedisSet">
+                        <g fill="white" stroke="#33322E" data-name="RedisSet">
+                            <rect x="4564.0" y="120.0" height="32.0" width="75.0" data-name="RedisSet"></rect>
+                        </g>
+                        <g transform="translate(4564, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="RedisSet">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="RedisSet">
+                                <text x="29.5" y="13.0" stroke="none" text-anchor="middle" data-name="RedisSet">RedisSet</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="RedisSortedSet">
+                        <g fill="white" stroke="#33322E" data-name="RedisSortedSet">
+                            <rect x="4679.0" y="120.0" height="32.0" width="119.0" data-name="RedisSortedSet"></rect>
+                        </g>
+                        <g transform="translate(4679, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="RedisSortedSet">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="RedisSortedSet">
+                                <text x="51.5" y="13.0" stroke="none" text-anchor="middle" data-name="RedisSortedSet">RedisSortedSet</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="SandBox">
+                        <g fill="white" stroke="#33322E" data-name="SandBox">
+                            <rect x="4838.0" y="120.0" height="32.0" width="75.0" data-name="SandBox"></rect>
+                        </g>
+                        <g transform="translate(4838, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="SandBox">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="SandBox">
+                                <text x="29.5" y="13.0" stroke="none" text-anchor="middle" data-name="SandBox">SandBox</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="Smtp">
+                        <g fill="white" stroke="#33322E" data-name="Smtp">
+                            <rect x="4953.0" y="120.0" height="32.0" width="49.0" data-name="Smtp"></rect>
+                        </g>
+                        <g transform="translate(4953, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Smtp">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Smtp">
+                                <text x="16.5" y="13.0" stroke="none" text-anchor="middle" data-name="Smtp">Smtp</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="Stat">
+                        <g fill="white" stroke="#33322E" data-name="Stat">
+                            <rect x="5042.0" y="120.0" height="32.0" width="42.0" data-name="Stat"></rect>
+                        </g>
+                        <g transform="translate(5042, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Stat">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Stat">
+                                <text x="13.0" y="13.0" stroke="none" text-anchor="middle" data-name="Stat">Stat</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="Stream">
+                        <g fill="white" stroke="#33322E" data-name="Stream">
+                            <rect x="5124.0" y="120.0" height="32.0" width="63.0" data-name="Stream"></rect>
+                        </g>
+                        <g transform="translate(5124, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Stream">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Stream">
+                                <text x="23.5" y="13.0" stroke="none" text-anchor="middle" data-name="Stream">Stream</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="BufferedStream">
+                        <g fill="white" stroke="#33322E" data-name="BufferedStream">
+                            <rect x="4340.0" y="192.0" height="32.0" width="119.0" data-name="BufferedStream"></rect>
+                        </g>
+                        <g transform="translate(4340, 192)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="BufferedStream">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="BufferedStream">
+                                <text x="51.5" y="13.0" stroke="none" text-anchor="middle" data-name="BufferedStream">BufferedStream</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="SeekableStream">
+                        <g fill="white" stroke="#33322E" data-name="SeekableStream">
+                            <rect x="4499.0" y="192.0" height="32.0" width="124.0" data-name="SeekableStream"></rect>
+                        </g>
+                        <g transform="translate(4499, 192)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="SeekableStream">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="SeekableStream">
+                                <text x="54.0" y="13.0" stroke="none" text-anchor="middle" data-name="SeekableStream">SeekableStream</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="File">
+                        <g fill="white" stroke="#33322E" data-name="File">
+                            <rect x="4288.0" y="264.0" height="32.0" width="39.0" data-name="File"></rect>
+                        </g>
+                        <g transform="translate(4288, 264)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="File">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="File">
+                                <text x="11.5" y="13.0" stroke="none" text-anchor="middle" data-name="File">File</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="MemoryStream">
+                        <g fill="white" stroke="#33322E" data-name="MemoryStream">
+                            <rect x="4367.0" y="264.0" height="32.0" width="115.0" data-name="MemoryStream"></rect>
+                        </g>
+                        <g transform="translate(4367, 264)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="MemoryStream">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="MemoryStream">
+                                <text x="49.5" y="13.0" stroke="none" text-anchor="middle" data-name="MemoryStream">MemoryStream</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="RangeStream">
+                        <g fill="white" stroke="#33322E" data-name="RangeStream">
+                            <rect x="4789.0" y="264.0" height="32.0" width="106.0" data-name="RangeStream"></rect>
+                        </g>
+                        <g transform="translate(4789, 264)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="RangeStream">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="RangeStream">
+                                <text x="45.0" y="13.0" stroke="none" text-anchor="middle" data-name="RangeStream">RangeStream</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="Socket">
+                        <g fill="white" stroke="#33322E" data-name="Socket">
+                            <rect x="4663.0" y="192.0" height="32.0" width="61.0" data-name="Socket"></rect>
+                        </g>
+                        <g transform="translate(4663, 192)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Socket">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Socket">
+                                <text x="22.5" y="13.0" stroke="none" text-anchor="middle" data-name="Socket">Socket</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="SslSocket">
+                        <g fill="white" stroke="#33322E" data-name="SslSocket">
+                            <rect x="5097.0" y="192.0" height="32.0" width="81.0" data-name="SslSocket"></rect>
+                        </g>
+                        <g transform="translate(5097, 192)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="SslSocket">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="SslSocket">
+                                <text x="32.5" y="13.0" stroke="none" text-anchor="middle" data-name="SslSocket">SslSocket</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="TTYInputStream">
+                        <g fill="white" stroke="#33322E" data-name="TTYInputStream">
+                            <rect x="5218.0" y="192.0" height="32.0" width="122.0" data-name="TTYInputStream"></rect>
+                        </g>
+                        <g transform="translate(5218, 192)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="TTYInputStream">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="TTYInputStream">
+                                <text x="53.0" y="13.0" stroke="none" text-anchor="middle" data-name="TTYInputStream">TTYInputStream</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="TTYOutputStream">
+                        <g fill="white" stroke="#33322E" data-name="TTYOutputStream">
+                            <rect x="5424.0" y="192.0" height="32.0" width="133.0" data-name="TTYOutputStream"></rect>
+                        </g>
+                        <g transform="translate(5424, 192)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="TTYOutputStream">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="TTYOutputStream">
+                                <text x="58.5" y="13.0" stroke="none" text-anchor="middle" data-name="TTYOutputStream">TTYOutputStream</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="StringDecoder">
+                        <g fill="white" stroke="#33322E" data-name="StringDecoder">
+                            <rect x="5505.0" y="120.0" height="32.0" width="110.0" data-name="StringDecoder"></rect>
+                        </g>
+                        <g transform="translate(5505, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="StringDecoder">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="StringDecoder">
+                                <text x="47.0" y="13.0" stroke="none" text-anchor="middle" data-name="StringDecoder">StringDecoder</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="TcpServer">
+                        <g fill="white" stroke="#33322E" data-name="TcpServer">
+                            <rect x="5660.0" y="120.0" height="32.0" width="84.0" data-name="TcpServer"></rect>
+                        </g>
+                        <g transform="translate(5660, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="TcpServer">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="TcpServer">
+                                <text x="34.0" y="13.0" stroke="none" text-anchor="middle" data-name="TcpServer">TcpServer</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="HttpServer">
+                        <g fill="white" stroke="#33322E" data-name="HttpServer">
+                            <rect x="5597.0" y="192.0" height="32.0" width="86.0" data-name="HttpServer"></rect>
+                        </g>
+                        <g transform="translate(5597, 192)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="HttpServer">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="HttpServer">
+                                <text x="35.0" y="13.0" stroke="none" text-anchor="middle" data-name="HttpServer">HttpServer</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="HttpsServer">
+                        <g fill="white" stroke="#33322E" data-name="HttpsServer">
+                            <rect x="5593.0" y="264.0" height="32.0" width="94.0" data-name="HttpsServer"></rect>
+                        </g>
+                        <g transform="translate(5593, 264)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="HttpsServer">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="HttpsServer">
+                                <text x="39.0" y="13.0" stroke="none" text-anchor="middle" data-name="HttpsServer">HttpsServer</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="SslServer">
+                        <g fill="white" stroke="#33322E" data-name="SslServer">
+                            <rect x="5723.0" y="192.0" height="32.0" width="79.0" data-name="SslServer"></rect>
+                        </g>
+                        <g transform="translate(5723, 192)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="SslServer">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="SslServer">
+                                <text x="31.5" y="13.0" stroke="none" text-anchor="middle" data-name="SslServer">SslServer</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="TextDecoder">
+                        <g fill="white" stroke="#33322E" data-name="TextDecoder">
+                            <rect x="5784.0" y="120.0" height="32.0" width="100.0" data-name="TextDecoder"></rect>
+                        </g>
+                        <g transform="translate(5784, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="TextDecoder">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="TextDecoder">
+                                <text x="42.0" y="13.0" stroke="none" text-anchor="middle" data-name="TextDecoder">TextDecoder</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="TextEncoder">
+                        <g fill="white" stroke="#33322E" data-name="TextEncoder">
+                            <rect x="5924.0" y="120.0" height="32.0" width="99.0" data-name="TextEncoder"></rect>
+                        </g>
+                        <g transform="translate(5924, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="TextEncoder">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="TextEncoder">
+                                <text x="41.5" y="13.0" stroke="none" text-anchor="middle" data-name="TextEncoder">TextEncoder</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="Timer">
+                        <g fill="white" stroke="#33322E" data-name="Timer">
+                            <rect x="6063.0" y="120.0" height="32.0" width="53.0" data-name="Timer"></rect>
+                        </g>
+                        <g transform="translate(6063, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Timer">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Timer">
+                                <text x="18.5" y="13.0" stroke="none" text-anchor="middle" data-name="Timer">Timer</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="UrlObject">
+                        <g fill="white" stroke="#33322E" data-name="UrlObject">
+                            <rect x="6156.0" y="120.0" height="32.0" width="77.0" data-name="UrlObject"></rect>
+                        </g>
+                        <g transform="translate(6156, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="UrlObject">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="UrlObject">
+                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="UrlObject">UrlObject</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="X509Cert">
+                        <g fill="white" stroke="#33322E" data-name="X509Cert">
+                            <rect x="6273.0" y="120.0" height="32.0" width="78.0" data-name="X509Cert"></rect>
+                        </g>
+                        <g transform="translate(6273, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="X509Cert">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="X509Cert">
+                                <text x="31.0" y="13.0" stroke="none" text-anchor="middle" data-name="X509Cert">X509Cert</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="X509Crl">
+                        <g fill="white" stroke="#33322E" data-name="X509Crl">
+                            <rect x="6391.0" y="120.0" height="32.0" width="69.0" data-name="X509Crl"></rect>
+                        </g>
+                        <g transform="translate(6391, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="X509Crl">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="X509Crl">
+                                <text x="26.5" y="13.0" stroke="none" text-anchor="middle" data-name="X509Crl">X509Crl</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="X509Req">
+                        <g fill="white" stroke="#33322E" data-name="X509Req">
+                            <rect x="6500.0" y="120.0" height="32.0" width="77.0" data-name="X509Req"></rect>
+                        </g>
+                        <g transform="translate(6500, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="X509Req">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="X509Req">
+                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="X509Req">X509Req</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="XmlAttr">
+                        <g fill="white" stroke="#33322E" data-name="XmlAttr">
+                            <rect x="6617.0" y="120.0" height="32.0" width="63.0" data-name="XmlAttr"></rect>
+                        </g>
+                        <g transform="translate(6617, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="XmlAttr">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="XmlAttr">
+                                <text x="23.5" y="13.0" stroke="none" text-anchor="middle" data-name="XmlAttr">XmlAttr</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="XmlNamedNodeMap">
+                        <g fill="white" stroke="#33322E" data-name="XmlNamedNodeMap">
+                            <rect x="6720.0" y="120.0" height="32.0" width="150.0" data-name="XmlNamedNodeMap"></rect>
+                        </g>
+                        <g transform="translate(6720, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="XmlNamedNodeMap">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="XmlNamedNodeMap">
+                                <text x="67.0" y="13.0" stroke="none" text-anchor="middle" data-name="XmlNamedNodeMap">XmlNamedNodeMap</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="XmlNode">
+                        <g fill="white" stroke="#33322E" data-name="XmlNode">
+                            <rect x="6910.0" y="120.0" height="32.0" width="75.0" data-name="XmlNode"></rect>
+                        </g>
+                        <g transform="translate(6910, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="XmlNode">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="XmlNode">
+                                <text x="29.5" y="13.0" stroke="none" text-anchor="middle" data-name="XmlNode">XmlNode</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="XmlCharacterData">
+                        <g fill="white" stroke="#33322E" data-name="XmlCharacterData">
+                            <rect x="5842.0" y="192.0" height="32.0" width="136.0" data-name="XmlCharacterData"></rect>
+                        </g>
+                        <g transform="translate(5842, 192)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="XmlCharacterData">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="XmlCharacterData">
+                                <text x="60.0" y="13.0" stroke="none" text-anchor="middle" data-name="XmlCharacterData">XmlCharacterData</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="XmlComment">
+                        <g fill="white" stroke="#33322E" data-name="XmlComment">
+                            <rect x="5793.0" y="264.0" height="32.0" width="103.0" data-name="XmlComment"></rect>
+                        </g>
+                        <g transform="translate(5793, 264)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="XmlComment">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="XmlComment">
+                                <text x="43.5" y="13.0" stroke="none" text-anchor="middle" data-name="XmlComment">XmlComment</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="XmlText">
+                        <g fill="white" stroke="#33322E" data-name="XmlText">
+                            <rect x="5939.0" y="264.0" height="32.0" width="69.0" data-name="XmlText"></rect>
+                        </g>
+                        <g transform="translate(5939, 264)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="XmlText">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="XmlText">
+                                <text x="26.5" y="13.0" stroke="none" text-anchor="middle" data-name="XmlText">XmlText</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="XmlCDATASection">
+                        <g fill="white" stroke="#33322E" data-name="XmlCDATASection">
+                            <rect x="5905.0" y="336.0" height="32.0" width="136.0" data-name="XmlCDATASection"></rect>
+                        </g>
+                        <g transform="translate(5905, 336)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="XmlCDATASection">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="XmlCDATASection">
+                                <text x="60.0" y="13.0" stroke="none" text-anchor="middle" data-name="XmlCDATASection">XmlCDATASection</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="XmlDocument">
+                        <g fill="white" stroke="#33322E" data-name="XmlDocument">
+                            <rect x="6344.0" y="192.0" height="32.0" width="107.0" data-name="XmlDocument"></rect>
+                        </g>
+                        <g transform="translate(6344, 192)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="XmlDocument">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="XmlDocument">
+                                <text x="45.5" y="13.0" stroke="none" text-anchor="middle" data-name="XmlDocument">XmlDocument</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="XmlDocumentType">
+                        <g fill="white" stroke="#33322E" data-name="XmlDocumentType">
+                            <rect x="6833.0" y="192.0" height="32.0" width="139.0" data-name="XmlDocumentType"></rect>
+                        </g>
+                        <g transform="translate(6833, 192)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="XmlDocumentType">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="XmlDocumentType">
+                                <text x="61.5" y="13.0" stroke="none" text-anchor="middle" data-name="XmlDocumentType">XmlDocumentType</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="XmlElement">
+                        <g fill="white" stroke="#33322E" data-name="XmlElement">
+                            <rect x="7012.0" y="192.0" height="32.0" width="94.0" data-name="XmlElement"></rect>
+                        </g>
+                        <g transform="translate(7012, 192)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="XmlElement">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="XmlElement">
+                                <text x="39.0" y="13.0" stroke="none" text-anchor="middle" data-name="XmlElement">XmlElement</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="XmlProcessingInstruction">
+                        <g fill="white" stroke="#33322E" data-name="XmlProcessingInstruction">
+                            <rect x="7146.0" y="192.0" height="32.0" width="183.0" data-name="XmlProcessingInstruction"></rect>
+                        </g>
+                        <g transform="translate(7146, 192)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="XmlProcessingInstruction">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="XmlProcessingInstruction">
+                                <text x="83.5" y="13.0" stroke="none" text-anchor="middle" data-name="XmlProcessingInstruction">XmlProcessingInstruction</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="XmlNodeList">
+                        <g fill="white" stroke="#33322E" data-name="XmlNodeList">
+                            <rect x="7025.0" y="120.0" height="32.0" width="99.0" data-name="XmlNodeList"></rect>
+                        </g>
+                        <g transform="translate(7025, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="XmlNodeList">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="XmlNodeList">
+                                <text x="41.5" y="13.0" stroke="none" text-anchor="middle" data-name="XmlNodeList">XmlNodeList</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="ZipFile">
+                        <g fill="white" stroke="#33322E" data-name="ZipFile">
+                            <rect x="7164.0" y="120.0" height="32.0" width="59.0" data-name="ZipFile"></rect>
+                        </g>
+                        <g transform="translate(7164, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="ZipFile">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="ZipFile">
+                                <text x="21.5" y="13.0" stroke="none" text-anchor="middle" data-name="ZipFile">ZipFile</text>
+
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
 </svg></div>
 
 <h2 id="成员函数">成员函数</h2>

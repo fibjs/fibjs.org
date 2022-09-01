@@ -4,7 +4,6 @@
 <li><a href=../../../guide/hello.md.html class ="notranslate">hello, world</a></li>
 <li><a href=../../../guide/test.md.html>美好生活从测试开始</a></li>
 <li><a href=../../../guide/profiler.md.html>找出性能杀手</a></li>
-<li><a href=../../../guide/desktop.md.html>快速开发桌面应用</a></li>
 <li><a href=../../../guide/server-hot-update.md.html>服务端模块热更新</a></li>
 <li><a href=../../../guide/host-routes.md.html>域名路由</a></li>
 <li><a href=../../../guide/x509.md.html>fibjs 中 X509 证书的使用</a></li>
@@ -13,6 +12,7 @@
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_module" aria-controls="collapse_module"> 基础模块 </a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby=headingOne><div class=panel-body> <ul>
 <li><a href=../../module/ifs/assert.md.html class ="notranslate">assert</a></li>
 <li><a href=../../module/ifs/base32.md.html class ="notranslate">base32</a></li>
+<li><a href=../../module/ifs/base58.md.html class ="notranslate">base58</a></li>
 <li><a href=../../module/ifs/base64.md.html class ="notranslate">base64</a></li>
 <li><a href=../../module/ifs/child_process.md.html class ="notranslate">child_process</a></li>
 <li><a href=../../module/ifs/console.md.html class ="notranslate">console</a></li>
@@ -36,6 +36,7 @@
 <li><a href=../../module/ifs/json.md.html class ="notranslate">json</a></li>
 <li><a href=../../module/ifs/mq.md.html class ="notranslate">mq</a></li>
 <li><a href=../../module/ifs/msgpack.md.html class ="notranslate">msgpack</a></li>
+<li><a href=../../module/ifs/multibase.md.html class ="notranslate">multibase</a></li>
 <li><a href=../../module/ifs/net.md.html class ="notranslate">net</a></li>
 <li><a href=../../module/ifs/os.md.html class ="notranslate">os</a></li>
 <li><a href=../../module/ifs/path.md.html class ="notranslate">path</a></li>
@@ -131,6 +132,8 @@
 <li><a href=ttyinputstream.md.html class ="notranslate">TTYInputStream</a></li>
 <li><a href=ttyoutputstream.md.html class ="notranslate">TTYOutputStream</a></li>
 <li><a href=tcpserver.md.html class ="notranslate">TcpServer</a></li>
+<li><a href=textdecoder.md.html class ="notranslate">TextDecoder</a></li>
+<li><a href=textencoder.md.html class ="notranslate">TextEncoder</a></li>
 <li><a href=timer.md.html class ="notranslate">Timer</a></li>
 <li><a href=urlobject.md.html class ="notranslate">UrlObject</a></li>
 <li><a href=websocket.md.html class ="notranslate">WebSocket</a></li>
@@ -205,81 +208,166 @@
 <p>CDATA 区段包含了不会被解析器解析的文本。CDATA 区段中的标签不会被视为标记，同时实体也不会被展开。主要的目的是为了包含诸如 XML 片段之类的材料，而无需转义所有的分隔符。</p>
 <p>在一个 CDATA 中唯一被识别的分隔符是 &quot;]]&gt;&quot;，它可标示 CDATA 区段的结束。CDATA 区段不能进行嵌套。</p>
 <h2 id="继承关系">继承关系</h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="229" height="952" viewbox="0 0 229 952" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:bold  10pt Helvetica,sans-Serif, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
-  <desc >
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="229.0" height="952.0" viewbox="0 0 229 952" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
+    <desc >
+    #lineWidth: 1.5
+    #font: Helvetica,sans-Serif
+    #fontSize: 10
+    #leading: 1.6
+    #.this: fill=lightgray
+    #.class: fill=white
 
-[&lt;class&gt;object|toString();toJSON()]
-[&lt;class&gt;XmlNode|nodeType;nodeName;nodeValue;ownerDocument;parentNode;childNodes;firstChild;lastChild;previousSibling;nextSibling|hasChildNodes();normalize();cloneNode();lookupPrefix();lookupNamespaceURI();insertBefore();insertAfter();appendChild();replaceChild();removeChild()]
-[&lt;class&gt;XmlCharacterData|data;length|substringData();appendData();insertData();deleteData();replaceData()]
-[&lt;class&gt;XmlText|splitText()]
-[&lt;this&gt;XmlCDATASection]
+    [&lt;class&gt;object|toString();toJSON()]
+    [&lt;class&gt;XmlNode|nodeType;nodeName;nodeValue;ownerDocument;parentNode;childNodes;firstChild;lastChild;previousSibling;nextSibling|hasChildNodes();normalize();cloneNode();lookupPrefix();lookupNamespaceURI();insertBefore();insertAfter();appendChild();replaceChild();removeChild()]
+    [&lt;class&gt;XmlCharacterData|data;length|substringData();appendData();insertData();deleteData();replaceData()]
+    [&lt;class&gt;XmlText|splitText()]
+    [&lt;this&gt;XmlCDATASection]
 
-[object] &lt;:- [XmlNode]
-[XmlNode] &lt;:- [XmlCharacterData]
-[XmlCharacterData] &lt;:- [XmlText]
-[XmlText] &lt;:- [XmlCDATASection]
-</desc>
-  <rect x="0" y="0" height="952" width="229" style="stroke:none; fill:transparent;"></rect>
-  <path d="M114.5 121.3 L114.5 128 L114.5 148 L114.5 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M119.8 121.3 L114.5 121.3 L109.2 121.3 L114.5 108 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M114.5 545.3 L114.5 552 L114.5 572 L114.5 572 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M119.8 545.3 L114.5 545.3 L109.2 545.3 L114.5 532 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M114.5 761.3 L114.5 768 L114.5 788 L114.5 788 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M119.8 761.3 L114.5 761.3 L109.2 761.3 L114.5 748 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M114.5 865.3 L114.5 872 L114.5 892 L114.5 892 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M119.8 865.3 L114.5 865.3 L109.2 865.3 L114.5 852 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <rect x="28" y="148" height="384" width="173" data-name="XmlNode" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <path d="M28 180 L201 180" data-name="XmlNode" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M28 356 L201 356" data-name="XmlNode" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <text x="114.5" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="XmlNode">XmlNode</text>
-  <text x="36" y="201" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="XmlNode">nodeType</text>
-  <text x="36" y="217" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="XmlNode">nodeName</text>
-  <text x="36" y="233" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="XmlNode">nodeValue</text>
-  <text x="36" y="249" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="XmlNode">ownerDocument</text>
-  <text x="36" y="265" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="XmlNode">parentNode</text>
-  <text x="36" y="281" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="XmlNode">childNodes</text>
-  <text x="36" y="297" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="XmlNode">firstChild</text>
-  <text x="36" y="313" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="XmlNode">lastChild</text>
-  <text x="36" y="329" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="XmlNode">previousSibling</text>
-  <text x="36" y="345" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="XmlNode">nextSibling</text>
-  <text x="36" y="377" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="XmlNode">hasChildNodes()</text>
-  <text x="36" y="393" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="XmlNode">normalize()</text>
-  <text x="36" y="409" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="XmlNode">cloneNode()</text>
-  <text x="36" y="425" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="XmlNode">lookupPrefix()</text>
-  <text x="36" y="441" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="XmlNode">lookupNamespaceURI()</text>
-  <text x="36" y="457" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="XmlNode">insertBefore()</text>
-  <text x="36" y="473" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="XmlNode">insertAfter()</text>
-  <text x="36" y="489" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="XmlNode">appendChild()</text>
-  <text x="36" y="505" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="XmlNode">replaceChild()</text>
-  <text x="36" y="521" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="XmlNode">removeChild()</text>
-  <rect x="47" y="572" height="176" width="136" data-name="XmlCharacterData" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <path d="M47 604 L183 604" data-name="XmlCharacterData" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M47 652 L183 652" data-name="XmlCharacterData" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <text x="115" y="593" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="XmlCharacterData">XmlCharacterData</text>
-  <text x="55" y="625" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="XmlCharacterData">data</text>
-  <text x="55" y="641" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="XmlCharacterData">length</text>
-  <text x="55" y="673" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="XmlCharacterData">substringData()</text>
-  <text x="55" y="689" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="XmlCharacterData">appendData()</text>
-  <text x="55" y="705" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="XmlCharacterData">insertData()</text>
-  <text x="55" y="721" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="XmlCharacterData">deleteData()</text>
-  <text x="55" y="737" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="XmlCharacterData">replaceData()</text>
-  <rect x="76" y="28" height="80" width="77" data-name="object" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <path d="M76 60 L153 60" data-name="object" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <text x="114.5" y="49" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="object">object</text>
-  <text x="84" y="81" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toString()</text>
-  <text x="84" y="97" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toJSON()</text>
-  <rect x="74" y="788" height="64" width="81" data-name="XmlText" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <path d="M74 820 L155 820" data-name="XmlText" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <text x="114.5" y="809" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="XmlText">XmlText</text>
-  <text x="82" y="841" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="XmlText">splitText()</text>
-  <rect x="47" y="892" height="32" width="136" data-name="XmlCDATASection" style="stroke:#33322E;fill:lightgray;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="115" y="913" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="XmlCDATASection">XmlCDATASection</text>
+    [object] &lt;:- [XmlNode]
+    [XmlNode] &lt;:- [XmlCharacterData]
+    [XmlCharacterData] &lt;:- [XmlText]
+    [XmlText] &lt;:- [XmlCDATASection]
+    </desc>
+    <g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="10pt" font-family="Helvetica,sans-Serif" font-weight="bold" font-style="normal">
+        <g font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="bold" font-style="normal" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
+            <g stroke="transparent" fill="transparent">
+                <rect x="0.0" y="0.0" height="952.0" width="229.0" stroke="none"></rect>
+            </g>
+            <g transform="translate(8, 8)" fill="#33322E">
+                <g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal">
+                    <path d="M86.5 93.3 L86.5 100 L86.5 120 L86.5 120.0 " fill="none"></path>
+                    <path d="M91.8 93.3 L86.5 93.3 L81.2 93.3 L86.5 80.0 Z"></path>
+                    <path d="M86.5 517.3 L86.5 524 L86.5 544 L86.5 544.0 " fill="none"></path>
+                    <path d="M91.8 517.3 L86.5 517.3 L81.2 517.3 L86.5 504.0 Z"></path>
+                    <path d="M86.5 733.3 L86.5 740 L86.5 760 L86.5 760.0 " fill="none"></path>
+                    <path d="M91.8 733.3 L86.5 733.3 L81.2 733.3 L86.5 720.0 Z"></path>
+                    <path d="M86.5 837.3 L86.5 844 L86.5 864 L86.5 864.0 " fill="none"></path>
+                    <path d="M91.8 837.3 L86.5 837.3 L81.2 837.3 L86.5 824.0 Z"></path>
+                    <g data-name="XmlNode">
+                        <g fill="white" stroke="#33322E" data-name="XmlNode">
+                            <rect x="0.0" y="120.0" height="384.0" width="173.0" data-name="XmlNode"></rect>
+                            <path d="M0.0 152.0 L173.0 152.0" fill="none" data-name="XmlNode"></path>
+                            <path d="M0.0 328.0 L173.0 328.0" fill="none" data-name="XmlNode"></path>
+                        </g>
+                        <g transform="translate(0, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="XmlNode">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="XmlNode">
+                                <text x="78.5" y="13.0" stroke="none" text-anchor="middle" data-name="XmlNode">XmlNode</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(0, 152)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="XmlNode">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="XmlNode">
+                                <text x="0.0" y="13.0" stroke="none" data-name="XmlNode">nodeType</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="XmlNode">nodeName</text>
+                                <text x="0.0" y="45.0" stroke="none" data-name="XmlNode">nodeValue</text>
+                                <text x="0.0" y="61.0" stroke="none" data-name="XmlNode">ownerDocument</text>
+                                <text x="0.0" y="77.0" stroke="none" data-name="XmlNode">parentNode</text>
+                                <text x="0.0" y="93.0" stroke="none" data-name="XmlNode">childNodes</text>
+                                <text x="0.0" y="109.0" stroke="none" data-name="XmlNode">firstChild</text>
+                                <text x="0.0" y="125.0" stroke="none" data-name="XmlNode">lastChild</text>
+                                <text x="0.0" y="141.0" stroke="none" data-name="XmlNode">previousSibling</text>
+                                <text x="0.0" y="157.0" stroke="none" data-name="XmlNode">nextSibling</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(0, 328)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="XmlNode">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="XmlNode">
+                                <text x="0.0" y="13.0" stroke="none" data-name="XmlNode">hasChildNodes()</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="XmlNode">normalize()</text>
+                                <text x="0.0" y="45.0" stroke="none" data-name="XmlNode">cloneNode()</text>
+                                <text x="0.0" y="61.0" stroke="none" data-name="XmlNode">lookupPrefix()</text>
+                                <text x="0.0" y="77.0" stroke="none" data-name="XmlNode">lookupNamespaceURI()</text>
+                                <text x="0.0" y="93.0" stroke="none" data-name="XmlNode">insertBefore()</text>
+                                <text x="0.0" y="109.0" stroke="none" data-name="XmlNode">insertAfter()</text>
+                                <text x="0.0" y="125.0" stroke="none" data-name="XmlNode">appendChild()</text>
+                                <text x="0.0" y="141.0" stroke="none" data-name="XmlNode">replaceChild()</text>
+                                <text x="0.0" y="157.0" stroke="none" data-name="XmlNode">removeChild()</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="XmlCharacterData">
+                        <g fill="white" stroke="#33322E" data-name="XmlCharacterData">
+                            <rect x="19.0" y="544.0" height="176.0" width="136.0" data-name="XmlCharacterData"></rect>
+                            <path d="M19.0 576.0 L155.0 576.0" fill="none" data-name="XmlCharacterData"></path>
+                            <path d="M19.0 624.0 L155.0 624.0" fill="none" data-name="XmlCharacterData"></path>
+                        </g>
+                        <g transform="translate(19, 544)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="XmlCharacterData">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="XmlCharacterData">
+                                <text x="60.0" y="13.0" stroke="none" text-anchor="middle" data-name="XmlCharacterData">XmlCharacterData</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(19, 576)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="XmlCharacterData">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="XmlCharacterData">
+                                <text x="0.0" y="13.0" stroke="none" data-name="XmlCharacterData">data</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="XmlCharacterData">length</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(19, 624)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="XmlCharacterData">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="XmlCharacterData">
+                                <text x="0.0" y="13.0" stroke="none" data-name="XmlCharacterData">substringData()</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="XmlCharacterData">appendData()</text>
+                                <text x="0.0" y="45.0" stroke="none" data-name="XmlCharacterData">insertData()</text>
+                                <text x="0.0" y="61.0" stroke="none" data-name="XmlCharacterData">deleteData()</text>
+                                <text x="0.0" y="77.0" stroke="none" data-name="XmlCharacterData">replaceData()</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="object">
+                        <g fill="white" stroke="#33322E" data-name="object">
+                            <rect x="48.0" y="0.0" height="80.0" width="77.0" data-name="object"></rect>
+                            <path d="M48.0 32.0 L125.0 32.0" fill="none" data-name="object"></path>
+                        </g>
+                        <g transform="translate(48, 0)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="object">
+                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="object">object</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(48, 32)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="object">
+                                <text x="0.0" y="13.0" stroke="none" data-name="object">toString()</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="object">toJSON()</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="XmlText">
+                        <g fill="white" stroke="#33322E" data-name="XmlText">
+                            <rect x="46.0" y="760.0" height="64.0" width="81.0" data-name="XmlText"></rect>
+                            <path d="M46.0 792.0 L127.0 792.0" fill="none" data-name="XmlText"></path>
+                        </g>
+                        <g transform="translate(46, 760)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="XmlText">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="XmlText">
+                                <text x="32.5" y="13.0" stroke="none" text-anchor="middle" data-name="XmlText">XmlText</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(46, 792)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="XmlText">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="XmlText">
+                                <text x="0.0" y="13.0" stroke="none" data-name="XmlText">splitText()</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="XmlCDATASection">
+                        <g fill="lightgray" stroke="#33322E" data-name="XmlCDATASection">
+                            <rect x="19.0" y="864.0" height="32.0" width="136.0" data-name="XmlCDATASection"></rect>
+                        </g>
+                        <g transform="translate(19, 864)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="XmlCDATASection">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="XmlCDATASection">
+                                <text x="60.0" y="13.0" stroke="none" text-anchor="middle" data-name="XmlCDATASection">XmlCDATASection</text>
+
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
 </svg></div>
 
 <h2 id="成员属性">成员属性</h2>

@@ -49,7 +49,7 @@ Value Digest.digest(String codec = "buffer");
 ```
 
 调用参数:
-* codec: String, 指定编码格式，允许值为："buffer", "[hex](../../module/ifs/hex.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
+* codec: String, 指定编码格式，允许值为："buffer", "[hex](../../module/ifs/hex.md)", "[base32](../../module/ifs/base32.md)", "[base58](../../module/ifs/base58.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
 
 返回结果:
 * Value, 返回指定编码的摘要表示
@@ -59,14 +59,33 @@ Value Digest.digest(String codec = "buffer");
 **签名并返回摘要**
 
 ```JavaScript
-Buffer Digest.sign(PKey key) async;
+Buffer Digest.sign(PKey key,
+    Object opts = {}) async;
 ```
 
 调用参数:
 * key: [PKey](PKey.md), 签名的私钥
+* opts: Object, 指定签名选项
 
 返回结果:
 * [Buffer](Buffer.md), 返回签名后的数据
+
+opts 支持以下参数:
+
+```JavaScript
+{
+    alg: 0， 指定签名的 hash 算法， 仅在 RSA 时有效， 缺省为 0. 支持算法: 0 = NONE,
+    1 = MD5,
+    2 = SHA1,
+    3 = SHA224,
+    4 = SHA256,
+    5 = SHA384,
+    6 = SHA512,
+    7 = RIPEMD160
+    to: pk,
+    指定验证方公钥， 仅在 ecsdsa 或 sm2 时有效
+}
+```
 
 --------------------------
 ### verify
@@ -74,15 +93,34 @@ Buffer Digest.sign(PKey key) async;
 
 ```JavaScript
 Boolean Digest.verify(PKey key,
-    Buffer sign) async;
+    Buffer sign,
+    Object opts = {}) async;
 ```
 
 调用参数:
 * key: [PKey](PKey.md), 验证签名的公钥
 * sign: [Buffer](Buffer.md), 指定要验证的签名
+* opts: Object, 指定验证选项
 
 返回结果:
 * Boolean, 返回验证后的结果
+
+opts 支持以下参数:
+
+```JavaScript
+{
+    alg: 0， 指定签名的 hash 算法， 仅在 RSA 时有效， 缺省为 0. 支持算法: 0 = NONE,
+    1 = MD5,
+    2 = SHA1,
+    3 = SHA224,
+    4 = SHA256,
+    5 = SHA384,
+    6 = SHA512,
+    7 = RIPEMD160
+    to: pk,
+    指定验证方公钥， 仅在 ecsdsa 或 sm2 时有效
+}
+```
 
 --------------------------
 ### toString

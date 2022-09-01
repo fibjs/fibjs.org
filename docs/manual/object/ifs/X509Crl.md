@@ -17,7 +17,7 @@ var k = new crypto.X509Crl();
 #.class: fill=white
 
 [<class>object|toString();toJSON()]
-[<this>X509Crl|new X509Crl()|version;issuer;serials;thisUpdate;nextUpdate;next|load();loadFile();dump();clear()]
+[<this>X509Crl|new X509Crl()|version;issuer;serials;thisUpdate;nextUpdate;next|import();pem();der();clear()]
 
 [object] <:- [X509Crl]
 ```
@@ -102,11 +102,11 @@ readonly X509Crl X509Crl.next;
 
 ## 成员函数
         
-### load
+### import
 **加载一个 DER 格式的撤销证书，可多次调用**
 
 ```JavaScript
-X509Crl.load(Buffer derCrl);
+X509Crl.import(Buffer derCrl);
 ```
 
 调用参数:
@@ -116,36 +116,36 @@ X509Crl.load(Buffer derCrl);
 **加载一个 PEM 格式的撤销证书，可多次调用**
 
 ```JavaScript
-X509Crl.load(String pemCrl);
+X509Crl.import(String pemCrl);
 ```
 
 调用参数:
 * pemCrl: String, PEM 格式的撤销证书
 
 --------------------------
-### loadFile
-**加载一个 PEM/DER 格式的撤销证书，可多次调用**
+### pem
+**以 PEM 格式导出已经加载的撤销证书**
 
 ```JavaScript
-X509Crl.loadFile(String filename);
+String X509Crl.pem(Boolean all = true);
 ```
 
 调用参数:
-* filename: String, 撤销证书文件名
-
---------------------------
-### dump
-**导出已经加载的撤销证书**
-
-```JavaScript
-Array X509Crl.dump(Boolean pem = true);
-```
-
-调用参数:
-* pem: Boolean, 指定输出 PEM 格式的撤销证书，缺省为 true
+* all: Boolean, 指定是否输出全部证书，缺省为 true
 
 返回结果:
-* Array, 以数组方式导出撤销证书链
+* String, 以数组方式导出撤销证书链
+
+--------------------------
+### der
+**以 DER 格式导出已经加载的撤销证书**
+
+```JavaScript
+Buffer X509Crl.der();
+```
+
+返回结果:
+* [Buffer](Buffer.md), 以数组方式导出撤销证书链
 
 --------------------------
 ### clear

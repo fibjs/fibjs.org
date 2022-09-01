@@ -4,7 +4,6 @@
 <li><a href=../../../guide/hello.md.html class ="notranslate">hello, world</a></li>
 <li><a href=../../../guide/test.md.html>美好生活从测试开始</a></li>
 <li><a href=../../../guide/profiler.md.html>找出性能杀手</a></li>
-<li><a href=../../../guide/desktop.md.html>快速开发桌面应用</a></li>
 <li><a href=../../../guide/server-hot-update.md.html>服务端模块热更新</a></li>
 <li><a href=../../../guide/host-routes.md.html>域名路由</a></li>
 <li><a href=../../../guide/x509.md.html>fibjs 中 X509 证书的使用</a></li>
@@ -13,6 +12,7 @@
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_module" aria-controls="collapse_module"> 基础模块 </a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby=headingOne><div class=panel-body> <ul>
 <li><a href=../../module/ifs/assert.md.html class ="notranslate">assert</a></li>
 <li><a href=../../module/ifs/base32.md.html class ="notranslate">base32</a></li>
+<li><a href=../../module/ifs/base58.md.html class ="notranslate">base58</a></li>
 <li><a href=../../module/ifs/base64.md.html class ="notranslate">base64</a></li>
 <li><a href=../../module/ifs/child_process.md.html class ="notranslate">child_process</a></li>
 <li><a href=../../module/ifs/console.md.html class ="notranslate">console</a></li>
@@ -36,6 +36,7 @@
 <li><a href=../../module/ifs/json.md.html class ="notranslate">json</a></li>
 <li><a href=../../module/ifs/mq.md.html class ="notranslate">mq</a></li>
 <li><a href=../../module/ifs/msgpack.md.html class ="notranslate">msgpack</a></li>
+<li><a href=../../module/ifs/multibase.md.html class ="notranslate">multibase</a></li>
 <li><a href=../../module/ifs/net.md.html class ="notranslate">net</a></li>
 <li><a href=../../module/ifs/os.md.html class ="notranslate">os</a></li>
 <li><a href=../../module/ifs/path.md.html class ="notranslate">path</a></li>
@@ -131,6 +132,8 @@
 <li><a href=ttyinputstream.md.html class ="notranslate">TTYInputStream</a></li>
 <li><a href=ttyoutputstream.md.html class ="notranslate">TTYOutputStream</a></li>
 <li><a href=tcpserver.md.html class ="notranslate">TcpServer</a></li>
+<li><a href=textdecoder.md.html class ="notranslate">TextDecoder</a></li>
+<li><a href=textencoder.md.html class ="notranslate">TextEncoder</a></li>
 <li><a href=timer.md.html class ="notranslate">Timer</a></li>
 <li><a href=urlobject.md.html class ="notranslate">UrlObject</a></li>
 <li><a href=websocket.md.html class ="notranslate">WebSocket</a></li>
@@ -201,50 +204,112 @@
 <p>事件对象</p>
 <p>通过一个事件达到对一组纤程进行控制的目的（事件对象的状态为bool类型）</p>
 <h2 id="继承关系">继承关系</h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="150" height="504" viewbox="0 0 150 504" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
-  <desc >
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="150.0" height="504.0" viewbox="0 0 150 504" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
+    <desc >
+    #lineWidth: 1.5
+    #font: Helvetica,sans-Serif
+    #fontSize: 10
+    #leading: 1.6
+    #.this: fill=lightgray
+    #.class: fill=white
 
-[&lt;class&gt;object|toString();toJSON()]
-[&lt;class&gt;Lock|new Lock()|acquire();release();count()]
-[&lt;this&gt;Event|new Event()|isSet();set();pulse();clear();wait()]
+    [&lt;class&gt;object|toString();toJSON()]
+    [&lt;class&gt;Lock|new Lock()|acquire();release();count()]
+    [&lt;this&gt;Event|new Event()|isSet();set();pulse();clear();wait()]
 
-[object] &lt;:- [Lock]
-[Lock] &lt;:- [Event]
-</desc>
-  <rect x="0" y="0" height="504" width="150" style="stroke:none; fill:transparent;"></rect>
-  <path d="M75 121.3 L75 128 L75 148 L75 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M80.3 121.3 L75 121.3 L69.7 121.3 L75 108 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M75 289.3 L75 296 L75 316 L75 316 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M80.3 289.3 L75 289.3 L69.7 289.3 L75 276 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <rect x="31" y="148" height="128" width="89" data-name="Lock" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <path d="M31 180 L120 180" data-name="Lock" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M31 212 L120 212" data-name="Lock" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <text x="75.5" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Lock">Lock</text>
-  <text x="39" y="201" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Lock">new Lock()</text>
-  <text x="39" y="233" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Lock">acquire()</text>
-  <text x="39" y="249" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Lock">release()</text>
-  <text x="39" y="265" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Lock">count()</text>
-  <rect x="28" y="316" height="160" width="94" data-name="Event" style="stroke:#33322E;fill:lightgray;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <path d="M28 348 L122 348" data-name="Event" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M28 380 L122 380" data-name="Event" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <text x="75" y="337" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Event">Event</text>
-  <text x="36" y="369" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Event">new Event()</text>
-  <text x="36" y="401" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Event">isSet()</text>
-  <text x="36" y="417" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Event">set()</text>
-  <text x="36" y="433" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Event">pulse()</text>
-  <text x="36" y="449" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Event">clear()</text>
-  <text x="36" y="465" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Event">wait()</text>
-  <rect x="37" y="28" height="80" width="77" data-name="object" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <path d="M37 60 L114 60" data-name="object" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <text x="75.5" y="49" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="object">object</text>
-  <text x="45" y="81" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toString()</text>
-  <text x="45" y="97" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toJSON()</text>
+    [object] &lt;:- [Lock]
+    [Lock] &lt;:- [Event]
+    </desc>
+    <g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="10pt" font-family="Helvetica,sans-Serif" font-weight="normal" font-style="normal">
+        <g font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="bold" font-style="normal" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
+            <g stroke="transparent" fill="transparent">
+                <rect x="0.0" y="0.0" height="504.0" width="150.0" stroke="none"></rect>
+            </g>
+            <g transform="translate(8, 8)" fill="#33322E">
+                <g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal">
+                    <path d="M47.0 93.3 L47 100 L47 120 L47.0 120.0 " fill="none"></path>
+                    <path d="M52.3 93.3 L47.0 93.3 L41.7 93.3 L47.0 80.0 Z"></path>
+                    <path d="M47.0 261.3 L47 268 L47 288 L47.0 288.0 " fill="none"></path>
+                    <path d="M52.3 261.3 L47.0 261.3 L41.7 261.3 L47.0 248.0 Z"></path>
+                    <g data-name="Lock">
+                        <g fill="white" stroke="#33322E" data-name="Lock">
+                            <rect x="3.0" y="120.0" height="128.0" width="89.0" data-name="Lock"></rect>
+                            <path d="M3.0 152.0 L92.0 152.0" fill="none" data-name="Lock"></path>
+                            <path d="M3.0 184.0 L92.0 184.0" fill="none" data-name="Lock"></path>
+                        </g>
+                        <g transform="translate(3, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Lock">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Lock">
+                                <text x="36.5" y="13.0" stroke="none" text-anchor="middle" data-name="Lock">Lock</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(3, 152)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Lock">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Lock">
+                                <text x="0.0" y="13.0" stroke="none" data-name="Lock">new Lock()</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(3, 184)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Lock">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Lock">
+                                <text x="0.0" y="13.0" stroke="none" data-name="Lock">acquire()</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="Lock">release()</text>
+                                <text x="0.0" y="45.0" stroke="none" data-name="Lock">count()</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="Event">
+                        <g fill="lightgray" stroke="#33322E" data-name="Event">
+                            <rect x="0.0" y="288.0" height="160.0" width="94.0" data-name="Event"></rect>
+                            <path d="M0.0 320.0 L94.0 320.0" fill="none" data-name="Event"></path>
+                            <path d="M0.0 352.0 L94.0 352.0" fill="none" data-name="Event"></path>
+                        </g>
+                        <g transform="translate(0, 288)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Event">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Event">
+                                <text x="39.0" y="13.0" stroke="none" text-anchor="middle" data-name="Event">Event</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(0, 320)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Event">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Event">
+                                <text x="0.0" y="13.0" stroke="none" data-name="Event">new Event()</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(0, 352)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Event">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Event">
+                                <text x="0.0" y="13.0" stroke="none" data-name="Event">isSet()</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="Event">set()</text>
+                                <text x="0.0" y="45.0" stroke="none" data-name="Event">pulse()</text>
+                                <text x="0.0" y="61.0" stroke="none" data-name="Event">clear()</text>
+                                <text x="0.0" y="77.0" stroke="none" data-name="Event">wait()</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="object">
+                        <g fill="white" stroke="#33322E" data-name="object">
+                            <rect x="9.0" y="0.0" height="80.0" width="77.0" data-name="object"></rect>
+                            <path d="M9.0 32.0 L86.0 32.0" fill="none" data-name="object"></path>
+                        </g>
+                        <g transform="translate(9, 0)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="object">
+                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="object">object</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(9, 32)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="object">
+                                <text x="0.0" y="13.0" stroke="none" data-name="object">toString()</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="object">toJSON()</text>
+
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
 </svg></div>
 
 <h2 id="构造函数">构造函数</h2>

@@ -380,6 +380,21 @@ static NArray fs.readdir(String path) async;
 * NArray, 返回目录的文件信息数组
 
 --------------------------
+**读取指定目录的文件信息**
+
+```JavaScript
+static NArray fs.readdir(String path,
+    Object opts) async;
+```
+
+调用参数:
+* path: String, 指定查询的目录
+* opts: Object, 指定参数，暂时不支持
+
+返回结果:
+* NArray, 返回目录的文件信息数组
+
+--------------------------
 ### openFile
 **打开文件，用于读取，写入，或者同时读写**
 

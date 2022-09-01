@@ -17,7 +17,7 @@ var k = new crypto.X509Cert();
 #.class: fill=white
 
 [<class>object|toString();toJSON()]
-[<this>X509Cert|new X509Cert()|version;serial;issuer;subject;notBefore;notAfter;ca;pathlen;usage;type;sig_md;sig_pk;publicKey;next|load();loadFile();loadRootCerts();verify();dump();clear()]
+[<this>X509Cert|new X509Cert()|version;serial;issuer;subject;notBefore;notAfter;ca;pathlen;usage;type;sig_md;sig_pk;publicKey;next|import();loadRootCerts();verify();pem();der();clear()]
 
 [object] <:- [X509Cert]
 ```
@@ -172,11 +172,11 @@ readonly X509Cert X509Cert.next;
 
 ## 成员函数
         
-### load
+### import
 **加载一个 DER 格式的证书，可多次调用**
 
 ```JavaScript
-X509Cert.load(Buffer derCert);
+X509Cert.import(Buffer derCert);
 ```
 
 调用参数:
@@ -186,26 +186,13 @@ X509Cert.load(Buffer derCert);
 **加载一个 CRT/PEM/TXT 格式的证书，可多次调用**
 
 ```JavaScript
-X509Cert.load(String txtCert);
+X509Cert.import(String txtCert);
 ```
 
 调用参数:
 * txtCert: String, CRT/PEM/TXT 格式的证书
 
-load 加载 mozilla 的 certdata,txt， 可于 http://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt 下载使用
-
---------------------------
-### loadFile
-**加载一个 CRT/PEM/DER/TXT 格式的证书，可多次调用**
-
-```JavaScript
-X509Cert.loadFile(String filename);
-```
-
-调用参数:
-* filename: String, 证书文件名
-
-loadFile 加载 mozilla 的 certdata,txt， 可于 http://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt 下载使用
+import 加载 mozilla 的 certdata,txt， 可于 http://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt 下载使用
 
 --------------------------
 ### loadRootCerts
@@ -232,18 +219,29 @@ Boolean X509Cert.verify(X509Cert cert) async;
 * Boolean, 如果验证成功则返回 True
 
 --------------------------
-### dump
-**导出已经加载的证书**
+### pem
+**以 PEM 格式导出已经加载的证书**
 
 ```JavaScript
-Array X509Cert.dump(Boolean pem = true);
+String X509Cert.pem(Boolean all = true);
 ```
 
 调用参数:
-* pem: Boolean, 指定输出 PEM 格式的撤销证书，缺省为 true
+* all: Boolean, 指定是否输出全部证书，缺省为 true
 
 返回结果:
-* Array, 以数组方式导出证书链
+* String, 以数组方式导出证书链
+
+--------------------------
+### der
+**以 DER 格式导出已经加载的证书**
+
+```JavaScript
+Buffer X509Cert.der();
+```
+
+返回结果:
+* [Buffer](Buffer.md), 以数组方式导出证书链
 
 --------------------------
 ### clear

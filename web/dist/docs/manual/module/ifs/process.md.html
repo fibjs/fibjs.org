@@ -4,7 +4,6 @@
 <li><a href=../../../guide/hello.md.html class ="notranslate">hello, world</a></li>
 <li><a href=../../../guide/test.md.html>美好生活从测试开始</a></li>
 <li><a href=../../../guide/profiler.md.html>找出性能杀手</a></li>
-<li><a href=../../../guide/desktop.md.html>快速开发桌面应用</a></li>
 <li><a href=../../../guide/server-hot-update.md.html>服务端模块热更新</a></li>
 <li><a href=../../../guide/host-routes.md.html>域名路由</a></li>
 <li><a href=../../../guide/x509.md.html>fibjs 中 X509 证书的使用</a></li>
@@ -13,6 +12,7 @@
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_module" aria-controls="collapse_module"> 基础模块 </a></h4></div><div id="collapse_module" class="panel-collapse collapse in" aria-labelledby=headingOne><div class=panel-body> <ul>
 <li><a href=assert.md.html class ="notranslate">assert</a></li>
 <li><a href=base32.md.html class ="notranslate">base32</a></li>
+<li><a href=base58.md.html class ="notranslate">base58</a></li>
 <li><a href=base64.md.html class ="notranslate">base64</a></li>
 <li><a href=child_process.md.html class ="notranslate">child_process</a></li>
 <li><a href=console.md.html class ="notranslate">console</a></li>
@@ -36,6 +36,7 @@
 <li><a href=json.md.html class ="notranslate">json</a></li>
 <li><a href=mq.md.html class ="notranslate">mq</a></li>
 <li><a href=msgpack.md.html class ="notranslate">msgpack</a></li>
+<li><a href=multibase.md.html class ="notranslate">multibase</a></li>
 <li><a href=net.md.html class ="notranslate">net</a></li>
 <li><a href=os.md.html class ="notranslate">os</a></li>
 <li><a href=path.md.html class ="notranslate">path</a></li>
@@ -131,6 +132,8 @@
 <li><a href=../../object/ifs/ttyinputstream.md.html class ="notranslate">TTYInputStream</a></li>
 <li><a href=../../object/ifs/ttyoutputstream.md.html class ="notranslate">TTYOutputStream</a></li>
 <li><a href=../../object/ifs/tcpserver.md.html class ="notranslate">TcpServer</a></li>
+<li><a href=../../object/ifs/textdecoder.md.html class ="notranslate">TextDecoder</a></li>
+<li><a href=../../object/ifs/textencoder.md.html class ="notranslate">TextEncoder</a></li>
 <li><a href=../../object/ifs/timer.md.html class ="notranslate">Timer</a></li>
 <li><a href=../../object/ifs/urlobject.md.html class ="notranslate">UrlObject</a></li>
 <li><a href=../../object/ifs/websocket.md.html class ="notranslate">WebSocket</a></li>
@@ -399,6 +402,20 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {
 <ul>
 <li><span class="notranslate">Value</span>, 返回指定的内部模块</li>
 </ul>
+<hr>
+<h3 id="disconnect" class ="notranslate">disconnect</h3>
+<p><strong>关闭与父进程的 ipc 管道</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> process.disconnect();
+</code></pre>
+<hr>
+<h3 id="send" class ="notranslate">send</h3>
+<p><strong>向父进程发送一个消息</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> process.send(Value msg);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">msg</span>: Value, 指定发送的消息</li>
+</ul>
 <h2 id="静态属性">静态属性</h2>
 <h3 id="argv" class ="notranslate">argv</h3>
 <p><strong>Array, 返回当前进程的命令行参数</strong></p>
@@ -468,5 +485,10 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {
 <h3 id="exitCode" class ="notranslate">exitCode</h3>
 <p><strong>Integer, 查询和设置当前进程的退出码</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer process.exitCode;
+</code></pre>
+<hr>
+<h3 id="connected" class ="notranslate">connected</h3>
+<p><strong>Boolean, 查询与父进程的管道是否正常连接</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Boolean</span> process.connected;
 </code></pre>
  </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

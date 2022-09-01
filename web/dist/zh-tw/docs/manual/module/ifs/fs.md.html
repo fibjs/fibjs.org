@@ -1,18 +1,18 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>模塊fs - JavaScript on Fiber</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Toggle navigation</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../readme.md.html">MODULE</a></li><li><a href="../../object/readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/module/ifs/fs.md.html">中文</a> <a href="../../../../../ca/docs/manual/module/ifs/fs.md.html">Catalan</a> <a href="../../../../../de/docs/manual/module/ifs/fs.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/module/ifs/fs.md.html">English</a> <a href="../../../../../es/docs/manual/module/ifs/fs.md.html">Español</a> <a href="../../../../../fr/docs/manual/module/ifs/fs.md.html">Français</a> <a href="../../../../../gl/docs/manual/module/ifs/fs.md.html">Galego</a> <a href="../../../../../it/docs/manual/module/ifs/fs.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/module/ifs/fs.md.html">Русский</a> <a href="../../../../../ja/docs/manual/module/ifs/fs.md.html">日本語</a> <a href="../../../../../ko/docs/manual/module/ifs/fs.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/module/ifs/fs.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Module 基礎模塊 </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Search" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="search input" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">首頁</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 基礎模塊 </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 模塊fs </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 開髮指南 </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>模塊fs - JavaScript on Fiber</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Toggle navigation</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../readme.md.html">MODULE</a></li><li><a href="../../object/readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/module/ifs/fs.md.html">中文</a> <a href="../../../../../ca/docs/manual/module/ifs/fs.md.html">Catalan</a> <a href="../../../../../de/docs/manual/module/ifs/fs.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/module/ifs/fs.md.html">English</a> <a href="../../../../../es/docs/manual/module/ifs/fs.md.html">Español</a> <a href="../../../../../fr/docs/manual/module/ifs/fs.md.html">Français</a> <a href="../../../../../gl/docs/manual/module/ifs/fs.md.html">Galego</a> <a href="../../../../../it/docs/manual/module/ifs/fs.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/module/ifs/fs.md.html">Русский</a> <a href="../../../../../ja/docs/manual/module/ifs/fs.md.html">日本語</a> <a href="../../../../../ko/docs/manual/module/ifs/fs.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/module/ifs/fs.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Module 基礎模塊</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Search" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="search input" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">首頁</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">基礎模塊</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模塊fs</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">開髮指南</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 是什麼？</font></font></a></li>
 <li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安裝運行環境</font></font></a></li>
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
 <li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">美好生活從測試開始</font></font></a></li>
 <li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">找出性能殺手</font></font></a></li>
-<li><a href="../../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">快速開發桌面應用</font></font></a></li>
 <li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服務端模塊熱更新</font></font></a></li>
 <li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">域名路由</font></font></a></li>
 <li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 中X509 證書的使用</font></font></a></li>
 <li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加native 模塊</font></font></a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 基礎模塊 </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">基礎模塊</font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="assert.md.html" class="notranslate">assert</a></li>
 <li><a href="base32.md.html" class="notranslate">base32</a></li>
+<li><a href="base58.md.html" class="notranslate">base58</a></li>
 <li><a href="base64.md.html" class="notranslate">base64</a></li>
 <li><a href="child_process.md.html" class="notranslate">child_process</a></li>
 <li><a href="console.md.html" class="notranslate">console</a></li>
@@ -36,6 +36,7 @@
 <li><a href="json.md.html" class="notranslate">json</a></li>
 <li><a href="mq.md.html" class="notranslate">mq</a></li>
 <li><a href="msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="multibase.md.html" class="notranslate">multibase</a></li>
 <li><a href="net.md.html" class="notranslate">net</a></li>
 <li><a href="os.md.html" class="notranslate">os</a></li>
 <li><a href="path.md.html" class="notranslate">path</a></li>
@@ -63,7 +64,7 @@
 <li><a href="zip.md.html" class="notranslate">zip</a></li>
 <li><a href="zlib.md.html" class="notranslate">zlib</a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 內置對象 </font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">內置對象</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a></li>
 <li><a href="../../object/ifs/bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
 <li><a href="../../object/ifs/chain.md.html" class="notranslate">Chain</a></li>
@@ -131,6 +132,8 @@
 <li><a href="../../object/ifs/ttyinputstream.md.html" class="notranslate">TTYInputStream</a></li>
 <li><a href="../../object/ifs/ttyoutputstream.md.html" class="notranslate">TTYOutputStream</a></li>
 <li><a href="../../object/ifs/tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="../../object/ifs/textdecoder.md.html" class="notranslate">TextDecoder</a></li>
+<li><a href="../../object/ifs/textencoder.md.html" class="notranslate">TextEncoder</a></li>
 <li><a href="../../object/ifs/timer.md.html" class="notranslate">Timer</a></li>
 <li><a href="../../object/ifs/urlobject.md.html" class="notranslate">UrlObject</a></li>
 <li><a href="../../object/ifs/websocket.md.html" class="notranslate">WebSocket</a></li>
@@ -155,7 +158,7 @@
 <li><a href="../../object/ifs/zipfile.md.html" class="notranslate">ZipFile</a></li>
 <li><a href="../../object/ifs/object.md.html" class="notranslate">object</a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 社區模塊 </font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社區模塊</font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../../awesome/module/fib-session.md.html" class="notranslate">fib-session</a></li>
 <li><a href="../../../awesome/module/fib-pool.md.html" class="notranslate">fib-pool</a></li>
 <li><a href="../../../awesome/module/fib-orm.md.html" class="notranslate">fib-orm</a></li>
@@ -204,10 +207,10 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">一些注意點:</font></font></p>
 <ul>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">運行 </font></font><code>fs.watch(filename)</code><font style="vertical-align: inherit;"></font><a href="../../object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 的watcher, 它支持'change', 'changeonly', 'renameonly' 三個事件</font></font></li>
-<li><code>fs.watchFile(target)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和 </font></font><code>fs.unwatchFile(target)</code><font style="vertical-align: inherit;"></font></li>
-<li><code>fs.watchFile(target)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 會返回一個繼承自 </font></font><a href="../../object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 的 </font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對象, 調用 </font></font><code>fs.unwatchFile(target)</code><font style="vertical-align: inherit;"></font><code>StatsWatcher.close()</code><font style="vertical-align: inherit;"></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">因為uv 在Linux 上的實現,</font></font><code>fs.watch</code><font style="vertical-align: inherit;"></font><code>recursive</code><font style="vertical-align: inherit;"></font><code>fs.watch('/[path](path.md)/to', { recursive: true }, handler)</code><font style="vertical-align: inherit;"></font><code>handler</code><font style="vertical-align: inherit;"></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">運行 </font></font><code>fs.watch(filename)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 會返回一個繼承自</font></font><a href="../../object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的watcher, 它支持'change', 'changeonly', 'renameonly' 三個事件</font></font></li>
+<li><code>fs.watchFile(target)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">和 </font></font><code>fs.unwatchFile(target)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 依然可以成對使用</font></font></li>
+<li><code>fs.watchFile(target)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">會返回一個繼承自</font></font><a href="../../object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的</font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對象, 調用 </font></font><code>fs.unwatchFile(target)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 等價於調用</font></font><code>StatsWatcher.close()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">因為uv 在Linux 上的實現,</font></font><code>fs.watch</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的 </font></font><code>recursive</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 選項僅在win32/darwin 被穩定支持. 你依然可以嘗試在Linux 中嘗試使用</font></font><code>fs.watch('/[path](path.md)/to', { recursive: true }, handler)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 但可能會發現 </font></font><code>handler</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 被回調的時機與你預期的有差異</font></font></li>
 </ul>
 <div name="对象" data-unique="对象"></div><h2 id="对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對象</font></font></h2>
 <div name="constants" data-unique="constants"></div><h3 id="constants" class="notranslate">constants</h3>
@@ -328,7 +331,7 @@
 <li><span class="notranslate">to</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定要拷貝的目標文件名</font></font></li>
 <li><span class="notranslate">mode</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, 指定拷貝操作的修飾符，缺省為 0</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mode 是一個可選的整數，指定拷貝操作的行為。</font><font style="vertical-align: inherit;">可以創建由兩個或更多個值按位或組成的掩碼（比如</font></font><a href="fs.md.html#constants" class="notranslate">fs.constants</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.COPYFILE_EXCL | </font></font><a href="fs.md.html#constants" class="notranslate">fs.constants</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.COPYFILE_FICLONE）。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mode 是一個可選的整數，指定拷貝操作的行為。</font><font style="vertical-align: inherit;">可以創建由兩個或更多個值按位或組成的掩碼（比如</font></font><a href="fs.md.html#constants" class="notranslate">fs.constants</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.COPYFILE_EXCL |</font></font><a href="fs.md.html#constants" class="notranslate">fs.constants</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.COPYFILE_FICLONE）。</font></font></p>
 <ul>
 <li><a href="fs.md.html#constants" class="notranslate">fs.constants</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.COPYFILE_EXCL - 如果dest 已存在，則拷貝操作將失敗。</font></font></li>
 <li><a href="fs.md.html#constants" class="notranslate">fs.constants</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.COPYFILE_FICLONE - 拷貝操作將嘗試創建寫時拷貝（copy-on-write）鏈接。</font><font style="vertical-align: inherit;">如果平台不支持寫時拷貝，則使用後備的拷貝機制。</font></font></li>
@@ -483,8 +486,8 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
 <ul>
 <li><span class="notranslate">fd</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, 文件描述符</font></font></li>
-<li><span class="notranslate">buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 讀取結果寫入的 </font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 對象</font></font></li>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, </font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 寫入偏移量， 默認為 0</font></font></li>
+<li><span class="notranslate">buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 讀取結果寫入的</font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對象</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer,</font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">寫入偏移量， 默認為 0</font></font></li>
 <li><span class="notranslate">length</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, 文件讀取字節數，默認為 0</font></font></li>
 <li><span class="notranslate">position</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, 文件讀取位置，默認為當前文件位置</font></font></li>
 </ul>
@@ -545,6 +548,21 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
 <ul>
 <li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定查詢的目錄</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
+<ul>
+<li><span class="notranslate">NArray</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回目錄的文件信息數組</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">讀取指定目錄的文件信息</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> NArray fs.readdir(<span class="hljs-built_in">String</span> path,
+    <span class="hljs-built_in">Object</span> opts) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
+<ul>
+<li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定查詢的目錄</font></font></li>
+<li><span class="notranslate">opts</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, 指定參數，暫時不支持</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
 <ul>
@@ -652,7 +670,7 @@
 </ul>
 <hr>
 <div name="readFile" data-unique="readFile"></div><h3 id="readFile" class="notranslate">readFile</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">打開二進製文件，並讀取內容</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">打開文件，並讀取內容</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> Variant fs.readFile(<span class="hljs-built_in">String</span> fname,
     <span class="hljs-built_in">String</span> encoding = <span class="hljs-string">""</span>) <span class="hljs-keyword">async</span>;
@@ -666,6 +684,28 @@
 <ul>
 <li><span class="notranslate">Variant</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回文件文本內容</font></font></li>
 </ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">打開文件，並讀取內容</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Variant fs.readFile(<span class="hljs-built_in">String</span> fname,
+    <span class="hljs-built_in">Object</span> options) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
+<ul>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定文件名</font></font></li>
+<li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, 指定讀取選項</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
+<ul>
+<li><span class="notranslate">Variant</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回文件文本內容</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">options 支持的選項如下：</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div>{
+    <span class="hljs-string">"encoding"</span>: <span class="hljs-string">"utf8"</span> <span class="hljs-comment">// 指定解码方式，缺省不解码</span><font></font>
+}<font></font>
+</code></pre>
 <hr>
 <div name="readLines" data-unique="readLines"></div><h3 id="readLines" class="notranslate">readLines</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">打開文件，以數組方式讀取一組文本行，行結尾標識基於EOL 屬性的設置，缺省時，posix:"\n"；windows:"\r\n"</font></font></strong></p>
@@ -704,7 +744,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
 <ul>
 <li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定文件名</font></font></li>
-<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 指定要寫入的二進制數據</font></font></li>
+<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 指定要寫入的二進制數據</font></font></li>
 </ul>
 <hr>
 <div name="appendFile" data-unique="appendFile"></div><h3 id="appendFile" class="notranslate">appendFile</h3>
@@ -716,11 +756,11 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
 <ul>
 <li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定文件名</font></font></li>
-<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 指定要寫入的二進制數據</font></font></li>
+<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 指定要寫入的二進制數據</font></font></li>
 </ul>
 <hr>
 <div name="setZipFS" data-unique="setZipFS"></div><h3 id="setZipFS" class="notranslate">setZipFS</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">設置 </font></font><a href="zip.md.html" class="notranslate">zip</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 虛擬文件映射</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">設置</font></font><a href="zip.md.html" class="notranslate">zip</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">虛擬文件映射</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> fs.setZipFS(<span class="hljs-built_in">String</span> fname,<font></font>
     Buffer data);<font></font>
@@ -728,11 +768,11 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
 <ul>
 <li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定映射路徑</font></font></li>
-<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 指定映射的 </font></font><a href="zip.md.html" class="notranslate">zip</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 文件數據</font></font></li>
+<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 指定映射的</font></font><a href="zip.md.html" class="notranslate">zip</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件數據</font></font></li>
 </ul>
 <hr>
 <div name="clearZipFS" data-unique="clearZipFS"></div><h3 id="clearZipFS" class="notranslate">clearZipFS</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">清除 </font></font><a href="zip.md.html" class="notranslate">zip</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 虛擬文件映射</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">清除</font></font><a href="zip.md.html" class="notranslate">zip</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">虛擬文件映射</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> fs.clearZipFS(<span class="hljs-built_in">String</span> fname = <span class="hljs-string">""</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
@@ -750,7 +790,7 @@
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
 <ul>
-<li><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 對象</font></font></li>
+<li><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">,</font></font><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對象</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">觀察一個文件, 返回對應的watcher 對象</font></font></strong></p>
@@ -761,11 +801,11 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
 <ul>
 <li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定要觀察的文件對象</font></font></li>
-<li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function,</font></font><code>(evtType: 'change' | 'rename', filename: string) =&gt; any</code><font style="vertical-align: inherit;"></font></li>
+<li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function,</font></font><code>(evtType: 'change' | 'rename', filename: string) =&gt; any</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">當文件對象發生變化時的處理回調</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
 <ul>
-<li><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 對象</font></font></li>
+<li><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">,</font></font><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對象</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">觀察一個文件, 返回對應的watcher 對象</font></font></strong></p>
@@ -780,7 +820,7 @@
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
 <ul>
-<li><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 對象</font></font></li>
+<li><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">,</font></font><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對象</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">options 支持的選項如下：</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
@@ -805,11 +845,11 @@
 <ul>
 <li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定要觀察的文件對象</font></font></li>
 <li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, 觀察選項</font></font></li>
-<li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function,</font></font><code>(evtType: 'change' | 'rename', filename: string) =&gt; any</code><font style="vertical-align: inherit;"></font></li>
+<li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function,</font></font><code>(evtType: 'change' | 'rename', filename: string) =&gt; any</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">當文件對象發生變化時的處理回調</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
 <ul>
-<li><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 對象</font></font></li>
+<li><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">,</font></font><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對象</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">options 支持的選項如下：</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
@@ -824,7 +864,7 @@
 </code></pre>
 <hr>
 <div name="watchFile" data-unique="watchFile"></div><h3 id="watchFile" class="notranslate">watchFile</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">觀察一個文件, 返回對應的 </font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 對象</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">觀察一個文件, 返回對應的</font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對象</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> StatsWatcher fs.watchFile(<span class="hljs-built_in">String</span> fname,
     <span class="hljs-built_in">Function</span> callback);
@@ -832,14 +872,14 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
 <ul>
 <li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定要觀察的文件對象</font></font></li>
-<li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function,</font></font><code>(curStats: Stats, prevStats: Stats) =&gt; any</code><font style="vertical-align: inherit;"></font></li>
+<li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function,</font></font><code>(curStats: Stats, prevStats: Stats) =&gt; any</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">當文件對象的stats 發生變化時的處理回調</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
 <ul>
-<li><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 對象</font></font></li>
+<li><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">,</font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對象</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">觀察一個文件, 返回對應的 </font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 對象</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">觀察一個文件, 返回對應的</font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對象</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">static</span> StatsWatcher fs.watchFile(<span class="hljs-built_in">String</span> fname,
@@ -850,11 +890,11 @@
 <ul>
 <li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定要觀察的文件對象</font></font></li>
 <li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, 觀察選項</font></font></li>
-<li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function,</font></font><code>(curStats: Stats, prevStats: Stats) =&gt; any</code><font style="vertical-align: inherit;"></font></li>
+<li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function,</font></font><code>(curStats: Stats, prevStats: Stats) =&gt; any</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">當文件對象的stats 發生變化時的處理回調</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
 <ul>
-<li><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 對象</font></font></li>
+<li><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">,</font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對象</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">options 支持的選項如下：</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
@@ -869,7 +909,7 @@
 </code></pre>
 <hr>
 <div name="unwatchFile" data-unique="unwatchFile"></div><h3 id="unwatchFile" class="notranslate">unwatchFile</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">從觀察fname 的 </font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 中移除所有觀察事件的回調</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">從觀察fname 的</font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">中移除所有觀察事件的回調</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> fs.unwatchFile(<span class="hljs-built_in">String</span> fname);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
@@ -878,10 +918,10 @@
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
 <ul>
-<li><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 對象</font></font></li>
+<li><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對象</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">從觀察fname 的 </font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的觀察事件回調中移除 </font></font><code>callback</code><font style="vertical-align: inherit;"></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">從觀察fname 的</font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的觀察事件回調中移除 </font></font><code>callback</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 回調</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> fs.unwatchFile(<span class="hljs-built_in">String</span> fname,
     <span class="hljs-built_in">Function</span> callback);
@@ -893,9 +933,9 @@
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
 <ul>
-<li><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 對象</font></font></li>
+<li><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對象</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">即便callback 不再 </font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 的觀察事件回調中也不會報錯</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">即便callback 不再</font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的觀察事件回調中也不會報錯</font></font></p>
 <div name="常量" data-unique="常量"></div><h2 id="常量"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">常量</font></font></h2>
 <div name="SEEK_SET" data-unique="SEEK_SET"></div><h3 id="SEEK_SET" class="notranslate">SEEK_SET</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">seek 方式常量，移動到絕對位置</font></font></strong></p>
@@ -911,4 +951,4 @@
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">seek 方式常量，移動到文件結尾的相對位置</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> fs.SEEK_END = <span class="hljs-number">2</span>;
 </code></pre>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip284391"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip284391" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip326543"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip326543" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

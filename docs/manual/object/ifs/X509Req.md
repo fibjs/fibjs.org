@@ -17,7 +17,7 @@ var k = new crypto.X509Req();
 #.class: fill=white
 
 [<class>object|toString();toJSON()]
-[<this>X509Req|new X509Req()|subject;publicKey;sig_md;sig_pk|load();loadFile();exportPem();exportDer();sign()]
+[<this>X509Req|new X509Req()|subject;publicKey;sig_md;sig_pk|import();pem();der();sign()]
 
 [object] <:- [X509Req]
 ```
@@ -100,11 +100,11 @@ readonly Integer X509Req.sig_pk;
 
 ## 成员函数
         
-### load
+### import
 **加载一个 DER 格式的证书请求**
 
 ```JavaScript
-X509Req.load(Buffer derReq);
+X509Req.import(Buffer derReq);
 ```
 
 调用参数:
@@ -114,40 +114,29 @@ X509Req.load(Buffer derReq);
 **加载一个 PEM 格式的证书请求**
 
 ```JavaScript
-X509Req.load(String pemReq);
+X509Req.import(String pemReq);
 ```
 
 调用参数:
 * pemReq: String, PEM 格式的证书请求
 
 --------------------------
-### loadFile
-**加载一个 PEM/DER 格式的证书请求，可多次调用**
-
-```JavaScript
-X509Req.loadFile(String filename);
-```
-
-调用参数:
-* filename: String, 证书请求文件名
-
---------------------------
-### exportPem
+### pem
 **返回当前证书请求的 PEM 格式编码**
 
 ```JavaScript
-String X509Req.exportPem();
+String X509Req.pem();
 ```
 
 返回结果:
 * String, 当前证书请求的 PEM 格式编码
 
 --------------------------
-### exportDer
+### der
 **返回当前证书请求的 DER 格式编码**
 
 ```JavaScript
-Buffer X509Req.exportDer();
+Buffer X509Req.der();
 ```
 
 返回结果:

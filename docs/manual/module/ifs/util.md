@@ -10,6 +10,22 @@
 LruCache util.LruCache;
 ```
 
+--------------------------
+### TextDecoder
+**[TextDecoder](../../object/ifs/TextDecoder.md) 解码对象，参见 [TextDecoder](../../object/ifs/TextDecoder.md) 对象。**
+
+```JavaScript
+TextDecoder util.TextDecoder;
+```
+
+--------------------------
+### TextEncoder
+**[TextEncoder](../../object/ifs/TextEncoder.md) 编码对象，参见 [TextEncoder](../../object/ifs/TextEncoder.md) 对象。**
+
+```JavaScript
+TextEncoder util.TextEncoder;
+```
+
 ## 静态函数
         
 ### format
@@ -74,6 +90,7 @@ static String util.inspect(Value obj,
 ```JavaScript
 {
     "colors": false, // 指定是否输出 ansi 作色字符串，缺省为 false
+    "depth": 2, // 指定格式化 object 时递归的次数，缺省为 2
     "table": false, // 指定输出 table 格式，缺省为 false
     "encode_string": true, // 指定表格中的字符串是否编码，缺省为 true
     "fields": [], // 当 table 为 true 时指定显示字段

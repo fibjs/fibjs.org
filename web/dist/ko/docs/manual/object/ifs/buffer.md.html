@@ -1,18 +1,18 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Fiber의 객체 버퍼-JavaScript</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">탐색 전환</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/buffer.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/buffer.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/buffer.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/buffer.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/buffer.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/buffer.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/buffer.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/buffer.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/buffer.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/buffer.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/buffer.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/buffer.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 객체 내장 객체 </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="찾다" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="검색 입력" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">첫 장</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 내장 객체 </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 객체 버퍼 </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 개발 가이드 </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>객체 버퍼 - Fiber의 JavaScript</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">탐색 전환</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/buffer.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/buffer.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/buffer.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/buffer.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/buffer.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/buffer.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/buffer.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/buffer.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/buffer.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/buffer.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/buffer.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/buffer.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">객체 내장 객체</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="검색" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="검색 입력" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">첫 장</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">내장 객체</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">객체 버퍼</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개발 가이드</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 란 무엇입니까?</font></font></a></li>
-<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">설치 및 운영 환경</font></font></a></li>
+<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">런타임 환경 설치</font></font></a></li>
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
 <li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">좋은 삶은 시험에서 시작된다</font></font></a></li>
 <li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">성능 킬러 찾기</font></font></a></li>
-<li><a href="../../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">데스크탑 애플리케이션을 빠르게 개발</font></font></a></li>
 <li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">서버 모듈 핫 업데이트</font></font></a></li>
 <li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">도메인 이름 라우팅</font></font></a></li>
 <li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs에서 X509 인증서 사용</font></font></a></li>
 <li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">네이티브 모듈 추가</font></font></a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 기본 모듈 </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">기본 모듈</font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../module/ifs/assert.md.html" class="notranslate">assert</a></li>
 <li><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a></li>
+<li><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a></li>
 <li><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a></li>
 <li><a href="../../module/ifs/child_process.md.html" class="notranslate">child_process</a></li>
 <li><a href="../../module/ifs/console.md.html" class="notranslate">console</a></li>
@@ -36,6 +36,7 @@
 <li><a href="../../module/ifs/json.md.html" class="notranslate">json</a></li>
 <li><a href="../../module/ifs/mq.md.html" class="notranslate">mq</a></li>
 <li><a href="../../module/ifs/msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="../../module/ifs/multibase.md.html" class="notranslate">multibase</a></li>
 <li><a href="../../module/ifs/net.md.html" class="notranslate">net</a></li>
 <li><a href="../../module/ifs/os.md.html" class="notranslate">os</a></li>
 <li><a href="../../module/ifs/path.md.html" class="notranslate">path</a></li>
@@ -63,7 +64,7 @@
 <li><a href="../../module/ifs/zip.md.html" class="notranslate">zip</a></li>
 <li><a href="../../module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 내장 객체 </font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">내장 객체</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li class="active"><a href="buffer.md.html" class="notranslate">Buffer</a></li>
 <li><a href="bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
 <li><a href="chain.md.html" class="notranslate">Chain</a></li>
@@ -131,6 +132,8 @@
 <li><a href="ttyinputstream.md.html" class="notranslate">TTYInputStream</a></li>
 <li><a href="ttyoutputstream.md.html" class="notranslate">TTYOutputStream</a></li>
 <li><a href="tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="textdecoder.md.html" class="notranslate">TextDecoder</a></li>
+<li><a href="textencoder.md.html" class="notranslate">TextEncoder</a></li>
 <li><a href="timer.md.html" class="notranslate">Timer</a></li>
 <li><a href="urlobject.md.html" class="notranslate">UrlObject</a></li>
 <li><a href="websocket.md.html" class="notranslate">WebSocket</a></li>
@@ -155,7 +158,7 @@
 <li><a href="zipfile.md.html" class="notranslate">ZipFile</a></li>
 <li><a href="object.md.html" class="notranslate">object</a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 커뮤니티 모듈 </font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">커뮤니티 모듈</font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../../awesome/module/fib-session.md.html" class="notranslate">fib-session</a></li>
 <li><a href="../../../awesome/module/fib-pool.md.html" class="notranslate">fib-pool</a></li>
 <li><a href="../../../awesome/module/fib-orm.md.html" class="notranslate">fib-orm</a></li>
@@ -198,115 +201,182 @@
 <li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="对象-Buffer" data-unique="对象-Buffer"></div><h1 id="对象-Buffer"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">객체 버퍼</font></font></h1>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">에 대한 이진 데이터 캐시 개체 </font></font><a href="../../module/ifs/io.md.html" class="notranslate">io</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 읽기 및 쓰기를 위한 데이터 처리</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buffer 객체는 전역 기본 클래스로, 언제든지 new Buffer(...)를 사용하여 직접 생성할 수 있습니다.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">바이너리 데이터 캐시 객체</font></font><a href="../../module/ifs/io.md.html" class="notranslate">io</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">읽기 및 쓰기 데이터 처리</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">버퍼 개체는 언제든지 new Buffer(...)를 사용하여 직접 만들 수 있는 전역 기본 클래스입니다.</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> buf = <span class="hljs-keyword">new</span> Buffer();
 </code></pre>
-<div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">계승</font></font></h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="190" height="1488" viewBox="0 0 190 1488" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
-  <desc>
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+<div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">상속 관계</font></font></h2>
+<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="190.0" height="1552.0" viewBox="0 0 190 1552" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
+    <desc>
+    #lineWidth: 1.5
+    #font: Helvetica,sans-Serif
+    #fontSize: 10
+    #leading: 1.6
+    #.this: fill=lightgray
+    #.class: fill=white
 
-[&lt;class&gt;object|toString();toJSON()]
-[&lt;this&gt;Buffer|new Buffer()|operator[];@iterator()|Buffer|isBuffer();from();concat();alloc();allocUnsafe();allocUnsafeSlow();byteLength();compare();isEncoding()|length;buffer|resize();append();write();fill();indexOf();compare();copy();set();readUInt8();readUInt16LE();readUInt16BE();readUInt32LE();readUInt32BE();readUIntLE();readUIntBE();readInt64LE();readInt64BE();readInt8();readInt16LE();readInt16BE();readInt32LE();readInt32BE();readIntLE();readIntBE();writeInt64LE();writeInt64BE();readFloatLE();readFloatBE();readDoubleLE();readDoubleBE();writeUInt8();writeUInt16LE();writeUInt16BE();writeUInt32LE();writeUInt32BE();writeUIntLE();writeUIntBE();writeInt8();writeInt16LE();writeInt16BE();writeInt32LE();writeInt32BE();writeIntLE();writeIntBE();writeFloatLE();writeFloatBE();writeDoubleLE();writeDoubleBE();slice();join();reverse();equals();hex();base64();keys();values();entries();toArray();toString()]
+    [&lt;class&gt;object|toString();toJSON()]
+    [&lt;this&gt;Buffer|new Buffer()|operator[];@iterator()|Buffer|isBuffer();from();concat();alloc();allocUnsafe();allocUnsafeSlow();byteLength();compare();isEncoding()|length;byteOffset;buffer|resize();append();write();fill();indexOf();compare();copy();set();readUInt8();readUInt16LE();readUInt16BE();readUInt32LE();readUInt32BE();readUIntLE();readUIntBE();readInt64LE();readInt64BE();readInt8();readInt16LE();readInt16BE();readInt32LE();readInt32BE();readIntLE();readIntBE();writeInt64LE();writeInt64BE();readFloatLE();readFloatBE();readDoubleLE();readDoubleBE();writeUInt8();writeUInt16LE();writeUInt16BE();writeUInt32LE();writeUInt32BE();writeUIntLE();writeUIntBE();writeInt8();writeInt16LE();writeInt16BE();writeInt32LE();writeInt32BE();writeIntLE();writeIntBE();writeFloatLE();writeFloatBE();writeDoubleLE();writeDoubleBE();slice();join();reverse();equals();hex();base32();base58();base64();keys();values();entries();forEach();toArray();toString()]
 
-[object] &lt;:- [Buffer]
-</desc>
-  <rect x="0" y="0" height="1488" width="190" style="stroke:none; fill:transparent;"></rect>
-  <path d="M95 121.3 L95 128 L95 148 L95 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M100.3 121.3 L95 121.3 L89.7 121.3 L95 108 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <rect x="28" y="148" height="1312" width="134" data-name="Buffer" style="stroke:#33322E;fill:lightgray;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <path d="M28 180 L162 180" data-name="Buffer" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M28 212 L162 212" data-name="Buffer" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M28 260 L162 260" data-name="Buffer" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M28 292 L162 292" data-name="Buffer" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M28 452 L162 452" data-name="Buffer" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M28 500 L162 500" data-name="Buffer" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <text x="95" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Buffer">Buffer</text>
-  <text x="36" y="201" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">new Buffer()</text>
-  <text x="36" y="233" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">operator[]</text>
-  <text x="36" y="249" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">@iterator()</text>
-  <text x="36" y="281" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">Buffer</text>
-  <text x="36" y="313" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">isBuffer()</text>
-  <text x="36" y="329" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">from()</text>
-  <text x="36" y="345" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">concat()</text>
-  <text x="36" y="361" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">alloc()</text>
-  <text x="36" y="377" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">allocUnsafe()</text>
-  <text x="36" y="393" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">allocUnsafeSlow()</text>
-  <text x="36" y="409" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">byteLength()</text>
-  <text x="36" y="425" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">compare()</text>
-  <text x="36" y="441" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">isEncoding()</text>
-  <text x="36" y="473" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">length</text>
-  <text x="36" y="489" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">buffer</text>
-  <text x="36" y="521" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">resize()</text>
-  <text x="36" y="537" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">append()</text>
-  <text x="36" y="553" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">write()</text>
-  <text x="36" y="569" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">fill()</text>
-  <text x="36" y="585" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">indexOf()</text>
-  <text x="36" y="601" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">compare()</text>
-  <text x="36" y="617" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">copy()</text>
-  <text x="36" y="633" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">set()</text>
-  <text x="36" y="649" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readUInt8()</text>
-  <text x="36" y="665" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readUInt16LE()</text>
-  <text x="36" y="681" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readUInt16BE()</text>
-  <text x="36" y="697" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readUInt32LE()</text>
-  <text x="36" y="713" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readUInt32BE()</text>
-  <text x="36" y="729" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readUIntLE()</text>
-  <text x="36" y="745" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readUIntBE()</text>
-  <text x="36" y="761" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readInt64LE()</text>
-  <text x="36" y="777" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readInt64BE()</text>
-  <text x="36" y="793" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readInt8()</text>
-  <text x="36" y="809" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readInt16LE()</text>
-  <text x="36" y="825" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readInt16BE()</text>
-  <text x="36" y="841" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readInt32LE()</text>
-  <text x="36" y="857" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readInt32BE()</text>
-  <text x="36" y="873" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readIntLE()</text>
-  <text x="36" y="889" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readIntBE()</text>
-  <text x="36" y="905" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeInt64LE()</text>
-  <text x="36" y="921" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeInt64BE()</text>
-  <text x="36" y="937" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readFloatLE()</text>
-  <text x="36" y="953" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readFloatBE()</text>
-  <text x="36" y="969" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readDoubleLE()</text>
-  <text x="36" y="985" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">readDoubleBE()</text>
-  <text x="36" y="1001" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeUInt8()</text>
-  <text x="36" y="1017" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeUInt16LE()</text>
-  <text x="36" y="1033" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeUInt16BE()</text>
-  <text x="36" y="1049" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeUInt32LE()</text>
-  <text x="36" y="1065" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeUInt32BE()</text>
-  <text x="36" y="1081" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeUIntLE()</text>
-  <text x="36" y="1097" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeUIntBE()</text>
-  <text x="36" y="1113" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeInt8()</text>
-  <text x="36" y="1129" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeInt16LE()</text>
-  <text x="36" y="1145" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeInt16BE()</text>
-  <text x="36" y="1161" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeInt32LE()</text>
-  <text x="36" y="1177" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeInt32BE()</text>
-  <text x="36" y="1193" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeIntLE()</text>
-  <text x="36" y="1209" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeIntBE()</text>
-  <text x="36" y="1225" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeFloatLE()</text>
-  <text x="36" y="1241" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeFloatBE()</text>
-  <text x="36" y="1257" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeDoubleLE()</text>
-  <text x="36" y="1273" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">writeDoubleBE()</text>
-  <text x="36" y="1289" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">slice()</text>
-  <text x="36" y="1305" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">join()</text>
-  <text x="36" y="1321" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">reverse()</text>
-  <text x="36" y="1337" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">equals()</text>
-  <text x="36" y="1353" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">hex()</text>
-  <text x="36" y="1369" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">base64()</text>
-  <text x="36" y="1385" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">keys()</text>
-  <text x="36" y="1401" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">values()</text>
-  <text x="36" y="1417" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">entries()</text>
-  <text x="36" y="1433" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">toArray()</text>
-  <text x="36" y="1449" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Buffer">toString()</text>
-  <rect x="57" y="28" height="80" width="77" data-name="object" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <path d="M57 60 L134 60" data-name="object" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <text x="95.5" y="49" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="object">object</text>
-  <text x="65" y="81" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toString()</text>
-  <text x="65" y="97" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toJSON()</text>
+    [object] &lt;:- [Buffer]
+    </desc>
+    <g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="10pt" font-family="Helvetica,sans-Serif" font-weight="normal" font-style="normal">
+        <g font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="bold" font-style="normal" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
+            <g stroke="transparent" fill="transparent">
+                <rect x="0.0" y="0.0" height="1552.0" width="190.0" stroke="none"></rect>
+            </g>
+            <g transform="translate(8, 8)" fill="#33322E">
+                <g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal">
+                    <path d="M67.0 93.3 L67 100 L67 120 L67.0 120.0 " fill="none"></path>
+                    <path d="M72.3 93.3 L67.0 93.3 L61.7 93.3 L67.0 80.0 Z"></path>
+                    <g data-name="Buffer">
+                        <g fill="lightgray" stroke="#33322E" data-name="Buffer">
+                            <rect x="0.0" y="120.0" height="1376.0" width="134.0" data-name="Buffer"></rect>
+                            <path d="M0.0 152.0 L134.0 152.0" fill="none" data-name="Buffer"></path>
+                            <path d="M0.0 184.0 L134.0 184.0" fill="none" data-name="Buffer"></path>
+                            <path d="M0.0 232.0 L134.0 232.0" fill="none" data-name="Buffer"></path>
+                            <path d="M0.0 264.0 L134.0 264.0" fill="none" data-name="Buffer"></path>
+                            <path d="M0.0 424.0 L134.0 424.0" fill="none" data-name="Buffer"></path>
+                            <path d="M0.0 488.0 L134.0 488.0" fill="none" data-name="Buffer"></path>
+                        </g>
+                        <g transform="translate(0, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Buffer">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Buffer">
+                                <text x="59.0" y="13.0" stroke="none" text-anchor="middle" data-name="Buffer">Buffer</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(0, 152)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Buffer">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Buffer">
+                                <text x="0.0" y="13.0" stroke="none" data-name="Buffer">new Buffer()</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(0, 184)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Buffer">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Buffer">
+                                <text x="0.0" y="13.0" stroke="none" data-name="Buffer">operator[]</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="Buffer">@iterator()</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(0, 232)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Buffer">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Buffer">
+                                <text x="0.0" y="13.0" stroke="none" data-name="Buffer">Buffer</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(0, 264)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Buffer">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Buffer">
+                                <text x="0.0" y="13.0" stroke="none" data-name="Buffer">isBuffer()</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="Buffer">from()</text>
+                                <text x="0.0" y="45.0" stroke="none" data-name="Buffer">concat()</text>
+                                <text x="0.0" y="61.0" stroke="none" data-name="Buffer">alloc()</text>
+                                <text x="0.0" y="77.0" stroke="none" data-name="Buffer">allocUnsafe()</text>
+                                <text x="0.0" y="93.0" stroke="none" data-name="Buffer">allocUnsafeSlow()</text>
+                                <text x="0.0" y="109.0" stroke="none" data-name="Buffer">byteLength()</text>
+                                <text x="0.0" y="125.0" stroke="none" data-name="Buffer">compare()</text>
+                                <text x="0.0" y="141.0" stroke="none" data-name="Buffer">isEncoding()</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(0, 424)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Buffer">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Buffer">
+                                <text x="0.0" y="13.0" stroke="none" data-name="Buffer">length</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="Buffer">byteOffset</text>
+                                <text x="0.0" y="45.0" stroke="none" data-name="Buffer">buffer</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(0, 488)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Buffer">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Buffer">
+                                <text x="0.0" y="13.0" stroke="none" data-name="Buffer">resize()</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="Buffer">append()</text>
+                                <text x="0.0" y="45.0" stroke="none" data-name="Buffer">write()</text>
+                                <text x="0.0" y="61.0" stroke="none" data-name="Buffer">fill()</text>
+                                <text x="0.0" y="77.0" stroke="none" data-name="Buffer">indexOf()</text>
+                                <text x="0.0" y="93.0" stroke="none" data-name="Buffer">compare()</text>
+                                <text x="0.0" y="109.0" stroke="none" data-name="Buffer">copy()</text>
+                                <text x="0.0" y="125.0" stroke="none" data-name="Buffer">set()</text>
+                                <text x="0.0" y="141.0" stroke="none" data-name="Buffer">readUInt8()</text>
+                                <text x="0.0" y="157.0" stroke="none" data-name="Buffer">readUInt16LE()</text>
+                                <text x="0.0" y="173.0" stroke="none" data-name="Buffer">readUInt16BE()</text>
+                                <text x="0.0" y="189.0" stroke="none" data-name="Buffer">readUInt32LE()</text>
+                                <text x="0.0" y="205.0" stroke="none" data-name="Buffer">readUInt32BE()</text>
+                                <text x="0.0" y="221.0" stroke="none" data-name="Buffer">readUIntLE()</text>
+                                <text x="0.0" y="237.0" stroke="none" data-name="Buffer">readUIntBE()</text>
+                                <text x="0.0" y="253.0" stroke="none" data-name="Buffer">readInt64LE()</text>
+                                <text x="0.0" y="269.0" stroke="none" data-name="Buffer">readInt64BE()</text>
+                                <text x="0.0" y="285.0" stroke="none" data-name="Buffer">readInt8()</text>
+                                <text x="0.0" y="301.0" stroke="none" data-name="Buffer">readInt16LE()</text>
+                                <text x="0.0" y="317.0" stroke="none" data-name="Buffer">readInt16BE()</text>
+                                <text x="0.0" y="333.0" stroke="none" data-name="Buffer">readInt32LE()</text>
+                                <text x="0.0" y="349.0" stroke="none" data-name="Buffer">readInt32BE()</text>
+                                <text x="0.0" y="365.0" stroke="none" data-name="Buffer">readIntLE()</text>
+                                <text x="0.0" y="381.0" stroke="none" data-name="Buffer">readIntBE()</text>
+                                <text x="0.0" y="397.0" stroke="none" data-name="Buffer">writeInt64LE()</text>
+                                <text x="0.0" y="413.0" stroke="none" data-name="Buffer">writeInt64BE()</text>
+                                <text x="0.0" y="429.0" stroke="none" data-name="Buffer">readFloatLE()</text>
+                                <text x="0.0" y="445.0" stroke="none" data-name="Buffer">readFloatBE()</text>
+                                <text x="0.0" y="461.0" stroke="none" data-name="Buffer">readDoubleLE()</text>
+                                <text x="0.0" y="477.0" stroke="none" data-name="Buffer">readDoubleBE()</text>
+                                <text x="0.0" y="493.0" stroke="none" data-name="Buffer">writeUInt8()</text>
+                                <text x="0.0" y="509.0" stroke="none" data-name="Buffer">writeUInt16LE()</text>
+                                <text x="0.0" y="525.0" stroke="none" data-name="Buffer">writeUInt16BE()</text>
+                                <text x="0.0" y="541.0" stroke="none" data-name="Buffer">writeUInt32LE()</text>
+                                <text x="0.0" y="557.0" stroke="none" data-name="Buffer">writeUInt32BE()</text>
+                                <text x="0.0" y="573.0" stroke="none" data-name="Buffer">writeUIntLE()</text>
+                                <text x="0.0" y="589.0" stroke="none" data-name="Buffer">writeUIntBE()</text>
+                                <text x="0.0" y="605.0" stroke="none" data-name="Buffer">writeInt8()</text>
+                                <text x="0.0" y="621.0" stroke="none" data-name="Buffer">writeInt16LE()</text>
+                                <text x="0.0" y="637.0" stroke="none" data-name="Buffer">writeInt16BE()</text>
+                                <text x="0.0" y="653.0" stroke="none" data-name="Buffer">writeInt32LE()</text>
+                                <text x="0.0" y="669.0" stroke="none" data-name="Buffer">writeInt32BE()</text>
+                                <text x="0.0" y="685.0" stroke="none" data-name="Buffer">writeIntLE()</text>
+                                <text x="0.0" y="701.0" stroke="none" data-name="Buffer">writeIntBE()</text>
+                                <text x="0.0" y="717.0" stroke="none" data-name="Buffer">writeFloatLE()</text>
+                                <text x="0.0" y="733.0" stroke="none" data-name="Buffer">writeFloatBE()</text>
+                                <text x="0.0" y="749.0" stroke="none" data-name="Buffer">writeDoubleLE()</text>
+                                <text x="0.0" y="765.0" stroke="none" data-name="Buffer">writeDoubleBE()</text>
+                                <text x="0.0" y="781.0" stroke="none" data-name="Buffer">slice()</text>
+                                <text x="0.0" y="797.0" stroke="none" data-name="Buffer">join()</text>
+                                <text x="0.0" y="813.0" stroke="none" data-name="Buffer">reverse()</text>
+                                <text x="0.0" y="829.0" stroke="none" data-name="Buffer">equals()</text>
+                                <text x="0.0" y="845.0" stroke="none" data-name="Buffer">hex()</text>
+                                <text x="0.0" y="861.0" stroke="none" data-name="Buffer">base32()</text>
+                                <text x="0.0" y="877.0" stroke="none" data-name="Buffer">base58()</text>
+                                <text x="0.0" y="893.0" stroke="none" data-name="Buffer">base64()</text>
+                                <text x="0.0" y="909.0" stroke="none" data-name="Buffer">keys()</text>
+                                <text x="0.0" y="925.0" stroke="none" data-name="Buffer">values()</text>
+                                <text x="0.0" y="941.0" stroke="none" data-name="Buffer">entries()</text>
+                                <text x="0.0" y="957.0" stroke="none" data-name="Buffer">forEach()</text>
+                                <text x="0.0" y="973.0" stroke="none" data-name="Buffer">toArray()</text>
+                                <text x="0.0" y="989.0" stroke="none" data-name="Buffer">toString()</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="object">
+                        <g fill="white" stroke="#33322E" data-name="object">
+                            <rect x="29.0" y="0.0" height="80.0" width="77.0" data-name="object"></rect>
+                            <path d="M29.0 32.0 L106.0 32.0" fill="none" data-name="object"></path>
+                        </g>
+                        <g transform="translate(29, 0)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="object">
+                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="object">object</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(29, 32)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="object">
+                                <text x="0.0" y="13.0" stroke="none" data-name="object">toString()</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="object">toJSON()</text>
+
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
 </svg></div>
 
 <div name="构造函数" data-unique="构造函数"></div><h2 id="构造函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">건설자</font></font></h2>
@@ -358,8 +428,8 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 초기화 문자열, 문자열은 utf-8 형식으로 작성되며 기본적으로 빈 객체가 생성됩니다.</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 인코딩 형식을 지정합니다. 허용되는 값은 "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8" 또는 </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 모듈에서 지원하는 문자 집합</font></font></li>
+<li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 초기화 문자열, 문자열은 utf-8 형식으로 작성되며 기본적으로 빈 객체가 생성됩니다.</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 인코딩 형식을 지정합니다. 허용되는 값은 다음과 같습니다. "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8" 또는</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">모듈에서 지원하는 문자 집합</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">캐시 객체 생성자</font></font></strong></p>
@@ -371,21 +441,21 @@
 </ul>
 <div name="操作符" data-unique="操作符"></div><h2 id="操作符"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">운영자</font></font></h2>
 <div name="operator[]" data-unique="operator[]"></div><h3 id="operator[]" class="notranslate">operator[]</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">캐시된 개체는 첨자를 사용하여 이진 데이터에 직접 액세스할 수 있습니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">캐시 개체는 첨자를 사용하여 이진 데이터에 직접 액세스할 수 있습니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer[];
 </code></pre>
 <hr>
 <div name="@iterator" data-unique="@iterator"></div><h3 id="@iterator" class="notranslate">@iterator</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">현재 개체 요소의 반복자 쿼리</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">현재 개체 요소에 대한 반복자 쿼리</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Iterator Buffer.@iterator();
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><a href="iterator.md.html" class="notranslate">Iterator</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 현재 객체 요소의 반복자를 반환합니다.</font></font></li>
+<li><a href="iterator.md.html" class="notranslate">Iterator</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 현재 객체의 요소에 대한 반복자를 반환합니다.</font></font></li>
 </ul>
 <div name="对象" data-unique="对象"></div><h2 id="对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">물체</font></font></h2>
 <div name="Buffer8" data-unique="Buffer8"></div><h3 id="Buffer" class="notranslate">Buffer</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">에 대한 이진 데이터 캐시 개체 </font></font><a href="../../module/ifs/io.md.html" class="notranslate">io</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 읽기 및 쓰기를 위한 데이터 처리</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">바이너리 데이터 캐시 객체</font></font><a href="../../module/ifs/io.md.html" class="notranslate">io</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">읽기 및 쓰기 데이터 처리</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer <span class="hljs-keyword">new</span> Buffer;
 </code></pre>
 <div name="静态函数" data-unique="静态函数"></div><h2 id="静态函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">정적 함수</font></font></h2>
@@ -395,7 +465,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 테스트할 변수가 주어진 값</font></font></li>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 값, 확인할 변수 지정</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
@@ -412,13 +482,13 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Buffer, 주어진 Buffer 유형 변수는 Buffer 객체를 생성하는 데 사용됩니다.</font></font></li>
+<li><span class="notranslate">buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Buffer, 주어진 Buffer 타입 변수는 Buffer 객체를 생성하는 데 사용됩니다.</font></font></li>
 <li><span class="notranslate">byteOffset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 0에서 시작하는 데이터의 시작 위치 지정</font></font></li>
-<li><span class="notranslate">length</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 데이터 길이를 지정하고 시작 비트는 -1이며, 이는 나머지 모든 데이터를 의미합니다.</font></font></li>
+<li><span class="notranslate">length</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 데이터 길이를 지정하고 시작 비트는 -1이며 나머지 모든 데이터를 나타냅니다.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 반환 버퍼 인스턴스</font></font></li>
+<li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Buffer 인스턴스를 반환합니다.</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">문자열에서 Buffer 객체 생성</font></font></strong></p>
@@ -430,13 +500,13 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 초기화 문자열, 문자열은 utf-8 형식으로 작성됩니다.</font></font></li>
+<li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 초기화 문자열, 문자열은 utf-8 형식으로 작성됩니다.</font></font></li>
 <li><span class="notranslate">byteOffset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 0에서 시작하는 데이터의 시작 위치 지정</font></font></li>
-<li><span class="notranslate">length</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 데이터 길이를 지정하고 시작 비트는 -1이며, 이는 나머지 모든 데이터를 의미합니다.</font></font></li>
+<li><span class="notranslate">length</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 데이터 길이를 지정하고 시작 비트는 -1이며 나머지 모든 데이터를 나타냅니다.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 반환 버퍼 인스턴스</font></font></li>
+<li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Buffer 인스턴스를 반환합니다.</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">문자열에서 Buffer 객체 생성</font></font></strong></p>
@@ -446,24 +516,24 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 초기화 문자열, 문자열은 utf-8 형식으로 작성되며 기본적으로 빈 객체가 생성됩니다.</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 인코딩 형식을 지정합니다. 허용되는 값은 "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8" 또는 </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 모듈에서 지원하는 문자 집합</font></font></li>
+<li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 초기화 문자열, 문자열은 utf-8 형식으로 작성되며 기본적으로 빈 객체가 생성됩니다.</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 인코딩 형식을 지정합니다. 허용되는 값은 다음과 같습니다. "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8" 또는</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">모듈에서 지원하는 문자 집합</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 반환 버퍼 인스턴스</font></font></li>
+<li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Buffer 인스턴스를 반환합니다.</font></font></li>
 </ul>
 <hr>
 <div name="concat" data-unique="concat"></div><h3 id="concat" class="notranslate">concat</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">여러 버퍼의 데이터 연결</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">여러 버퍼의 데이터 스플라이싱</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> Buffer Buffer.concat(<span class="hljs-built_in">Array</span> buflist,<font></font>
     Integer cutLength = <span class="hljs-number">-1</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">buflist</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 배열, 접합할 버퍼 배열</font></font></li>
-<li><span class="notranslate">cutLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 가로챌 Buffer 객체 수</font></font></li>
+<li><span class="notranslate">buflist</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Array, 접합할 Buffer 배열</font></font></li>
+<li><span class="notranslate">cutLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 가로챌 버퍼 개체 수</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
@@ -471,7 +541,7 @@
 </ul>
 <hr>
 <div name="alloc" data-unique="alloc"></div><h3 id="alloc" class="notranslate">alloc</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 길이의 새 버퍼 영역을 할당합니다. </font><font style="vertical-align: inherit;">크기가 0이면 길이가 0인 버퍼 영역이 생성됩니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 길이의 새 버퍼를 할당합니다. </font><font style="vertical-align: inherit;">크기가 0이면 길이가 0인 버퍼가 생성됩니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">static</span> Buffer Buffer.alloc(Integer size,<font></font>
@@ -480,16 +550,16 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 필요한 버퍼 길이</font></font></li>
-<li><span class="notranslate">fill</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 새 버퍼의 값을 미리 채우십시오. 문자열/버퍼/정수 값 유형을 사용할 수 있습니다. </font><font style="vertical-align: inherit;">기본값: 0</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 인코딩 형식을 지정합니다. 허용되는 값은 "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8" 또는 </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 모듈에서 지원하는 문자 집합</font></font></li>
+<li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 원하는 버퍼 길이</font></font></li>
+<li><span class="notranslate">fill</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 새 버퍼를 미리 채울 값은 문자열/버퍼/정수 값 유형을 사용합니다. </font><font style="vertical-align: inherit;">기본값: 0</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 인코딩 형식을 지정합니다. 허용되는 값은 다음과 같습니다. "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8" 또는</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">모듈에서 지원하는 문자 집합</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
 <li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 채워진 새 Buffer 객체</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 길이의 새 버퍼 영역을 할당합니다. </font><font style="vertical-align: inherit;">크기가 0이면 길이가 0인 버퍼 영역이 생성됩니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 길이의 새 버퍼를 할당합니다. </font><font style="vertical-align: inherit;">크기가 0이면 길이가 0인 버퍼가 생성됩니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">static</span> Buffer Buffer.alloc(Integer size,
@@ -498,16 +568,16 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 필요한 버퍼 길이</font></font></li>
-<li><span class="notranslate">fill</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 새 버퍼의 값을 미리 채우고 문자열/버퍼/정수 값 유형을 사용할 수 있습니다. </font><font style="vertical-align: inherit;">기본값: 0</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 인코딩 형식을 지정합니다. 허용되는 값은 "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8" 또는 </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 모듈에서 지원하는 문자 집합</font></font></li>
+<li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 원하는 버퍼 길이</font></font></li>
+<li><span class="notranslate">fill</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 새 버퍼를 미리 채울 값인 문자열은 문자열/버퍼/정수 값 유형을 사용합니다. </font><font style="vertical-align: inherit;">기본값: 0</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 인코딩 형식을 지정합니다. 허용되는 값은 다음과 같습니다. "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8" 또는</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">모듈에서 지원하는 문자 집합</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
 <li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 채워진 새 Buffer 객체</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 길이의 새 버퍼 영역을 할당합니다. </font><font style="vertical-align: inherit;">크기가 0이면 길이가 0인 버퍼 영역이 생성됩니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 길이의 새 버퍼를 할당합니다. </font><font style="vertical-align: inherit;">크기가 0이면 길이가 0인 버퍼가 생성됩니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">static</span> Buffer Buffer.alloc(Integer size,<font></font>
@@ -516,9 +586,9 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 필요한 버퍼 길이</font></font></li>
-<li><span class="notranslate">fill</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 버퍼, 새 버퍼의 값을 미리 채우고 문자열/버퍼/정수 값 유형을 사용할 수 있습니다. </font><font style="vertical-align: inherit;">기본값: 0</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 인코딩 형식을 지정합니다. 허용되는 값은 "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8" 또는 </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 모듈에서 지원하는 문자 집합</font></font></li>
+<li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 원하는 버퍼 길이</font></font></li>
+<li><span class="notranslate">fill</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 버퍼, 새 버퍼를 미리 채울 값은 문자열/버퍼/정수 값 유형을 사용합니다. </font><font style="vertical-align: inherit;">기본값: 0</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 인코딩 형식을 지정합니다. 허용되는 값은 다음과 같습니다. "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8" 또는</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">모듈에서 지원하는 문자 집합</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
@@ -526,12 +596,12 @@
 </ul>
 <hr>
 <div name="allocUnsafe" data-unique="allocUnsafe"></div><h3 id="allocUnsafe" class="notranslate">allocUnsafe</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 길이의 새 버퍼 영역을 할당합니다. </font><font style="vertical-align: inherit;">크기가 0이면 길이가 0인 버퍼 영역이 생성됩니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 길이의 새 버퍼를 할당합니다. </font><font style="vertical-align: inherit;">크기가 0이면 길이가 0인 버퍼가 생성됩니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Buffer Buffer.allocUnsafe(Integer size);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 필요한 버퍼 길이</font></font></li>
+<li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 원하는 버퍼 길이</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
@@ -539,12 +609,12 @@
 </ul>
 <hr>
 <div name="allocUnsafeSlow" data-unique="allocUnsafeSlow"></div><h3 id="allocUnsafeSlow" class="notranslate">allocUnsafeSlow</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 길이의 새 버퍼 영역을 할당합니다. </font><font style="vertical-align: inherit;">크기가 0이면 길이가 0인 버퍼 영역이 생성됩니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 길이의 새 버퍼를 할당합니다. </font><font style="vertical-align: inherit;">크기가 0이면 길이가 0인 버퍼가 생성됩니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Buffer Buffer.allocUnsafeSlow(Integer size);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 필요한 버퍼 길이</font></font></li>
+<li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 원하는 버퍼 길이</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
@@ -560,11 +630,11 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
 <li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 가져올 바이트 문자열, str이 ArrayBuffer/TypedArray/DataView/Buffer 객체인 경우 실제 길이를 반환합니다.</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 인코딩 형식을 지정합니다. 허용되는 값은 "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8" 또는 </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 모듈에서 지원하는 문자 집합</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 인코딩 형식을 지정합니다. 허용되는 값은 다음과 같습니다. "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8" 또는</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">모듈에서 지원하는 문자 집합</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 실제 바이트 길이를 반환합니다.</font></font></li>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 실제 길이를 바이트 단위로 반환</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">문자열의 실제 바이트 길이를 반환합니다.</font></font></strong></p>
@@ -574,12 +644,12 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ArrayBuffer, 가져올 바이트 문자열, str이 ArrayBuffer/TypedArray/DataView/Buffer 객체인 경우 실제 길이를 반환합니다.</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 인코딩 형식을 지정합니다. 허용되는 값은 "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8" 또는 </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 모듈에서 지원하는 문자 집합</font></font></li>
+<li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 가져올 바이트 문자열인 ArrayBuffer, str이 ArrayBuffer/TypedArray/DataView/Buffer 객체인 경우 실제 길이를 반환합니다.</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 인코딩 형식을 지정합니다. 허용되는 값은 다음과 같습니다. "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8" 또는</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">모듈에서 지원하는 문자 집합</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 실제 바이트 길이를 반환합니다.</font></font></li>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 실제 길이를 바이트 단위로 반환</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">문자열의 실제 바이트 길이를 반환합니다.</font></font></strong></p>
@@ -590,11 +660,11 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
 <li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ArrayBufferView, 가져올 바이트 문자열, str이 ArrayBuffer/TypedArray/DataView/Buffer 객체인 경우 실제 길이를 반환합니다.</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 인코딩 형식을 지정합니다. 허용되는 값은 "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8" 또는 </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 모듈에서 지원하는 문자 집합</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 인코딩 형식을 지정합니다. 허용되는 값은 다음과 같습니다. "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8" 또는</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">모듈에서 지원하는 문자 집합</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 실제 바이트 길이를 반환합니다.</font></font></li>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 실제 길이를 바이트 단위로 반환</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">문자열의 실제 바이트 길이를 반환합니다.</font></font></strong></p>
@@ -605,15 +675,15 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
 <li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Buffer, 가져올 바이트 문자열, str이 ArrayBuffer/TypedArray/DataView/Buffer 객체인 경우 실제 길이를 반환합니다.</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 인코딩 형식을 지정합니다. 허용되는 값은 "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8" 또는 </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 모듈에서 지원하는 문자 집합</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 인코딩 형식을 지정합니다. 허용되는 값은 다음과 같습니다. "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8" 또는</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">모듈에서 지원하는 문자 집합</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 실제 바이트 길이를 반환합니다.</font></font></li>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 실제 길이를 바이트 단위로 반환</font></font></li>
 </ul>
 <hr>
 <div name="compare" data-unique="compare"></div><h3 id="compare" class="notranslate">compare</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">buf1과 buf2를 비교하는 것은 Buffer 인스턴스 간의 정렬에 자주 사용되며 이 방법은 buf1.compare(buf2)와 동일합니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buffer 인스턴스 간의 정렬에 자주 사용되는 buf1과 buf2를 비교합니다. 이 메서드는 buf1.compare(buf2)와 동일합니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> Integer Buffer.compare(Buffer buf1,<font></font>
     Buffer buf2);<font></font>
@@ -625,7 +695,7 @@
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 비교 바이트 길이를 반환</font></font></li>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 비교된 바이트의 길이를 반환합니다.</font></font></li>
 </ul>
 <hr>
 <div name="isEncoding" data-unique="isEncoding"></div><h3 id="isEncoding" class="notranslate">isEncoding</h3>
@@ -638,21 +708,26 @@
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 지원합니까</font></font></li>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 지원 여부</font></font></li>
 </ul>
-<div name="成员属性" data-unique="成员属性"></div><h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">회원 속성</font></font></h2>
+<div name="成员属性" data-unique="成员属性"></div><h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">멤버 속성</font></font></h2>
 <div name="length" data-unique="length"></div><h3 id="length" class="notranslate">length</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">정수, 캐시된 개체의 크기 가져오기</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer Buffer.length;
 </code></pre>
 <hr>
+<div name="byteOffset" data-unique="byteOffset"></div><h3 id="byteOffset" class="notranslate">byteOffset</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">정수, 캐시된 개체의 오프셋 값 가져오기</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer Buffer.byteOffset;
+</code></pre>
+<hr>
 <div name="buffer" data-unique="buffer"></div><h3 id="buffer" class="notranslate">buffer</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ArrayBuffer, ArrayBuffer 형식으로 버퍼링된 데이터 반환</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ArrayBuffer, 버퍼링된 데이터를 ArrayBuffer 형식으로 반환</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly <span class="hljs-built_in">ArrayBuffer</span> Buffer.buffer;
 </code></pre>
 <div name="成员函数" data-unique="成员函数"></div><h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">멤버 함수</font></font></h2>
 <div name="resize" data-unique="resize"></div><h3 id="resize" class="notranslate">resize</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">캐시된 개체의 크기 수정</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">캐시 개체 크기 수정</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer.resize(Integer sz);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
@@ -676,12 +751,12 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 쓸 문자열</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 인코딩 형식을 지정합니다. 허용되는 값은 "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8" 또는 </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 모듈에서 지원하는 문자 집합</font></font></li>
+<li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 쓸 문자열</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 인코딩 형식을 지정합니다. 허용되는 값은 다음과 같습니다. "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8" 또는</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">모듈에서 지원하는 문자 집합</font></font></li>
 </ul>
 <hr>
 <div name="write" data-unique="write"></div><h3 id="write" class="notranslate">write</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 문자열을 캐시 개체에 쓰고, 문자열의 기본값은 utf-8이며, 경계를 초과하면 데이터의 일부만 기록됩니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 문자열을 캐시 개체에 쓰고, 문자열의 기본값은 utf-8이며, 범위를 벗어날 때 데이터의 일부만 기록됩니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -692,17 +767,17 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 쓸 문자열</font></font></li>
+<li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 쓸 문자열</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치</font></font></li>
-<li><span class="notranslate">length</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 길이(단위 바이트, 기본값 -1), 지정하지 않을 경우 쓸 문자열의 길이</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 인코딩 형식을 지정합니다. 허용되는 값은 "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8" 또는 </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 모듈에서 지원하는 문자 집합</font></font></li>
+<li><span class="notranslate">length</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 길이(바이트 단위, 기본값 -1), 지정되지 않은 경우 쓸 문자열의 길이</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 인코딩 형식을 지정합니다. 허용되는 값은 다음과 같습니다. "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8" 또는</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">모듈에서 지원하는 문자 집합</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 쓰여진 데이터 바이트의 길이</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 문자열을 캐시 개체에 쓰고, 문자열의 기본값은 utf-8이며, 경계를 초과하면 데이터의 일부만 기록됩니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 문자열을 캐시 개체에 쓰고, 문자열의 기본값은 utf-8이며, 범위를 벗어날 때 데이터의 일부만 기록됩니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div>Integer Buffer.write(<span class="hljs-built_in">String</span> str,<font></font>
@@ -711,24 +786,24 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 쓸 문자열</font></font></li>
+<li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 쓸 문자열</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 인코딩 형식을 지정합니다. 허용되는 값은 "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8" 또는 </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 모듈에서 지원하는 문자 집합</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 인코딩 형식을 지정합니다. 허용되는 값은 다음과 같습니다. "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8" 또는</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">모듈에서 지원하는 문자 집합</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 쓰여진 데이터 바이트의 길이</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 문자열을 캐시 개체에 쓰고, 문자열의 기본값은 utf-8이며, 경계를 초과하면 데이터의 일부만 기록됩니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 문자열을 캐시 개체에 쓰고, 문자열의 기본값은 utf-8이며, 범위를 벗어날 때 데이터의 일부만 기록됩니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.write(<span class="hljs-built_in">String</span> str,
     <span class="hljs-built_in">String</span> codec = <span class="hljs-string">"utf8"</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 쓸 문자열</font></font></li>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 인코딩 형식을 지정합니다. 허용되는 값은 "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8" 또는 </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 모듈에서 지원하는 문자 집합</font></font></li>
+<li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 쓸 문자열</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 인코딩 형식을 지정합니다. 허용되는 값은 다음과 같습니다. "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8" 또는</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">모듈에서 지원하는 문자 집합</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
@@ -736,7 +811,7 @@
 </ul>
 <hr>
 <div name="fill" data-unique="fill"></div><h3 id="fill" class="notranslate">fill</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buffer 객체를 지정된 콘텐츠 데이터로 채웁니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 콘텐츠 데이터로 Buffer 개체를 채웁니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div>Buffer Buffer.fill(Integer v,<font></font>
@@ -745,16 +820,16 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, 채워질 데이터, offset과 end를 지정하지 않으면 전체 버퍼가 채워진다.</font></font></li>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 채울 데이터, 오프셋과 끝이 지정되지 않으면 전체 버퍼가 채워집니다.</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 채우기 시작 위치</font></font></li>
 <li><span class="notranslate">end</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 끝 위치 채우기</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 현재 Buffer 객체를 반환</font></font></li>
+<li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 현재 Buffer 객체를 반환합니다.</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buffer 객체를 지정된 콘텐츠 데이터로 채웁니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 콘텐츠 데이터로 Buffer 개체를 채웁니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div>Buffer Buffer.fill(Buffer v,<font></font>
@@ -769,10 +844,10 @@
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 현재 Buffer 객체를 반환</font></font></li>
+<li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 현재 Buffer 객체를 반환합니다.</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buffer 객체를 지정된 콘텐츠 데이터로 채웁니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 콘텐츠 데이터로 Buffer 개체를 채웁니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div>Buffer Buffer.fill(<span class="hljs-built_in">String</span> v,<font></font>
@@ -787,11 +862,11 @@
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 현재 Buffer 객체를 반환</font></font></li>
+<li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 현재 Buffer 객체를 반환합니다.</font></font></li>
 </ul>
 <hr>
 <div name="indexOf" data-unique="indexOf"></div><h3 id="indexOf" class="notranslate">indexOf</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">버퍼에서 지정된 데이터의 첫 번째 발생 위치를 반환합니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">버퍼에서 지정된 데이터의 첫 번째 발생을 반환합니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.indexOf(Integer v,<font></font>
     Integer offset = <span class="hljs-number">0</span>);
@@ -806,14 +881,14 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 찾은 위치를 반환하고 찾지 못하면 -1을 반환합니다.</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">버퍼에서 지정된 데이터의 첫 번째 발생 위치를 반환합니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">버퍼에서 지정된 데이터의 첫 번째 발생을 반환합니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.indexOf(Buffer v,<font></font>
     Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 버퍼, 검색할 데이터, 오프셋이 지정되지 않은 경우 기본값은 시작 비트부터 시작</font></font></li>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Buffer, 검색할 데이터, offset을 지정하지 않으면 기본적으로 시작 비트부터 시작</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 검색 시작 위치</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
@@ -821,7 +896,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 찾은 위치를 반환하고 찾지 못하면 -1을 반환합니다.</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">버퍼에서 지정된 데이터의 첫 번째 발생 위치를 반환합니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">버퍼에서 지정된 데이터의 첫 번째 발생을 반환합니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.indexOf(<span class="hljs-built_in">String</span> v,<font></font>
     Integer offset = <span class="hljs-number">0</span>);
@@ -836,8 +911,8 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 찾은 위치를 반환하고 찾지 못하면 -1을 반환합니다.</font></font></li>
 </ul>
 <hr>
-<div name="compare28" data-unique="compare28"></div><h3 id="compare" class="notranslate">compare</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">캐시의 내용 비교</font></font></strong></p>
+<div name="compare29" data-unique="compare29"></div><h3 id="compare" class="notranslate">compare</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">버퍼의 내용 비교</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.compare(Buffer buf);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
@@ -862,13 +937,13 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
 <li><span class="notranslate">targetBuffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 버퍼, 대상 버퍼 객체</font></font></li>
-<li><span class="notranslate">targetStart</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 복사를 시작할 대상 캐시 객체의 바이트 위치, 기본값은 0</font></font></li>
+<li><span class="notranslate">targetStart</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 대상 캐시 개체가 바이트 위치 복사를 시작합니다. 기본값은 0입니다.</font></font></li>
 <li><span class="notranslate">sourceStart</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 소스 캐시 객체의 시작 바이트 위치, 기본값은 0</font></font></li>
-<li><span class="notranslate">sourceEnd</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 소스 캐시 객체의 끝 바이트 위치, 기본값은 소스 데이터의 길이를 의미하는 -1</font></font></li>
+<li><span class="notranslate">sourceEnd</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 소스 캐시 객체의 끝 바이트 위치, 기본값은 소스 데이터의 길이를 나타내는 -1</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 복사된 데이터 바이트의 길이</font></font></li>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 복사된 데이터의 길이(바이트)</font></font></li>
 </ul>
 <hr>
 <div name="set" data-unique="set"></div><h3 id="set" class="notranslate">set</h3>
@@ -884,11 +959,11 @@
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 복사된 데이터 바이트의 길이</font></font></li>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 복사된 데이터의 길이(바이트)</font></font></li>
 </ul>
 <hr>
 <div name="readUInt8" data-unique="readUInt8"></div><h3 id="readUInt8" class="notranslate">readUInt8</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">캐시 개체에서 8비트 부호 없는 정수 값 읽기</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">캐시 개체에서 8비트 부호 없는 정수 값을 읽습니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.readUInt8(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
@@ -901,7 +976,7 @@
 </ul>
 <hr>
 <div name="readUInt16LE" data-unique="readUInt16LE"></div><h3 id="readUInt16LE" class="notranslate">readUInt16LE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">캐시 개체에서 16비트 부호 없는 정수 값을 읽고 낮은 엔디안 순서로 저장</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">리틀 엔디안에 저장된 캐시 개체에서 16비트 부호 없는 정수 값을 읽습니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.readUInt16LE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
@@ -914,7 +989,7 @@
 </ul>
 <hr>
 <div name="readUInt16BE" data-unique="readUInt16BE"></div><h3 id="readUInt16BE" class="notranslate">readUInt16BE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">캐시 개체에서 16비트 부호 없는 정수 값을 읽고 하이 엔디안 순서로 저장</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">빅 엔디안에 저장된 캐시 개체에서 16비트 부호 없는 정수 값을 읽습니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.readUInt16BE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
@@ -927,7 +1002,7 @@
 </ul>
 <hr>
 <div name="readUInt32LE" data-unique="readUInt32LE"></div><h3 id="readUInt32LE" class="notranslate">readUInt32LE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">캐시 개체에서 32비트 부호 없는 정수 값을 읽고 낮은 엔디안 순서로 저장</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">리틀 엔디안에 저장된 캐시 개체에서 32비트 부호 없는 정수 값을 읽습니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Long Buffer.readUInt32LE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
@@ -940,7 +1015,7 @@
 </ul>
 <hr>
 <div name="readUInt32BE" data-unique="readUInt32BE"></div><h3 id="readUInt32BE" class="notranslate">readUInt32BE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">캐시 개체에서 32비트 부호 없는 정수 값을 읽고 하이 엔디안 순서로 저장합니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">빅 엔디안에 저장된 캐시 개체에서 32비트 부호 없는 정수 값을 읽습니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Long Buffer.readUInt32BE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
@@ -953,7 +1028,7 @@
 </ul>
 <hr>
 <div name="readUIntLE" data-unique="readUIntLE"></div><h3 id="readUIntLE" class="notranslate">readUIntLE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">로우 엔디안 순서로 저장된 최대 64비트 지원으로 캐시 개체에서 부호 없는 정수 값을 읽습니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">캐시 개체에서 부호 없는 정수 값을 읽고 최대 64비트를 지원하며 리틀 엔디안으로 저장합니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Long Buffer.readUIntLE(Integer offset = <span class="hljs-number">0</span>,<font></font>
     Integer byteLength = <span class="hljs-number">8</span>);
@@ -961,7 +1036,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 읽기 시작 위치를 지정합니다. 기본값은 0입니다.</font></font></li>
-<li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 읽은 바이트 수를 지정합니다. 기본값은 8바이트입니다.</font></font></li>
+<li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 읽을 바이트 수를 지정합니다. 기본값은 8바이트입니다.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
@@ -969,7 +1044,7 @@
 </ul>
 <hr>
 <div name="readUIntBE" data-unique="readUIntBE"></div><h3 id="readUIntBE" class="notranslate">readUIntBE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">하이 엔디안 순서로 저장된 최대 64비트 지원으로 캐시 개체에서 부호 없는 정수 값을 읽습니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">캐시 객체에서 부호 없는 정수 값을 읽어서 최대 64비트를 지원하고 하이엔디안 순서로 저장</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Long Buffer.readUIntBE(Integer offset = <span class="hljs-number">0</span>,<font></font>
     Integer byteLength = <span class="hljs-number">8</span>);
@@ -977,7 +1052,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 읽기 시작 위치를 지정합니다. 기본값은 0입니다.</font></font></li>
-<li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 읽은 바이트 수를 지정합니다. 기본값은 8바이트입니다.</font></font></li>
+<li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 읽을 바이트 수를 지정합니다. 기본값은 8바이트입니다.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
@@ -985,7 +1060,7 @@
 </ul>
 <hr>
 <div name="readInt64LE" data-unique="readInt64LE"></div><h3 id="readInt64LE" class="notranslate">readInt64LE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">캐시 개체에서 64비트 정수 값을 읽고 로우 엔디안 순서로 저장</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">리틀 엔디안에 저장된 캐시 객체에서 64비트 정수 값 읽기</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Long Buffer.readInt64LE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
@@ -998,7 +1073,7 @@
 </ul>
 <hr>
 <div name="readInt64BE" data-unique="readInt64BE"></div><h3 id="readInt64BE" class="notranslate">readInt64BE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">캐시 개체에서 64비트 정수 값을 읽고 하이 엔디안 순서로 저장</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">빅 엔디안 저장소의 캐시 개체에서 64비트 정수 값을 읽습니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Long Buffer.readInt64BE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
@@ -1011,7 +1086,7 @@
 </ul>
 <hr>
 <div name="readInt8" data-unique="readInt8"></div><h3 id="readInt8" class="notranslate">readInt8</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">캐시 개체에서 8비트 정수 값 읽기</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">캐시 개체에서 8비트 정수 값을 읽습니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.readInt8(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
@@ -1024,7 +1099,7 @@
 </ul>
 <hr>
 <div name="readInt16LE" data-unique="readInt16LE"></div><h3 id="readInt16LE" class="notranslate">readInt16LE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">캐시 개체에서 16비트 정수 값을 읽고 낮은 엔디안 순서로 저장</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">리틀 엔디안에 저장된 캐시 객체에서 16비트 정수 값 읽기</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.readInt16LE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
@@ -1037,7 +1112,7 @@
 </ul>
 <hr>
 <div name="readInt16BE" data-unique="readInt16BE"></div><h3 id="readInt16BE" class="notranslate">readInt16BE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">캐시 개체에서 16비트 정수 값을 읽고 하이 엔디안 순서로 저장합니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">빅 엔디안 저장소의 캐시 개체에서 16비트 정수 값을 읽습니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.readInt16BE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
@@ -1050,7 +1125,7 @@
 </ul>
 <hr>
 <div name="readInt32LE" data-unique="readInt32LE"></div><h3 id="readInt32LE" class="notranslate">readInt32LE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">캐시 개체에서 32비트 정수 값을 읽고 로우 엔디안 순서로 저장</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">리틀 엔디안 저장소의 캐시 개체에서 32비트 정수 값을 읽습니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.readInt32LE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
@@ -1063,7 +1138,7 @@
 </ul>
 <hr>
 <div name="readInt32BE" data-unique="readInt32BE"></div><h3 id="readInt32BE" class="notranslate">readInt32BE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">캐시 개체에서 32비트 정수 값을 읽고 하이 엔디안 순서로 저장</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">빅 엔디안에 저장된 캐시 개체에서 32비트 정수 값을 읽습니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.readInt32BE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
@@ -1076,7 +1151,7 @@
 </ul>
 <hr>
 <div name="readIntLE" data-unique="readIntLE"></div><h3 id="readIntLE" class="notranslate">readIntLE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">로우 엔디안 순서로 저장된 최대 64비트 지원으로 캐시 개체에서 정수 값 읽기</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">캐시 개체에서 정수 값을 읽고 최대 64비트를 지원하며 리틀 엔디안으로 저장합니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Long Buffer.readIntLE(Integer offset = <span class="hljs-number">0</span>,<font></font>
     Integer byteLength = <span class="hljs-number">8</span>);
@@ -1084,7 +1159,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 읽기 시작 위치를 지정합니다. 기본값은 0입니다.</font></font></li>
-<li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 읽은 바이트 수를 지정합니다. 기본값은 8바이트입니다.</font></font></li>
+<li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 읽을 바이트 수를 지정합니다. 기본값은 8바이트입니다.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
@@ -1092,7 +1167,7 @@
 </ul>
 <hr>
 <div name="readIntBE" data-unique="readIntBE"></div><h3 id="readIntBE" class="notranslate">readIntBE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">최대 64비트를 지원하는 캐시 개체에서 정수 값을 읽고 하이 엔디안 순서로 저장합니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">캐시 개체에서 정수 값을 읽고 최대 64비트를 지원하며 하이 엔디안 순서로 저장합니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Long Buffer.readIntBE(Integer offset = <span class="hljs-number">0</span>,<font></font>
     Integer byteLength = <span class="hljs-number">8</span>);
@@ -1100,7 +1175,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 읽기 시작 위치를 지정합니다. 기본값은 0입니다.</font></font></li>
-<li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 읽은 바이트 수를 지정합니다. 기본값은 8바이트입니다.</font></font></li>
+<li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 읽을 바이트 수를 지정합니다. 기본값은 8바이트입니다.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
@@ -1108,7 +1183,7 @@
 </ul>
 <hr>
 <div name="writeInt64LE" data-unique="writeInt64LE"></div><h3 id="writeInt64LE" class="notranslate">writeInt64LE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">로우 엔디안 스토리지의 캐시 개체에 64비트 정수 값 쓰기</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">리틀 엔디안에 저장된 64비트 정수 값을 캐시 개체에 씁니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeInt64LE(Long value,<font></font>
     Integer offset = <span class="hljs-number">0</span>);
@@ -1116,7 +1191,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long, 쓸 값 지정</font></font></li>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치 지정</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치를 지정합니다.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
@@ -1124,7 +1199,7 @@
 </ul>
 <hr>
 <div name="writeInt64BE" data-unique="writeInt64BE"></div><h3 id="writeInt64BE" class="notranslate">writeInt64BE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">캐시 개체에 64비트 정수 값을 쓰고 하이 엔디안 순서로 저장합니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">빅 엔디안 스토리지의 캐시 개체에 64비트 정수 값을 씁니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeInt64BE(Long value,<font></font>
     Integer offset = <span class="hljs-number">0</span>);
@@ -1132,7 +1207,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long, 쓸 값 지정</font></font></li>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치 지정</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치를 지정합니다.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
@@ -1140,7 +1215,7 @@
 </ul>
 <hr>
 <div name="readFloatLE" data-unique="readFloatLE"></div><h3 id="readFloatLE" class="notranslate">readFloatLE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">캐시 개체에서 부동 소수점 숫자를 읽고 로우 엔디안 순서로 저장</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">리틀 엔디안 저장소의 캐시 개체에서 부동 소수점 수를 읽습니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Number</span> Buffer.readFloatLE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
@@ -1149,11 +1224,11 @@
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Number</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 읽은 부동 소수점 수를 반환합니다.</font></font></li>
+<li><span class="notranslate">Number</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, float 읽기를 반환합니다.</font></font></li>
 </ul>
 <hr>
 <div name="readFloatBE" data-unique="readFloatBE"></div><h3 id="readFloatBE" class="notranslate">readFloatBE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">캐시 개체에서 부동 소수점 숫자를 읽고 하이 엔디안 순서로 저장</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">빅 엔디안 스토리지의 캐시 개체에서 부동 소수점 숫자를 읽습니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Number</span> Buffer.readFloatBE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
@@ -1162,11 +1237,11 @@
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Number</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 읽은 부동 소수점 수를 반환합니다.</font></font></li>
+<li><span class="notranslate">Number</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, float 읽기를 반환합니다.</font></font></li>
 </ul>
 <hr>
 <div name="readDoubleLE" data-unique="readDoubleLE"></div><h3 id="readDoubleLE" class="notranslate">readDoubleLE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">캐시 개체에서 배정밀도 부동 소수점 숫자를 읽고 낮은 엔디안 순서로 저장</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">리틀 엔디안 저장소의 캐시 개체에서 배정밀도 부동 소수점 수를 읽습니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Number</span> Buffer.readDoubleLE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
@@ -1179,7 +1254,7 @@
 </ul>
 <hr>
 <div name="readDoubleBE" data-unique="readDoubleBE"></div><h3 id="readDoubleBE" class="notranslate">readDoubleBE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">캐시 개체에서 배정밀도 부동 소수점 숫자를 읽고 하이 엔디안 순서로 저장</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">빅 엔디안 스토리지의 캐시 개체에서 배정밀도 부동 소수점 숫자를 읽습니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Number</span> Buffer.readDoubleBE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
@@ -1192,7 +1267,7 @@
 </ul>
 <hr>
 <div name="writeUInt8" data-unique="writeUInt8"></div><h3 id="writeUInt8" class="notranslate">writeUInt8</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">캐시 개체에 8비트 부호 없는 정수 값 쓰기</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">캐시 개체에 8비트 부호 없는 정수 값을 씁니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeUInt8(Integer value,<font></font>
     Integer offset = <span class="hljs-number">0</span>);
@@ -1200,7 +1275,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓸 값 지정</font></font></li>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치 지정</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치를 지정합니다.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
@@ -1208,7 +1283,7 @@
 </ul>
 <hr>
 <div name="writeUInt16LE" data-unique="writeUInt16LE"></div><h3 id="writeUInt16LE" class="notranslate">writeUInt16LE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">로우 엔디안 저장소의 캐시 개체에 16비트 부호 없는 정수 값 쓰기</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">리틀 엔디안에 저장된 16비트 부호 없는 정수 값을 캐시 개체에 씁니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeUInt16LE(Integer value,<font></font>
     Integer offset = <span class="hljs-number">0</span>);
@@ -1216,7 +1291,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓸 값 지정</font></font></li>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치 지정</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치를 지정합니다.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
@@ -1224,7 +1299,7 @@
 </ul>
 <hr>
 <div name="writeUInt16BE" data-unique="writeUInt16BE"></div><h3 id="writeUInt16BE" class="notranslate">writeUInt16BE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">16비트 부호 없는 정수 값을 캐시 개체에 쓰고 하이엔디안 순서로 저장합니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">빅 엔디안에 저장된 16비트 부호 없는 정수 값을 캐시 개체에 씁니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeUInt16BE(Integer value,<font></font>
     Integer offset = <span class="hljs-number">0</span>);
@@ -1232,7 +1307,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓸 값 지정</font></font></li>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치 지정</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치를 지정합니다.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
@@ -1240,7 +1315,7 @@
 </ul>
 <hr>
 <div name="writeUInt32LE" data-unique="writeUInt32LE"></div><h3 id="writeUInt32LE" class="notranslate">writeUInt32LE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">로우 엔디안 저장소의 캐시 개체에 32비트 부호 없는 정수 값 쓰기</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">리틀 엔디안에 저장된 32비트 부호 없는 정수 값을 캐시 개체에 씁니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeUInt32LE(Long value,<font></font>
     Integer offset = <span class="hljs-number">0</span>);
@@ -1248,7 +1323,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long, 쓸 값 지정</font></font></li>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치 지정</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치를 지정합니다.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
@@ -1256,7 +1331,7 @@
 </ul>
 <hr>
 <div name="writeUInt32BE" data-unique="writeUInt32BE"></div><h3 id="writeUInt32BE" class="notranslate">writeUInt32BE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">32비트 부호 없는 정수 값을 캐시 개체에 쓰고 하이엔디안 순서로 저장합니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">빅 엔디안에 저장된 32비트 부호 없는 정수 값을 캐시 개체에 씁니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeUInt32BE(Long value,<font></font>
     Integer offset = <span class="hljs-number">0</span>);
@@ -1264,7 +1339,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long, 쓸 값 지정</font></font></li>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치 지정</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치를 지정합니다.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
@@ -1272,7 +1347,7 @@
 </ul>
 <hr>
 <div name="writeUIntLE" data-unique="writeUIntLE"></div><h3 id="writeUIntLE" class="notranslate">writeUIntLE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">로우 엔디안 순서로 저장된 최대 64비트 지원으로 캐시 개체에 부호 없는 정수 값을 씁니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">리틀 엔디안 저장소에서 최대 64비트의 부호 없는 정수 값을 캐시 개체에 씁니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div>Integer Buffer.writeUIntLE(Long value,<font></font>
@@ -1282,8 +1357,8 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long, 쓸 값 지정</font></font></li>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치 지정</font></font></li>
-<li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰여진 바이트 수를 지정합니다. 기본값은 8바이트입니다.</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치를 지정합니다.</font></font></li>
+<li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓸 바이트 수를 지정합니다. 기본값은 8바이트입니다.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
@@ -1291,7 +1366,7 @@
 </ul>
 <hr>
 <div name="writeUIntBE" data-unique="writeUIntBE"></div><h3 id="writeUIntBE" class="notranslate">writeUIntBE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">하이 엔디안 순서로 저장된 최대 64비트 지원으로 캐시 개체에 부호 없는 정수 값을 씁니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">하이 엔디안 스토리지에서 최대 64비트의 부호 없는 정수 값을 캐시 개체에 씁니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div>Integer Buffer.writeUIntBE(Long value,<font></font>
@@ -1301,8 +1376,8 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long, 쓸 값 지정</font></font></li>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치 지정</font></font></li>
-<li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰여진 바이트 수를 지정합니다. 기본값은 8바이트입니다.</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치를 지정합니다.</font></font></li>
+<li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓸 바이트 수를 지정합니다. 기본값은 8바이트입니다.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
@@ -1310,7 +1385,7 @@
 </ul>
 <hr>
 <div name="writeInt8" data-unique="writeInt8"></div><h3 id="writeInt8" class="notranslate">writeInt8</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">캐시 개체에 8비트 정수 값 쓰기</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">캐시 개체에 8비트 정수 값을 씁니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeInt8(Integer value,<font></font>
     Integer offset = <span class="hljs-number">0</span>);
@@ -1318,7 +1393,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓸 값 지정</font></font></li>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치 지정</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치를 지정합니다.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
@@ -1326,7 +1401,7 @@
 </ul>
 <hr>
 <div name="writeInt16LE" data-unique="writeInt16LE"></div><h3 id="writeInt16LE" class="notranslate">writeInt16LE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">로우 엔디안 스토리지의 캐시 개체에 16비트 정수 값 쓰기</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">리틀 엔디안 저장소의 캐시 개체에 16비트 정수 값을 씁니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeInt16LE(Integer value,<font></font>
     Integer offset = <span class="hljs-number">0</span>);
@@ -1334,7 +1409,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓸 값 지정</font></font></li>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치 지정</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치를 지정합니다.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
@@ -1342,7 +1417,7 @@
 </ul>
 <hr>
 <div name="writeInt16BE" data-unique="writeInt16BE"></div><h3 id="writeInt16BE" class="notranslate">writeInt16BE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">캐시 개체에 16비트 정수 값을 쓰고 하이 엔디안 순서로 저장합니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">빅 엔디안 스토리지의 캐시 개체에 16비트 정수 값을 씁니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeInt16BE(Integer value,<font></font>
     Integer offset = <span class="hljs-number">0</span>);
@@ -1350,7 +1425,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓸 값 지정</font></font></li>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치 지정</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치를 지정합니다.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
@@ -1358,7 +1433,7 @@
 </ul>
 <hr>
 <div name="writeInt32LE" data-unique="writeInt32LE"></div><h3 id="writeInt32LE" class="notranslate">writeInt32LE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">로우 엔디안 스토리지의 캐시 개체에 32비트 정수 값 쓰기</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">리틀 엔디안 저장소의 캐시 개체에 32비트 정수 값을 씁니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeInt32LE(Integer value,<font></font>
     Integer offset = <span class="hljs-number">0</span>);
@@ -1366,7 +1441,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓸 값 지정</font></font></li>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치 지정</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치를 지정합니다.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
@@ -1374,7 +1449,7 @@
 </ul>
 <hr>
 <div name="writeInt32BE" data-unique="writeInt32BE"></div><h3 id="writeInt32BE" class="notranslate">writeInt32BE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">하이 엔디안 스토리지의 캐시 개체에 32비트 정수 값 쓰기</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">빅 엔디안 저장소의 캐시 개체에 32비트 정수 값을 씁니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeInt32BE(Integer value,<font></font>
     Integer offset = <span class="hljs-number">0</span>);
@@ -1382,7 +1457,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓸 값 지정</font></font></li>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치 지정</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치를 지정합니다.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
@@ -1390,7 +1465,7 @@
 </ul>
 <hr>
 <div name="writeIntLE" data-unique="writeIntLE"></div><h3 id="writeIntLE" class="notranslate">writeIntLE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">로우 엔디안 순서로 저장된 최대 64비트 지원으로 캐시 개체에 정수 값을 씁니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">리틀 엔디안 스토리지에서 최대 64비트의 정수 값을 캐시 개체에 씁니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div>Integer Buffer.writeIntLE(Long value,<font></font>
@@ -1400,8 +1475,8 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long, 쓸 값 지정</font></font></li>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치 지정</font></font></li>
-<li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰여진 바이트 수를 지정합니다. 기본값은 8바이트입니다.</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치를 지정합니다.</font></font></li>
+<li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓸 바이트 수를 지정합니다. 기본값은 8바이트입니다.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
@@ -1409,7 +1484,7 @@
 </ul>
 <hr>
 <div name="writeIntBE" data-unique="writeIntBE"></div><h3 id="writeIntBE" class="notranslate">writeIntBE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">하이 엔디안 순서로 저장된 최대 64비트의 정수 값을 캐시 개체에 씁니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">하이 엔디안 스토리지에서 최대 64비트의 정수 값을 캐시 개체에 씁니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div>Integer Buffer.writeIntBE(Long value,<font></font>
@@ -1419,8 +1494,8 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long, 쓸 값 지정</font></font></li>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치 지정</font></font></li>
-<li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰여진 바이트 수를 지정합니다. 기본값은 8바이트입니다.</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치를 지정합니다.</font></font></li>
+<li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓸 바이트 수를 지정합니다. 기본값은 8바이트입니다.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
@@ -1428,7 +1503,7 @@
 </ul>
 <hr>
 <div name="writeFloatLE" data-unique="writeFloatLE"></div><h3 id="writeFloatLE" class="notranslate">writeFloatLE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">로우 엔디안 스토리지의 캐시 개체에 부동 소수점 숫자 쓰기</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">리틀 엔디안 저장소의 캐시 개체에 부동 소수점 숫자를 씁니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeFloatLE(<span class="hljs-built_in">Number</span> value,<font></font>
     Integer offset);<font></font>
@@ -1436,7 +1511,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 숫자, 쓸 값 지정</font></font></li>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치 지정</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치를 지정합니다.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
@@ -1444,7 +1519,7 @@
 </ul>
 <hr>
 <div name="writeFloatBE" data-unique="writeFloatBE"></div><h3 id="writeFloatBE" class="notranslate">writeFloatBE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">하이 엔디안 스토리지의 캐시 개체에 부동 소수점 숫자 쓰기</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">빅 엔디안 스토리지의 캐시 개체에 부동 소수점 숫자를 씁니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeFloatBE(<span class="hljs-built_in">Number</span> value,<font></font>
     Integer offset);<font></font>
@@ -1452,7 +1527,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 숫자, 쓸 값 지정</font></font></li>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치 지정</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치를 지정합니다.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
@@ -1460,7 +1535,7 @@
 </ul>
 <hr>
 <div name="writeDoubleLE" data-unique="writeDoubleLE"></div><h3 id="writeDoubleLE" class="notranslate">writeDoubleLE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">캐시 객체에 배정밀도 부동 소수점 수를 쓰고 로우 엔디안 순서로 저장</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">리틀 엔디안 저장소의 캐시 개체에 배정밀도 부동 소수점 수를 씁니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeDoubleLE(<span class="hljs-built_in">Number</span> value,<font></font>
     Integer offset);<font></font>
@@ -1468,7 +1543,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 숫자, 쓸 값 지정</font></font></li>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치 지정</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치를 지정합니다.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
@@ -1476,7 +1551,7 @@
 </ul>
 <hr>
 <div name="writeDoubleBE" data-unique="writeDoubleBE"></div><h3 id="writeDoubleBE" class="notranslate">writeDoubleBE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">하이 엔디안 스토리지의 캐시 개체에 배정밀도 부동 소수점 숫자 쓰기</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">빅 엔디안 스토리지의 캐시 개체에 배정밀도 부동 소수점 숫자를 씁니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeDoubleBE(<span class="hljs-built_in">Number</span> value,<font></font>
     Integer offset);<font></font>
@@ -1484,7 +1559,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 숫자, 쓸 값 지정</font></font></li>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치 지정</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 쓰기 시작 위치를 지정합니다.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
@@ -1504,7 +1579,7 @@
 <li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 새 캐시 객체를 반환합니다.</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 범위의 데이터를 포함하는 새 캐시 객체를 반환합니다. 범위가 캐시를 초과하면 데이터의 유효한 부분만 반환됩니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 데이터 범위를 포함하는 새 캐시 개체를 반환합니다. 범위가 캐시를 초과하면 데이터의 유효한 부분만 반환됩니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Buffer Buffer.slice(Integer start,<font></font>
     Integer end);<font></font>
@@ -1520,7 +1595,7 @@
 </ul>
 <hr>
 <div name="join" data-unique="join"></div><h3 id="join" class="notranslate">join</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">현재 객체의 모든 요소를 ​​문자열에 넣습니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">현재 개체의 모든 요소를 ​​문자열에 넣습니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Buffer.join(<span class="hljs-built_in">String</span> separator = <span class="hljs-string">","</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
@@ -1529,11 +1604,11 @@
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 생성된 문자열을 반환</font></font></li>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 결과 문자열을 반환합니다.</font></font></li>
 </ul>
 <hr>
 <div name="reverse" data-unique="reverse"></div><h3 id="reverse" class="notranslate">reverse</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">현재 개체 데이터의 역순을 포함하는 새 캐시 개체를 반환합니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">현재 개체의 데이터를 역순으로 포함하는 새 캐시 개체를 반환합니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer Buffer.reverse();
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
@@ -1542,34 +1617,52 @@
 </ul>
 <hr>
 <div name="equals" data-unique="equals"></div><h3 id="equals" class="notranslate">equals</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">현재 객체가 주어진 객체와 같은지 비교</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">현재 객체를 주어진 객체와 동일한지 비교합니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> Buffer.equals(object expected);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">expected</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="object.md.html" class="notranslate">object</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 비교 대상 개발</font></font></li>
+<li><span class="notranslate">expected</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="object.md.html" class="notranslate">object</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 비교 대상 객체를 공식화하기 위해</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 객체 비교 결과 반환</font></font></li>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 객체 비교 결과를 반환합니다.</font></font></li>
 </ul>
 <hr>
 <div name="hex" data-unique="hex"></div><h3 id="hex" class="notranslate">hex</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">16진수 인코딩을 사용하여 개체 콘텐츠 캐시</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">16진수 인코딩을 사용하여 객체 콘텐츠 캐시</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Buffer.hex();
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 인코딩된 문자열을 반환합니다.</font></font></li>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 인코딩된 문자열을 반환</font></font></li>
+</ul>
+<hr>
+<div name="base32" data-unique="base32"></div><h3 id="base32" class="notranslate">base32</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">사용</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">캐시 개체 콘텐츠 인코딩</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Buffer.base32();
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
+<ul>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 인코딩된 문자열을 반환</font></font></li>
+</ul>
+<hr>
+<div name="base58" data-unique="base58"></div><h3 id="base58" class="notranslate">base58</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">사용</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">캐시 개체 콘텐츠 인코딩</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Buffer.base58();
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
+<ul>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 인코딩된 문자열을 반환</font></font></li>
 </ul>
 <hr>
 <div name="base64" data-unique="base64"></div><h3 id="base64" class="notranslate">base64</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">사용하다 </font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 캐시 개체 콘텐츠 인코딩</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">사용</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">캐시 개체 콘텐츠 인코딩</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Buffer.base64();
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 인코딩된 문자열을 반환합니다.</font></font></li>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 인코딩된 문자열을 반환</font></font></li>
 </ul>
 <hr>
 <div name="keys" data-unique="keys"></div><h3 id="keys" class="notranslate">keys</h3>
@@ -1578,7 +1671,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><a href="iterator.md.html" class="notranslate">Iterator</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 객체의 데이터 인덱스를 포함하는 반복자를 반환합니다.</font></font></li>
+<li><a href="iterator.md.html" class="notranslate">Iterator</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 객체 데이터의 인덱스를 포함하는 반복자를 반환합니다.</font></font></li>
 </ul>
 <hr>
 <div name="values" data-unique="values"></div><h3 id="values" class="notranslate">values</h3>
@@ -1587,7 +1680,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><a href="iterator.md.html" class="notranslate">Iterator</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 객체의 데이터 값을 포함하는 반복자를 반환합니다.</font></font></li>
+<li><a href="iterator.md.html" class="notranslate">Iterator</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 객체 데이터 값을 포함하는 반복자를 반환합니다.</font></font></li>
 </ul>
 <hr>
 <div name="entries" data-unique="entries"></div><h3 id="entries" class="notranslate">entries</h3>
@@ -1597,6 +1690,18 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
 <li><a href="iterator.md.html" class="notranslate">Iterator</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, [인덱스, 바이트] 쌍의 반복자</font></font></li>
+</ul>
+<hr>
+<div name="forEach" data-unique="forEach"></div><h3 id="forEach" class="notranslate">forEach</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">객체의 각 요소에 대해 주어진 함수를 한 번 실행</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Buffer.forEach(<span class="hljs-built_in">Function</span> callback,<font></font>
+    Value thisArg = <span class="hljs-literal">undefined</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
+<ul>
+<li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 함수, 배열의 각 요소에 대해 실행할 함수, 이 함수는 하나에서 세 개의 매개변수를 받습니다: currentValue, index, array</font></font></li>
+<li><span class="notranslate">thisArg</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Value, 콜백 함수가 실행될 때 사용되는 값</font></font></li>
 </ul>
 <hr>
 <div name="toArray" data-unique="toArray"></div><h3 id="toArray" class="notranslate">toArray</h3>
@@ -1618,7 +1723,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 인코딩 형식을 지정합니다. 허용되는 값은 "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8" 또는 </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 모듈에서 지원하는 문자 집합</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 인코딩 형식을 지정합니다. 허용되는 값은 다음과 같습니다. "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8" 또는</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">모듈에서 지원하는 문자 집합</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 읽기 시작 위치</font></font></li>
 <li><span class="notranslate">end</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 끝 위치 읽기</font></font></li>
 </ul>
@@ -1634,7 +1739,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 인코딩 형식을 지정합니다. 허용되는 값은 "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8" 또는 </font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 모듈에서 지원하는 문자 집합</font></font></li>
+<li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 인코딩 형식을 지정합니다. 허용되는 값은 다음과 같습니다. "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8" 또는</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">모듈에서 지원하는 문자 집합</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 읽기 시작 위치</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
@@ -1659,7 +1764,7 @@
 </ul>
 <hr>
 <div name="toJSON" data-unique="toJSON"></div><h3 id="toJSON" class="notranslate">toJSON</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">객체의 JSON 형식 표현을 반환하고 일반적으로 객체에 의해 정의된 읽을 수 있는 속성 모음을 반환합니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">객체의 JSON 형식 표현을 반환하고 일반적으로 객체에 의해 정의된 읽을 수 있는 속성 집합을 반환합니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value Buffer.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
@@ -1670,4 +1775,4 @@
 <ul>
 <li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 직렬화 가능한 JSON을 포함하는 값을 반환합니다.</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지원</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip574270"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip574270" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">클릭하면 톱 페이지로 돌아갑니다</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지원</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip411512"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip411512" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">클릭하면 톱 페이지로 돌아갑니다</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

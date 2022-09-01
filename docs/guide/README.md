@@ -5,7 +5,6 @@
 * [hello, world](hello.md)
 * [美好生活从测试开始](test.md)
 * [找出性能杀手](profiler.md)
-* [快速开发桌面应用](desktop.md)
 * [服务端模块热更新](server-hot-update.md)
 * [域名路由](host-routes.md)
 * [fibjs 中 X509 证书的使用](x509.md)

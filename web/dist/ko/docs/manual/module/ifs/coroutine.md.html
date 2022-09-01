@@ -1,18 +1,18 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Fiber의 모듈 코루틴-JavaScript</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">탐색 전환</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../readme.md.html">MODULE</a></li><li><a href="../../object/readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/module/ifs/coroutine.md.html">中文</a> <a href="../../../../../ca/docs/manual/module/ifs/coroutine.md.html">Catalan</a> <a href="../../../../../de/docs/manual/module/ifs/coroutine.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/module/ifs/coroutine.md.html">English</a> <a href="../../../../../es/docs/manual/module/ifs/coroutine.md.html">Español</a> <a href="../../../../../fr/docs/manual/module/ifs/coroutine.md.html">Français</a> <a href="../../../../../gl/docs/manual/module/ifs/coroutine.md.html">Galego</a> <a href="../../../../../it/docs/manual/module/ifs/coroutine.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/module/ifs/coroutine.md.html">Русский</a> <a href="../../../../../ja/docs/manual/module/ifs/coroutine.md.html">日本語</a> <a href="../../../../../ko/docs/manual/module/ifs/coroutine.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/module/ifs/coroutine.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 모듈 기본 모듈 </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="찾다" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="검색 입력" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">첫 장</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 기본 모듈 </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 모듈 코루틴 </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 개발 가이드 </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>모듈 코루틴 - Fiber의 JavaScript</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">탐색 전환</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../readme.md.html">MODULE</a></li><li><a href="../../object/readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/module/ifs/coroutine.md.html">中文</a> <a href="../../../../../ca/docs/manual/module/ifs/coroutine.md.html">Catalan</a> <a href="../../../../../de/docs/manual/module/ifs/coroutine.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/module/ifs/coroutine.md.html">English</a> <a href="../../../../../es/docs/manual/module/ifs/coroutine.md.html">Español</a> <a href="../../../../../fr/docs/manual/module/ifs/coroutine.md.html">Français</a> <a href="../../../../../gl/docs/manual/module/ifs/coroutine.md.html">Galego</a> <a href="../../../../../it/docs/manual/module/ifs/coroutine.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/module/ifs/coroutine.md.html">Русский</a> <a href="../../../../../ja/docs/manual/module/ifs/coroutine.md.html">日本語</a> <a href="../../../../../ko/docs/manual/module/ifs/coroutine.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/module/ifs/coroutine.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">모듈 기본 모듈</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="검색" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="검색 입력" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">첫 장</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">기본 모듈</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">모듈 코루틴</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개발 가이드</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 란 무엇입니까?</font></font></a></li>
 <li><a href="../../../guide/install.md.html">安装运行环境</a></li>
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
 <li><a href="../../../guide/test.md.html">美好生活从测试开始</a></li>
 <li><a href="../../../guide/profiler.md.html">找出性能杀手</a></li>
-<li><a href="../../../guide/desktop.md.html">快速开发桌面应用</a></li>
 <li><a href="../../../guide/server-hot-update.md.html">服务端模块热更新</a></li>
 <li><a href="../../../guide/host-routes.md.html">域名路由</a></li>
 <li><a href="../../../guide/x509.md.html">fibjs 中 X509 证书的使用</a></li>
 <li><a href="../../../guide/contribute.md.html">添加 native 模块</a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 기본 모듈 </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">기본 모듈</font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="assert.md.html" class="notranslate">assert</a></li>
 <li><a href="base32.md.html" class="notranslate">base32</a></li>
+<li><a href="base58.md.html" class="notranslate">base58</a></li>
 <li><a href="base64.md.html" class="notranslate">base64</a></li>
 <li><a href="child_process.md.html" class="notranslate">child_process</a></li>
 <li><a href="console.md.html" class="notranslate">console</a></li>
@@ -36,6 +36,7 @@
 <li><a href="json.md.html" class="notranslate">json</a></li>
 <li><a href="mq.md.html" class="notranslate">mq</a></li>
 <li><a href="msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="multibase.md.html" class="notranslate">multibase</a></li>
 <li><a href="net.md.html" class="notranslate">net</a></li>
 <li><a href="os.md.html" class="notranslate">os</a></li>
 <li><a href="path.md.html" class="notranslate">path</a></li>
@@ -63,7 +64,7 @@
 <li><a href="zip.md.html" class="notranslate">zip</a></li>
 <li><a href="zlib.md.html" class="notranslate">zlib</a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 내장 객체 </font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">내장 객체</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a></li>
 <li><a href="../../object/ifs/bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
 <li><a href="../../object/ifs/chain.md.html" class="notranslate">Chain</a></li>
@@ -131,6 +132,8 @@
 <li><a href="../../object/ifs/ttyinputstream.md.html" class="notranslate">TTYInputStream</a></li>
 <li><a href="../../object/ifs/ttyoutputstream.md.html" class="notranslate">TTYOutputStream</a></li>
 <li><a href="../../object/ifs/tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="../../object/ifs/textdecoder.md.html" class="notranslate">TextDecoder</a></li>
+<li><a href="../../object/ifs/textencoder.md.html" class="notranslate">TextEncoder</a></li>
 <li><a href="../../object/ifs/timer.md.html" class="notranslate">Timer</a></li>
 <li><a href="../../object/ifs/urlobject.md.html" class="notranslate">UrlObject</a></li>
 <li><a href="../../object/ifs/websocket.md.html" class="notranslate">WebSocket</a></li>
@@ -155,7 +158,7 @@
 <li><a href="../../object/ifs/zipfile.md.html" class="notranslate">ZipFile</a></li>
 <li><a href="../../object/ifs/object.md.html" class="notranslate">object</a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 커뮤니티 모듈 </font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">커뮤니티 모듈</font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../../awesome/module/fib-session.md.html" class="notranslate">fib-session</a></li>
 <li><a href="../../../awesome/module/fib-pool.md.html" class="notranslate">fib-pool</a></li>
 <li><a href="../../../awesome/module/fib-orm.md.html" class="notranslate">fib-orm</a></li>
@@ -204,44 +207,44 @@
 </code></pre>
 <div name="对象" data-unique="对象"></div><h2 id="对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">물체</font></font></h2>
 <div name="Lock" data-unique="Lock"></div><h3 id="Lock" class="notranslate">Lock</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">잠금 개체, 참조 </font></font><a href="../../object/ifs/lock.md.html" class="notranslate">Lock</a></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">잠금 개체, 참조</font></font><a href="../../object/ifs/lock.md.html" class="notranslate">Lock</a></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Lock coroutine.Lock;
 </code></pre>
 <hr>
 <div name="Semaphore" data-unique="Semaphore"></div><h3 id="Semaphore" class="notranslate">Semaphore</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">세마포어 개체, 참조 </font></font><a href="../../object/ifs/semaphore.md.html" class="notranslate">Semaphore</a></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">세마포어 개체, 참조</font></font><a href="../../object/ifs/semaphore.md.html" class="notranslate">Semaphore</a></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Semaphore coroutine.Semaphore;
 </code></pre>
 <hr>
 <div name="Condition" data-unique="Condition"></div><h3 id="Condition" class="notranslate">Condition</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">조건 변수 개체, 참조 </font></font><a href="../../object/ifs/condition.md.html" class="notranslate">Condition</a></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">조건 변수 개체, 참조</font></font><a href="../../object/ifs/condition.md.html" class="notranslate">Condition</a></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Condition coroutine.Condition;
 </code></pre>
 <hr>
 <div name="Event" data-unique="Event"></div><h3 id="Event" class="notranslate">Event</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이벤트 개체, 참조 </font></font><a href="../../object/ifs/event.md.html" class="notranslate">Event</a></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이벤트 개체, 참조</font></font><a href="../../object/ifs/event.md.html" class="notranslate">Event</a></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Event coroutine.Event;
 </code></pre>
 <hr>
 <div name="Worker" data-unique="Worker"></div><h3 id="Worker" class="notranslate">Worker</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">독립 스레드 작업 개체, 참조 </font></font><a href="../../object/ifs/worker.md.html" class="notranslate">Worker</a></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">독립 스레드 작업자 개체, 참조</font></font><a href="../../object/ifs/worker.md.html" class="notranslate">Worker</a></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Worker coroutine.Worker;
 </code></pre>
 <div name="静态函数" data-unique="静态函数"></div><h2 id="静态函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">정적 함수</font></font></h2>
 <div name="start" data-unique="start"></div><h3 id="start" class="notranslate">start</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">섬유를 시작하고 섬유 개체로 돌아갑니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">섬유를 시작하고 섬유 개체를 반환합니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> Fiber coroutine.start(<span class="hljs-built_in">Function</span> func,<font></font>
     ...args);<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function, Fiber에서 실행할 기능 지정</font></font></li>
-<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., 가변 매개변수 시퀀스, 이 시퀀스는 파이버의 기능에 전달됩니다.</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 기능, 광섬유에 의해 실행될 기능을 지정합니다.</font></font></li>
+<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., 파이버 내의 함수에 전달될 가변 인수 시퀀스</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><a href="../../object/ifs/fiber.md.html" class="notranslate">Fiber</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 반환 섬유 개체</font></font></li>
+<li><a href="../../object/ifs/fiber.md.html" class="notranslate">Fiber</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 섬유 객체를 반환합니다.</font></font></li>
 </ul>
 <hr>
 <div name="parallel" data-unique="parallel"></div><h3 id="parallel" class="notranslate">parallel</h3>
@@ -252,8 +255,8 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">funcs</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Array, 병렬로 실행되는 함수의 배열</font></font></li>
-<li><span class="notranslate">fibers</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 동시 광섬유 수를 제한합니다. 기본값은 -1이며, 함수와 동일한 수의 광섬유를 활성화합니다.</font></font></li>
+<li><span class="notranslate">funcs</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 배열, 병렬로 실행할 함수의 배열</font></font></li>
+<li><span class="notranslate">fibers</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 동시 광섬유 수를 제한합니다. 기본값은 -1이며, 기능 수와 동일한 수의 광섬유를 활성화합니다.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
@@ -269,8 +272,8 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">datas</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 배열, 병렬 실행을 위한 데이터 배열</font></font></li>
-<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 함수, 병렬로 실행되는 함수</font></font></li>
+<li><span class="notranslate">datas</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 배열, 병렬로 실행할 데이터 배열</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 함수, 병렬로 실행할 함수</font></font></li>
 <li><span class="notranslate">fibers</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 동시 광섬유 수를 제한합니다. 기본값은 -1이며 데이터와 동일한 수의 광섬유를 활성화합니다.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
@@ -287,9 +290,9 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function, 병렬로 실행되는 함수의 수</font></font></li>
-<li><span class="notranslate">num</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 반복 작업의 수</font></font></li>
-<li><span class="notranslate">fibers</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 동시 광섬유 수를 제한합니다. 기본값은 -1이며, 함수와 동일한 수의 광섬유를 활성화합니다.</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function, 병렬로 실행할 함수의 개수</font></font></li>
+<li><span class="notranslate">num</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 반복 작업 수</font></font></li>
+<li><span class="notranslate">fibers</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 동시 광섬유 수를 제한합니다. 기본값은 -1이며, 기능 수와 동일한 수의 광섬유를 활성화합니다.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
@@ -301,7 +304,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">funcs</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., 병렬로 실행되는 함수 집합</font></font></li>
+<li><span class="notranslate">funcs</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., 병렬로 실행할 함수 집합</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
@@ -318,31 +321,31 @@
 </ul>
 <hr>
 <div name="sleep" data-unique="sleep"></div><h3 id="sleep" class="notranslate">sleep</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">현재 광섬유에서 지정한 시간을 일시 중지합니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 시간 동안 현재 광섬유를 일시 중지합니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> coroutine.sleep(Integer ms = <span class="hljs-number">0</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">ms</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 일시 중단할 시간을 밀리초 단위로 지정합니다. 기본값은 0입니다. 즉, 여유 시간이 있으면 즉시 작업을 재개합니다.</font></font></li>
+<li><span class="notranslate">ms</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 일시 중지할 시간을 밀리초 단위로 지정합니다. 기본값은 0입니다. 즉, 유휴 시간이 있으면 즉시 실행을 재개합니다.</font></font></li>
 </ul>
 <div name="静态属性" data-unique="静态属性"></div><h2 id="静态属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">정적 속성</font></font></h2>
 <div name="fibers" data-unique="fibers"></div><h3 id="fibers" class="notranslate">fibers</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">어레이, 현재 실행 중인 모든 파이버 어레이를 반환합니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">배열, 현재 실행 중인 모든 파이버의 배열을 반환합니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Array</span> coroutine.fibers;
 </code></pre>
 <hr>
 <div name="spareFibers" data-unique="spareFibers"></div><h3 id="spareFibers" class="notranslate">spareFibers</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">정수, 쿼리 및 유휴 설정 </font></font><a href="../../object/ifs/fiber.md.html" class="notranslate">Fiber</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 숫자, 서버 지터가 클 때 유휴 상태가 적당히 증가 할 수 있습니다. </font></font><a href="../../object/ifs/fiber.md.html" class="notranslate">Fiber</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">수량. </font><font style="vertical-align: inherit;">기본값은 256입니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">정수, 쿼리 및 유휴 설정</font></font><a href="../../object/ifs/fiber.md.html" class="notranslate">Fiber</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">서버 지터가 클 때 유휴 서버의 수를 적당히 늘릴 수 있습니다.</font></font><a href="../../object/ifs/fiber.md.html" class="notranslate">Fiber</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">수량. </font><font style="vertical-align: inherit;">기본값은 256입니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer coroutine.spareFibers;
 </code></pre>
 <hr>
 <div name="vmid" data-unique="vmid"></div><h3 id="vmid" class="notranslate">vmid</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">정수, 현재 쿼리 </font></font><a href="vm.md.html" class="notranslate">vm</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 일련 번호</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">정수, 현재 쿼리</font></font><a href="vm.md.html" class="notranslate">vm</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">번호 매기기</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly Integer coroutine.vmid;
 </code></pre>
 <hr>
 <div name="loglevel" data-unique="loglevel"></div><h3 id="loglevel" class="notranslate">loglevel</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">정수, 수정 및 쿼리 </font></font><a href="vm.md.html" class="notranslate">vm</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 출력 정보를 필터링하는 데 사용되는 출력 레벨, 기본값은 </font></font><a href="console.md.html#NOTSET" class="notranslate">console.NOTSET</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 모든 출력</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">정수, 수정 및 쿼리</font></font><a href="vm.md.html" class="notranslate">vm</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">출력 정보를 필터링하는 데 사용되는 출력 레벨, 기본값은</font></font><a href="console.md.html#NOTSET" class="notranslate">console.NOTSET</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 모든 출력</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer coroutine.loglevel;
 </code></pre>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지원</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip23640"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip23640" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">클릭하면 톱 페이지로 돌아갑니다</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지원</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip327910"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip327910" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">클릭하면 톱 페이지로 돌아갑니다</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

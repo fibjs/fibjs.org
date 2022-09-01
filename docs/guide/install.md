@@ -14,7 +14,7 @@ brew install fibjs
 ## Windows 下自己编译
 
 ### 准备编译环境
-Windows 下需要安装 VS2017。如果你希望编译兼容 xp 的 fibjs， 还需要在安装时选择安装 `Windows XP support for C++`。
+Windows 下需要安装 VS2019。
 
 ### 获取代码
 fibjs 当前 github 地址为: https://github.com/fibjs/fibjs
@@ -40,29 +40,15 @@ options 的选项:
 * debug: 以调试方式编译
 * i386: 以 32 位发布方式编译
 * amd64: 以 64 位发布方式编译
-* noxp: 禁用 xp 兼容模式
 
 例如 release 模式编译命令如下:
 ```sh
 build release
 ```
 
-fibjs build 工具支持兼容 xp 模式，编译时需要手动开启：
-```sh
-build xp
-```
-
 ## UNIX 下自己编译
 
 ### 准备编译环境
-在 UNIX 下编译需要依赖以下工具:
-```
-CLANG 3.8 or newer
-GCC 4.8 or newer
-CMake 2.6 or newer
-GNU Make 3.81 or newer
-libexecinfo (FreeBSD and OpenBSD only)
-```
 Mac OS X 下，除需要安装 Xcode 及命令行工具外，以 brew 为例，准备环境命令如下:
 ```sh
 brew install cmake git ccache
@@ -70,10 +56,6 @@ brew install cmake git ccache
 Ubuntu 准备环境命令如下:
 ```sh
 apt install clang g++ make cmake git ccache libx11-dev
-```
-如果要编译 32 位版本，另需要安装 multilib:
-```sh
-apt install g++-multilib
 ```
 ARM on Ubuntu 准备环境命令如下:
 ```sh
@@ -95,18 +77,9 @@ apt install g++-mips-linux-gnu
 ```sh
 apt install g++-mips64-linux-gnuabi64
 ```
-fix:
-```sh
-rm -f /usr/include/asm
-rm -f /usr/include/i386-linux-gnu
-rm -f /usr/include/x86_64-linux-gnux32
-
-ln -s x86_64-linux-gnu /usr/include/i386-linux-gnu
-ln -s x86_64-linux-gnu /usr/include/x86_64-linux-gnux32
-```
 Fedora 准备环境命令如下:
 ```sh
-yum install gcc-c++ libstdc++-static make cmake git
+yum install clang gcc-c++ libstdc++-static make cmake git
 ```
 如果要编译 32 位版本，准备环境命令如下:
 ```sh
@@ -114,7 +87,7 @@ yum install glibc-devel.i686 libstdc++-static.i686
 ```
 Alpine 准备环境命令如下:
 ```sh
-apk add g++ linux-headers make cmake git libexecinfo-dev
+apk add clang g++ linux-headers make cmake git libx11-dev
 ```
 FreeBSD (8,9) 准备环境命令如下:
 ```sh
@@ -141,7 +114,7 @@ git submodule update --init --recursive
 ### 编译命令及说明
 UNIX 环境，在 fibjs 项目根目录，有一个 build 的 shell 脚本，可用于 fibjs 编译。 执行编译命令:
 ```sh
-sh build [options] [-jn] [-v] [-h]
+bash build [options] [-jn] [-v] [-h]
 ```
 options 的选项:
 * clean: 清除编译结果，便于全部重新编译
@@ -159,7 +132,7 @@ options 的选项:
 
 例如 release 模式编译命令如下:
 ```sh
-sh build release
+bash build release
 ```
 
 ## 测试全部用例

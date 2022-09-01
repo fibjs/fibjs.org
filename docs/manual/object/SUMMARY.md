@@ -65,6 +65,8 @@
 * [TTYInputStream](ifs/TTYInputStream.md)
 * [TTYOutputStream](ifs/TTYOutputStream.md)
 * [TcpServer](ifs/TcpServer.md)
+* [TextDecoder](ifs/TextDecoder.md)
+* [TextEncoder](ifs/TextEncoder.md)
 * [Timer](ifs/Timer.md)
 * [UrlObject](ifs/UrlObject.md)
 * [WebSocket](ifs/WebSocket.md)

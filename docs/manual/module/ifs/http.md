@@ -155,6 +155,7 @@ opts 包含请求的附加选项，支持的内容如下：
 
 ```JavaScript
 {
+    "method": "GET", //指定 http 请求方法：GET, POST 等
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
@@ -186,6 +187,7 @@ opts 包含请求的附加选项，支持的内容如下：
 
 ```JavaScript
 {
+    "method": "GET", //指定 http 请求方法：GET, POST 等
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
@@ -216,6 +218,7 @@ opts 包含请求的附加选项，支持的内容如下：
 
 ```JavaScript
 {
+    "method": "GET", //指定 http 请求方法：GET, POST 等
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
@@ -246,6 +249,7 @@ opts 包含请求的附加选项，支持的内容如下：
 
 ```JavaScript
 {
+    "method": "GET", //指定 http 请求方法：GET, POST 等
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
@@ -276,6 +280,7 @@ opts 包含请求的附加选项，支持的内容如下：
 
 ```JavaScript
 {
+    "method": "GET", //指定 http 请求方法：GET, POST 等
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
@@ -306,6 +311,38 @@ opts 包含请求的附加选项，支持的内容如下：
 
 ```JavaScript
 {
+    "method": "GET", //指定 http 请求方法：GET, POST 等
+    "query": {},
+    "body": SeekableStream | Buffer | String | {},
+    "json": {},
+    "pack": {},
+    "headers": {}
+}
+```
+
+其中 body，[json](json.md)，pack 不得同时出现。缺省为 {}，不包含任何附加信息
+
+--------------------------
+### head
+**用 HEAD 方法请求指定的 [url](url.md)，并返回结果，等同于 request("HEAD", ...)**
+
+```JavaScript
+static HttpResponse http.head(String url,
+    Object opts = {}) async;
+```
+
+调用参数:
+* url: String, 指定 [url](url.md)，必须是包含主机的完整 [url](url.md)
+* opts: Object, 指定附加信息
+
+返回结果:
+* [HttpResponse](../../object/ifs/HttpResponse.md), 返回服务器响应
+
+opts 包含请求的附加选项，支持的内容如下：
+
+```JavaScript
+{
+    "method": "GET", //指定 http 请求方法：GET, POST 等
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},

@@ -4,7 +4,6 @@
 <li><a href=../../../guide/hello.md.html class ="notranslate">hello, world</a></li>
 <li><a href=../../../guide/test.md.html>美好生活从测试开始</a></li>
 <li><a href=../../../guide/profiler.md.html>找出性能杀手</a></li>
-<li><a href=../../../guide/desktop.md.html>快速开发桌面应用</a></li>
 <li><a href=../../../guide/server-hot-update.md.html>服务端模块热更新</a></li>
 <li><a href=../../../guide/host-routes.md.html>域名路由</a></li>
 <li><a href=../../../guide/x509.md.html>fibjs 中 X509 证书的使用</a></li>
@@ -13,6 +12,7 @@
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_module" aria-controls="collapse_module"> 基础模块 </a></h4></div><div id="collapse_module" class="panel-collapse collapse in" aria-labelledby=headingOne><div class=panel-body> <ul>
 <li><a href=assert.md.html class ="notranslate">assert</a></li>
 <li><a href=base32.md.html class ="notranslate">base32</a></li>
+<li><a href=base58.md.html class ="notranslate">base58</a></li>
 <li><a href=base64.md.html class ="notranslate">base64</a></li>
 <li><a href=child_process.md.html class ="notranslate">child_process</a></li>
 <li><a href=console.md.html class ="notranslate">console</a></li>
@@ -36,6 +36,7 @@
 <li><a href=json.md.html class ="notranslate">json</a></li>
 <li><a href=mq.md.html class ="notranslate">mq</a></li>
 <li><a href=msgpack.md.html class ="notranslate">msgpack</a></li>
+<li><a href=multibase.md.html class ="notranslate">multibase</a></li>
 <li><a href=net.md.html class ="notranslate">net</a></li>
 <li><a href=os.md.html class ="notranslate">os</a></li>
 <li><a href=path.md.html class ="notranslate">path</a></li>
@@ -131,6 +132,8 @@
 <li><a href=../../object/ifs/ttyinputstream.md.html class ="notranslate">TTYInputStream</a></li>
 <li><a href=../../object/ifs/ttyoutputstream.md.html class ="notranslate">TTYOutputStream</a></li>
 <li><a href=../../object/ifs/tcpserver.md.html class ="notranslate">TcpServer</a></li>
+<li><a href=../../object/ifs/textdecoder.md.html class ="notranslate">TextDecoder</a></li>
+<li><a href=../../object/ifs/textencoder.md.html class ="notranslate">TextEncoder</a></li>
 <li><a href=../../object/ifs/timer.md.html class ="notranslate">Timer</a></li>
 <li><a href=../../object/ifs/urlobject.md.html class ="notranslate">UrlObject</a></li>
 <li><a href=../../object/ifs/websocket.md.html class ="notranslate">WebSocket</a></li>
@@ -212,52 +215,6 @@
 <li><span class="notranslate">ver</span>: Integer, 指定 ie 模拟版本</li>
 </ul>
 <hr>
-<h3 id="config" class ="notranslate">config</h3>
-<p><strong>设置 gui 全局参数，config 只对 cef gui 有效，不会影响 native webview</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> gui.config(<span class="hljs-built_in">Object</span> opt = {});
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li><span class="notranslate">opt</span>: Object, 指定设置的参数</li>
-</ul>
-<p>支持以下参数:</p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18</div>{
-    <span class="hljs-string">"cache_path"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// 设置数据持久化目录，缺省为空，退出进程后，客户端临时数据将不会被保存</span>
-    <span class="hljs-string">"cef_path"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// 设置 runtime 路径，缺省时在当前目录寻找 runtime</span>
-    <span class="hljs-string">"download_path"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// 设置下载文件保存路径，缺省时在当前目录</span>
-    <span class="hljs-string">"download_dialog"</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 设置是否显示下载文件对话框，缺省时显示</span>
-    <span class="hljs-string">"debug"</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 全局设置是否输出 WebView 内的错误和 console 信息，缺省显示</span>
-    <span class="hljs-string">"popup"</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 全局设置是否允许弹出新的网页，缺省允许</span>
-    <span class="hljs-string">"menu"</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 全局设置是否允许右键菜单，缺省允许</span>
-    <span class="hljs-string">"headless"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 设置 gui 全局无窗口，缺省不使用无窗口，当命令行指定 --headless 时，此属性将被忽略</span>
-    <span class="hljs-string">"backend"</span>: { <span class="hljs-comment">// 设置 cef 后端处理器，可用于处理 WebView 内部请求</span>
-        <span class="hljs-string">"http://app1/"</span>: handler1,
-        <span class="hljs-string">"fibjs://app2/"</span>: handler2,
-    },
-    <span class="hljs-string">"proxy"</span>: { <span class="hljs-comment">// 全局设置 cef 访问代理</span>
-        <span class="hljs-string">"mode"</span>: <span class="hljs-string">"fixed_servers|pac_script|auto_detect|system|direct"</span>, <span class="hljs-comment">// 指定代理模式</span>
-        <span class="hljs-string">"server"</span>: <span class="hljs-string">"localhost:8888"</span> <span class="hljs-comment">// 指定代理服务器地址，当 mode 为 pac_script 时，指定 pac url</span>
-    }
-}
-</code></pre>
-<hr>
 <h3 id="open" class ="notranslate">open</h3>
 <p><strong>打开一个窗口并访问指定网址</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
@@ -285,20 +242,7 @@
 9
 10
 11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24</div>{
-    <span class="hljs-string">"type"</span>: <span class="hljs-string">"cef"</span>, <span class="hljs-comment">// 指定 WenView 引擎，允许值为 "native" 和 "cef"，缺省为 "cef"</span>
+12</div>{
     <span class="hljs-string">"left"</span>: <span class="hljs-number">100</span>, <span class="hljs-comment">// 窗口左上角 x，缺省系统自动设定</span>
     <span class="hljs-string">"right"</span>: <span class="hljs-number">100</span>, <span class="hljs-comment">// 窗口左上角 y，缺省系统自动设定</span>
     <span class="hljs-string">"width"</span>: <span class="hljs-number">100</span>, <span class="hljs-comment">// 窗口宽度，缺省系统自动设定</span>
@@ -309,17 +253,6 @@
     <span class="hljs-string">"maximize"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 是否最大化显示，缺省不最大化</span>
     <span class="hljs-string">"fullscreen"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 是否显示全屏窗口，缺省不全屏</span>
     <span class="hljs-string">"debug"</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 是否输出 WebView 内的错误和 console 信息，缺省显示或继承全局设置</span>
-
-    <span class="hljs-comment">// 以下配置仅用于 cef 模式</span>
-    <span class="hljs-string">"download_path"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// 设置下载文件保存路径，缺省继承全局设置</span>
-    <span class="hljs-string">"download_dialog"</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 设置是否显示下载文件对话框，缺省继承全局设置</span>
-    <span class="hljs-string">"popup"</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 是否允许弹出新的网页，缺省继承全局设置</span>
-    <span class="hljs-string">"menu"</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 是否允许右键菜单，缺省继承全局设置</span>
-    <span class="hljs-string">"headless"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 是否使用无窗口模式加载页面，缺省不使用无窗口，当命令行指定 --headless 时，此属性将被忽略</span>
-    <span class="hljs-string">"proxy"</span>: { <span class="hljs-comment">// 设置访问代理，为设置时继承s全局设置</span>
-        <span class="hljs-string">"mode"</span>: <span class="hljs-string">"fixed_servers|pac_script|auto_detect|system|direct"</span>, <span class="hljs-comment">// 指定代理模式</span>
-        <span class="hljs-string">"server"</span>: <span class="hljs-string">"localhost:8888"</span> <span class="hljs-comment">// 指定代理服务器地址，当 mode 为 pac_script 时，指定 pac url</span>
-    }
 }
 </code></pre>
 <p>当设定 width 和 height，而未设定 left 或 right 时，窗口将自动居中</p>
@@ -347,16 +280,7 @@
 9
 10
 11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21</div>{
+12</div>{
     <span class="hljs-string">"left"</span>: <span class="hljs-number">100</span>, <span class="hljs-comment">// 窗口左上角 x，缺省系统自动设定</span>
     <span class="hljs-string">"right"</span>: <span class="hljs-number">100</span>, <span class="hljs-comment">// 窗口左上角 y，缺省系统自动设定</span>
     <span class="hljs-string">"width"</span>: <span class="hljs-number">100</span>, <span class="hljs-comment">// 窗口宽度，缺省系统自动设定</span>
@@ -367,15 +291,6 @@
     <span class="hljs-string">"maximize"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 是否最大化显示，缺省不最大化</span>
     <span class="hljs-string">"fullscreen"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 是否显示全屏窗口，缺省不全屏</span>
     <span class="hljs-string">"debug"</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 是否输出 WebView 内的错误和 console 信息，缺省显示或继承全局设置</span>
-
-    <span class="hljs-comment">// 以下配置仅用于 cef 模式</span>
-    <span class="hljs-string">"popup"</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 是否允许弹出新的网页，缺省允许或继承全局设置</span>
-    <span class="hljs-string">"menu"</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 是否允许右键菜单，缺省允许或继承全局设置</span>
-    <span class="hljs-string">"headless"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 是否使用无窗口模式加载页面，缺省不使用无窗口，当命令行指定 --headless 时，此属性将被忽略</span>
-    <span class="hljs-string">"proxy"</span>: { <span class="hljs-comment">// 设置访问代理，为设置时继承s全局设置</span>
-        <span class="hljs-string">"mode"</span>: <span class="hljs-string">"fixed_servers|pac_script|auto_detect|system|direct"</span>, <span class="hljs-comment">// 指定代理模式</span>
-        <span class="hljs-string">"server"</span>: <span class="hljs-string">"localhost:8888"</span> <span class="hljs-comment">// 指定代理服务器地址，当 mode 为 pac_script 时，指定 pac url</span>
-    }
 }
 </code></pre>
 <p>当设定 width 和 height，而未设定 left 或 right 时，窗口将自动居中</p>

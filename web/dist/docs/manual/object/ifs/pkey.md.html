@@ -4,7 +4,6 @@
 <li><a href=../../../guide/hello.md.html class ="notranslate">hello, world</a></li>
 <li><a href=../../../guide/test.md.html>美好生活从测试开始</a></li>
 <li><a href=../../../guide/profiler.md.html>找出性能杀手</a></li>
-<li><a href=../../../guide/desktop.md.html>快速开发桌面应用</a></li>
 <li><a href=../../../guide/server-hot-update.md.html>服务端模块热更新</a></li>
 <li><a href=../../../guide/host-routes.md.html>域名路由</a></li>
 <li><a href=../../../guide/x509.md.html>fibjs 中 X509 证书的使用</a></li>
@@ -13,6 +12,7 @@
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_module" aria-controls="collapse_module"> 基础模块 </a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby=headingOne><div class=panel-body> <ul>
 <li><a href=../../module/ifs/assert.md.html class ="notranslate">assert</a></li>
 <li><a href=../../module/ifs/base32.md.html class ="notranslate">base32</a></li>
+<li><a href=../../module/ifs/base58.md.html class ="notranslate">base58</a></li>
 <li><a href=../../module/ifs/base64.md.html class ="notranslate">base64</a></li>
 <li><a href=../../module/ifs/child_process.md.html class ="notranslate">child_process</a></li>
 <li><a href=../../module/ifs/console.md.html class ="notranslate">console</a></li>
@@ -36,6 +36,7 @@
 <li><a href=../../module/ifs/json.md.html class ="notranslate">json</a></li>
 <li><a href=../../module/ifs/mq.md.html class ="notranslate">mq</a></li>
 <li><a href=../../module/ifs/msgpack.md.html class ="notranslate">msgpack</a></li>
+<li><a href=../../module/ifs/multibase.md.html class ="notranslate">multibase</a></li>
 <li><a href=../../module/ifs/net.md.html class ="notranslate">net</a></li>
 <li><a href=../../module/ifs/os.md.html class ="notranslate">os</a></li>
 <li><a href=../../module/ifs/path.md.html class ="notranslate">path</a></li>
@@ -131,6 +132,8 @@
 <li><a href=ttyinputstream.md.html class ="notranslate">TTYInputStream</a></li>
 <li><a href=ttyoutputstream.md.html class ="notranslate">TTYOutputStream</a></li>
 <li><a href=tcpserver.md.html class ="notranslate">TcpServer</a></li>
+<li><a href=textdecoder.md.html class ="notranslate">TextDecoder</a></li>
+<li><a href=textencoder.md.html class ="notranslate">TextEncoder</a></li>
 <li><a href=timer.md.html class ="notranslate">Timer</a></li>
 <li><a href=urlobject.md.html class ="notranslate">UrlObject</a></li>
 <li><a href=websocket.md.html class ="notranslate">WebSocket</a></li>
@@ -203,59 +206,111 @@
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> k = <span class="hljs-keyword">new</span> crypto.PKey();
 </code></pre>
 <h2 id="继承关系">继承关系</h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="161" height="544" viewbox="0 0 161 544" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
-  <desc >
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="181.0" height="592.0" viewbox="0 0 181 592" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
+    <desc >
+    #lineWidth: 1.5
+    #font: Helvetica,sans-Serif
+    #fontSize: 10
+    #leading: 1.6
+    #.this: fill=lightgray
+    #.class: fill=white
 
-[&lt;class&gt;object|toString();toJSON()]
-[&lt;this&gt;PKey|new PKey()|name;keySize;publicKey|genRsaKey();genEcKey();genSm2Key();isPrivate();clone();importKey();importFile();exportPem();exportDer();exportJson();encrypt();decrypt();sign();verify()]
+    [&lt;class&gt;object|toString();toJSON()]
+    [&lt;this&gt;PKey|new PKey()|from();recover()|name;curve;keySize;alg;publicKey|isPrivate();clone();toX25519();pem();der();json();equals();encrypt();decrypt();sign();verify();computeSecret()]
 
-[object] &lt;:- [PKey]
-</desc>
-  <rect x="0" y="0" height="544" width="161" style="stroke:none; fill:transparent;"></rect>
-  <path d="M80.5 121.3 L80.5 128 L80.5 148 L80.5 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M85.8 121.3 L80.5 121.3 L75.2 121.3 L80.5 108 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <rect x="28" y="148" height="368" width="105" data-name="PKey" style="stroke:#33322E;fill:lightgray;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <path d="M28 180 L133 180" data-name="PKey" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M28 212 L133 212" data-name="PKey" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M28 276 L133 276" data-name="PKey" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <text x="80.5" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="PKey">PKey</text>
-  <text x="36" y="201" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="PKey">new PKey()</text>
-  <text x="36" y="233" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="PKey">name</text>
-  <text x="36" y="249" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="PKey">keySize</text>
-  <text x="36" y="265" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="PKey">publicKey</text>
-  <text x="36" y="297" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="PKey">genRsaKey()</text>
-  <text x="36" y="313" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="PKey">genEcKey()</text>
-  <text x="36" y="329" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="PKey">genSm2Key()</text>
-  <text x="36" y="345" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="PKey">isPrivate()</text>
-  <text x="36" y="361" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="PKey">clone()</text>
-  <text x="36" y="377" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="PKey">importKey()</text>
-  <text x="36" y="393" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="PKey">importFile()</text>
-  <text x="36" y="409" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="PKey">exportPem()</text>
-  <text x="36" y="425" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="PKey">exportDer()</text>
-  <text x="36" y="441" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="PKey">exportJson()</text>
-  <text x="36" y="457" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="PKey">encrypt()</text>
-  <text x="36" y="473" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="PKey">decrypt()</text>
-  <text x="36" y="489" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="PKey">sign()</text>
-  <text x="36" y="505" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="PKey">verify()</text>
-  <rect x="42" y="28" height="80" width="77" data-name="object" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <path d="M42 60 L119 60" data-name="object" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <text x="80.5" y="49" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="object">object</text>
-  <text x="50" y="81" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toString()</text>
-  <text x="50" y="97" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toJSON()</text>
+    [object] &lt;:- [PKey]
+    </desc>
+    <g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="10pt" font-family="Helvetica,sans-Serif" font-weight="normal" font-style="normal">
+        <g font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="bold" font-style="normal" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
+            <g stroke="transparent" fill="transparent">
+                <rect x="0.0" y="0.0" height="592.0" width="181.0" stroke="none"></rect>
+            </g>
+            <g transform="translate(8, 8)" fill="#33322E">
+                <g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal">
+                    <path d="M62.5 93.3 L62.5 100 L62.5 120 L62.5 120.0 " fill="none"></path>
+                    <path d="M67.8 93.3 L62.5 93.3 L57.2 93.3 L62.5 80.0 Z"></path>
+                    <g data-name="PKey">
+                        <g fill="lightgray" stroke="#33322E" data-name="PKey">
+                            <rect x="0.0" y="120.0" height="416.0" width="125.0" data-name="PKey"></rect>
+                            <path d="M0.0 152.0 L125.0 152.0" fill="none" data-name="PKey"></path>
+                            <path d="M0.0 184.0 L125.0 184.0" fill="none" data-name="PKey"></path>
+                            <path d="M0.0 232.0 L125.0 232.0" fill="none" data-name="PKey"></path>
+                            <path d="M0.0 328.0 L125.0 328.0" fill="none" data-name="PKey"></path>
+                        </g>
+                        <g transform="translate(0, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="PKey">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="PKey">
+                                <text x="54.5" y="13.0" stroke="none" text-anchor="middle" data-name="PKey">PKey</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(0, 152)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="PKey">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="PKey">
+                                <text x="0.0" y="13.0" stroke="none" data-name="PKey">new PKey()</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(0, 184)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="PKey">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="PKey">
+                                <text x="0.0" y="13.0" stroke="none" data-name="PKey">from()</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="PKey">recover()</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(0, 232)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="PKey">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="PKey">
+                                <text x="0.0" y="13.0" stroke="none" data-name="PKey">name</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="PKey">curve</text>
+                                <text x="0.0" y="45.0" stroke="none" data-name="PKey">keySize</text>
+                                <text x="0.0" y="61.0" stroke="none" data-name="PKey">alg</text>
+                                <text x="0.0" y="77.0" stroke="none" data-name="PKey">publicKey</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(0, 328)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="PKey">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="PKey">
+                                <text x="0.0" y="13.0" stroke="none" data-name="PKey">isPrivate()</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="PKey">clone()</text>
+                                <text x="0.0" y="45.0" stroke="none" data-name="PKey">toX25519()</text>
+                                <text x="0.0" y="61.0" stroke="none" data-name="PKey">pem()</text>
+                                <text x="0.0" y="77.0" stroke="none" data-name="PKey">der()</text>
+                                <text x="0.0" y="93.0" stroke="none" data-name="PKey">json()</text>
+                                <text x="0.0" y="109.0" stroke="none" data-name="PKey">equals()</text>
+                                <text x="0.0" y="125.0" stroke="none" data-name="PKey">encrypt()</text>
+                                <text x="0.0" y="141.0" stroke="none" data-name="PKey">decrypt()</text>
+                                <text x="0.0" y="157.0" stroke="none" data-name="PKey">sign()</text>
+                                <text x="0.0" y="173.0" stroke="none" data-name="PKey">verify()</text>
+                                <text x="0.0" y="189.0" stroke="none" data-name="PKey">computeSecret()</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="object">
+                        <g fill="white" stroke="#33322E" data-name="object">
+                            <rect x="24.0" y="0.0" height="80.0" width="77.0" data-name="object"></rect>
+                            <path d="M24.0 32.0 L101.0 32.0" fill="none" data-name="object"></path>
+                        </g>
+                        <g transform="translate(24, 0)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="object">
+                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="object">object</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(24, 32)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="object">
+                                <text x="0.0" y="13.0" stroke="none" data-name="object">toString()</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="object">toJSON()</text>
+
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
 </svg></div>
 
 <h2 id="构造函数">构造函数</h2>
 <h3 id="PKey" class ="notranslate">PKey</h3>
-<p><strong>PKey 构造函数</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> PKey();
-</code></pre>
-<hr>
 <p><strong>通过 DER 格式的密钥构造 PKey</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">new</span> PKey(Buffer DerKey,
@@ -347,71 +402,11 @@
     <span class="hljs-string">"y"</span>: <span class="hljs-string">"ASBHqrruB6kdkEUB3vlW3-UIkk4HtKdUeTwN-7m3j2rgZvYR1ffRAapDvWqKGiBjomqWafxokBkbDI0c95f6f4XU"</span>
 }
 </code></pre>
-<h2 id="成员属性">成员属性</h2>
-<h3 id="name" class ="notranslate">name</h3>
-<p><strong>String, 返回当前算法名称</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly <span class="hljs-built_in">String</span> PKey.name;
-</code></pre>
-<hr>
-<h3 id="keySize" class ="notranslate">keySize</h3>
-<p><strong>Integer, 返回当前算法密码长度，以位为单位</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer PKey.keySize;
-</code></pre>
-<hr>
-<h3 id="publicKey" class ="notranslate">publicKey</h3>
-<p><strong>PKey, 返回当前密钥的公钥</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly PKey PKey.publicKey;
-</code></pre>
-<p>返回结果:</p>
-<ul>
-<li>当前密钥的公钥</li>
-</ul>
-<h2 id="成员函数">成员函数</h2>
-<h3 id="genRsaKey" class ="notranslate">genRsaKey</h3>
-<p><strong>生成一个 RSA 私钥</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>PKey.genRsaKey(Integer size) <span class="hljs-keyword">async</span>;
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li><span class="notranslate">size</span>: Integer, 指定 RSA 密钥长度，bit 为单位</li>
-</ul>
-<hr>
-<h3 id="genEcKey" class ="notranslate">genEcKey</h3>
-<p><strong>生成一个 EC 私钥</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>PKey.genEcKey(<span class="hljs-built_in">String</span> curve = <span class="hljs-string">"secp521r1"</span>) <span class="hljs-keyword">async</span>;
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li><span class="notranslate">curve</span>: String, 指定预置椭圆曲线，可选值为：&quot;secp521r1&quot;, &quot;brainpoolP512r1&quot;, &quot;secp384r1&quot;, &quot;brainpoolP384r1&quot;, &quot;secp256r1&quot;, &quot;secp256k1&quot;, &quot;brainpoolP256r1&quot;, &quot;secp224r1&quot;, &quot;secp224k1&quot;, &quot;secp192r1&quot;, &quot;secp192k1&quot;</li>
-</ul>
-<hr>
-<h3 id="genSm2Key" class ="notranslate">genSm2Key</h3>
-<p><strong>生成一个 SM2 私钥</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>PKey.genSm2Key() <span class="hljs-keyword">async</span>;
-</code></pre>
-<hr>
-<h3 id="isPrivate" class ="notranslate">isPrivate</h3>
-<p><strong>查询当前密钥是否为私钥</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> PKey.isPrivate();
-</code></pre>
-<p>返回结果:</p>
-<ul>
-<li><span class="notranslate">Boolean</span>, 为 True 表示为私钥</li>
-</ul>
-<hr>
-<h3 id="clone" class ="notranslate">clone</h3>
-<p><strong>复制当前密钥</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>PKey PKey.clone();
-</code></pre>
-<p>返回结果:</p>
-<ul>
-<li><span class="notranslate">PKey</span>, 当前密钥的复制对象</li>
-</ul>
-<hr>
-<h3 id="importKey" class ="notranslate">importKey</h3>
+<h2 id="静态函数">静态函数</h2>
+<h3 id="from" class ="notranslate">from</h3>
 <p><strong>加载一个 DER 格式的密钥</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>PKey.importKey(Buffer DerKey,
+2</div><span class="hljs-keyword">static</span> PKey PKey.from(Buffer DerKey,
     <span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
@@ -419,10 +414,14 @@
 <li><span class="notranslate">DerKey</span>: <a href=buffer.md.html class ="notranslate">Buffer</a>, DER 格式的密钥</li>
 <li><span class="notranslate">password</span>: String, 解密密码</li>
 </ul>
+<p>返回结果:</p>
+<ul>
+<li><span class="notranslate">PKey</span>, 返回包含密钥的对象</li>
+</ul>
 <hr>
 <p><strong>加载一个 PEM 格式的密钥</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>PKey.importKey(<span class="hljs-built_in">String</span> pemKey,
+2</div><span class="hljs-keyword">static</span> PKey PKey.from(<span class="hljs-built_in">String</span> pemKey,
     <span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>);
 </code></pre>
 <p>调用参数:</p>
@@ -430,13 +429,21 @@
 <li><span class="notranslate">pemKey</span>: String, PEM 格式的密钥</li>
 <li><span class="notranslate">password</span>: String, 解密密码</li>
 </ul>
+<p>返回结果:</p>
+<ul>
+<li><span class="notranslate">PKey</span>, 返回包含密钥的对象</li>
+</ul>
 <hr>
 <p><strong>加载一个 JSON 格式的密钥</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>PKey.importKey(<span class="hljs-built_in">Object</span> jsonKey);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> PKey PKey.from(<span class="hljs-built_in">Object</span> jsonKey);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">jsonKey</span>: Object, JSON 格式的密钥</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><span class="notranslate">PKey</span>, 返回包含密钥的对象</li>
 </ul>
 <p>jsonKey 的格式支持以下四种，RSA 私钥：</p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
@@ -501,43 +508,129 @@
 }
 </code></pre>
 <hr>
-<h3 id="importFile" class ="notranslate">importFile</h3>
-<p><strong>加载一个 PEM/DER 格式的密钥文件</strong></p>
+<h3 id="recover" class ="notranslate">recover</h3>
+<p><strong>从可恢复签名中恢复公钥，仅支持 secp256k1</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>PKey.importFile(<span class="hljs-built_in">String</span> filename,
-    <span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>);
+2</div><span class="hljs-keyword">static</span> PKey PKey.recover(Buffer data,
+    Buffer sig) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li><span class="notranslate">filename</span>: String, 密钥文件名</li>
-<li><span class="notranslate">password</span>: String, 解密密码</li>
+<li><span class="notranslate">data</span>: <a href=buffer.md.html class ="notranslate">Buffer</a>, 签名的原始数据</li>
+<li><span class="notranslate">sig</span>: <a href=buffer.md.html class ="notranslate">Buffer</a>, 可恢复签名</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><span class="notranslate">PKey</span>, 返回包含公钥的对象</li>
+</ul>
+<h2 id="成员属性">成员属性</h2>
+<h3 id="name" class ="notranslate">name</h3>
+<p><strong>String, 返回当前算法名称</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly <span class="hljs-built_in">String</span> PKey.name;
+</code></pre>
+<hr>
+<h3 id="curve" class ="notranslate">curve</h3>
+<p><strong>String, 返回当前算法的椭圆曲线名称，仅用于 EC 和 SM2</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly <span class="hljs-built_in">String</span> PKey.curve;
+</code></pre>
+<hr>
+<h3 id="keySize" class ="notranslate">keySize</h3>
+<p><strong>Integer, 返回当前算法密码长度，以位为单位</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer PKey.keySize;
+</code></pre>
+<hr>
+<h3 id="alg" class ="notranslate">alg</h3>
+<p><strong>String, 返回和设置当前对象签名算法</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> PKey.alg;
+</code></pre>
+<hr>
+<h3 id="publicKey" class ="notranslate">publicKey</h3>
+<p><strong>PKey, 返回当前密钥的公钥</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly PKey PKey.publicKey;
+</code></pre>
+<p>返回结果:</p>
+<ul>
+<li>当前密钥的公钥</li>
+</ul>
+<h2 id="成员函数">成员函数</h2>
+<h3 id="isPrivate" class ="notranslate">isPrivate</h3>
+<p><strong>查询当前密钥是否为私钥</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> PKey.isPrivate();
+</code></pre>
+<p>返回结果:</p>
+<ul>
+<li><span class="notranslate">Boolean</span>, 为 True 表示为私钥</li>
 </ul>
 <hr>
-<h3 id="exportPem" class ="notranslate">exportPem</h3>
+<h3 id="clone" class ="notranslate">clone</h3>
+<p><strong>复制当前密钥</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>PKey PKey.clone();
+</code></pre>
+<p>返回结果:</p>
+<ul>
+<li><span class="notranslate">PKey</span>, 当前密钥的复制对象</li>
+</ul>
+<hr>
+<h3 id="toX25519" class ="notranslate">toX25519</h3>
+<p><strong>从当前对象转换 X25519 公私钥对，仅支持 Ed25519</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>PKey PKey.toX25519() <span class="hljs-keyword">async</span>;
+</code></pre>
+<p>返回结果:</p>
+<ul>
+<li><span class="notranslate">PKey</span>, 返回对应的 X25519 公钥的对象</li>
+</ul>
+<hr>
+<h3 id="pem" class ="notranslate">pem</h3>
 <p><strong>返回当前 key 的 PEM 格式编码</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> PKey.exportPem();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> PKey.pem();
 </code></pre>
 <p>返回结果:</p>
 <ul>
 <li><span class="notranslate">String</span>, 当前 key 的 PEM 格式编码</li>
 </ul>
 <hr>
-<h3 id="exportDer" class ="notranslate">exportDer</h3>
+<h3 id="der" class ="notranslate">der</h3>
 <p><strong>返回当前 key 的 DER 格式编码</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer PKey.exportDer();
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer PKey.der();
 </code></pre>
 <p>返回结果:</p>
 <ul>
 <li><a href=buffer.md.html class ="notranslate">Buffer</a>, 当前 key 的 DER 格式编码</li>
 </ul>
 <hr>
-<h3 id="exportJson" class ="notranslate">exportJson</h3>
-<p><strong>返回当前 key 的 DER 格式编码</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> PKey.exportJson();
+<h3 id="json" class ="notranslate">json</h3>
+<p><strong>返回当前 key 的 jwt 格式编码</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> PKey.json(<span class="hljs-built_in">Object</span> opts = {});
 </code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">opts</span>: Object, 指定导出选项</li>
+</ul>
 <p>返回结果:</p>
 <ul>
-<li><span class="notranslate">Object</span>, 当前 key 的 DER 格式编码</li>
+<li><span class="notranslate">Object</span>, 当前 key 的 jwt 格式编码</li>
+</ul>
+<p>opts 支持以下参数:</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div>{
+    <span class="hljs-attr">compress</span>: <span class="hljs-literal">false</span>， 指定签名以压缩方式输出公钥
+}
+</code></pre>
+<p>支持压缩的曲线为：secp192r1, secp192k1, secp256r1, secp256k1, brainpoolP256r1,
+               secp384r1, brainpoolP384r1, brainpoolP512r1, secp521r1, sm2</p>
+<hr>
+<h3 id="equals" class ="notranslate">equals</h3>
+<p><strong>比较两个公/私钥是否相同</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> PKey.equals(PKey key);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">key</span>: PKey, 指定对方的公/私钥</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><span class="notranslate">Boolean</span>, 相同则返回 true</li>
 </ul>
 <hr>
 <h3 id="encrypt" class ="notranslate">encrypt</h3>
@@ -570,17 +663,48 @@
 <p><strong>使用当前算法密码私钥签名数据</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Buffer PKey.sign(Buffer data,
-    Integer alg = <span class="hljs-number">0</span>) <span class="hljs-keyword">async</span>;
+    <span class="hljs-built_in">Object</span> opts = {}) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">data</span>: <a href=buffer.md.html class ="notranslate">Buffer</a>, 指定要签名的数据</li>
-<li><span class="notranslate">alg</span>: Integer, 指定要签名的算法, 默认0. 支持算法: 0=NONE,1=MD2,2=MD4,3=MD5,4=SHA1,5=SHA224,6=SHA256,7=SHA384,8=SHA512,9=RIPEMD160</li>
+<li><span class="notranslate">opts</span>: Object, 指定签名选项</li>
 </ul>
 <p>返回结果:</p>
 <ul>
 <li><a href=buffer.md.html class ="notranslate">Buffer</a>, 返回签名后的数据</li>
 </ul>
+<p>opts 支持以下参数:</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</div>{
+    <span class="hljs-attr">alg</span>: <span class="hljs-number">0</span>， 指定签名的 hash 算法， 仅在 RSA 时有效， 缺省为 <span class="hljs-number">0.</span> 支持算法: <span class="hljs-number">0</span> = NONE,
+    <span class="hljs-number">1</span> = MD5,
+    <span class="hljs-number">2</span> = SHA1,
+    <span class="hljs-number">3</span> = SHA224,
+    <span class="hljs-number">4</span> = SHA256,
+    <span class="hljs-number">5</span> = SHA384,
+    <span class="hljs-number">6</span> = SHA512,
+    <span class="hljs-number">7</span> = RIPEMD160
+    <span class="hljs-attr">to</span>: pk,
+    指定验证方公钥， 仅在 ecsdsa 或 sm2 时有效
+    <span class="hljs-attr">format</span>: <span class="hljs-string">"der"</span>,
+    指定签名格式， 可选为 der 和 raw， 缺省为 der
+    <span class="hljs-attr">recoverable</span>: <span class="hljs-literal">false</span> 指定返回可恢复签名， 仅在 secp256k1 有效
+}
+</code></pre>
 <hr>
 <h3 id="verify" class ="notranslate">verify</h3>
 <p><strong>使用当前算法密码公钥验证数据</strong></p>
@@ -588,17 +712,59 @@
 2
 3</div><span class="hljs-built_in">Boolean</span> PKey.verify(Buffer data,
     Buffer sign,
-    Integer alg = <span class="hljs-number">0</span>) <span class="hljs-keyword">async</span>;
+    <span class="hljs-built_in">Object</span> opts = {}) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">data</span>: <a href=buffer.md.html class ="notranslate">Buffer</a>, 指定要验证的数据</li>
 <li><span class="notranslate">sign</span>: <a href=buffer.md.html class ="notranslate">Buffer</a>, 指定要验证的签名</li>
-<li><span class="notranslate">alg</span>: Integer, 指定要签名的算法, 默认0. 支持算法: 0=NONE,1=MD2,2=MD4,3=MD5,4=SHA1,5=SHA224,6=SHA256,7=SHA384,8=SHA512,9=RIPEMD160</li>
+<li><span class="notranslate">opts</span>: Object, 指定验证选项</li>
 </ul>
 <p>返回结果:</p>
 <ul>
 <li><span class="notranslate">Boolean</span>, 返回验证后的结果</li>
+</ul>
+<p>opts 支持以下参数:</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</div>{
+    <span class="hljs-attr">alg</span>: <span class="hljs-number">0</span>， 指定签名的 hash 算法， 仅在 RSA 时有效， 缺省为 <span class="hljs-number">0.</span> 支持算法: <span class="hljs-number">0</span> = NONE,
+    <span class="hljs-number">1</span> = MD5,
+    <span class="hljs-number">2</span> = SHA1,
+    <span class="hljs-number">3</span> = SHA224,
+    <span class="hljs-number">4</span> = SHA256,
+    <span class="hljs-number">5</span> = SHA384,
+    <span class="hljs-number">6</span> = SHA512,
+    <span class="hljs-number">7</span> = RIPEMD160
+    <span class="hljs-attr">to</span>: pk,
+    指定验证方公钥， 仅在 ecsdsa 或 sm2 时有效
+    <span class="hljs-attr">format</span>: <span class="hljs-string">"der"</span>,
+    指定签名格式， 可选为 der 和 raw， 缺省为 der
+}
+</code></pre>
+<hr>
+<h3 id="computeSecret" class ="notranslate">computeSecret</h3>
+<p><strong>使用当前算法计算椭圆曲线 Diffie-Hellman (ECDH) 共享密钥</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer PKey.computeSecret(PKey publicKey) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">publicKey</span>: PKey, 指定对方的公钥</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=buffer.md.html class ="notranslate">Buffer</a>, 返回计算出的共享密钥</li>
 </ul>
 <hr>
 <h3 id="toString" class ="notranslate">toString</h3>

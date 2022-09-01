@@ -60,3 +60,4 @@
 * Constants
   - [constants](ifs/constants.md) - 常用常量定义模块
   - [fs_constants](ifs/fs_constants.md) - fs 模块常用常量定义模块
+* [multibase](ifs/multibase.md) - multibase 编码与解码模块

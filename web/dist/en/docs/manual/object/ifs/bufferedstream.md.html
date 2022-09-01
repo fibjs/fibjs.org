@@ -1,18 +1,18 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Object BufferedStream-JavaScript on Fiber</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Toggle navigation</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/bufferedstream.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/bufferedstream.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/bufferedstream.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/bufferedstream.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/bufferedstream.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/bufferedstream.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/bufferedstream.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/bufferedstream.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/bufferedstream.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/bufferedstream.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/bufferedstream.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/bufferedstream.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Object built-in object </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Search" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="search input" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">front page</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Built-in objects </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Object BufferedStream </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Development Guide </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Object BufferedStream - JavaScript on Fiber</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Toggle navigation</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/bufferedstream.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/bufferedstream.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/bufferedstream.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/bufferedstream.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/bufferedstream.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/bufferedstream.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/bufferedstream.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/bufferedstream.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/bufferedstream.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/bufferedstream.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/bufferedstream.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/bufferedstream.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Object built-in object</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Search" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="search input" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">front page</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">built-in objects</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ObjectBufferedStream</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Development Guide</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">What is fibjs?</font></font></a></li>
-<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Installation and operating environment</font></font></a></li>
+<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Install the runtime environment</font></font></a></li>
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
-<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A good life starts with the test</font></font></a></li>
+<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A good life starts with a test</font></font></a></li>
 <li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Find the performance killer</font></font></a></li>
-<li><a href="../../../guide/desktop.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Quickly develop desktop applications</font></font></a></li>
 <li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Server module hot update</font></font></a></li>
 <li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Domain name routing</font></font></a></li>
-<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Use of X509 certificate in fibjs</font></font></a></li>
-<li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Add native module</font></font></a></li>
+<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Use of X509 certificates in fibjs</font></font></a></li>
+<li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">add native module</font></font></a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Basic module </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">basic module</font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../module/ifs/assert.md.html" class="notranslate">assert</a></li>
 <li><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a></li>
+<li><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a></li>
 <li><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a></li>
 <li><a href="../../module/ifs/child_process.md.html" class="notranslate">child_process</a></li>
 <li><a href="../../module/ifs/console.md.html" class="notranslate">console</a></li>
@@ -36,6 +36,7 @@
 <li><a href="../../module/ifs/json.md.html" class="notranslate">json</a></li>
 <li><a href="../../module/ifs/mq.md.html" class="notranslate">mq</a></li>
 <li><a href="../../module/ifs/msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="../../module/ifs/multibase.md.html" class="notranslate">multibase</a></li>
 <li><a href="../../module/ifs/net.md.html" class="notranslate">net</a></li>
 <li><a href="../../module/ifs/os.md.html" class="notranslate">os</a></li>
 <li><a href="../../module/ifs/path.md.html" class="notranslate">path</a></li>
@@ -63,7 +64,7 @@
 <li><a href="../../module/ifs/zip.md.html" class="notranslate">zip</a></li>
 <li><a href="../../module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Built-in objects </font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">built-in objects</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="buffer.md.html" class="notranslate">Buffer</a></li>
 <li class="active"><a href="bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
 <li><a href="chain.md.html" class="notranslate">Chain</a></li>
@@ -131,6 +132,8 @@
 <li><a href="ttyinputstream.md.html" class="notranslate">TTYInputStream</a></li>
 <li><a href="ttyoutputstream.md.html" class="notranslate">TTYOutputStream</a></li>
 <li><a href="tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="textdecoder.md.html" class="notranslate">TextDecoder</a></li>
+<li><a href="textencoder.md.html" class="notranslate">TextEncoder</a></li>
 <li><a href="timer.md.html" class="notranslate">Timer</a></li>
 <li><a href="urlobject.md.html" class="notranslate">UrlObject</a></li>
 <li><a href="websocket.md.html" class="notranslate">WebSocket</a></li>
@@ -155,7 +158,7 @@
 <li><a href="zipfile.md.html" class="notranslate">ZipFile</a></li>
 <li><a href="object.md.html" class="notranslate">object</a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Community module </font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">community module</font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../../awesome/module/fib-session.md.html" class="notranslate">fib-session</a></li>
 <li><a href="../../../awesome/module/fib-pool.md.html" class="notranslate">fib-pool</a></li>
 <li><a href="../../../awesome/module/fib-orm.md.html" class="notranslate">fib-orm</a></li>
@@ -197,63 +200,130 @@
 <li><a href="../../../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
 <li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
 </ul>
- </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="对象-BufferedStream" data-unique="对象-BufferedStream"></div><h1 id="对象-BufferedStream"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Object BufferedStream</font></font></h1>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cache read object</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The BufferedReader object is used to cache binary stream object data and provide text reading capabilities. It only supports utf-8 format conversion. </font><font style="vertical-align: inherit;">Creation method:</font></font></p>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="对象-BufferedStream" data-unique="对象-BufferedStream"></div><h1 id="对象-BufferedStream"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ObjectBufferedStream</font></font></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cache read object</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The BufferedReader object is used to cache binary stream object data and provide text reading capability, and only supports utf-8 format conversion. </font><font style="vertical-align: inherit;">Create method:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> reader = <span class="hljs-keyword">new</span> io.BufferedStream(stream);
 </code></pre>
-<div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Inheritance</font></font></h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="215" height="616" viewBox="0 0 215 616" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
-  <desc>
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+<div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">inheritance relationship</font></font></h2>
+<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="215.0" height="616.0" viewBox="0 0 215 616" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
+    <desc>
+    #lineWidth: 1.5
+    #font: Helvetica,sans-Serif
+    #fontSize: 10
+    #leading: 1.6
+    #.this: fill=lightgray
+    #.class: fill=white
 
-[&lt;class&gt;object|toString();toJSON()]
-[&lt;class&gt;Stream|fd|read();write();flush();close();copyTo()]
-[&lt;this&gt;BufferedStream|new BufferedStream()|stream;charset;EOL|readText();readLine();readLines();readUntil();writeText();writeLine()]
+    [&lt;class&gt;object|toString();toJSON()]
+    [&lt;class&gt;Stream|fd|read();write();flush();close();copyTo()]
+    [&lt;this&gt;BufferedStream|new BufferedStream()|stream;charset;EOL|readText();readLine();readLines();readUntil();writeText();writeLine()]
 
-[object] &lt;:- [Stream]
-[Stream] &lt;:- [BufferedStream]
-</desc>
-  <rect x="0" y="0" height="616" width="215" style="stroke:none; fill:transparent;"></rect>
-  <path d="M107.5 121.3 L107.5 128 L107.5 148 L107.5 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M112.8 121.3 L107.5 121.3 L102.2 121.3 L107.5 108 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M107.5 321.3 L107.5 328 L107.5 348 L107.5 348 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M112.8 321.3 L107.5 321.3 L102.2 321.3 L107.5 308 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <rect x="28" y="348" height="240" width="159" data-name="BufferedStream" style="stroke:#33322E;fill:lightgray;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <path d="M28 380 L187 380" data-name="BufferedStream" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M28 412 L187 412" data-name="BufferedStream" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M28 476 L187 476" data-name="BufferedStream" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <text x="107.5" y="369" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="BufferedStream">BufferedStream</text>
-  <text x="36" y="401" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="BufferedStream">new BufferedStream()</text>
-  <text x="36" y="433" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="BufferedStream">stream</text>
-  <text x="36" y="449" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="BufferedStream">charset</text>
-  <text x="36" y="465" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="BufferedStream">EOL</text>
-  <text x="36" y="497" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="BufferedStream">readText()</text>
-  <text x="36" y="513" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="BufferedStream">readLine()</text>
-  <text x="36" y="529" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="BufferedStream">readLines()</text>
-  <text x="36" y="545" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="BufferedStream">readUntil()</text>
-  <text x="36" y="561" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="BufferedStream">writeText()</text>
-  <text x="36" y="577" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="BufferedStream">writeLine()</text>
-  <rect x="71" y="148" height="160" width="74" data-name="Stream" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <path d="M71 180 L145 180" data-name="Stream" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M71 212 L145 212" data-name="Stream" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <text x="108" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Stream">Stream</text>
-  <text x="79" y="201" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Stream">fd</text>
-  <text x="79" y="233" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Stream">read()</text>
-  <text x="79" y="249" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Stream">write()</text>
-  <text x="79" y="265" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Stream">flush()</text>
-  <text x="79" y="281" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Stream">close()</text>
-  <text x="79" y="297" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Stream">copyTo()</text>
-  <rect x="69" y="28" height="80" width="77" data-name="object" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <path d="M69 60 L146 60" data-name="object" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <text x="107.5" y="49" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="object">object</text>
-  <text x="77" y="81" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toString()</text>
-  <text x="77" y="97" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toJSON()</text>
+    [object] &lt;:- [Stream]
+    [Stream] &lt;:- [BufferedStream]
+    </desc>
+    <g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="10pt" font-family="Helvetica,sans-Serif" font-weight="normal" font-style="normal">
+        <g font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="bold" font-style="normal" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
+            <g stroke="transparent" fill="transparent">
+                <rect x="0.0" y="0.0" height="616.0" width="215.0" stroke="none"></rect>
+            </g>
+            <g transform="translate(8, 8)" fill="#33322E">
+                <g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal">
+                    <path d="M79.5 93.3 L79.5 100 L79.5 120 L79.5 120.0 " fill="none"></path>
+                    <path d="M84.8 93.3 L79.5 93.3 L74.2 93.3 L79.5 80.0 Z"></path>
+                    <path d="M79.5 293.3 L79.5 300 L79.5 320 L79.5 320.0 " fill="none"></path>
+                    <path d="M84.8 293.3 L79.5 293.3 L74.2 293.3 L79.5 280.0 Z"></path>
+                    <g data-name="BufferedStream">
+                        <g fill="lightgray" stroke="#33322E" data-name="BufferedStream">
+                            <rect x="0.0" y="320.0" height="240.0" width="159.0" data-name="BufferedStream"></rect>
+                            <path d="M0.0 352.0 L159.0 352.0" fill="none" data-name="BufferedStream"></path>
+                            <path d="M0.0 384.0 L159.0 384.0" fill="none" data-name="BufferedStream"></path>
+                            <path d="M0.0 448.0 L159.0 448.0" fill="none" data-name="BufferedStream"></path>
+                        </g>
+                        <g transform="translate(0, 320)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="BufferedStream">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="BufferedStream">
+                                <text x="71.5" y="13.0" stroke="none" text-anchor="middle" data-name="BufferedStream">BufferedStream</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(0, 352)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="BufferedStream">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="BufferedStream">
+                                <text x="0.0" y="13.0" stroke="none" data-name="BufferedStream">new BufferedStream()</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(0, 384)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="BufferedStream">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="BufferedStream">
+                                <text x="0.0" y="13.0" stroke="none" data-name="BufferedStream">stream</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="BufferedStream">charset</text>
+                                <text x="0.0" y="45.0" stroke="none" data-name="BufferedStream">EOL</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(0, 448)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="BufferedStream">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="BufferedStream">
+                                <text x="0.0" y="13.0" stroke="none" data-name="BufferedStream">readText()</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="BufferedStream">readLine()</text>
+                                <text x="0.0" y="45.0" stroke="none" data-name="BufferedStream">readLines()</text>
+                                <text x="0.0" y="61.0" stroke="none" data-name="BufferedStream">readUntil()</text>
+                                <text x="0.0" y="77.0" stroke="none" data-name="BufferedStream">writeText()</text>
+                                <text x="0.0" y="93.0" stroke="none" data-name="BufferedStream">writeLine()</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="Stream">
+                        <g fill="white" stroke="#33322E" data-name="Stream">
+                            <rect x="43.0" y="120.0" height="160.0" width="74.0" data-name="Stream"></rect>
+                            <path d="M43.0 152.0 L117.0 152.0" fill="none" data-name="Stream"></path>
+                            <path d="M43.0 184.0 L117.0 184.0" fill="none" data-name="Stream"></path>
+                        </g>
+                        <g transform="translate(43, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Stream">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Stream">
+                                <text x="29.0" y="13.0" stroke="none" text-anchor="middle" data-name="Stream">Stream</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(43, 152)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Stream">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Stream">
+                                <text x="0.0" y="13.0" stroke="none" data-name="Stream">fd</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(43, 184)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Stream">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Stream">
+                                <text x="0.0" y="13.0" stroke="none" data-name="Stream">read()</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="Stream">write()</text>
+                                <text x="0.0" y="45.0" stroke="none" data-name="Stream">flush()</text>
+                                <text x="0.0" y="61.0" stroke="none" data-name="Stream">close()</text>
+                                <text x="0.0" y="77.0" stroke="none" data-name="Stream">copyTo()</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="object">
+                        <g fill="white" stroke="#33322E" data-name="object">
+                            <rect x="41.0" y="0.0" height="80.0" width="77.0" data-name="object"></rect>
+                            <path d="M41.0 32.0 L118.0 32.0" fill="none" data-name="object"></path>
+                        </g>
+                        <g transform="translate(41, 0)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="object">
+                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="object">object</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(41, 32)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="object">
+                                <text x="0.0" y="13.0" stroke="none" data-name="object">toString()</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="object">toJSON()</text>
+
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
 </svg></div>
 
 <div name="构造函数" data-unique="构造函数"></div><h2 id="构造函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Constructor</font></font></h2>
@@ -263,11 +333,11 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">stm</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, The binary base stream object of BufferedStream</font></font></li>
+<li><span class="notranslate">stm</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, the binary underlying stream object of the BufferedStream</font></font></li>
 </ul>
-<div name="成员属性" data-unique="成员属性"></div><h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Member attributes</font></font></h2>
+<div name="成员属性" data-unique="成员属性"></div><h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Member properties</font></font></h2>
 <div name="stream" data-unique="stream"></div><h3 id="stream" class="notranslate">stream</h3>
-<p><strong><a href="stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Query the stream object when the cache object is created</font></font></strong></p>
+<p><strong><a href="stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, query the stream object when the cache object was created</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Stream BufferedStream.stream;
 </code></pre>
 <hr>
@@ -277,52 +347,52 @@
 </code></pre>
 <hr>
 <div name="EOL" data-unique="EOL"></div><h3 id="EOL" class="notranslate">EOL</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">String, query and set the end of line identifier, by default, posix:\"\n\"; windows:\"\r\n\"</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">String, query and set the line ending flag, by default, posix:\"\n\"; windows:\"\r\n\"</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> BufferedStream.EOL;
 </code></pre>
 <hr>
 <div name="fd" data-unique="fd"></div><h3 id="fd" class="notranslate">fd</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Integer, query </font></font><a href="stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> The corresponding file descriptor value, implemented by the subclass</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Integer, query</font></font><a href="stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The corresponding file descriptor value, implemented by subclasses</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer BufferedStream.fd;
 </code></pre>
-<div name="成员函数" data-unique="成员函数"></div><h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Member function</font></font></h2>
+<div name="成员函数" data-unique="成员函数"></div><h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">member function</font></font></h2>
 <div name="readText" data-unique="readText"></div><h3 id="readText" class="notranslate">readText</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Read text with specified characters</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> BufferedStream.readText(Integer size) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, specify the number of text characters to be read, subject to utf8 or the specified number of encoded bytes</font></font></li>
+<li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, specify the number of text characters to read, subject to utf8 or the specified number of encoded bytes</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
 <ul>
-<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Returns the read text string, if there is no data to read, or the connection is interrupted, it returns null</font></font></li>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns the read text string, or null if there is no data to read, or the connection is interrupted</font></font></li>
 </ul>
 <hr>
 <div name="readLine" data-unique="readLine"></div><h3 id="readLine" class="notranslate">readLine</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Read a line of text, the end of the line is based on the setting of the EOL attribute, by default, posix:\"\n\"; windows:\"\r\n\"</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Read a line of text. The line ending is marked based on the setting of the EOL property. By default, posix:\"\n\"; windows:\"\r\n\"</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> BufferedStream.readLine(Integer maxlen = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">maxlen</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, specify the maximum character string read this time, subject to the number of utf8 encoded bytes, the number of characters is not limited by default</font></font></li>
+<li><span class="notranslate">maxlen</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, specify the maximum string read this time, based on the number of utf8 encoded bytes, the default is not limited to the number of characters</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
 <ul>
-<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Returns the read text string, if there is no data to read, or the connection is interrupted, it returns null</font></font></li>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns the read text string, or null if there is no data to read, or the connection is interrupted</font></font></li>
 </ul>
 <hr>
 <div name="readLines" data-unique="readLines"></div><h3 id="readLines" class="notranslate">readLines</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Read a group of text lines in an array. The end of the line is identified based on the setting of the EOL attribute. By default, posix:\"\n\"; windows:\"\r\n\"</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Reads a set of text lines as an array, the line ending is marked based on the setting of the EOL property, by default, posix:\"\n\"; windows:\"\r\n\"</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Array</span> BufferedStream.readLines(Integer maxlines = <span class="hljs-number">-1</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">maxlines</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, specify the maximum number of lines read this time, read all text lines by default</font></font></li>
+<li><span class="notranslate">maxlines</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, specify the maximum number of lines to read this time, read all text lines by default</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
 <ul>
-<li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Returns the read text line array, if there is no data to read, or the connection is interrupted, empty array</font></font></li>
+<li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns the read text line array, if no data is readable, or the connection is broken, an empty array</font></font></li>
 </ul>
 <hr>
 <div name="readUntil" data-unique="readUntil"></div><h3 id="readUntil" class="notranslate">readUntil</h3>
@@ -333,34 +403,34 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">mk</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specify the ending string</font></font></li>
-<li><span class="notranslate">maxlen</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, specify the maximum character string read this time, subject to the number of utf8 encoded bytes, the number of characters is not limited by default</font></font></li>
+<li><span class="notranslate">mk</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the end of the string</font></font></li>
+<li><span class="notranslate">maxlen</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, specify the maximum string read this time, based on the number of utf8 encoded bytes, the default is not limited to the number of characters</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
 <ul>
-<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Returns the read text string, if there is no data to read, or the connection is interrupted, it returns null</font></font></li>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns the read text string, or null if there is no data to read, or the connection is interrupted</font></font></li>
 </ul>
 <hr>
 <div name="writeText" data-unique="writeText"></div><h3 id="writeText" class="notranslate">writeText</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Write a string</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">write a string</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>BufferedStream.writeText(<span class="hljs-built_in">String</span> txt) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">txt</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specify the written string</font></font></li>
+<li><span class="notranslate">txt</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the string to write</font></font></li>
 </ul>
 <hr>
 <div name="writeLine" data-unique="writeLine"></div><h3 id="writeLine" class="notranslate">writeLine</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Write a string, and write a newline character</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Write a string, and write a newline</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>BufferedStream.writeLine(<span class="hljs-built_in">String</span> txt) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">txt</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specify the written string</font></font></li>
+<li><span class="notranslate">txt</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the string to write</font></font></li>
 </ul>
 <hr>
 <div name="read" data-unique="read"></div><h3 id="read" class="notranslate">read</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Read data of the specified size from the stream</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Read data of specified size from the stream</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer BufferedStream.read(Integer bytes = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
@@ -369,7 +439,7 @@
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
 <ul>
-<li><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Return the data read from the stream, if there is no data to read, or the connection is interrupted, then return null</font></font></li>
+<li><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns the data read from the stream, or null if there is no data to read or the connection is interrupted</font></font></li>
 </ul>
 <hr>
 <div name="write" data-unique="write"></div><h3 id="write" class="notranslate">write</h3>
@@ -378,46 +448,46 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Given the data to be written</font></font></li>
+<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, given the data to write</font></font></li>
 </ul>
 <hr>
 <div name="flush" data-unique="flush"></div><h3 id="flush" class="notranslate">flush</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Write the contents of the file buffer to the physical device</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Write file buffer contents to physical device</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>BufferedStream.flush() <span class="hljs-keyword">async</span>;
 </code></pre>
 <hr>
 <div name="close" data-unique="close"></div><h3 id="close" class="notranslate">close</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Close the current stream object</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">closes the current stream object</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>BufferedStream.close() <span class="hljs-keyword">async</span>;
 </code></pre>
 <hr>
 <div name="copyTo" data-unique="copyTo"></div><h3 id="copyTo" class="notranslate">copyTo</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Copy the stream data to the target stream</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Copy stream data to target stream</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Long BufferedStream.copyTo(Stream stm,<font></font>
     Long bytes = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">stm</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: </font></font><a href="stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, The target stream object</font></font></li>
-<li><span class="notranslate">bytes</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long, the number of bytes copied</font></font></li>
+<li><span class="notranslate">stm</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, the target stream object</font></font></li>
+<li><span class="notranslate">bytes</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long, number of bytes copied</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
 <ul>
-<li><span class="notranslate">Long</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Returns the number of bytes copied</font></font></li>
+<li><span class="notranslate">Long</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns the number of bytes copied</font></font></li>
 </ul>
 <hr>
 <div name="toString" data-unique="toString"></div><h3 id="toString" class="notranslate">toString</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Returns the string representation of the object, generally returns "[Native Object]", the object can be re-implemented according to its own characteristics</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Returns the string representation of the object, generally returns "[Native Object]", the object can be reimplemented according to its own characteristics</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> BufferedStream.toString();
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
 <ul>
-<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Returns the string representation of the object</font></font></li>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns the string representation of the object</font></font></li>
 </ul>
 <hr>
 <div name="toJSON" data-unique="toJSON"></div><h3 id="toJSON" class="notranslate">toJSON</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Returns the JSON format representation of the object, generally returns a collection of readable attributes defined by the object</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Returns the JSON format representation of the object, generally returns the set of readable properties defined by the object</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value BufferedStream.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
@@ -426,6 +496,6 @@
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
 <ul>
-<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Returns a value containing JSON serializable</font></font></li>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns a value containing JSON serializable</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Support us</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip501935"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip501935" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Support us</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip999714"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip999714" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

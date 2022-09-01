@@ -80,22 +80,6 @@ static Digest crypto.createHmac(String algo,
 * [Digest](../../object/ifs/Digest.md), 返回信息摘要对象
 
 --------------------------
-### loadPKey
-**加载一个 PEM/DER 格式的密钥文件**
-
-```JavaScript
-static PKey crypto.loadPKey(String filename,
-    String password = "");
-```
-
-调用参数:
-* filename: String, 密钥文件名
-* password: String, 解密密码
-
-返回结果:
-* [PKey](../../object/ifs/PKey.md), 返回包含密钥的对象
-
---------------------------
 ### loadCert
 **加载一个 CRT/PEM/DER/TXT 格式的证书，可多次调用**
 
@@ -218,11 +202,11 @@ static String crypto.randomArt(Buffer data,
 * String, 返回生成的可视化字符串图像
 
 --------------------------
-### genRsaKey
+### generateKey
 **生成一个 RSA 私钥**
 
 ```JavaScript
-static PKey crypto.genRsaKey(Integer size) async;
+static PKey crypto.generateKey(Integer size) async;
 ```
 
 调用参数:
@@ -232,29 +216,31 @@ static PKey crypto.genRsaKey(Integer size) async;
 * [PKey](../../object/ifs/PKey.md), 返回包含生成私钥的对象
 
 --------------------------
-### genEcKey
-**生成一个 EC 私钥**
+**生成一个椭圆曲线私钥**
 
 ```JavaScript
-static PKey crypto.genEcKey(String curve = "secp521r1") async;
+static PKey crypto.generateKey(String curve = "secp521r1") async;
 ```
 
 调用参数:
-* curve: String, 指定预置椭圆曲线，可选值为："secp521r1", "brainpoolP512r1", "secp384r1", "brainpoolP384r1", "secp256r1", "secp256k1", "brainpoolP256r1", "secp224r1", "secp224k1", "secp192r1", "secp192k1"
+* curve: String, 指定预置椭圆曲线，缺省为 'secp256r1'
 
 返回结果:
 * [PKey](../../object/ifs/PKey.md), 返回包含生成私钥的对象
 
---------------------------
-### genSm2Key
-**生成一个 SM2 私钥**
+curve 可选的曲线包含 NIST 曲线和别名如下：
 
-```JavaScript
-static PKey crypto.genSm2Key() async;
-```
+| 曲线 | 别名 |
+| ----------- | ----------- |
+| NIST P-192 | 'NIST P-192', 'p192', 'P-192', 'prime192v1', 'secp192r1' |
+| NIST P-224 | 'NIST P-224', 'p224', 'P-224', 'prime224v1', 'secp224r1' |
+| NIST P-256 | 'NIST P-256', 'p256', 'P-256', 'prime256v1', 'secp256r1' |
+| NIST P-384 | 'NIST P-384', 'p384', 'P-384', 'prime384v1', 'secp384r1' |
+| NIST P-521 | 'NIST P-521', 'p521', 'P-521', 'prime521v1', 'secp521r1' |
 
-返回结果:
-* [PKey](../../object/ifs/PKey.md), 返回包含生成私钥的对象
+其它支持的曲线包括：
+"brainpoolP512r1", "brainpoolP384r1", "secp256k1", "P-256K", "brainpoolP256r1",
+"sm2p256r1", "SM2", "Ed25519", "BLS12381_G1", "BLS12381_G2"
 
 --------------------------
 ### pbkdf1

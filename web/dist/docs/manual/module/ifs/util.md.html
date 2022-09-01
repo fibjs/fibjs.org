@@ -4,7 +4,6 @@
 <li><a href=../../../guide/hello.md.html class ="notranslate">hello, world</a></li>
 <li><a href=../../../guide/test.md.html>美好生活从测试开始</a></li>
 <li><a href=../../../guide/profiler.md.html>找出性能杀手</a></li>
-<li><a href=../../../guide/desktop.md.html>快速开发桌面应用</a></li>
 <li><a href=../../../guide/server-hot-update.md.html>服务端模块热更新</a></li>
 <li><a href=../../../guide/host-routes.md.html>域名路由</a></li>
 <li><a href=../../../guide/x509.md.html>fibjs 中 X509 证书的使用</a></li>
@@ -13,6 +12,7 @@
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_module" aria-controls="collapse_module"> 基础模块 </a></h4></div><div id="collapse_module" class="panel-collapse collapse in" aria-labelledby=headingOne><div class=panel-body> <ul>
 <li><a href=assert.md.html class ="notranslate">assert</a></li>
 <li><a href=base32.md.html class ="notranslate">base32</a></li>
+<li><a href=base58.md.html class ="notranslate">base58</a></li>
 <li><a href=base64.md.html class ="notranslate">base64</a></li>
 <li><a href=child_process.md.html class ="notranslate">child_process</a></li>
 <li><a href=console.md.html class ="notranslate">console</a></li>
@@ -36,6 +36,7 @@
 <li><a href=json.md.html class ="notranslate">json</a></li>
 <li><a href=mq.md.html class ="notranslate">mq</a></li>
 <li><a href=msgpack.md.html class ="notranslate">msgpack</a></li>
+<li><a href=multibase.md.html class ="notranslate">multibase</a></li>
 <li><a href=net.md.html class ="notranslate">net</a></li>
 <li><a href=os.md.html class ="notranslate">os</a></li>
 <li><a href=path.md.html class ="notranslate">path</a></li>
@@ -131,6 +132,8 @@
 <li><a href=../../object/ifs/ttyinputstream.md.html class ="notranslate">TTYInputStream</a></li>
 <li><a href=../../object/ifs/ttyoutputstream.md.html class ="notranslate">TTYOutputStream</a></li>
 <li><a href=../../object/ifs/tcpserver.md.html class ="notranslate">TcpServer</a></li>
+<li><a href=../../object/ifs/textdecoder.md.html class ="notranslate">TextDecoder</a></li>
+<li><a href=../../object/ifs/textencoder.md.html class ="notranslate">TextEncoder</a></li>
 <li><a href=../../object/ifs/timer.md.html class ="notranslate">Timer</a></li>
 <li><a href=../../object/ifs/urlobject.md.html class ="notranslate">UrlObject</a></li>
 <li><a href=../../object/ifs/websocket.md.html class ="notranslate">WebSocket</a></li>
@@ -204,6 +207,16 @@
 <p><strong>LRU(least recently used) 缓存对象，参见 <a href=../../object/ifs/lrucache.md.html class ="notranslate">LruCache</a> 对象。</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>LruCache util.LruCache;
 </code></pre>
+<hr>
+<h3 id="TextDecoder" class ="notranslate">TextDecoder</h3>
+<p><strong><a href=../../object/ifs/textdecoder.md.html class ="notranslate">TextDecoder</a> 解码对象，参见 <a href=../../object/ifs/textdecoder.md.html class ="notranslate">TextDecoder</a> 对象。</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>TextDecoder util.TextDecoder;
+</code></pre>
+<hr>
+<h3 id="TextEncoder" class ="notranslate">TextEncoder</h3>
+<p><strong><a href=../../object/ifs/textencoder.md.html class ="notranslate">TextEncoder</a> 编码对象，参见 <a href=../../object/ifs/textencoder.md.html class ="notranslate">TextEncoder</a> 对象。</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>TextEncoder util.TextEncoder;
+</code></pre>
 <h2 id="静态函数">静态函数</h2>
 <h3 id="format" class ="notranslate">format</h3>
 <p><strong>按照指定的格式格式化变量</strong></p>
@@ -266,8 +279,10 @@
 3
 4
 5
-6</div>{
+6
+7</div>{
     <span class="hljs-string">"colors"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 指定是否输出 ansi 作色字符串，缺省为 false</span>
+    <span class="hljs-string">"depth"</span>: <span class="hljs-number">2</span>, <span class="hljs-comment">// 指定格式化 object 时递归的次数，缺省为 2</span>
     <span class="hljs-string">"table"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 指定输出 table 格式，缺省为 false</span>
     <span class="hljs-string">"encode_string"</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 指定表格中的字符串是否编码，缺省为 true</span>
     <span class="hljs-string">"fields"</span>: [], <span class="hljs-comment">// 当 table 为 true 时指定显示字段</span>

@@ -1,18 +1,18 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Modulo coroutine-JavaScript su fibra</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Attiva/disattiva navigazione</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../readme.md.html">MODULE</a></li><li><a href="../../object/readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/module/ifs/coroutine.md.html">中文</a> <a href="../../../../../ca/docs/manual/module/ifs/coroutine.md.html">Catalan</a> <a href="../../../../../de/docs/manual/module/ifs/coroutine.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/module/ifs/coroutine.md.html">English</a> <a href="../../../../../es/docs/manual/module/ifs/coroutine.md.html">Español</a> <a href="../../../../../fr/docs/manual/module/ifs/coroutine.md.html">Français</a> <a href="../../../../../gl/docs/manual/module/ifs/coroutine.md.html">Galego</a> <a href="../../../../../it/docs/manual/module/ifs/coroutine.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/module/ifs/coroutine.md.html">Русский</a> <a href="../../../../../ja/docs/manual/module/ifs/coroutine.md.html">日本語</a> <a href="../../../../../ko/docs/manual/module/ifs/coroutine.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/module/ifs/coroutine.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Modulo modulo base </font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Ricerca" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="input di ricerca" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">prima pagina</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Modulo base </font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Coroutine del modulo </font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Guida allo sviluppo </font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Modulo coroutine - JavaScript su Fibra</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Attiva/disattiva la navigazione</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../readme.md.html">MODULE</a></li><li><a href="../../object/readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/module/ifs/coroutine.md.html">中文</a> <a href="../../../../../ca/docs/manual/module/ifs/coroutine.md.html">Catalan</a> <a href="../../../../../de/docs/manual/module/ifs/coroutine.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/module/ifs/coroutine.md.html">English</a> <a href="../../../../../es/docs/manual/module/ifs/coroutine.md.html">Español</a> <a href="../../../../../fr/docs/manual/module/ifs/coroutine.md.html">Français</a> <a href="../../../../../gl/docs/manual/module/ifs/coroutine.md.html">Galego</a> <a href="../../../../../it/docs/manual/module/ifs/coroutine.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/module/ifs/coroutine.md.html">Русский</a> <a href="../../../../../ja/docs/manual/module/ifs/coroutine.md.html">日本語</a> <a href="../../../../../ko/docs/manual/module/ifs/coroutine.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/module/ifs/coroutine.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Modulo base modulo</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Ricerca" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="input di ricerca" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">prima pagina</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">modulo base</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">coroutine del modulo</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Guida allo sviluppo</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cos'è fibjs?</font></font></a></li>
 <li><a href="../../../guide/install.md.html">安装运行环境</a></li>
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
 <li><a href="../../../guide/test.md.html">美好生活从测试开始</a></li>
 <li><a href="../../../guide/profiler.md.html">找出性能杀手</a></li>
-<li><a href="../../../guide/desktop.md.html">快速开发桌面应用</a></li>
 <li><a href="../../../guide/server-hot-update.md.html">服务端模块热更新</a></li>
 <li><a href="../../../guide/host-routes.md.html">域名路由</a></li>
 <li><a href="../../../guide/x509.md.html">fibjs 中 X509 证书的使用</a></li>
 <li><a href="../../../guide/contribute.md.html">添加 native 模块</a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Modulo base </font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">modulo base</font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="assert.md.html" class="notranslate">assert</a></li>
 <li><a href="base32.md.html" class="notranslate">base32</a></li>
+<li><a href="base58.md.html" class="notranslate">base58</a></li>
 <li><a href="base64.md.html" class="notranslate">base64</a></li>
 <li><a href="child_process.md.html" class="notranslate">child_process</a></li>
 <li><a href="console.md.html" class="notranslate">console</a></li>
@@ -36,6 +36,7 @@
 <li><a href="json.md.html" class="notranslate">json</a></li>
 <li><a href="mq.md.html" class="notranslate">mq</a></li>
 <li><a href="msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="multibase.md.html" class="notranslate">multibase</a></li>
 <li><a href="net.md.html" class="notranslate">net</a></li>
 <li><a href="os.md.html" class="notranslate">os</a></li>
 <li><a href="path.md.html" class="notranslate">path</a></li>
@@ -63,7 +64,7 @@
 <li><a href="zip.md.html" class="notranslate">zip</a></li>
 <li><a href="zlib.md.html" class="notranslate">zlib</a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Oggetti incorporati </font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">oggetti incorporati</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a></li>
 <li><a href="../../object/ifs/bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
 <li><a href="../../object/ifs/chain.md.html" class="notranslate">Chain</a></li>
@@ -131,6 +132,8 @@
 <li><a href="../../object/ifs/ttyinputstream.md.html" class="notranslate">TTYInputStream</a></li>
 <li><a href="../../object/ifs/ttyoutputstream.md.html" class="notranslate">TTYOutputStream</a></li>
 <li><a href="../../object/ifs/tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="../../object/ifs/textdecoder.md.html" class="notranslate">TextDecoder</a></li>
+<li><a href="../../object/ifs/textencoder.md.html" class="notranslate">TextEncoder</a></li>
 <li><a href="../../object/ifs/timer.md.html" class="notranslate">Timer</a></li>
 <li><a href="../../object/ifs/urlobject.md.html" class="notranslate">UrlObject</a></li>
 <li><a href="../../object/ifs/websocket.md.html" class="notranslate">WebSocket</a></li>
@@ -155,7 +158,7 @@
 <li><a href="../../object/ifs/zipfile.md.html" class="notranslate">ZipFile</a></li>
 <li><a href="../../object/ifs/object.md.html" class="notranslate">object</a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Modulo comunitario </font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">modulo comunitario</font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../../awesome/module/fib-session.md.html" class="notranslate">fib-session</a></li>
 <li><a href="../../../awesome/module/fib-pool.md.html" class="notranslate">fib-pool</a></li>
 <li><a href="../../../awesome/module/fib-orm.md.html" class="notranslate">fib-orm</a></li>
@@ -197,51 +200,51 @@
 <li><a href="../../../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
 <li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
 </ul>
- </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="模块-coroutine" data-unique="模块-coroutine"></div><h1 id="模块-coroutine"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Coroutine del modulo</font></font></h1>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="模块-coroutine" data-unique="模块-coroutine"></div><h1 id="模块-coroutine"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">coroutine del modulo</font></font></h1>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Modulo di controllo della concorrenza</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Metodo di riferimento:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> coroutine = <span class="hljs-built_in">require</span>(<span class="hljs-string">'coroutine'</span>);
 </code></pre>
-<div name="对象" data-unique="对象"></div><h2 id="对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Oggetto</font></font></h2>
+<div name="对象" data-unique="对象"></div><h2 id="对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">oggetto</font></font></h2>
 <div name="Lock" data-unique="Lock"></div><h3 id="Lock" class="notranslate">Lock</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Blocca oggetto, vedi </font></font><a href="../../object/ifs/lock.md.html" class="notranslate">Lock</a></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">bloccare l'oggetto, vedi</font></font><a href="../../object/ifs/lock.md.html" class="notranslate">Lock</a></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Lock coroutine.Lock;
 </code></pre>
 <hr>
 <div name="Semaphore" data-unique="Semaphore"></div><h3 id="Semaphore" class="notranslate">Semaphore</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Oggetto semaforo, vedi </font></font><a href="../../object/ifs/semaphore.md.html" class="notranslate">Semaphore</a></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">oggetto semaforo, vedi</font></font><a href="../../object/ifs/semaphore.md.html" class="notranslate">Semaphore</a></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Semaphore coroutine.Semaphore;
 </code></pre>
 <hr>
 <div name="Condition" data-unique="Condition"></div><h3 id="Condition" class="notranslate">Condition</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Oggetto variabile di condizione, vedere </font></font><a href="../../object/ifs/condition.md.html" class="notranslate">Condition</a></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">oggetto variabile condizione, vedere</font></font><a href="../../object/ifs/condition.md.html" class="notranslate">Condition</a></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Condition coroutine.Condition;
 </code></pre>
 <hr>
 <div name="Event" data-unique="Event"></div><h3 id="Event" class="notranslate">Event</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Oggetto evento, vedi </font></font><a href="../../object/ifs/event.md.html" class="notranslate">Event</a></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">oggetto evento, vedi</font></font><a href="../../object/ifs/event.md.html" class="notranslate">Event</a></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Event coroutine.Event;
 </code></pre>
 <hr>
 <div name="Worker" data-unique="Worker"></div><h3 id="Worker" class="notranslate">Worker</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Oggetto di lavoro thread indipendente, vedere </font></font><a href="../../object/ifs/worker.md.html" class="notranslate">Worker</a></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">oggetto thread worker indipendente, vedere</font></font><a href="../../object/ifs/worker.md.html" class="notranslate">Worker</a></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Worker coroutine.Worker;
 </code></pre>
-<div name="静态函数" data-unique="静态函数"></div><h2 id="静态函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Funzione statica</font></font></h2>
+<div name="静态函数" data-unique="静态函数"></div><h2 id="静态函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">funzione statica</font></font></h2>
 <div name="start" data-unique="start"></div><h3 id="start" class="notranslate">start</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Avvia una fibra e torna all'oggetto fibra</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Avvia una fibra e restituisci l'oggetto fibra</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> Fiber coroutine.start(<span class="hljs-built_in">Function</span> func,<font></font>
     ...args);<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parametri di chiamata:</font></font></p>
 <ul>
-<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Funzione, specificare la funzione che deve essere eseguita dalla fibra</font></font></li>
-<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., sequenza di parametri variabili, questa sequenza verrà passata alla funzione nella fibra</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Funzione, specifica la funzione che deve essere eseguita dalla fibra</font></font></li>
+<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., una sequenza di argomenti variadici che verranno passati alla funzione all'interno della fibra</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Risultato di ritorno:</font></font></p>
 <ul>
-<li><a href="../../object/ifs/fiber.md.html" class="notranslate">Fiber</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Restituisci l'oggetto in fibra</font></font></li>
+<li><a href="../../object/ifs/fiber.md.html" class="notranslate">Fiber</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, restituisce l'oggetto fibra</font></font></li>
 </ul>
 <hr>
 <div name="parallel" data-unique="parallel"></div><h3 id="parallel" class="notranslate">parallel</h3>
@@ -252,12 +255,12 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parametri di chiamata:</font></font></p>
 <ul>
-<li><span class="notranslate">funcs</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Array, un array di funzioni eseguite in parallelo</font></font></li>
-<li><span class="notranslate">fibers</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Intero, limita il numero di fibre simultanee, il valore predefinito è -1, abilita lo stesso numero di fibre di funzioni</font></font></li>
+<li><span class="notranslate">funcs</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Array, array di funzioni da eseguire in parallelo</font></font></li>
+<li><span class="notranslate">fibers</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Intero, limita il numero di fibre simultanee, il valore predefinito è -1, abilita lo stesso numero di fibre del numero di funzioni</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Risultato di ritorno:</font></font></p>
 <ul>
-<li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Restituisce un array di risultati di esecuzione della funzione</font></font></li>
+<li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, restituisce una matrice del risultato dell'esecuzione della funzione</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Eseguire una funzione in parallelo per elaborare un insieme di dati e attendere il ritorno</font></font></strong></p>
@@ -269,16 +272,16 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parametri di chiamata:</font></font></p>
 <ul>
-<li><span class="notranslate">datas</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Array, array di dati per l'esecuzione parallela</font></font></li>
-<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Funzione, funzione eseguita in parallelo</font></font></li>
+<li><span class="notranslate">datas</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Array, array di dati da eseguire in parallelo</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Funzione, funzione da eseguire in parallelo</font></font></li>
 <li><span class="notranslate">fibers</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Intero, limita il numero di fibre simultanee, il valore predefinito è -1, abilita lo stesso numero di fibre dei dati</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Risultato di ritorno:</font></font></p>
 <ul>
-<li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Restituisce un array di risultati di esecuzione della funzione</font></font></li>
+<li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, restituisce una matrice del risultato dell'esecuzione della funzione</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Esegui una funzione più volte in parallelo e attendi il ritorno</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Eseguire una funzione più volte in parallelo e attendere il ritorno</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Array</span> coroutine.parallel(<span class="hljs-built_in">Function</span> func,<font></font>
@@ -287,13 +290,13 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parametri di chiamata:</font></font></p>
 <ul>
-<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Funzione, il numero di funzioni eseguite in parallelo</font></font></li>
-<li><span class="notranslate">num</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Intero, il numero di attività ripetitive</font></font></li>
-<li><span class="notranslate">fibers</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Intero, limita il numero di fibre simultanee, il valore predefinito è -1, abilita lo stesso numero di fibre di funzioni</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Funzione, il numero di funzioni da eseguire in parallelo</font></font></li>
+<li><span class="notranslate">num</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Numero intero, numero di attività ripetute</font></font></li>
+<li><span class="notranslate">fibers</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Intero, limita il numero di fibre simultanee, il valore predefinito è -1, abilita lo stesso numero di fibre del numero di funzioni</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Risultato di ritorno:</font></font></p>
 <ul>
-<li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Restituisce un array di risultati di esecuzione della funzione</font></font></li>
+<li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, restituisce una matrice del risultato dell'esecuzione della funzione</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Eseguire un insieme di funzioni in parallelo e attendere il ritorno</font></font></strong></p>
@@ -301,11 +304,11 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parametri di chiamata:</font></font></p>
 <ul>
-<li><span class="notranslate">funcs</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., un insieme di funzioni eseguite in parallelo</font></font></li>
+<li><span class="notranslate">funcs</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., un insieme di funzioni da eseguire in parallelo</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Risultato di ritorno:</font></font></p>
 <ul>
-<li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Restituisce un array di risultati di esecuzione della funzione</font></font></li>
+<li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, restituisce una matrice del risultato dell'esecuzione della funzione</font></font></li>
 </ul>
 <hr>
 <div name="current" data-unique="current"></div><h3 id="current" class="notranslate">current</h3>
@@ -314,35 +317,35 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Risultato di ritorno:</font></font></p>
 <ul>
-<li><a href="../../object/ifs/fiber.md.html" class="notranslate">Fiber</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, L'oggetto fibra corrente</font></font></li>
+<li><a href="../../object/ifs/fiber.md.html" class="notranslate">Fiber</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, l'oggetto fibra corrente</font></font></li>
 </ul>
 <hr>
 <div name="sleep" data-unique="sleep"></div><h3 id="sleep" class="notranslate">sleep</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Metti in pausa il tempo specificato dalla fibra corrente</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sospendere la fibra corrente per il tempo specificato</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> coroutine.sleep(Integer ms = <span class="hljs-number">0</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parametri di chiamata:</font></font></p>
 <ul>
-<li><span class="notranslate">ms</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Intero, specificare il tempo da sospendere, in millisecondi, il valore predefinito è 0, cioè se c'è tempo libero riprenderà immediatamente l'operazione</font></font></li>
+<li><span class="notranslate">ms</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Intero, specifica il tempo di pausa, in millisecondi, il valore predefinito è 0, ovvero, se c'è un tempo di inattività, riprenderà a funzionare immediatamente</font></font></li>
 </ul>
-<div name="静态属性" data-unique="静态属性"></div><h2 id="静态属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Proprietà statiche</font></font></h2>
+<div name="静态属性" data-unique="静态属性"></div><h2 id="静态属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">proprietà statiche</font></font></h2>
 <div name="fibers" data-unique="fibers"></div><h3 id="fibers" class="notranslate">fibers</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Array, restituisce tutti gli array di fibre attualmente in esecuzione</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Array, restituisce un array di tutte le fibre attualmente in esecuzione</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Array</span> coroutine.fibers;
 </code></pre>
 <hr>
 <div name="spareFibers" data-unique="spareFibers"></div><h3 id="spareFibers" class="notranslate">spareFibers</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Intero, interroga e imposta inattivo </font></font><a href="../../object/ifs/fiber.md.html" class="notranslate">Fiber</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Numero, l'inattività può essere moderatamente aumentata quando il jitter del server è grande </font></font><a href="../../object/ifs/fiber.md.html" class="notranslate">Fiber</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">quantità. </font><font style="vertical-align: inherit;">Il valore predefinito è 256</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Intero, interroga e imposta inattivo</font></font><a href="../../object/ifs/fiber.md.html" class="notranslate">Fiber</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Il numero di server inattivi può essere aumentato moderatamente quando il jitter del server è elevato</font></font><a href="../../object/ifs/fiber.md.html" class="notranslate">Fiber</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">quantità. </font><font style="vertical-align: inherit;">Il valore predefinito è 256</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer coroutine.spareFibers;
 </code></pre>
 <hr>
 <div name="vmid" data-unique="vmid"></div><h3 id="vmid" class="notranslate">vmid</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Intero, interrogazione corrente </font></font><a href="vm.md.html" class="notranslate">vm</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> numero di serie</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Intero, query corrente</font></font><a href="vm.md.html" class="notranslate">vm</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Numerazione</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly Integer coroutine.vmid;
 </code></pre>
 <hr>
 <div name="loglevel" data-unique="loglevel"></div><h3 id="loglevel" class="notranslate">loglevel</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Intero, modifica e interroga questo </font></font><a href="vm.md.html" class="notranslate">vm</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Il livello di uscita, utilizzato per filtrare le informazioni di uscita, il valore predefinito è </font></font><a href="console.md.html#NOTSET" class="notranslate">console.NOTSET</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Tutte le uscite</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Intero, modificare e interrogare questo</font></font><a href="vm.md.html" class="notranslate">vm</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Il livello di output utilizzato per filtrare le informazioni di output, l'impostazione predefinita è</font></font><a href="console.md.html#NOTSET" class="notranslate">console.NOTSET</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, tutto l'output</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer coroutine.loglevel;
 </code></pre>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sostienici</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip40509"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip40509" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Clicca per tornare alla prima pagina</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sostienici</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip410172"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip410172" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fare clic per tornare alla pagina principale</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

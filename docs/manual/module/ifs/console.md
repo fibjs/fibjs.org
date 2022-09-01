@@ -347,11 +347,25 @@ static console.alert(...args);
 **用 JSON 格式输出对象**
 
 ```JavaScript
-static console.dir(Value obj);
+static console.dir(Value obj,
+    Object options = {});
 ```
 
 调用参数:
-* obj: Value, 给定要显示的对象
+* obj: Value, 指定需要处理的对象
+* options: Object, 指定格式控制选项
+
+支持以下参数:
+
+```JavaScript
+{
+    "colors": false, // 指定是否输出 ansi 作色字符串，缺省为 false
+    "depth": 2, // 指定格式化 object 时递归的次数，缺省为 2
+    "table": false, // 指定输出 table 格式，缺省为 false
+    "encode_string": true, // 指定表格中的字符串是否编码，缺省为 true
+    "fields": [], // 当 table 为 true 时指定显示字段
+}
+```
 
 --------------------------
 ### table

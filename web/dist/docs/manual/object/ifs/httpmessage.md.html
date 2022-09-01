@@ -4,7 +4,6 @@
 <li><a href=../../../guide/hello.md.html class ="notranslate">hello, world</a></li>
 <li><a href=../../../guide/test.md.html>美好生活从测试开始</a></li>
 <li><a href=../../../guide/profiler.md.html>找出性能杀手</a></li>
-<li><a href=../../../guide/desktop.md.html>快速开发桌面应用</a></li>
 <li><a href=../../../guide/server-hot-update.md.html>服务端模块热更新</a></li>
 <li><a href=../../../guide/host-routes.md.html>域名路由</a></li>
 <li><a href=../../../guide/x509.md.html>fibjs 中 X509 证书的使用</a></li>
@@ -13,6 +12,7 @@
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_module" aria-controls="collapse_module"> 基础模块 </a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby=headingOne><div class=panel-body> <ul>
 <li><a href=../../module/ifs/assert.md.html class ="notranslate">assert</a></li>
 <li><a href=../../module/ifs/base32.md.html class ="notranslate">base32</a></li>
+<li><a href=../../module/ifs/base58.md.html class ="notranslate">base58</a></li>
 <li><a href=../../module/ifs/base64.md.html class ="notranslate">base64</a></li>
 <li><a href=../../module/ifs/child_process.md.html class ="notranslate">child_process</a></li>
 <li><a href=../../module/ifs/console.md.html class ="notranslate">console</a></li>
@@ -36,6 +36,7 @@
 <li><a href=../../module/ifs/json.md.html class ="notranslate">json</a></li>
 <li><a href=../../module/ifs/mq.md.html class ="notranslate">mq</a></li>
 <li><a href=../../module/ifs/msgpack.md.html class ="notranslate">msgpack</a></li>
+<li><a href=../../module/ifs/multibase.md.html class ="notranslate">multibase</a></li>
 <li><a href=../../module/ifs/net.md.html class ="notranslate">net</a></li>
 <li><a href=../../module/ifs/os.md.html class ="notranslate">os</a></li>
 <li><a href=../../module/ifs/path.md.html class ="notranslate">path</a></li>
@@ -131,6 +132,8 @@
 <li><a href=ttyinputstream.md.html class ="notranslate">TTYInputStream</a></li>
 <li><a href=ttyoutputstream.md.html class ="notranslate">TTYOutputStream</a></li>
 <li><a href=tcpserver.md.html class ="notranslate">TcpServer</a></li>
+<li><a href=textdecoder.md.html class ="notranslate">TextDecoder</a></li>
+<li><a href=textencoder.md.html class ="notranslate">TextEncoder</a></li>
 <li><a href=timer.md.html class ="notranslate">Timer</a></li>
 <li><a href=urlobject.md.html class ="notranslate">UrlObject</a></li>
 <li><a href=websocket.md.html class ="notranslate">WebSocket</a></li>
@@ -200,88 +203,178 @@
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="对象-HttpMessage">对象 HttpMessage</h1>
 <p><a href=../../module/ifs/http.md.html class ="notranslate">http</a> 基础消息对象</p>
 <h2 id="继承关系">继承关系</h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="303" height="992" viewbox="0 0 303 992" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="font:bold  10pt Helvetica,sans-Serif, Helvetica, sans-serif;;stroke-linejoin:round;stroke-linecap:round">
-  <desc >
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="303.0" height="992.0" viewbox="0 0 303 992" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
+    <desc >
+    #lineWidth: 1.5
+    #font: Helvetica,sans-Serif
+    #fontSize: 10
+    #leading: 1.6
+    #.this: fill=lightgray
+    #.class: fill=white
 
-[&lt;class&gt;object|toString();toJSON()]
-[&lt;class&gt;Message|new Message()|TEXT;BINARY|value;params;type;data;body;length;stream;lastError|read();readAll();write();json();pack();end();isEnded();clear();sendTo();readFrom()]
-[&lt;this&gt;HttpMessage|protocol;headers;keepAlive;upgrade;maxHeadersCount;maxBodySize;socket|hasHeader();firstHeader();allHeader();addHeader();setHeader();removeHeader()]
-[&lt;class&gt;HttpRequest]
-[&lt;class&gt;HttpResponse]
+    [&lt;class&gt;object|toString();toJSON()]
+    [&lt;class&gt;Message|new Message()|TEXT;BINARY|value;params;type;data;body;length;stream;lastError|read();readAll();write();json();pack();end();isEnded();clear();sendTo();readFrom()]
+    [&lt;this&gt;HttpMessage|protocol;headers;keepAlive;upgrade;maxHeadersCount;maxBodySize;socket|hasHeader();firstHeader();allHeader();addHeader();setHeader();removeHeader()]
+    [&lt;class&gt;HttpRequest]
+    [&lt;class&gt;HttpResponse]
 
-[object] &lt;:- [Message]
-[Message] &lt;:- [HttpMessage]
-[HttpMessage] &lt;:- [HttpRequest]
-[HttpMessage] &lt;:- [HttpResponse]
-</desc>
-  <rect x="0" y="0" height="992" width="303" style="stroke:none; fill:transparent;"></rect>
-  <path d="M148.8 121.3 L148.8 128 L148.8 148 L148.8 148 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M154.1 121.3 L148.8 121.3 L143.4 121.3 L148.8 108 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M148.8 593.3 L148.8 600 L148.8 620 L148.8 620 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M154.1 593.3 L148.8 593.3 L143.4 593.3 L148.8 580 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M80.6 904.1 L77 912 L77 932 L77 932 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M85.5 906.3 L80.6 904.1 L75.8 901.9 L86.2 892 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M216.9 904.1 L220.5 912 L220.5 932 L220.5 932 " style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M221.7 901.9 L216.9 904.1 L212 906.3 L211.3 892 Z" style="stroke:#33322E;fill:#eee8d5;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <rect x="90" y="148" height="432" width="117" data-name="Message" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <path d="M90 180 L207 180" data-name="Message" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M90 212 L207 212" data-name="Message" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M90 260 L207 260" data-name="Message" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M90 404 L207 404" data-name="Message" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <text x="148.5" y="169" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="Message">Message</text>
-  <text x="98" y="201" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Message">new Message()</text>
-  <text x="98" y="233" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Message">TEXT</text>
-  <text x="98" y="249" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Message">BINARY</text>
-  <text x="98" y="281" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Message">value</text>
-  <text x="98" y="297" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Message">params</text>
-  <text x="98" y="313" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Message">type</text>
-  <text x="98" y="329" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Message">data</text>
-  <text x="98" y="345" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Message">body</text>
-  <text x="98" y="361" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Message">length</text>
-  <text x="98" y="377" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Message">stream</text>
-  <text x="98" y="393" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Message">lastError</text>
-  <text x="98" y="425" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Message">read()</text>
-  <text x="98" y="441" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Message">readAll()</text>
-  <text x="98" y="457" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Message">write()</text>
-  <text x="98" y="473" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Message">json()</text>
-  <text x="98" y="489" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Message">pack()</text>
-  <text x="98" y="505" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Message">end()</text>
-  <text x="98" y="521" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Message">isEnded()</text>
-  <text x="98" y="537" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Message">clear()</text>
-  <text x="98" y="553" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Message">sendTo()</text>
-  <text x="98" y="569" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="Message">readFrom()</text>
-  <rect x="79" y="620" height="272" width="139" data-name="HttpMessage" style="stroke:#33322E;fill:lightgray;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <path d="M79 652 L218 652" data-name="HttpMessage" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <path d="M79 780 L218 780" data-name="HttpMessage" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <text x="148.5" y="641" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="HttpMessage">HttpMessage</text>
-  <text x="87" y="673" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="HttpMessage">protocol</text>
-  <text x="87" y="689" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="HttpMessage">headers</text>
-  <text x="87" y="705" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="HttpMessage">keepAlive</text>
-  <text x="87" y="721" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="HttpMessage">upgrade</text>
-  <text x="87" y="737" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="HttpMessage">maxHeadersCount</text>
-  <text x="87" y="753" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="HttpMessage">maxBodySize</text>
-  <text x="87" y="769" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="HttpMessage">socket</text>
-  <text x="87" y="801" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="HttpMessage">hasHeader()</text>
-  <text x="87" y="817" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="HttpMessage">firstHeader()</text>
-  <text x="87" y="833" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="HttpMessage">allHeader()</text>
-  <text x="87" y="849" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="HttpMessage">addHeader()</text>
-  <text x="87" y="865" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="HttpMessage">setHeader()</text>
-  <text x="87" y="881" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="HttpMessage">removeHeader()</text>
-  <rect x="110" y="28" height="80" width="77" data-name="object" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <path d="M110 60 L187 60" data-name="object" style="stroke:#33322E;fill:none;stroke-dasharray:none;stroke-width:1.5;"></path>
-  <text x="148.5" y="49" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="object">object</text>
-  <text x="118" y="81" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toString()</text>
-  <text x="118" y="97" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;" data-name="object">toJSON()</text>
-  <rect x="28" y="932" height="32" width="98" data-name="HttpRequest" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="77" y="953" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="HttpRequest">HttpRequest</text>
-  <rect x="166" y="932" height="32" width="109" data-name="HttpResponse" style="stroke:#33322E;fill:white;stroke-dasharray:none;stroke-width:1.5;"></rect>
-  <text x="220.5" y="953" style="fill: #33322E;font:normal  10pt Helvetica,sans-Serif, Helvetica, sans-serif;text-anchor: middle;" data-name="HttpResponse">HttpResponse</text>
+    [object] &lt;:- [Message]
+    [Message] &lt;:- [HttpMessage]
+    [HttpMessage] &lt;:- [HttpRequest]
+    [HttpMessage] &lt;:- [HttpResponse]
+    </desc>
+    <g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="10pt" font-family="Helvetica,sans-Serif" font-weight="bold" font-style="normal">
+        <g font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="bold" font-style="normal" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
+            <g stroke="transparent" fill="transparent">
+                <rect x="0.0" y="0.0" height="992.0" width="303.0" stroke="none"></rect>
+            </g>
+            <g transform="translate(8, 8)" fill="#33322E">
+                <g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal">
+                    <path d="M120.8 93.3 L120.75 100 L120.75 120 L120.8 120.0 " fill="none"></path>
+                    <path d="M126.1 93.3 L120.8 93.3 L115.4 93.3 L120.8 80.0 Z"></path>
+                    <path d="M120.8 565.3 L120.75 572 L120.75 592 L120.8 592.0 " fill="none"></path>
+                    <path d="M126.1 565.3 L120.8 565.3 L115.4 565.3 L120.8 552.0 Z"></path>
+                    <path d="M52.6 876.1 L49 884 L49 904 L49.0 904.0 " fill="none"></path>
+                    <path d="M57.5 878.3 L52.6 876.1 L47.8 873.9 L58.2 864.0 Z"></path>
+                    <path d="M188.9 876.1 L192.5 884 L192.5 904 L192.5 904.0 " fill="none"></path>
+                    <path d="M193.7 873.9 L188.9 876.1 L184.0 878.3 L183.3 864.0 Z"></path>
+                    <g data-name="Message">
+                        <g fill="white" stroke="#33322E" data-name="Message">
+                            <rect x="62.0" y="120.0" height="432.0" width="117.0" data-name="Message"></rect>
+                            <path d="M62.0 152.0 L179.0 152.0" fill="none" data-name="Message"></path>
+                            <path d="M62.0 184.0 L179.0 184.0" fill="none" data-name="Message"></path>
+                            <path d="M62.0 232.0 L179.0 232.0" fill="none" data-name="Message"></path>
+                            <path d="M62.0 376.0 L179.0 376.0" fill="none" data-name="Message"></path>
+                        </g>
+                        <g transform="translate(62, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Message">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Message">
+                                <text x="50.5" y="13.0" stroke="none" text-anchor="middle" data-name="Message">Message</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(62, 152)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Message">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Message">
+                                <text x="0.0" y="13.0" stroke="none" data-name="Message">new Message()</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(62, 184)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Message">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Message">
+                                <text x="0.0" y="13.0" stroke="none" data-name="Message">TEXT</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="Message">BINARY</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(62, 232)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Message">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Message">
+                                <text x="0.0" y="13.0" stroke="none" data-name="Message">value</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="Message">params</text>
+                                <text x="0.0" y="45.0" stroke="none" data-name="Message">type</text>
+                                <text x="0.0" y="61.0" stroke="none" data-name="Message">data</text>
+                                <text x="0.0" y="77.0" stroke="none" data-name="Message">body</text>
+                                <text x="0.0" y="93.0" stroke="none" data-name="Message">length</text>
+                                <text x="0.0" y="109.0" stroke="none" data-name="Message">stream</text>
+                                <text x="0.0" y="125.0" stroke="none" data-name="Message">lastError</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(62, 376)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Message">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Message">
+                                <text x="0.0" y="13.0" stroke="none" data-name="Message">read()</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="Message">readAll()</text>
+                                <text x="0.0" y="45.0" stroke="none" data-name="Message">write()</text>
+                                <text x="0.0" y="61.0" stroke="none" data-name="Message">json()</text>
+                                <text x="0.0" y="77.0" stroke="none" data-name="Message">pack()</text>
+                                <text x="0.0" y="93.0" stroke="none" data-name="Message">end()</text>
+                                <text x="0.0" y="109.0" stroke="none" data-name="Message">isEnded()</text>
+                                <text x="0.0" y="125.0" stroke="none" data-name="Message">clear()</text>
+                                <text x="0.0" y="141.0" stroke="none" data-name="Message">sendTo()</text>
+                                <text x="0.0" y="157.0" stroke="none" data-name="Message">readFrom()</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="HttpMessage">
+                        <g fill="lightgray" stroke="#33322E" data-name="HttpMessage">
+                            <rect x="51.0" y="592.0" height="272.0" width="139.0" data-name="HttpMessage"></rect>
+                            <path d="M51.0 624.0 L190.0 624.0" fill="none" data-name="HttpMessage"></path>
+                            <path d="M51.0 752.0 L190.0 752.0" fill="none" data-name="HttpMessage"></path>
+                        </g>
+                        <g transform="translate(51, 592)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="HttpMessage">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="HttpMessage">
+                                <text x="61.5" y="13.0" stroke="none" text-anchor="middle" data-name="HttpMessage">HttpMessage</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(51, 624)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="HttpMessage">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="HttpMessage">
+                                <text x="0.0" y="13.0" stroke="none" data-name="HttpMessage">protocol</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="HttpMessage">headers</text>
+                                <text x="0.0" y="45.0" stroke="none" data-name="HttpMessage">keepAlive</text>
+                                <text x="0.0" y="61.0" stroke="none" data-name="HttpMessage">upgrade</text>
+                                <text x="0.0" y="77.0" stroke="none" data-name="HttpMessage">maxHeadersCount</text>
+                                <text x="0.0" y="93.0" stroke="none" data-name="HttpMessage">maxBodySize</text>
+                                <text x="0.0" y="109.0" stroke="none" data-name="HttpMessage">socket</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(51, 752)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="HttpMessage">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="HttpMessage">
+                                <text x="0.0" y="13.0" stroke="none" data-name="HttpMessage">hasHeader()</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="HttpMessage">firstHeader()</text>
+                                <text x="0.0" y="45.0" stroke="none" data-name="HttpMessage">allHeader()</text>
+                                <text x="0.0" y="61.0" stroke="none" data-name="HttpMessage">addHeader()</text>
+                                <text x="0.0" y="77.0" stroke="none" data-name="HttpMessage">setHeader()</text>
+                                <text x="0.0" y="93.0" stroke="none" data-name="HttpMessage">removeHeader()</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="object">
+                        <g fill="white" stroke="#33322E" data-name="object">
+                            <rect x="82.0" y="0.0" height="80.0" width="77.0" data-name="object"></rect>
+                            <path d="M82.0 32.0 L159.0 32.0" fill="none" data-name="object"></path>
+                        </g>
+                        <g transform="translate(82, 0)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="object">
+                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="object">object</text>
+
+                            </g>
+                        </g>
+                        <g transform="translate(82, 32)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="object">
+                                <text x="0.0" y="13.0" stroke="none" data-name="object">toString()</text>
+                                <text x="0.0" y="29.0" stroke="none" data-name="object">toJSON()</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="HttpRequest">
+                        <g fill="white" stroke="#33322E" data-name="HttpRequest">
+                            <rect x="0.0" y="904.0" height="32.0" width="98.0" data-name="HttpRequest"></rect>
+                        </g>
+                        <g transform="translate(0, 904)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="HttpRequest">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="HttpRequest">
+                                <text x="41.0" y="13.0" stroke="none" text-anchor="middle" data-name="HttpRequest">HttpRequest</text>
+
+                            </g>
+                        </g>
+                    </g>
+                    <g data-name="HttpResponse">
+                        <g fill="white" stroke="#33322E" data-name="HttpResponse">
+                            <rect x="138.0" y="904.0" height="32.0" width="109.0" data-name="HttpResponse"></rect>
+                        </g>
+                        <g transform="translate(138, 904)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="HttpResponse">
+                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="HttpResponse">
+                                <text x="46.5" y="13.0" stroke="none" text-anchor="middle" data-name="HttpResponse">HttpResponse</text>
+
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
 </svg></div>
 
 <h2 id="常量">常量</h2>
