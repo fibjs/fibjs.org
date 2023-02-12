@@ -9,7 +9,7 @@ digraph {
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     PKey [tooltip="PKey", URL="PKey.md", label="{PKey|new PKey()\l|from()\l|name\lkeySize\lalg\lpublicKey\l|isPrivate()\lclone()\lpem()\lder()\ljson()\lequals()\lencrypt()\ldecrypt()\lsign()\lverify()\l}"];
     ECKey [tooltip="ECKey", URL="ECKey.md", label="{ECKey|new ECKey()\l|recover()\l|curve\l|computeSecret()\l}"];
-    BlsKey [tooltip="BlsKey", fillcolor="lightgray", id="me", label="{BlsKey|new BlsKey()\l|aggregateSignature()\laggregatePublicKey()\l|bbsSign()\lbbsVerify()\lderiveProof()\lverifyProof()\l}"];
+    BlsKey [tooltip="BlsKey", fillcolor="lightgray", id="me", label="{BlsKey|new BlsKey()\l|aggregateSignature()\laggregatePublicKey()\l}"];
 
     object -> PKey [dir=back];
     PKey -> ECKey [dir=back];
@@ -234,52 +234,6 @@ readonly PKey BlsKey.publicKey;
 
 ## 成员函数
         
-### bbsSign
-****
-
-```JavaScript
-Buffer BlsKey.bbsSign(Array messages) async;
-```
-
-调用参数:
-
---------------------------
-### bbsVerify
-****
-
-```JavaScript
-Boolean BlsKey.bbsVerify(Array messages,
-    Buffer sig) async;
-```
-
-调用参数:
-
---------------------------
-### deriveProof
-****
-
-```JavaScript
-Buffer BlsKey.deriveProof(Array messages,
-    Buffer sig,
-    Buffer nonce,
-    Array idx) async;
-```
-
-调用参数:
-
---------------------------
-### verifyProof
-****
-
-```JavaScript
-Boolean BlsKey.verifyProof(Array messages,
-    Buffer proof,
-    Buffer nonce) async;
-```
-
-调用参数:
-
---------------------------
 ### computeSecret
 **使用当前算法计算椭圆曲线 Diffie-Hellman (ECDH) 共享密钥**
 
