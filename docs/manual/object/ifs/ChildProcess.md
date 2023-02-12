@@ -7,20 +7,17 @@ var child = child_process.spawn("ls");
 ```
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<class>object|toString();toJSON()]
-[<class>EventEmitter|new EventEmitter()|EventEmitter|defaultMaxListeners|on();addListener();prependListener();once();prependOnceListener();off();removeListener();removeAllListeners();setMaxListeners();getMaxListeners();listeners();listenerCount();eventNames();emit()]
-[<this>ChildProcess|connected;pid;exitCode;stdin;stdout;stderr;onexit;onmessage|kill();join();disconnect();send();usage()]
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
+    ChildProcess [tooltip="ChildProcess", fillcolor="lightgray", id="me", label="{ChildProcess|connected\lpid\lexitCode\lstdin\lstdout\lstderr\lonexit\lonmessage\l|kill()\ljoin()\ldisconnect()\lsend()\lusage()\l}"];
 
-[object] <:- [EventEmitter]
-[EventEmitter] <:- [ChildProcess]
+    object -> EventEmitter [dir=back];
+    EventEmitter -> ChildProcess [dir=back];
+}
 ```
 
 ## 静态属性
@@ -124,11 +121,11 @@ ChildProcess.kill(String signal);
 **等待当前对象指向的进程结束，并返回进程结束代码**
 
 ```JavaScript
-ChildProcess.join() async;
+Integer ChildProcess.join() async;
 ```
 
 返回结果:
-* 进程的结束代码
+* Integer, 进程的结束代码
 
 --------------------------
 ### disconnect

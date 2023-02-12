@@ -28,20 +28,17 @@ sock.onmessage = evt => {
 ```
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<class>object|toString();toJSON()]
-[<class>EventEmitter|new EventEmitter()|EventEmitter|defaultMaxListeners|on();addListener();prependListener();once();prependOnceListener();off();removeListener();removeAllListeners();setMaxListeners();getMaxListeners();listeners();listenerCount();eventNames();emit()]
-[<this>WebSocket|new WebSocket()|url;protocol;origin;readyState;onopen;onmessage;onclose;onerror|close();send();ref();unref()]
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
+    WebSocket [tooltip="WebSocket", fillcolor="lightgray", id="me", label="{WebSocket|new WebSocket()\l|url\lprotocol\lorigin\lreadyState\lonopen\lonmessage\lonclose\lonerror\l|close()\lsend()\lref()\lunref()\l}"];
 
-[object] <:- [EventEmitter]
-[EventEmitter] <:- [WebSocket]
+    object -> EventEmitter [dir=back];
+    EventEmitter -> WebSocket [dir=back];
+}
 ```
 
 ## 构造函数

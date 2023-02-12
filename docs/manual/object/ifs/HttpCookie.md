@@ -2,18 +2,15 @@
 [http](../../module/ifs/http.md) Cookie 对象，用于添加和处理 cookie
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<class>object|toString();toJSON()]
-[<this>HttpCookie|new HttpCookie()|name;value;domain;path;expires;httpOnly;secure|parse();match()]
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    HttpCookie [tooltip="HttpCookie", fillcolor="lightgray", id="me", label="{HttpCookie|new HttpCookie()\l|name\lvalue\ldomain\lpath\lexpires\lhttpOnly\lsecure\l|parse()\lmatch()\l}"];
 
-[object] <:- [HttpCookie]
+    object -> HttpCookie [dir=back];
+}
 ```
 
 ## 构造函数

@@ -65,6 +65,7 @@
 <li><a href=../../module/ifs/zlib.md.html class ="notranslate">zlib</a></li>
 </ul>
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_object" aria-controls="collapse_object"> 内置对象 </a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby=headingOne><div class=panel-body> <ul>
+<li><a href=blskey.md.html class ="notranslate">BlsKey</a></li>
 <li><a href=buffer.md.html class ="notranslate">Buffer</a></li>
 <li><a href=bufferedstream.md.html class ="notranslate">BufferedStream</a></li>
 <li><a href=chain.md.html class ="notranslate">Chain</a></li>
@@ -74,6 +75,8 @@
 <li><a href=dbconnection.md.html class ="notranslate">DbConnection</a></li>
 <li><a href=dgramsocket.md.html class ="notranslate">DgramSocket</a></li>
 <li><a href=digest.md.html class ="notranslate">Digest</a></li>
+<li><a href=eckey.md.html class ="notranslate">ECKey</a></li>
+<li><a href=ed25519key.md.html class ="notranslate">Ed25519Key</a></li>
 <li><a href=event.md.html class ="notranslate">Event</a></li>
 <li><a href=eventemitter.md.html class ="notranslate">EventEmitter</a></li>
 <li><a href=fswatcher.md.html class ="notranslate">FSWatcher</a></li>
@@ -219,117 +222,73 @@
 });
 </code></pre>
 <h2 id="继承关系">继承关系</h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="180.0" height="488.0" viewbox="0 0 180 488" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
-    <desc >
-    #lineWidth: 1.5
-    #font: Helvetica,sans-Serif
-    #fontSize: 10
-    #leading: 1.6
-    #.this: fill=lightgray
-    #.class: fill=white
-
-    [&lt;class&gt;object|toString();toJSON()]
-    [&lt;class&gt;TcpServer|new TcpServer()|socket;handler|start();stop()]
-    [&lt;this&gt;SslServer|new SslServer()|verification;ca]
-
-    [object] &lt;:- [TcpServer]
-    [TcpServer] &lt;:- [SslServer]
-    </desc>
-    <g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="10pt" font-family="Helvetica,sans-Serif" font-weight="normal" font-style="normal">
-        <g font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="bold" font-style="normal" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
-            <g stroke="transparent" fill="transparent">
-                <rect x="0.0" y="0.0" height="488.0" width="180.0" stroke="none"></rect>
-            </g>
-            <g transform="translate(8, 8)" fill="#33322E">
-                <g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal">
-                    <path d="M62.0 93.3 L62 100 L62 120 L62.0 120.0 " fill="none"></path>
-                    <path d="M67.3 93.3 L62.0 93.3 L56.7 93.3 L62.0 80.0 Z"></path>
-                    <path d="M62.0 293.3 L62 300 L62 320 L62.0 320.0 " fill="none"></path>
-                    <path d="M67.3 293.3 L62.0 293.3 L56.7 293.3 L62.0 280.0 Z"></path>
-                    <g data-name="TcpServer">
-                        <g fill="white" stroke="#33322E" data-name="TcpServer">
-                            <rect x="0.0" y="120.0" height="160.0" width="124.0" data-name="TcpServer"></rect>
-                            <path d="M0.0 152.0 L124.0 152.0" fill="none" data-name="TcpServer"></path>
-                            <path d="M0.0 184.0 L124.0 184.0" fill="none" data-name="TcpServer"></path>
-                            <path d="M0.0 232.0 L124.0 232.0" fill="none" data-name="TcpServer"></path>
-                        </g>
-                        <g transform="translate(0, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="TcpServer">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="TcpServer">
-                                <text x="54.0" y="13.0" stroke="none" text-anchor="middle" data-name="TcpServer">TcpServer</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 152)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="TcpServer">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="TcpServer">
-                                <text x="0.0" y="13.0" stroke="none" data-name="TcpServer">new TcpServer()</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 184)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="TcpServer">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="TcpServer">
-                                <text x="0.0" y="13.0" stroke="none" data-name="TcpServer">socket</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="TcpServer">handler</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 232)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="TcpServer">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="TcpServer">
-                                <text x="0.0" y="13.0" stroke="none" data-name="TcpServer">start()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="TcpServer">stop()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="SslServer">
-                        <g fill="lightgray" stroke="#33322E" data-name="SslServer">
-                            <rect x="2.0" y="320.0" height="112.0" width="120.0" data-name="SslServer"></rect>
-                            <path d="M2.0 352.0 L122.0 352.0" fill="none" data-name="SslServer"></path>
-                            <path d="M2.0 384.0 L122.0 384.0" fill="none" data-name="SslServer"></path>
-                        </g>
-                        <g transform="translate(2, 320)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="SslServer">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="SslServer">
-                                <text x="52.0" y="13.0" stroke="none" text-anchor="middle" data-name="SslServer">SslServer</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(2, 352)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="SslServer">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="SslServer">
-                                <text x="0.0" y="13.0" stroke="none" data-name="SslServer">new SslServer()</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(2, 384)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="SslServer">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="SslServer">
-                                <text x="0.0" y="13.0" stroke="none" data-name="SslServer">verification</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="SslServer">ca</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="object">
-                        <g fill="white" stroke="#33322E" data-name="object">
-                            <rect x="24.0" y="0.0" height="80.0" width="77.0" data-name="object"></rect>
-                            <path d="M24.0 32.0 L101.0 32.0" fill="none" data-name="object"></path>
-                        </g>
-                        <g transform="translate(24, 0)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="object">
-                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="object">object</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(24, 32)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="object">
-                                <text x="0.0" y="13.0" stroke="none" data-name="object">toString()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="object">toJSON()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg></div>
+<div class="dot notranslate">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="98pt" height="311pt"
+ viewBox="0.00 0.00 97.89 311.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 307)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-307 93.887,-307 93.887,4 -4,4"/>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href=object.md.html xlink:title="object">
+<polygon fill="#ffffff" stroke="#000000" points="16.112,-250.5 16.112,-302.5 73.775,-302.5 73.775,-250.5 16.112,-250.5"/>
+<text text-anchor="middle" x="44.9435" y="-289.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="16.112,-282.5 73.775,-282.5 "/>
+<text text-anchor="start" x="24.112" y="-269.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="24.112" y="-257.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+</a>
+</g>
+</g>
+<!-- TcpServer -->
+<g id="node2" class="node">
+<title>TcpServer</title>
+<g id="a_node2"><a xlink:href=tcpserver.md.html xlink:title="TcpServer">
+<polygon fill="#ffffff" stroke="#000000" points="0,-109.5 0,-213.5 89.887,-213.5 89.887,-109.5 0,-109.5"/>
+<text text-anchor="middle" x="44.9435" y="-200.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">TcpServer</text>
+<polyline fill="none" stroke="#000000" points="0,-193.5 89.887,-193.5 "/>
+<text text-anchor="start" x="8" y="-180.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new TcpServer()</text>
+<polyline fill="none" stroke="#000000" points="0,-173.5 89.887,-173.5 "/>
+<text text-anchor="start" x="8" y="-160.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">socket</text>
+<text text-anchor="start" x="8" y="-148.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">handler</text>
+<polyline fill="none" stroke="#000000" points="0,-141.5 89.887,-141.5 "/>
+<text text-anchor="start" x="8" y="-128.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">start()</text>
+<text text-anchor="start" x="8" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">stop()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;TcpServer -->
+<g id="edge1" class="edge">
+<title>object&#45;&gt;TcpServer</title>
+<path fill="none" stroke="#000000" d="M44.9435,-240.2197C44.9435,-231.8315 44.9435,-222.7424 44.9435,-213.8209"/>
+<polygon fill="#000000" stroke="#000000" points="41.4436,-240.4047 44.9435,-250.4047 48.4436,-240.4048 41.4436,-240.4047"/>
+</g>
+<!-- SslServer -->
+<g id="me" class="node">
+<title>SslServer</title>
+<g id="a_me"><a xlink:title="SslServer">
+<polygon fill="#d3d3d3" stroke="#000000" points="1.39,-.5 1.39,-72.5 88.497,-72.5 88.497,-.5 1.39,-.5"/>
+<text text-anchor="middle" x="44.9435" y="-59.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">SslServer</text>
+<polyline fill="none" stroke="#000000" points="1.39,-52.5 88.497,-52.5 "/>
+<text text-anchor="start" x="9.39" y="-39.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new SslServer()</text>
+<polyline fill="none" stroke="#000000" points="1.39,-32.5 88.497,-32.5 "/>
+<text text-anchor="start" x="9.39" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">verification</text>
+<text text-anchor="start" x="9.39" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">ca</text>
+</a>
+</g>
+</g>
+<!-- TcpServer&#45;&gt;SslServer -->
+<g id="edge2" class="edge">
+<title>TcpServer&#45;&gt;SslServer</title>
+<path fill="none" stroke="#000000" d="M44.9435,-99.0338C44.9435,-89.9817 44.9435,-80.9287 44.9435,-72.6342"/>
+<polygon fill="#000000" stroke="#000000" points="41.4436,-99.213 44.9435,-109.213 48.4436,-99.2131 41.4436,-99.213"/>
+</g>
+</g>
+</svg>
+</div>
 
 <h2 id="构造函数">构造函数</h2>
 <h3 id="SslServer" class ="notranslate">SslServer</h3>
@@ -498,4 +457,4 @@
 <ul>
 <li><span class="notranslate">Value</span>, 返回包含可 JSON 序列化的值</li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

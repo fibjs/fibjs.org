@@ -65,6 +65,7 @@
 <li><a href=../../module/ifs/zlib.md.html class ="notranslate">zlib</a></li>
 </ul>
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_object" aria-controls="collapse_object"> 内置对象 </a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby=headingOne><div class=panel-body> <ul>
+<li><a href=blskey.md.html class ="notranslate">BlsKey</a></li>
 <li><a href=buffer.md.html class ="notranslate">Buffer</a></li>
 <li><a href=bufferedstream.md.html class ="notranslate">BufferedStream</a></li>
 <li><a href=chain.md.html class ="notranslate">Chain</a></li>
@@ -74,6 +75,8 @@
 <li><a href=dbconnection.md.html class ="notranslate">DbConnection</a></li>
 <li><a href=dgramsocket.md.html class ="notranslate">DgramSocket</a></li>
 <li><a href=digest.md.html class ="notranslate">Digest</a></li>
+<li><a href=eckey.md.html class ="notranslate">ECKey</a></li>
+<li><a href=ed25519key.md.html class ="notranslate">Ed25519Key</a></li>
 <li><a href=event.md.html class ="notranslate">Event</a></li>
 <li><a href=eventemitter.md.html class ="notranslate">EventEmitter</a></li>
 <li><a href=fswatcher.md.html class ="notranslate">FSWatcher</a></li>
@@ -228,111 +231,72 @@ l.release();
 </code></pre>
 <p>生产者/消费者模式通常则将信号量与队列配合使用。生产者向队列中加入数据，并 post 一个信号，消费者则先 wait 信号，获取信号后去队查询取数据。</p>
 <h2 id="继承关系">继承关系</h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="189.0" height="472.0" viewbox="0 0 189 472" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
-    <desc >
-    #lineWidth: 1.5
-    #font: Helvetica,sans-Serif
-    #fontSize: 10
-    #leading: 1.6
-    #.this: fill=lightgray
-    #.class: fill=white
-
-    [&lt;class&gt;object|toString();toJSON()]
-    [&lt;class&gt;Lock|new Lock()|acquire();release();count()]
-    [&lt;this&gt;Semaphore|new Semaphore()|wait();post();trywait()]
-
-    [object] &lt;:- [Lock]
-    [Lock] &lt;:- [Semaphore]
-    </desc>
-    <g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="10pt" font-family="Helvetica,sans-Serif" font-weight="normal" font-style="normal">
-        <g font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="bold" font-style="normal" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
-            <g stroke="transparent" fill="transparent">
-                <rect x="0.0" y="0.0" height="472.0" width="189.0" stroke="none"></rect>
-            </g>
-            <g transform="translate(8, 8)" fill="#33322E">
-                <g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal">
-                    <path d="M66.5 93.3 L66.5 100 L66.5 120 L66.5 120.0 " fill="none"></path>
-                    <path d="M71.8 93.3 L66.5 93.3 L61.2 93.3 L66.5 80.0 Z"></path>
-                    <path d="M66.5 261.3 L66.5 268 L66.5 288 L66.5 288.0 " fill="none"></path>
-                    <path d="M71.8 261.3 L66.5 261.3 L61.2 261.3 L66.5 248.0 Z"></path>
-                    <g data-name="Lock">
-                        <g fill="white" stroke="#33322E" data-name="Lock">
-                            <rect x="22.0" y="120.0" height="128.0" width="89.0" data-name="Lock"></rect>
-                            <path d="M22.0 152.0 L111.0 152.0" fill="none" data-name="Lock"></path>
-                            <path d="M22.0 184.0 L111.0 184.0" fill="none" data-name="Lock"></path>
-                        </g>
-                        <g transform="translate(22, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Lock">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Lock">
-                                <text x="36.5" y="13.0" stroke="none" text-anchor="middle" data-name="Lock">Lock</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(22, 152)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Lock">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Lock">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Lock">new Lock()</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(22, 184)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Lock">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Lock">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Lock">acquire()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="Lock">release()</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="Lock">count()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="Semaphore">
-                        <g fill="lightgray" stroke="#33322E" data-name="Semaphore">
-                            <rect x="0.0" y="288.0" height="128.0" width="133.0" data-name="Semaphore"></rect>
-                            <path d="M0.0 320.0 L133.0 320.0" fill="none" data-name="Semaphore"></path>
-                            <path d="M0.0 352.0 L133.0 352.0" fill="none" data-name="Semaphore"></path>
-                        </g>
-                        <g transform="translate(0, 288)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Semaphore">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Semaphore">
-                                <text x="58.5" y="13.0" stroke="none" text-anchor="middle" data-name="Semaphore">Semaphore</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 320)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Semaphore">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Semaphore">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Semaphore">new Semaphore()</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 352)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Semaphore">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Semaphore">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Semaphore">wait()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="Semaphore">post()</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="Semaphore">trywait()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="object">
-                        <g fill="white" stroke="#33322E" data-name="object">
-                            <rect x="28.0" y="0.0" height="80.0" width="77.0" data-name="object"></rect>
-                            <path d="M28.0 32.0 L105.0 32.0" fill="none" data-name="object"></path>
-                        </g>
-                        <g transform="translate(28, 0)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="object">
-                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="object">object</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(28, 32)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="object">
-                                <text x="0.0" y="13.0" stroke="none" data-name="object">toString()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="object">toJSON()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg></div>
+<div class="dot notranslate">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="103pt" height="303pt"
+ viewBox="0.00 0.00 103.46 303.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 299)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-299 99.455,-299 99.455,4 -4,4"/>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href=object.md.html xlink:title="object">
+<polygon fill="#ffffff" stroke="#000000" points="18.896,-242.5 18.896,-294.5 76.559,-294.5 76.559,-242.5 18.896,-242.5"/>
+<text text-anchor="middle" x="47.7275" y="-281.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="18.896,-274.5 76.559,-274.5 "/>
+<text text-anchor="start" x="26.896" y="-261.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="26.896" y="-249.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+</a>
+</g>
+</g>
+<!-- Lock -->
+<g id="node2" class="node">
+<title>Lock</title>
+<g id="a_node2"><a xlink:href=lock.md.html xlink:title="Lock">
+<polygon fill="#ffffff" stroke="#000000" points="15.2815,-121.5 15.2815,-205.5 80.1735,-205.5 80.1735,-121.5 15.2815,-121.5"/>
+<text text-anchor="middle" x="47.7275" y="-192.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Lock</text>
+<polyline fill="none" stroke="#000000" points="15.2815,-185.5 80.1735,-185.5 "/>
+<text text-anchor="start" x="23.2815" y="-172.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new Lock()</text>
+<polyline fill="none" stroke="#000000" points="15.2815,-165.5 80.1735,-165.5 "/>
+<text text-anchor="start" x="23.2815" y="-152.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">acquire()</text>
+<text text-anchor="start" x="23.2815" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">release()</text>
+<text text-anchor="start" x="23.2815" y="-128.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">count()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;Lock -->
+<g id="edge1" class="edge">
+<title>object&#45;&gt;Lock</title>
+<path fill="none" stroke="#000000" d="M47.7275,-232.2327C47.7275,-223.6838 47.7275,-214.498 47.7275,-205.7123"/>
+<polygon fill="#000000" stroke="#000000" points="44.2276,-232.2749 47.7275,-242.2749 51.2276,-232.275 44.2276,-232.2749"/>
+</g>
+<!-- Semaphore -->
+<g id="me" class="node">
+<title>Semaphore</title>
+<g id="a_me"><a xlink:title="Semaphore">
+<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-84.5 95.455,-84.5 95.455,-.5 0,-.5"/>
+<text text-anchor="middle" x="47.7275" y="-71.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Semaphore</text>
+<polyline fill="none" stroke="#000000" points="0,-64.5 95.455,-64.5 "/>
+<text text-anchor="start" x="8" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new Semaphore()</text>
+<polyline fill="none" stroke="#000000" points="0,-44.5 95.455,-44.5 "/>
+<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">wait()</text>
+<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">post()</text>
+<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">trywait()</text>
+</a>
+</g>
+</g>
+<!-- Lock&#45;&gt;Semaphore -->
+<g id="edge2" class="edge">
+<title>Lock&#45;&gt;Semaphore</title>
+<path fill="none" stroke="#000000" d="M47.7275,-110.977C47.7275,-102.1562 47.7275,-93.1052 47.7275,-84.5917"/>
+<polygon fill="#000000" stroke="#000000" points="44.2276,-111.18 47.7275,-121.1801 51.2276,-111.1801 44.2276,-111.18"/>
+</g>
+</g>
+</svg>
+</div>
 
 <h2 id="构造函数">构造函数</h2>
 <h3 id="Semaphore" class ="notranslate">Semaphore</h3>
@@ -345,9 +309,17 @@ l.release();
 </ul>
 <h2 id="成员函数">成员函数</h2>
 <h3 id="wait" class ="notranslate">wait</h3>
-<p><strong>等待一个信号量，等同于 acquire(true)</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Semaphore.wait();
+<p><strong>等待一个信号量</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> Semaphore.wait(Integer timeout = <span class="hljs-number">-1</span>);
 </code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">timeout</span>: Integer, 指定超时时间，单位毫秒，缺省为 -1，表示永不超时。</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><span class="notranslate">Boolean</span>, 获取成功则返回 true，超时返回 false</li>
+</ul>
 <hr>
 <h3 id="post" class ="notranslate">post</h3>
 <p><strong>释放一个信号量，等同于 release()</strong></p>
@@ -360,7 +332,7 @@ l.release();
 </code></pre>
 <p>返回结果:</p>
 <ul>
-<li><span class="notranslate">Boolean</span>, 获取成功则返回 true</li>
+<li><span class="notranslate">Boolean</span>, 获取成功则返回 true，超时返回 false</li>
 </ul>
 <hr>
 <h3 id="acquire" class ="notranslate">acquire</h3>
@@ -415,4 +387,4 @@ l.release();
 <ul>
 <li><span class="notranslate">Value</span>, 返回包含可 JSON 序列化的值</li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

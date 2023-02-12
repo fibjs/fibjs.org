@@ -65,6 +65,7 @@
 <li><a href=../../module/ifs/zlib.md.html class ="notranslate">zlib</a></li>
 </ul>
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_object" aria-controls="collapse_object"> 内置对象 </a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby=headingOne><div class=panel-body> <ul>
+<li><a href=blskey.md.html class ="notranslate">BlsKey</a></li>
 <li><a href=buffer.md.html class ="notranslate">Buffer</a></li>
 <li><a href=bufferedstream.md.html class ="notranslate">BufferedStream</a></li>
 <li><a href=chain.md.html class ="notranslate">Chain</a></li>
@@ -74,6 +75,8 @@
 <li><a href=dbconnection.md.html class ="notranslate">DbConnection</a></li>
 <li><a href=dgramsocket.md.html class ="notranslate">DgramSocket</a></li>
 <li><a href=digest.md.html class ="notranslate">Digest</a></li>
+<li><a href=eckey.md.html class ="notranslate">ECKey</a></li>
+<li><a href=ed25519key.md.html class ="notranslate">Ed25519Key</a></li>
 <li><a href=event.md.html class ="notranslate">Event</a></li>
 <li><a href=eventemitter.md.html class ="notranslate">EventEmitter</a></li>
 <li><a href=fswatcher.md.html class ="notranslate">FSWatcher</a></li>
@@ -206,108 +209,110 @@
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> k = <span class="hljs-keyword">new</span> crypto.PKey();
 </code></pre>
 <h2 id="继承关系">继承关系</h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="181.0" height="592.0" viewbox="0 0 181 592" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
-    <desc >
-    #lineWidth: 1.5
-    #font: Helvetica,sans-Serif
-    #fontSize: 10
-    #leading: 1.6
-    #.this: fill=lightgray
-    #.class: fill=white
-
-    [&lt;class&gt;object|toString();toJSON()]
-    [&lt;this&gt;PKey|new PKey()|from();recover()|name;curve;keySize;alg;publicKey|isPrivate();clone();toX25519();pem();der();json();equals();encrypt();decrypt();sign();verify();computeSecret()]
-
-    [object] &lt;:- [PKey]
-    </desc>
-    <g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="10pt" font-family="Helvetica,sans-Serif" font-weight="normal" font-style="normal">
-        <g font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="bold" font-style="normal" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
-            <g stroke="transparent" fill="transparent">
-                <rect x="0.0" y="0.0" height="592.0" width="181.0" stroke="none"></rect>
-            </g>
-            <g transform="translate(8, 8)" fill="#33322E">
-                <g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal">
-                    <path d="M62.5 93.3 L62.5 100 L62.5 120 L62.5 120.0 " fill="none"></path>
-                    <path d="M67.8 93.3 L62.5 93.3 L57.2 93.3 L62.5 80.0 Z"></path>
-                    <g data-name="PKey">
-                        <g fill="lightgray" stroke="#33322E" data-name="PKey">
-                            <rect x="0.0" y="120.0" height="416.0" width="125.0" data-name="PKey"></rect>
-                            <path d="M0.0 152.0 L125.0 152.0" fill="none" data-name="PKey"></path>
-                            <path d="M0.0 184.0 L125.0 184.0" fill="none" data-name="PKey"></path>
-                            <path d="M0.0 232.0 L125.0 232.0" fill="none" data-name="PKey"></path>
-                            <path d="M0.0 328.0 L125.0 328.0" fill="none" data-name="PKey"></path>
-                        </g>
-                        <g transform="translate(0, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="PKey">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="PKey">
-                                <text x="54.5" y="13.0" stroke="none" text-anchor="middle" data-name="PKey">PKey</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 152)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="PKey">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="PKey">
-                                <text x="0.0" y="13.0" stroke="none" data-name="PKey">new PKey()</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 184)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="PKey">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="PKey">
-                                <text x="0.0" y="13.0" stroke="none" data-name="PKey">from()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="PKey">recover()</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 232)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="PKey">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="PKey">
-                                <text x="0.0" y="13.0" stroke="none" data-name="PKey">name</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="PKey">curve</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="PKey">keySize</text>
-                                <text x="0.0" y="61.0" stroke="none" data-name="PKey">alg</text>
-                                <text x="0.0" y="77.0" stroke="none" data-name="PKey">publicKey</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 328)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="PKey">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="PKey">
-                                <text x="0.0" y="13.0" stroke="none" data-name="PKey">isPrivate()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="PKey">clone()</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="PKey">toX25519()</text>
-                                <text x="0.0" y="61.0" stroke="none" data-name="PKey">pem()</text>
-                                <text x="0.0" y="77.0" stroke="none" data-name="PKey">der()</text>
-                                <text x="0.0" y="93.0" stroke="none" data-name="PKey">json()</text>
-                                <text x="0.0" y="109.0" stroke="none" data-name="PKey">equals()</text>
-                                <text x="0.0" y="125.0" stroke="none" data-name="PKey">encrypt()</text>
-                                <text x="0.0" y="141.0" stroke="none" data-name="PKey">decrypt()</text>
-                                <text x="0.0" y="157.0" stroke="none" data-name="PKey">sign()</text>
-                                <text x="0.0" y="173.0" stroke="none" data-name="PKey">verify()</text>
-                                <text x="0.0" y="189.0" stroke="none" data-name="PKey">computeSecret()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="object">
-                        <g fill="white" stroke="#33322E" data-name="object">
-                            <rect x="24.0" y="0.0" height="80.0" width="77.0" data-name="object"></rect>
-                            <path d="M24.0 32.0 L101.0 32.0" fill="none" data-name="object"></path>
-                        </g>
-                        <g transform="translate(24, 0)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="object">
-                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="object">object</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(24, 32)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="object">
-                                <text x="0.0" y="13.0" stroke="none" data-name="object">toString()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="object">toJSON()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg></div>
+<div class="dot notranslate">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="154pt" height="488pt"
+ viewBox="0.00 0.00 153.63 488.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 484)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-484 149.6255,-484 149.6255,4 -4,4"/>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href=object.md.html xlink:title="object">
+<polygon fill="#ffffff" stroke="#000000" points="39.1685,-427.5 39.1685,-479.5 96.8315,-479.5 96.8315,-427.5 39.1685,-427.5"/>
+<text text-anchor="middle" x="68" y="-466.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="39.1685,-459.5 96.8315,-459.5 "/>
+<text text-anchor="start" x="47.1685" y="-446.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="47.1685" y="-434.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+</a>
+</g>
+</g>
+<!-- PKey -->
+<g id="me" class="node">
+<title>PKey</title>
+<g id="a_me"><a xlink:title="PKey">
+<polygon fill="#d3d3d3" stroke="#000000" points="34.1645,-146.5 34.1645,-390.5 101.8355,-390.5 101.8355,-146.5 34.1645,-146.5"/>
+<text text-anchor="middle" x="68" y="-377.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">PKey</text>
+<polyline fill="none" stroke="#000000" points="34.1645,-370.5 101.8355,-370.5 "/>
+<text text-anchor="start" x="42.1645" y="-357.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new PKey()</text>
+<polyline fill="none" stroke="#000000" points="34.1645,-350.5 101.8355,-350.5 "/>
+<text text-anchor="start" x="42.1645" y="-337.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">from()</text>
+<polyline fill="none" stroke="#000000" points="34.1645,-330.5 101.8355,-330.5 "/>
+<text text-anchor="start" x="42.1645" y="-317.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">name</text>
+<text text-anchor="start" x="42.1645" y="-305.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">keySize</text>
+<text text-anchor="start" x="42.1645" y="-293.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">alg</text>
+<text text-anchor="start" x="42.1645" y="-281.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">publicKey</text>
+<polyline fill="none" stroke="#000000" points="34.1645,-274.5 101.8355,-274.5 "/>
+<text text-anchor="start" x="42.1645" y="-261.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isPrivate()</text>
+<text text-anchor="start" x="42.1645" y="-249.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">clone()</text>
+<text text-anchor="start" x="42.1645" y="-237.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">pem()</text>
+<text text-anchor="start" x="42.1645" y="-225.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">der()</text>
+<text text-anchor="start" x="42.1645" y="-213.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">json()</text>
+<text text-anchor="start" x="42.1645" y="-201.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
+<text text-anchor="start" x="42.1645" y="-189.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">encrypt()</text>
+<text text-anchor="start" x="42.1645" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">decrypt()</text>
+<text text-anchor="start" x="42.1645" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">sign()</text>
+<text text-anchor="start" x="42.1645" y="-153.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">verify()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;PKey -->
+<g id="edge1" class="edge">
+<title>object&#45;&gt;PKey</title>
+<path fill="none" stroke="#000000" d="M68,-417.3034C68,-409.1956 68,-400.1562 68,-390.6496"/>
+<polygon fill="#000000" stroke="#000000" points="64.5001,-417.3864 68,-427.3864 71.5001,-417.3864 64.5001,-417.3864"/>
+</g>
+<!-- ECKey -->
+<g id="node3" class="node">
+<title>ECKey</title>
+<g id="a_node3"><a xlink:href=eckey.md.html xlink:title="ECKey">
+<polygon fill="#ffffff" stroke="#000000" points="41,-73.5 41,-109.5 95,-109.5 95,-73.5 41,-73.5"/>
+<text text-anchor="middle" x="67.558" y="-88.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">ECKey</text>
+</a>
+</g>
+</g>
+<!-- PKey&#45;&gt;ECKey -->
+<g id="edge2" class="edge">
+<title>PKey&#45;&gt;ECKey</title>
+<path fill="none" stroke="#000000" d="M68,-135.8086C68,-125.8731 68,-116.9373 68,-109.7367"/>
+<polygon fill="#000000" stroke="#000000" points="64.5001,-136.0501 68,-146.0501 71.5001,-136.0501 64.5001,-136.0501"/>
+</g>
+<!-- BlsKey -->
+<g id="node4" class="node">
+<title>BlsKey</title>
+<g id="a_node4"><a xlink:href=blskey.md.html xlink:title="BlsKey">
+<polygon fill="#ffffff" stroke="#000000" points="0,-.5 0,-36.5 54,-36.5 54,-.5 0,-.5"/>
+<text text-anchor="middle" x="26.558" y="-15.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">BlsKey</text>
+</a>
+</g>
+</g>
+<!-- ECKey&#45;&gt;BlsKey -->
+<g id="edge3" class="edge">
+<title>ECKey&#45;&gt;BlsKey</title>
+<path fill="none" stroke="#000000" d="M52.8566,-64.5374C47.6259,-55.2241 41.8948,-45.0199 37.1603,-36.5904"/>
+<polygon fill="#000000" stroke="#000000" points="49.9165,-66.45 57.8652,-73.4551 56.0198,-63.0221 49.9165,-66.45"/>
+</g>
+<!-- Ed25519Key -->
+<g id="node5" class="node">
+<title>Ed25519Key</title>
+<g id="a_node5"><a xlink:href=ed25519key.md.html xlink:title="Ed25519Key">
+<polygon fill="#ffffff" stroke="#000000" points="72.3745,-.5 72.3745,-36.5 145.6255,-36.5 145.6255,-.5 72.3745,-.5"/>
+<text text-anchor="middle" x="109" y="-15.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Ed25519Key</text>
+</a>
+</g>
+</g>
+<!-- ECKey&#45;&gt;Ed25519Key -->
+<g id="edge4" class="edge">
+<title>ECKey&#45;&gt;Ed25519Key</title>
+<path fill="none" stroke="#000000" d="M83.1434,-64.5374C88.3741,-55.2241 94.1052,-45.0199 98.8397,-36.5904"/>
+<polygon fill="#000000" stroke="#000000" points="79.9802,-63.0221 78.1348,-73.4551 86.0835,-66.45 79.9802,-63.0221"/>
+</g>
+</g>
+</svg>
+</div>
 
 <h2 id="构造函数">构造函数</h2>
 <h3 id="PKey" class ="notranslate">PKey</h3>
@@ -507,31 +512,10 @@
     <span class="hljs-string">"y"</span>: <span class="hljs-string">"ASBHqrruB6kdkEUB3vlW3-UIkk4HtKdUeTwN-7m3j2rgZvYR1ffRAapDvWqKGiBjomqWafxokBkbDI0c95f6f4XU"</span>
 }
 </code></pre>
-<hr>
-<h3 id="recover" class ="notranslate">recover</h3>
-<p><strong>从可恢复签名中恢复公钥，仅支持 secp256k1</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">static</span> PKey PKey.recover(Buffer data,
-    Buffer sig) <span class="hljs-keyword">async</span>;
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li><span class="notranslate">data</span>: <a href=buffer.md.html class ="notranslate">Buffer</a>, 签名的原始数据</li>
-<li><span class="notranslate">sig</span>: <a href=buffer.md.html class ="notranslate">Buffer</a>, 可恢复签名</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li><span class="notranslate">PKey</span>, 返回包含公钥的对象</li>
-</ul>
 <h2 id="成员属性">成员属性</h2>
 <h3 id="name" class ="notranslate">name</h3>
 <p><strong>String, 返回当前算法名称</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly <span class="hljs-built_in">String</span> PKey.name;
-</code></pre>
-<hr>
-<h3 id="curve" class ="notranslate">curve</h3>
-<p><strong>String, 返回当前算法的椭圆曲线名称，仅用于 EC 和 SM2</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly <span class="hljs-built_in">String</span> PKey.curve;
 </code></pre>
 <hr>
 <h3 id="keySize" class ="notranslate">keySize</h3>
@@ -569,15 +553,6 @@
 <p>返回结果:</p>
 <ul>
 <li><span class="notranslate">PKey</span>, 当前密钥的复制对象</li>
-</ul>
-<hr>
-<h3 id="toX25519" class ="notranslate">toX25519</h3>
-<p><strong>从当前对象转换 X25519 公私钥对，仅支持 Ed25519</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>PKey PKey.toX25519() <span class="hljs-keyword">async</span>;
-</code></pre>
-<p>返回结果:</p>
-<ul>
-<li><span class="notranslate">PKey</span>, 返回对应的 X25519 公钥的对象</li>
 </ul>
 <hr>
 <h3 id="pem" class ="notranslate">pem</h3>
@@ -754,19 +729,6 @@
 }
 </code></pre>
 <hr>
-<h3 id="computeSecret" class ="notranslate">computeSecret</h3>
-<p><strong>使用当前算法计算椭圆曲线 Diffie-Hellman (ECDH) 共享密钥</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer PKey.computeSecret(PKey publicKey) <span class="hljs-keyword">async</span>;
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li><span class="notranslate">publicKey</span>: PKey, 指定对方的公钥</li>
-</ul>
-<p>返回结果:</p>
-<ul>
-<li><a href=buffer.md.html class ="notranslate">Buffer</a>, 返回计算出的共享密钥</li>
-</ul>
-<hr>
 <h3 id="toString" class ="notranslate">toString</h3>
 <p><strong>返回对象的字符串表示，一般返回 &quot;[Native Object]&quot;，对象可以根据自己的特性重新实现</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> PKey.toString();
@@ -788,4 +750,4 @@
 <ul>
 <li><span class="notranslate">Value</span>, 返回包含可 JSON 序列化的值</li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

@@ -8,18 +8,21 @@ var k = new crypto.PKey();
 ```
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<class>object|toString();toJSON()]
-[<this>PKey|new PKey()|from();recover()|name;curve;keySize;alg;publicKey|isPrivate();clone();toX25519();pem();der();json();equals();encrypt();decrypt();sign();verify();computeSecret()]
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    PKey [tooltip="PKey", fillcolor="lightgray", id="me", label="{PKey|new PKey()\l|from()\l|name\lkeySize\lalg\lpublicKey\l|isPrivate()\lclone()\lpem()\lder()\ljson()\lequals()\lencrypt()\ldecrypt()\lsign()\lverify()\l}"];
+    ECKey [tooltip="ECKey", URL="ECKey.md", label="{ECKey}"];
+    BlsKey [tooltip="BlsKey", URL="BlsKey.md", label="{BlsKey}"];
+    Ed25519Key [tooltip="Ed25519Key", URL="Ed25519Key.md", label="{Ed25519Key}"];
 
-[object] <:- [PKey]
+    object -> PKey [dir=back];
+    PKey -> ECKey [dir=back];
+    ECKey -> BlsKey [dir=back];
+    ECKey -> Ed25519Key [dir=back];
+}
 ```
 
 ## 构造函数
@@ -201,22 +204,6 @@ EC 公钥：
 }
 ```
 
---------------------------
-### recover
-**从可恢复签名中恢复公钥，仅支持 secp256k1**
-
-```JavaScript
-static PKey PKey.recover(Buffer data,
-    Buffer sig) async;
-```
-
-调用参数:
-* data: [Buffer](Buffer.md), 签名的原始数据
-* sig: [Buffer](Buffer.md), 可恢复签名
-
-返回结果:
-* PKey, 返回包含公钥的对象
-
 ## 成员属性
         
 ### name
@@ -224,14 +211,6 @@ static PKey PKey.recover(Buffer data,
 
 ```JavaScript
 readonly String PKey.name;
-```
-
---------------------------
-### curve
-**String, 返回当前算法的椭圆曲线名称，仅用于 EC 和 SM2**
-
-```JavaScript
-readonly String PKey.curve;
 ```
 
 --------------------------
@@ -283,17 +262,6 @@ PKey PKey.clone();
 
 返回结果:
 * PKey, 当前密钥的复制对象
-
---------------------------
-### toX25519
-**从当前对象转换 X25519 公私钥对，仅支持 Ed25519**
-
-```JavaScript
-PKey PKey.toX25519() async;
-```
-
-返回结果:
-* PKey, 返回对应的 X25519 公钥的对象
 
 --------------------------
 ### pem
@@ -456,20 +424,6 @@ opts 支持以下参数:
     指定签名格式， 可选为 der 和 raw， 缺省为 der
 }
 ```
-
---------------------------
-### computeSecret
-**使用当前算法计算椭圆曲线 Diffie-Hellman (ECDH) 共享密钥**
-
-```JavaScript
-Buffer PKey.computeSecret(PKey publicKey) async;
-```
-
-调用参数:
-* publicKey: PKey, 指定对方的公钥
-
-返回结果:
-* [Buffer](Buffer.md), 返回计算出的共享密钥
 
 --------------------------
 ### toString

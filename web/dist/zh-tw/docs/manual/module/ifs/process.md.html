@@ -65,6 +65,7 @@
 <li><a href="zlib.md.html" class="notranslate">zlib</a></li>
 </ul>
  </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">內置對象</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../object/ifs/blskey.md.html" class="notranslate">BlsKey</a></li>
 <li><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a></li>
 <li><a href="../../object/ifs/bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
 <li><a href="../../object/ifs/chain.md.html" class="notranslate">Chain</a></li>
@@ -74,6 +75,8 @@
 <li><a href="../../object/ifs/dbconnection.md.html" class="notranslate">DbConnection</a></li>
 <li><a href="../../object/ifs/dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
 <li><a href="../../object/ifs/digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="../../object/ifs/eckey.md.html" class="notranslate">ECKey</a></li>
+<li><a href="../../object/ifs/ed25519key.md.html" class="notranslate">Ed25519Key</a></li>
 <li><a href="../../object/ifs/event.md.html" class="notranslate">Event</a></li>
 <li><a href="../../object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a></li>
 <li><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a></li>
@@ -403,6 +406,42 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {<font></font>
 <li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回指定的內部模塊</font></font></li>
 </ul>
 <hr>
+<div name="getgid" data-unique="getgid"></div><h3 id="getgid" class="notranslate">getgid</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">查詢當前進程的組id</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer process.getgid();
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
+<ul>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回當前進程的組id</font></font></li>
+</ul>
+<hr>
+<div name="getuid" data-unique="getuid"></div><h3 id="getuid" class="notranslate">getuid</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">查詢當前進程的用戶id</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer process.getuid();
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回結果:</font></font></p>
+<ul>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回當前進程的用戶id</font></font></li>
+</ul>
+<hr>
+<div name="setgid" data-unique="setgid"></div><h3 id="setgid" class="notranslate">setgid</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">設置當前進程的組id</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> process.setgid(Integer id);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
+<ul>
+<li><span class="notranslate">id</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, 指定要設置的組id</font></font></li>
+</ul>
+<hr>
+<div name="setuid" data-unique="setuid"></div><h3 id="setuid" class="notranslate">setuid</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">設置當前進程的用戶id</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> process.setuid(Integer id);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
+<ul>
+<li><span class="notranslate">id</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, 指定要設置的用戶id</font></font></li>
+</ul>
+<hr>
 <div name="disconnect" data-unique="disconnect"></div><h3 id="disconnect" class="notranslate">disconnect</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">關閉與父進程的ipc 管道</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> process.disconnect();
@@ -491,4 +530,4 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {<font></font>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Boolean, 查詢與父進程的管道是否正常連接</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Boolean</span> process.connected;
 </code></pre>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip870643"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip870643" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

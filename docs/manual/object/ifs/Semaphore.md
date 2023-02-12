@@ -24,20 +24,17 @@ l.release();
 生产者/消费者模式通常则将信号量与队列配合使用。生产者向队列中加入数据，并 post 一个信号，消费者则先 wait 信号，获取信号后去队查询取数据。
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<class>object|toString();toJSON()]
-[<class>Lock|new Lock()|acquire();release();count()]
-[<this>Semaphore|new Semaphore()|wait();post();trywait()]
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    Lock [tooltip="Lock", URL="Lock.md", label="{Lock|new Lock()\l|acquire()\lrelease()\lcount()\l}"];
+    Semaphore [tooltip="Semaphore", fillcolor="lightgray", id="me", label="{Semaphore|new Semaphore()\l|wait()\lpost()\ltrywait()\l}"];
 
-[object] <:- [Lock]
-[Lock] <:- [Semaphore]
+    object -> Lock [dir=back];
+    Lock -> Semaphore [dir=back];
+}
 ```
 
 ## 构造函数
@@ -55,11 +52,17 @@ new Semaphore(Integer value = 1);
 ## 成员函数
         
 ### wait
-**等待一个信号量，等同于 acquire(true)**
+**等待一个信号量**
 
 ```JavaScript
-Semaphore.wait();
+Boolean Semaphore.wait(Integer timeout = -1);
 ```
+
+调用参数:
+* timeout: Integer, 指定超时时间，单位毫秒，缺省为 -1，表示永不超时。
+
+返回结果:
+* Boolean, 获取成功则返回 true，超时返回 false
 
 --------------------------
 ### post
@@ -78,7 +81,7 @@ Boolean Semaphore.trywait();
 ```
 
 返回结果:
-* Boolean, 获取成功则返回 true
+* Boolean, 获取成功则返回 true，超时返回 false
 
 --------------------------
 ### acquire

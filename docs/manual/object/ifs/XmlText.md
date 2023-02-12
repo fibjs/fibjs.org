@@ -12,24 +12,21 @@ XmlText 节点没有子节点。
 关于从文档的子树中删除空 XmlText 节点与合并相邻的 XmlText 节点的方法，请参阅 [XmlNode.normalize](XmlNode.md#normalize) 方法。
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<class>object|toString();toJSON()]
-[<class>XmlNode|nodeType;nodeName;nodeValue;ownerDocument;parentNode;childNodes;firstChild;lastChild;previousSibling;nextSibling|hasChildNodes();normalize();cloneNode();lookupPrefix();lookupNamespaceURI();insertBefore();insertAfter();appendChild();replaceChild();removeChild()]
-[<class>XmlCharacterData|data;length|substringData();appendData();insertData();deleteData();replaceData()]
-[<this>XmlText|splitText()]
-[<class>XmlCDATASection]
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    XmlNode [tooltip="XmlNode", URL="XmlNode.md", label="{XmlNode|nodeType\lnodeName\lnodeValue\lownerDocument\lparentNode\lchildNodes\lfirstChild\llastChild\lpreviousSibling\lnextSibling\l|hasChildNodes()\lnormalize()\lcloneNode()\llookupPrefix()\llookupNamespaceURI()\linsertBefore()\linsertAfter()\lappendChild()\lreplaceChild()\lremoveChild()\l}"];
+    XmlCharacterData [tooltip="XmlCharacterData", URL="XmlCharacterData.md", label="{XmlCharacterData|data\llength\l|substringData()\lappendData()\linsertData()\ldeleteData()\lreplaceData()\l}"];
+    XmlText [tooltip="XmlText", fillcolor="lightgray", id="me", label="{XmlText|splitText()\l}"];
+    XmlCDATASection [tooltip="XmlCDATASection", URL="XmlCDATASection.md", label="{XmlCDATASection}"];
 
-[object] <:- [XmlNode]
-[XmlNode] <:- [XmlCharacterData]
-[XmlCharacterData] <:- [XmlText]
-[XmlText] <:- [XmlCDATASection]
+    object -> XmlNode [dir=back];
+    XmlNode -> XmlCharacterData [dir=back];
+    XmlCharacterData -> XmlText [dir=back];
+    XmlText -> XmlCDATASection [dir=back];
+}
 ```
 
 ## 成员属性

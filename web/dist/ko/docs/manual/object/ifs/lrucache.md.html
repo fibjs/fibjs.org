@@ -1,11 +1,11 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Object LruCache - Fiber의 JavaScript</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">탐색 전환</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/lrucache.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/lrucache.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/lrucache.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/lrucache.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/lrucache.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/lrucache.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/lrucache.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/lrucache.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/lrucache.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/lrucache.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/lrucache.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/lrucache.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">객체 내장 객체</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="검색" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="검색 입력" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">첫 장</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">내장 객체</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체 LruCache</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개발 가이드</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
-<li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 란 무엇입니까?</font></font></a></li>
-<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">런타임 환경 설치</font></font></a></li>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>ObjectLruCache - 파이버의 JavaScript</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">탐색 전환</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/lrucache.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/lrucache.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/lrucache.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/lrucache.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/lrucache.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/lrucache.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/lrucache.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/lrucache.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/lrucache.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/lrucache.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/lrucache.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/lrucache.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체 내장 개체</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="찾다" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="검색 입력" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">첫 장</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">내장 개체</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체LruCache</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개발 가이드</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs가 무엇인가요?</font></font></a></li>
+<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">운영 환경 설치</font></font></a></li>
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
-<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">좋은 삶은 시험에서 시작된다</font></font></a></li>
+<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">더 나은 삶은 시험에서 시작됩니다</font></font></a></li>
 <li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">성능 킬러 찾기</font></font></a></li>
 <li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">서버 모듈 핫 업데이트</font></font></a></li>
-<li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">도메인 이름 라우팅</font></font></a></li>
+<li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">도메인 라우팅</font></font></a></li>
 <li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs에서 X509 인증서 사용</font></font></a></li>
 <li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">네이티브 모듈 추가</font></font></a></li>
 </ul>
@@ -64,7 +64,8 @@
 <li><a href="../../module/ifs/zip.md.html" class="notranslate">zip</a></li>
 <li><a href="../../module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">내장 객체</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">내장 개체</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="blskey.md.html" class="notranslate">BlsKey</a></li>
 <li><a href="buffer.md.html" class="notranslate">Buffer</a></li>
 <li><a href="bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
 <li><a href="chain.md.html" class="notranslate">Chain</a></li>
@@ -74,6 +75,8 @@
 <li><a href="dbconnection.md.html" class="notranslate">DbConnection</a></li>
 <li><a href="dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
 <li><a href="digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="eckey.md.html" class="notranslate">ECKey</a></li>
+<li><a href="ed25519key.md.html" class="notranslate">Ed25519Key</a></li>
 <li><a href="event.md.html" class="notranslate">Event</a></li>
 <li><a href="eventemitter.md.html" class="notranslate">EventEmitter</a></li>
 <li><a href="fswatcher.md.html" class="notranslate">FSWatcher</a></li>
@@ -200,187 +203,132 @@
 <li><a href="../../../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
 <li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
 </ul>
- </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="对象-LruCache" data-unique="对象-LruCache"></div><h1 id="对象-LruCache"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체 LruCache</font></font></h1>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LRU(가장 최근에 사용한) 캐시 개체</font></font></p>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="对象-LruCache" data-unique="对象-LruCache"></div><h1 id="对象-LruCache"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체LruCache</font></font></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LRU(가장 최근에 사용되지 않은) 캐시 객체</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LruCache는 생성 방법인 LRU 캐시를 유지하는 데 사용됩니다.</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">var</span> util = <span class="hljs-built_in">require</span>(<span class="hljs-string">"util"</span>);
 <span class="hljs-keyword">var</span> c = <span class="hljs-keyword">new</span> util.LruCache(<span class="hljs-number">10</span>, <span class="hljs-number">100</span>);
 </code></pre>
 <div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">상속 관계</font></font></h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="225.0" height="824.0" viewBox="0 0 225 824" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
-    <desc>
-    #lineWidth: 1.5
-    #font: Helvetica,sans-Serif
-    #fontSize: 10
-    #leading: 1.6
-    #.this: fill=lightgray
-    #.class: fill=white
-
-    [&lt;class&gt;object|toString();toJSON()]
-    [&lt;class&gt;EventEmitter|new EventEmitter()|EventEmitter|defaultMaxListeners|on();addListener();prependListener();once();prependOnceListener();off();removeListener();removeAllListeners();setMaxListeners();getMaxListeners();listeners();listenerCount();eventNames();emit()]
-    [&lt;this&gt;LruCache|new LruCache()|size;timeout;onexpire|clear();has();get();set();remove();isEmpty()]
-
-    [object] &lt;:- [EventEmitter]
-    [EventEmitter] &lt;:- [LruCache]
-    </desc>
-    <g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="10pt" font-family="Helvetica,sans-Serif" font-weight="normal" font-style="normal">
-        <g font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="bold" font-style="normal" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
-            <g stroke="transparent" fill="transparent">
-                <rect x="0.0" y="0.0" height="824.0" width="225.0" stroke="none"></rect>
-            </g>
-            <g transform="translate(8, 8)" fill="#33322E">
-                <g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal">
-                    <path d="M84.5 93.3 L84.5 100 L84.5 120 L84.5 120.0 " fill="none"></path>
-                    <path d="M89.8 93.3 L84.5 93.3 L79.2 93.3 L84.5 80.0 Z"></path>
-                    <path d="M84.5 501.3 L84.5 508 L84.5 528 L84.5 528.0 " fill="none"></path>
-                    <path d="M89.8 501.3 L84.5 501.3 L79.2 501.3 L84.5 488.0 Z"></path>
-                    <g data-name="EventEmitter">
-                        <g fill="white" stroke="#33322E" data-name="EventEmitter">
-                            <rect x="0.0" y="120.0" height="368.0" width="169.0" data-name="EventEmitter"></rect>
-                            <path d="M0.0 152.0 L169.0 152.0" fill="none" data-name="EventEmitter"></path>
-                            <path d="M0.0 184.0 L169.0 184.0" fill="none" data-name="EventEmitter"></path>
-                            <path d="M0.0 216.0 L169.0 216.0" fill="none" data-name="EventEmitter"></path>
-                            <path d="M0.0 248.0 L169.0 248.0" fill="none" data-name="EventEmitter"></path>
-                        </g>
-                        <g transform="translate(0, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="EventEmitter">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="EventEmitter">
-                                <text x="76.5" y="13.0" stroke="none" text-anchor="middle" data-name="EventEmitter">EventEmitter</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 152)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="EventEmitter">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="EventEmitter">
-                                <text x="0.0" y="13.0" stroke="none" data-name="EventEmitter">new EventEmitter()</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 184)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="EventEmitter">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="EventEmitter">
-                                <text x="0.0" y="13.0" stroke="none" data-name="EventEmitter">EventEmitter</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 216)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="EventEmitter">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="EventEmitter">
-                                <text x="0.0" y="13.0" stroke="none" data-name="EventEmitter">defaultMaxListeners</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 248)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="EventEmitter">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="EventEmitter">
-                                <text x="0.0" y="13.0" stroke="none" data-name="EventEmitter">on()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="EventEmitter">addListener()</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="EventEmitter">prependListener()</text>
-                                <text x="0.0" y="61.0" stroke="none" data-name="EventEmitter">once()</text>
-                                <text x="0.0" y="77.0" stroke="none" data-name="EventEmitter">prependOnceListener()</text>
-                                <text x="0.0" y="93.0" stroke="none" data-name="EventEmitter">off()</text>
-                                <text x="0.0" y="109.0" stroke="none" data-name="EventEmitter">removeListener()</text>
-                                <text x="0.0" y="125.0" stroke="none" data-name="EventEmitter">removeAllListeners()</text>
-                                <text x="0.0" y="141.0" stroke="none" data-name="EventEmitter">setMaxListeners()</text>
-                                <text x="0.0" y="157.0" stroke="none" data-name="EventEmitter">getMaxListeners()</text>
-                                <text x="0.0" y="173.0" stroke="none" data-name="EventEmitter">listeners()</text>
-                                <text x="0.0" y="189.0" stroke="none" data-name="EventEmitter">listenerCount()</text>
-                                <text x="0.0" y="205.0" stroke="none" data-name="EventEmitter">eventNames()</text>
-                                <text x="0.0" y="221.0" stroke="none" data-name="EventEmitter">emit()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="LruCache">
-                        <g fill="lightgray" stroke="#33322E" data-name="LruCache">
-                            <rect x="24.0" y="528.0" height="240.0" width="121.0" data-name="LruCache"></rect>
-                            <path d="M24.0 560.0 L145.0 560.0" fill="none" data-name="LruCache"></path>
-                            <path d="M24.0 592.0 L145.0 592.0" fill="none" data-name="LruCache"></path>
-                            <path d="M24.0 656.0 L145.0 656.0" fill="none" data-name="LruCache"></path>
-                        </g>
-                        <g transform="translate(24, 528)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="LruCache">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="LruCache">
-                                <text x="52.5" y="13.0" stroke="none" text-anchor="middle" data-name="LruCache">LruCache</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(24, 560)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="LruCache">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="LruCache">
-                                <text x="0.0" y="13.0" stroke="none" data-name="LruCache">new LruCache()</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(24, 592)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="LruCache">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="LruCache">
-                                <text x="0.0" y="13.0" stroke="none" data-name="LruCache">size</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="LruCache">timeout</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="LruCache">onexpire</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(24, 656)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="LruCache">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="LruCache">
-                                <text x="0.0" y="13.0" stroke="none" data-name="LruCache">clear()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="LruCache">has()</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="LruCache">get()</text>
-                                <text x="0.0" y="61.0" stroke="none" data-name="LruCache">set()</text>
-                                <text x="0.0" y="77.0" stroke="none" data-name="LruCache">remove()</text>
-                                <text x="0.0" y="93.0" stroke="none" data-name="LruCache">isEmpty()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="object">
-                        <g fill="white" stroke="#33322E" data-name="object">
-                            <rect x="46.0" y="0.0" height="80.0" width="77.0" data-name="object"></rect>
-                            <path d="M46.0 32.0 L123.0 32.0" fill="none" data-name="object"></path>
-                        </g>
-                        <g transform="translate(46, 0)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="object">
-                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="object">object</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(46, 32)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="object">
-                                <text x="0.0" y="13.0" stroke="none" data-name="object">toString()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="object">toJSON()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg></div>
+<div class="dot notranslate">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="127pt" height="555pt" viewBox="0.00 0.00 126.80 555.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 551)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-551 122.801,-551 122.801,4 -4,4"></polygon>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href="object.md.html" xlink:title="object">
+<polygon fill="#ffffff" stroke="#000000" points="30.569,-494.5 30.569,-546.5 88.232,-546.5 88.232,-494.5 30.569,-494.5"></polygon>
+<text text-anchor="middle" x="59.4005" y="-533.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="30.569,-526.5 88.232,-526.5 "></polyline>
+<text text-anchor="start" x="38.569" y="-513.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="38.569" y="-501.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+</a>
+</g>
+</g>
+<!-- EventEmitter -->
+<g id="node2" class="node">
+<title>EventEmitter</title>
+<g id="a_node2"><a xlink:href="eventemitter.md.html" xlink:title="EventEmitter">
+<polygon fill="#ffffff" stroke="#000000" points="0,-201.5 0,-457.5 118.801,-457.5 118.801,-201.5 0,-201.5"></polygon>
+<text text-anchor="middle" x="59.4005" y="-444.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">EventEmitter</text>
+<polyline fill="none" stroke="#000000" points="0,-437.5 118.801,-437.5 "></polyline>
+<text text-anchor="start" x="8" y="-424.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new EventEmitter()</text>
+<polyline fill="none" stroke="#000000" points="0,-417.5 118.801,-417.5 "></polyline>
+<text text-anchor="start" x="8" y="-404.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">EventEmitter</text>
+<polyline fill="none" stroke="#000000" points="0,-397.5 118.801,-397.5 "></polyline>
+<text text-anchor="start" x="8" y="-384.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">defaultMaxListeners</text>
+<polyline fill="none" stroke="#000000" points="0,-377.5 118.801,-377.5 "></polyline>
+<text text-anchor="start" x="8" y="-364.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">on()</text>
+<text text-anchor="start" x="8" y="-352.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">addListener()</text>
+<text text-anchor="start" x="8" y="-340.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">prependListener()</text>
+<text text-anchor="start" x="8" y="-328.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">once()</text>
+<text text-anchor="start" x="8" y="-316.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">prependOnceListener()</text>
+<text text-anchor="start" x="8" y="-304.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">off()</text>
+<text text-anchor="start" x="8" y="-292.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">removeListener()</text>
+<text text-anchor="start" x="8" y="-280.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">removeAllListeners()</text>
+<text text-anchor="start" x="8" y="-268.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">setMaxListeners()</text>
+<text text-anchor="start" x="8" y="-256.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getMaxListeners()</text>
+<text text-anchor="start" x="8" y="-244.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">listeners()</text>
+<text text-anchor="start" x="8" y="-232.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">listenerCount()</text>
+<text text-anchor="start" x="8" y="-220.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">eventNames()</text>
+<text text-anchor="start" x="8" y="-208.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">emit()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;EventEmitter -->
+<g id="edge1" class="edge">
+<title>object-&gt;EventEmitter</title>
+<path fill="none" stroke="#000000" d="M59.4005,-484.2954C59.4005,-476.2131 59.4005,-467.1932 59.4005,-457.6815"></path>
+<polygon fill="#000000" stroke="#000000" points="55.9006,-484.3427 59.4005,-494.3427 62.9006,-484.3428 55.9006,-484.3427"></polygon>
+</g>
+<!-- LruCache -->
+<g id="me" class="node">
+<title>LruCache</title>
+<g id="a_me"><a xlink:title="LruCache">
+<polygon fill="#d3d3d3" stroke="#000000" points="15.842,-.5 15.842,-164.5 102.959,-164.5 102.959,-.5 15.842,-.5"></polygon>
+<text text-anchor="middle" x="59.4005" y="-151.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">LruCache</text>
+<polyline fill="none" stroke="#000000" points="15.842,-144.5 102.959,-144.5 "></polyline>
+<text text-anchor="start" x="23.842" y="-131.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new LruCache()</text>
+<polyline fill="none" stroke="#000000" points="15.842,-124.5 102.959,-124.5 "></polyline>
+<text text-anchor="start" x="23.842" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">size</text>
+<text text-anchor="start" x="23.842" y="-99.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">timeout</text>
+<text text-anchor="start" x="23.842" y="-87.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">onexpire</text>
+<polyline fill="none" stroke="#000000" points="15.842,-80.5 102.959,-80.5 "></polyline>
+<text text-anchor="start" x="23.842" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">clear()</text>
+<text text-anchor="start" x="23.842" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">has()</text>
+<text text-anchor="start" x="23.842" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">get()</text>
+<text text-anchor="start" x="23.842" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">set()</text>
+<text text-anchor="start" x="23.842" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">remove()</text>
+<text text-anchor="start" x="23.842" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isEmpty()</text>
+</a>
+</g>
+</g>
+<!-- EventEmitter&#45;&gt;LruCache -->
+<g id="edge2" class="edge">
+<title>EventEmitter-&gt;LruCache</title>
+<path fill="none" stroke="#000000" d="M59.4005,-191.1079C59.4005,-182.114 59.4005,-173.227 59.4005,-164.6415"></path>
+<polygon fill="#000000" stroke="#000000" points="55.9006,-191.2974 59.4005,-201.2974 62.9006,-191.2974 55.9006,-191.2974"></polygon>
+</g>
+</g>
+</svg>
+</div>
 
 <div name="构造函数" data-unique="构造函数"></div><h2 id="构造函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">건설자</font></font></h2>
 <div name="LruCache" data-unique="LruCache"></div><h3 id="LruCache" class="notranslate">LruCache</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LruCache 객체 생성자</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">LruCache 개체 생성자</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">new</span> LruCache(Integer size,<font></font>
     Integer timeout = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 캐시의 최대 크기</font></font></li>
-<li><span class="notranslate">timeout</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 요소 만료 시간, 단위는 ms, 0 이하는 만료되지 않음, 기본값은 0</font></font></li>
+<li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 최대 캐시 크기</font></font></li>
+<li><span class="notranslate">timeout</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 요소 만료 시간, 단위는 ms, 0보다 작거나 같으면 만료되지 않음, 기본값은 0</font></font></li>
 </ul>
 <div name="静态属性" data-unique="静态属性"></div><h2 id="静态属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">정적 속성</font></font></h2>
 <div name="defaultMaxListeners" data-unique="defaultMaxListeners"></div><h3 id="defaultMaxListeners" class="notranslate">defaultMaxListeners</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">정수, 기본 전역 최대 리스너 수</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">정수, 기본 글로벌 최대 리스너 수</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer LruCache.defaultMaxListeners;
 </code></pre>
-<div name="成员属性" data-unique="成员属性"></div><h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">멤버 속성</font></font></h2>
+<div name="成员属性" data-unique="成员属性"></div><h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">구성원 속성</font></font></h2>
 <div name="size" data-unique="size"></div><h3 id="size" class="notranslate">size</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">정수, 컨테이너의 값 수 쿼리</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer LruCache.size;
 </code></pre>
 <hr>
 <div name="timeout" data-unique="timeout"></div><h3 id="timeout" class="notranslate">timeout</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">정수, 쿼리 및 컨테이너에 있는 요소의 만료 시간 설정, 단위는 ms, 0보다 작거나 같으면 만료되지 않음</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">정수, 쿼리 및 컨테이너 요소의 만료 시간 설정, 단위는 ms, 0보다 작거나 같으면 만료되지 않음</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer LruCache.timeout;
 </code></pre>
 <hr>
 <div name="onexpire" data-unique="onexpire"></div><h3 id="onexpire" class="notranslate">onexpire</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">on("expire", func)에 해당하는 함수, 쿼리 및 바인딩 데이터 시간 초과 이벤트;</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">on("expire", func)과 동일한 기능, 쿼리 및 바인딩 데이터 제한 시간 이벤트;</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Function</span> LruCache.onexpire;
 </code></pre>
 <div name="成员函数" data-unique="成员函数"></div><h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">멤버 함수</font></font></h2>
@@ -390,16 +338,16 @@
 </code></pre>
 <hr>
 <div name="has" data-unique="has"></div><h3 id="has" class="notranslate">has</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 키 값을 가진 데이터가 컨테이너에 있는지 확인</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 키의 데이터가 컨테이너에 존재하는지 확인</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> LruCache.has(<span class="hljs-built_in">String</span> name);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">name</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 확인할 키 값 지정</font></font></li>
+<li><span class="notranslate">name</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 확인할 키 값을 지정합니다.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 키 값이 있는지 여부를 반환합니다.</font></font></li>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 키가 존재하는지 여부를 반환합니다.</font></font></li>
 </ul>
 <hr>
 <div name="get" data-unique="get"></div><h3 id="get" class="notranslate">get</h3>
@@ -412,10 +360,10 @@
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 키 값에 해당하는 값을 반환하거나 존재하지 않으면 정의되지 않음</font></font></li>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 키 값에 해당하는 값을 반환하거나 존재하지 않는 경우 정의되지 않음을 반환합니다.</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 키 값의 값을 쿼리합니다. 존재하지 않거나 만료되면 콜백 함수를 호출하여 데이터를 업데이트합니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 키 값의 값을 쿼리합니다. 존재하지 않거나 만료된 경우 콜백 함수를 호출하여 데이터를 업데이트합니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Value LruCache.get(<span class="hljs-built_in">String</span> name,
     <span class="hljs-built_in">Function</span> updater);
@@ -423,15 +371,15 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
 <li><span class="notranslate">name</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 쿼리할 키 값을 지정합니다.</font></font></li>
-<li><span class="notranslate">updater</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 기능, 업데이트 기능을 지정합니다.</font></font></li>
+<li><span class="notranslate">updater</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 기능, 업데이트 기능 지정</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 키 값에 해당하는 값을 반환</font></font></li>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 키에 해당하는 값을 반환합니다.</font></font></li>
 </ul>
 <hr>
 <div name="set" data-unique="set"></div><h3 id="set" class="notranslate">set</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">키 값 데이터를 설정하고 키 값이 없으면 새 데이터를 삽입하십시오.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">키 값 데이터 설정, 키 값이 없으면 새 데이터 삽입</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>LruCache.set(<span class="hljs-built_in">String</span> name,<font></font>
     Value value);<font></font>
@@ -442,12 +390,12 @@
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 값, 설정할 데이터를 지정합니다.</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">키 값 데이터를 설정하고 키 값이 없으면 새 데이터를 삽입하십시오.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">키 값 데이터 설정, 키 값이 없으면 새 데이터 삽입</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>LruCache.set(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 개체, 설정할 키-값 데이터 사전을 지정합니다.</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 객체, 설정할 키-값 데이터 사전 지정</font></font></li>
 </ul>
 <hr>
 <div name="remove" data-unique="remove"></div><h3 id="remove" class="notranslate">remove</h3>
@@ -456,7 +404,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">name</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 삭제할 키를 지정합니다.</font></font></li>
+<li><span class="notranslate">name</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 삭제할 키 값 지정</font></font></li>
 </ul>
 <hr>
 <div name="isEmpty" data-unique="isEmpty"></div><h3 id="isEmpty" class="notranslate">isEmpty</h3>
@@ -469,275 +417,275 @@
 </ul>
 <hr>
 <div name="on" data-unique="on"></div><h3 id="on" class="notranslate">on</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이벤트 핸들러를 객체에 바인딩</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">객체에 이벤트 핸들러 바인딩</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> LruCache.on(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 이벤트의 이름을 지정합니다.</font></font></li>
-<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 함수, 이벤트 핸들러 함수를 지정합니다.</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 지정된 이벤트의 이름</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 함수, 이벤트 핸들러 함수 지정</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 쉬운 연결을 위해 이벤트 개체 자체를 반환합니다.</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 체인 호출에 편리한 이벤트 객체 자체를 반환합니다.</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이벤트 핸들러를 객체에 바인딩</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">객체에 이벤트 핸들러 바인딩</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> LruCache.on(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 개체, 이벤트 매핑 관계를 지정하고 개체 속성 이름을 이벤트 이름으로 사용하고 속성 값을 이벤트 핸들러 함수로 사용합니다.</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 객체, 이벤트 매핑 관계를 지정합니다. 객체 속성 이름은 이벤트 이름으로 사용되며 속성 값은 이벤트 처리 기능으로 사용됩니다.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 쉬운 연결을 위해 이벤트 개체 자체를 반환합니다.</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 체인 호출에 편리한 이벤트 객체 자체를 반환합니다.</font></font></li>
 </ul>
 <hr>
 <div name="addListener" data-unique="addListener"></div><h3 id="addListener" class="notranslate">addListener</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이벤트 핸들러를 객체에 바인딩</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">객체에 이벤트 핸들러 바인딩</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> LruCache.addListener(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 이벤트의 이름을 지정합니다.</font></font></li>
-<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 함수, 이벤트 핸들러 함수를 지정합니다.</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 지정된 이벤트의 이름</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 함수, 이벤트 핸들러 함수 지정</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 쉬운 연결을 위해 이벤트 개체 자체를 반환합니다.</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 체인 호출에 편리한 이벤트 객체 자체를 반환합니다.</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이벤트 핸들러를 객체에 바인딩</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">객체에 이벤트 핸들러 바인딩</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> LruCache.addListener(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 개체, 이벤트 매핑 관계를 지정하고 개체 속성 이름을 이벤트 이름으로 사용하고 속성 값을 이벤트 핸들러 함수로 사용합니다.</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 객체, 이벤트 매핑 관계를 지정합니다. 객체 속성 이름은 이벤트 이름으로 사용되며 속성 값은 이벤트 처리 기능으로 사용됩니다.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 쉬운 연결을 위해 이벤트 개체 자체를 반환합니다.</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 체인 호출에 편리한 이벤트 객체 자체를 반환합니다.</font></font></li>
 </ul>
 <hr>
 <div name="prependListener" data-unique="prependListener"></div><h3 id="prependListener" class="notranslate">prependListener</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이벤트 핸들러를 객체 시작에 바인딩</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이벤트 핸들러 함수를 개체 시작에 바인딩</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> LruCache.prependListener(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 이벤트의 이름을 지정합니다.</font></font></li>
-<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 함수, 이벤트 핸들러 함수를 지정합니다.</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 지정된 이벤트의 이름</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 함수, 이벤트 핸들러 함수 지정</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 쉬운 연결을 위해 이벤트 개체 자체를 반환합니다.</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 체인 호출에 편리한 이벤트 객체 자체를 반환합니다.</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이벤트 핸들러를 객체 시작에 바인딩</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이벤트 핸들러 함수를 개체 시작에 바인딩</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> LruCache.prependListener(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 개체, 이벤트 매핑 관계를 지정하고 개체 속성 이름을 이벤트 이름으로 사용하고 속성 값을 이벤트 핸들러 함수로 사용합니다.</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 객체, 이벤트 매핑 관계를 지정합니다. 객체 속성 이름은 이벤트 이름으로 사용되며 속성 값은 이벤트 처리 기능으로 사용됩니다.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 쉬운 연결을 위해 이벤트 개체 자체를 반환합니다.</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 체인 호출에 편리한 이벤트 객체 자체를 반환합니다.</font></font></li>
 </ul>
 <hr>
 <div name="once" data-unique="once"></div><h3 id="once" class="notranslate">once</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">일회성 이벤트 핸들러를 객체에 바인딩하면 일회성 핸들러는 한 번만 실행됩니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">일회성 이벤트 처리기를 개체에 바인딩합니다. 일회성 처리기는 한 번만 트리거됩니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> LruCache.once(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 이벤트의 이름을 지정합니다.</font></font></li>
-<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 함수, 이벤트 핸들러 함수를 지정합니다.</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 지정된 이벤트의 이름</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 함수, 이벤트 핸들러 함수 지정</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 쉬운 연결을 위해 이벤트 개체 자체를 반환합니다.</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 체인 호출에 편리한 이벤트 객체 자체를 반환합니다.</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">일회성 이벤트 핸들러를 객체에 바인딩하면 일회성 핸들러는 한 번만 실행됩니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">일회성 이벤트 처리기를 개체에 바인딩합니다. 일회성 처리기는 한 번만 트리거됩니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> LruCache.once(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 개체, 이벤트 매핑 관계를 지정하고 개체 속성 이름을 이벤트 이름으로 사용하고 속성 값을 이벤트 핸들러 함수로 사용합니다.</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 객체, 이벤트 매핑 관계를 지정합니다. 객체 속성 이름은 이벤트 이름으로 사용되며 속성 값은 이벤트 처리 기능으로 사용됩니다.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 쉬운 연결을 위해 이벤트 개체 자체를 반환합니다.</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 체인 호출에 편리한 이벤트 객체 자체를 반환합니다.</font></font></li>
 </ul>
 <hr>
 <div name="prependOnceListener" data-unique="prependOnceListener"></div><h3 id="prependOnceListener" class="notranslate">prependOnceListener</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이벤트 핸들러를 객체 시작에 바인딩</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이벤트 핸들러 함수를 개체 시작에 바인딩</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> LruCache.prependOnceListener(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 이벤트의 이름을 지정합니다.</font></font></li>
-<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 함수, 이벤트 핸들러 함수를 지정합니다.</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 지정된 이벤트의 이름</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 함수, 이벤트 핸들러 함수 지정</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 쉬운 연결을 위해 이벤트 개체 자체를 반환합니다.</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 체인 호출에 편리한 이벤트 객체 자체를 반환합니다.</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이벤트 핸들러를 객체 시작에 바인딩</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이벤트 핸들러 함수를 개체 시작에 바인딩</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> LruCache.prependOnceListener(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 개체, 이벤트 매핑 관계를 지정하고 개체 속성 이름을 이벤트 이름으로 사용하고 속성 값을 이벤트 핸들러 함수로 사용합니다.</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 객체, 이벤트 매핑 관계를 지정합니다. 객체 속성 이름은 이벤트 이름으로 사용되며 속성 값은 이벤트 처리 기능으로 사용됩니다.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 쉬운 연결을 위해 이벤트 개체 자체를 반환합니다.</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 체인 호출에 편리한 이벤트 객체 자체를 반환합니다.</font></font></li>
 </ul>
 <hr>
 <div name="off" data-unique="off"></div><h3 id="off" class="notranslate">off</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">객체 처리 대기열에서 지정된 기능 취소</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체 처리 큐에서 함수 지정 취소</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> LruCache.off(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 이벤트의 이름을 지정합니다.</font></font></li>
-<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 함수, 이벤트 핸들러 함수를 지정합니다.</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 지정된 이벤트의 이름</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 함수, 이벤트 핸들러 함수 지정</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 쉬운 연결을 위해 이벤트 개체 자체를 반환합니다.</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 체인 호출에 편리한 이벤트 객체 자체를 반환합니다.</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체 처리 대기열의 모든 기능 취소</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체 처리 대기열의 모든 기능을 취소합니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> LruCache.off(<span class="hljs-built_in">String</span> ev);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 이벤트의 이름을 지정합니다.</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 지정된 이벤트의 이름</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 쉬운 연결을 위해 이벤트 개체 자체를 반환합니다.</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 체인 호출에 편리한 이벤트 객체 자체를 반환합니다.</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">객체 처리 대기열에서 지정된 기능 취소</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체 처리 큐에서 함수 지정 취소</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> LruCache.off(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 개체, 이벤트 매핑 관계를 지정하고 개체 속성 이름을 이벤트 이름으로 사용하고 속성 값을 이벤트 핸들러 함수로 사용합니다.</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, 이벤트 매핑 관계를 지정하며, 객체 속성의 이름은 이벤트 이름으로, 속성의 값은 이벤트 처리 함수로 사용</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 쉬운 연결을 위해 이벤트 개체 자체를 반환합니다.</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 체인 호출에 편리한 이벤트 객체 자체를 반환합니다.</font></font></li>
 </ul>
 <hr>
 <div name="removeListener" data-unique="removeListener"></div><h3 id="removeListener" class="notranslate">removeListener</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">객체 처리 대기열에서 지정된 기능 취소</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체 처리 큐에서 함수 지정 취소</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> LruCache.removeListener(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 이벤트의 이름을 지정합니다.</font></font></li>
-<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 함수, 이벤트 핸들러 함수를 지정합니다.</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 지정된 이벤트의 이름</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 함수, 이벤트 핸들러 함수 지정</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 쉬운 연결을 위해 이벤트 개체 자체를 반환합니다.</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 체인 호출에 편리한 이벤트 객체 자체를 반환합니다.</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체 처리 대기열의 모든 기능 취소</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체 처리 대기열의 모든 기능을 취소합니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> LruCache.removeListener(<span class="hljs-built_in">String</span> ev);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 이벤트의 이름을 지정합니다.</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 지정된 이벤트의 이름</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 쉬운 연결을 위해 이벤트 개체 자체를 반환합니다.</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 체인 호출에 편리한 이벤트 객체 자체를 반환합니다.</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">객체 처리 대기열에서 지정된 기능 취소</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체 처리 큐에서 함수 지정 취소</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> LruCache.removeListener(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 개체, 이벤트 매핑 관계를 지정하고 개체 속성 이름을 이벤트 이름으로 사용하고 속성 값을 이벤트 핸들러 함수로 사용합니다.</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, 이벤트 매핑 관계를 지정하며, 객체 속성의 이름은 이벤트 이름으로, 속성의 값은 이벤트 처리 함수로 사용</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 쉬운 연결을 위해 이벤트 개체 자체를 반환합니다.</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 체인 호출에 편리한 이벤트 객체 자체를 반환합니다.</font></font></li>
 </ul>
 <hr>
 <div name="removeAllListeners" data-unique="removeAllListeners"></div><h3 id="removeAllListeners" class="notranslate">removeAllListeners</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">객체의 처리 대기열에서 모든 이벤트에 대한 모든 리스너를 취소하거나 이벤트가 지정된 경우 지정된 이벤트에 대한 모든 리스너를 제거합니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체 처리 대기열에서 모든 이벤트에 대한 모든 수신기를 취소하거나 이벤트가 지정된 경우 지정된 이벤트에 대한 모든 수신기를 제거합니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> LruCache.removeAllListeners(<span class="hljs-built_in">String</span> ev);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 이벤트의 이름을 지정합니다.</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 지정된 이벤트의 이름</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 쉬운 연결을 위해 이벤트 개체 자체를 반환합니다.</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 체인 호출에 편리한 이벤트 객체 자체를 반환합니다.</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">객체의 처리 대기열에서 모든 이벤트에 대한 모든 리스너를 취소하거나 이벤트가 지정된 경우 지정된 이벤트에 대한 모든 리스너를 제거합니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체 처리 대기열에서 모든 이벤트에 대한 모든 수신기를 취소하거나 이벤트가 지정된 경우 지정된 이벤트에 대한 모든 수신기를 제거합니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> LruCache.removeAllListeners(<span class="hljs-built_in">Array</span> evs = []);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">evs</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 이벤트 이름을 지정하는 배열</font></font></li>
+<li><span class="notranslate">evs</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 배열, 지정된 이벤트의 이름</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 쉬운 연결을 위해 이벤트 개체 자체를 반환합니다.</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 체인 호출에 편리한 이벤트 객체 자체를 반환합니다.</font></font></li>
 </ul>
 <hr>
 <div name="setMaxListeners" data-unique="setMaxListeners"></div><h3 id="setMaxListeners" class="notranslate">setMaxListeners</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호환성을 위한 리스너 수의 기본 제한</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호환성만을 위한 리스너 수의 기본 제한</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>LruCache.setMaxListeners(Integer n);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">n</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 이벤트 수를 지정합니다.</font></font></li>
+<li><span class="notranslate">n</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 이벤트 수 지정</font></font></li>
 </ul>
 <hr>
 <div name="getMaxListeners" data-unique="getMaxListeners"></div><h3 id="getMaxListeners" class="notranslate">getMaxListeners</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호환성을 위해 수신기에 대한 기본 제한 수를 가져옵니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호환성을 위해서만 기본적으로 제한된 수의 리스너를 가져옵니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer LruCache.getMaxListeners();
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 기본 제한 수를 반환합니다.</font></font></li>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 기본 제한 번호를 반환합니다.</font></font></li>
 </ul>
 <hr>
 <div name="listeners" data-unique="listeners"></div><h3 id="listeners" class="notranslate">listeners</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">객체의 지정된 이벤트에 대한 리스너 배열 쿼리</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체의 지정된 이벤트에 대한 리스너 배열을 쿼리합니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Array</span> LruCache.listeners(<span class="hljs-built_in">String</span> ev);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 이벤트의 이름을 지정합니다.</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 지정된 이벤트의 이름</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
@@ -745,19 +693,19 @@
 </ul>
 <hr>
 <div name="listenerCount" data-unique="listenerCount"></div><h3 id="listenerCount" class="notranslate">listenerCount</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">쿼리 개체의 지정된 이벤트에 대한 리스너 수</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체의 지정된 이벤트에 대한 리스너 수를 쿼리합니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer LruCache.listenerCount(<span class="hljs-built_in">String</span> ev);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 이벤트의 이름을 지정합니다.</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 지정된 이벤트의 이름</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 지정된 이벤트에 대한 리스너 수를 반환합니다.</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">쿼리 개체의 지정된 이벤트에 대한 리스너 수</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체의 지정된 이벤트에 대한 리스너 수를 쿼리합니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer LruCache.listenerCount(Value o,
     <span class="hljs-built_in">String</span> ev);
@@ -765,7 +713,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
 <li><span class="notranslate">o</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 값, 쿼리의 개체를 지정합니다.</font></font></li>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 이벤트의 이름을 지정합니다.</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 지정된 이벤트의 이름</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
@@ -778,7 +726,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 이벤트 이름 배열을 반환합니다.</font></font></li>
+<li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 이벤트 이름의 배열을 반환합니다.</font></font></li>
 </ul>
 <hr>
 <div name="emit" data-unique="emit"></div><h3 id="emit" class="notranslate">emit</h3>
@@ -790,15 +738,15 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
 <li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 이벤트 이름</font></font></li>
-<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., 이벤트 핸들러에 전달될 이벤트 매개변수</font></font></li>
+<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., 이벤트 매개변수는 이벤트 핸들러 함수에 전달됩니다.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 이벤트 트리거 상태를 반환하고 응답 이벤트가 있으면 true를 반환하고 그렇지 않으면 false를 반환합니다.</font></font></li>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 이벤트 트리거 상태 반환, 응답 이벤트가 있으면 true 반환, 그렇지 않으면 false 반환</font></font></li>
 </ul>
 <hr>
 <div name="toString" data-unique="toString"></div><h3 id="toString" class="notranslate">toString</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체의 문자열 표현을 반환하고 일반적으로 "[네이티브 개체]"를 반환하며 개체는 고유한 특성에 따라 다시 구현할 수 있습니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체의 문자열 표현을 반환하고 일반적으로 "[네이티브 개체]"를 반환하며 개체는 자체 특성에 따라 다시 구현될 수 있습니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> LruCache.toString();
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
@@ -807,15 +755,15 @@
 </ul>
 <hr>
 <div name="toJSON" data-unique="toJSON"></div><h3 id="toJSON" class="notranslate">toJSON</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">객체의 JSON 형식 표현을 반환하고 일반적으로 객체에 의해 정의된 읽을 수 있는 속성 집합을 반환합니다.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체의 JSON 형식 표현을 반환하며 일반적으로 개체에 의해 정의된 읽기 가능한 속성 모음을 반환합니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value LruCache.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 미사용</font></font></li>
+<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 문자열, 사용하지 않음</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
-<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 직렬화 가능한 JSON을 포함하는 값을 반환합니다.</font></font></li>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, JSON 직렬화 가능 값을 반환합니다.</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지원</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip646264"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip646264" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">클릭하면 톱 페이지로 돌아갑니다</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© 저작권 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지원</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

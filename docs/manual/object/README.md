@@ -1,4 +1,5 @@
 # 内置对象
+* [BlsKey](ifs/BlsKey.md) - 椭圆曲线加密算法对象
 * [Buffer](ifs/Buffer.md) - 二进制数据缓存对象，用于 io 读写的数据处理
 * [BufferedStream](ifs/BufferedStream.md) - 缓存读取对象
 * [Chain](ifs/Chain.md) - 消息处理器链处理对象
@@ -8,6 +9,8 @@
 * [DbConnection](ifs/DbConnection.md) - 数据库连接对象，用于建立和维护一个数据库连接会话。
 * [DgramSocket](ifs/DgramSocket.md) - dgram.Socket 对象是一个封装了数据包函数功能的 EventEmitter。
 * [Digest](ifs/Digest.md) - 信息摘要对象
+* [ECKey](ifs/ECKey.md) - 椭圆曲线加密算法对象
+* [Ed25519Key](ifs/Ed25519Key.md) - 椭圆曲线加密算法对象
 * [Event](ifs/Event.md) - 事件对象
 * [EventEmitter](ifs/EventEmitter.md) - 事件触发对象，可用于建立观察者模式，支持事件触发的对象均继承于此，同一事件的同一函数只会产生一次回调
 * [FSWatcher](ifs/FSWatcher.md) - 文件系统观察对象

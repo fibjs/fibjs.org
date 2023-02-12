@@ -1,15 +1,15 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Objet Redis - JavaScript sur fibre</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Basculer la navigation</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/redis.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/redis.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/redis.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/redis.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/redis.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/redis.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/redis.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/redis.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/redis.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/redis.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/redis.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/redis.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objet objet intégré</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Chercher" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="entrée de recherche" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">page de garde</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">objets intégrés</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objet Redis</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Guide de développement</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Objet Redis - JavaScript sur fibre</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Basculer la navigation</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/redis.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/redis.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/redis.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/redis.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/redis.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/redis.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/redis.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/redis.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/redis.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/redis.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/redis.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/redis.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objet objet intégré</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Recherche" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="entrée de recherche" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">page de garde</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">objet incorporé</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objet Redis</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">guide de développement</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Qu'est-ce que fibjs?</font></font></a></li>
-<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Installer l'environnement d'exécution</font></font></a></li>
+<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Installer l'environnement d'exploitation</font></font></a></li>
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
-<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Une belle vie commence par un test</font></font></a></li>
-<li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Trouvez le tueur de performance</font></font></a></li>
+<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Une vie meilleure commence par un test</font></font></a></li>
+<li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Trouvez des tueurs de performance</font></font></a></li>
 <li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mise à jour à chaud du module serveur</font></font></a></li>
-<li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Routage de nom de domaine</font></font></a></li>
-<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Utilisation des certificats X509 dans fibjs</font></font></a></li>
-<li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ajouter un module natif</font></font></a></li>
+<li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Routage de domaine</font></font></a></li>
+<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Utilisation du certificat X509 dans fibjs</font></font></a></li>
+<li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ajouter un module natif</font></font></a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">module de base</font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Module de base</font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../module/ifs/assert.md.html" class="notranslate">assert</a></li>
 <li><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a></li>
 <li><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a></li>
@@ -64,7 +64,8 @@
 <li><a href="../../module/ifs/zip.md.html" class="notranslate">zip</a></li>
 <li><a href="../../module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">objets intégrés</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">objet incorporé</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="blskey.md.html" class="notranslate">BlsKey</a></li>
 <li><a href="buffer.md.html" class="notranslate">Buffer</a></li>
 <li><a href="bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
 <li><a href="chain.md.html" class="notranslate">Chain</a></li>
@@ -74,6 +75,8 @@
 <li><a href="dbconnection.md.html" class="notranslate">DbConnection</a></li>
 <li><a href="dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
 <li><a href="digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="eckey.md.html" class="notranslate">ECKey</a></li>
+<li><a href="ed25519key.md.html" class="notranslate">Ed25519Key</a></li>
 <li><a href="event.md.html" class="notranslate">Event</a></li>
 <li><a href="eventemitter.md.html" class="notranslate">EventEmitter</a></li>
 <li><a href="fswatcher.md.html" class="notranslate">FSWatcher</a></li>
@@ -202,131 +205,101 @@
 </ul>
  </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="对象-Redis" data-unique="对象-Redis"></div><h1 id="对象-Redis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objet Redis</font></font></h1>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objet client de base de données Redis</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pour créer et gérer la base de données Redis, créez la méthode&nbsp;:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pour créer et gérer la base de données Redis, la méthode de création&nbsp;:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">var</span> db = <span class="hljs-built_in">require</span>(<span class="hljs-string">"db"</span>);
 <span class="hljs-keyword">var</span> test = <span class="hljs-keyword">new</span> db.openRedis(<span class="hljs-string">"redis-server"</span>);
 </code></pre>
 <div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">relation d'héritage</font></font></h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="168.0" height="880.0" viewBox="0 0 168 880" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
-    <desc>
-    #lineWidth: 1.5
-    #font: Helvetica,sans-Serif
-    #fontSize: 10
-    #leading: 1.6
-    #.this: fill=lightgray
-    #.class: fill=white
+<div class="dot notranslate">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="89pt" height="614pt" viewBox="0.00 0.00 89.02 614.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 610)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-610 85.016,-610 85.016,4 -4,4"></polygon>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href="object.md.html" xlink:title="object">
+<polygon fill="#ffffff" stroke="#000000" points="11.6765,-553.5 11.6765,-605.5 69.3395,-605.5 69.3395,-553.5 11.6765,-553.5"></polygon>
+<text text-anchor="middle" x="40.508" y="-592.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="11.6765,-585.5 69.3395,-585.5 "></polyline>
+<text text-anchor="start" x="19.6765" y="-572.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="19.6765" y="-560.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+</a>
+</g>
+</g>
+<!-- Redis -->
+<g id="me" class="node">
+<title>Redis</title>
+<g id="a_me"><a xlink:title="Redis">
+<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-516.5 81.016,-516.5 81.016,-.5 0,-.5"></polygon>
+<text text-anchor="middle" x="40.508" y="-503.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Redis</text>
+<polyline fill="none" stroke="#000000" points="0,-496.5 81.016,-496.5 "></polyline>
+<text text-anchor="start" x="8" y="-483.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">onsuberror</text>
+<polyline fill="none" stroke="#000000" points="0,-476.5 81.016,-476.5 "></polyline>
+<text text-anchor="start" x="8" y="-463.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">command()</text>
+<text text-anchor="start" x="8" y="-451.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">set()</text>
+<text text-anchor="start" x="8" y="-439.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">setNX()</text>
+<text text-anchor="start" x="8" y="-427.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">setXX()</text>
+<text text-anchor="start" x="8" y="-415.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">mset()</text>
+<text text-anchor="start" x="8" y="-403.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">msetNX()</text>
+<text text-anchor="start" x="8" y="-391.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">append()</text>
+<text text-anchor="start" x="8" y="-379.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">setRange()</text>
+<text text-anchor="start" x="8" y="-367.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getRange()</text>
+<text text-anchor="start" x="8" y="-355.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">strlen()</text>
+<text text-anchor="start" x="8" y="-343.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">bitcount()</text>
+<text text-anchor="start" x="8" y="-331.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">get()</text>
+<text text-anchor="start" x="8" y="-319.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">mget()</text>
+<text text-anchor="start" x="8" y="-307.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getset()</text>
+<text text-anchor="start" x="8" y="-295.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">decr()</text>
+<text text-anchor="start" x="8" y="-283.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">incr()</text>
+<text text-anchor="start" x="8" y="-271.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">setBit()</text>
+<text text-anchor="start" x="8" y="-259.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getBit()</text>
+<text text-anchor="start" x="8" y="-247.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">exists()</text>
+<text text-anchor="start" x="8" y="-235.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">type()</text>
+<text text-anchor="start" x="8" y="-223.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">keys()</text>
+<text text-anchor="start" x="8" y="-211.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">del()</text>
+<text text-anchor="start" x="8" y="-199.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">expire()</text>
+<text text-anchor="start" x="8" y="-187.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">ttl()</text>
+<text text-anchor="start" x="8" y="-175.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">persist()</text>
+<text text-anchor="start" x="8" y="-163.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">rename()</text>
+<text text-anchor="start" x="8" y="-151.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">renameNX()</text>
+<text text-anchor="start" x="8" y="-139.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">sub()</text>
+<text text-anchor="start" x="8" y="-127.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">unsub()</text>
+<text text-anchor="start" x="8" y="-115.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">psub()</text>
+<text text-anchor="start" x="8" y="-103.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">unpsub()</text>
+<text text-anchor="start" x="8" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">pub()</text>
+<text text-anchor="start" x="8" y="-79.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getHash()</text>
+<text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getList()</text>
+<text text-anchor="start" x="8" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getSet()</text>
+<text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getSortedSet()</text>
+<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dump()</text>
+<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">restore()</text>
+<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">close()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;Redis -->
+<g id="edge1" class="edge">
+<title>object-&gt;Redis</title>
+<path fill="none" stroke="#000000" d="M40.508,-543.1412C40.508,-535.2577 40.508,-526.3486 40.508,-516.6758"></path>
+<polygon fill="#000000" stroke="#000000" points="37.0081,-543.2312 40.508,-553.2312 44.0081,-543.2313 37.0081,-543.2312"></polygon>
+</g>
+</g>
+</svg>
+</div>
 
-    [&lt;class&gt;object|toString();toJSON()]
-    [&lt;this&gt;Redis|onsuberror|command();set();setNX();setXX();mset();msetNX();append();setRange();getRange();strlen();bitcount();get();mget();getset();decr();incr();setBit();getBit();exists();type();keys();del();expire();ttl();persist();rename();renameNX();sub();unsub();psub();unpsub();pub();getHash();getList();getSet();getSortedSet();dump();restore();close()]
-
-    [object] &lt;:- [Redis]
-    </desc>
-    <g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="10pt" font-family="Helvetica,sans-Serif" font-weight="normal" font-style="normal">
-        <g font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="bold" font-style="normal" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
-            <g stroke="transparent" fill="transparent">
-                <rect x="0.0" y="0.0" height="880.0" width="168.0" stroke="none"></rect>
-            </g>
-            <g transform="translate(8, 8)" fill="#33322E">
-                <g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal">
-                    <path d="M56.0 93.3 L56 100 L56 120 L56.0 120.0 " fill="none"></path>
-                    <path d="M61.3 93.3 L56.0 93.3 L50.7 93.3 L56.0 80.0 Z"></path>
-                    <g data-name="Redis">
-                        <g fill="lightgray" stroke="#33322E" data-name="Redis">
-                            <rect x="0.0" y="120.0" height="704.0" width="112.0" data-name="Redis"></rect>
-                            <path d="M0.0 152.0 L112.0 152.0" fill="none" data-name="Redis"></path>
-                            <path d="M0.0 184.0 L112.0 184.0" fill="none" data-name="Redis"></path>
-                        </g>
-                        <g transform="translate(0, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Redis">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Redis">
-                                <text x="48.0" y="13.0" stroke="none" text-anchor="middle" data-name="Redis">Redis</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 152)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Redis">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Redis">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Redis">onsuberror</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 184)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Redis">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Redis">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Redis">command()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="Redis">set()</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="Redis">setNX()</text>
-                                <text x="0.0" y="61.0" stroke="none" data-name="Redis">setXX()</text>
-                                <text x="0.0" y="77.0" stroke="none" data-name="Redis">mset()</text>
-                                <text x="0.0" y="93.0" stroke="none" data-name="Redis">msetNX()</text>
-                                <text x="0.0" y="109.0" stroke="none" data-name="Redis">append()</text>
-                                <text x="0.0" y="125.0" stroke="none" data-name="Redis">setRange()</text>
-                                <text x="0.0" y="141.0" stroke="none" data-name="Redis">getRange()</text>
-                                <text x="0.0" y="157.0" stroke="none" data-name="Redis">strlen()</text>
-                                <text x="0.0" y="173.0" stroke="none" data-name="Redis">bitcount()</text>
-                                <text x="0.0" y="189.0" stroke="none" data-name="Redis">get()</text>
-                                <text x="0.0" y="205.0" stroke="none" data-name="Redis">mget()</text>
-                                <text x="0.0" y="221.0" stroke="none" data-name="Redis">getset()</text>
-                                <text x="0.0" y="237.0" stroke="none" data-name="Redis">decr()</text>
-                                <text x="0.0" y="253.0" stroke="none" data-name="Redis">incr()</text>
-                                <text x="0.0" y="269.0" stroke="none" data-name="Redis">setBit()</text>
-                                <text x="0.0" y="285.0" stroke="none" data-name="Redis">getBit()</text>
-                                <text x="0.0" y="301.0" stroke="none" data-name="Redis">exists()</text>
-                                <text x="0.0" y="317.0" stroke="none" data-name="Redis">type()</text>
-                                <text x="0.0" y="333.0" stroke="none" data-name="Redis">keys()</text>
-                                <text x="0.0" y="349.0" stroke="none" data-name="Redis">del()</text>
-                                <text x="0.0" y="365.0" stroke="none" data-name="Redis">expire()</text>
-                                <text x="0.0" y="381.0" stroke="none" data-name="Redis">ttl()</text>
-                                <text x="0.0" y="397.0" stroke="none" data-name="Redis">persist()</text>
-                                <text x="0.0" y="413.0" stroke="none" data-name="Redis">rename()</text>
-                                <text x="0.0" y="429.0" stroke="none" data-name="Redis">renameNX()</text>
-                                <text x="0.0" y="445.0" stroke="none" data-name="Redis">sub()</text>
-                                <text x="0.0" y="461.0" stroke="none" data-name="Redis">unsub()</text>
-                                <text x="0.0" y="477.0" stroke="none" data-name="Redis">psub()</text>
-                                <text x="0.0" y="493.0" stroke="none" data-name="Redis">unpsub()</text>
-                                <text x="0.0" y="509.0" stroke="none" data-name="Redis">pub()</text>
-                                <text x="0.0" y="525.0" stroke="none" data-name="Redis">getHash()</text>
-                                <text x="0.0" y="541.0" stroke="none" data-name="Redis">getList()</text>
-                                <text x="0.0" y="557.0" stroke="none" data-name="Redis">getSet()</text>
-                                <text x="0.0" y="573.0" stroke="none" data-name="Redis">getSortedSet()</text>
-                                <text x="0.0" y="589.0" stroke="none" data-name="Redis">dump()</text>
-                                <text x="0.0" y="605.0" stroke="none" data-name="Redis">restore()</text>
-                                <text x="0.0" y="621.0" stroke="none" data-name="Redis">close()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="object">
-                        <g fill="white" stroke="#33322E" data-name="object">
-                            <rect x="18.0" y="0.0" height="80.0" width="77.0" data-name="object"></rect>
-                            <path d="M18.0 32.0 L95.0 32.0" fill="none" data-name="object"></path>
-                        </g>
-                        <g transform="translate(18, 0)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="object">
-                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="object">object</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(18, 32)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="object">
-                                <text x="0.0" y="13.0" stroke="none" data-name="object">toString()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="object">toJSON()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg></div>
-
-<div name="成员属性" data-unique="成员属性"></div><h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Propriétés des membres</font></font></h2>
+<div name="成员属性" data-unique="成员属性"></div><h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">attribut de membre</font></font></h2>
 <div name="onsuberror" data-unique="onsuberror"></div><h3 id="onsuberror" class="notranslate">onsuberror</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fonction, requête et définition de la fonction de gestion des erreurs, rappel lorsque le sous-marin a une erreur ou que le réseau est interrompu, lorsque le rappel se produit, tous les sous-marins de cet objet seront terminés</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Function</span> Redis.onsuberror;
 </code></pre>
 <div name="成员函数" data-unique="成员函数"></div><h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fonction membre</font></font></h2>
 <div name="command" data-unique="command"></div><h3 id="command" class="notranslate">command</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Méthode de commande de base Redis</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">méthode de commande de base redis</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Value Redis.command(<span class="hljs-built_in">String</span> cmd,<font></font>
     ...args);<font></font>
@@ -334,15 +307,15 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel&nbsp;:</font></font></p>
 <ul>
 <li><span class="notranslate">cmd</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, spécifie la commande à envoyer</font></font></li>
-<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., indiquez les paramètres à envoyer</font></font></li>
+<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., spécifie les paramètres à envoyer</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retourner le résultat&nbsp;:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">résultat de retour&nbsp;:</font></font></p>
 <ul>
 <li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, renvoie le résultat renvoyé par le serveur</font></font></li>
 </ul>
 <hr>
 <div name="set" data-unique="set"></div><h3 id="set" class="notranslate">set</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Associez la valeur de la chaîne à la clé, si la clé contient déjà une autre valeur, SET écrasera l'ancienne valeur, quel que soit le type</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Associez la valeur de la chaîne à la clé, si la clé contient déjà d'autres valeurs, SET écrasera l'ancienne valeur, quel que soit le type</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div>Redis.set(Buffer key,<font></font>
@@ -352,8 +325,8 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel&nbsp;:</font></font></p>
 <ul>
 <li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, indiquez la clé à associer</font></font></li>
-<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, en précisant les données à associer</font></font></li>
-<li><span class="notranslate">ttl</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long, définit la durée de vie de la clé en millisecondes&nbsp;; si ttl vaut 0, aucune durée de vie n'est définie</font></font></li>
+<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, spécifie les données à associer</font></font></li>
+<li><span class="notranslate">ttl</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long, définit la durée de vie de la clé en millisecondes&nbsp;; si ttl vaut 0, alors ne définit pas la durée de vie</font></font></li>
 </ul>
 <hr>
 <div name="setNX" data-unique="setNX"></div><h3 id="setNX" class="notranslate">setNX</h3>
@@ -367,12 +340,12 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel&nbsp;:</font></font></p>
 <ul>
 <li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, indiquez la clé à associer</font></font></li>
-<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, en précisant les données à associer</font></font></li>
-<li><span class="notranslate">ttl</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long, définit la durée de vie de la clé en millisecondes&nbsp;; si ttl vaut 0, aucune durée de vie n'est définie</font></font></li>
+<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, spécifie les données à associer</font></font></li>
+<li><span class="notranslate">ttl</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long, définit la durée de vie de la clé en millisecondes&nbsp;; si ttl vaut 0, alors ne définit pas la durée de vie</font></font></li>
 </ul>
 <hr>
 <div name="setXX" data-unique="setXX"></div><h3 id="setXX" class="notranslate">setXX</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Définissez la valeur de key sur value et définissez la clé uniquement lorsque la clé existe déjà.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Définissez la valeur de key sur value et définissez la clé uniquement si la clé existe déjà.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div>Redis.setXX(Buffer key,<font></font>
@@ -382,8 +355,8 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel&nbsp;:</font></font></p>
 <ul>
 <li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, indiquez la clé à associer</font></font></li>
-<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, en précisant les données à associer</font></font></li>
-<li><span class="notranslate">ttl</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long, définit la durée de vie de la clé en millisecondes&nbsp;; si ttl vaut 0, aucune durée de vie n'est définie</font></font></li>
+<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, spécifie les données à associer</font></font></li>
+<li><span class="notranslate">ttl</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long, définit la durée de vie de la clé en millisecondes&nbsp;; si ttl vaut 0, alors ne définit pas la durée de vie</font></font></li>
 </ul>
 <hr>
 <div name="mset" data-unique="mset"></div><h3 id="mset" class="notranslate">mset</h3>
@@ -400,7 +373,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel&nbsp;:</font></font></p>
 <ul>
-<li><span class="notranslate">kvs</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., spécifie une liste de clés/valeurs à définir</font></font></li>
+<li><span class="notranslate">kvs</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., spécifie la liste clé/valeur à définir</font></font></li>
 </ul>
 <hr>
 <div name="msetNX" data-unique="msetNX"></div><h3 id="msetNX" class="notranslate">msetNX</h3>
@@ -417,21 +390,21 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel&nbsp;:</font></font></p>
 <ul>
-<li><span class="notranslate">kvs</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., spécifie une liste de clés/valeurs à définir</font></font></li>
+<li><span class="notranslate">kvs</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., spécifie la liste clé/valeur à définir</font></font></li>
 </ul>
 <hr>
 <div name="append" data-unique="append"></div><h3 id="append" class="notranslate">append</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Si key existe déjà et est une chaîne, la commande append ajoute value à la fin de la valeur originale de key. </font><font style="vertical-align: inherit;">Si la clé n'existe pas, ajouter définit simplement la clé donnée à la valeur</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Si key existe déjà et est une chaîne, la commande append ajoute value à la fin de la valeur d'origine de key. </font><font style="vertical-align: inherit;">Si la clé n'existe pas, append définit simplement la clé donnée à la valeur</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Redis.append(Buffer key,<font></font>
     Buffer value);<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel&nbsp;:</font></font></p>
 <ul>
-<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, spécifie la clé à ajouter</font></font></li>
+<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, spécifiez la clé à ajouter</font></font></li>
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, spécifie les données à ajouter</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retourner le résultat&nbsp;:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">résultat de retour&nbsp;:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, après avoir ajouté la valeur, la longueur de la chaîne dans la clé</font></font></li>
 </ul>
@@ -448,9 +421,9 @@
 <ul>
 <li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, indiquez la clé à modifier</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entier, spécifie le décalage d'octet modifié</font></font></li>
-<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, spécifiez les données à écraser</font></font></li>
+<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, en spécifiant les données à écraser</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retourner le résultat&nbsp;:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">résultat de retour&nbsp;:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, après modification, la longueur de la chaîne</font></font></li>
 </ul>
@@ -469,20 +442,20 @@
 <li><span class="notranslate">start</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entier, spécifie le décalage d'octet de départ de la requête</font></font></li>
 <li><span class="notranslate">end</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entier, spécifie le décalage d'octet de fin de la requête</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retourner le résultat&nbsp;:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">résultat de retour&nbsp;:</font></font></p>
 <ul>
-<li><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, pour intercepter la sous-chaîne extraite</font></font></li>
+<li><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, la sous-chaîne interceptée</font></font></li>
 </ul>
 <hr>
 <div name="strlen" data-unique="strlen"></div><h3 id="strlen" class="notranslate">strlen</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Renvoie la longueur de la valeur de chaîne stockée dans la clé. </font><font style="vertical-align: inherit;">Renvoie une erreur lorsque la clé n'est pas stockée en tant que valeur de chaîne</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Renvoie la longueur de la valeur de chaîne stockée par clé. </font><font style="vertical-align: inherit;">Renvoie une erreur lorsque la clé ne stocke pas de valeur de chaîne</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Redis.strlen(Buffer key);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel&nbsp;:</font></font></p>
 <ul>
 <li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, indiquez la clé à calculer</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retourner le résultat&nbsp;:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">résultat de retour&nbsp;:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, la longueur de la valeur de chaîne. </font><font style="vertical-align: inherit;">Renvoie 0 lorsque la clé n'existe pas</font></font></li>
 </ul>
@@ -498,23 +471,23 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel&nbsp;:</font></font></p>
 <ul>
 <li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, indiquez la clé à calculer</font></font></li>
-<li><span class="notranslate">start</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entier, spécifie l'octet de départ à calculer, des valeurs négatives peuvent être utilisées, -1 signifie le dernier octet, -2 signifie l'avant-dernier octet, etc.</font></font></li>
-<li><span class="notranslate">end</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entier, spécifie l'octet de fin à calculer, des valeurs négatives peuvent être utilisées, -1 signifie le dernier octet, -2 signifie l'avant-dernier octet, etc.</font></font></li>
+<li><span class="notranslate">start</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entier, spécifie l'octet de départ à calculer, des valeurs négatives peuvent être utilisées, -1 signifie le dernier octet, et -2 signifie l'avant-dernier octet, et ainsi de suite</font></font></li>
+<li><span class="notranslate">end</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entier, spécifie l'octet de fin à calculer, des valeurs négatives peuvent être utilisées, -1 signifie le dernier octet, et -2 signifie l'avant-dernier octet, et ainsi de suite</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retourner le résultat&nbsp;:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">résultat de retour&nbsp;:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, le nombre de bits mis à 1</font></font></li>
 </ul>
 <hr>
 <div name="get" data-unique="get"></div><h3 id="get" class="notranslate">get</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Renvoie la valeur de chaîne associée à la clé, ou la valeur spéciale Null si la clé n'existe pas</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Renvoie la valeur de chaîne associée à la clé, ou renvoie la valeur spéciale Null si la clé n'existe pas</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer Redis.get(Buffer key);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel&nbsp;:</font></font></p>
 <ul>
 <li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, indiquez la clé à associer</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retourner le résultat&nbsp;:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">résultat de retour&nbsp;:</font></font></p>
 <ul>
 <li><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, lorsque la clé n'existe pas, renvoie Null, sinon, renvoie la valeur de la clé</font></font></li>
 </ul>
@@ -527,7 +500,7 @@
 <ul>
 <li><span class="notranslate">keys</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Array, spécifie le tableau de clés à interroger</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retourner le résultat&nbsp;:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">résultat de retour&nbsp;:</font></font></p>
 <ul>
 <li><span class="notranslate">NArray</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, une liste contenant toutes les valeurs pour la clé donnée</font></font></li>
 </ul>
@@ -537,25 +510,25 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel&nbsp;:</font></font></p>
 <ul>
-<li><span class="notranslate">keys</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., spécifie une liste de clés à interroger</font></font></li>
+<li><span class="notranslate">keys</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., précise la liste des clés à interroger</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retourner le résultat&nbsp;:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">résultat de retour&nbsp;:</font></font></p>
 <ul>
 <li><span class="notranslate">NArray</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, une liste contenant toutes les valeurs pour la clé donnée</font></font></li>
 </ul>
 <hr>
 <div name="getset" data-unique="getset"></div><h3 id="getset" class="notranslate">getset</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Définit la valeur de la clé donnée sur value et renvoie l'ancienne valeur de la clé</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Définissez la valeur de la clé donnée sur value et renvoyez l'ancienne valeur de la clé (ancienne valeur)</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Buffer Redis.getset(Buffer key,<font></font>
     Buffer value);<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel&nbsp;:</font></font></p>
 <ul>
-<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, spécifiez la clé à interroger et à modifier</font></font></li>
-<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, spécifie la valeur à modifier</font></font></li>
+<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, indiquez la clé à interroger et à modifier</font></font></li>
+<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, spécifie la valeur modifiée</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retourner le résultat&nbsp;:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">résultat de retour&nbsp;:</font></font></p>
 <ul>
 <li><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, renvoie l'ancienne valeur pour la clé donnée</font></font></li>
 </ul>
@@ -571,13 +544,13 @@
 <li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, indiquez la clé à modifier</font></font></li>
 <li><span class="notranslate">num</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long, spécifie la valeur à soustraire</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retourner le résultat&nbsp;:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">résultat de retour&nbsp;:</font></font></p>
 <ul>
 <li><span class="notranslate">Long</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, après soustraction de num, la valeur de key</font></font></li>
 </ul>
 <hr>
 <div name="incr" data-unique="incr"></div><h3 id="incr" class="notranslate">incr</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Incrémenter la valeur stockée par clé</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Incrémenter la valeur stockée par la clé</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Long Redis.incr(Buffer key,<font></font>
     Long num = <span class="hljs-number">1</span>);
@@ -587,13 +560,13 @@
 <li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, indiquez la clé à modifier</font></font></li>
 <li><span class="notranslate">num</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long, spécifie la valeur à ajouter</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retourner le résultat&nbsp;:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">résultat de retour&nbsp;:</font></font></p>
 <ul>
 <li><span class="notranslate">Long</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, après avoir ajouté num, la valeur de la clé</font></font></li>
 </ul>
 <hr>
 <div name="setBit" data-unique="setBit"></div><h3 id="setBit" class="notranslate">setBit</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pour la valeur de chaîne stockée dans la clé, définissez ou effacez le bit au décalage spécifié (bit)</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pour la valeur de chaîne stockée par clé, définissez ou effacez le bit au décalage spécifié</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div>Integer Redis.setBit(Buffer key,<font></font>
@@ -604,15 +577,15 @@
 <ul>
 <li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, indiquez la clé à modifier</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entier, spécifie le décalage de bit modifié</font></font></li>
-<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entier, spécifie le paramètre à définir ou à effacer, il peut être 0 ou 1</font></font></li>
+<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entier, spécifie le paramètre à définir ou à effacer, peut être 0 ou 1</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retourner le résultat&nbsp;:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">résultat de retour&nbsp;:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, spécifie le bit où le décalage a été stocké à l'origine</font></font></li>
 </ul>
 <hr>
 <div name="getBit" data-unique="getBit"></div><h3 id="getBit" class="notranslate">getBit</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pour la valeur de chaîne stockée dans la clé, obtenez le bit au décalage spécifié (bit)</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pour la valeur de chaîne stockée par clé, obtenez le bit au décalage spécifié (bit)</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Redis.getBit(Buffer key,<font></font>
     Integer offset);<font></font>
@@ -622,35 +595,35 @@
 <li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, spécifiez la clé à interroger</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entier, spécifie le décalage de bit de la requête</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retourner le résultat&nbsp;:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">résultat de retour&nbsp;:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, la valeur de chaîne spécifie le bit à l'offset</font></font></li>
 </ul>
 <hr>
 <div name="exists" data-unique="exists"></div><h3 id="exists" class="notranslate">exists</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vérifier si une clé donnée existe</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vérifier si la clé donnée existe</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> Redis.exists(Buffer key);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel&nbsp;:</font></font></p>
 <ul>
 <li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, indiquez la clé à associer</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retourner le résultat&nbsp;:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">résultat de retour&nbsp;:</font></font></p>
 <ul>
-<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, renvoie True si la clé existe, sinon renvoie False</font></font></li>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, si la clé existe, renvoie True, sinon renvoie False</font></font></li>
 </ul>
 <hr>
 <div name="type" data-unique="type"></div><h3 id="type" class="notranslate">type</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Renvoie le type de la valeur stockée par clé</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Renvoie le type de la valeur stockée par la clé</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Redis.type(Buffer key);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel&nbsp;:</font></font></p>
 <ul>
 <li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, spécifiez la clé à interroger</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retourner le résultat&nbsp;:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">résultat de retour&nbsp;:</font></font></p>
 <ul>
-<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, renvoie le type de la valeur stockée par clé, la valeur possible est none (la clé n'existe pas) string (chaîne) list (liste) set (collection) zset (ensemble ordonné)</font></font><a href="../../module/ifs/hash.md.html" class="notranslate">hash</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(table de hachage)</font></font></li>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, renvoie le type de la valeur stockée par la clé, la valeur possible est none (la clé n'existe pas) string (string) list (list) set (collection) zset (ensemble ordonné)</font></font><a href="../../module/ifs/hash.md.html" class="notranslate">hash</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(table de hachage)</font></font></li>
 </ul>
 <hr>
 <div name="keys" data-unique="keys"></div><h3 id="keys" class="notranslate">keys</h3>
@@ -661,32 +634,32 @@
 <ul>
 <li><span class="notranslate">pattern</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, spécifie le mode de requête</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retourner le résultat&nbsp;:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">résultat de retour&nbsp;:</font></font></p>
 <ul>
 <li><span class="notranslate">NArray</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, une liste de clés correspondant au modèle donné</font></font></li>
 </ul>
 <hr>
 <div name="del" data-unique="del"></div><h3 id="del" class="notranslate">del</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Supprimez la ou les clés données, les clés inexistantes seront ignorées</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Supprimer une ou plusieurs clés données, les clés inexistantes seront ignorées</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Redis.del(<span class="hljs-built_in">Array</span> keys);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel&nbsp;:</font></font></p>
 <ul>
 <li><span class="notranslate">keys</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Array, spécifie le tableau de clés à supprimer</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retourner le résultat&nbsp;:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">résultat de retour&nbsp;:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, le nombre de clés supprimées</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Supprimez la ou les clés données, les clés inexistantes seront ignorées</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Supprimer une ou plusieurs clés données, les clés inexistantes seront ignorées</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Redis.del(...keys);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel&nbsp;:</font></font></p>
 <ul>
-<li><span class="notranslate">keys</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., spécifie une liste de clés à supprimer</font></font></li>
+<li><span class="notranslate">keys</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., précise la liste des clés à supprimer</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retourner le résultat&nbsp;:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">résultat de retour&nbsp;:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, le nombre de clés supprimées</font></font></li>
 </ul>
@@ -702,9 +675,9 @@
 <li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, indiquez la clé à définir</font></font></li>
 <li><span class="notranslate">ttl</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long, définit la durée de vie de la clé en millisecondes</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retourner le résultat&nbsp;:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">résultat de retour&nbsp;:</font></font></p>
 <ul>
-<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, renvoie True si la clé existe, sinon renvoie False</font></font></li>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, si la clé existe, renvoie True, sinon renvoie False</font></font></li>
 </ul>
 <hr>
 <div name="ttl" data-unique="ttl"></div><h3 id="ttl" class="notranslate">ttl</h3>
@@ -715,26 +688,26 @@
 <ul>
 <li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, spécifiez la clé à interroger</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retourner le résultat&nbsp;:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">résultat de retour&nbsp;:</font></font></p>
 <ul>
 <li><span class="notranslate">Long</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, renvoie la durée de vie restante de la clé en millisecondes, renvoie -2 lorsque la clé n'existe pas, renvoie -1 lorsque la clé existe mais ne définit pas la durée de vie restante</font></font></li>
 </ul>
 <hr>
 <div name="persist" data-unique="persist"></div><h3 id="persist" class="notranslate">persist</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Supprime la durée de vie d'une clé donnée, en convertissant la clé de "volatile" (une clé avec une durée de vie) en "durable" (une clé sans durée de vie qui n'expire jamais)</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Supprimer la durée de vie d'une clé donnée, en convertissant cette clé de "volatile" (clé avec durée de vie) en "durable" (une clé sans durée de vie et n'expirant jamais)</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> Redis.persist(Buffer key);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel&nbsp;:</font></font></p>
 <ul>
 <li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, indiquez la clé à définir</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retourner le résultat&nbsp;:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">résultat de retour&nbsp;:</font></font></p>
 <ul>
-<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, renvoie True si la clé existe, sinon renvoie False</font></font></li>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, si la clé existe, renvoie True, sinon renvoie False</font></font></li>
 </ul>
 <hr>
 <div name="rename" data-unique="rename"></div><h3 id="rename" class="notranslate">rename</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Renommez la clé en nouvelle clé et renvoyez une erreur lorsque la clé et la nouvelle clé sont identiques ou que la clé n'existe pas</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Renommez la clé en nouvelle clé et renvoyez une erreur lorsque la clé est identique à nouvelle clé ou que la clé n'existe pas</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Redis.rename(Buffer key,<font></font>
     Buffer newkey);<font></font>
@@ -746,7 +719,7 @@
 </ul>
 <hr>
 <div name="renameNX" data-unique="renameNX"></div><h3 id="renameNX" class="notranslate">renameNX</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Si et seulement si newkey n'existe pas, renommer key en newkey, si key n'existe pas, retourner une erreur</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Renommer la clé en nouvelle clé si et seulement si la nouvelle clé n'existe pas, et renvoyer une erreur lorsque la clé n'existe pas</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Boolean</span> Redis.renameNX(Buffer key,<font></font>
     Buffer newkey);<font></font>
@@ -756,38 +729,38 @@
 <li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, indiquez la clé à renommer</font></font></li>
 <li><span class="notranslate">newkey</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, indiquez la clé de destination à renommer</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retourner le résultat&nbsp;:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">résultat de retour&nbsp;:</font></font></p>
 <ul>
-<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Lorsque la modification est réussie, renvoie True, si newkey existe déjà, renvoie False</font></font></li>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, lorsque la modification est réussie, renvoie True, si la nouvelle clé existe déjà, renvoie False</font></font></li>
 </ul>
 <hr>
 <div name="sub" data-unique="sub"></div><h3 id="sub" class="notranslate">sub</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">S'abonner aux informations d'un canal donné, et appeler automatiquement func lorsqu'un message survient. func contient deux paramètres, qui sont tour à tour canal et message. La même fonction dans le même canal ne sera rappelée qu'une seule fois</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">S'abonner aux informations d'un canal donné, et appeler automatiquement func lorsqu'un message survient. func contient deux paramètres, canal et message tour à tour. La même fonction dans le même canal ne sera rappelée qu'une seule fois</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Redis.sub(Buffer channel,
     <span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel&nbsp;:</font></font></p>
 <ul>
-<li><span class="notranslate">channel</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, indiquez le nom de la chaîne à laquelle vous abonner</font></font></li>
-<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Fonction, spécifie la fonction de rappel</font></font></li>
+<li><span class="notranslate">channel</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, spécifie le nom de la chaîne à laquelle s'abonner</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Fonction, spécifiez la fonction de rappel</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Abonnez-vous aux informations d'un ensemble de canaux donné, et appelez automatiquement la fonction de rappel correspondante lorsque le message survient, la même fonction du même canal ne sera rappelée qu'une seule fois</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Abonnez-vous aux informations d'un ensemble de canaux donné, et appelez automatiquement la fonction de rappel correspondante lorsqu'un message survient. La même fonction dans le même canal ne sera rappelée qu'une seule fois.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Redis.sub(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel&nbsp;:</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objet, spécifiez la relation de mappage de canal, le nom de la propriété de l'objet sera utilisé comme nom de canal et la valeur de la propriété sera utilisée comme fonction de rappel</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objet, spécifie la relation de mappage de canal, le nom d'attribut d'objet sera utilisé comme nom de canal et la valeur d'attribut sera utilisée comme fonction de rappel</font></font></li>
 </ul>
 <hr>
 <div name="unsub" data-unique="unsub"></div><h3 id="unsub" class="notranslate">unsub</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tous les rappels pour se désabonner d'une chaîne donnée</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Désabonner tous les rappels pour le canal donné</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Redis.unsub(Buffer channel);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel&nbsp;:</font></font></p>
 <ul>
-<li><span class="notranslate">channel</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, indiquez le nom de la chaîne à laquelle vous souhaitez vous désabonner</font></font></li>
+<li><span class="notranslate">channel</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, spécifie le nom de la chaîne à laquelle se désabonner</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La fonction de rappel spécifiée pour se désabonner du canal donné</font></font></strong></p>
@@ -797,16 +770,16 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel&nbsp;:</font></font></p>
 <ul>
-<li><span class="notranslate">channel</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, indiquez le nom de la chaîne à laquelle vous souhaitez vous désabonner</font></font></li>
-<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Fonction, spécifie la fonction de rappel pour le désabonnement</font></font></li>
+<li><span class="notranslate">channel</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, spécifie le nom de la chaîne à laquelle se désabonner</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Fonction, spécifiez la fonction de rappel de désinscription</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tous les rappels pour se désabonner d'un ensemble de chaînes donné</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Se désabonner de tous les rappels pour un ensemble de chaînes donné</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Redis.unsub(<span class="hljs-built_in">Array</span> channels);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel&nbsp;:</font></font></p>
 <ul>
-<li><span class="notranslate">channels</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Array, spécifiez un tableau de chaînes désabonnées</font></font></li>
+<li><span class="notranslate">channels</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Array, spécifie un tableau de chaînes désabonnées</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La fonction de rappel spécifiée pour se désabonner d'un ensemble donné de canaux</font></font></strong></p>
@@ -814,31 +787,31 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel&nbsp;:</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objet, spécifiez la relation de mappage de canal, le nom de la propriété de l'objet sera utilisé comme nom de canal et la valeur de la propriété sera utilisée comme fonction de rappel</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objet, spécifie la relation de mappage de canal, le nom d'attribut d'objet sera utilisé comme nom de canal et la valeur d'attribut sera utilisée comme fonction de rappel</font></font></li>
 </ul>
 <hr>
 <div name="psub" data-unique="psub"></div><h3 id="psub" class="notranslate">psub</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">S'abonner aux informations d'un groupe de canaux selon le modèle. Lorsque le message survient, la fonction est automatiquement appelée. La fonction contient trois paramètres, qui sont tour à tour canal, message et modèle. Le même modèle et la même fonction ne feront que être rappelé une fois.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Abonnez-vous à un groupe d'informations sur le canal en fonction du modèle. Lorsqu'un message apparaît, func est automatiquement appelé. func contient trois paramètres, qui sont le canal, le message et le modèle dans l'ordre. Le même modèle et la même fonction ne seront rappelés qu'une seule fois .</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Redis.psub(<span class="hljs-built_in">String</span> pattern,
     <span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel&nbsp;:</font></font></p>
 <ul>
-<li><span class="notranslate">pattern</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Chaîne, spécifie le modèle de canal auquel s'abonner</font></font></li>
-<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Fonction, spécifie la fonction de rappel</font></font></li>
+<li><span class="notranslate">pattern</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">&nbsp;: Chaîne, spécifie le modèle de canal auquel vous êtes abonné</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Fonction, spécifiez la fonction de rappel</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">S'abonner aux informations d'un ensemble donné de modèles de canal. Lorsqu'un message survient, la fonction correspondante sera appelée automatiquement. La même fonction du même canal ne sera rappelée qu'une seule fois</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Abonnez-vous aux informations d'un ensemble donné de modèles de canaux et appelez automatiquement la fonction correspondante lorsqu'un message se produit, et la même fonction dans le même canal ne sera rappelée qu'une seule fois</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Redis.psub(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel&nbsp;:</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objet, spécifiez la relation de mappage de canal, le nom de la propriété de l'objet sera utilisé comme modèle de canal et la valeur de la propriété sera utilisée comme fonction de rappel</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objet, spécifie la relation de mappage de canal, le nom de l'attribut de l'objet sera utilisé comme modèle de canal et la valeur de l'attribut sera utilisée comme fonction de rappel</font></font></li>
 </ul>
 <hr>
 <div name="unpsub" data-unique="unpsub"></div><h3 id="unpsub" class="notranslate">unpsub</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tous les rappels pour se désabonner d'un canal pour un modèle donné</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Rappel pour désabonner toutes les chaînes d'un modèle donné</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Redis.unpsub(<span class="hljs-built_in">String</span> pattern);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel&nbsp;:</font></font></p>
@@ -846,7 +819,7 @@
 <li><span class="notranslate">pattern</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">&nbsp;: Chaîne, spécifie le modèle de canal auquel se désabonner</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La fonction de rappel spécifiée pour se désabonner du canal du modèle donné</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La fonction de rappel spécifiée pour se désabonner d'un canal avec le modèle donné</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Redis.unpsub(<span class="hljs-built_in">String</span> pattern,
     <span class="hljs-built_in">Function</span> func);
@@ -854,10 +827,10 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel&nbsp;:</font></font></p>
 <ul>
 <li><span class="notranslate">pattern</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">&nbsp;: Chaîne, spécifie le modèle de canal auquel se désabonner</font></font></li>
-<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Fonction, spécifie la fonction de rappel pour le désabonnement</font></font></li>
+<li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Fonction, spécifiez la fonction de rappel de désinscription</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tous les rappels pour se désabonner d'un ensemble de canaux pour un modèle donné</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Rappel pour désabonner tous les canaux d'un ensemble de modèles donnés</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Redis.unpsub(<span class="hljs-built_in">Array</span> patterns);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel&nbsp;:</font></font></p>
@@ -865,93 +838,93 @@
 <li><span class="notranslate">patterns</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Array, spécifie un tableau de modèles de canal à publier</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La fonction de rappel spécifiée pour se désabonner d'un canal d'un ensemble de modèles</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La fonction de rappel spécifiée pour désabonner des canaux à partir d'un ensemble de modèles</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Redis.unpsub(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel&nbsp;:</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objet, spécifiez la relation de mappage de canal, le nom de la propriété de l'objet sera utilisé comme modèle de canal et la valeur de la propriété sera utilisée comme fonction de rappel</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objet, spécifie la relation de mappage de canal, le nom de l'attribut de l'objet sera utilisé comme modèle de canal et la valeur de l'attribut sera utilisée comme fonction de rappel</font></font></li>
 </ul>
 <hr>
 <div name="pub" data-unique="pub"></div><h3 id="pub" class="notranslate">pub</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Envoie le message d'information au canal spécifié canal</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Envoyer un message d'information au canal spécifié canal</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Redis.pub(Buffer channel,<font></font>
     Buffer message);<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel&nbsp;:</font></font></p>
 <ul>
-<li><span class="notranslate">channel</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, spécifiez le canal sur lequel publier</font></font></li>
-<li><span class="notranslate">message</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, spécifie le message à publier</font></font></li>
+<li><span class="notranslate">channel</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, spécifie le canal à publier</font></font></li>
+<li><span class="notranslate">message</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, précise le message publié</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retourner le résultat&nbsp;:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">résultat de retour&nbsp;:</font></font></p>
 <ul>
-<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, le nombre de clients ayant reçu ce message</font></font></li>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, le nombre de clients recevant ce message</font></font></li>
 </ul>
 <hr>
 <div name="getHash" data-unique="getHash"></div><h3 id="getHash" class="notranslate">getHash</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Obtient l'objet Hash de la clé spécifiée. Cet objet est le client contenant la clé spécifiée. Ce n'est que lorsque sa méthode est appelée que la base de données sera exploitée.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Obtient l'objet Hash de la clé spécifiée. Cet objet est le client qui contient la clé spécifiée. Ce n'est que lorsque sa méthode est appelée que la base de données sera exploitée</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>RedisHash Redis.getHash(Buffer key);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel&nbsp;:</font></font></p>
 <ul>
 <li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, indiquez la clé à obtenir</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retourner le résultat&nbsp;:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">résultat de retour&nbsp;:</font></font></p>
 <ul>
 <li><a href="redishash.md.html" class="notranslate">RedisHash</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, renvoie un objet Hash contenant la clé spécifiée</font></font></li>
 </ul>
 <hr>
 <div name="getList" data-unique="getList"></div><h3 id="getList" class="notranslate">getList</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Récupère l'objet List de la clé spécifiée. Cet objet est le client contenant la clé spécifiée. La base de données ne sera exploitée que lorsque sa méthode sera appelée.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Obtient l'objet List de la clé spécifiée. Cet objet est le client qui contient la clé spécifiée. Ce n'est que lorsque sa méthode est appelée que la base de données sera exploitée</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>RedisList Redis.getList(Buffer key);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel&nbsp;:</font></font></p>
 <ul>
 <li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, indiquez la clé à obtenir</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retourner le résultat&nbsp;:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">résultat de retour&nbsp;:</font></font></p>
 <ul>
 <li><a href="redislist.md.html" class="notranslate">RedisList</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, renvoie un objet List contenant la clé spécifiée</font></font></li>
 </ul>
 <hr>
 <div name="getSet" data-unique="getSet"></div><h3 id="getSet" class="notranslate">getSet</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Récupère l'objet Set de la clé spécifiée. Cet objet est le client qui contient la clé spécifiée. La base de données ne sera exploitée que lorsque sa méthode sera appelée.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Obtient l'objet Set de la clé spécifiée. Cet objet est le client qui contient la clé spécifiée. Ce n'est que lorsque sa méthode est appelée que la base de données sera exploitée</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>RedisSet Redis.getSet(Buffer key);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel&nbsp;:</font></font></p>
 <ul>
 <li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, indiquez la clé à obtenir</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retourner le résultat&nbsp;:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">résultat de retour&nbsp;:</font></font></p>
 <ul>
 <li><a href="redisset.md.html" class="notranslate">RedisSet</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, renvoie un objet Set contenant la clé spécifiée</font></font></li>
 </ul>
 <hr>
 <div name="getSortedSet" data-unique="getSortedSet"></div><h3 id="getSortedSet" class="notranslate">getSortedSet</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Récupère l'objet SortedSet de la clé spécifiée, cet objet est le client contenant la clé spécifiée, et ce n'est que lorsque sa méthode est appelée que la base de données sera exploitée</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Obtient l'objet SortedSet de la clé spécifiée. Cet objet est le client qui contient la clé spécifiée. Ce n'est que lorsque sa méthode est appelée que la base de données sera exploitée</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>RedisSortedSet Redis.getSortedSet(Buffer key);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel&nbsp;:</font></font></p>
 <ul>
 <li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, indiquez la clé à obtenir</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retourner le résultat&nbsp;:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">résultat de retour&nbsp;:</font></font></p>
 <ul>
 <li><a href="redissortedset.md.html" class="notranslate">RedisSortedSet</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, renvoie un objet SortedSet contenant la clé spécifiée</font></font></li>
 </ul>
 <hr>
 <div name="dump" data-unique="dump"></div><h3 id="dump" class="notranslate">dump</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sérialisez la clé donnée et renvoyez la valeur sérialisée, qui peut être désérialisée en une clé Redis à l'aide de la commande restore</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sérialisez la clé donnée et renvoyez la valeur sérialisée, utilisez la commande restore pour désérialiser cette valeur dans une clé Redis</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer Redis.dump(Buffer key);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel&nbsp;:</font></font></p>
 <ul>
-<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, spécifie la clé à sérialiser</font></font></li>
+<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, spécifiez la clé à sérialiser</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retourner le résultat&nbsp;:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">résultat de retour&nbsp;:</font></font></p>
 <ul>
-<li><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, renvoie la valeur sérialisée, ou null si la clé n'existe pas</font></font></li>
+<li><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, renvoie la valeur après sérialisation, si la clé n'existe pas, renvoie alors null</font></font></li>
 </ul>
 <hr>
 <div name="restore" data-unique="restore"></div><h3 id="restore" class="notranslate">restore</h3>
@@ -964,9 +937,9 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel&nbsp;:</font></font></p>
 <ul>
-<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, spécifie la clé à désérialiser</font></font></li>
+<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, spécifiez la clé à désérialiser</font></font></li>
 <li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, spécifie les données à désérialiser</font></font></li>
-<li><span class="notranslate">ttl</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long, définit la durée de vie de la clé en millisecondes&nbsp;; si ttl vaut 0, aucune durée de vie n'est définie</font></font></li>
+<li><span class="notranslate">ttl</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long, définit la durée de vie de la clé en millisecondes&nbsp;; si ttl vaut 0, alors ne définit pas la durée de vie</font></font></li>
 </ul>
 <hr>
 <div name="close" data-unique="close"></div><h3 id="close" class="notranslate">close</h3>
@@ -978,21 +951,21 @@
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Renvoie la représentation sous forme de chaîne de l'objet, renvoie généralement "[Native Object]", l'objet peut être réimplémenté selon ses propres caractéristiques</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Redis.toString();
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retourner le résultat&nbsp;:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">résultat de retour&nbsp;:</font></font></p>
 <ul>
-<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, renvoie la représentation sous forme de chaîne de l'objet</font></font></li>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, renvoie une représentation sous forme de chaîne de l'objet</font></font></li>
 </ul>
 <hr>
 <div name="toJSON" data-unique="toJSON"></div><h3 id="toJSON" class="notranslate">toJSON</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Renvoie la représentation au format JSON de l'objet, renvoie généralement l'ensemble des propriétés lisibles définies par l'objet</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Renvoie la représentation au format JSON de l'objet, renvoie généralement une collection de propriétés lisibles définies par l'objet</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value Redis.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paramètres d'appel&nbsp;:</font></font></p>
 <ul>
-<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Chaîne, inutilisée</font></font></li>
+<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Chaîne, non utilisée</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retourner le résultat&nbsp;:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">résultat de retour&nbsp;:</font></font></p>
 <ul>
-<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, renvoie une valeur contenant du JSON sérialisable</font></font></li>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, qui renvoie une valeur sérialisable JSON</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Soutenez-nous</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip341079"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip341079" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cliquez pour revenir en haut de la page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Soutenez-nous</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

@@ -65,6 +65,7 @@
 <li><a href="zlib.md.html" class="notranslate">zlib</a></li>
 </ul>
  </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">內置對象</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../object/ifs/blskey.md.html" class="notranslate">BlsKey</a></li>
 <li><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a></li>
 <li><a href="../../object/ifs/bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
 <li><a href="../../object/ifs/chain.md.html" class="notranslate">Chain</a></li>
@@ -74,6 +75,8 @@
 <li><a href="../../object/ifs/dbconnection.md.html" class="notranslate">DbConnection</a></li>
 <li><a href="../../object/ifs/dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
 <li><a href="../../object/ifs/digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="../../object/ifs/eckey.md.html" class="notranslate">ECKey</a></li>
+<li><a href="../../object/ifs/ed25519key.md.html" class="notranslate">Ed25519Key</a></li>
 <li><a href="../../object/ifs/event.md.html" class="notranslate">Event</a></li>
 <li><a href="../../object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a></li>
 <li><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a></li>
@@ -216,6 +219,16 @@
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>PKey crypto.PKey;
 </code></pre>
 <hr>
+<div name="ECKey" data-unique="ECKey"></div><h3 id="ECKey" class="notranslate">ECKey</h3>
+<p><strong><a href="../../object/ifs/eckey.md.html" class="notranslate">ECKey</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">構造函數，參見</font></font><a href="../../object/ifs/eckey.md.html" class="notranslate">ECKey</a></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>ECKey crypto.ECKey;
+</code></pre>
+<hr>
+<div name="BlsKey" data-unique="BlsKey"></div><h3 id="BlsKey" class="notranslate">BlsKey</h3>
+<p><strong><a href="../../object/ifs/blskey.md.html" class="notranslate">BlsKey</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">構造函數，參見</font></font><a href="../../object/ifs/blskey.md.html" class="notranslate">BlsKey</a></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>BlsKey crypto.BlsKey;
+</code></pre>
+<hr>
 <div name="X509Cert" data-unique="X509Cert"></div><h3 id="X509Cert" class="notranslate">X509Cert</h3>
 <p><strong><a href="../../object/ifs/x509cert.md.html" class="notranslate">X509Cert</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">構造函數，參見</font></font><a href="../../object/ifs/x509cert.md.html" class="notranslate">X509Cert</a></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>X509Cert crypto.X509Cert;
@@ -261,7 +274,7 @@
 </ul>
 <hr>
 <div name="loadCert" data-unique="loadCert"></div><h3 id="loadCert" class="notranslate">loadCert</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">加載一個CRT/PEM/DER/TXT 格式的證書，可多次調用</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">加載一個CRT/PEM/DER 格式的證書，可多次調用</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> X509Cert crypto.loadCert(<span class="hljs-built_in">String</span> filename);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">調用參數:</font></font></p>
@@ -272,7 +285,6 @@
 <ul>
 <li><a href="../../object/ifs/x509cert.md.html" class="notranslate">X509Cert</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回包含證書的對象</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">loadFile 加載mozilla 的certdata,txt， 可於</font></font><a href="http://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">http://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下載使用</font></font></p>
 <hr>
 <div name="loadCrl" data-unique="loadCrl"></div><h3 id="loadCrl" class="notranslate">loadCrl</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">加載一個PEM/DER 格式的撤銷證書，可多次調用</font></font></strong></p>
@@ -655,4 +667,4 @@
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定填充模式為NOPADDING</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto.NOPADDING = <span class="hljs-number">4</span>;
 </code></pre>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip967034"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip967034" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

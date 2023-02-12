@@ -65,6 +65,7 @@
 <li><a href=../../module/ifs/zlib.md.html class ="notranslate">zlib</a></li>
 </ul>
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_object" aria-controls="collapse_object"> 内置对象 </a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby=headingOne><div class=panel-body> <ul>
+<li><a href=blskey.md.html class ="notranslate">BlsKey</a></li>
 <li class="active"><a href=buffer.md.html class ="notranslate">Buffer</a></li>
 <li><a href=bufferedstream.md.html class ="notranslate">BufferedStream</a></li>
 <li><a href=chain.md.html class ="notranslate">Chain</a></li>
@@ -74,6 +75,8 @@
 <li><a href=dbconnection.md.html class ="notranslate">DbConnection</a></li>
 <li><a href=dgramsocket.md.html class ="notranslate">DgramSocket</a></li>
 <li><a href=digest.md.html class ="notranslate">Digest</a></li>
+<li><a href=eckey.md.html class ="notranslate">ECKey</a></li>
+<li><a href=ed25519key.md.html class ="notranslate">Ed25519Key</a></li>
 <li><a href=event.md.html class ="notranslate">Event</a></li>
 <li><a href=eventemitter.md.html class ="notranslate">EventEmitter</a></li>
 <li><a href=fswatcher.md.html class ="notranslate">FSWatcher</a></li>
@@ -206,178 +209,129 @@
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> buf = <span class="hljs-keyword">new</span> Buffer();
 </code></pre>
 <h2 id="继承关系">继承关系</h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="190.0" height="1552.0" viewbox="0 0 190 1552" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
-    <desc >
-    #lineWidth: 1.5
-    #font: Helvetica,sans-Serif
-    #fontSize: 10
-    #leading: 1.6
-    #.this: fill=lightgray
-    #.class: fill=white
-
-    [&lt;class&gt;object|toString();toJSON()]
-    [&lt;this&gt;Buffer|new Buffer()|operator[];@iterator()|Buffer|isBuffer();from();concat();alloc();allocUnsafe();allocUnsafeSlow();byteLength();compare();isEncoding()|length;byteOffset;buffer|resize();append();write();fill();indexOf();compare();copy();set();readUInt8();readUInt16LE();readUInt16BE();readUInt32LE();readUInt32BE();readUIntLE();readUIntBE();readInt64LE();readInt64BE();readInt8();readInt16LE();readInt16BE();readInt32LE();readInt32BE();readIntLE();readIntBE();writeInt64LE();writeInt64BE();readFloatLE();readFloatBE();readDoubleLE();readDoubleBE();writeUInt8();writeUInt16LE();writeUInt16BE();writeUInt32LE();writeUInt32BE();writeUIntLE();writeUIntBE();writeInt8();writeInt16LE();writeInt16BE();writeInt32LE();writeInt32BE();writeIntLE();writeIntBE();writeFloatLE();writeFloatBE();writeDoubleLE();writeDoubleBE();slice();join();reverse();equals();hex();base32();base58();base64();keys();values();entries();forEach();toArray();toString()]
-
-    [object] &lt;:- [Buffer]
-    </desc>
-    <g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="10pt" font-family="Helvetica,sans-Serif" font-weight="normal" font-style="normal">
-        <g font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="bold" font-style="normal" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
-            <g stroke="transparent" fill="transparent">
-                <rect x="0.0" y="0.0" height="1552.0" width="190.0" stroke="none"></rect>
-            </g>
-            <g transform="translate(8, 8)" fill="#33322E">
-                <g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal">
-                    <path d="M67.0 93.3 L67 100 L67 120 L67.0 120.0 " fill="none"></path>
-                    <path d="M72.3 93.3 L67.0 93.3 L61.7 93.3 L67.0 80.0 Z"></path>
-                    <g data-name="Buffer">
-                        <g fill="lightgray" stroke="#33322E" data-name="Buffer">
-                            <rect x="0.0" y="120.0" height="1376.0" width="134.0" data-name="Buffer"></rect>
-                            <path d="M0.0 152.0 L134.0 152.0" fill="none" data-name="Buffer"></path>
-                            <path d="M0.0 184.0 L134.0 184.0" fill="none" data-name="Buffer"></path>
-                            <path d="M0.0 232.0 L134.0 232.0" fill="none" data-name="Buffer"></path>
-                            <path d="M0.0 264.0 L134.0 264.0" fill="none" data-name="Buffer"></path>
-                            <path d="M0.0 424.0 L134.0 424.0" fill="none" data-name="Buffer"></path>
-                            <path d="M0.0 488.0 L134.0 488.0" fill="none" data-name="Buffer"></path>
-                        </g>
-                        <g transform="translate(0, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Buffer">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Buffer">
-                                <text x="59.0" y="13.0" stroke="none" text-anchor="middle" data-name="Buffer">Buffer</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 152)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Buffer">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Buffer">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Buffer">new Buffer()</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 184)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Buffer">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Buffer">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Buffer">operator[]</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="Buffer">@iterator()</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 232)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Buffer">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Buffer">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Buffer">Buffer</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 264)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Buffer">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Buffer">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Buffer">isBuffer()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="Buffer">from()</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="Buffer">concat()</text>
-                                <text x="0.0" y="61.0" stroke="none" data-name="Buffer">alloc()</text>
-                                <text x="0.0" y="77.0" stroke="none" data-name="Buffer">allocUnsafe()</text>
-                                <text x="0.0" y="93.0" stroke="none" data-name="Buffer">allocUnsafeSlow()</text>
-                                <text x="0.0" y="109.0" stroke="none" data-name="Buffer">byteLength()</text>
-                                <text x="0.0" y="125.0" stroke="none" data-name="Buffer">compare()</text>
-                                <text x="0.0" y="141.0" stroke="none" data-name="Buffer">isEncoding()</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 424)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Buffer">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Buffer">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Buffer">length</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="Buffer">byteOffset</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="Buffer">buffer</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 488)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Buffer">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Buffer">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Buffer">resize()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="Buffer">append()</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="Buffer">write()</text>
-                                <text x="0.0" y="61.0" stroke="none" data-name="Buffer">fill()</text>
-                                <text x="0.0" y="77.0" stroke="none" data-name="Buffer">indexOf()</text>
-                                <text x="0.0" y="93.0" stroke="none" data-name="Buffer">compare()</text>
-                                <text x="0.0" y="109.0" stroke="none" data-name="Buffer">copy()</text>
-                                <text x="0.0" y="125.0" stroke="none" data-name="Buffer">set()</text>
-                                <text x="0.0" y="141.0" stroke="none" data-name="Buffer">readUInt8()</text>
-                                <text x="0.0" y="157.0" stroke="none" data-name="Buffer">readUInt16LE()</text>
-                                <text x="0.0" y="173.0" stroke="none" data-name="Buffer">readUInt16BE()</text>
-                                <text x="0.0" y="189.0" stroke="none" data-name="Buffer">readUInt32LE()</text>
-                                <text x="0.0" y="205.0" stroke="none" data-name="Buffer">readUInt32BE()</text>
-                                <text x="0.0" y="221.0" stroke="none" data-name="Buffer">readUIntLE()</text>
-                                <text x="0.0" y="237.0" stroke="none" data-name="Buffer">readUIntBE()</text>
-                                <text x="0.0" y="253.0" stroke="none" data-name="Buffer">readInt64LE()</text>
-                                <text x="0.0" y="269.0" stroke="none" data-name="Buffer">readInt64BE()</text>
-                                <text x="0.0" y="285.0" stroke="none" data-name="Buffer">readInt8()</text>
-                                <text x="0.0" y="301.0" stroke="none" data-name="Buffer">readInt16LE()</text>
-                                <text x="0.0" y="317.0" stroke="none" data-name="Buffer">readInt16BE()</text>
-                                <text x="0.0" y="333.0" stroke="none" data-name="Buffer">readInt32LE()</text>
-                                <text x="0.0" y="349.0" stroke="none" data-name="Buffer">readInt32BE()</text>
-                                <text x="0.0" y="365.0" stroke="none" data-name="Buffer">readIntLE()</text>
-                                <text x="0.0" y="381.0" stroke="none" data-name="Buffer">readIntBE()</text>
-                                <text x="0.0" y="397.0" stroke="none" data-name="Buffer">writeInt64LE()</text>
-                                <text x="0.0" y="413.0" stroke="none" data-name="Buffer">writeInt64BE()</text>
-                                <text x="0.0" y="429.0" stroke="none" data-name="Buffer">readFloatLE()</text>
-                                <text x="0.0" y="445.0" stroke="none" data-name="Buffer">readFloatBE()</text>
-                                <text x="0.0" y="461.0" stroke="none" data-name="Buffer">readDoubleLE()</text>
-                                <text x="0.0" y="477.0" stroke="none" data-name="Buffer">readDoubleBE()</text>
-                                <text x="0.0" y="493.0" stroke="none" data-name="Buffer">writeUInt8()</text>
-                                <text x="0.0" y="509.0" stroke="none" data-name="Buffer">writeUInt16LE()</text>
-                                <text x="0.0" y="525.0" stroke="none" data-name="Buffer">writeUInt16BE()</text>
-                                <text x="0.0" y="541.0" stroke="none" data-name="Buffer">writeUInt32LE()</text>
-                                <text x="0.0" y="557.0" stroke="none" data-name="Buffer">writeUInt32BE()</text>
-                                <text x="0.0" y="573.0" stroke="none" data-name="Buffer">writeUIntLE()</text>
-                                <text x="0.0" y="589.0" stroke="none" data-name="Buffer">writeUIntBE()</text>
-                                <text x="0.0" y="605.0" stroke="none" data-name="Buffer">writeInt8()</text>
-                                <text x="0.0" y="621.0" stroke="none" data-name="Buffer">writeInt16LE()</text>
-                                <text x="0.0" y="637.0" stroke="none" data-name="Buffer">writeInt16BE()</text>
-                                <text x="0.0" y="653.0" stroke="none" data-name="Buffer">writeInt32LE()</text>
-                                <text x="0.0" y="669.0" stroke="none" data-name="Buffer">writeInt32BE()</text>
-                                <text x="0.0" y="685.0" stroke="none" data-name="Buffer">writeIntLE()</text>
-                                <text x="0.0" y="701.0" stroke="none" data-name="Buffer">writeIntBE()</text>
-                                <text x="0.0" y="717.0" stroke="none" data-name="Buffer">writeFloatLE()</text>
-                                <text x="0.0" y="733.0" stroke="none" data-name="Buffer">writeFloatBE()</text>
-                                <text x="0.0" y="749.0" stroke="none" data-name="Buffer">writeDoubleLE()</text>
-                                <text x="0.0" y="765.0" stroke="none" data-name="Buffer">writeDoubleBE()</text>
-                                <text x="0.0" y="781.0" stroke="none" data-name="Buffer">slice()</text>
-                                <text x="0.0" y="797.0" stroke="none" data-name="Buffer">join()</text>
-                                <text x="0.0" y="813.0" stroke="none" data-name="Buffer">reverse()</text>
-                                <text x="0.0" y="829.0" stroke="none" data-name="Buffer">equals()</text>
-                                <text x="0.0" y="845.0" stroke="none" data-name="Buffer">hex()</text>
-                                <text x="0.0" y="861.0" stroke="none" data-name="Buffer">base32()</text>
-                                <text x="0.0" y="877.0" stroke="none" data-name="Buffer">base58()</text>
-                                <text x="0.0" y="893.0" stroke="none" data-name="Buffer">base64()</text>
-                                <text x="0.0" y="909.0" stroke="none" data-name="Buffer">keys()</text>
-                                <text x="0.0" y="925.0" stroke="none" data-name="Buffer">values()</text>
-                                <text x="0.0" y="941.0" stroke="none" data-name="Buffer">entries()</text>
-                                <text x="0.0" y="957.0" stroke="none" data-name="Buffer">forEach()</text>
-                                <text x="0.0" y="973.0" stroke="none" data-name="Buffer">toArray()</text>
-                                <text x="0.0" y="989.0" stroke="none" data-name="Buffer">toString()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="object">
-                        <g fill="white" stroke="#33322E" data-name="object">
-                            <rect x="29.0" y="0.0" height="80.0" width="77.0" data-name="object"></rect>
-                            <path d="M29.0 32.0 L106.0 32.0" fill="none" data-name="object"></path>
-                        </g>
-                        <g transform="translate(29, 0)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="object">
-                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="object">object</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(29, 32)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="object">
-                                <text x="0.0" y="13.0" stroke="none" data-name="object">toString()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="object">toJSON()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg></div>
+<div class="dot notranslate">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="105pt" height="1102pt"
+ viewBox="0.00 0.00 104.56 1102.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 1098)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-1098 100.555,-1098 100.555,4 -4,4"/>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href=object.md.html xlink:title="object">
+<polygon fill="#ffffff" stroke="#000000" points="19.446,-1041.5 19.446,-1093.5 77.109,-1093.5 77.109,-1041.5 19.446,-1041.5"/>
+<text text-anchor="middle" x="48.2775" y="-1080.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="19.446,-1073.5 77.109,-1073.5 "/>
+<text text-anchor="start" x="27.446" y="-1060.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="27.446" y="-1048.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+</a>
+</g>
+</g>
+<!-- Buffer -->
+<g id="me" class="node">
+<title>Buffer</title>
+<g id="a_me"><a xlink:title="Buffer">
+<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-1004.5 96.555,-1004.5 96.555,-.5 0,-.5"/>
+<text text-anchor="middle" x="48.2775" y="-991.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Buffer</text>
+<polyline fill="none" stroke="#000000" points="0,-984.5 96.555,-984.5 "/>
+<text text-anchor="start" x="8" y="-971.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new Buffer()</text>
+<polyline fill="none" stroke="#000000" points="0,-964.5 96.555,-964.5 "/>
+<text text-anchor="start" x="8" y="-951.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">operator[]</text>
+<text text-anchor="start" x="8" y="-939.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">iterator()</text>
+<polyline fill="none" stroke="#000000" points="0,-932.5 96.555,-932.5 "/>
+<text text-anchor="start" x="8" y="-919.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Buffer</text>
+<polyline fill="none" stroke="#000000" points="0,-912.5 96.555,-912.5 "/>
+<text text-anchor="start" x="8" y="-899.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isBuffer()</text>
+<text text-anchor="start" x="8" y="-887.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">from()</text>
+<text text-anchor="start" x="8" y="-875.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">concat()</text>
+<text text-anchor="start" x="8" y="-863.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">alloc()</text>
+<text text-anchor="start" x="8" y="-851.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">allocUnsafe()</text>
+<text text-anchor="start" x="8" y="-839.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">allocUnsafeSlow()</text>
+<text text-anchor="start" x="8" y="-827.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">byteLength()</text>
+<text text-anchor="start" x="8" y="-815.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">compare()</text>
+<text text-anchor="start" x="8" y="-803.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isEncoding()</text>
+<polyline fill="none" stroke="#000000" points="0,-796.5 96.555,-796.5 "/>
+<text text-anchor="start" x="8" y="-783.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">length</text>
+<text text-anchor="start" x="8" y="-771.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">byteOffset</text>
+<text text-anchor="start" x="8" y="-759.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">buffer</text>
+<polyline fill="none" stroke="#000000" points="0,-752.5 96.555,-752.5 "/>
+<text text-anchor="start" x="8" y="-739.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">resize()</text>
+<text text-anchor="start" x="8" y="-727.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">append()</text>
+<text text-anchor="start" x="8" y="-715.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">write()</text>
+<text text-anchor="start" x="8" y="-703.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">fill()</text>
+<text text-anchor="start" x="8" y="-691.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">indexOf()</text>
+<text text-anchor="start" x="8" y="-679.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">compare()</text>
+<text text-anchor="start" x="8" y="-667.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">copy()</text>
+<text text-anchor="start" x="8" y="-655.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">set()</text>
+<text text-anchor="start" x="8" y="-643.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readUInt8()</text>
+<text text-anchor="start" x="8" y="-631.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readUInt16LE()</text>
+<text text-anchor="start" x="8" y="-619.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readUInt16BE()</text>
+<text text-anchor="start" x="8" y="-607.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readUInt32LE()</text>
+<text text-anchor="start" x="8" y="-595.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readUInt32BE()</text>
+<text text-anchor="start" x="8" y="-583.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readUIntLE()</text>
+<text text-anchor="start" x="8" y="-571.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readUIntBE()</text>
+<text text-anchor="start" x="8" y="-559.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readInt64LE()</text>
+<text text-anchor="start" x="8" y="-547.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readInt64BE()</text>
+<text text-anchor="start" x="8" y="-535.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readInt8()</text>
+<text text-anchor="start" x="8" y="-523.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readInt16LE()</text>
+<text text-anchor="start" x="8" y="-511.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readInt16BE()</text>
+<text text-anchor="start" x="8" y="-499.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readInt32LE()</text>
+<text text-anchor="start" x="8" y="-487.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readInt32BE()</text>
+<text text-anchor="start" x="8" y="-475.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readIntLE()</text>
+<text text-anchor="start" x="8" y="-463.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readIntBE()</text>
+<text text-anchor="start" x="8" y="-451.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeInt64LE()</text>
+<text text-anchor="start" x="8" y="-439.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeInt64BE()</text>
+<text text-anchor="start" x="8" y="-427.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readFloatLE()</text>
+<text text-anchor="start" x="8" y="-415.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readFloatBE()</text>
+<text text-anchor="start" x="8" y="-403.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readDoubleLE()</text>
+<text text-anchor="start" x="8" y="-391.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readDoubleBE()</text>
+<text text-anchor="start" x="8" y="-379.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeUInt8()</text>
+<text text-anchor="start" x="8" y="-367.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeUInt16LE()</text>
+<text text-anchor="start" x="8" y="-355.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeUInt16BE()</text>
+<text text-anchor="start" x="8" y="-343.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeUInt32LE()</text>
+<text text-anchor="start" x="8" y="-331.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeUInt32BE()</text>
+<text text-anchor="start" x="8" y="-319.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeUIntLE()</text>
+<text text-anchor="start" x="8" y="-307.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeUIntBE()</text>
+<text text-anchor="start" x="8" y="-295.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeInt8()</text>
+<text text-anchor="start" x="8" y="-283.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeInt16LE()</text>
+<text text-anchor="start" x="8" y="-271.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeInt16BE()</text>
+<text text-anchor="start" x="8" y="-259.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeInt32LE()</text>
+<text text-anchor="start" x="8" y="-247.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeInt32BE()</text>
+<text text-anchor="start" x="8" y="-235.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeIntLE()</text>
+<text text-anchor="start" x="8" y="-223.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeIntBE()</text>
+<text text-anchor="start" x="8" y="-211.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeFloatLE()</text>
+<text text-anchor="start" x="8" y="-199.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeFloatBE()</text>
+<text text-anchor="start" x="8" y="-187.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeDoubleLE()</text>
+<text text-anchor="start" x="8" y="-175.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeDoubleBE()</text>
+<text text-anchor="start" x="8" y="-163.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">slice()</text>
+<text text-anchor="start" x="8" y="-151.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">join()</text>
+<text text-anchor="start" x="8" y="-139.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">reverse()</text>
+<text text-anchor="start" x="8" y="-127.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
+<text text-anchor="start" x="8" y="-115.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">hex()</text>
+<text text-anchor="start" x="8" y="-103.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">base32()</text>
+<text text-anchor="start" x="8" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">base58()</text>
+<text text-anchor="start" x="8" y="-79.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">base64()</text>
+<text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">keys()</text>
+<text text-anchor="start" x="8" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">values()</text>
+<text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">entries()</text>
+<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">forEach()</text>
+<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toArray()</text>
+<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;Buffer -->
+<g id="edge1" class="edge">
+<title>object&#45;&gt;Buffer</title>
+<path fill="none" stroke="#000000" d="M48.2775,-1031.1404C48.2775,-1023.3763 48.2775,-1014.5342 48.2775,-1004.7781"/>
+<polygon fill="#000000" stroke="#000000" points="44.7776,-1031.382 48.2775,-1041.382 51.7776,-1031.3821 44.7776,-1031.382"/>
+</g>
+</g>
+</svg>
+</div>
 
 <h2 id="构造函数">构造函数</h2>
 <h3 id="Buffer" class ="notranslate">Buffer</h3>
@@ -1003,7 +957,7 @@
 <hr>
 <h3 id="readUInt32LE" class ="notranslate">readUInt32LE</h3>
 <p><strong>从缓存对象读取一个 32 位无符号整型数值，以低字节序的存储方式</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Long Buffer.readUInt32LE(Integer offset = <span class="hljs-number">0</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Number</span> Buffer.readUInt32LE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -1011,12 +965,12 @@
 </ul>
 <p>返回结果:</p>
 <ul>
-<li><span class="notranslate">Long</span>, 返回读取的整型数值</li>
+<li><span class="notranslate">Number</span>, 返回读取的整型数值</li>
 </ul>
 <hr>
 <h3 id="readUInt32BE" class ="notranslate">readUInt32BE</h3>
 <p><strong>从缓存对象读取一个 32 位无符号整型数值，以高字节序的存储方式</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Long Buffer.readUInt32BE(Integer offset = <span class="hljs-number">0</span>);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Number</span> Buffer.readUInt32BE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -1024,39 +978,39 @@
 </ul>
 <p>返回结果:</p>
 <ul>
-<li><span class="notranslate">Long</span>, 返回读取的整型数值</li>
+<li><span class="notranslate">Number</span>, 返回读取的整型数值</li>
 </ul>
 <hr>
 <h3 id="readUIntLE" class ="notranslate">readUIntLE</h3>
-<p><strong>从缓存对象读取一个无符号整型数值，最大支持 64 位，以低字节序的存储方式</strong></p>
+<p><strong>从缓存对象读取一个无符号整型数值，最大支持 48 位，以低字节序的存储方式</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Long Buffer.readUIntLE(Integer offset = <span class="hljs-number">0</span>,
-    Integer byteLength = <span class="hljs-number">8</span>);
+2</div><span class="hljs-built_in">Number</span> Buffer.readUIntLE(Integer offset = <span class="hljs-number">0</span>,
+    Integer byteLength = <span class="hljs-number">6</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">offset</span>: Integer, 指定读取的起始位置，缺省为 0</li>
-<li><span class="notranslate">byteLength</span>: Integer, 指定读取的字节数，缺省 8 个字节</li>
+<li><span class="notranslate">byteLength</span>: Integer, 指定读取的字节数，缺省 6 个字节</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li><span class="notranslate">Long</span>, 返回读取的整型数值</li>
+<li><span class="notranslate">Number</span>, 返回读取的整型数值</li>
 </ul>
 <hr>
 <h3 id="readUIntBE" class ="notranslate">readUIntBE</h3>
-<p><strong>从缓存对象读取一个无符号整型数值，最大支持 64 位，以高字节序的存储方式</strong></p>
+<p><strong>从缓存对象读取一个无符号整型数值，最大支持 48 位，以高字节序的存储方式</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Long Buffer.readUIntBE(Integer offset = <span class="hljs-number">0</span>,
-    Integer byteLength = <span class="hljs-number">8</span>);
+2</div><span class="hljs-built_in">Number</span> Buffer.readUIntBE(Integer offset = <span class="hljs-number">0</span>,
+    Integer byteLength = <span class="hljs-number">6</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">offset</span>: Integer, 指定读取的起始位置，缺省为 0</li>
-<li><span class="notranslate">byteLength</span>: Integer, 指定读取的字节数，缺省 8 个字节</li>
+<li><span class="notranslate">byteLength</span>: Integer, 指定读取的字节数，缺省 6 个字节</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li><span class="notranslate">Long</span>, 返回读取的整型数值</li>
+<li><span class="notranslate">Number</span>, 返回读取的整型数值</li>
 </ul>
 <hr>
 <h3 id="readInt64LE" class ="notranslate">readInt64LE</h3>
@@ -1151,35 +1105,35 @@
 </ul>
 <hr>
 <h3 id="readIntLE" class ="notranslate">readIntLE</h3>
-<p><strong>从缓存对象读取一个整型数值，最大支持 64 位，以低字节序的存储方式</strong></p>
+<p><strong>从缓存对象读取一个整型数值，最大支持 48 位，以低字节序的存储方式</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Long Buffer.readIntLE(Integer offset = <span class="hljs-number">0</span>,
-    Integer byteLength = <span class="hljs-number">8</span>);
+2</div><span class="hljs-built_in">Number</span> Buffer.readIntLE(Integer offset = <span class="hljs-number">0</span>,
+    Integer byteLength = <span class="hljs-number">6</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">offset</span>: Integer, 指定读取的起始位置，缺省为 0</li>
-<li><span class="notranslate">byteLength</span>: Integer, 指定读取的字节数，缺省 8 个字节</li>
+<li><span class="notranslate">byteLength</span>: Integer, 指定读取的字节数，缺省 6 个字节</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li><span class="notranslate">Long</span>, 返回读取的整型数值</li>
+<li><span class="notranslate">Number</span>, 返回读取的整型数值</li>
 </ul>
 <hr>
 <h3 id="readIntBE" class ="notranslate">readIntBE</h3>
-<p><strong>从缓存对象读取一个整型数值，最大支持 64 位，以高字节序的存储方式</strong></p>
+<p><strong>从缓存对象读取一个整型数值，最大支持 48 位，以高字节序的存储方式</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Long Buffer.readIntBE(Integer offset = <span class="hljs-number">0</span>,
-    Integer byteLength = <span class="hljs-number">8</span>);
+2</div><span class="hljs-built_in">Number</span> Buffer.readIntBE(Integer offset = <span class="hljs-number">0</span>,
+    Integer byteLength = <span class="hljs-number">6</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">offset</span>: Integer, 指定读取的起始位置，缺省为 0</li>
-<li><span class="notranslate">byteLength</span>: Integer, 指定读取的字节数，缺省 8 个字节</li>
+<li><span class="notranslate">byteLength</span>: Integer, 指定读取的字节数，缺省 6 个字节</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li><span class="notranslate">Long</span>, 返回读取的整型数值</li>
+<li><span class="notranslate">Number</span>, 返回读取的整型数值</li>
 </ul>
 <hr>
 <h3 id="writeInt64LE" class ="notranslate">writeInt64LE</h3>
@@ -1347,18 +1301,18 @@
 </ul>
 <hr>
 <h3 id="writeUIntLE" class ="notranslate">writeUIntLE</h3>
-<p><strong>向缓存对象写入一个无符号整型数值，最大支持 64 位，以低字节序的存储方式</strong></p>
+<p><strong>向缓存对象写入一个无符号整型数值，最大支持 48 位，以低字节序的存储方式</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div>Integer Buffer.writeUIntLE(Long value,
     Integer offset = <span class="hljs-number">0</span>,
-    Integer byteLength = <span class="hljs-number">8</span>);
+    Integer byteLength = <span class="hljs-number">6</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">value</span>: Long, 指定写入的数值</li>
 <li><span class="notranslate">offset</span>: Integer, 指定写入的起始位置</li>
-<li><span class="notranslate">byteLength</span>: Integer, 指定写入的字节数，缺省 8 个字节</li>
+<li><span class="notranslate">byteLength</span>: Integer, 指定写入的字节数，缺省 6 个字节</li>
 </ul>
 <p>返回结果:</p>
 <ul>
@@ -1366,18 +1320,18 @@
 </ul>
 <hr>
 <h3 id="writeUIntBE" class ="notranslate">writeUIntBE</h3>
-<p><strong>向缓存对象写入一个无符号整型数值，最大支持 64 位，以高字节序的存储方式</strong></p>
+<p><strong>向缓存对象写入一个无符号整型数值，最大支持 48 位，以高字节序的存储方式</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div>Integer Buffer.writeUIntBE(Long value,
     Integer offset = <span class="hljs-number">0</span>,
-    Integer byteLength = <span class="hljs-number">8</span>);
+    Integer byteLength = <span class="hljs-number">6</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">value</span>: Long, 指定写入的数值</li>
 <li><span class="notranslate">offset</span>: Integer, 指定写入的起始位置</li>
-<li><span class="notranslate">byteLength</span>: Integer, 指定写入的字节数，缺省 8 个字节</li>
+<li><span class="notranslate">byteLength</span>: Integer, 指定写入的字节数，缺省 6 个字节</li>
 </ul>
 <p>返回结果:</p>
 <ul>
@@ -1465,18 +1419,18 @@
 </ul>
 <hr>
 <h3 id="writeIntLE" class ="notranslate">writeIntLE</h3>
-<p><strong>向缓存对象写入一个整型数值，最大支持 64 位，以低字节序的存储方式</strong></p>
+<p><strong>向缓存对象写入一个整型数值，最大支持 48 位，以低字节序的存储方式</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div>Integer Buffer.writeIntLE(Long value,
     Integer offset = <span class="hljs-number">0</span>,
-    Integer byteLength = <span class="hljs-number">8</span>);
+    Integer byteLength = <span class="hljs-number">6</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">value</span>: Long, 指定写入的数值</li>
 <li><span class="notranslate">offset</span>: Integer, 指定写入的起始位置</li>
-<li><span class="notranslate">byteLength</span>: Integer, 指定写入的字节数，缺省 8 个字节</li>
+<li><span class="notranslate">byteLength</span>: Integer, 指定写入的字节数，缺省 6 个字节</li>
 </ul>
 <p>返回结果:</p>
 <ul>
@@ -1484,18 +1438,18 @@
 </ul>
 <hr>
 <h3 id="writeIntBE" class ="notranslate">writeIntBE</h3>
-<p><strong>向缓存对象写入一个整型数值，最大支持 64 位，以高字节序的存储方式</strong></p>
+<p><strong>向缓存对象写入一个整型数值，最大支持 48 位，以高字节序的存储方式</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div>Integer Buffer.writeIntBE(Long value,
     Integer offset = <span class="hljs-number">0</span>,
-    Integer byteLength = <span class="hljs-number">8</span>);
+    Integer byteLength = <span class="hljs-number">6</span>);
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">value</span>: Long, 指定写入的数值</li>
 <li><span class="notranslate">offset</span>: Integer, 指定写入的起始位置</li>
-<li><span class="notranslate">byteLength</span>: Integer, 指定写入的字节数，缺省 8 个字节</li>
+<li><span class="notranslate">byteLength</span>: Integer, 指定写入的字节数，缺省 6 个字节</li>
 </ul>
 <p>返回结果:</p>
 <ul>
@@ -1775,4 +1729,4 @@
 <ul>
 <li><span class="notranslate">Value</span>, 返回包含可 JSON 序列化的值</li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

@@ -8,18 +8,15 @@ var buf = new Buffer();
 ```
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<class>object|toString();toJSON()]
-[<this>Buffer|new Buffer()|operator\[\];@iterator()|Buffer|isBuffer();from();concat();alloc();allocUnsafe();allocUnsafeSlow();byteLength();compare();isEncoding()|length;byteOffset;buffer|resize();append();write();fill();indexOf();compare();copy();set();readUInt8();readUInt16LE();readUInt16BE();readUInt32LE();readUInt32BE();readUIntLE();readUIntBE();readInt64LE();readInt64BE();readInt8();readInt16LE();readInt16BE();readInt32LE();readInt32BE();readIntLE();readIntBE();writeInt64LE();writeInt64BE();readFloatLE();readFloatBE();readDoubleLE();readDoubleBE();writeUInt8();writeUInt16LE();writeUInt16BE();writeUInt32LE();writeUInt32BE();writeUIntLE();writeUIntBE();writeInt8();writeInt16LE();writeInt16BE();writeInt32LE();writeInt32BE();writeIntLE();writeIntBE();writeFloatLE();writeFloatBE();writeDoubleLE();writeDoubleBE();slice();join();reverse();equals();hex();base32();base58();base64();keys();values();entries();forEach();toArray();toString()]
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    Buffer [tooltip="Buffer", fillcolor="lightgray", id="me", label="{Buffer|new Buffer()\l|operator[]\literator()\l|Buffer\l|isBuffer()\lfrom()\lconcat()\lalloc()\lallocUnsafe()\lallocUnsafeSlow()\lbyteLength()\lcompare()\lisEncoding()\l|length\lbyteOffset\lbuffer\l|resize()\lappend()\lwrite()\lfill()\lindexOf()\lcompare()\lcopy()\lset()\lreadUInt8()\lreadUInt16LE()\lreadUInt16BE()\lreadUInt32LE()\lreadUInt32BE()\lreadUIntLE()\lreadUIntBE()\lreadInt64LE()\lreadInt64BE()\lreadInt8()\lreadInt16LE()\lreadInt16BE()\lreadInt32LE()\lreadInt32BE()\lreadIntLE()\lreadIntBE()\lwriteInt64LE()\lwriteInt64BE()\lreadFloatLE()\lreadFloatBE()\lreadDoubleLE()\lreadDoubleBE()\lwriteUInt8()\lwriteUInt16LE()\lwriteUInt16BE()\lwriteUInt32LE()\lwriteUInt32BE()\lwriteUIntLE()\lwriteUIntBE()\lwriteInt8()\lwriteInt16LE()\lwriteInt16BE()\lwriteInt32LE()\lwriteInt32BE()\lwriteIntLE()\lwriteIntBE()\lwriteFloatLE()\lwriteFloatBE()\lwriteDoubleLE()\lwriteDoubleBE()\lslice()\ljoin()\lreverse()\lequals()\lhex()\lbase32()\lbase58()\lbase64()\lkeys()\lvalues()\lentries()\lforEach()\ltoArray()\ltoString()\l}"];
 
-[object] <:- [Buffer]
+    object -> Buffer [dir=back];
+}
 ```
 
 ## 构造函数
@@ -684,60 +681,60 @@ Integer Buffer.readUInt16BE(Integer offset = 0);
 **从缓存对象读取一个 32 位无符号整型数值，以低字节序的存储方式**
 
 ```JavaScript
-Long Buffer.readUInt32LE(Integer offset = 0);
+Number Buffer.readUInt32LE(Integer offset = 0);
 ```
 
 调用参数:
 * offset: Integer, 指定读取的起始位置，缺省为 0
 
 返回结果:
-* Long, 返回读取的整型数值
+* Number, 返回读取的整型数值
 
 --------------------------
 ### readUInt32BE
 **从缓存对象读取一个 32 位无符号整型数值，以高字节序的存储方式**
 
 ```JavaScript
-Long Buffer.readUInt32BE(Integer offset = 0);
+Number Buffer.readUInt32BE(Integer offset = 0);
 ```
 
 调用参数:
 * offset: Integer, 指定读取的起始位置，缺省为 0
 
 返回结果:
-* Long, 返回读取的整型数值
+* Number, 返回读取的整型数值
 
 --------------------------
 ### readUIntLE
-**从缓存对象读取一个无符号整型数值，最大支持 64 位，以低字节序的存储方式**
+**从缓存对象读取一个无符号整型数值，最大支持 48 位，以低字节序的存储方式**
 
 ```JavaScript
-Long Buffer.readUIntLE(Integer offset = 0,
-    Integer byteLength = 8);
+Number Buffer.readUIntLE(Integer offset = 0,
+    Integer byteLength = 6);
 ```
 
 调用参数:
 * offset: Integer, 指定读取的起始位置，缺省为 0
-* byteLength: Integer, 指定读取的字节数，缺省 8 个字节
+* byteLength: Integer, 指定读取的字节数，缺省 6 个字节
 
 返回结果:
-* Long, 返回读取的整型数值
+* Number, 返回读取的整型数值
 
 --------------------------
 ### readUIntBE
-**从缓存对象读取一个无符号整型数值，最大支持 64 位，以高字节序的存储方式**
+**从缓存对象读取一个无符号整型数值，最大支持 48 位，以高字节序的存储方式**
 
 ```JavaScript
-Long Buffer.readUIntBE(Integer offset = 0,
-    Integer byteLength = 8);
+Number Buffer.readUIntBE(Integer offset = 0,
+    Integer byteLength = 6);
 ```
 
 调用参数:
 * offset: Integer, 指定读取的起始位置，缺省为 0
-* byteLength: Integer, 指定读取的字节数，缺省 8 个字节
+* byteLength: Integer, 指定读取的字节数，缺省 6 个字节
 
 返回结果:
-* Long, 返回读取的整型数值
+* Number, 返回读取的整型数值
 
 --------------------------
 ### readInt64LE
@@ -839,35 +836,35 @@ Integer Buffer.readInt32BE(Integer offset = 0);
 
 --------------------------
 ### readIntLE
-**从缓存对象读取一个整型数值，最大支持 64 位，以低字节序的存储方式**
+**从缓存对象读取一个整型数值，最大支持 48 位，以低字节序的存储方式**
 
 ```JavaScript
-Long Buffer.readIntLE(Integer offset = 0,
-    Integer byteLength = 8);
+Number Buffer.readIntLE(Integer offset = 0,
+    Integer byteLength = 6);
 ```
 
 调用参数:
 * offset: Integer, 指定读取的起始位置，缺省为 0
-* byteLength: Integer, 指定读取的字节数，缺省 8 个字节
+* byteLength: Integer, 指定读取的字节数，缺省 6 个字节
 
 返回结果:
-* Long, 返回读取的整型数值
+* Number, 返回读取的整型数值
 
 --------------------------
 ### readIntBE
-**从缓存对象读取一个整型数值，最大支持 64 位，以高字节序的存储方式**
+**从缓存对象读取一个整型数值，最大支持 48 位，以高字节序的存储方式**
 
 ```JavaScript
-Long Buffer.readIntBE(Integer offset = 0,
-    Integer byteLength = 8);
+Number Buffer.readIntBE(Integer offset = 0,
+    Integer byteLength = 6);
 ```
 
 调用参数:
 * offset: Integer, 指定读取的起始位置，缺省为 0
-* byteLength: Integer, 指定读取的字节数，缺省 8 个字节
+* byteLength: Integer, 指定读取的字节数，缺省 6 个字节
 
 返回结果:
-* Long, 返回读取的整型数值
+* Number, 返回读取的整型数值
 
 --------------------------
 ### writeInt64LE
@@ -1039,36 +1036,36 @@ Integer Buffer.writeUInt32BE(Long value,
 
 --------------------------
 ### writeUIntLE
-**向缓存对象写入一个无符号整型数值，最大支持 64 位，以低字节序的存储方式**
+**向缓存对象写入一个无符号整型数值，最大支持 48 位，以低字节序的存储方式**
 
 ```JavaScript
 Integer Buffer.writeUIntLE(Long value,
     Integer offset = 0,
-    Integer byteLength = 8);
+    Integer byteLength = 6);
 ```
 
 调用参数:
 * value: Long, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
-* byteLength: Integer, 指定写入的字节数，缺省 8 个字节
+* byteLength: Integer, 指定写入的字节数，缺省 6 个字节
 
 返回结果:
 * Integer, offset 加上写入的字节数
 
 --------------------------
 ### writeUIntBE
-**向缓存对象写入一个无符号整型数值，最大支持 64 位，以高字节序的存储方式**
+**向缓存对象写入一个无符号整型数值，最大支持 48 位，以高字节序的存储方式**
 
 ```JavaScript
 Integer Buffer.writeUIntBE(Long value,
     Integer offset = 0,
-    Integer byteLength = 8);
+    Integer byteLength = 6);
 ```
 
 调用参数:
 * value: Long, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
-* byteLength: Integer, 指定写入的字节数，缺省 8 个字节
+* byteLength: Integer, 指定写入的字节数，缺省 6 个字节
 
 返回结果:
 * Integer, offset 加上写入的字节数
@@ -1155,36 +1152,36 @@ Integer Buffer.writeInt32BE(Integer value,
 
 --------------------------
 ### writeIntLE
-**向缓存对象写入一个整型数值，最大支持 64 位，以低字节序的存储方式**
+**向缓存对象写入一个整型数值，最大支持 48 位，以低字节序的存储方式**
 
 ```JavaScript
 Integer Buffer.writeIntLE(Long value,
     Integer offset = 0,
-    Integer byteLength = 8);
+    Integer byteLength = 6);
 ```
 
 调用参数:
 * value: Long, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
-* byteLength: Integer, 指定写入的字节数，缺省 8 个字节
+* byteLength: Integer, 指定写入的字节数，缺省 6 个字节
 
 返回结果:
 * Integer, offset 加上写入的字节数
 
 --------------------------
 ### writeIntBE
-**向缓存对象写入一个整型数值，最大支持 64 位，以高字节序的存储方式**
+**向缓存对象写入一个整型数值，最大支持 48 位，以高字节序的存储方式**
 
 ```JavaScript
 Integer Buffer.writeIntBE(Long value,
     Integer offset = 0,
-    Integer byteLength = 8);
+    Integer byteLength = 6);
 ```
 
 调用参数:
 * value: Long, 指定写入的数值
 * offset: Integer, 指定写入的起始位置
-* byteLength: Integer, 指定写入的字节数，缺省 8 个字节
+* byteLength: Integer, 指定写入的字节数，缺省 6 个字节
 
 返回结果:
 * Integer, offset 加上写入的字节数

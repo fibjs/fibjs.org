@@ -26,20 +26,17 @@ fs.watch('./tmp', {
 ```
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<class>object|toString();toJSON()]
-[<class>EventEmitter|new EventEmitter()|EventEmitter|defaultMaxListeners|on();addListener();prependListener();once();prependOnceListener();off();removeListener();removeAllListeners();setMaxListeners();getMaxListeners();listeners();listenerCount();eventNames();emit()]
-[<this>FSWatcher|onchange;onclose;onerror|close()]
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
+    FSWatcher [tooltip="FSWatcher", fillcolor="lightgray", id="me", label="{FSWatcher|onchange\lonclose\lonerror\l|close()\l}"];
 
-[object] <:- [EventEmitter]
-[EventEmitter] <:- [FSWatcher]
+    object -> EventEmitter [dir=back];
+    EventEmitter -> FSWatcher [dir=back];
+}
 ```
 
 ## 静态属性

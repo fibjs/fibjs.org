@@ -2,20 +2,17 @@
 系统服务管理对象
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<class>object|toString();toJSON()]
-[<class>EventEmitter|new EventEmitter()|EventEmitter|defaultMaxListeners|on();addListener();prependListener();once();prependOnceListener();off();removeListener();removeAllListeners();setMaxListeners();getMaxListeners();listeners();listenerCount();eventNames();emit()]
-[<this>Service|new Service()|install();remove();start();stop();restart();isInstalled();isRunning()|name;onstop;onpause;oncontinue|run()]
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
+    Service [tooltip="Service", fillcolor="lightgray", id="me", label="{Service|new Service()\l|install()\lremove()\lstart()\lstop()\lrestart()\lisInstalled()\lisRunning()\l|name\lonstop\lonpause\loncontinue\l|run()\l}"];
 
-[object] <:- [EventEmitter]
-[EventEmitter] <:- [Service]
+    object -> EventEmitter [dir=back];
+    EventEmitter -> Service [dir=back];
+}
 ```
 
 ## 构造函数

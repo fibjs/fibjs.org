@@ -8,7 +8,7 @@ case ${HOST_ARCH} in
 	x86_64|amd64) HOST_ARCH="x64";;
 	armv6) HOST_ARCH="armv6";;
 	armv7|armv7s|armv7l) HOST_ARCH="arm";;
-	aarch64) HOST_ARCH="arm64";;
+	aarch64|arm64) HOST_ARCH="arm64";;
 	mips|mipsel) HOST_ARCH="mips";;
 	mips64) HOST_ARCH="mips64";;
 	powerpc) HOST_ARCH="ppc";;

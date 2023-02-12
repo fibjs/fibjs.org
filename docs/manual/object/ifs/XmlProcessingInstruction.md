@@ -2,20 +2,17 @@
 XmlProcessingInstruction 对象表示 [xml](../../module/ifs/xml.md) 处理指令
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<class>object|toString();toJSON()]
-[<class>XmlNode|nodeType;nodeName;nodeValue;ownerDocument;parentNode;childNodes;firstChild;lastChild;previousSibling;nextSibling|hasChildNodes();normalize();cloneNode();lookupPrefix();lookupNamespaceURI();insertBefore();insertAfter();appendChild();replaceChild();removeChild()]
-[<this>XmlProcessingInstruction|target;data]
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    XmlNode [tooltip="XmlNode", URL="XmlNode.md", label="{XmlNode|nodeType\lnodeName\lnodeValue\lownerDocument\lparentNode\lchildNodes\lfirstChild\llastChild\lpreviousSibling\lnextSibling\l|hasChildNodes()\lnormalize()\lcloneNode()\llookupPrefix()\llookupNamespaceURI()\linsertBefore()\linsertAfter()\lappendChild()\lreplaceChild()\lremoveChild()\l}"];
+    XmlProcessingInstruction [tooltip="XmlProcessingInstruction", fillcolor="lightgray", id="me", label="{XmlProcessingInstruction|target\ldata\l}"];
 
-[object] <:- [XmlNode]
-[XmlNode] <:- [XmlProcessingInstruction]
+    object -> XmlNode [dir=back];
+    XmlNode -> XmlProcessingInstruction [dir=back];
+}
 ```
 
 ## 成员属性

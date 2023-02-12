@@ -4,20 +4,17 @@
 通过一个事件达到对一组纤程进行控制的目的（事件对象的状态为bool类型）
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<class>object|toString();toJSON()]
-[<class>Lock|new Lock()|acquire();release();count()]
-[<this>Event|new Event()|isSet();set();pulse();clear();wait()]
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    Lock [tooltip="Lock", URL="Lock.md", label="{Lock|new Lock()\l|acquire()\lrelease()\lcount()\l}"];
+    Event [tooltip="Event", fillcolor="lightgray", id="me", label="{Event|new Event()\l|isSet()\lset()\lpulse()\lclear()\lwait()\l}"];
 
-[object] <:- [Lock]
-[Lock] <:- [Event]
+    object -> Lock [dir=back];
+    Lock -> Event [dir=back];
+}
 ```
 
 ## 构造函数

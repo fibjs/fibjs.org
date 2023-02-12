@@ -65,6 +65,7 @@
 <li><a href=zlib.md.html class ="notranslate">zlib</a></li>
 </ul>
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_object" aria-controls="collapse_object"> 内置对象 </a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby=headingOne><div class=panel-body> <ul>
+<li><a href=../../object/ifs/blskey.md.html class ="notranslate">BlsKey</a></li>
 <li><a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a></li>
 <li><a href=../../object/ifs/bufferedstream.md.html class ="notranslate">BufferedStream</a></li>
 <li><a href=../../object/ifs/chain.md.html class ="notranslate">Chain</a></li>
@@ -74,6 +75,8 @@
 <li><a href=../../object/ifs/dbconnection.md.html class ="notranslate">DbConnection</a></li>
 <li><a href=../../object/ifs/dgramsocket.md.html class ="notranslate">DgramSocket</a></li>
 <li><a href=../../object/ifs/digest.md.html class ="notranslate">Digest</a></li>
+<li><a href=../../object/ifs/eckey.md.html class ="notranslate">ECKey</a></li>
+<li><a href=../../object/ifs/ed25519key.md.html class ="notranslate">Ed25519Key</a></li>
 <li><a href=../../object/ifs/event.md.html class ="notranslate">Event</a></li>
 <li><a href=../../object/ifs/eventemitter.md.html class ="notranslate">EventEmitter</a></li>
 <li><a href=../../object/ifs/fswatcher.md.html class ="notranslate">FSWatcher</a></li>
@@ -723,6 +726,52 @@
 <li><span class="notranslate">Array</span>, 返回读取的文本行数组，若无数据可读，或者连接中断，空数组</li>
 </ul>
 <hr>
+<h3 id="write" class ="notranslate">write</h3>
+<p><strong>根据文件描述符，向文件写入内容</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div><span class="hljs-keyword">static</span> Integer fs.write(Integer fd,
+    Buffer buffer,
+    Integer offset = <span class="hljs-number">0</span>,
+    Integer length = <span class="hljs-number">-1</span>,
+    Integer position = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">fd</span>: Integer, 文件描述符</li>
+<li><span class="notranslate">buffer</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 待写入的 <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a> 对象</li>
+<li><span class="notranslate">offset</span>: Integer, <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a> 数据读取偏移量， 默认为 0</li>
+<li><span class="notranslate">length</span>: Integer, 文件写入字节数，默认为 -1</li>
+<li><span class="notranslate">position</span>: Integer, 文件写入取位置，默认为当前文件位置</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><span class="notranslate">Integer</span>, 实际写入的字节数</li>
+</ul>
+<hr>
+<p><strong>根据文件描述符，向文件写入内容</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div><span class="hljs-keyword">static</span> Integer fs.write(Integer fd,
+    <span class="hljs-built_in">String</span> string,
+    Integer position = <span class="hljs-number">-1</span>,
+    <span class="hljs-built_in">String</span> encoding = <span class="hljs-string">"utf8"</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">fd</span>: Integer, 文件描述符</li>
+<li><span class="notranslate">string</span>: String, 待写入的字符串</li>
+<li><span class="notranslate">position</span>: Integer, 文件写入取位置，默认为当前文件位置</li>
+<li><span class="notranslate">encoding</span>: String, 指定解码方式，缺省解码 utf8</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><span class="notranslate">Integer</span>, 实际写入的字节数</li>
+</ul>
+<hr>
 <h3 id="writeTextFile" class ="notranslate">writeTextFile</h3>
 <p><strong>创建文本文件，并写入内容</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
@@ -951,4 +1000,4 @@
 <p><strong>seek 方式常量，移动到文件结尾的相对位置</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> fs.SEEK_END = <span class="hljs-number">2</span>;
 </code></pre>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

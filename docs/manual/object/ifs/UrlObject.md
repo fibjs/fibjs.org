@@ -13,18 +13,15 @@ var url = new net.Url({
 ```
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<class>object|toString();toJSON()]
-[<this>UrlObject|new UrlObject()|href;protocol;slashes;auth;username;password;host;hostname;port;path;pathname;search;query;hash;searchParams|parse();format();resolve();normalize()]
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    UrlObject [tooltip="UrlObject", fillcolor="lightgray", id="me", label="{UrlObject|new UrlObject()\l|href\lprotocol\lslashes\lauth\lusername\lpassword\lhost\lhostname\lport\lpath\lpathname\lsearch\lquery\lhash\lsearchParams\l|parse()\lformat()\lresolve()\lnormalize()\l}"];
 
-[object] <:- [UrlObject]
+    object -> UrlObject [dir=back];
+}
 ```
 
 ## 构造函数

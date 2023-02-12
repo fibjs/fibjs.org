@@ -2,18 +2,15 @@
 HeapGraphEdge表示两个[HeapGraphNode](HeapGraphNode.md)节点间的关联，从上游节点到下游节点
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<class>object|toString();toJSON()]
-[<this>HeapGraphEdge|type;name;description|getFromNode();getToNode()]
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    HeapGraphEdge [tooltip="HeapGraphEdge", fillcolor="lightgray", id="me", label="{HeapGraphEdge|type\lname\ldescription\l|getFromNode()\lgetToNode()\l}"];
 
-[object] <:- [HeapGraphEdge]
+    object -> HeapGraphEdge [dir=back];
+}
 ```
 
 ## 成员属性

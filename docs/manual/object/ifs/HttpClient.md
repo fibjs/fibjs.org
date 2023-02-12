@@ -11,18 +11,15 @@ httpClient.request('GET', 'http://fibjs.org');
 ```
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<class>object|toString();toJSON()]
-[<this>HttpClient|new HttpClient()|cookies;timeout;enableCookie;autoRedirect;enableEncoding;maxBodySize;userAgent;poolSize;poolTimeout;proxyAgent;sslVerification|setClientCert();request();get();post();del();put();patch();head()]
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    HttpClient [tooltip="HttpClient", fillcolor="lightgray", id="me", label="{HttpClient|new HttpClient()\l|cookies\ltimeout\lenableCookie\lautoRedirect\lenableEncoding\lmaxBodySize\luserAgent\lpoolSize\lpoolTimeout\lproxyAgent\lsslVerification\l|setClientCert()\lrequest()\lget()\lpost()\ldel()\lput()\lpatch()\lhead()\l}"];
 
-[object] <:- [HttpClient]
+    object -> HttpClient [dir=back];
+}
 ```
 
 ## 构造函数

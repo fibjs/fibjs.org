@@ -232,6 +232,50 @@ static Value process.binding(String name);
 * Value, 返回指定的内部模块
 
 --------------------------
+### getgid
+**查询当前进程的组 id**
+
+```JavaScript
+static Integer process.getgid();
+```
+
+返回结果:
+* Integer, 返回当前进程的组 id
+
+--------------------------
+### getuid
+**查询当前进程的用户 id**
+
+```JavaScript
+static Integer process.getuid();
+```
+
+返回结果:
+* Integer, 返回当前进程的用户 id
+
+--------------------------
+### setgid
+**设置当前进程的组 id**
+
+```JavaScript
+static process.setgid(Integer id);
+```
+
+调用参数:
+* id: Integer, 指定要设置的组 id
+
+--------------------------
+### setuid
+**设置当前进程的用户 id**
+
+```JavaScript
+static process.setuid(Integer id);
+```
+
+调用参数:
+* id: Integer, 指定要设置的用户 id
+
+--------------------------
 ### disconnect
 **关闭与父进程的 ipc 管道**
 

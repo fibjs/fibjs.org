@@ -1,15 +1,15 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Objeto EventEmitter - JavaScript en fibra</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Navegación de palanca</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/eventemitter.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/eventemitter.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/eventemitter.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/eventemitter.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/eventemitter.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/eventemitter.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/eventemitter.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/eventemitter.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/eventemitter.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/eventemitter.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/eventemitter.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/eventemitter.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objeto objeto incorporado</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Búsqueda" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="entrada de búsqueda" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">página delantera</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">objetos integrados</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ObjetoEventoEmisor</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Guía de desarrollo</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Objeto EventEmitter - JavaScript en fibra</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Navegación de palanca</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/eventemitter.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/eventemitter.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/eventemitter.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/eventemitter.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/eventemitter.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/eventemitter.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/eventemitter.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/eventemitter.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/eventemitter.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/eventemitter.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/eventemitter.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/eventemitter.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objeto objeto incorporado</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Buscar" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="entrada de búsqueda" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">página delantera</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">objeto incorporado</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objeto EventEmitter</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">guía de desarrollo</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¿Qué es fibjs?</font></font></a></li>
-<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instalar el entorno de tiempo de ejecución</font></font></a></li>
+<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instalar el entorno operativo</font></font></a></li>
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
-<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Una buena vida comienza con una prueba</font></font></a></li>
-<li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Encuentra al asesino del rendimiento</font></font></a></li>
+<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Una vida mejor comienza con una prueba</font></font></a></li>
+<li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Encuentra asesinos de rendimiento</font></font></a></li>
 <li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Actualización en caliente del módulo del servidor</font></font></a></li>
-<li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enrutamiento de nombres de dominio</font></font></a></li>
-<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Uso de certificados X509 en fibjs</font></font></a></li>
-<li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">añadir módulo nativo</font></font></a></li>
+<li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enrutamiento de dominio</font></font></a></li>
+<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Uso del certificado X509 en fibjs</font></font></a></li>
+<li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Añadir módulo nativo</font></font></a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">módulo básico</font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Módulo básico</font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../module/ifs/assert.md.html" class="notranslate">assert</a></li>
 <li><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a></li>
 <li><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a></li>
@@ -64,7 +64,8 @@
 <li><a href="../../module/ifs/zip.md.html" class="notranslate">zip</a></li>
 <li><a href="../../module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">objetos integrados</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">objeto incorporado</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="blskey.md.html" class="notranslate">BlsKey</a></li>
 <li><a href="buffer.md.html" class="notranslate">Buffer</a></li>
 <li><a href="bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
 <li><a href="chain.md.html" class="notranslate">Chain</a></li>
@@ -74,6 +75,8 @@
 <li><a href="dbconnection.md.html" class="notranslate">DbConnection</a></li>
 <li><a href="dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
 <li><a href="digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="eckey.md.html" class="notranslate">ECKey</a></li>
+<li><a href="ed25519key.md.html" class="notranslate">Ed25519Key</a></li>
 <li><a href="event.md.html" class="notranslate">Event</a></li>
 <li class="active"><a href="eventemitter.md.html" class="notranslate">EventEmitter</a></li>
 <li><a href="fswatcher.md.html" class="notranslate">FSWatcher</a></li>
@@ -200,9 +203,9 @@
 <li><a href="../../../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
 <li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
 </ul>
- </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="对象-EventEmitter" data-unique="对象-EventEmitter"></div><h1 id="对象-EventEmitter"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ObjetoEventoEmisor</font></font></h1>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objeto de activación de eventos, que se puede utilizar para establecer el modo de observador. Los objetos que admiten la activación de eventos se heredan de este. La misma función del mismo evento solo generará una devolución de llamada.</font></font></p>
-<p><a href="event.md.html" class="notranslate">Event</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Los objetos se pueden crear de forma independiente para formar sistemas de eventos personalizados:</font></font></p>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="对象-EventEmitter" data-unique="对象-EventEmitter"></div><h1 id="对象-EventEmitter"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objeto EventEmitter</font></font></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objeto activado por eventos, que se puede utilizar para establecer el modo de observador. Los objetos que admiten activados por eventos se heredan de este. La misma función del mismo evento solo generará una devolución de llamada</font></font></p>
+<p><a href="event.md.html" class="notranslate">Event</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Los objetos se pueden crear de forma independiente para su uso en la creación de sistemas de eventos personalizados:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">var</span> EventEmitter = <span class="hljs-built_in">require</span>(<span class="hljs-string">'events'</span>);<font></font>
@@ -210,240 +213,200 @@
 <span class="hljs-keyword">var</span> e = <span class="hljs-keyword">new</span> EventEmitter();
 </code></pre>
 <div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">relación de herencia</font></font></h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="1153.0" height="616.0" viewBox="0 0 1153 616" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
-    <desc>
-    #lineWidth: 1.5
-    #font: Helvetica,sans-Serif
-    #fontSize: 10
-    #leading: 1.6
-    #.this: fill=lightgray
-    #.class: fill=white
-
-    [&lt;class&gt;object|toString();toJSON()]
-    [&lt;this&gt;EventEmitter|new EventEmitter()|EventEmitter|defaultMaxListeners|on();addListener();prependListener();once();prependOnceListener();off();removeListener();removeAllListeners();setMaxListeners();getMaxListeners();listeners();listenerCount();eventNames();emit()]
-    [&lt;class&gt;ChildProcess]
-    [&lt;class&gt;DgramSocket]
-    [&lt;class&gt;FSWatcher]
-    [&lt;class&gt;LruCache]
-    [&lt;class&gt;Service]
-    [&lt;class&gt;StatsWatcher]
-    [&lt;class&gt;WebSocket]
-    [&lt;class&gt;WebView]
-    [&lt;class&gt;Worker]
-
-    [object] &lt;:- [EventEmitter]
-    [EventEmitter] &lt;:- [ChildProcess]
-    [EventEmitter] &lt;:- [DgramSocket]
-    [EventEmitter] &lt;:- [FSWatcher]
-    [EventEmitter] &lt;:- [LruCache]
-    [EventEmitter] &lt;:- [Service]
-    [EventEmitter] &lt;:- [StatsWatcher]
-    [EventEmitter] &lt;:- [WebSocket]
-    [EventEmitter] &lt;:- [WebView]
-    [EventEmitter] &lt;:- [Worker]
-    </desc>
-    <g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="10pt" font-family="Helvetica,sans-Serif" font-weight="bold" font-style="normal">
-        <g font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="bold" font-style="normal" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
-            <g stroke="transparent" fill="transparent">
-                <rect x="0.0" y="0.0" height="616.0" width="1153.0" stroke="none"></rect>
-            </g>
-            <g transform="translate(8, 8)" fill="#33322E">
-                <g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal">
-                    <path d="M568.5 93.3 L568.5 100 L568.5 120 L568.5 120.0 " fill="none"></path>
-                    <path d="M573.8 93.3 L568.5 93.3 L563.2 93.3 L568.5 80.0 Z"></path>
-                    <path d="M471.6 342.2 L51.5 508 L51.5 528 L51.5 528.0 " fill="none"></path>
-                    <path d="M473.6 347.2 L471.6 342.2 L469.6 337.3 L484.0 337.3 Z"></path>
-                    <path d="M472.3 356.5 L195 508 L195 528 L195.0 528.0 " fill="none"></path>
-                    <path d="M474.9 361.2 L472.3 356.5 L469.7 351.9 L484.0 350.2 Z"></path>
-                    <path d="M473.9 385.4 L331.5 508 L331.5 528 L331.5 528.0 " fill="none"></path>
-                    <path d="M477.4 389.5 L473.9 385.4 L470.4 381.4 L484.0 376.7 Z"></path>
-                    <path d="M477.6 468.9 L456 508 L456 528 L456.0 528.0 " fill="none"></path>
-                    <path d="M482.2 471.5 L477.6 468.9 L472.9 466.3 L484.0 457.2 Z"></path>
-                    <path d="M568.5 501.3 L568.5 508 L568.5 528 L568.5 528.0 " fill="none"></path>
-                    <path d="M573.8 501.3 L568.5 501.3 L563.2 501.3 L568.5 488.0 Z"></path>
-                    <path d="M659.9 453.8 L693 508 L693 528 L693.0 528.0 " fill="none"></path>
-                    <path d="M664.5 451.1 L659.9 453.8 L655.4 456.6 L653.0 442.5 Z"></path>
-                    <path d="M663.5 378.0 L830.5 508 L830.5 528 L830.5 528.0 " fill="none"></path>
-                    <path d="M666.8 373.8 L663.5 378.0 L660.2 382.2 L653.0 369.8 Z"></path>
-                    <path d="M664.8 354.9 L954.5 508 L954.5 528 L954.5 528.0 " fill="none"></path>
-                    <path d="M667.3 350.2 L664.8 354.9 L662.3 359.6 L653.0 348.7 Z"></path>
-                    <path d="M665.3 343.8 L1065 508 L1065 528 L1065.0 528.0 " fill="none"></path>
-                    <path d="M667.4 338.9 L665.3 343.8 L663.3 348.7 L653.0 338.7 Z"></path>
-                    <g data-name="EventEmitter">
-                        <g fill="lightgray" stroke="#33322E" data-name="EventEmitter">
-                            <rect x="484.0" y="120.0" height="368.0" width="169.0" data-name="EventEmitter"></rect>
-                            <path d="M484.0 152.0 L653.0 152.0" fill="none" data-name="EventEmitter"></path>
-                            <path d="M484.0 184.0 L653.0 184.0" fill="none" data-name="EventEmitter"></path>
-                            <path d="M484.0 216.0 L653.0 216.0" fill="none" data-name="EventEmitter"></path>
-                            <path d="M484.0 248.0 L653.0 248.0" fill="none" data-name="EventEmitter"></path>
-                        </g>
-                        <g transform="translate(484, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="EventEmitter">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="EventEmitter">
-                                <text x="76.5" y="13.0" stroke="none" text-anchor="middle" data-name="EventEmitter">EventEmitter</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(484, 152)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="EventEmitter">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="EventEmitter">
-                                <text x="0.0" y="13.0" stroke="none" data-name="EventEmitter">new EventEmitter()</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(484, 184)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="EventEmitter">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="EventEmitter">
-                                <text x="0.0" y="13.0" stroke="none" data-name="EventEmitter">EventEmitter</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(484, 216)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="EventEmitter">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="EventEmitter">
-                                <text x="0.0" y="13.0" stroke="none" data-name="EventEmitter">defaultMaxListeners</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(484, 248)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="EventEmitter">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="EventEmitter">
-                                <text x="0.0" y="13.0" stroke="none" data-name="EventEmitter">on()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="EventEmitter">addListener()</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="EventEmitter">prependListener()</text>
-                                <text x="0.0" y="61.0" stroke="none" data-name="EventEmitter">once()</text>
-                                <text x="0.0" y="77.0" stroke="none" data-name="EventEmitter">prependOnceListener()</text>
-                                <text x="0.0" y="93.0" stroke="none" data-name="EventEmitter">off()</text>
-                                <text x="0.0" y="109.0" stroke="none" data-name="EventEmitter">removeListener()</text>
-                                <text x="0.0" y="125.0" stroke="none" data-name="EventEmitter">removeAllListeners()</text>
-                                <text x="0.0" y="141.0" stroke="none" data-name="EventEmitter">setMaxListeners()</text>
-                                <text x="0.0" y="157.0" stroke="none" data-name="EventEmitter">getMaxListeners()</text>
-                                <text x="0.0" y="173.0" stroke="none" data-name="EventEmitter">listeners()</text>
-                                <text x="0.0" y="189.0" stroke="none" data-name="EventEmitter">listenerCount()</text>
-                                <text x="0.0" y="205.0" stroke="none" data-name="EventEmitter">eventNames()</text>
-                                <text x="0.0" y="221.0" stroke="none" data-name="EventEmitter">emit()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="object">
-                        <g fill="white" stroke="#33322E" data-name="object">
-                            <rect x="530.0" y="0.0" height="80.0" width="77.0" data-name="object"></rect>
-                            <path d="M530.0 32.0 L607.0 32.0" fill="none" data-name="object"></path>
-                        </g>
-                        <g transform="translate(530, 0)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="object">
-                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="object">object</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(530, 32)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="object">
-                                <text x="0.0" y="13.0" stroke="none" data-name="object">toString()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="object">toJSON()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="ChildProcess">
-                        <g fill="white" stroke="#33322E" data-name="ChildProcess">
-                            <rect x="0.0" y="528.0" height="32.0" width="103.0" data-name="ChildProcess"></rect>
-                        </g>
-                        <g transform="translate(0, 528)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="ChildProcess">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="ChildProcess">
-                                <text x="43.5" y="13.0" stroke="none" text-anchor="middle" data-name="ChildProcess">ChildProcess</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="DgramSocket">
-                        <g fill="white" stroke="#33322E" data-name="DgramSocket">
-                            <rect x="143.0" y="528.0" height="32.0" width="104.0" data-name="DgramSocket"></rect>
-                        </g>
-                        <g transform="translate(143, 528)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="DgramSocket">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="DgramSocket">
-                                <text x="44.0" y="13.0" stroke="none" text-anchor="middle" data-name="DgramSocket">DgramSocket</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="FSWatcher">
-                        <g fill="white" stroke="#33322E" data-name="FSWatcher">
-                            <rect x="287.0" y="528.0" height="32.0" width="89.0" data-name="FSWatcher"></rect>
-                        </g>
-                        <g transform="translate(287, 528)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="FSWatcher">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="FSWatcher">
-                                <text x="36.5" y="13.0" stroke="none" text-anchor="middle" data-name="FSWatcher">FSWatcher</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="LruCache">
-                        <g fill="white" stroke="#33322E" data-name="LruCache">
-                            <rect x="416.0" y="528.0" height="32.0" width="80.0" data-name="LruCache"></rect>
-                        </g>
-                        <g transform="translate(416, 528)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="LruCache">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="LruCache">
-                                <text x="32.0" y="13.0" stroke="none" text-anchor="middle" data-name="LruCache">LruCache</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="Service">
-                        <g fill="white" stroke="#33322E" data-name="Service">
-                            <rect x="536.0" y="528.0" height="32.0" width="65.0" data-name="Service"></rect>
-                        </g>
-                        <g transform="translate(536, 528)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Service">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Service">
-                                <text x="24.5" y="13.0" stroke="none" text-anchor="middle" data-name="Service">Service</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="StatsWatcher">
-                        <g fill="white" stroke="#33322E" data-name="StatsWatcher">
-                            <rect x="641.0" y="528.0" height="32.0" width="104.0" data-name="StatsWatcher"></rect>
-                        </g>
-                        <g transform="translate(641, 528)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="StatsWatcher">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="StatsWatcher">
-                                <text x="44.0" y="13.0" stroke="none" text-anchor="middle" data-name="StatsWatcher">StatsWatcher</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="WebSocket">
-                        <g fill="white" stroke="#33322E" data-name="WebSocket">
-                            <rect x="785.0" y="528.0" height="32.0" width="91.0" data-name="WebSocket"></rect>
-                        </g>
-                        <g transform="translate(785, 528)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="WebSocket">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="WebSocket">
-                                <text x="37.5" y="13.0" stroke="none" text-anchor="middle" data-name="WebSocket">WebSocket</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="WebView">
-                        <g fill="white" stroke="#33322E" data-name="WebView">
-                            <rect x="916.0" y="528.0" height="32.0" width="77.0" data-name="WebView"></rect>
-                        </g>
-                        <g transform="translate(916, 528)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="WebView">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="WebView">
-                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="WebView">WebView</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="Worker">
-                        <g fill="white" stroke="#33322E" data-name="Worker">
-                            <rect x="1033.0" y="528.0" height="32.0" width="64.0" data-name="Worker"></rect>
-                        </g>
-                        <g transform="translate(1033, 528)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Worker">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Worker">
-                                <text x="24.0" y="13.0" stroke="none" text-anchor="middle" data-name="Worker">Worker</text>
-
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg></div>
+<div class="dot notranslate">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="739pt" height="427pt" viewBox="0.00 0.00 739.45 427.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 423)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-423 735.4455,-423 735.4455,4 -4,4"></polygon>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href="object.md.html" xlink:title="object">
+<polygon fill="#ffffff" stroke="#000000" points="347.614,-366.5 347.614,-418.5 405.277,-418.5 405.277,-366.5 347.614,-366.5"></polygon>
+<text text-anchor="middle" x="376.4455" y="-405.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="347.614,-398.5 405.277,-398.5 "></polyline>
+<text text-anchor="start" x="355.614" y="-385.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="355.614" y="-373.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+</a>
+</g>
+</g>
+<!-- EventEmitter -->
+<g id="me" class="node">
+<title>EventEmitter</title>
+<g id="a_me"><a xlink:title="EventEmitter">
+<polygon fill="#d3d3d3" stroke="#000000" points="317.045,-73.5 317.045,-329.5 435.846,-329.5 435.846,-73.5 317.045,-73.5"></polygon>
+<text text-anchor="middle" x="376.4455" y="-316.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">EventEmitter</text>
+<polyline fill="none" stroke="#000000" points="317.045,-309.5 435.846,-309.5 "></polyline>
+<text text-anchor="start" x="325.045" y="-296.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new EventEmitter()</text>
+<polyline fill="none" stroke="#000000" points="317.045,-289.5 435.846,-289.5 "></polyline>
+<text text-anchor="start" x="325.045" y="-276.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">EventEmitter</text>
+<polyline fill="none" stroke="#000000" points="317.045,-269.5 435.846,-269.5 "></polyline>
+<text text-anchor="start" x="325.045" y="-256.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">defaultMaxListeners</text>
+<polyline fill="none" stroke="#000000" points="317.045,-249.5 435.846,-249.5 "></polyline>
+<text text-anchor="start" x="325.045" y="-236.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">on()</text>
+<text text-anchor="start" x="325.045" y="-224.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">addListener()</text>
+<text text-anchor="start" x="325.045" y="-212.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">prependListener()</text>
+<text text-anchor="start" x="325.045" y="-200.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">once()</text>
+<text text-anchor="start" x="325.045" y="-188.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">prependOnceListener()</text>
+<text text-anchor="start" x="325.045" y="-176.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">off()</text>
+<text text-anchor="start" x="325.045" y="-164.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">removeListener()</text>
+<text text-anchor="start" x="325.045" y="-152.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">removeAllListeners()</text>
+<text text-anchor="start" x="325.045" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">setMaxListeners()</text>
+<text text-anchor="start" x="325.045" y="-128.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getMaxListeners()</text>
+<text text-anchor="start" x="325.045" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">listeners()</text>
+<text text-anchor="start" x="325.045" y="-104.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">listenerCount()</text>
+<text text-anchor="start" x="325.045" y="-92.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">eventNames()</text>
+<text text-anchor="start" x="325.045" y="-80.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">emit()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;EventEmitter -->
+<g id="edge1" class="edge">
+<title>object-&gt;EventEmitter</title>
+<path fill="none" stroke="#000000" d="M376.4455,-356.2954C376.4455,-348.2131 376.4455,-339.1932 376.4455,-329.6815"></path>
+<polygon fill="#000000" stroke="#000000" points="372.9456,-356.3427 376.4455,-366.3427 379.9456,-356.3428 372.9456,-356.3427"></polygon>
+</g>
+<!-- ChildProcess -->
+<g id="node3" class="node">
+<title>ChildProcess</title>
+<g id="a_node3"><a xlink:href="childprocess.md.html" xlink:title="ChildProcess">
+<polygon fill="#ffffff" stroke="#000000" points="0,-.5 0,-36.5 74.891,-36.5 74.891,-.5 0,-.5"></polygon>
+<text text-anchor="middle" x="37.4455" y="-15.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">ChildProcess</text>
+</a>
+</g>
+</g>
+<!-- EventEmitter&#45;&gt;ChildProcess -->
+<g id="edge2" class="edge">
+<title>EventEmitter-&gt;ChildProcess</title>
+<path fill="none" stroke="#000000" d="M307.9985,-164.5508C236.0881,-125.7319 125.9583,-66.2813 71.0287,-36.629"></path>
+<polygon fill="#000000" stroke="#000000" points="306.5459,-167.744 317.0083,-169.4144 309.8712,-161.5842 306.5459,-167.744"></polygon>
+</g>
+<!-- DgramSocket -->
+<g id="node4" class="node">
+<title>DgramSocket</title>
+<g id="a_node4"><a xlink:href="dgramsocket.md.html" xlink:title="DgramSocket">
+<polygon fill="#ffffff" stroke="#000000" points="93.165,-.5 93.165,-36.5 169.726,-36.5 169.726,-.5 93.165,-.5"></polygon>
+<text text-anchor="middle" x="131.4455" y="-15.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">DgramSocket</text>
+</a>
+</g>
+</g>
+<!-- EventEmitter&#45;&gt;DgramSocket -->
+<g id="edge3" class="edge">
+<title>EventEmitter-&gt;DgramSocket</title>
+<path fill="none" stroke="#000000" d="M308.7977,-150.9712C257.8832,-112.9412 191.0371,-63.0113 155.7293,-36.6385"></path>
+<polygon fill="#000000" stroke="#000000" points="306.7188,-153.787 316.825,-156.9672 310.9078,-148.1787 306.7188,-153.787"></polygon>
+</g>
+<!-- FSWatcher -->
+<g id="node5" class="node">
+<title>FSWatcher</title>
+<g id="a_node5"><a xlink:href="fswatcher.md.html" xlink:title="FSWatcher">
+<polygon fill="#ffffff" stroke="#000000" points="187.4445,-.5 187.4445,-36.5 253.4465,-36.5 253.4465,-.5 187.4445,-.5"></polygon>
+<text text-anchor="middle" x="220.4455" y="-15.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">FSWatcher</text>
+</a>
+</g>
+</g>
+<!-- EventEmitter&#45;&gt;FSWatcher -->
+<g id="edge4" class="edge">
+<title>EventEmitter-&gt;FSWatcher</title>
+<path fill="none" stroke="#000000" d="M310.4512,-124.0836C282.9299,-91.7991 253.3657,-57.1179 235.9087,-36.6395"></path>
+<polygon fill="#000000" stroke="#000000" points="307.8726,-126.4539 317.0236,-131.7935 313.1998,-121.9127 307.8726,-126.4539"></polygon>
+</g>
+<!-- LruCache -->
+<g id="node6" class="node">
+<title>LruCache</title>
+<g id="a_node6"><a xlink:href="lrucache.md.html" xlink:title="LruCache">
+<polygon fill="#ffffff" stroke="#000000" points="271.774,-.5 271.774,-36.5 331.117,-36.5 331.117,-.5 271.774,-.5"></polygon>
+<text text-anchor="middle" x="301.4455" y="-15.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">LruCache</text>
+</a>
+</g>
+</g>
+<!-- EventEmitter&#45;&gt;LruCache -->
+<g id="edge5" class="edge">
+<title>EventEmitter-&gt;LruCache</title>
+<path fill="none" stroke="#000000" d="M320.0958,-64.0068C315.8317,-53.6024 312.0071,-44.2702 308.9477,-36.8054"></path>
+<polygon fill="#000000" stroke="#000000" points="316.9171,-65.4803 323.948,-73.406 323.3942,-62.8257 316.9171,-65.4803"></polygon>
+</g>
+<!-- Service -->
+<g id="node7" class="node">
+<title>Service</title>
+<g id="a_node7"><a xlink:href="service.md.html" xlink:title="Service">
+<polygon fill="#ffffff" stroke="#000000" points="349.4455,-.5 349.4455,-36.5 403.4455,-36.5 403.4455,-.5 349.4455,-.5"></polygon>
+<text text-anchor="middle" x="376.113" y="-15.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Service</text>
+</a>
+</g>
+</g>
+<!-- EventEmitter&#45;&gt;Service -->
+<g id="edge6" class="edge">
+<title>EventEmitter-&gt;Service</title>
+<path fill="none" stroke="#000000" d="M376.4455,-63.3775C376.4455,-53.2261 376.4455,-44.1194 376.4455,-36.8054"></path>
+<polygon fill="#000000" stroke="#000000" points="372.9456,-63.406 376.4455,-73.406 379.9456,-63.4061 372.9456,-63.406"></polygon>
+</g>
+<!-- StatsWatcher -->
+<g id="node8" class="node">
+<title>StatsWatcher</title>
+<g id="a_node8"><a xlink:href="statswatcher.md.html" xlink:title="StatsWatcher">
+<polygon fill="#ffffff" stroke="#000000" points="421.4405,-.5 421.4405,-36.5 497.4505,-36.5 497.4505,-.5 421.4405,-.5"></polygon>
+<text text-anchor="middle" x="459.4455" y="-15.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">StatsWatcher</text>
+</a>
+</g>
+</g>
+<!-- EventEmitter&#45;&gt;StatsWatcher -->
+<g id="edge7" class="edge">
+<title>EventEmitter-&gt;StatsWatcher</title>
+<path fill="none" stroke="#000000" d="M438.8058,-64.0068C443.5247,-53.6024 447.7574,-44.2702 451.1431,-36.8054"></path>
+<polygon fill="#000000" stroke="#000000" points="435.4859,-62.8533 434.5428,-73.406 441.8608,-65.7447 435.4859,-62.8533"></polygon>
+</g>
+<!-- WebSocket -->
+<g id="node9" class="node">
+<title>WebSocket</title>
+<g id="a_node9"><a xlink:href="websocket.md.html" xlink:title="WebSocket">
+<polygon fill="#ffffff" stroke="#000000" points="515.884,-.5 515.884,-36.5 583.007,-36.5 583.007,-.5 515.884,-.5"></polygon>
+<text text-anchor="middle" x="549.4455" y="-15.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">WebSocket</text>
+</a>
+</g>
+</g>
+<!-- EventEmitter&#45;&gt;WebSocket -->
+<g id="edge8" class="edge">
+<title>EventEmitter-&gt;WebSocket</title>
+<path fill="none" stroke="#000000" d="M443.1981,-130.8888C475.328,-96.9017 511.298,-58.8526 532.063,-36.8873"></path>
+<polygon fill="#000000" stroke="#000000" points="440.3086,-128.8505 435.9823,-138.5218 445.3954,-133.6593 440.3086,-128.8505"></polygon>
+</g>
+<!-- WebView -->
+<g id="node10" class="node">
+<title>WebView</title>
+<g id="a_node10"><a xlink:href="webview.md.html" xlink:title="WebView">
+<polygon fill="#ffffff" stroke="#000000" points="601.334,-.5 601.334,-36.5 659.557,-36.5 659.557,-.5 601.334,-.5"></polygon>
+<text text-anchor="middle" x="630.4455" y="-15.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">WebView</text>
+</a>
+</g>
+</g>
+<!-- EventEmitter&#45;&gt;WebView -->
+<g id="edge9" class="edge">
+<title>EventEmitter-&gt;WebView</title>
+<path fill="none" stroke="#000000" d="M444.3635,-152.5669C497.4909,-114.2902 568.3678,-63.2252 605.4405,-36.5154"></path>
+<polygon fill="#000000" stroke="#000000" points="442.0648,-149.9093 435.9972,-158.5946 446.1567,-155.5888 442.0648,-149.9093"></polygon>
+</g>
+<!-- Worker -->
+<g id="node11" class="node">
+<title>Worker</title>
+<g id="a_node11"><a xlink:href="worker.md.html" xlink:title="Worker">
+<polygon fill="#ffffff" stroke="#000000" points="677.4455,-.5 677.4455,-36.5 731.4455,-36.5 731.4455,-.5 677.4455,-.5"></polygon>
+<text text-anchor="middle" x="704.053" y="-15.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Worker</text>
+</a>
+</g>
+</g>
+<!-- EventEmitter&#45;&gt;Worker -->
+<g id="edge10" class="edge">
+<title>EventEmitter-&gt;Worker</title>
+<path fill="none" stroke="#000000" d="M445.2436,-163.1157C517.1948,-122.9722 626.5433,-61.9637 677.0769,-33.7697"></path>
+<polygon fill="#000000" stroke="#000000" points="443.2518,-160.219 436.2244,-168.1478 446.6624,-166.3319 443.2518,-160.219"></polygon>
+</g>
+</g>
+</svg>
+</div>
 
 <div name="构造函数" data-unique="构造函数"></div><h2 id="构造函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Constructor</font></font></h2>
 <div name="EventEmitter" data-unique="EventEmitter"></div><h3 id="EventEmitter" class="notranslate">EventEmitter</h3>
@@ -454,7 +417,7 @@
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">objeto disparador de evento</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>EventEmitter <span class="hljs-keyword">new</span> EventEmitter;
 </code></pre>
-<div name="静态属性" data-unique="静态属性"></div><h2 id="静态属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">propiedades estáticas</font></font></h2>
+<div name="静态属性" data-unique="静态属性"></div><h2 id="静态属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">propiedad estática</font></font></h2>
 <div name="defaultMaxListeners" data-unique="defaultMaxListeners"></div><h3 id="defaultMaxListeners" class="notranslate">defaultMaxListeners</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entero, el número máximo global predeterminado de oyentes</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer EventEmitter.defaultMaxListeners;
@@ -468,12 +431,12 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica el nombre del evento</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, el nombre del evento especificado</font></font></li>
 <li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Función, especifica la función del controlador de eventos</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado devuelto:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resultado devuelto:</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de evento en sí mismo para facilitar el encadenamiento</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de evento en sí, lo cual es conveniente para llamadas en cadena</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vincular un controlador de eventos a un objeto</font></font></strong></p>
@@ -481,11 +444,11 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objeto, especifique la relación de asignación de eventos, el nombre de la propiedad del objeto se usará como el nombre del evento y el valor de la propiedad se usará como la función del controlador de eventos</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objeto, especifique la relación de mapeo de eventos, el nombre del atributo del objeto se usará como el nombre del evento y el valor del atributo se usará como la función de procesamiento del evento</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado devuelto:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resultado devuelto:</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de evento en sí mismo para facilitar el encadenamiento</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de evento en sí, lo cual es conveniente para llamadas en cadena</font></font></li>
 </ul>
 <hr>
 <div name="addListener" data-unique="addListener"></div><h3 id="addListener" class="notranslate">addListener</h3>
@@ -496,12 +459,12 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica el nombre del evento</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, el nombre del evento especificado</font></font></li>
 <li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Función, especifica la función del controlador de eventos</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado devuelto:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resultado devuelto:</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de evento en sí mismo para facilitar el encadenamiento</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de evento en sí, lo cual es conveniente para llamadas en cadena</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vincular un controlador de eventos a un objeto</font></font></strong></p>
@@ -509,39 +472,39 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objeto, especifique la relación de asignación de eventos, el nombre de la propiedad del objeto se usará como el nombre del evento y el valor de la propiedad se usará como la función del controlador de eventos</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objeto, especifique la relación de mapeo de eventos, el nombre del atributo del objeto se usará como el nombre del evento y el valor del atributo se usará como la función de procesamiento del evento</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado devuelto:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resultado devuelto:</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de evento en sí mismo para facilitar el encadenamiento</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de evento en sí, lo cual es conveniente para llamadas en cadena</font></font></li>
 </ul>
 <hr>
 <div name="prependListener" data-unique="prependListener"></div><h3 id="prependListener" class="notranslate">prependListener</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vincular un controlador de eventos al inicio del objeto</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vincule una función de controlador de eventos al inicio del objeto</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> EventEmitter.prependListener(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica el nombre del evento</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, el nombre del evento especificado</font></font></li>
 <li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Función, especifica la función del controlador de eventos</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado devuelto:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resultado devuelto:</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de evento en sí mismo para facilitar el encadenamiento</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de evento en sí, lo cual es conveniente para llamadas en cadena</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vincular un controlador de eventos al inicio del objeto</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vincule una función de controlador de eventos al inicio del objeto</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> EventEmitter.prependListener(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objeto, especifique la relación de asignación de eventos, el nombre de la propiedad del objeto se usará como el nombre del evento y el valor de la propiedad se usará como la función del controlador de eventos</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objeto, especifique la relación de mapeo de eventos, el nombre del atributo del objeto se usará como el nombre del evento y el valor del atributo se usará como la función de procesamiento del evento</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado devuelto:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resultado devuelto:</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de evento en sí mismo para facilitar el encadenamiento</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de evento en sí, lo cual es conveniente para llamadas en cadena</font></font></li>
 </ul>
 <hr>
 <div name="once" data-unique="once"></div><h3 id="once" class="notranslate">once</h3>
@@ -552,12 +515,12 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica el nombre del evento</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, el nombre del evento especificado</font></font></li>
 <li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Función, especifica la función del controlador de eventos</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado devuelto:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resultado devuelto:</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de evento en sí mismo para facilitar el encadenamiento</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de evento en sí, lo cual es conveniente para llamadas en cadena</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vincule un controlador de eventos de una sola vez al objeto, el controlador de una sola vez solo se activará una vez</font></font></strong></p>
@@ -565,144 +528,144 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objeto, especifique la relación de asignación de eventos, el nombre de la propiedad del objeto se usará como el nombre del evento y el valor de la propiedad se usará como la función del controlador de eventos</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objeto, especifique la relación de mapeo de eventos, el nombre del atributo del objeto se usará como el nombre del evento y el valor del atributo se usará como la función de procesamiento del evento</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado devuelto:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resultado devuelto:</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de evento en sí mismo para facilitar el encadenamiento</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de evento en sí, lo cual es conveniente para llamadas en cadena</font></font></li>
 </ul>
 <hr>
 <div name="prependOnceListener" data-unique="prependOnceListener"></div><h3 id="prependOnceListener" class="notranslate">prependOnceListener</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vincular un controlador de eventos al inicio del objeto</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vincule una función de controlador de eventos al inicio del objeto</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> EventEmitter.prependOnceListener(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica el nombre del evento</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, el nombre del evento especificado</font></font></li>
 <li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Función, especifica la función del controlador de eventos</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado devuelto:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resultado devuelto:</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de evento en sí mismo para facilitar el encadenamiento</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de evento en sí, lo cual es conveniente para llamadas en cadena</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vincular un controlador de eventos al inicio del objeto</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vincule una función de controlador de eventos al inicio del objeto</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> EventEmitter.prependOnceListener(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objeto, especifique la relación de asignación de eventos, el nombre de la propiedad del objeto se usará como el nombre del evento y el valor de la propiedad se usará como la función del controlador de eventos</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objeto, especifique la relación de mapeo de eventos, el nombre del atributo del objeto se usará como el nombre del evento y el valor del atributo se usará como la función de procesamiento del evento</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado devuelto:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resultado devuelto:</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de evento en sí mismo para facilitar el encadenamiento</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de evento en sí, lo cual es conveniente para llamadas en cadena</font></font></li>
 </ul>
 <hr>
 <div name="off" data-unique="off"></div><h3 id="off" class="notranslate">off</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cancelar la función especificada de la cola de procesamiento de objetos</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">no especificar la función de la cola de procesamiento de objetos</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> EventEmitter.off(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica el nombre del evento</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, el nombre del evento especificado</font></font></li>
 <li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Función, especifica la función del controlador de eventos</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado devuelto:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resultado devuelto:</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de evento en sí mismo para facilitar el encadenamiento</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de evento en sí, lo cual es conveniente para llamadas en cadena</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cancelar todas las funciones en la cola de procesamiento de objetos</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cancela todas las funciones en la cola de procesamiento de objetos</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> EventEmitter.off(<span class="hljs-built_in">String</span> ev);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica el nombre del evento</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, el nombre del evento especificado</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado devuelto:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resultado devuelto:</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de evento en sí mismo para facilitar el encadenamiento</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de evento en sí, lo cual es conveniente para llamadas en cadena</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cancelar la función especificada de la cola de procesamiento de objetos</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">no especificar la función de la cola de procesamiento de objetos</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> EventEmitter.off(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objeto, especifica la relación de asignación de eventos, el nombre de la propiedad del objeto se usa como el nombre del evento y el valor de la propiedad se usa como la función del controlador de eventos</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objeto, especifica la relación de mapeo de eventos, el nombre del atributo del objeto se usa como el nombre del evento y el valor del atributo se usa como la función de procesamiento del evento</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado devuelto:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resultado devuelto:</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de evento en sí mismo para facilitar el encadenamiento</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de evento en sí, lo cual es conveniente para llamadas en cadena</font></font></li>
 </ul>
 <hr>
 <div name="removeListener" data-unique="removeListener"></div><h3 id="removeListener" class="notranslate">removeListener</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cancelar la función especificada de la cola de procesamiento de objetos</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">no especificar la función de la cola de procesamiento de objetos</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> EventEmitter.removeListener(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica el nombre del evento</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, el nombre del evento especificado</font></font></li>
 <li><span class="notranslate">func</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Función, especifica la función del controlador de eventos</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado devuelto:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resultado devuelto:</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de evento en sí mismo para facilitar el encadenamiento</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de evento en sí, lo cual es conveniente para llamadas en cadena</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cancelar todas las funciones en la cola de procesamiento de objetos</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cancela todas las funciones en la cola de procesamiento de objetos</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> EventEmitter.removeListener(<span class="hljs-built_in">String</span> ev);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica el nombre del evento</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, el nombre del evento especificado</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado devuelto:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resultado devuelto:</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de evento en sí mismo para facilitar el encadenamiento</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de evento en sí, lo cual es conveniente para llamadas en cadena</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cancelar la función especificada de la cola de procesamiento de objetos</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">no especificar la función de la cola de procesamiento de objetos</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> EventEmitter.removeListener(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objeto, especifica la relación de asignación de eventos, el nombre de la propiedad del objeto se usa como el nombre del evento y el valor de la propiedad se usa como la función del controlador de eventos</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objeto, especifica la relación de mapeo de eventos, el nombre del atributo del objeto se usa como el nombre del evento y el valor del atributo se usa como la función de procesamiento del evento</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado devuelto:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resultado devuelto:</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de evento en sí mismo para facilitar el encadenamiento</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de evento en sí, lo cual es conveniente para llamadas en cadena</font></font></li>
 </ul>
 <hr>
 <div name="removeAllListeners" data-unique="removeAllListeners"></div><h3 id="removeAllListeners" class="notranslate">removeAllListeners</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cancela todos los detectores de todos los eventos de la cola de procesamiento del objeto o, si se especifica un evento, elimina todos los detectores del evento especificado.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cancela todos los detectores de todos los eventos de la cola de procesamiento de objetos o elimina todos los detectores del evento especificado si se especifica un evento.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> EventEmitter.removeAllListeners(<span class="hljs-built_in">String</span> ev);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica el nombre del evento</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, el nombre del evento especificado</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado devuelto:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resultado devuelto:</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de evento en sí mismo para facilitar el encadenamiento</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de evento en sí, lo cual es conveniente para llamadas en cadena</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cancela todos los detectores de todos los eventos de la cola de procesamiento del objeto o, si se especifica un evento, elimina todos los detectores del evento especificado.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cancela todos los detectores de todos los eventos de la cola de procesamiento de objetos o elimina todos los detectores del evento especificado si se especifica un evento.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> EventEmitter.removeAllListeners(<span class="hljs-built_in">Array</span> evs = []);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">evs</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Array, especificando el nombre del evento</font></font></li>
+<li><span class="notranslate">evs</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Matriz, el nombre del evento especificado</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado devuelto:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resultado devuelto:</font></font></p>
 <ul>
-<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de evento en sí mismo para facilitar el encadenamiento</font></font></li>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el objeto de evento en sí, lo cual es conveniente para llamadas en cadena</font></font></li>
 </ul>
 <hr>
 <div name="setMaxListeners" data-unique="setMaxListeners"></div><h3 id="setMaxListeners" class="notranslate">setMaxListeners</h3>
@@ -715,10 +678,10 @@
 </ul>
 <hr>
 <div name="getMaxListeners" data-unique="getMaxListeners"></div><h3 id="getMaxListeners" class="notranslate">getMaxListeners</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Obtiene el número de límites predeterminados para los oyentes, solo por compatibilidad</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Obtiene el número limitado predeterminado de oyentes, solo por compatibilidad</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer EventEmitter.getMaxListeners();
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado devuelto:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resultado devuelto:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el número de límite predeterminado</font></font></li>
 </ul>
@@ -729,27 +692,27 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica el nombre del evento</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, el nombre del evento especificado</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado devuelto:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resultado devuelto:</font></font></p>
 <ul>
 <li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve una matriz de oyentes para el evento especificado</font></font></li>
 </ul>
 <hr>
 <div name="listenerCount" data-unique="listenerCount"></div><h3 id="listenerCount" class="notranslate">listenerCount</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El número de oyentes para el evento especificado del objeto de consulta</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Consultar el número de oyentes para el evento especificado del objeto</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer EventEmitter.listenerCount(<span class="hljs-built_in">String</span> ev);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica el nombre del evento</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, el nombre del evento especificado</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado devuelto:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resultado devuelto:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el número de oyentes para el evento especificado</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El número de oyentes para el evento especificado del objeto de consulta</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Consultar el número de oyentes para el evento especificado del objeto</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer EventEmitter.listenerCount(Value o,
     <span class="hljs-built_in">String</span> ev);
@@ -757,9 +720,9 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">o</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, especifica el objeto de la consulta</font></font></li>
-<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica el nombre del evento</font></font></li>
+<li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, el nombre del evento especificado</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado devuelto:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resultado devuelto:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el número de oyentes para el evento especificado</font></font></li>
 </ul>
@@ -768,7 +731,7 @@
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nombre del evento del oyente de consulta</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Array</span> EventEmitter.eventNames();
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado devuelto:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resultado devuelto:</font></font></p>
 <ul>
 <li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve una matriz de nombres de eventos</font></font></li>
 </ul>
@@ -782,9 +745,9 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
 <li><span class="notranslate">ev</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, nombre del evento</font></font></li>
-<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., parámetros del evento, que se pasarán al controlador de eventos</font></font></li>
+<li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., los parámetros del evento, se pasarán a la función del controlador de eventos</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado devuelto:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resultado devuelto:</font></font></p>
 <ul>
 <li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve el estado de activación del evento, devuelve verdadero si hay un evento de respuesta, de lo contrario devuelve falso</font></font></li>
 </ul>
@@ -793,21 +756,21 @@
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devuelve la representación de cadena del objeto, generalmente devuelve "[Objeto nativo]", el objeto se puede volver a implementar de acuerdo con sus propias características</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> EventEmitter.toString();
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado devuelto:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resultado devuelto:</font></font></p>
 <ul>
-<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve la representación de cadena del objeto</font></font></li>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve una representación de cadena del objeto</font></font></li>
 </ul>
 <hr>
 <div name="toJSON" data-unique="toJSON"></div><h3 id="toJSON" class="notranslate">toJSON</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devuelve la representación en formato JSON del objeto, generalmente devuelve el conjunto de propiedades legibles definidas por el objeto</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devuelve la representación en formato JSON del objeto, generalmente devuelve una colección de propiedades legibles definidas por el objeto</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value EventEmitter.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, sin usar</font></font></li>
+<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, no utilizada</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultado devuelto:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resultado devuelto:</font></font></p>
 <ul>
-<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, devuelve un valor que contiene JSON serializable</font></font></li>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, que devuelve un valor serializable JSON</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apóyanos</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip85949"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip85949" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Haga clic para volver a la página superior</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apóyanos</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

@@ -65,6 +65,7 @@
 <li><a href="../../module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
 </ul>
  </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">內置對象</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="blskey.md.html" class="notranslate">BlsKey</a></li>
 <li><a href="buffer.md.html" class="notranslate">Buffer</a></li>
 <li><a href="bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
 <li><a href="chain.md.html" class="notranslate">Chain</a></li>
@@ -74,6 +75,8 @@
 <li><a href="dbconnection.md.html" class="notranslate">DbConnection</a></li>
 <li class="active"><a href="dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
 <li><a href="digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="eckey.md.html" class="notranslate">ECKey</a></li>
+<li><a href="ed25519key.md.html" class="notranslate">Ed25519Key</a></li>
 <li><a href="event.md.html" class="notranslate">Event</a></li>
 <li><a href="eventemitter.md.html" class="notranslate">EventEmitter</a></li>
 <li><a href="fswatcher.md.html" class="notranslate">FSWatcher</a></li>
@@ -229,137 +232,92 @@
 </li>
 </ul>
 <div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">繼承關係</font></font></h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="225.0" height="808.0" viewBox="0 0 225 808" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
-    <desc>
-    #lineWidth: 1.5
-    #font: Helvetica,sans-Serif
-    #fontSize: 10
-    #leading: 1.6
-    #.this: fill=lightgray
-    #.class: fill=white
-
-    [&lt;class&gt;object|toString();toJSON()]
-    [&lt;class&gt;EventEmitter|new EventEmitter()|EventEmitter|defaultMaxListeners|on();addListener();prependListener();once();prependOnceListener();off();removeListener();removeAllListeners();setMaxListeners();getMaxListeners();listeners();listenerCount();eventNames();emit()]
-    [&lt;this&gt;DgramSocket|bind();send();address();close();getRecvBufferSize();getSendBufferSize();setRecvBufferSize();setSendBufferSize();setBroadcast();ref();unref()]
-
-    [object] &lt;:- [EventEmitter]
-    [EventEmitter] &lt;:- [DgramSocket]
-    </desc>
-    <g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="10pt" font-family="Helvetica,sans-Serif" font-weight="normal" font-style="normal">
-        <g font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="bold" font-style="normal" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
-            <g stroke="transparent" fill="transparent">
-                <rect x="0.0" y="0.0" height="808.0" width="225.0" stroke="none"></rect>
-            </g>
-            <g transform="translate(8, 8)" fill="#33322E">
-                <g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal">
-                    <path d="M84.5 93.3 L84.5 100 L84.5 120 L84.5 120.0 " fill="none"></path>
-                    <path d="M89.8 93.3 L84.5 93.3 L79.2 93.3 L84.5 80.0 Z"></path>
-                    <path d="M84.5 501.3 L84.5 508 L84.5 528 L84.5 528.0 " fill="none"></path>
-                    <path d="M89.8 501.3 L84.5 501.3 L79.2 501.3 L84.5 488.0 Z"></path>
-                    <g data-name="EventEmitter">
-                        <g fill="white" stroke="#33322E" data-name="EventEmitter">
-                            <rect x="0.0" y="120.0" height="368.0" width="169.0" data-name="EventEmitter"></rect>
-                            <path d="M0.0 152.0 L169.0 152.0" fill="none" data-name="EventEmitter"></path>
-                            <path d="M0.0 184.0 L169.0 184.0" fill="none" data-name="EventEmitter"></path>
-                            <path d="M0.0 216.0 L169.0 216.0" fill="none" data-name="EventEmitter"></path>
-                            <path d="M0.0 248.0 L169.0 248.0" fill="none" data-name="EventEmitter"></path>
-                        </g>
-                        <g transform="translate(0, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="EventEmitter">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="EventEmitter">
-                                <text x="76.5" y="13.0" stroke="none" text-anchor="middle" data-name="EventEmitter">EventEmitter</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 152)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="EventEmitter">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="EventEmitter">
-                                <text x="0.0" y="13.0" stroke="none" data-name="EventEmitter">new EventEmitter()</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 184)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="EventEmitter">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="EventEmitter">
-                                <text x="0.0" y="13.0" stroke="none" data-name="EventEmitter">EventEmitter</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 216)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="EventEmitter">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="EventEmitter">
-                                <text x="0.0" y="13.0" stroke="none" data-name="EventEmitter">defaultMaxListeners</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 248)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="EventEmitter">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="EventEmitter">
-                                <text x="0.0" y="13.0" stroke="none" data-name="EventEmitter">on()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="EventEmitter">addListener()</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="EventEmitter">prependListener()</text>
-                                <text x="0.0" y="61.0" stroke="none" data-name="EventEmitter">once()</text>
-                                <text x="0.0" y="77.0" stroke="none" data-name="EventEmitter">prependOnceListener()</text>
-                                <text x="0.0" y="93.0" stroke="none" data-name="EventEmitter">off()</text>
-                                <text x="0.0" y="109.0" stroke="none" data-name="EventEmitter">removeListener()</text>
-                                <text x="0.0" y="125.0" stroke="none" data-name="EventEmitter">removeAllListeners()</text>
-                                <text x="0.0" y="141.0" stroke="none" data-name="EventEmitter">setMaxListeners()</text>
-                                <text x="0.0" y="157.0" stroke="none" data-name="EventEmitter">getMaxListeners()</text>
-                                <text x="0.0" y="173.0" stroke="none" data-name="EventEmitter">listeners()</text>
-                                <text x="0.0" y="189.0" stroke="none" data-name="EventEmitter">listenerCount()</text>
-                                <text x="0.0" y="205.0" stroke="none" data-name="EventEmitter">eventNames()</text>
-                                <text x="0.0" y="221.0" stroke="none" data-name="EventEmitter">emit()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="object">
-                        <g fill="white" stroke="#33322E" data-name="object">
-                            <rect x="46.0" y="0.0" height="80.0" width="77.0" data-name="object"></rect>
-                            <path d="M46.0 32.0 L123.0 32.0" fill="none" data-name="object"></path>
-                        </g>
-                        <g transform="translate(46, 0)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="object">
-                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="object">object</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(46, 32)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="object">
-                                <text x="0.0" y="13.0" stroke="none" data-name="object">toString()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="object">toJSON()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="DgramSocket">
-                        <g fill="lightgray" stroke="#33322E" data-name="DgramSocket">
-                            <rect x="10.0" y="528.0" height="224.0" width="149.0" data-name="DgramSocket"></rect>
-                            <path d="M10.0 560.0 L159.0 560.0" fill="none" data-name="DgramSocket"></path>
-                        </g>
-                        <g transform="translate(10, 528)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="DgramSocket">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="DgramSocket">
-                                <text x="66.5" y="13.0" stroke="none" text-anchor="middle" data-name="DgramSocket">DgramSocket</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(10, 560)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="DgramSocket">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="DgramSocket">
-                                <text x="0.0" y="13.0" stroke="none" data-name="DgramSocket">bind()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="DgramSocket">send()</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="DgramSocket">address()</text>
-                                <text x="0.0" y="61.0" stroke="none" data-name="DgramSocket">close()</text>
-                                <text x="0.0" y="77.0" stroke="none" data-name="DgramSocket">getRecvBufferSize()</text>
-                                <text x="0.0" y="93.0" stroke="none" data-name="DgramSocket">getSendBufferSize()</text>
-                                <text x="0.0" y="109.0" stroke="none" data-name="DgramSocket">setRecvBufferSize()</text>
-                                <text x="0.0" y="125.0" stroke="none" data-name="DgramSocket">setSendBufferSize()</text>
-                                <text x="0.0" y="141.0" stroke="none" data-name="DgramSocket">setBroadcast()</text>
-                                <text x="0.0" y="157.0" stroke="none" data-name="DgramSocket">ref()</text>
-                                <text x="0.0" y="173.0" stroke="none" data-name="DgramSocket">unref()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg></div>
+<div class="dot notranslate">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="127pt" height="551pt" viewBox="0.00 0.00 126.80 551.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 547)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-547 122.801,-547 122.801,4 -4,4"></polygon>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href="object.md.html" xlink:title="object">
+<polygon fill="#ffffff" stroke="#000000" points="30.569,-490.5 30.569,-542.5 88.232,-542.5 88.232,-490.5 30.569,-490.5"></polygon>
+<text text-anchor="middle" x="59.4005" y="-529.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="30.569,-522.5 88.232,-522.5 "></polyline>
+<text text-anchor="start" x="38.569" y="-509.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="38.569" y="-497.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+</a>
+</g>
+</g>
+<!-- EventEmitter -->
+<g id="node2" class="node">
+<title>EventEmitter</title>
+<g id="a_node2"><a xlink:href="eventemitter.md.html" xlink:title="EventEmitter">
+<polygon fill="#ffffff" stroke="#000000" points="0,-197.5 0,-453.5 118.801,-453.5 118.801,-197.5 0,-197.5"></polygon>
+<text text-anchor="middle" x="59.4005" y="-440.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">EventEmitter</text>
+<polyline fill="none" stroke="#000000" points="0,-433.5 118.801,-433.5 "></polyline>
+<text text-anchor="start" x="8" y="-420.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new EventEmitter()</text>
+<polyline fill="none" stroke="#000000" points="0,-413.5 118.801,-413.5 "></polyline>
+<text text-anchor="start" x="8" y="-400.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">EventEmitter</text>
+<polyline fill="none" stroke="#000000" points="0,-393.5 118.801,-393.5 "></polyline>
+<text text-anchor="start" x="8" y="-380.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">defaultMaxListeners</text>
+<polyline fill="none" stroke="#000000" points="0,-373.5 118.801,-373.5 "></polyline>
+<text text-anchor="start" x="8" y="-360.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">on()</text>
+<text text-anchor="start" x="8" y="-348.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">addListener()</text>
+<text text-anchor="start" x="8" y="-336.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">prependListener()</text>
+<text text-anchor="start" x="8" y="-324.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">once()</text>
+<text text-anchor="start" x="8" y="-312.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">prependOnceListener()</text>
+<text text-anchor="start" x="8" y="-300.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">off()</text>
+<text text-anchor="start" x="8" y="-288.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">removeListener()</text>
+<text text-anchor="start" x="8" y="-276.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">removeAllListeners()</text>
+<text text-anchor="start" x="8" y="-264.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">setMaxListeners()</text>
+<text text-anchor="start" x="8" y="-252.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getMaxListeners()</text>
+<text text-anchor="start" x="8" y="-240.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">listeners()</text>
+<text text-anchor="start" x="8" y="-228.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">listenerCount()</text>
+<text text-anchor="start" x="8" y="-216.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">eventNames()</text>
+<text text-anchor="start" x="8" y="-204.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">emit()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;EventEmitter -->
+<g id="edge1" class="edge">
+<title>object-&gt;EventEmitter</title>
+<path fill="none" stroke="#000000" d="M59.4005,-480.2954C59.4005,-472.2131 59.4005,-463.1932 59.4005,-453.6815"></path>
+<polygon fill="#000000" stroke="#000000" points="55.9006,-480.3427 59.4005,-490.3427 62.9006,-480.3428 55.9006,-480.3427"></polygon>
+</g>
+<!-- DgramSocket -->
+<g id="me" class="node">
+<title>DgramSocket</title>
+<g id="a_me"><a xlink:title="DgramSocket">
+<polygon fill="#d3d3d3" stroke="#000000" points="6.3895,-.5 6.3895,-160.5 112.4115,-160.5 112.4115,-.5 6.3895,-.5"></polygon>
+<text text-anchor="middle" x="59.4005" y="-147.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">DgramSocket</text>
+<polyline fill="none" stroke="#000000" points="6.3895,-140.5 112.4115,-140.5 "></polyline>
+<text text-anchor="start" x="14.3895" y="-127.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">bind()</text>
+<text text-anchor="start" x="14.3895" y="-115.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">send()</text>
+<text text-anchor="start" x="14.3895" y="-103.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">address()</text>
+<text text-anchor="start" x="14.3895" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">close()</text>
+<text text-anchor="start" x="14.3895" y="-79.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getRecvBufferSize()</text>
+<text text-anchor="start" x="14.3895" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getSendBufferSize()</text>
+<text text-anchor="start" x="14.3895" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">setRecvBufferSize()</text>
+<text text-anchor="start" x="14.3895" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">setSendBufferSize()</text>
+<text text-anchor="start" x="14.3895" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">setBroadcast()</text>
+<text text-anchor="start" x="14.3895" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">ref()</text>
+<text text-anchor="start" x="14.3895" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">unref()</text>
+</a>
+</g>
+</g>
+<!-- EventEmitter&#45;&gt;DgramSocket -->
+<g id="edge2" class="edge">
+<title>EventEmitter-&gt;DgramSocket</title>
+<path fill="none" stroke="#000000" d="M59.4005,-187.0311C59.4005,-178.0064 59.4005,-169.0993 59.4005,-160.5102"></path>
+<polygon fill="#000000" stroke="#000000" points="55.9006,-187.2596 59.4005,-197.2597 62.9006,-187.2597 55.9006,-187.2596"></polygon>
+</g>
+</g>
+</svg>
+</div>
 
 <div name="静态属性" data-unique="静态属性"></div><h2 id="静态属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">靜態屬性</font></font></h2>
 <div name="defaultMaxListeners" data-unique="defaultMaxListeners"></div><h3 id="defaultMaxListeners" class="notranslate">defaultMaxListeners</h3>
@@ -865,4 +823,4 @@
 <ul>
 <li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回包含可JSON 序列化的值</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip353232"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip353232" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

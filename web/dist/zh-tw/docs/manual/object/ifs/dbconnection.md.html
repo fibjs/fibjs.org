@@ -65,6 +65,7 @@
 <li><a href="../../module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
 </ul>
  </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">內置對象</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="blskey.md.html" class="notranslate">BlsKey</a></li>
 <li><a href="buffer.md.html" class="notranslate">Buffer</a></li>
 <li><a href="bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
 <li><a href="chain.md.html" class="notranslate">Chain</a></li>
@@ -74,6 +75,8 @@
 <li class="active"><a href="dbconnection.md.html" class="notranslate">DbConnection</a></li>
 <li><a href="dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
 <li><a href="digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="eckey.md.html" class="notranslate">ECKey</a></li>
+<li><a href="ed25519key.md.html" class="notranslate">Ed25519Key</a></li>
 <li><a href="event.md.html" class="notranslate">Event</a></li>
 <li><a href="eventemitter.md.html" class="notranslate">EventEmitter</a></li>
 <li><a href="fswatcher.md.html" class="notranslate">FSWatcher</a></li>
@@ -203,139 +206,109 @@
  </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="对象-DbConnection" data-unique="对象-DbConnection"></div><h1 id="对象-DbConnection"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對象DbConnection</font></font></h1>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">數據庫連接對象，用於建立和維護一個數據庫連接會話。</font></font></p>
 <div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">繼承關係</font></font></h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="311.0" height="600.0" viewBox="0 0 311 600" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
-    <desc>
-    #lineWidth: 1.5
-    #font: Helvetica,sans-Serif
-    #fontSize: 10
-    #leading: 1.6
-    #.this: fill=lightgray
-    #.class: fill=white
-
-    [&lt;class&gt;object|toString();toJSON()]
-    [&lt;this&gt;DbConnection|type|close();use();begin();commit();rollback();trans();execute();createTable();dropTable();createIndex();dropIndex();insert();find();count();update();remove();format()]
-    [&lt;class&gt;MySQL]
-    [&lt;class&gt;Odbc]
-    [&lt;class&gt;SQLite]
-
-    [object] &lt;:- [DbConnection]
-    [DbConnection] &lt;:- [MySQL]
-    [DbConnection] &lt;:- [Odbc]
-    [DbConnection] &lt;:- [SQLite]
-    </desc>
-    <g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="10pt" font-family="Helvetica,sans-Serif" font-weight="bold" font-style="normal">
-        <g font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="bold" font-style="normal" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
-            <g stroke="transparent" fill="transparent">
-                <rect x="0.0" y="0.0" height="600.0" width="311.0" stroke="none"></rect>
-            </g>
-            <g transform="translate(8, 8)" fill="#33322E">
-                <g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal">
-                    <path d="M129.5 93.3 L129.5 100 L129.5 120 L129.5 120.0 " fill="none"></path>
-                    <path d="M134.8 93.3 L129.5 93.3 L124.2 93.3 L129.5 80.0 Z"></path>
-                    <path d="M69.1 417.5 L32 492 L32 512 L32.0 512.0 " fill="none"></path>
-                    <path d="M73.8 419.9 L69.1 417.5 L64.3 415.1 L75.0 405.6 Z"></path>
-                    <path d="M129.5 485.3 L129.5 492 L129.5 512 L129.5 512.0 " fill="none"></path>
-                    <path d="M134.8 485.3 L129.5 485.3 L124.2 485.3 L129.5 472.0 Z"></path>
-                    <path d="M189.8 419.8 L225 492 L225 512 L225.0 512.0 " fill="none"></path>
-                    <path d="M194.6 417.5 L189.8 419.8 L185.0 422.2 L184.0 407.9 Z"></path>
-                    <g data-name="DbConnection">
-                        <g fill="lightgray" stroke="#33322E" data-name="DbConnection">
-                            <rect x="75.0" y="120.0" height="352.0" width="109.0" data-name="DbConnection"></rect>
-                            <path d="M75.0 152.0 L184.0 152.0" fill="none" data-name="DbConnection"></path>
-                            <path d="M75.0 184.0 L184.0 184.0" fill="none" data-name="DbConnection"></path>
-                        </g>
-                        <g transform="translate(75, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="DbConnection">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="DbConnection">
-                                <text x="46.5" y="13.0" stroke="none" text-anchor="middle" data-name="DbConnection">DbConnection</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(75, 152)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="DbConnection">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="DbConnection">
-                                <text x="0.0" y="13.0" stroke="none" data-name="DbConnection">type</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(75, 184)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="DbConnection">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="DbConnection">
-                                <text x="0.0" y="13.0" stroke="none" data-name="DbConnection">close()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="DbConnection">use()</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="DbConnection">begin()</text>
-                                <text x="0.0" y="61.0" stroke="none" data-name="DbConnection">commit()</text>
-                                <text x="0.0" y="77.0" stroke="none" data-name="DbConnection">rollback()</text>
-                                <text x="0.0" y="93.0" stroke="none" data-name="DbConnection">trans()</text>
-                                <text x="0.0" y="109.0" stroke="none" data-name="DbConnection">execute()</text>
-                                <text x="0.0" y="125.0" stroke="none" data-name="DbConnection">createTable()</text>
-                                <text x="0.0" y="141.0" stroke="none" data-name="DbConnection">dropTable()</text>
-                                <text x="0.0" y="157.0" stroke="none" data-name="DbConnection">createIndex()</text>
-                                <text x="0.0" y="173.0" stroke="none" data-name="DbConnection">dropIndex()</text>
-                                <text x="0.0" y="189.0" stroke="none" data-name="DbConnection">insert()</text>
-                                <text x="0.0" y="205.0" stroke="none" data-name="DbConnection">find()</text>
-                                <text x="0.0" y="221.0" stroke="none" data-name="DbConnection">count()</text>
-                                <text x="0.0" y="237.0" stroke="none" data-name="DbConnection">update()</text>
-                                <text x="0.0" y="253.0" stroke="none" data-name="DbConnection">remove()</text>
-                                <text x="0.0" y="269.0" stroke="none" data-name="DbConnection">format()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="object">
-                        <g fill="white" stroke="#33322E" data-name="object">
-                            <rect x="91.0" y="0.0" height="80.0" width="77.0" data-name="object"></rect>
-                            <path d="M91.0 32.0 L168.0 32.0" fill="none" data-name="object"></path>
-                        </g>
-                        <g transform="translate(91, 0)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="object">
-                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="object">object</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(91, 32)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="object">
-                                <text x="0.0" y="13.0" stroke="none" data-name="object">toString()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="object">toJSON()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="MySQL">
-                        <g fill="white" stroke="#33322E" data-name="MySQL">
-                            <rect x="0.0" y="512.0" height="32.0" width="64.0" data-name="MySQL"></rect>
-                        </g>
-                        <g transform="translate(0, 512)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="MySQL">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="MySQL">
-                                <text x="24.0" y="13.0" stroke="none" text-anchor="middle" data-name="MySQL">MySQL</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="Odbc">
-                        <g fill="white" stroke="#33322E" data-name="Odbc">
-                            <rect x="104.0" y="512.0" height="32.0" width="51.0" data-name="Odbc"></rect>
-                        </g>
-                        <g transform="translate(104, 512)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Odbc">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Odbc">
-                                <text x="17.5" y="13.0" stroke="none" text-anchor="middle" data-name="Odbc">Odbc</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="SQLite">
-                        <g fill="white" stroke="#33322E" data-name="SQLite">
-                            <rect x="195.0" y="512.0" height="32.0" width="60.0" data-name="SQLite"></rect>
-                        </g>
-                        <g transform="translate(195, 512)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="SQLite">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="SQLite">
-                                <text x="22.0" y="13.0" stroke="none" text-anchor="middle" data-name="SQLite">SQLite</text>
-
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg></div>
+<div class="dot notranslate">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="206pt" height="423pt" viewBox="0.00 0.00 206.00 423.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 419)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-419 202,-419 202,4 -4,4"></polygon>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href="object.md.html" xlink:title="object">
+<polygon fill="#ffffff" stroke="#000000" points="70.1685,-362.5 70.1685,-414.5 127.8315,-414.5 127.8315,-362.5 70.1685,-362.5"></polygon>
+<text text-anchor="middle" x="99" y="-401.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="70.1685,-394.5 127.8315,-394.5 "></polyline>
+<text text-anchor="start" x="78.1685" y="-381.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="78.1685" y="-369.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+</a>
+</g>
+</g>
+<!-- DbConnection -->
+<g id="me" class="node">
+<title>DbConnection</title>
+<g id="a_me"><a xlink:title="DbConnection">
+<polygon fill="#d3d3d3" stroke="#000000" points="59.3255,-73.5 59.3255,-325.5 138.6745,-325.5 138.6745,-73.5 59.3255,-73.5"></polygon>
+<text text-anchor="middle" x="99" y="-312.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">DbConnection</text>
+<polyline fill="none" stroke="#000000" points="59.3255,-305.5 138.6745,-305.5 "></polyline>
+<text text-anchor="start" x="67.3255" y="-292.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">type</text>
+<polyline fill="none" stroke="#000000" points="59.3255,-285.5 138.6745,-285.5 "></polyline>
+<text text-anchor="start" x="67.3255" y="-272.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">close()</text>
+<text text-anchor="start" x="67.3255" y="-260.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">use()</text>
+<text text-anchor="start" x="67.3255" y="-248.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">begin()</text>
+<text text-anchor="start" x="67.3255" y="-236.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">commit()</text>
+<text text-anchor="start" x="67.3255" y="-224.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">rollback()</text>
+<text text-anchor="start" x="67.3255" y="-212.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">trans()</text>
+<text text-anchor="start" x="67.3255" y="-200.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">execute()</text>
+<text text-anchor="start" x="67.3255" y="-188.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">createTable()</text>
+<text text-anchor="start" x="67.3255" y="-176.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dropTable()</text>
+<text text-anchor="start" x="67.3255" y="-164.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">createIndex()</text>
+<text text-anchor="start" x="67.3255" y="-152.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dropIndex()</text>
+<text text-anchor="start" x="67.3255" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">insert()</text>
+<text text-anchor="start" x="67.3255" y="-128.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">find()</text>
+<text text-anchor="start" x="67.3255" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">count()</text>
+<text text-anchor="start" x="67.3255" y="-104.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">update()</text>
+<text text-anchor="start" x="67.3255" y="-92.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">remove()</text>
+<text text-anchor="start" x="67.3255" y="-80.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">format()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;DbConnection -->
+<g id="edge1" class="edge">
+<title>object-&gt;DbConnection</title>
+<path fill="none" stroke="#000000" d="M99,-352.151C99,-344.0543 99,-335.0258 99,-325.5165"></path>
+<polygon fill="#000000" stroke="#000000" points="95.5001,-352.2203 99,-362.2204 102.5001,-352.2204 95.5001,-352.2203"></polygon>
+</g>
+<!-- MySQL -->
+<g id="node3" class="node">
+<title>MySQL</title>
+<g id="a_node3"><a xlink:href="mysql.md.html" xlink:title="MySQL">
+<polygon fill="#ffffff" stroke="#000000" points="0,-.5 0,-36.5 54,-36.5 54,-.5 0,-.5"></polygon>
+<text text-anchor="middle" x="26.668" y="-15.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">MySQL</text>
+</a>
+</g>
+</g>
+<!-- DbConnection&#45;&gt;MySQL -->
+<g id="edge2" class="edge">
+<title>DbConnection-&gt;MySQL</title>
+<path fill="none" stroke="#000000" d="M55.6065,-90.4135C47.3217,-69.5864 39.5828,-50.1318 34.2489,-36.7229"></path>
+<polygon fill="#000000" stroke="#000000" points="52.3659,-91.7365 59.3143,-99.7347 58.8702,-89.1491 52.3659,-91.7365"></polygon>
+</g>
+<!-- Odbc -->
+<g id="node4" class="node">
+<title>Odbc</title>
+<g id="a_node4"><a xlink:href="odbc.md.html" xlink:title="Odbc">
+<polygon fill="#ffffff" stroke="#000000" points="72,-.5 72,-36.5 126,-36.5 126,-.5 72,-.5"></polygon>
+<text text-anchor="middle" x="98.9485" y="-15.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Odbc</text>
+</a>
+</g>
+</g>
+<!-- DbConnection&#45;&gt;Odbc -->
+<g id="edge3" class="edge">
+<title>DbConnection-&gt;Odbc</title>
+<path fill="none" stroke="#000000" d="M99,-62.9867C99,-52.9896 99,-44.013 99,-36.7858"></path>
+<polygon fill="#000000" stroke="#000000" points="95.5001,-63.2971 99,-73.2972 102.5001,-63.2972 95.5001,-63.2971"></polygon>
+</g>
+<!-- SQLite -->
+<g id="node5" class="node">
+<title>SQLite</title>
+<g id="a_node5"><a xlink:href="sqlite.md.html" xlink:title="SQLite">
+<polygon fill="#ffffff" stroke="#000000" points="144,-.5 144,-36.5 198,-36.5 198,-.5 144,-.5"></polygon>
+<text text-anchor="middle" x="170.782" y="-15.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">SQLite</text>
+</a>
+</g>
+</g>
+<!-- DbConnection&#45;&gt;SQLite -->
+<g id="edge4" class="edge">
+<title>DbConnection-&gt;SQLite</title>
+<path fill="none" stroke="#000000" d="M142.3935,-90.4135C150.6783,-69.5864 158.4172,-50.1318 163.7511,-36.7229"></path>
+<polygon fill="#000000" stroke="#000000" points="139.1298,-89.1491 138.6857,-99.7347 145.6341,-91.7365 139.1298,-89.1491"></polygon>
+</g>
+</g>
+</svg>
+</div>
 
 <div name="成员属性" data-unique="成员属性"></div><h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">成員屬性</font></font></h2>
 <div name="type" data-unique="type"></div><h3 id="type" class="notranslate">type</h3>
@@ -605,4 +578,4 @@
 <ul>
 <li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回包含可JSON 序列化的值</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip526034"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip526034" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

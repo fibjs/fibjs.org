@@ -2,198 +2,201 @@
 基础对象，所有对象均继承于此
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<this>object|toString();toJSON()]
-[<class>Buffer]
-[<class>Cipher]
-[<class>DbConnection]
-[<class>MySQL]
-[<class>Odbc]
-[<class>SQLite]
-[<class>Digest]
-[<class>EventEmitter]
-[<class>ChildProcess]
-[<class>DgramSocket]
-[<class>FSWatcher]
-[<class>LruCache]
-[<class>Service]
-[<class>StatsWatcher]
-[<class>WebSocket]
-[<class>WebView]
-[<class>Worker]
-[<class>Fiber]
-[<class>Handler]
-[<class>Chain]
-[<class>HttpHandler]
-[<class>HttpRepeater]
-[<class>Routing]
-[<class>SslHandler]
-[<class>HeapGraphEdge]
-[<class>HeapGraphNode]
-[<class>HeapSnapshot]
-[<class>HttpClient]
-[<class>HttpCollection]
-[<class>HttpCookie]
-[<class>HttpUploadData]
-[<class>Image]
-[<class>Iterator]
-[<class>LevelDB]
-[<class>Lock]
-[<class>Condition]
-[<class>Event]
-[<class>Semaphore]
-[<class>Message]
-[<class>HttpMessage]
-[<class>HttpRequest]
-[<class>HttpResponse]
-[<class>WebSocketMessage]
-[<class>MongoCollection]
-[<class>MongoCursor]
-[<class>MongoDB]
-[<class>MongoID]
-[<class>PKey]
-[<class>Redis]
-[<class>RedisHash]
-[<class>RedisList]
-[<class>RedisSet]
-[<class>RedisSortedSet]
-[<class>SandBox]
-[<class>Smtp]
-[<class>Stat]
-[<class>Stream]
-[<class>BufferedStream]
-[<class>SeekableStream]
-[<class>File]
-[<class>MemoryStream]
-[<class>RangeStream]
-[<class>Socket]
-[<class>SslSocket]
-[<class>TTYInputStream]
-[<class>TTYOutputStream]
-[<class>StringDecoder]
-[<class>TcpServer]
-[<class>HttpServer]
-[<class>HttpsServer]
-[<class>SslServer]
-[<class>TextDecoder]
-[<class>TextEncoder]
-[<class>Timer]
-[<class>UrlObject]
-[<class>X509Cert]
-[<class>X509Crl]
-[<class>X509Req]
-[<class>XmlAttr]
-[<class>XmlNamedNodeMap]
-[<class>XmlNode]
-[<class>XmlCharacterData]
-[<class>XmlComment]
-[<class>XmlText]
-[<class>XmlCDATASection]
-[<class>XmlDocument]
-[<class>XmlDocumentType]
-[<class>XmlElement]
-[<class>XmlProcessingInstruction]
-[<class>XmlNodeList]
-[<class>ZipFile]
+    object [tooltip="object", fillcolor="lightgray", id="me", label="{object|toString()\ltoJSON()\l}"];
+    Buffer [tooltip="Buffer", URL="Buffer.md", label="{Buffer}"];
+    Cipher [tooltip="Cipher", URL="Cipher.md", label="{Cipher}"];
+    DbConnection [tooltip="DbConnection", URL="DbConnection.md", label="{DbConnection}"];
+    MySQL [tooltip="MySQL", URL="MySQL.md", label="{MySQL}"];
+    Odbc [tooltip="Odbc", URL="Odbc.md", label="{Odbc}"];
+    SQLite [tooltip="SQLite", URL="SQLite.md", label="{SQLite}"];
+    Digest [tooltip="Digest", URL="Digest.md", label="{Digest}"];
+    EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter}"];
+    ChildProcess [tooltip="ChildProcess", URL="ChildProcess.md", label="{ChildProcess}"];
+    DgramSocket [tooltip="DgramSocket", URL="DgramSocket.md", label="{DgramSocket}"];
+    FSWatcher [tooltip="FSWatcher", URL="FSWatcher.md", label="{FSWatcher}"];
+    LruCache [tooltip="LruCache", URL="LruCache.md", label="{LruCache}"];
+    Service [tooltip="Service", URL="Service.md", label="{Service}"];
+    StatsWatcher [tooltip="StatsWatcher", URL="StatsWatcher.md", label="{StatsWatcher}"];
+    WebSocket [tooltip="WebSocket", URL="WebSocket.md", label="{WebSocket}"];
+    WebView [tooltip="WebView", URL="WebView.md", label="{WebView}"];
+    Worker [tooltip="Worker", URL="Worker.md", label="{Worker}"];
+    Fiber [tooltip="Fiber", URL="Fiber.md", label="{Fiber}"];
+    Handler [tooltip="Handler", URL="Handler.md", label="{Handler}"];
+    Chain [tooltip="Chain", URL="Chain.md", label="{Chain}"];
+    HttpHandler [tooltip="HttpHandler", URL="HttpHandler.md", label="{HttpHandler}"];
+    HttpRepeater [tooltip="HttpRepeater", URL="HttpRepeater.md", label="{HttpRepeater}"];
+    Routing [tooltip="Routing", URL="Routing.md", label="{Routing}"];
+    SslHandler [tooltip="SslHandler", URL="SslHandler.md", label="{SslHandler}"];
+    HeapGraphEdge [tooltip="HeapGraphEdge", URL="HeapGraphEdge.md", label="{HeapGraphEdge}"];
+    HeapGraphNode [tooltip="HeapGraphNode", URL="HeapGraphNode.md", label="{HeapGraphNode}"];
+    HeapSnapshot [tooltip="HeapSnapshot", URL="HeapSnapshot.md", label="{HeapSnapshot}"];
+    HttpClient [tooltip="HttpClient", URL="HttpClient.md", label="{HttpClient}"];
+    HttpCollection [tooltip="HttpCollection", URL="HttpCollection.md", label="{HttpCollection}"];
+    HttpCookie [tooltip="HttpCookie", URL="HttpCookie.md", label="{HttpCookie}"];
+    HttpUploadData [tooltip="HttpUploadData", URL="HttpUploadData.md", label="{HttpUploadData}"];
+    Image [tooltip="Image", URL="Image.md", label="{Image}"];
+    Iterator [tooltip="Iterator", URL="Iterator.md", label="{Iterator}"];
+    LevelDB [tooltip="LevelDB", URL="LevelDB.md", label="{LevelDB}"];
+    Lock [tooltip="Lock", URL="Lock.md", label="{Lock}"];
+    Condition [tooltip="Condition", URL="Condition.md", label="{Condition}"];
+    Event [tooltip="Event", URL="Event.md", label="{Event}"];
+    Semaphore [tooltip="Semaphore", URL="Semaphore.md", label="{Semaphore}"];
+    Message [tooltip="Message", URL="Message.md", label="{Message}"];
+    HttpMessage [tooltip="HttpMessage", URL="HttpMessage.md", label="{HttpMessage}"];
+    HttpRequest [tooltip="HttpRequest", URL="HttpRequest.md", label="{HttpRequest}"];
+    HttpResponse [tooltip="HttpResponse", URL="HttpResponse.md", label="{HttpResponse}"];
+    WebSocketMessage [tooltip="WebSocketMessage", URL="WebSocketMessage.md", label="{WebSocketMessage}"];
+    MongoCollection [tooltip="MongoCollection", URL="MongoCollection.md", label="{MongoCollection}"];
+    MongoCursor [tooltip="MongoCursor", URL="MongoCursor.md", label="{MongoCursor}"];
+    MongoDB [tooltip="MongoDB", URL="MongoDB.md", label="{MongoDB}"];
+    MongoID [tooltip="MongoID", URL="MongoID.md", label="{MongoID}"];
+    PKey [tooltip="PKey", URL="PKey.md", label="{PKey}"];
+    ECKey [tooltip="ECKey", URL="ECKey.md", label="{ECKey}"];
+    BlsKey [tooltip="BlsKey", URL="BlsKey.md", label="{BlsKey}"];
+    Ed25519Key [tooltip="Ed25519Key", URL="Ed25519Key.md", label="{Ed25519Key}"];
+    Redis [tooltip="Redis", URL="Redis.md", label="{Redis}"];
+    RedisHash [tooltip="RedisHash", URL="RedisHash.md", label="{RedisHash}"];
+    RedisList [tooltip="RedisList", URL="RedisList.md", label="{RedisList}"];
+    RedisSet [tooltip="RedisSet", URL="RedisSet.md", label="{RedisSet}"];
+    RedisSortedSet [tooltip="RedisSortedSet", URL="RedisSortedSet.md", label="{RedisSortedSet}"];
+    SandBox [tooltip="SandBox", URL="SandBox.md", label="{SandBox}"];
+    Smtp [tooltip="Smtp", URL="Smtp.md", label="{Smtp}"];
+    Stat [tooltip="Stat", URL="Stat.md", label="{Stat}"];
+    Stream [tooltip="Stream", URL="Stream.md", label="{Stream}"];
+    BufferedStream [tooltip="BufferedStream", URL="BufferedStream.md", label="{BufferedStream}"];
+    SeekableStream [tooltip="SeekableStream", URL="SeekableStream.md", label="{SeekableStream}"];
+    File [tooltip="File", URL="File.md", label="{File}"];
+    MemoryStream [tooltip="MemoryStream", URL="MemoryStream.md", label="{MemoryStream}"];
+    RangeStream [tooltip="RangeStream", URL="RangeStream.md", label="{RangeStream}"];
+    Socket [tooltip="Socket", URL="Socket.md", label="{Socket}"];
+    SslSocket [tooltip="SslSocket", URL="SslSocket.md", label="{SslSocket}"];
+    TTYInputStream [tooltip="TTYInputStream", URL="TTYInputStream.md", label="{TTYInputStream}"];
+    TTYOutputStream [tooltip="TTYOutputStream", URL="TTYOutputStream.md", label="{TTYOutputStream}"];
+    StringDecoder [tooltip="StringDecoder", URL="StringDecoder.md", label="{StringDecoder}"];
+    TcpServer [tooltip="TcpServer", URL="TcpServer.md", label="{TcpServer}"];
+    HttpServer [tooltip="HttpServer", URL="HttpServer.md", label="{HttpServer}"];
+    HttpsServer [tooltip="HttpsServer", URL="HttpsServer.md", label="{HttpsServer}"];
+    SslServer [tooltip="SslServer", URL="SslServer.md", label="{SslServer}"];
+    TextDecoder [tooltip="TextDecoder", URL="TextDecoder.md", label="{TextDecoder}"];
+    TextEncoder [tooltip="TextEncoder", URL="TextEncoder.md", label="{TextEncoder}"];
+    Timer [tooltip="Timer", URL="Timer.md", label="{Timer}"];
+    UrlObject [tooltip="UrlObject", URL="UrlObject.md", label="{UrlObject}"];
+    X509Cert [tooltip="X509Cert", URL="X509Cert.md", label="{X509Cert}"];
+    X509Crl [tooltip="X509Crl", URL="X509Crl.md", label="{X509Crl}"];
+    X509Req [tooltip="X509Req", URL="X509Req.md", label="{X509Req}"];
+    XmlAttr [tooltip="XmlAttr", URL="XmlAttr.md", label="{XmlAttr}"];
+    XmlNamedNodeMap [tooltip="XmlNamedNodeMap", URL="XmlNamedNodeMap.md", label="{XmlNamedNodeMap}"];
+    XmlNode [tooltip="XmlNode", URL="XmlNode.md", label="{XmlNode}"];
+    XmlCharacterData [tooltip="XmlCharacterData", URL="XmlCharacterData.md", label="{XmlCharacterData}"];
+    XmlComment [tooltip="XmlComment", URL="XmlComment.md", label="{XmlComment}"];
+    XmlText [tooltip="XmlText", URL="XmlText.md", label="{XmlText}"];
+    XmlCDATASection [tooltip="XmlCDATASection", URL="XmlCDATASection.md", label="{XmlCDATASection}"];
+    XmlDocument [tooltip="XmlDocument", URL="XmlDocument.md", label="{XmlDocument}"];
+    XmlDocumentType [tooltip="XmlDocumentType", URL="XmlDocumentType.md", label="{XmlDocumentType}"];
+    XmlElement [tooltip="XmlElement", URL="XmlElement.md", label="{XmlElement}"];
+    XmlProcessingInstruction [tooltip="XmlProcessingInstruction", URL="XmlProcessingInstruction.md", label="{XmlProcessingInstruction}"];
+    XmlNodeList [tooltip="XmlNodeList", URL="XmlNodeList.md", label="{XmlNodeList}"];
+    ZipFile [tooltip="ZipFile", URL="ZipFile.md", label="{ZipFile}"];
 
-[object] <:- [Buffer]
-[object] <:- [Cipher]
-[object] <:- [DbConnection]
-[DbConnection] <:- [MySQL]
-[DbConnection] <:- [Odbc]
-[DbConnection] <:- [SQLite]
-[object] <:- [Digest]
-[object] <:- [EventEmitter]
-[EventEmitter] <:- [ChildProcess]
-[EventEmitter] <:- [DgramSocket]
-[EventEmitter] <:- [FSWatcher]
-[EventEmitter] <:- [LruCache]
-[EventEmitter] <:- [Service]
-[EventEmitter] <:- [StatsWatcher]
-[EventEmitter] <:- [WebSocket]
-[EventEmitter] <:- [WebView]
-[EventEmitter] <:- [Worker]
-[object] <:- [Fiber]
-[object] <:- [Handler]
-[Handler] <:- [Chain]
-[Handler] <:- [HttpHandler]
-[Handler] <:- [HttpRepeater]
-[Handler] <:- [Routing]
-[Handler] <:- [SslHandler]
-[object] <:- [HeapGraphEdge]
-[object] <:- [HeapGraphNode]
-[object] <:- [HeapSnapshot]
-[object] <:- [HttpClient]
-[object] <:- [HttpCollection]
-[object] <:- [HttpCookie]
-[object] <:- [HttpUploadData]
-[object] <:- [Image]
-[object] <:- [Iterator]
-[object] <:- [LevelDB]
-[object] <:- [Lock]
-[Lock] <:- [Condition]
-[Lock] <:- [Event]
-[Lock] <:- [Semaphore]
-[object] <:- [Message]
-[Message] <:- [HttpMessage]
-[HttpMessage] <:- [HttpRequest]
-[HttpMessage] <:- [HttpResponse]
-[Message] <:- [WebSocketMessage]
-[object] <:- [MongoCollection]
-[object] <:- [MongoCursor]
-[object] <:- [MongoDB]
-[object] <:- [MongoID]
-[object] <:- [PKey]
-[object] <:- [Redis]
-[object] <:- [RedisHash]
-[object] <:- [RedisList]
-[object] <:- [RedisSet]
-[object] <:- [RedisSortedSet]
-[object] <:- [SandBox]
-[object] <:- [Smtp]
-[object] <:- [Stat]
-[object] <:- [Stream]
-[Stream] <:- [BufferedStream]
-[Stream] <:- [SeekableStream]
-[SeekableStream] <:- [File]
-[SeekableStream] <:- [MemoryStream]
-[SeekableStream] <:- [RangeStream]
-[Stream] <:- [Socket]
-[Stream] <:- [SslSocket]
-[Stream] <:- [TTYInputStream]
-[Stream] <:- [TTYOutputStream]
-[object] <:- [StringDecoder]
-[object] <:- [TcpServer]
-[TcpServer] <:- [HttpServer]
-[HttpServer] <:- [HttpsServer]
-[TcpServer] <:- [SslServer]
-[object] <:- [TextDecoder]
-[object] <:- [TextEncoder]
-[object] <:- [Timer]
-[object] <:- [UrlObject]
-[object] <:- [X509Cert]
-[object] <:- [X509Crl]
-[object] <:- [X509Req]
-[object] <:- [XmlAttr]
-[object] <:- [XmlNamedNodeMap]
-[object] <:- [XmlNode]
-[XmlNode] <:- [XmlCharacterData]
-[XmlCharacterData] <:- [XmlComment]
-[XmlCharacterData] <:- [XmlText]
-[XmlText] <:- [XmlCDATASection]
-[XmlNode] <:- [XmlDocument]
-[XmlNode] <:- [XmlDocumentType]
-[XmlNode] <:- [XmlElement]
-[XmlNode] <:- [XmlProcessingInstruction]
-[object] <:- [XmlNodeList]
-[object] <:- [ZipFile]
+    object -> Buffer [dir=back];
+    object -> Cipher [dir=back];
+    object -> DbConnection [dir=back];
+    DbConnection -> MySQL [dir=back];
+    DbConnection -> Odbc [dir=back];
+    DbConnection -> SQLite [dir=back];
+    object -> Digest [dir=back];
+    object -> EventEmitter [dir=back];
+    EventEmitter -> ChildProcess [dir=back];
+    EventEmitter -> DgramSocket [dir=back];
+    EventEmitter -> FSWatcher [dir=back];
+    EventEmitter -> LruCache [dir=back];
+    EventEmitter -> Service [dir=back];
+    EventEmitter -> StatsWatcher [dir=back];
+    EventEmitter -> WebSocket [dir=back];
+    EventEmitter -> WebView [dir=back];
+    EventEmitter -> Worker [dir=back];
+    object -> Fiber [dir=back];
+    object -> Handler [dir=back];
+    Handler -> Chain [dir=back];
+    Handler -> HttpHandler [dir=back];
+    Handler -> HttpRepeater [dir=back];
+    Handler -> Routing [dir=back];
+    Handler -> SslHandler [dir=back];
+    object -> HeapGraphEdge [dir=back];
+    object -> HeapGraphNode [dir=back];
+    object -> HeapSnapshot [dir=back];
+    object -> HttpClient [dir=back];
+    object -> HttpCollection [dir=back];
+    object -> HttpCookie [dir=back];
+    object -> HttpUploadData [dir=back];
+    object -> Image [dir=back];
+    object -> Iterator [dir=back];
+    object -> LevelDB [dir=back];
+    object -> Lock [dir=back];
+    Lock -> Condition [dir=back];
+    Lock -> Event [dir=back];
+    Lock -> Semaphore [dir=back];
+    object -> Message [dir=back];
+    Message -> HttpMessage [dir=back];
+    HttpMessage -> HttpRequest [dir=back];
+    HttpMessage -> HttpResponse [dir=back];
+    Message -> WebSocketMessage [dir=back];
+    object -> MongoCollection [dir=back];
+    object -> MongoCursor [dir=back];
+    object -> MongoDB [dir=back];
+    object -> MongoID [dir=back];
+    object -> PKey [dir=back];
+    PKey -> ECKey [dir=back];
+    ECKey -> BlsKey [dir=back];
+    ECKey -> Ed25519Key [dir=back];
+    object -> Redis [dir=back];
+    object -> RedisHash [dir=back];
+    object -> RedisList [dir=back];
+    object -> RedisSet [dir=back];
+    object -> RedisSortedSet [dir=back];
+    object -> SandBox [dir=back];
+    object -> Smtp [dir=back];
+    object -> Stat [dir=back];
+    object -> Stream [dir=back];
+    Stream -> BufferedStream [dir=back];
+    Stream -> SeekableStream [dir=back];
+    SeekableStream -> File [dir=back];
+    SeekableStream -> MemoryStream [dir=back];
+    SeekableStream -> RangeStream [dir=back];
+    Stream -> Socket [dir=back];
+    Stream -> SslSocket [dir=back];
+    Stream -> TTYInputStream [dir=back];
+    Stream -> TTYOutputStream [dir=back];
+    object -> StringDecoder [dir=back];
+    object -> TcpServer [dir=back];
+    TcpServer -> HttpServer [dir=back];
+    HttpServer -> HttpsServer [dir=back];
+    TcpServer -> SslServer [dir=back];
+    object -> TextDecoder [dir=back];
+    object -> TextEncoder [dir=back];
+    object -> Timer [dir=back];
+    object -> UrlObject [dir=back];
+    object -> X509Cert [dir=back];
+    object -> X509Crl [dir=back];
+    object -> X509Req [dir=back];
+    object -> XmlAttr [dir=back];
+    object -> XmlNamedNodeMap [dir=back];
+    object -> XmlNode [dir=back];
+    XmlNode -> XmlCharacterData [dir=back];
+    XmlCharacterData -> XmlComment [dir=back];
+    XmlCharacterData -> XmlText [dir=back];
+    XmlText -> XmlCDATASection [dir=back];
+    XmlNode -> XmlDocument [dir=back];
+    XmlNode -> XmlDocumentType [dir=back];
+    XmlNode -> XmlElement [dir=back];
+    XmlNode -> XmlProcessingInstruction [dir=back];
+    object -> XmlNodeList [dir=back];
+    object -> ZipFile [dir=back];
+}
 ```
 
 ## 成员函数

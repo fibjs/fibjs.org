@@ -10,20 +10,17 @@ var msg = new ws.Message();
 ```
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<class>object|toString();toJSON()]
-[<class>Message|new Message()|TEXT;BINARY|value;params;type;data;body;length;stream;lastError|read();readAll();write();json();pack();end();isEnded();clear();sendTo();readFrom()]
-[<this>WebSocketMessage|new WebSocketMessage()|masked;compress;maxSize]
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    Message [tooltip="Message", URL="Message.md", label="{Message|new Message()\l|TEXT\lBINARY\l|value\lparams\ltype\ldata\lbody\llength\lstream\llastError\l|read()\lreadAll()\lwrite()\ljson()\lpack()\lend()\lisEnded()\lclear()\lsendTo()\lreadFrom()\l}"];
+    WebSocketMessage [tooltip="WebSocketMessage", fillcolor="lightgray", id="me", label="{WebSocketMessage|new WebSocketMessage()\l|masked\lcompress\lmaxSize\l}"];
 
-[object] <:- [Message]
-[Message] <:- [WebSocketMessage]
+    object -> Message [dir=back];
+    Message -> WebSocketMessage [dir=back];
+}
 ```
 
 ## 构造函数

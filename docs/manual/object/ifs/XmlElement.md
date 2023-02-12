@@ -2,20 +2,17 @@
 XmlElement 对象表示 XML 文档中的元素
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<class>object|toString();toJSON()]
-[<class>XmlNode|nodeType;nodeName;nodeValue;ownerDocument;parentNode;childNodes;firstChild;lastChild;previousSibling;nextSibling|hasChildNodes();normalize();cloneNode();lookupPrefix();lookupNamespaceURI();insertBefore();insertAfter();appendChild();replaceChild();removeChild()]
-[<this>XmlElement|namespaceURI;prefix;localName;tagName;id;textContent;innerHTML;className;attributes|getAttribute();getAttributeNS();setAttribute();setAttributeNS();removeAttribute();removeAttributeNS();hasAttribute();hasAttributeNS();getElementsByTagName();getElementsByTagNameNS();getElementById();getElementsByClassName()]
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    XmlNode [tooltip="XmlNode", URL="XmlNode.md", label="{XmlNode|nodeType\lnodeName\lnodeValue\lownerDocument\lparentNode\lchildNodes\lfirstChild\llastChild\lpreviousSibling\lnextSibling\l|hasChildNodes()\lnormalize()\lcloneNode()\llookupPrefix()\llookupNamespaceURI()\linsertBefore()\linsertAfter()\lappendChild()\lreplaceChild()\lremoveChild()\l}"];
+    XmlElement [tooltip="XmlElement", fillcolor="lightgray", id="me", label="{XmlElement|namespaceURI\lprefix\llocalName\ltagName\lid\ltextContent\linnerHTML\lclassName\lattributes\l|getAttribute()\lgetAttributeNS()\lsetAttribute()\lsetAttributeNS()\lremoveAttribute()\lremoveAttributeNS()\lhasAttribute()\lhasAttributeNS()\lgetElementsByTagName()\lgetElementsByTagNameNS()\lgetElementById()\lgetElementsByClassName()\l}"];
 
-[object] <:- [XmlNode]
-[XmlNode] <:- [XmlElement]
+    object -> XmlNode [dir=back];
+    XmlNode -> XmlElement [dir=back];
+}
 ```
 
 ## 成员属性

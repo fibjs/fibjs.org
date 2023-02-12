@@ -65,6 +65,7 @@
 <li><a href=../../module/ifs/zlib.md.html class ="notranslate">zlib</a></li>
 </ul>
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_object" aria-controls="collapse_object"> 内置对象 </a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby=headingOne><div class=panel-body> <ul>
+<li><a href=blskey.md.html class ="notranslate">BlsKey</a></li>
 <li><a href=buffer.md.html class ="notranslate">Buffer</a></li>
 <li><a href=bufferedstream.md.html class ="notranslate">BufferedStream</a></li>
 <li><a href=chain.md.html class ="notranslate">Chain</a></li>
@@ -74,6 +75,8 @@
 <li><a href=dbconnection.md.html class ="notranslate">DbConnection</a></li>
 <li><a href=dgramsocket.md.html class ="notranslate">DgramSocket</a></li>
 <li><a href=digest.md.html class ="notranslate">Digest</a></li>
+<li><a href=eckey.md.html class ="notranslate">ECKey</a></li>
+<li><a href=ed25519key.md.html class ="notranslate">Ed25519Key</a></li>
 <li><a href=event.md.html class ="notranslate">Event</a></li>
 <li><a href=eventemitter.md.html class ="notranslate">EventEmitter</a></li>
 <li><a href=fswatcher.md.html class ="notranslate">FSWatcher</a></li>
@@ -203,179 +206,130 @@
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="对象-HttpMessage">对象 HttpMessage</h1>
 <p><a href=../../module/ifs/http.md.html class ="notranslate">http</a> 基础消息对象</p>
 <h2 id="继承关系">继承关系</h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="303.0" height="992.0" viewbox="0 0 303 992" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
-    <desc >
-    #lineWidth: 1.5
-    #font: Helvetica,sans-Serif
-    #fontSize: 10
-    #leading: 1.6
-    #.this: fill=lightgray
-    #.class: fill=white
-
-    [&lt;class&gt;object|toString();toJSON()]
-    [&lt;class&gt;Message|new Message()|TEXT;BINARY|value;params;type;data;body;length;stream;lastError|read();readAll();write();json();pack();end();isEnded();clear();sendTo();readFrom()]
-    [&lt;this&gt;HttpMessage|protocol;headers;keepAlive;upgrade;maxHeadersCount;maxBodySize;socket|hasHeader();firstHeader();allHeader();addHeader();setHeader();removeHeader()]
-    [&lt;class&gt;HttpRequest]
-    [&lt;class&gt;HttpResponse]
-
-    [object] &lt;:- [Message]
-    [Message] &lt;:- [HttpMessage]
-    [HttpMessage] &lt;:- [HttpRequest]
-    [HttpMessage] &lt;:- [HttpResponse]
-    </desc>
-    <g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="10pt" font-family="Helvetica,sans-Serif" font-weight="bold" font-style="normal">
-        <g font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="bold" font-style="normal" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
-            <g stroke="transparent" fill="transparent">
-                <rect x="0.0" y="0.0" height="992.0" width="303.0" stroke="none"></rect>
-            </g>
-            <g transform="translate(8, 8)" fill="#33322E">
-                <g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal">
-                    <path d="M120.8 93.3 L120.75 100 L120.75 120 L120.8 120.0 " fill="none"></path>
-                    <path d="M126.1 93.3 L120.8 93.3 L115.4 93.3 L120.8 80.0 Z"></path>
-                    <path d="M120.8 565.3 L120.75 572 L120.75 592 L120.8 592.0 " fill="none"></path>
-                    <path d="M126.1 565.3 L120.8 565.3 L115.4 565.3 L120.8 552.0 Z"></path>
-                    <path d="M52.6 876.1 L49 884 L49 904 L49.0 904.0 " fill="none"></path>
-                    <path d="M57.5 878.3 L52.6 876.1 L47.8 873.9 L58.2 864.0 Z"></path>
-                    <path d="M188.9 876.1 L192.5 884 L192.5 904 L192.5 904.0 " fill="none"></path>
-                    <path d="M193.7 873.9 L188.9 876.1 L184.0 878.3 L183.3 864.0 Z"></path>
-                    <g data-name="Message">
-                        <g fill="white" stroke="#33322E" data-name="Message">
-                            <rect x="62.0" y="120.0" height="432.0" width="117.0" data-name="Message"></rect>
-                            <path d="M62.0 152.0 L179.0 152.0" fill="none" data-name="Message"></path>
-                            <path d="M62.0 184.0 L179.0 184.0" fill="none" data-name="Message"></path>
-                            <path d="M62.0 232.0 L179.0 232.0" fill="none" data-name="Message"></path>
-                            <path d="M62.0 376.0 L179.0 376.0" fill="none" data-name="Message"></path>
-                        </g>
-                        <g transform="translate(62, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Message">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Message">
-                                <text x="50.5" y="13.0" stroke="none" text-anchor="middle" data-name="Message">Message</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(62, 152)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Message">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Message">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Message">new Message()</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(62, 184)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Message">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Message">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Message">TEXT</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="Message">BINARY</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(62, 232)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Message">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Message">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Message">value</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="Message">params</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="Message">type</text>
-                                <text x="0.0" y="61.0" stroke="none" data-name="Message">data</text>
-                                <text x="0.0" y="77.0" stroke="none" data-name="Message">body</text>
-                                <text x="0.0" y="93.0" stroke="none" data-name="Message">length</text>
-                                <text x="0.0" y="109.0" stroke="none" data-name="Message">stream</text>
-                                <text x="0.0" y="125.0" stroke="none" data-name="Message">lastError</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(62, 376)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Message">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Message">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Message">read()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="Message">readAll()</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="Message">write()</text>
-                                <text x="0.0" y="61.0" stroke="none" data-name="Message">json()</text>
-                                <text x="0.0" y="77.0" stroke="none" data-name="Message">pack()</text>
-                                <text x="0.0" y="93.0" stroke="none" data-name="Message">end()</text>
-                                <text x="0.0" y="109.0" stroke="none" data-name="Message">isEnded()</text>
-                                <text x="0.0" y="125.0" stroke="none" data-name="Message">clear()</text>
-                                <text x="0.0" y="141.0" stroke="none" data-name="Message">sendTo()</text>
-                                <text x="0.0" y="157.0" stroke="none" data-name="Message">readFrom()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="HttpMessage">
-                        <g fill="lightgray" stroke="#33322E" data-name="HttpMessage">
-                            <rect x="51.0" y="592.0" height="272.0" width="139.0" data-name="HttpMessage"></rect>
-                            <path d="M51.0 624.0 L190.0 624.0" fill="none" data-name="HttpMessage"></path>
-                            <path d="M51.0 752.0 L190.0 752.0" fill="none" data-name="HttpMessage"></path>
-                        </g>
-                        <g transform="translate(51, 592)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="HttpMessage">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="HttpMessage">
-                                <text x="61.5" y="13.0" stroke="none" text-anchor="middle" data-name="HttpMessage">HttpMessage</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(51, 624)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="HttpMessage">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="HttpMessage">
-                                <text x="0.0" y="13.0" stroke="none" data-name="HttpMessage">protocol</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="HttpMessage">headers</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="HttpMessage">keepAlive</text>
-                                <text x="0.0" y="61.0" stroke="none" data-name="HttpMessage">upgrade</text>
-                                <text x="0.0" y="77.0" stroke="none" data-name="HttpMessage">maxHeadersCount</text>
-                                <text x="0.0" y="93.0" stroke="none" data-name="HttpMessage">maxBodySize</text>
-                                <text x="0.0" y="109.0" stroke="none" data-name="HttpMessage">socket</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(51, 752)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="HttpMessage">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="HttpMessage">
-                                <text x="0.0" y="13.0" stroke="none" data-name="HttpMessage">hasHeader()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="HttpMessage">firstHeader()</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="HttpMessage">allHeader()</text>
-                                <text x="0.0" y="61.0" stroke="none" data-name="HttpMessage">addHeader()</text>
-                                <text x="0.0" y="77.0" stroke="none" data-name="HttpMessage">setHeader()</text>
-                                <text x="0.0" y="93.0" stroke="none" data-name="HttpMessage">removeHeader()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="object">
-                        <g fill="white" stroke="#33322E" data-name="object">
-                            <rect x="82.0" y="0.0" height="80.0" width="77.0" data-name="object"></rect>
-                            <path d="M82.0 32.0 L159.0 32.0" fill="none" data-name="object"></path>
-                        </g>
-                        <g transform="translate(82, 0)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="object">
-                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="object">object</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(82, 32)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="object">
-                                <text x="0.0" y="13.0" stroke="none" data-name="object">toString()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="object">toJSON()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="HttpRequest">
-                        <g fill="white" stroke="#33322E" data-name="HttpRequest">
-                            <rect x="0.0" y="904.0" height="32.0" width="98.0" data-name="HttpRequest"></rect>
-                        </g>
-                        <g transform="translate(0, 904)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="HttpRequest">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="HttpRequest">
-                                <text x="41.0" y="13.0" stroke="none" text-anchor="middle" data-name="HttpRequest">HttpRequest</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="HttpResponse">
-                        <g fill="white" stroke="#33322E" data-name="HttpResponse">
-                            <rect x="138.0" y="904.0" height="32.0" width="109.0" data-name="HttpResponse"></rect>
-                        </g>
-                        <g transform="translate(138, 904)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="HttpResponse">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="HttpResponse">
-                                <text x="46.5" y="13.0" stroke="none" text-anchor="middle" data-name="HttpResponse">HttpResponse</text>
-
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg></div>
+<div class="dot notranslate">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="176pt" height="704pt"
+ viewBox="0.00 0.00 176.46 704.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 700)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-700 172.46,-700 172.46,4 -4,4"/>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href=object.md.html xlink:title="object">
+<polygon fill="#ffffff" stroke="#000000" points="52.9535,-643.5 52.9535,-695.5 110.6165,-695.5 110.6165,-643.5 52.9535,-643.5"/>
+<text text-anchor="middle" x="81.785" y="-682.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="52.9535,-675.5 110.6165,-675.5 "/>
+<text text-anchor="start" x="60.9535" y="-662.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="60.9535" y="-650.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+</a>
+</g>
+</g>
+<!-- Message -->
+<g id="node2" class="node">
+<title>Message</title>
+<g id="a_node2"><a xlink:href=message.md.html xlink:title="Message">
+<polygon fill="#ffffff" stroke="#000000" points="39.6155,-302.5 39.6155,-606.5 123.9545,-606.5 123.9545,-302.5 39.6155,-302.5"/>
+<text text-anchor="middle" x="81.785" y="-593.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Message</text>
+<polyline fill="none" stroke="#000000" points="39.6155,-586.5 123.9545,-586.5 "/>
+<text text-anchor="start" x="47.6155" y="-573.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new Message()</text>
+<polyline fill="none" stroke="#000000" points="39.6155,-566.5 123.9545,-566.5 "/>
+<text text-anchor="start" x="47.6155" y="-553.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">TEXT</text>
+<text text-anchor="start" x="47.6155" y="-541.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">BINARY</text>
+<polyline fill="none" stroke="#000000" points="39.6155,-534.5 123.9545,-534.5 "/>
+<text text-anchor="start" x="47.6155" y="-521.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">value</text>
+<text text-anchor="start" x="47.6155" y="-509.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">params</text>
+<text text-anchor="start" x="47.6155" y="-497.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">type</text>
+<text text-anchor="start" x="47.6155" y="-485.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">data</text>
+<text text-anchor="start" x="47.6155" y="-473.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">body</text>
+<text text-anchor="start" x="47.6155" y="-461.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">length</text>
+<text text-anchor="start" x="47.6155" y="-449.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">stream</text>
+<text text-anchor="start" x="47.6155" y="-437.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">lastError</text>
+<polyline fill="none" stroke="#000000" points="39.6155,-430.5 123.9545,-430.5 "/>
+<text text-anchor="start" x="47.6155" y="-417.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">read()</text>
+<text text-anchor="start" x="47.6155" y="-405.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readAll()</text>
+<text text-anchor="start" x="47.6155" y="-393.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">write()</text>
+<text text-anchor="start" x="47.6155" y="-381.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">json()</text>
+<text text-anchor="start" x="47.6155" y="-369.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">pack()</text>
+<text text-anchor="start" x="47.6155" y="-357.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">end()</text>
+<text text-anchor="start" x="47.6155" y="-345.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isEnded()</text>
+<text text-anchor="start" x="47.6155" y="-333.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">clear()</text>
+<text text-anchor="start" x="47.6155" y="-321.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">sendTo()</text>
+<text text-anchor="start" x="47.6155" y="-309.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readFrom()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;Message -->
+<g id="edge1" class="edge">
+<title>object&#45;&gt;Message</title>
+<path fill="none" stroke="#000000" d="M81.785,-632.9226C81.785,-624.9827 81.785,-616.1108 81.785,-606.6809"/>
+<polygon fill="#000000" stroke="#000000" points="78.2851,-633.1367 81.785,-643.1368 85.2851,-633.1368 78.2851,-633.1367"/>
+</g>
+<!-- HttpMessage -->
+<g id="me" class="node">
+<title>HttpMessage</title>
+<g id="a_me"><a xlink:title="HttpMessage">
+<polygon fill="#d3d3d3" stroke="#000000" points="32.1115,-73.5 32.1115,-265.5 131.4585,-265.5 131.4585,-73.5 32.1115,-73.5"/>
+<text text-anchor="middle" x="81.785" y="-252.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">HttpMessage</text>
+<polyline fill="none" stroke="#000000" points="32.1115,-245.5 131.4585,-245.5 "/>
+<text text-anchor="start" x="40.1115" y="-232.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">protocol</text>
+<text text-anchor="start" x="40.1115" y="-220.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">headers</text>
+<text text-anchor="start" x="40.1115" y="-208.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">keepAlive</text>
+<text text-anchor="start" x="40.1115" y="-196.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">upgrade</text>
+<text text-anchor="start" x="40.1115" y="-184.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">maxHeadersCount</text>
+<text text-anchor="start" x="40.1115" y="-172.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">maxBodySize</text>
+<text text-anchor="start" x="40.1115" y="-160.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">socket</text>
+<polyline fill="none" stroke="#000000" points="32.1115,-153.5 131.4585,-153.5 "/>
+<text text-anchor="start" x="40.1115" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">hasHeader()</text>
+<text text-anchor="start" x="40.1115" y="-128.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">firstHeader()</text>
+<text text-anchor="start" x="40.1115" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">allHeader()</text>
+<text text-anchor="start" x="40.1115" y="-104.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">addHeader()</text>
+<text text-anchor="start" x="40.1115" y="-92.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">setHeader()</text>
+<text text-anchor="start" x="40.1115" y="-80.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">removeHeader()</text>
+</a>
+</g>
+</g>
+<!-- Message&#45;&gt;HttpMessage -->
+<g id="edge2" class="edge">
+<title>Message&#45;&gt;HttpMessage</title>
+<path fill="none" stroke="#000000" d="M81.785,-292.2065C81.785,-283.2075 81.785,-274.316 81.785,-265.6791"/>
+<polygon fill="#000000" stroke="#000000" points="78.2851,-292.4044 81.785,-302.4044 85.2851,-292.4044 78.2851,-292.4044"/>
+</g>
+<!-- HttpRequest -->
+<g id="node4" class="node">
+<title>HttpRequest</title>
+<g id="a_node4"><a xlink:href=httprequest.md.html xlink:title="HttpRequest">
+<polygon fill="#ffffff" stroke="#000000" points="0,-.5 0,-36.5 71.57,-36.5 71.57,-.5 0,-.5"/>
+<text text-anchor="middle" x="35.785" y="-15.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">HttpRequest</text>
+</a>
+</g>
+</g>
+<!-- HttpMessage&#45;&gt;HttpRequest -->
+<g id="edge3" class="edge">
+<title>HttpMessage&#45;&gt;HttpRequest</title>
+<path fill="none" stroke="#000000" d="M49.5913,-63.8208C46.4735,-53.5862 43.6255,-44.2373 41.3365,-36.7235"/>
+<polygon fill="#000000" stroke="#000000" points="46.2599,-64.8956 52.5222,-73.4416 52.9561,-62.8557 46.2599,-64.8956"/>
+</g>
+<!-- HttpResponse -->
+<g id="node5" class="node">
+<title>HttpResponse</title>
+<g id="a_node5"><a xlink:href=httpresponse.md.html xlink:title="HttpResponse">
+<polygon fill="#ffffff" stroke="#000000" points="89.11,-.5 89.11,-36.5 168.46,-36.5 168.46,-.5 89.11,-.5"/>
+<text text-anchor="middle" x="128.785" y="-15.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">HttpResponse</text>
+</a>
+</g>
+</g>
+<!-- HttpMessage&#45;&gt;HttpResponse -->
+<g id="edge4" class="edge">
+<title>HttpMessage&#45;&gt;HttpResponse</title>
+<path fill="none" stroke="#000000" d="M114.6785,-63.8208C117.8641,-53.5862 120.7741,-44.2373 123.1128,-36.7235"/>
+<polygon fill="#000000" stroke="#000000" points="111.3141,-62.8532 111.684,-73.4416 117.9978,-64.9336 111.3141,-62.8532"/>
+</g>
+</g>
+</svg>
+</div>
 
 <h2 id="常量">常量</h2>
 <h3 id="TEXT" class ="notranslate">TEXT</h3>
@@ -704,4 +658,4 @@
 <ul>
 <li><span class="notranslate">Value</span>, 返回包含可 JSON 序列化的值</li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

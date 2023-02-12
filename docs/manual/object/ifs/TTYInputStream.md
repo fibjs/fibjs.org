@@ -8,20 +8,17 @@ process.stdin.read(1)
 ```
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<class>object|toString();toJSON()]
-[<class>Stream|fd|read();write();flush();close();copyTo()]
-[<this>TTYInputStream|isTTY;isRaw|setRawMode()]
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    Stream [tooltip="Stream", URL="Stream.md", label="{Stream|fd\l|read()\lwrite()\lflush()\lclose()\lcopyTo()\l}"];
+    TTYInputStream [tooltip="TTYInputStream", fillcolor="lightgray", id="me", label="{TTYInputStream|isTTY\lisRaw\l|setRawMode()\l}"];
 
-[object] <:- [Stream]
-[Stream] <:- [TTYInputStream]
+    object -> Stream [dir=back];
+    Stream -> TTYInputStream [dir=back];
+}
 ```
 
 ## 成员属性

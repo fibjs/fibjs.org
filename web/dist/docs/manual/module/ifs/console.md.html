@@ -65,6 +65,7 @@
 <li><a href=zlib.md.html class ="notranslate">zlib</a></li>
 </ul>
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_object" aria-controls="collapse_object"> 内置对象 </a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby=headingOne><div class=panel-body> <ul>
+<li><a href=../../object/ifs/blskey.md.html class ="notranslate">BlsKey</a></li>
 <li><a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a></li>
 <li><a href=../../object/ifs/bufferedstream.md.html class ="notranslate">BufferedStream</a></li>
 <li><a href=../../object/ifs/chain.md.html class ="notranslate">Chain</a></li>
@@ -74,6 +75,8 @@
 <li><a href=../../object/ifs/dbconnection.md.html class ="notranslate">DbConnection</a></li>
 <li><a href=../../object/ifs/dgramsocket.md.html class ="notranslate">DgramSocket</a></li>
 <li><a href=../../object/ifs/digest.md.html class ="notranslate">Digest</a></li>
+<li><a href=../../object/ifs/eckey.md.html class ="notranslate">ECKey</a></li>
+<li><a href=../../object/ifs/ed25519key.md.html class ="notranslate">Ed25519Key</a></li>
 <li><a href=../../object/ifs/event.md.html class ="notranslate">Event</a></li>
 <li><a href=../../object/ifs/eventemitter.md.html class ="notranslate">EventEmitter</a></li>
 <li><a href=../../object/ifs/fswatcher.md.html class ="notranslate">FSWatcher</a></li>
@@ -630,168 +633,6 @@
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.clear();
 </code></pre>
 <hr>
-<h3 id="keyDown" class ="notranslate">keyDown</h3>
-<p><strong>按下一个按键</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.keyDown(<span class="hljs-built_in">String</span> key,
-    <span class="hljs-built_in">String</span> modifier = <span class="hljs-string">""</span>);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li><span class="notranslate">key</span>: String, 指定按键，单字符直接传入，功能键传入名称</li>
-<li><span class="notranslate">modifier</span>: String, 指定控制键，可以为：control, alt, shift, command</li>
-</ul>
-<p>参数 key 可以使用字符串传入功能键：</p>
-<ul>
-<li>功能键：f1 - f12</li>
-<li>方向键：up, down,left, right, home, end, pageup, pagedown</li>
-<li>编辑键：backspace, delete, insert, enter, tab, escape, space</li>
-<li>控制键：control, alt, shift, command</li>
-</ul>
-<hr>
-<p><strong>按下一个按键</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.keyDown(<span class="hljs-built_in">String</span> key,
-    <span class="hljs-built_in">Array</span> modifier);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li><span class="notranslate">key</span>: String, 指定按键，单字符直接传入，功能键传入名称</li>
-<li><span class="notranslate">modifier</span>: Array, 指定控制键数组，可以为：control, alt, shift, command</li>
-</ul>
-<p>参数 key 可以使用字符串传入功能键：</p>
-<ul>
-<li>功能键：f1 - f12</li>
-<li>方向键：up, down,left, right, home, end, pageup, pagedown</li>
-<li>编辑键：backspace, delete, insert, enter, tab, escape, space</li>
-<li>控制键：control, alt, shift, command</li>
-</ul>
-<hr>
-<h3 id="keyUp" class ="notranslate">keyUp</h3>
-<p><strong>松开一个按键</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.keyUp(<span class="hljs-built_in">String</span> key,
-    <span class="hljs-built_in">String</span> modifier = <span class="hljs-string">""</span>);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li><span class="notranslate">key</span>: String, 指定按键，单字符直接传入，功能键传入名称</li>
-<li><span class="notranslate">modifier</span>: String, 指定控制键，可以为：control, alt, shift, command</li>
-</ul>
-<p>参数 key 可以使用字符串传入功能键：</p>
-<ul>
-<li>功能键：f1 - f12</li>
-<li>方向键：up, down,left, right, home, end, pageup, pagedown</li>
-<li>编辑键：backspace, delete, insert, enter, tab, escape, space</li>
-<li>控制键：control, alt, shift, command</li>
-</ul>
-<hr>
-<p><strong>松开一个按键</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.keyUp(<span class="hljs-built_in">String</span> key,
-    <span class="hljs-built_in">Array</span> modifier);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li><span class="notranslate">key</span>: String, 指定按键，单字符直接传入，功能键传入名称</li>
-<li><span class="notranslate">modifier</span>: Array, 指定控制键数组，可以为：control, alt, shift, command</li>
-</ul>
-<p>参数 key 可以使用字符串传入功能键：</p>
-<ul>
-<li>功能键：f1 - f12</li>
-<li>方向键：up, down,left, right, home, end, pageup, pagedown</li>
-<li>编辑键：backspace, delete, insert, enter, tab, escape, space</li>
-<li>控制键：control, alt, shift, command</li>
-</ul>
-<hr>
-<h3 id="keyTap" class ="notranslate">keyTap</h3>
-<p><strong>点击并松开一个按键</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.keyTap(<span class="hljs-built_in">String</span> key,
-    <span class="hljs-built_in">String</span> modifier = <span class="hljs-string">""</span>);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li><span class="notranslate">key</span>: String, 指定按键，单字符直接传入，功能键传入名称</li>
-<li><span class="notranslate">modifier</span>: String, 指定控制键，可以为：control, alt, shift, command</li>
-</ul>
-<p>参数 key 可以使用字符串传入功能键：</p>
-<ul>
-<li>功能键：f1 - f12</li>
-<li>方向键：up, down,left, right, home, end, pageup, pagedown</li>
-<li>编辑键：backspace, delete, insert, enter, tab, escape, space</li>
-<li>控制键：control, alt, shift, command</li>
-</ul>
-<hr>
-<p><strong>点击并松开一个按键</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.keyTap(<span class="hljs-built_in">String</span> key,
-    <span class="hljs-built_in">Array</span> modifier);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li><span class="notranslate">key</span>: String, 指定按键，单字符直接传入，功能键传入名称</li>
-<li><span class="notranslate">modifier</span>: Array, 指定控制键数组，可以为：control, alt, shift, command</li>
-</ul>
-<p>参数 key 可以使用字符串传入功能键：</p>
-<ul>
-<li>功能键：f1 - f12</li>
-<li>方向键：up, down,left, right, home, end, pageup, pagedown</li>
-<li>编辑键：backspace, delete, insert, enter, tab, escape, space</li>
-<li>控制键：control, alt, shift, command</li>
-</ul>
-<hr>
-<h3 id="typeString" class ="notranslate">typeString</h3>
-<p><strong>输入一个字符串</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.typeString(<span class="hljs-built_in">String</span> text);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li><span class="notranslate">text</span>: String, 指定输入的字符串</li>
-</ul>
-<hr>
-<h3 id="moveMouse" class ="notranslate">moveMouse</h3>
-<p><strong>移动鼠标到指定的位置</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.moveMouse(Integer x,
-    Integer y);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li><span class="notranslate">x</span>: Integer, 指定 x 坐标</li>
-<li><span class="notranslate">y</span>: Integer, 指定 y 坐标</li>
-</ul>
-<hr>
-<h3 id="mouseUp" class ="notranslate">mouseUp</h3>
-<p><strong>按下一个鼠标键</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.mouseUp(<span class="hljs-built_in">String</span> button);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li><span class="notranslate">button</span>: String, 指定鼠标键名称，允许值为: left, right, moddle</li>
-</ul>
-<hr>
-<h3 id="mouseDown" class ="notranslate">mouseDown</h3>
-<p><strong>放开一个鼠标键</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.mouseDown(<span class="hljs-built_in">String</span> button);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li><span class="notranslate">button</span>: String, 指定鼠标键名称，允许值为: left, right, moddle</li>
-</ul>
-<hr>
-<h3 id="clickMouse" class ="notranslate">clickMouse</h3>
-<p><strong>点击一个鼠标键</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.clickMouse(<span class="hljs-built_in">String</span> button,
-    <span class="hljs-built_in">Boolean</span> dbclick = <span class="hljs-literal">false</span>);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li><span class="notranslate">button</span>: String, 指定鼠标键名称，允许值为: left, right, moddle</li>
-<li><span class="notranslate">dbclick</span>: Boolean, 指定是否双击，缺省为 false</li>
-</ul>
-<hr>
 <h3 id="readLine" class ="notranslate">readLine</h3>
 <p><strong>从控制台读取用户输入</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> <span class="hljs-built_in">console</span>.readLine(<span class="hljs-built_in">String</span> msg = <span class="hljs-string">""</span>) <span class="hljs-keyword">async</span>;
@@ -882,4 +723,4 @@
 <p><strong>loglevel 级别常量</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> <span class="hljs-built_in">console</span>.NOTSET = <span class="hljs-number">10</span>;
 </code></pre>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

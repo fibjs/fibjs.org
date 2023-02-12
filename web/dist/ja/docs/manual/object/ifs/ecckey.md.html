@@ -1,0 +1,754 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>ObjectECCKey - ファイバー上の JavaScript</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ナビゲーションを切り替える</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/ecckey.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/ecckey.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/ecckey.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/ecckey.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/ecckey.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/ecckey.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/ecckey.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/ecckey.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/ecckey.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/ecckey.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/ecckey.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/ecckey.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オブジェクト組み込みオブジェクト</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="検索" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="検索入力" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">表紙</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">組み込みオブジェクト</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オブジェクトECCキー</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">開発ガイド</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjsとは何ですか？</font></font></a></li>
+<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">動作環境のインストール</font></font></a></li>
+<li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
+<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">より良い人生はテストから始まります</font></font></a></li>
+<li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">パフォーマンス キラーを見つける</font></font></a></li>
+<li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">サーバーモジュールのホットアップデート</font></font></a></li>
+<li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ドメイン ルーティング</font></font></a></li>
+<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs での X509 証明書の使用</font></font></a></li>
+<li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ネイティブモジュールを追加</font></font></a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">基本モジュール</font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../module/ifs/assert.md.html" class="notranslate">assert</a></li>
+<li><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a></li>
+<li><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a></li>
+<li><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a></li>
+<li><a href="../../module/ifs/child_process.md.html" class="notranslate">child_process</a></li>
+<li><a href="../../module/ifs/console.md.html" class="notranslate">console</a></li>
+<li><a href="../../module/ifs/constants.md.html" class="notranslate">constants</a></li>
+<li><a href="../../module/ifs/coroutine.md.html" class="notranslate">coroutine</a></li>
+<li><a href="../../module/ifs/crypto.md.html" class="notranslate">crypto</a></li>
+<li><a href="../../module/ifs/db.md.html" class="notranslate">db</a></li>
+<li><a href="../../module/ifs/dgram.md.html" class="notranslate">dgram</a></li>
+<li><a href="../../module/ifs/dns.md.html" class="notranslate">dns</a></li>
+<li><a href="../../module/ifs/encoding.md.html" class="notranslate">encoding</a></li>
+<li><a href="../../module/ifs/fs.md.html" class="notranslate">fs</a></li>
+<li><a href="../../module/ifs/fs_constants.md.html" class="notranslate">fs_constants</a></li>
+<li><a href="../../module/ifs/gd.md.html" class="notranslate">gd</a></li>
+<li><a href="../../module/ifs/global.md.html" class="notranslate">global</a></li>
+<li><a href="../../module/ifs/gui.md.html" class="notranslate">gui</a></li>
+<li><a href="../../module/ifs/hash.md.html" class="notranslate">hash</a></li>
+<li><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a></li>
+<li><a href="../../module/ifs/http.md.html" class="notranslate">http</a></li>
+<li><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a></li>
+<li><a href="../../module/ifs/io.md.html" class="notranslate">io</a></li>
+<li><a href="../../module/ifs/json.md.html" class="notranslate">json</a></li>
+<li><a href="../../module/ifs/mq.md.html" class="notranslate">mq</a></li>
+<li><a href="../../module/ifs/msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="../../module/ifs/multibase.md.html" class="notranslate">multibase</a></li>
+<li><a href="../../module/ifs/net.md.html" class="notranslate">net</a></li>
+<li><a href="../../module/ifs/os.md.html" class="notranslate">os</a></li>
+<li><a href="../../module/ifs/path.md.html" class="notranslate">path</a></li>
+<li><a href="../../module/ifs/path_posix.md.html" class="notranslate">path_posix</a></li>
+<li><a href="../../module/ifs/path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="../../module/ifs/perf_hooks.md.html" class="notranslate">perf_hooks</a></li>
+<li><a href="../../module/ifs/performance.md.html" class="notranslate">performance</a></li>
+<li><a href="../../module/ifs/process.md.html" class="notranslate">process</a></li>
+<li><a href="../../module/ifs/profiler.md.html" class="notranslate">profiler</a></li>
+<li><a href="../../module/ifs/punycode.md.html" class="notranslate">punycode</a></li>
+<li><a href="../../module/ifs/querystring.md.html" class="notranslate">querystring</a></li>
+<li><a href="../../module/ifs/registry.md.html" class="notranslate">registry</a></li>
+<li><a href="../../module/ifs/ssl.md.html" class="notranslate">ssl</a></li>
+<li><a href="../../module/ifs/string_decoder.md.html" class="notranslate">string_decoder</a></li>
+<li><a href="../../module/ifs/test.md.html" class="notranslate">test</a></li>
+<li><a href="../../module/ifs/timers.md.html" class="notranslate">timers</a></li>
+<li><a href="../../module/ifs/tty.md.html" class="notranslate">tty</a></li>
+<li><a href="../../module/ifs/url.md.html" class="notranslate">url</a></li>
+<li><a href="../../module/ifs/util.md.html" class="notranslate">util</a></li>
+<li><a href="../../module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
+<li><a href="../../module/ifs/vm.md.html" class="notranslate">vm</a></li>
+<li><a href="../../module/ifs/worker_threads.md.html" class="notranslate">worker_threads</a></li>
+<li><a href="../../module/ifs/ws.md.html" class="notranslate">ws</a></li>
+<li><a href="../../module/ifs/xml.md.html" class="notranslate">xml</a></li>
+<li><a href="../../module/ifs/zip.md.html" class="notranslate">zip</a></li>
+<li><a href="../../module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">組み込みオブジェクト</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="buffer.md.html" class="notranslate">Buffer</a></li>
+<li><a href="bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
+<li><a href="chain.md.html" class="notranslate">Chain</a></li>
+<li><a href="childprocess.md.html" class="notranslate">ChildProcess</a></li>
+<li><a href="cipher.md.html" class="notranslate">Cipher</a></li>
+<li><a href="condition.md.html" class="notranslate">Condition</a></li>
+<li><a href="dbconnection.md.html" class="notranslate">DbConnection</a></li>
+<li><a href="dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
+<li><a href="digest.md.html" class="notranslate">Digest</a></li>
+<li class="active"><a href="ecckey.md.html" class="notranslate">ECCKey</a></li>
+<li><a href="ed25519key.md.html" class="notranslate">Ed25519Key</a></li>
+<li><a href="event.md.html" class="notranslate">Event</a></li>
+<li><a href="eventemitter.md.html" class="notranslate">EventEmitter</a></li>
+<li><a href="fswatcher.md.html" class="notranslate">FSWatcher</a></li>
+<li><a href="fiber.md.html" class="notranslate">Fiber</a></li>
+<li><a href="file.md.html" class="notranslate">File</a></li>
+<li><a href="handler.md.html" class="notranslate">Handler</a></li>
+<li><a href="heapgraphedge.md.html" class="notranslate">HeapGraphEdge</a></li>
+<li><a href="heapgraphnode.md.html" class="notranslate">HeapGraphNode</a></li>
+<li><a href="heapsnapshot.md.html" class="notranslate">HeapSnapshot</a></li>
+<li><a href="httpclient.md.html" class="notranslate">HttpClient</a></li>
+<li><a href="httpcollection.md.html" class="notranslate">HttpCollection</a></li>
+<li><a href="httpcookie.md.html" class="notranslate">HttpCookie</a></li>
+<li><a href="httphandler.md.html" class="notranslate">HttpHandler</a></li>
+<li><a href="httpmessage.md.html" class="notranslate">HttpMessage</a></li>
+<li><a href="httprepeater.md.html" class="notranslate">HttpRepeater</a></li>
+<li><a href="httprequest.md.html" class="notranslate">HttpRequest</a></li>
+<li><a href="httpresponse.md.html" class="notranslate">HttpResponse</a></li>
+<li><a href="httpserver.md.html" class="notranslate">HttpServer</a></li>
+<li><a href="httpuploaddata.md.html" class="notranslate">HttpUploadData</a></li>
+<li><a href="httpsserver.md.html" class="notranslate">HttpsServer</a></li>
+<li><a href="image.md.html" class="notranslate">Image</a></li>
+<li><a href="iterator.md.html" class="notranslate">Iterator</a></li>
+<li><a href="leveldb.md.html" class="notranslate">LevelDB</a></li>
+<li><a href="lock.md.html" class="notranslate">Lock</a></li>
+<li><a href="lrucache.md.html" class="notranslate">LruCache</a></li>
+<li><a href="memorystream.md.html" class="notranslate">MemoryStream</a></li>
+<li><a href="message.md.html" class="notranslate">Message</a></li>
+<li><a href="mongocollection.md.html" class="notranslate">MongoCollection</a></li>
+<li><a href="mongocursor.md.html" class="notranslate">MongoCursor</a></li>
+<li><a href="mongodb.md.html" class="notranslate">MongoDB</a></li>
+<li><a href="mongoid.md.html" class="notranslate">MongoID</a></li>
+<li><a href="mysql.md.html" class="notranslate">MySQL</a></li>
+<li><a href="odbc.md.html" class="notranslate">Odbc</a></li>
+<li><a href="pkey.md.html" class="notranslate">PKey</a></li>
+<li><a href="rangestream.md.html" class="notranslate">RangeStream</a></li>
+<li><a href="redis.md.html" class="notranslate">Redis</a></li>
+<li><a href="redishash.md.html" class="notranslate">RedisHash</a></li>
+<li><a href="redislist.md.html" class="notranslate">RedisList</a></li>
+<li><a href="redisset.md.html" class="notranslate">RedisSet</a></li>
+<li><a href="redissortedset.md.html" class="notranslate">RedisSortedSet</a></li>
+<li><a href="routing.md.html" class="notranslate">Routing</a></li>
+<li><a href="sqlite.md.html" class="notranslate">SQLite</a></li>
+<li><a href="sandbox.md.html" class="notranslate">SandBox</a></li>
+<li><a href="seekablestream.md.html" class="notranslate">SeekableStream</a></li>
+<li><a href="semaphore.md.html" class="notranslate">Semaphore</a></li>
+<li><a href="service.md.html" class="notranslate">Service</a></li>
+<li><a href="smtp.md.html" class="notranslate">Smtp</a></li>
+<li><a href="socket.md.html" class="notranslate">Socket</a></li>
+<li><a href="sslhandler.md.html" class="notranslate">SslHandler</a></li>
+<li><a href="sslserver.md.html" class="notranslate">SslServer</a></li>
+<li><a href="sslsocket.md.html" class="notranslate">SslSocket</a></li>
+<li><a href="stat.md.html" class="notranslate">Stat</a></li>
+<li><a href="statswatcher.md.html" class="notranslate">StatsWatcher</a></li>
+<li><a href="stream.md.html" class="notranslate">Stream</a></li>
+<li><a href="stringdecoder.md.html" class="notranslate">StringDecoder</a></li>
+<li><a href="ttyinputstream.md.html" class="notranslate">TTYInputStream</a></li>
+<li><a href="ttyoutputstream.md.html" class="notranslate">TTYOutputStream</a></li>
+<li><a href="tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="textdecoder.md.html" class="notranslate">TextDecoder</a></li>
+<li><a href="textencoder.md.html" class="notranslate">TextEncoder</a></li>
+<li><a href="timer.md.html" class="notranslate">Timer</a></li>
+<li><a href="urlobject.md.html" class="notranslate">UrlObject</a></li>
+<li><a href="websocket.md.html" class="notranslate">WebSocket</a></li>
+<li><a href="websocketmessage.md.html" class="notranslate">WebSocketMessage</a></li>
+<li><a href="webview.md.html" class="notranslate">WebView</a></li>
+<li><a href="worker.md.html" class="notranslate">Worker</a></li>
+<li><a href="x509cert.md.html" class="notranslate">X509Cert</a></li>
+<li><a href="x509crl.md.html" class="notranslate">X509Crl</a></li>
+<li><a href="x509req.md.html" class="notranslate">X509Req</a></li>
+<li><a href="xmlattr.md.html" class="notranslate">XmlAttr</a></li>
+<li><a href="xmlcdatasection.md.html" class="notranslate">XmlCDATASection</a></li>
+<li><a href="xmlcharacterdata.md.html" class="notranslate">XmlCharacterData</a></li>
+<li><a href="xmlcomment.md.html" class="notranslate">XmlComment</a></li>
+<li><a href="xmldocument.md.html" class="notranslate">XmlDocument</a></li>
+<li><a href="xmldocumenttype.md.html" class="notranslate">XmlDocumentType</a></li>
+<li><a href="xmlelement.md.html" class="notranslate">XmlElement</a></li>
+<li><a href="xmlnamednodemap.md.html" class="notranslate">XmlNamedNodeMap</a></li>
+<li><a href="xmlnode.md.html" class="notranslate">XmlNode</a></li>
+<li><a href="xmlnodelist.md.html" class="notranslate">XmlNodeList</a></li>
+<li><a href="xmlprocessinginstruction.md.html" class="notranslate">XmlProcessingInstruction</a></li>
+<li><a href="xmltext.md.html" class="notranslate">XmlText</a></li>
+<li><a href="zipfile.md.html" class="notranslate">ZipFile</a></li>
+<li><a href="object.md.html" class="notranslate">object</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">コミュニティ モジュール</font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../../awesome/module/fib-session.md.html" class="notranslate">fib-session</a></li>
+<li><a href="../../../awesome/module/fib-pool.md.html" class="notranslate">fib-pool</a></li>
+<li><a href="../../../awesome/module/fib-orm.md.html" class="notranslate">fib-orm</a></li>
+<li><a href="../../../awesome/module/fib-app.md.html" class="notranslate">fib-app</a></li>
+<li><a href="../../../awesome/module/fib-kv.md.html" class="notranslate">fib-kv</a></li>
+<li><a href="../../../awesome/module/fib-rpc.md.html" class="notranslate">fib-rpc</a></li>
+<li><a href="../../../awesome/module/fib-qr.md.html" class="notranslate">fib-qr</a></li>
+<li><a href="../../../awesome/module/fib-pug.md.html" class="notranslate">fib-pug</a></li>
+<li><a href="../../../awesome/module/ejs.md.html" class="notranslate">ejs</a></li>
+<li><a href="../../../awesome/module/juicer.md.html" class="notranslate">Juicer</a></li>
+<li><a href="../../../awesome/module/highlight.js.md.html" class="notranslate">highlight.js</a></li>
+<li><a href="../../../awesome/module/marked.md.html" class="notranslate">marked</a></li>
+<li><a href="../../../awesome/module/node-cron.md.html" class="notranslate">node-cron</a></li>
+<li><a href="../../../awesome/module/debug.md.html" class="notranslate">debug</a></li>
+<li><a href="../../../awesome/module/benchmark.js.md.html" class="notranslate">benchmark.js</a></li>
+<li><a href="../../../awesome/module/sinon.md.html" class="notranslate">sinon</a></li>
+<li><a href="../../../awesome/module/node-mime.md.html" class="notranslate">node-mime</a></li>
+<li><a href="../../../awesome/module/validatorjs.md.html" class="notranslate">validatorjs</a></li>
+<li><a href="../../../awesome/module/superstruct.md.html" class="notranslate">superstruct</a></li>
+<li><a href="../../../awesome/module/cluster-server.md.html" class="notranslate">cluster-server</a></li>
+<li><a href="../../../awesome/module/synaptic.md.html" class="notranslate">synaptic</a></li>
+<li><a href="../../../awesome/module/source-map.md.html" class="notranslate">source-map</a></li>
+<li><a href="../../../awesome/module/json-format.md.html" class="notranslate">json-format</a></li>
+<li><a href="../../../awesome/module/viz.js.md.html" class="notranslate">viz.js</a></li>
+<li><a href="../../../awesome/module/nomnoml.md.html" class="notranslate">nomnoml</a></li>
+<li><a href="../../../awesome/module/pegjs.md.html" class="notranslate">pegjs</a></li>
+<li><a href="../../../awesome/module/uglify-js.md.html" class="notranslate">uglify-js</a></li>
+<li><a href="../../../awesome/module/js-beautify.md.html" class="notranslate">js-beautify</a></li>
+<li><a href="../../../awesome/module/chalk-animation.md.html" class="notranslate">chalk-animation</a></li>
+<li><a href="../../../awesome/module/jsrsasign.md.html" class="notranslate">jsrsasign</a></li>
+<li><a href="../../../awesome/module/crypto-js.md.html" class="notranslate">crypto-js</a></li>
+<li><a href="../../../awesome/module/ascii-table.md.html" class="notranslate">ascii-table</a></li>
+<li><a href="../../../awesome/module/logstream.md.html" class="notranslate">logstream</a></li>
+<li><a href="../../../awesome/module/ci.md.html" class="notranslate">ci</a></li>
+<li><a href="../../../awesome/module/fs-readdir-recursive.md.html" class="notranslate">fs-readdir-recursive</a></li>
+<li><a href="../../../awesome/module/mkdirp.md.html" class="notranslate">mkdirp</a></li>
+<li><a href="../../../awesome/module/rmdirr.md.html" class="notranslate">rmdirr</a></li>
+<li><a href="../../../awesome/module/detect-port.md.html" class="notranslate">detect-port</a></li>
+<li><a href="../../../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
+<li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
+</ul>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="对象-ECCKey" data-unique="对象-ECCKey"></div><h1 id="对象-ECCKey"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オブジェクトECCキー</font></font></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">楕円曲線暗号オブジェクト</font></font></p>
+<div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">相続関係</font></font></h2>
+<div class="dot notranslate">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="123pt" height="564pt" viewBox="0.00 0.00 123.47 564.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 560)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-560 119.47,-560 119.47,4 -4,4"></polygon>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href="object.md.html" xlink:title="object">
+<polygon fill="#ffffff" stroke="#000000" points="28.9035,-503.5 28.9035,-555.5 86.5665,-555.5 86.5665,-503.5 28.9035,-503.5"></polygon>
+<text text-anchor="middle" x="57.735" y="-542.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="28.9035,-535.5 86.5665,-535.5 "></polyline>
+<text text-anchor="start" x="36.9035" y="-522.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="36.9035" y="-510.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+</a>
+</g>
+</g>
+<!-- PKey -->
+<g id="node2" class="node">
+<title>PKey</title>
+<g id="a_node2"><a xlink:href="pkey.md.html" xlink:title="PKey">
+<polygon fill="#ffffff" stroke="#000000" points="23.8995,-222.5 23.8995,-466.5 91.5705,-466.5 91.5705,-222.5 23.8995,-222.5"></polygon>
+<text text-anchor="middle" x="57.735" y="-453.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">PKey</text>
+<polyline fill="none" stroke="#000000" points="23.8995,-446.5 91.5705,-446.5 "></polyline>
+<text text-anchor="start" x="31.8995" y="-433.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new PKey()</text>
+<polyline fill="none" stroke="#000000" points="23.8995,-426.5 91.5705,-426.5 "></polyline>
+<text text-anchor="start" x="31.8995" y="-413.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">from()</text>
+<polyline fill="none" stroke="#000000" points="23.8995,-406.5 91.5705,-406.5 "></polyline>
+<text text-anchor="start" x="31.8995" y="-393.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">name</text>
+<text text-anchor="start" x="31.8995" y="-381.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">keySize</text>
+<text text-anchor="start" x="31.8995" y="-369.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">alg</text>
+<text text-anchor="start" x="31.8995" y="-357.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">publicKey</text>
+<polyline fill="none" stroke="#000000" points="23.8995,-350.5 91.5705,-350.5 "></polyline>
+<text text-anchor="start" x="31.8995" y="-337.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isPrivate()</text>
+<text text-anchor="start" x="31.8995" y="-325.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">clone()</text>
+<text text-anchor="start" x="31.8995" y="-313.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">pem()</text>
+<text text-anchor="start" x="31.8995" y="-301.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">der()</text>
+<text text-anchor="start" x="31.8995" y="-289.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">json()</text>
+<text text-anchor="start" x="31.8995" y="-277.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
+<text text-anchor="start" x="31.8995" y="-265.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">encrypt()</text>
+<text text-anchor="start" x="31.8995" y="-253.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">decrypt()</text>
+<text text-anchor="start" x="31.8995" y="-241.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">sign()</text>
+<text text-anchor="start" x="31.8995" y="-229.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">verify()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;PKey -->
+<g id="edge1" class="edge">
+<title>object-&gt;PKey</title>
+<path fill="none" stroke="#000000" d="M57.735,-493.3034C57.735,-485.1956 57.735,-476.1562 57.735,-466.6496"></path>
+<polygon fill="#000000" stroke="#000000" points="54.2351,-493.3864 57.735,-503.3864 61.2351,-493.3864 54.2351,-493.3864"></polygon>
+</g>
+<!-- ECCKey -->
+<g id="me" class="node">
+<title>ECCKey</title>
+<g id="a_me"><a xlink:title="ECCKey">
+<polygon fill="#d3d3d3" stroke="#000000" points="0,-73.5 0,-185.5 115.47,-185.5 115.47,-73.5 0,-73.5"></polygon>
+<text text-anchor="middle" x="57.735" y="-172.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">ECCKey</text>
+<polyline fill="none" stroke="#000000" points="0,-165.5 115.47,-165.5 "></polyline>
+<text text-anchor="start" x="8" y="-152.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new ECCKey()</text>
+<polyline fill="none" stroke="#000000" points="0,-145.5 115.47,-145.5 "></polyline>
+<text text-anchor="start" x="8" y="-132.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">recover()</text>
+<text text-anchor="start" x="8" y="-120.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">aggregateSignatures()</text>
+<polyline fill="none" stroke="#000000" points="0,-113.5 115.47,-113.5 "></polyline>
+<text text-anchor="start" x="8" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">curve</text>
+<polyline fill="none" stroke="#000000" points="0,-93.5 115.47,-93.5 "></polyline>
+<text text-anchor="start" x="8" y="-80.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">computeSecret()</text>
+</a>
+</g>
+</g>
+<!-- PKey&#45;&gt;ECCKey -->
+<g id="edge2" class="edge">
+<title>PKey-&gt;ECCKey</title>
+<path fill="none" stroke="#000000" d="M57.735,-212.1426C57.735,-202.9185 57.735,-193.9527 57.735,-185.5375"></path>
+<polygon fill="#000000" stroke="#000000" points="54.2351,-212.2393 57.735,-222.2393 61.2351,-212.2394 54.2351,-212.2393"></polygon>
+</g>
+<!-- Ed25519Key -->
+<g id="node4" class="node">
+<title>Ed25519Key</title>
+<g id="a_node4"><a xlink:href="ed25519key.md.html" xlink:title="Ed25519Key">
+<polygon fill="#ffffff" stroke="#000000" points="21.1095,-.5 21.1095,-36.5 94.3605,-36.5 94.3605,-.5 21.1095,-.5"></polygon>
+<text text-anchor="middle" x="57.735" y="-15.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Ed25519Key</text>
+</a>
+</g>
+</g>
+<!-- ECCKey&#45;&gt;Ed25519Key -->
+<g id="edge3" class="edge">
+<title>ECCKey-&gt;Ed25519Key</title>
+<path fill="none" stroke="#000000" d="M57.735,-63.0982C57.735,-53.3718 57.735,-44.1104 57.735,-36.5734"></path>
+<polygon fill="#000000" stroke="#000000" points="54.2351,-63.3496 57.735,-73.3496 61.2351,-63.3497 54.2351,-63.3496"></polygon>
+</g>
+</g>
+</svg>
+</div>
+
+<div name="构造函数" data-unique="构造函数"></div><h2 id="构造函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">コンストラクタ</font></font></h2>
+<div name="ECCKey" data-unique="ECCKey"></div><h3 id="ECCKey" class="notranslate">ECCKey</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DER 形式のキーから ECCKey を構築する</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">new</span> ECCKey(Buffer DerKey,
+    <span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
+<ul>
+<li><span class="notranslate">DerKey</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、DER 形式のキー</font></font></li>
+<li><span class="notranslate">password</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、復号化されたパスワード</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">PEM 形式のキーから ECCKey を構築する</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">new</span> ECCKey(<span class="hljs-built_in">String</span> pemKey,
+    <span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
+<ul>
+<li><span class="notranslate">pemKey</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、PEM 形式のキー</font></font></li>
+<li><span class="notranslate">password</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、復号化されたパスワード</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">JSON 形式のキーから ECCKey を構築する</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> ECCKey(<span class="hljs-built_in">Object</span> jsonKey);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
+<ul>
+<li><span class="notranslate">jsonKey</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: オブジェクト、JSON 形式のキー</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">jsonKey の形式は、次の 2 つのタイプ、EC 秘密鍵をサポートしています。</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7</div>{
+    <span class="hljs-string">"kty"</span>: <span class="hljs-string">"EC"</span>,
+    <span class="hljs-string">"crv"</span>: <span class="hljs-string">"P-521"</span>,
+    <span class="hljs-string">"x"</span>: <span class="hljs-string">"ATfNNFuuvlGxrTGoXgyfSAGgRNNDnO3rN3k74urKJdVS14RYhdnSwm91Bm-F1l-T1XKlAY2yRnzG9w1Ukvo8c0wL"</span>,
+    <span class="hljs-string">"y"</span>: <span class="hljs-string">"ASBHqrruB6kdkEUB3vlW3-UIkk4HtKdUeTwN-7m3j2rgZvYR1ffRAapDvWqKGiBjomqWafxokBkbDI0c95f6f4XU"</span>,
+    <span class="hljs-string">"d"</span>: <span class="hljs-string">"AfkIbUHXfW41njdpoKuqqKludcoLJS8D_oMEwkj-GVaXFNKccIoF5iKGu2c69kNDjo83R_7wyGlfRczsklkik1ST"</span><font></font>
+}<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">EC 公開鍵:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6</div>{
+    <span class="hljs-string">"kty"</span>: <span class="hljs-string">"EC"</span>,
+    <span class="hljs-string">"crv"</span>: <span class="hljs-string">"P-521"</span>,
+    <span class="hljs-string">"x"</span>: <span class="hljs-string">"ATfNNFuuvlGxrTGoXgyfSAGgRNNDnO3rN3k74urKJdVS14RYhdnSwm91Bm-F1l-T1XKlAY2yRnzG9w1Ukvo8c0wL"</span>,
+    <span class="hljs-string">"y"</span>: <span class="hljs-string">"ASBHqrruB6kdkEUB3vlW3-UIkk4HtKdUeTwN-7m3j2rgZvYR1ffRAapDvWqKGiBjomqWafxokBkbDI0c95f6f4XU"</span><font></font>
+}<font></font>
+</code></pre>
+<div name="静态函数" data-unique="静态函数"></div><h2 id="静态函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">静的関数</font></font></h2>
+<div name="recover" data-unique="recover"></div><h3 id="recover" class="notranslate">recover</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">回復可能な署名から公開鍵を回復します。secp256k1 のみがサポートされています</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> ECCKey ECCKey.recover(Buffer data,<font></font>
+    Buffer sig) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
+<ul>
+<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、署名の元のデータ</font></font></li>
+<li><span class="notranslate">sig</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、回復可能な署名</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
+<ul>
+<li><span class="notranslate">ECCKey</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、公開鍵を含むオブジェクトを返します</font></font></li>
+</ul>
+<hr>
+<div name="aggregateSignatures" data-unique="aggregateSignatures"></div><h3 id="aggregateSignatures" class="notranslate">aggregateSignatures</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">署名のグループを単一の署名にマージします。BLS12381_G1 と BLS12381_G2 のみをサポートします</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Buffer ECCKey.aggregateSignatures(<span class="hljs-built_in">Array</span> sigs);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
+<ul>
+<li><span class="notranslate">sigs</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 配列、マージされる署名のセット</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
+<ul>
+<li><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、マージされた単一の署名を返します</font></font></li>
+</ul>
+<hr>
+<div name="from" data-unique="from"></div><h3 id="from" class="notranslate">from</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DER 形式でキーをロードする</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> PKey ECCKey.from(Buffer DerKey,
+    <span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
+<ul>
+<li><span class="notranslate">DerKey</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、DER 形式のキー</font></font></li>
+<li><span class="notranslate">password</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、復号化されたパスワード</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
+<ul>
+<li><a href="pkey.md.html" class="notranslate">PKey</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、キーを含むオブジェクトを返します</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キーを PEM 形式でロードする</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> PKey ECCKey.from(<span class="hljs-built_in">String</span> pemKey,
+    <span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
+<ul>
+<li><span class="notranslate">pemKey</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、PEM 形式のキー</font></font></li>
+<li><span class="notranslate">password</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、復号化されたパスワード</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
+<ul>
+<li><a href="pkey.md.html" class="notranslate">PKey</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、キーを含むオブジェクトを返します</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">JSON 形式でキーをロードする</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> PKey ECCKey.from(<span class="hljs-built_in">Object</span> jsonKey);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
+<ul>
+<li><span class="notranslate">jsonKey</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: オブジェクト、JSON 形式のキー</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
+<ul>
+<li><a href="pkey.md.html" class="notranslate">PKey</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、キーを含むオブジェクトを返します</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">jsonKey の形式は、次の 4 つのタイプ、RSA 秘密鍵をサポートします。</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</div>{
+    <span class="hljs-string">"kty"</span>: <span class="hljs-string">"RSA"</span>,
+    <span class="hljs-string">"n"</span>: <span class="hljs-string">"0m5lvKpWqy9JS7tV2HIPqHCYHLquSuxIC3F8strIQLJKO3rZmTT96KTnhsOfBO7Y1bI7mnT0PB3_vcHd9ekWMEoZJQw7MuB8KeM_Wn54-elJr5DNLk5bMppSGxX7ZnumiXGG51_X3Yp-_EbGtDG80GxXXix7Mucyo7K25uE0uW8="</span>,
+    <span class="hljs-string">"e"</span>: <span class="hljs-string">"AQAB"</span>,
+    <span class="hljs-string">"d"</span>: <span class="hljs-string">"agN2O9NxMHL1MTMi75WfL9Pxvl-KWXKqZSF6mjzAsF9iKI8euyHIXYFepzU8kual1RsjDhCnzvWqFvZplW8lXqrHf_P-rS_9Y4gBUw6pjnI_DnFIRwWHRvrUHHSCfWOdTCIKdOTkgLZuGFuhEY3RMIW0WSYejjLtftwy0RVxAzk="</span>,
+    <span class="hljs-string">"p"</span>: <span class="hljs-string">"6a4G1qmfwWmn1biigN7IVFlkbLf9oVe6g7rOmHxI-hn1GRxKDSVuAUrmR1IhuAnca9M0y7SD-7TUs6wjOxWxaw=="</span>,
+    <span class="hljs-string">"q"</span>: <span class="hljs-string">"5ofkxFKdPBD0CQHMb9q13AMHUVe0rJ-hSjqqIBrmqApUOneyAcMV76M0QyIQnI2p3POa4Qu_7XChDwRVl7LlDQ=="</span>,
+    <span class="hljs-string">"dp"</span>: <span class="hljs-string">"2mXGiGwCHl8j-FBWuID-1C6z-BRB3MBEVoeKPOOzxOPruatB3mWEGXsqG7A8SWgV9URxTI2K6P3J6Z7RUpBkvw=="</span>,
+    <span class="hljs-string">"dq"</span>: <span class="hljs-string">"oagn5vfb5NQqnOpS9xkSsD67cfIj821ZSFlNFYhnuOzNVda7z_qCtnHm4zDPH0lEFXoKYMfBhfqWJpaugttjPQ=="</span>,
+    <span class="hljs-string">"qi"</span>: <span class="hljs-string">"dqEQgxNmOVFrF4s776hTqeC6oEDila8EvpVb2F2ZvwAOLjCQ66OiAZK1BiYGHqUy0NeqNmtlsLSuBEZQZvqZwg=="</span><font></font>
+}<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">RSA 公開鍵:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div>{
+    <span class="hljs-string">"kty"</span>: <span class="hljs-string">"RSA"</span>,
+    <span class="hljs-string">"n"</span>: <span class="hljs-string">"0m5lvKpWqy9JS7tV2HIPqHCYHLquSuxIC3F8strIQLJKO3rZmTT96KTnhsOfBO7Y1bI7mnT0PB3_vcHd9ekWMEoZJQw7MuB8KeM_Wn54-elJr5DNLk5bMppSGxX7ZnumiXGG51_X3Yp-_EbGtDG80GxXXix7Mucyo7K25uE0uW8="</span>,
+    <span class="hljs-string">"e"</span>: <span class="hljs-string">"AQAB"</span><font></font>
+}<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">EC 秘密鍵:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7</div>{
+    <span class="hljs-string">"kty"</span>: <span class="hljs-string">"EC"</span>,
+    <span class="hljs-string">"crv"</span>: <span class="hljs-string">"P-521"</span>,
+    <span class="hljs-string">"x"</span>: <span class="hljs-string">"ATfNNFuuvlGxrTGoXgyfSAGgRNNDnO3rN3k74urKJdVS14RYhdnSwm91Bm-F1l-T1XKlAY2yRnzG9w1Ukvo8c0wL"</span>,
+    <span class="hljs-string">"y"</span>: <span class="hljs-string">"ASBHqrruB6kdkEUB3vlW3-UIkk4HtKdUeTwN-7m3j2rgZvYR1ffRAapDvWqKGiBjomqWafxokBkbDI0c95f6f4XU"</span>,
+    <span class="hljs-string">"d"</span>: <span class="hljs-string">"AfkIbUHXfW41njdpoKuqqKludcoLJS8D_oMEwkj-GVaXFNKccIoF5iKGu2c69kNDjo83R_7wyGlfRczsklkik1ST"</span><font></font>
+}<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">EC 公開鍵:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6</div>{
+    <span class="hljs-string">"kty"</span>: <span class="hljs-string">"EC"</span>,
+    <span class="hljs-string">"crv"</span>: <span class="hljs-string">"P-521"</span>,
+    <span class="hljs-string">"x"</span>: <span class="hljs-string">"ATfNNFuuvlGxrTGoXgyfSAGgRNNDnO3rN3k74urKJdVS14RYhdnSwm91Bm-F1l-T1XKlAY2yRnzG9w1Ukvo8c0wL"</span>,
+    <span class="hljs-string">"y"</span>: <span class="hljs-string">"ASBHqrruB6kdkEUB3vlW3-UIkk4HtKdUeTwN-7m3j2rgZvYR1ffRAapDvWqKGiBjomqWafxokBkbDI0c95f6f4XU"</span><font></font>
+}<font></font>
+</code></pre>
+<div name="成员属性" data-unique="成员属性"></div><h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">メンバー属性</font></font></h2>
+<div name="curve" data-unique="curve"></div><h3 id="curve" class="notranslate">curve</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文字列、現在のアルゴリズムの楕円曲線名を返します</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly <span class="hljs-built_in">String</span> ECCKey.curve;
+</code></pre>
+<hr>
+<div name="name" data-unique="name"></div><h3 id="name" class="notranslate">name</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文字列、現在のアルゴリズム名を返します</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly <span class="hljs-built_in">String</span> ECCKey.name;
+</code></pre>
+<hr>
+<div name="keySize" data-unique="keySize"></div><h3 id="keySize" class="notranslate">keySize</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">整数、現在のアルゴリズムのパスワード長をビット単位で返します</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer ECCKey.keySize;
+</code></pre>
+<hr>
+<div name="alg" data-unique="alg"></div><h3 id="alg" class="notranslate">alg</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">現在のオブジェクトの署名アルゴリズムを返し、設定する文字列</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> ECCKey.alg;
+</code></pre>
+<hr>
+<div name="publicKey" data-unique="publicKey"></div><h3 id="publicKey" class="notranslate">publicKey</h3>
+<p><strong><a href="pkey.md.html" class="notranslate">PKey</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、現在の鍵の公開鍵を返します</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly PKey ECCKey.publicKey;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
+<ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">現在の鍵の公開鍵</font></font></li>
+</ul>
+<div name="成员函数" data-unique="成员函数"></div><h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">メンバー関数</font></font></h2>
+<div name="computeSecret" data-unique="computeSecret"></div><h3 id="computeSecret" class="notranslate">computeSecret</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">現在のアルゴリズムを使用して楕円曲線 Diffie-Hellman (ECDH) 共有シークレットを計算します</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer ECCKey.computeSecret(ECCKey publicKey) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
+<ul>
+<li><span class="notranslate">publicKey</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：ECCKey、相手の公開鍵を指定</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
+<ul>
+<li><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、計算された共有シークレットを返します</font></font></li>
+</ul>
+<hr>
+<div name="isPrivate" data-unique="isPrivate"></div><h3 id="isPrivate" class="notranslate">isPrivate</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">現在の鍵が秘密鍵かどうかを問い合わせる</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> ECCKey.isPrivate();
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、True が秘密鍵を意味する場合</font></font></li>
+</ul>
+<hr>
+<div name="clone" data-unique="clone"></div><h3 id="clone" class="notranslate">clone</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">現在のキーをコピー</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>PKey ECCKey.clone();
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
+<ul>
+<li><a href="pkey.md.html" class="notranslate">PKey</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、現在のキーのコピー オブジェクト</font></font></li>
+</ul>
+<hr>
+<div name="pem" data-unique="pem"></div><h3 id="pem" class="notranslate">pem</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">現在のキーの PEM 形式のエンコーディングを返します</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> ECCKey.pem();
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
+<ul>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、現在のキーの PEM 形式のエンコーディング</font></font></li>
+</ul>
+<hr>
+<div name="der" data-unique="der"></div><h3 id="der" class="notranslate">der</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">現在のキーの DER 形式のエンコーディングを返します</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer ECCKey.der();
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
+<ul>
+<li><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、現在の鍵の DER 形式のエンコード</font></font></li>
+</ul>
+<hr>
+<div name="json" data-unique="json"></div><h3 id="json" class="notranslate">json</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">現在のキーの jwt 形式のエンコーディングを返します</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> ECCKey.json(<span class="hljs-built_in">Object</span> opts = {});
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
+<ul>
+<li><span class="notranslate">opts</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: オブジェクト、書き出しオプションを指定</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
+<ul>
+<li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、現在のキーの jwt 形式のエンコーディング</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">opts は次のパラメーターをサポートしています。</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div>{
+    <span class="hljs-attr">compress</span>: <span class="hljs-literal">false</span>， 指定签名以压缩方式输出公钥<font></font>
+}<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">圧縮をサポートする曲線は次のとおりです。</font></font></p>
+<hr>
+<div name="equals" data-unique="equals"></div><h3 id="equals" class="notranslate">equals</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2 つの公開鍵と秘密鍵が同じかどうかを比較する</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> ECCKey.equals(PKey key);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
+<ul>
+<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="pkey.md.html" class="notranslate">PKey</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、相手の公開鍵・秘密鍵を指定</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、同じ場合は true を返します</font></font></li>
+</ul>
+<hr>
+<div name="encrypt" data-unique="encrypt"></div><h3 id="encrypt" class="notranslate">encrypt</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">現在のアルゴリズムの暗号化公開鍵を使用してデータを暗号化する</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer ECCKey.encrypt(Buffer data) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
+<ul>
+<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、暗号化するデータを指定します</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
+<ul>
+<li><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、暗号化されたデータを返します</font></font></li>
+</ul>
+<hr>
+<div name="decrypt" data-unique="decrypt"></div><h3 id="decrypt" class="notranslate">decrypt</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">現在のアルゴリズムの暗号化秘密鍵を使用してデータを復号化する</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer ECCKey.decrypt(Buffer data) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
+<ul>
+<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、復号化するデータを指定します</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
+<ul>
+<li><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、復号化されたデータを返します</font></font></li>
+</ul>
+<hr>
+<div name="sign" data-unique="sign"></div><h3 id="sign" class="notranslate">sign</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">現在のアルゴリズムの暗号化秘密鍵を使用してデータに署名する</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Buffer ECCKey.sign(Buffer data,
+    <span class="hljs-built_in">Object</span> opts = {}) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
+<ul>
+<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、署名するデータを指定します</font></font></li>
+<li><span class="notranslate">opts</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: オブジェクト、署名オプションを指定します</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
+<ul>
+<li><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、署名されたデータを返します</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">opts は次のパラメーターをサポートしています。</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</div>{
+    <span class="hljs-attr">alg</span>: <span class="hljs-number">0</span>， 指定签名的 hash 算法， 仅在 RSA 时有效， 缺省为 <span class="hljs-number">0.</span> 支持算法: <span class="hljs-number">0</span> = NONE,
+    <span class="hljs-number">1</span> = MD5,
+    <span class="hljs-number">2</span> = SHA1,
+    <span class="hljs-number">3</span> = SHA224,
+    <span class="hljs-number">4</span> = SHA256,
+    <span class="hljs-number">5</span> = SHA384,
+    <span class="hljs-number">6</span> = SHA512,
+    <span class="hljs-number">7</span> = RIPEMD160
+    <span class="hljs-attr">to</span>: pk,<font></font>
+    指定验证方公钥， 仅在 ecsdsa 或 sm2 时有效<font></font>
+    <span class="hljs-attr">format</span>: <span class="hljs-string">"der"</span>,<font></font>
+    指定签名格式， 可选为 der 和 raw， 缺省为 der<font></font>
+    <span class="hljs-attr">recoverable</span>: <span class="hljs-literal">false</span> 指定返回可恢复签名， 仅在 secp256k1 有效<font></font>
+}<font></font>
+</code></pre>
+<hr>
+<div name="verify" data-unique="verify"></div><h3 id="verify" class="notranslate">verify</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">現在のアルゴリズムの暗号化公開鍵を使用してデータを検証します</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-built_in">Boolean</span> ECCKey.verify(Buffer data,<font></font>
+    Buffer sign,<font></font>
+    <span class="hljs-built_in">Object</span> opts = {}) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
+<ul>
+<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、検証するデータを指定する</font></font></li>
+<li><span class="notranslate">sign</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、検証する署名を指定</font></font></li>
+<li><span class="notranslate">opts</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: オブジェクト、認証オプションを指定します</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、検証された結果を返します</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">opts は次のパラメーターをサポートしています。</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</div>{
+    <span class="hljs-attr">alg</span>: <span class="hljs-number">0</span>， 指定签名的 hash 算法， 仅在 RSA 时有效， 缺省为 <span class="hljs-number">0.</span> 支持算法: <span class="hljs-number">0</span> = NONE,
+    <span class="hljs-number">1</span> = MD5,
+    <span class="hljs-number">2</span> = SHA1,
+    <span class="hljs-number">3</span> = SHA224,
+    <span class="hljs-number">4</span> = SHA256,
+    <span class="hljs-number">5</span> = SHA384,
+    <span class="hljs-number">6</span> = SHA512,
+    <span class="hljs-number">7</span> = RIPEMD160
+    <span class="hljs-attr">to</span>: pk,<font></font>
+    指定验证方公钥， 仅在 ecsdsa 或 sm2 时有效<font></font>
+    <span class="hljs-attr">format</span>: <span class="hljs-string">"der"</span>,<font></font>
+    指定签名格式， 可选为 der 和 raw， 缺省为 der<font></font>
+}<font></font>
+</code></pre>
+<hr>
+<div name="toString" data-unique="toString"></div><h3 id="toString" class="notranslate">toString</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オブジェクトの文字列表現を返します。通常は「[Native Object]」を返します。オブジェクトは独自の特性に従って再実装できます</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> ECCKey.toString();
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
+<ul>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、オブジェクトの文字列表現を返します</font></font></li>
+</ul>
+<hr>
+<div name="toJSON" data-unique="toJSON"></div><h3 id="toJSON" class="notranslate">toJSON</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オブジェクトの JSON 形式表現を返します。通常は、オブジェクトによって定義された読み取り可能なプロパティのコレクションを返します。</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value ECCKey.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
+<ul>
+<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、未使用</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
+<ul>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、JSON シリアル化可能な値を返します</font></font></li>
+</ul>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">サポートしてください</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip351426"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip351426" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">クリックするとトップページに戻ります</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

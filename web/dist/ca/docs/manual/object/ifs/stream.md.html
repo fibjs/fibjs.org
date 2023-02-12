@@ -1,15 +1,15 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Object Stream - JavaScript a la fibra</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Canvia la navegació</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/stream.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/stream.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/stream.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/stream.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/stream.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/stream.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/stream.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/stream.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/stream.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/stream.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/stream.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/stream.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objecte objecte incorporat</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Cerca" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="entrada de cerca" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">portada</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">objectes incorporats</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Seqüència d'objectes</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Guia de desenvolupament</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Object Stream - JavaScript a la fibra</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Canvia la navegació</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/stream.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/stream.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/stream.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/stream.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/stream.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/stream.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/stream.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/stream.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/stream.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/stream.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/stream.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/stream.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objecte objecte incorporat</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Cerca" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="entrada de cerca" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">portada</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">objecte incorporat</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Seqüència d'objectes</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">guia de desenvolupament</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Què és fibjs?</font></font></a></li>
-<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instal·leu l'entorn d'execució</font></font></a></li>
+<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instal·leu l'entorn operatiu</font></font></a></li>
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
-<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Una bona vida comença amb una prova</font></font></a></li>
-<li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Troba l'assassí del rendiment</font></font></a></li>
+<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Una vida millor comença amb una prova</font></font></a></li>
+<li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Trobeu assassins de rendiment</font></font></a></li>
 <li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Actualització en calent del mòdul del servidor</font></font></a></li>
-<li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Encaminament de noms de domini</font></font></a></li>
-<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ús de certificats X509 en fibjs</font></font></a></li>
-<li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">afegir un mòdul natiu</font></font></a></li>
+<li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enrutament de dominis</font></font></a></li>
+<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ús del certificat X509 en fibjs</font></font></a></li>
+<li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Afegeix un mòdul natiu</font></font></a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mòdul bàsic</font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mòdul bàsic</font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../module/ifs/assert.md.html" class="notranslate">assert</a></li>
 <li><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a></li>
 <li><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a></li>
@@ -64,7 +64,8 @@
 <li><a href="../../module/ifs/zip.md.html" class="notranslate">zip</a></li>
 <li><a href="../../module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">objectes incorporats</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">objecte incorporat</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="blskey.md.html" class="notranslate">BlsKey</a></li>
 <li><a href="buffer.md.html" class="notranslate">Buffer</a></li>
 <li><a href="bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
 <li><a href="chain.md.html" class="notranslate">Chain</a></li>
@@ -74,6 +75,8 @@
 <li><a href="dbconnection.md.html" class="notranslate">DbConnection</a></li>
 <li><a href="dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
 <li><a href="digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="eckey.md.html" class="notranslate">ECKey</a></li>
+<li><a href="ed25519key.md.html" class="notranslate">Ed25519Key</a></li>
 <li><a href="event.md.html" class="notranslate">Event</a></li>
 <li><a href="eventemitter.md.html" class="notranslate">EventEmitter</a></li>
 <li><a href="fswatcher.md.html" class="notranslate">FSWatcher</a></li>
@@ -201,224 +204,194 @@
 <li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="对象-Stream" data-unique="对象-Stream"></div><h1 id="对象-Stream"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Seqüència d'objectes</font></font></h1>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objecte d'operació de flux, utilitzat per a la lectura i escriptura de flux de dades binàries</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El flux és l'objecte bàsic utilitzat per definir interfícies estàndard per al processament del flux i no es pot crear de manera independent</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objecte d'operació de flux, utilitzat per llegir i escriure fluxos de dades binàries</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El flux és l'objecte base utilitzat per definir una interfície estàndard per al processament del flux i no es pot crear de manera independent</font></font></p>
 <div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">relació hereditària</font></font></h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="896.0" height="480.0" viewBox="0 0 896 480" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
-    <desc>
-    #lineWidth: 1.5
-    #font: Helvetica,sans-Serif
-    #fontSize: 10
-    #leading: 1.6
-    #.this: fill=lightgray
-    #.class: fill=white
+<div class="dot notranslate">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="575pt" height="352pt" viewBox="0.00 0.00 574.57 352.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 348)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-348 570.5705,-348 570.5705,4 -4,4"></polygon>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href="object.md.html" xlink:title="object">
+<polygon fill="#ffffff" stroke="#000000" points="247.1765,-291.5 247.1765,-343.5 304.8395,-343.5 304.8395,-291.5 247.1765,-291.5"></polygon>
+<text text-anchor="middle" x="276.008" y="-330.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="247.1765,-323.5 304.8395,-323.5 "></polyline>
+<text text-anchor="start" x="255.1765" y="-310.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="255.1765" y="-298.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+</a>
+</g>
+</g>
+<!-- Stream -->
+<g id="me" class="node">
+<title>Stream</title>
+<g id="a_me"><a xlink:title="Stream">
+<polygon fill="#d3d3d3" stroke="#000000" points="248.286,-146.5 248.286,-254.5 303.73,-254.5 303.73,-146.5 248.286,-146.5"></polygon>
+<text text-anchor="middle" x="276.008" y="-241.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Stream</text>
+<polyline fill="none" stroke="#000000" points="248.286,-234.5 303.73,-234.5 "></polyline>
+<text text-anchor="start" x="256.286" y="-221.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">fd</text>
+<polyline fill="none" stroke="#000000" points="248.286,-214.5 303.73,-214.5 "></polyline>
+<text text-anchor="start" x="256.286" y="-201.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">read()</text>
+<text text-anchor="start" x="256.286" y="-189.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">write()</text>
+<text text-anchor="start" x="256.286" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">flush()</text>
+<text text-anchor="start" x="256.286" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">close()</text>
+<text text-anchor="start" x="256.286" y="-153.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">copyTo()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;Stream -->
+<g id="edge1" class="edge">
+<title>object-&gt;Stream</title>
+<path fill="none" stroke="#000000" d="M276.008,-281.1428C276.008,-272.8239 276.008,-263.8042 276.008,-254.9111"></path>
+<polygon fill="#000000" stroke="#000000" points="272.5081,-281.2429 276.008,-291.2429 279.5081,-281.243 272.5081,-281.2429"></polygon>
+</g>
+<!-- BufferedStream -->
+<g id="node3" class="node">
+<title>BufferedStream</title>
+<g id="a_node3"><a xlink:href="bufferedstream.md.html" xlink:title="BufferedStream">
+<polygon fill="#ffffff" stroke="#000000" points="0,-73.5 0,-109.5 86.016,-109.5 86.016,-73.5 0,-73.5"></polygon>
+<text text-anchor="middle" x="43.008" y="-88.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">BufferedStream</text>
+</a>
+</g>
+</g>
+<!-- Stream&#45;&gt;BufferedStream -->
+<g id="edge2" class="edge">
+<title>Stream-&gt;BufferedStream</title>
+<path fill="none" stroke="#000000" d="M238.6301,-183.0142C195.593,-162.881 125.2447,-129.9713 81.6722,-109.5875"></path>
+<polygon fill="#000000" stroke="#000000" points="237.3618,-186.2849 247.9028,-187.3521 240.328,-179.9444 237.3618,-186.2849"></polygon>
+</g>
+<!-- SeekableStream -->
+<g id="node4" class="node">
+<title>SeekableStream</title>
+<g id="a_node4"><a xlink:href="seekablestream.md.html" xlink:title="SeekableStream">
+<polygon fill="#ffffff" stroke="#000000" points="104.0545,-73.5 104.0545,-109.5 193.9615,-109.5 193.9615,-73.5 104.0545,-73.5"></polygon>
+<text text-anchor="middle" x="149.008" y="-88.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">SeekableStream</text>
+</a>
+</g>
+</g>
+<!-- Stream&#45;&gt;SeekableStream -->
+<g id="edge3" class="edge">
+<title>Stream-&gt;SeekableStream</title>
+<path fill="none" stroke="#000000" d="M240.4018,-169.9403C217.7652,-150.5121 189.2264,-126.0182 170.1165,-109.6167"></path>
+<polygon fill="#000000" stroke="#000000" points="238.2694,-172.7225 248.1373,-176.5795 242.8284,-167.4107 238.2694,-172.7225"></polygon>
+</g>
+<!-- Socket -->
+<g id="node8" class="node">
+<title>Socket</title>
+<g id="a_node8"><a xlink:href="socket.md.html" xlink:title="Socket">
+<polygon fill="#ffffff" stroke="#000000" points="212.008,-73.5 212.008,-109.5 266.008,-109.5 266.008,-73.5 212.008,-73.5"></polygon>
+<text text-anchor="middle" x="238.791" y="-88.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Socket</text>
+</a>
+</g>
+</g>
+<!-- Stream&#45;&gt;Socket -->
+<g id="edge7" class="edge">
+<title>Stream-&gt;Socket</title>
+<path fill="none" stroke="#000000" d="M254.362,-136.732C250.9976,-126.8206 247.7762,-117.3305 245.1606,-109.6253"></path>
+<polygon fill="#000000" stroke="#000000" points="251.0877,-137.9751 257.6164,-146.3193 257.7162,-135.725 251.0877,-137.9751"></polygon>
+</g>
+<!-- SslSocket -->
+<g id="node9" class="node">
+<title>SslSocket</title>
+<g id="a_node9"><a xlink:href="sslsocket.md.html" xlink:title="SslSocket">
+<polygon fill="#ffffff" stroke="#000000" points="283.781,-73.5 283.781,-109.5 344.235,-109.5 344.235,-73.5 283.781,-73.5"></polygon>
+<text text-anchor="middle" x="314.008" y="-88.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">SslSocket</text>
+</a>
+</g>
+</g>
+<!-- Stream&#45;&gt;SslSocket -->
+<g id="edge8" class="edge">
+<title>Stream-&gt;SslSocket</title>
+<path fill="none" stroke="#000000" d="M298.239,-136.732C301.6944,-126.8206 305.0029,-117.3305 307.6891,-109.6253"></path>
+<polygon fill="#000000" stroke="#000000" points="294.8837,-135.7245 294.8967,-146.3193 301.4936,-138.0289 294.8837,-135.7245"></polygon>
+</g>
+<!-- TTYInputStream -->
+<g id="node10" class="node">
+<title>TTYInputStream</title>
+<g id="a_node10"><a xlink:href="ttyinputstream.md.html" xlink:title="TTYInputStream">
+<polygon fill="#ffffff" stroke="#000000" points="362.335,-73.5 362.335,-109.5 451.681,-109.5 451.681,-73.5 362.335,-73.5"></polygon>
+<text text-anchor="middle" x="407.008" y="-88.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">TTYInputStream</text>
+</a>
+</g>
+</g>
+<!-- Stream&#45;&gt;TTYInputStream -->
+<g id="edge9" class="edge">
+<title>Stream-&gt;TTYInputStream</title>
+<path fill="none" stroke="#000000" d="M311.5059,-170.9636C335.0774,-151.3506 365.2616,-126.2356 385.3209,-109.545"></path>
+<polygon fill="#000000" stroke="#000000" points="309.2381,-168.2973 303.7897,-177.3839 313.7154,-173.6783 309.2381,-168.2973"></polygon>
+</g>
+<!-- TTYOutputStream -->
+<g id="node11" class="node">
+<title>TTYOutputStream</title>
+<g id="a_node11"><a xlink:href="ttyoutputstream.md.html" xlink:title="TTYOutputStream">
+<polygon fill="#ffffff" stroke="#000000" points="469.4455,-73.5 469.4455,-109.5 566.5705,-109.5 566.5705,-73.5 469.4455,-73.5"></polygon>
+<text text-anchor="middle" x="518.008" y="-88.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">TTYOutputStream</text>
+</a>
+</g>
+</g>
+<!-- Stream&#45;&gt;TTYOutputStream -->
+<g id="edge10" class="edge">
+<title>Stream-&gt;TTYOutputStream</title>
+<path fill="none" stroke="#000000" d="M313.0552,-183.8135C357.5384,-163.7776 431.8724,-130.2966 477.741,-109.6368"></path>
+<polygon fill="#000000" stroke="#000000" points="311.4489,-180.6982 303.7685,-187.9963 314.3237,-187.0807 311.4489,-180.6982"></polygon>
+</g>
+<!-- File -->
+<g id="node5" class="node">
+<title>File</title>
+<g id="a_node5"><a xlink:href="file.md.html" xlink:title="File">
+<polygon fill="#ffffff" stroke="#000000" points="35.008,-.5 35.008,-36.5 89.008,-36.5 89.008,-.5 35.008,-.5"></polygon>
+<text text-anchor="middle" x="61.561" y="-15.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">File</text>
+</a>
+</g>
+</g>
+<!-- SeekableStream&#45;&gt;File -->
+<g id="edge4" class="edge">
+<title>SeekableStream-&gt;File</title>
+<path fill="none" stroke="#000000" d="M119.6254,-66.8457C107.8167,-56.9372 94.4511,-45.7224 83.5677,-36.5904"></path>
+<polygon fill="#000000" stroke="#000000" points="117.5921,-69.7084 127.5024,-73.4551 122.0916,-64.346 117.5921,-69.7084"></polygon>
+</g>
+<!-- MemoryStream -->
+<g id="node6" class="node">
+<title>MemoryStream</title>
+<g id="a_node6"><a xlink:href="memorystream.md.html" xlink:title="MemoryStream">
+<polygon fill="#ffffff" stroke="#000000" points="106.8435,-.5 106.8435,-36.5 191.1725,-36.5 191.1725,-.5 106.8435,-.5"></polygon>
+<text text-anchor="middle" x="149.008" y="-15.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">MemoryStream</text>
+</a>
+</g>
+</g>
+<!-- SeekableStream&#45;&gt;MemoryStream -->
+<g id="edge5" class="edge">
+<title>SeekableStream-&gt;MemoryStream</title>
+<path fill="none" stroke="#000000" d="M149.008,-63.3688C149.008,-54.3769 149.008,-44.6687 149.008,-36.5904"></path>
+<polygon fill="#000000" stroke="#000000" points="145.5081,-63.455 149.008,-73.4551 152.5081,-63.4551 145.5081,-63.455"></polygon>
+</g>
+<!-- RangeStream -->
+<g id="node7" class="node">
+<title>RangeStream</title>
+<g id="a_node7"><a xlink:href="rangestream.md.html" xlink:title="RangeStream">
+<polygon fill="#ffffff" stroke="#000000" points="209.1685,-.5 209.1685,-36.5 286.8475,-36.5 286.8475,-.5 209.1685,-.5"></polygon>
+<text text-anchor="middle" x="248.008" y="-15.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">RangeStream</text>
+</a>
+</g>
+</g>
+<!-- SeekableStream&#45;&gt;RangeStream -->
+<g id="edge6" class="edge">
+<title>SeekableStream-&gt;RangeStream</title>
+<path fill="none" stroke="#000000" d="M181.6701,-67.4158C195.2949,-57.3693 210.8518,-45.898 223.4745,-36.5904"></path>
+<polygon fill="#000000" stroke="#000000" points="179.4513,-64.7033 173.4799,-73.4551 183.6056,-70.3372 179.4513,-64.7033"></polygon>
+</g>
+</g>
+</svg>
+</div>
 
-    [&lt;class&gt;object|toString();toJSON()]
-    [&lt;this&gt;Stream|fd|read();write();flush();close();copyTo()]
-    [&lt;class&gt;BufferedStream]
-    [&lt;class&gt;SeekableStream]
-    [&lt;class&gt;File]
-    [&lt;class&gt;MemoryStream]
-    [&lt;class&gt;RangeStream]
-    [&lt;class&gt;Socket]
-    [&lt;class&gt;SslSocket]
-    [&lt;class&gt;TTYInputStream]
-    [&lt;class&gt;TTYOutputStream]
-
-    [object] &lt;:- [Stream]
-    [Stream] &lt;:- [BufferedStream]
-    [Stream] &lt;:- [SeekableStream]
-    [SeekableStream] &lt;:- [File]
-    [SeekableStream] &lt;:- [MemoryStream]
-    [SeekableStream] &lt;:- [RangeStream]
-    [Stream] &lt;:- [Socket]
-    [Stream] &lt;:- [SslSocket]
-    [Stream] &lt;:- [TTYInputStream]
-    [Stream] &lt;:- [TTYOutputStream]
-    </desc>
-    <g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="10pt" font-family="Helvetica,sans-Serif" font-weight="bold" font-style="normal">
-        <g font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="bold" font-style="normal" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
-            <g stroke="transparent" fill="transparent">
-                <rect x="0.0" y="0.0" height="480.0" width="896.0" stroke="none"></rect>
-            </g>
-            <g transform="translate(8, 8)" fill="#33322E">
-                <g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal">
-                    <path d="M409.0 93.3 L409 100 L409 120 L409.0 120.0 " fill="none"></path>
-                    <path d="M414.3 93.3 L409.0 93.3 L403.7 93.3 L409.0 80.0 Z"></path>
-                    <path d="M359.2 214.3 L59.5 300 L59.5 320 L59.5 320.0 " fill="none"></path>
-                    <path d="M360.6 219.4 L359.2 214.3 L357.7 209.1 L372.0 210.6 Z"></path>
-                    <path d="M360.2 225.9 L221 300 L221 320 L221.0 320.0 " fill="none"></path>
-                    <path d="M362.7 230.7 L360.2 225.9 L357.7 221.2 L372.0 219.7 Z"></path>
-                    <path d="M156.3 355.9 L104 372 L104 392 L104.0 392.0 " fill="none"></path>
-                    <path d="M157.8 361.0 L156.3 355.9 L154.7 350.8 L169.0 352.0 Z"></path>
-                    <path d="M221.0 365.3 L221 372 L221 392 L221.0 392.0 " fill="none"></path>
-                    <path d="M226.3 365.3 L221.0 365.3 L215.7 365.3 L221.0 352.0 Z"></path>
-                    <path d="M296.0 353.9 L371.5 372 L371.5 392 L371.5 392.0 " fill="none"></path>
-                    <path d="M297.2 348.7 L296.0 353.9 L294.7 359.1 L283.0 350.8 Z"></path>
-                    <path d="M365.5 278.3 L353.5 300 L353.5 320 L353.5 320.0 " fill="none"></path>
-                    <path d="M370.2 280.9 L365.5 278.3 L360.9 275.7 L372.0 266.7 Z"></path>
-                    <path d="M452.5 278.3 L464.5 300 L464.5 320 L464.5 320.0 " fill="none"></path>
-                    <path d="M457.1 275.7 L452.5 278.3 L447.8 280.9 L446.0 266.7 Z"></path>
-                    <path d="M457.9 224.8 L606 300 L606 320 L606.0 320.0 " fill="none"></path>
-                    <path d="M460.3 220.1 L457.9 224.8 L455.5 229.6 L446.0 218.8 Z"></path>
-                    <path d="M458.9 213.7 L773.5 300 L773.5 320 L773.5 320.0 " fill="none"></path>
-                    <path d="M460.3 208.5 L458.9 213.7 L457.4 218.8 L446.0 210.2 Z"></path>
-                    <g data-name="Stream">
-                        <g fill="lightgray" stroke="#33322E" data-name="Stream">
-                            <rect x="372.0" y="120.0" height="160.0" width="74.0" data-name="Stream"></rect>
-                            <path d="M372.0 152.0 L446.0 152.0" fill="none" data-name="Stream"></path>
-                            <path d="M372.0 184.0 L446.0 184.0" fill="none" data-name="Stream"></path>
-                        </g>
-                        <g transform="translate(372, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Stream">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Stream">
-                                <text x="29.0" y="13.0" stroke="none" text-anchor="middle" data-name="Stream">Stream</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(372, 152)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Stream">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Stream">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Stream">fd</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(372, 184)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Stream">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Stream">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Stream">read()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="Stream">write()</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="Stream">flush()</text>
-                                <text x="0.0" y="61.0" stroke="none" data-name="Stream">close()</text>
-                                <text x="0.0" y="77.0" stroke="none" data-name="Stream">copyTo()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="object">
-                        <g fill="white" stroke="#33322E" data-name="object">
-                            <rect x="371.0" y="0.0" height="80.0" width="77.0" data-name="object"></rect>
-                            <path d="M371.0 32.0 L448.0 32.0" fill="none" data-name="object"></path>
-                        </g>
-                        <g transform="translate(371, 0)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="object">
-                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="object">object</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(371, 32)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="object">
-                                <text x="0.0" y="13.0" stroke="none" data-name="object">toString()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="object">toJSON()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="BufferedStream">
-                        <g fill="white" stroke="#33322E" data-name="BufferedStream">
-                            <rect x="0.0" y="320.0" height="32.0" width="119.0" data-name="BufferedStream"></rect>
-                        </g>
-                        <g transform="translate(0, 320)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="BufferedStream">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="BufferedStream">
-                                <text x="51.5" y="13.0" stroke="none" text-anchor="middle" data-name="BufferedStream">BufferedStream</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="SeekableStream">
-                        <g fill="white" stroke="#33322E" data-name="SeekableStream">
-                            <rect x="159.0" y="320.0" height="32.0" width="124.0" data-name="SeekableStream"></rect>
-                        </g>
-                        <g transform="translate(159, 320)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="SeekableStream">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="SeekableStream">
-                                <text x="54.0" y="13.0" stroke="none" text-anchor="middle" data-name="SeekableStream">SeekableStream</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="File">
-                        <g fill="white" stroke="#33322E" data-name="File">
-                            <rect x="85.0" y="392.0" height="32.0" width="39.0" data-name="File"></rect>
-                        </g>
-                        <g transform="translate(85, 392)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="File">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="File">
-                                <text x="11.5" y="13.0" stroke="none" text-anchor="middle" data-name="File">File</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="MemoryStream">
-                        <g fill="white" stroke="#33322E" data-name="MemoryStream">
-                            <rect x="164.0" y="392.0" height="32.0" width="115.0" data-name="MemoryStream"></rect>
-                        </g>
-                        <g transform="translate(164, 392)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="MemoryStream">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="MemoryStream">
-                                <text x="49.5" y="13.0" stroke="none" text-anchor="middle" data-name="MemoryStream">MemoryStream</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="RangeStream">
-                        <g fill="white" stroke="#33322E" data-name="RangeStream">
-                            <rect x="319.0" y="392.0" height="32.0" width="106.0" data-name="RangeStream"></rect>
-                        </g>
-                        <g transform="translate(319, 392)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="RangeStream">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="RangeStream">
-                                <text x="45.0" y="13.0" stroke="none" text-anchor="middle" data-name="RangeStream">RangeStream</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="Socket">
-                        <g fill="white" stroke="#33322E" data-name="Socket">
-                            <rect x="323.0" y="320.0" height="32.0" width="61.0" data-name="Socket"></rect>
-                        </g>
-                        <g transform="translate(323, 320)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Socket">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Socket">
-                                <text x="22.5" y="13.0" stroke="none" text-anchor="middle" data-name="Socket">Socket</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="SslSocket">
-                        <g fill="white" stroke="#33322E" data-name="SslSocket">
-                            <rect x="424.0" y="320.0" height="32.0" width="81.0" data-name="SslSocket"></rect>
-                        </g>
-                        <g transform="translate(424, 320)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="SslSocket">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="SslSocket">
-                                <text x="32.5" y="13.0" stroke="none" text-anchor="middle" data-name="SslSocket">SslSocket</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="TTYInputStream">
-                        <g fill="white" stroke="#33322E" data-name="TTYInputStream">
-                            <rect x="545.0" y="320.0" height="32.0" width="122.0" data-name="TTYInputStream"></rect>
-                        </g>
-                        <g transform="translate(545, 320)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="TTYInputStream">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="TTYInputStream">
-                                <text x="53.0" y="13.0" stroke="none" text-anchor="middle" data-name="TTYInputStream">TTYInputStream</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="TTYOutputStream">
-                        <g fill="white" stroke="#33322E" data-name="TTYOutputStream">
-                            <rect x="707.0" y="320.0" height="32.0" width="133.0" data-name="TTYOutputStream"></rect>
-                        </g>
-                        <g transform="translate(707, 320)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="TTYOutputStream">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="TTYOutputStream">
-                                <text x="58.5" y="13.0" stroke="none" text-anchor="middle" data-name="TTYOutputStream">TTYOutputStream</text>
-
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg></div>
-
-<div name="成员属性" data-unique="成员属性"></div><h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Propietats dels membres</font></font></h2>
+<div name="成员属性" data-unique="成员属性"></div><h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">atribut de membre</font></font></h2>
 <div name="fd" data-unique="fd"></div><h3 id="fd" class="notranslate">fd</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enter, consulteu el valor del descriptor de fitxer corresponent a Stream, implementat per subclasses</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enter, consulteu el valor del descriptor de fitxer corresponent a Stream, implementat per subclasse</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer Stream.fd;
 </code></pre>
 <div name="成员函数" data-unique="成员函数"></div><h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">funció de membre</font></font></h2>
@@ -428,15 +401,15 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
 <ul>
-<li><span class="notranslate">bytes</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Sencer, especifiqueu la quantitat de dades a llegir, el valor predeterminat és llegir un bloc de dades de mida aleatòria, la mida de les dades llegides depèn del dispositiu</font></font></li>
+<li><span class="notranslate">bytes</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Sencer, especifiqueu la quantitat de dades a llegir, el valor predeterminat és llegir blocs de dades de mida aleatòria, la mida de les dades de lectura depèn del dispositiu</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resultat de retorn:</font></font></p>
 <ul>
 <li><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna les dades llegides del flux o nul si no hi ha dades per llegir o la connexió s'interromp</font></font></li>
 </ul>
 <hr>
 <div name="write" data-unique="write"></div><h3 id="write" class="notranslate">write</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Escriu les dades donades al flux</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">escriu les dades proporcionades al flux</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Stream.write(Buffer data) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
@@ -450,7 +423,7 @@
 </code></pre>
 <hr>
 <div name="close" data-unique="close"></div><h3 id="close" class="notranslate">close</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">tanca l'objecte del flux actual</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">tanqueu l'objecte del flux actual</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Stream.close() <span class="hljs-keyword">async</span>;
 </code></pre>
 <hr>
@@ -463,9 +436,9 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
 <ul>
 <li><span class="notranslate">stm</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Stream, objecte stream objectiu</font></font></li>
-<li><span class="notranslate">bytes</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: llarg, nombre de bytes copiats</font></font></li>
+<li><span class="notranslate">bytes</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: llarg, el nombre de bytes copiats</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resultat de retorn:</font></font></p>
 <ul>
 <li><span class="notranslate">Long</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna el nombre de bytes copiats</font></font></li>
 </ul>
@@ -474,21 +447,21 @@
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retorna la representació de cadena de l'objecte, generalment retorna "[Native Object]", l'objecte es pot reimplementar segons les seves pròpies característiques</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Stream.toString();
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resultat de retorn:</font></font></p>
 <ul>
-<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna la representació de cadena de l'objecte</font></font></li>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna una representació de cadena de l'objecte</font></font></li>
 </ul>
 <hr>
 <div name="toJSON" data-unique="toJSON"></div><h3 id="toJSON" class="notranslate">toJSON</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retorna la representació en format JSON de l'objecte, generalment retorna el conjunt de propietats llegibles definides per l'objecte</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retorna la representació en format JSON de l'objecte, generalment retorna una col·lecció de propietats llegibles definides per l'objecte</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value Stream.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
 <ul>
-<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Corda, sense utilitzar</font></font></li>
+<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Corda, no utilitzada</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resultat de retorn:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resultat de retorn:</font></font></p>
 <ul>
-<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna un valor que conté JSON serializable</font></font></li>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, que retorna un valor serialitzable per JSON</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | Doneu- </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">nos suport</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip802175"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip802175" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Feu clic per tornar a la pàgina superior</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | Doneu- </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">nos suport</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

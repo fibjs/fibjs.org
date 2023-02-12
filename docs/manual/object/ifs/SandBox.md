@@ -15,18 +15,15 @@ var mod_in_sbox = sbox.require('./path/to/mod');
 ```
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<class>object|toString();toJSON()]
-[<this>SandBox|new SandBox()|global;modules|add();addScript();remove();has();clone();freeze();refresh();run();resolve();require();setModuleCompiler()]
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    SandBox [tooltip="SandBox", fillcolor="lightgray", id="me", label="{SandBox|new SandBox()\l|global\lmodules\l|addBuiltinModules()\ladd()\laddScript()\lremove()\lhas()\lclone()\lfreeze()\lrun()\lresolve()\lrequire()\lsetModuleCompiler()\l}"];
 
-[object] <:- [SandBox]
+    object -> SandBox [dir=back];
+}
 ```
 
 ## 构造函数
@@ -35,7 +32,7 @@ var mod_in_sbox = sbox.require('./path/to/mod');
 **构造一个新的安全沙箱对象，并初始化基础模块**
 
 ```JavaScript
-new SandBox(Object mods);
+new SandBox(Object mods = {});
 ```
 
 调用参数:
@@ -98,6 +95,14 @@ readonly Object SandBox.modules;
 
 ## 成员函数
         
+### addBuiltinModules
+**向沙箱中添加内置基础模块**
+
+```JavaScript
+SandBox.addBuiltinModules();
+```
+
+--------------------------
 ### add
 **向沙箱中添加一个基础模块**
 
@@ -178,14 +183,6 @@ SandBox SandBox.clone();
 
 ```JavaScript
 SandBox.freeze();
-```
-
---------------------------
-### refresh
-**重新加载沙箱内的模块，此操作只会重新初始化模块，复位模块内的变量，不更新模块代码**
-
-```JavaScript
-SandBox.refresh();
 ```
 
 --------------------------

@@ -36,6 +36,7 @@
   - [hex](ifs/hex.md) - hex 编码与解码模块
   - [iconv](ifs/iconv.md) - iconv 编码与解码模块
   - [json](ifs/json.md) - json 编码与解码模块
+  - [multibase](ifs/multibase.md) - multibase 编码与解码模块
   - [msgpack](ifs/msgpack.md) - msgpack 编码与解码模块
   - [string_decoder](ifs/string_decoder.md) - 解码 Buffer 到字符串
 * Crypto
@@ -44,7 +45,7 @@
 * Compress
   - [zip](ifs/zip.md) - zip 格式文件压缩解压模块
   - [zlib](ifs/zlib.md) - zlib 压缩解压模块
-* Test Suite
+* Test
   - [assert](ifs/assert.md) - 断言测试模块，如果测试值为假，则报错，报错行为可设定继续运行或者错误抛出
   - [performance](ifs/performance.md) - performance 基础性能监控模块
   - [perf_hooks](ifs/perf_hooks.md) - perf_hooks 基础模块
@@ -60,4 +61,3 @@
 * Constants
   - [constants](ifs/constants.md) - 常用常量定义模块
   - [fs_constants](ifs/fs_constants.md) - fs 模块常用常量定义模块
-* [multibase](ifs/multibase.md) - multibase 编码与解码模块

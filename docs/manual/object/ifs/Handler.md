@@ -2,28 +2,25 @@
 消息处理器接口
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<class>object|toString();toJSON()]
-[<this>Handler|new Handler()|invoke()]
-[<class>Chain]
-[<class>HttpHandler]
-[<class>HttpRepeater]
-[<class>Routing]
-[<class>SslHandler]
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    Handler [tooltip="Handler", fillcolor="lightgray", id="me", label="{Handler|new Handler()\l|invoke()\l}"];
+    Chain [tooltip="Chain", URL="Chain.md", label="{Chain}"];
+    HttpHandler [tooltip="HttpHandler", URL="HttpHandler.md", label="{HttpHandler}"];
+    HttpRepeater [tooltip="HttpRepeater", URL="HttpRepeater.md", label="{HttpRepeater}"];
+    Routing [tooltip="Routing", URL="Routing.md", label="{Routing}"];
+    SslHandler [tooltip="SslHandler", URL="SslHandler.md", label="{SslHandler}"];
 
-[object] <:- [Handler]
-[Handler] <:- [Chain]
-[Handler] <:- [HttpHandler]
-[Handler] <:- [HttpRepeater]
-[Handler] <:- [Routing]
-[Handler] <:- [SslHandler]
+    object -> Handler [dir=back];
+    Handler -> Chain [dir=back];
+    Handler -> HttpHandler [dir=back];
+    Handler -> HttpRepeater [dir=back];
+    Handler -> Routing [dir=back];
+    Handler -> SslHandler [dir=back];
+}
 ```
 
 ## 构造函数

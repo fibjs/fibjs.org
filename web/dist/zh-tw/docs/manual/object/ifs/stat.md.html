@@ -65,6 +65,7 @@
 <li><a href="../../module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
 </ul>
  </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">內置對象</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="blskey.md.html" class="notranslate">BlsKey</a></li>
 <li><a href="buffer.md.html" class="notranslate">Buffer</a></li>
 <li><a href="bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
 <li><a href="chain.md.html" class="notranslate">Chain</a></li>
@@ -74,6 +75,8 @@
 <li><a href="dbconnection.md.html" class="notranslate">DbConnection</a></li>
 <li><a href="dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
 <li><a href="digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="eckey.md.html" class="notranslate">ECKey</a></li>
+<li><a href="ed25519key.md.html" class="notranslate">Ed25519Key</a></li>
 <li><a href="event.md.html" class="notranslate">Event</a></li>
 <li><a href="eventemitter.md.html" class="notranslate">EventEmitter</a></li>
 <li><a href="fswatcher.md.html" class="notranslate">FSWatcher</a></li>
@@ -204,107 +207,77 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件的基礎信息對象</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Stat 對象通過</font></font><a href="../../module/ifs/fs.md.html#stat" class="notranslate">fs.stat</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">,</font></font><a href="file.md.html#stat" class="notranslate">File.stat</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">,</font></font><a href="../../module/ifs/fs.md.html#readdir" class="notranslate">fs.readdir</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">查詢，不可獨立創建</font></font></p>
 <div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">繼承關係</font></font></h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="203.0" height="736.0" viewBox="0 0 203 736" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
-    <desc>
-    #lineWidth: 1.5
-    #font: Helvetica,sans-Serif
-    #fontSize: 10
-    #leading: 1.6
-    #.this: fill=lightgray
-    #.class: fill=white
-
-    [&lt;class&gt;object|toString();toJSON()]
-    [&lt;this&gt;Stat|name;dev;ino;mode;nlink;uid;gid;rdev;size;blksize;blocks;mtime;mtimeMs;atime;atimeMs;ctime;ctimeMs;birthtime;birthtimeMs|isWritable();isReadable();isExecutable();isHidden();isBlockDevice();isCharacterDevice();isDirectory();isFIFO();isFile();isSymbolicLink();isMemory();isSocket()]
-
-    [object] &lt;:- [Stat]
-    </desc>
-    <g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="10pt" font-family="Helvetica,sans-Serif" font-weight="normal" font-style="normal">
-        <g font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="bold" font-style="normal" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
-            <g stroke="transparent" fill="transparent">
-                <rect x="0.0" y="0.0" height="736.0" width="203.0" stroke="none"></rect>
-            </g>
-            <g transform="translate(8, 8)" fill="#33322E">
-                <g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal">
-                    <path d="M73.5 93.3 L73.5 100 L73.5 120 L73.5 120.0 " fill="none"></path>
-                    <path d="M78.8 93.3 L73.5 93.3 L68.2 93.3 L73.5 80.0 Z"></path>
-                    <g data-name="Stat">
-                        <g fill="lightgray" stroke="#33322E" data-name="Stat">
-                            <rect x="0.0" y="120.0" height="560.0" width="147.0" data-name="Stat"></rect>
-                            <path d="M0.0 152.0 L147.0 152.0" fill="none" data-name="Stat"></path>
-                            <path d="M0.0 472.0 L147.0 472.0" fill="none" data-name="Stat"></path>
-                        </g>
-                        <g transform="translate(0, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Stat">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Stat">
-                                <text x="65.5" y="13.0" stroke="none" text-anchor="middle" data-name="Stat">Stat</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 152)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Stat">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Stat">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Stat">name</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="Stat">dev</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="Stat">ino</text>
-                                <text x="0.0" y="61.0" stroke="none" data-name="Stat">mode</text>
-                                <text x="0.0" y="77.0" stroke="none" data-name="Stat">nlink</text>
-                                <text x="0.0" y="93.0" stroke="none" data-name="Stat">uid</text>
-                                <text x="0.0" y="109.0" stroke="none" data-name="Stat">gid</text>
-                                <text x="0.0" y="125.0" stroke="none" data-name="Stat">rdev</text>
-                                <text x="0.0" y="141.0" stroke="none" data-name="Stat">size</text>
-                                <text x="0.0" y="157.0" stroke="none" data-name="Stat">blksize</text>
-                                <text x="0.0" y="173.0" stroke="none" data-name="Stat">blocks</text>
-                                <text x="0.0" y="189.0" stroke="none" data-name="Stat">mtime</text>
-                                <text x="0.0" y="205.0" stroke="none" data-name="Stat">mtimeMs</text>
-                                <text x="0.0" y="221.0" stroke="none" data-name="Stat">atime</text>
-                                <text x="0.0" y="237.0" stroke="none" data-name="Stat">atimeMs</text>
-                                <text x="0.0" y="253.0" stroke="none" data-name="Stat">ctime</text>
-                                <text x="0.0" y="269.0" stroke="none" data-name="Stat">ctimeMs</text>
-                                <text x="0.0" y="285.0" stroke="none" data-name="Stat">birthtime</text>
-                                <text x="0.0" y="301.0" stroke="none" data-name="Stat">birthtimeMs</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 472)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Stat">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Stat">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Stat">isWritable()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="Stat">isReadable()</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="Stat">isExecutable()</text>
-                                <text x="0.0" y="61.0" stroke="none" data-name="Stat">isHidden()</text>
-                                <text x="0.0" y="77.0" stroke="none" data-name="Stat">isBlockDevice()</text>
-                                <text x="0.0" y="93.0" stroke="none" data-name="Stat">isCharacterDevice()</text>
-                                <text x="0.0" y="109.0" stroke="none" data-name="Stat">isDirectory()</text>
-                                <text x="0.0" y="125.0" stroke="none" data-name="Stat">isFIFO()</text>
-                                <text x="0.0" y="141.0" stroke="none" data-name="Stat">isFile()</text>
-                                <text x="0.0" y="157.0" stroke="none" data-name="Stat">isSymbolicLink()</text>
-                                <text x="0.0" y="173.0" stroke="none" data-name="Stat">isMemory()</text>
-                                <text x="0.0" y="189.0" stroke="none" data-name="Stat">isSocket()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="object">
-                        <g fill="white" stroke="#33322E" data-name="object">
-                            <rect x="35.0" y="0.0" height="80.0" width="77.0" data-name="object"></rect>
-                            <path d="M35.0 32.0 L112.0 32.0" fill="none" data-name="object"></path>
-                        </g>
-                        <g transform="translate(35, 0)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="object">
-                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="object">object</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(35, 32)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="object">
-                                <text x="0.0" y="13.0" stroke="none" data-name="object">toString()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="object">toJSON()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg></div>
+<div class="dot notranslate">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="112pt" height="506pt" viewBox="0.00 0.00 112.33 506.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 502)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-502 108.325,-502 108.325,4 -4,4"></polygon>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href="object.md.html" xlink:title="object">
+<polygon fill="#ffffff" stroke="#000000" points="23.331,-445.5 23.331,-497.5 80.994,-497.5 80.994,-445.5 23.331,-445.5"></polygon>
+<text text-anchor="middle" x="52.1625" y="-484.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="23.331,-477.5 80.994,-477.5 "></polyline>
+<text text-anchor="start" x="31.331" y="-464.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="31.331" y="-452.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+</a>
+</g>
+</g>
+<!-- Stat -->
+<g id="me" class="node">
+<title>Stat</title>
+<g id="a_me"><a xlink:title="Stat">
+<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-408.5 104.325,-408.5 104.325,-.5 0,-.5"></polygon>
+<text text-anchor="middle" x="52.1625" y="-395.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Stat</text>
+<polyline fill="none" stroke="#000000" points="0,-388.5 104.325,-388.5 "></polyline>
+<text text-anchor="start" x="8" y="-375.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">name</text>
+<text text-anchor="start" x="8" y="-363.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">dev</text>
+<text text-anchor="start" x="8" y="-351.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">ino</text>
+<text text-anchor="start" x="8" y="-339.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">mode</text>
+<text text-anchor="start" x="8" y="-327.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">nlink</text>
+<text text-anchor="start" x="8" y="-315.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">uid</text>
+<text text-anchor="start" x="8" y="-303.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">gid</text>
+<text text-anchor="start" x="8" y="-291.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">rdev</text>
+<text text-anchor="start" x="8" y="-279.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">size</text>
+<text text-anchor="start" x="8" y="-267.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">blksize</text>
+<text text-anchor="start" x="8" y="-255.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">blocks</text>
+<text text-anchor="start" x="8" y="-243.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">mtime</text>
+<text text-anchor="start" x="8" y="-231.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">mtimeMs</text>
+<text text-anchor="start" x="8" y="-219.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">atime</text>
+<text text-anchor="start" x="8" y="-207.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">atimeMs</text>
+<text text-anchor="start" x="8" y="-195.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">ctime</text>
+<text text-anchor="start" x="8" y="-183.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">ctimeMs</text>
+<text text-anchor="start" x="8" y="-171.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">birthtime</text>
+<text text-anchor="start" x="8" y="-159.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">birthtimeMs</text>
+<polyline fill="none" stroke="#000000" points="0,-152.5 104.325,-152.5 "></polyline>
+<text text-anchor="start" x="8" y="-139.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isWritable()</text>
+<text text-anchor="start" x="8" y="-127.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isReadable()</text>
+<text text-anchor="start" x="8" y="-115.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isExecutable()</text>
+<text text-anchor="start" x="8" y="-103.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isHidden()</text>
+<text text-anchor="start" x="8" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isBlockDevice()</text>
+<text text-anchor="start" x="8" y="-79.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isCharacterDevice()</text>
+<text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isDirectory()</text>
+<text text-anchor="start" x="8" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isFIFO()</text>
+<text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isFile()</text>
+<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isSymbolicLink()</text>
+<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isMemory()</text>
+<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isSocket()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;Stat -->
+<g id="edge1" class="edge">
+<title>object-&gt;Stat</title>
+<path fill="none" stroke="#000000" d="M52.1625,-435.1934C52.1625,-427.2182 52.1625,-418.2328 52.1625,-408.5529"></path>
+<polygon fill="#000000" stroke="#000000" points="48.6626,-435.4127 52.1625,-445.4128 55.6626,-435.4128 48.6626,-435.4127"></polygon>
+</g>
+</g>
+</svg>
+</div>
 
 <div name="成员属性" data-unique="成员属性"></div><h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">成員屬性</font></font></h2>
 <div name="name" data-unique="name"></div><h3 id="name" class="notranslate">name</h3>
@@ -531,4 +504,4 @@
 <ul>
 <li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回包含可JSON 序列化的值</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip956730"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip956730" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

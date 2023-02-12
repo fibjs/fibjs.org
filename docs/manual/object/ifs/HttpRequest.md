@@ -2,22 +2,19 @@
 [http](../../module/ifs/http.md) 请求消息对象
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<class>object|toString();toJSON()]
-[<class>Message|new Message()|TEXT;BINARY|value;params;type;data;body;length;stream;lastError|read();readAll();write();json();pack();end();isEnded();clear();sendTo();readFrom()]
-[<class>HttpMessage|protocol;headers;keepAlive;upgrade;maxHeadersCount;maxBodySize;socket|hasHeader();firstHeader();allHeader();addHeader();setHeader();removeHeader()]
-[<this>HttpRequest|new HttpRequest()|response;method;address;queryString;cookies;form;query]
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    Message [tooltip="Message", URL="Message.md", label="{Message|new Message()\l|TEXT\lBINARY\l|value\lparams\ltype\ldata\lbody\llength\lstream\llastError\l|read()\lreadAll()\lwrite()\ljson()\lpack()\lend()\lisEnded()\lclear()\lsendTo()\lreadFrom()\l}"];
+    HttpMessage [tooltip="HttpMessage", URL="HttpMessage.md", label="{HttpMessage|protocol\lheaders\lkeepAlive\lupgrade\lmaxHeadersCount\lmaxBodySize\lsocket\l|hasHeader()\lfirstHeader()\lallHeader()\laddHeader()\lsetHeader()\lremoveHeader()\l}"];
+    HttpRequest [tooltip="HttpRequest", fillcolor="lightgray", id="me", label="{HttpRequest|new HttpRequest()\l|response\lmethod\laddress\lqueryString\lcookies\lform\lquery\l}"];
 
-[object] <:- [Message]
-[Message] <:- [HttpMessage]
-[HttpMessage] <:- [HttpRequest]
+    object -> Message [dir=back];
+    Message -> HttpMessage [dir=back];
+    HttpMessage -> HttpRequest [dir=back];
+}
 ```
 
 ## 构造函数

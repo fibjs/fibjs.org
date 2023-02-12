@@ -8,20 +8,17 @@ var s = new ssl.Socket();
 ```
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<class>object|toString();toJSON()]
-[<class>Stream|fd|read();write();flush();close();copyTo()]
-[<this>SslSocket|new SslSocket()|verification;ca;peerCert;hostname;stream|connect();accept()]
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    Stream [tooltip="Stream", URL="Stream.md", label="{Stream|fd\l|read()\lwrite()\lflush()\lclose()\lcopyTo()\l}"];
+    SslSocket [tooltip="SslSocket", fillcolor="lightgray", id="me", label="{SslSocket|new SslSocket()\l|verification\lca\lpeerCert\lhostname\lstream\l|connect()\laccept()\l}"];
 
-[object] <:- [Stream]
-[Stream] <:- [SslSocket]
+    object -> Stream [dir=back];
+    Stream -> SslSocket [dir=back];
+}
 ```
 
 ## 构造函数

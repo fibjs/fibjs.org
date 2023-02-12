@@ -2,20 +2,17 @@
 Odbc 数据库连接对象
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<class>object|toString();toJSON()]
-[<class>DbConnection|type|close();use();begin();commit();rollback();trans();execute();createTable();dropTable();createIndex();dropIndex();insert();find();count();update();remove();format()]
-[<this>Odbc|codec]
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    DbConnection [tooltip="DbConnection", URL="DbConnection.md", label="{DbConnection|type\l|close()\luse()\lbegin()\lcommit()\lrollback()\ltrans()\lexecute()\lcreateTable()\ldropTable()\lcreateIndex()\ldropIndex()\linsert()\lfind()\lcount()\lupdate()\lremove()\lformat()\l}"];
+    Odbc [tooltip="Odbc", fillcolor="lightgray", id="me", label="{Odbc|codec\l}"];
 
-[object] <:- [DbConnection]
-[DbConnection] <:- [Odbc]
+    object -> DbConnection [dir=back];
+    DbConnection -> Odbc [dir=back];
+}
 ```
 
 ## 成员属性

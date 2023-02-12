@@ -8,18 +8,15 @@ var k = new crypto.X509Cert();
 ```
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<class>object|toString();toJSON()]
-[<this>X509Cert|new X509Cert()|version;serial;issuer;subject;notBefore;notAfter;ca;pathlen;usage;type;sig_md;sig_pk;publicKey;next|import();loadRootCerts();verify();pem();der();clear()]
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    X509Cert [tooltip="X509Cert", fillcolor="lightgray", id="me", label="{X509Cert|new X509Cert()\l|version\lserial\lissuer\lsubject\lnotBefore\lnotAfter\lca\lpathlen\lusage\ltype\lsig_md\lsig_pk\lpublicKey\lnext\l|import()\lloadRootCerts()\lverify()\lpem()\lder()\lclear()\l}"];
 
-[object] <:- [X509Cert]
+    object -> X509Cert [dir=back];
+}
 ```
 
 ## 构造函数
@@ -42,16 +39,14 @@ new X509Cert(Buffer derCert);
 * derCert: [Buffer](Buffer.md), DER 格式的证书
 
 --------------------------
-**X509Cert 构造函数，加载一个 CRT/PEM/TXT 格式的证书**
+**X509Cert 构造函数，加载一个 CRT/PEM 格式的证书**
 
 ```JavaScript
 new X509Cert(String txtCert);
 ```
 
 调用参数:
-* txtCert: String, CRT/PEM/TXT 格式的证书
-
-load 加载 mozilla 的 certdata,txt， 可于 http://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt 下载使用
+* txtCert: String, CRT/PEM 格式的证书
 
 ## 成员属性
         
@@ -183,16 +178,14 @@ X509Cert.import(Buffer derCert);
 * derCert: [Buffer](Buffer.md), DER 格式的证书
 
 --------------------------
-**加载一个 CRT/PEM/TXT 格式的证书，可多次调用**
+**加载一个 CRT/PEM 格式的证书，可多次调用**
 
 ```JavaScript
 X509Cert.import(String txtCert);
 ```
 
 调用参数:
-* txtCert: String, CRT/PEM/TXT 格式的证书
-
-import 加载 mozilla 的 certdata,txt， 可于 http://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt 下载使用
+* txtCert: String, CRT/PEM 格式的证书
 
 --------------------------
 ### loadRootCerts

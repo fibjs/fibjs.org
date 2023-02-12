@@ -1,15 +1,15 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Состояние объекта — JavaScript на волокне</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Переключить навигацию</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/condition.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/condition.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/condition.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/condition.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/condition.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/condition.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/condition.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/condition.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/condition.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/condition.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/condition.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/condition.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Встроенный объект объекта</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Поиск" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="поисковый ввод" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">титульная страница</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">встроенные объекты</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Состояние объекта</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Руководство по разработке</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Состояние объекта — JavaScript на волокне</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Переключить навигацию</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/condition.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/condition.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/condition.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/condition.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/condition.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/condition.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/condition.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/condition.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/condition.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/condition.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/condition.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/condition.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Встроенный объект объекта</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Поиск" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="поисковый ввод" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">титульная страница</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">встроенный объект</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Состояние объекта</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">руководство по развитию</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Что такое фибы?</font></font></a></li>
-<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Установите среду выполнения</font></font></a></li>
+<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Установить операционную среду</font></font></a></li>
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
-<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Хорошая жизнь начинается с испытания</font></font></a></li>
-<li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Найдите убийцу производительности</font></font></a></li>
+<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Лучшая жизнь начинается с испытания</font></font></a></li>
+<li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Найдите убийц производительности</font></font></a></li>
 <li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Горячее обновление серверного модуля</font></font></a></li>
-<li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Маршрутизация доменного имени</font></font></a></li>
-<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Использование сертификатов X509 в fibjs</font></font></a></li>
-<li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">добавить нативный модуль</font></font></a></li>
+<li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Маршрутизация домена</font></font></a></li>
+<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Использование сертификата X509 в fibjs</font></font></a></li>
+<li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Добавить нативный модуль</font></font></a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">базовый модуль</font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Базовый модуль</font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../module/ifs/assert.md.html" class="notranslate">assert</a></li>
 <li><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a></li>
 <li><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a></li>
@@ -64,7 +64,8 @@
 <li><a href="../../module/ifs/zip.md.html" class="notranslate">zip</a></li>
 <li><a href="../../module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">встроенные объекты</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">встроенный объект</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="blskey.md.html" class="notranslate">BlsKey</a></li>
 <li><a href="buffer.md.html" class="notranslate">Buffer</a></li>
 <li><a href="bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
 <li><a href="chain.md.html" class="notranslate">Chain</a></li>
@@ -74,6 +75,8 @@
 <li><a href="dbconnection.md.html" class="notranslate">DbConnection</a></li>
 <li><a href="dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
 <li><a href="digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="eckey.md.html" class="notranslate">ECKey</a></li>
+<li><a href="ed25519key.md.html" class="notranslate">Ed25519Key</a></li>
 <li><a href="event.md.html" class="notranslate">Event</a></li>
 <li><a href="eventemitter.md.html" class="notranslate">EventEmitter</a></li>
 <li><a href="fswatcher.md.html" class="notranslate">FSWatcher</a></li>
@@ -202,10 +205,10 @@
 </ul>
  </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="对象-Condition" data-unique="对象-Condition"></div><h1 id="对象-Condition"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Состояние объекта</font></font></h1>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">объект переменной условия</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Переменные условия — это механизм синхронизации с использованием глобальных переменных, общих для волокон, которые в основном включают два действия: 1) один поток ожидает выполнения определенного условия и приостанавливает себя; 2) другой поток делает условие истинным и уведомляет об ожидании волокно для выполнения вниз.</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Для предотвращения гонок каждой условной переменной требуется</font></font><a href="lock.md.html" class="notranslate">Lock</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">матч (</font></font><a href="lock.md.html" class="notranslate">Lock</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Вы можете явно создать его самостоятельно и передать его или позволить fibjs создать его для вас)</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Используя условные переменные, условную переменную можно использовать для управления переключением пакета волокон;</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ниже приведены примеры планирования двух волокон:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Условная переменная — это механизм синхронизации с использованием глобальных переменных, совместно используемых файберами, который в основном включает два действия: 1) один поток ожидает выполнения определенного условия, а затем приостанавливает себя; 2) другой поток делает условие истинным, и уведомить ожидающие волокна о выполнении нисходящего.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Чтобы предотвратить состояние гонки, каждая переменная условия требует</font></font><a href="lock.md.html" class="notranslate">Lock</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Сотрудничество (</font></font><a href="lock.md.html" class="notranslate">Lock</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Вы можете явно создать его самостоятельно и передать его или позволить fibjs создать его для вас)</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Используя условные переменные, одну условную переменную можно использовать для управления переключением пакета волокон;</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ниже приведены два примера планирования оптоволокна:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -254,119 +257,79 @@ coroutine.sleep();<font></font>
 go<font></font>
 </code></pre>
 <div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">отношения наследования</font></font></h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="175.0" height="472.0" viewBox="0 0 175 472" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
-    <desc>
-    #lineWidth: 1.5
-    #font: Helvetica,sans-Serif
-    #fontSize: 10
-    #leading: 1.6
-    #.this: fill=lightgray
-    #.class: fill=white
-
-    [&lt;class&gt;object|toString();toJSON()]
-    [&lt;class&gt;Lock|new Lock()|acquire();release();count()]
-    [&lt;this&gt;Condition|new Condition()|wait();notify();notifyAll()]
-
-    [object] &lt;:- [Lock]
-    [Lock] &lt;:- [Condition]
-    </desc>
-    <g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="10pt" font-family="Helvetica,sans-Serif" font-weight="normal" font-style="normal">
-        <g font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="bold" font-style="normal" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
-            <g stroke="transparent" fill="transparent">
-                <rect x="0.0" y="0.0" height="472.0" width="175.0" stroke="none"></rect>
-            </g>
-            <g transform="translate(8, 8)" fill="#33322E">
-                <g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal">
-                    <path d="M59.5 93.3 L59.5 100 L59.5 120 L59.5 120.0 " fill="none"></path>
-                    <path d="M64.8 93.3 L59.5 93.3 L54.2 93.3 L59.5 80.0 Z"></path>
-                    <path d="M59.5 261.3 L59.5 268 L59.5 288 L59.5 288.0 " fill="none"></path>
-                    <path d="M64.8 261.3 L59.5 261.3 L54.2 261.3 L59.5 248.0 Z"></path>
-                    <g data-name="Lock">
-                        <g fill="white" stroke="#33322E" data-name="Lock">
-                            <rect x="15.0" y="120.0" height="128.0" width="89.0" data-name="Lock"></rect>
-                            <path d="M15.0 152.0 L104.0 152.0" fill="none" data-name="Lock"></path>
-                            <path d="M15.0 184.0 L104.0 184.0" fill="none" data-name="Lock"></path>
-                        </g>
-                        <g transform="translate(15, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Lock">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Lock">
-                                <text x="36.5" y="13.0" stroke="none" text-anchor="middle" data-name="Lock">Lock</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(15, 152)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Lock">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Lock">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Lock">new Lock()</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(15, 184)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Lock">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Lock">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Lock">acquire()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="Lock">release()</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="Lock">count()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="Condition">
-                        <g fill="lightgray" stroke="#33322E" data-name="Condition">
-                            <rect x="0.0" y="288.0" height="128.0" width="119.0" data-name="Condition"></rect>
-                            <path d="M0.0 320.0 L119.0 320.0" fill="none" data-name="Condition"></path>
-                            <path d="M0.0 352.0 L119.0 352.0" fill="none" data-name="Condition"></path>
-                        </g>
-                        <g transform="translate(0, 288)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Condition">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Condition">
-                                <text x="51.5" y="13.0" stroke="none" text-anchor="middle" data-name="Condition">Condition</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 320)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Condition">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Condition">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Condition">new Condition()</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 352)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Condition">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Condition">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Condition">wait()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="Condition">notify()</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="Condition">notifyAll()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="object">
-                        <g fill="white" stroke="#33322E" data-name="object">
-                            <rect x="21.0" y="0.0" height="80.0" width="77.0" data-name="object"></rect>
-                            <path d="M21.0 32.0 L98.0 32.0" fill="none" data-name="object"></path>
-                        </g>
-                        <g transform="translate(21, 0)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="object">
-                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="object">object</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(21, 32)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="object">
-                                <text x="0.0" y="13.0" stroke="none" data-name="object">toString()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="object">toJSON()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg></div>
+<div class="dot notranslate">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="94pt" height="303pt" viewBox="0.00 0.00 94.01 303.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 299)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-299 90.005,-299 90.005,4 -4,4"></polygon>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href="object.md.html" xlink:title="object">
+<polygon fill="#ffffff" stroke="#000000" points="14.171,-242.5 14.171,-294.5 71.834,-294.5 71.834,-242.5 14.171,-242.5"></polygon>
+<text text-anchor="middle" x="43.0025" y="-281.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="14.171,-274.5 71.834,-274.5 "></polyline>
+<text text-anchor="start" x="22.171" y="-261.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="22.171" y="-249.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+</a>
+</g>
+</g>
+<!-- Lock -->
+<g id="node2" class="node">
+<title>Lock</title>
+<g id="a_node2"><a xlink:href="lock.md.html" xlink:title="Lock">
+<polygon fill="#ffffff" stroke="#000000" points="10.5565,-121.5 10.5565,-205.5 75.4485,-205.5 75.4485,-121.5 10.5565,-121.5"></polygon>
+<text text-anchor="middle" x="43.0025" y="-192.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Lock</text>
+<polyline fill="none" stroke="#000000" points="10.5565,-185.5 75.4485,-185.5 "></polyline>
+<text text-anchor="start" x="18.5565" y="-172.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new Lock()</text>
+<polyline fill="none" stroke="#000000" points="10.5565,-165.5 75.4485,-165.5 "></polyline>
+<text text-anchor="start" x="18.5565" y="-152.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">acquire()</text>
+<text text-anchor="start" x="18.5565" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">release()</text>
+<text text-anchor="start" x="18.5565" y="-128.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">count()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;Lock -->
+<g id="edge1" class="edge">
+<title>object-&gt;Lock</title>
+<path fill="none" stroke="#000000" d="M43.0025,-232.2327C43.0025,-223.6838 43.0025,-214.498 43.0025,-205.7123"></path>
+<polygon fill="#000000" stroke="#000000" points="39.5026,-232.2749 43.0025,-242.2749 46.5026,-232.275 39.5026,-232.2749"></polygon>
+</g>
+<!-- Condition -->
+<g id="me" class="node">
+<title>Condition</title>
+<g id="a_me"><a xlink:title="Condition">
+<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-84.5 86.005,-84.5 86.005,-.5 0,-.5"></polygon>
+<text text-anchor="middle" x="43.0025" y="-71.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Condition</text>
+<polyline fill="none" stroke="#000000" points="0,-64.5 86.005,-64.5 "></polyline>
+<text text-anchor="start" x="8" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new Condition()</text>
+<polyline fill="none" stroke="#000000" points="0,-44.5 86.005,-44.5 "></polyline>
+<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">wait()</text>
+<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">notify()</text>
+<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">notifyAll()</text>
+</a>
+</g>
+</g>
+<!-- Lock&#45;&gt;Condition -->
+<g id="edge2" class="edge">
+<title>Lock-&gt;Condition</title>
+<path fill="none" stroke="#000000" d="M43.0025,-110.977C43.0025,-102.1562 43.0025,-93.1052 43.0025,-84.5917"></path>
+<polygon fill="#000000" stroke="#000000" points="39.5026,-111.18 43.0025,-121.1801 46.5026,-111.1801 39.5026,-111.18"></polygon>
+</g>
+</g>
+</svg>
+</div>
 
 <div name="构造函数" data-unique="构造函数"></div><h2 id="构造函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Конструктор</font></font></h2>
 <div name="Condition" data-unique="Condition"></div><h3 id="Condition" class="notranslate">Condition</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Конструктор условной переменной (блокировка, необходимая для условной переменной, создается внутри fibjs)</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Конструктор условных переменных (блокировки, необходимые для условных переменных, создаются внутри fibjs)</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> Condition();
 </code></pre>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Конструктор условной переменной</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">конструктор условной переменной</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> Condition(Lock lock);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры вызова:</font></font></p>
@@ -375,56 +338,64 @@ go<font></font>
 </ul>
 <div name="成员函数" data-unique="成员函数"></div><h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">функция-член</font></font></h2>
 <div name="wait" data-unique="wait"></div><h3 id="wait" class="notranslate">wait</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">перевести волокно в состояние блокировки</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Condition.wait();
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ждать условной переменной</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> Condition.wait(Integer timeout = <span class="hljs-number">-1</span>);
 </code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры вызова:</font></font></p>
+<ul>
+<li><span class="notranslate">timeout</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, укажите время таймаута в миллисекундах, по умолчанию -1, что означает никогда таймаута.</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">возвращаемый результат:</font></font></p>
+<ul>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, вернуть true, если получение данных прошло успешно, и вернуть false, если тайм-аут</font></font></li>
+</ul>
 <hr>
 <div name="notify" data-unique="notify"></div><h3 id="notify" class="notranslate">notify</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Уведомить заблокированное волокно (последнее добавленное в пул волокон) для продолжения выполнения вниз</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Уведомить заблокированное волокно (последнее присоединившееся к пулу волокон) для продолжения выполнения вниз</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Condition.notify();
 </code></pre>
 <hr>
 <div name="notifyAll" data-unique="notifyAll"></div><h3 id="notifyAll" class="notranslate">notifyAll</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Уведомляет все заблокированные волокна о продолжении работы</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Уведомить все заблокированные волокна, чтобы продолжить выполнение вниз</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Condition.notifyAll();
 </code></pre>
 <hr>
 <div name="acquire" data-unique="acquire"></div><h3 id="acquire" class="notranslate">acquire</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">стать владельцем замка</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">получить право собственности на замок</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> Condition.acquire(<span class="hljs-built_in">Boolean</span> blocking = <span class="hljs-literal">true</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры вызова:</font></font></p>
 <ul>
-<li><span class="notranslate">blocking</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: логическое значение, указать, следует ли ждать, ждать, если верно, по умолчанию истинно</font></font></li>
+<li><span class="notranslate">blocking</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, укажите, следует ли ждать, если true, подождите, по умолчанию true</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Возвращаемый результат:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">возвращаемый результат:</font></font></p>
 <ul>
-<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Возвращает, была ли блокировка успешно получена, true означает успешное получение</font></font></li>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, возвращает, была ли блокировка успешно получена, true означает, что блокировка была успешно получена</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Метод Acquire используется для приобретения права собственности на блокировку. Когда блокировка находится в доступном для получения состоянии, этот метод немедленно возвращает значение true.</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Если блокировка не может быть получена, а блокировка имеет значение true, текущее волокно переходит в спящий режим. Когда другие волокна освобождают блокировку, этот метод возвращает значение true.</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Если блокировка не может быть получена и блокировка имеет значение false, метод возвращает значение false.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Метод Acquire используется для приобретения права собственности на блокировку, и этот метод немедленно возвращает значение true, когда блокировка находится в доступном для получения состоянии.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Если блокировка не может быть получена, а блокировка имеет значение true, текущее волокно переходит в режим бездействия. Когда другие волокна освобождают блокировку, этот метод возвращает значение true.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Когда блокировка недоступна и блокировка имеет значение false, метод возвращает значение false.</font></font></p>
 <hr>
 <div name="release" data-unique="release"></div><h3 id="release" class="notranslate">release</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Отменить право собственности на замок</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">снять блокировку владения</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Condition.release();
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Этот метод освобождает владельца блокировки и выдает ошибку, если блокировка не принадлежит текущему волокну.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Этот метод освобождает владельца блокировки или выдает ошибку, если текущий файбер не владеет блокировкой.</font></font></p>
 <hr>
 <div name="count" data-unique="count"></div><h3 id="count" class="notranslate">count</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Запросить текущее количество ожидающих задач</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Condition.count();
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Возвращаемый результат:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">возвращаемый результат:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, возвращает количество задач</font></font></li>
 </ul>
 <hr>
 <div name="toString" data-unique="toString"></div><h3 id="toString" class="notranslate">toString</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Возвращает строковое представление объекта, обычно возвращает "[Native Object]", объект может быть переопределен в соответствии с его собственными характеристиками.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Возвращает строковое представление объекта, как правило, возвращает «[Native Object]», объект может быть переопределен в соответствии с его собственными характеристиками.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Condition.toString();
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Возвращаемый результат:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">возвращаемый результат:</font></font></p>
 <ul>
 <li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, возвращает строковое представление объекта</font></font></li>
 </ul>
@@ -437,8 +408,8 @@ go<font></font>
 <ul>
 <li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Строка, не используется</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Возвращаемый результат:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">возвращаемый результат:</font></font></p>
 <ul>
-<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, возвращает значение, содержащее сериализуемый JSON</font></font></li>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, который возвращает сериализуемое значение JSON</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Поддержите нас</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip172294"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip172294" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Нажмите, чтобы вернуться на главную страницу</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Поддержите нас</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

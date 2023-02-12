@@ -42,20 +42,17 @@ go
 ```
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<class>object|toString();toJSON()]
-[<class>Lock|new Lock()|acquire();release();count()]
-[<this>Condition|new Condition()|wait();notify();notifyAll()]
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    Lock [tooltip="Lock", URL="Lock.md", label="{Lock|new Lock()\l|acquire()\lrelease()\lcount()\l}"];
+    Condition [tooltip="Condition", fillcolor="lightgray", id="me", label="{Condition|new Condition()\l|wait()\lnotify()\lnotifyAll()\l}"];
 
-[object] <:- [Lock]
-[Lock] <:- [Condition]
+    object -> Lock [dir=back];
+    Lock -> Condition [dir=back];
+}
 ```
 
 ## 构造函数
@@ -80,11 +77,17 @@ new Condition(Lock lock);
 ## 成员函数
         
 ### wait
-**使纤程进入阻塞状态**
+**等待一个条件变量**
 
 ```JavaScript
-Condition.wait();
+Boolean Condition.wait(Integer timeout = -1);
 ```
+
+调用参数:
+* timeout: Integer, 指定超时时间，单位毫秒，缺省为 -1，表示永不超时。
+
+返回结果:
+* Boolean, 获取成功则返回 true，超时返回 false
 
 --------------------------
 ### notify

@@ -1,3 +1,4 @@
+* [BlsKey](ifs/BlsKey.md)
 * [Buffer](ifs/Buffer.md)
 * [BufferedStream](ifs/BufferedStream.md)
 * [Chain](ifs/Chain.md)
@@ -7,6 +8,8 @@
 * [DbConnection](ifs/DbConnection.md)
 * [DgramSocket](ifs/DgramSocket.md)
 * [Digest](ifs/Digest.md)
+* [ECKey](ifs/ECKey.md)
+* [Ed25519Key](ifs/Ed25519Key.md)
 * [Event](ifs/Event.md)
 * [EventEmitter](ifs/EventEmitter.md)
 * [FSWatcher](ifs/FSWatcher.md)

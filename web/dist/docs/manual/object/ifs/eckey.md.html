@@ -1,0 +1,758 @@
+<!DOCTYPE html><html><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel=icon type=image/png href=../../../../imgs/icon.png><title> 对象 ECKey - JavaScript on Fiber</title><link href=../../../../css/common.css rel=stylesheet><link href=../../../../css/docs.css rel=stylesheet></head><body><div class="navbar navbar-default navbar-static-top" role=navigation><div class=container><div class=navbar-header><button type=button class="navbar-toggle collapsed" data-toggle=collapse data-target=#navbar aria-expanded=false aria-controls=navbar><span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span></button> <a class=navbar-brand href=../../../../index.html><img src=../../../../imgs/logo-dark.png></a></div><div id=navbar class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href=../../../../index.html>HOME</a></li><li><a href=../../../guide/readme.md.html>GUIDE</a></li><li><a href=../../module/readme.md.html>MODULE</a></li><li><a href=../readme.md.html>OBJECT</a></li><li><a href=../../../awesome/readme.md.html>AWESOME</a></li><li><a href=../../../../download/index.html>DOWNLOAD</a></li><li class="nav-item dropdown"><a href=# data-toggle=dropdown aria-haspopup=true aria-expanded=false>LANGUAGE</a><div class=dropdown-menu><a href=../../../../docs/manual/object/ifs/eckey.md.html>中文</a> <a href=../../../../ca/docs/manual/object/ifs/eckey.md.html>Catalan</a> <a href=../../../../de/docs/manual/object/ifs/eckey.md.html>Deutsch</a> <a href=../../../../en/docs/manual/object/ifs/eckey.md.html>English</a> <a href=../../../../es/docs/manual/object/ifs/eckey.md.html>Español</a> <a href=../../../../fr/docs/manual/object/ifs/eckey.md.html>Français</a> <a href=../../../../gl/docs/manual/object/ifs/eckey.md.html>Galego</a> <a href=../../../../it/docs/manual/object/ifs/eckey.md.html>Italiano</a> <a href=../../../../ru/docs/manual/object/ifs/eckey.md.html>Русский</a> <a href=../../../../ja/docs/manual/object/ifs/eckey.md.html>日本語</a> <a href=../../../../ko/docs/manual/object/ifs/eckey.md.html>한국어</a> <a href=../../../../zh-tw/docs/manual/object/ifs/eckey.md.html>繁體中文</a></div></li></ul></div></div></div><div class=band><div class=container><span class=group> Object 内置对象 </span><div class=search><input type=text class=searchbox placeholder=Search></div></div></div><div class=container><ol class=breadcrumb><li><a href=../../../../index.html>首页</a></li><li><a href=../readme.md.html> 内置对象 </a></li><li class=active> 对象 ECKey </li></ol></div><div class=page-body><div class=container><div class="sidebar hidden-xs"><div class=panel-group id=accordion role=tablist>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_guide" aria-controls="collapse_guide"> 开发指南 </a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby=headingOne><div class=panel-body> <ul>
+<li><a href=../../../guide/about.md.html>fibjs 是什么？</a></li>
+<li><a href=../../../guide/install.md.html>安装运行环境</a></li>
+<li><a href=../../../guide/hello.md.html class ="notranslate">hello, world</a></li>
+<li><a href=../../../guide/test.md.html>美好生活从测试开始</a></li>
+<li><a href=../../../guide/profiler.md.html>找出性能杀手</a></li>
+<li><a href=../../../guide/server-hot-update.md.html>服务端模块热更新</a></li>
+<li><a href=../../../guide/host-routes.md.html>域名路由</a></li>
+<li><a href=../../../guide/x509.md.html>fibjs 中 X509 证书的使用</a></li>
+<li><a href=../../../guide/contribute.md.html>添加 native 模块</a></li>
+</ul>
+ </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_module" aria-controls="collapse_module"> 基础模块 </a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby=headingOne><div class=panel-body> <ul>
+<li><a href=../../module/ifs/assert.md.html class ="notranslate">assert</a></li>
+<li><a href=../../module/ifs/base32.md.html class ="notranslate">base32</a></li>
+<li><a href=../../module/ifs/base58.md.html class ="notranslate">base58</a></li>
+<li><a href=../../module/ifs/base64.md.html class ="notranslate">base64</a></li>
+<li><a href=../../module/ifs/child_process.md.html class ="notranslate">child_process</a></li>
+<li><a href=../../module/ifs/console.md.html class ="notranslate">console</a></li>
+<li><a href=../../module/ifs/constants.md.html class ="notranslate">constants</a></li>
+<li><a href=../../module/ifs/coroutine.md.html class ="notranslate">coroutine</a></li>
+<li><a href=../../module/ifs/crypto.md.html class ="notranslate">crypto</a></li>
+<li><a href=../../module/ifs/db.md.html class ="notranslate">db</a></li>
+<li><a href=../../module/ifs/dgram.md.html class ="notranslate">dgram</a></li>
+<li><a href=../../module/ifs/dns.md.html class ="notranslate">dns</a></li>
+<li><a href=../../module/ifs/encoding.md.html class ="notranslate">encoding</a></li>
+<li><a href=../../module/ifs/fs.md.html class ="notranslate">fs</a></li>
+<li><a href=../../module/ifs/fs_constants.md.html class ="notranslate">fs_constants</a></li>
+<li><a href=../../module/ifs/gd.md.html class ="notranslate">gd</a></li>
+<li><a href=../../module/ifs/global.md.html class ="notranslate">global</a></li>
+<li><a href=../../module/ifs/gui.md.html class ="notranslate">gui</a></li>
+<li><a href=../../module/ifs/hash.md.html class ="notranslate">hash</a></li>
+<li><a href=../../module/ifs/hex.md.html class ="notranslate">hex</a></li>
+<li><a href=../../module/ifs/http.md.html class ="notranslate">http</a></li>
+<li><a href=../../module/ifs/iconv.md.html class ="notranslate">iconv</a></li>
+<li><a href=../../module/ifs/io.md.html class ="notranslate">io</a></li>
+<li><a href=../../module/ifs/json.md.html class ="notranslate">json</a></li>
+<li><a href=../../module/ifs/mq.md.html class ="notranslate">mq</a></li>
+<li><a href=../../module/ifs/msgpack.md.html class ="notranslate">msgpack</a></li>
+<li><a href=../../module/ifs/multibase.md.html class ="notranslate">multibase</a></li>
+<li><a href=../../module/ifs/net.md.html class ="notranslate">net</a></li>
+<li><a href=../../module/ifs/os.md.html class ="notranslate">os</a></li>
+<li><a href=../../module/ifs/path.md.html class ="notranslate">path</a></li>
+<li><a href=../../module/ifs/path_posix.md.html class ="notranslate">path_posix</a></li>
+<li><a href=../../module/ifs/path_win32.md.html class ="notranslate">path_win32</a></li>
+<li><a href=../../module/ifs/perf_hooks.md.html class ="notranslate">perf_hooks</a></li>
+<li><a href=../../module/ifs/performance.md.html class ="notranslate">performance</a></li>
+<li><a href=../../module/ifs/process.md.html class ="notranslate">process</a></li>
+<li><a href=../../module/ifs/profiler.md.html class ="notranslate">profiler</a></li>
+<li><a href=../../module/ifs/punycode.md.html class ="notranslate">punycode</a></li>
+<li><a href=../../module/ifs/querystring.md.html class ="notranslate">querystring</a></li>
+<li><a href=../../module/ifs/registry.md.html class ="notranslate">registry</a></li>
+<li><a href=../../module/ifs/ssl.md.html class ="notranslate">ssl</a></li>
+<li><a href=../../module/ifs/string_decoder.md.html class ="notranslate">string_decoder</a></li>
+<li><a href=../../module/ifs/test.md.html class ="notranslate">test</a></li>
+<li><a href=../../module/ifs/timers.md.html class ="notranslate">timers</a></li>
+<li><a href=../../module/ifs/tty.md.html class ="notranslate">tty</a></li>
+<li><a href=../../module/ifs/url.md.html class ="notranslate">url</a></li>
+<li><a href=../../module/ifs/util.md.html class ="notranslate">util</a></li>
+<li><a href=../../module/ifs/uuid.md.html class ="notranslate">uuid</a></li>
+<li><a href=../../module/ifs/vm.md.html class ="notranslate">vm</a></li>
+<li><a href=../../module/ifs/worker_threads.md.html class ="notranslate">worker_threads</a></li>
+<li><a href=../../module/ifs/ws.md.html class ="notranslate">ws</a></li>
+<li><a href=../../module/ifs/xml.md.html class ="notranslate">xml</a></li>
+<li><a href=../../module/ifs/zip.md.html class ="notranslate">zip</a></li>
+<li><a href=../../module/ifs/zlib.md.html class ="notranslate">zlib</a></li>
+</ul>
+ </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_object" aria-controls="collapse_object"> 内置对象 </a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby=headingOne><div class=panel-body> <ul>
+<li><a href=blskey.md.html class ="notranslate">BlsKey</a></li>
+<li><a href=buffer.md.html class ="notranslate">Buffer</a></li>
+<li><a href=bufferedstream.md.html class ="notranslate">BufferedStream</a></li>
+<li><a href=chain.md.html class ="notranslate">Chain</a></li>
+<li><a href=childprocess.md.html class ="notranslate">ChildProcess</a></li>
+<li><a href=cipher.md.html class ="notranslate">Cipher</a></li>
+<li><a href=condition.md.html class ="notranslate">Condition</a></li>
+<li><a href=dbconnection.md.html class ="notranslate">DbConnection</a></li>
+<li><a href=dgramsocket.md.html class ="notranslate">DgramSocket</a></li>
+<li><a href=digest.md.html class ="notranslate">Digest</a></li>
+<li class="active"><a href=eckey.md.html class ="notranslate">ECKey</a></li>
+<li><a href=ed25519key.md.html class ="notranslate">Ed25519Key</a></li>
+<li><a href=event.md.html class ="notranslate">Event</a></li>
+<li><a href=eventemitter.md.html class ="notranslate">EventEmitter</a></li>
+<li><a href=fswatcher.md.html class ="notranslate">FSWatcher</a></li>
+<li><a href=fiber.md.html class ="notranslate">Fiber</a></li>
+<li><a href=file.md.html class ="notranslate">File</a></li>
+<li><a href=handler.md.html class ="notranslate">Handler</a></li>
+<li><a href=heapgraphedge.md.html class ="notranslate">HeapGraphEdge</a></li>
+<li><a href=heapgraphnode.md.html class ="notranslate">HeapGraphNode</a></li>
+<li><a href=heapsnapshot.md.html class ="notranslate">HeapSnapshot</a></li>
+<li><a href=httpclient.md.html class ="notranslate">HttpClient</a></li>
+<li><a href=httpcollection.md.html class ="notranslate">HttpCollection</a></li>
+<li><a href=httpcookie.md.html class ="notranslate">HttpCookie</a></li>
+<li><a href=httphandler.md.html class ="notranslate">HttpHandler</a></li>
+<li><a href=httpmessage.md.html class ="notranslate">HttpMessage</a></li>
+<li><a href=httprepeater.md.html class ="notranslate">HttpRepeater</a></li>
+<li><a href=httprequest.md.html class ="notranslate">HttpRequest</a></li>
+<li><a href=httpresponse.md.html class ="notranslate">HttpResponse</a></li>
+<li><a href=httpserver.md.html class ="notranslate">HttpServer</a></li>
+<li><a href=httpuploaddata.md.html class ="notranslate">HttpUploadData</a></li>
+<li><a href=httpsserver.md.html class ="notranslate">HttpsServer</a></li>
+<li><a href=image.md.html class ="notranslate">Image</a></li>
+<li><a href=iterator.md.html class ="notranslate">Iterator</a></li>
+<li><a href=leveldb.md.html class ="notranslate">LevelDB</a></li>
+<li><a href=lock.md.html class ="notranslate">Lock</a></li>
+<li><a href=lrucache.md.html class ="notranslate">LruCache</a></li>
+<li><a href=memorystream.md.html class ="notranslate">MemoryStream</a></li>
+<li><a href=message.md.html class ="notranslate">Message</a></li>
+<li><a href=mongocollection.md.html class ="notranslate">MongoCollection</a></li>
+<li><a href=mongocursor.md.html class ="notranslate">MongoCursor</a></li>
+<li><a href=mongodb.md.html class ="notranslate">MongoDB</a></li>
+<li><a href=mongoid.md.html class ="notranslate">MongoID</a></li>
+<li><a href=mysql.md.html class ="notranslate">MySQL</a></li>
+<li><a href=odbc.md.html class ="notranslate">Odbc</a></li>
+<li><a href=pkey.md.html class ="notranslate">PKey</a></li>
+<li><a href=rangestream.md.html class ="notranslate">RangeStream</a></li>
+<li><a href=redis.md.html class ="notranslate">Redis</a></li>
+<li><a href=redishash.md.html class ="notranslate">RedisHash</a></li>
+<li><a href=redislist.md.html class ="notranslate">RedisList</a></li>
+<li><a href=redisset.md.html class ="notranslate">RedisSet</a></li>
+<li><a href=redissortedset.md.html class ="notranslate">RedisSortedSet</a></li>
+<li><a href=routing.md.html class ="notranslate">Routing</a></li>
+<li><a href=sqlite.md.html class ="notranslate">SQLite</a></li>
+<li><a href=sandbox.md.html class ="notranslate">SandBox</a></li>
+<li><a href=seekablestream.md.html class ="notranslate">SeekableStream</a></li>
+<li><a href=semaphore.md.html class ="notranslate">Semaphore</a></li>
+<li><a href=service.md.html class ="notranslate">Service</a></li>
+<li><a href=smtp.md.html class ="notranslate">Smtp</a></li>
+<li><a href=socket.md.html class ="notranslate">Socket</a></li>
+<li><a href=sslhandler.md.html class ="notranslate">SslHandler</a></li>
+<li><a href=sslserver.md.html class ="notranslate">SslServer</a></li>
+<li><a href=sslsocket.md.html class ="notranslate">SslSocket</a></li>
+<li><a href=stat.md.html class ="notranslate">Stat</a></li>
+<li><a href=statswatcher.md.html class ="notranslate">StatsWatcher</a></li>
+<li><a href=stream.md.html class ="notranslate">Stream</a></li>
+<li><a href=stringdecoder.md.html class ="notranslate">StringDecoder</a></li>
+<li><a href=ttyinputstream.md.html class ="notranslate">TTYInputStream</a></li>
+<li><a href=ttyoutputstream.md.html class ="notranslate">TTYOutputStream</a></li>
+<li><a href=tcpserver.md.html class ="notranslate">TcpServer</a></li>
+<li><a href=textdecoder.md.html class ="notranslate">TextDecoder</a></li>
+<li><a href=textencoder.md.html class ="notranslate">TextEncoder</a></li>
+<li><a href=timer.md.html class ="notranslate">Timer</a></li>
+<li><a href=urlobject.md.html class ="notranslate">UrlObject</a></li>
+<li><a href=websocket.md.html class ="notranslate">WebSocket</a></li>
+<li><a href=websocketmessage.md.html class ="notranslate">WebSocketMessage</a></li>
+<li><a href=webview.md.html class ="notranslate">WebView</a></li>
+<li><a href=worker.md.html class ="notranslate">Worker</a></li>
+<li><a href=x509cert.md.html class ="notranslate">X509Cert</a></li>
+<li><a href=x509crl.md.html class ="notranslate">X509Crl</a></li>
+<li><a href=x509req.md.html class ="notranslate">X509Req</a></li>
+<li><a href=xmlattr.md.html class ="notranslate">XmlAttr</a></li>
+<li><a href=xmlcdatasection.md.html class ="notranslate">XmlCDATASection</a></li>
+<li><a href=xmlcharacterdata.md.html class ="notranslate">XmlCharacterData</a></li>
+<li><a href=xmlcomment.md.html class ="notranslate">XmlComment</a></li>
+<li><a href=xmldocument.md.html class ="notranslate">XmlDocument</a></li>
+<li><a href=xmldocumenttype.md.html class ="notranslate">XmlDocumentType</a></li>
+<li><a href=xmlelement.md.html class ="notranslate">XmlElement</a></li>
+<li><a href=xmlnamednodemap.md.html class ="notranslate">XmlNamedNodeMap</a></li>
+<li><a href=xmlnode.md.html class ="notranslate">XmlNode</a></li>
+<li><a href=xmlnodelist.md.html class ="notranslate">XmlNodeList</a></li>
+<li><a href=xmlprocessinginstruction.md.html class ="notranslate">XmlProcessingInstruction</a></li>
+<li><a href=xmltext.md.html class ="notranslate">XmlText</a></li>
+<li><a href=zipfile.md.html class ="notranslate">ZipFile</a></li>
+<li><a href=object.md.html class ="notranslate">object</a></li>
+</ul>
+ </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_awesome" aria-controls="collapse_awesome"> 社区模块 </a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby=headingOne><div class=panel-body> <ul>
+<li><a href=../../../awesome/module/fib-session.md.html class ="notranslate">fib-session</a></li>
+<li><a href=../../../awesome/module/fib-pool.md.html class ="notranslate">fib-pool</a></li>
+<li><a href=../../../awesome/module/fib-orm.md.html class ="notranslate">fib-orm</a></li>
+<li><a href=../../../awesome/module/fib-app.md.html class ="notranslate">fib-app</a></li>
+<li><a href=../../../awesome/module/fib-kv.md.html class ="notranslate">fib-kv</a></li>
+<li><a href=../../../awesome/module/fib-rpc.md.html class ="notranslate">fib-rpc</a></li>
+<li><a href=../../../awesome/module/fib-qr.md.html class ="notranslate">fib-qr</a></li>
+<li><a href=../../../awesome/module/fib-pug.md.html class ="notranslate">fib-pug</a></li>
+<li><a href=../../../awesome/module/ejs.md.html class ="notranslate">ejs</a></li>
+<li><a href=../../../awesome/module/juicer.md.html class ="notranslate">Juicer</a></li>
+<li><a href=../../../awesome/module/highlight.js.md.html class ="notranslate">highlight.js</a></li>
+<li><a href=../../../awesome/module/marked.md.html class ="notranslate">marked</a></li>
+<li><a href=../../../awesome/module/node-cron.md.html class ="notranslate">node-cron</a></li>
+<li><a href=../../../awesome/module/debug.md.html class ="notranslate">debug</a></li>
+<li><a href=../../../awesome/module/benchmark.js.md.html class ="notranslate">benchmark.js</a></li>
+<li><a href=../../../awesome/module/sinon.md.html class ="notranslate">sinon</a></li>
+<li><a href=../../../awesome/module/node-mime.md.html class ="notranslate">node-mime</a></li>
+<li><a href=../../../awesome/module/validatorjs.md.html class ="notranslate">validatorjs</a></li>
+<li><a href=../../../awesome/module/superstruct.md.html class ="notranslate">superstruct</a></li>
+<li><a href=../../../awesome/module/cluster-server.md.html class ="notranslate">cluster-server</a></li>
+<li><a href=../../../awesome/module/synaptic.md.html class ="notranslate">synaptic</a></li>
+<li><a href=../../../awesome/module/source-map.md.html class ="notranslate">source-map</a></li>
+<li><a href=../../../awesome/module/json-format.md.html class ="notranslate">json-format</a></li>
+<li><a href=../../../awesome/module/viz.js.md.html class ="notranslate">viz.js</a></li>
+<li><a href=../../../awesome/module/nomnoml.md.html class ="notranslate">nomnoml</a></li>
+<li><a href=../../../awesome/module/pegjs.md.html class ="notranslate">pegjs</a></li>
+<li><a href=../../../awesome/module/uglify-js.md.html class ="notranslate">uglify-js</a></li>
+<li><a href=../../../awesome/module/js-beautify.md.html class ="notranslate">js-beautify</a></li>
+<li><a href=../../../awesome/module/chalk-animation.md.html class ="notranslate">chalk-animation</a></li>
+<li><a href=../../../awesome/module/jsrsasign.md.html class ="notranslate">jsrsasign</a></li>
+<li><a href=../../../awesome/module/crypto-js.md.html class ="notranslate">crypto-js</a></li>
+<li><a href=../../../awesome/module/ascii-table.md.html class ="notranslate">ascii-table</a></li>
+<li><a href=../../../awesome/module/logstream.md.html class ="notranslate">logstream</a></li>
+<li><a href=../../../awesome/module/ci.md.html class ="notranslate">ci</a></li>
+<li><a href=../../../awesome/module/fs-readdir-recursive.md.html class ="notranslate">fs-readdir-recursive</a></li>
+<li><a href=../../../awesome/module/mkdirp.md.html class ="notranslate">mkdirp</a></li>
+<li><a href=../../../awesome/module/rmdirr.md.html class ="notranslate">rmdirr</a></li>
+<li><a href=../../../awesome/module/detect-port.md.html class ="notranslate">detect-port</a></li>
+<li><a href=../../../awesome/module/bitcoinjs-lib.md.html class ="notranslate">bitcoinjs-lib</a></li>
+<li><a href=../../../awesome/module/rakuten.md.html class ="notranslate">Rakuten</a></li>
+</ul>
+ </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="对象-ECKey">对象 ECKey</h1>
+<p>椭圆曲线加密算法对象</p>
+<h2 id="继承关系">继承关系</h2>
+<div class="dot notranslate">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="154pt" height="552pt"
+ viewBox="0.00 0.00 153.63 552.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 548)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-548 149.6255,-548 149.6255,4 -4,4"/>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href=object.md.html xlink:title="object">
+<polygon fill="#ffffff" stroke="#000000" points="39.1685,-491.5 39.1685,-543.5 96.8315,-543.5 96.8315,-491.5 39.1685,-491.5"/>
+<text text-anchor="middle" x="68" y="-530.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="39.1685,-523.5 96.8315,-523.5 "/>
+<text text-anchor="start" x="47.1685" y="-510.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="47.1685" y="-498.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+</a>
+</g>
+</g>
+<!-- PKey -->
+<g id="node2" class="node">
+<title>PKey</title>
+<g id="a_node2"><a xlink:href=pkey.md.html xlink:title="PKey">
+<polygon fill="#ffffff" stroke="#000000" points="34.1645,-210.5 34.1645,-454.5 101.8355,-454.5 101.8355,-210.5 34.1645,-210.5"/>
+<text text-anchor="middle" x="68" y="-441.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">PKey</text>
+<polyline fill="none" stroke="#000000" points="34.1645,-434.5 101.8355,-434.5 "/>
+<text text-anchor="start" x="42.1645" y="-421.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new PKey()</text>
+<polyline fill="none" stroke="#000000" points="34.1645,-414.5 101.8355,-414.5 "/>
+<text text-anchor="start" x="42.1645" y="-401.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">from()</text>
+<polyline fill="none" stroke="#000000" points="34.1645,-394.5 101.8355,-394.5 "/>
+<text text-anchor="start" x="42.1645" y="-381.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">name</text>
+<text text-anchor="start" x="42.1645" y="-369.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">keySize</text>
+<text text-anchor="start" x="42.1645" y="-357.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">alg</text>
+<text text-anchor="start" x="42.1645" y="-345.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">publicKey</text>
+<polyline fill="none" stroke="#000000" points="34.1645,-338.5 101.8355,-338.5 "/>
+<text text-anchor="start" x="42.1645" y="-325.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isPrivate()</text>
+<text text-anchor="start" x="42.1645" y="-313.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">clone()</text>
+<text text-anchor="start" x="42.1645" y="-301.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">pem()</text>
+<text text-anchor="start" x="42.1645" y="-289.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">der()</text>
+<text text-anchor="start" x="42.1645" y="-277.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">json()</text>
+<text text-anchor="start" x="42.1645" y="-265.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
+<text text-anchor="start" x="42.1645" y="-253.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">encrypt()</text>
+<text text-anchor="start" x="42.1645" y="-241.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">decrypt()</text>
+<text text-anchor="start" x="42.1645" y="-229.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">sign()</text>
+<text text-anchor="start" x="42.1645" y="-217.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">verify()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;PKey -->
+<g id="edge1" class="edge">
+<title>object&#45;&gt;PKey</title>
+<path fill="none" stroke="#000000" d="M68,-481.3034C68,-473.1956 68,-464.1562 68,-454.6496"/>
+<polygon fill="#000000" stroke="#000000" points="64.5001,-481.3864 68,-491.3864 71.5001,-481.3864 64.5001,-481.3864"/>
+</g>
+<!-- ECKey -->
+<g id="me" class="node">
+<title>ECKey</title>
+<g id="a_me"><a xlink:title="ECKey">
+<polygon fill="#d3d3d3" stroke="#000000" points="23.0515,-73.5 23.0515,-173.5 112.9485,-173.5 112.9485,-73.5 23.0515,-73.5"/>
+<text text-anchor="middle" x="68" y="-160.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">ECKey</text>
+<polyline fill="none" stroke="#000000" points="23.0515,-153.5 112.9485,-153.5 "/>
+<text text-anchor="start" x="31.0515" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new ECKey()</text>
+<polyline fill="none" stroke="#000000" points="23.0515,-133.5 112.9485,-133.5 "/>
+<text text-anchor="start" x="31.0515" y="-120.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">recover()</text>
+<polyline fill="none" stroke="#000000" points="23.0515,-113.5 112.9485,-113.5 "/>
+<text text-anchor="start" x="31.0515" y="-100.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">curve</text>
+<polyline fill="none" stroke="#000000" points="23.0515,-93.5 112.9485,-93.5 "/>
+<text text-anchor="start" x="31.0515" y="-80.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">computeSecret()</text>
+</a>
+</g>
+</g>
+<!-- PKey&#45;&gt;ECKey -->
+<g id="edge2" class="edge">
+<title>PKey&#45;&gt;ECKey</title>
+<path fill="none" stroke="#000000" d="M68,-200.1617C68,-190.9008 68,-181.9545 68,-173.6438"/>
+<polygon fill="#000000" stroke="#000000" points="64.5001,-200.3191 68,-210.3191 71.5001,-200.3192 64.5001,-200.3191"/>
+</g>
+<!-- BlsKey -->
+<g id="node4" class="node">
+<title>BlsKey</title>
+<g id="a_node4"><a xlink:href=blskey.md.html xlink:title="BlsKey">
+<polygon fill="#ffffff" stroke="#000000" points="0,-.5 0,-36.5 54,-36.5 54,-.5 0,-.5"/>
+<text text-anchor="middle" x="26.558" y="-15.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">BlsKey</text>
+</a>
+</g>
+</g>
+<!-- ECKey&#45;&gt;BlsKey -->
+<g id="edge3" class="edge">
+<title>ECKey&#45;&gt;BlsKey</title>
+<path fill="none" stroke="#000000" d="M44.7483,-63.9531C40.8996,-54.0965 37.1826,-44.5774 34.1534,-36.8196"/>
+<polygon fill="#000000" stroke="#000000" points="41.563,-65.4182 48.4606,-73.4601 48.0835,-62.872 41.563,-65.4182"/>
+</g>
+<!-- Ed25519Key -->
+<g id="node5" class="node">
+<title>Ed25519Key</title>
+<g id="a_node5"><a xlink:href=ed25519key.md.html xlink:title="Ed25519Key">
+<polygon fill="#ffffff" stroke="#000000" points="72.3745,-.5 72.3745,-36.5 145.6255,-36.5 145.6255,-.5 72.3745,-.5"/>
+<text text-anchor="middle" x="109" y="-15.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Ed25519Key</text>
+</a>
+</g>
+</g>
+<!-- ECKey&#45;&gt;Ed25519Key -->
+<g id="edge4" class="edge">
+<title>ECKey&#45;&gt;Ed25519Key</title>
+<path fill="none" stroke="#000000" d="M91.2517,-63.9531C95.1004,-54.0965 98.8174,-44.5774 101.8466,-36.8196"/>
+<polygon fill="#000000" stroke="#000000" points="87.9165,-62.872 87.5394,-73.4601 94.437,-65.4182 87.9165,-62.872"/>
+</g>
+</g>
+</svg>
+</div>
+
+<h2 id="构造函数">构造函数</h2>
+<h3 id="ECKey" class ="notranslate">ECKey</h3>
+<p><strong>通过 DER 格式的密钥构造 ECKey</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">new</span> ECKey(Buffer DerKey,
+    <span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">DerKey</span>: <a href=buffer.md.html class ="notranslate">Buffer</a>, DER 格式的密钥</li>
+<li><span class="notranslate">password</span>: String, 解密密码</li>
+</ul>
+<hr>
+<p><strong>通过 PEM 格式的密钥构造 ECKey</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">new</span> ECKey(<span class="hljs-built_in">String</span> pemKey,
+    <span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">pemKey</span>: String, PEM 格式的密钥</li>
+<li><span class="notranslate">password</span>: String, 解密密码</li>
+</ul>
+<hr>
+<p><strong>通过 JSON 格式的密钥构造 ECKey</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> ECKey(<span class="hljs-built_in">Object</span> jsonKey);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">jsonKey</span>: Object, JSON 格式的密钥</li>
+</ul>
+<p>jsonKey 的格式支持以下两种，EC 私钥：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7</div>{
+    <span class="hljs-string">"kty"</span>: <span class="hljs-string">"EC"</span>,
+    <span class="hljs-string">"crv"</span>: <span class="hljs-string">"P-521"</span>,
+    <span class="hljs-string">"x"</span>: <span class="hljs-string">"ATfNNFuuvlGxrTGoXgyfSAGgRNNDnO3rN3k74urKJdVS14RYhdnSwm91Bm-F1l-T1XKlAY2yRnzG9w1Ukvo8c0wL"</span>,
+    <span class="hljs-string">"y"</span>: <span class="hljs-string">"ASBHqrruB6kdkEUB3vlW3-UIkk4HtKdUeTwN-7m3j2rgZvYR1ffRAapDvWqKGiBjomqWafxokBkbDI0c95f6f4XU"</span>,
+    <span class="hljs-string">"d"</span>: <span class="hljs-string">"AfkIbUHXfW41njdpoKuqqKludcoLJS8D_oMEwkj-GVaXFNKccIoF5iKGu2c69kNDjo83R_7wyGlfRczsklkik1ST"</span>
+}
+</code></pre>
+<p>EC 公钥：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6</div>{
+    <span class="hljs-string">"kty"</span>: <span class="hljs-string">"EC"</span>,
+    <span class="hljs-string">"crv"</span>: <span class="hljs-string">"P-521"</span>,
+    <span class="hljs-string">"x"</span>: <span class="hljs-string">"ATfNNFuuvlGxrTGoXgyfSAGgRNNDnO3rN3k74urKJdVS14RYhdnSwm91Bm-F1l-T1XKlAY2yRnzG9w1Ukvo8c0wL"</span>,
+    <span class="hljs-string">"y"</span>: <span class="hljs-string">"ASBHqrruB6kdkEUB3vlW3-UIkk4HtKdUeTwN-7m3j2rgZvYR1ffRAapDvWqKGiBjomqWafxokBkbDI0c95f6f4XU"</span>
+}
+</code></pre>
+<h2 id="静态函数">静态函数</h2>
+<h3 id="recover" class ="notranslate">recover</h3>
+<p><strong>从可恢复签名中恢复公钥，仅支持 secp256k1</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> ECKey ECKey.recover(Buffer data,
+    Buffer sig) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">data</span>: <a href=buffer.md.html class ="notranslate">Buffer</a>, 签名的原始数据</li>
+<li><span class="notranslate">sig</span>: <a href=buffer.md.html class ="notranslate">Buffer</a>, 可恢复签名</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><span class="notranslate">ECKey</span>, 返回包含公钥的对象</li>
+</ul>
+<hr>
+<h3 id="from" class ="notranslate">from</h3>
+<p><strong>加载一个 DER 格式的密钥</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> PKey ECKey.from(Buffer DerKey,
+    <span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">DerKey</span>: <a href=buffer.md.html class ="notranslate">Buffer</a>, DER 格式的密钥</li>
+<li><span class="notranslate">password</span>: String, 解密密码</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=pkey.md.html class ="notranslate">PKey</a>, 返回包含密钥的对象</li>
+</ul>
+<hr>
+<p><strong>加载一个 PEM 格式的密钥</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> PKey ECKey.from(<span class="hljs-built_in">String</span> pemKey,
+    <span class="hljs-built_in">String</span> password = <span class="hljs-string">""</span>);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">pemKey</span>: String, PEM 格式的密钥</li>
+<li><span class="notranslate">password</span>: String, 解密密码</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=pkey.md.html class ="notranslate">PKey</a>, 返回包含密钥的对象</li>
+</ul>
+<hr>
+<p><strong>加载一个 JSON 格式的密钥</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> PKey ECKey.from(<span class="hljs-built_in">Object</span> jsonKey);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">jsonKey</span>: Object, JSON 格式的密钥</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=pkey.md.html class ="notranslate">PKey</a>, 返回包含密钥的对象</li>
+</ul>
+<p>jsonKey 的格式支持以下四种，RSA 私钥：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</div>{
+    <span class="hljs-string">"kty"</span>: <span class="hljs-string">"RSA"</span>,
+    <span class="hljs-string">"n"</span>: <span class="hljs-string">"0m5lvKpWqy9JS7tV2HIPqHCYHLquSuxIC3F8strIQLJKO3rZmTT96KTnhsOfBO7Y1bI7mnT0PB3_vcHd9ekWMEoZJQw7MuB8KeM_Wn54-elJr5DNLk5bMppSGxX7ZnumiXGG51_X3Yp-_EbGtDG80GxXXix7Mucyo7K25uE0uW8="</span>,
+    <span class="hljs-string">"e"</span>: <span class="hljs-string">"AQAB"</span>,
+    <span class="hljs-string">"d"</span>: <span class="hljs-string">"agN2O9NxMHL1MTMi75WfL9Pxvl-KWXKqZSF6mjzAsF9iKI8euyHIXYFepzU8kual1RsjDhCnzvWqFvZplW8lXqrHf_P-rS_9Y4gBUw6pjnI_DnFIRwWHRvrUHHSCfWOdTCIKdOTkgLZuGFuhEY3RMIW0WSYejjLtftwy0RVxAzk="</span>,
+    <span class="hljs-string">"p"</span>: <span class="hljs-string">"6a4G1qmfwWmn1biigN7IVFlkbLf9oVe6g7rOmHxI-hn1GRxKDSVuAUrmR1IhuAnca9M0y7SD-7TUs6wjOxWxaw=="</span>,
+    <span class="hljs-string">"q"</span>: <span class="hljs-string">"5ofkxFKdPBD0CQHMb9q13AMHUVe0rJ-hSjqqIBrmqApUOneyAcMV76M0QyIQnI2p3POa4Qu_7XChDwRVl7LlDQ=="</span>,
+    <span class="hljs-string">"dp"</span>: <span class="hljs-string">"2mXGiGwCHl8j-FBWuID-1C6z-BRB3MBEVoeKPOOzxOPruatB3mWEGXsqG7A8SWgV9URxTI2K6P3J6Z7RUpBkvw=="</span>,
+    <span class="hljs-string">"dq"</span>: <span class="hljs-string">"oagn5vfb5NQqnOpS9xkSsD67cfIj821ZSFlNFYhnuOzNVda7z_qCtnHm4zDPH0lEFXoKYMfBhfqWJpaugttjPQ=="</span>,
+    <span class="hljs-string">"qi"</span>: <span class="hljs-string">"dqEQgxNmOVFrF4s776hTqeC6oEDila8EvpVb2F2ZvwAOLjCQ66OiAZK1BiYGHqUy0NeqNmtlsLSuBEZQZvqZwg=="</span>
+}
+</code></pre>
+<p>RSA 公钥：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div>{
+    <span class="hljs-string">"kty"</span>: <span class="hljs-string">"RSA"</span>,
+    <span class="hljs-string">"n"</span>: <span class="hljs-string">"0m5lvKpWqy9JS7tV2HIPqHCYHLquSuxIC3F8strIQLJKO3rZmTT96KTnhsOfBO7Y1bI7mnT0PB3_vcHd9ekWMEoZJQw7MuB8KeM_Wn54-elJr5DNLk5bMppSGxX7ZnumiXGG51_X3Yp-_EbGtDG80GxXXix7Mucyo7K25uE0uW8="</span>,
+    <span class="hljs-string">"e"</span>: <span class="hljs-string">"AQAB"</span>
+}
+</code></pre>
+<p>EC 私钥：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7</div>{
+    <span class="hljs-string">"kty"</span>: <span class="hljs-string">"EC"</span>,
+    <span class="hljs-string">"crv"</span>: <span class="hljs-string">"P-521"</span>,
+    <span class="hljs-string">"x"</span>: <span class="hljs-string">"ATfNNFuuvlGxrTGoXgyfSAGgRNNDnO3rN3k74urKJdVS14RYhdnSwm91Bm-F1l-T1XKlAY2yRnzG9w1Ukvo8c0wL"</span>,
+    <span class="hljs-string">"y"</span>: <span class="hljs-string">"ASBHqrruB6kdkEUB3vlW3-UIkk4HtKdUeTwN-7m3j2rgZvYR1ffRAapDvWqKGiBjomqWafxokBkbDI0c95f6f4XU"</span>,
+    <span class="hljs-string">"d"</span>: <span class="hljs-string">"AfkIbUHXfW41njdpoKuqqKludcoLJS8D_oMEwkj-GVaXFNKccIoF5iKGu2c69kNDjo83R_7wyGlfRczsklkik1ST"</span>
+}
+</code></pre>
+<p>EC 公钥：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6</div>{
+    <span class="hljs-string">"kty"</span>: <span class="hljs-string">"EC"</span>,
+    <span class="hljs-string">"crv"</span>: <span class="hljs-string">"P-521"</span>,
+    <span class="hljs-string">"x"</span>: <span class="hljs-string">"ATfNNFuuvlGxrTGoXgyfSAGgRNNDnO3rN3k74urKJdVS14RYhdnSwm91Bm-F1l-T1XKlAY2yRnzG9w1Ukvo8c0wL"</span>,
+    <span class="hljs-string">"y"</span>: <span class="hljs-string">"ASBHqrruB6kdkEUB3vlW3-UIkk4HtKdUeTwN-7m3j2rgZvYR1ffRAapDvWqKGiBjomqWafxokBkbDI0c95f6f4XU"</span>
+}
+</code></pre>
+<h2 id="成员属性">成员属性</h2>
+<h3 id="curve" class ="notranslate">curve</h3>
+<p><strong>String, 返回当前算法的椭圆曲线名称</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly <span class="hljs-built_in">String</span> ECKey.curve;
+</code></pre>
+<hr>
+<h3 id="name" class ="notranslate">name</h3>
+<p><strong>String, 返回当前算法名称</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly <span class="hljs-built_in">String</span> ECKey.name;
+</code></pre>
+<hr>
+<h3 id="keySize" class ="notranslate">keySize</h3>
+<p><strong>Integer, 返回当前算法密码长度，以位为单位</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer ECKey.keySize;
+</code></pre>
+<hr>
+<h3 id="alg" class ="notranslate">alg</h3>
+<p><strong>String, 返回和设置当前对象签名算法</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> ECKey.alg;
+</code></pre>
+<hr>
+<h3 id="publicKey" class ="notranslate">publicKey</h3>
+<p><strong><a href=pkey.md.html class ="notranslate">PKey</a>, 返回当前密钥的公钥</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly PKey ECKey.publicKey;
+</code></pre>
+<p>返回结果:</p>
+<ul>
+<li>当前密钥的公钥</li>
+</ul>
+<h2 id="成员函数">成员函数</h2>
+<h3 id="computeSecret" class ="notranslate">computeSecret</h3>
+<p><strong>使用当前算法计算椭圆曲线 Diffie-Hellman (ECDH) 共享密钥</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer ECKey.computeSecret(ECKey publicKey) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">publicKey</span>: ECKey, 指定对方的公钥</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=buffer.md.html class ="notranslate">Buffer</a>, 返回计算出的共享密钥</li>
+</ul>
+<hr>
+<h3 id="isPrivate" class ="notranslate">isPrivate</h3>
+<p><strong>查询当前密钥是否为私钥</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> ECKey.isPrivate();
+</code></pre>
+<p>返回结果:</p>
+<ul>
+<li><span class="notranslate">Boolean</span>, 为 True 表示为私钥</li>
+</ul>
+<hr>
+<h3 id="clone" class ="notranslate">clone</h3>
+<p><strong>复制当前密钥</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>PKey ECKey.clone();
+</code></pre>
+<p>返回结果:</p>
+<ul>
+<li><a href=pkey.md.html class ="notranslate">PKey</a>, 当前密钥的复制对象</li>
+</ul>
+<hr>
+<h3 id="pem" class ="notranslate">pem</h3>
+<p><strong>返回当前 key 的 PEM 格式编码</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> ECKey.pem();
+</code></pre>
+<p>返回结果:</p>
+<ul>
+<li><span class="notranslate">String</span>, 当前 key 的 PEM 格式编码</li>
+</ul>
+<hr>
+<h3 id="der" class ="notranslate">der</h3>
+<p><strong>返回当前 key 的 DER 格式编码</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer ECKey.der();
+</code></pre>
+<p>返回结果:</p>
+<ul>
+<li><a href=buffer.md.html class ="notranslate">Buffer</a>, 当前 key 的 DER 格式编码</li>
+</ul>
+<hr>
+<h3 id="json" class ="notranslate">json</h3>
+<p><strong>返回当前 key 的 jwt 格式编码</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> ECKey.json(<span class="hljs-built_in">Object</span> opts = {});
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">opts</span>: Object, 指定导出选项</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><span class="notranslate">Object</span>, 当前 key 的 jwt 格式编码</li>
+</ul>
+<p>opts 支持以下参数:</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div>{
+    <span class="hljs-attr">compress</span>: <span class="hljs-literal">false</span>， 指定签名以压缩方式输出公钥
+}
+</code></pre>
+<p>支持压缩的曲线为：secp192r1, secp192k1, secp256r1, secp256k1, brainpoolP256r1,
+               secp384r1, brainpoolP384r1, brainpoolP512r1, secp521r1, sm2</p>
+<hr>
+<h3 id="equals" class ="notranslate">equals</h3>
+<p><strong>比较两个公/私钥是否相同</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> ECKey.equals(PKey key);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">key</span>: <a href=pkey.md.html class ="notranslate">PKey</a>, 指定对方的公/私钥</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><span class="notranslate">Boolean</span>, 相同则返回 true</li>
+</ul>
+<hr>
+<h3 id="encrypt" class ="notranslate">encrypt</h3>
+<p><strong>使用当前算法密码公钥加密数据</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer ECKey.encrypt(Buffer data) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">data</span>: <a href=buffer.md.html class ="notranslate">Buffer</a>, 指定要加密的数据</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=buffer.md.html class ="notranslate">Buffer</a>, 返回加密后的数据</li>
+</ul>
+<hr>
+<h3 id="decrypt" class ="notranslate">decrypt</h3>
+<p><strong>使用当前算法密码私钥解密数据</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer ECKey.decrypt(Buffer data) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">data</span>: <a href=buffer.md.html class ="notranslate">Buffer</a>, 指定要解密的数据</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=buffer.md.html class ="notranslate">Buffer</a>, 返回解密后的数据</li>
+</ul>
+<hr>
+<h3 id="sign" class ="notranslate">sign</h3>
+<p><strong>使用当前算法密码私钥签名数据</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Buffer ECKey.sign(Buffer data,
+    <span class="hljs-built_in">Object</span> opts = {}) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">data</span>: <a href=buffer.md.html class ="notranslate">Buffer</a>, 指定要签名的数据</li>
+<li><span class="notranslate">opts</span>: Object, 指定签名选项</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=buffer.md.html class ="notranslate">Buffer</a>, 返回签名后的数据</li>
+</ul>
+<p>opts 支持以下参数:</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</div>{
+    <span class="hljs-attr">alg</span>: <span class="hljs-number">0</span>， 指定签名的 hash 算法， 仅在 RSA 时有效， 缺省为 <span class="hljs-number">0.</span> 支持算法: <span class="hljs-number">0</span> = NONE,
+    <span class="hljs-number">1</span> = MD5,
+    <span class="hljs-number">2</span> = SHA1,
+    <span class="hljs-number">3</span> = SHA224,
+    <span class="hljs-number">4</span> = SHA256,
+    <span class="hljs-number">5</span> = SHA384,
+    <span class="hljs-number">6</span> = SHA512,
+    <span class="hljs-number">7</span> = RIPEMD160
+    <span class="hljs-attr">to</span>: pk,
+    指定验证方公钥， 仅在 ecsdsa 或 sm2 时有效
+    <span class="hljs-attr">format</span>: <span class="hljs-string">"der"</span>,
+    指定签名格式， 可选为 der 和 raw， 缺省为 der
+    <span class="hljs-attr">recoverable</span>: <span class="hljs-literal">false</span> 指定返回可恢复签名， 仅在 secp256k1 有效
+}
+</code></pre>
+<hr>
+<h3 id="verify" class ="notranslate">verify</h3>
+<p><strong>使用当前算法密码公钥验证数据</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-built_in">Boolean</span> ECKey.verify(Buffer data,
+    Buffer sign,
+    <span class="hljs-built_in">Object</span> opts = {}) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">data</span>: <a href=buffer.md.html class ="notranslate">Buffer</a>, 指定要验证的数据</li>
+<li><span class="notranslate">sign</span>: <a href=buffer.md.html class ="notranslate">Buffer</a>, 指定要验证的签名</li>
+<li><span class="notranslate">opts</span>: Object, 指定验证选项</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><span class="notranslate">Boolean</span>, 返回验证后的结果</li>
+</ul>
+<p>opts 支持以下参数:</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</div>{
+    <span class="hljs-attr">alg</span>: <span class="hljs-number">0</span>， 指定签名的 hash 算法， 仅在 RSA 时有效， 缺省为 <span class="hljs-number">0.</span> 支持算法: <span class="hljs-number">0</span> = NONE,
+    <span class="hljs-number">1</span> = MD5,
+    <span class="hljs-number">2</span> = SHA1,
+    <span class="hljs-number">3</span> = SHA224,
+    <span class="hljs-number">4</span> = SHA256,
+    <span class="hljs-number">5</span> = SHA384,
+    <span class="hljs-number">6</span> = SHA512,
+    <span class="hljs-number">7</span> = RIPEMD160
+    <span class="hljs-attr">to</span>: pk,
+    指定验证方公钥， 仅在 ecsdsa 或 sm2 时有效
+    <span class="hljs-attr">format</span>: <span class="hljs-string">"der"</span>,
+    指定签名格式， 可选为 der 和 raw， 缺省为 der
+}
+</code></pre>
+<hr>
+<h3 id="toString" class ="notranslate">toString</h3>
+<p><strong>返回对象的字符串表示，一般返回 &quot;[Native Object]&quot;，对象可以根据自己的特性重新实现</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> ECKey.toString();
+</code></pre>
+<p>返回结果:</p>
+<ul>
+<li><span class="notranslate">String</span>, 返回对象的字符串表示</li>
+</ul>
+<hr>
+<h3 id="toJSON" class ="notranslate">toJSON</h3>
+<p><strong>返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value ECKey.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">key</span>: String, 未使用</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><span class="notranslate">Value</span>, 返回包含可 JSON 序列化的值</li>
+</ul>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

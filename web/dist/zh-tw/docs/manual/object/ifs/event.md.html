@@ -6,8 +6,8 @@
 <li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">找出性能殺手</font></font></a></li>
 <li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服務端模塊熱更新</font></font></a></li>
 <li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">域名路由</font></font></a></li>
-<li><a href="../../../guide/x509.md.html">fibjs 中 X509 证书的使用</a></li>
-<li><a href="../../../guide/contribute.md.html">添加 native 模块</a></li>
+<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 中X509 證書的使用</font></font></a></li>
+<li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加native 模塊</font></font></a></li>
 </ul>
  </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">基礎模塊</font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../module/ifs/assert.md.html" class="notranslate">assert</a></li>
@@ -65,6 +65,7 @@
 <li><a href="../../module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
 </ul>
  </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">內置對象</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="blskey.md.html" class="notranslate">BlsKey</a></li>
 <li><a href="buffer.md.html" class="notranslate">Buffer</a></li>
 <li><a href="bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
 <li><a href="chain.md.html" class="notranslate">Chain</a></li>
@@ -74,6 +75,8 @@
 <li><a href="dbconnection.md.html" class="notranslate">DbConnection</a></li>
 <li><a href="dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
 <li><a href="digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="eckey.md.html" class="notranslate">ECKey</a></li>
+<li><a href="ed25519key.md.html" class="notranslate">Ed25519Key</a></li>
 <li class="active"><a href="event.md.html" class="notranslate">Event</a></li>
 <li><a href="eventemitter.md.html" class="notranslate">EventEmitter</a></li>
 <li><a href="fswatcher.md.html" class="notranslate">FSWatcher</a></li>
@@ -204,113 +207,73 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">事件對象</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通過一個事件達到對一組纖程進行控制的目的（事件對象的狀態為bool類型）</font></font></p>
 <div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">繼承關係</font></font></h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="150.0" height="504.0" viewBox="0 0 150 504" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
-    <desc>
-    #lineWidth: 1.5
-    #font: Helvetica,sans-Serif
-    #fontSize: 10
-    #leading: 1.6
-    #.this: fill=lightgray
-    #.class: fill=white
-
-    [&lt;class&gt;object|toString();toJSON()]
-    [&lt;class&gt;Lock|new Lock()|acquire();release();count()]
-    [&lt;this&gt;Event|new Event()|isSet();set();pulse();clear();wait()]
-
-    [object] &lt;:- [Lock]
-    [Lock] &lt;:- [Event]
-    </desc>
-    <g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="10pt" font-family="Helvetica,sans-Serif" font-weight="normal" font-style="normal">
-        <g font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="bold" font-style="normal" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
-            <g stroke="transparent" fill="transparent">
-                <rect x="0.0" y="0.0" height="504.0" width="150.0" stroke="none"></rect>
-            </g>
-            <g transform="translate(8, 8)" fill="#33322E">
-                <g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal">
-                    <path d="M47.0 93.3 L47 100 L47 120 L47.0 120.0 " fill="none"></path>
-                    <path d="M52.3 93.3 L47.0 93.3 L41.7 93.3 L47.0 80.0 Z"></path>
-                    <path d="M47.0 261.3 L47 268 L47 288 L47.0 288.0 " fill="none"></path>
-                    <path d="M52.3 261.3 L47.0 261.3 L41.7 261.3 L47.0 248.0 Z"></path>
-                    <g data-name="Lock">
-                        <g fill="white" stroke="#33322E" data-name="Lock">
-                            <rect x="3.0" y="120.0" height="128.0" width="89.0" data-name="Lock"></rect>
-                            <path d="M3.0 152.0 L92.0 152.0" fill="none" data-name="Lock"></path>
-                            <path d="M3.0 184.0 L92.0 184.0" fill="none" data-name="Lock"></path>
-                        </g>
-                        <g transform="translate(3, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Lock">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Lock">
-                                <text x="36.5" y="13.0" stroke="none" text-anchor="middle" data-name="Lock">Lock</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(3, 152)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Lock">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Lock">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Lock">new Lock()</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(3, 184)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Lock">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Lock">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Lock">acquire()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="Lock">release()</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="Lock">count()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="Event">
-                        <g fill="lightgray" stroke="#33322E" data-name="Event">
-                            <rect x="0.0" y="288.0" height="160.0" width="94.0" data-name="Event"></rect>
-                            <path d="M0.0 320.0 L94.0 320.0" fill="none" data-name="Event"></path>
-                            <path d="M0.0 352.0 L94.0 352.0" fill="none" data-name="Event"></path>
-                        </g>
-                        <g transform="translate(0, 288)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Event">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Event">
-                                <text x="39.0" y="13.0" stroke="none" text-anchor="middle" data-name="Event">Event</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 320)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Event">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Event">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Event">new Event()</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 352)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Event">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Event">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Event">isSet()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="Event">set()</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="Event">pulse()</text>
-                                <text x="0.0" y="61.0" stroke="none" data-name="Event">clear()</text>
-                                <text x="0.0" y="77.0" stroke="none" data-name="Event">wait()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="object">
-                        <g fill="white" stroke="#33322E" data-name="object">
-                            <rect x="9.0" y="0.0" height="80.0" width="77.0" data-name="object"></rect>
-                            <path d="M9.0 32.0 L86.0 32.0" fill="none" data-name="object"></path>
-                        </g>
-                        <g transform="translate(9, 0)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="object">
-                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="object">object</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(9, 32)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="object">
-                                <text x="0.0" y="13.0" stroke="none" data-name="object">toString()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="object">toJSON()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg></div>
+<div class="dot notranslate">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="77pt" height="327pt" viewBox="0.00 0.00 77.34 327.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 323)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-323 73.34,-323 73.34,4 -4,4"></polygon>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href="object.md.html" xlink:title="object">
+<polygon fill="#ffffff" stroke="#000000" points="5.8385,-266.5 5.8385,-318.5 63.5015,-318.5 63.5015,-266.5 5.8385,-266.5"></polygon>
+<text text-anchor="middle" x="34.67" y="-305.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="5.8385,-298.5 63.5015,-298.5 "></polyline>
+<text text-anchor="start" x="13.8385" y="-285.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="13.8385" y="-273.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+</a>
+</g>
+</g>
+<!-- Lock -->
+<g id="node2" class="node">
+<title>Lock</title>
+<g id="a_node2"><a xlink:href="lock.md.html" xlink:title="Lock">
+<polygon fill="#ffffff" stroke="#000000" points="2.224,-145.5 2.224,-229.5 67.116,-229.5 67.116,-145.5 2.224,-145.5"></polygon>
+<text text-anchor="middle" x="34.67" y="-216.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Lock</text>
+<polyline fill="none" stroke="#000000" points="2.224,-209.5 67.116,-209.5 "></polyline>
+<text text-anchor="start" x="10.224" y="-196.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new Lock()</text>
+<polyline fill="none" stroke="#000000" points="2.224,-189.5 67.116,-189.5 "></polyline>
+<text text-anchor="start" x="10.224" y="-176.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">acquire()</text>
+<text text-anchor="start" x="10.224" y="-164.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">release()</text>
+<text text-anchor="start" x="10.224" y="-152.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">count()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;Lock -->
+<g id="edge1" class="edge">
+<title>object-&gt;Lock</title>
+<path fill="none" stroke="#000000" d="M34.67,-256.2327C34.67,-247.6838 34.67,-238.498 34.67,-229.7123"></path>
+<polygon fill="#000000" stroke="#000000" points="31.1701,-256.2749 34.67,-266.2749 38.1701,-256.275 31.1701,-256.2749"></polygon>
+</g>
+<!-- Event -->
+<g id="me" class="node">
+<title>Event</title>
+<g id="a_me"><a xlink:title="Event">
+<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-108.5 69.34,-108.5 69.34,-.5 0,-.5"></polygon>
+<text text-anchor="middle" x="34.67" y="-95.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Event</text>
+<polyline fill="none" stroke="#000000" points="0,-88.5 69.34,-88.5 "></polyline>
+<text text-anchor="start" x="8" y="-75.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new Event()</text>
+<polyline fill="none" stroke="#000000" points="0,-68.5 69.34,-68.5 "></polyline>
+<text text-anchor="start" x="8" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isSet()</text>
+<text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">set()</text>
+<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">pulse()</text>
+<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">clear()</text>
+<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">wait()</text>
+</a>
+</g>
+</g>
+<!-- Lock&#45;&gt;Event -->
+<g id="edge2" class="edge">
+<title>Lock-&gt;Event</title>
+<path fill="none" stroke="#000000" d="M34.67,-135.2898C34.67,-126.4915 34.67,-117.343 34.67,-108.5003"></path>
+<polygon fill="#000000" stroke="#000000" points="31.1701,-135.4179 34.67,-145.418 38.1701,-135.418 31.1701,-135.4179"></polygon>
+</g>
+</g>
+</svg>
+</div>
 
 <div name="构造函数" data-unique="构造函数"></div><h2 id="构造函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">構造函數</font></font></h2>
 <div name="Event" data-unique="Event"></div><h3 id="Event" class="notranslate">Event</h3>
@@ -403,4 +366,4 @@
 <ul>
 <li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回包含可JSON 序列化的值</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip261156"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip261156" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

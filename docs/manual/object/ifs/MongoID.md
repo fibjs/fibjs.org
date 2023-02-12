@@ -2,18 +2,15 @@
 mongodb 数据库数据唯一标识对象，用于存储传递 oid
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<class>object|toString();toJSON()]
-[<this>MongoID]
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    MongoID [tooltip="MongoID", fillcolor="lightgray", id="me", label="{MongoID}"];
 
-[object] <:- [MongoID]
+    object -> MongoID [dir=back];
+}
 ```
 
 ## 成员函数

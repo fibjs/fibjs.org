@@ -4,26 +4,23 @@ XmlCharacterData 接口提供了 [XmlText](XmlText.md) 和 [XmlComment](XmlComme
 XmlCharacterData 是 [XmlText](XmlText.md) 和 [XmlComment](XmlComment.md) 节点的超接口。文档从不包含 XmlCharacterData 节点，它们只包含 [XmlText](XmlText.md) 节点和 [XmlComment](XmlComment.md) 节点。但由于这两种节点具有相似的功能，因此此处定义了这些函数，以便 [XmlText](XmlText.md) 和 [XmlComment](XmlComment.md) 可以继承它。
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<class>object|toString();toJSON()]
-[<class>XmlNode|nodeType;nodeName;nodeValue;ownerDocument;parentNode;childNodes;firstChild;lastChild;previousSibling;nextSibling|hasChildNodes();normalize();cloneNode();lookupPrefix();lookupNamespaceURI();insertBefore();insertAfter();appendChild();replaceChild();removeChild()]
-[<this>XmlCharacterData|data;length|substringData();appendData();insertData();deleteData();replaceData()]
-[<class>XmlComment]
-[<class>XmlText]
-[<class>XmlCDATASection]
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    XmlNode [tooltip="XmlNode", URL="XmlNode.md", label="{XmlNode|nodeType\lnodeName\lnodeValue\lownerDocument\lparentNode\lchildNodes\lfirstChild\llastChild\lpreviousSibling\lnextSibling\l|hasChildNodes()\lnormalize()\lcloneNode()\llookupPrefix()\llookupNamespaceURI()\linsertBefore()\linsertAfter()\lappendChild()\lreplaceChild()\lremoveChild()\l}"];
+    XmlCharacterData [tooltip="XmlCharacterData", fillcolor="lightgray", id="me", label="{XmlCharacterData|data\llength\l|substringData()\lappendData()\linsertData()\ldeleteData()\lreplaceData()\l}"];
+    XmlComment [tooltip="XmlComment", URL="XmlComment.md", label="{XmlComment}"];
+    XmlText [tooltip="XmlText", URL="XmlText.md", label="{XmlText}"];
+    XmlCDATASection [tooltip="XmlCDATASection", URL="XmlCDATASection.md", label="{XmlCDATASection}"];
 
-[object] <:- [XmlNode]
-[XmlNode] <:- [XmlCharacterData]
-[XmlCharacterData] <:- [XmlComment]
-[XmlCharacterData] <:- [XmlText]
-[XmlText] <:- [XmlCDATASection]
+    object -> XmlNode [dir=back];
+    XmlNode -> XmlCharacterData [dir=back];
+    XmlCharacterData -> XmlComment [dir=back];
+    XmlCharacterData -> XmlText [dir=back];
+    XmlText -> XmlCDATASection [dir=back];
+}
 ```
 
 ## 成员属性

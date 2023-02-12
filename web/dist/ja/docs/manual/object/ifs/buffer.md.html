@@ -1,11 +1,11 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>オブジェクト バッファ - ファイバー上の JavaScript</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ナビゲーションを切り替える</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/buffer.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/buffer.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/buffer.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/buffer.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/buffer.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/buffer.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/buffer.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/buffer.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/buffer.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/buffer.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/buffer.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/buffer.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オブジェクト組み込みオブジェクト</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="探す" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="検索入力" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">表紙</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">組み込みオブジェクト</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オブジェクトバッファ</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">開発ガイド</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>オブジェクト バッファ - ファイバー上の JavaScript</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ナビゲーションを切り替える</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/buffer.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/buffer.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/buffer.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/buffer.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/buffer.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/buffer.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/buffer.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/buffer.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/buffer.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/buffer.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/buffer.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/buffer.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オブジェクト組み込みオブジェクト</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="検索" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="検索入力" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">表紙</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">組み込みオブジェクト</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オブジェクトバッファ</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">開発ガイド</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjsとは何ですか？</font></font></a></li>
-<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ランタイム環境をインストールする</font></font></a></li>
+<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">動作環境のインストール</font></font></a></li>
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
-<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">良い人生はテストから始まる</font></font></a></li>
-<li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">パフォーマンスキラーを見つける</font></font></a></li>
+<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">より良い人生はテストから始まります</font></font></a></li>
+<li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">パフォーマンス キラーを見つける</font></font></a></li>
 <li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">サーバーモジュールのホットアップデート</font></font></a></li>
-<li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ドメイン名ルーティング</font></font></a></li>
+<li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ドメイン ルーティング</font></font></a></li>
 <li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs での X509 証明書の使用</font></font></a></li>
 <li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ネイティブモジュールを追加</font></font></a></li>
 </ul>
@@ -65,6 +65,7 @@
 <li><a href="../../module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
 </ul>
  </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">組み込みオブジェクト</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="blskey.md.html" class="notranslate">BlsKey</a></li>
 <li class="active"><a href="buffer.md.html" class="notranslate">Buffer</a></li>
 <li><a href="bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
 <li><a href="chain.md.html" class="notranslate">Chain</a></li>
@@ -74,6 +75,8 @@
 <li><a href="dbconnection.md.html" class="notranslate">DbConnection</a></li>
 <li><a href="dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
 <li><a href="digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="eckey.md.html" class="notranslate">ECKey</a></li>
+<li><a href="ed25519key.md.html" class="notranslate">Ed25519Key</a></li>
 <li><a href="event.md.html" class="notranslate">Event</a></li>
 <li><a href="eventemitter.md.html" class="notranslate">EventEmitter</a></li>
 <li><a href="fswatcher.md.html" class="notranslate">FSWatcher</a></li>
@@ -201,187 +204,137 @@
 <li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="对象-Buffer" data-unique="对象-Buffer"></div><h1 id="对象-Buffer"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オブジェクトバッファ</font></font></h1>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">のバイナリ データ キャッシュ オブジェクト</font></font><a href="../../module/ifs/io.md.html" class="notranslate">io</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">読み書きデータ処理</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buffer オブジェクトは、 new Buffer(...) を使用していつでも直接作成できるグローバル基本クラスです。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">のバイナリ データ キャッシュ オブジェクト</font></font><a href="../../module/ifs/io.md.html" class="notranslate">io</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">読み書きのためのデータ処理</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buffer オブジェクトはグローバルな基本クラスであり、 new Buffer(...) を使用していつでも直接作成できます。</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> buf = <span class="hljs-keyword">new</span> Buffer();
 </code></pre>
 <div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">相続関係</font></font></h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="190.0" height="1552.0" viewBox="0 0 190 1552" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
-    <desc>
-    #lineWidth: 1.5
-    #font: Helvetica,sans-Serif
-    #fontSize: 10
-    #leading: 1.6
-    #.this: fill=lightgray
-    #.class: fill=white
-
-    [&lt;class&gt;object|toString();toJSON()]
-    [&lt;this&gt;Buffer|new Buffer()|operator[];@iterator()|Buffer|isBuffer();from();concat();alloc();allocUnsafe();allocUnsafeSlow();byteLength();compare();isEncoding()|length;byteOffset;buffer|resize();append();write();fill();indexOf();compare();copy();set();readUInt8();readUInt16LE();readUInt16BE();readUInt32LE();readUInt32BE();readUIntLE();readUIntBE();readInt64LE();readInt64BE();readInt8();readInt16LE();readInt16BE();readInt32LE();readInt32BE();readIntLE();readIntBE();writeInt64LE();writeInt64BE();readFloatLE();readFloatBE();readDoubleLE();readDoubleBE();writeUInt8();writeUInt16LE();writeUInt16BE();writeUInt32LE();writeUInt32BE();writeUIntLE();writeUIntBE();writeInt8();writeInt16LE();writeInt16BE();writeInt32LE();writeInt32BE();writeIntLE();writeIntBE();writeFloatLE();writeFloatBE();writeDoubleLE();writeDoubleBE();slice();join();reverse();equals();hex();base32();base58();base64();keys();values();entries();forEach();toArray();toString()]
-
-    [object] &lt;:- [Buffer]
-    </desc>
-    <g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="10pt" font-family="Helvetica,sans-Serif" font-weight="normal" font-style="normal">
-        <g font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="bold" font-style="normal" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
-            <g stroke="transparent" fill="transparent">
-                <rect x="0.0" y="0.0" height="1552.0" width="190.0" stroke="none"></rect>
-            </g>
-            <g transform="translate(8, 8)" fill="#33322E">
-                <g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal">
-                    <path d="M67.0 93.3 L67 100 L67 120 L67.0 120.0 " fill="none"></path>
-                    <path d="M72.3 93.3 L67.0 93.3 L61.7 93.3 L67.0 80.0 Z"></path>
-                    <g data-name="Buffer">
-                        <g fill="lightgray" stroke="#33322E" data-name="Buffer">
-                            <rect x="0.0" y="120.0" height="1376.0" width="134.0" data-name="Buffer"></rect>
-                            <path d="M0.0 152.0 L134.0 152.0" fill="none" data-name="Buffer"></path>
-                            <path d="M0.0 184.0 L134.0 184.0" fill="none" data-name="Buffer"></path>
-                            <path d="M0.0 232.0 L134.0 232.0" fill="none" data-name="Buffer"></path>
-                            <path d="M0.0 264.0 L134.0 264.0" fill="none" data-name="Buffer"></path>
-                            <path d="M0.0 424.0 L134.0 424.0" fill="none" data-name="Buffer"></path>
-                            <path d="M0.0 488.0 L134.0 488.0" fill="none" data-name="Buffer"></path>
-                        </g>
-                        <g transform="translate(0, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Buffer">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Buffer">
-                                <text x="59.0" y="13.0" stroke="none" text-anchor="middle" data-name="Buffer">Buffer</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 152)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Buffer">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Buffer">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Buffer">new Buffer()</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 184)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Buffer">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Buffer">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Buffer">operator[]</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="Buffer">@iterator()</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 232)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Buffer">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Buffer">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Buffer">Buffer</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 264)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Buffer">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Buffer">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Buffer">isBuffer()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="Buffer">from()</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="Buffer">concat()</text>
-                                <text x="0.0" y="61.0" stroke="none" data-name="Buffer">alloc()</text>
-                                <text x="0.0" y="77.0" stroke="none" data-name="Buffer">allocUnsafe()</text>
-                                <text x="0.0" y="93.0" stroke="none" data-name="Buffer">allocUnsafeSlow()</text>
-                                <text x="0.0" y="109.0" stroke="none" data-name="Buffer">byteLength()</text>
-                                <text x="0.0" y="125.0" stroke="none" data-name="Buffer">compare()</text>
-                                <text x="0.0" y="141.0" stroke="none" data-name="Buffer">isEncoding()</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 424)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Buffer">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Buffer">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Buffer">length</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="Buffer">byteOffset</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="Buffer">buffer</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 488)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Buffer">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Buffer">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Buffer">resize()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="Buffer">append()</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="Buffer">write()</text>
-                                <text x="0.0" y="61.0" stroke="none" data-name="Buffer">fill()</text>
-                                <text x="0.0" y="77.0" stroke="none" data-name="Buffer">indexOf()</text>
-                                <text x="0.0" y="93.0" stroke="none" data-name="Buffer">compare()</text>
-                                <text x="0.0" y="109.0" stroke="none" data-name="Buffer">copy()</text>
-                                <text x="0.0" y="125.0" stroke="none" data-name="Buffer">set()</text>
-                                <text x="0.0" y="141.0" stroke="none" data-name="Buffer">readUInt8()</text>
-                                <text x="0.0" y="157.0" stroke="none" data-name="Buffer">readUInt16LE()</text>
-                                <text x="0.0" y="173.0" stroke="none" data-name="Buffer">readUInt16BE()</text>
-                                <text x="0.0" y="189.0" stroke="none" data-name="Buffer">readUInt32LE()</text>
-                                <text x="0.0" y="205.0" stroke="none" data-name="Buffer">readUInt32BE()</text>
-                                <text x="0.0" y="221.0" stroke="none" data-name="Buffer">readUIntLE()</text>
-                                <text x="0.0" y="237.0" stroke="none" data-name="Buffer">readUIntBE()</text>
-                                <text x="0.0" y="253.0" stroke="none" data-name="Buffer">readInt64LE()</text>
-                                <text x="0.0" y="269.0" stroke="none" data-name="Buffer">readInt64BE()</text>
-                                <text x="0.0" y="285.0" stroke="none" data-name="Buffer">readInt8()</text>
-                                <text x="0.0" y="301.0" stroke="none" data-name="Buffer">readInt16LE()</text>
-                                <text x="0.0" y="317.0" stroke="none" data-name="Buffer">readInt16BE()</text>
-                                <text x="0.0" y="333.0" stroke="none" data-name="Buffer">readInt32LE()</text>
-                                <text x="0.0" y="349.0" stroke="none" data-name="Buffer">readInt32BE()</text>
-                                <text x="0.0" y="365.0" stroke="none" data-name="Buffer">readIntLE()</text>
-                                <text x="0.0" y="381.0" stroke="none" data-name="Buffer">readIntBE()</text>
-                                <text x="0.0" y="397.0" stroke="none" data-name="Buffer">writeInt64LE()</text>
-                                <text x="0.0" y="413.0" stroke="none" data-name="Buffer">writeInt64BE()</text>
-                                <text x="0.0" y="429.0" stroke="none" data-name="Buffer">readFloatLE()</text>
-                                <text x="0.0" y="445.0" stroke="none" data-name="Buffer">readFloatBE()</text>
-                                <text x="0.0" y="461.0" stroke="none" data-name="Buffer">readDoubleLE()</text>
-                                <text x="0.0" y="477.0" stroke="none" data-name="Buffer">readDoubleBE()</text>
-                                <text x="0.0" y="493.0" stroke="none" data-name="Buffer">writeUInt8()</text>
-                                <text x="0.0" y="509.0" stroke="none" data-name="Buffer">writeUInt16LE()</text>
-                                <text x="0.0" y="525.0" stroke="none" data-name="Buffer">writeUInt16BE()</text>
-                                <text x="0.0" y="541.0" stroke="none" data-name="Buffer">writeUInt32LE()</text>
-                                <text x="0.0" y="557.0" stroke="none" data-name="Buffer">writeUInt32BE()</text>
-                                <text x="0.0" y="573.0" stroke="none" data-name="Buffer">writeUIntLE()</text>
-                                <text x="0.0" y="589.0" stroke="none" data-name="Buffer">writeUIntBE()</text>
-                                <text x="0.0" y="605.0" stroke="none" data-name="Buffer">writeInt8()</text>
-                                <text x="0.0" y="621.0" stroke="none" data-name="Buffer">writeInt16LE()</text>
-                                <text x="0.0" y="637.0" stroke="none" data-name="Buffer">writeInt16BE()</text>
-                                <text x="0.0" y="653.0" stroke="none" data-name="Buffer">writeInt32LE()</text>
-                                <text x="0.0" y="669.0" stroke="none" data-name="Buffer">writeInt32BE()</text>
-                                <text x="0.0" y="685.0" stroke="none" data-name="Buffer">writeIntLE()</text>
-                                <text x="0.0" y="701.0" stroke="none" data-name="Buffer">writeIntBE()</text>
-                                <text x="0.0" y="717.0" stroke="none" data-name="Buffer">writeFloatLE()</text>
-                                <text x="0.0" y="733.0" stroke="none" data-name="Buffer">writeFloatBE()</text>
-                                <text x="0.0" y="749.0" stroke="none" data-name="Buffer">writeDoubleLE()</text>
-                                <text x="0.0" y="765.0" stroke="none" data-name="Buffer">writeDoubleBE()</text>
-                                <text x="0.0" y="781.0" stroke="none" data-name="Buffer">slice()</text>
-                                <text x="0.0" y="797.0" stroke="none" data-name="Buffer">join()</text>
-                                <text x="0.0" y="813.0" stroke="none" data-name="Buffer">reverse()</text>
-                                <text x="0.0" y="829.0" stroke="none" data-name="Buffer">equals()</text>
-                                <text x="0.0" y="845.0" stroke="none" data-name="Buffer">hex()</text>
-                                <text x="0.0" y="861.0" stroke="none" data-name="Buffer">base32()</text>
-                                <text x="0.0" y="877.0" stroke="none" data-name="Buffer">base58()</text>
-                                <text x="0.0" y="893.0" stroke="none" data-name="Buffer">base64()</text>
-                                <text x="0.0" y="909.0" stroke="none" data-name="Buffer">keys()</text>
-                                <text x="0.0" y="925.0" stroke="none" data-name="Buffer">values()</text>
-                                <text x="0.0" y="941.0" stroke="none" data-name="Buffer">entries()</text>
-                                <text x="0.0" y="957.0" stroke="none" data-name="Buffer">forEach()</text>
-                                <text x="0.0" y="973.0" stroke="none" data-name="Buffer">toArray()</text>
-                                <text x="0.0" y="989.0" stroke="none" data-name="Buffer">toString()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="object">
-                        <g fill="white" stroke="#33322E" data-name="object">
-                            <rect x="29.0" y="0.0" height="80.0" width="77.0" data-name="object"></rect>
-                            <path d="M29.0 32.0 L106.0 32.0" fill="none" data-name="object"></path>
-                        </g>
-                        <g transform="translate(29, 0)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="object">
-                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="object">object</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(29, 32)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="object">
-                                <text x="0.0" y="13.0" stroke="none" data-name="object">toString()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="object">toJSON()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg></div>
+<div class="dot notranslate">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="105pt" height="1102pt" viewBox="0.00 0.00 104.56 1102.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 1098)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-1098 100.555,-1098 100.555,4 -4,4"></polygon>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href="object.md.html" xlink:title="object">
+<polygon fill="#ffffff" stroke="#000000" points="19.446,-1041.5 19.446,-1093.5 77.109,-1093.5 77.109,-1041.5 19.446,-1041.5"></polygon>
+<text text-anchor="middle" x="48.2775" y="-1080.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="19.446,-1073.5 77.109,-1073.5 "></polyline>
+<text text-anchor="start" x="27.446" y="-1060.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="27.446" y="-1048.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+</a>
+</g>
+</g>
+<!-- Buffer -->
+<g id="me" class="node">
+<title>Buffer</title>
+<g id="a_me"><a xlink:title="Buffer">
+<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-1004.5 96.555,-1004.5 96.555,-.5 0,-.5"></polygon>
+<text text-anchor="middle" x="48.2775" y="-991.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Buffer</text>
+<polyline fill="none" stroke="#000000" points="0,-984.5 96.555,-984.5 "></polyline>
+<text text-anchor="start" x="8" y="-971.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new Buffer()</text>
+<polyline fill="none" stroke="#000000" points="0,-964.5 96.555,-964.5 "></polyline>
+<text text-anchor="start" x="8" y="-951.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">operator[]</text>
+<text text-anchor="start" x="8" y="-939.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">iterator()</text>
+<polyline fill="none" stroke="#000000" points="0,-932.5 96.555,-932.5 "></polyline>
+<text text-anchor="start" x="8" y="-919.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Buffer</text>
+<polyline fill="none" stroke="#000000" points="0,-912.5 96.555,-912.5 "></polyline>
+<text text-anchor="start" x="8" y="-899.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isBuffer()</text>
+<text text-anchor="start" x="8" y="-887.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">from()</text>
+<text text-anchor="start" x="8" y="-875.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">concat()</text>
+<text text-anchor="start" x="8" y="-863.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">alloc()</text>
+<text text-anchor="start" x="8" y="-851.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">allocUnsafe()</text>
+<text text-anchor="start" x="8" y="-839.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">allocUnsafeSlow()</text>
+<text text-anchor="start" x="8" y="-827.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">byteLength()</text>
+<text text-anchor="start" x="8" y="-815.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">compare()</text>
+<text text-anchor="start" x="8" y="-803.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isEncoding()</text>
+<polyline fill="none" stroke="#000000" points="0,-796.5 96.555,-796.5 "></polyline>
+<text text-anchor="start" x="8" y="-783.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">length</text>
+<text text-anchor="start" x="8" y="-771.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">byteOffset</text>
+<text text-anchor="start" x="8" y="-759.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">buffer</text>
+<polyline fill="none" stroke="#000000" points="0,-752.5 96.555,-752.5 "></polyline>
+<text text-anchor="start" x="8" y="-739.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">resize()</text>
+<text text-anchor="start" x="8" y="-727.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">append()</text>
+<text text-anchor="start" x="8" y="-715.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">write()</text>
+<text text-anchor="start" x="8" y="-703.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">fill()</text>
+<text text-anchor="start" x="8" y="-691.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">indexOf()</text>
+<text text-anchor="start" x="8" y="-679.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">compare()</text>
+<text text-anchor="start" x="8" y="-667.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">copy()</text>
+<text text-anchor="start" x="8" y="-655.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">set()</text>
+<text text-anchor="start" x="8" y="-643.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readUInt8()</text>
+<text text-anchor="start" x="8" y="-631.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readUInt16LE()</text>
+<text text-anchor="start" x="8" y="-619.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readUInt16BE()</text>
+<text text-anchor="start" x="8" y="-607.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readUInt32LE()</text>
+<text text-anchor="start" x="8" y="-595.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readUInt32BE()</text>
+<text text-anchor="start" x="8" y="-583.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readUIntLE()</text>
+<text text-anchor="start" x="8" y="-571.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readUIntBE()</text>
+<text text-anchor="start" x="8" y="-559.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readInt64LE()</text>
+<text text-anchor="start" x="8" y="-547.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readInt64BE()</text>
+<text text-anchor="start" x="8" y="-535.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readInt8()</text>
+<text text-anchor="start" x="8" y="-523.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readInt16LE()</text>
+<text text-anchor="start" x="8" y="-511.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readInt16BE()</text>
+<text text-anchor="start" x="8" y="-499.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readInt32LE()</text>
+<text text-anchor="start" x="8" y="-487.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readInt32BE()</text>
+<text text-anchor="start" x="8" y="-475.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readIntLE()</text>
+<text text-anchor="start" x="8" y="-463.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readIntBE()</text>
+<text text-anchor="start" x="8" y="-451.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeInt64LE()</text>
+<text text-anchor="start" x="8" y="-439.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeInt64BE()</text>
+<text text-anchor="start" x="8" y="-427.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readFloatLE()</text>
+<text text-anchor="start" x="8" y="-415.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readFloatBE()</text>
+<text text-anchor="start" x="8" y="-403.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readDoubleLE()</text>
+<text text-anchor="start" x="8" y="-391.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readDoubleBE()</text>
+<text text-anchor="start" x="8" y="-379.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeUInt8()</text>
+<text text-anchor="start" x="8" y="-367.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeUInt16LE()</text>
+<text text-anchor="start" x="8" y="-355.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeUInt16BE()</text>
+<text text-anchor="start" x="8" y="-343.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeUInt32LE()</text>
+<text text-anchor="start" x="8" y="-331.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeUInt32BE()</text>
+<text text-anchor="start" x="8" y="-319.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeUIntLE()</text>
+<text text-anchor="start" x="8" y="-307.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeUIntBE()</text>
+<text text-anchor="start" x="8" y="-295.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeInt8()</text>
+<text text-anchor="start" x="8" y="-283.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeInt16LE()</text>
+<text text-anchor="start" x="8" y="-271.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeInt16BE()</text>
+<text text-anchor="start" x="8" y="-259.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeInt32LE()</text>
+<text text-anchor="start" x="8" y="-247.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeInt32BE()</text>
+<text text-anchor="start" x="8" y="-235.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeIntLE()</text>
+<text text-anchor="start" x="8" y="-223.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeIntBE()</text>
+<text text-anchor="start" x="8" y="-211.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeFloatLE()</text>
+<text text-anchor="start" x="8" y="-199.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeFloatBE()</text>
+<text text-anchor="start" x="8" y="-187.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeDoubleLE()</text>
+<text text-anchor="start" x="8" y="-175.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">writeDoubleBE()</text>
+<text text-anchor="start" x="8" y="-163.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">slice()</text>
+<text text-anchor="start" x="8" y="-151.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">join()</text>
+<text text-anchor="start" x="8" y="-139.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">reverse()</text>
+<text text-anchor="start" x="8" y="-127.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">equals()</text>
+<text text-anchor="start" x="8" y="-115.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">hex()</text>
+<text text-anchor="start" x="8" y="-103.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">base32()</text>
+<text text-anchor="start" x="8" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">base58()</text>
+<text text-anchor="start" x="8" y="-79.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">base64()</text>
+<text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">keys()</text>
+<text text-anchor="start" x="8" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">values()</text>
+<text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">entries()</text>
+<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">forEach()</text>
+<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toArray()</text>
+<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;Buffer -->
+<g id="edge1" class="edge">
+<title>object-&gt;Buffer</title>
+<path fill="none" stroke="#000000" d="M48.2775,-1031.1404C48.2775,-1023.3763 48.2775,-1014.5342 48.2775,-1004.7781"></path>
+<polygon fill="#000000" stroke="#000000" points="44.7776,-1031.382 48.2775,-1041.382 51.7776,-1031.3821 44.7776,-1031.382"></polygon>
+</g>
+</g>
+</svg>
+</div>
 
 <div name="构造函数" data-unique="构造函数"></div><h2 id="构造函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">コンストラクタ</font></font></h2>
 <div name="Buffer" data-unique="Buffer"></div><h3 id="Buffer" class="notranslate">Buffer</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクト コンストラクター</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクト コンストラクタ</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> Buffer(<span class="hljs-built_in">Array</span> datas);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
@@ -389,15 +342,15 @@
 <li><span class="notranslate">datas</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 配列、データ配列を初期化します</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクト コンストラクター</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクト コンストラクタ</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> Buffer(<span class="hljs-built_in">ArrayBuffer</span> datas);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">datas</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ArrayBuffer、データ配列を初期化します</font></font></li>
+<li><span class="notranslate">datas</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ArrayBuffer、データ配列の初期化</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクト コンストラクター</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクト コンストラクタ</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> Buffer(TypedArray datas);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
@@ -405,7 +358,7 @@
 <li><span class="notranslate">datas</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: TypedArray、データ配列の初期化</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクト コンストラクター</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクト コンストラクタ</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> Buffer(ArrayBufferView datas);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
@@ -413,7 +366,7 @@
 <li><span class="notranslate">datas</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ArrayBufferView、データ配列を初期化します</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクト コンストラクター</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクト コンストラクタ</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> Buffer(Buffer buffer);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
@@ -421,41 +374,41 @@
 <li><span class="notranslate">buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: バッファ、Buffer オブジェクトを初期化します</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクト コンストラクター</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクト コンストラクタ</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">new</span> Buffer(<span class="hljs-built_in">String</span> str,
     <span class="hljs-built_in">String</span> codec = <span class="hljs-string">"utf8"</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、初期化文字列。文字列は utf-8 形式で書き込まれます。デフォルトでは、空のオブジェクトが作成されます。</font></font></li>
+<li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、初期化文字列、文字列は utf-8 形式で書き込まれ、デフォルトで空のオブジェクトが作成されます</font></font></li>
 <li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、エンコード形式を指定します。使用できる値は次のとおりです: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"utf8"、または</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">モジュールがサポートする文字セット</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクト コンストラクター</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクト コンストラクタ</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> Buffer(Integer size = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、バッファサイズの初期化</font></font></li>
+<li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、初期バッファ サイズ</font></font></li>
 </ul>
 <div name="操作符" data-unique="操作符"></div><h2 id="操作符"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オペレーター</font></font></h2>
 <div name="operator[]" data-unique="operator[]"></div><h3 id="operator[]" class="notranslate">operator[]</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュオブジェクトは添え字を使用してバイナリデータに直接アクセスできます</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクトは、添え字を使用してバイナリ データに直接アクセスできます。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer[];
 </code></pre>
 <hr>
 <div name="@iterator" data-unique="@iterator"></div><h3 id="@iterator" class="notranslate">@iterator</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">現在のオブジェクト要素の反復子をクエリします</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">現在のオブジェクトの要素を照会する反復子</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Iterator Buffer.@iterator();
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><a href="iterator.md.html" class="notranslate">Iterator</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、現在のオブジェクトの要素に対する反復子を返します</font></font></li>
 </ul>
 <div name="对象" data-unique="对象"></div><h2 id="对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">物体</font></font></h2>
 <div name="Buffer8" data-unique="Buffer8"></div><h3 id="Buffer" class="notranslate">Buffer</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">のバイナリ データ キャッシュ オブジェクト</font></font><a href="../../module/ifs/io.md.html" class="notranslate">io</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">読み書きデータ処理</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">のバイナリ データ キャッシュ オブジェクト</font></font><a href="../../module/ifs/io.md.html" class="notranslate">io</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">読み書きのためのデータ処理</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer <span class="hljs-keyword">new</span> Buffer;
 </code></pre>
 <div name="静态函数" data-unique="静态函数"></div><h2 id="静态函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">静的関数</font></font></h2>
@@ -465,9 +418,9 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: チェックする変数が与えられた場合の値</font></font></li>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 検出する変数が与えられた値</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、着信オブジェクトが Buffer オブジェクトかどうか</font></font></li>
 </ul>
@@ -483,12 +436,12 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
 <li><span class="notranslate">buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Buffer、指定された Buffer タイプ変数を使用して Buffer オブジェクトを作成します</font></font></li>
-<li><span class="notranslate">byteOffset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、0 から始まるデータの開始位置を指定します。</font></font></li>
-<li><span class="notranslate">length</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、データ長を指定、開始ビットは -1、残りのすべてのデータを示す</font></font></li>
+<li><span class="notranslate">byteOffset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、0 から始まるデータの開始位置を指定します</font></font></li>
+<li><span class="notranslate">length</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数。データ長を指定します。開始ビットは -1 で、残りのすべてのデータを示します。</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
-<li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、Buffer インスタンスを返します</font></font></li>
+<li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、 Buffer インスタンスを返します</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文字列から Buffer オブジェクトを作成する</font></font></strong></p>
@@ -501,12 +454,12 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
 <li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、初期化文字列、文字列は utf-8 形式で書き込まれます</font></font></li>
-<li><span class="notranslate">byteOffset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、0 から始まるデータの開始位置を指定します。</font></font></li>
-<li><span class="notranslate">length</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、データ長を指定、開始ビットは -1、残りのすべてのデータを示す</font></font></li>
+<li><span class="notranslate">byteOffset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、0 から始まるデータの開始位置を指定します</font></font></li>
+<li><span class="notranslate">length</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数。データ長を指定します。開始ビットは -1 で、残りのすべてのデータを示します。</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
-<li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、Buffer インスタンスを返します</font></font></li>
+<li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、 Buffer インスタンスを返します</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文字列から Buffer オブジェクトを作成する</font></font></strong></p>
@@ -516,32 +469,32 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、初期化文字列。文字列は utf-8 形式で書き込まれます。デフォルトでは、空のオブジェクトが作成されます。</font></font></li>
+<li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、初期化文字列、文字列は utf-8 形式で書き込まれ、デフォルトで空のオブジェクトが作成されます</font></font></li>
 <li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、エンコード形式を指定します。使用できる値は次のとおりです: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"utf8"、または</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">モジュールがサポートする文字セット</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
-<li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、Buffer インスタンスを返します</font></font></li>
+<li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、 Buffer インスタンスを返します</font></font></li>
 </ul>
 <hr>
 <div name="concat" data-unique="concat"></div><h3 id="concat" class="notranslate">concat</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">複数のバッファからのデータの接合</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">複数のバッファからのデータを連結する</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> Buffer Buffer.concat(<span class="hljs-built_in">Array</span> buflist,<font></font>
     Integer cutLength = <span class="hljs-number">-1</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">buflist</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 配列、スプライスされるバッファ配列</font></font></li>
+<li><span class="notranslate">buflist</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 配列、接合するバッファ配列</font></font></li>
 <li><span class="notranslate">cutLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、インターセプトする Buffer オブジェクトの数</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、スプライシング後に生成された新しい Buffer オブジェクト</font></font></li>
 </ul>
 <hr>
 <div name="alloc" data-unique="alloc"></div><h3 id="alloc" class="notranslate">alloc</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定された長さの新しいバッファーを割り当てます。</font><font style="vertical-align: inherit;">サイズが 0 の場合、長さゼロのバッファーが作成されます。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定された長さの新しいバッファーを割り当てます。</font><font style="vertical-align: inherit;">size が 0 の場合、長さ 0 のバッファーが作成されます。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">static</span> Buffer Buffer.alloc(Integer size,<font></font>
@@ -551,15 +504,15 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
 <li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、バッファの希望の長さ</font></font></li>
-<li><span class="notranslate">fill</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、新しいバッファに事前に入力する値。文字列/バッファ/整数値タイプを使用します。</font><font style="vertical-align: inherit;">デフォルト: 0</font></font></li>
+<li><span class="notranslate">fill</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、新しいバッファを事前に埋める値、文字列/バッファ/整数値タイプを使用できます。</font><font style="vertical-align: inherit;">デフォルト: 0</font></font></li>
 <li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、エンコード形式を指定します。使用できる値は次のとおりです: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"utf8"、または</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">モジュールがサポートする文字セット</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、塗りつぶされた新しい Buffer オブジェクト</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定された長さの新しいバッファーを割り当てます。</font><font style="vertical-align: inherit;">サイズが 0 の場合、長さゼロのバッファーが作成されます。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定された長さの新しいバッファーを割り当てます。</font><font style="vertical-align: inherit;">size が 0 の場合、長さ 0 のバッファーが作成されます。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">static</span> Buffer Buffer.alloc(Integer size,
@@ -569,15 +522,15 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
 <li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、バッファの希望の長さ</font></font></li>
-<li><span class="notranslate">fill</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 新しいバッファに事前に入力する値である文字列。文字列/バッファ/整数値タイプを使用します。</font><font style="vertical-align: inherit;">デフォルト: 0</font></font></li>
+<li><span class="notranslate">fill</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、新しいバッファを事前に埋める値、文字列/バッファ/整数値タイプを使用できます。</font><font style="vertical-align: inherit;">デフォルト: 0</font></font></li>
 <li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、エンコード形式を指定します。使用できる値は次のとおりです: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"utf8"、または</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">モジュールがサポートする文字セット</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、塗りつぶされた新しい Buffer オブジェクト</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定された長さの新しいバッファーを割り当てます。</font><font style="vertical-align: inherit;">サイズが 0 の場合、長さゼロのバッファーが作成されます。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定された長さの新しいバッファーを割り当てます。</font><font style="vertical-align: inherit;">size が 0 の場合、長さ 0 のバッファーが作成されます。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">static</span> Buffer Buffer.alloc(Integer size,<font></font>
@@ -587,36 +540,36 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
 <li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、バッファの希望の長さ</font></font></li>
-<li><span class="notranslate">fill</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 新しいバッファを事前に埋める値であるバッファは、文字列/バッファ/整数値タイプを使用します。</font><font style="vertical-align: inherit;">デフォルト: 0</font></font></li>
+<li><span class="notranslate">fill</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: バッファ、新しいバッファを事前に埋める値、文字列/バッファ/整数値タイプを使用できます。</font><font style="vertical-align: inherit;">デフォルト: 0</font></font></li>
 <li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、エンコード形式を指定します。使用できる値は次のとおりです: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"utf8"、または</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">モジュールがサポートする文字セット</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、塗りつぶされた新しい Buffer オブジェクト</font></font></li>
 </ul>
 <hr>
 <div name="allocUnsafe" data-unique="allocUnsafe"></div><h3 id="allocUnsafe" class="notranslate">allocUnsafe</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定された長さの新しいバッファーを割り当てます。</font><font style="vertical-align: inherit;">サイズが 0 の場合、長さゼロのバッファーが作成されます。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定された長さの新しいバッファーを割り当てます。</font><font style="vertical-align: inherit;">size が 0 の場合、長さ 0 のバッファーが作成されます。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Buffer Buffer.allocUnsafe(Integer size);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
 <li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、バッファの希望の長さ</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、指定されたサイズの新しい Buffer オブジェクト</font></font></li>
 </ul>
 <hr>
 <div name="allocUnsafeSlow" data-unique="allocUnsafeSlow"></div><h3 id="allocUnsafeSlow" class="notranslate">allocUnsafeSlow</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定された長さの新しいバッファーを割り当てます。</font><font style="vertical-align: inherit;">サイズが 0 の場合、長さゼロのバッファーが作成されます。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定された長さの新しいバッファーを割り当てます。</font><font style="vertical-align: inherit;">size が 0 の場合、長さ 0 のバッファーが作成されます。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Buffer Buffer.allocUnsafeSlow(Integer size);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
 <li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、バッファの希望の長さ</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、指定されたサイズの新しい Buffer オブジェクト</font></font></li>
 </ul>
@@ -629,12 +582,12 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String、フェッチされるバイトの文字列。str が ArrayBuffer/TypedArray/DataView/Buffer オブジェクトの場合、実際の長さを返します</font></font></li>
+<li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String、取得するバイトの文字列。str が ArrayBuffer/TypedArray/DataView/Buffer オブジェクトの場合、実際の長さを返します</font></font></li>
 <li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、エンコード形式を指定します。使用できる値は次のとおりです: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"utf8"、または</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">モジュールがサポートする文字セット</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
-<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、実際の長さをバイト単位で返します</font></font></li>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、実際のバイト長を返します</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文字列の実際のバイト長を返します</font></font></strong></p>
@@ -644,12 +597,12 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ArrayBuffer、取得するバイトの文字列。str が ArrayBuffer/TypedArray/DataView/Buffer オブジェクトの場合、実際の長さを返します</font></font></li>
+<li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ArrayBuffer、取得するバイト文字列。str が ArrayBuffer/TypedArray/DataView/Buffer オブジェクトの場合、実際の長さを返します</font></font></li>
 <li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、エンコード形式を指定します。使用できる値は次のとおりです: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"utf8"、または</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">モジュールがサポートする文字セット</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
-<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、実際の長さをバイト単位で返します</font></font></li>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、実際のバイト長を返します</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文字列の実際のバイト長を返します</font></font></strong></p>
@@ -662,9 +615,9 @@
 <li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ArrayBufferView、取得するバイト文字列。str が ArrayBuffer/TypedArray/DataView/Buffer オブジェクトの場合、実際の長さを返します</font></font></li>
 <li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、エンコード形式を指定します。使用できる値は次のとおりです: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"utf8"、または</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">モジュールがサポートする文字セット</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
-<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、実際の長さをバイト単位で返します</font></font></li>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、実際のバイト長を返します</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文字列の実際のバイト長を返します</font></font></strong></p>
@@ -674,28 +627,28 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Buffer、フェッチされるバイト文字列。str が ArrayBuffer/TypedArray/DataView/Buffer オブジェクトの場合、実際の長さを返します</font></font></li>
+<li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Buffer、フェッチされるバイトの文字列。str が ArrayBuffer/TypedArray/DataView/Buffer オブジェクトの場合、実際の長さを返します</font></font></li>
 <li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、エンコード形式を指定します。使用できる値は次のとおりです: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"utf8"、または</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">モジュールがサポートする文字セット</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
-<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、実際の長さをバイト単位で返します</font></font></li>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、実際のバイト長を返します</font></font></li>
 </ul>
 <hr>
 <div name="compare" data-unique="compare"></div><h3 id="compare" class="notranslate">compare</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">buf1 と buf2 を比較します, 多くの場合 Buffer インスタンス間のソートに使用されます. このメソッドは buf1.compare(buf2) と同等です.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">buf1 と buf2 の比較は、Buffer インスタンス間のソートによく使用されます。このメソッドは、buf1.compare(buf2) と同等です。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> Integer Buffer.compare(Buffer buf1,<font></font>
     Buffer buf2);<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">buf1</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: バッファ、比較する buf</font></font></li>
-<li><span class="notranslate">buf2</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: バッファ、比較する buf</font></font></li>
+<li><span class="notranslate">buf1</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 比較するバッファ、buf</font></font></li>
+<li><span class="notranslate">buf2</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 比較するバッファ、buf</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
-<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、比較されたバイトの長さを返します</font></font></li>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、比較バイト長を返します</font></font></li>
 </ul>
 <hr>
 <div name="isEncoding" data-unique="isEncoding"></div><h3 id="isEncoding" class="notranslate">isEncoding</h3>
@@ -706,18 +659,18 @@
 <ul>
 <li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、検出するエンコード形式</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
-<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、サポートするかどうか</font></font></li>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、サポートしていますか</font></font></li>
 </ul>
-<div name="成员属性" data-unique="成员属性"></div><h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">メンバー プロパティ</font></font></h2>
+<div name="成员属性" data-unique="成员属性"></div><h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">メンバー属性</font></font></h2>
 <div name="length" data-unique="length"></div><h3 id="length" class="notranslate">length</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">整数、キャッシュされたオブジェクトのサイズを取得します</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer Buffer.length;
 </code></pre>
 <hr>
 <div name="byteOffset" data-unique="byteOffset"></div><h3 id="byteOffset" class="notranslate">byteOffset</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">整数、キャッシュされたオブジェクトのオフセット値を取得します</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">整数、キャッシュ オブジェクトのオフセット値を取得します</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer Buffer.byteOffset;
 </code></pre>
 <hr>
@@ -732,7 +685,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">sz</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、新しいサイズを指定</font></font></li>
+<li><span class="notranslate">sz</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、新しいサイズを指定します</font></font></li>
 </ul>
 <hr>
 <div name="append" data-unique="append"></div><h3 id="append" class="notranslate">append</h3>
@@ -744,7 +697,7 @@
 <li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: バッファ、バイナリデータの初期化</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクトの最後に文字列を書き込みます。文字列は utf-8 形式で書き込まれます。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクトの末尾に文字列を書き込むと、文字列は utf-8 形式で書き込まれます</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Buffer.append(<span class="hljs-built_in">String</span> str,
     <span class="hljs-built_in">String</span> codec = <span class="hljs-string">"utf8"</span>);
@@ -769,12 +722,12 @@
 <ul>
 <li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、書き込まれる文字列</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：整数、書き込み開始位置</font></font></li>
-<li><span class="notranslate">length</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、書き込み長 (バイト単位、デフォルト値 -1)、指定されていない場合は、書き込まれる文字列の長さ</font></font></li>
+<li><span class="notranslate">length</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、書き込み長 (単位バイト、デフォルト値 -1)、指定されていない場合は、書き込まれる文字列の長さ</font></font></li>
 <li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、エンコード形式を指定します。使用できる値は次のとおりです: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"utf8"、または</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">モジュールがサポートする文字セット</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
-<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、書き込まれたデータ バイトの長さ</font></font></li>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、書き込まれたデータバイトの長さ</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定された文字列をキャッシュ オブジェクトに書き込みます。文字列のデフォルトは utf-8 で、範囲外の場合はデータの一部のみが書き込まれます</font></font></strong></p>
@@ -790,9 +743,9 @@
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：整数、書き込み開始位置</font></font></li>
 <li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、エンコード形式を指定します。使用できる値は次のとおりです: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"utf8"、または</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">モジュールがサポートする文字セット</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
-<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、書き込まれたデータ バイトの長さ</font></font></li>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、書き込まれたデータバイトの長さ</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定された文字列をキャッシュ オブジェクトに書き込みます。文字列のデフォルトは utf-8 で、範囲外の場合はデータの一部のみが書き込まれます</font></font></strong></p>
@@ -805,13 +758,13 @@
 <li><span class="notranslate">str</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、書き込まれる文字列</font></font></li>
 <li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、エンコード形式を指定します。使用できる値は次のとおりです: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"utf8"、または</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">モジュールがサポートする文字セット</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
-<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、書き込まれたデータ バイトの長さ</font></font></li>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、書き込まれたデータバイトの長さ</font></font></li>
 </ul>
 <hr>
 <div name="fill" data-unique="fill"></div><h3 id="fill" class="notranslate">fill</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定されたコンテンツ データで Buffer オブジェクトを埋めます</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buffer オブジェクトの指定されたコンテンツ データを入力します。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div>Buffer Buffer.fill(Integer v,<font></font>
@@ -821,15 +774,15 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
 <li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、埋められるデータ。オフセットと終了が指定されていない場合、バッファ全体が埋められます。</font></font></li>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、塗りつぶし開始位置</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、パディング開始位置</font></font></li>
 <li><span class="notranslate">end</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、塗りつぶし終了位置</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、現在の Buffer オブジェクトを返します</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定されたコンテンツ データで Buffer オブジェクトを埋めます</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buffer オブジェクトの指定されたコンテンツ データを入力します。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div>Buffer Buffer.fill(Buffer v,<font></font>
@@ -839,15 +792,15 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
 <li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: バッファ、埋められるデータ。オフセットと終了が指定されていない場合、バッファ全体が埋められます。</font></font></li>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、塗りつぶし開始位置</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、パディング開始位置</font></font></li>
 <li><span class="notranslate">end</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、塗りつぶし終了位置</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、現在の Buffer オブジェクトを返します</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定されたコンテンツ データで Buffer オブジェクトを埋めます</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buffer オブジェクトの指定されたコンテンツ データを入力します。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div>Buffer Buffer.fill(<span class="hljs-built_in">String</span> v,<font></font>
@@ -856,32 +809,32 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、埋められるデータ、オフセットと終了が指定されていない場合、バッファ全体が埋められます</font></font></li>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、塗りつぶし開始位置</font></font></li>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、埋められるデータ。オフセットと終了が指定されていない場合、バッファ全体が埋められます。</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、パディング開始位置</font></font></li>
 <li><span class="notranslate">end</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、塗りつぶし終了位置</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、現在の Buffer オブジェクトを返します</font></font></li>
 </ul>
 <hr>
 <div name="indexOf" data-unique="indexOf"></div><h3 id="indexOf" class="notranslate">indexOf</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buffer 内の指定されたデータの最初の出現を返します</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定されたデータが Buffer 内で最初に現れる位置を返します</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.indexOf(Integer v,<font></font>
     Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、検索するデータ、オフセットが指定されていない場合、デフォルトは開始ビットから始まります</font></font></li>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、検索するデータ。オフセットが指定されていない場合、デフォルトで開始ビットから開始されます。</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、検索開始位置</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、見つかった位置を返します。見つからない場合は -1 を返します</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buffer 内の指定されたデータの最初の出現を返します</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定されたデータが Buffer 内で最初に現れる位置を返します</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.indexOf(Buffer v,<font></font>
     Integer offset = <span class="hljs-number">0</span>);
@@ -891,22 +844,22 @@
 <li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: バッファ、検索するデータ、オフセットが指定されていない場合、デフォルトで開始ビットから開始されます</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、検索開始位置</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、見つかった位置を返します。見つからない場合は -1 を返します</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buffer 内の指定されたデータの最初の出現を返します</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定されたデータが Buffer 内で最初に現れる位置を返します</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.indexOf(<span class="hljs-built_in">String</span> v,<font></font>
     Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、検索するデータ、オフセットが指定されていない場合、デフォルトは開始ビットから始まります</font></font></li>
+<li><span class="notranslate">v</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、検索するデータ。オフセットが指定されていない場合、デフォルトで開始ビットから開始されます。</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、検索開始位置</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、見つかった位置を返します。見つからない場合は -1 を返します</font></font></li>
 </ul>
@@ -919,13 +872,13 @@
 <ul>
 <li><span class="notranslate">buf</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Buffer、比較するバッファ オブジェクト</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、内容比較結果</font></font></li>
 </ul>
 <hr>
 <div name="copy" data-unique="copy"></div><h3 id="copy" class="notranslate">copy</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ソース キャッシュ オブジェクト領域から宛先キャッシュ オブジェクト領域へのデータのコピー</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ソース キャッシュ オブジェクト領域からターゲット キャッシュ オブジェクト領域へのデータのコピー</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -937,17 +890,17 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
 <li><span class="notranslate">targetBuffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: バッファ、ターゲット バッファ オブジェクト</font></font></li>
-<li><span class="notranslate">targetStart</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、ターゲット キャッシュ オブジェクトのコピー開始バイト位置、デフォルトは 0</font></font></li>
+<li><span class="notranslate">targetStart</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、ターゲット キャッシュ オブジェクトの開始コピー バイト位置、デフォルトは 0</font></font></li>
 <li><span class="notranslate">sourceStart</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、ソース キャッシュ オブジェクトの開始バイト位置、デフォルトは 0</font></font></li>
 <li><span class="notranslate">sourceEnd</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、ソース キャッシュ オブジェクトの終了バイト位置。デフォルトは -1 で、ソース データの長さを示します。</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
-<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、コピーされたデータの長さ (バイト単位)</font></font></li>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、コピーされたデータのバイト長</font></font></li>
 </ul>
 <hr>
 <div name="set" data-unique="set"></div><h3 id="set" class="notranslate">set</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ソース キャッシュ オブジェクト領域から宛先キャッシュ オブジェクト領域へのデータのコピー</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ソース キャッシュ オブジェクト領域からターゲット キャッシュ オブジェクト領域へのデータのコピー</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.set(Buffer src,<font></font>
     Integer start);<font></font>
@@ -957,9 +910,9 @@
 <li><span class="notranslate">src</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: バッファ、ターゲット バッファ オブジェクト</font></font></li>
 <li><span class="notranslate">start</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、ソース キャッシュ オブジェクトの開始バイト位置</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
-<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、コピーされたデータの長さ (バイト単位)</font></font></li>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、コピーされたデータのバイト長</font></font></li>
 </ul>
 <hr>
 <div name="readUInt8" data-unique="readUInt8"></div><h3 id="readUInt8" class="notranslate">readUInt8</h3>
@@ -968,119 +921,119 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定、デフォルトは 0</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定します。デフォルトは 0 です</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、読み取った整数値を返します</font></font></li>
 </ul>
 <hr>
 <div name="readUInt16LE" data-unique="readUInt16LE"></div><h3 id="readUInt16LE" class="notranslate">readUInt16LE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">リトルエンディアンで格納されたキャッシュ オブジェクトから 16 ビットの符号なし整数値を読み取ります</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ローエンディアン順に格納されたキャッシュ オブジェクトから 16 ビットの符号なし整数値を読み取ります</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.readUInt16LE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定、デフォルトは 0</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定します。デフォルトは 0 です</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、読み取った整数値を返します</font></font></li>
 </ul>
 <hr>
 <div name="readUInt16BE" data-unique="readUInt16BE"></div><h3 id="readUInt16BE" class="notranslate">readUInt16BE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ビッグ エンディアンで格納されたキャッシュ オブジェクトから 16 ビットの符号なし整数値を読み取ります</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクトから 16 ビットの符号なし整数値を読み取り、ハイ エンディアンで格納します。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.readUInt16BE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定、デフォルトは 0</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定します。デフォルトは 0 です</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、読み取った整数値を返します</font></font></li>
 </ul>
 <hr>
 <div name="readUInt32LE" data-unique="readUInt32LE"></div><h3 id="readUInt32LE" class="notranslate">readUInt32LE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">リトルエンディアンで格納されたキャッシュ オブジェクトから 32 ビットの符号なし整数値を読み取ります</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Long Buffer.readUInt32LE(Integer offset = <span class="hljs-number">0</span>);
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ローエンディアンで格納されたキャッシュ オブジェクトから 32 ビットの符号なし整数値を読み取ります</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Number</span> Buffer.readUInt32LE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定、デフォルトは 0</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定します。デフォルトは 0 です</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
-<li><span class="notranslate">Long</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、読み取った整数値を返します</font></font></li>
+<li><span class="notranslate">Number</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、読み取った整数値を返します</font></font></li>
 </ul>
 <hr>
 <div name="readUInt32BE" data-unique="readUInt32BE"></div><h3 id="readUInt32BE" class="notranslate">readUInt32BE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクトから 32 ビットの符号なし整数値を読み取り、ビッグ エンディアンで格納します</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Long Buffer.readUInt32BE(Integer offset = <span class="hljs-number">0</span>);
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクトから 32 ビットの符号なし整数値を読み込みます。ハイ エンディアンで格納されます。</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Number</span> Buffer.readUInt32BE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定、デフォルトは 0</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定します。デフォルトは 0 です</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
-<li><span class="notranslate">Long</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、読み取った整数値を返します</font></font></li>
+<li><span class="notranslate">Number</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、読み取った整数値を返します</font></font></li>
 </ul>
 <hr>
 <div name="readUIntLE" data-unique="readUIntLE"></div><h3 id="readUIntLE" class="notranslate">readUIntLE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクトから符号なし整数値を読み取り、最大 64 ビットをサポートし、リトル エンディアンで格納します。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ローエンディアン順に格納された最大 48 ビットをサポートするキャッシュ オブジェクトから符号なし整数値を読み取ります</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Long Buffer.readUIntLE(Integer offset = <span class="hljs-number">0</span>,<font></font>
-    Integer byteLength = <span class="hljs-number">8</span>);
+2</div><span class="hljs-built_in">Number</span> Buffer.readUIntLE(Integer offset = <span class="hljs-number">0</span>,<font></font>
+    Integer byteLength = <span class="hljs-number">6</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定、デフォルトは 0</font></font></li>
-<li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数。読み取るバイト数を指定します。デフォルトは 8 バイトです。</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定します。デフォルトは 0 です</font></font></li>
+<li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取るバイト数を指定、デフォルトは 6 バイト</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
-<li><span class="notranslate">Long</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、読み取った整数値を返します</font></font></li>
+<li><span class="notranslate">Number</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、読み取った整数値を返します</font></font></li>
 </ul>
 <hr>
 <div name="readUIntBE" data-unique="readUIntBE"></div><h3 id="readUIntBE" class="notranslate">readUIntBE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクトから符号なし整数値を読み取り、最大 64 ビットをサポートし、それを上位エンディアン順に格納します</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクトから最大 48 ビットの符号なし整数値を読み取り、ハイ エンディアンで格納されます</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Long Buffer.readUIntBE(Integer offset = <span class="hljs-number">0</span>,<font></font>
-    Integer byteLength = <span class="hljs-number">8</span>);
+2</div><span class="hljs-built_in">Number</span> Buffer.readUIntBE(Integer offset = <span class="hljs-number">0</span>,<font></font>
+    Integer byteLength = <span class="hljs-number">6</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定、デフォルトは 0</font></font></li>
-<li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数。読み取るバイト数を指定します。デフォルトは 8 バイトです。</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定します。デフォルトは 0 です</font></font></li>
+<li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取るバイト数を指定、デフォルトは 6 バイト</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
-<li><span class="notranslate">Long</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、読み取った整数値を返します</font></font></li>
+<li><span class="notranslate">Number</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、読み取った整数値を返します</font></font></li>
 </ul>
 <hr>
 <div name="readInt64LE" data-unique="readInt64LE"></div><h3 id="readInt64LE" class="notranslate">readInt64LE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">リトルエンディアンで格納されたキャッシュ オブジェクトから 64 ビット整数値を読み取ります</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ローエンディアンで格納されたキャッシュ オブジェクトから 64 ビット整数値を読み取ります</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Long Buffer.readInt64LE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定、デフォルトは 0</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定します。デフォルトは 0 です</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Long</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、読み取った整数値を返します</font></font></li>
 </ul>
 <hr>
 <div name="readInt64BE" data-unique="readInt64BE"></div><h3 id="readInt64BE" class="notranslate">readInt64BE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ビッグ エンディアン ストレージのキャッシュ オブジェクトから 64 ビット整数値を読み取ります。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクトから 64 ビット整数値を読み取り、ハイ エンディアンで格納されます</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Long Buffer.readInt64BE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定、デフォルトは 0</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定します。デフォルトは 0 です</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Long</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、読み取った整数値を返します</font></font></li>
 </ul>
@@ -1091,183 +1044,183 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定、デフォルトは 0</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定します。デフォルトは 0 です</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、読み取った整数値を返します</font></font></li>
 </ul>
 <hr>
 <div name="readInt16LE" data-unique="readInt16LE"></div><h3 id="readInt16LE" class="notranslate">readInt16LE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">リトルエンディアンで格納されたキャッシュ オブジェクトから 16 ビット整数値を読み取ります</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ローエンディアン順に格納されたキャッシュ オブジェクトから 16 ビット整数値を読み取ります</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.readInt16LE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定、デフォルトは 0</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定します。デフォルトは 0 です</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、読み取った整数値を返します</font></font></li>
 </ul>
 <hr>
 <div name="readInt16BE" data-unique="readInt16BE"></div><h3 id="readInt16BE" class="notranslate">readInt16BE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ビッグ エンディアン ストレージのキャッシュ オブジェクトから 16 ビット整数値を読み取ります。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクトから 16 ビット整数値を読み取り、ハイ エンディアンで格納されます</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.readInt16BE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定、デフォルトは 0</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定します。デフォルトは 0 です</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、読み取った整数値を返します</font></font></li>
 </ul>
 <hr>
 <div name="readInt32LE" data-unique="readInt32LE"></div><h3 id="readInt32LE" class="notranslate">readInt32LE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">リトルエンディアン ストレージのキャッシュ オブジェクトから 32 ビット整数値を読み取ります。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">低エンディアン順に格納されたキャッシュ オブジェクトから 32 ビット整数値を読み取ります</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.readInt32LE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定、デフォルトは 0</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定します。デフォルトは 0 です</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、読み取った整数値を返します</font></font></li>
 </ul>
 <hr>
 <div name="readInt32BE" data-unique="readInt32BE"></div><h3 id="readInt32BE" class="notranslate">readInt32BE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ビッグ エンディアンで格納されたキャッシュ オブジェクトから 32 ビット整数値を読み取ります</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクトから 32 ビット整数値を読み取り、ハイ エンディアンで格納されます</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.readInt32BE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定、デフォルトは 0</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定します。デフォルトは 0 です</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、読み取った整数値を返します</font></font></li>
 </ul>
 <hr>
 <div name="readIntLE" data-unique="readIntLE"></div><h3 id="readIntLE" class="notranslate">readIntLE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクトから整数値を読み取り、最大 64 ビットをサポートし、リトル エンディアンで格納します。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ローエンディアン順に格納された、最大 48 ビットをサポートするキャッシュ オブジェクトから整数値を読み取ります</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Long Buffer.readIntLE(Integer offset = <span class="hljs-number">0</span>,<font></font>
-    Integer byteLength = <span class="hljs-number">8</span>);
+2</div><span class="hljs-built_in">Number</span> Buffer.readIntLE(Integer offset = <span class="hljs-number">0</span>,<font></font>
+    Integer byteLength = <span class="hljs-number">6</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定、デフォルトは 0</font></font></li>
-<li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数。読み取るバイト数を指定します。デフォルトは 8 バイトです。</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定します。デフォルトは 0 です</font></font></li>
+<li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取るバイト数を指定、デフォルトは 6 バイト</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
-<li><span class="notranslate">Long</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、読み取った整数値を返します</font></font></li>
+<li><span class="notranslate">Number</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、読み取った整数値を返します</font></font></li>
 </ul>
 <hr>
 <div name="readIntBE" data-unique="readIntBE"></div><h3 id="readIntBE" class="notranslate">readIntBE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクトから整数値を読み取り、最大 64 ビットをサポートし、それを上位エンディアン順に格納します</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクトから整数値を読み取り、最大 48 ビットをサポートし、上位エンディアン順に格納されます</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div>Long Buffer.readIntBE(Integer offset = <span class="hljs-number">0</span>,<font></font>
-    Integer byteLength = <span class="hljs-number">8</span>);
+2</div><span class="hljs-built_in">Number</span> Buffer.readIntBE(Integer offset = <span class="hljs-number">0</span>,<font></font>
+    Integer byteLength = <span class="hljs-number">6</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定、デフォルトは 0</font></font></li>
-<li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数。読み取るバイト数を指定します。デフォルトは 8 バイトです。</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定します。デフォルトは 0 です</font></font></li>
+<li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取るバイト数を指定、デフォルトは 6 バイト</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
-<li><span class="notranslate">Long</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、読み取った整数値を返します</font></font></li>
+<li><span class="notranslate">Number</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、読み取った整数値を返します</font></font></li>
 </ul>
 <hr>
 <div name="writeInt64LE" data-unique="writeInt64LE"></div><h3 id="writeInt64LE" class="notranslate">writeInt64LE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">リトルエンディアンで格納されたキャッシュ オブジェクトに 64 ビット整数値を書き込みます。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ローエンディアン順に格納されたキャッシュ オブジェクトに 64 ビット整数値を書き込みます。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeInt64LE(Long value,<font></font>
     Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：ロング、書き込む値を指定</font></font></li>
+<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long、書き込む値を指定</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、書き込み開始位置を指定</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、オフセットと書き込まれたバイト数</font></font></li>
 </ul>
 <hr>
 <div name="writeInt64BE" data-unique="writeInt64BE"></div><h3 id="writeInt64BE" class="notranslate">writeInt64BE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ビッグ エンディアン ストレージのキャッシュ オブジェクトに 64 ビット整数値を書き込みます。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクトに 64 ビット整数値を書き込み、ハイ エンディアンで格納します。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeInt64BE(Long value,<font></font>
     Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：ロング、書き込む値を指定</font></font></li>
+<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long、書き込む値を指定</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、書き込み開始位置を指定</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、オフセットと書き込まれたバイト数</font></font></li>
 </ul>
 <hr>
 <div name="readFloatLE" data-unique="readFloatLE"></div><h3 id="readFloatLE" class="notranslate">readFloatLE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">リトルエンディアン ストレージのキャッシュ オブジェクトから浮動小数点数を読み取ります。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">リトルエンディアンで格納されたキャッシュ オブジェクトから浮動小数点数を読み取ります</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Number</span> Buffer.readFloatLE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定、デフォルトは 0</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定します。デフォルトは 0 です</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
-<li><span class="notranslate">Number</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、読み込んだ浮動小数点数を返します</font></font></li>
+<li><span class="notranslate">Number</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、読み取った浮動小数点数を返します</font></font></li>
 </ul>
 <hr>
 <div name="readFloatBE" data-unique="readFloatBE"></div><h3 id="readFloatBE" class="notranslate">readFloatBE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ビッグ エンディアン ストレージのキャッシュ オブジェクトから浮動小数点数を読み取ります。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ビッグ エンディアンで格納されたキャッシュ オブジェクトから浮動小数点数を読み取る</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Number</span> Buffer.readFloatBE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定、デフォルトは 0</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定します。デフォルトは 0 です</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
-<li><span class="notranslate">Number</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、読み込んだ浮動小数点数を返します</font></font></li>
+<li><span class="notranslate">Number</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、読み取った浮動小数点数を返します</font></font></li>
 </ul>
 <hr>
 <div name="readDoubleLE" data-unique="readDoubleLE"></div><h3 id="readDoubleLE" class="notranslate">readDoubleLE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">リトルエンディアン ストレージのキャッシュ オブジェクトから倍精度浮動小数点数を読み取ります。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">リトルエンディアンで格納されたキャッシュ オブジェクトから倍精度浮動小数点数を読み取ります。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Number</span> Buffer.readDoubleLE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定、デフォルトは 0</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定します。デフォルトは 0 です</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Number</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、読み取った倍精度浮動小数点数を返します</font></font></li>
 </ul>
 <hr>
 <div name="readDoubleBE" data-unique="readDoubleBE"></div><h3 id="readDoubleBE" class="notranslate">readDoubleBE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ビッグ エンディアン ストレージ内のキャッシュ オブジェクトから倍精度浮動小数点数を読み取ります。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ハイエンディアンで格納されたキャッシュオブジェクトから倍精度浮動小数点数を読み取ります</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Number</span> Buffer.readDoubleBE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定、デフォルトは 0</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取りの開始位置を指定します。デフォルトは 0 です</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Number</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、読み取った倍精度浮動小数点数を返します</font></font></li>
 </ul>
 <hr>
 <div name="writeUInt8" data-unique="writeUInt8"></div><h3 id="writeUInt8" class="notranslate">writeUInt8</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">8 ビットの符号なし整数値をキャッシュ オブジェクトに書き込みます。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">8 ビットの符号なし整数値をバッファー オブジェクトに書き込みます。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeUInt8(Integer value,<font></font>
     Integer offset = <span class="hljs-number">0</span>);
@@ -1277,13 +1230,13 @@
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、書き込む値を指定</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、書き込み開始位置を指定</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、オフセットと書き込まれたバイト数</font></font></li>
 </ul>
 <hr>
 <div name="writeUInt16LE" data-unique="writeUInt16LE"></div><h3 id="writeUInt16LE" class="notranslate">writeUInt16LE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">リトルエンディアンで格納された 16 ビットの符号なし整数値をキャッシュ オブジェクトに書き込みます。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ローエンディアン順に格納された 16 ビットの符号なし整数値をキャッシュ オブジェクトに書き込みます。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeUInt16LE(Integer value,<font></font>
     Integer offset = <span class="hljs-number">0</span>);
@@ -1293,13 +1246,13 @@
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、書き込む値を指定</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、書き込み開始位置を指定</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、オフセットと書き込まれたバイト数</font></font></li>
 </ul>
 <hr>
 <div name="writeUInt16BE" data-unique="writeUInt16BE"></div><h3 id="writeUInt16BE" class="notranslate">writeUInt16BE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">16 ビットの符号なし整数値をキャッシュ オブジェクトに書き込み、ビッグ エンディアンで格納します。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクトに 16 ビットの符号なし整数値を書き込み、ハイ エンディアンで格納します。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeUInt16BE(Integer value,<font></font>
     Integer offset = <span class="hljs-number">0</span>);
@@ -1309,77 +1262,77 @@
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、書き込む値を指定</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、書き込み開始位置を指定</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、オフセットと書き込まれたバイト数</font></font></li>
 </ul>
 <hr>
 <div name="writeUInt32LE" data-unique="writeUInt32LE"></div><h3 id="writeUInt32LE" class="notranslate">writeUInt32LE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">32 ビットの符号なし整数値をキャッシュ オブジェクトに書き込み、リトル エンディアンで格納します。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">32 ビットの符号なし整数値をキャッシュ オブジェクトに書き込み、ロー エンディアン順に格納します</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeUInt32LE(Long value,<font></font>
     Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：ロング、書き込む値を指定</font></font></li>
+<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long、書き込む値を指定</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、書き込み開始位置を指定</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、オフセットと書き込まれたバイト数</font></font></li>
 </ul>
 <hr>
 <div name="writeUInt32BE" data-unique="writeUInt32BE"></div><h3 id="writeUInt32BE" class="notranslate">writeUInt32BE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">32 ビットの符号なし整数値をキャッシュ オブジェクトに書き込み、ビッグ エンディアンで格納します。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">32 ビットの符号なし整数値をキャッシュ オブジェクトに書き込み、ハイ エンディアンで格納します。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeUInt32BE(Long value,<font></font>
     Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：ロング、書き込む値を指定</font></font></li>
+<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long、書き込む値を指定</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、書き込み開始位置を指定</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、オフセットと書き込まれたバイト数</font></font></li>
 </ul>
 <hr>
 <div name="writeUIntLE" data-unique="writeUIntLE"></div><h3 id="writeUIntLE" class="notranslate">writeUIntLE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">リトルエンディアン ストレージで、最大 64 ビットの符号なし整数値をキャッシュ オブジェクトに書き込みます。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">最大 48 ビットをサポートする符号なし整数値をキャッシュ オブジェクトに書き込み、ロー エンディアン順に格納します</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div>Integer Buffer.writeUIntLE(Long value,<font></font>
     Integer offset = <span class="hljs-number">0</span>,<font></font>
-    Integer byteLength = <span class="hljs-number">8</span>);
+    Integer byteLength = <span class="hljs-number">6</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：ロング、書き込む値を指定</font></font></li>
+<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long、書き込む値を指定</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、書き込み開始位置を指定</font></font></li>
-<li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数。書き込むバイト数を指定します。デフォルトは 8 バイトです。</font></font></li>
+<li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、書き込むバイト数を指定、デフォルトは 6 バイト</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、オフセットと書き込まれたバイト数</font></font></li>
 </ul>
 <hr>
 <div name="writeUIntBE" data-unique="writeUIntBE"></div><h3 id="writeUIntBE" class="notranslate">writeUIntBE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">符号なし整数値を、最大 64 ビットのキャッシュ オブジェクトにハイ エンディアン ストレージに書き込みます。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">符号なし整数値をキャッシュ オブジェクトに書き込みます。最大 48 ビットをサポートし、上位エンディアン順に格納されます。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div>Integer Buffer.writeUIntBE(Long value,<font></font>
     Integer offset = <span class="hljs-number">0</span>,<font></font>
-    Integer byteLength = <span class="hljs-number">8</span>);
+    Integer byteLength = <span class="hljs-number">6</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：ロング、書き込む値を指定</font></font></li>
+<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long、書き込む値を指定</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、書き込み開始位置を指定</font></font></li>
-<li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数。書き込むバイト数を指定します。デフォルトは 8 バイトです。</font></font></li>
+<li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、書き込むバイト数を指定、デフォルトは 6 バイト</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、オフセットと書き込まれたバイト数</font></font></li>
 </ul>
@@ -1395,13 +1348,13 @@
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、書き込む値を指定</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、書き込み開始位置を指定</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、オフセットと書き込まれたバイト数</font></font></li>
 </ul>
 <hr>
 <div name="writeInt16LE" data-unique="writeInt16LE"></div><h3 id="writeInt16LE" class="notranslate">writeInt16LE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">リトル エンディアン ストレージのキャッシュ オブジェクトに 16 ビット整数値を書き込みます。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ローエンディアン順に格納されたキャッシュ オブジェクトに 16 ビット整数値を書き込みます。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeInt16LE(Integer value,<font></font>
     Integer offset = <span class="hljs-number">0</span>);
@@ -1411,13 +1364,13 @@
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、書き込む値を指定</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、書き込み開始位置を指定</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、オフセットと書き込まれたバイト数</font></font></li>
 </ul>
 <hr>
 <div name="writeInt16BE" data-unique="writeInt16BE"></div><h3 id="writeInt16BE" class="notranslate">writeInt16BE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">16 ビット整数値をビッグ エンディアン ストレージのキャッシュ オブジェクトに書き込みます。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクトに 16 ビット整数値を書き込み、ハイ エンディアンで格納します。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeInt16BE(Integer value,<font></font>
     Integer offset = <span class="hljs-number">0</span>);
@@ -1427,13 +1380,13 @@
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、書き込む値を指定</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、書き込み開始位置を指定</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、オフセットと書き込まれたバイト数</font></font></li>
 </ul>
 <hr>
 <div name="writeInt32LE" data-unique="writeInt32LE"></div><h3 id="writeInt32LE" class="notranslate">writeInt32LE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">リトル エンディアン ストレージのキャッシュ オブジェクトに 32 ビット整数値を書き込みます。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ローエンディアン順に格納されたキャッシュ オブジェクトに 32 ビット整数値を書き込みます。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeInt32LE(Integer value,<font></font>
     Integer offset = <span class="hljs-number">0</span>);
@@ -1443,13 +1396,13 @@
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、書き込む値を指定</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、書き込み開始位置を指定</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、オフセットと書き込まれたバイト数</font></font></li>
 </ul>
 <hr>
 <div name="writeInt32BE" data-unique="writeInt32BE"></div><h3 id="writeInt32BE" class="notranslate">writeInt32BE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ビッグ エンディアン ストレージのキャッシュ オブジェクトに 32 ビット整数値を書き込みます。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクトに 32 ビット整数値を書き込み、ハイ エンディアンで格納します。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeInt32BE(Integer value,<font></font>
     Integer offset = <span class="hljs-number">0</span>);
@@ -1459,137 +1412,137 @@
 <li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、書き込む値を指定</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、書き込み開始位置を指定</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、オフセットと書き込まれたバイト数</font></font></li>
 </ul>
 <hr>
 <div name="writeIntLE" data-unique="writeIntLE"></div><h3 id="writeIntLE" class="notranslate">writeIntLE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">リトル エンディアン ストレージで最大 64 ビットの整数値をキャッシュ オブジェクトに書き込みます。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ローエンディアン順に格納された、最大 48 ビットをサポートするキャッシュ オブジェクトに整数値を書き込みます。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div>Integer Buffer.writeIntLE(Long value,<font></font>
     Integer offset = <span class="hljs-number">0</span>,<font></font>
-    Integer byteLength = <span class="hljs-number">8</span>);
+    Integer byteLength = <span class="hljs-number">6</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：ロング、書き込む値を指定</font></font></li>
+<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long、書き込む値を指定</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、書き込み開始位置を指定</font></font></li>
-<li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数。書き込むバイト数を指定します。デフォルトは 8 バイトです。</font></font></li>
+<li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、書き込むバイト数を指定、デフォルトは 6 バイト</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、オフセットと書き込まれたバイト数</font></font></li>
 </ul>
 <hr>
 <div name="writeIntBE" data-unique="writeIntBE"></div><h3 id="writeIntBE" class="notranslate">writeIntBE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">整数値を、最大 64 ビットのキャッシュ オブジェクトにハイ エンディアン ストレージに書き込みます。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">整数値をキャッシュ オブジェクトに書き込みます。最大 48 ビットをサポートし、上位エンディアン順に格納されます。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div>Integer Buffer.writeIntBE(Long value,<font></font>
     Integer offset = <span class="hljs-number">0</span>,<font></font>
-    Integer byteLength = <span class="hljs-number">8</span>);
+    Integer byteLength = <span class="hljs-number">6</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：ロング、書き込む値を指定</font></font></li>
+<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long、書き込む値を指定</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、書き込み開始位置を指定</font></font></li>
-<li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数。書き込むバイト数を指定します。デフォルトは 8 バイトです。</font></font></li>
+<li><span class="notranslate">byteLength</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、書き込むバイト数を指定、デフォルトは 6 バイト</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、オフセットと書き込まれたバイト数</font></font></li>
 </ul>
 <hr>
 <div name="writeFloatLE" data-unique="writeFloatLE"></div><h3 id="writeFloatLE" class="notranslate">writeFloatLE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">リトル エンディアン ストレージのキャッシュ オブジェクトに浮動小数点数を書き込みます。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">低エンディアンで格納された浮動小数点数をキャッシュ オブジェクトに書き込みます。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeFloatLE(<span class="hljs-built_in">Number</span> value,<font></font>
     Integer offset);<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：数値、書き込む値を指定</font></font></li>
+<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 数値、書き込む値を指定</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、書き込み開始位置を指定</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、オフセットと書き込まれたバイト数</font></font></li>
 </ul>
 <hr>
 <div name="writeFloatBE" data-unique="writeFloatBE"></div><h3 id="writeFloatBE" class="notranslate">writeFloatBE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">浮動小数点数をビッグ エンディアン ストレージのキャッシュ オブジェクトに書き込みます。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクトに浮動小数点数を書き込み、ハイエンド エンディアンで格納します。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeFloatBE(<span class="hljs-built_in">Number</span> value,<font></font>
     Integer offset);<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：数値、書き込む値を指定</font></font></li>
+<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 数値、書き込む値を指定</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、書き込み開始位置を指定</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、オフセットと書き込まれたバイト数</font></font></li>
 </ul>
 <hr>
 <div name="writeDoubleLE" data-unique="writeDoubleLE"></div><h3 id="writeDoubleLE" class="notranslate">writeDoubleLE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">リトルエンディアン ストレージのキャッシュ オブジェクトに倍精度浮動小数点数を書き込みます。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">低エンディアン順に格納された倍精度浮動小数点数をキャッシュ オブジェクトに書き込みます。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeDoubleLE(<span class="hljs-built_in">Number</span> value,<font></font>
     Integer offset);<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：数値、書き込む値を指定</font></font></li>
+<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 数値、書き込む値を指定</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、書き込み開始位置を指定</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、オフセットと書き込まれたバイト数</font></font></li>
 </ul>
 <hr>
 <div name="writeDoubleBE" data-unique="writeDoubleBE"></div><h3 id="writeDoubleBE" class="notranslate">writeDoubleBE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">倍精度浮動小数点数をビッグ エンディアン ストレージのキャッシュ オブジェクトに書き込みます。</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ハイエンディアンで格納された倍精度浮動小数点数をキャッシュオブジェクトに書き込みます</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeDoubleBE(<span class="hljs-built_in">Number</span> value,<font></font>
     Integer offset);<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：数値、書き込む値を指定</font></font></li>
+<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 数値、書き込む値を指定</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、書き込み開始位置を指定</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、オフセットと書き込まれたバイト数</font></font></li>
 </ul>
 <hr>
 <div name="slice" data-unique="slice"></div><h3 id="slice" class="notranslate">slice</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュの指定された開始点から終了点までのデータを含む新しいキャッシュ オブジェクトを返します</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">バッファの指定された開始位置から終了位置までのデータを含む新しいバッファ オブジェクトを返します。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer Buffer.slice(Integer start = <span class="hljs-number">0</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">start</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、指定された範囲の開始、デフォルトは先頭から開始</font></font></li>
+<li><span class="notranslate">start</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、指定された範囲の先頭、デフォルトは先頭から開始</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、新しいキャッシュ オブジェクトを返します</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定された範囲のデータを含む新しいキャッシュ オブジェクトを返します。範囲がキャッシュを超える場合は、データの有効な部分のみが返されます</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定した範囲のデータを含む新しいキャッシュ オブジェクトを返します。範囲がキャッシュを超える場合は、データの有効な部分のみが返されます。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Buffer Buffer.slice(Integer start,<font></font>
     Integer end);<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">start</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、指定範囲の開始</font></font></li>
-<li><span class="notranslate">end</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、指定範囲の末尾</font></font></li>
+<li><span class="notranslate">start</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、範囲の開始を指定します</font></font></li>
+<li><span class="notranslate">end</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、範囲の終わりを指定します</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、新しいキャッシュ オブジェクトを返します</font></font></li>
 </ul>
@@ -1600,9 +1553,9 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">separator</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、分割文字、デフォルトは「,」</font></font></li>
+<li><span class="notranslate">separator</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、区切り文字、デフォルトは「,」</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、結果の文字列を返します</font></font></li>
 </ul>
@@ -1611,7 +1564,7 @@
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">現在のオブジェクトのデータを逆順で含む新しいキャッシュ オブジェクトを返します。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer Buffer.reverse();
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、新しいキャッシュ オブジェクトを返します</font></font></li>
 </ul>
@@ -1624,43 +1577,43 @@
 <ul>
 <li><span class="notranslate">expected</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="object.md.html" class="notranslate">object</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、比較対象を定式化する</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、オブジェクト比較の結果を返します</font></font></li>
 </ul>
 <hr>
 <div name="hex" data-unique="hex"></div><h3 id="hex" class="notranslate">hex</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">16 進エンコードを使用してオブジェクト コンテンツをキャッシュする</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">16 進エンコーディングを使用してオブジェクト コンテンツをキャッシュする</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Buffer.hex();
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、エンコードされた文字列を返します</font></font></li>
 </ul>
 <hr>
 <div name="base32" data-unique="base32"></div><h3 id="base32" class="notranslate">base32</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用する</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクト コンテンツのエンコード</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクトのコンテンツをエンコードする</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Buffer.base32();
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、エンコードされた文字列を返します</font></font></li>
 </ul>
 <hr>
 <div name="base58" data-unique="base58"></div><h3 id="base58" class="notranslate">base58</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用する</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクト コンテンツのエンコード</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクトのコンテンツをエンコードする</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Buffer.base58();
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、エンコードされた文字列を返します</font></font></li>
 </ul>
 <hr>
 <div name="base64" data-unique="base64"></div><h3 id="base64" class="notranslate">base64</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用する</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクト コンテンツのエンコード</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">キャッシュ オブジェクトのコンテンツをエンコードする</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Buffer.base64();
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、エンコードされた文字列を返します</font></font></li>
 </ul>
@@ -1669,46 +1622,46 @@
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">すべてのバイナリ データの配列を返します</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Iterator Buffer.keys();
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
-<li><a href="iterator.md.html" class="notranslate">Iterator</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、オブジェクトのデータのインデックスを含む反復子を返します</font></font></li>
+<li><a href="iterator.md.html" class="notranslate">Iterator</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、オブジェクト データのインデックスを含む反復子を返します</font></font></li>
 </ul>
 <hr>
 <div name="values" data-unique="values"></div><h3 id="values" class="notranslate">values</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">すべてのバイナリ データの配列を返します</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Iterator Buffer.values();
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
-<li><a href="iterator.md.html" class="notranslate">Iterator</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、オブジェクト データ値を含む反復子を返します</font></font></li>
+<li><a href="iterator.md.html" class="notranslate">Iterator</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、オブジェクトのデータ値を含む反復子を返します</font></font></li>
 </ul>
 <hr>
 <div name="entries" data-unique="entries"></div><h3 id="entries" class="notranslate">entries</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オブジェクト データ [インデックス、バイト] ペアを含む反復子を返します</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Iterator Buffer.entries();
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
-<li><a href="iterator.md.html" class="notranslate">Iterator</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, [index, byte] ペアの反復子</font></font></li>
+<li><a href="iterator.md.html" class="notranslate">Iterator</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、[index, byte] ペアの反復子</font></font></li>
 </ul>
 <hr>
 <div name="forEach" data-unique="forEach"></div><h3 id="forEach" class="notranslate">forEach</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オブジェクトの各要素に対して指定された関数を1回実行します</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オブジェクトの各要素に対して指定された関数を 1 回実行します</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Buffer.forEach(<span class="hljs-built_in">Function</span> callback,<font></font>
     Value thisArg = <span class="hljs-literal">undefined</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 関数、配列内の各要素に対して実行する関数。この関数は、1 つから 3 つのパラメーターを受け入れます: currentValue、index、array</font></font></li>
-<li><span class="notranslate">thisArg</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 値、コールバック関数が実行されるときにこれとして使用される値</font></font></li>
+<li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 関数、配列内の各要素に対して実行される関数。この関数は、1 つから 3 つのパラメーターを受け取ります: currentValue、index、array</font></font></li>
+<li><span class="notranslate">thisArg</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: コールバック関数 callback が実行されるときに this の値として使用される値。</font></font></li>
 </ul>
 <hr>
 <div name="toArray" data-unique="toArray"></div><h3 id="toArray" class="notranslate">toArray</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">すべてのバイナリ データの配列を返します</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Array</span> Buffer.toArray();
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、オブジェクト データを含む配列を返します</font></font></li>
 </ul>
@@ -1727,7 +1680,7 @@
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取り開始位置</font></font></li>
 <li><span class="notranslate">end</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取り終了位置</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、オブジェクトの文字列表現を返します</font></font></li>
 </ul>
@@ -1742,15 +1695,15 @@
 <li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、エンコード形式を指定します。使用できる値は次のとおりです: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"、"utf8"、または</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">モジュールがサポートする文字セット</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 整数、読み取り開始位置</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、オブジェクトの文字列表現を返します</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">バイナリ データの utf8 エンコード文字列を返します</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">バイナリ データの utf8 でエンコードされた文字列を返します</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Buffer.toString();
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、オブジェクトの文字列表現を返します</font></font></li>
 </ul>
@@ -1758,21 +1711,21 @@
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オブジェクトの文字列表現を返します。通常は「[Native Object]」を返します。オブジェクトは独自の特性に従って再実装できます</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Buffer.toString();
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
 <li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、オブジェクトの文字列表現を返します</font></font></li>
 </ul>
 <hr>
 <div name="toJSON" data-unique="toJSON"></div><h3 id="toJSON" class="notranslate">toJSON</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オブジェクトの JSON 形式表現を返します。通常は、オブジェクトによって定義された読み取り可能なプロパティのセットを返します</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">オブジェクトの JSON 形式表現を返します。通常は、オブジェクトによって定義された読み取り可能なプロパティのコレクションを返します。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value Buffer.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">呼び出しパラメーター:</font></font></p>
 <ul>
-<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：文字列、未使用</font></font></li>
+<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、未使用</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返される結果:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">戻り値:</font></font></p>
 <ul>
-<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、シリアル化可能な JSON を含む値を返します</font></font></li>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">、JSON シリアル化可能な値を返します</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">サポートしてください</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip335428"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip335428" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">クリックするとトップページに戻ります</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">サポートしてください</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

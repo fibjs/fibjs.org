@@ -4,36 +4,33 @@
 Stream 为基础对象，用于为流处理定义标准借口，不能独立创建
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<class>object|toString();toJSON()]
-[<this>Stream|fd|read();write();flush();close();copyTo()]
-[<class>BufferedStream]
-[<class>SeekableStream]
-[<class>File]
-[<class>MemoryStream]
-[<class>RangeStream]
-[<class>Socket]
-[<class>SslSocket]
-[<class>TTYInputStream]
-[<class>TTYOutputStream]
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    Stream [tooltip="Stream", fillcolor="lightgray", id="me", label="{Stream|fd\l|read()\lwrite()\lflush()\lclose()\lcopyTo()\l}"];
+    BufferedStream [tooltip="BufferedStream", URL="BufferedStream.md", label="{BufferedStream}"];
+    SeekableStream [tooltip="SeekableStream", URL="SeekableStream.md", label="{SeekableStream}"];
+    File [tooltip="File", URL="File.md", label="{File}"];
+    MemoryStream [tooltip="MemoryStream", URL="MemoryStream.md", label="{MemoryStream}"];
+    RangeStream [tooltip="RangeStream", URL="RangeStream.md", label="{RangeStream}"];
+    Socket [tooltip="Socket", URL="Socket.md", label="{Socket}"];
+    SslSocket [tooltip="SslSocket", URL="SslSocket.md", label="{SslSocket}"];
+    TTYInputStream [tooltip="TTYInputStream", URL="TTYInputStream.md", label="{TTYInputStream}"];
+    TTYOutputStream [tooltip="TTYOutputStream", URL="TTYOutputStream.md", label="{TTYOutputStream}"];
 
-[object] <:- [Stream]
-[Stream] <:- [BufferedStream]
-[Stream] <:- [SeekableStream]
-[SeekableStream] <:- [File]
-[SeekableStream] <:- [MemoryStream]
-[SeekableStream] <:- [RangeStream]
-[Stream] <:- [Socket]
-[Stream] <:- [SslSocket]
-[Stream] <:- [TTYInputStream]
-[Stream] <:- [TTYOutputStream]
+    object -> Stream [dir=back];
+    Stream -> BufferedStream [dir=back];
+    Stream -> SeekableStream [dir=back];
+    SeekableStream -> File [dir=back];
+    SeekableStream -> MemoryStream [dir=back];
+    SeekableStream -> RangeStream [dir=back];
+    Stream -> Socket [dir=back];
+    Stream -> SslSocket [dir=back];
+    Stream -> TTYInputStream [dir=back];
+    Stream -> TTYOutputStream [dir=back];
+}
 ```
 
 ## 成员属性

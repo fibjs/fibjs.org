@@ -2,18 +2,15 @@
 XmlAttr 对象表示 [XmlElement](XmlElement.md) 对象的属性
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<class>object|toString();toJSON()]
-[<this>XmlAttr|localName;value;name;namespaceURI;prefix;nodeName;nodeValue]
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    XmlAttr [tooltip="XmlAttr", fillcolor="lightgray", id="me", label="{XmlAttr|localName\lvalue\lname\lnamespaceURI\lprefix\lnodeName\lnodeValue\l}"];
 
-[object] <:- [XmlAttr]
+    object -> XmlAttr [dir=back];
+}
 ```
 
 ## 成员属性

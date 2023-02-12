@@ -25,6 +25,22 @@ PKey crypto.PKey;
 ```
 
 --------------------------
+### ECKey
+**[ECKey](../../object/ifs/ECKey.md) 构造函数，参见 [ECKey](../../object/ifs/ECKey.md)**
+
+```JavaScript
+ECKey crypto.ECKey;
+```
+
+--------------------------
+### BlsKey
+**[BlsKey](../../object/ifs/BlsKey.md) 构造函数，参见 [BlsKey](../../object/ifs/BlsKey.md)**
+
+```JavaScript
+BlsKey crypto.BlsKey;
+```
+
+--------------------------
 ### X509Cert
 **[X509Cert](../../object/ifs/X509Cert.md) 构造函数，参见 [X509Cert](../../object/ifs/X509Cert.md)**
 
@@ -81,7 +97,7 @@ static Digest crypto.createHmac(String algo,
 
 --------------------------
 ### loadCert
-**加载一个 CRT/PEM/DER/TXT 格式的证书，可多次调用**
+**加载一个 CRT/PEM/DER 格式的证书，可多次调用**
 
 ```JavaScript
 static X509Cert crypto.loadCert(String filename);
@@ -92,8 +108,6 @@ static X509Cert crypto.loadCert(String filename);
 
 返回结果:
 * [X509Cert](../../object/ifs/X509Cert.md), 返回包含证书的对象
-
-loadFile 加载 mozilla 的 certdata,txt， 可于 http://hg.mozilla.org/releases/mozilla-release/raw-file/default/security/nss/lib/ckfw/builtins/certdata.txt 下载使用
 
 --------------------------
 ### loadCrl

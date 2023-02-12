@@ -8,18 +8,15 @@ var textDecoder = new util.TextDecoder('utf8');
 ```
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<class>object|toString();toJSON()]
-[<this>TextDecoder|new TextDecoder()|encoding|decode()]
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    TextDecoder [tooltip="TextDecoder", fillcolor="lightgray", id="me", label="{TextDecoder|new TextDecoder()\l|encoding\l|decode()\l}"];
 
-[object] <:- [TextDecoder]
+    object -> TextDecoder [dir=back];
+}
 ```
 
 ## 构造函数

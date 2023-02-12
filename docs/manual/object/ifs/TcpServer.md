@@ -17,24 +17,21 @@ new net.TcpServer(8080, func).start();
 ```
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<class>object|toString();toJSON()]
-[<this>TcpServer|new TcpServer()|socket;handler|start();stop()]
-[<class>HttpServer]
-[<class>HttpsServer]
-[<class>SslServer]
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    TcpServer [tooltip="TcpServer", fillcolor="lightgray", id="me", label="{TcpServer|new TcpServer()\l|socket\lhandler\l|start()\lstop()\l}"];
+    HttpServer [tooltip="HttpServer", URL="HttpServer.md", label="{HttpServer}"];
+    HttpsServer [tooltip="HttpsServer", URL="HttpsServer.md", label="{HttpsServer}"];
+    SslServer [tooltip="SslServer", URL="SslServer.md", label="{SslServer}"];
 
-[object] <:- [TcpServer]
-[TcpServer] <:- [HttpServer]
-[HttpServer] <:- [HttpsServer]
-[TcpServer] <:- [SslServer]
+    object -> TcpServer [dir=back];
+    TcpServer -> HttpServer [dir=back];
+    HttpServer -> HttpsServer [dir=back];
+    TcpServer -> SslServer [dir=back];
+}
 ```
 
 ## 构造函数

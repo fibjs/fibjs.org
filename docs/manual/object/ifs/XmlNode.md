@@ -2,34 +2,31 @@
 XmlNode 对象是整个 DOM 的基础数据类型
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<class>object|toString();toJSON()]
-[<this>XmlNode|nodeType;nodeName;nodeValue;ownerDocument;parentNode;childNodes;firstChild;lastChild;previousSibling;nextSibling|hasChildNodes();normalize();cloneNode();lookupPrefix();lookupNamespaceURI();insertBefore();insertAfter();appendChild();replaceChild();removeChild()]
-[<class>XmlCharacterData]
-[<class>XmlComment]
-[<class>XmlText]
-[<class>XmlCDATASection]
-[<class>XmlDocument]
-[<class>XmlDocumentType]
-[<class>XmlElement]
-[<class>XmlProcessingInstruction]
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    XmlNode [tooltip="XmlNode", fillcolor="lightgray", id="me", label="{XmlNode|nodeType\lnodeName\lnodeValue\lownerDocument\lparentNode\lchildNodes\lfirstChild\llastChild\lpreviousSibling\lnextSibling\l|hasChildNodes()\lnormalize()\lcloneNode()\llookupPrefix()\llookupNamespaceURI()\linsertBefore()\linsertAfter()\lappendChild()\lreplaceChild()\lremoveChild()\l}"];
+    XmlCharacterData [tooltip="XmlCharacterData", URL="XmlCharacterData.md", label="{XmlCharacterData}"];
+    XmlComment [tooltip="XmlComment", URL="XmlComment.md", label="{XmlComment}"];
+    XmlText [tooltip="XmlText", URL="XmlText.md", label="{XmlText}"];
+    XmlCDATASection [tooltip="XmlCDATASection", URL="XmlCDATASection.md", label="{XmlCDATASection}"];
+    XmlDocument [tooltip="XmlDocument", URL="XmlDocument.md", label="{XmlDocument}"];
+    XmlDocumentType [tooltip="XmlDocumentType", URL="XmlDocumentType.md", label="{XmlDocumentType}"];
+    XmlElement [tooltip="XmlElement", URL="XmlElement.md", label="{XmlElement}"];
+    XmlProcessingInstruction [tooltip="XmlProcessingInstruction", URL="XmlProcessingInstruction.md", label="{XmlProcessingInstruction}"];
 
-[object] <:- [XmlNode]
-[XmlNode] <:- [XmlCharacterData]
-[XmlCharacterData] <:- [XmlComment]
-[XmlCharacterData] <:- [XmlText]
-[XmlText] <:- [XmlCDATASection]
-[XmlNode] <:- [XmlDocument]
-[XmlNode] <:- [XmlDocumentType]
-[XmlNode] <:- [XmlElement]
-[XmlNode] <:- [XmlProcessingInstruction]
+    object -> XmlNode [dir=back];
+    XmlNode -> XmlCharacterData [dir=back];
+    XmlCharacterData -> XmlComment [dir=back];
+    XmlCharacterData -> XmlText [dir=back];
+    XmlText -> XmlCDATASection [dir=back];
+    XmlNode -> XmlDocument [dir=back];
+    XmlNode -> XmlDocumentType [dir=back];
+    XmlNode -> XmlElement [dir=back];
+    XmlNode -> XmlProcessingInstruction [dir=back];
+}
 ```
 
 ## 成员属性

@@ -65,6 +65,7 @@
 <li><a href=../../module/ifs/zlib.md.html class ="notranslate">zlib</a></li>
 </ul>
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_object" aria-controls="collapse_object"> 内置对象 </a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby=headingOne><div class=panel-body> <ul>
+<li><a href=blskey.md.html class ="notranslate">BlsKey</a></li>
 <li><a href=buffer.md.html class ="notranslate">Buffer</a></li>
 <li><a href=bufferedstream.md.html class ="notranslate">BufferedStream</a></li>
 <li><a href=chain.md.html class ="notranslate">Chain</a></li>
@@ -74,6 +75,8 @@
 <li><a href=dbconnection.md.html class ="notranslate">DbConnection</a></li>
 <li><a href=dgramsocket.md.html class ="notranslate">DgramSocket</a></li>
 <li><a href=digest.md.html class ="notranslate">Digest</a></li>
+<li><a href=eckey.md.html class ="notranslate">ECKey</a></li>
+<li><a href=ed25519key.md.html class ="notranslate">Ed25519Key</a></li>
 <li><a href=event.md.html class ="notranslate">Event</a></li>
 <li><a href=eventemitter.md.html class ="notranslate">EventEmitter</a></li>
 <li><a href=fswatcher.md.html class ="notranslate">FSWatcher</a></li>
@@ -307,115 +310,76 @@ svr.start();
 </code></pre>
 <p>匹配消息 &quot;/func1/123/456.html&quot; 后，value == &quot;123&quot;，params == [&quot;123&quot;];</p>
 <h2 id="继承关系">继承关系</h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="165.0" height="536.0" viewbox="0 0 165 536" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
-    <desc >
-    #lineWidth: 1.5
-    #font: Helvetica,sans-Serif
-    #fontSize: 10
-    #leading: 1.6
-    #.this: fill=lightgray
-    #.class: fill=white
-
-    [&lt;class&gt;object|toString();toJSON()]
-    [&lt;class&gt;Handler|new Handler()|invoke()]
-    [&lt;this&gt;Routing|new Routing()|append();host();all();get();post();del();put();patch();find()]
-
-    [object] &lt;:- [Handler]
-    [Handler] &lt;:- [Routing]
-    </desc>
-    <g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="10pt" font-family="Helvetica,sans-Serif" font-weight="normal" font-style="normal">
-        <g font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="bold" font-style="normal" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
-            <g stroke="transparent" fill="transparent">
-                <rect x="0.0" y="0.0" height="536.0" width="165.0" stroke="none"></rect>
-            </g>
-            <g transform="translate(8, 8)" fill="#33322E">
-                <g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal">
-                    <path d="M54.5 93.3 L54.5 100 L54.5 120 L54.5 120.0 " fill="none"></path>
-                    <path d="M59.8 93.3 L54.5 93.3 L49.2 93.3 L54.5 80.0 Z"></path>
-                    <path d="M54.5 229.3 L54.5 236 L54.5 256 L54.5 256.0 " fill="none"></path>
-                    <path d="M59.8 229.3 L54.5 229.3 L49.2 229.3 L54.5 216.0 Z"></path>
-                    <g data-name="Handler">
-                        <g fill="white" stroke="#33322E" data-name="Handler">
-                            <rect x="0.0" y="120.0" height="96.0" width="109.0" data-name="Handler"></rect>
-                            <path d="M0.0 152.0 L109.0 152.0" fill="none" data-name="Handler"></path>
-                            <path d="M0.0 184.0 L109.0 184.0" fill="none" data-name="Handler"></path>
-                        </g>
-                        <g transform="translate(0, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Handler">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Handler">
-                                <text x="46.5" y="13.0" stroke="none" text-anchor="middle" data-name="Handler">Handler</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 152)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Handler">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Handler">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Handler">new Handler()</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 184)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Handler">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Handler">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Handler">invoke()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="Routing">
-                        <g fill="lightgray" stroke="#33322E" data-name="Routing">
-                            <rect x="1.0" y="256.0" height="224.0" width="108.0" data-name="Routing"></rect>
-                            <path d="M1.0 288.0 L109.0 288.0" fill="none" data-name="Routing"></path>
-                            <path d="M1.0 320.0 L109.0 320.0" fill="none" data-name="Routing"></path>
-                        </g>
-                        <g transform="translate(1, 256)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Routing">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Routing">
-                                <text x="46.0" y="13.0" stroke="none" text-anchor="middle" data-name="Routing">Routing</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(1, 288)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Routing">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Routing">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Routing">new Routing()</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(1, 320)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Routing">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Routing">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Routing">append()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="Routing">host()</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="Routing">all()</text>
-                                <text x="0.0" y="61.0" stroke="none" data-name="Routing">get()</text>
-                                <text x="0.0" y="77.0" stroke="none" data-name="Routing">post()</text>
-                                <text x="0.0" y="93.0" stroke="none" data-name="Routing">del()</text>
-                                <text x="0.0" y="109.0" stroke="none" data-name="Routing">put()</text>
-                                <text x="0.0" y="125.0" stroke="none" data-name="Routing">patch()</text>
-                                <text x="0.0" y="141.0" stroke="none" data-name="Routing">find()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="object">
-                        <g fill="white" stroke="#33322E" data-name="object">
-                            <rect x="16.0" y="0.0" height="80.0" width="77.0" data-name="object"></rect>
-                            <path d="M16.0 32.0 L93.0 32.0" fill="none" data-name="object"></path>
-                        </g>
-                        <g transform="translate(16, 0)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="object">
-                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="object">object</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(16, 32)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="object">
-                                <text x="0.0" y="13.0" stroke="none" data-name="object">toString()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="object">toJSON()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg></div>
+<div class="dot notranslate">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="87pt" height="351pt"
+ viewBox="0.00 0.00 86.78 351.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 347)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-347 82.777,-347 82.777,4 -4,4"/>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href=object.md.html xlink:title="object">
+<polygon fill="#ffffff" stroke="#000000" points="10.557,-290.5 10.557,-342.5 68.22,-342.5 68.22,-290.5 10.557,-290.5"/>
+<text text-anchor="middle" x="39.3885" y="-329.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="10.557,-322.5 68.22,-322.5 "/>
+<text text-anchor="start" x="18.557" y="-309.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="18.557" y="-297.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+</a>
+</g>
+</g>
+<!-- Handler -->
+<g id="node2" class="node">
+<title>Handler</title>
+<g id="a_node2"><a xlink:href=handler.md.html xlink:title="Handler">
+<polygon fill="#ffffff" stroke="#000000" points="0,-193.5 0,-253.5 78.777,-253.5 78.777,-193.5 0,-193.5"/>
+<text text-anchor="middle" x="39.3885" y="-240.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Handler</text>
+<polyline fill="none" stroke="#000000" points="0,-233.5 78.777,-233.5 "/>
+<text text-anchor="start" x="8" y="-220.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new Handler()</text>
+<polyline fill="none" stroke="#000000" points="0,-213.5 78.777,-213.5 "/>
+<text text-anchor="start" x="8" y="-200.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">invoke()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;Handler -->
+<g id="edge1" class="edge">
+<title>object&#45;&gt;Handler</title>
+<path fill="none" stroke="#000000" d="M39.3885,-279.8142C39.3885,-271.1162 39.3885,-261.9383 39.3885,-253.574"/>
+<polygon fill="#000000" stroke="#000000" points="35.8886,-280.0987 39.3885,-290.0987 42.8886,-280.0987 35.8886,-280.0987"/>
+</g>
+<!-- Routing -->
+<g id="me" class="node">
+<title>Routing</title>
+<g id="a_me"><a xlink:title="Routing">
+<polygon fill="#d3d3d3" stroke="#000000" points=".275,-.5 .275,-156.5 78.502,-156.5 78.502,-.5 .275,-.5"/>
+<text text-anchor="middle" x="39.3885" y="-143.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Routing</text>
+<polyline fill="none" stroke="#000000" points=".275,-136.5 78.502,-136.5 "/>
+<text text-anchor="start" x="8.275" y="-123.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new Routing()</text>
+<polyline fill="none" stroke="#000000" points=".275,-116.5 78.502,-116.5 "/>
+<text text-anchor="start" x="8.275" y="-103.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">append()</text>
+<text text-anchor="start" x="8.275" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">host()</text>
+<text text-anchor="start" x="8.275" y="-79.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">all()</text>
+<text text-anchor="start" x="8.275" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">get()</text>
+<text text-anchor="start" x="8.275" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">post()</text>
+<text text-anchor="start" x="8.275" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">del()</text>
+<text text-anchor="start" x="8.275" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">put()</text>
+<text text-anchor="start" x="8.275" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">patch()</text>
+<text text-anchor="start" x="8.275" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">find()</text>
+</a>
+</g>
+</g>
+<!-- Handler&#45;&gt;Routing -->
+<g id="edge2" class="edge">
+<title>Handler&#45;&gt;Routing</title>
+<path fill="none" stroke="#000000" d="M39.3885,-183.3032C39.3885,-174.9487 39.3885,-165.8748 39.3885,-156.6782"/>
+<polygon fill="#000000" stroke="#000000" points="35.8886,-183.4559 39.3885,-193.4559 42.8886,-183.4559 35.8886,-183.4559"/>
+</g>
+</g>
+</svg>
+</div>
 
 <h2 id="构造函数">构造函数</h2>
 <h3 id="Routing" class ="notranslate">Routing</h3>
@@ -754,4 +718,4 @@ svr.start();
 <ul>
 <li><span class="notranslate">Value</span>, 返回包含可 JSON 序列化的值</li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

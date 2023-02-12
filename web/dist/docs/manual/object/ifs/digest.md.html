@@ -65,6 +65,7 @@
 <li><a href=../../module/ifs/zlib.md.html class ="notranslate">zlib</a></li>
 </ul>
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_object" aria-controls="collapse_object"> 内置对象 </a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby=headingOne><div class=panel-body> <ul>
+<li><a href=blskey.md.html class ="notranslate">BlsKey</a></li>
 <li><a href=buffer.md.html class ="notranslate">Buffer</a></li>
 <li><a href=bufferedstream.md.html class ="notranslate">BufferedStream</a></li>
 <li><a href=chain.md.html class ="notranslate">Chain</a></li>
@@ -74,6 +75,8 @@
 <li><a href=dbconnection.md.html class ="notranslate">DbConnection</a></li>
 <li><a href=dgramsocket.md.html class ="notranslate">DgramSocket</a></li>
 <li class="active"><a href=digest.md.html class ="notranslate">Digest</a></li>
+<li><a href=eckey.md.html class ="notranslate">ECKey</a></li>
+<li><a href=ed25519key.md.html class ="notranslate">Ed25519Key</a></li>
 <li><a href=event.md.html class ="notranslate">Event</a></li>
 <li><a href=eventemitter.md.html class ="notranslate">EventEmitter</a></li>
 <li><a href=fswatcher.md.html class ="notranslate">FSWatcher</a></li>
@@ -203,81 +206,52 @@
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="对象-Digest">对象 Digest</h1>
 <p>信息摘要对象</p>
 <h2 id="继承关系">继承关系</h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="133.0" height="320.0" viewbox="0 0 133 320" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
-    <desc >
-    #lineWidth: 1.5
-    #font: Helvetica,sans-Serif
-    #fontSize: 10
-    #leading: 1.6
-    #.this: fill=lightgray
-    #.class: fill=white
-
-    [&lt;class&gt;object|toString();toJSON()]
-    [&lt;this&gt;Digest|size|update();digest();sign();verify()]
-
-    [object] &lt;:- [Digest]
-    </desc>
-    <g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="10pt" font-family="Helvetica,sans-Serif" font-weight="normal" font-style="normal">
-        <g font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="bold" font-style="normal" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
-            <g stroke="transparent" fill="transparent">
-                <rect x="0.0" y="0.0" height="320.0" width="133.0" stroke="none"></rect>
-            </g>
-            <g transform="translate(8, 8)" fill="#33322E">
-                <g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal">
-                    <path d="M38.5 93.3 L38.5 100 L38.5 120 L38.5 120.0 " fill="none"></path>
-                    <path d="M43.8 93.3 L38.5 93.3 L33.2 93.3 L38.5 80.0 Z"></path>
-                    <g data-name="Digest">
-                        <g fill="lightgray" stroke="#33322E" data-name="Digest">
-                            <rect x="3.0" y="120.0" height="144.0" width="72.0" data-name="Digest"></rect>
-                            <path d="M3.0 152.0 L75.0 152.0" fill="none" data-name="Digest"></path>
-                            <path d="M3.0 184.0 L75.0 184.0" fill="none" data-name="Digest"></path>
-                        </g>
-                        <g transform="translate(3, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Digest">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Digest">
-                                <text x="28.0" y="13.0" stroke="none" text-anchor="middle" data-name="Digest">Digest</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(3, 152)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Digest">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Digest">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Digest">size</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(3, 184)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Digest">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Digest">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Digest">update()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="Digest">digest()</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="Digest">sign()</text>
-                                <text x="0.0" y="61.0" stroke="none" data-name="Digest">verify()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="object">
-                        <g fill="white" stroke="#33322E" data-name="object">
-                            <rect x="0.0" y="0.0" height="80.0" width="77.0" data-name="object"></rect>
-                            <path d="M0.0 32.0 L77.0 32.0" fill="none" data-name="object"></path>
-                        </g>
-                        <g transform="translate(0, 0)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="object">
-                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="object">object</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 32)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="object">
-                                <text x="0.0" y="13.0" stroke="none" data-name="object">toString()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="object">toJSON()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg></div>
+<div class="dot notranslate">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="66pt" height="194pt"
+ viewBox="0.00 0.00 65.66 194.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 190)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-190 61.663,-190 61.663,4 -4,4"/>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href=object.md.html xlink:title="object">
+<polygon fill="#ffffff" stroke="#000000" points="0,-133.5 0,-185.5 57.663,-185.5 57.663,-133.5 0,-133.5"/>
+<text text-anchor="middle" x="28.8315" y="-172.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="0,-165.5 57.663,-165.5 "/>
+<text text-anchor="start" x="8" y="-152.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="8" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+</a>
+</g>
+</g>
+<!-- Digest -->
+<g id="me" class="node">
+<title>Digest</title>
+<g id="a_me"><a xlink:title="Digest">
+<polygon fill="#d3d3d3" stroke="#000000" points="1.8315,-.5 1.8315,-96.5 55.8315,-96.5 55.8315,-.5 1.8315,-.5"/>
+<text text-anchor="middle" x="28.4475" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Digest</text>
+<polyline fill="none" stroke="#000000" points="1.8315,-76.5 55.0635,-76.5 "/>
+<text text-anchor="start" x="9.8315" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">size</text>
+<polyline fill="none" stroke="#000000" points="1.8315,-56.5 55.0635,-56.5 "/>
+<text text-anchor="start" x="9.8315" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">update()</text>
+<text text-anchor="start" x="9.8315" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">digest()</text>
+<text text-anchor="start" x="9.8315" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">sign()</text>
+<text text-anchor="start" x="9.8315" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">verify()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;Digest -->
+<g id="edge1" class="edge">
+<title>object&#45;&gt;Digest</title>
+<path fill="none" stroke="#000000" d="M28.8315,-123.4355C28.8315,-114.8631 28.8315,-105.5825 28.8315,-96.5684"/>
+<polygon fill="#000000" stroke="#000000" points="25.3316,-123.4754 28.8315,-133.4754 32.3316,-123.4755 25.3316,-123.4754"/>
+</g>
+</g>
+</svg>
+</div>
 
 <h2 id="成员属性">成员属性</h2>
 <h3 id="size" class ="notranslate">size</h3>
@@ -417,4 +391,4 @@
 <ul>
 <li><span class="notranslate">Value</span>, 返回包含可 JSON 序列化的值</li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

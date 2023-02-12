@@ -42,6 +42,14 @@ console global.console;
 process global.process;
 ```
 
+--------------------------
+### performance
+**基础性能监控模块**
+
+```JavaScript
+performance global.performance;
+```
+
 ## 静态函数
         
 ### run

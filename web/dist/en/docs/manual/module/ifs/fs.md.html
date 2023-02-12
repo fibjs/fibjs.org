@@ -1,15 +1,15 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Module fs - JavaScript on Fiber</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Toggle navigation</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../readme.md.html">MODULE</a></li><li><a href="../../object/readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/module/ifs/fs.md.html">中文</a> <a href="../../../../../ca/docs/manual/module/ifs/fs.md.html">Catalan</a> <a href="../../../../../de/docs/manual/module/ifs/fs.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/module/ifs/fs.md.html">English</a> <a href="../../../../../es/docs/manual/module/ifs/fs.md.html">Español</a> <a href="../../../../../fr/docs/manual/module/ifs/fs.md.html">Français</a> <a href="../../../../../gl/docs/manual/module/ifs/fs.md.html">Galego</a> <a href="../../../../../it/docs/manual/module/ifs/fs.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/module/ifs/fs.md.html">Русский</a> <a href="../../../../../ja/docs/manual/module/ifs/fs.md.html">日本語</a> <a href="../../../../../ko/docs/manual/module/ifs/fs.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/module/ifs/fs.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Module base module</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Search" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="search input" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">front page</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">basic module</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">module fs</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Development Guide</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Module fs - JavaScript on Fiber</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Toggle navigation</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../readme.md.html">MODULE</a></li><li><a href="../../object/readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/module/ifs/fs.md.html">中文</a> <a href="../../../../../ca/docs/manual/module/ifs/fs.md.html">Catalan</a> <a href="../../../../../de/docs/manual/module/ifs/fs.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/module/ifs/fs.md.html">English</a> <a href="../../../../../es/docs/manual/module/ifs/fs.md.html">Español</a> <a href="../../../../../fr/docs/manual/module/ifs/fs.md.html">Français</a> <a href="../../../../../gl/docs/manual/module/ifs/fs.md.html">Galego</a> <a href="../../../../../it/docs/manual/module/ifs/fs.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/module/ifs/fs.md.html">Русский</a> <a href="../../../../../ja/docs/manual/module/ifs/fs.md.html">日本語</a> <a href="../../../../../ko/docs/manual/module/ifs/fs.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/module/ifs/fs.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Module basic module</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Search" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="search input" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">front page</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Basic module</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">module fs</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">development guide</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">What is fibjs?</font></font></a></li>
-<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Install the runtime environment</font></font></a></li>
+<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Install the operating environment</font></font></a></li>
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
-<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A good life starts with a test</font></font></a></li>
-<li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Find the performance killer</font></font></a></li>
+<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A better life begins with a test</font></font></a></li>
+<li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Find performance killers</font></font></a></li>
 <li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Server module hot update</font></font></a></li>
-<li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Domain name routing</font></font></a></li>
-<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Use of X509 certificates in fibjs</font></font></a></li>
-<li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">add native module</font></font></a></li>
+<li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Domain Routing</font></font></a></li>
+<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Use of X509 certificate in fibjs</font></font></a></li>
+<li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Add native module</font></font></a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">basic module</font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Basic module</font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="assert.md.html" class="notranslate">assert</a></li>
 <li><a href="base32.md.html" class="notranslate">base32</a></li>
 <li><a href="base58.md.html" class="notranslate">base58</a></li>
@@ -64,7 +64,8 @@
 <li><a href="zip.md.html" class="notranslate">zip</a></li>
 <li><a href="zlib.md.html" class="notranslate">zlib</a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">built-in objects</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">built-in object</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../object/ifs/blskey.md.html" class="notranslate">BlsKey</a></li>
 <li><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a></li>
 <li><a href="../../object/ifs/bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
 <li><a href="../../object/ifs/chain.md.html" class="notranslate">Chain</a></li>
@@ -74,6 +75,8 @@
 <li><a href="../../object/ifs/dbconnection.md.html" class="notranslate">DbConnection</a></li>
 <li><a href="../../object/ifs/dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
 <li><a href="../../object/ifs/digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="../../object/ifs/eckey.md.html" class="notranslate">ECKey</a></li>
+<li><a href="../../object/ifs/ed25519key.md.html" class="notranslate">Ed25519Key</a></li>
 <li><a href="../../object/ifs/event.md.html" class="notranslate">Event</a></li>
 <li><a href="../../object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a></li>
 <li><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a></li>
@@ -207,14 +210,14 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Some notes:</font></font></p>
 <ul>
-<li><font style="vertical-align: inherit;"></font><code>fs.watch(filename)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Running</font><font style="vertical-align: inherit;"> returns an attribute that inherits from</font></font><a href="../../object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The watcher, it supports 'change', 'changeonly', 'renameonly' three events</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Running </font></font><code>fs.watch(filename)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">will return an inherited from</font></font><a href="../../object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">watcher, it supports 'change', 'changeonly', 'renameonly' three events</font></font></li>
 <li><code>fs.watchFile(target)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">and can </font></font><code>fs.unwatchFile(target)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">still be used in pairs</font></font></li>
-<li><code>fs.watchFile(target)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">will return an inheritance from</font></font><a href="../../object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">of</font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">object, call is </font></font><code>fs.unwatchFile(target)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">equivalent to call </font></font><code>StatsWatcher.close()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Because of the implementation of uv on Linux, </font></font><code>fs.watch</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">the </font></font><code>recursive</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">option is only supported stably on win32/darwin. You can still try it on Linux </font></font><code>fs.watch('/[path](path.md)/to', { recursive: true }, handler)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, but you may find </font></font><code>handler</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">that the timing of the callback is different from what you expected</font></font></li>
+<li><code>fs.watchFile(target)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">will return an inherited from</font></font><a href="../../object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">of</font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">object, call is </font></font><code>fs.unwatchFile(target)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">equivalent to call </font></font><code>StatsWatcher.close()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Because of the implementation of uv on Linux, </font></font><code>fs.watch</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">the </font></font><code>recursive</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">option is only supported on win32/darwin. You can still try to use it on Linux </font></font><code>fs.watch('/[path](path.md)/to', { recursive: true }, handler)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, but you may find </font></font><code>handler</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">that the timing of the callback is different from what you expected</font></font></li>
 </ul>
 <div name="对象" data-unique="对象"></div><h2 id="对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">object</font></font></h2>
 <div name="constants" data-unique="constants"></div><h3 id="constants" class="notranslate">constants</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Constant object for the fs module</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Constant object of the fs module</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>fs_constants fs.constants;
 </code></pre>
 <div name="静态函数" data-unique="静态函数"></div><h2 id="静态函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">static function</font></font></h2>
@@ -226,7 +229,7 @@
 <ul>
 <li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the path to query</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">return result:</font></font></p>
 <ul>
 <li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns True if the file or directory exists</font></font></li>
 </ul>
@@ -256,7 +259,7 @@
 </ul>
 <hr>
 <div name="unlink" data-unique="unlink"></div><h3 id="unlink" class="notranslate">unlink</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">delete the specified file</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">delete specified file</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> fs.unlink(<span class="hljs-built_in">String</span> path) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
@@ -272,8 +275,8 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the directory name to create</font></font></li>
-<li><span class="notranslate">mode</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, specify file permissions, Windows ignores this parameter, default value: 0777</font></font></li>
+<li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the name of the directory to be created</font></font></li>
+<li><span class="notranslate">mode</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, specifies the file permission, Windows ignores this parameter, default value: 0777</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">create a directory</font></font></strong></p>
@@ -283,7 +286,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the directory name to create</font></font></li>
+<li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the name of the directory to be created</font></font></li>
 <li><span class="notranslate">opt</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, specifies the creation parameters</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Creation parameters can contain the following values:</font></font></p>
@@ -313,12 +316,12 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">from</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specify the file to be renamed</font></font></li>
+<li><span class="notranslate">from</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the file to be renamed</font></font></li>
 <li><span class="notranslate">to</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the new file name to modify</font></font></li>
 </ul>
 <hr>
 <div name="copyFile" data-unique="copyFile"></div><h3 id="copyFile" class="notranslate">copyFile</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Copy src to dest. </font><font style="vertical-align: inherit;">By default, dest is overwritten if it already exists.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Copy src to dest. </font><font style="vertical-align: inherit;">By default, if dest already exists, it is overwritten.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">static</span> fs.copyFile(<span class="hljs-built_in">String</span> <span class="hljs-keyword">from</span>,
@@ -327,43 +330,43 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">from</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the name of the source file to copy</font></font></li>
-<li><span class="notranslate">to</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the name of the target file to copy</font></font></li>
-<li><span class="notranslate">mode</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, modifier specifying copy operation, default is 0</font></font></li>
+<li><span class="notranslate">from</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the name of the source file to be copied</font></font></li>
+<li><span class="notranslate">to</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the name of the target file to be copied</font></font></li>
+<li><span class="notranslate">mode</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, specifies the modifier of the copy operation, the default is 0</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mode is an optional integer specifying the behavior of the copy operation. </font><font style="vertical-align: inherit;">It is possible to create a mask consisting of the bitwise OR of two or more values ​​(such as</font></font><a href="fs.md.html#constants" class="notranslate">fs.constants</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.COPYFILE_EXCL |</font></font><a href="fs.md.html#constants" class="notranslate">fs.constants</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.COPYFILE_FICLONE).</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mode is an optional integer specifying the behavior of the copy operation. </font><font style="vertical-align: inherit;">It is possible to create a mask consisting of a bitwise OR of two or more values ​​(such as</font></font><a href="fs.md.html#constants" class="notranslate">fs.constants</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.COPYFILE_EXCL |</font></font><a href="fs.md.html#constants" class="notranslate">fs.constants</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.COPYFILE_FICLONE).</font></font></p>
 <ul>
 <li><a href="fs.md.html#constants" class="notranslate">fs.constants</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.COPYFILE_EXCL - If dest already exists, the copy operation will fail.</font></font></li>
-<li><a href="fs.md.html#constants" class="notranslate">fs.constants</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.COPYFILE_FICLONE - The copy operation will attempt to create a copy-on-write link. </font><font style="vertical-align: inherit;">If the platform does not support copy-on-write, the fallback copy mechanism is used.</font></font></li>
+<li><a href="fs.md.html#constants" class="notranslate">fs.constants</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.COPYFILE_FICLONE - The copy operation will attempt to create a copy-on-write link. </font><font style="vertical-align: inherit;">If the platform does not support copy-on-write, a fallback copy mechanism is used.</font></font></li>
 <li><a href="fs.md.html#constants" class="notranslate">fs.constants</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.COPYFILE_FICLONE_FORCE - The copy operation will attempt to create a copy-on-write link. </font><font style="vertical-align: inherit;">If the platform does not support copy-on-write, the copy operation will fail.</font></font></li>
 </ul>
 <hr>
 <div name="chmod" data-unique="chmod"></div><h3 id="chmod" class="notranslate">chmod</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Set the access permission of the specified file, this method is not supported on Windows</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Set the access permission of the specified file, Windows does not support this method</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> fs.chmod(<span class="hljs-built_in">String</span> path,<font></font>
     Integer mode) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, the file to specify the operation on</font></font></li>
-<li><span class="notranslate">mode</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, specifies the set access rights</font></font></li>
+<li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the file to operate on</font></font></li>
+<li><span class="notranslate">mode</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, specifies the access rights of the settings</font></font></li>
 </ul>
 <hr>
 <div name="lchmod" data-unique="lchmod"></div><h3 id="lchmod" class="notranslate">lchmod</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Set the access permission of the specified file. If the file is a soft link, the permission to point to the file will not be changed. It is only available on macOS and BSD series platforms.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Set the access permission of the specified file. If the file is a soft link, the permission of the pointing file will not be changed. It is only available on macOS and BSD series platforms</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> fs.lchmod(<span class="hljs-built_in">String</span> path,<font></font>
     Integer mode) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, the file to specify the operation on</font></font></li>
-<li><span class="notranslate">mode</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, specifies the set access rights</font></font></li>
+<li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the file to operate on</font></font></li>
+<li><span class="notranslate">mode</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, specifies the access rights of the settings</font></font></li>
 </ul>
 <hr>
 <div name="chown" data-unique="chown"></div><h3 id="chown" class="notranslate">chown</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sets the owner of the specified file, Windows does not support this method</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Set the owner of the specified file, Windows does not support this method</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">static</span> fs.chown(<span class="hljs-built_in">String</span> path,<font></font>
@@ -378,7 +381,7 @@
 </ul>
 <hr>
 <div name="lchown" data-unique="lchown"></div><h3 id="lchown" class="notranslate">lchown</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Set the owner of the specified file. If the specified file is a soft link, it will not change the owner of the file it points to. Windows does not support this method.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Set the owner of the specified file. If the specified file is a soft link, it will not change the owner of the file it points to. Windows does not support this method</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">static</span> fs.lchown(<span class="hljs-built_in">String</span> path,<font></font>
@@ -400,20 +403,20 @@
 <ul>
 <li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the file to query</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">return result:</font></font></p>
 <ul>
 <li><a href="../../object/ifs/stat.md.html" class="notranslate">Stat</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns the basic information of the file</font></font></li>
 </ul>
 <hr>
 <div name="lstat" data-unique="lstat"></div><h3 id="lstat" class="notranslate">lstat</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Query the basic information of the specified file. Unlike stat, when</font></font><a href="path.md.html" class="notranslate">path</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">When it is a soft connection, the information of the soft connection will be returned instead of the information of the pointed file</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Query the basic information of the specified file. Unlike stat, when</font></font><a href="path.md.html" class="notranslate">path</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">When it is a soft link, the information returned will be the information of this soft link instead of the information of the pointed file</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Stat fs.lstat(<span class="hljs-built_in">String</span> path) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
 <li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the file to query</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">return result:</font></font></p>
 <ul>
 <li><a href="../../object/ifs/stat.md.html" class="notranslate">Stat</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns the basic information of the file</font></font></li>
 </ul>
@@ -424,28 +427,28 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specify the soft link file to read</font></font></li>
+<li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the soft link file to read</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">return result:</font></font></p>
 <ul>
 <li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns the filename pointed to by the soft link</font></font></li>
 </ul>
 <hr>
 <div name="realpath" data-unique="realpath"></div><h3 id="realpath" class="notranslate">realpath</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Returns the absolute path of the specified path, if the specified path contains a relative path, it will also be expanded</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Returns the absolute path of the specified path. If the specified path contains a relative path, it will also be expanded</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> fs.realpath(<span class="hljs-built_in">String</span> path) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the path to read</font></font></li>
+<li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the read path</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">return result:</font></font></p>
 <ul>
 <li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns the processed absolute path</font></font></li>
 </ul>
 <hr>
 <div name="symlink" data-unique="symlink"></div><h3 id="symlink" class="notranslate">symlink</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Create soft link file</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Create a soft link file</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">static</span> fs.symlink(<span class="hljs-built_in">String</span> target,
@@ -454,13 +457,13 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">target</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, target file, can be a file, directory, or non-existing path</font></font></li>
-<li><span class="notranslate">linkpath</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, the symlink file to be created</font></font></li>
-<li><span class="notranslate">type</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, the type of soft link to create, the optional type is 'file', 'dir', 'junction', the default is 'file', this parameter is only valid on windows, when it is 'junction', the target to be created The path linkpath must be an absolute path, and the target will be automatically converted to an absolute path.</font></font></li>
+<li><span class="notranslate">target</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, the target file, which can be a file, directory, or non-existing path</font></font></li>
+<li><span class="notranslate">linkpath</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, the soft link file to be created</font></font></li>
+<li><span class="notranslate">type</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, the type of soft connection to be created, the optional type is 'file', 'dir', 'junction', the default is 'file', this parameter is only valid on windows, the target to be created when it is 'junction' The path linkpath must be an absolute path, while target will be automatically converted to an absolute path.</font></font></li>
 </ul>
 <hr>
 <div name="truncate" data-unique="truncate"></div><h3 id="truncate" class="notranslate">truncate</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Modify the file size. If the specified length is greater than the source file size, it will be filled with '\0', otherwise the content of the file will be lost.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Modify the file size, if the specified length is greater than the source file size, it will be filled with '\0', otherwise the excess file content will be lost</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> fs.truncate(<span class="hljs-built_in">String</span> path,<font></font>
     Integer len) <span class="hljs-keyword">async</span>;
@@ -472,7 +475,7 @@
 </ul>
 <hr>
 <div name="read" data-unique="read"></div><h3 id="read" class="notranslate">read</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Read the file content according to the file descriptor</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">According to the file descriptor, read the content of the file</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -489,15 +492,15 @@
 <li><span class="notranslate">buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, the read result is written to</font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">object</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer,</font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">write offset, default is 0</font></font></li>
 <li><span class="notranslate">length</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, the number of bytes to read from the file, the default is 0</font></font></li>
-<li><span class="notranslate">position</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, the file read position, defaults to the current file position</font></font></li>
+<li><span class="notranslate">position</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, the file reading position, the default is the current file position</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">return result:</font></font></p>
 <ul>
-<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, the number of bytes actually read</font></font></li>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, the actual number of bytes read</font></font></li>
 </ul>
 <hr>
 <div name="fchmod" data-unique="fchmod"></div><h3 id="fchmod" class="notranslate">fchmod</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">According to the file descriptor, change the file mode. </font><font style="vertical-align: inherit;">Only valid on POSIX systems.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Depending on the file descriptor, change the file mode. </font><font style="vertical-align: inherit;">Only available on POSIX systems.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> fs.fchmod(Integer fd,<font></font>
     Integer mode) <span class="hljs-keyword">async</span>;
@@ -509,7 +512,7 @@
 </ul>
 <hr>
 <div name="fchown" data-unique="fchown"></div><h3 id="fchown" class="notranslate">fchown</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Based on the file descriptor, change the owner. </font><font style="vertical-align: inherit;">Only valid on POSIX systems.</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Depending on the file descriptor, change the owner. </font><font style="vertical-align: inherit;">Only available on POSIX systems.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">static</span> fs.fchown(Integer fd,<font></font>
@@ -519,12 +522,12 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
 <li><span class="notranslate">fd</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, file descriptor</font></font></li>
-<li><span class="notranslate">uid</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, userid</font></font></li>
+<li><span class="notranslate">uid</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, user id</font></font></li>
 <li><span class="notranslate">gid</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, group id</font></font></li>
 </ul>
 <hr>
 <div name="fdatasync" data-unique="fdatasync"></div><h3 id="fdatasync" class="notranslate">fdatasync</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Synchronize data to disk based on file descriptors</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Synchronize data to disk according to the file descriptor</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> fs.fdatasync(Integer fd) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
@@ -533,7 +536,7 @@
 </ul>
 <hr>
 <div name="fsync" data-unique="fsync"></div><h3 id="fsync" class="notranslate">fsync</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Synchronize data to disk based on file descriptors</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Synchronize data to disk according to the file descriptor</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> fs.fsync(Integer fd) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
@@ -549,9 +552,9 @@
 <ul>
 <li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the directory to query</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">return result:</font></font></p>
 <ul>
-<li><span class="notranslate">NArray</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns an array of file information for the directory</font></font></li>
+<li><span class="notranslate">NArray</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns the file information array of the directory</font></font></li>
 </ul>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Read the file information of the specified directory</font></font></strong></p>
@@ -562,15 +565,15 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
 <li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the directory to query</font></font></li>
-<li><span class="notranslate">opts</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, specify parameters, temporarily not supported</font></font></li>
+<li><span class="notranslate">opts</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, specifies the parameter, not supported for now</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">return result:</font></font></p>
 <ul>
-<li><span class="notranslate">NArray</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns an array of file information for the directory</font></font></li>
+<li><span class="notranslate">NArray</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns the file information array of the directory</font></font></li>
 </ul>
 <hr>
 <div name="openFile" data-unique="openFile"></div><h3 id="openFile" class="notranslate">openFile</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Open file for reading, writing, or both</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Open a file for reading, writing, or both</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> SeekableStream fs.openFile(<span class="hljs-built_in">String</span> fname,
     <span class="hljs-built_in">String</span> flags = <span class="hljs-string">"r"</span>) <span class="hljs-keyword">async</span>;
@@ -578,20 +581,20 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
 <li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the file name</font></font></li>
-<li><span class="notranslate">flags</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specify the file opening mode, the default is "r", read-only mode</font></font></li>
+<li><span class="notranslate">flags</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the file opening method, the default is "r", read-only</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">return result:</font></font></p>
 <ul>
-<li><a href="../../object/ifs/seekablestream.md.html" class="notranslate">SeekableStream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns the open file object</font></font></li>
+<li><a href="../../object/ifs/seekablestream.md.html" class="notranslate">SeekableStream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns the opened file object</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The supported methods of parameter flags are as follows:</font></font></p>
 <ul>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'r' is read-only, throws an error if the file does not exist.</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'r+' Read and write mode, throw an error if the file does not exist.</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'w' is write-only, if the file does not exist, it will be created automatically, and if it exists, it will be emptied.</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'w+' read and write mode, the file will be created automatically if it does not exist.</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'a' Write-only add method, the file will be automatically created if it does not exist.</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'a+' read-write addition method, the file will be created automatically if it does not exist.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'r' read-only mode, throws an error if the file does not exist.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'r+' for reading and writing, throws an error if the file does not exist.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'w' write-only mode, if the file does not exist, it will be created automatically, if it exists, it will be cleared.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'w+' Read and write mode, if the file does not exist, it will be created automatically.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'a' is a write-only add method, and the file will be created automatically if it does not exist.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'a+' read-write add method, if the file does not exist, it will be created automatically.</font></font></li>
 </ul>
 <hr>
 <div name="open" data-unique="open"></div><h3 id="open" class="notranslate">open</h3>
@@ -605,21 +608,21 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
 <li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the file name</font></font></li>
-<li><span class="notranslate">flags</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specify the file opening mode, the default is "r", read-only mode</font></font></li>
+<li><span class="notranslate">flags</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the file opening method, the default is "r", read-only</font></font></li>
 <li><span class="notranslate">mode</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, when creating a file, specify the mode of the file, default 0666</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">return result:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns the open file descriptor</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The supported methods of parameter flags are as follows:</font></font></p>
 <ul>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'r' is read-only, throws an error if the file does not exist.</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'r+' Read and write mode, throw an error if the file does not exist.</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'w' is write-only, if the file does not exist, it will be created automatically, and if it exists, it will be emptied.</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'w+' read and write mode, the file will be created automatically if it does not exist.</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'a' Write-only add method, the file will be automatically created if it does not exist.</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'a+' read-write addition method, the file will be created automatically if it does not exist.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'r' read-only mode, throws an error if the file does not exist.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'r+' for reading and writing, throws an error if the file does not exist.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'w' write-only mode, if the file does not exist, it will be created automatically, if it exists, it will be cleared.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'w+' Read and write mode, if the file does not exist, it will be created automatically.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'a' is a write-only add method, and the file will be created automatically if it does not exist.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'a+' read-write add method, if the file does not exist, it will be created automatically.</font></font></li>
 </ul>
 <hr>
 <div name="close" data-unique="close"></div><h3 id="close" class="notranslate">close</h3>
@@ -632,7 +635,7 @@
 </ul>
 <hr>
 <div name="openTextStream" data-unique="openTextStream"></div><h3 id="openTextStream" class="notranslate">openTextStream</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Open a text file for reading, writing, or both</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Opens a text file for reading, writing, or both</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> BufferedStream fs.openTextStream(<span class="hljs-built_in">String</span> fname,
     <span class="hljs-built_in">String</span> flags = <span class="hljs-string">"r"</span>) <span class="hljs-keyword">async</span>;
@@ -640,31 +643,31 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
 <li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the file name</font></font></li>
-<li><span class="notranslate">flags</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specify the file opening mode, the default is "r", read-only mode</font></font></li>
+<li><span class="notranslate">flags</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the file opening method, the default is "r", read-only</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">return result:</font></font></p>
 <ul>
-<li><a href="../../object/ifs/bufferedstream.md.html" class="notranslate">BufferedStream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns the open file object</font></font></li>
+<li><a href="../../object/ifs/bufferedstream.md.html" class="notranslate">BufferedStream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns the opened file object</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The supported methods of parameter flags are as follows:</font></font></p>
 <ul>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'r' is read-only, throws an error if the file does not exist.</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'r+' Read and write mode, throw an error if the file does not exist.</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'w' is write-only, if the file does not exist, it will be created automatically, and if it exists, it will be emptied.</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'w+' read and write mode, the file will be created automatically if it does not exist.</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'a' Write-only add method, the file will be automatically created if it does not exist.</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'a+' read-write addition method, the file will be created automatically if it does not exist.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'r' read-only mode, throws an error if the file does not exist.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'r+' for reading and writing, throws an error if the file does not exist.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'w' write-only mode, if the file does not exist, it will be created automatically, if it exists, it will be cleared.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'w+' Read and write mode, if the file does not exist, it will be created automatically.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'a' is a write-only add method, and the file will be created automatically if it does not exist.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'a+' read-write add method, if the file does not exist, it will be created automatically.</font></font></li>
 </ul>
 <hr>
 <div name="readTextFile" data-unique="readTextFile"></div><h3 id="readTextFile" class="notranslate">readTextFile</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Open a text file and read the content</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Open the text file and read the content</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> fs.readTextFile(<span class="hljs-built_in">String</span> fname) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
 <li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the file name</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">return result:</font></font></p>
 <ul>
 <li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns the text content of the file</font></font></li>
 </ul>
@@ -678,9 +681,9 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
 <li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the file name</font></font></li>
-<li><span class="notranslate">encoding</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specify the decoding method, the default is not decoding</font></font></li>
+<li><span class="notranslate">encoding</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the decoding method, the default is no decoding</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">return result:</font></font></p>
 <ul>
 <li><span class="notranslate">Variant</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns the text content of the file</font></font></li>
 </ul>
@@ -693,9 +696,9 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
 <li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the file name</font></font></li>
-<li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, specifies read options</font></font></li>
+<li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, specifies the read option</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">return result:</font></font></p>
 <ul>
 <li><span class="notranslate">Variant</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns the text content of the file</font></font></li>
 </ul>
@@ -708,7 +711,7 @@
 </code></pre>
 <hr>
 <div name="readLines" data-unique="readLines"></div><h3 id="readLines" class="notranslate">readLines</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Open the file, read a set of text lines in an array, the line ending is marked based on the setting of the EOL property, by default, posix: "\n"; windows: "\r\n"</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Open the file and read a group of text lines in an array. The end of line identification is based on the setting of the EOL attribute. By default, posix: "\n"; windows: "\r\n"</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Array</span> fs.readLines(<span class="hljs-built_in">String</span> fname,<font></font>
     Integer maxlines = <span class="hljs-number">-1</span>);
@@ -716,11 +719,57 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
 <li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the file name</font></font></li>
-<li><span class="notranslate">maxlines</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, specify the maximum number of lines to read this time, read all text lines by default</font></font></li>
+<li><span class="notranslate">maxlines</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, specifies the maximum number of lines to read this time, and reads all text lines by default</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">return result:</font></font></p>
 <ul>
-<li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns the read text line array, if no data is readable, or the connection is broken, an empty array</font></font></li>
+<li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns an array of text lines read, if there is no data to read, or the connection is interrupted, an empty array</font></font></li>
+</ul>
+<hr>
+<div name="write" data-unique="write"></div><h3 id="write" class="notranslate">write</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Write content to the file according to the file descriptor</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div><span class="hljs-keyword">static</span> Integer fs.write(Integer fd,<font></font>
+    Buffer buffer,<font></font>
+    Integer offset = <span class="hljs-number">0</span>,<font></font>
+    Integer length = <span class="hljs-number">-1</span>,<font></font>
+    Integer position = <span class="hljs-number">-1</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
+<ul>
+<li><span class="notranslate">fd</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, file descriptor</font></font></li>
+<li><span class="notranslate">buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, to be written</font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">object</font></font></li>
+<li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer,</font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Data read offset, the default is 0</font></font></li>
+<li><span class="notranslate">length</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, the number of bytes written in the file, the default is -1</font></font></li>
+<li><span class="notranslate">position</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, the location to write the file to, the default is the current file location</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">return result:</font></font></p>
+<ul>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, the actual number of bytes written</font></font></li>
+</ul>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Write content to the file according to the file descriptor</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div><span class="hljs-keyword">static</span> Integer fs.write(Integer fd,
+    <span class="hljs-built_in">String</span> string,<font></font>
+    Integer position = <span class="hljs-number">-1</span>,
+    <span class="hljs-built_in">String</span> encoding = <span class="hljs-string">"utf8"</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
+<ul>
+<li><span class="notranslate">fd</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, file descriptor</font></font></li>
+<li><span class="notranslate">string</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, the string to be written</font></font></li>
+<li><span class="notranslate">position</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, the location to write the file to, the default is the current file location</font></font></li>
+<li><span class="notranslate">encoding</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the decoding method, the default decoding is utf8</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">return result:</font></font></p>
+<ul>
+<li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, the actual number of bytes written</font></font></li>
 </ul>
 <hr>
 <div name="writeTextFile" data-unique="writeTextFile"></div><h3 id="writeTextFile" class="notranslate">writeTextFile</h3>
@@ -772,12 +821,12 @@
 </ul>
 <hr>
 <div name="clearZipFS" data-unique="clearZipFS"></div><h3 id="clearZipFS" class="notranslate">clearZipFS</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">clear</font></font><a href="zip.md.html" class="notranslate">zip</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">virtual file mapping</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">to clear</font></font><a href="zip.md.html" class="notranslate">zip</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">virtual file mapping</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> fs.clearZipFS(<span class="hljs-built_in">String</span> fname = <span class="hljs-string">""</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specify the mapping path, clear all caches by default</font></font></li>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the mapping path, clears all caches by default</font></font></li>
 </ul>
 <hr>
 <div name="watch" data-unique="watch"></div><h3 id="watch" class="notranslate">watch</h3>
@@ -786,9 +835,9 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the file object to watch</font></font></li>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the file object to observe</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">return result:</font></font></p>
 <ul>
 <li><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">,</font></font><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">object</font></font></li>
 </ul>
@@ -800,10 +849,10 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the file object to watch</font></font></li>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the file object to observe</font></font></li>
 <li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function, </font></font><code>(evtType: 'change' | 'rename', filename: string) =&gt; any</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">the processing callback when the file object changes</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">return result:</font></font></p>
 <ul>
 <li><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">,</font></font><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">object</font></font></li>
 </ul>
@@ -815,10 +864,10 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the file object to watch</font></font></li>
-<li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, watch options</font></font></li>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the file object to observe</font></font></li>
+<li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, observation options</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">return result:</font></font></p>
 <ul>
 <li><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">,</font></font><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">object</font></font></li>
 </ul>
@@ -843,11 +892,11 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the file object to watch</font></font></li>
-<li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, watch options</font></font></li>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the file object to observe</font></font></li>
+<li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, observation options</font></font></li>
 <li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function, </font></font><code>(evtType: 'change' | 'rename', filename: string) =&gt; any</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">the processing callback when the file object changes</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">return result:</font></font></p>
 <ul>
 <li><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">,</font></font><a href="../../object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">object</font></font></li>
 </ul>
@@ -871,10 +920,10 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the file object to watch</font></font></li>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the file object to observe</font></font></li>
 <li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function, </font></font><code>(curStats: Stats, prevStats: Stats) =&gt; any</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">the processing callback when the stats of the file object changes</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">return result:</font></font></p>
 <ul>
 <li><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">,</font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">object</font></font></li>
 </ul>
@@ -888,11 +937,11 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the file object to watch</font></font></li>
-<li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, watch options</font></font></li>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the file object to observe</font></font></li>
+<li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, observation options</font></font></li>
 <li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function, </font></font><code>(curStats: Stats, prevStats: Stats) =&gt; any</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">the processing callback when the stats of the file object changes</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">return result:</font></font></p>
 <ul>
 <li><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">,</font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">object</font></font></li>
 </ul>
@@ -909,41 +958,41 @@
 </code></pre>
 <hr>
 <div name="unwatchFile" data-unique="unwatchFile"></div><h3 id="unwatchFile" class="notranslate">unwatchFile</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">From observing fname's</font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Remove callbacks from all watch events in</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">From observing fname's</font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Callback to remove all observed events in</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> fs.unwatchFile(<span class="hljs-built_in">String</span> fname);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the file object to watch</font></font></li>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the file object to observe</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">return result:</font></font></p>
 <ul>
 <li><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">object</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">From observing fname's</font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Remove the </font></font><code>callback</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">callback</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">From observing fname's</font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Removed </font></font><code>callback</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">callbacks from watch event callbacks</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> fs.unwatchFile(<span class="hljs-built_in">String</span> fname,
     <span class="hljs-built_in">Function</span> callback);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the file object to watch</font></font></li>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the file object to observe</font></font></li>
 <li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function, the callback to remove</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">return result:</font></font></p>
 <ul>
 <li><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">object</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Even if the callback is no longer</font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">No error will be reported in the callback of the observation event</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Even if the callback is no longer</font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">No error will be reported in the observation event callback of</font></font></p>
 <div name="常量" data-unique="常量"></div><h2 id="常量"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">constant</font></font></h2>
 <div name="SEEK_SET" data-unique="SEEK_SET"></div><h3 id="SEEK_SET" class="notranslate">SEEK_SET</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">seek mode constant, move to absolute position</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">seek method constant, move to absolute position</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> fs.SEEK_SET = <span class="hljs-number">0</span>;
 </code></pre>
 <hr>
 <div name="SEEK_CUR" data-unique="SEEK_CUR"></div><h3 id="SEEK_CUR" class="notranslate">SEEK_CUR</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">seek mode constant, move to the relative position of the current position</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">seek method constant, move to the relative position of the current position</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> fs.SEEK_CUR = <span class="hljs-number">1</span>;
 </code></pre>
 <hr>
@@ -951,4 +1000,4 @@
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">seek mode constant, move to the relative position of the end of the file</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> fs.SEEK_END = <span class="hljs-number">2</span>;
 </code></pre>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Support us</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip702669"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip702669" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Support us</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

@@ -65,6 +65,7 @@
 <li><a href=../../module/ifs/zlib.md.html class ="notranslate">zlib</a></li>
 </ul>
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_object" aria-controls="collapse_object"> 内置对象 </a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby=headingOne><div class=panel-body> <ul>
+<li><a href=blskey.md.html class ="notranslate">BlsKey</a></li>
 <li><a href=buffer.md.html class ="notranslate">Buffer</a></li>
 <li><a href=bufferedstream.md.html class ="notranslate">BufferedStream</a></li>
 <li><a href=chain.md.html class ="notranslate">Chain</a></li>
@@ -74,6 +75,8 @@
 <li><a href=dbconnection.md.html class ="notranslate">DbConnection</a></li>
 <li><a href=dgramsocket.md.html class ="notranslate">DgramSocket</a></li>
 <li><a href=digest.md.html class ="notranslate">Digest</a></li>
+<li><a href=eckey.md.html class ="notranslate">ECKey</a></li>
+<li><a href=ed25519key.md.html class ="notranslate">Ed25519Key</a></li>
 <li><a href=event.md.html class ="notranslate">Event</a></li>
 <li><a href=eventemitter.md.html class ="notranslate">EventEmitter</a></li>
 <li><a href=fswatcher.md.html class ="notranslate">FSWatcher</a></li>
@@ -206,128 +209,84 @@
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> s = <span class="hljs-keyword">new</span> net.Socket();
 </code></pre>
 <h2 id="继承关系">继承关系</h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="172.0" height="664.0" viewbox="0 0 172 664" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
-    <desc >
-    #lineWidth: 1.5
-    #font: Helvetica,sans-Serif
-    #fontSize: 10
-    #leading: 1.6
-    #.this: fill=lightgray
-    #.class: fill=white
-
-    [&lt;class&gt;object|toString();toJSON()]
-    [&lt;class&gt;Stream|fd|read();write();flush();close();copyTo()]
-    [&lt;this&gt;Socket|new Socket()|family;remoteAddress;remotePort;localAddress;localPort;timeout|connect();bind();listen();accept();recv();send()]
-
-    [object] &lt;:- [Stream]
-    [Stream] &lt;:- [Socket]
-    </desc>
-    <g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="10pt" font-family="Helvetica,sans-Serif" font-weight="normal" font-style="normal">
-        <g font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="bold" font-style="normal" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
-            <g stroke="transparent" fill="transparent">
-                <rect x="0.0" y="0.0" height="664.0" width="172.0" stroke="none"></rect>
-            </g>
-            <g transform="translate(8, 8)" fill="#33322E">
-                <g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal">
-                    <path d="M58.0 93.3 L58 100 L58 120 L58.0 120.0 " fill="none"></path>
-                    <path d="M63.3 93.3 L58.0 93.3 L52.7 93.3 L58.0 80.0 Z"></path>
-                    <path d="M58.0 293.3 L58 300 L58 320 L58.0 320.0 " fill="none"></path>
-                    <path d="M63.3 293.3 L58.0 293.3 L52.7 293.3 L58.0 280.0 Z"></path>
-                    <g data-name="Socket">
-                        <g fill="lightgray" stroke="#33322E" data-name="Socket">
-                            <rect x="0.0" y="320.0" height="288.0" width="116.0" data-name="Socket"></rect>
-                            <path d="M0.0 352.0 L116.0 352.0" fill="none" data-name="Socket"></path>
-                            <path d="M0.0 384.0 L116.0 384.0" fill="none" data-name="Socket"></path>
-                            <path d="M0.0 496.0 L116.0 496.0" fill="none" data-name="Socket"></path>
-                        </g>
-                        <g transform="translate(0, 320)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Socket">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Socket">
-                                <text x="50.0" y="13.0" stroke="none" text-anchor="middle" data-name="Socket">Socket</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 352)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Socket">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Socket">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Socket">new Socket()</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 384)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Socket">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Socket">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Socket">family</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="Socket">remoteAddress</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="Socket">remotePort</text>
-                                <text x="0.0" y="61.0" stroke="none" data-name="Socket">localAddress</text>
-                                <text x="0.0" y="77.0" stroke="none" data-name="Socket">localPort</text>
-                                <text x="0.0" y="93.0" stroke="none" data-name="Socket">timeout</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 496)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Socket">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Socket">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Socket">connect()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="Socket">bind()</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="Socket">listen()</text>
-                                <text x="0.0" y="61.0" stroke="none" data-name="Socket">accept()</text>
-                                <text x="0.0" y="77.0" stroke="none" data-name="Socket">recv()</text>
-                                <text x="0.0" y="93.0" stroke="none" data-name="Socket">send()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="Stream">
-                        <g fill="white" stroke="#33322E" data-name="Stream">
-                            <rect x="21.0" y="120.0" height="160.0" width="74.0" data-name="Stream"></rect>
-                            <path d="M21.0 152.0 L95.0 152.0" fill="none" data-name="Stream"></path>
-                            <path d="M21.0 184.0 L95.0 184.0" fill="none" data-name="Stream"></path>
-                        </g>
-                        <g transform="translate(21, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Stream">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Stream">
-                                <text x="29.0" y="13.0" stroke="none" text-anchor="middle" data-name="Stream">Stream</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(21, 152)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Stream">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Stream">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Stream">fd</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(21, 184)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Stream">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Stream">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Stream">read()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="Stream">write()</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="Stream">flush()</text>
-                                <text x="0.0" y="61.0" stroke="none" data-name="Stream">close()</text>
-                                <text x="0.0" y="77.0" stroke="none" data-name="Stream">copyTo()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="object">
-                        <g fill="white" stroke="#33322E" data-name="object">
-                            <rect x="20.0" y="0.0" height="80.0" width="77.0" data-name="object"></rect>
-                            <path d="M20.0 32.0 L97.0 32.0" fill="none" data-name="object"></path>
-                        </g>
-                        <g transform="translate(20, 0)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="object">
-                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="object">object</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(20, 32)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="object">
-                                <text x="0.0" y="13.0" stroke="none" data-name="object">toString()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="object">toJSON()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg></div>
+<div class="dot notranslate">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="92pt" height="443pt"
+ viewBox="0.00 0.00 91.79 443.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 439)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-439 87.789,-439 87.789,4 -4,4"/>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href=object.md.html xlink:title="object">
+<polygon fill="#ffffff" stroke="#000000" points="13.063,-382.5 13.063,-434.5 70.726,-434.5 70.726,-382.5 13.063,-382.5"/>
+<text text-anchor="middle" x="41.8945" y="-421.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="13.063,-414.5 70.726,-414.5 "/>
+<text text-anchor="start" x="21.063" y="-401.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="21.063" y="-389.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+</a>
+</g>
+</g>
+<!-- Stream -->
+<g id="node2" class="node">
+<title>Stream</title>
+<g id="a_node2"><a xlink:href=stream.md.html xlink:title="Stream">
+<polygon fill="#ffffff" stroke="#000000" points="14.1725,-237.5 14.1725,-345.5 69.6165,-345.5 69.6165,-237.5 14.1725,-237.5"/>
+<text text-anchor="middle" x="41.8945" y="-332.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Stream</text>
+<polyline fill="none" stroke="#000000" points="14.1725,-325.5 69.6165,-325.5 "/>
+<text text-anchor="start" x="22.1725" y="-312.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">fd</text>
+<polyline fill="none" stroke="#000000" points="14.1725,-305.5 69.6165,-305.5 "/>
+<text text-anchor="start" x="22.1725" y="-292.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">read()</text>
+<text text-anchor="start" x="22.1725" y="-280.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">write()</text>
+<text text-anchor="start" x="22.1725" y="-268.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">flush()</text>
+<text text-anchor="start" x="22.1725" y="-256.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">close()</text>
+<text text-anchor="start" x="22.1725" y="-244.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">copyTo()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;Stream -->
+<g id="edge1" class="edge">
+<title>object&#45;&gt;Stream</title>
+<path fill="none" stroke="#000000" d="M41.8945,-372.1428C41.8945,-363.8239 41.8945,-354.8042 41.8945,-345.9111"/>
+<polygon fill="#000000" stroke="#000000" points="38.3946,-372.2429 41.8945,-382.2429 45.3946,-372.243 38.3946,-372.2429"/>
+</g>
+<!-- Socket -->
+<g id="me" class="node">
+<title>Socket</title>
+<g id="a_me"><a xlink:title="Socket">
+<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-200.5 83.789,-200.5 83.789,-.5 0,-.5"/>
+<text text-anchor="middle" x="41.8945" y="-187.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Socket</text>
+<polyline fill="none" stroke="#000000" points="0,-180.5 83.789,-180.5 "/>
+<text text-anchor="start" x="8" y="-167.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new Socket()</text>
+<polyline fill="none" stroke="#000000" points="0,-160.5 83.789,-160.5 "/>
+<text text-anchor="start" x="8" y="-147.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">family</text>
+<text text-anchor="start" x="8" y="-135.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">remoteAddress</text>
+<text text-anchor="start" x="8" y="-123.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">remotePort</text>
+<text text-anchor="start" x="8" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">localAddress</text>
+<text text-anchor="start" x="8" y="-99.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">localPort</text>
+<text text-anchor="start" x="8" y="-87.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">timeout</text>
+<polyline fill="none" stroke="#000000" points="0,-80.5 83.789,-80.5 "/>
+<text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">connect()</text>
+<text text-anchor="start" x="8" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">bind()</text>
+<text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">listen()</text>
+<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">accept()</text>
+<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">recv()</text>
+<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">send()</text>
+</a>
+</g>
+</g>
+<!-- Stream&#45;&gt;Socket -->
+<g id="edge2" class="edge">
+<title>Stream&#45;&gt;Socket</title>
+<path fill="none" stroke="#000000" d="M41.8945,-227.1058C41.8945,-218.5988 41.8945,-209.7222 41.8945,-200.7895"/>
+<polygon fill="#000000" stroke="#000000" points="38.3946,-227.2779 41.8945,-237.278 45.3946,-227.278 38.3946,-227.2779"/>
+</g>
+</g>
+</svg>
+</div>
 
 <h2 id="构造函数">构造函数</h2>
 <h3 id="Socket" class ="notranslate">Socket</h3>
@@ -521,4 +480,4 @@
 <ul>
 <li><span class="notranslate">Value</span>, 返回包含可 JSON 序列化的值</li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

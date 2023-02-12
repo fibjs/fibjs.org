@@ -5,20 +5,17 @@ XmlDocument 对象是一棵文档树的根，可为我们提供对文档数据�
 用于元素节点、文本节点、注释、处理指令等均无法存在于 XmlDocument 之外， XmlDocument 对象同样提供了创建这些对象的方法。 [XmlNode](XmlNode.md) 对象提供了一个 ownerDocument 属性，此属性可把它们与在其中创建它们的 XmlDocument 关联起来。
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<class>object|toString();toJSON()]
-[<class>XmlNode|nodeType;nodeName;nodeValue;ownerDocument;parentNode;childNodes;firstChild;lastChild;previousSibling;nextSibling|hasChildNodes();normalize();cloneNode();lookupPrefix();lookupNamespaceURI();insertBefore();insertAfter();appendChild();replaceChild();removeChild()]
-[<this>XmlDocument|new XmlDocument()|inputEncoding;xmlStandalone;xmlVersion;doctype;documentElement;head;title;body|load();getElementsByTagName();getElementsByTagNameNS();getElementById();getElementsByClassName();createElement();createElementNS();createTextNode();createComment();createCDATASection();createProcessingInstruction()]
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    XmlNode [tooltip="XmlNode", URL="XmlNode.md", label="{XmlNode|nodeType\lnodeName\lnodeValue\lownerDocument\lparentNode\lchildNodes\lfirstChild\llastChild\lpreviousSibling\lnextSibling\l|hasChildNodes()\lnormalize()\lcloneNode()\llookupPrefix()\llookupNamespaceURI()\linsertBefore()\linsertAfter()\lappendChild()\lreplaceChild()\lremoveChild()\l}"];
+    XmlDocument [tooltip="XmlDocument", fillcolor="lightgray", id="me", label="{XmlDocument|new XmlDocument()\l|inputEncoding\lxmlStandalone\lxmlVersion\ldoctype\ldocumentElement\lhead\ltitle\lbody\l|load()\lgetElementsByTagName()\lgetElementsByTagNameNS()\lgetElementById()\lgetElementsByClassName()\lcreateElement()\lcreateElementNS()\lcreateTextNode()\lcreateComment()\lcreateCDATASection()\lcreateProcessingInstruction()\l}"];
 
-[object] <:- [XmlNode]
-[XmlNode] <:- [XmlDocument]
+    object -> XmlNode [dir=back];
+    XmlNode -> XmlDocument [dir=back];
+}
 ```
 
 ## 构造函数

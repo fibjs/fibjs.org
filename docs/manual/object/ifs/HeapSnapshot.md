@@ -2,18 +2,15 @@
 HeapSnapshots记录JS堆在某个时刻的状态
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<class>object|toString();toJSON()]
-[<this>HeapSnapshot|time;root;nodes|diff();getNodeById();save()]
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    HeapSnapshot [tooltip="HeapSnapshot", fillcolor="lightgray", id="me", label="{HeapSnapshot|time\lroot\lnodes\l|diff()\lgetNodeById()\lsave()\l}"];
 
-[object] <:- [HeapSnapshot]
+    object -> HeapSnapshot [dir=back];
+}
 ```
 
 ## 成员属性

@@ -177,6 +177,19 @@ static test.oit(String name,
 * block: Function, 测试内容
 
 --------------------------
+### todo
+**计划项目定义，[test.setup](test.md#setup) 后可使用 it.todo 调用**
+
+```JavaScript
+static test.todo(String name,
+    Function block);
+```
+
+调用参数:
+* name: String, 定义项目名称
+* block: Function, 测试内容
+
+--------------------------
 ### before
 **定义当前测试模块进入事件**
 
@@ -225,14 +238,52 @@ static test.afterEach(Function func);
 **开始执行定义的测试模块**
 
 ```JavaScript
-static Integer test.run(Integer loglevel = console.ERROR);
+static Object test.run(Integer mode = console.ERROR);
 ```
 
 调用参数:
-* loglevel: Integer, 指定进行测试时的日志输出级别，ERROR 时，项目报错信息集中在报告后显示，低于 ERROR 时，输出信息随时显示，高于 ERROR 时，只显示报告
+* mode: Integer, 指定进行测试模式，ERROR 时，项目报错信息集中在报告后显示，低于 ERROR 时，输出信息随时显示，高于 ERROR 时，只显示报告
 
 返回结果:
-* Integer, 返回测试用例统计结果，正确则返回 0，错误则返回错误个数
+* Object, 返回测试结果
+
+测试运行完成后，将以以下形式返回测试结果：
+
+```JavaScript
+{
+    "total": 2, // 总测试项目数
+    "pass": 2, // 通过测试项目数
+    "fail": 0, // 失败测试项目数
+    "skip": 0, // 跳过测试项目数
+    "todo": 0, // 计划测试项目数
+    "time": 0.000000, // 测试耗时
+    "cases": [ // 测试项目列表
+        {
+            "name": "test", // 测试项目名称
+            "time": 0.000000, // 测试耗时
+            "result": true, // 测试结果
+            "error": null // 测试错误信息
+        },
+        {
+            "name": "sub cases", // 测试组名称
+            "total": 1, // 总测试项目数
+            "pass": 1, // 通过测试项目数
+            "fail": 0, // 失败测试项目数
+            "skip": 0, // 跳过测试项目数
+            "todo": 0, // 计划测试项目数
+            "time": 0.000000, // 测试耗时
+            "cases": [ // 测试项目列表
+                {
+                    "name": "test", // 测试项目名称
+                    "time": 0.000000, // 测试耗时
+                    "result": true, // 测试结果
+                    "error": null // 测试错误信息
+                }
+            ]
+        }
+    ]
+}
+```
 
 --------------------------
 ### setup

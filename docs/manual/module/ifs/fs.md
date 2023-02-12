@@ -549,6 +549,47 @@ static Array fs.readLines(String fname,
 * Array, 返回读取的文本行数组，若无数据可读，或者连接中断，空数组
 
 --------------------------
+### write
+**根据文件描述符，向文件写入内容**
+
+```JavaScript
+static Integer fs.write(Integer fd,
+    Buffer buffer,
+    Integer offset = 0,
+    Integer length = -1,
+    Integer position = -1) async;
+```
+
+调用参数:
+* fd: Integer, 文件描述符
+* buffer: [Buffer](../../object/ifs/Buffer.md), 待写入的 [Buffer](../../object/ifs/Buffer.md) 对象
+* offset: Integer, [Buffer](../../object/ifs/Buffer.md) 数据读取偏移量， 默认为 0
+* length: Integer, 文件写入字节数，默认为 -1
+* position: Integer, 文件写入取位置，默认为当前文件位置
+
+返回结果:
+* Integer, 实际写入的字节数
+
+--------------------------
+**根据文件描述符，向文件写入内容**
+
+```JavaScript
+static Integer fs.write(Integer fd,
+    String string,
+    Integer position = -1,
+    String encoding = "utf8") async;
+```
+
+调用参数:
+* fd: Integer, 文件描述符
+* string: String, 待写入的字符串
+* position: Integer, 文件写入取位置，默认为当前文件位置
+* encoding: String, 指定解码方式，缺省解码 utf8
+
+返回结果:
+* Integer, 实际写入的字节数
+
+--------------------------
 ### writeTextFile
 **创建文本文件，并写入内容**
 

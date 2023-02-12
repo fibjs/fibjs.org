@@ -65,6 +65,7 @@
 <li><a href=../../module/ifs/zlib.md.html class ="notranslate">zlib</a></li>
 </ul>
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_object" aria-controls="collapse_object"> 内置对象 </a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby=headingOne><div class=panel-body> <ul>
+<li><a href=blskey.md.html class ="notranslate">BlsKey</a></li>
 <li><a href=buffer.md.html class ="notranslate">Buffer</a></li>
 <li><a href=bufferedstream.md.html class ="notranslate">BufferedStream</a></li>
 <li><a href=chain.md.html class ="notranslate">Chain</a></li>
@@ -74,6 +75,8 @@
 <li><a href=dbconnection.md.html class ="notranslate">DbConnection</a></li>
 <li><a href=dgramsocket.md.html class ="notranslate">DgramSocket</a></li>
 <li><a href=digest.md.html class ="notranslate">Digest</a></li>
+<li><a href=eckey.md.html class ="notranslate">ECKey</a></li>
+<li><a href=ed25519key.md.html class ="notranslate">Ed25519Key</a></li>
 <li><a href=event.md.html class ="notranslate">Event</a></li>
 <li><a href=eventemitter.md.html class ="notranslate">EventEmitter</a></li>
 <li><a href=fswatcher.md.html class ="notranslate">FSWatcher</a></li>
@@ -220,101 +223,67 @@
 <span class="hljs-keyword">var</span> mod_in_sbox = sbox.require(<span class="hljs-string">'./path/to/mod'</span>);
 </code></pre>
 <h2 id="继承关系">继承关系</h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="209.0" height="480.0" viewbox="0 0 209 480" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
-    <desc >
-    #lineWidth: 1.5
-    #font: Helvetica,sans-Serif
-    #fontSize: 10
-    #leading: 1.6
-    #.this: fill=lightgray
-    #.class: fill=white
-
-    [&lt;class&gt;object|toString();toJSON()]
-    [&lt;this&gt;SandBox|new SandBox()|global;modules|add();addScript();remove();has();clone();freeze();refresh();run();resolve();require();setModuleCompiler()]
-
-    [object] &lt;:- [SandBox]
-    </desc>
-    <g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="10pt" font-family="Helvetica,sans-Serif" font-weight="normal" font-style="normal">
-        <g font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="bold" font-style="normal" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
-            <g stroke="transparent" fill="transparent">
-                <rect x="0.0" y="0.0" height="480.0" width="209.0" stroke="none"></rect>
-            </g>
-            <g transform="translate(8, 8)" fill="#33322E">
-                <g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal">
-                    <path d="M76.5 93.3 L76.5 100 L76.5 120 L76.5 120.0 " fill="none"></path>
-                    <path d="M81.8 93.3 L76.5 93.3 L71.2 93.3 L76.5 80.0 Z"></path>
-                    <g data-name="SandBox">
-                        <g fill="lightgray" stroke="#33322E" data-name="SandBox">
-                            <rect x="0.0" y="120.0" height="304.0" width="153.0" data-name="SandBox"></rect>
-                            <path d="M0.0 152.0 L153.0 152.0" fill="none" data-name="SandBox"></path>
-                            <path d="M0.0 184.0 L153.0 184.0" fill="none" data-name="SandBox"></path>
-                            <path d="M0.0 232.0 L153.0 232.0" fill="none" data-name="SandBox"></path>
-                        </g>
-                        <g transform="translate(0, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="SandBox">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="SandBox">
-                                <text x="68.5" y="13.0" stroke="none" text-anchor="middle" data-name="SandBox">SandBox</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 152)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="SandBox">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="SandBox">
-                                <text x="0.0" y="13.0" stroke="none" data-name="SandBox">new SandBox()</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 184)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="SandBox">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="SandBox">
-                                <text x="0.0" y="13.0" stroke="none" data-name="SandBox">global</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="SandBox">modules</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 232)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="SandBox">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="SandBox">
-                                <text x="0.0" y="13.0" stroke="none" data-name="SandBox">add()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="SandBox">addScript()</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="SandBox">remove()</text>
-                                <text x="0.0" y="61.0" stroke="none" data-name="SandBox">has()</text>
-                                <text x="0.0" y="77.0" stroke="none" data-name="SandBox">clone()</text>
-                                <text x="0.0" y="93.0" stroke="none" data-name="SandBox">freeze()</text>
-                                <text x="0.0" y="109.0" stroke="none" data-name="SandBox">refresh()</text>
-                                <text x="0.0" y="125.0" stroke="none" data-name="SandBox">run()</text>
-                                <text x="0.0" y="141.0" stroke="none" data-name="SandBox">resolve()</text>
-                                <text x="0.0" y="157.0" stroke="none" data-name="SandBox">require()</text>
-                                <text x="0.0" y="173.0" stroke="none" data-name="SandBox">setModuleCompiler()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="object">
-                        <g fill="white" stroke="#33322E" data-name="object">
-                            <rect x="38.0" y="0.0" height="80.0" width="77.0" data-name="object"></rect>
-                            <path d="M38.0 32.0 L115.0 32.0" fill="none" data-name="object"></path>
-                        </g>
-                        <g transform="translate(38, 0)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="object">
-                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="object">object</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(38, 32)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="object">
-                                <text x="0.0" y="13.0" stroke="none" data-name="object">toString()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="object">toJSON()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg></div>
+<div class="dot notranslate">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="117pt" height="310pt"
+ viewBox="0.00 0.00 116.77 310.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 306)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-306 112.772,-306 112.772,4 -4,4"/>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href=object.md.html xlink:title="object">
+<polygon fill="#ffffff" stroke="#000000" points="25.5545,-249.5 25.5545,-301.5 83.2175,-301.5 83.2175,-249.5 25.5545,-249.5"/>
+<text text-anchor="middle" x="54.386" y="-288.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="25.5545,-281.5 83.2175,-281.5 "/>
+<text text-anchor="start" x="33.5545" y="-268.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="33.5545" y="-256.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+</a>
+</g>
+</g>
+<!-- SandBox -->
+<g id="me" class="node">
+<title>SandBox</title>
+<g id="a_me"><a xlink:title="SandBox">
+<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-212.5 108.772,-212.5 108.772,-.5 0,-.5"/>
+<text text-anchor="middle" x="54.386" y="-199.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">SandBox</text>
+<polyline fill="none" stroke="#000000" points="0,-192.5 108.772,-192.5 "/>
+<text text-anchor="start" x="8" y="-179.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new SandBox()</text>
+<polyline fill="none" stroke="#000000" points="0,-172.5 108.772,-172.5 "/>
+<text text-anchor="start" x="8" y="-159.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">global</text>
+<text text-anchor="start" x="8" y="-147.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">modules</text>
+<polyline fill="none" stroke="#000000" points="0,-140.5 108.772,-140.5 "/>
+<text text-anchor="start" x="8" y="-127.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">addBuiltinModules()</text>
+<text text-anchor="start" x="8" y="-115.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">add()</text>
+<text text-anchor="start" x="8" y="-103.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">addScript()</text>
+<text text-anchor="start" x="8" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">remove()</text>
+<text text-anchor="start" x="8" y="-79.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">has()</text>
+<text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">clone()</text>
+<text text-anchor="start" x="8" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">freeze()</text>
+<text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">run()</text>
+<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">resolve()</text>
+<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">require()</text>
+<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">setModuleCompiler()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;SandBox -->
+<g id="edge1" class="edge">
+<title>object&#45;&gt;SandBox</title>
+<path fill="none" stroke="#000000" d="M54.386,-239.2911C54.386,-231.1222 54.386,-222.047 54.386,-212.5847"/>
+<polygon fill="#000000" stroke="#000000" points="50.8861,-239.4641 54.386,-249.4641 57.8861,-239.4642 50.8861,-239.4641"/>
+</g>
+</g>
+</svg>
+</div>
 
 <h2 id="构造函数">构造函数</h2>
 <h3 id="SandBox" class ="notranslate">SandBox</h3>
 <p><strong>构造一个新的安全沙箱对象，并初始化基础模块</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> SandBox(<span class="hljs-built_in">Object</span> mods);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> SandBox(<span class="hljs-built_in">Object</span> mods = {});
 </code></pre>
 <p>调用参数:</p>
 <ul>
@@ -367,6 +336,11 @@
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly <span class="hljs-built_in">Object</span> SandBox.modules;
 </code></pre>
 <h2 id="成员函数">成员函数</h2>
+<h3 id="addBuiltinModules" class ="notranslate">addBuiltinModules</h3>
+<p><strong>向沙箱中添加内置基础模块</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>SandBox.addBuiltinModules();
+</code></pre>
+<hr>
 <h3 id="add" class ="notranslate">add</h3>
 <p><strong>向沙箱中添加一个基础模块</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
@@ -437,11 +411,6 @@
 <h3 id="freeze" class ="notranslate">freeze</h3>
 <p><strong>冻结当前沙箱，冻结后的沙箱，对 <a href=../../module/ifs/global.md.html class ="notranslate">global</a> 所做的修改将被忽略</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>SandBox.freeze();
-</code></pre>
-<hr>
-<h3 id="refresh" class ="notranslate">refresh</h3>
-<p><strong>重新加载沙箱内的模块，此操作只会重新初始化模块，复位模块内的变量，不更新模块代码</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>SandBox.refresh();
 </code></pre>
 <hr>
 <h3 id="run" class ="notranslate">run</h3>
@@ -565,4 +534,4 @@ sbox.setModuleCompiler(<span class="hljs-string">'.markdown'</span>, mdCompiler)
 <ul>
 <li><span class="notranslate">Value</span>, 返回包含可 JSON 序列化的值</li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

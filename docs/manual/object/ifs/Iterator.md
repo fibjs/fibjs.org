@@ -2,18 +2,15 @@
 迭代器对象，用于遍历集合数据
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<class>object|toString();toJSON()]
-[<this>Iterator|@iterator()|next()]
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    Iterator [tooltip="Iterator", fillcolor="lightgray", id="me", label="{Iterator|iterator()\l|next()\l}"];
 
-[object] <:- [Iterator]
+    object -> Iterator [dir=back];
+}
 ```
 
 ## 操作符

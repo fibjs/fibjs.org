@@ -65,6 +65,7 @@
 <li><a href=../../module/ifs/zlib.md.html class ="notranslate">zlib</a></li>
 </ul>
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_object" aria-controls="collapse_object"> 内置对象 </a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby=headingOne><div class=panel-body> <ul>
+<li><a href=blskey.md.html class ="notranslate">BlsKey</a></li>
 <li><a href=buffer.md.html class ="notranslate">Buffer</a></li>
 <li><a href=bufferedstream.md.html class ="notranslate">BufferedStream</a></li>
 <li><a href=chain.md.html class ="notranslate">Chain</a></li>
@@ -74,6 +75,8 @@
 <li><a href=dbconnection.md.html class ="notranslate">DbConnection</a></li>
 <li><a href=dgramsocket.md.html class ="notranslate">DgramSocket</a></li>
 <li><a href=digest.md.html class ="notranslate">Digest</a></li>
+<li><a href=eckey.md.html class ="notranslate">ECKey</a></li>
+<li><a href=ed25519key.md.html class ="notranslate">Ed25519Key</a></li>
 <li><a href=event.md.html class ="notranslate">Event</a></li>
 <li><a href=eventemitter.md.html class ="notranslate">EventEmitter</a></li>
 <li><a href=fswatcher.md.html class ="notranslate">FSWatcher</a></li>
@@ -210,140 +213,91 @@
 <span class="hljs-keyword">var</span> msg = <span class="hljs-keyword">new</span> ws.Message();
 </code></pre>
 <h2 id="继承关系">继承关系</h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="248.0" height="776.0" viewbox="0 0 248 776" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
-    <desc >
-    #lineWidth: 1.5
-    #font: Helvetica,sans-Serif
-    #fontSize: 10
-    #leading: 1.6
-    #.this: fill=lightgray
-    #.class: fill=white
-
-    [&lt;class&gt;object|toString();toJSON()]
-    [&lt;class&gt;Message|new Message()|TEXT;BINARY|value;params;type;data;body;length;stream;lastError|read();readAll();write();json();pack();end();isEnded();clear();sendTo();readFrom()]
-    [&lt;this&gt;WebSocketMessage|new WebSocketMessage()|masked;compress;maxSize]
-
-    [object] &lt;:- [Message]
-    [Message] &lt;:- [WebSocketMessage]
-    </desc>
-    <g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="10pt" font-family="Helvetica,sans-Serif" font-weight="normal" font-style="normal">
-        <g font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="bold" font-style="normal" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
-            <g stroke="transparent" fill="transparent">
-                <rect x="0.0" y="0.0" height="776.0" width="248.0" stroke="none"></rect>
-            </g>
-            <g transform="translate(8, 8)" fill="#33322E">
-                <g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal">
-                    <path d="M96.0 93.3 L96 100 L96 120 L96.0 120.0 " fill="none"></path>
-                    <path d="M101.3 93.3 L96.0 93.3 L90.7 93.3 L96.0 80.0 Z"></path>
-                    <path d="M96.0 565.3 L96 572 L96 592 L96.0 592.0 " fill="none"></path>
-                    <path d="M101.3 565.3 L96.0 565.3 L90.7 565.3 L96.0 552.0 Z"></path>
-                    <g data-name="Message">
-                        <g fill="white" stroke="#33322E" data-name="Message">
-                            <rect x="38.0" y="120.0" height="432.0" width="117.0" data-name="Message"></rect>
-                            <path d="M38.0 152.0 L155.0 152.0" fill="none" data-name="Message"></path>
-                            <path d="M38.0 184.0 L155.0 184.0" fill="none" data-name="Message"></path>
-                            <path d="M38.0 232.0 L155.0 232.0" fill="none" data-name="Message"></path>
-                            <path d="M38.0 376.0 L155.0 376.0" fill="none" data-name="Message"></path>
-                        </g>
-                        <g transform="translate(38, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Message">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Message">
-                                <text x="50.5" y="13.0" stroke="none" text-anchor="middle" data-name="Message">Message</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(38, 152)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Message">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Message">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Message">new Message()</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(38, 184)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Message">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Message">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Message">TEXT</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="Message">BINARY</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(38, 232)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Message">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Message">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Message">value</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="Message">params</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="Message">type</text>
-                                <text x="0.0" y="61.0" stroke="none" data-name="Message">data</text>
-                                <text x="0.0" y="77.0" stroke="none" data-name="Message">body</text>
-                                <text x="0.0" y="93.0" stroke="none" data-name="Message">length</text>
-                                <text x="0.0" y="109.0" stroke="none" data-name="Message">stream</text>
-                                <text x="0.0" y="125.0" stroke="none" data-name="Message">lastError</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(38, 376)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Message">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Message">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Message">read()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="Message">readAll()</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="Message">write()</text>
-                                <text x="0.0" y="61.0" stroke="none" data-name="Message">json()</text>
-                                <text x="0.0" y="77.0" stroke="none" data-name="Message">pack()</text>
-                                <text x="0.0" y="93.0" stroke="none" data-name="Message">end()</text>
-                                <text x="0.0" y="109.0" stroke="none" data-name="Message">isEnded()</text>
-                                <text x="0.0" y="125.0" stroke="none" data-name="Message">clear()</text>
-                                <text x="0.0" y="141.0" stroke="none" data-name="Message">sendTo()</text>
-                                <text x="0.0" y="157.0" stroke="none" data-name="Message">readFrom()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="WebSocketMessage">
-                        <g fill="lightgray" stroke="#33322E" data-name="WebSocketMessage">
-                            <rect x="0.0" y="592.0" height="128.0" width="192.0" data-name="WebSocketMessage"></rect>
-                            <path d="M0.0 624.0 L192.0 624.0" fill="none" data-name="WebSocketMessage"></path>
-                            <path d="M0.0 656.0 L192.0 656.0" fill="none" data-name="WebSocketMessage"></path>
-                        </g>
-                        <g transform="translate(0, 592)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="WebSocketMessage">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="WebSocketMessage">
-                                <text x="88.0" y="13.0" stroke="none" text-anchor="middle" data-name="WebSocketMessage">WebSocketMessage</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 624)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="WebSocketMessage">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="WebSocketMessage">
-                                <text x="0.0" y="13.0" stroke="none" data-name="WebSocketMessage">new WebSocketMessage()</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 656)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="WebSocketMessage">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="WebSocketMessage">
-                                <text x="0.0" y="13.0" stroke="none" data-name="WebSocketMessage">masked</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="WebSocketMessage">compress</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="WebSocketMessage">maxSize</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="object">
-                        <g fill="white" stroke="#33322E" data-name="object">
-                            <rect x="58.0" y="0.0" height="80.0" width="77.0" data-name="object"></rect>
-                            <path d="M58.0 32.0 L135.0 32.0" fill="none" data-name="object"></path>
-                        </g>
-                        <g transform="translate(58, 0)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="object">
-                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="object">object</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(58, 32)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="object">
-                                <text x="0.0" y="13.0" stroke="none" data-name="object">toString()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="object">toJSON()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg></div>
+<div class="dot notranslate">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="143pt" height="523pt"
+ viewBox="0.00 0.00 143.46 523.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 519)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-519 139.462,-519 139.462,4 -4,4"/>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href=object.md.html xlink:title="object">
+<polygon fill="#ffffff" stroke="#000000" points="38.8995,-462.5 38.8995,-514.5 96.5625,-514.5 96.5625,-462.5 38.8995,-462.5"/>
+<text text-anchor="middle" x="67.731" y="-501.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="38.8995,-494.5 96.5625,-494.5 "/>
+<text text-anchor="start" x="46.8995" y="-481.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="46.8995" y="-469.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+</a>
+</g>
+</g>
+<!-- Message -->
+<g id="node2" class="node">
+<title>Message</title>
+<g id="a_node2"><a xlink:href=message.md.html xlink:title="Message">
+<polygon fill="#ffffff" stroke="#000000" points="25.5615,-121.5 25.5615,-425.5 109.9005,-425.5 109.9005,-121.5 25.5615,-121.5"/>
+<text text-anchor="middle" x="67.731" y="-412.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Message</text>
+<polyline fill="none" stroke="#000000" points="25.5615,-405.5 109.9005,-405.5 "/>
+<text text-anchor="start" x="33.5615" y="-392.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new Message()</text>
+<polyline fill="none" stroke="#000000" points="25.5615,-385.5 109.9005,-385.5 "/>
+<text text-anchor="start" x="33.5615" y="-372.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">TEXT</text>
+<text text-anchor="start" x="33.5615" y="-360.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">BINARY</text>
+<polyline fill="none" stroke="#000000" points="25.5615,-353.5 109.9005,-353.5 "/>
+<text text-anchor="start" x="33.5615" y="-340.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">value</text>
+<text text-anchor="start" x="33.5615" y="-328.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">params</text>
+<text text-anchor="start" x="33.5615" y="-316.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">type</text>
+<text text-anchor="start" x="33.5615" y="-304.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">data</text>
+<text text-anchor="start" x="33.5615" y="-292.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">body</text>
+<text text-anchor="start" x="33.5615" y="-280.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">length</text>
+<text text-anchor="start" x="33.5615" y="-268.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">stream</text>
+<text text-anchor="start" x="33.5615" y="-256.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">lastError</text>
+<polyline fill="none" stroke="#000000" points="25.5615,-249.5 109.9005,-249.5 "/>
+<text text-anchor="start" x="33.5615" y="-236.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">read()</text>
+<text text-anchor="start" x="33.5615" y="-224.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readAll()</text>
+<text text-anchor="start" x="33.5615" y="-212.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">write()</text>
+<text text-anchor="start" x="33.5615" y="-200.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">json()</text>
+<text text-anchor="start" x="33.5615" y="-188.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">pack()</text>
+<text text-anchor="start" x="33.5615" y="-176.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">end()</text>
+<text text-anchor="start" x="33.5615" y="-164.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isEnded()</text>
+<text text-anchor="start" x="33.5615" y="-152.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">clear()</text>
+<text text-anchor="start" x="33.5615" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">sendTo()</text>
+<text text-anchor="start" x="33.5615" y="-128.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readFrom()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;Message -->
+<g id="edge1" class="edge">
+<title>object&#45;&gt;Message</title>
+<path fill="none" stroke="#000000" d="M67.731,-451.9226C67.731,-443.9827 67.731,-435.1108 67.731,-425.6809"/>
+<polygon fill="#000000" stroke="#000000" points="64.2311,-452.1367 67.731,-462.1368 71.2311,-452.1368 64.2311,-452.1367"/>
+</g>
+<!-- WebSocketMessage -->
+<g id="me" class="node">
+<title>WebSocketMessage</title>
+<g id="a_me"><a xlink:title="WebSocketMessage">
+<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-84.5 135.462,-84.5 135.462,-.5 0,-.5"/>
+<text text-anchor="middle" x="67.731" y="-71.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">WebSocketMessage</text>
+<polyline fill="none" stroke="#000000" points="0,-64.5 135.462,-64.5 "/>
+<text text-anchor="start" x="8" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new WebSocketMessage()</text>
+<polyline fill="none" stroke="#000000" points="0,-44.5 135.462,-44.5 "/>
+<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">masked</text>
+<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">compress</text>
+<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">maxSize</text>
+</a>
+</g>
+</g>
+<!-- Message&#45;&gt;WebSocketMessage -->
+<g id="edge2" class="edge">
+<title>Message&#45;&gt;WebSocketMessage</title>
+<path fill="none" stroke="#000000" d="M67.731,-111.314C67.731,-101.8445 67.731,-92.8783 67.731,-84.7388"/>
+<polygon fill="#000000" stroke="#000000" points="64.2311,-111.351 67.731,-121.351 71.2311,-111.351 64.2311,-111.351"/>
+</g>
+</g>
+</svg>
+</div>
 
 <h2 id="构造函数">构造函数</h2>
 <h3 id="WebSocketMessage" class ="notranslate">WebSocketMessage</h3>
@@ -560,4 +514,4 @@
 <ul>
 <li><span class="notranslate">Value</span>, 返回包含可 JSON 序列化的值</li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

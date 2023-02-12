@@ -65,6 +65,7 @@
 <li><a href=zlib.md.html class ="notranslate">zlib</a></li>
 </ul>
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_object" aria-controls="collapse_object"> 内置对象 </a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby=headingOne><div class=panel-body> <ul>
+<li><a href=../../object/ifs/blskey.md.html class ="notranslate">BlsKey</a></li>
 <li><a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a></li>
 <li><a href=../../object/ifs/bufferedstream.md.html class ="notranslate">BufferedStream</a></li>
 <li><a href=../../object/ifs/chain.md.html class ="notranslate">Chain</a></li>
@@ -74,6 +75,8 @@
 <li><a href=../../object/ifs/dbconnection.md.html class ="notranslate">DbConnection</a></li>
 <li><a href=../../object/ifs/dgramsocket.md.html class ="notranslate">DgramSocket</a></li>
 <li><a href=../../object/ifs/digest.md.html class ="notranslate">Digest</a></li>
+<li><a href=../../object/ifs/eckey.md.html class ="notranslate">ECKey</a></li>
+<li><a href=../../object/ifs/ed25519key.md.html class ="notranslate">Ed25519Key</a></li>
 <li><a href=../../object/ifs/event.md.html class ="notranslate">Event</a></li>
 <li><a href=../../object/ifs/eventemitter.md.html class ="notranslate">EventEmitter</a></li>
 <li><a href=../../object/ifs/fswatcher.md.html class ="notranslate">FSWatcher</a></li>
@@ -255,6 +258,30 @@
 <li><a href=../../object/ifs/stream.md.html class ="notranslate">Stream</a>, 返回连接成功的 <a href=../../object/ifs/sslsocket.md.html class ="notranslate">SslSocket</a> 对象</li>
 </ul>
 <hr>
+<p><strong>创建一个 <a href=../../object/ifs/sslsocket.md.html class ="notranslate">SslSocket</a> 对象并建立连接</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div><span class="hljs-keyword">static</span> Stream ssl.connect(<span class="hljs-built_in">String</span> url,
+    Integer verification,
+    X509Cert crt,
+    PKey key,
+    Integer timeout = <span class="hljs-number">0</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">url</span>: String, 指定连接的协议，可以是：ssl://host:port</li>
+<li><span class="notranslate">verification</span>: Integer, 证书验证模式</li>
+<li><span class="notranslate">crt</span>: <a href=../../object/ifs/x509cert.md.html class ="notranslate">X509Cert</a>, 证书，用于发送给服务器验证客户端</li>
+<li><span class="notranslate">key</span>: <a href=../../object/ifs/pkey.md.html class ="notranslate">PKey</a>, 私钥，用于与客户端会话</li>
+<li><span class="notranslate">timeout</span>: Integer, 指定超时时间，单位是毫秒，默认为0</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/stream.md.html class ="notranslate">Stream</a>, 返回连接成功的 <a href=../../object/ifs/sslsocket.md.html class ="notranslate">SslSocket</a> 对象</li>
+</ul>
+<hr>
 <h3 id="setClientCert" class ="notranslate">setClientCert</h3>
 <p><strong>设定缺省客户端证书</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
@@ -317,4 +344,4 @@
 <p><strong>证书验证结果，证书不可信</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ssl.BADCERT_NOT_TRUSTED = <span class="hljs-number">8</span>;
 </code></pre>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

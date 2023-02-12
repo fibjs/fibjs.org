@@ -65,6 +65,7 @@
 <li><a href=../../module/ifs/zlib.md.html class ="notranslate">zlib</a></li>
 </ul>
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_object" aria-controls="collapse_object"> 内置对象 </a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby=headingOne><div class=panel-body> <ul>
+<li><a href=blskey.md.html class ="notranslate">BlsKey</a></li>
 <li><a href=buffer.md.html class ="notranslate">Buffer</a></li>
 <li><a href=bufferedstream.md.html class ="notranslate">BufferedStream</a></li>
 <li><a href=chain.md.html class ="notranslate">Chain</a></li>
@@ -74,6 +75,8 @@
 <li><a href=dbconnection.md.html class ="notranslate">DbConnection</a></li>
 <li><a href=dgramsocket.md.html class ="notranslate">DgramSocket</a></li>
 <li><a href=digest.md.html class ="notranslate">Digest</a></li>
+<li><a href=eckey.md.html class ="notranslate">ECKey</a></li>
+<li><a href=ed25519key.md.html class ="notranslate">Ed25519Key</a></li>
 <li><a href=event.md.html class ="notranslate">Event</a></li>
 <li><a href=eventemitter.md.html class ="notranslate">EventEmitter</a></li>
 <li><a href=fswatcher.md.html class ="notranslate">FSWatcher</a></li>
@@ -206,123 +209,79 @@
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> s = <span class="hljs-keyword">new</span> ssl.Socket();
 </code></pre>
 <h2 id="继承关系">继承关系</h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="178.0" height="584.0" viewbox="0 0 178 584" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
-    <desc >
-    #lineWidth: 1.5
-    #font: Helvetica,sans-Serif
-    #fontSize: 10
-    #leading: 1.6
-    #.this: fill=lightgray
-    #.class: fill=white
-
-    [&lt;class&gt;object|toString();toJSON()]
-    [&lt;class&gt;Stream|fd|read();write();flush();close();copyTo()]
-    [&lt;this&gt;SslSocket|new SslSocket()|verification;ca;peerCert;hostname;stream|connect();accept()]
-
-    [object] &lt;:- [Stream]
-    [Stream] &lt;:- [SslSocket]
-    </desc>
-    <g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="10pt" font-family="Helvetica,sans-Serif" font-weight="normal" font-style="normal">
-        <g font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="bold" font-style="normal" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
-            <g stroke="transparent" fill="transparent">
-                <rect x="0.0" y="0.0" height="584.0" width="178.0" stroke="none"></rect>
-            </g>
-            <g transform="translate(8, 8)" fill="#33322E">
-                <g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal">
-                    <path d="M61.0 93.3 L61 100 L61 120 L61.0 120.0 " fill="none"></path>
-                    <path d="M66.3 93.3 L61.0 93.3 L55.7 93.3 L61.0 80.0 Z"></path>
-                    <path d="M61.0 293.3 L61 300 L61 320 L61.0 320.0 " fill="none"></path>
-                    <path d="M66.3 293.3 L61.0 293.3 L55.7 293.3 L61.0 280.0 Z"></path>
-                    <g data-name="SslSocket">
-                        <g fill="lightgray" stroke="#33322E" data-name="SslSocket">
-                            <rect x="0.0" y="320.0" height="208.0" width="122.0" data-name="SslSocket"></rect>
-                            <path d="M0.0 352.0 L122.0 352.0" fill="none" data-name="SslSocket"></path>
-                            <path d="M0.0 384.0 L122.0 384.0" fill="none" data-name="SslSocket"></path>
-                            <path d="M0.0 480.0 L122.0 480.0" fill="none" data-name="SslSocket"></path>
-                        </g>
-                        <g transform="translate(0, 320)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="SslSocket">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="SslSocket">
-                                <text x="53.0" y="13.0" stroke="none" text-anchor="middle" data-name="SslSocket">SslSocket</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 352)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="SslSocket">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="SslSocket">
-                                <text x="0.0" y="13.0" stroke="none" data-name="SslSocket">new SslSocket()</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 384)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="SslSocket">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="SslSocket">
-                                <text x="0.0" y="13.0" stroke="none" data-name="SslSocket">verification</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="SslSocket">ca</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="SslSocket">peerCert</text>
-                                <text x="0.0" y="61.0" stroke="none" data-name="SslSocket">hostname</text>
-                                <text x="0.0" y="77.0" stroke="none" data-name="SslSocket">stream</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 480)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="SslSocket">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="SslSocket">
-                                <text x="0.0" y="13.0" stroke="none" data-name="SslSocket">connect()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="SslSocket">accept()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="Stream">
-                        <g fill="white" stroke="#33322E" data-name="Stream">
-                            <rect x="24.0" y="120.0" height="160.0" width="74.0" data-name="Stream"></rect>
-                            <path d="M24.0 152.0 L98.0 152.0" fill="none" data-name="Stream"></path>
-                            <path d="M24.0 184.0 L98.0 184.0" fill="none" data-name="Stream"></path>
-                        </g>
-                        <g transform="translate(24, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Stream">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Stream">
-                                <text x="29.0" y="13.0" stroke="none" text-anchor="middle" data-name="Stream">Stream</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(24, 152)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Stream">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Stream">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Stream">fd</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(24, 184)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Stream">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Stream">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Stream">read()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="Stream">write()</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="Stream">flush()</text>
-                                <text x="0.0" y="61.0" stroke="none" data-name="Stream">close()</text>
-                                <text x="0.0" y="77.0" stroke="none" data-name="Stream">copyTo()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="object">
-                        <g fill="white" stroke="#33322E" data-name="object">
-                            <rect x="23.0" y="0.0" height="80.0" width="77.0" data-name="object"></rect>
-                            <path d="M23.0 32.0 L100.0 32.0" fill="none" data-name="object"></path>
-                        </g>
-                        <g transform="translate(23, 0)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="object">
-                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="object">object</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(23, 32)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="object">
-                                <text x="0.0" y="13.0" stroke="none" data-name="object">toString()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="object">toJSON()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg></div>
+<div class="dot notranslate">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="96pt" height="383pt"
+ viewBox="0.00 0.00 96.23 383.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 379)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-379 92.228,-379 92.228,4 -4,4"/>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href=object.md.html xlink:title="object">
+<polygon fill="#ffffff" stroke="#000000" points="15.2825,-322.5 15.2825,-374.5 72.9455,-374.5 72.9455,-322.5 15.2825,-322.5"/>
+<text text-anchor="middle" x="44.114" y="-361.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="15.2825,-354.5 72.9455,-354.5 "/>
+<text text-anchor="start" x="23.2825" y="-341.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="23.2825" y="-329.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+</a>
+</g>
+</g>
+<!-- Stream -->
+<g id="node2" class="node">
+<title>Stream</title>
+<g id="a_node2"><a xlink:href=stream.md.html xlink:title="Stream">
+<polygon fill="#ffffff" stroke="#000000" points="16.392,-177.5 16.392,-285.5 71.836,-285.5 71.836,-177.5 16.392,-177.5"/>
+<text text-anchor="middle" x="44.114" y="-272.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Stream</text>
+<polyline fill="none" stroke="#000000" points="16.392,-265.5 71.836,-265.5 "/>
+<text text-anchor="start" x="24.392" y="-252.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">fd</text>
+<polyline fill="none" stroke="#000000" points="16.392,-245.5 71.836,-245.5 "/>
+<text text-anchor="start" x="24.392" y="-232.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">read()</text>
+<text text-anchor="start" x="24.392" y="-220.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">write()</text>
+<text text-anchor="start" x="24.392" y="-208.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">flush()</text>
+<text text-anchor="start" x="24.392" y="-196.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">close()</text>
+<text text-anchor="start" x="24.392" y="-184.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">copyTo()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;Stream -->
+<g id="edge1" class="edge">
+<title>object&#45;&gt;Stream</title>
+<path fill="none" stroke="#000000" d="M44.114,-312.1428C44.114,-303.8239 44.114,-294.8042 44.114,-285.9111"/>
+<polygon fill="#000000" stroke="#000000" points="40.6141,-312.2429 44.114,-322.2429 47.6141,-312.243 40.6141,-312.2429"/>
+</g>
+<!-- SslSocket -->
+<g id="me" class="node">
+<title>SslSocket</title>
+<g id="a_me"><a xlink:title="SslSocket">
+<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-140.5 88.228,-140.5 88.228,-.5 0,-.5"/>
+<text text-anchor="middle" x="44.114" y="-127.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">SslSocket</text>
+<polyline fill="none" stroke="#000000" points="0,-120.5 88.228,-120.5 "/>
+<text text-anchor="start" x="8" y="-107.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new SslSocket()</text>
+<polyline fill="none" stroke="#000000" points="0,-100.5 88.228,-100.5 "/>
+<text text-anchor="start" x="8" y="-87.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">verification</text>
+<text text-anchor="start" x="8" y="-75.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">ca</text>
+<text text-anchor="start" x="8" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">peerCert</text>
+<text text-anchor="start" x="8" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">hostname</text>
+<text text-anchor="start" x="8" y="-39.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">stream</text>
+<polyline fill="none" stroke="#000000" points="0,-32.5 88.228,-32.5 "/>
+<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">connect()</text>
+<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">accept()</text>
+</a>
+</g>
+</g>
+<!-- Stream&#45;&gt;SslSocket -->
+<g id="edge2" class="edge">
+<title>Stream&#45;&gt;SslSocket</title>
+<path fill="none" stroke="#000000" d="M44.114,-167.3227C44.114,-158.5757 44.114,-149.5604 44.114,-140.7135"/>
+<polygon fill="#000000" stroke="#000000" points="40.6141,-167.4414 44.114,-177.4414 47.6141,-167.4415 40.6141,-167.4414"/>
+</g>
+</g>
+</svg>
+</div>
 
 <h2 id="构造函数">构造函数</h2>
 <h3 id="SslSocket" class ="notranslate">SslSocket</h3>
@@ -496,4 +455,4 @@
 <ul>
 <li><span class="notranslate">Value</span>, 返回包含可 JSON 序列化的值</li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

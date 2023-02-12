@@ -65,6 +65,7 @@
 <li><a href=zlib.md.html class ="notranslate">zlib</a></li>
 </ul>
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_object" aria-controls="collapse_object"> 内置对象 </a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby=headingOne><div class=panel-body> <ul>
+<li><a href=../../object/ifs/blskey.md.html class ="notranslate">BlsKey</a></li>
 <li><a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a></li>
 <li><a href=../../object/ifs/bufferedstream.md.html class ="notranslate">BufferedStream</a></li>
 <li><a href=../../object/ifs/chain.md.html class ="notranslate">Chain</a></li>
@@ -74,6 +75,8 @@
 <li><a href=../../object/ifs/dbconnection.md.html class ="notranslate">DbConnection</a></li>
 <li><a href=../../object/ifs/dgramsocket.md.html class ="notranslate">DgramSocket</a></li>
 <li><a href=../../object/ifs/digest.md.html class ="notranslate">Digest</a></li>
+<li><a href=../../object/ifs/eckey.md.html class ="notranslate">ECKey</a></li>
+<li><a href=../../object/ifs/ed25519key.md.html class ="notranslate">Ed25519Key</a></li>
 <li><a href=../../object/ifs/event.md.html class ="notranslate">Event</a></li>
 <li><a href=../../object/ifs/eventemitter.md.html class ="notranslate">EventEmitter</a></li>
 <li><a href=../../object/ifs/fswatcher.md.html class ="notranslate">FSWatcher</a></li>
@@ -445,6 +448,18 @@ process.exit(-test.run(<span class="hljs-built_in">console</span>.DEBUG));
 <li><span class="notranslate">block</span>: Function, 测试内容</li>
 </ul>
 <hr>
+<h3 id="todo" class ="notranslate">todo</h3>
+<p><strong>计划项目定义，<a href=test.md.html#setup class ="notranslate">test.setup</a> 后可使用 it.todo 调用</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> test.todo(<span class="hljs-built_in">String</span> name,
+    <span class="hljs-built_in">Function</span> block);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">name</span>: String, 定义项目名称</li>
+<li><span class="notranslate">block</span>: Function, 测试内容</li>
+</ul>
+<hr>
 <h3 id="before" class ="notranslate">before</h3>
 <p><strong>定义当前测试模块进入事件</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> test.before(<span class="hljs-built_in">Function</span> func);
@@ -483,16 +498,83 @@ process.exit(-test.run(<span class="hljs-built_in">console</span>.DEBUG));
 <hr>
 <h3 id="run" class ="notranslate">run</h3>
 <p><strong>开始执行定义的测试模块</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer test.run(Integer loglevel = <span class="hljs-built_in">console</span>.ERROR);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Object</span> test.run(Integer mode = <span class="hljs-built_in">console</span>.ERROR);
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li><span class="notranslate">loglevel</span>: Integer, 指定进行测试时的日志输出级别，ERROR 时，项目报错信息集中在报告后显示，低于 ERROR 时，输出信息随时显示，高于 ERROR 时，只显示报告</li>
+<li><span class="notranslate">mode</span>: Integer, 指定进行测试模式，ERROR 时，项目报错信息集中在报告后显示，低于 ERROR 时，输出信息随时显示，高于 ERROR 时，只显示报告</li>
 </ul>
 <p>返回结果:</p>
 <ul>
-<li><span class="notranslate">Integer</span>, 返回测试用例统计结果，正确则返回 0，错误则返回错误个数</li>
+<li><span class="notranslate">Object</span>, 返回测试结果</li>
 </ul>
+<p>测试运行完成后，将以以下形式返回测试结果：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33</div>{
+    <span class="hljs-string">"total"</span>: <span class="hljs-number">2</span>, <span class="hljs-comment">// 总测试项目数</span>
+    <span class="hljs-string">"pass"</span>: <span class="hljs-number">2</span>, <span class="hljs-comment">// 通过测试项目数</span>
+    <span class="hljs-string">"fail"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// 失败测试项目数</span>
+    <span class="hljs-string">"skip"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// 跳过测试项目数</span>
+    <span class="hljs-string">"todo"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// 计划测试项目数</span>
+    <span class="hljs-string">"time"</span>: <span class="hljs-number">0.000000</span>, <span class="hljs-comment">// 测试耗时</span>
+    <span class="hljs-string">"cases"</span>: [ <span class="hljs-comment">// 测试项目列表</span>
+        {
+            <span class="hljs-string">"name"</span>: <span class="hljs-string">"test"</span>, <span class="hljs-comment">// 测试项目名称</span>
+            <span class="hljs-string">"time"</span>: <span class="hljs-number">0.000000</span>, <span class="hljs-comment">// 测试耗时</span>
+            <span class="hljs-string">"result"</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 测试结果</span>
+            <span class="hljs-string">"error"</span>: <span class="hljs-literal">null</span> <span class="hljs-comment">// 测试错误信息</span>
+        },
+        {
+            <span class="hljs-string">"name"</span>: <span class="hljs-string">"sub cases"</span>, <span class="hljs-comment">// 测试组名称</span>
+            <span class="hljs-string">"total"</span>: <span class="hljs-number">1</span>, <span class="hljs-comment">// 总测试项目数</span>
+            <span class="hljs-string">"pass"</span>: <span class="hljs-number">1</span>, <span class="hljs-comment">// 通过测试项目数</span>
+            <span class="hljs-string">"fail"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// 失败测试项目数</span>
+            <span class="hljs-string">"skip"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// 跳过测试项目数</span>
+            <span class="hljs-string">"todo"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// 计划测试项目数</span>
+            <span class="hljs-string">"time"</span>: <span class="hljs-number">0.000000</span>, <span class="hljs-comment">// 测试耗时</span>
+            <span class="hljs-string">"cases"</span>: [ <span class="hljs-comment">// 测试项目列表</span>
+                {
+                    <span class="hljs-string">"name"</span>: <span class="hljs-string">"test"</span>, <span class="hljs-comment">// 测试项目名称</span>
+                    <span class="hljs-string">"time"</span>: <span class="hljs-number">0.000000</span>, <span class="hljs-comment">// 测试耗时</span>
+                    <span class="hljs-string">"result"</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 测试结果</span>
+                    <span class="hljs-string">"error"</span>: <span class="hljs-literal">null</span> <span class="hljs-comment">// 测试错误信息</span>
+                }
+            ]
+        }
+    ]
+}
+</code></pre>
 <hr>
 <h3 id="setup" class ="notranslate">setup</h3>
 <p><strong>初始化当前脚本的测试环境，将 test 模块方法复制为当前脚本全局变量</strong></p>
@@ -503,4 +585,4 @@ process.exit(-test.run(<span class="hljs-built_in">console</span>.DEBUG));
 <p><strong>Integer, 设置和查询慢速测试警告阀值，以 ms 为单位，缺省为 75</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer test.slow;
 </code></pre>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

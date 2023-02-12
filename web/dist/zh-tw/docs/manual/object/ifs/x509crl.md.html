@@ -65,6 +65,7 @@
 <li><a href="../../module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
 </ul>
  </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">內置對象</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="blskey.md.html" class="notranslate">BlsKey</a></li>
 <li><a href="buffer.md.html" class="notranslate">Buffer</a></li>
 <li><a href="bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
 <li><a href="chain.md.html" class="notranslate">Chain</a></li>
@@ -74,6 +75,8 @@
 <li><a href="dbconnection.md.html" class="notranslate">DbConnection</a></li>
 <li><a href="dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
 <li><a href="digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="eckey.md.html" class="notranslate">ECKey</a></li>
+<li><a href="ed25519key.md.html" class="notranslate">Ed25519Key</a></li>
 <li><a href="event.md.html" class="notranslate">Event</a></li>
 <li><a href="eventemitter.md.html" class="notranslate">EventEmitter</a></li>
 <li><a href="fswatcher.md.html" class="notranslate">FSWatcher</a></li>
@@ -206,93 +209,58 @@
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> k = <span class="hljs-keyword">new</span> crypto.X509Crl();
 </code></pre>
 <div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">繼承關係</font></font></h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="165.0" height="432.0" viewBox="0 0 165 432" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
-    <desc>
-    #lineWidth: 1.5
-    #font: Helvetica,sans-Serif
-    #fontSize: 10
-    #leading: 1.6
-    #.this: fill=lightgray
-    #.class: fill=white
-
-    [&lt;class&gt;object|toString();toJSON()]
-    [&lt;this&gt;X509Crl|new X509Crl()|version;issuer;serials;thisUpdate;nextUpdate;next|import();pem();der();clear()]
-
-    [object] &lt;:- [X509Crl]
-    </desc>
-    <g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="10pt" font-family="Helvetica,sans-Serif" font-weight="normal" font-style="normal">
-        <g font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="bold" font-style="normal" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
-            <g stroke="transparent" fill="transparent">
-                <rect x="0.0" y="0.0" height="432.0" width="165.0" stroke="none"></rect>
-            </g>
-            <g transform="translate(8, 8)" fill="#33322E">
-                <g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal">
-                    <path d="M54.5 93.3 L54.5 100 L54.5 120 L54.5 120.0 " fill="none"></path>
-                    <path d="M59.8 93.3 L54.5 93.3 L49.2 93.3 L54.5 80.0 Z"></path>
-                    <g data-name="X509Crl">
-                        <g fill="lightgray" stroke="#33322E" data-name="X509Crl">
-                            <rect x="0.0" y="120.0" height="256.0" width="109.0" data-name="X509Crl"></rect>
-                            <path d="M0.0 152.0 L109.0 152.0" fill="none" data-name="X509Crl"></path>
-                            <path d="M0.0 184.0 L109.0 184.0" fill="none" data-name="X509Crl"></path>
-                            <path d="M0.0 296.0 L109.0 296.0" fill="none" data-name="X509Crl"></path>
-                        </g>
-                        <g transform="translate(0, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="X509Crl">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="X509Crl">
-                                <text x="46.5" y="13.0" stroke="none" text-anchor="middle" data-name="X509Crl">X509Crl</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 152)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="X509Crl">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="X509Crl">
-                                <text x="0.0" y="13.0" stroke="none" data-name="X509Crl">new X509Crl()</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 184)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="X509Crl">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="X509Crl">
-                                <text x="0.0" y="13.0" stroke="none" data-name="X509Crl">version</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="X509Crl">issuer</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="X509Crl">serials</text>
-                                <text x="0.0" y="61.0" stroke="none" data-name="X509Crl">thisUpdate</text>
-                                <text x="0.0" y="77.0" stroke="none" data-name="X509Crl">nextUpdate</text>
-                                <text x="0.0" y="93.0" stroke="none" data-name="X509Crl">next</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 296)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="X509Crl">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="X509Crl">
-                                <text x="0.0" y="13.0" stroke="none" data-name="X509Crl">import()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="X509Crl">pem()</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="X509Crl">der()</text>
-                                <text x="0.0" y="61.0" stroke="none" data-name="X509Crl">clear()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="object">
-                        <g fill="white" stroke="#33322E" data-name="object">
-                            <rect x="16.0" y="0.0" height="80.0" width="77.0" data-name="object"></rect>
-                            <path d="M16.0 32.0 L93.0 32.0" fill="none" data-name="object"></path>
-                        </g>
-                        <g transform="translate(16, 0)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="object">
-                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="object">object</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(16, 32)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="object">
-                                <text x="0.0" y="13.0" stroke="none" data-name="object">toString()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="object">toJSON()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg></div>
+<div class="dot notranslate">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="88pt" height="274pt" viewBox="0.00 0.00 87.89 274.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 270)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-270 83.887,-270 83.887,4 -4,4"></polygon>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href="object.md.html" xlink:title="object">
+<polygon fill="#ffffff" stroke="#000000" points="11.112,-213.5 11.112,-265.5 68.775,-265.5 68.775,-213.5 11.112,-213.5"></polygon>
+<text text-anchor="middle" x="39.9435" y="-252.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="11.112,-245.5 68.775,-245.5 "></polyline>
+<text text-anchor="start" x="19.112" y="-232.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="19.112" y="-220.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+</a>
+</g>
+</g>
+<!-- X509Crl -->
+<g id="me" class="node">
+<title>X509Crl</title>
+<g id="a_me"><a xlink:title="X509Crl">
+<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-176.5 79.887,-176.5 79.887,-.5 0,-.5"></polygon>
+<text text-anchor="middle" x="39.9435" y="-163.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">X509Crl</text>
+<polyline fill="none" stroke="#000000" points="0,-156.5 79.887,-156.5 "></polyline>
+<text text-anchor="start" x="8" y="-143.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new X509Crl()</text>
+<polyline fill="none" stroke="#000000" points="0,-136.5 79.887,-136.5 "></polyline>
+<text text-anchor="start" x="8" y="-123.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">version</text>
+<text text-anchor="start" x="8" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">issuer</text>
+<text text-anchor="start" x="8" y="-99.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">serials</text>
+<text text-anchor="start" x="8" y="-87.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">thisUpdate</text>
+<text text-anchor="start" x="8" y="-75.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">nextUpdate</text>
+<text text-anchor="start" x="8" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">next</text>
+<polyline fill="none" stroke="#000000" points="0,-56.5 79.887,-56.5 "></polyline>
+<text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">import()</text>
+<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">pem()</text>
+<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">der()</text>
+<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">clear()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;X509Crl -->
+<g id="edge1" class="edge">
+<title>object-&gt;X509Crl</title>
+<path fill="none" stroke="#000000" d="M39.9435,-203.0451C39.9435,-194.9208 39.9435,-185.9644 39.9435,-176.7469"></path>
+<polygon fill="#000000" stroke="#000000" points="36.4436,-203.1978 39.9435,-213.1978 43.4436,-203.1978 36.4436,-203.1978"></polygon>
+</g>
+</g>
+</svg>
+</div>
 
 <div name="构造函数" data-unique="构造函数"></div><h2 id="构造函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">構造函數</font></font></h2>
 <div name="X509Crl" data-unique="X509Crl"></div><h3 id="X509Crl" class="notranslate">X509Crl</h3>
@@ -411,4 +379,4 @@
 <ul>
 <li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回包含可JSON 序列化的值</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip230227"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip230227" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

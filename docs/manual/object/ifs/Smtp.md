@@ -2,18 +2,15 @@
 Smtp对象
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<class>object|toString();toJSON()]
-[<this>Smtp|new Smtp()|timeout;socket|connect();command();hello();login();from();to();data();quit()]
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    Smtp [tooltip="Smtp", fillcolor="lightgray", id="me", label="{Smtp|new Smtp()\l|timeout\lsocket\l|connect()\lcommand()\lhello()\llogin()\lfrom()\lto()\ldata()\lquit()\l}"];
 
-[object] <:- [Smtp]
+    object -> Smtp [dir=back];
+}
 ```
 
 ## 构造函数

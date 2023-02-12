@@ -65,6 +65,7 @@
 <li><a href=../../module/ifs/zlib.md.html class ="notranslate">zlib</a></li>
 </ul>
  </div></div></div>  <div class=panel><div class=panel-heading role=tab id=headingOne><h4 class=panel-title><a data-toggle=collapse data-parent=#accordion href="#collapse_object" aria-controls="collapse_object"> 内置对象 </a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby=headingOne><div class=panel-body> <ul>
+<li><a href=blskey.md.html class ="notranslate">BlsKey</a></li>
 <li><a href=buffer.md.html class ="notranslate">Buffer</a></li>
 <li><a href=bufferedstream.md.html class ="notranslate">BufferedStream</a></li>
 <li><a href=chain.md.html class ="notranslate">Chain</a></li>
@@ -74,6 +75,8 @@
 <li><a href=dbconnection.md.html class ="notranslate">DbConnection</a></li>
 <li><a href=dgramsocket.md.html class ="notranslate">DgramSocket</a></li>
 <li><a href=digest.md.html class ="notranslate">Digest</a></li>
+<li><a href=eckey.md.html class ="notranslate">ECKey</a></li>
+<li><a href=ed25519key.md.html class ="notranslate">Ed25519Key</a></li>
 <li><a href=event.md.html class ="notranslate">Event</a></li>
 <li><a href=eventemitter.md.html class ="notranslate">EventEmitter</a></li>
 <li><a href=fswatcher.md.html class ="notranslate">FSWatcher</a></li>
@@ -208,115 +211,76 @@
 process.stdout.clearLine(<span class="hljs-number">1</span>)
 </code></pre>
 <h2 id="继承关系">继承关系</h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="198.0" height="536.0" viewbox="0 0 198 536" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
-    <desc >
-    #lineWidth: 1.5
-    #font: Helvetica,sans-Serif
-    #fontSize: 10
-    #leading: 1.6
-    #.this: fill=lightgray
-    #.class: fill=white
-
-    [&lt;class&gt;object|toString();toJSON()]
-    [&lt;class&gt;Stream|fd|read();write();flush();close();copyTo()]
-    [&lt;this&gt;TTYOutputStream|isTTY;columns;rows|clearLine();clearScreenDown();getWindowSize()]
-
-    [object] &lt;:- [Stream]
-    [Stream] &lt;:- [TTYOutputStream]
-    </desc>
-    <g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="10pt" font-family="Helvetica,sans-Serif" font-weight="normal" font-style="normal">
-        <g font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="bold" font-style="normal" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
-            <g stroke="transparent" fill="transparent">
-                <rect x="0.0" y="0.0" height="536.0" width="198.0" stroke="none"></rect>
-            </g>
-            <g transform="translate(8, 8)" fill="#33322E">
-                <g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal">
-                    <path d="M71.0 93.3 L71 100 L71 120 L71.0 120.0 " fill="none"></path>
-                    <path d="M76.3 93.3 L71.0 93.3 L65.7 93.3 L71.0 80.0 Z"></path>
-                    <path d="M71.0 293.3 L71 300 L71 320 L71.0 320.0 " fill="none"></path>
-                    <path d="M76.3 293.3 L71.0 293.3 L65.7 293.3 L71.0 280.0 Z"></path>
-                    <g data-name="Stream">
-                        <g fill="white" stroke="#33322E" data-name="Stream">
-                            <rect x="34.0" y="120.0" height="160.0" width="74.0" data-name="Stream"></rect>
-                            <path d="M34.0 152.0 L108.0 152.0" fill="none" data-name="Stream"></path>
-                            <path d="M34.0 184.0 L108.0 184.0" fill="none" data-name="Stream"></path>
-                        </g>
-                        <g transform="translate(34, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Stream">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Stream">
-                                <text x="29.0" y="13.0" stroke="none" text-anchor="middle" data-name="Stream">Stream</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(34, 152)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Stream">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Stream">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Stream">fd</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(34, 184)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Stream">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Stream">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Stream">read()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="Stream">write()</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="Stream">flush()</text>
-                                <text x="0.0" y="61.0" stroke="none" data-name="Stream">close()</text>
-                                <text x="0.0" y="77.0" stroke="none" data-name="Stream">copyTo()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="TTYOutputStream">
-                        <g fill="lightgray" stroke="#33322E" data-name="TTYOutputStream">
-                            <rect x="0.0" y="320.0" height="160.0" width="142.0" data-name="TTYOutputStream"></rect>
-                            <path d="M0.0 352.0 L142.0 352.0" fill="none" data-name="TTYOutputStream"></path>
-                            <path d="M0.0 416.0 L142.0 416.0" fill="none" data-name="TTYOutputStream"></path>
-                        </g>
-                        <g transform="translate(0, 320)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="TTYOutputStream">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="TTYOutputStream">
-                                <text x="63.0" y="13.0" stroke="none" text-anchor="middle" data-name="TTYOutputStream">TTYOutputStream</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 352)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="TTYOutputStream">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="TTYOutputStream">
-                                <text x="0.0" y="13.0" stroke="none" data-name="TTYOutputStream">isTTY</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="TTYOutputStream">columns</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="TTYOutputStream">rows</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 416)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="TTYOutputStream">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="TTYOutputStream">
-                                <text x="0.0" y="13.0" stroke="none" data-name="TTYOutputStream">clearLine()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="TTYOutputStream">clearScreenDown()</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="TTYOutputStream">getWindowSize()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="object">
-                        <g fill="white" stroke="#33322E" data-name="object">
-                            <rect x="33.0" y="0.0" height="80.0" width="77.0" data-name="object"></rect>
-                            <path d="M33.0 32.0 L110.0 32.0" fill="none" data-name="object"></path>
-                        </g>
-                        <g transform="translate(33, 0)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="object">
-                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="object">object</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(33, 32)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="object">
-                                <text x="0.0" y="13.0" stroke="none" data-name="object">toString()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="object">toJSON()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg></div>
+<div class="dot notranslate">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="110pt" height="351pt"
+ viewBox="0.00 0.00 109.56 351.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 347)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-347 105.555,-347 105.555,4 -4,4"/>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href=object.md.html xlink:title="object">
+<polygon fill="#ffffff" stroke="#000000" points="21.946,-290.5 21.946,-342.5 79.609,-342.5 79.609,-290.5 21.946,-290.5"/>
+<text text-anchor="middle" x="50.7775" y="-329.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="21.946,-322.5 79.609,-322.5 "/>
+<text text-anchor="start" x="29.946" y="-309.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="29.946" y="-297.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+</a>
+</g>
+</g>
+<!-- Stream -->
+<g id="node2" class="node">
+<title>Stream</title>
+<g id="a_node2"><a xlink:href=stream.md.html xlink:title="Stream">
+<polygon fill="#ffffff" stroke="#000000" points="23.0555,-145.5 23.0555,-253.5 78.4995,-253.5 78.4995,-145.5 23.0555,-145.5"/>
+<text text-anchor="middle" x="50.7775" y="-240.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Stream</text>
+<polyline fill="none" stroke="#000000" points="23.0555,-233.5 78.4995,-233.5 "/>
+<text text-anchor="start" x="31.0555" y="-220.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">fd</text>
+<polyline fill="none" stroke="#000000" points="23.0555,-213.5 78.4995,-213.5 "/>
+<text text-anchor="start" x="31.0555" y="-200.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">read()</text>
+<text text-anchor="start" x="31.0555" y="-188.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">write()</text>
+<text text-anchor="start" x="31.0555" y="-176.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">flush()</text>
+<text text-anchor="start" x="31.0555" y="-164.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">close()</text>
+<text text-anchor="start" x="31.0555" y="-152.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">copyTo()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;Stream -->
+<g id="edge1" class="edge">
+<title>object&#45;&gt;Stream</title>
+<path fill="none" stroke="#000000" d="M50.7775,-280.1428C50.7775,-271.8239 50.7775,-262.8042 50.7775,-253.9111"/>
+<polygon fill="#000000" stroke="#000000" points="47.2776,-280.2429 50.7775,-290.2429 54.2776,-280.243 47.2776,-280.2429"/>
+</g>
+<!-- TTYOutputStream -->
+<g id="me" class="node">
+<title>TTYOutputStream</title>
+<g id="a_me"><a xlink:title="TTYOutputStream">
+<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-108.5 101.555,-108.5 101.555,-.5 0,-.5"/>
+<text text-anchor="middle" x="50.7775" y="-95.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">TTYOutputStream</text>
+<polyline fill="none" stroke="#000000" points="0,-88.5 101.555,-88.5 "/>
+<text text-anchor="start" x="8" y="-75.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isTTY</text>
+<text text-anchor="start" x="8" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">columns</text>
+<text text-anchor="start" x="8" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">rows</text>
+<polyline fill="none" stroke="#000000" points="0,-44.5 101.555,-44.5 "/>
+<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">clearLine()</text>
+<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">clearScreenDown()</text>
+<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">getWindowSize()</text>
+</a>
+</g>
+</g>
+<!-- Stream&#45;&gt;TTYOutputStream -->
+<g id="edge2" class="edge">
+<title>Stream&#45;&gt;TTYOutputStream</title>
+<path fill="none" stroke="#000000" d="M50.7775,-134.9262C50.7775,-126.1766 50.7775,-117.2712 50.7775,-108.7279"/>
+<polygon fill="#000000" stroke="#000000" points="47.2776,-135.0948 50.7775,-145.0948 54.2776,-135.0948 47.2776,-135.0948"/>
+</g>
+</g>
+</svg>
+</div>
 
 <h2 id="成员属性">成员属性</h2>
 <h3 id="isTTY" class ="notranslate">isTTY</h3>
@@ -437,4 +401,4 @@ process.stdout.clearLine(<span class="hljs-number">1</span>)
 <ul>
 <li><span class="notranslate">Value</span>, 返回包含可 JSON 序列化的值</li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="Click to return on the top page" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

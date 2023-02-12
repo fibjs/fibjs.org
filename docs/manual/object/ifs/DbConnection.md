@@ -2,24 +2,21 @@
 数据库连接对象，用于建立和维护一个数据库连接会话。
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<class>object|toString();toJSON()]
-[<this>DbConnection|type|close();use();begin();commit();rollback();trans();execute();createTable();dropTable();createIndex();dropIndex();insert();find();count();update();remove();format()]
-[<class>MySQL]
-[<class>Odbc]
-[<class>SQLite]
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    DbConnection [tooltip="DbConnection", fillcolor="lightgray", id="me", label="{DbConnection|type\l|close()\luse()\lbegin()\lcommit()\lrollback()\ltrans()\lexecute()\lcreateTable()\ldropTable()\lcreateIndex()\ldropIndex()\linsert()\lfind()\lcount()\lupdate()\lremove()\lformat()\l}"];
+    MySQL [tooltip="MySQL", URL="MySQL.md", label="{MySQL}"];
+    Odbc [tooltip="Odbc", URL="Odbc.md", label="{Odbc}"];
+    SQLite [tooltip="SQLite", URL="SQLite.md", label="{SQLite}"];
 
-[object] <:- [DbConnection]
-[DbConnection] <:- [MySQL]
-[DbConnection] <:- [Odbc]
-[DbConnection] <:- [SQLite]
+    object -> DbConnection [dir=back];
+    DbConnection -> MySQL [dir=back];
+    DbConnection -> Odbc [dir=back];
+    DbConnection -> SQLite [dir=back];
+}
 ```
 
 ## 成员属性

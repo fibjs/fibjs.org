@@ -65,6 +65,7 @@
 <li><a href="../../module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
 </ul>
  </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">內置對象</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="blskey.md.html" class="notranslate">BlsKey</a></li>
 <li><a href="buffer.md.html" class="notranslate">Buffer</a></li>
 <li><a href="bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
 <li><a href="chain.md.html" class="notranslate">Chain</a></li>
@@ -74,6 +75,8 @@
 <li><a href="dbconnection.md.html" class="notranslate">DbConnection</a></li>
 <li><a href="dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
 <li><a href="digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="eckey.md.html" class="notranslate">ECKey</a></li>
+<li><a href="ed25519key.md.html" class="notranslate">Ed25519Key</a></li>
 <li><a href="event.md.html" class="notranslate">Event</a></li>
 <li><a href="eventemitter.md.html" class="notranslate">EventEmitter</a></li>
 <li><a href="fswatcher.md.html" class="notranslate">FSWatcher</a></li>
@@ -208,169 +211,129 @@
 <span class="hljs-keyword">var</span> m = <span class="hljs-keyword">new</span> mq.Message();
 </code></pre>
 <div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">繼承關係</font></font></h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="419.3" height="752.0" viewBox="0 0 419.25 752" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
-    <desc>
-    #lineWidth: 1.5
-    #font: Helvetica,sans-Serif
-    #fontSize: 10
-    #leading: 1.6
-    #.this: fill=lightgray
-    #.class: fill=white
-
-    [&lt;class&gt;object|toString();toJSON()]
-    [&lt;this&gt;Message|new Message()|TEXT;BINARY|value;params;type;data;body;length;stream;lastError|read();readAll();write();json();pack();end();isEnded();clear();sendTo();readFrom()]
-    [&lt;class&gt;HttpMessage]
-    [&lt;class&gt;HttpRequest]
-    [&lt;class&gt;HttpResponse]
-    [&lt;class&gt;WebSocketMessage]
-
-    [object] &lt;:- [Message]
-    [Message] &lt;:- [HttpMessage]
-    [HttpMessage] &lt;:- [HttpRequest]
-    [HttpMessage] &lt;:- [HttpResponse]
-    [Message] &lt;:- [WebSocketMessage]
-    </desc>
-    <g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="10pt" font-family="Helvetica,sans-Serif" font-weight="bold" font-style="normal">
-        <g font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="bold" font-style="normal" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
-            <g stroke="transparent" fill="transparent">
-                <rect x="0.0" y="0.0" height="752.0" width="419.3" stroke="none"></rect>
-            </g>
-            <g transform="translate(8, 8)" fill="#33322E">
-                <g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal">
-                    <path d="M204.3 93.3 L204.25 100 L204.25 120 L204.3 120.0 " fill="none"></path>
-                    <path d="M209.6 93.3 L204.3 93.3 L198.9 93.3 L204.3 80.0 Z"></path>
-                    <path d="M141.3 513.9 L120.75 572 L120.75 592 L120.8 592.0 " fill="none"></path>
-                    <path d="M146.3 515.7 L141.3 513.9 L136.3 512.1 L145.8 501.3 Z"></path>
-                    <path d="M76.9 630.0 L49 644 L49 664 L49.0 664.0 " fill="none"></path>
-                    <path d="M79.3 634.7 L76.9 630.0 L74.6 625.2 L88.9 624.0 Z"></path>
-                    <path d="M164.6 630.0 L192.5 644 L192.5 664 L192.5 664.0 " fill="none"></path>
-                    <path d="M166.9 625.2 L164.6 630.0 L162.2 634.7 L152.6 624.0 Z"></path>
-                    <path d="M267.2 513.9 L287.75 572 L287.75 592 L287.8 592.0 " fill="none"></path>
-                    <path d="M272.2 512.1 L267.2 513.9 L262.2 515.7 L262.8 501.3 Z"></path>
-                    <g data-name="Message">
-                        <g fill="lightgray" stroke="#33322E" data-name="Message">
-                            <rect x="146.0" y="120.0" height="432.0" width="117.0" data-name="Message"></rect>
-                            <path d="M146.0 152.0 L263.0 152.0" fill="none" data-name="Message"></path>
-                            <path d="M146.0 184.0 L263.0 184.0" fill="none" data-name="Message"></path>
-                            <path d="M146.0 232.0 L263.0 232.0" fill="none" data-name="Message"></path>
-                            <path d="M146.0 376.0 L263.0 376.0" fill="none" data-name="Message"></path>
-                        </g>
-                        <g transform="translate(146, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Message">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="Message">
-                                <text x="50.5" y="13.0" stroke="none" text-anchor="middle" data-name="Message">Message</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(146, 152)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Message">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Message">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Message">new Message()</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(146, 184)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Message">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Message">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Message">TEXT</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="Message">BINARY</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(146, 232)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Message">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Message">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Message">value</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="Message">params</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="Message">type</text>
-                                <text x="0.0" y="61.0" stroke="none" data-name="Message">data</text>
-                                <text x="0.0" y="77.0" stroke="none" data-name="Message">body</text>
-                                <text x="0.0" y="93.0" stroke="none" data-name="Message">length</text>
-                                <text x="0.0" y="109.0" stroke="none" data-name="Message">stream</text>
-                                <text x="0.0" y="125.0" stroke="none" data-name="Message">lastError</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(146, 376)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="Message">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="Message">
-                                <text x="0.0" y="13.0" stroke="none" data-name="Message">read()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="Message">readAll()</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="Message">write()</text>
-                                <text x="0.0" y="61.0" stroke="none" data-name="Message">json()</text>
-                                <text x="0.0" y="77.0" stroke="none" data-name="Message">pack()</text>
-                                <text x="0.0" y="93.0" stroke="none" data-name="Message">end()</text>
-                                <text x="0.0" y="109.0" stroke="none" data-name="Message">isEnded()</text>
-                                <text x="0.0" y="125.0" stroke="none" data-name="Message">clear()</text>
-                                <text x="0.0" y="141.0" stroke="none" data-name="Message">sendTo()</text>
-                                <text x="0.0" y="157.0" stroke="none" data-name="Message">readFrom()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="object">
-                        <g fill="white" stroke="#33322E" data-name="object">
-                            <rect x="166.0" y="0.0" height="80.0" width="77.0" data-name="object"></rect>
-                            <path d="M166.0 32.0 L243.0 32.0" fill="none" data-name="object"></path>
-                        </g>
-                        <g transform="translate(166, 0)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="object">
-                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="object">object</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(166, 32)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="object">
-                                <text x="0.0" y="13.0" stroke="none" data-name="object">toString()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="object">toJSON()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="HttpMessage">
-                        <g fill="white" stroke="#33322E" data-name="HttpMessage">
-                            <rect x="69.0" y="592.0" height="32.0" width="103.0" data-name="HttpMessage"></rect>
-                        </g>
-                        <g transform="translate(69, 592)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="HttpMessage">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="HttpMessage">
-                                <text x="43.5" y="13.0" stroke="none" text-anchor="middle" data-name="HttpMessage">HttpMessage</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="HttpRequest">
-                        <g fill="white" stroke="#33322E" data-name="HttpRequest">
-                            <rect x="0.0" y="664.0" height="32.0" width="98.0" data-name="HttpRequest"></rect>
-                        </g>
-                        <g transform="translate(0, 664)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="HttpRequest">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="HttpRequest">
-                                <text x="41.0" y="13.0" stroke="none" text-anchor="middle" data-name="HttpRequest">HttpRequest</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="HttpResponse">
-                        <g fill="white" stroke="#33322E" data-name="HttpResponse">
-                            <rect x="138.0" y="664.0" height="32.0" width="109.0" data-name="HttpResponse"></rect>
-                        </g>
-                        <g transform="translate(138, 664)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="HttpResponse">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="HttpResponse">
-                                <text x="46.5" y="13.0" stroke="none" text-anchor="middle" data-name="HttpResponse">HttpResponse</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="WebSocketMessage">
-                        <g fill="white" stroke="#33322E" data-name="WebSocketMessage">
-                            <rect x="212.0" y="592.0" height="32.0" width="151.0" data-name="WebSocketMessage"></rect>
-                        </g>
-                        <g transform="translate(212, 592)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="WebSocketMessage">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="WebSocketMessage">
-                                <text x="67.5" y="13.0" stroke="none" text-anchor="middle" data-name="WebSocketMessage">WebSocketMessage</text>
-
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg></div>
+<div class="dot notranslate">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="253pt" height="548pt" viewBox="0.00 0.00 252.63 548.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 544)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-544 248.629,-544 248.629,4 -4,4"></polygon>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href="object.md.html" xlink:title="object">
+<polygon fill="#ffffff" stroke="#000000" points="106.9535,-487.5 106.9535,-539.5 164.6165,-539.5 164.6165,-487.5 106.9535,-487.5"></polygon>
+<text text-anchor="middle" x="135.785" y="-526.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="106.9535,-519.5 164.6165,-519.5 "></polyline>
+<text text-anchor="start" x="114.9535" y="-506.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="114.9535" y="-494.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+</a>
+</g>
+</g>
+<!-- Message -->
+<g id="me" class="node">
+<title>Message</title>
+<g id="a_me"><a xlink:title="Message">
+<polygon fill="#d3d3d3" stroke="#000000" points="93.6155,-146.5 93.6155,-450.5 177.9545,-450.5 177.9545,-146.5 93.6155,-146.5"></polygon>
+<text text-anchor="middle" x="135.785" y="-437.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">Message</text>
+<polyline fill="none" stroke="#000000" points="93.6155,-430.5 177.9545,-430.5 "></polyline>
+<text text-anchor="start" x="101.6155" y="-417.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new Message()</text>
+<polyline fill="none" stroke="#000000" points="93.6155,-410.5 177.9545,-410.5 "></polyline>
+<text text-anchor="start" x="101.6155" y="-397.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">TEXT</text>
+<text text-anchor="start" x="101.6155" y="-385.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">BINARY</text>
+<polyline fill="none" stroke="#000000" points="93.6155,-378.5 177.9545,-378.5 "></polyline>
+<text text-anchor="start" x="101.6155" y="-365.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">value</text>
+<text text-anchor="start" x="101.6155" y="-353.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">params</text>
+<text text-anchor="start" x="101.6155" y="-341.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">type</text>
+<text text-anchor="start" x="101.6155" y="-329.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">data</text>
+<text text-anchor="start" x="101.6155" y="-317.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">body</text>
+<text text-anchor="start" x="101.6155" y="-305.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">length</text>
+<text text-anchor="start" x="101.6155" y="-293.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">stream</text>
+<text text-anchor="start" x="101.6155" y="-281.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">lastError</text>
+<polyline fill="none" stroke="#000000" points="93.6155,-274.5 177.9545,-274.5 "></polyline>
+<text text-anchor="start" x="101.6155" y="-261.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">read()</text>
+<text text-anchor="start" x="101.6155" y="-249.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readAll()</text>
+<text text-anchor="start" x="101.6155" y="-237.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">write()</text>
+<text text-anchor="start" x="101.6155" y="-225.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">json()</text>
+<text text-anchor="start" x="101.6155" y="-213.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">pack()</text>
+<text text-anchor="start" x="101.6155" y="-201.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">end()</text>
+<text text-anchor="start" x="101.6155" y="-189.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">isEnded()</text>
+<text text-anchor="start" x="101.6155" y="-177.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">clear()</text>
+<text text-anchor="start" x="101.6155" y="-165.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">sendTo()</text>
+<text text-anchor="start" x="101.6155" y="-153.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">readFrom()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;Message -->
+<g id="edge1" class="edge">
+<title>object-&gt;Message</title>
+<path fill="none" stroke="#000000" d="M135.785,-476.9226C135.785,-468.9827 135.785,-460.1108 135.785,-450.6809"></path>
+<polygon fill="#000000" stroke="#000000" points="132.2851,-477.1367 135.785,-487.1368 139.2851,-477.1368 132.2851,-477.1367"></polygon>
+</g>
+<!-- HttpMessage -->
+<g id="node3" class="node">
+<title>HttpMessage</title>
+<g id="a_node3"><a xlink:href="httpmessage.md.html" xlink:title="HttpMessage">
+<polygon fill="#ffffff" stroke="#000000" points="44.3345,-73.5 44.3345,-109.5 119.2355,-109.5 119.2355,-73.5 44.3345,-73.5"></polygon>
+<text text-anchor="middle" x="81.785" y="-88.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">HttpMessage</text>
+</a>
+</g>
+</g>
+<!-- Message&#45;&gt;HttpMessage -->
+<g id="edge2" class="edge">
+<title>Message-&gt;HttpMessage</title>
+<path fill="none" stroke="#000000" d="M93.5435,-136.5744C90.832,-126.1801 88.4254,-116.9549 86.507,-109.6008"></path>
+<polygon fill="#000000" stroke="#000000" points="90.2033,-137.6361 96.1142,-146.4287 96.9766,-135.8691 90.2033,-137.6361"></polygon>
+</g>
+<!-- WebSocketMessage -->
+<g id="node6" class="node">
+<title>WebSocketMessage</title>
+<g id="a_node6"><a xlink:href="websocketmessage.md.html" xlink:title="WebSocketMessage">
+<polygon fill="#ffffff" stroke="#000000" points="136.941,-73.5 136.941,-109.5 244.629,-109.5 244.629,-73.5 136.941,-73.5"></polygon>
+<text text-anchor="middle" x="190.785" y="-88.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">WebSocketMessage</text>
+</a>
+</g>
+</g>
+<!-- Message&#45;&gt;WebSocketMessage -->
+<g id="edge5" class="edge">
+<title>Message-&gt;WebSocketMessage</title>
+<path fill="none" stroke="#000000" d="M178.8087,-136.5744C181.5705,-126.1801 184.0216,-116.9549 185.9756,-109.6008"></path>
+<polygon fill="#000000" stroke="#000000" points="175.3758,-135.8653 176.1904,-146.4287 182.141,-137.6629 175.3758,-135.8653"></polygon>
+</g>
+<!-- HttpRequest -->
+<g id="node4" class="node">
+<title>HttpRequest</title>
+<g id="a_node4"><a xlink:href="httprequest.md.html" xlink:title="HttpRequest">
+<polygon fill="#ffffff" stroke="#000000" points="0,-.5 0,-36.5 71.57,-36.5 71.57,-.5 0,-.5"></polygon>
+<text text-anchor="middle" x="35.785" y="-15.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">HttpRequest</text>
+</a>
+</g>
+</g>
+<!-- HttpMessage&#45;&gt;HttpRequest -->
+<g id="edge3" class="edge">
+<title>HttpMessage-&gt;HttpRequest</title>
+<path fill="none" stroke="#000000" d="M64.9781,-64.8282C59.0603,-55.4369 52.5515,-45.1077 47.1844,-36.5904"></path>
+<polygon fill="#000000" stroke="#000000" points="62.1218,-66.8606 70.4142,-73.4551 68.0441,-63.1287 62.1218,-66.8606"></polygon>
+</g>
+<!-- HttpResponse -->
+<g id="node5" class="node">
+<title>HttpResponse</title>
+<g id="a_node5"><a xlink:href="httpresponse.md.html" xlink:title="HttpResponse">
+<polygon fill="#ffffff" stroke="#000000" points="89.11,-.5 89.11,-36.5 168.46,-36.5 168.46,-.5 89.11,-.5"></polygon>
+<text text-anchor="middle" x="128.785" y="-15.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">HttpResponse</text>
+</a>
+</g>
+</g>
+<!-- HttpMessage&#45;&gt;HttpResponse -->
+<g id="edge4" class="edge">
+<title>HttpMessage-&gt;HttpResponse</title>
+<path fill="none" stroke="#000000" d="M98.9573,-64.8282C105.0037,-55.4369 111.654,-45.1077 117.1378,-36.5904"></path>
+<polygon fill="#000000" stroke="#000000" points="95.8736,-63.1523 93.403,-73.4551 101.7592,-66.9417 95.8736,-63.1523"></polygon>
+</g>
+</g>
+</svg>
+</div>
 
 <div name="构造函数" data-unique="构造函数"></div><h2 id="构造函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">構造函數</font></font></h2>
 <div name="Message" data-unique="Message"></div><h3 id="Message" class="notranslate">Message</h3>
@@ -559,4 +522,4 @@
 <ul>
 <li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回包含可JSON 序列化的值</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip960715"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip960715" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

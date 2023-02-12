@@ -1,15 +1,15 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Object SandBox - JavaScript on Fiber</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Toggle navigation</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/sandbox.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/sandbox.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/sandbox.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/sandbox.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/sandbox.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/sandbox.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/sandbox.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/sandbox.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/sandbox.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/sandbox.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/sandbox.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/sandbox.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Object built-in object</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Search" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="search input" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">front page</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">built-in objects</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ObjectSandBox</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Development Guide</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>ObjectSandBox - JavaScript on Fiber</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Toggle navigation</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/sandbox.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/sandbox.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/sandbox.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/sandbox.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/sandbox.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/sandbox.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/sandbox.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/sandbox.md.html">Italiano</a> <a href="../../../../../ru/docs/manual/object/ifs/sandbox.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/sandbox.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/sandbox.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/sandbox.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Object built-in object</font></font></span><div class="search"><input type="text" class="searchbox" placeholder="Search"></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">front page</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">built-in object</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ObjectSandBox</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">development guide</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">What is fibjs?</font></font></a></li>
-<li><a href="../../../guide/install.md.html">安装运行环境</a></li>
+<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Install the operating environment</font></font></a></li>
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
-<li><a href="../../../guide/test.md.html">美好生活从测试开始</a></li>
-<li><a href="../../../guide/profiler.md.html">找出性能杀手</a></li>
-<li><a href="../../../guide/server-hot-update.md.html">服务端模块热更新</a></li>
-<li><a href="../../../guide/host-routes.md.html">域名路由</a></li>
-<li><a href="../../../guide/x509.md.html">fibjs 中 X509 证书的使用</a></li>
-<li><a href="../../../guide/contribute.md.html">添加 native 模块</a></li>
+<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A better life begins with a test</font></font></a></li>
+<li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Find performance killers</font></font></a></li>
+<li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Server module hot update</font></font></a></li>
+<li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Domain Routing</font></font></a></li>
+<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Use of X509 certificate in fibjs</font></font></a></li>
+<li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Add native module</font></font></a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">basic module</font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Basic module</font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../module/ifs/assert.md.html" class="notranslate">assert</a></li>
 <li><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a></li>
 <li><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a></li>
@@ -64,7 +64,8 @@
 <li><a href="../../module/ifs/zip.md.html" class="notranslate">zip</a></li>
 <li><a href="../../module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">built-in objects</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">built-in object</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="blskey.md.html" class="notranslate">BlsKey</a></li>
 <li><a href="buffer.md.html" class="notranslate">Buffer</a></li>
 <li><a href="bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
 <li><a href="chain.md.html" class="notranslate">Chain</a></li>
@@ -74,6 +75,8 @@
 <li><a href="dbconnection.md.html" class="notranslate">DbConnection</a></li>
 <li><a href="dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
 <li><a href="digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="eckey.md.html" class="notranslate">ECKey</a></li>
+<li><a href="ed25519key.md.html" class="notranslate">Ed25519Key</a></li>
 <li><a href="event.md.html" class="notranslate">Event</a></li>
 <li><a href="eventemitter.md.html" class="notranslate">EventEmitter</a></li>
 <li><a href="fswatcher.md.html" class="notranslate">FSWatcher</a></li>
@@ -200,9 +203,9 @@
 <li><a href="../../../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
 <li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
 </ul>
- </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="对象-SandBox" data-unique="对象-SandBox"></div><h1 id="对象-SandBox"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ObjectSandBox</font></font></h1>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Security sandbox object, used to manage a separate runtime space</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">All code runs in its own sandbox, the global require will call the current sandbox to load the module, and the sandbox will be passed to the loaded sandbox through require. </font><font style="vertical-align: inherit;">The following example creates a sandbox that restricts access to the global base module only</font></font><a href="../../module/ifs/assert.md.html" class="notranslate">assert</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">module, and add two custom modules a and b:</font></font></p>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <h1 id="对象-SandBox"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ObjectSandBox</font></font></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Security sandbox object, used to manage an independent running space</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">All code runs in its own sandbox. The global require will call the current sandbox to load the module, and the sandbox will be passed to the loaded sandbox through require. </font><font style="vertical-align: inherit;">The following example creates a sandbox that restricts access to only the</font></font><a href="../../module/ifs/assert.md.html" class="notranslate">assert</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">module, and add two custom modules a and b:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -219,102 +222,67 @@
 <font></font>
 <span class="hljs-keyword">var</span> mod_in_sbox = sbox.require(<span class="hljs-string">'./path/to/mod'</span>);
 </code></pre>
-<div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">inheritance relationship</font></font></h2>
-<div class="dot notranslate"><svg version="1.1" baseProfile="full" width="209.0" height="480.0" viewBox="0 0 209 480" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events">
-    <desc>
-    #lineWidth: 1.5
-    #font: Helvetica,sans-Serif
-    #fontSize: 10
-    #leading: 1.6
-    #.this: fill=lightgray
-    #.class: fill=white
+<h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">inheritance relationship</font></font></h2>
+<div class="dot notranslate">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="117pt" height="310pt" viewBox="0.00 0.00 116.77 310.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 306)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-306 112.772,-306 112.772,4 -4,4"></polygon>
+<!-- object -->
+<g id="node1" class="node">
+<title>object</title>
+<g id="a_node1"><a xlink:href="object.md.html" xlink:title="object">
+<polygon fill="#ffffff" stroke="#000000" points="25.5545,-249.5 25.5545,-301.5 83.2175,-301.5 83.2175,-249.5 25.5545,-249.5"></polygon>
+<text text-anchor="middle" x="54.386" y="-288.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">object</text>
+<polyline fill="none" stroke="#000000" points="25.5545,-281.5 83.2175,-281.5 "></polyline>
+<text text-anchor="start" x="33.5545" y="-268.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toString()</text>
+<text text-anchor="start" x="33.5545" y="-256.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">toJSON()</text>
+</a>
+</g>
+</g>
+<!-- SandBox -->
+<g id="me" class="node">
+<title>SandBox</title>
+<g id="a_me"><a xlink:title="SandBox">
+<polygon fill="#d3d3d3" stroke="#000000" points="0,-.5 0,-212.5 108.772,-212.5 108.772,-.5 0,-.5"></polygon>
+<text text-anchor="middle" x="54.386" y="-199.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">SandBox</text>
+<polyline fill="none" stroke="#000000" points="0,-192.5 108.772,-192.5 "></polyline>
+<text text-anchor="start" x="8" y="-179.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">new SandBox()</text>
+<polyline fill="none" stroke="#000000" points="0,-172.5 108.772,-172.5 "></polyline>
+<text text-anchor="start" x="8" y="-159.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">global</text>
+<text text-anchor="start" x="8" y="-147.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">modules</text>
+<polyline fill="none" stroke="#000000" points="0,-140.5 108.772,-140.5 "></polyline>
+<text text-anchor="start" x="8" y="-127.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">addBuiltinModules()</text>
+<text text-anchor="start" x="8" y="-115.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">add()</text>
+<text text-anchor="start" x="8" y="-103.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">addScript()</text>
+<text text-anchor="start" x="8" y="-91.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">remove()</text>
+<text text-anchor="start" x="8" y="-79.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">has()</text>
+<text text-anchor="start" x="8" y="-67.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">clone()</text>
+<text text-anchor="start" x="8" y="-55.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">freeze()</text>
+<text text-anchor="start" x="8" y="-43.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">run()</text>
+<text text-anchor="start" x="8" y="-31.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">resolve()</text>
+<text text-anchor="start" x="8" y="-19.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">require()</text>
+<text text-anchor="start" x="8" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="#000000">setModuleCompiler()</text>
+</a>
+</g>
+</g>
+<!-- object&#45;&gt;SandBox -->
+<g id="edge1" class="edge">
+<title>object-&gt;SandBox</title>
+<path fill="none" stroke="#000000" d="M54.386,-239.2911C54.386,-231.1222 54.386,-222.047 54.386,-212.5847"></path>
+<polygon fill="#000000" stroke="#000000" points="50.8861,-239.4641 54.386,-249.4641 57.8861,-239.4642 50.8861,-239.4641"></polygon>
+</g>
+</g>
+</svg>
+</div>
 
-    [&lt;class&gt;object|toString();toJSON()]
-    [&lt;this&gt;SandBox|new SandBox()|global;modules|add();addScript();remove();has();clone();freeze();refresh();run();resolve();require();setModuleCompiler()]
-
-    [object] &lt;:- [SandBox]
-    </desc>
-    <g stroke-width="1.0" text-align="left" font="12pt Helvetica, Arial, sans-serif" font-size="10pt" font-family="Helvetica,sans-Serif" font-weight="normal" font-style="normal">
-        <g font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="bold" font-style="normal" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" stroke="#33322E">
-            <g stroke="transparent" fill="transparent">
-                <rect x="0.0" y="0.0" height="480.0" width="209.0" stroke="none"></rect>
-            </g>
-            <g transform="translate(8, 8)" fill="#33322E">
-                <g transform="translate(20, 20)" fill="#eee8d5" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal">
-                    <path d="M76.5 93.3 L76.5 100 L76.5 120 L76.5 120.0 " fill="none"></path>
-                    <path d="M81.8 93.3 L76.5 93.3 L71.2 93.3 L76.5 80.0 Z"></path>
-                    <g data-name="SandBox">
-                        <g fill="lightgray" stroke="#33322E" data-name="SandBox">
-                            <rect x="0.0" y="120.0" height="304.0" width="153.0" data-name="SandBox"></rect>
-                            <path d="M0.0 152.0 L153.0 152.0" fill="none" data-name="SandBox"></path>
-                            <path d="M0.0 184.0 L153.0 184.0" fill="none" data-name="SandBox"></path>
-                            <path d="M0.0 232.0 L153.0 232.0" fill="none" data-name="SandBox"></path>
-                        </g>
-                        <g transform="translate(0, 120)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="SandBox">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="SandBox">
-                                <text x="68.5" y="13.0" stroke="none" text-anchor="middle" data-name="SandBox">SandBox</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 152)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="SandBox">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="SandBox">
-                                <text x="0.0" y="13.0" stroke="none" data-name="SandBox">new SandBox()</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 184)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="SandBox">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="SandBox">
-                                <text x="0.0" y="13.0" stroke="none" data-name="SandBox">global</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="SandBox">modules</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(0, 232)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="SandBox">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="SandBox">
-                                <text x="0.0" y="13.0" stroke="none" data-name="SandBox">add()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="SandBox">addScript()</text>
-                                <text x="0.0" y="45.0" stroke="none" data-name="SandBox">remove()</text>
-                                <text x="0.0" y="61.0" stroke="none" data-name="SandBox">has()</text>
-                                <text x="0.0" y="77.0" stroke="none" data-name="SandBox">clone()</text>
-                                <text x="0.0" y="93.0" stroke="none" data-name="SandBox">freeze()</text>
-                                <text x="0.0" y="109.0" stroke="none" data-name="SandBox">refresh()</text>
-                                <text x="0.0" y="125.0" stroke="none" data-name="SandBox">run()</text>
-                                <text x="0.0" y="141.0" stroke="none" data-name="SandBox">resolve()</text>
-                                <text x="0.0" y="157.0" stroke="none" data-name="SandBox">require()</text>
-                                <text x="0.0" y="173.0" stroke="none" data-name="SandBox">setModuleCompiler()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                    <g data-name="object">
-                        <g fill="white" stroke="#33322E" data-name="object">
-                            <rect x="38.0" y="0.0" height="80.0" width="77.0" data-name="object"></rect>
-                            <path d="M38.0 32.0 L115.0 32.0" fill="none" data-name="object"></path>
-                        </g>
-                        <g transform="translate(38, 0)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="center" data-name="object">
-                                <text x="30.5" y="13.0" stroke="none" text-anchor="middle" data-name="object">object</text>
-
-                            </g>
-                        </g>
-                        <g transform="translate(38, 32)" font-family="Helvetica,sans-Serif" font-size="10pt" font-weight="normal" font-style="normal" data-name="object">
-                            <g transform="translate(8, 8)" fill="#33322E" text-align="left" data-name="object">
-                                <text x="0.0" y="13.0" stroke="none" data-name="object">toString()</text>
-                                <text x="0.0" y="29.0" stroke="none" data-name="object">toJSON()</text>
-
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg></div>
-
-<div name="构造函数" data-unique="构造函数"></div><h2 id="构造函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Constructor</font></font></h2>
-<div name="SandBox" data-unique="SandBox"></div><h3 id="SandBox" class="notranslate">SandBox</h3>
+<h2 id="构造函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Constructor</font></font></h2>
+<h3 id="SandBox" class="notranslate">SandBox</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Construct a new security sandbox object and initialize the base module</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> SandBox(<span class="hljs-built_in">Object</span> mods);
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> SandBox(<span class="hljs-built_in">Object</span> mods = {});
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
@@ -329,10 +297,10 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
 <li><span class="notranslate">mods</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, specifies the module object dictionary to add</font></font></li>
-<li><span class="notranslate">require</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function, a custom require function, when the module does not exist, the custom function is called first, no return, and then loaded from the file</font></font></li>
+<li><span class="notranslate">require</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function, custom require function, when the module does not exist, call the custom function first, and then load it from the file if there is no return</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Construct an independent Global new security sandbox object and initialize the base module</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Construct a new security sandbox object of an independent Global and initialize the basic module</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">new</span> SandBox(<span class="hljs-built_in">Object</span> mods,
     <span class="hljs-built_in">Object</span> global);
@@ -343,7 +311,7 @@
 <li><span class="notranslate">global</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, specifies the initialized Global property</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Construct an independent Global new security sandbox object and initialize the base module</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Construct a new security sandbox object of an independent Global and initialize the basic module</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">new</span> SandBox(<span class="hljs-built_in">Object</span> mods,
@@ -353,21 +321,26 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
 <li><span class="notranslate">mods</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, specifies the module object dictionary to add</font></font></li>
-<li><span class="notranslate">require</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function, a custom require function, when the module does not exist, the custom function is called first, no return, and then loaded from the file</font></font></li>
+<li><span class="notranslate">require</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function, custom require function, when the module does not exist, call the custom function first, and then load it from the file if there is no return</font></font></li>
 <li><span class="notranslate">global</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, specifies the initialized Global property</font></font></li>
 </ul>
-<div name="成员属性" data-unique="成员属性"></div><h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Member properties</font></font></h2>
-<div name="global" data-unique="global"></div><h3 id="global" class="notranslate">global</h3>
+<h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">member attribute</font></font></h2>
+<h3 id="global" class="notranslate">global</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Object, query sandbox</font></font><a href="../../module/ifs/global.md.html" class="notranslate">global</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">object</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly <span class="hljs-built_in">Object</span> SandBox.global;
 </code></pre>
 <hr>
-<div name="modules" data-unique="modules"></div><h3 id="modules" class="notranslate">modules</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Object, query the dictionary object of all existing modules in the sandbox</font></font></strong></p>
+<h3 id="modules" class="notranslate">modules</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Object, a dictionary object to query all existing modules in the sandbox</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly <span class="hljs-built_in">Object</span> SandBox.modules;
 </code></pre>
-<div name="成员函数" data-unique="成员函数"></div><h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">member function</font></font></h2>
-<div name="add" data-unique="add"></div><h3 id="add" class="notranslate">add</h3>
+<h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">member function</font></font></h2>
+<h3 id="addBuiltinModules" class="notranslate">addBuiltinModules</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Add built-in base modules to the sandbox</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>SandBox.addBuiltinModules();
+</code></pre>
+<hr>
+<h3 id="add" class="notranslate">add</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Add a base module to the sandbox</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>SandBox.add(<span class="hljs-built_in">String</span> id,<font></font>
@@ -384,10 +357,10 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">mods</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, specifies the object dictionary of the module to be added. The added javascript module will generate a copy to avoid mutual interference between sandbox modification objects</font></font></li>
+<li><span class="notranslate">mods</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, specify the module object dictionary to add, the added javascript module will generate a copy to avoid mutual interference between sandbox modification objects</font></font></li>
 </ul>
 <hr>
-<div name="addScript" data-unique="addScript"></div><h3 id="addScript" class="notranslate">addScript</h3>
+<h3 id="addScript" class="notranslate">addScript</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Add a script module to the sandbox</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Value SandBox.addScript(<span class="hljs-built_in">String</span> srcname,<font></font>
@@ -395,15 +368,15 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">srcname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the name of the script to add, srcname must contain the extension, such as</font></font><a href="../../module/ifs/json.md.html" class="notranslate">json</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">or js, jsc</font></font></li>
+<li><span class="notranslate">srcname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the name of the script to be added, srcname must contain an extension, such as</font></font><a href="../../module/ifs/json.md.html" class="notranslate">json</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">or js, jsc</font></font></li>
 <li><span class="notranslate">script</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, specifies the binary code to add</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">return result:</font></font></p>
 <ul>
 <li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns the loaded module object</font></font></li>
 </ul>
 <hr>
-<div name="remove" data-unique="remove"></div><h3 id="remove" class="notranslate">remove</h3>
+<h3 id="remove" class="notranslate">remove</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Remove the specified base module from the sandbox</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>SandBox.remove(<span class="hljs-built_in">String</span> id);
 </code></pre>
@@ -412,39 +385,34 @@
 <li><span class="notranslate">id</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the name of the module to be deleted, this path has nothing to do with the currently running script, it must be an absolute path or a module name</font></font></li>
 </ul>
 <hr>
-<div name="has" data-unique="has"></div><h3 id="has" class="notranslate">has</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Detect the existence of a base module from the sandbox</font></font></strong></p>
+<h3 id="has" class="notranslate">has</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Detect the existence of the base module from the sandbox</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> SandBox.has(<span class="hljs-built_in">String</span> id);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
 <li><span class="notranslate">id</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the name of the module to be detected, this path has nothing to do with the currently running script, it must be an absolute path or a module name</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">return result:</font></font></p>
 <ul>
 <li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, does it exist</font></font></li>
 </ul>
 <hr>
-<div name="clone" data-unique="clone"></div><h3 id="clone" class="notranslate">clone</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Duplicates the current sandbox, the new sandbox contains the modules of the current sandbox, with the same name and require function</font></font></strong></p>
+<h3 id="clone" class="notranslate">clone</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Duplicate the current sandbox, the new sandbox contains the modules of the current sandbox, and the same name and require function</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>SandBox SandBox.clone();
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">return result:</font></font></p>
 <ul>
-<li><span class="notranslate">SandBox</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, a new sandbox to copy</font></font></li>
+<li><span class="notranslate">SandBox</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, the new sandbox copied</font></font></li>
 </ul>
 <hr>
-<div name="freeze" data-unique="freeze"></div><h3 id="freeze" class="notranslate">freeze</h3>
+<h3 id="freeze" class="notranslate">freeze</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Freeze the current sandbox, the frozen sandbox, yes</font></font><a href="../../module/ifs/global.md.html" class="notranslate">global</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Modifications made will be ignored</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>SandBox.freeze();
 </code></pre>
 <hr>
-<div name="refresh" data-unique="refresh"></div><h3 id="refresh" class="notranslate">refresh</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Reload the module in the sandbox. This operation only reinitializes the module, resets the variables in the module, and does not update the module code</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>SandBox.refresh();
-</code></pre>
-<hr>
-<div name="run" data-unique="run"></div><h3 id="run" class="notranslate">run</h3>
+<h3 id="run" class="notranslate">run</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">run a script</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>SandBox.run(<span class="hljs-built_in">String</span> fname,
@@ -452,12 +420,12 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the path of the script to run, this path has nothing to do with the currently running script, it must be an absolute path</font></font></li>
-<li><span class="notranslate">argv</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Array, specify the parameters to run, this parameter can be obtained using argv in the script</font></font></li>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the path of the script to be run. This path has nothing to do with the currently running script and must be an absolute path</font></font></li>
+<li><span class="notranslate">argv</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Array, specifies the parameters to run, this parameter can be obtained using argv in the script</font></font></li>
 </ul>
 <hr>
-<div name="resolve" data-unique="resolve"></div><h3 id="resolve" class="notranslate">resolve</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Query a module and return the module full filename</font></font></strong></p>
+<h3 id="resolve" class="notranslate">resolve</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Query a module and return the module's full filename</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">String</span> SandBox.resolve(<span class="hljs-built_in">String</span> id,
     <span class="hljs-built_in">String</span> base);
@@ -467,13 +435,13 @@
 <li><span class="notranslate">id</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the name of the module to load</font></font></li>
 <li><span class="notranslate">base</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the search path</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">return result:</font></font></p>
 <ul>
 <li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns the full filename of the loaded module</font></font></li>
 </ul>
 <hr>
-<div name="require" data-unique="require"></div><h3 id="require" class="notranslate">require</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Load a module and return the module object</font></font></strong></p>
+<h3 id="require" class="notranslate">require</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">load a module and return the module object</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Value SandBox.require(<span class="hljs-built_in">String</span> id,
     <span class="hljs-built_in">String</span> base);
@@ -483,21 +451,21 @@
 <li><span class="notranslate">id</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the name of the module to load</font></font></li>
 <li><span class="notranslate">base</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specifies the search path</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">return result:</font></font></p>
 <ul>
 <li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns the loaded module object</font></font></li>
 </ul>
 <hr>
-<div name="setModuleCompiler" data-unique="setModuleCompiler"></div><h3 id="setModuleCompiler" class="notranslate">setModuleCompiler</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Add a compiler to the specified extname, extname cannot be a built-in extension of the system (including {'.js', '.</font></font><a href="../../module/ifs/json.md.html" class="notranslate">json</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">', '.jsc', '.wasm'}), the compiler must return a valid javascript script.</font></font></strong></p>
+<h3 id="setModuleCompiler" class="notranslate">setModuleCompiler</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Add a compiler to the specified extname, extname cannot be a system built-in extension (including {'.js', '.</font></font><a href="../../module/ifs/json.md.html" class="notranslate">json</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">', '.jsc', '.wasm'}), the compiler needs to return a valid javascript script.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>SandBox.setModuleCompiler(<span class="hljs-built_in">String</span> extname,
     <span class="hljs-built_in">Function</span> compiler);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">extname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, the specified extname, must start with '.', and is a non-system built-in extension</font></font></li>
-<li><span class="notranslate">compiler</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function, compile callback function, all files with extname will be required only once. The format of the callback function is </font></font><code>compiler(buf, requireInfo)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, buf is the read file</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, the structure of requireInfo is </font></font><code>{filename: string}</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></li>
+<li><span class="notranslate">extname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, the specified extname must start with '.', and it is a non-system built-in extension</font></font></li>
+<li><span class="notranslate">compiler</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Function, compile callback function, all files with extname will only require once. The format of the callback function is </font></font><code>compiler(buf, requireInfo)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, buf is the read file</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, the requireInfo structure is </font></font><code>{filename: string}</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></li>
 </ul>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -544,25 +512,25 @@ sbox.setModuleCompiler(<span class="hljs-string">'.md'</span>, mdCompiler)<font>
 sbox.setModuleCompiler(<span class="hljs-string">'.markdown'</span>, mdCompiler)
 </code></pre>
 <hr>
-<div name="toString" data-unique="toString"></div><h3 id="toString" class="notranslate">toString</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Returns the string representation of the object, generally returns "[Native Object]", the object can be reimplemented according to its own characteristics</font></font></strong></p>
+<h3 id="toString" class="notranslate">toString</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return the string representation of the object, generally return "[Native Object]", the object can be reimplemented according to its own characteristics</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> SandBox.toString();
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">return result:</font></font></p>
 <ul>
-<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns the string representation of the object</font></font></li>
+<li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns a string representation of the object</font></font></li>
 </ul>
 <hr>
-<div name="toJSON" data-unique="toJSON"></div><h3 id="toJSON" class="notranslate">toJSON</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Returns the JSON format representation of the object, generally returns the set of readable properties defined by the object</font></font></strong></p>
+<h3 id="toJSON" class="notranslate">toJSON</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Returns the JSON format representation of the object, generally returns a collection of readable properties defined by the object</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value SandBox.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
 <ul>
-<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, unused</font></font></li>
+<li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, not used</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Return result:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">return result:</font></font></p>
 <ul>
-<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns a value containing JSON serializable</font></font></li>
+<li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, which returns a JSON-serializable value</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Support us</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title="Click to return on the top page" aria-describedby="tooltip360752"><span class="glyphicon glyphicon-chevron-up"></span></a><div class="tooltip fade left in" role="tooltip" id="tooltip360752" style="top: 0px; left: -190px; display: block;"><div class="tooltip-arrow" style="top: 0%;"></div><div class="tooltip-inner"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Click to return on the top page</font></font></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Support us</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

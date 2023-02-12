@@ -9,18 +9,15 @@ var test = new db.openLevelDB("test.db");
 ```
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<class>object|toString();toJSON()]
-[<this>LevelDB|has();get();mget();set();mset();mremove();remove();forEach();between();begin();commit();close()]
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    LevelDB [tooltip="LevelDB", fillcolor="lightgray", id="me", label="{LevelDB|has()\lget()\lmget()\lset()\lmset()\lmremove()\lremove()\lforEach()\lbetween()\lbegin()\lcommit()\lclose()\l}"];
 
-[object] <:- [LevelDB]
+    object -> LevelDB [dir=back];
+}
 ```
 
 ## 成员函数

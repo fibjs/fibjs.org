@@ -9,26 +9,23 @@ var m = new mq.Message();
 ```
 
 ## 继承关系
-```uml
-#lineWidth: 1.5
-#font: Helvetica,sans-Serif
-#fontSize: 10
-#leading: 1.6
-#.this: fill=lightgray
-#.class: fill=white
+```dot
+digraph {
+    node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
-[<class>object|toString();toJSON()]
-[<this>Message|new Message()|TEXT;BINARY|value;params;type;data;body;length;stream;lastError|read();readAll();write();json();pack();end();isEnded();clear();sendTo();readFrom()]
-[<class>HttpMessage]
-[<class>HttpRequest]
-[<class>HttpResponse]
-[<class>WebSocketMessage]
+    object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
+    Message [tooltip="Message", fillcolor="lightgray", id="me", label="{Message|new Message()\l|TEXT\lBINARY\l|value\lparams\ltype\ldata\lbody\llength\lstream\llastError\l|read()\lreadAll()\lwrite()\ljson()\lpack()\lend()\lisEnded()\lclear()\lsendTo()\lreadFrom()\l}"];
+    HttpMessage [tooltip="HttpMessage", URL="HttpMessage.md", label="{HttpMessage}"];
+    HttpRequest [tooltip="HttpRequest", URL="HttpRequest.md", label="{HttpRequest}"];
+    HttpResponse [tooltip="HttpResponse", URL="HttpResponse.md", label="{HttpResponse}"];
+    WebSocketMessage [tooltip="WebSocketMessage", URL="WebSocketMessage.md", label="{WebSocketMessage}"];
 
-[object] <:- [Message]
-[Message] <:- [HttpMessage]
-[HttpMessage] <:- [HttpRequest]
-[HttpMessage] <:- [HttpResponse]
-[Message] <:- [WebSocketMessage]
+    object -> Message [dir=back];
+    Message -> HttpMessage [dir=back];
+    HttpMessage -> HttpRequest [dir=back];
+    HttpMessage -> HttpResponse [dir=back];
+    Message -> WebSocketMessage [dir=back];
+}
 ```
 
 ## 构造函数
