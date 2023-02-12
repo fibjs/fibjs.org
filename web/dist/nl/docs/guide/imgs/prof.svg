@@ -1,0 +1,1866 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" width="1000" height="514" onload="init(evt)" viewBox="0 0 1000 514" 
+    xmlns="http://www.w3.org/2000/svg" 
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs >
+        <linearGradient id="background" y1="0" y2="1" x1="0" x2="0">
+            <stop stop-color="#eeeeee" offset="5%" />
+            <stop stop-color="#eeeeb0" offset="95%" />
+        </linearGradient>
+    </defs>
+    <style type="text/css">
+    .func_g:hover {
+        stroke:black;
+        stroke-width:0.5;
+        cursor:pointer;
+    }
+    </style>
+
+    <script type="text/ecmascript">
+        <![CDATA[
+    var details, searchbtn, matchedtxt, svg;
+    function init(evt) { 
+        details = document.getElementById("details").firstChild; 
+        searchbtn = document.getElementById("search");
+        matchedtxt = document.getElementById("matched");
+        svg = document.getElementsByTagName("svg")[0];
+        searching = 0;
+        unzoom();
+    }
+
+    // mouse-over for info
+    function s(node) {		// show
+        info = g_to_text(node);
+        details.nodeValue = "Function: " + info;
+    }
+    function c() {			// clear
+        details.nodeValue = ' ';
+    }
+
+    // ctrl-F for search
+    window.addEventListener("keydown",function (e) {
+        if (e.keyCode === 114 || (e.ctrlKey && e.keyCode === 70)) {
+            e.preventDefault();
+            search_prompt();
+        }
+    })
+
+    // functions
+    function find_child(parent, name, attr) {
+        var children = parent.childNodes;
+        for (var i=0; i<children.length;i++) {
+            if (children[i].tagName == name)
+                return (attr != undefined) ? children[i].attributes[attr].value : children[i];
+        }
+        return;
+    }
+    function orig_save(e, attr, val) {
+        if (e.attributes["_orig_"+attr] != undefined) return;
+        if (e.attributes[attr] == undefined) return;
+        if (val == undefined) val = e.attributes[attr].value;
+        e.setAttribute("_orig_"+attr, val);
+    }
+    function orig_load(e, attr) {
+        if (e.attributes["_orig_"+attr] == undefined) return;
+        e.attributes[attr].value = e.attributes["_orig_"+attr].value;
+        e.removeAttribute("_orig_"+attr);
+    }
+    function g_to_text(e) {
+        var text = find_child(e, "title").firstChild.nodeValue;
+        return (text)
+    }
+    function g_to_func(e) {
+        var func = g_to_text(e);
+        if (func != null)
+            func = func.replace(/ .*/, "");
+        return (func);
+    }
+    function update_text(e) {
+        var r = find_child(e, "rect");
+        var t = find_child(e, "text");
+        var w = parseFloat(r.attributes["width"].value) -3;
+        var txt = find_child(e, "title").textContent.replace(/\([^(]*\)$/,"");
+        t.attributes["x"].value = parseFloat(r.attributes["x"].value) +3;
+        
+        // Smaller than this size won't fit anything
+        if (w < 2*12*0.59) {
+            t.textContent = "";
+            return;
+        }
+        
+        t.textContent = txt;
+        // Fit in full text width
+        if (/^ *$/.test(txt) || t.getSubStringLength(0, txt.length) < w)
+            return;
+        
+        for (var x=txt.length-2; x>0; x--) {
+            if (t.getSubStringLength(0, x+2) <= w) { 
+                t.textContent = txt.substring(0,x) + "..";
+                return;
+            }
+        }
+        t.textContent = "";
+    }
+
+    // zoom
+    function zoom_reset(e) {
+        if (e.attributes != undefined) {
+            orig_load(e, "x");
+            orig_load(e, "width");
+        }
+        if (e.childNodes == undefined) return;
+        for(var i=0, c=e.childNodes; i<c.length; i++) {
+            zoom_reset(c[i]);
+        }
+    }
+    function zoom_child(e, x, ratio) {
+        if (e.attributes != undefined) {
+            if (e.attributes["x"] != undefined) {
+                orig_save(e, "x");
+                e.attributes["x"].value = (parseFloat(e.attributes["x"].value) - x - 10) * ratio + 10;
+                if(e.tagName == "text") e.attributes["x"].value = find_child(e.parentNode, "rect", "x") + 3;
+            }
+            if (e.attributes["width"] != undefined) {
+                orig_save(e, "width");
+                e.attributes["width"].value = parseFloat(e.attributes["width"].value) * ratio;
+            }
+        }
+        
+        if (e.childNodes == undefined) return;
+        for(var i=0, c=e.childNodes; i<c.length; i++) {
+            zoom_child(c[i], x-10, ratio);
+        }
+    }
+    function zoom_parent(e) {
+        if (e.attributes) {
+            if (e.attributes["x"] != undefined) {
+                orig_save(e, "x");
+                e.attributes["x"].value = 10;
+            }
+            if (e.attributes["width"] != undefined) {
+                orig_save(e, "width");
+                e.attributes["width"].value = parseInt(svg.width.baseVal.value) - (10*2);
+            }
+        }
+        if (e.childNodes == undefined) return;
+        for(var i=0, c=e.childNodes; i<c.length; i++) {
+            zoom_parent(c[i]);
+        }
+    }
+    function zoom(node) { 
+        var attr = find_child(node, "rect").attributes;
+        var width = parseFloat(attr["width"].value);
+        var xmin = parseFloat(attr["x"].value);
+        var xmax = parseFloat(xmin + width);
+        var ymin = parseFloat(attr["y"].value);
+        var ratio = (svg.width.baseVal.value - 2*10) / width;
+        
+        // XXX: Workaround for JavaScript float issues (fix me)
+        var fudge = 0.0001;
+        
+        var unzoombtn = document.getElementById("unzoom");
+        unzoombtn.style["opacity"] = "1.0";
+        
+        var el = document.getElementsByTagName("g");
+        for(var i=0;i<el.length;i++){
+            var e = el[i];
+            var a = find_child(e, "rect").attributes;
+            var ex = parseFloat(a["x"].value);
+            var ew = parseFloat(a["width"].value);
+            // Is it an ancestor
+            if (0 == 0) {
+                var upstack = parseFloat(a["y"].value) > ymin;
+            } else {
+                var upstack = parseFloat(a["y"].value) < ymin;
+            }
+            if (upstack) {
+                // Direct ancestor
+                if (ex <= xmin && (ex+ew+fudge) >= xmax) {
+                    e.style["opacity"] = "0.5";
+                    zoom_parent(e);
+                    e.onclick = function(e){unzoom(); zoom(this);};
+                    update_text(e);
+                }
+                // not in current path
+                else
+                    e.style["display"] = "none";
+            }
+            // Children maybe
+            else {
+                // no common path
+                if (ex < xmin || ex + fudge >= xmax) {
+                    e.style["display"] = "none";
+                }
+                else {
+                    zoom_child(e, xmin, ratio);
+                    e.onclick = function(e){zoom(this);};
+                    update_text(e);
+                }
+            }
+        }
+    }
+    function unzoom() {
+        var unzoombtn = document.getElementById("unzoom");
+        unzoombtn.style["opacity"] = "0.0";
+        
+        var el = document.getElementsByTagName("g"); for(i=0;i<el.length;i++) {
+            el[i].style["display"] = "block";
+            el[i].style["opacity"] = "1";
+            zoom_reset(el[i]);
+            update_text(el[i]);
+        }
+    }	
+
+    // search
+    function reset_search() {
+        var el = document.getElementsByTagName("rect");
+        for (var i=0; i < el.length; i++) {
+            orig_load(el[i], "fill")
+        }
+    }
+    function search_prompt() {
+        if (!searching) {
+            var term = prompt("Enter a search term (regexp " +
+                "allowed, eg: ^ext4_)", "");
+            if (term != null) {
+                search(term)
+            }
+        } else {
+            reset_search();
+            searching = 0;
+            searchbtn.style["opacity"] = "0.1";
+            searchbtn.firstChild.nodeValue = "Search"
+            matchedtxt.style["opacity"] = "0.0";
+            matchedtxt.firstChild.nodeValue = ""
+        }
+    }
+    function search(term) {
+        var re = new RegExp(term);
+        var el = document.getElementsByTagName("g");
+        var matches = new Object();
+        var maxwidth = 0;
+        for (var i = 0; i < el.length; i++) {
+            var e = el[i];
+            if (e.attributes["class"].value != "func_g")
+                continue;
+            var func = g_to_func(e);
+            var rect = find_child(e, "rect");
+            if (rect == null) {
+                // the rect might be wrapped in an anchor
+                // if nameattr href is being used
+                if (rect = find_child(e, "a")) {
+                    rect = find_child(r, "rect");
+                }
+            }
+            if (func == null || rect == null)
+                continue;
+
+            // Save max width. Only works as we have a root frame
+            var w = parseFloat(rect.attributes["width"].value);
+            if (w > maxwidth)
+                maxwidth = w;
+
+            if (func.match(re)) {
+                // highlight
+                var x = parseFloat(rect.attributes["x"].value);
+                orig_save(rect, "fill");
+                rect.attributes["fill"].value =
+                    "rgb(230,0,230)";
+
+                // remember matches
+                if (matches[x] == undefined) {
+                    matches[x] = w;
+                } else {
+                    if (w > matches[x]) {
+                        // overwrite with parent
+                        matches[x] = w;
+                    }
+                }
+                searching = 1;
+            }
+        }
+        if (!searching)
+            return;
+
+        searchbtn.style["opacity"] = "1.0";
+        searchbtn.firstChild.nodeValue = "Reset Search"
+
+        // calculate percent matched, excluding vertical overlap
+        var count = 0;
+        var lastx = -1;
+        var lastw = 0;
+        var keys = Array();
+        for (k in matches) {
+            if (matches.hasOwnProperty(k))
+                keys.push(k);
+        }
+        // sort the matched frames by their x location
+        // ascending, then width descending
+        keys.sort(function(a, b){
+                return a - b;
+            if (a < b || a > b)
+                return a - b;
+            return matches[b] - matches[a];
+        });
+        // Step through frames saving only the biggest bottom-up frames
+        // thanks to the sort order. This relies on the tree property
+        // where children are always smaller than their parents.
+        for (var k in keys) {
+            var x = parseFloat(keys[k]);
+            var w = matches[keys[k]];
+            if (x >= lastx + lastw) {
+                count += w;
+                lastx = x;
+                lastw = w;
+            }
+        }
+        // display matched percent
+        matchedtxt.style["opacity"] = "1.0";
+        pct = 100 * count / maxwidth;
+        if (pct == 100)
+            pct = "100"
+        else
+            pct = pct.toFixed(1)
+        matchedtxt.firstChild.nodeValue = "Matched: " + pct + "%";
+    }
+    function searchover(e) {
+        searchbtn.style["opacity"] = "1.0";
+    }
+    function searchout(e) {
+        if (searching) {
+            searchbtn.style["opacity"] = "1.0";
+        } else {
+            searchbtn.style["opacity"] = "0.1";
+        }
+    }
+]]>
+    </script>
+
+    <rect x="0.0" y="0" width="1000.0" height="514.0" fill="url(#background)" />
+    <text text-anchor="middle" x="500" y="24" font-size="17" font-family="Verdana" fill="rgb(0,0,0)">Flame Graph</text>
+    <text text-anchor="" x="10.00" y="24" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" id="unzoom" onclick="unzoom()" style="opacity:0.0;cursor:pointer">Reset Zoom</text>
+    <text text-anchor="" x="890.00" y="24" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" id="search" onmouseover="searchover()" onmouseout="searchout()" onclick="search_prompt()" style="opacity:0.1;cursor:pointer">Search</text>
+    <text text-anchor="" x="1090.00" y="1025" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" id="matched"></text>
+    <text text-anchor="" x="10" y="497" font-size="12" font-family="Verdana" fill="rgb(0,0,0)" id="details"></text>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>all (630 samples, 100.00%)</title>
+        <rect x="10.00" y="465" width="981.00" height="15.0" fill="#ff0000" rx="2" ry="2" />
+        <text text-anchor="" x="13.00" y="475.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/test.js:1:86 (1 samples, 0.16%)</title>
+        <rect x="10.00" y="449" width="1.56" height="15.0" fill="#ff1108" rx="2" ry="2" />
+        <text text-anchor="" x="13.00" y="459.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/@fxjs/orm/lib/index.js:1:83 (1 samples, 0.16%)</title>
+        <rect x="10.00" y="433" width="1.56" height="15.0" fill="#ff210f" rx="2" ry="2" />
+        <text text-anchor="" x="13.00" y="443.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/ORM.js:6:17 (1 samples, 0.16%)</title>
+        <rect x="10.00" y="417" width="1.56" height="15.0" fill="#ff3017" rx="2" ry="2" />
+        <text text-anchor="" x="13.00" y="427.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Model.js:4:19 (1 samples, 0.16%)</title>
+        <rect x="10.00" y="401" width="1.56" height="15.0" fill="#ff401e" rx="2" ry="2" />
+        <text text-anchor="" x="13.00" y="411.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/ChainFind.js:2:19 (1 samples, 0.16%)</title>
+        <rect x="10.00" y="385" width="1.56" height="15.0" fill="#ff4e26" rx="2" ry="2" />
+        <text text-anchor="" x="13.00" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Utilities.js:9:19 (1 samples, 0.16%)</title>
+        <rect x="10.00" y="369" width="1.56" height="15.0" fill="#ff5c2d" rx="2" ry="2" />
+        <text text-anchor="" x="13.00" y="379.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Helpers.js:2:18 (1 samples, 0.16%)</title>
+        <rect x="10.00" y="353" width="1.56" height="15.0" fill="#ff6935" rx="2" ry="2" />
+        <text text-anchor="" x="13.00" y="363.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/@fxjs/db-driver/lib/index.js:1:87 (1 samples, 0.16%)</title>
+        <rect x="10.00" y="337" width="1.56" height="15.0" fill="#ff763c" rx="2" ry="2" />
+        <text text-anchor="" x="13.00" y="347.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/@fxjs/db-driver/lib/built-ins/base.class.js:6:15 (1 samples, 0.16%)</title>
+        <rect x="10.00" y="321" width="1.56" height="15.0" fill="#ff8244" rx="2" ry="2" />
+        <text text-anchor="" x="13.00" y="331.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/@fxjs/db-driver/lib/utils.js:8:17 (1 samples, 0.16%)</title>
+        <rect x="10.00" y="305" width="1.56" height="15.0" fill="#ff8e4c" rx="2" ry="2" />
+        <text text-anchor="" x="13.00" y="315.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/fib-pool/lib/index.js:1:1 (1 samples, 0.16%)</title>
+        <rect x="10.00" y="289" width="1.56" height="15.0" fill="#ff9953" rx="2" ry="2" />
+        <text text-anchor="" x="13.00" y="299.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/test.js:3:14 (5 samples, 0.79%)</title>
+        <rect x="11.56" y="449" width="7.79" height="15.0" fill="#ff1108" rx="2" ry="2" />
+        <text text-anchor="" x="14.56" y="459.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>connectSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/ORM.js:71:34) (5 samples, 0.79%)</title>
+        <rect x="11.56" y="433" width="7.79" height="15.0" fill="#ff210f" rx="2" ry="2" />
+        <text text-anchor="" x="14.56" y="443.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.exposeErrAndResultFromSyncMethod (/fibjs_test/node_modules/@fxjs/orm-core/lib/utils.js:6:23) (5 samples, 0.79%)</title>
+        <rect x="11.56" y="417" width="7.79" height="15.0" fill="#ff3017" rx="2" ry="2" />
+        <text text-anchor="" x="14.56" y="427.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>Utilities.exposeErrAndResultFromSyncMethod (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/ORM.js:72:36) (1 samples, 0.16%)</title>
+        <rect x="11.56" y="401" width="1.56" height="15.0" fill="#ff401e" rx="2" ry="2" />
+        <text text-anchor="" x="14.56" y="411.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>getAdapter (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Adapters.js:15:26) (1 samples, 0.16%)</title>
+        <rect x="11.56" y="385" width="1.56" height="15.0" fill="#ff4e26" rx="2" ry="2" />
+        <text text-anchor="" x="14.56" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Drivers/DML/sqlite.js:5:13 (1 samples, 0.16%)</title>
+        <rect x="11.56" y="369" width="1.56" height="15.0" fill="#ff5c2d" rx="2" ry="2" />
+        <text text-anchor="" x="14.56" y="379.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Drivers/DDL/SQL.js:2:16 (1 samples, 0.16%)</title>
+        <rect x="11.56" y="353" width="1.56" height="15.0" fill="#ff6935" rx="2" ry="2" />
+        <text text-anchor="" x="14.56" y="363.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/lodash.merge/index.js:1:1 (1 samples, 0.16%)</title>
+        <rect x="11.56" y="337" width="1.56" height="15.0" fill="#ff763c" rx="2" ry="2" />
+        <text text-anchor="" x="14.56" y="347.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>Utilities.exposeErrAndResultFromSyncMethod (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/ORM.js:74:24) (4 samples, 0.63%)</title>
+        <rect x="13.11" y="401" width="6.23" height="15.0" fill="#ff401e" rx="2" ry="2" />
+        <text text-anchor="" x="16.11" y="411.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Driver (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Drivers/DML/sqlite.js:31:16) (4 samples, 0.63%)</title>
+        <rect x="13.11" y="385" width="6.23" height="15.0" fill="#ff4e26" rx="2" ry="2" />
+        <text text-anchor="" x="16.11" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>Query (/fibjs_test/node_modules/@fxjs/sql-query/lib/Query.js:44:19) (4 samples, 0.63%)</title>
+        <rect x="13.11" y="369" width="6.23" height="15.0" fill="#ff5c2d" rx="2" ry="2" />
+        <text text-anchor="" x="16.11" y="379.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>mountKnex (/fibjs_test/node_modules/@fxjs/sql-query/lib/Query.js:16:19) (3 samples, 0.48%)</title>
+        <rect x="13.11" y="353" width="4.67" height="15.0" fill="#ff6935" rx="2" ry="2" />
+        <text text-anchor="" x="16.11" y="363.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/@fxjs/knex/lib/index.js:4:23 (3 samples, 0.48%)</title>
+        <rect x="13.11" y="337" width="4.67" height="15.0" fill="#ff763c" rx="2" ry="2" />
+        <text text-anchor="" x="16.11" y="347.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/knex/knex.js:28:18 (3 samples, 0.48%)</title>
+        <rect x="13.11" y="321" width="4.67" height="15.0" fill="#ff8244" rx="2" ry="2" />
+        <text text-anchor="" x="16.11" y="331.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/knex/lib/index.js:8:14 (3 samples, 0.48%)</title>
+        <rect x="13.11" y="305" width="4.67" height="15.0" fill="#ff8e4c" rx="2" ry="2" />
+        <text text-anchor="" x="16.11" y="315.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/knex/lib/knex.js:8:35 (1 samples, 0.16%)</title>
+        <rect x="13.11" y="289" width="1.56" height="15.0" fill="#ff9953" rx="2" ry="2" />
+        <text text-anchor="" x="16.11" y="299.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/knex/lib/raw.js:10:39 (1 samples, 0.16%)</title>
+        <rect x="13.11" y="273" width="1.56" height="15.0" fill="#ffa45b" rx="2" ry="2" />
+        <text text-anchor="" x="16.11" y="283.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/knex/lib/helpers.js:11:15 (1 samples, 0.16%)</title>
+        <rect x="13.11" y="257" width="1.56" height="15.0" fill="#ffae62" rx="2" ry="2" />
+        <text text-anchor="" x="16.11" y="267.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/lodash/lodash.js:1:1 (1 samples, 0.16%)</title>
+        <rect x="13.11" y="241" width="1.56" height="15.0" fill="#ffb76a" rx="2" ry="2" />
+        <text text-anchor="" x="16.11" y="251.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/knex/lib/knex.js:10:38 (2 samples, 0.32%)</title>
+        <rect x="14.67" y="289" width="3.11" height="15.0" fill="#ff9953" rx="2" ry="2" />
+        <text text-anchor="" x="17.67" y="299.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/knex/lib/client.js:14:38 (1 samples, 0.16%)</title>
+        <rect x="14.67" y="273" width="1.56" height="15.0" fill="#ffa45b" rx="2" ry="2" />
+        <text text-anchor="" x="17.67" y="283.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/knex/lib/runner.js:10:17 (1 samples, 0.16%)</title>
+        <rect x="14.67" y="257" width="1.56" height="15.0" fill="#ffae62" rx="2" ry="2" />
+        <text text-anchor="" x="17.67" y="267.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>_interopRequireDefault (/fibjs_test/node_modules/knex/lib/runner.js:12:32) (1 samples, 0.16%)</title>
+        <rect x="14.67" y="241" width="1.56" height="15.0" fill="#ffb76a" rx="2" ry="2" />
+        <text text-anchor="" x="17.67" y="251.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/knex/lib/client.js:18:43 (1 samples, 0.16%)</title>
+        <rect x="16.23" y="273" width="1.56" height="15.0" fill="#ffa45b" rx="2" ry="2" />
+        <text text-anchor="" x="19.23" y="283.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/knex/lib/transaction.js:14:40 (1 samples, 0.16%)</title>
+        <rect x="16.23" y="257" width="1.56" height="15.0" fill="#ffae62" rx="2" ry="2" />
+        <text text-anchor="" x="19.23" y="267.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/knex/lib/util/make-knex.js:22:16 (1 samples, 0.16%)</title>
+        <rect x="16.23" y="241" width="1.56" height="15.0" fill="#ffb76a" rx="2" ry="2" />
+        <text text-anchor="" x="19.23" y="251.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>_interopRequireWildcard (/fibjs_test/node_modules/knex/lib/util/make-knex.js:26:33) (1 samples, 0.16%)</title>
+        <rect x="16.23" y="225" width="1.56" height="15.0" fill="#ffc071" rx="2" ry="2" />
+        <text text-anchor="" x="19.23" y="235.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>mountKnex (/fibjs_test/node_modules/@fxjs/sql-query/lib/Query.js:20:16) (1 samples, 0.16%)</title>
+        <rect x="17.79" y="353" width="1.56" height="15.0" fill="#ff6935" rx="2" ry="2" />
+        <text text-anchor="" x="20.79" y="363.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>Knex (/fibjs_test/node_modules/knex/lib/knex.js:47:19) (1 samples, 0.16%)</title>
+        <rect x="17.79" y="337" width="1.56" height="15.0" fill="#ff763c" rx="2" ry="2" />
+        <text text-anchor="" x="20.79" y="347.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/knex/lib/dialects/sqlite3/index.js:16:40 (1 samples, 0.16%)</title>
+        <rect x="17.79" y="321" width="1.56" height="15.0" fill="#ff8244" rx="2" ry="2" />
+        <text text-anchor="" x="20.79" y="331.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/knex/lib/dialects/sqlite3/query/compiler.js:28:20 (1 samples, 0.16%)</title>
+        <rect x="17.79" y="305" width="1.56" height="15.0" fill="#ff8e4c" rx="2" ry="2" />
+        <text text-anchor="" x="20.79" y="315.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/lodash/lodash.js:6548:22 (1 samples, 0.16%)</title>
+        <rect x="17.79" y="289" width="1.56" height="15.0" fill="#ff9953" rx="2" ry="2" />
+        <text text-anchor="" x="20.79" y="299.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/test.js:27:8 (2 samples, 0.32%)</title>
+        <rect x="19.34" y="449" width="3.11" height="15.0" fill="#ff1108" rx="2" ry="2" />
+        <text text-anchor="" x="22.34" y="459.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Model.model.findSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Model.js:421:22) (2 samples, 0.32%)</title>
+        <rect x="19.34" y="433" width="3.11" height="15.0" fill="#ff210f" rx="2" ry="2" />
+        <text text-anchor="" x="22.34" y="443.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>runSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/ChainFind.js:249:20) (2 samples, 0.32%)</title>
+        <rect x="19.34" y="417" width="3.11" height="15.0" fill="#ff3017" rx="2" ry="2" />
+        <text text-anchor="" x="22.34" y="427.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>chainRunSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/ChainFind.js:58:34) (2 samples, 0.32%)</title>
+        <rect x="19.34" y="401" width="3.11" height="15.0" fill="#ff401e" rx="2" ry="2" />
+        <text text-anchor="" x="22.34" y="411.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>foundItems.map (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/ChainFind.js:60:20) (2 samples, 0.32%)</title>
+        <rect x="19.34" y="385" width="3.11" height="15.0" fill="#ff4e26" rx="2" ry="2" />
+        <text text-anchor="" x="22.34" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>newInstanceSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Model.js:401:34) (2 samples, 0.32%)</title>
+        <rect x="19.34" y="369" width="3.11" height="15.0" fill="#ff5c2d" rx="2" ry="2" />
+        <text text-anchor="" x="22.34" y="379.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.modelGet (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Singleton.js:39:16) (2 samples, 0.32%)</title>
+        <rect x="19.34" y="353" width="3.11" height="15.0" fill="#ff6935" rx="2" ry="2" />
+        <text text-anchor="" x="22.34" y="363.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Model.js:405:28 (2 samples, 0.32%)</title>
+        <rect x="19.34" y="337" width="3.11" height="15.0" fill="#ff763c" rx="2" ry="2" />
+        <text text-anchor="" x="22.34" y="347.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>createInstanceSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Model.js:91:26) (2 samples, 0.32%)</title>
+        <rect x="19.34" y="321" width="3.11" height="15.0" fill="#ff8244" rx="2" ry="2" />
+        <text text-anchor="" x="22.34" y="331.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Instance (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:569:15) (1 samples, 0.16%)</title>
+        <rect x="19.34" y="305" width="1.56" height="15.0" fill="#ff8e4c" rx="2" ry="2" />
+        <text text-anchor="" x="22.34" y="315.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>addHiddenUnwritableMethodToInstance (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Utilities.js:584:57) (1 samples, 0.16%)</title>
+        <rect x="19.34" y="289" width="1.56" height="15.0" fill="#ff9953" rx="2" ry="2" />
+        <text text-anchor="" x="22.34" y="299.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Instance (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:441:5) (1 samples, 0.16%)</title>
+        <rect x="20.90" y="305" width="1.56" height="15.0" fill="#ff8e4c" rx="2" ry="2" />
+        <text text-anchor="" x="23.90" y="315.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/test.js:29:4 (6 samples, 0.95%)</title>
+        <rect x="22.46" y="449" width="9.34" height="15.0" fill="#0811ff" rx="2" ry="2" />
+        <text text-anchor="" x="25.46" y="459.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>Person.findSync.forEach.p (/fibjs_test/test.js:29:19) (6 samples, 0.95%)</title>
+        <rect x="22.46" y="433" width="9.34" height="15.0" fill="#0f21ff" rx="2" ry="2" />
+        <text text-anchor="" x="25.46" y="443.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:546:14 (6 samples, 0.95%)</title>
+        <rect x="22.46" y="417" width="9.34" height="15.0" fill="#1730ff" rx="2" ry="2" />
+        <text text-anchor="" x="25.46" y="427.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.wait (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:53:16) (6 samples, 0.95%)</title>
+        <rect x="22.46" y="401" width="9.34" height="15.0" fill="#1e40ff" rx="2" ry="2" />
+        <text text-anchor="" x="25.46" y="411.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:554:44 (6 samples, 0.95%)</title>
+        <rect x="22.46" y="385" width="9.34" height="15.0" fill="#264eff" rx="2" ry="2" />
+        <text text-anchor="" x="25.46" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.exposeErrAndResultFromSyncMethod (/fibjs_test/node_modules/@fxjs/orm-core/lib/utils.js:6:23) (6 samples, 0.95%)</title>
+        <rect x="22.46" y="369" width="9.34" height="15.0" fill="#2d5cff" rx="2" ry="2" />
+        <text text-anchor="" x="25.46" y="379.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Instance.Utilities.addHiddenUnwritableMethodToInstance.Hook.wait.Utilities.exposeErrAndResultFromSyncMethod (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:554:95) (6 samples, 0.95%)</title>
+        <rect x="22.46" y="353" width="9.34" height="15.0" fill="#3569ff" rx="2" ry="2" />
+        <text text-anchor="" x="25.46" y="363.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Driver.remove (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Drivers/DML/sqlite.js:146:17) (6 samples, 0.95%)</title>
+        <rect x="22.46" y="337" width="9.34" height="15.0" fill="#3c76ff" rx="2" ry="2" />
+        <text text-anchor="" x="25.46" y="347.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Driver.execSimpleQuery (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Drivers/DML/sqlite.js:70:20) (6 samples, 0.95%)</title>
+        <rect x="22.46" y="321" width="9.34" height="15.0" fill="#4482ff" rx="2" ry="2" />
+        <text text-anchor="" x="25.46" y="331.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>all (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Drivers/DB/sqlite3.js:29:21) (6 samples, 0.95%)</title>
+        <rect x="22.46" y="305" width="9.34" height="15.0" fill="#4c8eff" rx="2" ry="2" />
+        <text text-anchor="" x="25.46" y="315.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>query (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Drivers/DB/sqlite3.js:24:45) (5 samples, 0.79%)</title>
+        <rect x="22.46" y="289" width="7.79" height="15.0" fill="#5399ff" rx="2" ry="2" />
+        <text text-anchor="" x="25.46" y="299.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.exposeErrAndResultFromSyncMethod (/fibjs_test/node_modules/@fxjs/orm-core/lib/utils.js:6:23) (5 samples, 0.79%)</title>
+        <rect x="22.46" y="273" width="7.79" height="15.0" fill="#5ba4ff" rx="2" ry="2" />
+        <text text-anchor="" x="25.46" y="283.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>query.Utilities.exposeErrAndResultFromSyncMethod (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Drivers/DB/sqlite3.js:24:89) (5 samples, 0.79%)</title>
+        <rect x="22.46" y="257" width="7.79" height="15.0" fill="#62aeff" rx="2" ry="2" />
+        <text text-anchor="" x="25.46" y="267.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>execute (/fibjs_test/node_modules/@fxjs/db-driver/lib/built-ins/base.class.js:201:32) (5 samples, 0.79%)</title>
+        <rect x="22.46" y="241" width="7.79" height="15.0" fill="#6ab7ff" rx="2" ry="2" />
+        <text text-anchor="" x="25.46" y="251.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>DbConnection.execute (native code) (5 samples, 0.79%)</title>
+        <rect x="22.46" y="225" width="7.79" height="15.0" fill="#71c0ff" rx="2" ry="2" />
+        <text text-anchor="" x="25.46" y="235.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>query (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Drivers/DB/sqlite3.js:25:19) (1 samples, 0.16%)</title>
+        <rect x="30.24" y="289" width="1.56" height="15.0" fill="#ff9953" rx="2" ry="2" />
+        <text text-anchor="" x="33.24" y="299.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.throwErrOrCallabckErrResult (/fibjs_test/node_modules/@fxjs/orm-core/lib/utils.js:13:48) (1 samples, 0.16%)</title>
+        <rect x="30.24" y="273" width="1.56" height="15.0" fill="#ffa45b" rx="2" ry="2" />
+        <text text-anchor="" x="33.24" y="283.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/test.js:32:12 (614 samples, 97.46%)</title>
+        <rect x="31.80" y="449" width="956.09" height="15.0" fill="#ff1108" rx="2" ry="2" />
+        <text text-anchor="" x="34.80" y="459.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Model.model.createSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Model.js:617:33) (133 samples, 21.11%)</title>
+        <rect x="31.80" y="433" width="207.10" height="15.0" fill="#ff210f" rx="2" ry="2" />
+        <text text-anchor="" x="34.80" y="443.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>parallelQueryIfPossible (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Utilities.js:528:21) (32 samples, 5.08%)</title>
+        <rect x="31.80" y="417" width="49.83" height="15.0" fill="#ff3017" rx="2" ry="2" />
+        <text text-anchor="" x="34.80" y="427.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Model.model.createSync.Utilities.parallelQueryIfPossible (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Model.js:624:18) (29 samples, 4.60%)</title>
+        <rect x="31.80" y="401" width="45.16" height="15.0" fill="#ff401e" rx="2" ry="2" />
+        <text text-anchor="" x="34.80" y="411.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:513:9 (29 samples, 4.60%)</title>
+        <rect x="31.80" y="385" width="45.16" height="15.0" fill="#ff4e26" rx="2" ry="2" />
+        <text text-anchor="" x="34.80" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>saveInstanceSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:106:18) (24 samples, 3.81%)</title>
+        <rect x="31.80" y="369" width="37.37" height="15.0" fill="#ff5c2d" rx="2" ry="2" />
+        <text text-anchor="" x="34.80" y="379.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.wait (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:45:26) (10 samples, 1.59%)</title>
+        <rect x="31.80" y="353" width="15.57" height="15.0" fill="#ff6935" rx="2" ry="2" />
+        <text text-anchor="" x="34.80" y="363.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>waitHooks (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:33:12) (10 samples, 1.59%)</title>
+        <rect x="31.80" y="337" width="15.57" height="15.0" fill="#ff763c" rx="2" ry="2" />
+        <text text-anchor="" x="34.80" y="347.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>nextHook (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:31:22) (10 samples, 1.59%)</title>
+        <rect x="31.80" y="321" width="15.57" height="15.0" fill="#ff8244" rx="2" ry="2" />
+        <text text-anchor="" x="34.80" y="331.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.wait (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:53:16) (10 samples, 1.59%)</title>
+        <rect x="31.80" y="305" width="15.57" height="15.0" fill="#ff8e4c" rx="2" ry="2" />
+        <text text-anchor="" x="34.80" y="315.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>waitHandler (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:29:20) (10 samples, 1.59%)</title>
+        <rect x="31.80" y="289" width="15.57" height="15.0" fill="#ff9953" rx="2" ry="2" />
+        <text text-anchor="" x="34.80" y="299.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>nextHook (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:31:22) (10 samples, 1.59%)</title>
+        <rect x="31.80" y="273" width="15.57" height="15.0" fill="#ffa45b" rx="2" ry="2" />
+        <text text-anchor="" x="34.80" y="283.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.wait (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:53:16) (10 samples, 1.59%)</title>
+        <rect x="31.80" y="257" width="15.57" height="15.0" fill="#ffae62" rx="2" ry="2" />
+        <text text-anchor="" x="34.80" y="267.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>waitHandler (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:29:20) (10 samples, 1.59%)</title>
+        <rect x="31.80" y="241" width="15.57" height="15.0" fill="#ffb76a" rx="2" ry="2" />
+        <text text-anchor="" x="34.80" y="251.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>nextHook (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:24:25) (10 samples, 1.59%)</title>
+        <rect x="31.80" y="225" width="15.57" height="15.0" fill="#ffc071" rx="2" ry="2" />
+        <text text-anchor="" x="34.80" y="235.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:111:17 (10 samples, 1.59%)</title>
+        <rect x="31.80" y="209" width="15.57" height="15.0" fill="#ffc879" rx="2" ry="2" />
+        <text text-anchor="" x="34.80" y="219.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>saveNewSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:161:34) (10 samples, 1.59%)</title>
+        <rect x="31.80" y="193" width="15.57" height="15.0" fill="#ffd080" rx="2" ry="2" />
+        <text text-anchor="" x="34.80" y="203.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Driver.insert (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Drivers/DML/sqlite.js:103:10) (1 samples, 0.16%)</title>
+        <rect x="31.80" y="177" width="1.56" height="15.0" fill="#ffd788" rx="2" ry="2" />
+        <text text-anchor="" x="34.80" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>build (/fibjs_test/node_modules/@fxjs/sql-query/lib/Insert.js:30:27) (1 samples, 0.16%)</title>
+        <rect x="31.80" y="161" width="1.56" height="15.0" fill="#ffde90" rx="2" ry="2" />
+        <text text-anchor="" x="34.80" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>Target.toQuery (/fibjs_test/node_modules/knex/lib/interface.js:12:21) (1 samples, 0.16%)</title>
+        <rect x="31.80" y="145" width="1.56" height="15.0" fill="#ffe497" rx="2" ry="2" />
+        <text text-anchor="" x="34.80" y="155.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>toSQL (/fibjs_test/node_modules/knex/lib/query/builder.js:72:44) (1 samples, 0.16%)</title>
+        <rect x="31.80" y="129" width="1.56" height="15.0" fill="#ffea9f" rx="2" ry="2" />
+        <text text-anchor="" x="34.80" y="139.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>toSQL (/fibjs_test/node_modules/knex/lib/query/compiler.js:50:29) (1 samples, 0.16%)</title>
+        <rect x="31.80" y="113" width="1.56" height="15.0" fill="#ffefa6" rx="2" ry="2" />
+        <text text-anchor="" x="34.80" y="123.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>insert (/fibjs_test/node_modules/knex/lib/dialects/sqlite3/query/compiler.js:71:41) (1 samples, 0.16%)</title>
+        <rect x="31.80" y="97" width="1.56" height="15.0" fill="#fff3ae" rx="2" ry="2" />
+        <text text-anchor="" x="34.80" y="107.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>parameterize (/fibjs_test/node_modules/knex/lib/formatter.js:50:15) (1 samples, 0.16%)</title>
+        <rect x="31.80" y="81" width="1.56" height="15.0" fill="#fff7b5" rx="2" ry="2" />
+        <text text-anchor="" x="34.80" y="91.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Driver.insert (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Drivers/DML/sqlite.js:107:36) (6 samples, 0.95%)</title>
+        <rect x="33.36" y="177" width="9.34" height="15.0" fill="#88d7ff" rx="2" ry="2" />
+        <text text-anchor="" x="36.36" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.exposeErrAndResultFromSyncMethod (/fibjs_test/node_modules/@fxjs/orm-core/lib/utils.js:6:23) (6 samples, 0.95%)</title>
+        <rect x="33.36" y="161" width="9.34" height="15.0" fill="#90deff" rx="2" ry="2" />
+        <text text-anchor="" x="36.36" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Driver.insert.Utilities.exposeErrAndResultFromSyncMethod (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Drivers/DML/sqlite.js:108:27) (6 samples, 0.95%)</title>
+        <rect x="33.36" y="145" width="9.34" height="15.0" fill="#97e4ff" rx="2" ry="2" />
+        <text text-anchor="" x="36.36" y="155.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Driver.execSimpleQuery (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Drivers/DML/sqlite.js:70:20) (6 samples, 0.95%)</title>
+        <rect x="33.36" y="129" width="9.34" height="15.0" fill="#9feaff" rx="2" ry="2" />
+        <text text-anchor="" x="36.36" y="139.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>all (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Drivers/DB/sqlite3.js:29:21) (6 samples, 0.95%)</title>
+        <rect x="33.36" y="113" width="9.34" height="15.0" fill="#a6efff" rx="2" ry="2" />
+        <text text-anchor="" x="36.36" y="123.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>query (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Drivers/DB/sqlite3.js:24:45) (6 samples, 0.95%)</title>
+        <rect x="33.36" y="97" width="9.34" height="15.0" fill="#aef3ff" rx="2" ry="2" />
+        <text text-anchor="" x="36.36" y="107.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.exposeErrAndResultFromSyncMethod (/fibjs_test/node_modules/@fxjs/orm-core/lib/utils.js:6:23) (3 samples, 0.48%)</title>
+        <rect x="33.36" y="81" width="4.67" height="15.0" fill="#b5f7ff" rx="2" ry="2" />
+        <text text-anchor="" x="36.36" y="91.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>query.Utilities.exposeErrAndResultFromSyncMethod (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Drivers/DB/sqlite3.js:24:89) (3 samples, 0.48%)</title>
+        <rect x="33.36" y="65" width="4.67" height="15.0" fill="#bdfaff" rx="2" ry="2" />
+        <text text-anchor="" x="36.36" y="75.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>execute (/fibjs_test/node_modules/@fxjs/db-driver/lib/built-ins/base.class.js:201:32) (3 samples, 0.48%)</title>
+        <rect x="33.36" y="49" width="4.67" height="15.0" fill="#c4fdff" rx="2" ry="2" />
+        <text text-anchor="" x="36.36" y="59.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>DbConnection.execute (native code) (3 samples, 0.48%)</title>
+        <rect x="33.36" y="33" width="4.67" height="15.0" fill="#ccffff" rx="2" ry="2" />
+        <text text-anchor="" x="36.36" y="43.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>query.Utilities.exposeErrAndResultFromSyncMethod (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Drivers/DB/sqlite3.js:24:89) (3 samples, 0.48%)</title>
+        <rect x="38.03" y="81" width="4.67" height="15.0" fill="#b5f7ff" rx="2" ry="2" />
+        <text text-anchor="" x="41.03" y="91.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>execute (/fibjs_test/node_modules/@fxjs/db-driver/lib/built-ins/base.class.js:201:32) (3 samples, 0.48%)</title>
+        <rect x="38.03" y="65" width="4.67" height="15.0" fill="#bdfaff" rx="2" ry="2" />
+        <text text-anchor="" x="41.03" y="75.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>DbConnection.execute (native code) (3 samples, 0.48%)</title>
+        <rect x="38.03" y="49" width="4.67" height="15.0" fill="#c4fdff" rx="2" ry="2" />
+        <text text-anchor="" x="41.03" y="59.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Driver.insert (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Drivers/DML/sqlite.js:100:24) (1 samples, 0.16%)</title>
+        <rect x="42.70" y="177" width="1.56" height="15.0" fill="#ffd788" rx="2" ry="2" />
+        <text text-anchor="" x="45.70" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>insert (/fibjs_test/node_modules/@fxjs/sql-query/lib/Query.js:71:11) (1 samples, 0.16%)</title>
+        <rect x="42.70" y="161" width="1.56" height="15.0" fill="#ffde90" rx="2" ry="2" />
+        <text text-anchor="" x="45.70" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Driver.insert (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Drivers/DML/sqlite.js:124:15) (1 samples, 0.16%)</title>
+        <rect x="44.26" y="177" width="1.56" height="15.0" fill="#ffd788" rx="2" ry="2" />
+        <text text-anchor="" x="47.26" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.throwErrOrCallabckErrResult (/fibjs_test/node_modules/@fxjs/orm-core/lib/utils.js:13:48) (1 samples, 0.16%)</title>
+        <rect x="44.26" y="161" width="1.56" height="15.0" fill="#ffde90" rx="2" ry="2" />
+        <text text-anchor="" x="47.26" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Driver.insert.Utilities.exposeErrAndResultFromSyncMethod (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Drivers/DML/sqlite.js:108:27) (1 samples, 0.16%)</title>
+        <rect x="45.81" y="177" width="1.56" height="15.0" fill="#88d7ff" rx="2" ry="2" />
+        <text text-anchor="" x="48.81" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Driver.execSimpleQuery (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Drivers/DML/sqlite.js:70:20) (1 samples, 0.16%)</title>
+        <rect x="45.81" y="161" width="1.56" height="15.0" fill="#90deff" rx="2" ry="2" />
+        <text text-anchor="" x="48.81" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>all (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Drivers/DB/sqlite3.js:29:21) (1 samples, 0.16%)</title>
+        <rect x="45.81" y="145" width="1.56" height="15.0" fill="#97e4ff" rx="2" ry="2" />
+        <text text-anchor="" x="48.81" y="155.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>query (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Drivers/DB/sqlite3.js:24:45) (1 samples, 0.16%)</title>
+        <rect x="45.81" y="129" width="1.56" height="15.0" fill="#9feaff" rx="2" ry="2" />
+        <text text-anchor="" x="48.81" y="139.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>query.Utilities.exposeErrAndResultFromSyncMethod (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Drivers/DB/sqlite3.js:24:89) (1 samples, 0.16%)</title>
+        <rect x="45.81" y="113" width="1.56" height="15.0" fill="#a6efff" rx="2" ry="2" />
+        <text text-anchor="" x="48.81" y="123.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>execute (/fibjs_test/node_modules/@fxjs/db-driver/lib/built-ins/base.class.js:201:32) (1 samples, 0.16%)</title>
+        <rect x="45.81" y="97" width="1.56" height="15.0" fill="#aef3ff" rx="2" ry="2" />
+        <text text-anchor="" x="48.81" y="107.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>DbConnection.execute (native code) (1 samples, 0.16%)</title>
+        <rect x="45.81" y="81" width="1.56" height="15.0" fill="#b5f7ff" rx="2" ry="2" />
+        <text text-anchor="" x="48.81" y="91.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>waitHooks (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:33:12) (13 samples, 2.06%)</title>
+        <rect x="47.37" y="353" width="20.24" height="15.0" fill="#3569ff" rx="2" ry="2" />
+        <text text-anchor="" x="50.37" y="363.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>nextHook (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:31:22) (13 samples, 2.06%)</title>
+        <rect x="47.37" y="337" width="20.24" height="15.0" fill="#3c76ff" rx="2" ry="2" />
+        <text text-anchor="" x="50.37" y="347.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.wait (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:53:16) (13 samples, 2.06%)</title>
+        <rect x="47.37" y="321" width="20.24" height="15.0" fill="#4482ff" rx="2" ry="2" />
+        <text text-anchor="" x="50.37" y="331.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>waitHandler (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:29:20) (13 samples, 2.06%)</title>
+        <rect x="47.37" y="305" width="20.24" height="15.0" fill="#4c8eff" rx="2" ry="2" />
+        <text text-anchor="" x="50.37" y="315.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>nextHook (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:31:22) (13 samples, 2.06%)</title>
+        <rect x="47.37" y="289" width="20.24" height="15.0" fill="#5399ff" rx="2" ry="2" />
+        <text text-anchor="" x="50.37" y="299.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.wait (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:53:16) (13 samples, 2.06%)</title>
+        <rect x="47.37" y="273" width="20.24" height="15.0" fill="#5ba4ff" rx="2" ry="2" />
+        <text text-anchor="" x="50.37" y="283.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>waitHandler (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:29:20) (13 samples, 2.06%)</title>
+        <rect x="47.37" y="257" width="20.24" height="15.0" fill="#62aeff" rx="2" ry="2" />
+        <text text-anchor="" x="50.37" y="267.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>nextHook (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:24:25) (13 samples, 2.06%)</title>
+        <rect x="47.37" y="241" width="20.24" height="15.0" fill="#6ab7ff" rx="2" ry="2" />
+        <text text-anchor="" x="50.37" y="251.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:111:17 (13 samples, 2.06%)</title>
+        <rect x="47.37" y="225" width="20.24" height="15.0" fill="#71c0ff" rx="2" ry="2" />
+        <text text-anchor="" x="50.37" y="235.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>saveNewSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:161:34) (11 samples, 1.75%)</title>
+        <rect x="47.37" y="209" width="17.13" height="15.0" fill="#79c8ff" rx="2" ry="2" />
+        <text text-anchor="" x="50.37" y="219.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Driver.insert.Utilities.exposeErrAndResultFromSyncMethod (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Drivers/DML/sqlite.js:108:27) (11 samples, 1.75%)</title>
+        <rect x="47.37" y="193" width="17.13" height="15.0" fill="#80d0ff" rx="2" ry="2" />
+        <text text-anchor="" x="50.37" y="203.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Driver.execSimpleQuery (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Drivers/DML/sqlite.js:70:20) (11 samples, 1.75%)</title>
+        <rect x="47.37" y="177" width="17.13" height="15.0" fill="#88d7ff" rx="2" ry="2" />
+        <text text-anchor="" x="50.37" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>all (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Drivers/DB/sqlite3.js:29:21) (11 samples, 1.75%)</title>
+        <rect x="47.37" y="161" width="17.13" height="15.0" fill="#90deff" rx="2" ry="2" />
+        <text text-anchor="" x="50.37" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>query (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Drivers/DB/sqlite3.js:24:45) (11 samples, 1.75%)</title>
+        <rect x="47.37" y="145" width="17.13" height="15.0" fill="#97e4ff" rx="2" ry="2" />
+        <text text-anchor="" x="50.37" y="155.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>query.Utilities.exposeErrAndResultFromSyncMethod (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Drivers/DB/sqlite3.js:24:89) (11 samples, 1.75%)</title>
+        <rect x="47.37" y="129" width="17.13" height="15.0" fill="#9feaff" rx="2" ry="2" />
+        <text text-anchor="" x="50.37" y="139.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>execute (/fibjs_test/node_modules/@fxjs/db-driver/lib/built-ins/base.class.js:201:32) (11 samples, 1.75%)</title>
+        <rect x="47.37" y="113" width="17.13" height="15.0" fill="#a6efff" rx="2" ry="2" />
+        <text text-anchor="" x="50.37" y="123.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>DbConnection.execute (native code) (11 samples, 1.75%)</title>
+        <rect x="47.37" y="97" width="17.13" height="15.0" fill="#aef3ff" rx="2" ry="2" />
+        <text text-anchor="" x="50.37" y="107.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>saveNewSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:171:43) (1 samples, 0.16%)</title>
+        <rect x="64.50" y="209" width="1.56" height="15.0" fill="#ffc879" rx="2" ry="2" />
+        <text text-anchor="" x="67.50" y="219.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>saveAssociationsSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:216:43) (1 samples, 0.16%)</title>
+        <rect x="64.50" y="193" width="1.56" height="15.0" fill="#ffd080" rx="2" ry="2" />
+        <text text-anchor="" x="67.50" y="203.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>saveNewSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:162:9) (1 samples, 0.16%)</title>
+        <rect x="66.06" y="209" width="1.56" height="15.0" fill="#ffc879" rx="2" ry="2" />
+        <text text-anchor="" x="69.06" y="219.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>resetChanges (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:156:35) (1 samples, 0.16%)</title>
+        <rect x="66.06" y="193" width="1.56" height="15.0" fill="#ffd080" rx="2" ry="2" />
+        <text text-anchor="" x="69.06" y="203.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>waitHooks (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:21:27) (1 samples, 0.16%)</title>
+        <rect x="67.61" y="353" width="1.56" height="15.0" fill="#ff6935" rx="2" ry="2" />
+        <text text-anchor="" x="70.61" y="363.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>saveInstanceSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:104:23) (2 samples, 0.32%)</title>
+        <rect x="69.17" y="369" width="3.11" height="15.0" fill="#ff5c2d" rx="2" ry="2" />
+        <text text-anchor="" x="72.17" y="379.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>attachOnceTypedHookRefToInstance (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Utilities.js:798:14) (1 samples, 0.16%)</title>
+        <rect x="69.17" y="353" width="1.56" height="15.0" fill="#ff6935" rx="2" ry="2" />
+        <text text-anchor="" x="72.17" y="363.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>addHiddenReadonlyPropertyToInstance (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Utilities.js:791:67) (1 samples, 0.16%)</title>
+        <rect x="69.17" y="337" width="1.56" height="15.0" fill="#ff763c" rx="2" ry="2" />
+        <text text-anchor="" x="72.17" y="347.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>addHiddenReadonlyPropertyToInstance (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Utilities.js:791:67) (1 samples, 0.16%)</title>
+        <rect x="70.73" y="353" width="1.56" height="15.0" fill="#ff6935" rx="2" ry="2" />
+        <text text-anchor="" x="73.73" y="363.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>saveInstanceSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:98:21) (3 samples, 0.48%)</title>
+        <rect x="72.29" y="369" width="4.67" height="15.0" fill="#ff5c2d" rx="2" ry="2" />
+        <text text-anchor="" x="75.29" y="379.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>handleValidationsSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:44:14) (3 samples, 0.48%)</title>
+        <rect x="72.29" y="353" width="4.67" height="15.0" fill="#ff6935" rx="2" ry="2" />
+        <text text-anchor="" x="75.29" y="363.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.wait (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:53:16) (1 samples, 0.16%)</title>
+        <rect x="72.29" y="337" width="1.56" height="15.0" fill="#ff763c" rx="2" ry="2" />
+        <text text-anchor="" x="75.29" y="347.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:52:13 (1 samples, 0.16%)</title>
+        <rect x="72.29" y="321" width="1.56" height="15.0" fill="#ff8244" rx="2" ry="2" />
+        <text text-anchor="" x="75.29" y="331.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:77:35 (2 samples, 0.32%)</title>
+        <rect x="73.84" y="337" width="3.11" height="15.0" fill="#ff763c" rx="2" ry="2" />
+        <text text-anchor="" x="76.84" y="347.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>checkSync (/fibjs_test/node_modules/@fibjs/enforce/lib/enforce.js:50:43) (1 samples, 0.16%)</title>
+        <rect x="73.84" y="321" width="1.56" height="15.0" fill="#ff8244" rx="2" ry="2" />
+        <text text-anchor="" x="76.84" y="331.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>checkSync (/fibjs_test/node_modules/@fibjs/enforce/lib/enforce.js:57:40) (1 samples, 0.16%)</title>
+        <rect x="75.40" y="321" width="1.56" height="15.0" fill="#ff8244" rx="2" ry="2" />
+        <text text-anchor="" x="78.40" y="331.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>get (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:396:27) (1 samples, 0.16%)</title>
+        <rect x="75.40" y="305" width="1.56" height="15.0" fill="#ff8e4c" rx="2" ry="2" />
+        <text text-anchor="" x="78.40" y="315.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Model.model.createSync.Utilities.parallelQueryIfPossible (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Model.js:618:26) (3 samples, 0.48%)</title>
+        <rect x="76.96" y="401" width="4.67" height="15.0" fill="#ff401e" rx="2" ry="2" />
+        <text text-anchor="" x="79.96" y="411.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>createInstanceSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Model.js:91:26) (3 samples, 0.48%)</title>
+        <rect x="76.96" y="385" width="4.67" height="15.0" fill="#ff4e26" rx="2" ry="2" />
+        <text text-anchor="" x="79.96" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Instance (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:441:5) (3 samples, 0.48%)</title>
+        <rect x="76.96" y="369" width="4.67" height="15.0" fill="#ff5c2d" rx="2" ry="2" />
+        <text text-anchor="" x="79.96" y="379.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>parallelQueryIfPossible (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Utilities.js:525:33) (1 samples, 0.16%)</title>
+        <rect x="81.63" y="417" width="1.56" height="15.0" fill="#ff3017" rx="2" ry="2" />
+        <text text-anchor="" x="84.63" y="427.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Model.model.createSync.Utilities.parallelQueryIfPossible (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Model.js:624:18) (94 samples, 14.92%)</title>
+        <rect x="83.19" y="417" width="146.37" height="15.0" fill="#ff3017" rx="2" ry="2" />
+        <text text-anchor="" x="86.19" y="427.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:513:9 (94 samples, 14.92%)</title>
+        <rect x="83.19" y="401" width="146.37" height="15.0" fill="#ff401e" rx="2" ry="2" />
+        <text text-anchor="" x="86.19" y="411.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>saveInstanceSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:106:18) (76 samples, 12.06%)</title>
+        <rect x="83.19" y="385" width="118.34" height="15.0" fill="#264eff" rx="2" ry="2" />
+        <text text-anchor="" x="86.19" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>waitHooks (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:33:12) (75 samples, 11.90%)</title>
+        <rect x="83.19" y="369" width="116.79" height="15.0" fill="#2d5cff" rx="2" ry="2" />
+        <text text-anchor="" x="86.19" y="379.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>nextHook (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:31:22) (75 samples, 11.90%)</title>
+        <rect x="83.19" y="353" width="116.79" height="15.0" fill="#3569ff" rx="2" ry="2" />
+        <text text-anchor="" x="86.19" y="363.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.wait (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:53:16) (75 samples, 11.90%)</title>
+        <rect x="83.19" y="337" width="116.79" height="15.0" fill="#3c76ff" rx="2" ry="2" />
+        <text text-anchor="" x="86.19" y="347.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>waitHandler (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:29:20) (75 samples, 11.90%)</title>
+        <rect x="83.19" y="321" width="116.79" height="15.0" fill="#4482ff" rx="2" ry="2" />
+        <text text-anchor="" x="86.19" y="331.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>nextHook (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:31:22) (75 samples, 11.90%)</title>
+        <rect x="83.19" y="305" width="116.79" height="15.0" fill="#4c8eff" rx="2" ry="2" />
+        <text text-anchor="" x="86.19" y="315.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.wait (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:53:16) (75 samples, 11.90%)</title>
+        <rect x="83.19" y="289" width="116.79" height="15.0" fill="#5399ff" rx="2" ry="2" />
+        <text text-anchor="" x="86.19" y="299.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>waitHandler (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:29:20) (75 samples, 11.90%)</title>
+        <rect x="83.19" y="273" width="116.79" height="15.0" fill="#5ba4ff" rx="2" ry="2" />
+        <text text-anchor="" x="86.19" y="283.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>nextHook (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:24:25) (75 samples, 11.90%)</title>
+        <rect x="83.19" y="257" width="116.79" height="15.0" fill="#62aeff" rx="2" ry="2" />
+        <text text-anchor="" x="86.19" y="267.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:111:17 (75 samples, 11.90%)</title>
+        <rect x="83.19" y="241" width="116.79" height="15.0" fill="#6ab7ff" rx="2" ry="2" />
+        <text text-anchor="" x="86.19" y="251.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>saveNewSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:161:34) (65 samples, 10.32%)</title>
+        <rect x="83.19" y="225" width="101.21" height="15.0" fill="#71c0ff" rx="2" ry="2" />
+        <text text-anchor="" x="86.19" y="235.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Driver.insert.Utilities.exposeErrAndResultFromSyncMethod (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Drivers/DML/sqlite.js:108:27) (63 samples, 10.00%)</title>
+        <rect x="83.19" y="209" width="98.10" height="15.0" fill="#79c8ff" rx="2" ry="2" />
+        <text text-anchor="" x="86.19" y="219.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Driver.execSimpleQuery (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Drivers/DML/sqlite.js:70:20) (3 samples, 0.48%)</title>
+        <rect x="83.19" y="193" width="4.67" height="15.0" fill="#80d0ff" rx="2" ry="2" />
+        <text text-anchor="" x="86.19" y="203.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>query.Utilities.exposeErrAndResultFromSyncMethod (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Drivers/DB/sqlite3.js:24:89) (3 samples, 0.48%)</title>
+        <rect x="83.19" y="177" width="4.67" height="15.0" fill="#88d7ff" rx="2" ry="2" />
+        <text text-anchor="" x="86.19" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>execute (/fibjs_test/node_modules/@fxjs/db-driver/lib/built-ins/base.class.js:201:32) (3 samples, 0.48%)</title>
+        <rect x="83.19" y="161" width="4.67" height="15.0" fill="#90deff" rx="2" ry="2" />
+        <text text-anchor="" x="86.19" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>DbConnection.execute (native code) (3 samples, 0.48%)</title>
+        <rect x="83.19" y="145" width="4.67" height="15.0" fill="#97e4ff" rx="2" ry="2" />
+        <text text-anchor="" x="86.19" y="155.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>query.Utilities.exposeErrAndResultFromSyncMethod (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Drivers/DB/sqlite3.js:24:89) (60 samples, 9.52%)</title>
+        <rect x="87.86" y="193" width="93.43" height="15.0" fill="#80d0ff" rx="2" ry="2" />
+        <text text-anchor="" x="90.86" y="203.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>execute (/fibjs_test/node_modules/@fxjs/db-driver/lib/built-ins/base.class.js:201:32) (6 samples, 0.95%)</title>
+        <rect x="87.86" y="177" width="9.34" height="15.0" fill="#88d7ff" rx="2" ry="2" />
+        <text text-anchor="" x="90.86" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>DbConnection.execute (native code) (6 samples, 0.95%)</title>
+        <rect x="87.86" y="161" width="9.34" height="15.0" fill="#90deff" rx="2" ry="2" />
+        <text text-anchor="" x="90.86" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>DbConnection.execute (native code) (54 samples, 8.57%)</title>
+        <rect x="97.20" y="177" width="84.09" height="15.0" fill="#88d7ff" rx="2" ry="2" />
+        <text text-anchor="" x="100.20" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>Target.toQuery (/fibjs_test/node_modules/knex/lib/interface.js:12:21) (1 samples, 0.16%)</title>
+        <rect x="181.29" y="209" width="1.56" height="15.0" fill="#ffc879" rx="2" ry="2" />
+        <text text-anchor="" x="184.29" y="219.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>toSQL (/fibjs_test/node_modules/knex/lib/query/compiler.js:50:29) (1 samples, 0.16%)</title>
+        <rect x="181.29" y="193" width="1.56" height="15.0" fill="#ffd080" rx="2" ry="2" />
+        <text text-anchor="" x="184.29" y="203.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>insert (/fibjs_test/node_modules/knex/lib/dialects/sqlite3/query/compiler.js:60:31) (1 samples, 0.16%)</title>
+        <rect x="181.29" y="177" width="1.56" height="15.0" fill="#ffd788" rx="2" ry="2" />
+        <text text-anchor="" x="184.29" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>wrapString (/fibjs_test/node_modules/knex/lib/formatter.js:268:27) (1 samples, 0.16%)</title>
+        <rect x="181.29" y="161" width="1.56" height="15.0" fill="#ffde90" rx="2" ry="2" />
+        <text text-anchor="" x="184.29" y="171.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>Target.toQuery (/fibjs_test/node_modules/knex/lib/interface.js:14:28) (1 samples, 0.16%)</title>
+        <rect x="182.84" y="209" width="1.56" height="15.0" fill="#ffc879" rx="2" ry="2" />
+        <text text-anchor="" x="185.84" y="219.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>Target.toQuery.statement (/fibjs_test/node_modules/knex/lib/interface.js:15:26) (1 samples, 0.16%)</title>
+        <rect x="182.84" y="193" width="1.56" height="15.0" fill="#ffd080" rx="2" ry="2" />
+        <text text-anchor="" x="185.84" y="203.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>saveNewSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:162:9) (8 samples, 1.27%)</title>
+        <rect x="184.40" y="225" width="12.46" height="15.0" fill="#ffc071" rx="2" ry="2" />
+        <text text-anchor="" x="187.40" y="235.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>resetChanges (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:156:35) (8 samples, 1.27%)</title>
+        <rect x="184.40" y="209" width="12.46" height="15.0" fill="#ffc879" rx="2" ry="2" />
+        <text text-anchor="" x="187.40" y="219.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>saveNewSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:163:9) (1 samples, 0.16%)</title>
+        <rect x="196.86" y="225" width="1.56" height="15.0" fill="#ffc071" rx="2" ry="2" />
+        <text text-anchor="" x="199.86" y="235.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>saveNewSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:170:13) (1 samples, 0.16%)</title>
+        <rect x="198.41" y="225" width="1.56" height="15.0" fill="#ffc071" rx="2" ry="2" />
+        <text text-anchor="" x="201.41" y="235.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>shouldSaveAssocs (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:34:28) (1 samples, 0.16%)</title>
+        <rect x="198.41" y="209" width="1.56" height="15.0" fill="#ffc879" rx="2" ry="2" />
+        <text text-anchor="" x="201.41" y="219.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>baseClone (/fibjs_test/node_modules/lodash.clonedeep/index.js:841:19) (1 samples, 0.16%)</title>
+        <rect x="198.41" y="193" width="1.56" height="15.0" fill="#ffd080" rx="2" ry="2" />
+        <text text-anchor="" x="201.41" y="203.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>waitHooks (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:21:27) (1 samples, 0.16%)</title>
+        <rect x="199.97" y="369" width="1.56" height="15.0" fill="#ff5c2d" rx="2" ry="2" />
+        <text text-anchor="" x="202.97" y="379.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>saveInstanceSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:104:23) (14 samples, 2.22%)</title>
+        <rect x="201.53" y="385" width="21.80" height="15.0" fill="#ff4e26" rx="2" ry="2" />
+        <text text-anchor="" x="204.53" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>addHiddenReadonlyPropertyToInstance (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Utilities.js:791:67) (2 samples, 0.32%)</title>
+        <rect x="201.53" y="369" width="3.11" height="15.0" fill="#ff5c2d" rx="2" ry="2" />
+        <text text-anchor="" x="204.53" y="379.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>saveInstanceSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:98:21) (3 samples, 0.48%)</title>
+        <rect x="223.33" y="385" width="4.67" height="15.0" fill="#ff4e26" rx="2" ry="2" />
+        <text text-anchor="" x="226.33" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>handleValidationsSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:44:14) (3 samples, 0.48%)</title>
+        <rect x="223.33" y="369" width="4.67" height="15.0" fill="#ff5c2d" rx="2" ry="2" />
+        <text text-anchor="" x="226.33" y="379.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:77:35 (3 samples, 0.48%)</title>
+        <rect x="223.33" y="353" width="4.67" height="15.0" fill="#ff6935" rx="2" ry="2" />
+        <text text-anchor="" x="226.33" y="363.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>checkSync (/fibjs_test/node_modules/@fibjs/enforce/lib/enforce.js:57:40) (2 samples, 0.32%)</title>
+        <rect x="223.33" y="337" width="3.11" height="15.0" fill="#ff763c" rx="2" ry="2" />
+        <text text-anchor="" x="226.33" y="347.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>get (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:396:27) (2 samples, 0.32%)</title>
+        <rect x="223.33" y="321" width="3.11" height="15.0" fill="#ff8244" rx="2" ry="2" />
+        <text text-anchor="" x="226.33" y="331.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>checkSync (/fibjs_test/node_modules/@fibjs/enforce/lib/enforce.js:53:46) (1 samples, 0.16%)</title>
+        <rect x="226.44" y="337" width="1.56" height="15.0" fill="#ff763c" rx="2" ry="2" />
+        <text text-anchor="" x="229.44" y="347.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>noErrorsOrNeedAllErrors (/fibjs_test/node_modules/@fibjs/enforce/lib/enforce.js:47:41) (1 samples, 0.16%)</title>
+        <rect x="226.44" y="321" width="1.56" height="15.0" fill="#ff8244" rx="2" ry="2" />
+        <text text-anchor="" x="229.44" y="331.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>saveInstanceSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:105:23) (1 samples, 0.16%)</title>
+        <rect x="228.00" y="385" width="1.56" height="15.0" fill="#ff4e26" rx="2" ry="2" />
+        <text text-anchor="" x="231.00" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>addHiddenReadonlyPropertyToInstance (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Utilities.js:791:67) (1 samples, 0.16%)</title>
+        <rect x="228.00" y="369" width="1.56" height="15.0" fill="#ff5c2d" rx="2" ry="2" />
+        <text text-anchor="" x="231.00" y="379.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Model.model.createSync.Utilities.parallelQueryIfPossible (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Model.js:618:26) (6 samples, 0.95%)</title>
+        <rect x="229.56" y="417" width="9.34" height="15.0" fill="#ff3017" rx="2" ry="2" />
+        <text text-anchor="" x="232.56" y="427.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>createInstanceSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Model.js:91:26) (6 samples, 0.95%)</title>
+        <rect x="229.56" y="401" width="9.34" height="15.0" fill="#ff401e" rx="2" ry="2" />
+        <text text-anchor="" x="232.56" y="411.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Instance (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:16:42) (1 samples, 0.16%)</title>
+        <rect x="229.56" y="385" width="1.56" height="15.0" fill="#ff4e26" rx="2" ry="2" />
+        <text text-anchor="" x="232.56" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Instance (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:478:15) (1 samples, 0.16%)</title>
+        <rect x="231.11" y="385" width="1.56" height="15.0" fill="#ff4e26" rx="2" ry="2" />
+        <text text-anchor="" x="234.11" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>addHiddenUnwritableMethodToInstance (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Utilities.js:583:45) (1 samples, 0.16%)</title>
+        <rect x="231.11" y="369" width="1.56" height="15.0" fill="#ff5c2d" rx="2" ry="2" />
+        <text text-anchor="" x="234.11" y="379.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Instance (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:591:15) (2 samples, 0.32%)</title>
+        <rect x="232.67" y="385" width="3.11" height="15.0" fill="#ff4e26" rx="2" ry="2" />
+        <text text-anchor="" x="235.67" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Instance (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:563:15) (1 samples, 0.16%)</title>
+        <rect x="235.79" y="385" width="1.56" height="15.0" fill="#ff4e26" rx="2" ry="2" />
+        <text text-anchor="" x="238.79" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>addHiddenUnwritableMethodToInstance (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Utilities.js:584:57) (1 samples, 0.16%)</title>
+        <rect x="235.79" y="369" width="1.56" height="15.0" fill="#ff5c2d" rx="2" ry="2" />
+        <text text-anchor="" x="238.79" y="379.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Instance (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:441:5) (1 samples, 0.16%)</title>
+        <rect x="237.34" y="385" width="1.56" height="15.0" fill="#ff4e26" rx="2" ry="2" />
+        <text text-anchor="" x="240.34" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Model.model.createSync.Utilities.parallelQueryIfPossible (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Model.js:624:18) (430 samples, 68.25%)</title>
+        <rect x="238.90" y="433" width="669.57" height="15.0" fill="#ff210f" rx="2" ry="2" />
+        <text text-anchor="" x="241.90" y="443.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:513:9 (429 samples, 68.10%)</title>
+        <rect x="238.90" y="417" width="668.01" height="15.0" fill="#ff3017" rx="2" ry="2" />
+        <text text-anchor="" x="241.90" y="427.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>saveInstanceSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:106:18) (355 samples, 56.35%)</title>
+        <rect x="238.90" y="401" width="552.79" height="15.0" fill="#1e40ff" rx="2" ry="2" />
+        <text text-anchor="" x="241.90" y="411.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>waitHooks (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:33:12) (352 samples, 55.87%)</title>
+        <rect x="238.90" y="385" width="548.11" height="15.0" fill="#264eff" rx="2" ry="2" />
+        <text text-anchor="" x="241.90" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>nextHook (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:31:22) (351 samples, 55.71%)</title>
+        <rect x="238.90" y="369" width="546.56" height="15.0" fill="#2d5cff" rx="2" ry="2" />
+        <text text-anchor="" x="241.90" y="379.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.wait (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:53:16) (351 samples, 55.71%)</title>
+        <rect x="238.90" y="353" width="546.56" height="15.0" fill="#3569ff" rx="2" ry="2" />
+        <text text-anchor="" x="241.90" y="363.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>waitHandler (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:29:20) (350 samples, 55.56%)</title>
+        <rect x="238.90" y="337" width="545.00" height="15.0" fill="#3c76ff" rx="2" ry="2" />
+        <text text-anchor="" x="241.90" y="347.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>nextHook (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:31:22) (350 samples, 55.56%)</title>
+        <rect x="238.90" y="321" width="545.00" height="15.0" fill="#4482ff" rx="2" ry="2" />
+        <text text-anchor="" x="241.90" y="331.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.wait (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:53:16) (348 samples, 55.24%)</title>
+        <rect x="238.90" y="305" width="541.89" height="15.0" fill="#4c8eff" rx="2" ry="2" />
+        <text text-anchor="" x="241.90" y="315.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>waitHandler (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:29:20) (348 samples, 55.24%)</title>
+        <rect x="238.90" y="289" width="541.89" height="15.0" fill="#5399ff" rx="2" ry="2" />
+        <text text-anchor="" x="241.90" y="299.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>nextHook (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:24:25) (348 samples, 55.24%)</title>
+        <rect x="238.90" y="273" width="541.89" height="15.0" fill="#5ba4ff" rx="2" ry="2" />
+        <text text-anchor="" x="241.90" y="283.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:111:17 (344 samples, 54.60%)</title>
+        <rect x="238.90" y="257" width="535.66" height="15.0" fill="#62aeff" rx="2" ry="2" />
+        <text text-anchor="" x="241.90" y="267.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>saveNewSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:161:34) (304 samples, 48.25%)</title>
+        <rect x="238.90" y="241" width="473.37" height="15.0" fill="#6ab7ff" rx="2" ry="2" />
+        <text text-anchor="" x="241.90" y="251.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Driver.insert.Utilities.exposeErrAndResultFromSyncMethod (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Drivers/DML/sqlite.js:108:27) (291 samples, 46.19%)</title>
+        <rect x="238.90" y="225" width="453.13" height="15.0" fill="#71c0ff" rx="2" ry="2" />
+        <text text-anchor="" x="241.90" y="235.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>query.Utilities.exposeErrAndResultFromSyncMethod (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Drivers/DB/sqlite3.js:24:89) (291 samples, 46.19%)</title>
+        <rect x="238.90" y="209" width="453.13" height="15.0" fill="#79c8ff" rx="2" ry="2" />
+        <text text-anchor="" x="241.90" y="219.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>DbConnection.execute (native code) (291 samples, 46.19%)</title>
+        <rect x="238.90" y="193" width="453.13" height="15.0" fill="#80d0ff" rx="2" ry="2" />
+        <text text-anchor="" x="241.90" y="203.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>Target.toQuery (/fibjs_test/node_modules/knex/lib/interface.js:12:21) (10 samples, 1.59%)</title>
+        <rect x="692.03" y="225" width="15.57" height="15.0" fill="#ffc071" rx="2" ry="2" />
+        <text text-anchor="" x="695.03" y="235.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>toSQL (/fibjs_test/node_modules/knex/lib/query/compiler.js:50:29) (9 samples, 1.43%)</title>
+        <rect x="692.03" y="209" width="14.01" height="15.0" fill="#ffc879" rx="2" ry="2" />
+        <text text-anchor="" x="695.03" y="219.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>insert (/fibjs_test/node_modules/knex/lib/dialects/sqlite3/query/compiler.js:38:49) (1 samples, 0.16%)</title>
+        <rect x="692.03" y="193" width="1.56" height="15.0" fill="#ffd080" rx="2" ry="2" />
+        <text text-anchor="" x="695.03" y="203.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>get (/fibjs_test/node_modules/knex/lib/query/compiler.js:756:52) (1 samples, 0.16%)</title>
+        <rect x="692.03" y="177" width="1.56" height="15.0" fill="#ffd788" rx="2" ry="2" />
+        <text text-anchor="" x="695.03" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>insert (/fibjs_test/node_modules/knex/lib/dialects/sqlite3/query/compiler.js:60:31) (7 samples, 1.11%)</title>
+        <rect x="693.59" y="193" width="10.90" height="15.0" fill="#ffd080" rx="2" ry="2" />
+        <text text-anchor="" x="696.59" y="203.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>wrapString (/fibjs_test/node_modules/knex/lib/formatter.js:268:27) (2 samples, 0.32%)</title>
+        <rect x="693.59" y="177" width="3.11" height="15.0" fill="#ffd788" rx="2" ry="2" />
+        <text text-anchor="" x="696.59" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>wrapString (/fibjs_test/node_modules/knex/lib/formatter.js:272:20) (4 samples, 0.63%)</title>
+        <rect x="696.70" y="177" width="6.23" height="15.0" fill="#ffd788" rx="2" ry="2" />
+        <text text-anchor="" x="699.70" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>insert (/fibjs_test/node_modules/knex/lib/dialects/sqlite3/query/compiler.js:50:29) (1 samples, 0.16%)</title>
+        <rect x="704.49" y="193" width="1.56" height="15.0" fill="#ffd080" rx="2" ry="2" />
+        <text text-anchor="" x="707.49" y="203.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>_prepInsert (/fibjs_test/node_modules/knex/lib/query/compiler.js:640:51) (1 samples, 0.16%)</title>
+        <rect x="704.49" y="177" width="1.56" height="15.0" fill="#ffd788" rx="2" ry="2" />
+        <text text-anchor="" x="707.49" y="187.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>QueryCompiler (/fibjs_test/node_modules/knex/lib/query/compiler.js:37:38) (1 samples, 0.16%)</title>
+        <rect x="706.04" y="209" width="1.56" height="15.0" fill="#ffc879" rx="2" ry="2" />
+        <text text-anchor="" x="709.04" y="219.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>escapeValForKnex (/fibjs_test/node_modules/@fxjs/sql-query/lib/Helpers.js:137:26) (1 samples, 0.16%)</title>
+        <rect x="707.60" y="225" width="1.56" height="15.0" fill="#ffc071" rx="2" ry="2" />
+        <text text-anchor="" x="710.60" y="235.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>Target.toQuery (/fibjs_test/node_modules/knex/lib/interface.js:14:28) (2 samples, 0.32%)</title>
+        <rect x="709.16" y="225" width="3.11" height="15.0" fill="#ffc071" rx="2" ry="2" />
+        <text text-anchor="" x="712.16" y="235.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>saveNewSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:174:9) (9 samples, 1.43%)</title>
+        <rect x="712.27" y="241" width="14.01" height="15.0" fill="#ffb76a" rx="2" ry="2" />
+        <text text-anchor="" x="715.27" y="251.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>runSyncAfterSaveActions (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:130:14) (3 samples, 0.48%)</title>
+        <rect x="712.27" y="225" width="4.67" height="15.0" fill="#ffc071" rx="2" ry="2" />
+        <text text-anchor="" x="715.27" y="235.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>runSyncAfterSaveActions (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:129:18) (6 samples, 0.95%)</title>
+        <rect x="716.94" y="225" width="9.34" height="15.0" fill="#ffc071" rx="2" ry="2" />
+        <text text-anchor="" x="719.94" y="235.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>saveNewSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:162:9) (27 samples, 4.29%)</title>
+        <rect x="726.29" y="241" width="42.04" height="15.0" fill="#ffb76a" rx="2" ry="2" />
+        <text text-anchor="" x="729.29" y="251.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>resetChanges (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:156:35) (27 samples, 4.29%)</title>
+        <rect x="726.29" y="225" width="42.04" height="15.0" fill="#ffc071" rx="2" ry="2" />
+        <text text-anchor="" x="729.29" y="235.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>saveNewSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:163:9) (2 samples, 0.32%)</title>
+        <rect x="768.33" y="241" width="3.11" height="15.0" fill="#ffb76a" rx="2" ry="2" />
+        <text text-anchor="" x="771.33" y="251.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>saveNewSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:170:13) (1 samples, 0.16%)</title>
+        <rect x="771.44" y="241" width="1.56" height="15.0" fill="#ffb76a" rx="2" ry="2" />
+        <text text-anchor="" x="774.44" y="251.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>shouldSaveAssocs (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:34:28) (1 samples, 0.16%)</title>
+        <rect x="771.44" y="225" width="1.56" height="15.0" fill="#ffc071" rx="2" ry="2" />
+        <text text-anchor="" x="774.44" y="235.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>baseClone (/fibjs_test/node_modules/lodash.clonedeep/index.js:841:19) (1 samples, 0.16%)</title>
+        <rect x="771.44" y="209" width="1.56" height="15.0" fill="#ffc879" rx="2" ry="2" />
+        <text text-anchor="" x="774.44" y="219.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>saveNewSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:177:9) (1 samples, 0.16%)</title>
+        <rect x="773.00" y="241" width="1.56" height="15.0" fill="#ffb76a" rx="2" ry="2" />
+        <text text-anchor="" x="776.00" y="251.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>saveInstanceExtraSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:286:44) (1 samples, 0.16%)</title>
+        <rect x="773.00" y="225" width="1.56" height="15.0" fill="#ffc071" rx="2" ry="2" />
+        <text text-anchor="" x="776.00" y="235.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:111:42 (4 samples, 0.63%)</title>
+        <rect x="774.56" y="257" width="6.23" height="15.0" fill="#ffae62" rx="2" ry="2" />
+        <text text-anchor="" x="777.56" y="267.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>getInstanceData (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:135:9) (3 samples, 0.48%)</title>
+        <rect x="774.56" y="241" width="4.67" height="15.0" fill="#ffb76a" rx="2" ry="2" />
+        <text text-anchor="" x="777.56" y="251.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>getInstanceData (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:132:38) (1 samples, 0.16%)</title>
+        <rect x="779.23" y="241" width="1.56" height="15.0" fill="#ffb76a" rx="2" ry="2" />
+        <text text-anchor="" x="782.23" y="251.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.wait (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:40:25) (2 samples, 0.32%)</title>
+        <rect x="780.79" y="305" width="3.11" height="15.0" fill="#ff8e4c" rx="2" ry="2" />
+        <text text-anchor="" x="783.79" y="315.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>waitHandler (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:26:38) (1 samples, 0.16%)</title>
+        <rect x="783.90" y="337" width="1.56" height="15.0" fill="#ff763c" rx="2" ry="2" />
+        <text text-anchor="" x="786.90" y="347.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>nextHook (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:22:31) (1 samples, 0.16%)</title>
+        <rect x="785.46" y="369" width="1.56" height="15.0" fill="#ff5c2d" rx="2" ry="2" />
+        <text text-anchor="" x="788.46" y="379.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>waitHooks (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:21:27) (1 samples, 0.16%)</title>
+        <rect x="787.01" y="385" width="1.56" height="15.0" fill="#ff4e26" rx="2" ry="2" />
+        <text text-anchor="" x="790.01" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>waitHooks (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Hook.js:19:28) (2 samples, 0.32%)</title>
+        <rect x="788.57" y="385" width="3.11" height="15.0" fill="#ff4e26" rx="2" ry="2" />
+        <text text-anchor="" x="791.57" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>saveInstanceSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:104:23) (56 samples, 8.89%)</title>
+        <rect x="791.69" y="401" width="87.20" height="15.0" fill="#ff401e" rx="2" ry="2" />
+        <text text-anchor="" x="794.69" y="411.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>addHiddenReadonlyPropertyToInstance (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Utilities.js:791:67) (4 samples, 0.63%)</title>
+        <rect x="791.69" y="385" width="6.23" height="15.0" fill="#ff4e26" rx="2" ry="2" />
+        <text text-anchor="" x="794.69" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>saveInstanceSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:98:21) (16 samples, 2.54%)</title>
+        <rect x="878.89" y="401" width="24.91" height="15.0" fill="#ff401e" rx="2" ry="2" />
+        <text text-anchor="" x="881.89" y="411.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>handleValidationsSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:44:14) (16 samples, 2.54%)</title>
+        <rect x="878.89" y="385" width="24.91" height="15.0" fill="#ff4e26" rx="2" ry="2" />
+        <text text-anchor="" x="881.89" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:77:35 (14 samples, 2.22%)</title>
+        <rect x="878.89" y="369" width="21.80" height="15.0" fill="#ff5c2d" rx="2" ry="2" />
+        <text text-anchor="" x="881.89" y="379.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>checkSync (/fibjs_test/node_modules/@fibjs/enforce/lib/enforce.js:57:40) (11 samples, 1.75%)</title>
+        <rect x="878.89" y="353" width="17.13" height="15.0" fill="#ff6935" rx="2" ry="2" />
+        <text text-anchor="" x="881.89" y="363.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>get (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:396:27) (11 samples, 1.75%)</title>
+        <rect x="878.89" y="337" width="17.13" height="15.0" fill="#ff763c" rx="2" ry="2" />
+        <text text-anchor="" x="881.89" y="347.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>checkSync (/fibjs_test/node_modules/@fibjs/enforce/lib/enforce.js:39:14) (1 samples, 0.16%)</title>
+        <rect x="896.01" y="353" width="1.56" height="15.0" fill="#ff6935" rx="2" ry="2" />
+        <text text-anchor="" x="899.01" y="363.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>checkSync (/fibjs_test/node_modules/@fibjs/enforce/lib/enforce.js:57:27) (2 samples, 0.32%)</title>
+        <rect x="897.57" y="353" width="3.11" height="15.0" fill="#ff6935" rx="2" ry="2" />
+        <text text-anchor="" x="900.57" y="363.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>Validator (/fibjs_test/node_modules/@fibjs/enforce/lib/enforcements/ranges.js:10:20) (1 samples, 0.16%)</title>
+        <rect x="897.57" y="337" width="1.56" height="15.0" fill="#ff763c" rx="2" ry="2" />
+        <text text-anchor="" x="900.57" y="347.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>checkSync.validator.validate (/fibjs_test/node_modules/@fibjs/enforce/lib/enforce.js:57:52) (1 samples, 0.16%)</title>
+        <rect x="897.57" y="321" width="1.56" height="15.0" fill="#ff8244" rx="2" ry="2" />
+        <text text-anchor="" x="900.57" y="331.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>Validator (/fibjs_test/node_modules/@fibjs/enforce/lib/enforcements/ranges.js:4:26) (1 samples, 0.16%)</title>
+        <rect x="899.13" y="337" width="1.56" height="15.0" fill="#ff763c" rx="2" ry="2" />
+        <text text-anchor="" x="902.13" y="347.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:50:52 (1 samples, 0.16%)</title>
+        <rect x="900.69" y="369" width="1.56" height="15.0" fill="#ff5c2d" rx="2" ry="2" />
+        <text text-anchor="" x="903.69" y="379.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>baseClone (/fibjs_test/node_modules/lodash.clonedeep/index.js:841:19) (1 samples, 0.16%)</title>
+        <rect x="900.69" y="353" width="1.56" height="15.0" fill="#ff6935" rx="2" ry="2" />
+        <text text-anchor="" x="903.69" y="363.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>saveInstanceSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:105:23) (2 samples, 0.32%)</title>
+        <rect x="903.80" y="401" width="3.11" height="15.0" fill="#ff401e" rx="2" ry="2" />
+        <text text-anchor="" x="906.80" y="411.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>addHiddenReadonlyPropertyToInstance (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Utilities.js:791:67) (2 samples, 0.32%)</title>
+        <rect x="903.80" y="385" width="3.11" height="15.0" fill="#ff4e26" rx="2" ry="2" />
+        <text text-anchor="" x="906.80" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title> (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:507:39 (1 samples, 0.16%)</title>
+        <rect x="906.91" y="417" width="1.56" height="15.0" fill="#ff3017" rx="2" ry="2" />
+        <text text-anchor="" x="909.91" y="427.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>collectParamsForSave (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:481:43) (1 samples, 0.16%)</title>
+        <rect x="906.91" y="401" width="1.56" height="15.0" fill="#ff401e" rx="2" ry="2" />
+        <text text-anchor="" x="909.91" y="411.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Model.model.createSync.Utilities.parallelQueryIfPossible (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Model.js:618:26) (50 samples, 7.94%)</title>
+        <rect x="908.47" y="433" width="77.86" height="15.0" fill="#ff210f" rx="2" ry="2" />
+        <text text-anchor="" x="911.47" y="443.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>createInstanceSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Model.js:91:26) (48 samples, 7.62%)</title>
+        <rect x="908.47" y="417" width="74.74" height="15.0" fill="#ff3017" rx="2" ry="2" />
+        <text text-anchor="" x="911.47" y="427.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Instance (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:441:5) (18 samples, 2.86%)</title>
+        <rect x="908.47" y="401" width="28.03" height="15.0" fill="#ff401e" rx="2" ry="2" />
+        <text text-anchor="" x="911.47" y="411.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Instance (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:16:42) (11 samples, 1.75%)</title>
+        <rect x="936.50" y="401" width="17.13" height="15.0" fill="#ff401e" rx="2" ry="2" />
+        <text text-anchor="" x="939.50" y="411.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Instance (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:453:15) (2 samples, 0.32%)</title>
+        <rect x="953.63" y="401" width="3.11" height="15.0" fill="#ff401e" rx="2" ry="2" />
+        <text text-anchor="" x="956.63" y="411.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>addHiddenUnwritableMethodToInstance (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Utilities.js:584:57) (2 samples, 0.32%)</title>
+        <rect x="953.63" y="385" width="3.11" height="15.0" fill="#ff4e26" rx="2" ry="2" />
+        <text text-anchor="" x="956.63" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Instance (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:11:29) (4 samples, 0.63%)</title>
+        <rect x="956.74" y="401" width="6.23" height="15.0" fill="#ff401e" rx="2" ry="2" />
+        <text text-anchor="" x="959.74" y="411.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Instance (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:575:15) (1 samples, 0.16%)</title>
+        <rect x="962.97" y="401" width="1.56" height="15.0" fill="#ff401e" rx="2" ry="2" />
+        <text text-anchor="" x="965.97" y="411.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>addHiddenPropertyToInstance (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Utilities.js:587:37) (1 samples, 0.16%)</title>
+        <rect x="962.97" y="385" width="1.56" height="15.0" fill="#ff4e26" rx="2" ry="2" />
+        <text text-anchor="" x="965.97" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Instance (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:642:10) (3 samples, 0.48%)</title>
+        <rect x="964.53" y="401" width="4.67" height="15.0" fill="#ff401e" rx="2" ry="2" />
+        <text text-anchor="" x="967.53" y="411.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Instance (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:516:15) (2 samples, 0.32%)</title>
+        <rect x="969.20" y="401" width="3.11" height="15.0" fill="#ff401e" rx="2" ry="2" />
+        <text text-anchor="" x="972.20" y="411.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>addHiddenUnwritableMethodToInstance (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Utilities.js:584:57) (1 samples, 0.16%)</title>
+        <rect x="969.20" y="385" width="1.56" height="15.0" fill="#ff4e26" rx="2" ry="2" />
+        <text text-anchor="" x="972.20" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>addHiddenUnwritableMethodToInstance (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Utilities.js:583:45) (1 samples, 0.16%)</title>
+        <rect x="970.76" y="385" width="1.56" height="15.0" fill="#ff4e26" rx="2" ry="2" />
+        <text text-anchor="" x="973.76" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Instance (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:442:9) (2 samples, 0.32%)</title>
+        <rect x="972.31" y="401" width="3.11" height="15.0" fill="#ff401e" rx="2" ry="2" />
+        <text text-anchor="" x="975.31" y="411.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>setInstanceProperty (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:337:42) (2 samples, 0.32%)</title>
+        <rect x="972.31" y="385" width="3.11" height="15.0" fill="#ff4e26" rx="2" ry="2" />
+        <text text-anchor="" x="975.31" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Instance (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:574:15) (2 samples, 0.32%)</title>
+        <rect x="975.43" y="401" width="3.11" height="15.0" fill="#ff401e" rx="2" ry="2" />
+        <text text-anchor="" x="978.43" y="411.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>addHiddenReadonlyPropertyToInstance (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Utilities.js:591:45) (2 samples, 0.32%)</title>
+        <rect x="975.43" y="385" width="3.11" height="15.0" fill="#ff4e26" rx="2" ry="2" />
+        <text text-anchor="" x="978.43" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Instance (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:576:15) (2 samples, 0.32%)</title>
+        <rect x="978.54" y="401" width="3.11" height="15.0" fill="#ff401e" rx="2" ry="2" />
+        <text text-anchor="" x="981.54" y="411.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>addHiddenUnwritableMethodToInstance (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Utilities.js:583:45) (2 samples, 0.32%)</title>
+        <rect x="978.54" y="385" width="3.11" height="15.0" fill="#ff4e26" rx="2" ry="2" />
+        <text text-anchor="" x="981.54" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Instance (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Instance.js:478:15) (1 samples, 0.16%)</title>
+        <rect x="981.66" y="401" width="1.56" height="15.0" fill="#ff401e" rx="2" ry="2" />
+        <text text-anchor="" x="984.66" y="411.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>addHiddenUnwritableMethodToInstance (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Utilities.js:583:45) (1 samples, 0.16%)</title>
+        <rect x="981.66" y="385" width="1.56" height="15.0" fill="#ff4e26" rx="2" ry="2" />
+        <text text-anchor="" x="984.66" y="395.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>createInstanceSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Model.js:115:22) (1 samples, 0.16%)</title>
+        <rect x="983.21" y="417" width="1.56" height="15.0" fill="#ff3017" rx="2" ry="2" />
+        <text text-anchor="" x="986.21" y="427.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>createInstanceSync (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Model.js:51:9) (1 samples, 0.16%)</title>
+        <rect x="984.77" y="417" width="1.56" height="15.0" fill="#ff3017" rx="2" ry="2" />
+        <text text-anchor="" x="987.77" y="427.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>exports.Model.model.createSync.Utilities.parallelQueryIfPossible (/fibjs_test/node_modules/@fxjs/orm/lib/orm/entry/Model.js:617:109) (1 samples, 0.16%)</title>
+        <rect x="986.33" y="433" width="1.56" height="15.0" fill="#ff210f" rx="2" ry="2" />
+        <text text-anchor="" x="989.33" y="443.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+    <g class="func_g" onmouseover="s(this)" onmouseout="c()" onclick="zoom(this)">
+        <title>checkSync.coroutine.start (/fibjs_test/node_modules/@fibjs/enforce/lib/enforce.js:68:33) (2 samples, 0.32%)</title>
+        <rect x="987.89" y="449" width="3.11" height="15.0" fill="#ff1108" rx="2" ry="2" />
+        <text text-anchor="" x="990.89" y="459.5" font-size="12" font-family="Verdana" fill="rgb(0,0,0)"></text>
+    </g>
+</svg>
