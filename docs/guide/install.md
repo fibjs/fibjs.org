@@ -14,7 +14,7 @@ brew install fibjs
 ## Windows 下自己编译
 
 ### 准备编译环境
-Windows 下需要安装 VS2019。
+Windows 下需要安装 VS2019 或以上版本，注意：安装时需选择 c++ 环境。
 
 ### 获取代码
 fibjs 当前 github 地址为: https://github.com/fibjs/fibjs
@@ -40,10 +40,11 @@ options 的选项:
 * debug: 以调试方式编译
 * i386: 以 32 位发布方式编译
 * amd64: 以 64 位发布方式编译
+* arm64: 交叉编译 ARM64 版本
 
 例如 release 模式编译命令如下:
 ```sh
-build release
+build
 ```
 
 ## UNIX 下自己编译
@@ -118,21 +119,23 @@ bash build [options] [-jn] [-v] [-h]
 ```
 options 的选项:
 * clean: 清除编译结果，便于全部重新编译
-* release: 以发布方式编译
+* release: 以发布方式编译，缺省选项
 * debug: 以调试方式编译
+* linux: 使用预装的 docker 环境编译 Linux 版本
+* alpine: 使用预装的 docker 环境编译 alpine 版本
+* android: 使用预装的 docker 环境编译 android 版本
+* iphone: 使用预装的 docker 环境编译 iphone 版本
 * i386: 以 32 位发布方式编译
 * amd64: 以 64 位发布方式编译
-* arm: 交叉编译 32 位 ARM 版本
-* armv6: 交叉编译 32 位 ARM v6 版本
-* arm64: 交叉编译 64 位 ARM 版本
-* mips: 交叉编译 32 位 MIPS 版本
-* mips64: 交叉编译 64 位 MIPS 版本
-* ppc: 交叉编译 32 位 PowerPC 版本
-* ppc64: 交叉编译 64 位 PowerPC 版本
+* arm: 交叉编译 ARM 版本
+* arm64: 交叉编译 ARM64 版本
+* mips64: 交叉编译 MIPS64 版本
+* ppc64: 交叉编译 PowerPC64 版本
+* loong64: 交叉编译 LoongArch64 版本
 
 例如 release 模式编译命令如下:
 ```sh
-bash build release
+bash build
 ```
 
 ## 测试全部用例

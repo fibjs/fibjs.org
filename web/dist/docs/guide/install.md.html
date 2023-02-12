@@ -214,7 +214,7 @@
 <p>如果你想随时拥有开发中的最新特性，或者你可能需要自行开发自己的分支，也可以自己编译最新的版本。</p>
 <h2 id="Windows-下自己编译">Windows 下自己编译</h2>
 <h3 id="准备编译环境">准备编译环境</h3>
-<p>Windows 下需要安装 VS2019。</p>
+<p>Windows 下需要安装 VS2019 或以上版本，注意：安装时需选择 c++ 环境。</p>
 <h3 id="获取代码">获取代码</h3>
 <p>fibjs 当前 github 地址为: <a href="https://github.com/fibjs/fibjs">https://github.com/fibjs/fibjs</a></p>
 <p>在工作目录下执行以下命令:</p>
@@ -236,9 +236,10 @@ git submodule update --init --recursive
 <li><span class="notranslate">debug</span>: 以调试方式编译</li>
 <li><span class="notranslate">i386</span>: 以 32 位发布方式编译</li>
 <li><span class="notranslate">amd64</span>: 以 64 位发布方式编译</li>
+<li><span class="notranslate">arm64</span>: 交叉编译 ARM64 版本</li>
 </ul>
 <p>例如 release 模式编译命令如下:</p>
-<pre><code class="lang-sh"><div class="line-numbers">1</div>build release
+<pre><code class="lang-sh"><div class="line-numbers">1</div>build
 </code></pre>
 <h2 id="UNIX-下自己编译">UNIX 下自己编译</h2>
 <h3 id="准备编译环境">准备编译环境</h3>
@@ -295,20 +296,22 @@ git submodule update --init --recursive
 <p>options 的选项:</p>
 <ul>
 <li><span class="notranslate">clean</span>: 清除编译结果，便于全部重新编译</li>
-<li><span class="notranslate">release</span>: 以发布方式编译</li>
+<li><span class="notranslate">release</span>: 以发布方式编译，缺省选项</li>
 <li><span class="notranslate">debug</span>: 以调试方式编译</li>
+<li><span class="notranslate">linux</span>: 使用预装的 docker 环境编译 Linux 版本</li>
+<li><span class="notranslate">alpine</span>: 使用预装的 docker 环境编译 alpine 版本</li>
+<li><span class="notranslate">android</span>: 使用预装的 docker 环境编译 android 版本</li>
+<li><span class="notranslate">iphone</span>: 使用预装的 docker 环境编译 iphone 版本</li>
 <li><span class="notranslate">i386</span>: 以 32 位发布方式编译</li>
 <li><span class="notranslate">amd64</span>: 以 64 位发布方式编译</li>
-<li><span class="notranslate">arm</span>: 交叉编译 32 位 ARM 版本</li>
-<li><span class="notranslate">armv6</span>: 交叉编译 32 位 ARM v6 版本</li>
-<li><span class="notranslate">arm64</span>: 交叉编译 64 位 ARM 版本</li>
-<li><span class="notranslate">mips</span>: 交叉编译 32 位 MIPS 版本</li>
-<li><span class="notranslate">mips64</span>: 交叉编译 64 位 MIPS 版本</li>
-<li><span class="notranslate">ppc</span>: 交叉编译 32 位 PowerPC 版本</li>
-<li><span class="notranslate">ppc64</span>: 交叉编译 64 位 PowerPC 版本</li>
+<li><span class="notranslate">arm</span>: 交叉编译 ARM 版本</li>
+<li><span class="notranslate">arm64</span>: 交叉编译 ARM64 版本</li>
+<li><span class="notranslate">mips64</span>: 交叉编译 MIPS64 版本</li>
+<li><span class="notranslate">ppc64</span>: 交叉编译 PowerPC64 版本</li>
+<li><span class="notranslate">loong64</span>: 交叉编译 LoongArch64 版本</li>
 </ul>
 <p>例如 release 模式编译命令如下:</p>
-<pre><code class="lang-sh"><div class="line-numbers">1</div>bash build release
+<pre><code class="lang-sh"><div class="line-numbers">1</div>bash build
 </code></pre>
 <h2 id="测试全部用例">测试全部用例</h2>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>bin/{<span class="hljs-variable">$OS</span>}_{<span class="hljs-variable">$arch</span>}_release/fibjs <span class="hljs-built_in">test</span>
