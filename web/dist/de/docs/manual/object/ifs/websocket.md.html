@@ -235,7 +235,7 @@
     };<font></font>
 }));<font></font>
 <font></font>
-serv.run(<span class="hljs-function"><span class="hljs-params">r</span> =&gt;</span> <span class="hljs-number">0</span>);<font></font>
+serv.start();<font></font>
 <font></font>
 <span class="hljs-keyword">var</span> sock = <span class="hljs-keyword">new</span> ws.Socket(<span class="hljs-string">'ws://127.0.0.1:8811'</span>);<font></font>
 sock.on(<span class="hljs-string">'open'</span>, () =&gt; {<font></font>
@@ -468,7 +468,7 @@ sock.onmessage = <span class="hljs-function"><span class="hljs-params">evt</span
 </ul>
 <hr>
 <div name="unref" data-unique="unref"></div><h3 id="unref" class="notranslate">unref</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Beenden des fibjs-Prozesses zulassen, zulassen, dass der fibjs-Prozess während der Objektbindung beendet wird</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Beenden des fibjs-Prozesses zulassen, Beenden des fibjs-Prozesses während der Objektbindung zulassen</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>WebSocket WebSocket.unref();
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Rückgabeergebnis:</font></font></p>
@@ -533,7 +533,7 @@ sock.onmessage = <span class="hljs-function"><span class="hljs-params">evt</span
 </ul>
 <hr>
 <div name="prependListener" data-unique="prependListener"></div><h3 id="prependListener" class="notranslate">prependListener</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Binden Sie eine Event-Handler-Funktion an den Objektursprung</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Binden Sie eine Event-Handler-Funktion an den Objektanfang</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> WebSocket.prependListener(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
@@ -548,7 +548,7 @@ sock.onmessage = <span class="hljs-function"><span class="hljs-params">evt</span
 <li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt das Ereignisobjekt selbst zurück, was für Kettenaufrufe praktisch ist</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Binden Sie eine Event-Handler-Funktion an den Objektursprung</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Binden Sie eine Event-Handler-Funktion an den Objektanfang</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> WebSocket.prependListener(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aufrufparameter:</font></font></p>
@@ -589,7 +589,7 @@ sock.onmessage = <span class="hljs-function"><span class="hljs-params">evt</span
 </ul>
 <hr>
 <div name="prependOnceListener" data-unique="prependOnceListener"></div><h3 id="prependOnceListener" class="notranslate">prependOnceListener</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Binden Sie eine Event-Handler-Funktion an den Objektursprung</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Binden Sie eine Event-Handler-Funktion an den Objektanfang</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> WebSocket.prependOnceListener(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
@@ -604,7 +604,7 @@ sock.onmessage = <span class="hljs-function"><span class="hljs-params">evt</span
 <li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt das Ereignisobjekt selbst zurück, was für Kettenaufrufe praktisch ist</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Binden Sie eine Event-Handler-Funktion an den Objektursprung</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Binden Sie eine Event-Handler-Funktion an den Objektanfang</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> WebSocket.prependOnceListener(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aufrufparameter:</font></font></p>
@@ -802,7 +802,7 @@ sock.onmessage = <span class="hljs-function"><span class="hljs-params">evt</span
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Rückgabeergebnis:</font></font></p>
 <ul>
-<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt den Status des Ereignisauslösers zurück, gibt „true“ zurück, wenn ein Antwortereignis vorliegt, gibt andernfalls „false“ zurück</font></font></li>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt den Status des Ereignisauslösers zurück, gibt „true“ zurück, wenn es ein Antwortereignis gibt, gibt andernfalls „false“ zurück</font></font></li>
 </ul>
 <hr>
 <div name="toString" data-unique="toString"></div><h3 id="toString" class="notranslate">toString</h3>

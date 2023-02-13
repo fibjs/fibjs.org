@@ -13,7 +13,7 @@ var serv = new http.Server(8811, ws.upgrade((conn) => {
     };
 }));
 
-serv.run(r => 0);
+serv.start();
 
 var sock = new ws.Socket('ws://127.0.0.1:8811');
 sock.on('open', () => {
