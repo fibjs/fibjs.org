@@ -29,13 +29,13 @@ static Boolean zip.isZipFile(String filename) async;
 ```JavaScript
 static ZipFile zip.open(String path,
     String mod = "r",
-    Integer compress_type = ZIP_DEFLATED) async;
+    String codec = "utf-8") async;
 ```
 
 调用参数:
 * path: String, 文件路径
 * mod: String, 打开文件模式, "r"代表读取, "w"代表创建, "a"代表在zip文件后追加
-* compress_type: Integer, 压缩类型, ZIP_STORED 代表不压缩, 仅存储。 默认使用ZIP_DEFLATED 代表使用[zlib](zlib.md)库进行压缩。
+* codec: String, 设置 zip 文件编码方式，缺省为 "utf-8"
 
 返回结果:
 * [ZipFile](../../object/ifs/ZipFile.md), 返回zip文件对象
@@ -46,13 +46,13 @@ static ZipFile zip.open(String path,
 ```JavaScript
 static ZipFile zip.open(Buffer data,
     String mod = "r",
-    Integer compress_type = ZIP_DEFLATED) async;
+    String codec = "utf-8") async;
 ```
 
 调用参数:
 * data: [Buffer](../../object/ifs/Buffer.md), zip文件数据
 * mod: String, 打开文件模式, "r"代表读取, "w"代表创建, "a"代表在zip文件后追加
-* compress_type: Integer, 压缩类型, ZIP_STORED 代表不压缩, 仅存储。 默认使用ZIP_DEFLATED 代表使用[zlib](zlib.md)库进行压缩。
+* codec: String, 设置 zip 文件编码方式，缺省为 "utf-8"
 
 返回结果:
 * [ZipFile](../../object/ifs/ZipFile.md), 返回zip文件对象
@@ -63,31 +63,14 @@ static ZipFile zip.open(Buffer data,
 ```JavaScript
 static ZipFile zip.open(SeekableStream strm,
     String mod = "r",
-    Integer compress_type = ZIP_DEFLATED) async;
+    String codec = "utf-8") async;
 ```
 
 调用参数:
 * strm: [SeekableStream](../../object/ifs/SeekableStream.md), zip文件流
 * mod: String, 打开文件模式, "r"代表读取, "w"代表创建, "a"代表在zip文件后追加
-* compress_type: Integer, 压缩类型, ZIP_STORED 代表不压缩, 仅存储。 默认使用ZIP_DEFLATED 代表使用[zlib](zlib.md)库进行压缩。
+* codec: String, 设置 zip 文件编码方式，缺省为 "utf-8"
 
 返回结果:
 * [ZipFile](../../object/ifs/ZipFile.md), 返回zip文件对象
-
-## 常量
-        
-### ZIP_STORED
-**压缩类型常量, 不压缩, 仅存储**
-
-```JavaScript
-const zip.ZIP_STORED = 0;
-```
-
---------------------------
-### ZIP_DEFLATED
-**压缩类型常量, 需要依赖[zlib](zlib.md)库进行压缩**
-
-```JavaScript
-const zip.ZIP_DEFLATED = 1;
-```
 

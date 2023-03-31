@@ -11,6 +11,14 @@ Buffer global.Buffer;
 ```
 
 --------------------------
+### URL
+**创建一个 [UrlObject](../../object/ifs/UrlObject.md) 请求对象，参见 [UrlObject](../../object/ifs/UrlObject.md)**
+
+```JavaScript
+UrlObject global.URL;
+```
+
+--------------------------
 ### TextDecoder
 **[TextDecoder](../../object/ifs/TextDecoder.md) 解码对象，参见 [TextDecoder](../../object/ifs/TextDecoder.md) 对象。**
 

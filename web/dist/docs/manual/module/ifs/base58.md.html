@@ -205,13 +205,24 @@
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="模块-base58">模块 base58</h1>
 <p>base58 编码与解码模块</p>
-<p>引用方式：</p>
+<p><code>base58</code> 模块是一个用于对数据进行 Base58 编解码的模块。Base58 是一种数字与字母的组合表示方法，它不包含数字 0、字母 O、字母 I、字母 l 等易混淆字符，具有不易出错的特点。</p>
+<p>该模块提供了 <code>encode</code> 和 <code>decode</code> 两个方法。<code>encode</code> 方法用于将给定的数据进行 Base58 编码，返回编码后的字符串。<code>decode</code> 方法用于将给定的 Base58 编码的字符串进行解码，返回解码后的二进制数据。</p>
+<p>以下是 <code>base58</code> 模块的示例代码：</p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">var</span> encoding = <span class="hljs-built_in">require</span>(<span class="hljs-string">'encoding'</span>);
-<span class="hljs-keyword">var</span> base58 = encoding.base58;
-</code></pre>
-<p>或者</p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> base58 = <span class="hljs-built_in">require</span>(<span class="hljs-string">'base58'</span>);
+2
+3
+4
+5
+6
+7
+8</div><span class="hljs-keyword">var</span> base58 = <span class="hljs-built_in">require</span>(<span class="hljs-string">'base58'</span>);
+
+<span class="hljs-keyword">var</span> data = <span class="hljs-string">"Hello, World!"</span>;
+<span class="hljs-keyword">var</span> encoded = base58.encode(data);
+<span class="hljs-built_in">console</span>.log(encoded); <span class="hljs-comment">// =&gt; 'StV1DL6CwTryKyV'</span>
+
+<span class="hljs-keyword">var</span> decoded = base58.decode(encoded);
+<span class="hljs-built_in">console</span>.log(decoded.toString()); <span class="hljs-comment">// =&gt; 'hello world'</span>
 </code></pre>
 <h2 id="静态函数">静态函数</h2>
 <h3 id="encode" class ="notranslate">encode</h3>

@@ -205,14 +205,20 @@
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="模块-base32">模块 base32</h1>
 <p>base32 编码与解码模块</p>
-<p>引用方式：</p>
+<p><code>base32</code>模块是一个用于 base32 编码和解码的模块。Base32 是一种用于将二进制数据编码为 ASCII 字符串的算法，用于将二进制数据在邮件、DNS 等网络协议中传输。</p>
+<p>该模块提供了两个方法：<code>encode</code> 和 <code>decode</code>。其中 <code>encode</code> 方法用于将二进制数据编码为 Base32 字符串，<code>decode</code> 方法用于将 Base32 字符串解码为二进制数据。下面是使用示例：</p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">var</span> encoding = <span class="hljs-built_in">require</span>(<span class="hljs-string">'encoding'</span>);
-<span class="hljs-keyword">var</span> base32 = encoding.base32;
+2
+3
+4
+5</div><span class="hljs-keyword">const</span> base32 = <span class="hljs-built_in">require</span>(<span class="hljs-string">'base32'</span>);
+<span class="hljs-keyword">const</span> data = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Uint8Array</span>([<span class="hljs-number">0x4e</span>, <span class="hljs-number">0x4f</span>, <span class="hljs-number">0x44</span>, <span class="hljs-number">0x45</span>]); <span class="hljs-comment">// 'NODE'</span>
+<span class="hljs-keyword">const</span> encoded = base32.encode(data); <span class="hljs-comment">// 'KRUGKIDROV======'</span>
+<span class="hljs-keyword">const</span> decoded = base32.decode(encoded); <span class="hljs-comment">// [0x4e, 0x4f, 0x44, 0x45]</span>
+<span class="hljs-built_in">console</span>.log(encoded, decoded); <span class="hljs-comment">// KRUGKIDROV====== [78, 79, 68, 69]</span>
 </code></pre>
-<p>或者</p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> base32 = <span class="hljs-built_in">require</span>(<span class="hljs-string">'base32'</span>);
-</code></pre>
+<p>可以看到，<code>encode</code> 方法将二进制数据编码为了 <code>KRUGKIDROV======</code>，而 <code>decode</code> 方法将其解码为了 <code>[0x4e, 0x4f, 0x44, 0x45]</code>。</p>
+<p>需要注意的是，Base32 编码的结果字符串长度是原二进制数据长度的约 8/5 倍，因此不适合用于对大量数据的编码。如果需要对大量数据进行编码，建议使用 Base64 编码。</p>
 <h2 id="静态函数">静态函数</h2>
 <h3 id="encode" class ="notranslate">encode</h3>
 <p><strong>以 base32 方式编码数据</strong></p>

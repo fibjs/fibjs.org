@@ -228,13 +228,13 @@
 2
 3</div><span class="hljs-keyword">static</span> ZipFile zip.open(<span class="hljs-built_in">String</span> path,
     <span class="hljs-built_in">String</span> mod = <span class="hljs-string">"r"</span>,
-    Integer compress_type = ZIP_DEFLATED) <span class="hljs-keyword">async</span>;
+    <span class="hljs-built_in">String</span> codec = <span class="hljs-string">"utf-8"</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">path</span>: String, 文件路径</li>
 <li><span class="notranslate">mod</span>: String, 打开文件模式, &quot;r&quot;代表读取, &quot;w&quot;代表创建, &quot;a&quot;代表在zip文件后追加</li>
-<li><span class="notranslate">compress_type</span>: Integer, 压缩类型, ZIP_STORED 代表不压缩, 仅存储。 默认使用ZIP_DEFLATED 代表使用<a href=zlib.md.html class ="notranslate">zlib</a>库进行压缩。</li>
+<li><span class="notranslate">codec</span>: String, 设置 zip 文件编码方式，缺省为 &quot;utf-8&quot;</li>
 </ul>
 <p>返回结果:</p>
 <ul>
@@ -246,13 +246,13 @@
 2
 3</div><span class="hljs-keyword">static</span> ZipFile zip.open(Buffer data,
     <span class="hljs-built_in">String</span> mod = <span class="hljs-string">"r"</span>,
-    Integer compress_type = ZIP_DEFLATED) <span class="hljs-keyword">async</span>;
+    <span class="hljs-built_in">String</span> codec = <span class="hljs-string">"utf-8"</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">data</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, zip文件数据</li>
 <li><span class="notranslate">mod</span>: String, 打开文件模式, &quot;r&quot;代表读取, &quot;w&quot;代表创建, &quot;a&quot;代表在zip文件后追加</li>
-<li><span class="notranslate">compress_type</span>: Integer, 压缩类型, ZIP_STORED 代表不压缩, 仅存储。 默认使用ZIP_DEFLATED 代表使用<a href=zlib.md.html class ="notranslate">zlib</a>库进行压缩。</li>
+<li><span class="notranslate">codec</span>: String, 设置 zip 文件编码方式，缺省为 &quot;utf-8&quot;</li>
 </ul>
 <p>返回结果:</p>
 <ul>
@@ -264,26 +264,16 @@
 2
 3</div><span class="hljs-keyword">static</span> ZipFile zip.open(SeekableStream strm,
     <span class="hljs-built_in">String</span> mod = <span class="hljs-string">"r"</span>,
-    Integer compress_type = ZIP_DEFLATED) <span class="hljs-keyword">async</span>;
+    <span class="hljs-built_in">String</span> codec = <span class="hljs-string">"utf-8"</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">strm</span>: <a href=../../object/ifs/seekablestream.md.html class ="notranslate">SeekableStream</a>, zip文件流</li>
 <li><span class="notranslate">mod</span>: String, 打开文件模式, &quot;r&quot;代表读取, &quot;w&quot;代表创建, &quot;a&quot;代表在zip文件后追加</li>
-<li><span class="notranslate">compress_type</span>: Integer, 压缩类型, ZIP_STORED 代表不压缩, 仅存储。 默认使用ZIP_DEFLATED 代表使用<a href=zlib.md.html class ="notranslate">zlib</a>库进行压缩。</li>
+<li><span class="notranslate">codec</span>: String, 设置 zip 文件编码方式，缺省为 &quot;utf-8&quot;</li>
 </ul>
 <p>返回结果:</p>
 <ul>
 <li><a href=../../object/ifs/zipfile.md.html class ="notranslate">ZipFile</a>, 返回zip文件对象</li>
 </ul>
-<h2 id="常量">常量</h2>
-<h3 id="ZIP_STORED" class ="notranslate">ZIP_STORED</h3>
-<p><strong>压缩类型常量, 不压缩, 仅存储</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> zip.ZIP_STORED = <span class="hljs-number">0</span>;
-</code></pre>
-<hr>
-<h3 id="ZIP_DEFLATED" class ="notranslate">ZIP_DEFLATED</h3>
-<p><strong>压缩类型常量, 需要依赖<a href=zlib.md.html class ="notranslate">zlib</a>库进行压缩</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> zip.ZIP_DEFLATED = <span class="hljs-number">1</span>;
-</code></pre>
  </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

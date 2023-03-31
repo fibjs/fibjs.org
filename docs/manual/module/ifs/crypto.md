@@ -138,6 +138,20 @@ static X509Req crypto.loadReq(String filename);
 * [X509Req](../../object/ifs/X509Req.md), 返回包含请求证书的对象
 
 --------------------------
+### loadPKey
+**加载一个 CRT/PEM/DER 格式的非对称公钥或者私钥**
+
+```JavaScript
+static PKey crypto.loadPKey(String filename);
+```
+
+调用参数:
+* filename: String, 公钥或者私钥文件名
+
+返回结果:
+* [PKey](../../object/ifs/PKey.md), 返回包含 [PKey](../../object/ifs/PKey.md) 的对象
+
+--------------------------
 ### randomBytes
 **生成指定尺寸的随机数，使用 havege 生成器**
 

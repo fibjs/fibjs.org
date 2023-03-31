@@ -12,7 +12,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    XmlNode [tooltip="XmlNode", URL="XmlNode.md", label="{XmlNode|nodeType\lnodeName\lnodeValue\lownerDocument\lparentNode\lchildNodes\lfirstChild\llastChild\lpreviousSibling\lnextSibling\l|hasChildNodes()\lnormalize()\lcloneNode()\llookupPrefix()\llookupNamespaceURI()\linsertBefore()\linsertAfter()\lappendChild()\lreplaceChild()\lremoveChild()\l}"];
+    XmlNode [tooltip="XmlNode", URL="XmlNode.md", label="{XmlNode|nodeType\lnodeName\lnodeValue\lownerDocument\lparentNode\lchildNodes\lchildren\lfirstChild\llastChild\lpreviousSibling\lnextSibling\lfirstElementChild\llastElementChild\lpreviousElementSibling\lnextElementSibling\ltextContent\l|hasChildNodes()\lnormalize()\lcloneNode()\llookupPrefix()\llookupNamespaceURI()\linsertBefore()\linsertAfter()\lappendChild()\lreplaceChild()\lremoveChild()\l}"];
     XmlCharacterData [tooltip="XmlCharacterData", URL="XmlCharacterData.md", label="{XmlCharacterData|data\llength\l|substringData()\lappendData()\linsertData()\ldeleteData()\lreplaceData()\l}"];
     XmlComment [tooltip="XmlComment", fillcolor="lightgray", id="me", label="{XmlComment}"];
 
@@ -118,6 +118,14 @@ readonly XmlNodeList XmlComment.childNodes;
 ```
 
 --------------------------
+### children
+**[XmlNodeList](XmlNodeList.md), 返回指定节点的子元素节点的节点列表**
+
+```JavaScript
+readonly XmlNodeList XmlComment.children;
+```
+
+--------------------------
 ### firstChild
 **[XmlNode](XmlNode.md), 返回节点的首个子节点**
 
@@ -147,6 +155,46 @@ readonly XmlNode XmlComment.previousSibling;
 
 ```JavaScript
 readonly XmlNode XmlComment.nextSibling;
+```
+
+--------------------------
+### firstElementChild
+**[XmlNode](XmlNode.md), 返回节点的首个子元素节点**
+
+```JavaScript
+readonly XmlNode XmlComment.firstElementChild;
+```
+
+--------------------------
+### lastElementChild
+**[XmlNode](XmlNode.md), 返回节点的最后一个子元素节点**
+
+```JavaScript
+readonly XmlNode XmlComment.lastElementChild;
+```
+
+--------------------------
+### previousElementSibling
+**[XmlNode](XmlNode.md), 返回某节点之前紧跟的元素节点（处于同一树层级），如果没有此节点，那么该属性返回 null**
+
+```JavaScript
+readonly XmlNode XmlComment.previousElementSibling;
+```
+
+--------------------------
+### nextElementSibling
+**[XmlNode](XmlNode.md), 返回某个元素之后紧跟的元素节点（处于同一树层级中），如果无此节点，则属性返回 null**
+
+```JavaScript
+readonly XmlNode XmlComment.nextElementSibling;
+```
+
+--------------------------
+### textContent
+**String, 查询和设置选定元素的文本。查询时，返回元素节点内所有文本节点的值；设置时，删除所有子节点，并用单个文本节点来替换它们。**
+
+```JavaScript
+String XmlComment.textContent;
 ```
 
 ## 成员函数

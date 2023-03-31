@@ -205,9 +205,41 @@
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="模块-coroutine">模块 coroutine</h1>
 <p>并发控制模块</p>
-<p>引用方法：</p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> coroutine = <span class="hljs-built_in">require</span>(<span class="hljs-string">'coroutine'</span>);
+<p><code>coroutine</code> 模块提供了一个用于控制 <code>fiber</code> 执行顺序的 API。它允许开发者手动切换 <code>fiber</code>，从而实现协作式多任务。<code>coroutine</code> 模块的一个重要的函数是 <code>sleep</code> 函数，它允许当前正在执行的 <code>fiber</code> 让出 CPU，让其他 <code>fiber</code> 运行。</p>
+<p>以下是一个简单的示例代码，演示了如何使用 <code>coroutine</code> 模块：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</div><span class="hljs-keyword">const</span> coroutine = <span class="hljs-built_in">require</span>(<span class="hljs-string">'coroutine'</span>);
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'start foo'</span>);
+    coroutine.sleep(<span class="hljs-number">1000</span>); <span class="hljs-comment">// 让出 CPU，让其他 fiber 运行</span>
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'end foo'</span>);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bar</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'start bar'</span>);
+    coroutine.sleep(<span class="hljs-number">2000</span>);
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'end bar'</span>);
+}
+
+coroutine.start(foo);
+coroutine.start(bar);
 </code></pre>
+<p>在上面的代码中，我们定义了两个函数 <code>foo</code> 和 <code>bar</code>，然后使用 <code>coroutine.start</code> 函数启动两个 <code>fiber</code>。在每个 <code>fiber</code> 中，我们使用 <code>coroutine.sleep</code> 函数来让出 CPU，让其他 <code>fiber</code> 运行。</p>
 <h2 id="对象">对象</h2>
 <h3 id="Lock" class ="notranslate">Lock</h3>
 <p><strong>锁对象，参见 <a href=../../object/ifs/lock.md.html class ="notranslate">Lock</a></strong></p>

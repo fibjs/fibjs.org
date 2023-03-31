@@ -339,14 +339,119 @@
 6
 7
 8
-9</div>{
+9
+10
+11
+12
+13
+14
+15
+16</div>{
     <span class="hljs-string">"method"</span>: <span class="hljs-string">"GET"</span>, <span class="hljs-comment">//指定 http 请求方法：GET, POST 等</span>
+    <span class="hljs-string">"protocol"</span>: <span class="hljs-string">"http"</span>,
+    <span class="hljs-string">"slashes"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">"username"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"password"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"hostname"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"port"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"pathname"</span>: <span class="hljs-string">""</span>,
     <span class="hljs-string">"query"</span>: {},
     <span class="hljs-string">"body"</span>: SeekableStream | Buffer | <span class="hljs-built_in">String</span> | {},
     <span class="hljs-string">"json"</span>: {},
     <span class="hljs-string">"pack"</span>: {},
     <span class="hljs-string">"headers"</span>: {},
     <span class="hljs-string">"response_body"</span>: SeekableStream <span class="hljs-comment">//指定接受 resposne 数据的流</span>
+}
+</code></pre>
+<p>其中 body，<a href=json.md.html class ="notranslate">json</a>，pack 不得同时出现。缺省为 {}，不包含任何附加信息</p>
+<hr>
+<p><strong>用 GET 方法请求指定的 <a href=url.md.html class ="notranslate">url</a>，并返回结果，等同于 request(&quot;GET&quot;, ...)</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> HttpResponse http.request(<span class="hljs-built_in">String</span> url,
+    <span class="hljs-built_in">Object</span> opts = {}) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">url</span>: String, 指定 <a href=url.md.html class ="notranslate">url</a>，必须是包含主机的完整 <a href=url.md.html class ="notranslate">url</a></li>
+<li><span class="notranslate">opts</span>: Object, 指定附加信息</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/httpresponse.md.html class ="notranslate">HttpResponse</a>, 返回服务器响应</li>
+</ul>
+<p>opts 包含请求的附加选项，支持的内容如下：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</div>{
+    <span class="hljs-string">"method"</span>: <span class="hljs-string">"GET"</span>, <span class="hljs-comment">//指定 http 请求方法：GET, POST 等</span>
+    <span class="hljs-string">"protocol"</span>: <span class="hljs-string">"http"</span>,
+    <span class="hljs-string">"slashes"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">"username"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"password"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"hostname"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"port"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"pathname"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"query"</span>: {},
+    <span class="hljs-string">"body"</span>: SeekableStream | Buffer | <span class="hljs-built_in">String</span> | {},
+    <span class="hljs-string">"json"</span>: {},
+    <span class="hljs-string">"pack"</span>: {},
+    <span class="hljs-string">"headers"</span>: {}
+}
+</code></pre>
+<p>其中 body，<a href=json.md.html class ="notranslate">json</a>，pack 不得同时出现。缺省为 {}，不包含任何附加信息</p>
+<hr>
+<p><strong>请求 opts 指定的 <a href=url.md.html class ="notranslate">url</a>，并返回结果</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> HttpResponse http.request(<span class="hljs-built_in">Object</span> opts) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">opts</span>: Object, 指定附加信息</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/httpresponse.md.html class ="notranslate">HttpResponse</a>, 返回服务器响应</li>
+</ul>
+<p>opts 包含请求的附加选项，支持的内容如下：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</div>{
+    <span class="hljs-string">"method"</span>: <span class="hljs-string">"GET"</span>, <span class="hljs-comment">//指定 http 请求方法：GET, POST 等</span>
+    <span class="hljs-string">"protocol"</span>: <span class="hljs-string">"http"</span>,
+    <span class="hljs-string">"slashes"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">"username"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"password"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"hostname"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"port"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"pathname"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"query"</span>: {},
+    <span class="hljs-string">"body"</span>: SeekableStream | Buffer | <span class="hljs-built_in">String</span> | {},
+    <span class="hljs-string">"json"</span>: {},
+    <span class="hljs-string">"pack"</span>: {},
+    <span class="hljs-string">"headers"</span>: {}
 }
 </code></pre>
 <p>其中 body，<a href=json.md.html class ="notranslate">json</a>，pack 不得同时出现。缺省为 {}，不包含任何附加信息</p>
@@ -374,8 +479,22 @@
 5
 6
 7
-8</div>{
+8
+9
+10
+11
+12
+13
+14
+15</div>{
     <span class="hljs-string">"method"</span>: <span class="hljs-string">"GET"</span>, <span class="hljs-comment">//指定 http 请求方法：GET, POST 等</span>
+    <span class="hljs-string">"protocol"</span>: <span class="hljs-string">"http"</span>,
+    <span class="hljs-string">"slashes"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">"username"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"password"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"hostname"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"port"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"pathname"</span>: <span class="hljs-string">""</span>,
     <span class="hljs-string">"query"</span>: {},
     <span class="hljs-string">"body"</span>: SeekableStream | Buffer | <span class="hljs-built_in">String</span> | {},
     <span class="hljs-string">"json"</span>: {},
@@ -408,8 +527,22 @@
 5
 6
 7
-8</div>{
+8
+9
+10
+11
+12
+13
+14
+15</div>{
     <span class="hljs-string">"method"</span>: <span class="hljs-string">"GET"</span>, <span class="hljs-comment">//指定 http 请求方法：GET, POST 等</span>
+    <span class="hljs-string">"protocol"</span>: <span class="hljs-string">"http"</span>,
+    <span class="hljs-string">"slashes"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">"username"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"password"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"hostname"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"port"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"pathname"</span>: <span class="hljs-string">""</span>,
     <span class="hljs-string">"query"</span>: {},
     <span class="hljs-string">"body"</span>: SeekableStream | Buffer | <span class="hljs-built_in">String</span> | {},
     <span class="hljs-string">"json"</span>: {},
@@ -442,8 +575,22 @@
 5
 6
 7
-8</div>{
+8
+9
+10
+11
+12
+13
+14
+15</div>{
     <span class="hljs-string">"method"</span>: <span class="hljs-string">"GET"</span>, <span class="hljs-comment">//指定 http 请求方法：GET, POST 等</span>
+    <span class="hljs-string">"protocol"</span>: <span class="hljs-string">"http"</span>,
+    <span class="hljs-string">"slashes"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">"username"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"password"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"hostname"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"port"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"pathname"</span>: <span class="hljs-string">""</span>,
     <span class="hljs-string">"query"</span>: {},
     <span class="hljs-string">"body"</span>: SeekableStream | Buffer | <span class="hljs-built_in">String</span> | {},
     <span class="hljs-string">"json"</span>: {},
@@ -476,8 +623,22 @@
 5
 6
 7
-8</div>{
+8
+9
+10
+11
+12
+13
+14
+15</div>{
     <span class="hljs-string">"method"</span>: <span class="hljs-string">"GET"</span>, <span class="hljs-comment">//指定 http 请求方法：GET, POST 等</span>
+    <span class="hljs-string">"protocol"</span>: <span class="hljs-string">"http"</span>,
+    <span class="hljs-string">"slashes"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">"username"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"password"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"hostname"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"port"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"pathname"</span>: <span class="hljs-string">""</span>,
     <span class="hljs-string">"query"</span>: {},
     <span class="hljs-string">"body"</span>: SeekableStream | Buffer | <span class="hljs-built_in">String</span> | {},
     <span class="hljs-string">"json"</span>: {},
@@ -510,8 +671,22 @@
 5
 6
 7
-8</div>{
+8
+9
+10
+11
+12
+13
+14
+15</div>{
     <span class="hljs-string">"method"</span>: <span class="hljs-string">"GET"</span>, <span class="hljs-comment">//指定 http 请求方法：GET, POST 等</span>
+    <span class="hljs-string">"protocol"</span>: <span class="hljs-string">"http"</span>,
+    <span class="hljs-string">"slashes"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">"username"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"password"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"hostname"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"port"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"pathname"</span>: <span class="hljs-string">""</span>,
     <span class="hljs-string">"query"</span>: {},
     <span class="hljs-string">"body"</span>: SeekableStream | Buffer | <span class="hljs-built_in">String</span> | {},
     <span class="hljs-string">"json"</span>: {},
@@ -544,8 +719,22 @@
 5
 6
 7
-8</div>{
+8
+9
+10
+11
+12
+13
+14
+15</div>{
     <span class="hljs-string">"method"</span>: <span class="hljs-string">"GET"</span>, <span class="hljs-comment">//指定 http 请求方法：GET, POST 等</span>
+    <span class="hljs-string">"protocol"</span>: <span class="hljs-string">"http"</span>,
+    <span class="hljs-string">"slashes"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">"username"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"password"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"hostname"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"port"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"pathname"</span>: <span class="hljs-string">""</span>,
     <span class="hljs-string">"query"</span>: {},
     <span class="hljs-string">"body"</span>: SeekableStream | Buffer | <span class="hljs-built_in">String</span> | {},
     <span class="hljs-string">"json"</span>: {},
@@ -605,8 +794,13 @@
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer http.poolTimeout;
 </code></pre>
 <hr>
-<h3 id="proxyAgent" class ="notranslate">proxyAgent</h3>
-<p><strong>String, 查询和设置代理服务器，支持 http/https/socks5 代理</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> http.proxyAgent;
+<h3 id="http_proxy" class ="notranslate">http_proxy</h3>
+<p><strong>String, 查询和设置 http 请求代理，支持 http/https/socks5 代理</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> http.http_proxy;
+</code></pre>
+<hr>
+<h3 id="https_proxy" class ="notranslate">https_proxy</h3>
+<p><strong>String, 查询和设置 https 请求代理，支持 http/https/socks5 代理，不设置，或者设置为空，则复用 http_proxy</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> http.https_proxy;
 </code></pre>
  </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

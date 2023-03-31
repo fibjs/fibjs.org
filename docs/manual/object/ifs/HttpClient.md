@@ -16,7 +16,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    HttpClient [tooltip="HttpClient", fillcolor="lightgray", id="me", label="{HttpClient|new HttpClient()\l|cookies\ltimeout\lenableCookie\lautoRedirect\lenableEncoding\lmaxBodySize\luserAgent\lpoolSize\lpoolTimeout\lproxyAgent\lsslVerification\l|setClientCert()\lrequest()\lget()\lpost()\ldel()\lput()\lpatch()\lhead()\l}"];
+    HttpClient [tooltip="HttpClient", fillcolor="lightgray", id="me", label="{HttpClient|new HttpClient()\l|cookies\ltimeout\lenableCookie\lautoRedirect\lenableEncoding\lmaxBodySize\luserAgent\lpoolSize\lpoolTimeout\lhttp_proxy\lhttps_proxy\lsslVerification\l|setClientCert()\lrequest()\lget()\lpost()\ldel()\lput()\lpatch()\lhead()\l}"];
 
     object -> HttpClient [dir=back];
 }
@@ -105,11 +105,19 @@ Integer HttpClient.poolTimeout;
 ```
 
 --------------------------
-### proxyAgent
-**String, 查询和设置代理服务器，支持 [http](../../module/ifs/http.md)/https/socks5 代理**
+### http_proxy
+**String, 查询和设置 [http](../../module/ifs/http.md) 请求代理，支持 [http](../../module/ifs/http.md)/https/socks5 代理**
 
 ```JavaScript
-String HttpClient.proxyAgent;
+String HttpClient.http_proxy;
+```
+
+--------------------------
+### https_proxy
+**String, 查询和设置 https 请求代理，支持 [http](../../module/ifs/http.md)/https/socks5 代理，不设置，或者设置为空，则复用 http_proxy**
+
+```JavaScript
+String HttpClient.https_proxy;
 ```
 
 --------------------------
@@ -189,12 +197,91 @@ opts 包含请求的附加选项，支持的内容如下：
 ```JavaScript
 {
     "method": "GET", //指定 http 请求方法：GET, POST 等
+    "protocol": "http",
+    "slashes": true,
+    "username": "",
+    "password": "",
+    "hostname": "",
+    "port": "",
+    "pathname": "",
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
     "pack": {},
     "headers": {},
     "response_body": SeekableStream // 指定接受 resposne 数据的流
+}
+```
+
+其中 body，[json](../../module/ifs/json.md)，pack 不得同时出现。缺省为 {}，不包含任何附加信息
+
+--------------------------
+**用 GET 方法请求指定的 [url](../../module/ifs/url.md)，并返回结果，等同于 request("GET", ...)**
+
+```JavaScript
+HttpResponse HttpClient.request(String url,
+    Object opts = {}) async;
+```
+
+调用参数:
+* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
+* opts: Object, 指定附加信息
+
+返回结果:
+* [HttpResponse](HttpResponse.md), 返回服务器响应
+
+opts 包含请求的附加选项，支持的内容如下：
+
+```JavaScript
+{
+    "method": "GET", //指定 http 请求方法：GET, POST 等
+    "protocol": "http",
+    "slashes": true,
+    "username": "",
+    "password": "",
+    "hostname": "",
+    "port": "",
+    "pathname": "",
+    "query": {},
+    "body": SeekableStream | Buffer | String | {},
+    "json": {},
+    "pack": {},
+    "headers": {}
+}
+```
+
+其中 body，[json](../../module/ifs/json.md)，pack 不得同时出现。缺省为 {}，不包含任何附加信息
+
+--------------------------
+**请求 opts 指定的 [url](../../module/ifs/url.md)，并返回结果**
+
+```JavaScript
+HttpResponse HttpClient.request(Object opts) async;
+```
+
+调用参数:
+* opts: Object, 指定附加信息
+
+返回结果:
+* [HttpResponse](HttpResponse.md), 返回服务器响应
+
+opts 包含请求的附加选项，支持的内容如下：
+
+```JavaScript
+{
+    "method": "GET", //指定 http 请求方法：GET, POST 等
+    "protocol": "http",
+    "slashes": true,
+    "username": "",
+    "password": "",
+    "hostname": "",
+    "port": "",
+    "pathname": "",
+    "query": {},
+    "body": SeekableStream | Buffer | String | {},
+    "json": {},
+    "pack": {},
+    "headers": {}
 }
 ```
 
@@ -221,6 +308,13 @@ opts 包含请求的附加选项，支持的内容如下：
 ```JavaScript
 {
     "method": "GET", //指定 http 请求方法：GET, POST 等
+    "protocol": "http",
+    "slashes": true,
+    "username": "",
+    "password": "",
+    "hostname": "",
+    "port": "",
+    "pathname": "",
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
@@ -252,6 +346,13 @@ opts 包含请求的附加选项，支持的内容如下：
 ```JavaScript
 {
     "method": "GET", //指定 http 请求方法：GET, POST 等
+    "protocol": "http",
+    "slashes": true,
+    "username": "",
+    "password": "",
+    "hostname": "",
+    "port": "",
+    "pathname": "",
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
@@ -283,6 +384,13 @@ opts 包含请求的附加选项，支持的内容如下：
 ```JavaScript
 {
     "method": "GET", //指定 http 请求方法：GET, POST 等
+    "protocol": "http",
+    "slashes": true,
+    "username": "",
+    "password": "",
+    "hostname": "",
+    "port": "",
+    "pathname": "",
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
@@ -314,6 +422,13 @@ opts 包含请求的附加选项，支持的内容如下：
 ```JavaScript
 {
     "method": "GET", //指定 http 请求方法：GET, POST 等
+    "protocol": "http",
+    "slashes": true,
+    "username": "",
+    "password": "",
+    "hostname": "",
+    "port": "",
+    "pathname": "",
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
@@ -345,6 +460,13 @@ opts 包含请求的附加选项，支持的内容如下：
 ```JavaScript
 {
     "method": "GET", //指定 http 请求方法：GET, POST 等
+    "protocol": "http",
+    "slashes": true,
+    "username": "",
+    "password": "",
+    "hostname": "",
+    "port": "",
+    "pathname": "",
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
@@ -376,6 +498,13 @@ opts 包含请求的附加选项，支持的内容如下：
 ```JavaScript
 {
     "method": "GET", //指定 http 请求方法：GET, POST 等
+    "protocol": "http",
+    "slashes": true,
+    "username": "",
+    "password": "",
+    "hostname": "",
+    "port": "",
+    "pathname": "",
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
