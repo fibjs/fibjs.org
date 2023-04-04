@@ -204,10 +204,34 @@
 <li><a href=../../../awesome/module/rakuten.md.html class ="notranslate">Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="模块-dgram">模块 dgram</h1>
-<p>dgram 模块提供了 UDP 数据包 socket 的实现</p>
-<p>基础模块，引用方式：</p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> dgram = <span class="hljs-built_in">require</span>(<span class="hljs-string">'dgram'</span>);
-</code></pre>
+<p>dgram 基础模块之一，主要用于实现 UDP 数据包 socket 的封装。</p>
+<p>使用步骤：</p>
+<ol>
+<li><p>首先，通过下面的语句引入 dgram 模块。</p>
+<pre><code><div class="line-numbers">1</div><span class="hljs-attribute">var dgram</span> = require(<span class="hljs-string">'dgram'</span>);
+</code></pre></li>
+<li><p>创建 UDP 数据包 socket 实例。</p>
+<pre><code><div class="line-numbers">1</div><span class="hljs-keyword">var</span> sock = dgram.createSocket(<span class="hljs-string">'udp4'</span>);
+</code></pre></li>
+<li><p>为 UDP 数据包 socket 注册数据接收事件消息回调函数。</p>
+<pre><code><div class="line-numbers">1
+2
+3</div>sock.on(<span class="hljs-string">'message'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(msg, rinfo)</span> </span>{
+<span class="hljs-comment">// 处理数据包消息</span>
+});
+</code></pre></li>
+<li><p>发送 UDP 数据包消息到指定目标地址。</p>
+<pre><code><div class="line-numbers">1
+2
+3
+4
+5</div><span class="hljs-built_in">var</span> msg = <span class="hljs-params">...</span>; <span class="hljs-comment">// 待发送数据包消息</span>
+<span class="hljs-built_in">var</span> port = <span class="hljs-params">...</span>; <span class="hljs-comment">// 目标端口</span>
+<span class="hljs-built_in">var</span> host = <span class="hljs-params">...</span>; <span class="hljs-comment">// 目标地址</span>
+<span class="hljs-built_in">var</span> <span class="hljs-built_in">bytes</span> = sock.send(msg, <span class="hljs-number">0</span>, msg.length, port, host);
+console.<span class="hljs-keyword">log</span>(<span class="hljs-string">'UDP message sent to '</span> + host + <span class="hljs-string">':'</span> + port);
+</code></pre></li>
+</ol>
 <h2 id="对象">对象</h2>
 <h3 id="Socket" class ="notranslate">Socket</h3>
 <p><strong><a href=dgram.md.html#Socket class ="notranslate">dgram.Socket</a> 对象是一个封装了数据包函数功能的 <a href=../../object/ifs/eventemitter.md.html class ="notranslate">EventEmitter</a>。参见 <a href=../../object/ifs/dgramsocket.md.html class ="notranslate">DgramSocket</a></strong></p>

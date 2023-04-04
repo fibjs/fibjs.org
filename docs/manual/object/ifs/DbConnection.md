@@ -1,5 +1,13 @@
 # 对象 DbConnection
-数据库连接对象，用于建立和维护一个数据库连接会话。
+DBConnection 是数据库连接的基类，用于建立和维护一个数据库连接会话。其实现了连接的基本操作，并作为派生类的基础。同时支持开始事务、提交事务、回滚事务等操作。
+
+DBConnection 的子类包括：[Odbc](Odbc.md)、[MySQL](MySQL.md)、[SQLite](SQLite.md)，通过实例化每个子类，我们可以很方便地访问不同种类的数据库。
+
+DBConnection 不能直接创建，只能通过 [db.open](../../module/ifs/db.md#open) 等方法创建，例如：
+```js
+var db = require("db");
+var conn = db.open("mysql://root:123456@localhost:3306/test");
+```
 
 ## 继承关系
 ```dot

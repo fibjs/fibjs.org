@@ -204,7 +204,83 @@
 <li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="对象-Worker" data-unique="对象-Worker"></div><h1 id="对象-Worker"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Object Worker</font></font></h1>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Independent thread worker object</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The Worker object is an object used to create sub-threads, which can be created and processed in the program. </font><font style="vertical-align: inherit;">A Worker object can be understood as a JavaScript process that executes in a thread different from the main thread. </font><font style="vertical-align: inherit;">Worker does not share memory with the main thread and will not block the main thread. It is a mainstream asynchronous programming method</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The constructor of the Worker object is as follows:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> Worker(<span class="hljs-built_in">String</span> path, <span class="hljs-built_in">Object</span> opts = {})
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">in,</font></font><a href="../../module/ifs/path.md.html" class="notranslate">path</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The parameter specifies the JavaScript file path for the new thread. </font><font style="vertical-align: inherit;">For example, you can write a work.js file with the following content:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div><span class="hljs-keyword">const</span> {<font></font>
+    Worker<font></font>
+} = <span class="hljs-built_in">require</span>(<span class="hljs-string">'worker_threads'</span>);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Hi from worker'</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">In the main program, run work.js with the following code:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div><span class="hljs-keyword">const</span> {<font></font>
+    Worker<font></font>
+} = <span class="hljs-built_in">require</span>(<span class="hljs-string">'worker_threads'</span>);
+<span class="hljs-keyword">const</span> worker = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'path/to/work.js'</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">After running, you can see the output "Hi from worker" in the console of the main program.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">In the following example, suppose we have a long time-consuming calculation, and we want to put it into another thread for processing, while avoiding being blocked by this calculation in the main thread. </font><font style="vertical-align: inherit;">code show as below:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">main thread:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</div><span class="hljs-keyword">const</span> {<font></font>
+    Worker<font></font>
+} = <span class="hljs-built_in">require</span>(<span class="hljs-string">'worker_threads'</span>);<font></font>
+<font></font>
+<span class="hljs-comment">// 将耗时计算交给 Worker 来做</span>
+<span class="hljs-keyword">const</span> fib = <span class="hljs-keyword">new</span> Worker(__dirname + <span class="hljs-string">'/fib-worker.js'</span>);
+<span class="hljs-comment">// 通过 on 和 postMessage 在主线程和工作线程之间发送消息</span>
+fib.onmessage = <span class="hljs-function">(<span class="hljs-params">ev</span>) =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'result: '</span>, ev.data);<font></font>
+};<font></font>
+fib.postMessage(<span class="hljs-number">40</span>);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'main thread still working'</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">In this example, we create a worker thread through the constructor of the Worker object to process the calculation of the Fibonacci sequence. The main thread passes data to the worker thread through the postMessage() method, and obtains the processing result through the onmessage event. </font><font style="vertical-align: inherit;">At the same time, the main thread displays the 'still working' message to prove that this calculation task has been 'delegated' to the worker thread and can continue to process other things.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The code style of the worker thread is as follows:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</div><span class="hljs-comment">// fib-worker.js</span>
+Master.onmessage = <span class="hljs-function">(<span class="hljs-params">ev</span>) =&gt;</span> {
+    <span class="hljs-keyword">const</span> n = ev.data;
+    <span class="hljs-keyword">const</span> result = fib(n);
+    <span class="hljs-comment">// Once the calculation has been completed, the result is sent back to the main thread.</span><font></font>
+    Master.postMessage(result);<font></font>
+};<font></font>
+<font></font>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fib</span>(<span class="hljs-params">n</span>) </span>{
+    <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> n;
+    <span class="hljs-keyword">return</span> fib(n - <span class="hljs-number">1</span>) + fib(n - <span class="hljs-number">2</span>);<font></font>
+}<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">In the worker thread, we listen to the message sent by the main thread through the entry parameter postMessage(), calculate the specified Fibonacci sequence and send the calculation result back to the main thread through the Master.postMessage() method.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">This is the most basic Worker example. When developing with Worker objects, the main thread and worker threads are completely asynchronous. Each Worker object is a separate thread. The Worker object instantiated in the main thread does not generate any block.</font></font></p>
 <div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">inheritance relationship</font></font></h2>
 <div class="dot notranslate">
 <!-- Generated by graphviz version 2.40.1 (20161225.0304)

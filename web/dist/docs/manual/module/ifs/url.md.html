@@ -204,7 +204,50 @@
 <li><a href=../../../awesome/module/rakuten.md.html class ="notranslate">Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="模块-url">模块 url</h1>
-<p>url 处理模块</p>
+<p>url 处理模块，url 模块提供了 Url 类，用于处理 URL 相关的操作，包括解析、组装、拼接等</p>
+<p>Url 类的常用属性和方法如下：</p>
+<p>属性：</p>
+<ul>
+<li>href：返回完整的 URL 字符串。</li>
+<li>protocol：URL 的协议部分。</li>
+<li>host：URL 的主机部分。</li>
+<li>auth：URL 的认证部分。</li>
+<li>hostname：URL 的主机名部分。</li>
+<li>port：URL 的端口部分。</li>
+<li>pathname：URL 的路径部分。</li>
+<li>search：URL 的查询参数字符串。</li>
+<li><a href=hash.md.html class ="notranslate">hash</a>：URL 的 <a href=hash.md.html class ="notranslate">hash</a> 部分。</li>
+</ul>
+<p>方法：</p>
+<ul>
+<li>resolve(from, to)：将解析 to（或 to 与 from 的组合）为一个绝对 URL，并返回解析后的 URL 对象。</li>
+<li>parse(urlString)：将 URL 字符串解析为 URL 对象并返回该对象。</li>
+<li>format(urlObject)：将 URL 对象格式化为 URL 字符串并返回。</li>
+</ul>
+<p>下面是一个 url 模块的示例：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</div><span class="hljs-keyword">const</span> {
+    Url
+} = <span class="hljs-built_in">require</span>(<span class="hljs-string">'url'</span>);
+
+<span class="hljs-keyword">const</span> url = <span class="hljs-keyword">new</span> Url(<span class="hljs-string">'http://www.baidu.com/s?ie=UTF-8&amp;wd=fibjs#hash'</span>);
+<span class="hljs-built_in">console</span>.log(url.protocol); <span class="hljs-comment">// 'http:'</span>
+<span class="hljs-built_in">console</span>.log(url.host); <span class="hljs-comment">// 'www.baidu.com'</span>
+<span class="hljs-built_in">console</span>.log(url.path); <span class="hljs-comment">// '/s?ie=UTF-8&amp;wd=fibjs'</span>
+<span class="hljs-built_in">console</span>.log(url.hash); <span class="hljs-comment">// '#hash'</span>
+
+<span class="hljs-built_in">console</span>.log(url.href); <span class="hljs-comment">// 'http://www.baidu.com/s?ie=UTF-8&amp;wd=fibjs&amp;query=fibjs#hash'</span>
+</code></pre>
+<p>在这个例子中，我们演示了如何使用 url 模块来解析 url 字符串，再重新组装成新的 url 字符串。</p>
 <h2 id="对象">对象</h2>
 <h3 id="URL" class ="notranslate">URL</h3>
 <p><strong>创建一个 <a href=../../object/ifs/urlobject.md.html class ="notranslate">UrlObject</a> 请求对象，参见 <a href=../../object/ifs/urlobject.md.html class ="notranslate">UrlObject</a></strong></p>

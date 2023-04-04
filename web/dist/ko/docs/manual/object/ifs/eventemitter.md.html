@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>개체 EventEmitter - 파이버의 JavaScript</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">탐색 전환</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/eventemitter.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/eventemitter.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/eventemitter.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/eventemitter.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/eventemitter.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/eventemitter.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/eventemitter.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/eventemitter.md.html">Italiano</a> <a href="../../../../../nl/docs/manual/object/ifs/eventemitter.md.html">Nederlands</a> <a href="../../../../../ru/docs/manual/object/ifs/eventemitter.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/eventemitter.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/eventemitter.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/eventemitter.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체 내장 개체</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="찾다" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="검색 입력" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">첫 장</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">내장 개체</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체 EventEmitter</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개발 가이드</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>개체 EventEmitter - 파이버의 JavaScript</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">탐색 전환</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/eventemitter.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/eventemitter.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/eventemitter.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/eventemitter.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/eventemitter.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/eventemitter.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/eventemitter.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/eventemitter.md.html">Italiano</a> <a href="../../../../../nl/docs/manual/object/ifs/eventemitter.md.html">Nederlands</a> <a href="../../../../../ru/docs/manual/object/ifs/eventemitter.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/eventemitter.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/eventemitter.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/eventemitter.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체 내장 개체</font></font></span><div class="search"><input type="text" class="searchbox" placeholder="찾다"></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">첫 장</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">내장 객체</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체 EventEmitter</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개발 가이드</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs가 무엇인가요?</font></font></a></li>
 <li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">운영 환경 설치</font></font></a></li>
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
@@ -64,7 +64,7 @@
 <li><a href="../../module/ifs/zip.md.html" class="notranslate">zip</a></li>
 <li><a href="../../module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">내장 개체</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">내장 객체</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="blskey.md.html" class="notranslate">BlsKey</a></li>
 <li><a href="buffer.md.html" class="notranslate">Buffer</a></li>
 <li><a href="bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
@@ -203,16 +203,60 @@
 <li><a href="../../../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
 <li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
 </ul>
- </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="对象-EventEmitter" data-unique="对象-EventEmitter"></div><h1 id="对象-EventEmitter"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체 EventEmitter</font></font></h1>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">관찰자 모드를 설정하는 데 사용할 수 있는 이벤트 트리거 개체 이벤트 트리거를 지원하는 개체는 여기에서 상속됩니다. 동일한 이벤트의 동일한 함수는 하나의 콜백만 생성합니다.</font></font></p>
-<p><a href="event.md.html" class="notranslate">Event</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">사용자 정의 이벤트 시스템 구축에 사용하기 위해 객체를 독립적으로 생성할 수 있습니다.</font></font></p>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <h1 id="对象-EventEmitter"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체 EventEmitter</font></font></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">EventEmitter는 관찰자 패턴을 설정하는 데 사용할 수 있는 이벤트 트리거 개체이며 이벤트 트리거를 지원하는 개체는 이로부터 상속됩니다.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이벤트가 발생하면 해당 이벤트와 연결된 모든 리스너가 비동기적으로 호출됩니다. </font><font style="vertical-align: inherit;">또한 높은 수준의 사용자 정의 가능성과 유연성을 갖춘 코드를 생성할 수 있습니다.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">일반적으로 사용되는 기능에는 addListener/on, once, removeListener/off, removeAllListeners 및 emit이 있습니다.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">샘플 코드는 다음과 같습니다.</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
-3</div><span class="hljs-keyword">var</span> EventEmitter = <span class="hljs-built_in">require</span>(<span class="hljs-string">'events'</span>);<font></font>
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</div><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
+<span class="hljs-keyword">var</span> EventEmitter = <span class="hljs-built_in">require</span>(<span class="hljs-string">'events'</span>);
+<span class="hljs-keyword">var</span> event = <span class="hljs-keyword">new</span> EventEmitter();<font></font>
 <font></font>
-<span class="hljs-keyword">var</span> e = <span class="hljs-keyword">new</span> EventEmitter();
+event.on(<span class="hljs-string">'read_file'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">filename</span>) </span>{<font></font>
+    fs.readFile(filename, <span class="hljs-string">'utf8'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, data</span>) </span>{
+        <span class="hljs-keyword">if</span> (err) {<font></font>
+            event.emit(<span class="hljs-string">'error'</span>, err);
+            <span class="hljs-keyword">return</span>;<font></font>
+        }<font></font>
+        event.emit(<span class="hljs-string">'show_content'</span>, data);<font></font>
+    });<font></font>
+});<font></font>
+<font></font>
+event.on(<span class="hljs-string">'error'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Error <span class="hljs-subst">${err}</span>`</span>);<font></font>
+});<font></font>
+<font></font>
+event.on(<span class="hljs-string">'show_content'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">content</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(content);<font></font>
+});<font></font>
+<font></font>
+event.emit(<span class="hljs-string">'read_file'</span>, <span class="hljs-string">'test.txt'</span>);
 </code></pre>
-<div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">상속 관계</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">위의 샘플 코드는 실행 시 이벤트 이미터 인스턴스 이벤트가 먼저 'read_file' 이벤트를 수신한 다음 이벤트가 트리거( )되면 </font></font><code>event.emit('read_file', 'test.txt')</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">파일을 읽는 작업을 트리거합니다 . </font><font style="vertical-align: inherit;">읽기에 성공하면 'show_content' 이벤트가 트리거되고 'show_content' 이벤트를 수신하는 함수가 실행되고 파일 내용이 표시됩니다. </font><font style="vertical-align: inherit;">파일을 읽는 동안 오류가 발생하면 '오류' 이벤트가 발생하고 실패한 작업이 처리됩니다.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이 모드는 비동기 작업을 다루는 비즈니스 시나리오에서 큰 이점이 있습니다.</font></font></p>
+<h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">상속 관계</font></font></h2>
 <div class="dot notranslate">
 <!-- Generated by graphviz version 2.40.1 (20161225.0304)
  -->
@@ -408,22 +452,22 @@
 </svg>
 </div>
 
-<div name="构造函数" data-unique="构造函数"></div><h2 id="构造函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">건설자</font></font></h2>
-<div name="EventEmitter" data-unique="EventEmitter"></div><h3 id="EventEmitter" class="notranslate">EventEmitter</h3>
+<h2 id="构造函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">건설자</font></font></h2>
+<h3 id="EventEmitter" class="notranslate">EventEmitter</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">건설자</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> EventEmitter();
 </code></pre>
-<div name="对象" data-unique="对象"></div><h2 id="对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">물체</font></font></h2>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이벤트 트리거 객체</font></font></strong></p>
+<h2 id="对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">물체</font></font></h2>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이벤트 트리거 개체</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>EventEmitter <span class="hljs-keyword">new</span> EventEmitter;
 </code></pre>
-<div name="静态属性" data-unique="静态属性"></div><h2 id="静态属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">정적 속성</font></font></h2>
-<div name="defaultMaxListeners" data-unique="defaultMaxListeners"></div><h3 id="defaultMaxListeners" class="notranslate">defaultMaxListeners</h3>
+<h2 id="静态属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">정적 속성</font></font></h2>
+<h3 id="defaultMaxListeners" class="notranslate">defaultMaxListeners</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">정수, 기본 글로벌 최대 리스너 수</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer EventEmitter.defaultMaxListeners;
 </code></pre>
-<div name="成员函数" data-unique="成员函数"></div><h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">멤버 함수</font></font></h2>
-<div name="on" data-unique="on"></div><h3 id="on" class="notranslate">on</h3>
+<h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">멤버 함수</font></font></h2>
+<h3 id="on" class="notranslate">on</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">객체에 이벤트 핸들러 바인딩</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> EventEmitter.on(<span class="hljs-built_in">String</span> ev,
@@ -451,7 +495,7 @@
 <li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 체인 호출에 편리한 이벤트 객체 자체를 반환합니다.</font></font></li>
 </ul>
 <hr>
-<div name="addListener" data-unique="addListener"></div><h3 id="addListener" class="notranslate">addListener</h3>
+<h3 id="addListener" class="notranslate">addListener</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">객체에 이벤트 핸들러 바인딩</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> EventEmitter.addListener(<span class="hljs-built_in">String</span> ev,
@@ -479,8 +523,8 @@
 <li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 체인 호출에 편리한 이벤트 객체 자체를 반환합니다.</font></font></li>
 </ul>
 <hr>
-<div name="prependListener" data-unique="prependListener"></div><h3 id="prependListener" class="notranslate">prependListener</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이벤트 핸들러 함수를 개체 원점에 바인딩</font></font></strong></p>
+<h3 id="prependListener" class="notranslate">prependListener</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이벤트 핸들러 함수를 개체 시작에 바인딩</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> EventEmitter.prependListener(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
@@ -495,7 +539,7 @@
 <li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 체인 호출에 편리한 이벤트 객체 자체를 반환합니다.</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이벤트 핸들러 함수를 개체 원점에 바인딩</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이벤트 핸들러 함수를 개체 시작에 바인딩</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> EventEmitter.prependListener(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
@@ -507,7 +551,7 @@
 <li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 체인 호출에 편리한 이벤트 객체 자체를 반환합니다.</font></font></li>
 </ul>
 <hr>
-<div name="once" data-unique="once"></div><h3 id="once" class="notranslate">once</h3>
+<h3 id="once" class="notranslate">once</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">일회성 이벤트 처리기를 개체에 바인딩합니다. 일회성 처리기는 한 번만 트리거됩니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> EventEmitter.once(<span class="hljs-built_in">String</span> ev,
@@ -535,8 +579,8 @@
 <li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 체인 호출에 편리한 이벤트 객체 자체를 반환합니다.</font></font></li>
 </ul>
 <hr>
-<div name="prependOnceListener" data-unique="prependOnceListener"></div><h3 id="prependOnceListener" class="notranslate">prependOnceListener</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이벤트 핸들러 함수를 개체 원점에 바인딩</font></font></strong></p>
+<h3 id="prependOnceListener" class="notranslate">prependOnceListener</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이벤트 핸들러 함수를 개체 시작에 바인딩</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> EventEmitter.prependOnceListener(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
@@ -551,7 +595,7 @@
 <li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 체인 호출에 편리한 이벤트 객체 자체를 반환합니다.</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이벤트 핸들러 함수를 개체 원점에 바인딩</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이벤트 핸들러 함수를 개체 시작에 바인딩</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> EventEmitter.prependOnceListener(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
@@ -563,7 +607,7 @@
 <li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 체인 호출에 편리한 이벤트 객체 자체를 반환합니다.</font></font></li>
 </ul>
 <hr>
-<div name="off" data-unique="off"></div><h3 id="off" class="notranslate">off</h3>
+<h3 id="off" class="notranslate">off</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체 처리 큐에서 함수 지정 취소</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> EventEmitter.off(<span class="hljs-built_in">String</span> ev,
@@ -596,14 +640,14 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, 이벤트 매핑 관계를 지정하며, 객체 속성의 이름은 이벤트 이름으로, 속성의 값은 이벤트 처리 함수로 사용</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, 이벤트 매핑 관계 지정, 객체 속성의 이름을 이벤트 이름으로 사용, 속성의 값을 이벤트 처리 함수로 사용</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
 <li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 체인 호출에 편리한 이벤트 객체 자체를 반환합니다.</font></font></li>
 </ul>
 <hr>
-<div name="removeListener" data-unique="removeListener"></div><h3 id="removeListener" class="notranslate">removeListener</h3>
+<h3 id="removeListener" class="notranslate">removeListener</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체 처리 큐에서 함수 지정 취소</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> EventEmitter.removeListener(<span class="hljs-built_in">String</span> ev,
@@ -636,14 +680,14 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
 <ul>
-<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, 이벤트 매핑 관계를 지정하며, 객체 속성의 이름은 이벤트 이름으로, 속성의 값은 이벤트 처리 함수로 사용</font></font></li>
+<li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, 이벤트 매핑 관계 지정, 객체 속성의 이름을 이벤트 이름으로 사용, 속성의 값을 이벤트 처리 함수로 사용</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">반환 결과:</font></font></p>
 <ul>
 <li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 체인 호출에 편리한 이벤트 객체 자체를 반환합니다.</font></font></li>
 </ul>
 <hr>
-<div name="removeAllListeners" data-unique="removeAllListeners"></div><h3 id="removeAllListeners" class="notranslate">removeAllListeners</h3>
+<h3 id="removeAllListeners" class="notranslate">removeAllListeners</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체 처리 대기열에서 모든 이벤트에 대한 모든 수신기를 취소하거나 이벤트가 지정된 경우 지정된 이벤트에 대한 모든 수신기를 제거합니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> EventEmitter.removeAllListeners(<span class="hljs-built_in">String</span> ev);
 </code></pre>
@@ -668,7 +712,7 @@
 <li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 체인 호출에 편리한 이벤트 객체 자체를 반환합니다.</font></font></li>
 </ul>
 <hr>
-<div name="setMaxListeners" data-unique="setMaxListeners"></div><h3 id="setMaxListeners" class="notranslate">setMaxListeners</h3>
+<h3 id="setMaxListeners" class="notranslate">setMaxListeners</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호환성만을 위한 리스너 수의 기본 제한</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>EventEmitter.setMaxListeners(Integer n);
 </code></pre>
@@ -677,7 +721,7 @@
 <li><span class="notranslate">n</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 정수, 이벤트 수 지정</font></font></li>
 </ul>
 <hr>
-<div name="getMaxListeners" data-unique="getMaxListeners"></div><h3 id="getMaxListeners" class="notranslate">getMaxListeners</h3>
+<h3 id="getMaxListeners" class="notranslate">getMaxListeners</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호환성을 위해서만 기본적으로 제한된 수의 리스너를 가져옵니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer EventEmitter.getMaxListeners();
 </code></pre>
@@ -686,7 +730,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 기본 제한 번호를 반환합니다.</font></font></li>
 </ul>
 <hr>
-<div name="listeners" data-unique="listeners"></div><h3 id="listeners" class="notranslate">listeners</h3>
+<h3 id="listeners" class="notranslate">listeners</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체의 지정된 이벤트에 대한 리스너 배열을 쿼리합니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Array</span> EventEmitter.listeners(<span class="hljs-built_in">String</span> ev);
 </code></pre>
@@ -699,7 +743,7 @@
 <li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 지정된 이벤트에 대한 리스너 배열을 반환합니다.</font></font></li>
 </ul>
 <hr>
-<div name="listenerCount" data-unique="listenerCount"></div><h3 id="listenerCount" class="notranslate">listenerCount</h3>
+<h3 id="listenerCount" class="notranslate">listenerCount</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체의 지정된 이벤트에 대한 리스너 수를 쿼리합니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer EventEmitter.listenerCount(<span class="hljs-built_in">String</span> ev);
 </code></pre>
@@ -727,7 +771,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 지정된 이벤트에 대한 리스너 수를 반환합니다.</font></font></li>
 </ul>
 <hr>
-<div name="eventNames" data-unique="eventNames"></div><h3 id="eventNames" class="notranslate">eventNames</h3>
+<h3 id="eventNames" class="notranslate">eventNames</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">쿼리 리스너 이벤트 이름</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Array</span> EventEmitter.eventNames();
 </code></pre>
@@ -736,7 +780,7 @@
 <li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 이벤트 이름의 배열을 반환합니다.</font></font></li>
 </ul>
 <hr>
-<div name="emit" data-unique="emit"></div><h3 id="emit" class="notranslate">emit</h3>
+<h3 id="emit" class="notranslate">emit</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이벤트를 적극적으로 트리거</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Boolean</span> EventEmitter.emit(<span class="hljs-built_in">String</span> ev,<font></font>
@@ -752,7 +796,7 @@
 <li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 이벤트 트리거 상태 반환, 응답 이벤트가 있으면 true 반환, 그렇지 않으면 false 반환</font></font></li>
 </ul>
 <hr>
-<div name="toString" data-unique="toString"></div><h3 id="toString" class="notranslate">toString</h3>
+<h3 id="toString" class="notranslate">toString</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체의 문자열 표현을 반환하고 일반적으로 "[네이티브 개체]"를 반환하며 개체는 자체 특성에 따라 다시 구현될 수 있습니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> EventEmitter.toString();
 </code></pre>
@@ -761,7 +805,7 @@
 <li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 객체의 문자열 표현을 반환합니다.</font></font></li>
 </ul>
 <hr>
-<div name="toJSON" data-unique="toJSON"></div><h3 id="toJSON" class="notranslate">toJSON</h3>
+<h3 id="toJSON" class="notranslate">toJSON</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체의 JSON 형식 표현을 반환하며 일반적으로 개체에 의해 정의된 읽기 가능한 속성 모음을 반환합니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value EventEmitter.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
@@ -773,4 +817,4 @@
 <ul>
 <li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, JSON 직렬화 가능 값을 반환합니다.</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© 저작권 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지원</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© 저작권 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지원</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

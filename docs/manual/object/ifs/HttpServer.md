@@ -1,5 +1,5 @@
 # 对象 HttpServer
-[http](../../module/ifs/http.md) 服务器对象
+HttpServer 是内置对象之一，它是用于创建 HTTP 服务器的对象。一个 HttpServer 对象包含两个必传的参数：端口和事件处理接口对象。在事件处理接口对象中，具体的实现方式可以是简单的回调函数，也可以使用复杂的路由、链式处理数组等方式
 
 [http](../../module/ifs/http.md) 服务器对象是将 [TcpServer](TcpServer.md) 和 [HttpHandler](HttpHandler.md) 组合封装的对象，方便快速搭建服务器，逻辑上相当于：
 
@@ -9,14 +9,19 @@ var svr = new net.TcpServer(addr, port, new http.Handler(function(req) {
 }));
 ```
 
-创建方法：
+下面是一个最简单的 HttpServer 的应用示例，它仅仅是对所有请求，返回字符串 hello world。
 
 ```JavaScript
-var http = require("http");
-var svr = new http.Server(80, function(req) {
-    ...
+const http = require('http');
+var svr = new http.Server(8080, (req) => {
+    req.response.write('hello, world');
 });
+svr.start();
 ```
+
+从代码中可以看到，首先，我们导入了内置的 [http](../../module/ifs/http.md) 模块。然后我们创建了一个新的 HttpServer 对象，并且传入了两个必要参数：一个是端口号，另一个是具体的事件处理接口对象。在这个例子中，我们使用了一个简单的回调函数作为事件处理接口，用来响应来自 HTTP 请求的数据。其中 ``req.response.write('hello, world')`` 用于将我们的字符串 hello world 响应到客户端。
+
+在完成了 HttpServer 对象的创建之后，使用 ``svr.start()`` 来启动服务器，这样我们就能通过这个服务器接收来自 Internet 的 HTTP 请求了。
 
 ## 继承关系
 ```dot

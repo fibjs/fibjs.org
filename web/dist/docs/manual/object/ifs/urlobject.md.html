@@ -204,19 +204,46 @@
 <li><a href=../../../awesome/module/rakuten.md.html class ="notranslate">Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="对象-UrlObject">对象 UrlObject</h1>
-<p>Url 处理对象</p>
-<p>基础模块。提供 <a href=../../module/ifs/url.md.html class ="notranslate">url</a> 的格式化，解析与拼装</p>
+<p>UrlObject 是用于表示 URL 信息的一种对象，我们可以方便地使用 UrlObject 对象表示和操作一个 URL 地址。</p>
+<p>UrlObject 封装了许多有用的方法和属性，例如 parse 和 format 等方法，可以快速地对 URL 进行解析和格式化。</p>
+<p>对于 UrlObject 对象，我们可以通过以下方式进行创建：</p>
+<ol>
+<li>使用 <a href=../../module/ifs/url.md.html class ="notranslate">url</a> 字符串创建 UrlObject。在该方法中，parse 自动将 URL 进行解析，如果 URL 不合法，将抛出异常：</li>
+</ol>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div><span class="hljs-keyword">const</span> url = <span class="hljs-built_in">require</span>(<span class="hljs-string">'url'</span>);
+
+<span class="hljs-keyword">const</span> parsedURL = url.parse(<span class="hljs-string">'https://www.google.com'</span>);
+<span class="hljs-built_in">console</span>.log(parsedURL);
+</code></pre>
+<ol start="2">
+<li>使用构造参数创建 UrlObject：</li>
+</ol>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4
 5
-6</div><span class="hljs-keyword">var</span> url = <span class="hljs-keyword">new</span> net.Url(<span class="hljs-string">'http://www.xici.net/'</span>);
-<span class="hljs-keyword">var</span> url = <span class="hljs-keyword">new</span> net.Url({
-    <span class="hljs-attr">protocol</span>: <span class="hljs-string">'http:'</span>,
-    <span class="hljs-attr">hostname</span>: <span class="hljs-string">'www.xici.net'</span>,
-    <span class="hljs-attr">pathname</span>: <span class="hljs-string">'/'</span>
+6
+7
+8
+9
+10
+11
+12</div><span class="hljs-keyword">const</span> url = <span class="hljs-built_in">require</span>(<span class="hljs-string">'url'</span>);
+
+<span class="hljs-keyword">const</span> parsedURL = <span class="hljs-keyword">new</span> url.URL({
+    <span class="hljs-attr">protocol</span>: <span class="hljs-string">'https:'</span>,
+    <span class="hljs-attr">hostname</span>: <span class="hljs-string">'www.google.com'</span>,
+    <span class="hljs-attr">pathname</span>: <span class="hljs-string">'/search'</span>,
+    <span class="hljs-attr">query</span>: {
+        <span class="hljs-attr">q</span>: <span class="hljs-string">'hello world'</span>,
+    }
 });
+
+<span class="hljs-built_in">console</span>.log(parsedURL);
 </code></pre>
 <h2 id="继承关系">继承关系</h2>
 <div class="dot notranslate">

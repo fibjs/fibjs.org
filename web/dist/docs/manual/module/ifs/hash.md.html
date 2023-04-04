@@ -204,7 +204,36 @@
 <li><a href=../../../awesome/module/rakuten.md.html class ="notranslate">Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="模块-hash">模块 hash</h1>
-<p>信息摘要计算模块，可用于计算信息摘要和摘要签名</p>
+<p>hash 模块主要用于实现消息摘要算法，是实现加密算法中，非常重要的一个子模块。同时，消息摘要算法也是许多加密算法的基础。</p>
+<p>在使用 <code>hash</code> 子模块之前，需要使用 <code>require(&#39;hash&#39;);</code> 加载该模块。</p>
+<p>在 <code>hash</code> 模块中，主要包含以下几个类 <code>Digest</code>、<code>Hmac</code>。其中，<code>Digest</code> 类用于计算消息摘要算法，<code>Hmac</code> 类用于计算带密钥的哈希消息。</p>
+<p>以下是一个简单的使用 <code>Digest</code> 类计算 <code>MD5</code> 摘要的示例代码：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</div><span class="hljs-keyword">const</span> hash = <span class="hljs-built_in">require</span>(<span class="hljs-string">'hash'</span>);
+
+<span class="hljs-comment">// 创建 `MD5` digest 对象</span>
+<span class="hljs-keyword">const</span> digest = hash.digest(hash.MD5);
+
+<span class="hljs-comment">// 更新数据</span>
+<span class="hljs-keyword">const</span> data = <span class="hljs-string">'hello, world'</span>;
+digest.update(data);
+
+<span class="hljs-comment">// 获取摘要结果</span>
+<span class="hljs-keyword">const</span> result = digest.digest(<span class="hljs-string">'hex'</span>);
+<span class="hljs-built_in">console</span>.log(result);
+</code></pre>
+<p>在以上示例代码中，我们首先使用 <code>hash.digest([hash.MD5](hash.md#MD5))</code> 将一个 <code>Digest</code> 对象初始化为 <code>MD5</code> 模式。然后，我们使用 <code>update()</code> 方法向 Digest 对象添加需要进行摘要计算的数据。接着，我们使用 <code>digest()</code> 方法计算摘要结果，并返回通过参数指定的编码方式（这里使用的是 十六进制编码）。最后，输出计算出的摘要结果。</p>
+<p>除了 <code>MD5</code> 以外，<code>Digest</code> 类还支持其他摘要算法，比如 <code>SHA-1</code>、<code>SHA-256</code>、<code>SHA-512</code>等。 在使用时需要将 <code>md5</code> 参数改成对应的摘要算法即可。</p>
 <h2 id="静态函数">静态函数</h2>
 <h3 id="digest" class ="notranslate">digest</h3>
 <p><strong>根据指定的算法标识创建一个信息摘要运算对象</strong></p>

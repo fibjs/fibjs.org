@@ -204,12 +204,39 @@
 <li><a href=../../../awesome/module/rakuten.md.html class ="notranslate">Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="对象-HttpRepeater">对象 HttpRepeater</h1>
-<p><a href=../../module/ifs/http.md.html class ="notranslate">http</a> 请求转发处理器</p>
-<p><a href=../../module/ifs/http.md.html class ="notranslate">http</a> 用于将 <a href=../../module/ifs/http.md.html class ="notranslate">http</a> 请求转发到后端服务器
-用法如下：</p>
+<p>HttpRepeater 是一个 HTTP 请求转发器，可以将 HTTP 请求转发到指定的后端服务器并获得响应。它常常用于需要在前端与多个服务端交互的复杂系统中，或者用于负载均衡</p>
+<p>使用 HttpRepeater 非常简单，只需要在创建实例时为其提供后端服务器的 URL 或负载均衡 URL 数组即可。</p>
+<p>如下是一个使用单个后端的示例：</p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);
-<span class="hljs-keyword">var</span> hr = <span class="hljs-keyword">new</span> http.Repeater(<span class="hljs-string">'http://10.0.0.100:8080/test'</span>);
+2
+3
+4
+5
+6</div><span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);
+<span class="hljs-keyword">var</span> serverUrl = <span class="hljs-string">'http://localhost:'</span> + actualPort + <span class="hljs-string">'/example'</span>
+<span class="hljs-keyword">var</span> repeater = <span class="hljs-keyword">new</span> http.Repeater(serverUrl)
+
+<span class="hljs-keyword">var</span> server = <span class="hljs-keyword">new</span> http.Server(<span class="hljs-number">8081</span>, repeater);
+server.start();
+</code></pre>
+<p>下面是一个使用 URL 数组实现负载均衡的示例：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9</div><span class="hljs-keyword">var</span> serverURLs = [
+    <span class="hljs-string">'http://server1.example.com'</span>,
+    <span class="hljs-string">'http://server2.example.com'</span>,
+    <span class="hljs-string">'http://server3.example.com'</span>
+]
+<span class="hljs-keyword">var</span> repeater = <span class="hljs-keyword">new</span> http.Repeater(serverURLs)
+
+<span class="hljs-keyword">var</span> server = <span class="hljs-keyword">new</span> http.Server(<span class="hljs-number">8081</span>, repeater);
+server.start();
 </code></pre>
 <h2 id="继承关系">继承关系</h2>
 <div class="dot notranslate">

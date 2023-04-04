@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>객체 잠금 - 파이버의 JavaScript</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">탐색 전환</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/lock.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/lock.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/lock.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/lock.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/lock.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/lock.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/lock.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/lock.md.html">Italiano</a> <a href="../../../../../nl/docs/manual/object/ifs/lock.md.html">Nederlands</a> <a href="../../../../../ru/docs/manual/object/ifs/lock.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/lock.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/lock.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/lock.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체 내장 개체</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="찾다" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="검색 입력" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">첫 장</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">내장 개체</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">객체 잠금</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개발 가이드</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>객체 잠금 - 파이버의 JavaScript</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">탐색 전환</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/lock.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/lock.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/lock.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/lock.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/lock.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/lock.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/lock.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/lock.md.html">Italiano</a> <a href="../../../../../nl/docs/manual/object/ifs/lock.md.html">Nederlands</a> <a href="../../../../../ru/docs/manual/object/ifs/lock.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/lock.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/lock.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/lock.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체 내장 개체</font></font></span><div class="search"><input type="text" class="searchbox" placeholder="찾다"></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">첫 장</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">내장 객체</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">객체 잠금</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개발 가이드</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs가 무엇인가요?</font></font></a></li>
 <li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">운영 환경 설치</font></font></a></li>
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
@@ -64,7 +64,7 @@
 <li><a href="../../module/ifs/zip.md.html" class="notranslate">zip</a></li>
 <li><a href="../../module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">내장 개체</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">내장 객체</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="blskey.md.html" class="notranslate">BlsKey</a></li>
 <li><a href="buffer.md.html" class="notranslate">Buffer</a></li>
 <li><a href="bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
@@ -203,18 +203,52 @@
 <li><a href="../../../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
 <li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
 </ul>
- </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="对象-Lock" data-unique="对象-Lock"></div><h1 id="对象-Lock"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">객체 잠금</font></font></h1>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">섬유 잠금 개체</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">운영 체제의 잠금과 달리 파이버 잠금은 순수한 논리 구현이며 잠금 및 잠금 해제의 부하가 매우 적습니다.</font></font></p>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <h1 id="对象-Lock"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">객체 잠금</font></font></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">잠금은 파이버의 동시 액세스를 제어하는 ​​데 사용할 수 있는 내장 개체이며 하나의 파이버를 통해 잠금을 획득하여 다른 파이버가 동시에 획득하는 것을 방지할 수 있습니다. </font><font style="vertical-align: inherit;">잠금을 전달할 수 있습니다.</font></font><a href="../../module/ifs/coroutine.md.html#Lock" class="notranslate">coroutine.Lock</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">() 함수 생성</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">일반적인 상황은 다중 스레드 시나리오에서 여러 스레드가 동일한 데이터를 수정하려고 할 때 데이터 불일치가 발생한다는 것입니다. </font><font style="vertical-align: inherit;">예를 들어, 두 개의 스레드가 동일한 데이터에서 동일한 값을 수정하려고 하는데 제어가 잘못되면 일관성 없는 결과가 발생할 수 있습니다. </font><font style="vertical-align: inherit;">이 때 Lock 객체를 사용하여 동일한 데이터에 대한 상호 배타적 액세스를 실현합니다.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">다음은 Lock을 사용하여 두 섬유의 교대 실행을 실현하는 간단한 예이며 공유 변수 v의 값은 300이 아닙니다.</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
-4</div><span class="hljs-keyword">var</span> l = <span class="hljs-keyword">new</span> coroutine.Lock();<font></font>
-l.acquire();<font></font>
-.....<font></font>
-l.release();<font></font>
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</div><span class="hljs-keyword">var</span> coroutine = <span class="hljs-built_in">require</span>(<span class="hljs-string">"coroutine"</span>)<font></font>
+<font></font>
+<span class="hljs-keyword">var</span> l = <span class="hljs-keyword">new</span> coroutine.Lock()
+<span class="hljs-keyword">var</span> v = <span class="hljs-number">100</span><font></font>
+<font></font>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"></span>) </span>{<font></font>
+    l.acquire()<font></font>
+    v = <span class="hljs-number">200</span>
+    coroutine.sleep(<span class="hljs-number">1</span>)<font></font>
+    v = <span class="hljs-number">300</span><font></font>
+    l.release()<font></font>
+}<font></font>
+coroutine.start(f)<font></font>
+<font></font>
+coroutine.sleep(<span class="hljs-number">1</span>)<font></font>
+<font></font>
+l.acquire()<font></font>
+assert.notEqual(<span class="hljs-number">300</span>, v)<font></font>
+assert.equal(<span class="hljs-number">200</span>, v)<font></font>
+l.release()<font></font>
 </code></pre>
-<div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">상속 관계</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">먼저 Lock 객체를 만들고 fiber f를 입력하고 잠금을 획득한 후 변수 v를 수정한 다음 잠금을 해제합니다. </font><font style="vertical-align: inherit;">메인 스레드에서 먼저 파이버 f가 완료될 때까지 기다립니다... 파이버 f가 잠금을 해제한 후 메인 스레드는 잠금을 획득하기 시작하고 변수 v의 값이 300으로 변경되었는지 확인합니다.</font></font></p>
+<h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">상속 관계</font></font></h2>
 <div class="dot notranslate">
 <!-- Generated by graphviz version 2.40.1 (20161225.0304)
  -->
@@ -305,13 +339,13 @@ l.release();<font></font>
 </svg>
 </div>
 
-<div name="构造函数" data-unique="构造函数"></div><h2 id="构造函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">건설자</font></font></h2>
-<div name="Lock" data-unique="Lock"></div><h3 id="Lock" class="notranslate">Lock</h3>
+<h2 id="构造函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">건설자</font></font></h2>
+<h3 id="Lock" class="notranslate">Lock</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">건설자</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> Lock();
 </code></pre>
-<div name="成员函数" data-unique="成员函数"></div><h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">멤버 함수</font></font></h2>
-<div name="acquire" data-unique="acquire"></div><h3 id="acquire" class="notranslate">acquire</h3>
+<h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">멤버 함수</font></font></h2>
+<h3 id="acquire" class="notranslate">acquire</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">자물쇠의 소유권을 얻다</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> Lock.acquire(<span class="hljs-built_in">Boolean</span> blocking = <span class="hljs-literal">true</span>);
 </code></pre>
@@ -327,13 +361,13 @@ l.release();<font></font>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">잠금을 획득할 수 없고 차단이 true이면 현재 광섬유가 휴면 상태에 들어가고 다른 광섬유가 잠금을 해제하면 이 메서드는 true를 반환합니다.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">잠금을 사용할 수 없고 차단이 false인 경우 메서드는 false를 반환합니다.</font></font></p>
 <hr>
-<div name="release" data-unique="release"></div><h3 id="release" class="notranslate">release</h3>
+<h3 id="release" class="notranslate">release</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">잠금 소유권 해제</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Lock.release();
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이 메서드는 잠금 소유권을 해제하거나 현재 파이버가 잠금을 소유하지 않는 경우 오류를 발생시킵니다.</font></font></p>
 <hr>
-<div name="count" data-unique="count"></div><h3 id="count" class="notranslate">count</h3>
+<h3 id="count" class="notranslate">count</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">현재 대기 중인 작업 수 쿼리</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Lock.count();
 </code></pre>
@@ -342,7 +376,7 @@ l.release();<font></font>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 작업 수를 반환합니다.</font></font></li>
 </ul>
 <hr>
-<div name="toString" data-unique="toString"></div><h3 id="toString" class="notranslate">toString</h3>
+<h3 id="toString" class="notranslate">toString</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체의 문자열 표현을 반환하고 일반적으로 "[네이티브 개체]"를 반환하며 개체는 자체 특성에 따라 다시 구현될 수 있습니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Lock.toString();
 </code></pre>
@@ -351,7 +385,7 @@ l.release();<font></font>
 <li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 객체의 문자열 표현을 반환합니다.</font></font></li>
 </ul>
 <hr>
-<div name="toJSON" data-unique="toJSON"></div><h3 id="toJSON" class="notranslate">toJSON</h3>
+<h3 id="toJSON" class="notranslate">toJSON</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체의 JSON 형식 표현을 반환하며 일반적으로 개체에 의해 정의된 읽기 가능한 속성 모음을 반환합니다.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value Lock.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
@@ -363,4 +397,4 @@ l.release();<font></font>
 <ul>
 <li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, JSON 직렬화 가능 값을 반환합니다.</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© 저작권 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지원</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© 저작권 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지원</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

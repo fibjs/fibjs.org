@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>模塊fs - JavaScript on Fiber</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Toggle navigation</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../readme.md.html">MODULE</a></li><li><a href="../../object/readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/module/ifs/fs.md.html">中文</a> <a href="../../../../../ca/docs/manual/module/ifs/fs.md.html">Catalan</a> <a href="../../../../../de/docs/manual/module/ifs/fs.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/module/ifs/fs.md.html">English</a> <a href="../../../../../es/docs/manual/module/ifs/fs.md.html">Español</a> <a href="../../../../../fr/docs/manual/module/ifs/fs.md.html">Français</a> <a href="../../../../../gl/docs/manual/module/ifs/fs.md.html">Galego</a> <a href="../../../../../it/docs/manual/module/ifs/fs.md.html">Italiano</a> <a href="../../../../../nl/docs/manual/module/ifs/fs.md.html">Nederlands</a> <a href="../../../../../ru/docs/manual/module/ifs/fs.md.html">Русский</a> <a href="../../../../../ja/docs/manual/module/ifs/fs.md.html">日本語</a> <a href="../../../../../ko/docs/manual/module/ifs/fs.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/module/ifs/fs.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Module 基礎模塊</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Search" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="search input" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">首頁</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">基礎模塊</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模塊fs</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">開髮指南</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>模塊fs - JavaScript on Fiber</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Toggle navigation</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../readme.md.html">MODULE</a></li><li><a href="../../object/readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/module/ifs/fs.md.html">中文</a> <a href="../../../../../ca/docs/manual/module/ifs/fs.md.html">Catalan</a> <a href="../../../../../de/docs/manual/module/ifs/fs.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/module/ifs/fs.md.html">English</a> <a href="../../../../../es/docs/manual/module/ifs/fs.md.html">Español</a> <a href="../../../../../fr/docs/manual/module/ifs/fs.md.html">Français</a> <a href="../../../../../gl/docs/manual/module/ifs/fs.md.html">Galego</a> <a href="../../../../../it/docs/manual/module/ifs/fs.md.html">Italiano</a> <a href="../../../../../nl/docs/manual/module/ifs/fs.md.html">Nederlands</a> <a href="../../../../../ru/docs/manual/module/ifs/fs.md.html">Русский</a> <a href="../../../../../ja/docs/manual/module/ifs/fs.md.html">日本語</a> <a href="../../../../../ko/docs/manual/module/ifs/fs.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/module/ifs/fs.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Module 基礎模塊</font></font></span><div class="search"><input type="text" class="searchbox" placeholder="Search"></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">首頁</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">基礎模塊</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模塊fs</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">開髮指南</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 是什麼？</font></font></a></li>
 <li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安裝運行環境</font></font></a></li>
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
@@ -203,11 +203,45 @@
 <li><a href="../../../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
 <li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
 </ul>
- </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="模块-fs" data-unique="模块-fs"></div><h1 id="模块-fs"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模塊fs</font></font></h1>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件系統處理模塊</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用方法：</font></font></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <h1 id="模块-fs"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模塊fs</font></font></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fs 模塊是文件系統操作模塊。</font><font style="vertical-align: inherit;">它提供了讀取文件、寫入文件、打開文件、關閉文件、更改文件權限等磁盤I/O 操作，支持同步和異步兩種用法。</font><font style="vertical-align: inherit;">fs 模塊還提供了文件監視器功能，可以監聽文件系統中文件和目錄的變化，並回調指定的函數。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">例如，要在fibjs 中讀取一個文件，可以使用fs 模塊的readFile 方法：</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
+<span class="hljs-keyword">var</span> content = fs.readFile(<span class="hljs-string">'/path/to/file'</span>);
 </code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果想要異步讀取文件，可以通過回調來實現：</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);<font></font>
+fs.readFile(<span class="hljs-string">'/path/to/file'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, data</span>) </span>{
+    <span class="hljs-keyword">if</span> (err) <span class="hljs-keyword">throw</span> err;
+    <span class="hljs-built_in">console</span>.log(data);<font></font>
+});<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">類似地，如果要寫入一個文件，可以使用fs 模塊的writeFile 方法：</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
+<span class="hljs-keyword">var</span> content = <span class="hljs-string">'hello, world!'</span>;<font></font>
+fs.writeFile(<span class="hljs-string">'/path/to/file'</span>, content);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">如果要異步寫入文件，可以通過回調來實現：</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6</div><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
+<span class="hljs-keyword">var</span> content = <span class="hljs-string">'hello, world!'</span>;<font></font>
+fs.writeFile(<span class="hljs-string">'/path/to/file'</span>, content, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>{
+    <span class="hljs-keyword">if</span> (err) <span class="hljs-keyword">throw</span> err;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'File saved.'</span>);<font></font>
+});<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">除了讀寫文件之外，fs 模塊還提供了一系列其他的文件系統操作，諸如創建目錄、修改文件權限、查詢文件狀態等等。</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">一些注意點:</font></font></p>
 <ul>
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">運行 </font></font><code>fs.watch(filename)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 會返回一個繼承自</font></font><a href="../../object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的watcher, 它支持'change', 'changeonly', 'renameonly' 三個事件</font></font></li>
@@ -215,13 +249,13 @@
 <li><code>fs.watchFile(target)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">會返回一個繼承自</font></font><a href="../../object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的</font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對象, 調用 </font></font><code>fs.unwatchFile(target)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 等價於調用</font></font><code>StatsWatcher.close()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></li>
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">因為uv 在Linux 上的實現,</font></font><code>fs.watch</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的 </font></font><code>recursive</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 選項僅在win32/darwin 被穩定支持. 你依然可以嘗試在Linux 中嘗試使用</font></font><code>fs.watch('/[path](path.md)/to', { recursive: true }, handler)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 但可能會發現 </font></font><code>handler</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 被回調的時機與你預期的有差異</font></font></li>
 </ul>
-<div name="对象" data-unique="对象"></div><h2 id="对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對象</font></font></h2>
-<div name="constants" data-unique="constants"></div><h3 id="constants" class="notranslate">constants</h3>
+<h2 id="对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對象</font></font></h2>
+<h3 id="constants" class="notranslate">constants</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fs模塊的常量對象</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>fs_constants fs.constants;
 </code></pre>
-<div name="静态函数" data-unique="静态函数"></div><h2 id="静态函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">靜態函數</font></font></h2>
-<div name="exists" data-unique="exists"></div><h3 id="exists" class="notranslate">exists</h3>
+<h2 id="静态函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">靜態函數</font></font></h2>
+<h3 id="exists" class="notranslate">exists</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">查詢指定的文件或目錄是否存在</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> fs.exists(<span class="hljs-built_in">String</span> path) <span class="hljs-keyword">async</span>;
 </code></pre>
@@ -234,7 +268,7 @@
 <li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回True 表示文件或目錄存在</font></font></li>
 </ul>
 <hr>
-<div name="access" data-unique="access"></div><h3 id="access" class="notranslate">access</h3>
+<h3 id="access" class="notranslate">access</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">查詢用戶對指定的文件的權限</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> fs.access(<span class="hljs-built_in">String</span> path,<font></font>
@@ -246,7 +280,7 @@
 <li><span class="notranslate">mode</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, 指定查詢的權限,默認為文件是否存在</font></font></li>
 </ul>
 <hr>
-<div name="link" data-unique="link"></div><h3 id="link" class="notranslate">link</h3>
+<h3 id="link" class="notranslate">link</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">創建硬鏈接文件, windows 下不支持此方法</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> fs.link(<span class="hljs-built_in">String</span> oldPath,
@@ -258,7 +292,7 @@
 <li><span class="notranslate">newPath</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 將要被創建的文件</font></font></li>
 </ul>
 <hr>
-<div name="unlink" data-unique="unlink"></div><h3 id="unlink" class="notranslate">unlink</h3>
+<h3 id="unlink" class="notranslate">unlink</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">刪除指定的文件</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> fs.unlink(<span class="hljs-built_in">String</span> path) <span class="hljs-keyword">async</span>;
 </code></pre>
@@ -267,7 +301,7 @@
 <li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定要刪除的路徑</font></font></li>
 </ul>
 <hr>
-<div name="mkdir" data-unique="mkdir"></div><h3 id="mkdir" class="notranslate">mkdir</h3>
+<h3 id="mkdir" class="notranslate">mkdir</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">創建一個目錄</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> fs.mkdir(<span class="hljs-built_in">String</span> path,<font></font>
@@ -299,7 +333,7 @@
 }<font></font>
 </code></pre>
 <hr>
-<div name="rmdir" data-unique="rmdir"></div><h3 id="rmdir" class="notranslate">rmdir</h3>
+<h3 id="rmdir" class="notranslate">rmdir</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">刪除一個目錄</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> fs.rmdir(<span class="hljs-built_in">String</span> path) <span class="hljs-keyword">async</span>;
 </code></pre>
@@ -308,7 +342,7 @@
 <li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定要刪除的目錄名</font></font></li>
 </ul>
 <hr>
-<div name="rename" data-unique="rename"></div><h3 id="rename" class="notranslate">rename</h3>
+<h3 id="rename" class="notranslate">rename</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">重新命名一個文件</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> fs.rename(<span class="hljs-built_in">String</span> <span class="hljs-keyword">from</span>,
@@ -320,7 +354,7 @@
 <li><span class="notranslate">to</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定要修改的新文件名</font></font></li>
 </ul>
 <hr>
-<div name="copyFile" data-unique="copyFile"></div><h3 id="copyFile" class="notranslate">copyFile</h3>
+<h3 id="copyFile" class="notranslate">copyFile</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">將src 拷貝到dest。</font><font style="vertical-align: inherit;">默認情況下，如果dest 已經存在，則覆蓋它。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -341,7 +375,7 @@
 <li><a href="fs.md.html#constants" class="notranslate">fs.constants</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.COPYFILE_FICLONE_FORCE - 拷貝操作將嘗試創建寫時拷貝鏈接。</font><font style="vertical-align: inherit;">如果平台不支持寫時拷貝，則拷貝操作將失敗。</font></font></li>
 </ul>
 <hr>
-<div name="chmod" data-unique="chmod"></div><h3 id="chmod" class="notranslate">chmod</h3>
+<h3 id="chmod" class="notranslate">chmod</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">設置指定文件的訪問權限，Windows 不支持此方法</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> fs.chmod(<span class="hljs-built_in">String</span> path,<font></font>
@@ -353,7 +387,7 @@
 <li><span class="notranslate">mode</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, 指定設定的訪問權限</font></font></li>
 </ul>
 <hr>
-<div name="lchmod" data-unique="lchmod"></div><h3 id="lchmod" class="notranslate">lchmod</h3>
+<h3 id="lchmod" class="notranslate">lchmod</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">設置指定文件的訪問權限，若文件是軟連接則不改變指向文件的權限，只在macOS、BSD 系列平台上可用</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> fs.lchmod(<span class="hljs-built_in">String</span> path,<font></font>
@@ -365,7 +399,7 @@
 <li><span class="notranslate">mode</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, 指定設定的訪問權限</font></font></li>
 </ul>
 <hr>
-<div name="chown" data-unique="chown"></div><h3 id="chown" class="notranslate">chown</h3>
+<h3 id="chown" class="notranslate">chown</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">設置指定文件的擁有者，Windows 不支持此方法</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -380,7 +414,7 @@
 <li><span class="notranslate">gid</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, 文件擁有者組id</font></font></li>
 </ul>
 <hr>
-<div name="lchown" data-unique="lchown"></div><h3 id="lchown" class="notranslate">lchown</h3>
+<h3 id="lchown" class="notranslate">lchown</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">設置指定文件的擁有者，如果指定的文件是軟連接則不會改變其指向文件的擁有者，Windows 不支持此方法</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -395,7 +429,7 @@
 <li><span class="notranslate">gid</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, 文件擁有者組id</font></font></li>
 </ul>
 <hr>
-<div name="stat" data-unique="stat"></div><h3 id="stat" class="notranslate">stat</h3>
+<h3 id="stat" class="notranslate">stat</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">查詢指定文件的基礎信息</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Stat fs.stat(<span class="hljs-built_in">String</span> path) <span class="hljs-keyword">async</span>;
 </code></pre>
@@ -408,7 +442,7 @@
 <li><a href="../../object/ifs/stat.md.html" class="notranslate">Stat</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回文件的基礎信息</font></font></li>
 </ul>
 <hr>
-<div name="lstat" data-unique="lstat"></div><h3 id="lstat" class="notranslate">lstat</h3>
+<h3 id="lstat" class="notranslate">lstat</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">查詢指定文件的基礎信息, 和stat不同的是, 當</font></font><a href="path.md.html" class="notranslate">path</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是一個軟連接的時候，返回的將是這個軟連接的信息而不是指向的文件的信息</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Stat fs.lstat(<span class="hljs-built_in">String</span> path) <span class="hljs-keyword">async</span>;
 </code></pre>
@@ -421,7 +455,7 @@
 <li><a href="../../object/ifs/stat.md.html" class="notranslate">Stat</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回文件的基礎信息</font></font></li>
 </ul>
 <hr>
-<div name="readlink" data-unique="readlink"></div><h3 id="readlink" class="notranslate">readlink</h3>
+<h3 id="readlink" class="notranslate">readlink</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">讀取指定的軟連接文件, windows 下不支持此方法</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> fs.readlink(<span class="hljs-built_in">String</span> path) <span class="hljs-keyword">async</span>;
 </code></pre>
@@ -434,7 +468,7 @@
 <li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回軟連接指向的文件名</font></font></li>
 </ul>
 <hr>
-<div name="realpath" data-unique="realpath"></div><h3 id="realpath" class="notranslate">realpath</h3>
+<h3 id="realpath" class="notranslate">realpath</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">返回指定路徑的絕對路徑，如果指定路徑中包含相對路徑也會被展開</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> fs.realpath(<span class="hljs-built_in">String</span> path) <span class="hljs-keyword">async</span>;
 </code></pre>
@@ -447,7 +481,7 @@
 <li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回處理後的絕對路徑</font></font></li>
 </ul>
 <hr>
-<div name="symlink" data-unique="symlink"></div><h3 id="symlink" class="notranslate">symlink</h3>
+<h3 id="symlink" class="notranslate">symlink</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">創建軟連接文件</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -462,7 +496,7 @@
 <li><span class="notranslate">type</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 創建的軟連接類型, 可選類型為'file', 'dir', 'junction', 默認為'file', 該參數只在windows上有效，當為'junction'的時候將要創建的目標路徑linkpath必須為絕對路徑, 而target則會被自動轉化為絕對路徑。</font></font></li>
 </ul>
 <hr>
-<div name="truncate" data-unique="truncate"></div><h3 id="truncate" class="notranslate">truncate</h3>
+<h3 id="truncate" class="notranslate">truncate</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">修改文件尺寸,如果指定的長度大於源文件大小則用'\0'填充，否則多於的文件內容將丟失</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> fs.truncate(<span class="hljs-built_in">String</span> path,<font></font>
@@ -474,7 +508,7 @@
 <li><span class="notranslate">len</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, 指定修改後文件的大小</font></font></li>
 </ul>
 <hr>
-<div name="read" data-unique="read"></div><h3 id="read" class="notranslate">read</h3>
+<h3 id="read" class="notranslate">read</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">根據文件描述符，讀取文件內容</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -499,7 +533,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 實際讀取的字節數</font></font></li>
 </ul>
 <hr>
-<div name="fchmod" data-unique="fchmod"></div><h3 id="fchmod" class="notranslate">fchmod</h3>
+<h3 id="fchmod" class="notranslate">fchmod</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">根據文件描述符，改變文件模式。</font><font style="vertical-align: inherit;">只在POSIX 系統有效。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> fs.fchmod(Integer fd,<font></font>
@@ -511,7 +545,7 @@
 <li><span class="notranslate">mode</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, 文件的模式</font></font></li>
 </ul>
 <hr>
-<div name="fchown" data-unique="fchown"></div><h3 id="fchown" class="notranslate">fchown</h3>
+<h3 id="fchown" class="notranslate">fchown</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">根據文件描述符，改變所有者。</font><font style="vertical-align: inherit;">只在POSIX 系統有效。</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -526,7 +560,7 @@
 <li><span class="notranslate">gid</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, 組id</font></font></li>
 </ul>
 <hr>
-<div name="fdatasync" data-unique="fdatasync"></div><h3 id="fdatasync" class="notranslate">fdatasync</h3>
+<h3 id="fdatasync" class="notranslate">fdatasync</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">根據文件描述符，同步數據到磁盤</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> fs.fdatasync(Integer fd) <span class="hljs-keyword">async</span>;
 </code></pre>
@@ -535,7 +569,7 @@
 <li><span class="notranslate">fd</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, 文件描述符</font></font></li>
 </ul>
 <hr>
-<div name="fsync" data-unique="fsync"></div><h3 id="fsync" class="notranslate">fsync</h3>
+<h3 id="fsync" class="notranslate">fsync</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">根據文件描述符，同步數據到磁盤</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> fs.fsync(Integer fd) <span class="hljs-keyword">async</span>;
 </code></pre>
@@ -544,7 +578,7 @@
 <li><span class="notranslate">fd</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, 文件描述符</font></font></li>
 </ul>
 <hr>
-<div name="readdir" data-unique="readdir"></div><h3 id="readdir" class="notranslate">readdir</h3>
+<h3 id="readdir" class="notranslate">readdir</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">讀取指定目錄的文件信息</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> NArray fs.readdir(<span class="hljs-built_in">String</span> path) <span class="hljs-keyword">async</span>;
 </code></pre>
@@ -572,7 +606,7 @@
 <li><span class="notranslate">NArray</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回目錄的文件信息數組</font></font></li>
 </ul>
 <hr>
-<div name="openFile" data-unique="openFile"></div><h3 id="openFile" class="notranslate">openFile</h3>
+<h3 id="openFile" class="notranslate">openFile</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">打開文件，用於讀取，寫入，或者同時讀寫</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> SeekableStream fs.openFile(<span class="hljs-built_in">String</span> fname,
@@ -597,7 +631,7 @@
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'a+' 讀寫添加方式，文件不存在則自動創建。</font></font></li>
 </ul>
 <hr>
-<div name="open" data-unique="open"></div><h3 id="open" class="notranslate">open</h3>
+<h3 id="open" class="notranslate">open</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">打開文件描述符</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -625,7 +659,7 @@
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'a+' 讀寫添加方式，文件不存在則自動創建。</font></font></li>
 </ul>
 <hr>
-<div name="close" data-unique="close"></div><h3 id="close" class="notranslate">close</h3>
+<h3 id="close" class="notranslate">close</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">關閉文件描述符</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> fs.close(Integer fd) <span class="hljs-keyword">async</span>;
 </code></pre>
@@ -634,7 +668,7 @@
 <li><span class="notranslate">fd</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, 文件描述符</font></font></li>
 </ul>
 <hr>
-<div name="openTextStream" data-unique="openTextStream"></div><h3 id="openTextStream" class="notranslate">openTextStream</h3>
+<h3 id="openTextStream" class="notranslate">openTextStream</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">打開文本文件，用於讀取，寫入，或者同時讀寫</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> BufferedStream fs.openTextStream(<span class="hljs-built_in">String</span> fname,
@@ -659,7 +693,7 @@
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">'a+' 讀寫添加方式，文件不存在則自動創建。</font></font></li>
 </ul>
 <hr>
-<div name="readTextFile" data-unique="readTextFile"></div><h3 id="readTextFile" class="notranslate">readTextFile</h3>
+<h3 id="readTextFile" class="notranslate">readTextFile</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">打開文本文件，並讀取內容</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> fs.readTextFile(<span class="hljs-built_in">String</span> fname) <span class="hljs-keyword">async</span>;
 </code></pre>
@@ -672,7 +706,7 @@
 <li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回文件文本內容</font></font></li>
 </ul>
 <hr>
-<div name="readFile" data-unique="readFile"></div><h3 id="readFile" class="notranslate">readFile</h3>
+<h3 id="readFile" class="notranslate">readFile</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">打開文件，並讀取內容</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> Variant fs.readFile(<span class="hljs-built_in">String</span> fname,
@@ -710,7 +744,7 @@
 }<font></font>
 </code></pre>
 <hr>
-<div name="readLines" data-unique="readLines"></div><h3 id="readLines" class="notranslate">readLines</h3>
+<h3 id="readLines" class="notranslate">readLines</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">打開文件，以數組方式讀取一組文本行，行結尾標識基於EOL 屬性的設置，缺省時，posix:"\n"；windows:"\r\n"</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Array</span> fs.readLines(<span class="hljs-built_in">String</span> fname,<font></font>
@@ -726,7 +760,7 @@
 <li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 返回讀取的文本行數組，若無數據可讀，或者連接中斷，空數組</font></font></li>
 </ul>
 <hr>
-<div name="write" data-unique="write"></div><h3 id="write" class="notranslate">write</h3>
+<h3 id="write" class="notranslate">write</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">根據文件描述符，向文件寫入內容</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -772,7 +806,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 實際寫入的字節數</font></font></li>
 </ul>
 <hr>
-<div name="writeTextFile" data-unique="writeTextFile"></div><h3 id="writeTextFile" class="notranslate">writeTextFile</h3>
+<h3 id="writeTextFile" class="notranslate">writeTextFile</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">創建文本文件，並寫入內容</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> fs.writeTextFile(<span class="hljs-built_in">String</span> fname,
@@ -784,7 +818,7 @@
 <li><span class="notranslate">txt</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定要寫入的字符串</font></font></li>
 </ul>
 <hr>
-<div name="writeFile" data-unique="writeFile"></div><h3 id="writeFile" class="notranslate">writeFile</h3>
+<h3 id="writeFile" class="notranslate">writeFile</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">創建二進製文件，並寫入內容</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> fs.writeFile(<span class="hljs-built_in">String</span> fname,<font></font>
@@ -796,7 +830,7 @@
 <li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 指定要寫入的二進制數據</font></font></li>
 </ul>
 <hr>
-<div name="appendFile" data-unique="appendFile"></div><h3 id="appendFile" class="notranslate">appendFile</h3>
+<h3 id="appendFile" class="notranslate">appendFile</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">創建二進製文件，並寫入內容</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> fs.appendFile(<span class="hljs-built_in">String</span> fname,<font></font>
@@ -808,7 +842,7 @@
 <li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 指定要寫入的二進制數據</font></font></li>
 </ul>
 <hr>
-<div name="setZipFS" data-unique="setZipFS"></div><h3 id="setZipFS" class="notranslate">setZipFS</h3>
+<h3 id="setZipFS" class="notranslate">setZipFS</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">設置</font></font><a href="zip.md.html" class="notranslate">zip</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">虛擬文件映射</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> fs.setZipFS(<span class="hljs-built_in">String</span> fname,<font></font>
@@ -820,7 +854,7 @@
 <li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 指定映射的</font></font><a href="zip.md.html" class="notranslate">zip</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件數據</font></font></li>
 </ul>
 <hr>
-<div name="clearZipFS" data-unique="clearZipFS"></div><h3 id="clearZipFS" class="notranslate">clearZipFS</h3>
+<h3 id="clearZipFS" class="notranslate">clearZipFS</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">清除</font></font><a href="zip.md.html" class="notranslate">zip</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">虛擬文件映射</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> fs.clearZipFS(<span class="hljs-built_in">String</span> fname = <span class="hljs-string">""</span>);
 </code></pre>
@@ -829,7 +863,7 @@
 <li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, 指定映射路徑，缺省清除全部緩存</font></font></li>
 </ul>
 <hr>
-<div name="watch" data-unique="watch"></div><h3 id="watch" class="notranslate">watch</h3>
+<h3 id="watch" class="notranslate">watch</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">觀察一個文件, 返回對應的watcher 對象</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> FSWatcher fs.watch(<span class="hljs-built_in">String</span> fname);
 </code></pre>
@@ -912,7 +946,7 @@
 }<font></font>
 </code></pre>
 <hr>
-<div name="watchFile" data-unique="watchFile"></div><h3 id="watchFile" class="notranslate">watchFile</h3>
+<h3 id="watchFile" class="notranslate">watchFile</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">觀察一個文件, 返回對應的</font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對象</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> StatsWatcher fs.watchFile(<span class="hljs-built_in">String</span> fname,
@@ -957,7 +991,7 @@
 }<font></font>
 </code></pre>
 <hr>
-<div name="unwatchFile" data-unique="unwatchFile"></div><h3 id="unwatchFile" class="notranslate">unwatchFile</h3>
+<h3 id="unwatchFile" class="notranslate">unwatchFile</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">從觀察fname 的</font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">中移除所有觀察事件的回調</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> fs.unwatchFile(<span class="hljs-built_in">String</span> fname);
 </code></pre>
@@ -985,19 +1019,19 @@
 <li><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對象</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">即便callback 不再</font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">的觀察事件回調中也不會報錯</font></font></p>
-<div name="常量" data-unique="常量"></div><h2 id="常量"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">常量</font></font></h2>
-<div name="SEEK_SET" data-unique="SEEK_SET"></div><h3 id="SEEK_SET" class="notranslate">SEEK_SET</h3>
+<h2 id="常量"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">常量</font></font></h2>
+<h3 id="SEEK_SET" class="notranslate">SEEK_SET</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">seek 方式常量，移動到絕對位置</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> fs.SEEK_SET = <span class="hljs-number">0</span>;
 </code></pre>
 <hr>
-<div name="SEEK_CUR" data-unique="SEEK_CUR"></div><h3 id="SEEK_CUR" class="notranslate">SEEK_CUR</h3>
+<h3 id="SEEK_CUR" class="notranslate">SEEK_CUR</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">seek 方式常量，移動到當前位置的相對位置</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> fs.SEEK_CUR = <span class="hljs-number">1</span>;
 </code></pre>
 <hr>
-<div name="SEEK_END" data-unique="SEEK_END"></div><h3 id="SEEK_END" class="notranslate">SEEK_END</h3>
+<h3 id="SEEK_END" class="notranslate">SEEK_END</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">seek 方式常量，移動到文件結尾的相對位置</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> fs.SEEK_END = <span class="hljs-number">2</span>;
 </code></pre>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

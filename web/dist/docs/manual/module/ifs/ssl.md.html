@@ -204,7 +204,61 @@
 <li><a href=../../../awesome/module/rakuten.md.html class ="notranslate">Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="模块-ssl">模块 ssl</h1>
-<p>ssl/tls 模块，模块别名：tls</p>
+<p>ssl 模块是 fibjs 内置的加密模块，可以用于建立网络连接的 SSL 超文本传输协议。该模块提供加密验证，客户端和服务器可以确保连接是安全的</p>
+<p>ssl 模块中包含了多个对象和常量，可以用于一个完整的 SSL 客户端/服务器通信流程。常用的类别有：</p>
+<ol>
+<li><a href=../../object/ifs/sslsocket.md.html class ="notranslate">SslSocket</a>：基于底层 <a href=../../object/ifs/socket.md.html class ="notranslate">Socket</a> 封装的 Ssl 套接字对象，可以用来与远程服务器端进行双向验证等通信操作。</li>
+<li><a href=../../object/ifs/sslhandler.md.html class ="notranslate">SslHandler</a>：SSL 协议转换处理器，用于将数据流转换为 SSL 流协议，适用于构建服务器端的服务。</li>
+<li><a href=../../object/ifs/sslserver.md.html class ="notranslate">SslServer</a>：SSL 服务器对象，方便搭建标准多纤程 SSL 服务器。</li>
+</ol>
+<p>下面以 <a href=ssl.md.html#Server class ="notranslate">ssl.Server</a> 为例，介绍 ssl 模块的使用。</p>
+<p><a href=ssl.md.html#Server class ="notranslate">ssl.Server</a> 是一个基本的 SSL 服务器，它提供了一个基于 SSL 的网络服务。使用 <a href=ssl.md.html#Server class ="notranslate">ssl.Server</a> 类可以快速创建一个基于 SSL/TLS 的服务器，同时兼容 TCP/HTTP 服务的基本所有特性。它具有以下特点：</p>
+<ul>
+<li>自带 X.509 证书管理器，支持多个域名证书、通配符、SAN 证书等功能。</li>
+<li>拥有与 TCP 服务器完全一致的接口和使用方式，上层代码无需关心 SSL 连接和 TCP 连接区别。</li>
+<li>使用内置的 OpenSSL 库实现了所有 SSL/TLS 安全协议。</li>
+<li>支持 SNI 和 ALPN 等协议扩展功能。</li>
+</ul>
+<p>下面是一个简单的示例：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</div><span class="hljs-keyword">const</span> ssl = <span class="hljs-built_in">require</span>(<span class="hljs-string">'ssl'</span>);
+<span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);
+<span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
+
+<span class="hljs-comment">// 读取 SSL 证书和私钥</span>
+<span class="hljs-keyword">let</span> key = crypto.loadPKey(<span class="hljs-string">'mycert.key'</span>);
+<span class="hljs-keyword">let</span> cert = crypto.loadCert(<span class="hljs-string">'mycert.pem'</span>);
+<span class="hljs-comment">// 创建 SSL 服务器</span>
+<span class="hljs-keyword">const</span> svr = <span class="hljs-keyword">new</span> ssl.Server(cert, key, <span class="hljs-number">8080</span>, s =&gt; {
+    <span class="hljs-keyword">var</span> data;
+
+    <span class="hljs-keyword">while</span> (data = s.read()) {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`received data: <span class="hljs-subst">${data.toString()}</span>`</span>);
+        s.write(data.toString().toUpperCase());
+    }
+});
+
+<span class="hljs-comment">// 启动服务器</span>
+svr.start();
+</code></pre>
+<p>上面的代码中，我们首先读取了 SSL 证书和私钥文件，然后创建了一个 SSL 服务器实例。在服务器的回调函数中，接收到客户端数据后，将数据转换为大写，并通过 write 函数将数据返回给客户。</p>
 <h2 id="对象">对象</h2>
 <h3 id="Socket" class ="notranslate">Socket</h3>
 <p><strong>创建一个 <a href=../../object/ifs/sslsocket.md.html class ="notranslate">SslSocket</a> 对象，参见 <a href=../../object/ifs/sslsocket.md.html class ="notranslate">SslSocket</a></strong></p>

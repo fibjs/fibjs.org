@@ -1,5 +1,5 @@
 # 对象 HttpsServer
-https 服务器对象
+HttpsServer 是用于创建 https 服务器的对象，HttpsServer 对象可以使用 [HttpServer](HttpServer.md) 所有的接口函数和属性。HttpsServer 对象可以通过在创建时传入之前使用 openssl 生成的证书对象 ([X509Cert](X509Cert.md) 类型) 和密钥对象 ([PKey](PKey.md) 类型)，从而为客户端提供 [ssl](../../module/ifs/ssl.md) 加密保护的服务
 
 https 服务器对象是将 [SslServer](SslServer.md) 和 [HttpHandler](HttpHandler.md) 组合封装的对象，方便快速搭建服务器，逻辑上相当于：
 
@@ -9,14 +9,26 @@ var svr = new net.SslServer(crt, key, addr, port, new http.Handler(function(req)
 }));
 ```
 
-创建方法：
+下面是一个使用 HttpsServer 的示例代码：
 
 ```JavaScript
-var http = require("http");
-var svr = new http.HttpsServer(crt, key, 443, function(req) {
-    ...
+const http = require("http");
+const crypto = require("crypto");
+
+// 加载证书和密钥文件
+const cert = crypto.loadCert("server.crt");
+const key = crypto.loadPKey("server.key");
+
+//创建 https 服务器并启动
+const server = new http.HttpsServer(cert, key, 8443, function(req) {
+    resp.response.write(`Hello, Fibjs!`);
 });
+server.start();
 ```
+
+在上面的例子中，我们加载了一个名为 "server.crt" 和 "server.key" 的证书和私钥文件，然后使用 HttpsServer 对象创建了一个服务，并开启了监听 8443 端口的服务，当客户端通过"https://localhost:8443/" 访问服务时，就可以受到 [ssl](../../module/ifs/ssl.md) 加密保护。
+
+需要注意的是，如果是需要让外部访问的话，需要确保证书是公信机构颁发的，否则客户端无法验证，降低了性能和安全，并可能触发安全警告。
 
 ## 继承关系
 ```dot

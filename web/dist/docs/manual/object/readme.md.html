@@ -212,13 +212,13 @@
 <li><a href=ifs/childprocess.md.html class ="notranslate">ChildProcess</a> - 子进程对象</li>
 <li><a href=ifs/cipher.md.html class ="notranslate">Cipher</a> - 对称加密算法对象</li>
 <li><a href=ifs/condition.md.html class ="notranslate">Condition</a> - 条件变量对象</li>
-<li><a href=ifs/dbconnection.md.html class ="notranslate">DbConnection</a> - 数据库连接对象，用于建立和维护一个数据库连接会话。</li>
+<li><a href=ifs/dbconnection.md.html class ="notranslate">DbConnection</a> - DBConnection 是数据库连接的基类，用于建立和维护一个数据库连接会话。其实现了连接的基本操作，并作为派生类的基础。同时支持开始事务、提交事务、回滚事务等操作。</li>
 <li><a href=ifs/dgramsocket.md.html class ="notranslate">DgramSocket</a> - dgram.Socket 对象是一个封装了数据包函数功能的 EventEmitter。</li>
 <li><a href=ifs/digest.md.html class ="notranslate">Digest</a> - 信息摘要对象</li>
-<li><a href=ifs/eckey.md.html class ="notranslate">ECKey</a> - 椭圆曲线加密算法对象</li>
+<li><a href=ifs/eckey.md.html class ="notranslate">ECKey</a> - ECKey 类是在 crypto 模块中实现的，可以使用该类来生成 ECDSA 密钥对、签名和验证消息等</li>
 <li><a href=ifs/ed25519key.md.html class ="notranslate">Ed25519Key</a> - 椭圆曲线加密算法对象</li>
-<li><a href=ifs/event.md.html class ="notranslate">Event</a> - 事件对象</li>
-<li><a href=ifs/eventemitter.md.html class ="notranslate">EventEmitter</a> - 事件触发对象，可用于建立观察者模式，支持事件触发的对象均继承于此，同一事件的同一函数只会产生一次回调</li>
+<li><a href=ifs/event.md.html class ="notranslate">Event</a> - Event 模块提供了一个事件对象，用于协同共享数据操作。它允许多个纤程（协程）之间进行同步操作，以实现协作式多任务。事件对象有 wait，pulse 和 clear 三个方法，wait 方法将阻塞当前纤程，直至事件被触发，pulse 方法将唤醒所有等待该事件的纤程，而 clear 方法则将事件标志重置为 false。通过使用 coroutine.Event 模块，开发者可以控制纤程之间的执行顺序和数据共享，实现复杂业务逻辑。</li>
+<li><a href=ifs/eventemitter.md.html class ="notranslate">EventEmitter</a> - EventEmitter 是事件触发对象，它可以被用于建立观察者模式，支持事件触发的对象均继承于此</li>
 <li><a href=ifs/fswatcher.md.html class ="notranslate">FSWatcher</a> - 文件系统观察对象</li>
 <li><a href=ifs/fiber.md.html class ="notranslate">Fiber</a> - 纤程操作对象，此对象不可直接创建</li>
 <li><a href=ifs/file.md.html class ="notranslate">File</a> - 文件操作对象，用于二进制文件读写</li>
@@ -226,31 +226,31 @@
 <li><a href=ifs/heapgraphedge.md.html class ="notranslate">HeapGraphEdge</a> - HeapGraphEdge表示两个HeapGraphNode节点间的关联，从上游节点到下游节点</li>
 <li><a href=ifs/heapgraphnode.md.html class ="notranslate">HeapGraphNode</a> - HeapGraphNode表示堆视图中的一个节点</li>
 <li><a href=ifs/heapsnapshot.md.html class ="notranslate">HeapSnapshot</a> - HeapSnapshots记录JS堆在某个时刻的状态</li>
-<li><a href=ifs/httpclient.md.html class ="notranslate">HttpClient</a> - http客户端对象</li>
-<li><a href=ifs/httpcollection.md.html class ="notranslate">HttpCollection</a> - http 容器对象，用于 http header，cookie，query，form，等数据的存储与组织</li>
-<li><a href=ifs/httpcookie.md.html class ="notranslate">HttpCookie</a> - http Cookie 对象，用于添加和处理 cookie</li>
+<li><a href=ifs/httpclient.md.html class ="notranslate">HttpClient</a> - HttpClient 是针对 HTTP 客户端功能设计的类库，提供了基本的 HTTP/HTTPS 请求、代理访问、cookie 管理等功能</li>
+<li><a href=ifs/httpcollection.md.html class ="notranslate">HttpCollection</a> - HttpCollection 是一个通用容器，用于处理 http 消息中的 headers, query, form, cookie 数据</li>
+<li><a href=ifs/httpcookie.md.html class ="notranslate">HttpCookie</a> - HttpCookie 是 HTTP 协议封装的 cookie 对象，它提供了获取、设置 cookie 的各个属性，同时也支持多个 cookie 的组织与处理，是 http.Request 和 http.Response 两个对象都支持的一个重要属性</li>
 <li><a href=ifs/httphandler.md.html class ="notranslate">HttpHandler</a> - http 协议转换处理器</li>
 <li><a href=ifs/httpmessage.md.html class ="notranslate">HttpMessage</a> - http 基础消息对象</li>
-<li><a href=ifs/httprepeater.md.html class ="notranslate">HttpRepeater</a> - http 请求转发处理器</li>
-<li><a href=ifs/httprequest.md.html class ="notranslate">HttpRequest</a> - http 请求消息对象</li>
-<li><a href=ifs/httpresponse.md.html class ="notranslate">HttpResponse</a> - http 响应消息对象</li>
-<li><a href=ifs/httpserver.md.html class ="notranslate">HttpServer</a> - http 服务器对象</li>
+<li><a href=ifs/httprepeater.md.html class ="notranslate">HttpRepeater</a> - HttpRepeater 是一个 HTTP 请求转发器，可以将 HTTP 请求转发到指定的后端服务器并获得响应。它常常用于需要在前端与多个服务端交互的复杂系统中，或者用于负载均衡</li>
+<li><a href=ifs/httprequest.md.html class ="notranslate">HttpRequest</a> - HttpRequest 是用来处理 HTTP 请求的类， 它允许你创建 HTTP 请求并与服务器交互。你可以使用它来向 Web 服务器发送 GET、POST 以及其它类型的 HTTP 请求</li>
+<li><a href=ifs/httpresponse.md.html class ="notranslate">HttpResponse</a> - HttpResponse 是一个 HTTP 响应对象，使用 HttpRequest.response 对象完成 Http 服务端数据响应，或 http.request 请求返回服务器的响应数据</li>
+<li><a href=ifs/httpserver.md.html class ="notranslate">HttpServer</a> - HttpServer 是内置对象之一，它是用于创建 HTTP 服务器的对象。一个 HttpServer 对象包含两个必传的参数：端口和事件处理接口对象。在事件处理接口对象中，具体的实现方式可以是简单的回调函数，也可以使用复杂的路由、链式处理数组等方式</li>
 <li><a href=ifs/httpuploaddata.md.html class ="notranslate">HttpUploadData</a> - 包含 multipart 的一个条目数据</li>
-<li><a href=ifs/httpsserver.md.html class ="notranslate">HttpsServer</a> - https 服务器对象</li>
+<li><a href=ifs/httpsserver.md.html class ="notranslate">HttpsServer</a> - HttpsServer 是用于创建 https 服务器的对象，HttpsServer 对象可以使用 HttpServer 所有的接口函数和属性。HttpsServer 对象可以通过在创建时传入之前使用 openssl 生成的证书对象 (X509Cert 类型) 和密钥对象 (PKey 类型)，从而为客户端提供 ssl 加密保护的服务</li>
 <li><a href=ifs/image.md.html class ="notranslate">Image</a> - 图像处理对象，用以对图像进行转换，绘制，存储等操作</li>
 <li><a href=ifs/iterator.md.html class ="notranslate">Iterator</a> - 迭代器对象，用于遍历集合数据</li>
-<li><a href=ifs/leveldb.md.html class ="notranslate">LevelDB</a> - LevelDB 数据库对象</li>
-<li><a href=ifs/lock.md.html class ="notranslate">Lock</a> - 纤程锁对象</li>
-<li><a href=ifs/lrucache.md.html class ="notranslate">LruCache</a> - LRU(least recently used) 缓存对象</li>
+<li><a href=ifs/leveldb.md.html class ="notranslate">LevelDB</a> - evelDB 是 fibjs 内置的数据库操作对象，用于创建和管理键值对形式的字典对象。使用 LevelDB 对象，可轻松实现键值对数据的存储、查询、删除、枚举等操作。它基于 Google 开源的 LevelDB 实现，具有高效、可靠、可扩展等优点</li>
+<li><a href=ifs/lock.md.html class ="notranslate">Lock</a> - Lock 是一个内建对象，它可以用来控制纤程并发访问, 可以通过一个纤程获取锁，来阻止其他纤程同时获取。Lock 可以通过 coroutine.Lock() 函数创建</li>
+<li><a href=ifs/lrucache.md.html class ="notranslate">LruCache</a> - LruCache(Least Recently Used Cache) 是用来维护LRU缓存的类。它可以存储一定数量的值，并且保持了容器的尺寸。当新数据进来时，如果容器还没有到达尺寸限制，新数据可以直接加入到容器中。如果容器已满，则容器将淘汰最近最少使用的数据</li>
 <li><a href=ifs/memorystream.md.html class ="notranslate">MemoryStream</a> - 内存流对象</li>
 <li><a href=ifs/message.md.html class ="notranslate">Message</a> - 基础消息对象</li>
 <li><a href=ifs/mongocollection.md.html class ="notranslate">MongoCollection</a> - mongodb 数据库数据集对象</li>
 <li><a href=ifs/mongocursor.md.html class ="notranslate">MongoCursor</a> - mongodb 数据库数据游标对象</li>
 <li><a href=ifs/mongodb.md.html class ="notranslate">MongoDB</a> - mongodb 数据库连接对象</li>
 <li><a href=ifs/mongoid.md.html class ="notranslate">MongoID</a> - mongodb 数据库数据唯一标识对象，用于存储传递 oid</li>
-<li><a href=ifs/mysql.md.html class ="notranslate">MySQL</a> - mysql 数据库连接对象</li>
+<li><a href=ifs/mysql.md.html class ="notranslate">MySQL</a> - MySQL 对象是用于操作 MySQL 数据库的类,</li>
 <li><a href=ifs/odbc.md.html class ="notranslate">Odbc</a> - Odbc 数据库连接对象</li>
-<li><a href=ifs/pkey.md.html class ="notranslate">PKey</a> - 不对称加密算法对象</li>
+<li><a href=ifs/pkey.md.html class ="notranslate">PKey</a> - PKey 是内置的 crypto 模块提供的对象，它表示一对密钥：公钥和私钥。PKey 支持在 JS 中生成密钥、载入密钥、存储密钥以及对加密过程进行管理</li>
 <li><a href=ifs/rangestream.md.html class ="notranslate">RangeStream</a> - Range 查询流读取对象</li>
 <li><a href=ifs/redis.md.html class ="notranslate">Redis</a> - Redis 数据库客户端对象</li>
 <li><a href=ifs/redishash.md.html class ="notranslate">RedisHash</a> - Redis 数据库客户端 Hash 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库</li>
@@ -258,7 +258,7 @@
 <li><a href=ifs/redisset.md.html class ="notranslate">RedisSet</a> - Redis 数据库客户端 Set 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库</li>
 <li><a href=ifs/redissortedset.md.html class ="notranslate">RedisSortedSet</a> - Redis 数据库客户端 SortedSet 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库</li>
 <li><a href=ifs/routing.md.html class ="notranslate">Routing</a> - 消息处理器路由对象</li>
-<li><a href=ifs/sqlite.md.html class ="notranslate">SQLite</a> - sqlite 数据库连接对象</li>
+<li><a href=ifs/sqlite.md.html class ="notranslate">SQLite</a> - SQLite 对象是内置模块 db 的一个成员，主要负责 SQLite 数据库的连接和操作，可用于 SQLite 数据库的创建、查询、插入、更新等操作。同时，SQLite 对象也提供了一些类似备份、格式化 SQL 等高级操作。SQLite 连接对象还支持事务操作</li>
 <li><a href=ifs/sandbox.md.html class ="notranslate">SandBox</a> - 安全沙箱对象，用于管理一个独立的运行空间</li>
 <li><a href=ifs/seekablestream.md.html class ="notranslate">SeekableStream</a> - 可移动当前指针的流对象接口</li>
 <li><a href=ifs/semaphore.md.html class ="notranslate">Semaphore</a> - 纤程信号量对象</li>
@@ -274,23 +274,23 @@
 <li><a href=ifs/stringdecoder.md.html class ="notranslate">StringDecoder</a> - 流解码对象</li>
 <li><a href=ifs/ttyinputstream.md.html class ="notranslate">TTYInputStream</a> - tty 读流对象, 用于对 tty 进行读取, 写入</li>
 <li><a href=ifs/ttyoutputstream.md.html class ="notranslate">TTYOutputStream</a> - tty 写流对象, 用于处理 tty 输出</li>
-<li><a href=ifs/tcpserver.md.html class ="notranslate">TcpServer</a> - tcp 服务器对象，可方便创建一个标准多纤程 tcp 服务器</li>
+<li><a href=ifs/tcpserver.md.html class ="notranslate">TcpServer</a> - TcpServer` 是高并发的 TCP Socket 服务器，可以用来创建一个初始状态下已经与客户端建立了 TCP 连接的 TCP 服务器</li>
 <li><a href=ifs/textdecoder.md.html class ="notranslate">TextDecoder</a> - TextDecoder 解码对象</li>
 <li><a href=ifs/textencoder.md.html class ="notranslate">TextEncoder</a> - TextEncoder 编码对象</li>
 <li><a href=ifs/timer.md.html class ="notranslate">Timer</a> - 定时器处理器对象</li>
-<li><a href=ifs/urlobject.md.html class ="notranslate">UrlObject</a> - Url 处理对象</li>
-<li><a href=ifs/websocket.md.html class ="notranslate">WebSocket</a> - WebSocket 包协议转换处理器</li>
-<li><a href=ifs/websocketmessage.md.html class ="notranslate">WebSocketMessage</a> - websocket 消息对象</li>
+<li><a href=ifs/urlobject.md.html class ="notranslate">UrlObject</a> - UrlObject 是用于表示 URL 信息的一种对象，我们可以方便地使用 UrlObject 对象表示和操作一个 URL 地址。</li>
+<li><a href=ifs/websocket.md.html class ="notranslate">WebSocket</a> - WebSocket 是一种基于 TCP 协议的全双工通信协议，在浏览器和服务器之间建立起一个不断开的连接，可以实现实时双向数据传输，并且可以支持任意格式的数据传输。在 fibjs 中，WebSocket 支持模块提供了相应的 API 接口，可以实现 WebSocket 服务器端和客户端的开发</li>
+<li><a href=ifs/websocketmessage.md.html class ="notranslate">WebSocketMessage</a> - <code>WebSocketMessage</code> 是 WebSocket 协议中的一种消息类型，它封装了 WebSocket 传输协议中各类消息的数据格式和处理方式，可用于 WebSocket 客户端和服务端双方通信。</li>
 <li><a href=ifs/webview.md.html class ="notranslate">WebView</a> - 浏览器窗口对象</li>
-<li><a href=ifs/worker.md.html class ="notranslate">Worker</a> - 独立线程工作对象</li>
-<li><a href=ifs/x509cert.md.html class ="notranslate">X509Cert</a> - x509 证书对象</li>
-<li><a href=ifs/x509crl.md.html class ="notranslate">X509Crl</a> - x509 撤销证书对象</li>
-<li><a href=ifs/x509req.md.html class ="notranslate">X509Req</a> - x509 证书请求对象</li>
+<li><a href=ifs/worker.md.html class ="notranslate">Worker</a> - Worker 对象是用于创建子线程的对象，可以在程序中创建和处理子线程。一个 Worker 对象可以理解为一个在与主线程不同的线程中执行的 JavaScript 进程。 Worker 不与主线程共享内存，不会阻塞主线程，是一种主流的异步编程方式</li>
+<li><a href=ifs/x509cert.md.html class ="notranslate">X509Cert</a> - X509Cert 是 crypto 模块中表示 x509 证书的对象，这个对象主要包括了从一个 DER 或者 PEM 格式的证书数据以及证书链数据构建出来的证书信息和方法，可以进行证书的解析和验证等操作</li>
+<li><a href=ifs/x509crl.md.html class ="notranslate">X509Crl</a> - X509Crl 对象是 crypto 模块中的一个对象，用来表示 X509 撤销证书，即证书的吊销列表，与 CA 相关的操作如 X509 证书链的验证都会用到撤销列表信息</li>
+<li><a href=ifs/x509req.md.html class ="notranslate">X509Req</a> - X509Req 对象是用于创建 x509 证书请求的对象，属于 crypto 模块</li>
 <li><a href=ifs/xmlattr.md.html class ="notranslate">XmlAttr</a> - XmlAttr 对象表示 XmlElement 对象的属性</li>
 <li><a href=ifs/xmlcdatasection.md.html class ="notranslate">XmlCDATASection</a> - XmlCDATASection 对象表示文档中的 CDATA 区段</li>
 <li><a href=ifs/xmlcharacterdata.md.html class ="notranslate">XmlCharacterData</a> - XmlCharacterData 接口提供了 XmlText 和 XmlComment 节点的常用功能</li>
 <li><a href=ifs/xmlcomment.md.html class ="notranslate">XmlComment</a> - XmlComment 对象表示文档中注释节点的内容</li>
-<li><a href=ifs/xmldocument.md.html class ="notranslate">XmlDocument</a> - XmlDocument 对象代表整个 XML 文档</li>
+<li><a href=ifs/xmldocument.md.html class ="notranslate">XmlDocument</a> - XmlDocument 是  xml 模块的一个对象，它代表整个 XML 文档，提供了对整个文档的访问入口</li>
 <li><a href=ifs/xmldocumenttype.md.html class ="notranslate">XmlDocumentType</a> - XmlDocumentType 对象用于访问 XML 所定义的实体</li>
 <li><a href=ifs/xmlelement.md.html class ="notranslate">XmlElement</a> - XmlElement 对象表示 XML 文档中的元素</li>
 <li><a href=ifs/xmlnamednodemap.md.html class ="notranslate">XmlNamedNodeMap</a> - XmlNamedNodeMap 对象表示一个无顺序的属性列表</li>
@@ -298,7 +298,7 @@
 <li><a href=ifs/xmlnodelist.md.html class ="notranslate">XmlNodeList</a> - XmlNodeList 对象代表一个有顺序的节点列表</li>
 <li><a href=ifs/xmlprocessinginstruction.md.html class ="notranslate">XmlProcessingInstruction</a> - XmlProcessingInstruction 对象表示 xml 处理指令</li>
 <li><a href=ifs/xmltext.md.html class ="notranslate">XmlText</a> - XmlText 对象表示元素或属性的文本内容</li>
-<li><a href=ifs/zipfile.md.html class ="notranslate">ZipFile</a> - zip 文件访问对象</li>
+<li><a href=ifs/zipfile.md.html class ="notranslate">ZipFile</a> - ZipFile 对象是 zip 格式文件压缩解压模块中的重要对象，提供了对 zip 文件的读写访问</li>
 <li><a href=ifs/object.md.html class ="notranslate">object</a> - 基础对象，所有对象均继承于此</li>
 </ul>
  </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../js/common.js></script><script type=text/javascript src=../../../js/docs.js></script></body></html>

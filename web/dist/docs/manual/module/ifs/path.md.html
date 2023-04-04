@@ -204,10 +204,50 @@
 <li><a href=../../../awesome/module/rakuten.md.html class ="notranslate">Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="模块-path">模块 path</h1>
-<p>文件路径处理模块</p>
-<p>引用方法：</p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">'path'</span>);
+<p>path 模块是一个核心模块，它提供了一些工具函数来处理文件和目录的路径。它不会检查路径是否存在或是否是有效路径，而是只提供了处理路径的方法</p>
+<p>path 模块提供的方法很多，最常用的是：</p>
+<ul>
+<li>join()：将给定的路径片段连接在一起，并处理成标准的路径格式。</li>
+<li>resolve()：将路径或路径片段的序列解析为一个绝对路径。</li>
+<li>basename()：返回路径中路径的最后一部分。</li>
+<li>dirname()：返回指定路径的目录名。</li>
+<li>extname()：返回路径中文件的扩展名。</li>
+</ul>
+<p>以下是这些方法的示例代码：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</div><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">'path'</span>);
+
+<span class="hljs-comment">// 连接两个路径片段，并处理成标准的路径格式</span>
+<span class="hljs-built_in">console</span>.log(path.join(<span class="hljs-string">'/usr'</span>, <span class="hljs-string">'local'</span>, <span class="hljs-string">'bin'</span>)); <span class="hljs-comment">// 输出：/usr/local/bin</span>
+
+<span class="hljs-comment">// 将路径 /foo/bar 和 baz 解析为 /foo/bar/baz</span>
+<span class="hljs-built_in">console</span>.log(path.resolve(<span class="hljs-string">'/foo/bar'</span>, <span class="hljs-string">'./baz'</span>)); <span class="hljs-comment">// 输出：/foo/bar/baz</span>
+
+<span class="hljs-comment">// 返回路径 /foo/bar/baz 的最后一部分 baz</span>
+<span class="hljs-built_in">console</span>.log(path.basename(<span class="hljs-string">'/foo/bar/baz'</span>)); <span class="hljs-comment">// 输出：baz</span>
+
+<span class="hljs-comment">// 返回路径 /foo/bar/baz 的目录名 /foo/bar</span>
+<span class="hljs-built_in">console</span>.log(path.dirname(<span class="hljs-string">'/foo/bar/baz'</span>)); <span class="hljs-comment">// 输出：/foo/bar</span>
+
+<span class="hljs-comment">// 返回路径 /foo/bar/baz 中的扩展名 .txt</span>
+<span class="hljs-built_in">console</span>.log(path.extname(<span class="hljs-string">'/foo/bar/baz.txt'</span>)); <span class="hljs-comment">// 输出：.txt</span>
 </code></pre>
+<p>除了上述方法，path 模块还提供了很多其他的方法，如 normalize()、delimiter、posix、win32 等等，用于处理路径的规范化、路径分隔符、路径格式的处理等等。这些方法在实际开发中也经常用到。</p>
+<p>path 模块为我们处理路径提供了很多方便的工具函数，可以使我们更加方便地处理文件和目录路径，是开发中不可或缺的工具之一。</p>
 <h2 id="静态函数">静态函数</h2>
 <h3 id="normalize" class ="notranslate">normalize</h3>
 <p><strong>标准化路径，处理路径中父目录等信息</strong></p>

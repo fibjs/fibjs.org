@@ -204,9 +204,35 @@
 <li><a href=../../../awesome/module/rakuten.md.html class ="notranslate">Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="对象-X509Crl">对象 X509Crl</h1>
-<p>x509 撤销证书对象</p>
-<p>X509Crl 对象属于 <a href=../../module/ifs/crypto.md.html class ="notranslate">crypto</a> 模块，创建：</p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> k = <span class="hljs-keyword">new</span> crypto.X509Crl();
+<p>X509Crl 对象是 <a href=../../module/ifs/crypto.md.html class ="notranslate">crypto</a> 模块中的一个对象，用来表示 X509 撤销证书，即证书的吊销列表，与 CA 相关的操作如 X509 证书链的验证都会用到撤销列表信息</p>
+<p>X509Crl 在 <a href=../../module/ifs/crypto.md.html class ="notranslate">crypto</a> 模块声明，故可以通过下面的代码来引入：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
+</code></pre>
+<p>用户可以通过新建 X509Crl 类对象，调用对象的 import 方法加载一个 DER 或 PEM 格式的证书。可以通过 clear 方法清除已经加载的撤销证书列表信息，控制加载状态，以支持重复的证书加载工作。然后可以使用 nextUpdate 方法获取撤销列表的下次更新时间，调用 serials 获取证书吊销序列号列表等。</p>
+<p>下面这个示例演示如何从文件中导入一个撤销证 ，并将其列表在控制台输出：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
+<span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
+
+<span class="hljs-comment">// 加载 PEM 格式文件</span>
+<span class="hljs-keyword">var</span> pemFile = <span class="hljs-string">'./mycrl.pem'</span>;
+<span class="hljs-keyword">var</span> pemText = fs.readFile(pemFile).toString();
+<span class="hljs-keyword">var</span> crl = <span class="hljs-keyword">new</span> crypto.X509Crl(pemText);
+
+<span class="hljs-comment">// 显示撤销列表中的证书吊销序列号</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; crl.serials.length; i++) {
+    <span class="hljs-built_in">console</span>.log(crl.serials[i]);
+}
 </code></pre>
 <h2 id="继承关系">继承关系</h2>
 <div class="dot notranslate">

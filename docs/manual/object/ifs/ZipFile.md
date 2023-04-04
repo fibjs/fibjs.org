@@ -1,5 +1,48 @@
 # 对象 ZipFile
-[zip](../../module/ifs/zip.md) 文件访问对象
+ZipFile 对象是 [zip](../../module/ifs/zip.md) 格式文件压缩解压模块中的重要对象，提供了对 [zip](../../module/ifs/zip.md) 文件的读写访问
+
+ZipFile 对象继承自[Stream](Stream.md) 对象，因此可以通过 [Stream](Stream.md) 对象一样的方式进行操作。
+
+常用的静态函数有：
+
+- [zip.open](../../module/ifs/zip.md#open)：打开一个 [zip](../../module/ifs/zip.md) 文件或 stream
+- [zip.isZipFile](../../module/ifs/zip.md#isZipFile)：判断文件是否是 [zip](../../module/ifs/zip.md) 文件
+- [fs.setZipFS](../../module/ifs/fs.md#setZipFS)：设置 [zip](../../module/ifs/zip.md) 文件虚拟文件系统
+- [fs.clearZipFS](../../module/ifs/fs.md#clearZipFS)：清除 [zip](../../module/ifs/zip.md) 文件虚拟文件系统
+
+ZipFile 对象的常用实例函数及方法有：
+
+- NArray [ZipFile.namelist](ZipFile.md#namelist)()：获取文件名列表
+- NObject [ZipFile.getinfo](ZipFile.md#getinfo)(String member)：获取文件信息
+- [Buffer](Buffer.md) [ZipFile.read](ZipFile.md#read)(String member, String password = "")：读取指定文件
+- NArray [ZipFile.readAll](ZipFile.md#readAll)(String password = "")：读取所有文件
+- void [ZipFile.extract](ZipFile.md#extract)(String member, String [path](../../module/ifs/path.md), String password = "")：解压文件到指定路径中
+- void [ZipFile.extract](ZipFile.md#extract)(String member, [SeekableStream](SeekableStream.md) strm, String password = "")：解压文件到流中
+- void [ZipFile.extractAll](ZipFile.md#extractAll)(String [path](../../module/ifs/path.md), String password = "")：解压所有文件到指定路径
+- void [ZipFile.write](ZipFile.md#write)(String filename, String inZipName, String password = "")：写入指定文件到压缩文件
+- void [ZipFile.write](ZipFile.md#write)([Buffer](Buffer.md) data, String inZipName, String password = "")：写入指定文件到压缩文件
+- void [ZipFile.write](ZipFile.md#write)([SeekableStream](SeekableStream.md) strm, String inZipName, String password = "")：写入指定文件到压缩文件
+- void [ZipFile.close](ZipFile.md#close)()：关闭打开的[zip](../../module/ifs/zip.md)文件
+
+代码实例如下：
+
+```JavaScript
+var zip = require('zip');
+var path = require('path');
+var fs = require('fs');
+
+var zipfile = zip.open(path.join(__dirname, 'unzip_test.zip'), 'w');
+
+// 写入一个文件
+var buf = new Buffer('test data');
+zipfile.write(buf, 'test.txt');
+
+// 读取一个文件内容
+buf = zipfile.read("unzip_test.js");
+console.log(buf);
+
+zipfile.close();
+```
 
 ## 继承关系
 ```dot

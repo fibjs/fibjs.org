@@ -204,34 +204,24 @@
 <li><a href=../../../awesome/module/rakuten.md.html class ="notranslate">Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="模块-iconv">模块 iconv</h1>
-<p>iconv 编码与解码模块</p>
-<p>引用方式：</p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">var</span> encoding = <span class="hljs-built_in">require</span>(<span class="hljs-string">'encoding'</span>);
-<span class="hljs-keyword">var</span> iconv = encoding.iconv;
-</code></pre>
-<p>或者</p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> iconv = <span class="hljs-built_in">require</span>(<span class="hljs-string">'iconv'</span>);
-</code></pre>
-<p>iconv 会使用系统已安装的编码进行处理，iconv 模块同时还支持以下内置编码集：</p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1
+<p><code>iconv</code> 是内置的一个转换模块，用于实现各种不同编码之间的数据转换</p>
+<p>iconv 是调用底层系统的编码功能来实现的，同时也支持一些内置编码集，例如 &quot;utf8&quot;, &quot;utf-8&quot;, &quot;ucs2&quot;, &quot;ucs-2&quot;, &quot;utf16&quot;, &quot;utf-16&quot;, &quot;ucs2le&quot;, &quot;ucs-2le&quot;, &quot;utf16le&quot;, &quot;utf-16le&quot;, &quot;ucs2be&quot;, &quot;ucs-2be&quot;, &quot;utf16be&quot;, &quot;utf-16be&quot;, &quot;ucs4&quot;, &quot;ucs-4&quot;, &quot;utf32&quot;, &quot;utf-32&quot;, &quot;ucs4le&quot;, &quot;ucs-4le&quot;, &quot;utf32le&quot;, &quot;utf-32le&quot;, &quot;ucs4be&quot;, &quot;ucs-4be&quot;, &quot;utf32be&quot;, &quot;utf-32be&quot;</p>
+<p><code>iconv</code> 模块提供了两个核心方法：</p>
+<ol>
+<li><code>iconv.encode(charset, data)</code>：将文本数据转换为二进制数据</li>
+<li><code>iconv.decode(charset, data)</code>：将二进制数据转换为文本数据</li>
+</ol>
+<p>这两个方法非常易于使用和理解，比如对于一个 &quot;utf-8&quot; 编码的字符串 &quot;hello&quot;，我们可以通过以下代码将其转换为 &quot;gbk&quot; 编码：</p>
+<pre><code><div class="line-numbers">1
 2
 3
 4
-5
-6
-7
-8
-9</div><span class="hljs-string">"utf8"</span>, <span class="hljs-string">"utf-8"</span>,
+5</div><span class="hljs-keyword">const</span> iconv = <span class="hljs-built_in">require</span>(<span class="hljs-string">'iconv'</span>);
 
-<span class="hljs-string">"ucs2"</span>, <span class="hljs-string">"ucs-2"</span>, <span class="hljs-string">"utf16"</span>, <span class="hljs-string">"utf-16"</span>,
-<span class="hljs-string">"ucs2le"</span>, <span class="hljs-string">"ucs-2le"</span>, <span class="hljs-string">"utf16le"</span>, <span class="hljs-string">"utf-16le"</span>,
-<span class="hljs-string">"ucs2be"</span>, <span class="hljs-string">"ucs-2be"</span>, <span class="hljs-string">"utf16be"</span>, <span class="hljs-string">"utf-16be"</span>,
-
-<span class="hljs-string">"ucs4"</span>, <span class="hljs-string">"ucs-4"</span>, <span class="hljs-string">"utf32"</span>, <span class="hljs-string">"utf-32"</span>,
-<span class="hljs-string">"ucs4le"</span>, <span class="hljs-string">"ucs-4le"</span>, <span class="hljs-string">"utf32le"</span>, <span class="hljs-string">"utf-32le"</span>,
-<span class="hljs-string">"ucs4be"</span>, <span class="hljs-string">"ucs-4be"</span>, <span class="hljs-string">"utf32be"</span>, <span class="hljs-string">"utf-32be"</span>
-</code></pre>
+<span class="hljs-keyword">const</span> utf8String = <span class="hljs-string">'hello'</span>;
+<span class="hljs-keyword">const</span> gbkString = iconv.decode(<span class="hljs-string">'gbk'</span>, iconv.encode(<span class="hljs-string">'utf-8'</span>, utf8String));
+<span class="hljs-built_in">console</span>.log(gbkString);  <span class="hljs-comment">// 输出 "hello"</span>
+</code></pre><p>注意：<code>encode</code> 和 <code>decode</code> 方法的第一个参数 charset 都是指定要使用的编码。</p>
 <h2 id="静态函数">静态函数</h2>
 <h3 id="encode" class ="notranslate">encode</h3>
 <p><strong>用 iconv 将文本转换为二进制数据</strong></p>

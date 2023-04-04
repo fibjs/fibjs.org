@@ -204,7 +204,77 @@
 <li><a href=../../../awesome/module/rakuten.md.html class ="notranslate">Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="模块-timers">模块 timers</h1>
-<p>timers 模块</p>
+<p>timers 模块是一个内置模块，提供了一些与时间相关的函数和对象，包括 setTimeout()、setInterval()、clearInterval()、clearTimeout() 等等</p>
+<p>setInterval() 函数每隔指定的时间后调用函数，返回定时器对象。</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6</div><span class="hljs-keyword">var</span> timers = <span class="hljs-built_in">require</span>(<span class="hljs-string">'timers'</span>);
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Hello, World!'</span>);
+}
+<span class="hljs-keyword">var</span> intervalId = timers.setInterval(callback, <span class="hljs-number">1000</span>);
+</code></pre>
+<p>setTimeout() 函数在指定的时间后调用函数，返回定时器对象。</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6</div><span class="hljs-keyword">var</span> timers = <span class="hljs-built_in">require</span>(<span class="hljs-string">'timers'</span>);
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Hello, World!'</span>);
+}
+<span class="hljs-keyword">var</span> timeoutId = timers.setTimeout(callback, <span class="hljs-number">1000</span>);
+</code></pre>
+<p>clearTimeout() 函数用于取消一个由 setTimeout() 方法设置的定时器。需要提供的是在 setTimeout() 中返回的定时器标识符值。</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7</div><span class="hljs-keyword">var</span> timers = <span class="hljs-built_in">require</span>(<span class="hljs-string">'timers'</span>);
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Hello, World!'</span>);
+}
+<span class="hljs-keyword">var</span> timeoutId = timers.setTimeout(callback, <span class="hljs-number">1000</span>);
+timers.clearTimeout(timeoutId);
+</code></pre>
+<p>clearInterval() 函数用于取消一个由 setInterval() 方法设置的定时器。需要提供的是在 setInterval() 中返回的定时器标识符值。</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7</div><span class="hljs-keyword">var</span> timers = <span class="hljs-built_in">require</span>(<span class="hljs-string">'timers'</span>);
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Hello, World!'</span>);
+}
+<span class="hljs-keyword">var</span> intervalId = timers.setInterval(callback, <span class="hljs-number">1000</span>);
+timers.clearInterval(intervalId);
+</code></pre>
+<p>setImmediate() 函数用于在下一个闲置时间立即调用函数，返回定时器对象。</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6</div><span class="hljs-keyword">var</span> timers = <span class="hljs-built_in">require</span>(<span class="hljs-string">'timers'</span>);
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Hello, World!'</span>);
+}
+<span class="hljs-keyword">var</span> immediateId = timers.setImmediate(callback);
+</code></pre>
+<p>以上都是 timers 模块提供的常用函数和对象示例，通过使用这些函数和对象，可以方便的在应用程序中实现延迟执行任务或调度任务执行。</p>
 <h2 id="静态函数">静态函数</h2>
 <h3 id="setTimeout" class ="notranslate">setTimeout</h3>
 <p><strong>在指定的时间后调用函数</strong></p>

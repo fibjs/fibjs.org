@@ -204,9 +204,42 @@
 <li><a href=../../../awesome/module/rakuten.md.html class ="notranslate">Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="模块-zip">模块 zip</h1>
-<p>zip 格式文件压缩解压模块</p>
-<p>使用方法：</p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> zip = <span class="hljs-built_in">require</span>(<span class="hljs-string">'zip'</span>);
+<p>zip 模块是一个用于文件压缩和解压缩的模块。它提供了压缩、解压缩、查找和枚举 zip 文件中的文件列表等操作</p>
+<p>通过 zip 模块，我们可以将多个文件打包成一个 zip 文件，也可以对 zip 文件进行解压缩以恢复原始文件。</p>
+<p>下面是一些示例：</p>
+<p>1.压缩文件：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6</div><span class="hljs-keyword">var</span> zip = <span class="hljs-built_in">require</span>(<span class="hljs-string">'zip'</span>);
+<span class="hljs-keyword">var</span> zipfile = zip.open(<span class="hljs-string">'/path/to/dest.zip'</span>, <span class="hljs-string">'w'</span>);
+
+zipfile.write(<span class="hljs-string">'/path/to/src1'</span>, <span class="hljs-string">'src1'</span>);
+zipfile.write(<span class="hljs-string">'/path/to/src2'</span>, <span class="hljs-string">'src2'</span>);
+zipfile.close();
+</code></pre>
+<p>2.解压缩文件：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</div><span class="hljs-keyword">var</span> zip = <span class="hljs-built_in">require</span>(<span class="hljs-string">'zip'</span>);
+<span class="hljs-keyword">var</span> zipfile = zip.open(<span class="hljs-string">'/path/to/src.zip'</span>, <span class="hljs-string">'r'</span>);
+
+<span class="hljs-keyword">var</span> filenames = zipfile.namelist();
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; filenames.length; ++i) {
+    <span class="hljs-keyword">var</span> filename = filenames[i];
+    <span class="hljs-keyword">var</span> data = zipfile.read(filename);
+    <span class="hljs-built_in">console</span>.log(filename + <span class="hljs-string">': '</span> + data.length + <span class="hljs-string">' bytes'</span>);
+}
+zipfile.close();
 </code></pre>
 <h2 id="静态函数">静态函数</h2>
 <h3 id="isZipFile" class ="notranslate">isZipFile</h3>

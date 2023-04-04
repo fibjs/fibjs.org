@@ -204,7 +204,40 @@
 <li><a href=../../../awesome/module/rakuten.md.html class ="notranslate">Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="模块-xml">模块 xml</h1>
-<p>xml 处理模块</p>
+<p>xml 处理模块，可以使用 xml 模块解析和处理 xml 和 html 文件</p>
+<p>要解析 xml 文件，你可以使用如下代码：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7</div><span class="hljs-keyword">var</span> xml = <span class="hljs-built_in">require</span>(<span class="hljs-string">'xml'</span>);
+<span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
+
+<span class="hljs-keyword">var</span> xmlStr = fs.readFile(<span class="hljs-string">'test.xml'</span>);
+<span class="hljs-keyword">var</span> xmlDoc = xml.parse(xmlStr);
+
+<span class="hljs-built_in">console</span>.log(xmlDoc.documentElement.nodeName); <span class="hljs-comment">// 输出 xml 根节点名称</span>
+</code></pre>
+<p>在上面的代码中，我们使用 <a href=fs.md.html class ="notranslate">fs</a> 模块的 readFile 方法读取了一个 xml 文件，然后使用 xml 模块的 parse 方法解析该 xml 文件，并返回一个 <a href=../../object/ifs/xmldocument.md.html class ="notranslate">XmlDocument</a> 对象 xmlDoc。然后，我们就可以通过 xmlDoc.documentElement 访问 xml 文档的根元素了。</p>
+<p>要解析 html 文件，你只需稍微修改一下代码：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7</div><span class="hljs-keyword">var</span> xml = <span class="hljs-built_in">require</span>(<span class="hljs-string">'xml'</span>);
+<span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
+
+<span class="hljs-keyword">var</span> htmlStr = fs.readFile(<span class="hljs-string">'test.html'</span>);
+<span class="hljs-keyword">var</span> xmlDoc = xml.parse(htmlStr, <span class="hljs-string">'text/html'</span>);
+
+<span class="hljs-built_in">console</span>.log(xmlDoc.documentElement.nodeName); <span class="hljs-comment">// 输出 html 根节点名称</span>
+</code></pre>
+<p>在这里，我们同样使用了 <a href=fs.md.html class ="notranslate">fs</a> 模块的 readFile 方法读取了一个 html 文件，但我们在调用 xml 模块的 parse 方法时指定了第二个参数为 ‘text/html’，这样 xml 模块就会按照 html 的语法规则解析文件。</p>
+<p>解析后的 Xml 文档对象都是 <a href=../../object/ifs/xmldocument.md.html class ="notranslate">XmlDocument</a> 类型，其属性和方法都可以参考 xml 对象模型（DOM）进行操作。</p>
 <h2 id="对象">对象</h2>
 <h3 id="Document" class ="notranslate">Document</h3>
 <p><strong>xml 文档对象，参见 <a href=../../object/ifs/xmldocument.md.html class ="notranslate">XmlDocument</a> 对象</strong></p>

@@ -4,10 +4,10 @@
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
 <li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A better life begins with a test</font></font></a></li>
 <li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Find performance killers</font></font></a></li>
-<li><a href="../../../guide/server-hot-update.md.html">服务端模块热更新</a></li>
-<li><a href="../../../guide/host-routes.md.html">域名路由</a></li>
-<li><a href="../../../guide/x509.md.html">fibjs 中 X509 证书的使用</a></li>
-<li><a href="../../../guide/contribute.md.html">添加 native 模块</a></li>
+<li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Server module hot update</font></font></a></li>
+<li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Domain Routing</font></font></a></li>
+<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Use of X509 certificate in fibjs</font></font></a></li>
+<li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Add native module</font></font></a></li>
 </ul>
  </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Basic module</font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="assert.md.html" class="notranslate">assert</a></li>
@@ -204,7 +204,35 @@
 <li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <h1 id="模块-http"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">module http</font></font></h1>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Hypertext transfer protocol module, used to support http protocol processing, module alias: https</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The http module encapsulates the processing of HTTP requests and responses, allowing us to easily create an http server, or simulate a client to initiate an http request. </font><font style="vertical-align: inherit;">Using the http module, developers can easily write and process code related to the HTTP protocol</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Here is a simple example that creates a web server that returns a hello world response:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7</div><span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);<font></font>
+<font></font>
+<span class="hljs-keyword">const</span> server = <span class="hljs-keyword">new</span> http.Server(<span class="hljs-number">8080</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">request</span>) </span>{<font></font>
+    request.response.write(<span class="hljs-string">'Hello World!'</span>);<font></font>
+});<font></font>
+<font></font>
+server.start();<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">In this example, we import the http module, then define an http server object, and bind it to the local port number 8080. </font><font style="vertical-align: inherit;">When a request is sent to this port number, the response will be set to the string "Hello World!".</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">At the same time, the http module also contains client objects,</font></font><a href="http.md#Client" class="notranslate">http.Client</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Simulate the browser environment to cache cookies, and access</font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The http client object that carries the corresponding cookie. </font><font style="vertical-align: inherit;">you can use it</font></font><a href="http.md#Client" class="notranslate">http.Client</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A series of http-related operations such as accessing http interface requests, performing http downloads, etc. </font><font style="vertical-align: inherit;">Below is</font></font><a href="http.md#Client" class="notranslate">http.Client</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Application example for:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div><span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);<font></font>
+<font></font>
+<span class="hljs-keyword">var</span> httpClient = <span class="hljs-keyword">new</span> http.Client();<font></font>
+httpClient.get(<span class="hljs-string">'http://fibjs.org'</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">In the example above, a</font></font><a href="http.md#Client" class="notranslate">http.Client</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">object, and then call </font></font><code>get</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">the method to initiate a http GET request to fibjs.org.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">in addition,</font></font><a href="http.md#Client" class="notranslate">http.Client</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">There are other properties and methods that can be called, such </font></font><code>cookies</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">as</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The https module is an alias of the http module, and the http module can </font></font><code>require('https')</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">also .</font></font></p>
 <h2 id="对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">object</font></font></h2>
 <h3 id="Request" class="notranslate">Request</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Create an http request object, see</font></font><a href="../../object/ifs/httprequest.md.html" class="notranslate">HttpRequest</a></strong></p>
@@ -264,7 +292,7 @@
 <ul>
 <li><a href="../../object/ifs/handler.md.html" class="notranslate">Handler</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns a static file handler for handling http messages</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fileHandler supports gzip pre-compression. When the request accepts gzip encoding and the filename.ext.gz file exists in the same path, it will directly return this file, thus avoiding repeated compression to bring server load.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fileHandler supports gzip pre-compression. When the request accepts gzip encoding and the filename.ext.gz file exists under the same path, it will directly return this file, thus avoiding repeated compression to bring server load.</font></font></p>
 <hr>
 <h3 id="setClientCert" class="notranslate">setClientCert</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Set default client certificate</font></font></strong></p>
@@ -312,7 +340,7 @@
 <li><a href="../../object/ifs/httpresponse.md.html" class="notranslate">HttpResponse</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns the server response</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">requested to specify</font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, and return the result</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">requested to specify</font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, and returns the result</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">static</span> HttpResponse http.request(<span class="hljs-built_in">String</span> method,
@@ -338,14 +366,119 @@
 6
 7
 8
-9</div>{
+9
+10
+11
+12
+13
+14
+15
+16</div>{
     <span class="hljs-string">"method"</span>: <span class="hljs-string">"GET"</span>, <span class="hljs-comment">//指定 http 请求方法：GET, POST 等</span>
+    <span class="hljs-string">"protocol"</span>: <span class="hljs-string">"http"</span>,
+    <span class="hljs-string">"slashes"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">"username"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"password"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"hostname"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"port"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"pathname"</span>: <span class="hljs-string">""</span>,
     <span class="hljs-string">"query"</span>: {},
     <span class="hljs-string">"body"</span>: SeekableStream | Buffer | <span class="hljs-built_in">String</span> | {},
     <span class="hljs-string">"json"</span>: {},
     <span class="hljs-string">"pack"</span>: {},
     <span class="hljs-string">"headers"</span>: {},
     <span class="hljs-string">"response_body"</span>: SeekableStream <span class="hljs-comment">//指定接受 resposne 数据的流</span><font></font>
+}<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">where body,</font></font><a href="json.md.html" class="notranslate">json</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, pack must not appear at the same time. </font><font style="vertical-align: inherit;">The default is {}, does not contain any additional information</font></font></p>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Use the GET method to request the specified</font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, and return the result, which is equivalent to request("GET", ...)</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> HttpResponse http.request(<span class="hljs-built_in">String</span> url,
+    <span class="hljs-built_in">Object</span> opts = {}) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
+<ul>
+<li><span class="notranslate">url</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, specified</font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, which must be a complete</font></font><a href="url.md.html" class="notranslate">url</a></li>
+<li><span class="notranslate">opts</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, specifies additional information</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">return result:</font></font></p>
+<ul>
+<li><a href="../../object/ifs/httpresponse.md.html" class="notranslate">HttpResponse</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns the server response</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">opts contains additional options for the request, the supported content is as follows:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</div>{
+    <span class="hljs-string">"method"</span>: <span class="hljs-string">"GET"</span>, <span class="hljs-comment">//指定 http 请求方法：GET, POST 等</span>
+    <span class="hljs-string">"protocol"</span>: <span class="hljs-string">"http"</span>,
+    <span class="hljs-string">"slashes"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">"username"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"password"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"hostname"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"port"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"pathname"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"query"</span>: {},
+    <span class="hljs-string">"body"</span>: SeekableStream | Buffer | <span class="hljs-built_in">String</span> | {},
+    <span class="hljs-string">"json"</span>: {},
+    <span class="hljs-string">"pack"</span>: {},
+    <span class="hljs-string">"headers"</span>: {}<font></font>
+}<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">where body,</font></font><a href="json.md.html" class="notranslate">json</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, pack must not appear at the same time. </font><font style="vertical-align: inherit;">The default is {}, does not contain any additional information</font></font></p>
+<hr>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">request opts specified</font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, and returns the result</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> HttpResponse http.request(<span class="hljs-built_in">Object</span> opts) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Call parameters:</font></font></p>
+<ul>
+<li><span class="notranslate">opts</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, specifies additional information</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">return result:</font></font></p>
+<ul>
+<li><a href="../../object/ifs/httpresponse.md.html" class="notranslate">HttpResponse</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, returns the server response</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">opts contains additional options for the request, the supported content is as follows:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</div>{
+    <span class="hljs-string">"method"</span>: <span class="hljs-string">"GET"</span>, <span class="hljs-comment">//指定 http 请求方法：GET, POST 等</span>
+    <span class="hljs-string">"protocol"</span>: <span class="hljs-string">"http"</span>,
+    <span class="hljs-string">"slashes"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">"username"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"password"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"hostname"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"port"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"pathname"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"query"</span>: {},
+    <span class="hljs-string">"body"</span>: SeekableStream | Buffer | <span class="hljs-built_in">String</span> | {},
+    <span class="hljs-string">"json"</span>: {},
+    <span class="hljs-string">"pack"</span>: {},
+    <span class="hljs-string">"headers"</span>: {}<font></font>
 }<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">where body,</font></font><a href="json.md.html" class="notranslate">json</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, pack must not appear at the same time. </font><font style="vertical-align: inherit;">The default is {}, does not contain any additional information</font></font></p>
@@ -373,8 +506,22 @@
 5
 6
 7
-8</div>{
+8
+9
+10
+11
+12
+13
+14
+15</div>{
     <span class="hljs-string">"method"</span>: <span class="hljs-string">"GET"</span>, <span class="hljs-comment">//指定 http 请求方法：GET, POST 等</span>
+    <span class="hljs-string">"protocol"</span>: <span class="hljs-string">"http"</span>,
+    <span class="hljs-string">"slashes"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">"username"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"password"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"hostname"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"port"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"pathname"</span>: <span class="hljs-string">""</span>,
     <span class="hljs-string">"query"</span>: {},
     <span class="hljs-string">"body"</span>: SeekableStream | Buffer | <span class="hljs-built_in">String</span> | {},
     <span class="hljs-string">"json"</span>: {},
@@ -407,8 +554,22 @@
 5
 6
 7
-8</div>{
+8
+9
+10
+11
+12
+13
+14
+15</div>{
     <span class="hljs-string">"method"</span>: <span class="hljs-string">"GET"</span>, <span class="hljs-comment">//指定 http 请求方法：GET, POST 等</span>
+    <span class="hljs-string">"protocol"</span>: <span class="hljs-string">"http"</span>,
+    <span class="hljs-string">"slashes"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">"username"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"password"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"hostname"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"port"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"pathname"</span>: <span class="hljs-string">""</span>,
     <span class="hljs-string">"query"</span>: {},
     <span class="hljs-string">"body"</span>: SeekableStream | Buffer | <span class="hljs-built_in">String</span> | {},
     <span class="hljs-string">"json"</span>: {},
@@ -441,8 +602,22 @@
 5
 6
 7
-8</div>{
+8
+9
+10
+11
+12
+13
+14
+15</div>{
     <span class="hljs-string">"method"</span>: <span class="hljs-string">"GET"</span>, <span class="hljs-comment">//指定 http 请求方法：GET, POST 等</span>
+    <span class="hljs-string">"protocol"</span>: <span class="hljs-string">"http"</span>,
+    <span class="hljs-string">"slashes"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">"username"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"password"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"hostname"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"port"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"pathname"</span>: <span class="hljs-string">""</span>,
     <span class="hljs-string">"query"</span>: {},
     <span class="hljs-string">"body"</span>: SeekableStream | Buffer | <span class="hljs-built_in">String</span> | {},
     <span class="hljs-string">"json"</span>: {},
@@ -475,8 +650,22 @@
 5
 6
 7
-8</div>{
+8
+9
+10
+11
+12
+13
+14
+15</div>{
     <span class="hljs-string">"method"</span>: <span class="hljs-string">"GET"</span>, <span class="hljs-comment">//指定 http 请求方法：GET, POST 等</span>
+    <span class="hljs-string">"protocol"</span>: <span class="hljs-string">"http"</span>,
+    <span class="hljs-string">"slashes"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">"username"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"password"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"hostname"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"port"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"pathname"</span>: <span class="hljs-string">""</span>,
     <span class="hljs-string">"query"</span>: {},
     <span class="hljs-string">"body"</span>: SeekableStream | Buffer | <span class="hljs-built_in">String</span> | {},
     <span class="hljs-string">"json"</span>: {},
@@ -509,8 +698,22 @@
 5
 6
 7
-8</div>{
+8
+9
+10
+11
+12
+13
+14
+15</div>{
     <span class="hljs-string">"method"</span>: <span class="hljs-string">"GET"</span>, <span class="hljs-comment">//指定 http 请求方法：GET, POST 等</span>
+    <span class="hljs-string">"protocol"</span>: <span class="hljs-string">"http"</span>,
+    <span class="hljs-string">"slashes"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">"username"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"password"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"hostname"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"port"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"pathname"</span>: <span class="hljs-string">""</span>,
     <span class="hljs-string">"query"</span>: {},
     <span class="hljs-string">"body"</span>: SeekableStream | Buffer | <span class="hljs-built_in">String</span> | {},
     <span class="hljs-string">"json"</span>: {},
@@ -543,8 +746,22 @@
 5
 6
 7
-8</div>{
+8
+9
+10
+11
+12
+13
+14
+15</div>{
     <span class="hljs-string">"method"</span>: <span class="hljs-string">"GET"</span>, <span class="hljs-comment">//指定 http 请求方法：GET, POST 等</span>
+    <span class="hljs-string">"protocol"</span>: <span class="hljs-string">"http"</span>,
+    <span class="hljs-string">"slashes"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">"username"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"password"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"hostname"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"port"</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-string">"pathname"</span>: <span class="hljs-string">""</span>,
     <span class="hljs-string">"query"</span>: {},
     <span class="hljs-string">"body"</span>: SeekableStream | Buffer | <span class="hljs-built_in">String</span> | {},
     <span class="hljs-string">"json"</span>: {},
@@ -604,8 +821,13 @@
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer http.poolTimeout;
 </code></pre>
 <hr>
-<h3 id="proxyAgent" class="notranslate">proxyAgent</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">String, query and set proxy server, support http/https/socks5 proxy</font></font></strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> http.proxyAgent;
+<h3 id="http_proxy" class="notranslate">http_proxy</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">String, query and set http request proxy, support http/https/socks5 proxy</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> http.http_proxy;
+</code></pre>
+<hr>
+<h3 id="https_proxy" class="notranslate">https_proxy</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">String, query and set https request proxy, support http/https/socks5 proxy, if not set, or set to empty, http_proxy will be reused</font></font></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> http.https_proxy;
 </code></pre>
  </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Support us</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Object EventEmitter - JavaScript su fibra</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Attiva/disattiva la navigazione</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/eventemitter.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/eventemitter.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/eventemitter.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/eventemitter.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/eventemitter.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/eventemitter.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/eventemitter.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/eventemitter.md.html">Italiano</a> <a href="../../../../../nl/docs/manual/object/ifs/eventemitter.md.html">Nederlands</a> <a href="../../../../../ru/docs/manual/object/ifs/eventemitter.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/eventemitter.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/eventemitter.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/eventemitter.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Oggetto oggetto incorporato</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Ricerca" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="ingresso di ricerca" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">prima pagina</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">oggetto integrato</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Oggetto EventEmitter</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">guida allo sviluppo</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Object EventEmitter - JavaScript su fibra</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Attiva/disattiva la navigazione</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/eventemitter.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/eventemitter.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/eventemitter.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/eventemitter.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/eventemitter.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/eventemitter.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/eventemitter.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/eventemitter.md.html">Italiano</a> <a href="../../../../../nl/docs/manual/object/ifs/eventemitter.md.html">Nederlands</a> <a href="../../../../../ru/docs/manual/object/ifs/eventemitter.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/eventemitter.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/eventemitter.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/eventemitter.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Oggetto oggetto incorporato</font></font></span><div class="search"><input type="text" class="searchbox" placeholder="Ricerca"></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">prima pagina</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">oggetto integrato</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Oggetto EventEmitter</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">guida allo sviluppo</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cos'è fibjs?</font></font></a></li>
 <li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Installare l'ambiente operativo</font></font></a></li>
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
@@ -203,16 +203,60 @@
 <li><a href="../../../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
 <li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
 </ul>
- </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="对象-EventEmitter" data-unique="对象-EventEmitter"></div><h1 id="对象-EventEmitter"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Oggetto EventEmitter</font></font></h1>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Oggetto attivato da eventi, che può essere utilizzato per stabilire la modalità osservatore. Gli oggetti che supportano l'attivazione da eventi vengono ereditati da questo. La stessa funzione dello stesso evento genererà solo una richiamata</font></font></p>
-<p><a href="event.md.html" class="notranslate">Event</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gli oggetti possono essere creati indipendentemente per essere utilizzati nella creazione di sistemi di eventi personalizzati:</font></font></p>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <h1 id="对象-EventEmitter"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Oggetto EventEmitter</font></font></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">EventEmitter è un oggetto attivato da eventi, che può essere utilizzato per stabilire un modello di osservatore e gli oggetti che supportano l'attivazione di eventi vengono ereditati da questo</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Quando viene attivato un evento, tutti i listener associati a quell'evento vengono chiamati in modo asincrono. </font><font style="vertical-align: inherit;">Ci consente inoltre di creare codice con un alto grado di personalizzazione e flessibilità.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Le funzioni comunemente utilizzate includono: addListener/on, once, removeListener/off, removeAllListeners ed emit.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ecco un codice di esempio:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
-3</div><span class="hljs-keyword">var</span> EventEmitter = <span class="hljs-built_in">require</span>(<span class="hljs-string">'events'</span>);<font></font>
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</div><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
+<span class="hljs-keyword">var</span> EventEmitter = <span class="hljs-built_in">require</span>(<span class="hljs-string">'events'</span>);
+<span class="hljs-keyword">var</span> event = <span class="hljs-keyword">new</span> EventEmitter();<font></font>
 <font></font>
-<span class="hljs-keyword">var</span> e = <span class="hljs-keyword">new</span> EventEmitter();
+event.on(<span class="hljs-string">'read_file'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">filename</span>) </span>{<font></font>
+    fs.readFile(filename, <span class="hljs-string">'utf8'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, data</span>) </span>{
+        <span class="hljs-keyword">if</span> (err) {<font></font>
+            event.emit(<span class="hljs-string">'error'</span>, err);
+            <span class="hljs-keyword">return</span>;<font></font>
+        }<font></font>
+        event.emit(<span class="hljs-string">'show_content'</span>, data);<font></font>
+    });<font></font>
+});<font></font>
+<font></font>
+event.on(<span class="hljs-string">'error'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Error <span class="hljs-subst">${err}</span>`</span>);<font></font>
+});<font></font>
+<font></font>
+event.on(<span class="hljs-string">'show_content'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">content</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(content);<font></font>
+});<font></font>
+<font></font>
+event.emit(<span class="hljs-string">'read_file'</span>, <span class="hljs-string">'test.txt'</span>);
 </code></pre>
-<div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">rapporto ereditario</font></font></h2>
+<p><font style="vertical-align: inherit;"></font><code>event.emit('read_file', 'test.txt')</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Il codice di esempio precedente, durante l'esecuzione, l'evento dell'istanza dell'emettitore di eventi ascolta prima l'evento 'read_file', quindi attiva l'operazione di lettura del file </font><font style="vertical-align: inherit;">quando viene attivato l'evento ( ). </font><font style="vertical-align: inherit;">Quando la lettura ha esito positivo, verrà attivato l'evento 'show_content' e verrà eseguita la funzione che ascolta l'evento 'show_content' e verrà visualizzato il contenuto del file. </font><font style="vertical-align: inherit;">Se si verifica un errore durante la lettura del file, viene generato l'evento 'error' e viene gestita l'operazione non riuscita.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Questa modalità presenta grandi vantaggi negli scenari aziendali che si occupano di operazioni asincrone.</font></font></p>
+<h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">rapporto ereditario</font></font></h2>
 <div class="dot notranslate">
 <!-- Generated by graphviz version 2.40.1 (20161225.0304)
  -->
@@ -408,22 +452,22 @@
 </svg>
 </div>
 
-<div name="构造函数" data-unique="构造函数"></div><h2 id="构造函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Costruttore</font></font></h2>
-<div name="EventEmitter" data-unique="EventEmitter"></div><h3 id="EventEmitter" class="notranslate">EventEmitter</h3>
+<h2 id="构造函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Costruttore</font></font></h2>
+<h3 id="EventEmitter" class="notranslate">EventEmitter</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Costruttore</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> EventEmitter();
 </code></pre>
-<div name="对象" data-unique="对象"></div><h2 id="对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">oggetto</font></font></h2>
+<h2 id="对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">oggetto</font></font></h2>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">oggetto trigger evento</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>EventEmitter <span class="hljs-keyword">new</span> EventEmitter;
 </code></pre>
-<div name="静态属性" data-unique="静态属性"></div><h2 id="静态属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">proprietà statica</font></font></h2>
-<div name="defaultMaxListeners" data-unique="defaultMaxListeners"></div><h3 id="defaultMaxListeners" class="notranslate">defaultMaxListeners</h3>
+<h2 id="静态属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">proprietà statica</font></font></h2>
+<h3 id="defaultMaxListeners" class="notranslate">defaultMaxListeners</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Integer, il numero massimo globale predefinito di listener</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer EventEmitter.defaultMaxListeners;
 </code></pre>
-<div name="成员函数" data-unique="成员函数"></div><h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">funzione membro</font></font></h2>
-<div name="on" data-unique="on"></div><h3 id="on" class="notranslate">on</h3>
+<h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">funzione membro</font></font></h2>
+<h3 id="on" class="notranslate">on</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Associa un gestore di eventi a un oggetto</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> EventEmitter.on(<span class="hljs-built_in">String</span> ev,
@@ -451,7 +495,7 @@
 <li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, restituisce l'oggetto evento stesso, utile per le chiamate a catena</font></font></li>
 </ul>
 <hr>
-<div name="addListener" data-unique="addListener"></div><h3 id="addListener" class="notranslate">addListener</h3>
+<h3 id="addListener" class="notranslate">addListener</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Associa un gestore di eventi a un oggetto</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> EventEmitter.addListener(<span class="hljs-built_in">String</span> ev,
@@ -479,8 +523,8 @@
 <li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, restituisce l'oggetto evento stesso, utile per le chiamate a catena</font></font></li>
 </ul>
 <hr>
-<div name="prependListener" data-unique="prependListener"></div><h3 id="prependListener" class="notranslate">prependListener</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Associa una funzione del gestore eventi all'origine dell'oggetto</font></font></strong></p>
+<h3 id="prependListener" class="notranslate">prependListener</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Associa una funzione del gestore eventi all'inizio dell'oggetto</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> EventEmitter.prependListener(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
@@ -495,7 +539,7 @@
 <li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, restituisce l'oggetto evento stesso, utile per le chiamate a catena</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Associa una funzione del gestore eventi all'origine dell'oggetto</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Associa una funzione del gestore eventi all'inizio dell'oggetto</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> EventEmitter.prependListener(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parametri di chiamata:</font></font></p>
@@ -507,7 +551,7 @@
 <li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, restituisce l'oggetto evento stesso, utile per le chiamate a catena</font></font></li>
 </ul>
 <hr>
-<div name="once" data-unique="once"></div><h3 id="once" class="notranslate">once</h3>
+<h3 id="once" class="notranslate">once</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Associa un gestore di eventi monouso all'oggetto, il gestore monouso verrà attivato solo una volta</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> EventEmitter.once(<span class="hljs-built_in">String</span> ev,
@@ -535,8 +579,8 @@
 <li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, restituisce l'oggetto evento stesso, utile per le chiamate a catena</font></font></li>
 </ul>
 <hr>
-<div name="prependOnceListener" data-unique="prependOnceListener"></div><h3 id="prependOnceListener" class="notranslate">prependOnceListener</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Associa una funzione del gestore eventi all'origine dell'oggetto</font></font></strong></p>
+<h3 id="prependOnceListener" class="notranslate">prependOnceListener</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Associa una funzione del gestore eventi all'inizio dell'oggetto</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> EventEmitter.prependOnceListener(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
@@ -551,7 +595,7 @@
 <li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, restituisce l'oggetto evento stesso, utile per le chiamate a catena</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Associa una funzione del gestore eventi all'origine dell'oggetto</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Associa una funzione del gestore eventi all'inizio dell'oggetto</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> EventEmitter.prependOnceListener(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parametri di chiamata:</font></font></p>
@@ -563,7 +607,7 @@
 <li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, restituisce l'oggetto evento stesso, utile per le chiamate a catena</font></font></li>
 </ul>
 <hr>
-<div name="off" data-unique="off"></div><h3 id="off" class="notranslate">off</h3>
+<h3 id="off" class="notranslate">off</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">funzione unspecify dalla coda di elaborazione degli oggetti</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> EventEmitter.off(<span class="hljs-built_in">String</span> ev,
@@ -603,7 +647,7 @@
 <li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, restituisce l'oggetto evento stesso, utile per le chiamate a catena</font></font></li>
 </ul>
 <hr>
-<div name="removeListener" data-unique="removeListener"></div><h3 id="removeListener" class="notranslate">removeListener</h3>
+<h3 id="removeListener" class="notranslate">removeListener</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">funzione unspecify dalla coda di elaborazione degli oggetti</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> EventEmitter.removeListener(<span class="hljs-built_in">String</span> ev,
@@ -643,7 +687,7 @@
 <li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, restituisce l'oggetto evento stesso, utile per le chiamate a catena</font></font></li>
 </ul>
 <hr>
-<div name="removeAllListeners" data-unique="removeAllListeners"></div><h3 id="removeAllListeners" class="notranslate">removeAllListeners</h3>
+<h3 id="removeAllListeners" class="notranslate">removeAllListeners</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Annulla tutti i listener per tutti gli eventi dalla coda di elaborazione dell'oggetto o rimuove tutti i listener per l'evento specificato se è specificato un evento.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> EventEmitter.removeAllListeners(<span class="hljs-built_in">String</span> ev);
 </code></pre>
@@ -668,7 +712,7 @@
 <li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, restituisce l'oggetto evento stesso, utile per le chiamate a catena</font></font></li>
 </ul>
 <hr>
-<div name="setMaxListeners" data-unique="setMaxListeners"></div><h3 id="setMaxListeners" class="notranslate">setMaxListeners</h3>
+<h3 id="setMaxListeners" class="notranslate">setMaxListeners</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Il limite predefinito per il numero di ascoltatori, solo per compatibilità</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>EventEmitter.setMaxListeners(Integer n);
 </code></pre>
@@ -677,7 +721,7 @@
 <li><span class="notranslate">n</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, specifica il numero di eventi</font></font></li>
 </ul>
 <hr>
-<div name="getMaxListeners" data-unique="getMaxListeners"></div><h3 id="getMaxListeners" class="notranslate">getMaxListeners</h3>
+<h3 id="getMaxListeners" class="notranslate">getMaxListeners</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ottiene il numero limitato predefinito di listener, solo per compatibilità</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer EventEmitter.getMaxListeners();
 </code></pre>
@@ -686,7 +730,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, restituisce il numero limite predefinito</font></font></li>
 </ul>
 <hr>
-<div name="listeners" data-unique="listeners"></div><h3 id="listeners" class="notranslate">listeners</h3>
+<h3 id="listeners" class="notranslate">listeners</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Interroga l'array di listener per l'evento specificato dell'oggetto</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Array</span> EventEmitter.listeners(<span class="hljs-built_in">String</span> ev);
 </code></pre>
@@ -699,7 +743,7 @@
 <li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, restituisce una matrice di listener per l'evento specificato</font></font></li>
 </ul>
 <hr>
-<div name="listenerCount" data-unique="listenerCount"></div><h3 id="listenerCount" class="notranslate">listenerCount</h3>
+<h3 id="listenerCount" class="notranslate">listenerCount</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Interroga il numero di ascoltatori per l'evento specificato dell'oggetto</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer EventEmitter.listenerCount(<span class="hljs-built_in">String</span> ev);
 </code></pre>
@@ -727,7 +771,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, restituisce il numero di ascoltatori per l'evento specificato</font></font></li>
 </ul>
 <hr>
-<div name="eventNames" data-unique="eventNames"></div><h3 id="eventNames" class="notranslate">eventNames</h3>
+<h3 id="eventNames" class="notranslate">eventNames</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Interroga il nome dell'evento del listener</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Array</span> EventEmitter.eventNames();
 </code></pre>
@@ -736,7 +780,7 @@
 <li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, restituisce una matrice di nomi di eventi</font></font></li>
 </ul>
 <hr>
-<div name="emit" data-unique="emit"></div><h3 id="emit" class="notranslate">emit</h3>
+<h3 id="emit" class="notranslate">emit</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Attivare attivamente un evento</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Boolean</span> EventEmitter.emit(<span class="hljs-built_in">String</span> ev,<font></font>
@@ -752,7 +796,7 @@
 <li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, restituisce lo stato di attivazione dell'evento, restituisce true se è presente un evento di risposta, altrimenti restituisce false</font></font></li>
 </ul>
 <hr>
-<div name="toString" data-unique="toString"></div><h3 id="toString" class="notranslate">toString</h3>
+<h3 id="toString" class="notranslate">toString</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Restituisce la rappresentazione in stringa dell'oggetto, generalmente restituisce "[Native Object]", l'oggetto può essere reimplementato secondo le proprie caratteristiche</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> EventEmitter.toString();
 </code></pre>
@@ -761,7 +805,7 @@
 <li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, restituisce una rappresentazione in forma di stringa dell'oggetto</font></font></li>
 </ul>
 <hr>
-<div name="toJSON" data-unique="toJSON"></div><h3 id="toJSON" class="notranslate">toJSON</h3>
+<h3 id="toJSON" class="notranslate">toJSON</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Restituisce la rappresentazione in formato JSON dell'oggetto, in genere restituisce una raccolta di proprietà leggibili definite dall'oggetto</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value EventEmitter.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
@@ -773,4 +817,4 @@
 <ul>
 <li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, che restituisce un valore serializzabile in JSON</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sostienici</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sostienici</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

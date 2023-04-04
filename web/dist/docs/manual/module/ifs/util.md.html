@@ -204,7 +204,77 @@
 <li><a href=../../../awesome/module/rakuten.md.html class ="notranslate">Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="模块-util">模块 util</h1>
-<p>常用工具模块</p>
+<p>util 模块提供了对数据类型的判断、对象属性的复制、模版字符串的解析、事件处理等实用的工具函数</p>
+<p>下面是具体的介绍和示例：</p>
+<ol>
+<li>判断数据类型 - <code>util.is[type]</code>
+该模块内提供了诸如 <code>isDate</code>、<code>isRegExp</code>、<code>isError</code> 等判断传入参数数据类型的方法，例如：</li>
+</ol>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">var</span> util = <span class="hljs-built_in">require</span>(<span class="hljs-string">'util'</span>);
+<span class="hljs-built_in">console</span>.log(util.isDate(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>()));
+<span class="hljs-built_in">console</span>.log(util.isRegExp(<span class="hljs-regexp">/some regexp/</span>));
+</code></pre>
+<ol start="2">
+<li>对象属性复制 - <code>util.inherits()</code>
+该方法可以选择将一个构造函数继承自另一个，从而实现原型继承。</li>
+</ol>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</div><span class="hljs-keyword">var</span> util = <span class="hljs-built_in">require</span>(<span class="hljs-string">'util'</span>);
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Animal</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">this</span>.name = <span class="hljs-string">'Animal'</span>;
+    <span class="hljs-keyword">this</span>.sleep = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.name + <span class="hljs-string">'正在睡觉！'</span>);
+    }
+}
+Animal.prototype.eat = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">food</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.name + <span class="hljs-string">'正在吃：'</span> + food);
+};
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Cat</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">this</span>.name = <span class="hljs-string">'cat'</span>;
+}
+util.inherits(Cat, Animal);
+</code></pre>
+<p>使用 <code>Cat</code> 这个构造函数继承了 <code>Animal</code> 的实例属性和原型属性，打印 <code>Cat</code> 的实例的属性和方法</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div><span class="hljs-keyword">var</span> cat = <span class="hljs-keyword">new</span> Cat();
+<span class="hljs-built_in">console</span>.log(cat.name);
+<span class="hljs-built_in">console</span>.log(cat.eat(<span class="hljs-string">'fish'</span>));
+<span class="hljs-built_in">console</span>.log(cat.sleep());
+</code></pre>
+<ol start="3">
+<li><a href=util.md.html#format class ="notranslate">util.format</a>() 格式化输出模版</li>
+</ol>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div><span class="hljs-keyword">const</span> util = <span class="hljs-built_in">require</span>(<span class="hljs-string">'util'</span>);
+<span class="hljs-keyword">const</span> str1 = util.format(<span class="hljs-string">'%s:%s'</span>, <span class="hljs-string">'foo'</span>);
+<span class="hljs-keyword">const</span> str2 = util.format(<span class="hljs-string">'%s:%s'</span>, <span class="hljs-string">'foo'</span>, <span class="hljs-string">'bar'</span>, <span class="hljs-string">'baz'</span>);
+<span class="hljs-built_in">console</span>.log(str1) <span class="hljs-comment">// =&gt; 'foo:%s'</span>
+<span class="hljs-built_in">console</span>.log(str2) <span class="hljs-comment">// =&gt; 'foo:bar baz'</span>
+</code></pre>
+<p>以上是 <code>util</code> 模块的一些常用方法，常常可以用于简化实际开发过程。</p>
 <h2 id="对象">对象</h2>
 <h3 id="LruCache" class ="notranslate">LruCache</h3>
 <p><strong>LRU(least recently used) 缓存对象，参见 <a href=../../object/ifs/lrucache.md.html class ="notranslate">LruCache</a> 对象。</strong></p>

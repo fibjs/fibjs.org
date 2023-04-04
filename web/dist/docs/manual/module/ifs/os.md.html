@@ -204,9 +204,78 @@
 <li><a href=../../../awesome/module/rakuten.md.html class ="notranslate">Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="模块-os">模块 os</h1>
-<p>操作系统与文件系统处理模块</p>
-<p>使用方法：</p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> os = <span class="hljs-built_in">require</span>(<span class="hljs-string">'os'</span>);
+<p><code>os</code> 模块是核心模块之一，用于运行的操作系统函数。它提供了与操作系统交互的实用程序功能，包括文件地址、文件路径、网络接口、主机名、操作系统类型等</p>
+<h3 id="常用方法">常用方法</h3>
+<p><code>os</code> 模块中提供的方法很多，以下是几个比较常用的方法：</p>
+<h4 id="os.hostname()"><a href=os.md.html#hostname class ="notranslate">os.hostname</a>()</h4>
+<p>获取当前计算机的主机名。</p>
+<p>示例代码：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">const</span> os = <span class="hljs-built_in">require</span>(<span class="hljs-string">'os'</span>);
+<span class="hljs-keyword">const</span> hostname = os.hostname();
+<span class="hljs-built_in">console</span>.log(hostname);
+</code></pre>
+<p>返回结果类似如下：</p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>localhost
+</code></pre>
+<h4 id="os.type()"><a href=os.md.html#type class ="notranslate">os.type</a>()</h4>
+<p>获取当前操作系统的名称。</p>
+<p>示例代码：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">const</span> os = <span class="hljs-built_in">require</span>(<span class="hljs-string">'os'</span>);
+<span class="hljs-keyword">const</span> type = os.type();
+<span class="hljs-built_in">console</span>.log(type);
+</code></pre>
+<p>返回结果类似如下：</p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>Windows_NT
+</code></pre>
+<h4 id="os.release()"><a href=os.md.html#release class ="notranslate">os.release</a>()</h4>
+<p>获取当前操作系统的版本。</p>
+<p>示例代码：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">const</span> os = <span class="hljs-built_in">require</span>(<span class="hljs-string">'os'</span>);
+<span class="hljs-keyword">const</span> release = os.release();
+<span class="hljs-built_in">console</span>.log(release);
+</code></pre>
+<p>返回结果类似如下：</p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>10.0.18362
+</code></pre>
+<h4 id="os.arch()"><a href=os.md.html#arch class ="notranslate">os.arch</a>()</h4>
+<p>获取操作系统的处理器架构。</p>
+<p>示例代码：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">const</span> os = <span class="hljs-built_in">require</span>(<span class="hljs-string">'os'</span>);
+<span class="hljs-keyword">const</span> arch = os.arch();
+<span class="hljs-built_in">console</span>.log(arch);
+</code></pre>
+<p>返回结果类似如下：</p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>x64
+</code></pre>
+<h4 id="os.cpus()"><a href=os.md.html#cpus class ="notranslate">os.cpus</a>()</h4>
+<p>获取 CPU 的信息。</p>
+<p>示例代码：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">const</span> os = <span class="hljs-built_in">require</span>(<span class="hljs-string">'os'</span>);
+<span class="hljs-keyword">const</span> cpus = os.cpus();
+<span class="hljs-built_in">console</span>.log(cpus);
+</code></pre>
+<p>返回结果类似如下：</p>
+<pre><code class="lang-sh"><div class="line-numbers">1
+2
+3
+4
+5
+6</div>[
+{ model: <span class="hljs-string">'Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz'</span>, speed: 2592, <span class="hljs-built_in">times</span>: { user: 2400298, nice: 0, sys: 9684894, idle: 91516801, irq: 0 } },
+{ model: <span class="hljs-string">'Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz'</span>, speed: 2592, <span class="hljs-built_in">times</span>: { user: 464927, nice: 0, sys: 1454926, idle: 95119061, irq: 0 } },
+{ model: <span class="hljs-string">'Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz'</span>, speed: 2592, <span class="hljs-built_in">times</span>: { user: 232077, nice: 0, sys: 898942, idle: 95482112, irq: 0 } },
+{ model: <span class="hljs-string">'Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz'</span>, speed: 2592, <span class="hljs-built_in">times</span>: { user: 950448, nice: 0, sys: 1875169, idle: 93117788, irq: 0 } }
+]
 </code></pre>
 <h2 id="对象">对象</h2>
 <h3 id="Service" class ="notranslate">Service</h3>

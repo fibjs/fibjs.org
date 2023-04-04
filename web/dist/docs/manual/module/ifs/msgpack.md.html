@@ -204,8 +204,8 @@
 <li><a href=../../../awesome/module/rakuten.md.html class ="notranslate">Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="模块-msgpack">模块 msgpack</h1>
-<p>msgpack 编码与解码模块</p>
-<p>引用方式：</p>
+<p>msgpack是一种比 JSON 更轻量的数据交换格式，它可以将 JSON 对象序列化为二进制数据，以达到更快、更高效的数据交换效果</p>
+<p>msgpack 编码与解码模块的引用方式为</p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">var</span> encoding = <span class="hljs-built_in">require</span>(<span class="hljs-string">'encoding'</span>);
 <span class="hljs-keyword">var</span> msgpack = encoding.msgpack;
@@ -213,6 +213,34 @@
 <p>或者</p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> msgpack = <span class="hljs-built_in">require</span>(<span class="hljs-string">'msgpack'</span>);
 </code></pre>
+<p>msgpack 模块提供了两个主要的方法用于消息处理：encode 和 decode。</p>
+<ul>
+<li><p><code>encode</code>：以 msgpack 编码写入给定的数据<code>Value Message.encode(Value data)</code>。示例代码：</p>
+<pre><code><div class="line-numbers">1
+2
+3
+4
+5
+6</div><span class="hljs-built_in">var</span> msgpack = <span class="hljs-keyword">require</span>(<span class="hljs-string">'msgpack'</span>);
+
+<span class="hljs-built_in">var</span> <span class="hljs-built_in">data</span> = {
+   foo: <span class="hljs-string">'bar'</span>
+};
+<span class="hljs-built_in">var</span> buffer = msgpack.encode(<span class="hljs-built_in">data</span>);
+</code></pre><p>该方法首先需要传入需要写入的数据，然后将该数据保存为msgpack格式的二进制数据并返回，编码过程是非常快速的。</p>
+</li>
+<li><p><code>decode</code>：以 msgpack 编码解析消息中的数据<code>Value Message.decode()</code>。示例代码：</p>
+<pre><code><div class="line-numbers">1
+2
+3
+4</div><span class="hljs-built_in">var</span> msgpack = <span class="hljs-keyword">require</span>(<span class="hljs-string">'msgpack'</span>);
+<span class="hljs-built_in">var</span> <span class="hljs-built_in">data</span> = msgpack.encode({foo: <span class="hljs-string">'bar'</span>});
+
+<span class="hljs-built_in">var</span> unpackedData = msgpack.decode(<span class="hljs-built_in">data</span>);
+</code></pre><p>此时解析中的数据将会是一个 <a href=json.md.html class ="notranslate">json</a> 对象<code>{foo: &#39;bar&#39;}</code>，可以直接使用。</p>
+</li>
+</ul>
+<p>msgpack 模块是一种比较高效的序列化和反序列化消息数据的方式，它能够将消息数据以二进制的形式发送到对方，并且避免了文本数据传输时的字符组合和还原的效率问题，该模块非常适合在需要处理大量消息数据的场景下使用。</p>
 <h2 id="静态函数">静态函数</h2>
 <h3 id="encode" class ="notranslate">encode</h3>
 <p><strong>以 msgpack 格式编码变量</strong></p>

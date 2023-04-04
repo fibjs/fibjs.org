@@ -204,8 +204,32 @@
 <li><a href=../../../awesome/module/rakuten.md.html class ="notranslate">Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="对象-WebSocket">对象 WebSocket</h1>
-<p>WebSocket 包协议转换处理器</p>
-<p>用以将 Http 协议转换为 WebSocket 包协议消息。创建方式：</p>
+<p>WebSocket 是一种基于 TCP 协议的全双工通信协议，在浏览器和服务器之间建立起一个不断开的连接，可以实现实时双向数据传输，并且可以支持任意格式的数据传输。在 fibjs 中，WebSocket 支持模块提供了相应的 API 接口，可以实现 WebSocket 服务器端和客户端的开发</p>
+<p>WebSocket 支持模块只是 WebSocket 协议的一个实现，需要在 HTTP 协议之上才能工作。在服务器端，可以通过 upgrade 函数将 HTTP 请求转换为 WebSocket 连接，而在客户端，则需要通过 WebSocket 协议的 URL 来指定需要连接的服务器地址。</p>
+<p>启动WebSocket服务器示例：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</div><span class="hljs-keyword">var</span> ws = <span class="hljs-built_in">require</span>(<span class="hljs-string">'ws'</span>);
+<span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);
+
+<span class="hljs-keyword">var</span> svr = <span class="hljs-keyword">new</span> http.Server(<span class="hljs-number">80</span>, {
+    <span class="hljs-string">'/ws'</span>: ws.upgrade(<span class="hljs-function"><span class="hljs-params">conn</span> =&gt;</span> {
+        conn.onmessage = <span class="hljs-function"><span class="hljs-params">e</span> =&gt;</span> {
+            conn.send(<span class="hljs-string">'fibjs:'</span> + e.data);
+        };
+    })
+});
+svr.start();
+</code></pre>
+<p>在客户端中与上述服务器建立连接的示例：</p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -217,36 +241,18 @@
 9
 10
 11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21</div><span class="hljs-keyword">var</span> ws = <span class="hljs-built_in">require</span>(<span class="hljs-string">'ws'</span>);
-<span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);
+12</div><span class="hljs-keyword">var</span> ws = <span class="hljs-built_in">require</span>(<span class="hljs-string">"ws"</span>);
 
-<span class="hljs-keyword">var</span> serv = <span class="hljs-keyword">new</span> http.Server(<span class="hljs-number">8811</span>, ws.upgrade(<span class="hljs-function">(<span class="hljs-params">conn</span>) =&gt;</span> {
-    conn.onmessage = <span class="hljs-function"><span class="hljs-params">msg</span> =&gt;</span> {
-        conn.send(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>());
-    };
-}));
-
-serv.start();
-
-<span class="hljs-keyword">var</span> sock = <span class="hljs-keyword">new</span> ws.Socket(<span class="hljs-string">'ws://127.0.0.1:8811'</span>);
-sock.on(<span class="hljs-string">'open'</span>, () =&gt; {
-    setInterval(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
-        sock.send(<span class="hljs-string">'get date'</span>);
-    }, <span class="hljs-number">1000</span>);
-});
-
-sock.onmessage = <span class="hljs-function"><span class="hljs-params">evt</span> =&gt;</span> {
-    <span class="hljs-built_in">console</span>.log(evt.data);
-}
+<span class="hljs-keyword">var</span> conn = <span class="hljs-keyword">new</span> ws.Socket(<span class="hljs-string">"ws://127.0.0.1/ws"</span>);
+<span class="hljs-comment">// WebSocket 连接成功时触发 onopen 事件</span>
+conn.onopen = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"websocket connected"</span>);
+    conn.send(<span class="hljs-string">"hi"</span>);
+};
+<span class="hljs-comment">// WebSocket 接收到消息时触发 onmessage 事件</span>
+conn.onmessage = <span class="hljs-function"><span class="hljs-params">evt</span> =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"websocket receive: "</span> + evt.data);
+};
 </code></pre>
 <h2 id="继承关系">继承关系</h2>
 <div class="dot notranslate">

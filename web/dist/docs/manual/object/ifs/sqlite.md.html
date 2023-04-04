@@ -204,9 +204,87 @@
 <li><a href=../../../awesome/module/rakuten.md.html class ="notranslate">Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="对象-SQLite">对象 SQLite</h1>
-<p>sqlite 数据库连接对象</p>
-<p>使用 <a href=../../module/ifs/db.md.html#open class ="notranslate">db.open</a> 或 <a href=../../module/ifs/db.md.html#openSQLite class ="notranslate">db.openSQLite</a> 创建，创建方式：</p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> slite = db.openSQLite(<span class="hljs-string">"sqlite:/path/to/db"</span>);
+<p>SQLite 对象是内置模块 <a href=../../module/ifs/db.md.html class ="notranslate">db</a> 的一个成员，主要负责 SQLite 数据库的连接和操作，可用于 SQLite 数据库的创建、查询、插入、更新等操作。同时，SQLite 对象也提供了一些类似备份、格式化 SQL 等高级操作。SQLite 连接对象还支持事务操作</p>
+<p>在实际应用中，我们通常根据业务需求创建 SQLite 类型的数据表，然后进行数据的增删改查等操作，例如：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</div><span class="hljs-keyword">var</span> db = <span class="hljs-built_in">require</span>(<span class="hljs-string">'db'</span>)
+
+<span class="hljs-comment">// 根据以上代码示例中的代码，获取一个 SQLite 数据库连接对象</span>
+<span class="hljs-keyword">var</span> sqlite = db.openSQLite(<span class="hljs-string">'test.db'</span>)
+
+<span class="hljs-comment">// 创建表</span>
+sqlite.execute(<span class="hljs-string">'CREATE TABLE test (id INT PRIMARY KEY NOT NULL, name TEXT NOT NULL, age INT NOT NULL)'</span>)
+
+<span class="hljs-comment">// 插入数据</span>
+sqlite.execute(<span class="hljs-string">'INSERT INTO test (id, name, age) VALUES (?, ?, ?)'</span>, <span class="hljs-number">1</span>, <span class="hljs-string">'Alice'</span>, <span class="hljs-number">18</span>)
+sqlite.execute(<span class="hljs-string">'INSERT INTO test (id, name, age) VALUES (?, ?, ?)'</span>, <span class="hljs-number">2</span>, <span class="hljs-string">'Bob'</span>, <span class="hljs-number">20</span>)
+sqlite.execute(<span class="hljs-string">'INSERT INTO test (id, name, age) VALUES (?, ?, ?)'</span>, <span class="hljs-number">3</span>, <span class="hljs-string">'Charlie'</span>, <span class="hljs-number">22</span>)
+
+<span class="hljs-comment">// 查询数据</span>
+<span class="hljs-keyword">var</span> rs = sqlite.execute(<span class="hljs-string">'SELECT * FROM test'</span>)
+<span class="hljs-built_in">console</span>.log(rs)
+
+<span class="hljs-comment">// 更新数据</span>
+sqlite.execute(<span class="hljs-string">'UPDATE test SET name=?, age=? WHERE id=?'</span>, <span class="hljs-string">'Marry'</span>, <span class="hljs-number">19</span>, <span class="hljs-number">1</span>)
+
+<span class="hljs-comment">// 删除数据</span>
+sqlite.execute(<span class="hljs-string">'DELETE FROM test WHERE id=?'</span>, <span class="hljs-number">2</span>)
+</code></pre>
+<p>SQLite 还内置了 vec_index 模块，我们可以在 SQLite 数据库上创建对向量字段的索引，基于向量字段进行检索，得到与目标向量最近似的向量集合。支持使用数值类型的数组表示向量，如：[1, 2, 3]，同时支持向量维度。此外，vec_index 支持在事务内批量操作。</p>
+<p>下面是一个简单的示例：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8</div><span class="hljs-keyword">var</span> db = <span class="hljs-built_in">require</span>(<span class="hljs-string">'db'</span>);
+<span class="hljs-keyword">var</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">'path'</span>);
+
+<span class="hljs-keyword">var</span> conn = db.openSQLite(path.join(__dirname, <span class="hljs-string">'vec_test.db'</span>));
+
+conn.execute(<span class="hljs-string">'create virtual table vindex using vec_index(title(3), description(3))'</span>);
+
+conn.execute(<span class="hljs-string">`insert into vindex(title, description, rowid) values("[1,2,3]", "[3,4,5]", 3)`</span>);
+</code></pre>
+<p>可以使用 vec_search 函数执行向量检索，例如：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div><span class="hljs-keyword">var</span> key = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5.1234</span>];
+<span class="hljs-keyword">var</span> limit = <span class="hljs-number">1</span>;
+
+<span class="hljs-keyword">var</span> res = conn.execute(<span class="hljs-string">`select rowid, distance from vindex where vec_search(title, "<span class="hljs-subst">${<span class="hljs-built_in">JSON</span>.stringify(key)}</span>")`</span>);
+</code></pre>
+<p>vec_search 返回一个最接近的向量集合和距离数组，其中距离按照从小到大顺序排列。如果需要返回多个最接近的向量集合，可以使用 :limit 参数，例如：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div><span class="hljs-keyword">var</span> key = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5.1234</span>];
+<span class="hljs-keyword">var</span> limit = <span class="hljs-number">1</span>;
+
+<span class="hljs-keyword">var</span> res = conn.execute(<span class="hljs-string">`select rowid, distance from vindex where vec_search(title, "<span class="hljs-subst">${<span class="hljs-built_in">JSON</span>.stringify(key)}</span>:10")`</span>);
 </code></pre>
 <h2 id="继承关系">继承关系</h2>
 <div class="dot notranslate">

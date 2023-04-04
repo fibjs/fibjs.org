@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Mòdul fs - JavaScript a la fibra</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Canvia la navegació</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../readme.md.html">MODULE</a></li><li><a href="../../object/readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/module/ifs/fs.md.html">中文</a> <a href="../../../../../ca/docs/manual/module/ifs/fs.md.html">Catalan</a> <a href="../../../../../de/docs/manual/module/ifs/fs.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/module/ifs/fs.md.html">English</a> <a href="../../../../../es/docs/manual/module/ifs/fs.md.html">Español</a> <a href="../../../../../fr/docs/manual/module/ifs/fs.md.html">Français</a> <a href="../../../../../gl/docs/manual/module/ifs/fs.md.html">Galego</a> <a href="../../../../../it/docs/manual/module/ifs/fs.md.html">Italiano</a> <a href="../../../../../nl/docs/manual/module/ifs/fs.md.html">Nederlands</a> <a href="../../../../../ru/docs/manual/module/ifs/fs.md.html">Русский</a> <a href="../../../../../ja/docs/manual/module/ifs/fs.md.html">日本語</a> <a href="../../../../../ko/docs/manual/module/ifs/fs.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/module/ifs/fs.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mòdul mòdul bàsic</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Cerca" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="entrada de cerca" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">portada</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mòdul bàsic</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mòdul fs</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">guia de desenvolupament</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Mòdul fs - JavaScript a la fibra</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Canvia la navegació</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../readme.md.html">MODULE</a></li><li><a href="../../object/readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/module/ifs/fs.md.html">中文</a> <a href="../../../../../ca/docs/manual/module/ifs/fs.md.html">Catalan</a> <a href="../../../../../de/docs/manual/module/ifs/fs.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/module/ifs/fs.md.html">English</a> <a href="../../../../../es/docs/manual/module/ifs/fs.md.html">Español</a> <a href="../../../../../fr/docs/manual/module/ifs/fs.md.html">Français</a> <a href="../../../../../gl/docs/manual/module/ifs/fs.md.html">Galego</a> <a href="../../../../../it/docs/manual/module/ifs/fs.md.html">Italiano</a> <a href="../../../../../nl/docs/manual/module/ifs/fs.md.html">Nederlands</a> <a href="../../../../../ru/docs/manual/module/ifs/fs.md.html">Русский</a> <a href="../../../../../ja/docs/manual/module/ifs/fs.md.html">日本語</a> <a href="../../../../../ko/docs/manual/module/ifs/fs.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/module/ifs/fs.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mòdul mòdul bàsic</font></font></span><div class="search"><input type="text" class="searchbox" placeholder="Cerca"></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">portada</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mòdul bàsic</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mòdul fs</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">guia de desenvolupament</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Què és fibjs?</font></font></a></li>
 <li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instal·leu l'entorn operatiu</font></font></a></li>
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
@@ -203,25 +203,59 @@
 <li><a href="../../../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
 <li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
 </ul>
- </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="模块-fs" data-unique="模块-fs"></div><h1 id="模块-fs"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mòdul fs</font></font></h1>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mòdul de processament del sistema de fitxers</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instruccions:</font></font></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <h1 id="模块-fs"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mòdul fs</font></font></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El mòdul fs és el mòdul de manipulació del sistema de fitxers. </font><font style="vertical-align: inherit;">Proporciona operacions d'E/S de disc com ara llegir fitxers, escriure fitxers, obrir fitxers, tancar fitxers i canviar els permisos dels fitxers, i admet l'ús síncron i asíncron. </font><font style="vertical-align: inherit;">El mòdul fs també proporciona la funció de monitor de fitxers, que pot supervisar els canvis de fitxers i directoris al sistema de fitxers i tornar a trucar la funció especificada.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Per exemple, per llegir un fitxer a fibjs, utilitzeu el mètode readFile del mòdul fs:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
+<span class="hljs-keyword">var</span> content = fs.readFile(<span class="hljs-string">'/path/to/file'</span>);
 </code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Si voleu llegir el fitxer de manera asíncrona, podeu fer-ho mitjançant una devolució de trucada:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);<font></font>
+fs.readFile(<span class="hljs-string">'/path/to/file'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, data</span>) </span>{
+    <span class="hljs-keyword">if</span> (err) <span class="hljs-keyword">throw</span> err;
+    <span class="hljs-built_in">console</span>.log(data);<font></font>
+});<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">De la mateixa manera, per escriure en un fitxer, utilitzeu el mètode writeFile del mòdul fs:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
+<span class="hljs-keyword">var</span> content = <span class="hljs-string">'hello, world!'</span>;<font></font>
+fs.writeFile(<span class="hljs-string">'/path/to/file'</span>, content);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Si voleu escriure al fitxer de manera asíncrona, podeu fer-ho amb una devolució de trucada:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6</div><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
+<span class="hljs-keyword">var</span> content = <span class="hljs-string">'hello, world!'</span>;<font></font>
+fs.writeFile(<span class="hljs-string">'/path/to/file'</span>, content, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>{
+    <span class="hljs-keyword">if</span> (err) <span class="hljs-keyword">throw</span> err;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'File saved.'</span>);<font></font>
+});<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A més de llegir i escriure fitxers, el mòdul fs també ofereix una sèrie d'altres operacions del sistema de fitxers, com ara la creació de directoris, la modificació de permisos de fitxers, la consulta de l'estat dels fitxers, etc.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Algunes notes:</font></font></p>
 <ul>
 <li><font style="vertical-align: inherit;"></font><code>fs.watch(filename)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Running</font><font style="vertical-align: inherit;"> retornarà un heretat de</font></font><a href="../../object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">observador, admet tres esdeveniments "canvi", "només canvi", "només només".</font></font></li>
-<li><code>fs.watchFile(target)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">i </font></font><code>fs.unwatchFile(target)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">encara es pot utilitzar per parelles</font></font></li>
+<li><code>fs.watchFile(target)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">i </font></font><code>fs.unwatchFile(target)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">encara utilitzar per parelles</font></font></li>
 <li><code>fs.watchFile(target)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">retornarà un heretat de</font></font><a href="../../object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">de</font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">object, call és </font></font><code>fs.unwatchFile(target)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">equivalent a call </font></font><code>StatsWatcher.close()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A causa de la implementació d'uv a Linux, </font></font><code>fs.watch</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">l' </font></font><code>recursive</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">opció només és compatible amb win32/darwin. Encara podeu provar d'utilitzar-la a Linux </font></font><code>fs.watch('/[path](path.md)/to', { recursive: true }, handler)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, però és possible que trobeu </font></font><code>handler</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">que el moment de la devolució de trucada és diferent del que esperàveu</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A causa de la implementació d'uv a Linux, </font><font style="vertical-align: inherit;">l'opció</font></font><code>fs.watch</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> només és compatible amb win32/darwin. Encara podeu provar d'utilitzar-la a Linux </font><font style="vertical-align: inherit;">, però és possible que trobeu </font><font style="vertical-align: inherit;">que el moment de la devolució de trucada és diferent del que esperàveu</font></font><code>recursive</code><font style="vertical-align: inherit;"></font><code>fs.watch('/[path](path.md)/to', { recursive: true }, handler)</code><font style="vertical-align: inherit;"></font><code>handler</code><font style="vertical-align: inherit;"></font></li>
 </ul>
-<div name="对象" data-unique="对象"></div><h2 id="对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">objecte</font></font></h2>
-<div name="constants" data-unique="constants"></div><h3 id="constants" class="notranslate">constants</h3>
+<h2 id="对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">objecte</font></font></h2>
+<h3 id="constants" class="notranslate">constants</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objecte constant del mòdul fs</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>fs_constants fs.constants;
 </code></pre>
-<div name="静态函数" data-unique="静态函数"></div><h2 id="静态函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">funció estàtica</font></font></h2>
-<div name="exists" data-unique="exists"></div><h3 id="exists" class="notranslate">exists</h3>
+<h2 id="静态函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">funció estàtica</font></font></h2>
+<h3 id="exists" class="notranslate">exists</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Consulta si el fitxer o directori especificat existeix</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> fs.exists(<span class="hljs-built_in">String</span> path) <span class="hljs-keyword">async</span>;
 </code></pre>
@@ -234,8 +268,8 @@
 <li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna True si el fitxer o directori existeix</font></font></li>
 </ul>
 <hr>
-<div name="access" data-unique="access"></div><h3 id="access" class="notranslate">access</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Consulta els permisos de l'usuari sobre el fitxer especificat</font></font></strong></p>
+<h3 id="access" class="notranslate">access</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Consulteu els permisos de l'usuari sobre el fitxer especificat</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> fs.access(<span class="hljs-built_in">String</span> path,<font></font>
     Integer mode = <span class="hljs-number">0</span>) <span class="hljs-keyword">async</span>;
@@ -246,7 +280,7 @@
 <li><span class="notranslate">mode</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifica el permís de la consulta, el valor per defecte és si el fitxer existeix</font></font></li>
 </ul>
 <hr>
-<div name="link" data-unique="link"></div><h3 id="link" class="notranslate">link</h3>
+<h3 id="link" class="notranslate">link</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Creeu un fitxer d'enllaç dur, aquest mètode no és compatible amb Windows</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> fs.link(<span class="hljs-built_in">String</span> oldPath,
@@ -258,7 +292,7 @@
 <li><span class="notranslate">newPath</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, el fitxer que s'ha de crear</font></font></li>
 </ul>
 <hr>
-<div name="unlink" data-unique="unlink"></div><h3 id="unlink" class="notranslate">unlink</h3>
+<h3 id="unlink" class="notranslate">unlink</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">suprimir el fitxer especificat</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> fs.unlink(<span class="hljs-built_in">String</span> path) <span class="hljs-keyword">async</span>;
 </code></pre>
@@ -267,7 +301,7 @@
 <li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica el camí a suprimir</font></font></li>
 </ul>
 <hr>
-<div name="mkdir" data-unique="mkdir"></div><h3 id="mkdir" class="notranslate">mkdir</h3>
+<h3 id="mkdir" class="notranslate">mkdir</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">crear un directori</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> fs.mkdir(<span class="hljs-built_in">String</span> path,<font></font>
@@ -299,7 +333,7 @@
 }<font></font>
 </code></pre>
 <hr>
-<div name="rmdir" data-unique="rmdir"></div><h3 id="rmdir" class="notranslate">rmdir</h3>
+<h3 id="rmdir" class="notranslate">rmdir</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">eliminar un directori</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> fs.rmdir(<span class="hljs-built_in">String</span> path) <span class="hljs-keyword">async</span>;
 </code></pre>
@@ -308,7 +342,7 @@
 <li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica el nom del directori que cal eliminar</font></font></li>
 </ul>
 <hr>
-<div name="rename" data-unique="rename"></div><h3 id="rename" class="notranslate">rename</h3>
+<h3 id="rename" class="notranslate">rename</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">canviar el nom d'un fitxer</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> fs.rename(<span class="hljs-built_in">String</span> <span class="hljs-keyword">from</span>,
@@ -320,7 +354,7 @@
 <li><span class="notranslate">to</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica el nom del fitxer nou a modificar</font></font></li>
 </ul>
 <hr>
-<div name="copyFile" data-unique="copyFile"></div><h3 id="copyFile" class="notranslate">copyFile</h3>
+<h3 id="copyFile" class="notranslate">copyFile</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Copia src a dest. </font><font style="vertical-align: inherit;">Per defecte, si dest ja existeix, se sobreescriu.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -341,7 +375,7 @@
 <li><a href="fs.md.html#constants" class="notranslate">fs.constants</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.COPYFILE_FICLONE_FORCE: l'operació de còpia intentarà crear un enllaç de còpia en escriptura. </font><font style="vertical-align: inherit;">Si la plataforma no admet la còpia en escriptura, l'operació de còpia fallarà.</font></font></li>
 </ul>
 <hr>
-<div name="chmod" data-unique="chmod"></div><h3 id="chmod" class="notranslate">chmod</h3>
+<h3 id="chmod" class="notranslate">chmod</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Establiu el permís d'accés del fitxer especificat, Windows no admet aquest mètode</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> fs.chmod(<span class="hljs-built_in">String</span> path,<font></font>
@@ -353,7 +387,7 @@
 <li><span class="notranslate">mode</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Sencer, especifica els drets d'accés de la configuració</font></font></li>
 </ul>
 <hr>
-<div name="lchmod" data-unique="lchmod"></div><h3 id="lchmod" class="notranslate">lchmod</h3>
+<h3 id="lchmod" class="notranslate">lchmod</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Estableix el permís d'accés del fitxer especificat. Si el fitxer és un enllaç suau, el permís del fitxer apuntant no es canviarà. Només està disponible a les plataformes de la sèrie macOS i BSD</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> fs.lchmod(<span class="hljs-built_in">String</span> path,<font></font>
@@ -365,7 +399,7 @@
 <li><span class="notranslate">mode</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Sencer, especifica els drets d'accés de la configuració</font></font></li>
 </ul>
 <hr>
-<div name="chown" data-unique="chown"></div><h3 id="chown" class="notranslate">chown</h3>
+<h3 id="chown" class="notranslate">chown</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Estableix el propietari del fitxer especificat, Windows no admet aquest mètode</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -380,7 +414,7 @@
 <li><span class="notranslate">gid</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, identificador del grup del propietari del fitxer</font></font></li>
 </ul>
 <hr>
-<div name="lchown" data-unique="lchown"></div><h3 id="lchown" class="notranslate">lchown</h3>
+<h3 id="lchown" class="notranslate">lchown</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Estableix el propietari del fitxer especificat. Si el fitxer especificat és un enllaç programari, no canviarà el propietari del fitxer al qual apunta. Windows no admet aquest mètode</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -395,7 +429,7 @@
 <li><span class="notranslate">gid</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, identificador del grup del propietari del fitxer</font></font></li>
 </ul>
 <hr>
-<div name="stat" data-unique="stat"></div><h3 id="stat" class="notranslate">stat</h3>
+<h3 id="stat" class="notranslate">stat</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Consulta la informació bàsica del fitxer especificat</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Stat fs.stat(<span class="hljs-built_in">String</span> path) <span class="hljs-keyword">async</span>;
 </code></pre>
@@ -408,7 +442,7 @@
 <li><a href="../../object/ifs/stat.md.html" class="notranslate">Stat</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna la informació bàsica del fitxer</font></font></li>
 </ul>
 <hr>
-<div name="lstat" data-unique="lstat"></div><h3 id="lstat" class="notranslate">lstat</h3>
+<h3 id="lstat" class="notranslate">lstat</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Consulta la informació bàsica del fitxer especificat. A diferència de stat, quan</font></font><a href="path.md.html" class="notranslate">path</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Quan es tracti d'un soft link, la informació que es retorna serà la informació d'aquest soft link en lloc de la informació del fitxer apuntat</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Stat fs.lstat(<span class="hljs-built_in">String</span> path) <span class="hljs-keyword">async</span>;
 </code></pre>
@@ -421,7 +455,7 @@
 <li><a href="../../object/ifs/stat.md.html" class="notranslate">Stat</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna la informació bàsica del fitxer</font></font></li>
 </ul>
 <hr>
-<div name="readlink" data-unique="readlink"></div><h3 id="readlink" class="notranslate">readlink</h3>
+<h3 id="readlink" class="notranslate">readlink</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Llegiu el fitxer d'enllaç suau especificat, aquest mètode no és compatible amb Windows</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> fs.readlink(<span class="hljs-built_in">String</span> path) <span class="hljs-keyword">async</span>;
 </code></pre>
@@ -434,7 +468,7 @@
 <li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna el nom del fitxer al qual apunta l'enllaç suau</font></font></li>
 </ul>
 <hr>
-<div name="realpath" data-unique="realpath"></div><h3 id="realpath" class="notranslate">realpath</h3>
+<h3 id="realpath" class="notranslate">realpath</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retorna el camí absolut del camí especificat. Si el camí especificat conté un camí relatiu, també s'ampliarà</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> fs.realpath(<span class="hljs-built_in">String</span> path) <span class="hljs-keyword">async</span>;
 </code></pre>
@@ -447,7 +481,7 @@
 <li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna la ruta absoluta processada</font></font></li>
 </ul>
 <hr>
-<div name="symlink" data-unique="symlink"></div><h3 id="symlink" class="notranslate">symlink</h3>
+<h3 id="symlink" class="notranslate">symlink</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Creeu un fitxer d'enllaç suau</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -462,7 +496,7 @@
 <li><span class="notranslate">type</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, el tipus de connexió suau que s'ha de crear, el tipus opcional és 'fitxer', 'dir', 'junction', el valor predeterminat és 'fitxer', aquest paràmetre només és vàlid a Windows, l'objectiu que s'ha de crear quan és 'junction' El camí d'enllaç ha de ser un camí absolut, mentre que l'objectiu es convertirà automàticament en un camí absolut.</font></font></li>
 </ul>
 <hr>
-<div name="truncate" data-unique="truncate"></div><h3 id="truncate" class="notranslate">truncate</h3>
+<h3 id="truncate" class="notranslate">truncate</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Modifiqueu la mida del fitxer, si la longitud especificada és superior a la mida del fitxer d'origen, s'omplirà amb "\0", en cas contrari es perdrà l'excés de contingut del fitxer.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> fs.truncate(<span class="hljs-built_in">String</span> path,<font></font>
@@ -474,7 +508,7 @@
 <li><span class="notranslate">len</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifica la mida del fitxer modificat</font></font></li>
 </ul>
 <hr>
-<div name="read" data-unique="read"></div><h3 id="read" class="notranslate">read</h3>
+<h3 id="read" class="notranslate">read</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Segons el descriptor del fitxer, llegiu el contingut del fitxer</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -499,7 +533,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, el nombre real de bytes llegits</font></font></li>
 </ul>
 <hr>
-<div name="fchmod" data-unique="fchmod"></div><h3 id="fchmod" class="notranslate">fchmod</h3>
+<h3 id="fchmod" class="notranslate">fchmod</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Depenent del descriptor del fitxer, canvieu el mode del fitxer. </font><font style="vertical-align: inherit;">Només disponible en sistemes POSIX.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> fs.fchmod(Integer fd,<font></font>
@@ -511,7 +545,7 @@
 <li><span class="notranslate">mode</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, el mode del fitxer</font></font></li>
 </ul>
 <hr>
-<div name="fchown" data-unique="fchown"></div><h3 id="fchown" class="notranslate">fchown</h3>
+<h3 id="fchown" class="notranslate">fchown</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">En funció del descriptor del fitxer, canvieu el propietari. </font><font style="vertical-align: inherit;">Només disponible en sistemes POSIX.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -526,7 +560,7 @@
 <li><span class="notranslate">gid</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, identificador de grup</font></font></li>
 </ul>
 <hr>
-<div name="fdatasync" data-unique="fdatasync"></div><h3 id="fdatasync" class="notranslate">fdatasync</h3>
+<h3 id="fdatasync" class="notranslate">fdatasync</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sincronitza les dades amb el disc segons el descriptor del fitxer</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> fs.fdatasync(Integer fd) <span class="hljs-keyword">async</span>;
 </code></pre>
@@ -535,7 +569,7 @@
 <li><span class="notranslate">fd</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, descriptor de fitxer</font></font></li>
 </ul>
 <hr>
-<div name="fsync" data-unique="fsync"></div><h3 id="fsync" class="notranslate">fsync</h3>
+<h3 id="fsync" class="notranslate">fsync</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sincronitza les dades amb el disc segons el descriptor del fitxer</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> fs.fsync(Integer fd) <span class="hljs-keyword">async</span>;
 </code></pre>
@@ -544,7 +578,7 @@
 <li><span class="notranslate">fd</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, descriptor de fitxer</font></font></li>
 </ul>
 <hr>
-<div name="readdir" data-unique="readdir"></div><h3 id="readdir" class="notranslate">readdir</h3>
+<h3 id="readdir" class="notranslate">readdir</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Llegiu la informació del fitxer del directori especificat</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> NArray fs.readdir(<span class="hljs-built_in">String</span> path) <span class="hljs-keyword">async</span>;
 </code></pre>
@@ -572,7 +606,7 @@
 <li><span class="notranslate">NArray</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna la matriu d'informació del fitxer del directori</font></font></li>
 </ul>
 <hr>
-<div name="openFile" data-unique="openFile"></div><h3 id="openFile" class="notranslate">openFile</h3>
+<h3 id="openFile" class="notranslate">openFile</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Obre un fitxer per llegir, escriure o ambdues coses</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> SeekableStream fs.openFile(<span class="hljs-built_in">String</span> fname,
@@ -597,7 +631,7 @@
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mètode d'addició de lectura-escriptura 'a+', si el fitxer no existeix, es crearà automàticament.</font></font></li>
 </ul>
 <hr>
-<div name="open" data-unique="open"></div><h3 id="open" class="notranslate">open</h3>
+<h3 id="open" class="notranslate">open</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">descriptor de fitxer obert</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -625,7 +659,7 @@
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mètode d'addició de lectura-escriptura 'a+', si el fitxer no existeix, es crearà automàticament.</font></font></li>
 </ul>
 <hr>
-<div name="close" data-unique="close"></div><h3 id="close" class="notranslate">close</h3>
+<h3 id="close" class="notranslate">close</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">tanca el descriptor del fitxer</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> fs.close(Integer fd) <span class="hljs-keyword">async</span>;
 </code></pre>
@@ -634,7 +668,7 @@
 <li><span class="notranslate">fd</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, descriptor de fitxer</font></font></li>
 </ul>
 <hr>
-<div name="openTextStream" data-unique="openTextStream"></div><h3 id="openTextStream" class="notranslate">openTextStream</h3>
+<h3 id="openTextStream" class="notranslate">openTextStream</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Obre un fitxer de text per llegir, escriure o ambdues coses</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> BufferedStream fs.openTextStream(<span class="hljs-built_in">String</span> fname,
@@ -659,7 +693,7 @@
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mètode d'addició de lectura-escriptura 'a+', si el fitxer no existeix, es crearà automàticament.</font></font></li>
 </ul>
 <hr>
-<div name="readTextFile" data-unique="readTextFile"></div><h3 id="readTextFile" class="notranslate">readTextFile</h3>
+<h3 id="readTextFile" class="notranslate">readTextFile</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Obriu el fitxer de text i llegiu-ne el contingut</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> fs.readTextFile(<span class="hljs-built_in">String</span> fname) <span class="hljs-keyword">async</span>;
 </code></pre>
@@ -672,7 +706,7 @@
 <li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna el contingut de text del fitxer</font></font></li>
 </ul>
 <hr>
-<div name="readFile" data-unique="readFile"></div><h3 id="readFile" class="notranslate">readFile</h3>
+<h3 id="readFile" class="notranslate">readFile</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Obriu el fitxer i llegiu-ne el contingut</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> Variant fs.readFile(<span class="hljs-built_in">String</span> fname,
@@ -710,7 +744,7 @@
 }<font></font>
 </code></pre>
 <hr>
-<div name="readLines" data-unique="readLines"></div><h3 id="readLines" class="notranslate">readLines</h3>
+<h3 id="readLines" class="notranslate">readLines</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Obriu el fitxer i llegiu un grup de línies de text en una matriu. La identificació del final de la línia es basa en la configuració de l'atribut EOL. Per defecte, posix: "\n"; windows: "\r\n"</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Array</span> fs.readLines(<span class="hljs-built_in">String</span> fname,<font></font>
@@ -726,7 +760,7 @@
 <li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna una matriu de línies de text llegides, si no hi ha dades per llegir, o la connexió s'interromp, una matriu buida</font></font></li>
 </ul>
 <hr>
-<div name="write" data-unique="write"></div><h3 id="write" class="notranslate">write</h3>
+<h3 id="write" class="notranslate">write</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Escriu contingut al fitxer segons el descriptor del fitxer</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -772,7 +806,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, el nombre real de bytes escrits</font></font></li>
 </ul>
 <hr>
-<div name="writeTextFile" data-unique="writeTextFile"></div><h3 id="writeTextFile" class="notranslate">writeTextFile</h3>
+<h3 id="writeTextFile" class="notranslate">writeTextFile</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Creeu un fitxer de text i escriviu-ne el contingut</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> fs.writeTextFile(<span class="hljs-built_in">String</span> fname,
@@ -784,7 +818,7 @@
 <li><span class="notranslate">txt</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica la cadena a escriure</font></font></li>
 </ul>
 <hr>
-<div name="writeFile" data-unique="writeFile"></div><h3 id="writeFile" class="notranslate">writeFile</h3>
+<h3 id="writeFile" class="notranslate">writeFile</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Creeu un fitxer binari i escriviu-ne el contingut</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> fs.writeFile(<span class="hljs-built_in">String</span> fname,<font></font>
@@ -793,10 +827,10 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
 <ul>
 <li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica el nom del fitxer</font></font></li>
-<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, especifica les dades binàries a escriure</font></font></li>
+<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, especifica les dades binàries per escriure</font></font></li>
 </ul>
 <hr>
-<div name="appendFile" data-unique="appendFile"></div><h3 id="appendFile" class="notranslate">appendFile</h3>
+<h3 id="appendFile" class="notranslate">appendFile</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Creeu un fitxer binari i escriviu-ne el contingut</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> fs.appendFile(<span class="hljs-built_in">String</span> fname,<font></font>
@@ -805,10 +839,10 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
 <ul>
 <li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica el nom del fitxer</font></font></li>
-<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, especifica les dades binàries a escriure</font></font></li>
+<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, especifica les dades binàries per escriure</font></font></li>
 </ul>
 <hr>
-<div name="setZipFS" data-unique="setZipFS"></div><h3 id="setZipFS" class="notranslate">setZipFS</h3>
+<h3 id="setZipFS" class="notranslate">setZipFS</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">configurar</font></font><a href="zip.md.html" class="notranslate">zip</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mapeig de fitxers virtuals</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> fs.setZipFS(<span class="hljs-built_in">String</span> fname,<font></font>
@@ -820,8 +854,8 @@
 <li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, especificant el mapa</font></font><a href="zip.md.html" class="notranslate">zip</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dades del fitxer</font></font></li>
 </ul>
 <hr>
-<div name="clearZipFS" data-unique="clearZipFS"></div><h3 id="clearZipFS" class="notranslate">clearZipFS</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">aclarir</font></font><a href="zip.md.html" class="notranslate">zip</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mapeig de fitxers virtuals</font></font></strong></p>
+<h3 id="clearZipFS" class="notranslate">clearZipFS</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">per aclarir</font></font><a href="zip.md.html" class="notranslate">zip</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mapeig de fitxers virtuals</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> fs.clearZipFS(<span class="hljs-built_in">String</span> fname = <span class="hljs-string">""</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
@@ -829,13 +863,13 @@
 <li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, especifica la ruta de mapatge, esborra totes les memòria cau per defecte</font></font></li>
 </ul>
 <hr>
-<div name="watch" data-unique="watch"></div><h3 id="watch" class="notranslate">watch</h3>
+<h3 id="watch" class="notranslate">watch</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mireu un fitxer i retorneu l'objecte observador corresponent</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> FSWatcher fs.watch(<span class="hljs-built_in">String</span> fname);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
 <ul>
-<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica l'objecte fitxer a observar</font></font></li>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica l'objecte del fitxer a observar</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resultat de retorn:</font></font></p>
 <ul>
@@ -849,7 +883,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
 <ul>
-<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica l'objecte fitxer a observar</font></font></li>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica l'objecte del fitxer a observar</font></font></li>
 <li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Funció, </font></font><code>(evtType: 'change' | 'rename', filename: string) =&gt; any</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">la devolució de trucada de processament quan canvia l'objecte del fitxer</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resultat de retorn:</font></font></p>
@@ -864,7 +898,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
 <ul>
-<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica l'objecte fitxer a observar</font></font></li>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica l'objecte del fitxer a observar</font></font></li>
 <li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objecte, opcions d'observació</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resultat de retorn:</font></font></p>
@@ -892,7 +926,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
 <ul>
-<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica l'objecte fitxer a observar</font></font></li>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica l'objecte del fitxer a observar</font></font></li>
 <li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objecte, opcions d'observació</font></font></li>
 <li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Funció, </font></font><code>(evtType: 'change' | 'rename', filename: string) =&gt; any</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">la devolució de trucada de processament quan canvia l'objecte del fitxer</font></font></li>
 </ul>
@@ -912,7 +946,7 @@
 }<font></font>
 </code></pre>
 <hr>
-<div name="watchFile" data-unique="watchFile"></div><h3 id="watchFile" class="notranslate">watchFile</h3>
+<h3 id="watchFile" class="notranslate">watchFile</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Observa un fitxer i retorna el corresponent</font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">objecte</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> StatsWatcher fs.watchFile(<span class="hljs-built_in">String</span> fname,
@@ -920,7 +954,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
 <ul>
-<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica l'objecte fitxer a observar</font></font></li>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica l'objecte del fitxer a observar</font></font></li>
 <li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Funció, </font></font><code>(curStats: Stats, prevStats: Stats) =&gt; any</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">la devolució de trucada de processament quan canvien les estadístiques de l'objecte del fitxer</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resultat de retorn:</font></font></p>
@@ -937,7 +971,7 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
 <ul>
-<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica l'objecte fitxer a observar</font></font></li>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica l'objecte del fitxer a observar</font></font></li>
 <li><span class="notranslate">options</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objecte, opcions d'observació</font></font></li>
 <li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Funció, </font></font><code>(curStats: Stats, prevStats: Stats) =&gt; any</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">la devolució de trucada de processament quan canvien les estadístiques de l'objecte del fitxer</font></font></li>
 </ul>
@@ -957,27 +991,27 @@
 }<font></font>
 </code></pre>
 <hr>
-<div name="unwatchFile" data-unique="unwatchFile"></div><h3 id="unwatchFile" class="notranslate">unwatchFile</h3>
+<h3 id="unwatchFile" class="notranslate">unwatchFile</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">De l'observació de fname</font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Devolució de trucada per eliminar tots els esdeveniments observats</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> fs.unwatchFile(<span class="hljs-built_in">String</span> fname);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
 <ul>
-<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica l'objecte fitxer a observar</font></font></li>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica l'objecte del fitxer a observar</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resultat de retorn:</font></font></p>
 <ul>
 <li><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">objecte</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">De l'observació de fname</font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">S'han eliminat les </font></font><code>callback</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">devolució de trucades de les devolució de trucades d'esdeveniments de visualització</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">De l'observació de fname</font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">S'han eliminat </font></font><code>callback</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">les devolució de trucades</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> fs.unwatchFile(<span class="hljs-built_in">String</span> fname,
     <span class="hljs-built_in">Function</span> callback);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
 <ul>
-<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica l'objecte fitxer a observar</font></font></li>
+<li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica l'objecte del fitxer a observar</font></font></li>
 <li><span class="notranslate">callback</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Funció, la devolució de trucada per eliminar</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resultat de retorn:</font></font></p>
@@ -985,19 +1019,19 @@
 <li><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">objecte</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fins i tot si la devolució de trucada ja no és</font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">No s'informarà cap error a la devolució de trucada de l'esdeveniment d'observació</font></font></p>
-<div name="常量" data-unique="常量"></div><h2 id="常量"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">constant</font></font></h2>
-<div name="SEEK_SET" data-unique="SEEK_SET"></div><h3 id="SEEK_SET" class="notranslate">SEEK_SET</h3>
+<h2 id="常量"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">constant</font></font></h2>
+<h3 id="SEEK_SET" class="notranslate">SEEK_SET</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">buscar constant del mètode, passar a la posició absoluta</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> fs.SEEK_SET = <span class="hljs-number">0</span>;
 </code></pre>
 <hr>
-<div name="SEEK_CUR" data-unique="SEEK_CUR"></div><h3 id="SEEK_CUR" class="notranslate">SEEK_CUR</h3>
+<h3 id="SEEK_CUR" class="notranslate">SEEK_CUR</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">cerca constant del mètode, moveu-vos a la posició relativa de la posició actual</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> fs.SEEK_CUR = <span class="hljs-number">1</span>;
 </code></pre>
 <hr>
-<div name="SEEK_END" data-unique="SEEK_END"></div><h3 id="SEEK_END" class="notranslate">SEEK_END</h3>
+<h3 id="SEEK_END" class="notranslate">SEEK_END</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Seek mode constant, moveu-vos a la posició relativa del final del fitxer</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> fs.SEEK_END = <span class="hljs-number">2</span>;
 </code></pre>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | Doneu- </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">nos suport</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Doneu-nos suport</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

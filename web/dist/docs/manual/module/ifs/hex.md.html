@@ -204,15 +204,30 @@
 <li><a href=../../../awesome/module/rakuten.md.html class ="notranslate">Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="模块-hex">模块 hex</h1>
-<p>hex 编码与解码模块</p>
-<p>引用方式：</p>
+<p>hex 模块是内置模块，在编码和解码二进制数据和 ASCII 字符之间提供了十六进制的实现方式。<code>hex</code> 模块提供了编码和解码两种功能</p>
+<p>使用编码方法，可以将任意二进制数据编码为十六进制的字符串。例如：</p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">var</span> encoding = <span class="hljs-built_in">require</span>(<span class="hljs-string">'encoding'</span>);
-<span class="hljs-keyword">var</span> hex = encoding.hex;
+2
+3
+4
+5</div><span class="hljs-keyword">const</span> hex = <span class="hljs-built_in">require</span>(<span class="hljs-string">'hex'</span>)
+
+<span class="hljs-keyword">const</span> data = <span class="hljs-keyword">new</span> Buffer([<span class="hljs-number">0x4e</span>, <span class="hljs-number">0x4f</span>, <span class="hljs-number">0x44</span>, <span class="hljs-number">0x45</span>]) <span class="hljs-comment">// [0x4e, 0x4f, 0x44, 0x45] =&gt; 'NODE'</span>
+<span class="hljs-keyword">const</span> encodedData = hex.encode(data)
+<span class="hljs-built_in">console</span>.log(encodedData) <span class="hljs-comment">// "4e4f4445"</span>
 </code></pre>
-<p>或者</p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> hex = <span class="hljs-built_in">require</span>(<span class="hljs-string">'hex'</span>);
+<p>使用解码方法，可以将十六进制的字符串解码为原来的二进制数据。例如：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div><span class="hljs-keyword">const</span> hex = <span class="hljs-built_in">require</span>(<span class="hljs-string">'hex'</span>)
+
+<span class="hljs-keyword">const</span> encodedData = <span class="hljs-string">'4e4f4445'</span> <span class="hljs-comment">// 'NODE'</span>
+<span class="hljs-keyword">const</span> decodedData = hex.decode(encodedData)
+<span class="hljs-built_in">console</span>.log(decodedData) <span class="hljs-comment">// [0x4e, 0x4f, 0x44, 0x45]</span>
 </code></pre>
+<p>可以看到，<code>hex</code> 是非常简单的编码和解码模块，它适用于一些简单的二进制数据和字符串之间的转换需求。</p>
 <h2 id="静态函数">静态函数</h2>
 <h3 id="encode" class ="notranslate">encode</h3>
 <p><strong>以 hex 方式编码数据</strong></p>

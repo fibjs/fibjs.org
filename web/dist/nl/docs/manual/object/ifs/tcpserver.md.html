@@ -204,8 +204,9 @@
 <li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="对象-TcpServer" data-unique="对象-TcpServer"></div><h1 id="对象-TcpServer"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Object TcpServer</font></font></h1>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Het tcp-serverobject is handig voor het maken van een standaard multi-fiber tcp-server</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gebruik het TcpServer-object om snel een multi-thread concurrent processing tcp-server te maken.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">TcpServer` is een hoge gelijktijdige TCP</font></font><a href="socket.md.html" class="notranslate">Socket</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Server, waarmee een TCP-server kan worden gemaakt die in de begintoestand een TCP-verbinding met de client tot stand heeft gebracht</font></font></p>
+<p><font style="vertical-align: inherit;"></font><code>TcpServer</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objecten</font><font style="vertical-align: inherit;"> kunnen worden gebruikt om snel een multi-thread concurrent processing TCP-server te maken. </font><font style="vertical-align: inherit;">Wanneer een client verbinding maakt met het luisteradres, wordt de callback-functie aangeroepen en wordt een nieuw verbonden </font></font><code>Socket</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">object kunnen dit object gebruiken om TCP-pakketten naar en van de client te verzenden of te ontvangen.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Het volgende is een specifiek voorbeeld van het terugschrijven van client-TCP-pakketten op basis van </font></font><code>TcpServer</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">het object :</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -215,17 +216,27 @@
 7
 8
 9
-10</div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">func</span>(<span class="hljs-params">conn</span>) </span>{
-    <span class="hljs-keyword">var</span> data;<font></font>
+10
+11
+12
+13
+14</div><span class="hljs-keyword">const</span> net = <span class="hljs-built_in">require</span>(<span class="hljs-string">"net"</span>);<font></font>
 <font></font>
-    <span class="hljs-keyword">while</span> (data = conn.read())<font></font>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">onConnect</span>(<span class="hljs-params">conn</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`new client accepted! local:<span class="hljs-subst">${conn.localAddress}</span>, remote:<span class="hljs-subst">${conn.remoteAddress}</span>`</span>);
+    <span class="hljs-keyword">const</span> data = conn.read();
+    <span class="hljs-keyword">if</span> (data) {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`recv data on fn onConnect: <span class="hljs-subst">${data}</span>`</span>);<font></font>
         conn.write(data);<font></font>
-<font></font>
+    }<font></font>
     conn.close();<font></font>
 }<font></font>
 <font></font>
-<span class="hljs-keyword">new</span> net.TcpServer(<span class="hljs-number">8080</span>, func).start();
+<span class="hljs-keyword">new</span> net.TcpServer(<span class="hljs-string">'0.0.0.0'</span>, <span class="hljs-number">8080</span>, onConnect).start();
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'server is running on port: 8080'</span>);
 </code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">In de bovenstaande code maken we een </font></font><code>TcpServer</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">object en gebruiken we de callback-functie </font></font><code>onConnect</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">om de ontvangen klantverzoekinformatie te verwerken en de gegevens terug te schrijven naar de klant.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Wanneer deze service wordt gestart, luistert deze naar alle IP-adressen en verzoeken op </font></font><code>8080</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">de poort . Wanneer u </font></font><code>telnet</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">verbinding maakt met de service via of andere clienttools, ziet u dat de service de verbindingsinformatie afdrukt en elk verzendt. Het verzoek wordt teruggestuurd als- is.</font></font></p>
 <div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">erfenis relatie</font></font></h2>
 <div class="dot notranslate">
 <!-- Generated by graphviz version 2.40.1 (20161225.0304)

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Object Worker - JavaScript a la fibra</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Canvia la navegació</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/worker.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/worker.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/worker.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/worker.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/worker.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/worker.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/worker.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/worker.md.html">Italiano</a> <a href="../../../../../nl/docs/manual/object/ifs/worker.md.html">Nederlands</a> <a href="../../../../../ru/docs/manual/object/ifs/worker.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/worker.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/worker.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/worker.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objecte objecte incorporat</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Cerca" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="entrada de cerca" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">portada</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">objecte incorporat</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Treballador d'objectes</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">guia de desenvolupament</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Object Worker - JavaScript a la fibra</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Canvia la navegació</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/worker.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/worker.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/worker.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/worker.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/worker.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/worker.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/worker.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/worker.md.html">Italiano</a> <a href="../../../../../nl/docs/manual/object/ifs/worker.md.html">Nederlands</a> <a href="../../../../../ru/docs/manual/object/ifs/worker.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/worker.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/worker.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/worker.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objecte objecte incorporat</font></font></span><div class="search"><input type="text" class="searchbox" placeholder="Cerca"></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">portada</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">objecte incorporat</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Treballador d'objectes</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">guia de desenvolupament</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Què és fibjs?</font></font></a></li>
 <li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instal·leu l'entorn operatiu</font></font></a></li>
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
@@ -203,9 +203,85 @@
 <li><a href="../../../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
 <li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
 </ul>
- </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="对象-Worker" data-unique="对象-Worker"></div><h1 id="对象-Worker"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Treballador d'objectes</font></font></h1>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objecte de treballador de fil independent</font></font></p>
-<div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">relació hereditària</font></font></h2>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <h1 id="对象-Worker"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Treballador d'objectes</font></font></h1>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">L'objecte Worker és un objecte utilitzat per crear subfils, que es poden crear i processar al programa. </font><font style="vertical-align: inherit;">Un objecte Worker es pot entendre com un procés de JavaScript que s'executa en un fil diferent del fil principal. </font><font style="vertical-align: inherit;">El treballador no comparteix memòria amb el fil principal i no bloquejarà el fil principal. És un mètode de programació asíncron generalitzat.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El constructor de l'objecte Worker és el següent:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> Worker(<span class="hljs-built_in">String</span> path, <span class="hljs-built_in">Object</span> opts = {})
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">en,</font></font><a href="../../module/ifs/path.md.html" class="notranslate">path</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El paràmetre especifica la ruta del fitxer JavaScript per al fil nou. </font><font style="vertical-align: inherit;">Per exemple, podeu escriure un fitxer work.js amb el contingut següent:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div><span class="hljs-keyword">const</span> {<font></font>
+    Worker<font></font>
+} = <span class="hljs-built_in">require</span>(<span class="hljs-string">'worker_threads'</span>);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Hi from worker'</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Al programa principal, executeu work.js amb el codi següent:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div><span class="hljs-keyword">const</span> {<font></font>
+    Worker<font></font>
+} = <span class="hljs-built_in">require</span>(<span class="hljs-string">'worker_threads'</span>);
+<span class="hljs-keyword">const</span> worker = <span class="hljs-keyword">new</span> Worker(<span class="hljs-string">'path/to/work.js'</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Després de l'execució, podeu veure la sortida "Hola del treballador" a la consola del programa principal.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">En l'exemple següent, suposem que tenim un càlcul que consumeix molt de temps i que volem posar-lo en un altre fil per processar-lo, tot evitant ser bloquejat per aquest càlcul al fil principal. </font><font style="vertical-align: inherit;">el codi mostra el següent:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fil principal:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</div><span class="hljs-keyword">const</span> {<font></font>
+    Worker<font></font>
+} = <span class="hljs-built_in">require</span>(<span class="hljs-string">'worker_threads'</span>);<font></font>
+<font></font>
+<span class="hljs-comment">// 将耗时计算交给 Worker 来做</span>
+<span class="hljs-keyword">const</span> fib = <span class="hljs-keyword">new</span> Worker(__dirname + <span class="hljs-string">'/fib-worker.js'</span>);
+<span class="hljs-comment">// 通过 on 和 postMessage 在主线程和工作线程之间发送消息</span>
+fib.onmessage = <span class="hljs-function">(<span class="hljs-params">ev</span>) =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'result: '</span>, ev.data);<font></font>
+};<font></font>
+fib.postMessage(<span class="hljs-number">40</span>);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'main thread still working'</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">En aquest exemple, creem un fil de treball mitjançant el constructor de l'objecte Worker per processar el càlcul de la seqüència de Fibonacci. El fil principal passa dades al fil de treball mitjançant el mètode postMessage() i obté el resultat del processament mitjançant l'esdeveniment onmessage. . </font><font style="vertical-align: inherit;">Al mateix temps, el fil principal mostra el missatge "encara funcionant" per demostrar que aquesta tasca de càlcul s'ha "delegat" al fil de treball i pot continuar processant altres coses.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">L'estil de codi del fil de treball és el següent:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</div><span class="hljs-comment">// fib-worker.js</span>
+Master.onmessage = <span class="hljs-function">(<span class="hljs-params">ev</span>) =&gt;</span> {
+    <span class="hljs-keyword">const</span> n = ev.data;
+    <span class="hljs-keyword">const</span> result = fib(n);
+    <span class="hljs-comment">// Once the calculation has been completed, the result is sent back to the main thread.</span><font></font>
+    Master.postMessage(result);<font></font>
+};<font></font>
+<font></font>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fib</span>(<span class="hljs-params">n</span>) </span>{
+    <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> n;
+    <span class="hljs-keyword">return</span> fib(n - <span class="hljs-number">1</span>) + fib(n - <span class="hljs-number">2</span>);<font></font>
+}<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Al fil de treball, escoltem el missatge enviat pel fil principal mitjançant el paràmetre d'entrada postMessage(), calculem la seqüència de Fibonacci especificada i tornem a enviar el resultat del càlcul al fil principal mitjançant el mètode Master.postMessage().</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aquest és l'exemple més bàsic de Worker. Quan es desenvolupa amb objectes de Worker, el fil principal i els fils de treball són completament asíncrons. Cada objecte Worker és un fil independent. L'objecte Worker creat al fil principal no genera cap bloc.</font></font></p>
+<h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">relació hereditària</font></font></h2>
 <div class="dot notranslate">
 <!-- Generated by graphviz version 2.40.1 (20161225.0304)
  -->
@@ -289,8 +365,8 @@
 </svg>
 </div>
 
-<div name="构造函数" data-unique="构造函数"></div><h2 id="构造函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Constructor</font></font></h2>
-<div name="Worker" data-unique="Worker"></div><h3 id="Worker" class="notranslate">Worker</h3>
+<h2 id="构造函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Constructor</font></font></h2>
+<h3 id="Worker" class="notranslate">Worker</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Constructor d'objectes de treball</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">new</span> Worker(<span class="hljs-built_in">String</span> path,
@@ -298,31 +374,31 @@
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
 <ul>
-<li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifiqueu l'script d'entrada del treballador, només accepta el camí absolut</font></font></li>
+<li><span class="notranslate">path</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, especifica l'script d'entrada Worker, només accepta camins absoluts</font></font></li>
 <li><span class="notranslate">opts</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Objecte, opció de construcció, encara no suportat</font></font></li>
 </ul>
-<div name="静态属性" data-unique="静态属性"></div><h2 id="静态属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">propietat estàtica</font></font></h2>
-<div name="defaultMaxListeners" data-unique="defaultMaxListeners"></div><h3 id="defaultMaxListeners" class="notranslate">defaultMaxListeners</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enter, el nombre màxim global d'oients per defecte</font></font></strong></p>
+<h2 id="静态属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">propietat estàtica</font></font></h2>
+<h3 id="defaultMaxListeners" class="notranslate">defaultMaxListeners</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enter, el nombre màxim global predeterminat d'oients</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer Worker.defaultMaxListeners;
 </code></pre>
-<div name="成员属性" data-unique="成员属性"></div><h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">atribut de membre</font></font></h2>
-<div name="onload" data-unique="onload"></div><h3 id="onload" class="notranslate">onload</h3>
+<h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">atribut de membre</font></font></h2>
+<h3 id="onload" class="notranslate">onload</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La funció, la consulta i l'enllaç accepten l'esdeveniment del missatge de càrrega, equivalent a on("load", func);</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Function</span> Worker.onload;
 </code></pre>
 <hr>
-<div name="onmessage" data-unique="onmessage"></div><h3 id="onmessage" class="notranslate">onmessage</h3>
+<h3 id="onmessage" class="notranslate">onmessage</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La funció, la consulta i l'enllaç accepten l'esdeveniment de missatge postMessage, equivalent a on("missatge", func);</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Function</span> Worker.onmessage;
 </code></pre>
 <hr>
-<div name="onerror" data-unique="onerror"></div><h3 id="onerror" class="notranslate">onerror</h3>
+<h3 id="onerror" class="notranslate">onerror</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La funció, la consulta i l'enllaç accepta l'esdeveniment del missatge d'error, equivalent a on("error", func);</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Function</span> Worker.onerror;
 </code></pre>
-<div name="成员函数" data-unique="成员函数"></div><h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">funció de membre</font></font></h2>
-<div name="postMessage" data-unique="postMessage"></div><h3 id="postMessage" class="notranslate">postMessage</h3>
+<h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">funció de membre</font></font></h2>
+<h3 id="postMessage" class="notranslate">postMessage</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Envieu un missatge al mestre o al treballador,</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Worker.postMessage(Value data);
 </code></pre>
@@ -331,7 +407,7 @@
 <li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valor, especifica el contingut del missatge enviat</font></font></li>
 </ul>
 <hr>
-<div name="on" data-unique="on"></div><h3 id="on" class="notranslate">on</h3>
+<h3 id="on" class="notranslate">on</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enllaçar un controlador d'esdeveniments a un objecte</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> Worker.on(<span class="hljs-built_in">String</span> ev,
@@ -359,7 +435,7 @@
 <li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna el propi objecte d'esdeveniment, que és convenient per a trucades en cadena</font></font></li>
 </ul>
 <hr>
-<div name="addListener" data-unique="addListener"></div><h3 id="addListener" class="notranslate">addListener</h3>
+<h3 id="addListener" class="notranslate">addListener</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enllaçar un controlador d'esdeveniments a un objecte</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> Worker.addListener(<span class="hljs-built_in">String</span> ev,
@@ -387,8 +463,8 @@
 <li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna el propi objecte d'esdeveniment, que és convenient per a trucades en cadena</font></font></li>
 </ul>
 <hr>
-<div name="prependListener" data-unique="prependListener"></div><h3 id="prependListener" class="notranslate">prependListener</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enllaceu una funció de controlador d'esdeveniments a l'origen de l'objecte</font></font></strong></p>
+<h3 id="prependListener" class="notranslate">prependListener</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enllaceu una funció de controlador d'esdeveniments a l'inici de l'objecte</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> Worker.prependListener(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
@@ -403,7 +479,7 @@
 <li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna el propi objecte d'esdeveniment, que és convenient per a trucades en cadena</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enllaceu una funció de controlador d'esdeveniments a l'origen de l'objecte</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enllaceu una funció de controlador d'esdeveniments a l'inici de l'objecte</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> Worker.prependListener(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
@@ -415,7 +491,7 @@
 <li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna el propi objecte d'esdeveniment, que és convenient per a trucades en cadena</font></font></li>
 </ul>
 <hr>
-<div name="once" data-unique="once"></div><h3 id="once" class="notranslate">once</h3>
+<h3 id="once" class="notranslate">once</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enllaceu un controlador d'esdeveniments únic a l'objecte, el controlador únic només s'activarà una vegada</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> Worker.once(<span class="hljs-built_in">String</span> ev,
@@ -443,8 +519,8 @@
 <li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna el propi objecte d'esdeveniment, que és convenient per a trucades en cadena</font></font></li>
 </ul>
 <hr>
-<div name="prependOnceListener" data-unique="prependOnceListener"></div><h3 id="prependOnceListener" class="notranslate">prependOnceListener</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enllaceu una funció de controlador d'esdeveniments a l'origen de l'objecte</font></font></strong></p>
+<h3 id="prependOnceListener" class="notranslate">prependOnceListener</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enllaceu una funció de controlador d'esdeveniments a l'inici de l'objecte</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> Worker.prependOnceListener(<span class="hljs-built_in">String</span> ev,
     <span class="hljs-built_in">Function</span> func);
@@ -459,7 +535,7 @@
 <li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna el propi objecte d'esdeveniment, que és convenient per a trucades en cadena</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enllaceu una funció de controlador d'esdeveniments a l'origen de l'objecte</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enllaceu una funció de controlador d'esdeveniments a l'inici de l'objecte</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> Worker.prependOnceListener(<span class="hljs-built_in">Object</span> map);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
@@ -471,7 +547,7 @@
 <li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna el propi objecte d'esdeveniment, que és convenient per a trucades en cadena</font></font></li>
 </ul>
 <hr>
-<div name="off" data-unique="off"></div><h3 id="off" class="notranslate">off</h3>
+<h3 id="off" class="notranslate">off</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">desespecifica la funció de la cua de processament d'objectes</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> Worker.off(<span class="hljs-built_in">String</span> ev,
@@ -511,7 +587,7 @@
 <li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna el propi objecte d'esdeveniment, que és convenient per a trucades en cadena</font></font></li>
 </ul>
 <hr>
-<div name="removeListener" data-unique="removeListener"></div><h3 id="removeListener" class="notranslate">removeListener</h3>
+<h3 id="removeListener" class="notranslate">removeListener</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">desespecifica la funció de la cua de processament d'objectes</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Object</span> Worker.removeListener(<span class="hljs-built_in">String</span> ev,
@@ -551,7 +627,7 @@
 <li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna el propi objecte d'esdeveniment, que és convenient per a trucades en cadena</font></font></li>
 </ul>
 <hr>
-<div name="removeAllListeners" data-unique="removeAllListeners"></div><h3 id="removeAllListeners" class="notranslate">removeAllListeners</h3>
+<h3 id="removeAllListeners" class="notranslate">removeAllListeners</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cancel·la tots els oients de tots els esdeveniments de la cua de processament d'objectes o elimina tots els oients de l'esdeveniment especificat si s'especifica un esdeveniment.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Object</span> Worker.removeAllListeners(<span class="hljs-built_in">String</span> ev);
 </code></pre>
@@ -576,7 +652,7 @@
 <li><span class="notranslate">Object</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna el propi objecte d'esdeveniment, que és convenient per a trucades en cadena</font></font></li>
 </ul>
 <hr>
-<div name="setMaxListeners" data-unique="setMaxListeners"></div><h3 id="setMaxListeners" class="notranslate">setMaxListeners</h3>
+<h3 id="setMaxListeners" class="notranslate">setMaxListeners</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El límit predeterminat del nombre d'oients, només per compatibilitat</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Worker.setMaxListeners(Integer n);
 </code></pre>
@@ -585,7 +661,7 @@
 <li><span class="notranslate">n</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, especifica el nombre d'esdeveniments</font></font></li>
 </ul>
 <hr>
-<div name="getMaxListeners" data-unique="getMaxListeners"></div><h3 id="getMaxListeners" class="notranslate">getMaxListeners</h3>
+<h3 id="getMaxListeners" class="notranslate">getMaxListeners</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Obté el nombre limitat d'oients per defecte, només per compatibilitat</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Worker.getMaxListeners();
 </code></pre>
@@ -594,7 +670,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna el número de límit predeterminat</font></font></li>
 </ul>
 <hr>
-<div name="listeners" data-unique="listeners"></div><h3 id="listeners" class="notranslate">listeners</h3>
+<h3 id="listeners" class="notranslate">listeners</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Consulteu la matriu d'oients per a l'esdeveniment especificat de l'objecte</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Array</span> Worker.listeners(<span class="hljs-built_in">String</span> ev);
 </code></pre>
@@ -607,8 +683,8 @@
 <li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna una matriu d'oients per a l'esdeveniment especificat</font></font></li>
 </ul>
 <hr>
-<div name="listenerCount" data-unique="listenerCount"></div><h3 id="listenerCount" class="notranslate">listenerCount</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Consulta el nombre d'oients per a l'esdeveniment especificat de l'objecte</font></font></strong></p>
+<h3 id="listenerCount" class="notranslate">listenerCount</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Consulteu el nombre d'oients per a l'esdeveniment especificat de l'objecte</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Worker.listenerCount(<span class="hljs-built_in">String</span> ev);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
@@ -620,7 +696,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna el nombre d'oients per a l'esdeveniment especificat</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Consulta el nombre d'oients per a l'esdeveniment especificat de l'objecte</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Consulteu el nombre d'oients per a l'esdeveniment especificat de l'objecte</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Worker.listenerCount(Value o,
     <span class="hljs-built_in">String</span> ev);
@@ -635,7 +711,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna el nombre d'oients per a l'esdeveniment especificat</font></font></li>
 </ul>
 <hr>
-<div name="eventNames" data-unique="eventNames"></div><h3 id="eventNames" class="notranslate">eventNames</h3>
+<h3 id="eventNames" class="notranslate">eventNames</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Consulta el nom de l'esdeveniment de l'oient</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Array</span> Worker.eventNames();
 </code></pre>
@@ -644,7 +720,7 @@
 <li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna una matriu de noms d'esdeveniments</font></font></li>
 </ul>
 <hr>
-<div name="emit" data-unique="emit"></div><h3 id="emit" class="notranslate">emit</h3>
+<h3 id="emit" class="notranslate">emit</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Activa activament un esdeveniment</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Boolean</span> Worker.emit(<span class="hljs-built_in">String</span> ev,<font></font>
@@ -657,10 +733,10 @@
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resultat de retorn:</font></font></p>
 <ul>
-<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna l'estat del desencadenant de l'esdeveniment, retorna true si hi ha un esdeveniment de resposta, en cas contrari retorna false</font></font></li>
+<li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna l'estat de l'activador de l'esdeveniment, retorna true si hi ha un esdeveniment de resposta, en cas contrari retorna false</font></font></li>
 </ul>
 <hr>
-<div name="toString" data-unique="toString"></div><h3 id="toString" class="notranslate">toString</h3>
+<h3 id="toString" class="notranslate">toString</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retorna la representació de cadena de l'objecte, generalment retorna "[Native Object]", l'objecte es pot reimplementar segons les seves pròpies característiques</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Worker.toString();
 </code></pre>
@@ -669,7 +745,7 @@
 <li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, retorna una representació de cadena de l'objecte</font></font></li>
 </ul>
 <hr>
-<div name="toJSON" data-unique="toJSON"></div><h3 id="toJSON" class="notranslate">toJSON</h3>
+<h3 id="toJSON" class="notranslate">toJSON</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Retorna la representació en format JSON de l'objecte, generalment retorna una col·lecció de propietats llegibles definides per l'objecte</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value Worker.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
@@ -681,4 +757,4 @@
 <ul>
 <li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, que retorna un valor serialitzable per JSON</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | Doneu- </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">nos suport</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Doneu-nos suport</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

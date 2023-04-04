@@ -204,10 +204,44 @@
 <li><a href=../../../awesome/module/rakuten.md.html class ="notranslate">Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="模块-fs">模块 fs</h1>
-<p>文件系统处理模块</p>
-<p>使用方法：</p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
+<p>fs 模块是文件系统操作模块。它提供了读取文件、写入文件、打开文件、关闭文件、更改文件权限等磁盘 I/O 操作，支持同步和异步两种用法。fs 模块还提供了文件监视器功能，可以监听文件系统中文件和目录的变化，并回调指定的函数。</p>
+<p>例如，要在 fibjs 中读取一个文件，可以使用 fs 模块的 readFile 方法：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
+<span class="hljs-keyword">var</span> content = fs.readFile(<span class="hljs-string">'/path/to/file'</span>);
 </code></pre>
+<p>如果想要异步读取文件，可以通过回调来实现：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
+fs.readFile(<span class="hljs-string">'/path/to/file'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, data</span>) </span>{
+    <span class="hljs-keyword">if</span> (err) <span class="hljs-keyword">throw</span> err;
+    <span class="hljs-built_in">console</span>.log(data);
+});
+</code></pre>
+<p>类似地，如果要写入一个文件，可以使用 fs 模块的 writeFile 方法：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
+<span class="hljs-keyword">var</span> content = <span class="hljs-string">'hello, world!'</span>;
+fs.writeFile(<span class="hljs-string">'/path/to/file'</span>, content);
+</code></pre>
+<p>如果要异步写入文件，可以通过回调来实现：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6</div><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
+<span class="hljs-keyword">var</span> content = <span class="hljs-string">'hello, world!'</span>;
+fs.writeFile(<span class="hljs-string">'/path/to/file'</span>, content, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>{
+    <span class="hljs-keyword">if</span> (err) <span class="hljs-keyword">throw</span> err;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'File saved.'</span>);
+});
+</code></pre>
+<p>除了读写文件之外，fs 模块还提供了一系列其他的文件系统操作，诸如创建目录、修改文件权限、查询文件状态等等。</p>
 <p>一些注意点:</p>
 <ul>
 <li>运行 <code>fs.watch(filename)</code> 会返回一个继承自 <a href=../../object/ifs/eventemitter.md.html class ="notranslate">EventEmitter</a> 的 watcher, 它支持 &#39;change&#39;, &#39;changeonly&#39;, &#39;renameonly&#39; 三个事件</li>

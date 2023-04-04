@@ -204,172 +204,58 @@
 <li><a href=../../../awesome/module/rakuten.md.html class ="notranslate">Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="模块-test">模块 test</h1>
-<p>测试套件模块，用以定义管理测试套件</p>
-<p>使用方法 ：</p>
+<p>test 模块是一个测试框架，结合断言模块 <code>assert</code> 可以方便地编写各种测试用例</p>
+<p>在 <code>fibjs</code> 中引入 <code>test</code> 模块常常需要先进行 <code>test setup</code> 操作：</p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82</div><span class="hljs-keyword">var</span> test = <span class="hljs-built_in">require</span>(<span class="hljs-string">'test'</span>);
+2</div><span class="hljs-keyword">var</span> test = <span class="hljs-built_in">require</span>(<span class="hljs-string">'test'</span>);
 test.setup();
-
-describe(<span class="hljs-string">'test'</span>, () =&gt; {
-    before(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
-        <span class="hljs-comment">// setup before the whole test</span>
-    });
-
-    beforeEach(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
-        <span class="hljs-comment">// setup before each test</span>
-    });
-
-    after(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
-        <span class="hljs-comment">// cleanup after the whole test</span>
-    });
-
-    afterEach(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
-        <span class="hljs-comment">// cleanup after each test</span>
-    });
-
-    it(<span class="hljs-string">'case'</span>, () =&gt; {
-        assert.ok(<span class="hljs-literal">true</span>);
-    });
-
-    <span class="hljs-comment">// ignored test case</span>
-    xit(<span class="hljs-string">'case'</span>, () =&gt; {
-        assert.ok(<span class="hljs-literal">true</span>);
-    });
-
-    <span class="hljs-comment">// ignored test case</span>
-    it.skip(<span class="hljs-string">'case'</span>, () =&gt; {
-        assert.ok(<span class="hljs-literal">true</span>);
-    });
-
-    <span class="hljs-comment">// only test case</span>
-    oit(<span class="hljs-string">'case'</span>, () =&gt; {
-        assert.ok(<span class="hljs-literal">true</span>);
-    });
-
-    <span class="hljs-comment">// only test case</span>
-    it.only(<span class="hljs-string">'case'</span>, () =&gt; {
-        assert.ok(<span class="hljs-literal">true</span>);
-    });
-});
-
-<span class="hljs-comment">// async function test</span>
-describe(<span class="hljs-string">'test async'</span>, () =&gt; {
-    it(<span class="hljs-string">'pass case'</span>, <span class="hljs-keyword">async</span> () =&gt; {
-        assert.ok(<span class="hljs-literal">true</span>);
-    });
-
-    it(<span class="hljs-string">'error case'</span>, <span class="hljs-keyword">async</span> () =&gt; {
-        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'some thing wrong!'</span>);
-    });
-});
-
-<span class="hljs-comment">// callback function test</span>
-<span class="hljs-comment">// cannot use callback mode in jsc</span>
-describe(<span class="hljs-string">'test callback'</span>, () =&gt; {
-    it(<span class="hljs-string">'pass case'</span>, done =&gt; {
-        setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
-            assert.ok(<span class="hljs-literal">true</span>);
-            done();
-        }, <span class="hljs-number">0</span>);
-    });
-
-    it(<span class="hljs-string">'error case'</span>, done =&gt; {
-        setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
-            done(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'some thing wrong!'</span>));
-        }, <span class="hljs-number">0</span>);
-    });
-
-    it(<span class="hljs-string">'check in done'</span>, done =&gt; {
-        setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
-            done(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
-                assert.ok(<span class="hljs-literal">true</span>);
-            });
-        }, <span class="hljs-number">0</span>);
-    });
-});
-
-process.exit(-test.run(<span class="hljs-built_in">console</span>.DEBUG));
 </code></pre>
+<p>在编写测试用例前通常需要先定义一个测试模块用来描述测试内容。</p>
+<ul>
+<li>describe</li>
+</ul>
+<p>describe 所有的测试分组的容器，类似于测试套件的概念，是用于将 <code>it</code> 测试挂靠在特定的分类下，describe 可以包含多个 it 用例或者其它嵌套的 describe 表示的子分类。</p>
+<pre><code><div class="line-numbers">1</div><span class="hljs-keyword">describe</span>(<span class="hljs-keyword">String</span> <span class="hljs-keyword">name</span>, <span class="hljs-keyword">Function</span> <span class="hljs-keyword">block</span>)
+</code></pre><p>调用参数:
+name: String, 定义模块名称
+block: Function, 模块初始化代码</p>
+<ul>
+<li>it</li>
+</ul>
+<p>表示单个测试用例，每个描述都应该只测单一的一种情况，以保证测试结果的可靠性。</p>
+<pre><code><div class="line-numbers">1</div>it(String <span class="hljs-keyword">name</span>, <span class="hljs-function"><span class="hljs-keyword">Function</span></span> <span class="hljs-keyword">block</span>)
+</code></pre><p>调用参数:
+name: String, 定义项目名称
+block: Function, 测试内容</p>
+<ul>
+<li>xit &amp; it.skip</li>
+</ul>
+<p>表示被跳过的测试用例。</p>
+<pre><code><div class="line-numbers">1</div>xit(String <span class="hljs-keyword">name</span>, <span class="hljs-function"><span class="hljs-keyword">Function</span></span> <span class="hljs-keyword">block</span>)
+</code></pre><p>调用参数:
+name: String, 定义项目名称
+block: Function, 测试内容</p>
+<ul>
+<li>oit &amp; it.only</li>
+</ul>
+<p>表示仅运行当前测试用例，忽略其他测试用例，以便单独调试当前用例，非常实用。</p>
+<pre><code><div class="line-numbers">1
+2</div>oit(String <span class="hljs-keyword">name</span>, <span class="hljs-function"><span class="hljs-keyword">Function</span></span> <span class="hljs-keyword">block</span>)
+it.<span class="hljs-keyword">only</span>(String <span class="hljs-keyword">name</span>, <span class="hljs-function"><span class="hljs-keyword">Function</span></span> <span class="hljs-keyword">block</span>)
+</code></pre><p>调用参数:
+name: String, 定义项目名称
+block: Function, 测试内容</p>
+<ul>
+<li>todo</li>
+</ul>
+<p>表示需进一步完善测试用例的计划。</p>
+<pre><code><div class="line-numbers">1</div>todo(String <span class="hljs-keyword">name</span>, <span class="hljs-function"><span class="hljs-keyword">Function</span></span> <span class="hljs-keyword">block</span>)
+</code></pre><p>调用参数:
+name: String, 定义项目名称
+block: Function, 测试内容</p>
+<p>在编写测试用例时，通常使用 <a href=assert.md.html class ="notranslate">assert</a> 断言模块，对函数的返回进行检查。使用方法如下：</p>
+<pre><code><div class="line-numbers">1</div>assert(condition, <span class="hljs-keyword">String</span> <span class="hljs-keyword">message</span>);
+</code></pre><p>其中，第一个参数是需要断言的条件，第二个参数是错误消息。</p>
 <h2 id="对象">对象</h2>
 <h3 id="assert" class ="notranslate">assert</h3>
 <p><strong>断言测试模块，如果测试值为假，则报错，报错行为可设定继续运行或者错误抛出</strong></p>
