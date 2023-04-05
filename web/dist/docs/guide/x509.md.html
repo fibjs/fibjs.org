@@ -204,64 +204,30 @@
 <li><a href=../awesome/module/rakuten.md.html class ="notranslate">Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="fibjs-中-X509-证书的使用">fibjs 中 X509 证书的使用</h1>
-<h2 id="方式一:-使用临时生成自签发证书">方式一: 使用临时生成自签发证书</h2>
-<pre><code class="lang-js"><div class="line-numbers">1
-2
-3</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
-<span class="hljs-keyword">const</span> ssl = <span class="hljs-built_in">require</span>(<span class="hljs-string">'ssl'</span>);
-<span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">"http"</span>);
-</code></pre>
-<p><strong>1.创建一个密钥对象, 并生成2048位RSA密钥对</strong></p>
-<pre><code class="lang-js"><div class="line-numbers">1
-2</div><span class="hljs-keyword">let</span> pky = <span class="hljs-keyword">new</span> crypto.PKey();  
-pky.genRsaKey(<span class="hljs-number">2048</span>); 
-</code></pre>
-<p><strong>2.创建证书请求对象, 用到了上面 pky 中的公钥</strong></p>
-<pre><code class="lang-js"><div class="line-numbers">1
-2
-3
-4
-5
-6
-7</div><span class="hljs-keyword">let</span> xrq = <span class="hljs-keyword">new</span> crypto.X509Req(<span class="hljs-string">"CN=localhost,O=fibjs"</span>, pky);
-
-
-<span class="hljs-comment">/**
- * CN=localhost 是证书的主题名称, 就是证书的使用者（一般是域名
- * 可以加一些扩展内容, 比如 O=IBM,OU=IT,...（用逗号分隔）等项
- */</span>
-</code></pre>
-<p><strong>3.签发证书, 用到 pky 中的私钥</strong></p>
-<pre><code class="lang-js"><div class="line-numbers">1
-2
-3
-4
-5
-6
-7
-8</div><span class="hljs-keyword">let</span> opt = {
-  <span class="hljs-attr">notBefore</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">'2019-01-01'</span>) <span class="hljs-comment">// 证书生效时间</span>
- ,<span class="hljs-attr">notAfter</span>:  <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">'2029-12-31'</span>) <span class="hljs-comment">// 证书失效时间</span>
-};
-<span class="hljs-keyword">let</span> crt = xrq.sign(<span class="hljs-string">"CN=myy.mkx"</span>, pky, opt); 
-
-<span class="hljs-comment">// CN=myy.mkx 是证书的签发者, 同样可添加扩展</span>
-<span class="hljs-comment">// opt 参数参见 fibjs 文档</span>
-</code></pre>
-<p><strong>4. 使用临时证书启动https服务</strong></p>
-<pre><code class="lang-js"><div class="line-numbers">1
-2
-3
-4</div><span class="hljs-keyword">var</span> svr = <span class="hljs-keyword">new</span> http.HttpsServer(crt, pky, <span class="hljs-number">443</span>, (req)=&gt; {
-  req.response.write(<span class="hljs-string">'&lt;h1&gt;fibjs https server&lt;/h1&gt;'</span>);
-});
-svr.start();
-</code></pre>
-<p><strong>5. 浏览器访问 <a href="https://localhost/">https://localhost/</a> 测试, 因为不是正式的证书, 浏览器不会认, 需要手动继续访问, 点击地址栏证书图标可查看证书的详细信息。</strong></p>
-<hr>
-<h2 id="方式二:-生成和使用自签发证书文件">方式二: 生成和使用自签发证书文件</h2>
-<p><strong>1. 生成证书/私钥文件</strong></p>
-<pre><code class="lang-js"><div class="line-numbers">1
+<h2 id="背景介绍">背景介绍</h2>
+<h3 id="什么是-x509-证书">什么是 x509 证书</h3>
+<p>x509 证书是基于国际标准的公钥认证服务（PKI）体系中，最常用的一种数字证书格式。它能够用于认证和加密，在互联网上广泛应用于 SSL/TLS 协议以及其他类型的网络应用。x509 证书采用了公钥/私钥认证机制，并且能够保证数据传输的保密性、完整性和真实性等。</p>
+<h3 id="x509-证书在什么场景中用到">x509 证书在什么场景中用到</h3>
+<p>在互联网上，x509 证书最常用的场景是用于 TLS/SSL 协议中的证书认证，保证客户端与服务端之间传输的数据使用安全通道进行加密并且是经过验证的。x509 证书还可以用于 VPN/SSH 等基于公私钥加密的应用协议中的身份认证。</p>
+<h3 id="fibjs-支持-x509-证书的处理">fibjs 支持 x509 证书的处理</h3>
+<p>fibjs 支持 x509 证书的处理，提供了 crypto 模块中的 X509Cert、X509Req 等类来进行证书的读取、创建和签名等操作。可以通过这些类获取证书的有效期、公钥、颁发者、主题名称等信息，以及对证书进行签名、验证等操作。同时，fibjs 还提供了 HttpsServer 类来支持 HTTPS 的证书认证和加密连接，使得在 fibjs 中使用 x509 证书变得更加容易。</p>
+<h2 id="X509-模块的介绍">X509 模块的介绍</h2>
+<h3 id="X509-模块是什么">X509 模块是什么</h3>
+<p>在 fibjs 的 crypto 模块中，提供了 X509Cert、X509Req 等类来进行 x509 证书的读取、创建和签名等操作。X509 模块是一个用于处理 x509 证书的模块，提供了对证书的解析、创建和验证等操作。</p>
+<h3 id="X509-模块的作用">X509 模块的作用</h3>
+<p>X509 模块的作用是对 x509 证书进行操作，可以通过该模块读取已有的 x509 证书，获取证书的有效期、公钥、颁发者、主题名称等信息。同时, X509 模块也可以创建 x509 证书请求和签名证书，方式如用于 TLS/SSL 协议中的证书认证。</p>
+<h3 id="X509-模块的-API">X509 模块的 API</h3>
+<p>以下是 X509 模块中比较重要的 API 列表：</p>
+<ul>
+<li><span class="notranslate">X509Cert</span>: 用于读取和操作 x509 证书的类。</li>
+<li><span class="notranslate">X509Req</span>: 用于创建 x509 证书请求的类。</li>
+<li><span class="notranslate">verify</span>: 通过 CA 证书对验证 x509 证书。</li>
+<li><span class="notranslate">SslServer</span>: 提供基于 x509 证书的认证服务的类。</li>
+<li><span class="notranslate">SslSocket</span>: 提供基于 x509 证书的认证服务的套接字收发数据操作的类。</li>
+</ul>
+<h3 id="示例代码">示例代码</h3>
+<p>以下是读取 x509 证书和创建 x509 证书请求的示例代码：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4
@@ -269,18 +235,98 @@ svr.start();
 6
 7
 8
-9</div><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
+9
+10
+11
+12</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
 
-<span class="hljs-comment">//...(同上面方式一的1、2、3步骤, 省略)...</span>
+<span class="hljs-comment">// 读取 x509 证书</span>
+<span class="hljs-keyword">const</span> cert = crypto.loadCert(<span class="hljs-string">'server.crt'</span>);
+<span class="hljs-built_in">console</span>.log(cert.subject);
 
-<span class="hljs-keyword">let</span> ks = pky.exportPem();   <span class="hljs-comment">// 导出私钥文本</span>
-<span class="hljs-keyword">let</span> cs = crt.dump(<span class="hljs-literal">true</span>)[<span class="hljs-number">0</span>]; <span class="hljs-comment">// 导出证书文本, 数组（只有一项）</span>
-
-fs.writeTextFile(<span class="hljs-string">'d:/mycert.key'</span>, ks); <span class="hljs-comment">// 保存私钥</span>
-fs.writeTextFile(<span class="hljs-string">'d:/mycert.pem'</span>, cs); <span class="hljs-comment">// 保存证书</span>
+<span class="hljs-comment">// 创建 x509 证书请求</span>
+<span class="hljs-keyword">let</span> pky = crypto.PKey.from(private_pem);
+<span class="hljs-keyword">let</span> req = <span class="hljs-keyword">new</span> crypto.X509Req(<span class="hljs-string">"CN=localhost,O=fibjs"</span>, pky);
+<span class="hljs-keyword">let</span> derReq = req.der();
+<span class="hljs-keyword">let</span> pemReq = req.pem();
+<span class="hljs-built_in">console</span>.log(pemReq);
 </code></pre>
-<p><strong>2. 使用证书/私钥文件</strong></p>
-<pre><code class="lang-js"><div class="line-numbers">1
+<p>以上示例代码通过 X509Cert 类读取了一个已有的 x509 证书，并输出了证书的主题名称 subject。同时，示例代码还演示了如何通过 X509Req 创建 x509 证书请求，并输出了 PEM 格式的请求信息。</p>
+<h2 id="X509-模块的使用">X509 模块的使用</h2>
+<h3 id="生成自签名证书">生成自签名证书</h3>
+<p>生成自签名证书的过程比较简单，一般需要完成以下步骤：</p>
+<ul>
+<li>生成 PKey（私钥）</li>
+<li>生成 X509Req（证书请求）</li>
+<li>使用 X509Req 生成 X509Cert（正式证书）</li>
+<li>保存证书</li>
+</ul>
+<p>通过这些步骤，可以自己生成一个用于测试和开发环境的 x509 证书。下面是具体的实现：</p>
+<p>使用以下代码创建 PKey 对象。其中，from() 方法可以通过一个 PEM 格式的字符串或者一个 Buffer 来创建 PKey 对象。</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
+<span class="hljs-keyword">const</span> pky = crypto.PKey.from(private_pem);
+</code></pre>
+<p>使用以下代码创建 X509Req 对象。其中，X509Req 的第一个参数是主题可分辨名称（Subject Name），字符串格式为 key1=value1,key2=value2。第二个参数是先前创建的 PKey 对象，用于证书签名。例如：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">let</span> xrq = <span class="hljs-keyword">new</span> crypto.X509Req(<span class="hljs-string">"CN=localhost,O=fibjs"</span>, pky);
+</code></pre>
+<p>使用以下代码创建 X509Cert（正式证书）。具体操作是调用 X509Req 的 sign() 方法，该方法接受三个参数：证书颁发机构的名称、用于签名的 PKey 对象、以及其他相关信息。例如，下列示例中，将 X509Req 对象签名为自签名证书，签名机构为本身，证书有效期为 10 年：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div><span class="hljs-keyword">const</span> opt = {
+  <span class="hljs-attr">notBefore</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(),
+  <span class="hljs-attr">notAfter</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().getTime() + <span class="hljs-number">10</span> * <span class="hljs-number">365</span> * <span class="hljs-number">24</span> * <span class="hljs-number">60</span> * <span class="hljs-number">60</span> * <span class="hljs-number">1000</span>)
+};
+<span class="hljs-keyword">const</span> cert = xrq.sign(<span class="hljs-string">"CN=localhost,O=fibjs"</span>, pky, opt);
+</code></pre>
+<p>使用以下代码将 PKey 和 X509Cert 保存到本地文件。由于证书是使用 PEM 格式保存的，因此可以使用 pem() 方法将证书对象转化为字符串，然后直接保存到文件中：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
+<span class="hljs-keyword">const</span> ks = pky.pem();    <span class="hljs-comment">// 导出私钥文本</span>
+<span class="hljs-keyword">const</span> cs = cert.pem(); <span class="hljs-comment">// 导出证书文本</span>
+fs.writeFile(<span class="hljs-string">'mycert.key'</span>, ks); <span class="hljs-comment">// 保存私钥</span>
+fs.writeFile(<span class="hljs-string">'mycert.pem'</span>, cs); <span class="hljs-comment">// 保存证书</span>
+</code></pre>
+<p>以上代码完成了从生成私钥到存储自签名证书的整个过程。可以通过这个证书来测试和开发安全相关的应用程序。</p>
+<h3 id="加载证书">加载证书</h3>
+<p>加载证书是使用 x509 证书时的一项重要操作。下面介绍如何加载证书文件和加载公钥私钥。</p>
+<p>为了使用 x509 证书，必须首先将证书文件读取到内存中，并将其转换为 x509 证书对象。以下是如何加载证书文件的步骤：</p>
+<p>在 fibjs 的 JavaScript 程序中，可以使用 fs 模块的相关 API 来读取文件。例如，使用以下代码读取 PEM 格式的证书文件：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
+<span class="hljs-keyword">const</span> certData = fs.readFile(<span class="hljs-string">'server.crt'</span>);
+</code></pre>
+<p>读取文件后，必须使用 X509Cert 对象将证书文件内容转换为 x509 证书：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
+<span class="hljs-keyword">const</span> cert = <span class="hljs-keyword">new</span> crypto.X509Cert(certData);
+</code></pre>
+<p>经过以上步骤，可以加载本地的 x509 证书文件。也可以使用 crypto.loadCert 直接读取证书：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
+<span class="hljs-keyword">const</span> cert = crypto.loadCert(<span class="hljs-string">'server.crt'</span>);
+</code></pre>
+<p>x509 证书中保存着公钥和加密后的签名信息，因此需要在使用证书时，将证书中的公钥解析出来，以方便对数据进行加密和解密。PKey 类可以将 PEM 格式的公钥/私钥字符串转换为公钥/私钥对象。可以使用以下代码读取 PEM 格式的公钥/私钥字符串，并创建 PKey 对象:</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">const</span> privateKey = fs.readFile(<span class="hljs-string">'private.pem'</span>); <span class="hljs-comment">// 读取 PEM 格式的私钥</span>
+<span class="hljs-keyword">const</span> pKey = crypto.PKey.from(privateKey); <span class="hljs-comment">// 生成 PKey 对象</span>
+</code></pre>
+<p>或者使用 crypto.loadPKey 直接读取：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
+<span class="hljs-keyword">const</span> pKey = crypto.loadPKey(<span class="hljs-string">'private.pem'</span>);
+</code></pre>
+<p>经过以上步骤，可以将公钥/私钥文件转换为 PKey 对象。</p>
+<h3 id="解析证书">解析证书</h3>
+<p>证书是 SSL/TLS 交互中重要的组成部分，用于身份身份验证和数据传输的加密。现在，我们来了解如何在 fibjs 中解析一个证书。</p>
+<p>我们可以使用 crypto 模块的 X509Cert 类，通过读取一个 DER/PEM 格式的证书文件构建一个证书对象，紧接着可以获取证书的一些基本信息，例如获取证书的主题名称、颁发者名称、有效期等等信息。</p>
+<p>示例代码如下：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4
@@ -293,27 +339,97 @@ fs.writeTextFile(<span class="hljs-string">'d:/mycert.pem'</span>, cs); <span cl
 11
 12
 13
-14</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
-<span class="hljs-keyword">const</span> ssl = <span class="hljs-built_in">require</span>(<span class="hljs-string">'ssl'</span>);
-<span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">"http"</span>);
+14
+15
+16
+17</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
 
-<span class="hljs-keyword">let</span> pky = <span class="hljs-keyword">new</span> crypto.PKey();      
-<span class="hljs-keyword">let</span> crt = <span class="hljs-keyword">new</span> crypto.X509Cert();  
+<span class="hljs-comment">// 读取证书文件，生成 X509Cert 对象</span>
+<span class="hljs-keyword">const</span> cert = crypto.loadCert(<span class="hljs-string">'path/to/cert.pem'</span>);
 
-pky.importFile(<span class="hljs-string">'d:/mycert.key'</span>); <span class="hljs-comment">// 读取key文件</span>
-crt.loadFile(<span class="hljs-string">'d:/mycert.pem'</span>);   <span class="hljs-comment">// 读取pem文件</span>
+<span class="hljs-comment">// 获取证书基本信息</span>
+<span class="hljs-keyword">const</span> subjectName = cert.subject;
+<span class="hljs-keyword">const</span> issuerName = cert.issuer;
+<span class="hljs-keyword">const</span> validFromDate = cert.notBefore;
+<span class="hljs-keyword">const</span> expirationDate = cert.notAfter;
+<span class="hljs-keyword">const</span> serialNumber = cert.serial;
 
-<span class="hljs-keyword">var</span> svr = <span class="hljs-keyword">new</span> http.HttpsServer(crt, pky, <span class="hljs-number">443</span>, (req)=&gt; {
-  req.response.write(<span class="hljs-string">'&lt;h1&gt;fibjs https server&lt;/h1&gt;'</span>);
-});
-svr.start();
+<span class="hljs-comment">// 打印证书基本信息</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">`证书主题名称: <span class="hljs-subst">${subjectName}</span>`</span>);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">`证书颁发者名称: <span class="hljs-subst">${issuerName}</span>`</span>);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">`证书有效期: <span class="hljs-subst">${validFromDate.toLocaleString()}</span> ~ <span class="hljs-subst">${expirationDate.toLocaleString()}</span>`</span>);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">`证书序列号: <span class="hljs-subst">${serialNumber}</span>`</span>);
 </code></pre>
-<h2 id="方式三:-使用已有的证书">方式三: 使用已有的证书</h2>
-<p>以上载入证书文件的方法, 也可用于正式证书, 比如</p>
+<p>当需要使用一个证书时，我们需要验证这个证书的合法性，关键是要确定证书是由一个可信的组织颁发的。可以使用 X509Cert 中的 verify 方法来检查证书的合法性，常见的验证方式是通过验证证书的链，确保证书被受信任的 CA 颁发。</p>
+<p>示例代码如下：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</div><span class="hljs-comment">// 读取 CA 证书文件，生成 X509Cert 对象</span>
+<span class="hljs-keyword">const</span> caCert = crypto.loadCert(<span class="hljs-string">'path/to/ca.crt'</span>);
+
+<span class="hljs-comment">// 验证证书的合法性</span>
+<span class="hljs-keyword">const</span> verifyResult = cert.verify(caCert);
+
+<span class="hljs-comment">// 验证结果</span>
+<span class="hljs-keyword">if</span> (verifyResult !== <span class="hljs-number">0</span>) {
+  <span class="hljs-built_in">console</span>.error(<span class="hljs-string">'证书验证失败'</span>, verifyResult);
+} <span class="hljs-keyword">else</span> {
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'证书验证通过'</span>);
+}
+</code></pre>
+<p>在此示例代码中，我们首先读取指定的 CA 证书，生成一个 X509Cert 对象，接着使用证书对象上的 verify 方法验证需要验证的证书，并获取验证结果。你可以通过比较验证结果是否等于 0 来判断证书是否合法。如果验证结果不为 0，则说明验证失败，此时应当停止使用该证书。</p>
+<h3 id="使用证书">使用证书</h3>
+<p>在使用 https 服务器时，需要确保使用的证书已经添加到服务器上。以下是一个简单的示例，通过 crypto 模块加载证书和私钥文件：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</div><span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">"http"</span>);
+<span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">"crypto"</span>);
+<span class="hljs-comment">// 加载证书和密钥文件</span>
+<span class="hljs-keyword">const</span> cert = crypto.loadCert(<span class="hljs-string">"server.crt"</span>);
+<span class="hljs-keyword">const</span> key = crypto.loadPKey(<span class="hljs-string">"server.key"</span>);
+<span class="hljs-comment">//创建 https 服务器并启动</span>
+<span class="hljs-keyword">const</span> server = <span class="hljs-keyword">new</span> http.HttpsServer(cert, key, <span class="hljs-number">8443</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req</span>) </span>{
+    req.response.write(<span class="hljs-string">`Hello, fibjs!`</span>);
+});
+server.start();
+</code></pre>
+<p>在上面的示例中，我们通过 loadCert 和 loadPKey 函数加载了 server.crt 和 server.key 文件，然后使用 HttpsServer 对象创建了一个服务，并用加载的证书和密钥文件启动服务。</p>
+<h2 id="X509-模块的注意事项">X509 模块的注意事项</h2>
+<h3 id="证书的安全性">证书的安全性</h3>
+<p>X509 模块提供了证书的创建、处理等功能，证书的安全性必须得到保障，这需要特别注意以下几点：</p>
 <ul>
-<li>从阿里云申请的免费证书（下载other格式, 包含 xxx.pem 和 xxx.key 两个文件).</li>
-<li>通过 certbot 申请得到的证书.</li>
+<li>私钥的安全性。私钥是证书的重要组成部分，必须得到严格保护。在证书的使用过程中，应该尽可能地将私钥存储在安全的地方，并合理设置访问权限。</li>
+<li>证书的传输安全。在证书的交换和使用过程中，必须采用安全的传输方式，避免证书被窃取或篡改。</li>
+<li>证书的验证安全。证书验证是确保证书有效和安全性的重要环节，必须严格按照证书的验证规则来进行验证，以避免伪造的证书误导使用者。</li>
 </ul>
-<p>其他格式的证书可能需要转换, 具体请参考 fibjs 的文档。</p>
+<h3 id="证书的有效期">证书的有效期</h3>
+<p>证书的有效期是指从证书发行日期到证书过期日期之间的这段时间。证书的有效期限制了证书的使用时间，在证书过期之前，证书持有人可以使用证书，但在证书过期之后，证书将失去其有效性。</p>
+<p>因此，在使用证书之前，必须先检查证书的有效期，以避免使用已经过期的证书。同时，在证书过期之前，应该尽早地更新证书，以确保证书的可用性。</p>
+<h3 id="证书的信任机制">证书的信任机制</h3>
+<p>证书的信任机制是证书能否被客户端或服务器端信任的关键因素。通常情况下，客户端或服务器端只信任由可信机构(CA)签发和承认的证书。</p>
+<p>在使用证书之前，必须确定证书的信任问题。可以通过检查证书的颁发机构、证书的主题可分辨名称等方式来判断证书是否可信任。</p>
+<h3 id="证书的更新机制">证书的更新机制</h3>
+<p>证书的更新机制是确保证书一直有效并且安全的重要环节。通常情况下，证书的更新主要包括两个方面：</p>
+<ul>
+<li>证书过期后的更新。在证书过期后，必须重新申请证书，并按照相应的规则进行签名和验证，以确保证书的有效性。</li>
+<li>证书扩展和更新。在证书的使用过程中，如果需要扩展或更新证书的信息，可以通过重新申请证书并进行签名和验证的方式来实现。</li>
+</ul>
+<p>综上所述，X509 模块提供了证书的创建、处理等功能，是确保证书安全、可信和有效的重要环节。在使用和管理证书的过程中，必须遵循相应的规则和要求，以确保证书的有效性和安全性。</p>
 <p>👉 【<a href=contribute.md.html>添加 native 模块</a>】</p>
  </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../js/common.js></script><script type=text/javascript src=../../js/docs.js></script></body></html>

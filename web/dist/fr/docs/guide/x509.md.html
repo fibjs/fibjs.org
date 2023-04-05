@@ -204,64 +204,30 @@
 <li><a href="../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <h1 id="fibjs-中-X509-证书的使用"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Utilisation du certificat X509 dans fibjs</font></font></h1>
-<h2 id="方式一:-使用临时生成自签发证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Méthode 1 : Utiliser un certificat auto-signé généré temporairement</font></font></h2>
-<pre><code class="lang-js"><div class="line-numbers">1
-2
-3</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
-<span class="hljs-keyword">const</span> ssl = <span class="hljs-built_in">require</span>(<span class="hljs-string">'ssl'</span>);
-<span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">"http"</span>);
-</code></pre>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1. Créez un objet clé et générez une paire de clés RSA 2048 bits</font></font></strong></p>
-<pre><code class="lang-js"><div class="line-numbers">1
-2</div><span class="hljs-keyword">let</span> pky = <span class="hljs-keyword">new</span> crypto.PKey();  <font></font>
-pky.genRsaKey(<span class="hljs-number">2048</span>); 
-</code></pre>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2. Créez un objet de demande de certificat, en utilisant la clé publique dans le pky ci-dessus</font></font></strong></p>
-<pre><code class="lang-js"><div class="line-numbers">1
-2
-3
-4
-5
-6
-7</div><span class="hljs-keyword">let</span> xrq = <span class="hljs-keyword">new</span> crypto.X509Req(<span class="hljs-string">"CN=localhost,O=fibjs"</span>, pky);<font></font>
-<font></font>
-<font></font>
-<span class="hljs-comment">/**
- * CN=localhost 是证书的主题名称, 就是证书的使用者（一般是域名
- * 可以加一些扩展内容, 比如 O=IBM,OU=IT,...（用逗号分隔）等项
- */</span>
-</code></pre>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">3. Pour émettre un certificat, utilisez la clé privée dans pky</font></font></strong></p>
-<pre><code class="lang-js"><div class="line-numbers">1
-2
-3
-4
-5
-6
-7
-8</div><span class="hljs-keyword">let</span> opt = {
-  <span class="hljs-attr">notBefore</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">'2019-01-01'</span>) <span class="hljs-comment">// 证书生效时间</span>
- ,<span class="hljs-attr">notAfter</span>:  <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">'2029-12-31'</span>) <span class="hljs-comment">// 证书失效时间</span><font></font>
-};<font></font>
-<span class="hljs-keyword">let</span> crt = xrq.sign(<span class="hljs-string">"CN=myy.mkx"</span>, pky, opt); <font></font>
-<font></font>
-<span class="hljs-comment">// CN=myy.mkx 是证书的签发者, 同样可添加扩展</span>
-<span class="hljs-comment">// opt 参数参见 fibjs 文档</span>
-</code></pre>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">4. Démarrez le service https avec un certificat temporaire</font></font></strong></p>
-<pre><code class="lang-js"><div class="line-numbers">1
-2
-3
-4</div><span class="hljs-keyword">var</span> svr = <span class="hljs-keyword">new</span> http.HttpsServer(crt, pky, <span class="hljs-number">443</span>, (req)=&gt; {<font></font>
-  req.response.write(<span class="hljs-string">'&lt;h1&gt;fibjs https server&lt;/h1&gt;'</span>);<font></font>
-});<font></font>
-svr.start();<font></font>
-</code></pre>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">5. Le navigateur accède à </font></font><a href="https://localhost/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">https://localhost/</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> test, car ce n'est pas un certificat officiel, le navigateur ne le reconnaîtra pas, vous devez continuer à visiter manuellement, cliquez sur l'icône du certificat dans la barre d'adresse pour afficher les informations détaillées de le certificat.</font></font></strong></p>
-<hr>
-<h2 id="方式二:-生成和使用自签发证书文件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Méthode 2 : générer et utiliser un fichier de certificat auto-signé</font></font></h2>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1. Générer un certificat/fichier de clé privée</font></font></strong></p>
-<pre><code class="lang-js"><div class="line-numbers">1
+<h2 id="背景介绍"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">présentation de fond</font></font></h2>
+<h3 id="什么是-x509-证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Qu'est-ce qu'un certificat x509</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Le certificat x509 est le format de certificat numérique le plus couramment utilisé dans le système de service d'authentification à clé publique (PKI) basé sur les normes internationales. </font><font style="vertical-align: inherit;">Il peut être utilisé pour l'authentification et le cryptage, et est largement utilisé dans les protocoles SSL/TLS et d'autres types d'applications réseau sur Internet. </font><font style="vertical-align: inherit;">Le certificat x509 adopte le mécanisme d'authentification à clé publique/clé privée et peut garantir la confidentialité, l'intégrité et l'authenticité de la transmission des données.</font></font></p>
+<h3 id="x509-证书在什么场景中用到"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dans quels scénarios les certificats x509 sont-ils utilisés&nbsp;?</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sur Internet, les certificats x509 sont le plus souvent utilisés pour l'authentification des certificats dans le protocole TLS/SSL, garantissant que les données transmises entre le client et le serveur sont chiffrées à l'aide d'un canal sécurisé et sont authentifiées. </font><font style="vertical-align: inherit;">Le certificat x509 peut également être utilisé pour l'authentification d'identité dans les protocoles d'application basés sur le cryptage à clé publique et privée tels que VPN/SSH.</font></font></p>
+<h3 id="fibjs-支持-x509-证书的处理"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs prend en charge le traitement des certificats x509</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs prend en charge le traitement des certificats x509 et fournit des classes telles que X509Cert et X509Req dans le module crypto pour lire, créer et signer des certificats. </font><font style="vertical-align: inherit;">Ces classes peuvent être utilisées pour obtenir des informations telles que la période de validité, la clé publique, l'émetteur et le nom du sujet du certificat, et effectuer des opérations telles que la signature et la vérification du certificat. </font><font style="vertical-align: inherit;">Dans le même temps, fibjs fournit également la classe HttpsServer pour prendre en charge l'authentification par certificat HTTPS et les connexions chiffrées, ce qui facilite l'utilisation des certificats x509 dans fibjs.</font></font></p>
+<h2 id="X509-模块的介绍"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Présentation du module X509</font></font></h2>
+<h3 id="X509-模块是什么"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Qu'est-ce que le module X509</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dans le module crypto de fibjs, des classes telles que X509Cert et X509Req sont fournies pour lire, créer et signer des certificats x509. </font><font style="vertical-align: inherit;">Le module X509 est un module de traitement des certificats x509, fournissant des opérations telles que l'analyse, la création et la vérification des certificats.</font></font></p>
+<h3 id="X509-模块的作用"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Le rôle du module X509</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La fonction du module X509 est de fonctionner sur le certificat x509. Grâce à ce module, le certificat x509 existant peut être lu et des informations telles que la période de validité, la clé publique, l'émetteur et le nom du sujet du certificat peuvent être obtenues. </font><font style="vertical-align: inherit;">Dans le même temps, le module X509 peut également créer des demandes de certificat x509 et des certificats de signature, par exemple pour l'authentification de certificat dans le protocole TLS/SSL.</font></font></p>
+<h3 id="X509-模块的-API"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">API du module X509</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Voici une liste des API les plus importantes du module X509&nbsp;:</font></font></p>
+<ul>
+<li><span class="notranslate">X509Cert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Classe pour lire et manipuler les certificats x509.</font></font></li>
+<li><span class="notranslate">X509Req</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Classe pour créer des demandes de certificat x509.</font></font></li>
+<li><span class="notranslate">verify</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Vérifiez le certificat x509 par rapport à la paire de certificats CA.</font></font></li>
+<li><span class="notranslate">SslServer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Une classe qui fournit des services d'authentification basés sur des certificats x509.</font></font></li>
+<li><span class="notranslate">SslSocket</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: une classe qui fournit des opérations d'envoi et de réception de données par socket basées sur des services d'authentification basés sur des certificats x509.</font></font></li>
+</ul>
+<h3 id="示例代码"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">exemple de code</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Voici un exemple de code pour lire le certificat x509 et créer une demande de certificat x509&nbsp;:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4
@@ -269,18 +235,98 @@ svr.start();<font></font>
 6
 7
 8
-9</div><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);<font></font>
+9
+10
+11
+12</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);<font></font>
 <font></font>
-<span class="hljs-comment">//...(同上面方式一的1、2、3步骤, 省略)...</span><font></font>
+<span class="hljs-comment">// 读取 x509 证书</span>
+<span class="hljs-keyword">const</span> cert = crypto.loadCert(<span class="hljs-string">'server.crt'</span>);
+<span class="hljs-built_in">console</span>.log(cert.subject);<font></font>
 <font></font>
-<span class="hljs-keyword">let</span> ks = pky.exportPem();   <span class="hljs-comment">// 导出私钥文本</span>
-<span class="hljs-keyword">let</span> cs = crt.dump(<span class="hljs-literal">true</span>)[<span class="hljs-number">0</span>]; <span class="hljs-comment">// 导出证书文本, 数组（只有一项）</span><font></font>
-<font></font>
-fs.writeTextFile(<span class="hljs-string">'d:/mycert.key'</span>, ks); <span class="hljs-comment">// 保存私钥</span>
-fs.writeTextFile(<span class="hljs-string">'d:/mycert.pem'</span>, cs); <span class="hljs-comment">// 保存证书</span>
+<span class="hljs-comment">// 创建 x509 证书请求</span>
+<span class="hljs-keyword">let</span> pky = crypto.PKey.from(private_pem);
+<span class="hljs-keyword">let</span> req = <span class="hljs-keyword">new</span> crypto.X509Req(<span class="hljs-string">"CN=localhost,O=fibjs"</span>, pky);
+<span class="hljs-keyword">let</span> derReq = req.der();
+<span class="hljs-keyword">let</span> pemReq = req.pem();
+<span class="hljs-built_in">console</span>.log(pemReq);
 </code></pre>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2. Utilisez le fichier de certificat/clé privée</font></font></strong></p>
-<pre><code class="lang-js"><div class="line-numbers">1
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">L'exemple de code ci-dessus lit un certificat x509 existant via la classe X509Cert et génère le nom du sujet du certificat. </font><font style="vertical-align: inherit;">Dans le même temps, l'exemple de code montre également comment créer une demande de certificat x509 via X509Req et génère les informations de demande au format PEM.</font></font></p>
+<h2 id="X509-模块的使用"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Utilisation du module X509</font></font></h2>
+<h3 id="生成自签名证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Générer un certificat auto-signé</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Le processus de génération d'un certificat auto-signé est relativement simple, généralement vous devez suivre les étapes suivantes&nbsp;:</font></font></p>
+<ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Générer PKey (clé privée)</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Générer X509Req (demande de certificat)</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Utilisez X509Req pour générer X509Cert (certificat officiel)</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">enregistrer le certificat</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Avec ces étapes, vous pouvez générer vous-même un certificat x509 à utiliser dans des environnements de test et de développement. </font><font style="vertical-align: inherit;">Voici la mise en œuvre spécifique&nbsp;:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Créez un objet PKey à l'aide du code suivant. </font><font style="vertical-align: inherit;">Parmi elles, la méthode from() permet de créer un objet PKey via une chaîne au format PEM ou un Buffer.</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
+<span class="hljs-keyword">const</span> pky = crypto.PKey.from(private_pem);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Créez un objet X509Req à l'aide du code suivant. </font><font style="vertical-align: inherit;">Parmi eux, le premier paramètre de X509Req est le nom distinctif du sujet (Subject Name) et le format de chaîne est key1=value1, key2=value2. </font><font style="vertical-align: inherit;">Le deuxième paramètre est l'objet PKey créé précédemment et utilisé pour signer le certificat. </font><font style="vertical-align: inherit;">Par exemple:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">let</span> xrq = <span class="hljs-keyword">new</span> crypto.X509Req(<span class="hljs-string">"CN=localhost,O=fibjs"</span>, pky);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Utilisez le code suivant pour créer un X509Cert (certificat officiel). </font><font style="vertical-align: inherit;">L'opération spécifique consiste à appeler la méthode sign() de X509Req, qui accepte trois paramètres&nbsp;: le nom de l'autorité de certification, l'objet PKey utilisé pour la signature et d'autres informations pertinentes. </font><font style="vertical-align: inherit;">Par exemple, dans l'exemple suivant, l'objet X509Req est signé en tant que certificat auto-signé, l'autorité de signature est elle-même et le certificat est valide pendant 10&nbsp;ans&nbsp;:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div><span class="hljs-keyword">const</span> opt = {
+  <span class="hljs-attr">notBefore</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(),
+  <span class="hljs-attr">notAfter</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().getTime() + <span class="hljs-number">10</span> * <span class="hljs-number">365</span> * <span class="hljs-number">24</span> * <span class="hljs-number">60</span> * <span class="hljs-number">60</span> * <span class="hljs-number">1000</span>)<font></font>
+};<font></font>
+<span class="hljs-keyword">const</span> cert = xrq.sign(<span class="hljs-string">"CN=localhost,O=fibjs"</span>, pky, opt);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Utilisez le code suivant pour enregistrer le PKey et le X509Cert dans un fichier local. </font><font style="vertical-align: inherit;">Le certificat étant enregistré au format PEM, vous pouvez utiliser la méthode pem() pour convertir l'objet certificat en chaîne, puis l'enregistrer directement dans le fichier&nbsp;:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
+<span class="hljs-keyword">const</span> ks = pky.pem();    <span class="hljs-comment">// 导出私钥文本</span>
+<span class="hljs-keyword">const</span> cs = cert.pem(); <span class="hljs-comment">// 导出证书文本</span>
+fs.writeFile(<span class="hljs-string">'mycert.key'</span>, ks); <span class="hljs-comment">// 保存私钥</span>
+fs.writeFile(<span class="hljs-string">'mycert.pem'</span>, cs); <span class="hljs-comment">// 保存证书</span>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Le code ci-dessus complète l'ensemble du processus, de la génération de la clé privée au stockage du certificat auto-signé. </font><font style="vertical-align: inherit;">Ce certificat peut être utilisé pour tester et développer des applications liées à la sécurité.</font></font></p>
+<h3 id="加载证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">certificat de charge</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Le chargement d'un certificat est une opération importante lors de l'utilisation de certificats x509. </font><font style="vertical-align: inherit;">Ce qui suit décrit comment charger le fichier de certificat et charger la clé publique et la clé privée.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pour utiliser un certificat x509, le fichier de certificat doit d'abord être lu en mémoire et converti en un objet de certificat x509. </font><font style="vertical-align: inherit;">Voici les étapes à suivre pour charger le fichier de certificat&nbsp;:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dans le programme JavaScript de fibjs, vous pouvez utiliser l'API appropriée du module fs pour lire le fichier. </font><font style="vertical-align: inherit;">Par exemple, utilisez le code suivant pour lire un fichier de certificat au format PEM&nbsp;:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
+<span class="hljs-keyword">const</span> certData = fs.readFile(<span class="hljs-string">'server.crt'</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Après avoir lu le fichier, le contenu du fichier de certificat doit être converti en certificat x509 à l'aide de l'objet X509Cert&nbsp;:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
+<span class="hljs-keyword">const</span> cert = <span class="hljs-keyword">new</span> crypto.X509Cert(certData);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Après les étapes ci-dessus, le fichier de certificat x509 local peut être chargé. </font><font style="vertical-align: inherit;">Le certificat peut également être lu directement à l'aide de crypto.loadCert&nbsp;:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
+<span class="hljs-keyword">const</span> cert = crypto.loadCert(<span class="hljs-string">'server.crt'</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Le certificat x509 stocke la clé publique et les informations de signature chiffrées. Ainsi, lors de l'utilisation du certificat, la clé publique du certificat doit être analysée pour faciliter le chiffrement et le déchiffrement des données. </font><font style="vertical-align: inherit;">La classe PKey convertit une chaîne de clé publique/privée au format PEM en un objet clé publique/privée. </font><font style="vertical-align: inherit;">Le code suivant peut être utilisé pour lire une chaîne de clé publique/privée au format PEM et créer un objet PKey&nbsp;:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">const</span> privateKey = fs.readFile(<span class="hljs-string">'private.pem'</span>); <span class="hljs-comment">// 读取 PEM 格式的私钥</span>
+<span class="hljs-keyword">const</span> pKey = crypto.PKey.from(privateKey); <span class="hljs-comment">// 生成 PKey 对象</span>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ou utilisez crypto.loadPKey pour lire directement&nbsp;:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
+<span class="hljs-keyword">const</span> pKey = crypto.loadPKey(<span class="hljs-string">'private.pem'</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Après les étapes ci-dessus, le fichier de clé publique/clé privée peut être converti en un objet PKey.</font></font></p>
+<h3 id="解析证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">certificat d'analyse</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Les certificats sont une partie importante des interactions SSL/TLS, utilisés pour l'authentification et le cryptage de la transmission de données. </font><font style="vertical-align: inherit;">Voyons maintenant comment analyser un certificat dans fibjs.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nous pouvons utiliser la classe X509Cert du module crypto pour construire un objet certificat en lisant un fichier de certificat au format DER/PEM, puis obtenir des informations de base sur le certificat, telles que le nom du sujet, le nom de l'émetteur, la période de validité, etc. du certificat.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">L'exemple de code est le suivant&nbsp;:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4
@@ -293,27 +339,97 @@ fs.writeTextFile(<span class="hljs-string">'d:/mycert.pem'</span>, cs); <span cl
 11
 12
 13
-14</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
-<span class="hljs-keyword">const</span> ssl = <span class="hljs-built_in">require</span>(<span class="hljs-string">'ssl'</span>);
-<span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">"http"</span>);<font></font>
+14
+15
+16
+17</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);<font></font>
 <font></font>
-<span class="hljs-keyword">let</span> pky = <span class="hljs-keyword">new</span> crypto.PKey();      
-<span class="hljs-keyword">let</span> crt = <span class="hljs-keyword">new</span> crypto.X509Cert();  <font></font>
+<span class="hljs-comment">// 读取证书文件，生成 X509Cert 对象</span>
+<span class="hljs-keyword">const</span> cert = crypto.loadCert(<span class="hljs-string">'path/to/cert.pem'</span>);<font></font>
 <font></font>
-pky.importFile(<span class="hljs-string">'d:/mycert.key'</span>); <span class="hljs-comment">// 读取key文件</span>
-crt.loadFile(<span class="hljs-string">'d:/mycert.pem'</span>);   <span class="hljs-comment">// 读取pem文件</span><font></font>
+<span class="hljs-comment">// 获取证书基本信息</span>
+<span class="hljs-keyword">const</span> subjectName = cert.subject;
+<span class="hljs-keyword">const</span> issuerName = cert.issuer;
+<span class="hljs-keyword">const</span> validFromDate = cert.notBefore;
+<span class="hljs-keyword">const</span> expirationDate = cert.notAfter;
+<span class="hljs-keyword">const</span> serialNumber = cert.serial;<font></font>
 <font></font>
-<span class="hljs-keyword">var</span> svr = <span class="hljs-keyword">new</span> http.HttpsServer(crt, pky, <span class="hljs-number">443</span>, (req)=&gt; {<font></font>
-  req.response.write(<span class="hljs-string">'&lt;h1&gt;fibjs https server&lt;/h1&gt;'</span>);<font></font>
-});<font></font>
-svr.start();<font></font>
+<span class="hljs-comment">// 打印证书基本信息</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">`证书主题名称: <span class="hljs-subst">${subjectName}</span>`</span>);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">`证书颁发者名称: <span class="hljs-subst">${issuerName}</span>`</span>);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">`证书有效期: <span class="hljs-subst">${validFromDate.toLocaleString()}</span> ~ <span class="hljs-subst">${expirationDate.toLocaleString()}</span>`</span>);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">`证书序列号: <span class="hljs-subst">${serialNumber}</span>`</span>);
 </code></pre>
-<h2 id="方式三:-使用已有的证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Méthode 3 : Utiliser un certificat existant</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La méthode de chargement des fichiers de certificat ci-dessus peut également être utilisée pour les certificats formels, tels que</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Lorsqu'un certificat doit être utilisé, nous devons vérifier la validité du certificat. La clé est de s'assurer que le certificat est émis par une organisation de confiance. </font><font style="vertical-align: inherit;">Vous pouvez utiliser la méthode de vérification dans X509Cert pour vérifier la validité du certificat. La méthode de vérification courante consiste à vérifier la chaîne de certificats pour s'assurer que le certificat est émis par une autorité de certification approuvée.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">L'exemple de code est le suivant&nbsp;:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</div><span class="hljs-comment">// 读取 CA 证书文件，生成 X509Cert 对象</span>
+<span class="hljs-keyword">const</span> caCert = crypto.loadCert(<span class="hljs-string">'path/to/ca.crt'</span>);<font></font>
+<font></font>
+<span class="hljs-comment">// 验证证书的合法性</span>
+<span class="hljs-keyword">const</span> verifyResult = cert.verify(caCert);<font></font>
+<font></font>
+<span class="hljs-comment">// 验证结果</span>
+<span class="hljs-keyword">if</span> (verifyResult !== <span class="hljs-number">0</span>) {
+  <span class="hljs-built_in">console</span>.error(<span class="hljs-string">'证书验证失败'</span>, verifyResult);<font></font>
+} <span class="hljs-keyword">else</span> {
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'证书验证通过'</span>);<font></font>
+}<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dans cet exemple de code, nous lisons d'abord le certificat CA spécifié, générons un objet X509Cert, puis utilisons la méthode de vérification sur l'objet certificat pour vérifier le certificat à vérifier et obtenons le résultat de la vérification. </font><font style="vertical-align: inherit;">Vous pouvez juger si le certificat est légal en comparant si le résultat de la vérification est égal à 0. </font><font style="vertical-align: inherit;">Si le résultat de la vérification n'est pas 0, cela signifie que la vérification a échoué et que le certificat doit être arrêté à ce moment.</font></font></p>
+<h3 id="使用证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">utiliser le certificat</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Lorsque vous utilisez un serveur https, vous devez vous assurer que le certificat utilisé a été ajouté au serveur. </font><font style="vertical-align: inherit;">Voici un exemple simple qui charge les fichiers de certificat et de clé privée via le module crypto :</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</div><span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">"http"</span>);
+<span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">"crypto"</span>);
+<span class="hljs-comment">// 加载证书和密钥文件</span>
+<span class="hljs-keyword">const</span> cert = crypto.loadCert(<span class="hljs-string">"server.crt"</span>);
+<span class="hljs-keyword">const</span> key = crypto.loadPKey(<span class="hljs-string">"server.key"</span>);
+<span class="hljs-comment">//创建 https 服务器并启动</span>
+<span class="hljs-keyword">const</span> server = <span class="hljs-keyword">new</span> http.HttpsServer(cert, key, <span class="hljs-number">8443</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req</span>) </span>{<font></font>
+    req.response.write(<span class="hljs-string">`Hello, fibjs!`</span>);<font></font>
+});<font></font>
+server.start();<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Dans l'exemple ci-dessus, nous avons chargé les fichiers server.crt et server.key via les fonctions loadCert et loadPKey, puis créé un service à l'aide de l'objet HttpsServer et démarré le service avec le certificat chargé et les fichiers de clé.</font></font></p>
+<h2 id="X509-模块的注意事项"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Remarques sur le module X509</font></font></h2>
+<h3 id="证书的安全性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sécurité des certificats</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Le module X509 fournit des fonctions telles que la création et le traitement de certificat, et la sécurité du certificat doit être garantie, ce qui nécessite une attention particulière aux points suivants :</font></font></p>
 <ul>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Certificat gratuit appliqué depuis Alibaba Cloud (téléchargez un autre format, y compris deux fichiers xxx.pem et xxx.key).</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Certificat obtenu via l'application certbot.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sécurité des clés privées. </font><font style="vertical-align: inherit;">La clé privée est une partie importante du certificat et doit être strictement protégée. </font><font style="vertical-align: inherit;">Pendant l'utilisation du certificat, la clé privée doit être stockée dans un endroit sûr autant que possible et les droits d'accès doivent être définis de manière raisonnable.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Le transport des certificats est sécurisé. </font><font style="vertical-align: inherit;">Lors de l'échange et de l'utilisation des certificats, une méthode de transmission sécurisée doit être adoptée pour empêcher le vol ou la falsification des certificats.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sécurité de la vérification des certificats. </font><font style="vertical-align: inherit;">La vérification des certificats est un maillon important pour assurer la validité et la sécurité du certificat, et elle doit être vérifiée dans le strict respect des règles de vérification des certificats pour éviter d'induire les utilisateurs en erreur avec des certificats falsifiés.</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Les certificats dans d'autres formats peuvent devoir être convertis, veuillez vous référer à la documentation de fibjs pour plus de détails.</font></font></p>
+<h3 id="证书的有效期"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La durée de validité du certificat</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La période de validité d'un certificat fait référence à la période allant de la date d'émission du certificat à la date d'expiration du certificat. </font><font style="vertical-align: inherit;">La période de validité du certificat limite la durée d'utilisation du certificat. Avant l'expiration du certificat, le détenteur du certificat peut utiliser le certificat, mais après l'expiration du certificat, le certificat perdra sa validité.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Par conséquent, avant d'utiliser un certificat, vous devez vérifier la période de validité du certificat pour éviter d'utiliser un certificat expiré. </font><font style="vertical-align: inherit;">Dans le même temps, avant l'expiration du certificat, le certificat doit être renouvelé le plus tôt possible pour garantir l'utilisabilité du certificat.</font></font></p>
+<h3 id="证书的信任机制"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mécanisme de confiance des certificats</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Le mécanisme de confiance du certificat est un facteur clé pour savoir si le certificat peut être approuvé par le client ou le serveur. </font><font style="vertical-align: inherit;">En règle générale, le client ou le serveur ne fait confiance qu'aux certificats émis et reconnus par une autorité de confiance (CA).</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Avant qu'un certificat puisse être utilisé, les problèmes de confiance avec le certificat doivent être déterminés. </font><font style="vertical-align: inherit;">Vous pouvez juger si un certificat est digne de confiance en vérifiant l'autorité émettrice du certificat, le nom distinctif du sujet du certificat, etc.</font></font></p>
+<h3 id="证书的更新机制"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mécanisme de mise à jour des certificats</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Le mécanisme de renouvellement de certificat est un maillon important pour garantir que le certificat est toujours valide et sûr. </font><font style="vertical-align: inherit;">Normalement, le renouvellement du certificat comprend principalement deux aspects&nbsp;:</font></font></p>
+<ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Renouvellement après expiration du certificat. </font><font style="vertical-align: inherit;">Après l'expiration du certificat, vous devez présenter une nouvelle demande de certificat, signer et vérifier conformément aux règles correspondantes pour garantir la validité du certificat.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Extensions et renouvellements de certificats. </font><font style="vertical-align: inherit;">Pendant l'utilisation du certificat, si les informations du certificat doivent être étendues ou mises à jour, cela peut être réalisé en redemandant le certificat et en effectuant la signature et la vérification.</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">En résumé, le module X509 fournit des fonctions telles que la création et le traitement de certificats, et constitue un maillon important pour assurer la sécurité, la crédibilité et la validité des certificats. </font><font style="vertical-align: inherit;">Dans le processus d'utilisation et de gestion des certificats, les règles et exigences correspondantes doivent être respectées pour garantir la validité et la sécurité des certificats.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">👉【</font></font><a href="contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ajouter un module natif</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">】</font></font></p>
  </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Soutenez-nous</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../js/common.js"></script><script type="text/javascript" src="../../../js/docs.js"></script></body></html>

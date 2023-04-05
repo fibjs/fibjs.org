@@ -204,64 +204,30 @@
 <li><a href="../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <h1 id="fibjs-中-X509-证书的使用"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 中X509 證書的使用</font></font></h1>
-<h2 id="方式一:-使用临时生成自签发证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">方式一: 使用臨時生成自簽發證書</font></font></h2>
-<pre><code class="lang-js"><div class="line-numbers">1
-2
-3</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
-<span class="hljs-keyword">const</span> ssl = <span class="hljs-built_in">require</span>(<span class="hljs-string">'ssl'</span>);
-<span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">"http"</span>);
-</code></pre>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1.創建一個密鑰對象, 並生成2048位RSA密鑰對</font></font></strong></p>
-<pre><code class="lang-js"><div class="line-numbers">1
-2</div><span class="hljs-keyword">let</span> pky = <span class="hljs-keyword">new</span> crypto.PKey();  <font></font>
-pky.genRsaKey(<span class="hljs-number">2048</span>); 
-</code></pre>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2.創建證書請求對象, 用到了上面pky 中的公鑰</font></font></strong></p>
-<pre><code class="lang-js"><div class="line-numbers">1
-2
-3
-4
-5
-6
-7</div><span class="hljs-keyword">let</span> xrq = <span class="hljs-keyword">new</span> crypto.X509Req(<span class="hljs-string">"CN=localhost,O=fibjs"</span>, pky);<font></font>
-<font></font>
-<font></font>
-<span class="hljs-comment">/**
- * CN=localhost 是证书的主题名称, 就是证书的使用者（一般是域名
- * 可以加一些扩展内容, 比如 O=IBM,OU=IT,...（用逗号分隔）等项
- */</span>
-</code></pre>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">3.簽發證書, 用到pky 中的私鑰</font></font></strong></p>
-<pre><code class="lang-js"><div class="line-numbers">1
-2
-3
-4
-5
-6
-7
-8</div><span class="hljs-keyword">let</span> opt = {
-  <span class="hljs-attr">notBefore</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">'2019-01-01'</span>) <span class="hljs-comment">// 证书生效时间</span>
- ,<span class="hljs-attr">notAfter</span>:  <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">'2029-12-31'</span>) <span class="hljs-comment">// 证书失效时间</span><font></font>
-};<font></font>
-<span class="hljs-keyword">let</span> crt = xrq.sign(<span class="hljs-string">"CN=myy.mkx"</span>, pky, opt); <font></font>
-<font></font>
-<span class="hljs-comment">// CN=myy.mkx 是证书的签发者, 同样可添加扩展</span>
-<span class="hljs-comment">// opt 参数参见 fibjs 文档</span>
-</code></pre>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">4. 使用臨時證書啟動https服務</font></font></strong></p>
-<pre><code class="lang-js"><div class="line-numbers">1
-2
-3
-4</div><span class="hljs-keyword">var</span> svr = <span class="hljs-keyword">new</span> http.HttpsServer(crt, pky, <span class="hljs-number">443</span>, (req)=&gt; {<font></font>
-  req.response.write(<span class="hljs-string">'&lt;h1&gt;fibjs https server&lt;/h1&gt;'</span>);<font></font>
-});<font></font>
-svr.start();<font></font>
-</code></pre>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">5. 瀏覽器訪問</font></font><a href="https://localhost/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">https://localhost/</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">測試, 因為不是正式的證書, 瀏覽器不會認, 需要手動繼續訪問, 點擊地址欄證書圖標可查看證書的詳細信息。</font></font></strong></p>
-<hr>
-<h2 id="方式二:-生成和使用自签发证书文件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">方式二: 生成和使用自簽發證書文件</font></font></h2>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1. 生成證書/私鑰文件</font></font></strong></p>
-<pre><code class="lang-js"><div class="line-numbers">1
+<h2 id="背景介绍"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">背景介紹</font></font></h2>
+<h3 id="什么是-x509-证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">什麼是x509 證書</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">x509 證書是基於國際標準的公鑰認證服務（PKI）體系中，最常用的一種數字證書格式。</font><font style="vertical-align: inherit;">它能夠用於認證和加密，在互聯網上廣泛應用於SSL/TLS 協議以及其他類型的網絡應用。</font><font style="vertical-align: inherit;">x509 證書採用了公鑰/私鑰認證機制，並且能夠保證數據傳輸的保密性、完整性和真實性等。</font></font></p>
+<h3 id="x509-证书在什么场景中用到"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">x509 證書在什麼場景中用到</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在互聯網上，x509 證書最常用的場景是用於TLS/SSL 協議中的證書認證，保證客戶端與服務端之間傳輸的數據使用安全通道進行加密並且是經過驗證的。</font><font style="vertical-align: inherit;">x509 證書還可以用於VPN/SSH 等基於公私鑰加密的應用協議中的身份認證。</font></font></p>
+<h3 id="fibjs-支持-x509-证书的处理"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 支持x509 證書的處理</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 支持x509 證書的處理，提供了crypto 模塊中的X509Cert、X509Req 等類來進行證書的讀取、創建和簽名等操作。</font><font style="vertical-align: inherit;">可以通過這些類獲取證書的有效期、公鑰、頒發者、主題名稱等信息，以及對證書進行簽名、驗證等操作。</font><font style="vertical-align: inherit;">同時，fibjs 還提供了HttpsServer 類來支持HTTPS 的證書認證和加密連接，使得在fibjs 中使用x509 證書變得更加容易。</font></font></p>
+<h2 id="X509-模块的介绍"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509 模塊的介紹</font></font></h2>
+<h3 id="X509-模块是什么"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509 模塊是什麼</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在fibjs 的crypto 模塊中，提供了X509Cert、X509Req 等類來進行x509 證書的讀取、創建和簽名等操作。</font><font style="vertical-align: inherit;">X509 模塊是一個用於處理x509 證書的模塊，提供了對證書的解析、創建和驗證等操作。</font></font></p>
+<h3 id="X509-模块的作用"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509 模塊的作用</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509 模塊的作用是對x509 證書進行操作，可以通過該模塊讀取已有的x509 證書，獲取證書的有效期、公鑰、頒發者、主題名稱等信息。</font><font style="vertical-align: inherit;">同時, X509 模塊也可以創建x509 證書請求和簽名證書，方式如用於TLS/SSL 協議中的證書認證。</font></font></p>
+<h3 id="X509-模块的-API"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509 模塊的API</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以下是X509 模塊中比較重要的API 列表：</font></font></p>
+<ul>
+<li><span class="notranslate">X509Cert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 用於讀取和操作x509 證書的類。</font></font></li>
+<li><span class="notranslate">X509Req</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 用於創建x509 證書請求的類。</font></font></li>
+<li><span class="notranslate">verify</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 通過CA 證書對驗證x509 證書。</font></font></li>
+<li><span class="notranslate">SslServer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 提供基於x509 證書的認證服務的類。</font></font></li>
+<li><span class="notranslate">SslSocket</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 提供基於x509 證書的認證服務的套接字收發數據操作的類。</font></font></li>
+</ul>
+<h3 id="示例代码"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">示例代碼</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以下是讀取x509 證書和創建x509 證書請求的示例代碼：</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4
@@ -269,18 +235,98 @@ svr.start();<font></font>
 6
 7
 8
-9</div><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);<font></font>
+9
+10
+11
+12</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);<font></font>
 <font></font>
-<span class="hljs-comment">//...(同上面方式一的1、2、3步骤, 省略)...</span><font></font>
+<span class="hljs-comment">// 读取 x509 证书</span>
+<span class="hljs-keyword">const</span> cert = crypto.loadCert(<span class="hljs-string">'server.crt'</span>);
+<span class="hljs-built_in">console</span>.log(cert.subject);<font></font>
 <font></font>
-<span class="hljs-keyword">let</span> ks = pky.exportPem();   <span class="hljs-comment">// 导出私钥文本</span>
-<span class="hljs-keyword">let</span> cs = crt.dump(<span class="hljs-literal">true</span>)[<span class="hljs-number">0</span>]; <span class="hljs-comment">// 导出证书文本, 数组（只有一项）</span><font></font>
-<font></font>
-fs.writeTextFile(<span class="hljs-string">'d:/mycert.key'</span>, ks); <span class="hljs-comment">// 保存私钥</span>
-fs.writeTextFile(<span class="hljs-string">'d:/mycert.pem'</span>, cs); <span class="hljs-comment">// 保存证书</span>
+<span class="hljs-comment">// 创建 x509 证书请求</span>
+<span class="hljs-keyword">let</span> pky = crypto.PKey.from(private_pem);
+<span class="hljs-keyword">let</span> req = <span class="hljs-keyword">new</span> crypto.X509Req(<span class="hljs-string">"CN=localhost,O=fibjs"</span>, pky);
+<span class="hljs-keyword">let</span> derReq = req.der();
+<span class="hljs-keyword">let</span> pemReq = req.pem();
+<span class="hljs-built_in">console</span>.log(pemReq);
 </code></pre>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2. 使用證書/私鑰文件</font></font></strong></p>
-<pre><code class="lang-js"><div class="line-numbers">1
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以上示例代碼通過X509Cert 類讀取了一個已有的x509 證書，並輸出了證書的主題名稱subject。</font><font style="vertical-align: inherit;">同時，示例代碼還演示瞭如何通過X509Req 創建x509 證書請求，並輸出了PEM 格式的請求信息。</font></font></p>
+<h2 id="X509-模块的使用"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509 模塊的使用</font></font></h2>
+<h3 id="生成自签名证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">生成自簽名證書</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">生成自簽名證書的過程比較簡單，一般需要完成以下步驟：</font></font></p>
+<ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">生成PKey（私鑰）</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">生成X509Req（證書請求）</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用X509Req 生成X509Cert（正式證書）</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">保存證書</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通過這些步驟，可以自己生成一個用於測試和開發環境的x509 證書。</font><font style="vertical-align: inherit;">下面是具體的實現：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用以下代碼創建PKey 對象。</font><font style="vertical-align: inherit;">其中，from() 方法可以通過一個PEM 格式的字符串或者一個Buffer 來創建PKey 對象。</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
+<span class="hljs-keyword">const</span> pky = crypto.PKey.from(private_pem);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用以下代碼創建X509Req 對象。</font><font style="vertical-align: inherit;">其中，X509Req 的第一個參數是主題可分辨名稱（Subject Name），字符串格式為key1=value1,key2=value2。</font><font style="vertical-align: inherit;">第二個參數是先前創建的PKey 對象，用於證書籤名。</font><font style="vertical-align: inherit;">例如：</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">let</span> xrq = <span class="hljs-keyword">new</span> crypto.X509Req(<span class="hljs-string">"CN=localhost,O=fibjs"</span>, pky);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用以下代碼創建X509Cert（正式證書）。</font><font style="vertical-align: inherit;">具體操作是調用X509Req 的sign() 方法，該方法接受三個參數：證書頒發機構的名稱、用於簽名的PKey 對象、以及其他相關信息。</font><font style="vertical-align: inherit;">例如，下列示例中，將X509Req 對象簽名為自簽名證書，簽名機構為本身，證書有效期為10 年：</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div><span class="hljs-keyword">const</span> opt = {
+  <span class="hljs-attr">notBefore</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(),
+  <span class="hljs-attr">notAfter</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().getTime() + <span class="hljs-number">10</span> * <span class="hljs-number">365</span> * <span class="hljs-number">24</span> * <span class="hljs-number">60</span> * <span class="hljs-number">60</span> * <span class="hljs-number">1000</span>)<font></font>
+};<font></font>
+<span class="hljs-keyword">const</span> cert = xrq.sign(<span class="hljs-string">"CN=localhost,O=fibjs"</span>, pky, opt);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用以下代碼將PKey 和X509Cert 保存到本地文件。</font><font style="vertical-align: inherit;">由於證書是使用PEM 格式保存的，因此可以使用pem() 方法將證書對象轉化為字符串，然後直接保存到文件中：</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
+<span class="hljs-keyword">const</span> ks = pky.pem();    <span class="hljs-comment">// 导出私钥文本</span>
+<span class="hljs-keyword">const</span> cs = cert.pem(); <span class="hljs-comment">// 导出证书文本</span>
+fs.writeFile(<span class="hljs-string">'mycert.key'</span>, ks); <span class="hljs-comment">// 保存私钥</span>
+fs.writeFile(<span class="hljs-string">'mycert.pem'</span>, cs); <span class="hljs-comment">// 保存证书</span>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以上代碼完成了從生成私鑰到存儲自簽名證書的整個過程。</font><font style="vertical-align: inherit;">可以通過這個證書來測試和開發安全相關的應用程序。</font></font></p>
+<h3 id="加载证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">加載證書</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">加載證書是使用x509 證書時的一項重要操作。</font><font style="vertical-align: inherit;">下面介紹如何加載證書文件和加載公鑰私鑰。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">為了使用x509 證書，必須首先將證書文件讀取到內存中，並將其轉換為x509 證書對象。</font><font style="vertical-align: inherit;">以下是如何加載證書文件的步驟：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在fibjs 的JavaScript 程序中，可以使用fs 模塊的相關API 來讀取文件。</font><font style="vertical-align: inherit;">例如，使用以下代碼讀取PEM 格式的證書文件：</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
+<span class="hljs-keyword">const</span> certData = fs.readFile(<span class="hljs-string">'server.crt'</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">讀取文件後，必須使用X509Cert 對象將證書文件內容轉換為x509 證書：</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
+<span class="hljs-keyword">const</span> cert = <span class="hljs-keyword">new</span> crypto.X509Cert(certData);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">經過以上步驟，可以加載本地的x509 證書文件。</font><font style="vertical-align: inherit;">也可以使用crypto.loadCert 直接讀取證書：</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
+<span class="hljs-keyword">const</span> cert = crypto.loadCert(<span class="hljs-string">'server.crt'</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">x509 證書中保存著公鑰和加密後的簽名信息，因此需要在使用證書時，將證書中的公鑰解析出來，以方便對數據進行加密和解密。</font><font style="vertical-align: inherit;">PKey 類可以將PEM 格式的公鑰/私鑰字符串轉換為公鑰/私鑰對象。</font><font style="vertical-align: inherit;">可以使用以下代碼讀取PEM 格式的公鑰/私鑰字符串，並創建PKey 對象:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">const</span> privateKey = fs.readFile(<span class="hljs-string">'private.pem'</span>); <span class="hljs-comment">// 读取 PEM 格式的私钥</span>
+<span class="hljs-keyword">const</span> pKey = crypto.PKey.from(privateKey); <span class="hljs-comment">// 生成 PKey 对象</span>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">或者使用crypto.loadPKey 直接讀取：</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
+<span class="hljs-keyword">const</span> pKey = crypto.loadPKey(<span class="hljs-string">'private.pem'</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">經過以上步驟，可以將公鑰/私鑰文件轉換為PKey 對象。</font></font></p>
+<h3 id="解析证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">解析證書</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">證書是SSL/TLS 交互中重要的組成部分，用於身份身份驗證和數據傳輸的加密。</font><font style="vertical-align: inherit;">現在，我們來了解如何在fibjs 中解析一個證書。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我們可以使用crypto 模塊的X509Cert 類，通過讀取一個DER/PEM 格式的證書文件構建一個證書對象，緊接著可以獲取證書的一些基本信息，例如獲取證書的主題名稱、頒發者名稱、有效期等等信息。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">示例代碼如下：</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
 4
@@ -293,27 +339,97 @@ fs.writeTextFile(<span class="hljs-string">'d:/mycert.pem'</span>, cs); <span cl
 11
 12
 13
-14</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
-<span class="hljs-keyword">const</span> ssl = <span class="hljs-built_in">require</span>(<span class="hljs-string">'ssl'</span>);
-<span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">"http"</span>);<font></font>
+14
+15
+16
+17</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);<font></font>
 <font></font>
-<span class="hljs-keyword">let</span> pky = <span class="hljs-keyword">new</span> crypto.PKey();      
-<span class="hljs-keyword">let</span> crt = <span class="hljs-keyword">new</span> crypto.X509Cert();  <font></font>
+<span class="hljs-comment">// 读取证书文件，生成 X509Cert 对象</span>
+<span class="hljs-keyword">const</span> cert = crypto.loadCert(<span class="hljs-string">'path/to/cert.pem'</span>);<font></font>
 <font></font>
-pky.importFile(<span class="hljs-string">'d:/mycert.key'</span>); <span class="hljs-comment">// 读取key文件</span>
-crt.loadFile(<span class="hljs-string">'d:/mycert.pem'</span>);   <span class="hljs-comment">// 读取pem文件</span><font></font>
+<span class="hljs-comment">// 获取证书基本信息</span>
+<span class="hljs-keyword">const</span> subjectName = cert.subject;
+<span class="hljs-keyword">const</span> issuerName = cert.issuer;
+<span class="hljs-keyword">const</span> validFromDate = cert.notBefore;
+<span class="hljs-keyword">const</span> expirationDate = cert.notAfter;
+<span class="hljs-keyword">const</span> serialNumber = cert.serial;<font></font>
 <font></font>
-<span class="hljs-keyword">var</span> svr = <span class="hljs-keyword">new</span> http.HttpsServer(crt, pky, <span class="hljs-number">443</span>, (req)=&gt; {<font></font>
-  req.response.write(<span class="hljs-string">'&lt;h1&gt;fibjs https server&lt;/h1&gt;'</span>);<font></font>
-});<font></font>
-svr.start();<font></font>
+<span class="hljs-comment">// 打印证书基本信息</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">`证书主题名称: <span class="hljs-subst">${subjectName}</span>`</span>);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">`证书颁发者名称: <span class="hljs-subst">${issuerName}</span>`</span>);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">`证书有效期: <span class="hljs-subst">${validFromDate.toLocaleString()}</span> ~ <span class="hljs-subst">${expirationDate.toLocaleString()}</span>`</span>);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">`证书序列号: <span class="hljs-subst">${serialNumber}</span>`</span>);
 </code></pre>
-<h2 id="方式三:-使用已有的证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">方式三: 使用已有的證書</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以上載入證書文件的方法, 也可用於正式證書, 比如</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">當需要使用一個證書時，我們需要驗證這個證書的合法性，關鍵是要確定證書是由一個可信的組織頒發的。</font><font style="vertical-align: inherit;">可以使用X509Cert 中的verify 方法來檢查證書的合法性，常見的驗證方式是通過驗證證書的鏈，確保證書被受信任的CA 頒發。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">示例代碼如下：</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</div><span class="hljs-comment">// 读取 CA 证书文件，生成 X509Cert 对象</span>
+<span class="hljs-keyword">const</span> caCert = crypto.loadCert(<span class="hljs-string">'path/to/ca.crt'</span>);<font></font>
+<font></font>
+<span class="hljs-comment">// 验证证书的合法性</span>
+<span class="hljs-keyword">const</span> verifyResult = cert.verify(caCert);<font></font>
+<font></font>
+<span class="hljs-comment">// 验证结果</span>
+<span class="hljs-keyword">if</span> (verifyResult !== <span class="hljs-number">0</span>) {
+  <span class="hljs-built_in">console</span>.error(<span class="hljs-string">'证书验证失败'</span>, verifyResult);<font></font>
+} <span class="hljs-keyword">else</span> {
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'证书验证通过'</span>);<font></font>
+}<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在此示例代碼中，我們首先讀取指定的CA 證書，生成一個X509Cert 對象，接著使用證書對像上的verify 方法驗證需要驗證的證書，並獲取驗證結果。</font><font style="vertical-align: inherit;">你可以通過比較驗證結果是否等於0 來判斷證書是否合法。</font><font style="vertical-align: inherit;">如果驗證結果不為0，則說明驗證失敗，此時應當停止使用該證書。</font></font></p>
+<h3 id="使用证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用證書</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在使用https 服務器時，需要確保使用的證書已經添加到服務器上。</font><font style="vertical-align: inherit;">以下是一個簡單的示例，通過crypto 模塊加載證書和私鑰文件：</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</div><span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">"http"</span>);
+<span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">"crypto"</span>);
+<span class="hljs-comment">// 加载证书和密钥文件</span>
+<span class="hljs-keyword">const</span> cert = crypto.loadCert(<span class="hljs-string">"server.crt"</span>);
+<span class="hljs-keyword">const</span> key = crypto.loadPKey(<span class="hljs-string">"server.key"</span>);
+<span class="hljs-comment">//创建 https 服务器并启动</span>
+<span class="hljs-keyword">const</span> server = <span class="hljs-keyword">new</span> http.HttpsServer(cert, key, <span class="hljs-number">8443</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req</span>) </span>{<font></font>
+    req.response.write(<span class="hljs-string">`Hello, fibjs!`</span>);<font></font>
+});<font></font>
+server.start();<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在上面的示例中，我們通過loadCert 和loadPKey 函數加載了server.crt 和server.key 文件，然後使用HttpsServer 對象創建了一個服務，並用加載的證書和密鑰文件啟動服務。</font></font></p>
+<h2 id="X509-模块的注意事项"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509 模塊的注意事項</font></font></h2>
+<h3 id="证书的安全性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">證書的安全性</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509 模塊提供了證書的創建、處理等功能，證書的安全性必須得到保障，這需要特別注意以下幾點：</font></font></p>
 <ul>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">從阿里雲申請的免費證書（下載other格式, 包含xxx.pem 和xxx.key 兩個文件).</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通過certbot 申請得到的證書.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">私鑰的安全性。</font><font style="vertical-align: inherit;">私鑰是證書的重要組成部分，必須得到嚴格保護。</font><font style="vertical-align: inherit;">在證書的使用過程中，應該盡可能地將私鑰存儲在安全的地方，並合理設置訪問權限。</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">證書的傳輸安全。</font><font style="vertical-align: inherit;">在證書的交換和使用過程中，必須採用安全的傳輸方式，避免證書被竊取或篡改。</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">證書的驗證安全。</font><font style="vertical-align: inherit;">證書驗證是確保證書有效和安全性的重要環節，必須嚴格按照證書的驗證規則來進行驗證，以避免偽造的證書誤導使用者。</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">其他格式的證書可能需要轉換, 具體請參考fibjs 的文檔。</font></font></p>
+<h3 id="证书的有效期"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">證書的有效期</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">證書的有效期是指從證書發行日期到證書過期日期之間的這段時間。</font><font style="vertical-align: inherit;">證書的有效期限制了證書的使用時間，在證書過期之前，證書持有人可以使用證書，但在證書過期之後，證書將失去其有效性。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">因此，在使用證書之前，必須先檢查證書的有效期，以避免使用已經過期的證書。</font><font style="vertical-align: inherit;">同時，在證書過期之前，應該儘早地更新證書，以確保證書的可用性。</font></font></p>
+<h3 id="证书的信任机制"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">證書的信任機制</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">證書的信任機制是證書能否被客戶端或服務器端信任的關鍵因素。</font><font style="vertical-align: inherit;">通常情況下，客戶端或服務器端只信任由可信機構(CA)簽發和承認的證書。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在使用證書之前，必須確定證書的信任問題。</font><font style="vertical-align: inherit;">可以通過檢查證書的頒發機構、證書的主題可分辨名稱等方式來判斷證書是否可信任。</font></font></p>
+<h3 id="证书的更新机制"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">證書的更新機制</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">證書的更新機制是確保證書一直有效並且安全的重要環節。</font><font style="vertical-align: inherit;">通常情況下，證書的更新主要包括兩個方面：</font></font></p>
+<ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">證書過期後的更新。</font><font style="vertical-align: inherit;">在證書過期後，必須重新申請證書，並按照相應的規則進行簽名和驗證，以確保證書的有效性。</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">證書擴展和更新。</font><font style="vertical-align: inherit;">在證書的使用過程中，如果需要擴展或更新證書的信息，可以通過重新申請證書並進行簽名和驗證的方式來實現。</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">綜上所述，X509 模塊提供了證書的創建、處理等功能，是確保證書安全、可信和有效的重要環節。</font><font style="vertical-align: inherit;">在使用和管理證書的過程中，必須遵循相應的規則和要求，以確保證書的有效性和安全性。</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">👉 【</font></font><a href="contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加native 模塊</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">】</font></font></p>
  </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../js/common.js"></script><script type="text/javascript" src="../../../js/docs.js"></script></body></html>
