@@ -4,7 +4,9 @@
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
 <li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Una vita migliore inizia con una prova</font></font></a></li>
 <li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Trova i killer delle prestazioni</font></font></a></li>
+<li><a href="../../../guide/sync.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sincrono e asincrono</font></font></a></li>
 <li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aggiornamento a caldo del modulo server</font></font></a></li>
+<li><a href="../../../guide/web.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pratiche per applicazioni Web ad alte prestazioni</font></font></a></li>
 <li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instradamento del dominio</font></font></a></li>
 <li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Uso del certificato X509 in fibjs</font></font></a></li>
 <li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aggiungi modulo nativo</font></font></a></li>
@@ -362,7 +364,7 @@
 </ul>
 <hr>
 <h3 id="nodeName" class="notranslate">nodeName</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Stringa, restituisce il nome del nodo, in base al suo tipo</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">String, restituisce il nome del nodo, in base al suo tipo</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly <span class="hljs-built_in">String</span> XmlText.nodeName;
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Il nodeName di diversi oggetti restituirà valori diversi:</font></font></p>
@@ -378,7 +380,7 @@
 </ul>
 <hr>
 <h3 id="nodeValue" class="notranslate">nodeValue</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Stringa, restituisce il nome del nodo, in base al suo tipo</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">String, restituisce il nome del nodo, in base al suo tipo</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> XmlText.nodeValue;
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Il nodeName di diversi oggetti restituirà valori diversi:</font></font></p>
@@ -470,7 +472,7 @@
 <ul>
 <li><span class="notranslate">XmlText</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, il nodo Testo diviso dal nodo corrente</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Questo metodo dividerà il nodo XmlText in due nodi in corrispondenza dell'offset specificato. </font><font style="vertical-align: inherit;">Il nodo XmlText originale verrà modificato in modo che contenga il contenuto di testo fino alla posizione specificata da offset (esclusa). </font><font style="vertical-align: inherit;">Verrà creato un nuovo nodo XmlText per contenere tutti i caratteri dalla posizione offset (incluso il carattere in questa posizione) fino alla fine del carattere originale. </font><font style="vertical-align: inherit;">Il nuovo nodo XmlText è il valore restituito di questo metodo. </font><font style="vertical-align: inherit;">Inoltre, se il nodo XmlText originale aveva un parentNode, il nuovo nodo XmlText verrà inserito in questo nodo padre, subito dopo il nodo originale.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Questo metodo dividerà il nodo XmlText in due nodi in corrispondenza dell'offset specificato. </font><font style="vertical-align: inherit;">Il nodo XmlText originale verrà modificato in modo che contenga il contenuto del testo fino alla posizione specificata da offset (esclusa). </font><font style="vertical-align: inherit;">Verrà creato un nuovo nodo XmlText per contenere tutti i caratteri dalla posizione offset (incluso il carattere in questa posizione) fino alla fine del carattere originale. </font><font style="vertical-align: inherit;">Il nuovo nodo XmlText è il valore restituito di questo metodo. </font><font style="vertical-align: inherit;">Inoltre, se il nodo XmlText originale aveva un parentNode, il nuovo nodo XmlText verrà inserito in questo nodo padre, subito dopo il nodo originale.</font></font></p>
 <p><a href="xmlcdatasection.md.html" class="notranslate">XmlCDATASection</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">L'interfaccia eredita l'interfaccia XmlText,</font></font><a href="xmlcdatasection.md.html" class="notranslate">XmlCDATASection</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Anche i nodi possono utilizzare questo metodo, ma i nodi appena creati lo sono</font></font><a href="xmlcdatasection.md.html" class="notranslate">XmlCDATASection</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">nodo, non un nodo XmlText.</font></font></p>
 <hr>
 <h3 id="substringData" class="notranslate">substringData</h3>
@@ -564,7 +566,7 @@
 <ul>
 <li><a href="xmlnode.md.html" class="notranslate">XmlNode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, restituisce il nodo copiato</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Questo metodo copierà e restituirà una copia del nodo su cui è stato chiamato. </font><font style="vertical-align: inherit;">Se il parametro passato è vero, copierà anche in modo ricorsivo tutti i nodi discendenti del nodo corrente. </font><font style="vertical-align: inherit;">Altrimenti, copia solo il nodo corrente. </font><font style="vertical-align: inherit;">Il nodo restituito non appartiene all'albero del documento e la sua proprietà parentNode è nulla. </font><font style="vertical-align: inherit;">Quando si copia un nodo Elemento, verranno copiate tutte le sue proprietà.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Questo metodo copierà e restituirà una copia del nodo su cui è stato chiamato. </font><font style="vertical-align: inherit;">Se il parametro passato è vero, copierà anche in modo ricorsivo tutti i nodi discendenti del nodo corrente. </font><font style="vertical-align: inherit;">Altrimenti, copia solo il nodo corrente. </font><font style="vertical-align: inherit;">Il nodo restituito non appartiene all'albero del documento e la sua proprietà parentNode è nulla. </font><font style="vertical-align: inherit;">Quando si copia un nodo Elemento, verranno copiati tutti i suoi attributi.</font></font></p>
 <hr>
 <h3 id="lookupPrefix" class="notranslate">lookupPrefix</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Restituisce i prefissi corrispondenti all'URI dello spazio dei nomi specificato nel nodo corrente</font></font></strong></p>

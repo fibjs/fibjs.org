@@ -4,7 +4,9 @@
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
 <li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">より良い人生はテストから始まります</font></font></a></li>
 <li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">パフォーマンス キラーを見つける</font></font></a></li>
+<li><a href="../../../guide/sync.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">同期と非同期</font></font></a></li>
 <li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">サーバーモジュールのホットアップデート</font></font></a></li>
+<li><a href="../../../guide/web.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ハイ パフォーマンス Web アプリケーションの実践</font></font></a></li>
 <li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ドメイン ルーティング</font></font></a></li>
 <li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs での X509 証明書の使用</font></font></a></li>
 <li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ネイティブモジュールを追加</font></font></a></li>
@@ -207,7 +209,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">コンソール アクセス オブジェクト</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">コンソールモジュールは、ブラウザのコンソールオブジェクトと同様の機能を提供するコアモジュールであり、デバッグや情報の出力に便利なコンソールに情報を出力できます。</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">コンソール モジュールで最も一般的に使用されるメソッドは log() です。これは、任意の JavaScript 値をコンソールに出力し、自動的に改行を追加します。</font><font style="vertical-align: inherit;">log() メソッドの他に info() メソッド、warn() メソッド、error() メソッドがあり、それぞれ情報、警告、エラーを出力します. これらの機能は基本的に log() メソッドと同じです.ただし、コンソールに表示される方法は異なります。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">コンソール モジュールは、オブジェクトのプロパティとメソッドをより読みやすい形式でコンソールに出力するために使用される dir() メソッドも提供します。これは、複雑なオブジェクトのデバッグに便利です。</font><font style="vertical-align: inherit;">さらに、コンソールでコード実行のタイミングを計り、時間差を出力するための time() および timeEnd() メソッドがあります。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">コンソール モジュールは、複雑なオブジェクトのデバッグに便利な、より読みやすい形式でオブジェクトのプロパティとメソッドをコンソールに出力するために使用される dir() メソッドも提供します。</font><font style="vertical-align: inherit;">さらに、コンソールでコード実行のタイミングを計り、時間差を出力するための time() および timeEnd() メソッドがあります。</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上記の一般的に使用されるメソッドに加えて、コンソール モジュールは次のような他のメソッドも提供します。</font></font><a href="assert.md.html" class="notranslate">assert</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">()、notic()、trace() などは、さまざまな状況で情報を便利にデバッグおよび出力できます。</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">コンソールモジュールは、開発プロセスにおけるデバッグ効率を向上させ、さまざまな情報を便利かつ迅速に出力できる非常に実用的なモジュールです。</font></font></p>
 <h2 id="静态函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">静的関数</font></font></h2>
@@ -452,7 +454,7 @@
 <li><span class="notranslate">fmt</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 文字列、フォーマットされた文字列</font></font></li>
 <li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., オプションのパラメータ リスト</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">レコードは、重大なエラー ログ メッセージに使用されます。</font><font style="vertical-align: inherit;">通常、重大なエラー メッセージを出力するために使用されます。</font><font style="vertical-align: inherit;">非常に重要です。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">レコードは重大なエラー ログ メッセージに使用されます。</font><font style="vertical-align: inherit;">通常、重大なエラー メッセージを出力するために使用されます。</font><font style="vertical-align: inherit;">非常に重要です。</font></font></p>
 <hr>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">重大なエラー ログ情報を記録する</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.crit(...args);
@@ -461,7 +463,7 @@
 <ul>
 <li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., オプションのパラメータ リスト</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">レコードは、重大なエラー ログ メッセージに使用されます。</font><font style="vertical-align: inherit;">通常、重大なエラー メッセージを出力するために使用されます。</font><font style="vertical-align: inherit;">非常に重要です。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">レコードは重大なエラー ログ メッセージに使用されます。</font><font style="vertical-align: inherit;">通常、重大なエラー メッセージを出力するために使用されます。</font><font style="vertical-align: inherit;">非常に重要です。</font></font></p>
 <hr>
 <h3 id="alert" class="notranslate">alert</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">アラート エラー ログ情報を記録する</font></font></strong></p>

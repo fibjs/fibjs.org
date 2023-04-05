@@ -4,7 +4,9 @@
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
 <li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Лучшая жизнь начинается с испытания</font></font></a></li>
 <li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Найдите убийц производительности</font></font></a></li>
+<li><a href="../../../guide/sync.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">синхронный и асинхронный</font></font></a></li>
 <li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Горячее обновление серверного модуля</font></font></a></li>
+<li><a href="../../../guide/web.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Практика высокопроизводительных веб-приложений</font></font></a></li>
 <li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Маршрутизация домена</font></font></a></li>
 <li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Использование сертификата X509 в fibjs</font></font></a></li>
 <li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Добавить нативный модуль</font></font></a></li>
@@ -292,7 +294,7 @@ httpClient.get(<span class="hljs-string">'http://fibjs.org'</span>);
 <ul>
 <li><a href="../../object/ifs/handler.md.html" class="notranslate">Handler</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, возвращает обработчик статических файлов для обработки http-сообщений</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fileHandler поддерживает предварительное сжатие gzip.Когда запрос принимает кодировку gzip и файл filename.ext.gz существует по тому же пути, он напрямую возвращает этот файл, что позволяет избежать повторного сжатия для увеличения нагрузки на сервер.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fileHandler поддерживает предварительное сжатие gzip. Когда запрос принимает кодировку gzip и файл filename.ext.gz существует по тому же пути, он напрямую возвращает этот файл, что позволяет избежать повторного сжатия, чтобы увеличить нагрузку на сервер.</font></font></p>
 <hr>
 <h3 id="setClientCert" class="notranslate">setClientCert</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Установить сертификат клиента по умолчанию</font></font></strong></p>
@@ -340,7 +342,7 @@ httpClient.get(<span class="hljs-string">'http://fibjs.org'</span>);
 <li><a href="../../object/ifs/httpresponse.md.html" class="notranslate">HttpResponse</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, возвращает ответ сервера</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">просят указать</font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, и вернуть результат</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">просят указать</font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, и возвращает результат</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">static</span> HttpResponse http.request(<span class="hljs-built_in">String</span> method,
@@ -350,7 +352,7 @@ httpClient.get(<span class="hljs-string">'http://fibjs.org'</span>);
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры вызова:</font></font></p>
 <ul>
 <li><span class="notranslate">method</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Строка, указывает метод http-запроса: GET, POST и т. д.</font></font></li>
-<li><span class="notranslate">url</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: указанная строка</font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, который должен быть полным</font></font><a href="url.md.html" class="notranslate">url</a></li>
+<li><span class="notranslate">url</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Строка, указанная</font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, который должен быть полным</font></font><a href="url.md.html" class="notranslate">url</a></li>
 <li><span class="notranslate">opts</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Объект, указывает дополнительную информацию</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">возвращаемый результат:</font></font></p>
@@ -399,7 +401,7 @@ httpClient.get(<span class="hljs-string">'http://fibjs.org'</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры вызова:</font></font></p>
 <ul>
-<li><span class="notranslate">url</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: указанная строка</font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, который должен быть полным</font></font><a href="url.md.html" class="notranslate">url</a></li>
+<li><span class="notranslate">url</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Строка, указанная</font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, который должен быть полным</font></font><a href="url.md.html" class="notranslate">url</a></li>
 <li><span class="notranslate">opts</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Объект, указывает дополнительную информацию</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">возвращаемый результат:</font></font></p>
@@ -439,7 +441,7 @@ httpClient.get(<span class="hljs-string">'http://fibjs.org'</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">где тело,</font></font><a href="json.md.html" class="notranslate">json</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, пакет не должен появляться одновременно. </font><font style="vertical-align: inherit;">По умолчанию {}, не содержит никакой дополнительной информации.</font></font></p>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">параметры запроса указаны</font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, и вернуть результат</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">параметры запроса указаны</font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, и возвращает результат</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> HttpResponse http.request(<span class="hljs-built_in">Object</span> opts) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры вызова:</font></font></p>
@@ -491,7 +493,7 @@ httpClient.get(<span class="hljs-string">'http://fibjs.org'</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры вызова:</font></font></p>
 <ul>
-<li><span class="notranslate">url</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: указанная строка</font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, который должен быть полным</font></font><a href="url.md.html" class="notranslate">url</a></li>
+<li><span class="notranslate">url</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Строка, указанная</font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, который должен быть полным</font></font><a href="url.md.html" class="notranslate">url</a></li>
 <li><span class="notranslate">opts</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Объект, указывает дополнительную информацию</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">возвращаемый результат:</font></font></p>
@@ -539,7 +541,7 @@ httpClient.get(<span class="hljs-string">'http://fibjs.org'</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры вызова:</font></font></p>
 <ul>
-<li><span class="notranslate">url</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: указанная строка</font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, который должен быть полным</font></font><a href="url.md.html" class="notranslate">url</a></li>
+<li><span class="notranslate">url</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Строка, указанная</font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, который должен быть полным</font></font><a href="url.md.html" class="notranslate">url</a></li>
 <li><span class="notranslate">opts</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Объект, указывает дополнительную информацию</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">возвращаемый результат:</font></font></p>
@@ -587,7 +589,7 @@ httpClient.get(<span class="hljs-string">'http://fibjs.org'</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры вызова:</font></font></p>
 <ul>
-<li><span class="notranslate">url</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: указанная строка</font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, который должен быть полным</font></font><a href="url.md.html" class="notranslate">url</a></li>
+<li><span class="notranslate">url</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Строка, указанная</font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, который должен быть полным</font></font><a href="url.md.html" class="notranslate">url</a></li>
 <li><span class="notranslate">opts</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Объект, указывает дополнительную информацию</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">возвращаемый результат:</font></font></p>
@@ -628,14 +630,14 @@ httpClient.get(<span class="hljs-string">'http://fibjs.org'</span>);
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">где тело,</font></font><a href="json.md.html" class="notranslate">json</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, пакет не должен появляться одновременно. </font><font style="vertical-align: inherit;">По умолчанию {}, не содержит никакой дополнительной информации.</font></font></p>
 <hr>
 <h3 id="put" class="notranslate">put</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Используйте метод PUT для запроса указанного</font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, и вернуть результат, эквивалентный request("PUT",...)</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Используйте метод PUT для запроса указанного</font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, и вернуть результат, который эквивалентен request("PUT", ...)</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> HttpResponse http.put(<span class="hljs-built_in">String</span> url,
     <span class="hljs-built_in">Object</span> opts = {}) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры вызова:</font></font></p>
 <ul>
-<li><span class="notranslate">url</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: указанная строка</font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, который должен быть полным</font></font><a href="url.md.html" class="notranslate">url</a></li>
+<li><span class="notranslate">url</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Строка, указанная</font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, который должен быть полным</font></font><a href="url.md.html" class="notranslate">url</a></li>
 <li><span class="notranslate">opts</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Объект, указывает дополнительную информацию</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">возвращаемый результат:</font></font></p>
@@ -683,7 +685,7 @@ httpClient.get(<span class="hljs-string">'http://fibjs.org'</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры вызова:</font></font></p>
 <ul>
-<li><span class="notranslate">url</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: указанная строка</font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, который должен быть полным</font></font><a href="url.md.html" class="notranslate">url</a></li>
+<li><span class="notranslate">url</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Строка, указанная</font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, который должен быть полным</font></font><a href="url.md.html" class="notranslate">url</a></li>
 <li><span class="notranslate">opts</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Объект, указывает дополнительную информацию</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">возвращаемый результат:</font></font></p>
@@ -731,7 +733,7 @@ httpClient.get(<span class="hljs-string">'http://fibjs.org'</span>);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры вызова:</font></font></p>
 <ul>
-<li><span class="notranslate">url</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: указанная строка</font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, который должен быть полным</font></font><a href="url.md.html" class="notranslate">url</a></li>
+<li><span class="notranslate">url</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Строка, указанная</font></font><a href="url.md.html" class="notranslate">url</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, который должен быть полным</font></font><a href="url.md.html" class="notranslate">url</a></li>
 <li><span class="notranslate">opts</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Объект, указывает дополнительную информацию</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">возвращаемый результат:</font></font></p>

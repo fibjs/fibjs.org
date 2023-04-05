@@ -1,10 +1,12 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Processus de module - JavaScript sur fibre</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Basculer la navigation</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../readme.md.html">MODULE</a></li><li><a href="../../object/readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/module/ifs/process.md.html">中文</a> <a href="../../../../../ca/docs/manual/module/ifs/process.md.html">Catalan</a> <a href="../../../../../de/docs/manual/module/ifs/process.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/module/ifs/process.md.html">English</a> <a href="../../../../../es/docs/manual/module/ifs/process.md.html">Español</a> <a href="../../../../../fr/docs/manual/module/ifs/process.md.html">Français</a> <a href="../../../../../gl/docs/manual/module/ifs/process.md.html">Galego</a> <a href="../../../../../it/docs/manual/module/ifs/process.md.html">Italiano</a> <a href="../../../../../nl/docs/manual/module/ifs/process.md.html">Nederlands</a> <a href="../../../../../ru/docs/manual/module/ifs/process.md.html">Русский</a> <a href="../../../../../ja/docs/manual/module/ifs/process.md.html">日本語</a> <a href="../../../../../ko/docs/manual/module/ifs/process.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/module/ifs/process.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Module module de base</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Recherche" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="entrée de recherche" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">page de garde</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Module de base</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">processus de modules</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">guide de développement</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Processus de module - JavaScript sur fibre</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Basculer la navigation</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../readme.md.html">MODULE</a></li><li><a href="../../object/readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/module/ifs/process.md.html">中文</a> <a href="../../../../../ca/docs/manual/module/ifs/process.md.html">Catalan</a> <a href="../../../../../de/docs/manual/module/ifs/process.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/module/ifs/process.md.html">English</a> <a href="../../../../../es/docs/manual/module/ifs/process.md.html">Español</a> <a href="../../../../../fr/docs/manual/module/ifs/process.md.html">Français</a> <a href="../../../../../gl/docs/manual/module/ifs/process.md.html">Galego</a> <a href="../../../../../it/docs/manual/module/ifs/process.md.html">Italiano</a> <a href="../../../../../nl/docs/manual/module/ifs/process.md.html">Nederlands</a> <a href="../../../../../ru/docs/manual/module/ifs/process.md.html">Русский</a> <a href="../../../../../ja/docs/manual/module/ifs/process.md.html">日本語</a> <a href="../../../../../ko/docs/manual/module/ifs/process.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/module/ifs/process.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Module module de base</font></font></span><div class="search"><input type="text" class="searchbox" placeholder="Recherche"></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">page de garde</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Module de base</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">processus de modules</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">guide de développement</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Qu'est-ce que fibjs?</font></font></a></li>
 <li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Installer l'environnement d'exploitation</font></font></a></li>
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
 <li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Une vie meilleure commence par un test</font></font></a></li>
 <li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Trouvez des tueurs de performance</font></font></a></li>
+<li><a href="../../../guide/sync.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">synchrone et asynchrone</font></font></a></li>
 <li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mise à jour à chaud du module serveur</font></font></a></li>
+<li><a href="../../../guide/web.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pratiques d'application Web haute performance</font></font></a></li>
 <li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Routage de domaine</font></font></a></li>
 <li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Utilisation du certificat X509 dans fibjs</font></font></a></li>
 <li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ajouter un module natif</font></font></a></li>
@@ -203,25 +205,25 @@
 <li><a href="../../../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
 <li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
 </ul>
- </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="模块-process" data-unique="模块-process"></div><h1 id="模块-process"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">processus de modules</font></font></h1>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <h1 id="模块-process"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">processus de modules</font></font></h1>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Module de traitement de processus, permettant de gérer les ressources du processus en cours</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Méthode de référence&nbsp;:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Méthode de référence :</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> process = <span class="hljs-built_in">require</span>(<span class="hljs-string">'process'</span>);
 </code></pre>
-<div name="进程事件" data-unique="进程事件"></div><h2 id="进程事件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">traiter les événements</font></font></h2>
+<h2 id="进程事件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">événement de processus</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">L'objet du module de processus est</font></font><a href="../../object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instance de , qui peut répondre aux événements au niveau du processus en enregistrant des écouteurs d'événement.</font></font></p>
-<div name="beforeExit-事件" data-unique="beforeExit-事件"></div><h3 id="beforeExit-事件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">événement beforeExit</font></font></h3>
+<h3 id="beforeExit-事件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">événement beforeExit</font></font></h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">L'événement </font></font><code>beforeExit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">est</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>process.on(<span class="hljs-string">'beforeExit'</span>, exitCode =&gt; {});
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Normalement, le processus fibjs se termine si aucun travail supplémentaire n'est ajouté à la file d'attente des tâches. </font><font style="vertical-align: inherit;">Mais si une nouvelle tâche est démarrée dans la fonction de rappel de l'écouteur lié à l' </font></font><code>beforeExit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">événement , comme le démarrage d'une fibre, le processus fibjs continuera à s'exécuter.</font></font></p>
-<p><a href="process.md.html#exitCode" class="notranslate">process.exitCode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Passé comme seule valeur de paramètre à la fonction de rappel de l'écouteur d' </font></font><code>beforeExit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">événement . </font><font style="vertical-align: inherit;">Si le processus est sur le point de se terminer pour une raison explicite, comme appeler directement</font></font><a href="process.md.html#exit" class="notranslate">process.exit</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ou une exception non interceptée est levée et l' </font></font><code>beforeExit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">événement ne sera pas déclenché.</font></font></p>
-<div name="exit-事件" data-unique="exit-事件"></div><h3 id="exit-事件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">événement de sortie</font></font></h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Lorsque fibjs se termine, l'événement </font></font><code>exit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sera déclenché, et une fois que tous les </font></font><code>exit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">écouteurs liés à l'événement seront exécutés, le processus se terminera</font></font></strong></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Normalement, le processus fibjs se termine si aucun travail supplémentaire n'est ajouté à la file d'attente des tâches. </font><font style="vertical-align: inherit;">Mais si une nouvelle tâche est démarrée dans la fonction de rappel de l'écouteur lié </font></font><code>beforeExit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">aux événements , comme le démarrage d'une fibre, le processus fibjs continuera à s'exécuter.</font></font></p>
+<p><a href="process.md.html#exitCode" class="notranslate">process.exitCode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Passé comme seule valeur de paramètre à </font></font><code>beforeExit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">la fonction de rappel de l'écouteur d'événement . </font><font style="vertical-align: inherit;">Si le processus est sur le point de se terminer pour une raison explicite, comme appeler directement</font></font><a href="process.md.html#exit" class="notranslate">process.exit</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ou une exception non interceptée est levée et </font></font><code>beforeExit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">l'événement ne sera pas déclenché.</font></font></p>
+<h3 id="exit-事件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">événement de sortie</font></font></h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Lorsque fibjs se termine, l'événement </font></font><code>exit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sera déclenché, et une fois que tous </font></font><code>exit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">les écouteurs liés à l'événement seront exécutés, le processus se terminera</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>process.on(<span class="hljs-string">'exit'</span>, exitCode =&gt; {});
 </code></pre>
-<p><code>exit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La fonction de rappel de l'écouteur d'événement n'a qu'un seul paramètre d'entrée, et la valeur de ce paramètre peut être</font></font><a href="process.md.html#exitCode" class="notranslate">process.exitCode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">valeur de la propriété, ou appelez</font></font><a href="process.md.html#exit" class="notranslate">process.exit</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La </font></font><code>exitCode</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">valeur .</font></font></p>
-<div name="Signal-事件" data-unique="Signal-事件"></div><h3 id="Signal-事件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Événement signalé</font></font></h3>
+<p><code>exit</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La fonction de rappel de l'écouteur d'événement n'a qu'un seul paramètre d'entrée, et la valeur de ce paramètre peut être</font></font><a href="process.md.html#exitCode" class="notranslate">process.exitCode</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">valeur de la propriété, ou appelez</font></font><a href="process.md.html#exit" class="notranslate">process.exit</a><font style="vertical-align: inherit;"></font><code>exitCode</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La valeur</font><font style="vertical-align: inherit;"> transmise à la méthode .</font></font></p>
+<h3 id="Signal-事件"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Événement signalé</font></font></h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Lorsque le processus fibjs reçoit un signal, il déclenche un événement de signal. Les signaux actuellement pris en charge sont SIGINT et SIGTERM. </font><font style="vertical-align: inherit;">Chaque nom d'événement, exprimé en majuscule du nom du signal (par exemple l'événement 'SIGINT' correspond au signal SIGINT).</font></font></strong></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Les événements de signal sont différents des autres événements de processus. Les événements de signal sont préemptifs. Lorsqu'un signal se produit, quel que soit le</font></font><a href="io.md.html" class="notranslate">io</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">L'action, ou l'opération JavaScript, déclenchera l'événement correspondant dès que possible. </font><font style="vertical-align: inherit;">Par exemple, vous pouvez utiliser le code suivant pour interrompre l'application en cours et afficher l'état d'exécution&nbsp;:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
@@ -241,8 +243,8 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {<font></font>
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SIGINT&nbsp;: Lorsque le terminal est en cours d'exécution, il peut être pris en charge par toutes les plateformes et peut généralement être déclenché par CTRL+C.</font></font></li>
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SIGTERM : Ce signal est déclenché lorsque le processus est tué. </font><font style="vertical-align: inherit;">Non pris en charge sous Windows.</font></font></li>
 </ul>
-<div name="静态函数" data-unique="静态函数"></div><h2 id="静态函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fonction statique</font></font></h2>
-<div name="umask" data-unique="umask"></div><h3 id="umask" class="notranslate">umask</h3>
+<h2 id="静态函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fonction statique</font></font></h2>
+<h3 id="umask" class="notranslate">umask</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Changer le umask actuel, Windows ne prend pas en charge cette méthode</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer process.umask(Integer mask);
 </code></pre>
@@ -275,7 +277,7 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {<font></font>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, renvoie la valeur actuelle du masque</font></font></li>
 </ul>
 <hr>
-<div name="hrtime" data-unique="hrtime"></div><h3 id="hrtime" class="notranslate">hrtime</h3>
+<h3 id="hrtime" class="notranslate">hrtime</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Renvoie l'heure de haute précision du système, qui n'a rien à voir avec l'heure actuelle et n'est utilisée que pour une synchronisation de haute précision</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Array</span> process.hrtime(<span class="hljs-built_in">Array</span> diff = []);
 </code></pre>
@@ -288,7 +290,7 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {<font></font>
 <li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, renvoie le temps de synchronisation, le format est [secondes, nanosecondes]</font></font></li>
 </ul>
 <hr>
-<div name="exit" data-unique="exit"></div><h3 id="exit" class="notranslate">exit</h3>
+<h3 id="exit" class="notranslate">exit</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Quitter le processus en cours et renvoyer exitCode comme résultat du processus</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> process.exit();
 </code></pre>
@@ -301,7 +303,7 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {<font></font>
 <li><span class="notranslate">code</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entier, renvoie le résultat du processus</font></font></li>
 </ul>
 <hr>
-<div name="cwd" data-unique="cwd"></div><h3 id="cwd" class="notranslate">cwd</h3>
+<h3 id="cwd" class="notranslate">cwd</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Renvoie le chemin de travail actuel du système d'exploitation</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> process.cwd();
 </code></pre>
@@ -310,7 +312,7 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {<font></font>
 <li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, renvoie le chemin système actuel</font></font></li>
 </ul>
 <hr>
-<div name="chdir" data-unique="chdir"></div><h3 id="chdir" class="notranslate">chdir</h3>
+<h3 id="chdir" class="notranslate">chdir</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Modifier le chemin de travail actuel du système d'exploitation</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> process.chdir(<span class="hljs-built_in">String</span> directory);
 </code></pre>
@@ -319,7 +321,7 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {<font></font>
 <li><span class="notranslate">directory</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, spécifie le nouveau chemin du paramètre</font></font></li>
 </ul>
 <hr>
-<div name="uptime" data-unique="uptime"></div><h3 id="uptime" class="notranslate">uptime</h3>
+<h3 id="uptime" class="notranslate">uptime</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Interroger le temps d'exécution de l'environnement d'exécution, en secondes</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Number</span> process.uptime();
 </code></pre>
@@ -328,7 +330,7 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {<font></font>
 <li><span class="notranslate">Number</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, renvoie une valeur représentant le temps</font></font></li>
 </ul>
 <hr>
-<div name="cpuUsage" data-unique="cpuUsage"></div><h3 id="cpuUsage" class="notranslate">cpuUsage</h3>
+<h3 id="cpuUsage" class="notranslate">cpuUsage</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Interroger le temps passé par le processus en cours dans le code utilisateur et système, sa valeur est en microsecondes (un millionième de seconde)</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Object</span> process.cpuUsage(<span class="hljs-built_in">Object</span> previousValue = {});
 </code></pre>
@@ -355,7 +357,7 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {<font></font>
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">system renvoie le temps passé par le processus dans le code système</font></font></li>
 </ul>
 <hr>
-<div name="memoryUsage" data-unique="memoryUsage"></div><h3 id="memoryUsage" class="notranslate">memoryUsage</h3>
+<h3 id="memoryUsage" class="notranslate">memoryUsage</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Interroger le rapport d'utilisation de la mémoire du processus en cours</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Object</span> process.memoryUsage();
 </code></pre>
@@ -381,7 +383,7 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {<font></font>
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">heapUsed renvoie la taille de la mémoire de tas utilisée par le moteur v8</font></font></li>
 </ul>
 <hr>
-<div name="nextTick" data-unique="nextTick"></div><h3 id="nextTick" class="notranslate">nextTick</h3>
+<h3 id="nextTick" class="notranslate">nextTick</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">démarrer une fibre</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> process.nextTick(<span class="hljs-built_in">Function</span> func,<font></font>
@@ -393,7 +395,7 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {<font></font>
 <li><span class="notranslate">args</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., séquence d'arguments variadiques qui seront passés à la fonction dans la fibre</font></font></li>
 </ul>
 <hr>
-<div name="binding" data-unique="binding"></div><h3 id="binding" class="notranslate">binding</h3>
+<h3 id="binding" class="notranslate">binding</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Obtenir le module interne avec le nom spécifié</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Value process.binding(<span class="hljs-built_in">String</span> name);
 </code></pre>
@@ -406,7 +408,7 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {<font></font>
 <li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, renvoie le module interne spécifié</font></font></li>
 </ul>
 <hr>
-<div name="getgid" data-unique="getgid"></div><h3 id="getgid" class="notranslate">getgid</h3>
+<h3 id="getgid" class="notranslate">getgid</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Interroger l'identifiant de groupe du processus en cours</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer process.getgid();
 </code></pre>
@@ -415,7 +417,7 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {<font></font>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, renvoie l'identifiant de groupe du processus en cours</font></font></li>
 </ul>
 <hr>
-<div name="getuid" data-unique="getuid"></div><h3 id="getuid" class="notranslate">getuid</h3>
+<h3 id="getuid" class="notranslate">getuid</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Interroger l'ID utilisateur du processus en cours</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer process.getuid();
 </code></pre>
@@ -424,7 +426,7 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {<font></font>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, renvoie l'identifiant de l'utilisateur du processus en cours</font></font></li>
 </ul>
 <hr>
-<div name="setgid" data-unique="setgid"></div><h3 id="setgid" class="notranslate">setgid</h3>
+<h3 id="setgid" class="notranslate">setgid</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Définir l'identifiant de groupe du processus en cours</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> process.setgid(Integer id);
 </code></pre>
@@ -433,7 +435,7 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {<font></font>
 <li><span class="notranslate">id</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entier, spécifiez l'identifiant du groupe à définir</font></font></li>
 </ul>
 <hr>
-<div name="setuid" data-unique="setuid"></div><h3 id="setuid" class="notranslate">setuid</h3>
+<h3 id="setuid" class="notranslate">setuid</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Définir l'ID utilisateur du processus en cours</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> process.setuid(Integer id);
 </code></pre>
@@ -442,12 +444,12 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {<font></font>
 <li><span class="notranslate">id</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entier, spécifiez l'ID utilisateur à définir</font></font></li>
 </ul>
 <hr>
-<div name="disconnect" data-unique="disconnect"></div><h3 id="disconnect" class="notranslate">disconnect</h3>
+<h3 id="disconnect" class="notranslate">disconnect</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fermez le tuyau ipc avec le processus parent</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> process.disconnect();
 </code></pre>
 <hr>
-<div name="send" data-unique="send"></div><h3 id="send" class="notranslate">send</h3>
+<h3 id="send" class="notranslate">send</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Envoyer un message au processus parent</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> process.send(Value msg);
 </code></pre>
@@ -455,79 +457,79 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {<font></font>
 <ul>
 <li><span class="notranslate">msg</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Valeur, spécifie le message à envoyer</font></font></li>
 </ul>
-<div name="静态属性" data-unique="静态属性"></div><h2 id="静态属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">propriété statique</font></font></h2>
-<div name="argv" data-unique="argv"></div><h3 id="argv" class="notranslate">argv</h3>
+<h2 id="静态属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">propriété statique</font></font></h2>
+<h3 id="argv" class="notranslate">argv</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Array, renvoie les arguments de la ligne de commande du processus en cours</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Array</span> process.argv;
 </code></pre>
 <hr>
-<div name="execArgv" data-unique="execArgv"></div><h3 id="execArgv" class="notranslate">execArgv</h3>
+<h3 id="execArgv" class="notranslate">execArgv</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Array, renvoie les paramètres de ligne de commande spéciaux du processus en cours, ces paramètres sont utilisés par fibjs pour définir l'environnement d'exécution</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Array</span> process.execArgv;
 </code></pre>
 <hr>
-<div name="version" data-unique="version"></div><h3 id="version" class="notranslate">version</h3>
+<h3 id="version" class="notranslate">version</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Chaîne, renvoie la chaîne de version fibjs</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">String</span> process.version;
 </code></pre>
 <hr>
-<div name="versions" data-unique="versions"></div><h3 id="versions" class="notranslate">versions</h3>
+<h3 id="versions" class="notranslate">versions</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Object, renvoie les informations de version de fibjs et des composants</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Object</span> process.versions;
 </code></pre>
 <hr>
-<div name="execPath" data-unique="execPath"></div><h3 id="execPath" class="notranslate">execPath</h3>
+<h3 id="execPath" class="notranslate">execPath</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Chaîne, interrogez le chemin complet du fichier d'exécution en cours d'exécution</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">String</span> process.execPath;
 </code></pre>
 <hr>
-<div name="env" data-unique="env"></div><h3 id="env" class="notranslate">env</h3>
+<h3 id="env" class="notranslate">env</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objet, interroge les variables d'environnement du processus en cours</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Object</span> process.env;
 </code></pre>
 <hr>
-<div name="arch" data-unique="arch"></div><h3 id="arch" class="notranslate">arch</h3>
+<h3 id="arch" class="notranslate">arch</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Chaîne, interrogez l'environnement actuel du processeur, les résultats possibles sont 'amd64', 'arm', 'arm64', 'ia32'</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">String</span> process.arch;
 </code></pre>
 <hr>
-<div name="platform" data-unique="platform"></div><h3 id="platform" class="notranslate">platform</h3>
+<h3 id="platform" class="notranslate">platform</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">String, interrogez le nom de la plate-forme actuelle, les résultats possibles sont 'darwin', 'freebsd', 'linux' ou 'win32'</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">String</span> process.platform;
 </code></pre>
 <hr>
-<div name="pid" data-unique="pid"></div><h3 id="pid" class="notranslate">pid</h3>
+<h3 id="pid" class="notranslate">pid</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entier, lire l'identifiant du processus pointé par l'objet courant</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly Integer process.pid;
 </code></pre>
 <hr>
-<div name="ppid" data-unique="ppid"></div><h3 id="ppid" class="notranslate">ppid</h3>
+<h3 id="ppid" class="notranslate">ppid</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entier, lit l'identifiant du processus parent pointé par l'objet courant</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly Integer process.ppid;
 </code></pre>
 <hr>
-<div name="stdin" data-unique="stdin"></div><h3 id="stdin" class="notranslate">stdin</h3>
-<p><strong><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, pour interroger l'objet d'entrée standard du traitement en cours, dans</font></font><a href="tty.md.html" class="notranslate">tty</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dans le</font></font><a href="../../object/ifs/ttyinputstream.md.html" class="notranslate">TTYInputStream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, sinon</font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a></strong></p>
+<h3 id="stdin" class="notranslate">stdin</h3>
+<p><strong><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, pour interroger l'objet d'entrée standard du traitement en cours, dans</font></font><a href="tty.md.html" class="notranslate">tty</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">au milieu</font></font><a href="../../object/ifs/ttyinputstream.md.html" class="notranslate">TTYInputStream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, sinon</font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly Stream process.stdin;
 </code></pre>
 <hr>
-<div name="stdout" data-unique="stdout"></div><h3 id="stdout" class="notranslate">stdout</h3>
-<p><strong><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, pour interroger l'objet de sortie standard du traitement en cours, dans</font></font><a href="tty.md.html" class="notranslate">tty</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dans le</font></font><a href="../../object/ifs/ttyoutputstream.md.html" class="notranslate">TTYOutputStream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, sinon</font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a></strong></p>
+<h3 id="stdout" class="notranslate">stdout</h3>
+<p><strong><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, pour interroger l'objet de sortie standard du traitement en cours, dans</font></font><a href="tty.md.html" class="notranslate">tty</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">au milieu</font></font><a href="../../object/ifs/ttyoutputstream.md.html" class="notranslate">TTYOutputStream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, sinon</font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly Stream process.stdout;
 </code></pre>
 <hr>
-<div name="stderr" data-unique="stderr"></div><h3 id="stderr" class="notranslate">stderr</h3>
-<p><strong><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, pour interroger l'objet de sortie d'erreur standard du processus en cours, dans</font></font><a href="tty.md.html" class="notranslate">tty</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">dans le</font></font><a href="../../object/ifs/ttyoutputstream.md.html" class="notranslate">TTYOutputStream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, sinon</font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a></strong></p>
+<h3 id="stderr" class="notranslate">stderr</h3>
+<p><strong><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, pour interroger l'objet de sortie d'erreur standard du processus en cours, dans</font></font><a href="tty.md.html" class="notranslate">tty</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">au milieu</font></font><a href="../../object/ifs/ttyoutputstream.md.html" class="notranslate">TTYOutputStream</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, sinon</font></font><a href="../../object/ifs/stream.md.html" class="notranslate">Stream</a></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly Stream process.stderr;
 </code></pre>
 <hr>
-<div name="exitCode" data-unique="exitCode"></div><h3 id="exitCode" class="notranslate">exitCode</h3>
+<h3 id="exitCode" class="notranslate">exitCode</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entier, interroger et définir le code de sortie du processus en cours</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer process.exitCode;
 </code></pre>
 <hr>
-<div name="connected" data-unique="connected"></div><h3 id="connected" class="notranslate">connected</h3>
+<h3 id="connected" class="notranslate">connected</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Booléen, demande si le pipeline avec le processus parent est connecté normalement</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Boolean</span> process.connected;
 </code></pre>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Soutenez-nous</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Soutenez-nous</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

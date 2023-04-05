@@ -4,7 +4,9 @@
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
 <li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Een beter leven begint met een test</font></font></a></li>
 <li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vind prestatiemoordenaars</font></font></a></li>
+<li><a href="../../../guide/sync.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">synchroon en asynchroon</font></font></a></li>
 <li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Hot-update voor servermodule</font></font></a></li>
+<li><a href="../../../guide/web.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Praktijken voor hoogwaardige webapplicaties</font></font></a></li>
 <li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Domeinroutering</font></font></a></li>
 <li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gebruik van X509-certificaat in fibjs</font></font></a></li>
 <li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Native module toevoegen</font></font></a></li>
@@ -210,7 +212,7 @@
 <li><code>ws.TEXT</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Vertegenwoordigt een bericht van het teksttype, de inhoud is een tekenreeks.</font></font></li>
 <li><code>ws.BINARY</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Vertegenwoordigt een bericht van het binaire type en de inhoud bestaat uit binaire gegevens.</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Daarnaast kunt u ook aangeven of u een masker wilt toepassen door </font></font><code>WebSocketMessage.masked</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">het attribuut , en </font></font><code>WebSocketMessage.compress</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">opgeven of u wilt comprimeren via het attribuut.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Daarnaast kunt u ook aangeven of u een masker wilt toepassen door </font></font><code>WebSocketMessage.masked</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">het attribuut , en </font></font><code>WebSocketMessage.compress</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">kunt u aangeven of u wilt comprimeren via het attribuut.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">De volgende code is een voorbeeld van een websocketserver. Wanneer een client verbinding maakt, stuurt de server het ontvangen bericht terug naar de client:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -248,7 +250,7 @@
 });<font></font>
 svr.start();<font></font>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">In dit programma zijn de websocket-ondersteuningsmodule en de ingebouwde</font></font><a href="../../module/ifs/http.md.html" class="notranslate">http</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">module, en vervolgens de</font></font><a href="../../module/ifs/http.md.html" class="notranslate">http</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Service-object en geef het aanvraagpad op dat moet worden verwerkt, call</font></font><a href="../../module/ifs/ws.md.html#upgrade" class="notranslate">ws.upgrade</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">De functie upgradet de aanvraag die overeenkomt met het pad naar een websocket-verbinding. </font><font style="vertical-align: inherit;">Na het maken van een websocket-verbinding maakt de server automatisch een</font></font><a href="../../module/ifs/ws.md.html#Socket" class="notranslate">ws.Socket</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">object, en biedt API's zoals onopen, onmessage, onclose, enz., om af te handelen wanneer een client verbinding maakt, een bericht ontvangt en de gebeurtenis sluit. </font><font style="vertical-align: inherit;">Bij het ontvangen van een bericht beoordeelt de server het type bericht en als het een teksttype is, zal het het ontvangen bericht terugkaatsen. </font><font style="vertical-align: inherit;">Het bovenstaande is een eenvoudige websocket-serververwerkingsstroom, die kan worden aangepast aan de werkelijke behoeften.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">In dit programma zijn de websocket-ondersteuningsmodule en de ingebouwde</font></font><a href="../../module/ifs/http.md.html" class="notranslate">http</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">module, en vervolgens de</font></font><a href="../../module/ifs/http.md.html" class="notranslate">http</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Service-object en geef het aanvraagpad op dat moet worden verwerkt, call</font></font><a href="../../module/ifs/ws.md.html#upgrade" class="notranslate">ws.upgrade</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">De functie upgradet de aanvraag die overeenkomt met het pad naar een websocket-verbinding. </font><font style="vertical-align: inherit;">Na het maken van een websocket-verbinding maakt de server automatisch een</font></font><a href="../../module/ifs/ws.md.html#Socket" class="notranslate">ws.Socket</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">object, en biedt onopen, onmessage, onclose en andere API's om te verwerken wanneer een client verbinding maakt, een bericht ontvangt en de gebeurtenis sluit. </font><font style="vertical-align: inherit;">Bij het ontvangen van een bericht beoordeelt de server het type bericht en als het een teksttype is, zal het het ontvangen bericht terugkaatsen. </font><font style="vertical-align: inherit;">Het bovenstaande is een eenvoudige websocket-serververwerkingsstroom, die kan worden aangepast aan de werkelijke behoeften.</font></font></p>
 <h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">erfenis relatie</font></font></h2>
 <div class="dot notranslate">
 <!-- Generated by graphviz version 2.40.1 (20161225.0304)
@@ -349,7 +351,7 @@ svr.start();<font></font>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Oproepparameters:</font></font></p>
 <ul>
 <li><span class="notranslate">type</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, berichttype websocket, standaard is websocket.BINARY</font></font></li>
-<li><span class="notranslate">masked</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, websocket-berichtmasker, standaardwaarde is waar</font></font></li>
+<li><span class="notranslate">masked</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, websocket-berichtmasker, standaard is waar</font></font></li>
 <li><span class="notranslate">compress</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Boolean, of de berichtcompressie moet worden gemarkeerd, de standaardwaarde is false</font></font></li>
 <li><span class="notranslate">maxSize</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, de maximale pakketgrootte in MB, de standaardwaarde is 67108864 (64M)</font></font></li>
 </ul>
@@ -370,7 +372,7 @@ svr.start();<font></font>
 </code></pre>
 <hr>
 <h3 id="compress" class="notranslate">compress</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Boolean, vraag en lees websocket-compressiestatus, standaard is false</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Boolean, vraag en lees websocket-compressiestatus, standaard is onwaar</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> WebSocketMessage.compress;
 </code></pre>
 <hr>

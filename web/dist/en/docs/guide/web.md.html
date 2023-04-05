@@ -1,0 +1,659 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../imgs/icon.png"><title>High Performance Web Application Practice - JavaScript on Fiber</title><link href="../../../css/common.css" rel="stylesheet"><link href="../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Toggle navigation</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../index.html"><img src="../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../index.html">HOME</a></li><li><a href="readme.md.html">GUIDE</a></li><li><a href="../manual/module/readme.md.html">MODULE</a></li><li><a href="../manual/object/readme.md.html">OBJECT</a></li><li><a href="../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../docs/guide/web.md.html">中文</a> <a href="../../../ca/docs/guide/web.md.html">Catalan</a> <a href="../../../de/docs/guide/web.md.html">Deutsch</a> <a href="../../../en/docs/guide/web.md.html">English</a> <a href="../../../es/docs/guide/web.md.html">Español</a> <a href="../../../fr/docs/guide/web.md.html">Français</a> <a href="../../../gl/docs/guide/web.md.html">Galego</a> <a href="../../../it/docs/guide/web.md.html">Italiano</a> <a href="../../../nl/docs/guide/web.md.html">Nederlands</a> <a href="../../../ru/docs/guide/web.md.html">Русский</a> <a href="../../../ja/docs/guide/web.md.html">日本語</a> <a href="../../../ko/docs/guide/web.md.html">한국어</a> <a href="../../../zh-tw/docs/guide/web.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Guide Development Guide</font></font></span><div class="search"><input type="text" class="searchbox" placeholder="Search"></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">front page</font></font></a></li><li><a href="readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">development guide</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">High Performance Web Application Practices</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">development guide</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">What is fibjs?</font></font></a></li>
+<li><a href="install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Install the operating environment</font></font></a></li>
+<li><a href="hello.md.html" class="notranslate">hello, world</a></li>
+<li><a href="test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A better life begins with a test</font></font></a></li>
+<li><a href="profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Find performance killers</font></font></a></li>
+<li><a href="sync.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">synchronous and asynchronous</font></font></a></li>
+<li><a href="server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Server module hot update</font></font></a></li>
+<li class="active"><a href="web.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">High Performance Web Application Practices</font></font></a></li>
+<li><a href="host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Domain Routing</font></font></a></li>
+<li><a href="x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Use of X509 certificate in fibjs</font></font></a></li>
+<li><a href="contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Add native module</font></font></a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Basic module</font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../manual/module/ifs/assert.md.html" class="notranslate">assert</a></li>
+<li><a href="../manual/module/ifs/base32.md.html" class="notranslate">base32</a></li>
+<li><a href="../manual/module/ifs/base58.md.html" class="notranslate">base58</a></li>
+<li><a href="../manual/module/ifs/base64.md.html" class="notranslate">base64</a></li>
+<li><a href="../manual/module/ifs/child_process.md.html" class="notranslate">child_process</a></li>
+<li><a href="../manual/module/ifs/console.md.html" class="notranslate">console</a></li>
+<li><a href="../manual/module/ifs/constants.md.html" class="notranslate">constants</a></li>
+<li><a href="../manual/module/ifs/coroutine.md.html" class="notranslate">coroutine</a></li>
+<li><a href="../manual/module/ifs/crypto.md.html" class="notranslate">crypto</a></li>
+<li><a href="../manual/module/ifs/db.md.html" class="notranslate">db</a></li>
+<li><a href="../manual/module/ifs/dgram.md.html" class="notranslate">dgram</a></li>
+<li><a href="../manual/module/ifs/dns.md.html" class="notranslate">dns</a></li>
+<li><a href="../manual/module/ifs/encoding.md.html" class="notranslate">encoding</a></li>
+<li><a href="../manual/module/ifs/fs.md.html" class="notranslate">fs</a></li>
+<li><a href="../manual/module/ifs/fs_constants.md.html" class="notranslate">fs_constants</a></li>
+<li><a href="../manual/module/ifs/gd.md.html" class="notranslate">gd</a></li>
+<li><a href="../manual/module/ifs/global.md.html" class="notranslate">global</a></li>
+<li><a href="../manual/module/ifs/gui.md.html" class="notranslate">gui</a></li>
+<li><a href="../manual/module/ifs/hash.md.html" class="notranslate">hash</a></li>
+<li><a href="../manual/module/ifs/hex.md.html" class="notranslate">hex</a></li>
+<li><a href="../manual/module/ifs/http.md.html" class="notranslate">http</a></li>
+<li><a href="../manual/module/ifs/iconv.md.html" class="notranslate">iconv</a></li>
+<li><a href="../manual/module/ifs/io.md.html" class="notranslate">io</a></li>
+<li><a href="../manual/module/ifs/json.md.html" class="notranslate">json</a></li>
+<li><a href="../manual/module/ifs/mq.md.html" class="notranslate">mq</a></li>
+<li><a href="../manual/module/ifs/msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="../manual/module/ifs/multibase.md.html" class="notranslate">multibase</a></li>
+<li><a href="../manual/module/ifs/net.md.html" class="notranslate">net</a></li>
+<li><a href="../manual/module/ifs/os.md.html" class="notranslate">os</a></li>
+<li><a href="../manual/module/ifs/path.md.html" class="notranslate">path</a></li>
+<li><a href="../manual/module/ifs/path_posix.md.html" class="notranslate">path_posix</a></li>
+<li><a href="../manual/module/ifs/path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="../manual/module/ifs/perf_hooks.md.html" class="notranslate">perf_hooks</a></li>
+<li><a href="../manual/module/ifs/performance.md.html" class="notranslate">performance</a></li>
+<li><a href="../manual/module/ifs/process.md.html" class="notranslate">process</a></li>
+<li><a href="../manual/module/ifs/profiler.md.html" class="notranslate">profiler</a></li>
+<li><a href="../manual/module/ifs/punycode.md.html" class="notranslate">punycode</a></li>
+<li><a href="../manual/module/ifs/querystring.md.html" class="notranslate">querystring</a></li>
+<li><a href="../manual/module/ifs/registry.md.html" class="notranslate">registry</a></li>
+<li><a href="../manual/module/ifs/ssl.md.html" class="notranslate">ssl</a></li>
+<li><a href="../manual/module/ifs/string_decoder.md.html" class="notranslate">string_decoder</a></li>
+<li><a href="../manual/module/ifs/test.md.html" class="notranslate">test</a></li>
+<li><a href="../manual/module/ifs/timers.md.html" class="notranslate">timers</a></li>
+<li><a href="../manual/module/ifs/tty.md.html" class="notranslate">tty</a></li>
+<li><a href="../manual/module/ifs/url.md.html" class="notranslate">url</a></li>
+<li><a href="../manual/module/ifs/util.md.html" class="notranslate">util</a></li>
+<li><a href="../manual/module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
+<li><a href="../manual/module/ifs/vm.md.html" class="notranslate">vm</a></li>
+<li><a href="../manual/module/ifs/worker_threads.md.html" class="notranslate">worker_threads</a></li>
+<li><a href="../manual/module/ifs/ws.md.html" class="notranslate">ws</a></li>
+<li><a href="../manual/module/ifs/xml.md.html" class="notranslate">xml</a></li>
+<li><a href="../manual/module/ifs/zip.md.html" class="notranslate">zip</a></li>
+<li><a href="../manual/module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">built-in object</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../manual/object/ifs/blskey.md.html" class="notranslate">BlsKey</a></li>
+<li><a href="../manual/object/ifs/buffer.md.html" class="notranslate">Buffer</a></li>
+<li><a href="../manual/object/ifs/bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
+<li><a href="../manual/object/ifs/chain.md.html" class="notranslate">Chain</a></li>
+<li><a href="../manual/object/ifs/childprocess.md.html" class="notranslate">ChildProcess</a></li>
+<li><a href="../manual/object/ifs/cipher.md.html" class="notranslate">Cipher</a></li>
+<li><a href="../manual/object/ifs/condition.md.html" class="notranslate">Condition</a></li>
+<li><a href="../manual/object/ifs/dbconnection.md.html" class="notranslate">DbConnection</a></li>
+<li><a href="../manual/object/ifs/dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
+<li><a href="../manual/object/ifs/digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="../manual/object/ifs/eckey.md.html" class="notranslate">ECKey</a></li>
+<li><a href="../manual/object/ifs/ed25519key.md.html" class="notranslate">Ed25519Key</a></li>
+<li><a href="../manual/object/ifs/event.md.html" class="notranslate">Event</a></li>
+<li><a href="../manual/object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a></li>
+<li><a href="../manual/object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a></li>
+<li><a href="../manual/object/ifs/fiber.md.html" class="notranslate">Fiber</a></li>
+<li><a href="../manual/object/ifs/file.md.html" class="notranslate">File</a></li>
+<li><a href="../manual/object/ifs/handler.md.html" class="notranslate">Handler</a></li>
+<li><a href="../manual/object/ifs/heapgraphedge.md.html" class="notranslate">HeapGraphEdge</a></li>
+<li><a href="../manual/object/ifs/heapgraphnode.md.html" class="notranslate">HeapGraphNode</a></li>
+<li><a href="../manual/object/ifs/heapsnapshot.md.html" class="notranslate">HeapSnapshot</a></li>
+<li><a href="../manual/object/ifs/httpclient.md.html" class="notranslate">HttpClient</a></li>
+<li><a href="../manual/object/ifs/httpcollection.md.html" class="notranslate">HttpCollection</a></li>
+<li><a href="../manual/object/ifs/httpcookie.md.html" class="notranslate">HttpCookie</a></li>
+<li><a href="../manual/object/ifs/httphandler.md.html" class="notranslate">HttpHandler</a></li>
+<li><a href="../manual/object/ifs/httpmessage.md.html" class="notranslate">HttpMessage</a></li>
+<li><a href="../manual/object/ifs/httprepeater.md.html" class="notranslate">HttpRepeater</a></li>
+<li><a href="../manual/object/ifs/httprequest.md.html" class="notranslate">HttpRequest</a></li>
+<li><a href="../manual/object/ifs/httpresponse.md.html" class="notranslate">HttpResponse</a></li>
+<li><a href="../manual/object/ifs/httpserver.md.html" class="notranslate">HttpServer</a></li>
+<li><a href="../manual/object/ifs/httpuploaddata.md.html" class="notranslate">HttpUploadData</a></li>
+<li><a href="../manual/object/ifs/httpsserver.md.html" class="notranslate">HttpsServer</a></li>
+<li><a href="../manual/object/ifs/image.md.html" class="notranslate">Image</a></li>
+<li><a href="../manual/object/ifs/iterator.md.html" class="notranslate">Iterator</a></li>
+<li><a href="../manual/object/ifs/leveldb.md.html" class="notranslate">LevelDB</a></li>
+<li><a href="../manual/object/ifs/lock.md.html" class="notranslate">Lock</a></li>
+<li><a href="../manual/object/ifs/lrucache.md.html" class="notranslate">LruCache</a></li>
+<li><a href="../manual/object/ifs/memorystream.md.html" class="notranslate">MemoryStream</a></li>
+<li><a href="../manual/object/ifs/message.md.html" class="notranslate">Message</a></li>
+<li><a href="../manual/object/ifs/mongocollection.md.html" class="notranslate">MongoCollection</a></li>
+<li><a href="../manual/object/ifs/mongocursor.md.html" class="notranslate">MongoCursor</a></li>
+<li><a href="../manual/object/ifs/mongodb.md.html" class="notranslate">MongoDB</a></li>
+<li><a href="../manual/object/ifs/mongoid.md.html" class="notranslate">MongoID</a></li>
+<li><a href="../manual/object/ifs/mysql.md.html" class="notranslate">MySQL</a></li>
+<li><a href="../manual/object/ifs/odbc.md.html" class="notranslate">Odbc</a></li>
+<li><a href="../manual/object/ifs/pkey.md.html" class="notranslate">PKey</a></li>
+<li><a href="../manual/object/ifs/rangestream.md.html" class="notranslate">RangeStream</a></li>
+<li><a href="../manual/object/ifs/redis.md.html" class="notranslate">Redis</a></li>
+<li><a href="../manual/object/ifs/redishash.md.html" class="notranslate">RedisHash</a></li>
+<li><a href="../manual/object/ifs/redislist.md.html" class="notranslate">RedisList</a></li>
+<li><a href="../manual/object/ifs/redisset.md.html" class="notranslate">RedisSet</a></li>
+<li><a href="../manual/object/ifs/redissortedset.md.html" class="notranslate">RedisSortedSet</a></li>
+<li><a href="../manual/object/ifs/routing.md.html" class="notranslate">Routing</a></li>
+<li><a href="../manual/object/ifs/sqlite.md.html" class="notranslate">SQLite</a></li>
+<li><a href="../manual/object/ifs/sandbox.md.html" class="notranslate">SandBox</a></li>
+<li><a href="../manual/object/ifs/seekablestream.md.html" class="notranslate">SeekableStream</a></li>
+<li><a href="../manual/object/ifs/semaphore.md.html" class="notranslate">Semaphore</a></li>
+<li><a href="../manual/object/ifs/service.md.html" class="notranslate">Service</a></li>
+<li><a href="../manual/object/ifs/smtp.md.html" class="notranslate">Smtp</a></li>
+<li><a href="../manual/object/ifs/socket.md.html" class="notranslate">Socket</a></li>
+<li><a href="../manual/object/ifs/sslhandler.md.html" class="notranslate">SslHandler</a></li>
+<li><a href="../manual/object/ifs/sslserver.md.html" class="notranslate">SslServer</a></li>
+<li><a href="../manual/object/ifs/sslsocket.md.html" class="notranslate">SslSocket</a></li>
+<li><a href="../manual/object/ifs/stat.md.html" class="notranslate">Stat</a></li>
+<li><a href="../manual/object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a></li>
+<li><a href="../manual/object/ifs/stream.md.html" class="notranslate">Stream</a></li>
+<li><a href="../manual/object/ifs/stringdecoder.md.html" class="notranslate">StringDecoder</a></li>
+<li><a href="../manual/object/ifs/ttyinputstream.md.html" class="notranslate">TTYInputStream</a></li>
+<li><a href="../manual/object/ifs/ttyoutputstream.md.html" class="notranslate">TTYOutputStream</a></li>
+<li><a href="../manual/object/ifs/tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="../manual/object/ifs/textdecoder.md.html" class="notranslate">TextDecoder</a></li>
+<li><a href="../manual/object/ifs/textencoder.md.html" class="notranslate">TextEncoder</a></li>
+<li><a href="../manual/object/ifs/timer.md.html" class="notranslate">Timer</a></li>
+<li><a href="../manual/object/ifs/urlobject.md.html" class="notranslate">UrlObject</a></li>
+<li><a href="../manual/object/ifs/websocket.md.html" class="notranslate">WebSocket</a></li>
+<li><a href="../manual/object/ifs/websocketmessage.md.html" class="notranslate">WebSocketMessage</a></li>
+<li><a href="../manual/object/ifs/webview.md.html" class="notranslate">WebView</a></li>
+<li><a href="../manual/object/ifs/worker.md.html" class="notranslate">Worker</a></li>
+<li><a href="../manual/object/ifs/x509cert.md.html" class="notranslate">X509Cert</a></li>
+<li><a href="../manual/object/ifs/x509crl.md.html" class="notranslate">X509Crl</a></li>
+<li><a href="../manual/object/ifs/x509req.md.html" class="notranslate">X509Req</a></li>
+<li><a href="../manual/object/ifs/xmlattr.md.html" class="notranslate">XmlAttr</a></li>
+<li><a href="../manual/object/ifs/xmlcdatasection.md.html" class="notranslate">XmlCDATASection</a></li>
+<li><a href="../manual/object/ifs/xmlcharacterdata.md.html" class="notranslate">XmlCharacterData</a></li>
+<li><a href="../manual/object/ifs/xmlcomment.md.html" class="notranslate">XmlComment</a></li>
+<li><a href="../manual/object/ifs/xmldocument.md.html" class="notranslate">XmlDocument</a></li>
+<li><a href="../manual/object/ifs/xmldocumenttype.md.html" class="notranslate">XmlDocumentType</a></li>
+<li><a href="../manual/object/ifs/xmlelement.md.html" class="notranslate">XmlElement</a></li>
+<li><a href="../manual/object/ifs/xmlnamednodemap.md.html" class="notranslate">XmlNamedNodeMap</a></li>
+<li><a href="../manual/object/ifs/xmlnode.md.html" class="notranslate">XmlNode</a></li>
+<li><a href="../manual/object/ifs/xmlnodelist.md.html" class="notranslate">XmlNodeList</a></li>
+<li><a href="../manual/object/ifs/xmlprocessinginstruction.md.html" class="notranslate">XmlProcessingInstruction</a></li>
+<li><a href="../manual/object/ifs/xmltext.md.html" class="notranslate">XmlText</a></li>
+<li><a href="../manual/object/ifs/zipfile.md.html" class="notranslate">ZipFile</a></li>
+<li><a href="../manual/object/ifs/object.md.html" class="notranslate">object</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">community module</font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../awesome/module/fib-session.md.html" class="notranslate">fib-session</a></li>
+<li><a href="../awesome/module/fib-pool.md.html" class="notranslate">fib-pool</a></li>
+<li><a href="../awesome/module/fib-orm.md.html" class="notranslate">fib-orm</a></li>
+<li><a href="../awesome/module/fib-app.md.html" class="notranslate">fib-app</a></li>
+<li><a href="../awesome/module/fib-kv.md.html" class="notranslate">fib-kv</a></li>
+<li><a href="../awesome/module/fib-rpc.md.html" class="notranslate">fib-rpc</a></li>
+<li><a href="../awesome/module/fib-qr.md.html" class="notranslate">fib-qr</a></li>
+<li><a href="../awesome/module/fib-pug.md.html" class="notranslate">fib-pug</a></li>
+<li><a href="../awesome/module/ejs.md.html" class="notranslate">ejs</a></li>
+<li><a href="../awesome/module/juicer.md.html" class="notranslate">Juicer</a></li>
+<li><a href="../awesome/module/highlight.js.md.html" class="notranslate">highlight.js</a></li>
+<li><a href="../awesome/module/marked.md.html" class="notranslate">marked</a></li>
+<li><a href="../awesome/module/node-cron.md.html" class="notranslate">node-cron</a></li>
+<li><a href="../awesome/module/debug.md.html" class="notranslate">debug</a></li>
+<li><a href="../awesome/module/benchmark.js.md.html" class="notranslate">benchmark.js</a></li>
+<li><a href="../awesome/module/sinon.md.html" class="notranslate">sinon</a></li>
+<li><a href="../awesome/module/node-mime.md.html" class="notranslate">node-mime</a></li>
+<li><a href="../awesome/module/validatorjs.md.html" class="notranslate">validatorjs</a></li>
+<li><a href="../awesome/module/superstruct.md.html" class="notranslate">superstruct</a></li>
+<li><a href="../awesome/module/cluster-server.md.html" class="notranslate">cluster-server</a></li>
+<li><a href="../awesome/module/synaptic.md.html" class="notranslate">synaptic</a></li>
+<li><a href="../awesome/module/source-map.md.html" class="notranslate">source-map</a></li>
+<li><a href="../awesome/module/json-format.md.html" class="notranslate">json-format</a></li>
+<li><a href="../awesome/module/viz.js.md.html" class="notranslate">viz.js</a></li>
+<li><a href="../awesome/module/nomnoml.md.html" class="notranslate">nomnoml</a></li>
+<li><a href="../awesome/module/pegjs.md.html" class="notranslate">pegjs</a></li>
+<li><a href="../awesome/module/uglify-js.md.html" class="notranslate">uglify-js</a></li>
+<li><a href="../awesome/module/js-beautify.md.html" class="notranslate">js-beautify</a></li>
+<li><a href="../awesome/module/chalk-animation.md.html" class="notranslate">chalk-animation</a></li>
+<li><a href="../awesome/module/jsrsasign.md.html" class="notranslate">jsrsasign</a></li>
+<li><a href="../awesome/module/crypto-js.md.html" class="notranslate">crypto-js</a></li>
+<li><a href="../awesome/module/ascii-table.md.html" class="notranslate">ascii-table</a></li>
+<li><a href="../awesome/module/logstream.md.html" class="notranslate">logstream</a></li>
+<li><a href="../awesome/module/ci.md.html" class="notranslate">ci</a></li>
+<li><a href="../awesome/module/fs-readdir-recursive.md.html" class="notranslate">fs-readdir-recursive</a></li>
+<li><a href="../awesome/module/mkdirp.md.html" class="notranslate">mkdirp</a></li>
+<li><a href="../awesome/module/rmdirr.md.html" class="notranslate">rmdirr</a></li>
+<li><a href="../awesome/module/detect-port.md.html" class="notranslate">detect-port</a></li>
+<li><a href="../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
+<li><a href="../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
+</ul>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <h1 id="高性能-Web-应用程序实践"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">High Performance Web Application Practices</font></font></h1>
+<h2 id="介绍"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">introduce</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs is a high-performance application server framework designed primarily for web backend development. </font><font style="vertical-align: inherit;">It is built on the basis of Google v8 JavaScript engine, and chooses a different concurrency solution from the traditional callback. </font><font style="vertical-align: inherit;">fibjs uses fibers to isolate the business complexity caused by asynchronous calls at the framework layer, greatly reducing the difficulty of development, and reducing the performance problems caused by frequent asynchronous processing in user space.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The design of fibjs pays great attention to performance. The built-in network IO and HTTP modules adopt an event-driven non-blocking I/O model, and developers can easily implement high-reliability server applications. </font><font style="vertical-align: inherit;">And because the bottom layer is implemented by C++, fibjs has excellent performance, can easily handle high concurrent access, and provide extremely stable and reliable services.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">At the same time, fibjs also supports WebSocket, which is a full-duplex communication protocol based on the TCP protocol. It establishes an uninterrupted connection between the browser and the server, which can realize real-time two-way data transmission, and can support data in any format transmission. </font><font style="vertical-align: inherit;">Real-time communication applications with better communication effects can be easily realized by using WebSocket.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">In short, fibjs not only emphasizes high performance and high reliability, but also provides real-time communication features such as WebSocket. It is a framework very suitable for developing high-speed Web applications.</font></font></p>
+<h2 id="开发环境搭建"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Build the development environment</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Before starting the development of fibjs, we need to prepare the development environment first. </font><font style="vertical-align: inherit;">This chapter will introduce how to install fibjs, how to use the fibjs tool to initialize the project and how to use the IDE integrated development environment.</font></font></p>
+<h3 id="安装-fibjs"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Install fibjs</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">For different operating systems, the way to install fibjs is also slightly different.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">For Linux and macOS users, fibjs can be installed with the following command:</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>curl -s https://fibjs.org/download/installer.sh | sh
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">If using macOS and using the Homebrew package manager, you can also install it with:</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>brew install fibjs
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">For Windows users, you need to download the installer from the fibjs official website, and then follow the instructions to install it.</font></font></p>
+<h3 id="使用-fibjs-–init-创建新项目"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Create a new project with fibjs --init</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">After installing fibjs, you can use the fibjs tool to quickly create new projects. </font><font style="vertical-align: inherit;">A basic project template can be created with the following command:</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>fibjs --init
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">This command will create a new project structure in the current directory, including package.json, which is used to store the basic information of the project and dependency information.</font></font></p>
+<h2 id="编写-Web-应用程序"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Write a web application</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Web application development is currently the most commonly used application scenario for fibjs. fibjs provides a series of tools and modules to help us build web applications more quickly.</font></font></p>
+<h3 id="编写-HTTP-服务器"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Write an HTTP server</font></font></h3>
+<ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">First import the http module;</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instantiate http.Server and listen for requests.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The server is started with the start function.</font></font></li>
+</ul>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6</div><span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);<font></font>
+<font></font>
+<span class="hljs-keyword">const</span> server = <span class="hljs-keyword">new</span> http.Server(<span class="hljs-number">8080</span>, (req) =&gt; {<font></font>
+    req.response.write(<span class="hljs-string">'Hello World!'</span>);<font></font>
+});<font></font>
+server.start();<font></font>
+</code></pre>
+<h3 id="解析-URL-参数和请求体"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parse URL parameters and request body</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parsing url parameters and request body is very important and applied to various server applications. </font><font style="vertical-align: inherit;">In fibjs, the incoming url parameters can be parsed directly through req.query, while the request body is read through req.body.</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8</div><span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);<font></font>
+<font></font>
+<span class="hljs-keyword">const</span> server = <span class="hljs-keyword">new</span> http.Server(<span class="hljs-number">8080</span>, (req) =&gt; {
+    <span class="hljs-keyword">var</span> name = req.query.first(<span class="hljs-string">'name'</span>);
+    <span class="hljs-keyword">var</span> msg = name ? <span class="hljs-string">`Hello <span class="hljs-subst">${name}</span>!`</span> : <span class="hljs-string">'Hello world!'</span>;<font></font>
+    req.response.write(msg);<font></font>
+});<font></font>
+server.start();<font></font>
+</code></pre>
+<h3 id="实现接口访问控制"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Implement interface access control</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Restricting user access through interfaces is a very common scenario. </font><font style="vertical-align: inherit;">Below is a simple example.</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</div><span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);<font></font>
+<font></font>
+<span class="hljs-keyword">const</span> server = <span class="hljs-keyword">new</span> http.Server(<span class="hljs-number">8080</span>, (req) =&gt; {
+    <span class="hljs-keyword">if</span> (req.headers.first(<span class="hljs-string">'auth'</span>) === <span class="hljs-string">'ok'</span>) {<font></font>
+        req.response.write(<span class="hljs-string">'Hello World!'</span>);<font></font>
+    } <span class="hljs-keyword">else</span> {<font></font>
+        req.response.write(<span class="hljs-string">'Access Denied!'</span>);<font></font>
+    }<font></font>
+});<font></font>
+server.start();<font></font>
+</code></pre>
+<h3 id="增加路由处理"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Add routing processing</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Routing is one of the most important concepts in a web application. Routing refers to distributing received requests to processors according to certain rules. </font><font style="vertical-align: inherit;">In fibjs, you can write your own routing module and bind it to the http server, and then perform URL matching and corresponding processing through custom routing parsing.</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9</div><span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);
+<span class="hljs-keyword">const</span> { Router } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mq'</span>);<font></font>
+<font></font>
+<span class="hljs-keyword">var</span> router = <span class="hljs-keyword">new</span> Router();<font></font>
+router.get(<span class="hljs-string">'/hello/:name'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, name</span>) </span>{<font></font>
+    req.response.write(<span class="hljs-string">'hello, '</span> + name);<font></font>
+});<font></font>
+<span class="hljs-keyword">var</span> svr = <span class="hljs-keyword">new</span> http.Server(<span class="hljs-number">8080</span>, router);<font></font>
+svr.start();<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The above example can also be implemented with a simpler syntax:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8</div><span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);<font></font>
+<font></font>
+<span class="hljs-keyword">var</span> svr = <span class="hljs-keyword">new</span> http.Server(<span class="hljs-number">8080</span>, {
+    <span class="hljs-string">'/hello/:name'</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, name</span>) </span>{<font></font>
+        req.response.write(<span class="hljs-string">'hello, '</span> + name);<font></font>
+    }<font></font>
+});<font></font>
+svr.start();<font></font>
+</code></pre>
+<h3 id="错误处理与日志记录"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Error handling and logging</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">In fibjs, you can catch logical exceptions through the try-catch block, and output them to the log file for debugging record; if it is a fatal exception, you can directly throw it to the upper framework for processing.</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</div><span class="hljs-keyword">const</span> <span class="hljs-built_in">console</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">'console'</span>);
+<span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);<font></font>
+<font></font>
+<span class="hljs-keyword">const</span> server = <span class="hljs-keyword">new</span> http.Server(<span class="hljs-number">8080</span>, (req) =&gt; {
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-comment">// ...</span>
+    } <span class="hljs-keyword">catch</span> (e) {
+        <span class="hljs-built_in">console</span>.log(e.message, e.stack);<font></font>
+    }<font></font>
+});<font></font>
+</code></pre>
+<h2 id="WebSocket"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">WebSocket</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The WebSocket protocol is a full-duplex communication protocol based on the TCP protocol. It establishes an uninterrupted connection between the browser and the server, can realize real-time two-way data transmission, and can support data transmission in any format. </font><font style="vertical-align: inherit;">In fibjs, the WebSocket support module provides the corresponding API interface, which can realize the development of WebSocket server and client.</font></font></p>
+<h3 id="使用-fibjs-原生-WebSocket-模块实现-WebSocket-服务器端"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Use fibjs native WebSocket module to implement WebSocket server side</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">On the server side, HTTP requests can be converted to WebSocket connections through the upgrade function. </font><font style="vertical-align: inherit;">When creating an http server object, you can use ws.upgrade(callback) and pass it into the http.start() method to convert the http request into WebSocket.</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</div><span class="hljs-keyword">var</span> ws = <span class="hljs-built_in">require</span>(<span class="hljs-string">'ws'</span>);
+<span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);<font></font>
+<font></font>
+<span class="hljs-keyword">var</span> server = <span class="hljs-keyword">new</span> http.Server(<span class="hljs-number">8080</span>, {
+  <span class="hljs-string">'/ws'</span>: ws.upgrade(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">conn, req</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'a client connected.'</span>);<font></font>
+<font></font>
+    <span class="hljs-comment">// 监听消息事件</span>
+    conn.onmessage = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">evt</span>) </span>{
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'received message: '</span>, evt.data);
+      <span class="hljs-comment">// echo 消息回客户端</span>
+      conn.send(<span class="hljs-string">'Server: '</span> + evt.data);<font></font>
+    };<font></font>
+<font></font>
+    <span class="hljs-comment">// 监听关闭事件</span>
+    conn.onclose = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">code, reason</span>) </span>{
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'closed.'</span>);<font></font>
+    };<font></font>
+<font></font>
+    <span class="hljs-comment">// 监听错误事件</span>
+    conn.onerror = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>{
+      <span class="hljs-built_in">console</span>.log(err);<font></font>
+    };<font></font>
+  })<font></font>
+});<font></font>
+<font></font>
+server.start();<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">In the above example, we can monitor the message event sent by the client and the connection close event between the server and the client. </font><font style="vertical-align: inherit;">When the server receives a client message, it sends the same message back to the client. </font><font style="vertical-align: inherit;">At this point, simple WebSocket point-to-point communication is realized.</font></font></p>
+<h3 id="实现与数据存储的交互"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Implementing Interaction with Datastores</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">When using WebSocket for communication, in addition to simple message sending and receiving, operations such as persistent storage and query of data also need to be considered. </font><font style="vertical-align: inherit;">At this time, you need to use the database, and you can use the built-in db module of fibjs to interact with the database.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The sample code is as follows:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33</div><span class="hljs-keyword">var</span> ws = <span class="hljs-built_in">require</span>(<span class="hljs-string">"ws"</span>);
+<span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">"http"</span>);
+<span class="hljs-keyword">var</span> db = <span class="hljs-built_in">require</span>(<span class="hljs-string">"db"</span>);<font></font>
+<font></font>
+<span class="hljs-comment">// 创建一个 MySQL 数据库连接对象</span>
+<span class="hljs-keyword">var</span> mysql = db.openMySQL(<span class="hljs-string">"mysql://root:password@localhost/dbname"</span>);<font></font>
+<font></font>
+<span class="hljs-keyword">var</span> server = <span class="hljs-keyword">new</span> http.Server(<span class="hljs-number">8080</span>, {
+  <span class="hljs-string">"/ws"</span>: ws.upgrade(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">conn, req</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"a client connected."</span>);<font></font>
+<font></font>
+    <span class="hljs-comment">// 监听消息事件</span>
+    conn.onmessage = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">evt</span>) </span>{
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"received message: "</span>, evt.data);<font></font>
+<font></font>
+      <span class="hljs-comment">// 查询数据库，返回满足条件的记录</span>
+      <span class="hljs-keyword">var</span> rs = mysql.execute(<span class="hljs-string">"SELECT * FROM user WHERE name=?"</span>, evt.data.toString());<font></font>
+      conn.send(<span class="hljs-built_in">JSON</span>.stringify(rs));<font></font>
+    };<font></font>
+<font></font>
+    <span class="hljs-comment">// 监听关闭事件</span>
+    conn.onclose = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">code, reason</span>) </span>{
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"closed."</span>);<font></font>
+    };<font></font>
+<font></font>
+    <span class="hljs-comment">// 监听错误事件</span>
+    conn.onerror = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>{
+      <span class="hljs-built_in">console</span>.log(err);<font></font>
+    };<font></font>
+  })<font></font>
+});<font></font>
+<font></font>
+server.start();<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">In the above example, we first use the openMySQL method of the db module to create a MySQL database connection object mysql, and then use the execute method to directly execute SQL queries after listening to messages from the client to obtain records that meet the conditions. </font><font style="vertical-align: inherit;">Finally, the query results are sent back to the client through the WebSocket protocol.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">It should be noted that in actual development, exception handling and data security need to be done well.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">To sum up, through the db module, we can easily interact with the database, combined with the WebSocket protocol, to achieve real-time, high-performance Web applications.</font></font></p>
+<h3 id="实现-WebSocket-客户端与服务器端通信"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Implement WebSocket client-server communication</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">On the client side, you can connect to a WebSocket server by creating a WebSocket instance and specifying a URL, and then send messages to the server.</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24</div><span class="hljs-keyword">var</span> ws = <span class="hljs-built_in">require</span>(<span class="hljs-string">'ws'</span>);<font></font>
+<font></font>
+<span class="hljs-comment">// 创建 WebSocket 实例</span>
+<span class="hljs-keyword">var</span> conn = <span class="hljs-keyword">new</span> ws.Socket(<span class="hljs-string">'ws://localhost:8080/ws'</span>);<font></font>
+<font></font>
+<span class="hljs-comment">// 监听打开事件</span>
+conn.onopen = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{<font></font>
+  conn.send(<span class="hljs-string">'hello'</span>);<font></font>
+}<font></font>
+<font></font>
+<span class="hljs-comment">// 监听消息事件</span>
+conn.onmessage = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">evt</span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'received message:'</span>, evt.data);<font></font>
+}<font></font>
+<font></font>
+<span class="hljs-comment">// 监听关闭事件</span>
+conn.onclose = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">code, reason</span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'closed.'</span>);<font></font>
+}<font></font>
+<font></font>
+<span class="hljs-comment">// 监听错误事件</span>
+conn.onerror = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>{
+  <span class="hljs-built_in">console</span>.log(err);<font></font>
+}<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">In the above client code, we create a WebSocket instance and specify its URL. After the connection is successfully established, we can send messages to the server. </font><font style="vertical-align: inherit;">When the server receives a client message, it sends the same message back to the client. </font><font style="vertical-align: inherit;">At this point, simple WebSocket point-to-point communication is realized.</font></font></p>
+<h3 id="WebSocket-的优势和使用场景"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Advantages and usage scenarios of WebSocket</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The WebSocket protocol has a typical two-way communication model, allowing the server to actively push data to the client, and is often used to implement chats, online games and other occasions that require real-time and high immediacy. </font><font style="vertical-align: inherit;">Compared with other transport protocols, the WebSocket protocol has the following advantages:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">• High real-time performance, support two-way communication • Simple protocol specification, easy to use • Able to handle a large number of concurrent connections • Support long connections, reducing the time consumption of network transmission</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The most common usage scenarios of WebSocket include web chat, game battle, online play and instant messaging, etc.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">To sum up, with the WebSocket support module, it is very simple to implement, and developers can quickly build their own Web applications.</font></font></p>
+<h2 id="单元测试"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">unit test</font></font></h2>
+<h3 id="测试框架和测试方法"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Test framework and test method</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">In the software development process, testing is a very important link, and unit testing is an important part of it. Unit testing can effectively verify whether the code meets the design and requirements, and avoid errors introduced when the code is modified. </font><font style="vertical-align: inherit;">Generally, the principle of unit testing is to test each function and method to ensure that the input and output of each function and method are correct.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A test framework is a code base for writing, running and verifying test cases, which provides functions such as test case management, running and reporting. </font><font style="vertical-align: inherit;">In JavaScript and Node.js, popular unit testing frameworks include Mocha, Jest, and Jasmine, among others. </font><font style="vertical-align: inherit;">In fibjs, we also have our own testing framework, the test module.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">In the unit testing process, generally used testing methods include black-box testing and white-box testing.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Black-box testing is a testing method that only considers the input and output of a function without considering the implementation details inside the function. </font><font style="vertical-align: inherit;">Black-box testing is based on requirements analysis and design specifications, through test case analysis and execution, to determine whether there are logic errors, boundary errors, and security issues in the program. </font><font style="vertical-align: inherit;">Its advantage is that the test process is simple and the test results are reliable, but the disadvantage is that the test cannot cover all program paths.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">White box testing is a testing method that considers the internal implementation details of functions, including conditional statements, loop statements, recursion, and code coverage. </font><font style="vertical-align: inherit;">Through these tests, you can find possible problems in the interaction between shared data and code. </font><font style="vertical-align: inherit;">The advantage of white-box testing is that it can cover all program paths. The disadvantage is that the testing process is more complicated, and the test results are affected by the environment and implementation methods.</font></font></p>
+<h3 id="使用-test-模块编写测试用例"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Write test cases using the test module</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">In fibjs, we can use the test module to write test cases for web server. </font><font style="vertical-align: inherit;">Here is a simple example:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</div><span class="hljs-keyword">var</span> test = <span class="hljs-built_in">require</span>(<span class="hljs-string">'test'</span>);<font></font>
+test.setup();<font></font>
+<font></font>
+<span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);<font></font>
+<font></font>
+describe(<span class="hljs-string">'Web server test'</span>, () =&gt; {<font></font>
+    it(<span class="hljs-string">'should return hello world'</span>, () =&gt; {
+        <span class="hljs-keyword">var</span> r = http.get(<span class="hljs-string">'http://localhost:8080/hello'</span>);<font></font>
+        assert.equal(r.statusCode, <span class="hljs-number">200</span>);<font></font>
+        assert.equal(r.data.toString(), <span class="hljs-string">'Hello World'</span>);<font></font>
+    });<font></font>
+});<font></font>
+<font></font>
+test.run();<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">In this example, we use the describe and it functions to define the test module and test cases respectively, and use the assert function for assertion verification.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">In the describe function, we can define multiple it functions to test different scenarios respectively. </font><font style="vertical-align: inherit;">In each it function, we can use the http.get function to simulate an HTTP GET request, obtain the request response and perform assertion verification such as assertTrue and assertEqual.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">By writing test cases, you can effectively test the correctness of functions and modules, ensure product quality, and enhance code maintainability.</font></font></p>
+<h2 id="热更新"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">hot update</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Hot update refers to updating the server code without stopping the service. </font><font style="vertical-align: inherit;">In the process of program development, in order to iterate quickly, it is often necessary to adjust the code and add new functions. </font><font style="vertical-align: inherit;">Using hot update can use new code to complete iteration work more efficiently without stopping the service.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">In fibjs, we can use the SandBox module to achieve smooth hot updates. </font><font style="vertical-align: inherit;">The SandBox module can provide a safe execution environment, simulate global variables and other functions. </font><font style="vertical-align: inherit;">For specific implementation, please refer to the following steps:</font></font></p>
+<ul>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Load the code files that need to be updated (such as web.js).</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Through SandBox, create a new security module, load web.js in this module, and generate a security module. </font><font style="vertical-align: inherit;">Remount the handler of the running service through the generated security module.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">The server continues to process previous requests, and new requests will be mounted on the new handler.</font></font></li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Here's a sample code for smooth hot updates using the SandBox module:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</div><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
+<span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);
+<span class="hljs-keyword">const</span> { SandBox } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'vm'</span>);<font></font>
+<font></font>
+<span class="hljs-keyword">let</span> FILE_PATH = <span class="hljs-string">'./web.js'</span>;
+<span class="hljs-keyword">let</span> handler = <span class="hljs-keyword">new</span> SandBox().require(FILE_PATH).handler;<font></font>
+<font></font>
+<span class="hljs-keyword">const</span> server = <span class="hljs-keyword">new</span> http.Server(<span class="hljs-number">8080</span>, handler);<font></font>
+<font></font>
+server.start();<font></font>
+<font></font>
+fs.watch(FILE_PATH, (event, filename) =&gt; {<font></font>
+  handler = <span class="hljs-keyword">new</span> SandBox().require(FILE_PATH).handler;<font></font>
+  server.handler = handler;<font></font>
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`[<span class="hljs-subst">${<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().toLocaleString()}</span>] server reloaded.`</span>);<font></font>
+});<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">In this code, we first load the code in web.js once when the program starts, then create a SandBox instance, and load the code in the instance. </font><font style="vertical-align: inherit;">Afterwards, we created a new HTTP Server and used the method in handler to process the request.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">In the code, we use fs.watch to monitor the changes of the web.js file. Once the file changes, we reload the code and update the implementation in the handler.</font></font></p>
+<h2 id="性能优化"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">performance optimization</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">In the process of development, we often need to face performance problems. </font><font style="vertical-align: inherit;">Optimizing code and improving performance is one of the necessary skills for developers. </font><font style="vertical-align: inherit;">In fibjs, we can use CPU Profiler to help us analyze the running status of the program and optimize the code.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">In fibjs, you only need to use the command line parameter --prof to start fibjs, that is, you can start CPU Profiler (the default interval is 1000ms). </font><font style="vertical-align: inherit;">If you need higher-precision analysis logs, you can use the --prof-interval parameter to set the log interval. </font><font style="vertical-align: inherit;">For example:</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1
+2</div>$ fibjs --prof test.js   <span class="hljs-comment"># 启动 CPU Profiler，默认以 1000ms 为间隔</span>
+$ fibjs --prof --prof-interval=10ms test.js <span class="hljs-comment"># 启动 CPU Profiler，以 10000us（即 10ms）为间隔</span>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">When fibjs finishes running, a source file name directory will be generated in the current directory, which contains a log file and some auxiliary files. </font><font style="vertical-align: inherit;">The default name of the log file is fibjs-xxxx.log, where xxxx is a timestamp. </font><font style="vertical-align: inherit;">The log file name can be specified with the --log option. </font><font style="vertical-align: inherit;">At this point, you can </font></font><code>--prof-process</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">process :</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>fibjs --prof-process fibjs-xxxx.log prof.svg
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">After running, open prof.svg with a browser to view the flame graph of this log:
+ </font></font><img src="./imgs/prof.svg" alt="Prof"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+You can click to view the full-size image. In the full-size image, you can use the mouse to view more detailed information: </font></font><a href="./imgs/prof.svg"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">prof. svg</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> .</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">In the generated flame diagram, each color block represents a recording point. The longer the color block, the more times it has been recorded; each line represents a layer of call stack, and the more layers, the more layers of calls; The arrangement of the stack is inverted, the lower the color block, the more the original function.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">There are two types of color blocks, one is red and the other is blue. </font><font style="vertical-align: inherit;">In the profiler of fibjs, red represents JavaScript operations, and blue represents io operations or Native operations. </font><font style="vertical-align: inherit;">Depending on the problem you need to solve, the areas you need to focus on will vary. </font><font style="vertical-align: inherit;">For example, if you need to solve the problem of high CPU usage, you need to pay attention to the red color block at this time; and if your application has a low CPU usage but slow response, you need to pay attention to the blue color block. </font><font style="vertical-align: inherit;">The larger the color block near the top, the more attention and optimization is needed.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">We can try to adjust the functions that take up more CPU resources, implement IO through asynchronous methods, or optimize the code when writing.</font></font></p>
+<h2 id="部署上线"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">deployment online</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">In order for our project to run in production, we need to compile and deploy it. </font><font style="vertical-align: inherit;">Here we introduce how to use the package.json file to configure compilation and deployment.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">In the project, we can use package.json to manage project dependencies, configure compilation and deployment. </font><font style="vertical-align: inherit;">Take a simple example package.json as an example:</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7</div>{
+  <span class="hljs-string">"name"</span>: <span class="hljs-string">"my-project"</span>,
+  <span class="hljs-string">"version"</span>: <span class="hljs-string">"1.0.0"</span>,
+  <span class="hljs-string">"dependencies"</span>: {
+    <span class="hljs-string">"fib-pool"</span>: <span class="hljs-string">"^1.0.0"</span><font></font>
+  }<font></font>
+}<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">When we need to compile and deploy the project, we only need to enter the project directory in the terminal, and then execute the following command:</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>fibjs --install
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">This command will automatically install the modules that the project depends on. </font><font style="vertical-align: inherit;">Afterwards, we can start the project with the following command:</font></font></p>
+<pre><code class="lang-sh"><div class="line-numbers">1</div>fibjs app.js
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">👉【</font></font><a href="host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Domain name routing</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">】</font></font></p>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Support us</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../js/common.js"></script><script type="text/javascript" src="../../../js/docs.js"></script></body></html>

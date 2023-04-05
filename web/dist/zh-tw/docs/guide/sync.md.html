@@ -1,0 +1,301 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../imgs/icon.png"><title>同步和異步- JavaScript on Fiber</title><link href="../../../css/common.css" rel="stylesheet"><link href="../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Toggle navigation</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../index.html"><img src="../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../index.html">HOME</a></li><li><a href="readme.md.html">GUIDE</a></li><li><a href="../manual/module/readme.md.html">MODULE</a></li><li><a href="../manual/object/readme.md.html">OBJECT</a></li><li><a href="../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../docs/guide/sync.md.html">中文</a> <a href="../../../ca/docs/guide/sync.md.html">Catalan</a> <a href="../../../de/docs/guide/sync.md.html">Deutsch</a> <a href="../../../en/docs/guide/sync.md.html">English</a> <a href="../../../es/docs/guide/sync.md.html">Español</a> <a href="../../../fr/docs/guide/sync.md.html">Français</a> <a href="../../../gl/docs/guide/sync.md.html">Galego</a> <a href="../../../it/docs/guide/sync.md.html">Italiano</a> <a href="../../../nl/docs/guide/sync.md.html">Nederlands</a> <a href="../../../ru/docs/guide/sync.md.html">Русский</a> <a href="../../../ja/docs/guide/sync.md.html">日本語</a> <a href="../../../ko/docs/guide/sync.md.html">한국어</a> <a href="../../../zh-tw/docs/guide/sync.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Guide 開髮指南</font></font></span><div class="search"><input type="text" class="searchbox" placeholder="Search"></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">首頁</font></font></a></li><li><a href="readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">開髮指南</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">同步和異步</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">開髮指南</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 是什麼？</font></font></a></li>
+<li><a href="install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安裝運行環境</font></font></a></li>
+<li><a href="hello.md.html" class="notranslate">hello, world</a></li>
+<li><a href="test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">美好生活從測試開始</font></font></a></li>
+<li><a href="profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">找出性能殺手</font></font></a></li>
+<li class="active"><a href="sync.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">同步和異步</font></font></a></li>
+<li><a href="server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服務端模塊熱更新</font></font></a></li>
+<li><a href="web.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">高性能Web 應用程序實踐</font></font></a></li>
+<li><a href="host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">域名路由</font></font></a></li>
+<li><a href="x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 中X509 證書的使用</font></font></a></li>
+<li><a href="contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加native 模塊</font></font></a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">基礎模塊</font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../manual/module/ifs/assert.md.html" class="notranslate">assert</a></li>
+<li><a href="../manual/module/ifs/base32.md.html" class="notranslate">base32</a></li>
+<li><a href="../manual/module/ifs/base58.md.html" class="notranslate">base58</a></li>
+<li><a href="../manual/module/ifs/base64.md.html" class="notranslate">base64</a></li>
+<li><a href="../manual/module/ifs/child_process.md.html" class="notranslate">child_process</a></li>
+<li><a href="../manual/module/ifs/console.md.html" class="notranslate">console</a></li>
+<li><a href="../manual/module/ifs/constants.md.html" class="notranslate">constants</a></li>
+<li><a href="../manual/module/ifs/coroutine.md.html" class="notranslate">coroutine</a></li>
+<li><a href="../manual/module/ifs/crypto.md.html" class="notranslate">crypto</a></li>
+<li><a href="../manual/module/ifs/db.md.html" class="notranslate">db</a></li>
+<li><a href="../manual/module/ifs/dgram.md.html" class="notranslate">dgram</a></li>
+<li><a href="../manual/module/ifs/dns.md.html" class="notranslate">dns</a></li>
+<li><a href="../manual/module/ifs/encoding.md.html" class="notranslate">encoding</a></li>
+<li><a href="../manual/module/ifs/fs.md.html" class="notranslate">fs</a></li>
+<li><a href="../manual/module/ifs/fs_constants.md.html" class="notranslate">fs_constants</a></li>
+<li><a href="../manual/module/ifs/gd.md.html" class="notranslate">gd</a></li>
+<li><a href="../manual/module/ifs/global.md.html" class="notranslate">global</a></li>
+<li><a href="../manual/module/ifs/gui.md.html" class="notranslate">gui</a></li>
+<li><a href="../manual/module/ifs/hash.md.html" class="notranslate">hash</a></li>
+<li><a href="../manual/module/ifs/hex.md.html" class="notranslate">hex</a></li>
+<li><a href="../manual/module/ifs/http.md.html" class="notranslate">http</a></li>
+<li><a href="../manual/module/ifs/iconv.md.html" class="notranslate">iconv</a></li>
+<li><a href="../manual/module/ifs/io.md.html" class="notranslate">io</a></li>
+<li><a href="../manual/module/ifs/json.md.html" class="notranslate">json</a></li>
+<li><a href="../manual/module/ifs/mq.md.html" class="notranslate">mq</a></li>
+<li><a href="../manual/module/ifs/msgpack.md.html" class="notranslate">msgpack</a></li>
+<li><a href="../manual/module/ifs/multibase.md.html" class="notranslate">multibase</a></li>
+<li><a href="../manual/module/ifs/net.md.html" class="notranslate">net</a></li>
+<li><a href="../manual/module/ifs/os.md.html" class="notranslate">os</a></li>
+<li><a href="../manual/module/ifs/path.md.html" class="notranslate">path</a></li>
+<li><a href="../manual/module/ifs/path_posix.md.html" class="notranslate">path_posix</a></li>
+<li><a href="../manual/module/ifs/path_win32.md.html" class="notranslate">path_win32</a></li>
+<li><a href="../manual/module/ifs/perf_hooks.md.html" class="notranslate">perf_hooks</a></li>
+<li><a href="../manual/module/ifs/performance.md.html" class="notranslate">performance</a></li>
+<li><a href="../manual/module/ifs/process.md.html" class="notranslate">process</a></li>
+<li><a href="../manual/module/ifs/profiler.md.html" class="notranslate">profiler</a></li>
+<li><a href="../manual/module/ifs/punycode.md.html" class="notranslate">punycode</a></li>
+<li><a href="../manual/module/ifs/querystring.md.html" class="notranslate">querystring</a></li>
+<li><a href="../manual/module/ifs/registry.md.html" class="notranslate">registry</a></li>
+<li><a href="../manual/module/ifs/ssl.md.html" class="notranslate">ssl</a></li>
+<li><a href="../manual/module/ifs/string_decoder.md.html" class="notranslate">string_decoder</a></li>
+<li><a href="../manual/module/ifs/test.md.html" class="notranslate">test</a></li>
+<li><a href="../manual/module/ifs/timers.md.html" class="notranslate">timers</a></li>
+<li><a href="../manual/module/ifs/tty.md.html" class="notranslate">tty</a></li>
+<li><a href="../manual/module/ifs/url.md.html" class="notranslate">url</a></li>
+<li><a href="../manual/module/ifs/util.md.html" class="notranslate">util</a></li>
+<li><a href="../manual/module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
+<li><a href="../manual/module/ifs/vm.md.html" class="notranslate">vm</a></li>
+<li><a href="../manual/module/ifs/worker_threads.md.html" class="notranslate">worker_threads</a></li>
+<li><a href="../manual/module/ifs/ws.md.html" class="notranslate">ws</a></li>
+<li><a href="../manual/module/ifs/xml.md.html" class="notranslate">xml</a></li>
+<li><a href="../manual/module/ifs/zip.md.html" class="notranslate">zip</a></li>
+<li><a href="../manual/module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">內置對象</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../manual/object/ifs/blskey.md.html" class="notranslate">BlsKey</a></li>
+<li><a href="../manual/object/ifs/buffer.md.html" class="notranslate">Buffer</a></li>
+<li><a href="../manual/object/ifs/bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
+<li><a href="../manual/object/ifs/chain.md.html" class="notranslate">Chain</a></li>
+<li><a href="../manual/object/ifs/childprocess.md.html" class="notranslate">ChildProcess</a></li>
+<li><a href="../manual/object/ifs/cipher.md.html" class="notranslate">Cipher</a></li>
+<li><a href="../manual/object/ifs/condition.md.html" class="notranslate">Condition</a></li>
+<li><a href="../manual/object/ifs/dbconnection.md.html" class="notranslate">DbConnection</a></li>
+<li><a href="../manual/object/ifs/dgramsocket.md.html" class="notranslate">DgramSocket</a></li>
+<li><a href="../manual/object/ifs/digest.md.html" class="notranslate">Digest</a></li>
+<li><a href="../manual/object/ifs/eckey.md.html" class="notranslate">ECKey</a></li>
+<li><a href="../manual/object/ifs/ed25519key.md.html" class="notranslate">Ed25519Key</a></li>
+<li><a href="../manual/object/ifs/event.md.html" class="notranslate">Event</a></li>
+<li><a href="../manual/object/ifs/eventemitter.md.html" class="notranslate">EventEmitter</a></li>
+<li><a href="../manual/object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a></li>
+<li><a href="../manual/object/ifs/fiber.md.html" class="notranslate">Fiber</a></li>
+<li><a href="../manual/object/ifs/file.md.html" class="notranslate">File</a></li>
+<li><a href="../manual/object/ifs/handler.md.html" class="notranslate">Handler</a></li>
+<li><a href="../manual/object/ifs/heapgraphedge.md.html" class="notranslate">HeapGraphEdge</a></li>
+<li><a href="../manual/object/ifs/heapgraphnode.md.html" class="notranslate">HeapGraphNode</a></li>
+<li><a href="../manual/object/ifs/heapsnapshot.md.html" class="notranslate">HeapSnapshot</a></li>
+<li><a href="../manual/object/ifs/httpclient.md.html" class="notranslate">HttpClient</a></li>
+<li><a href="../manual/object/ifs/httpcollection.md.html" class="notranslate">HttpCollection</a></li>
+<li><a href="../manual/object/ifs/httpcookie.md.html" class="notranslate">HttpCookie</a></li>
+<li><a href="../manual/object/ifs/httphandler.md.html" class="notranslate">HttpHandler</a></li>
+<li><a href="../manual/object/ifs/httpmessage.md.html" class="notranslate">HttpMessage</a></li>
+<li><a href="../manual/object/ifs/httprepeater.md.html" class="notranslate">HttpRepeater</a></li>
+<li><a href="../manual/object/ifs/httprequest.md.html" class="notranslate">HttpRequest</a></li>
+<li><a href="../manual/object/ifs/httpresponse.md.html" class="notranslate">HttpResponse</a></li>
+<li><a href="../manual/object/ifs/httpserver.md.html" class="notranslate">HttpServer</a></li>
+<li><a href="../manual/object/ifs/httpuploaddata.md.html" class="notranslate">HttpUploadData</a></li>
+<li><a href="../manual/object/ifs/httpsserver.md.html" class="notranslate">HttpsServer</a></li>
+<li><a href="../manual/object/ifs/image.md.html" class="notranslate">Image</a></li>
+<li><a href="../manual/object/ifs/iterator.md.html" class="notranslate">Iterator</a></li>
+<li><a href="../manual/object/ifs/leveldb.md.html" class="notranslate">LevelDB</a></li>
+<li><a href="../manual/object/ifs/lock.md.html" class="notranslate">Lock</a></li>
+<li><a href="../manual/object/ifs/lrucache.md.html" class="notranslate">LruCache</a></li>
+<li><a href="../manual/object/ifs/memorystream.md.html" class="notranslate">MemoryStream</a></li>
+<li><a href="../manual/object/ifs/message.md.html" class="notranslate">Message</a></li>
+<li><a href="../manual/object/ifs/mongocollection.md.html" class="notranslate">MongoCollection</a></li>
+<li><a href="../manual/object/ifs/mongocursor.md.html" class="notranslate">MongoCursor</a></li>
+<li><a href="../manual/object/ifs/mongodb.md.html" class="notranslate">MongoDB</a></li>
+<li><a href="../manual/object/ifs/mongoid.md.html" class="notranslate">MongoID</a></li>
+<li><a href="../manual/object/ifs/mysql.md.html" class="notranslate">MySQL</a></li>
+<li><a href="../manual/object/ifs/odbc.md.html" class="notranslate">Odbc</a></li>
+<li><a href="../manual/object/ifs/pkey.md.html" class="notranslate">PKey</a></li>
+<li><a href="../manual/object/ifs/rangestream.md.html" class="notranslate">RangeStream</a></li>
+<li><a href="../manual/object/ifs/redis.md.html" class="notranslate">Redis</a></li>
+<li><a href="../manual/object/ifs/redishash.md.html" class="notranslate">RedisHash</a></li>
+<li><a href="../manual/object/ifs/redislist.md.html" class="notranslate">RedisList</a></li>
+<li><a href="../manual/object/ifs/redisset.md.html" class="notranslate">RedisSet</a></li>
+<li><a href="../manual/object/ifs/redissortedset.md.html" class="notranslate">RedisSortedSet</a></li>
+<li><a href="../manual/object/ifs/routing.md.html" class="notranslate">Routing</a></li>
+<li><a href="../manual/object/ifs/sqlite.md.html" class="notranslate">SQLite</a></li>
+<li><a href="../manual/object/ifs/sandbox.md.html" class="notranslate">SandBox</a></li>
+<li><a href="../manual/object/ifs/seekablestream.md.html" class="notranslate">SeekableStream</a></li>
+<li><a href="../manual/object/ifs/semaphore.md.html" class="notranslate">Semaphore</a></li>
+<li><a href="../manual/object/ifs/service.md.html" class="notranslate">Service</a></li>
+<li><a href="../manual/object/ifs/smtp.md.html" class="notranslate">Smtp</a></li>
+<li><a href="../manual/object/ifs/socket.md.html" class="notranslate">Socket</a></li>
+<li><a href="../manual/object/ifs/sslhandler.md.html" class="notranslate">SslHandler</a></li>
+<li><a href="../manual/object/ifs/sslserver.md.html" class="notranslate">SslServer</a></li>
+<li><a href="../manual/object/ifs/sslsocket.md.html" class="notranslate">SslSocket</a></li>
+<li><a href="../manual/object/ifs/stat.md.html" class="notranslate">Stat</a></li>
+<li><a href="../manual/object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a></li>
+<li><a href="../manual/object/ifs/stream.md.html" class="notranslate">Stream</a></li>
+<li><a href="../manual/object/ifs/stringdecoder.md.html" class="notranslate">StringDecoder</a></li>
+<li><a href="../manual/object/ifs/ttyinputstream.md.html" class="notranslate">TTYInputStream</a></li>
+<li><a href="../manual/object/ifs/ttyoutputstream.md.html" class="notranslate">TTYOutputStream</a></li>
+<li><a href="../manual/object/ifs/tcpserver.md.html" class="notranslate">TcpServer</a></li>
+<li><a href="../manual/object/ifs/textdecoder.md.html" class="notranslate">TextDecoder</a></li>
+<li><a href="../manual/object/ifs/textencoder.md.html" class="notranslate">TextEncoder</a></li>
+<li><a href="../manual/object/ifs/timer.md.html" class="notranslate">Timer</a></li>
+<li><a href="../manual/object/ifs/urlobject.md.html" class="notranslate">UrlObject</a></li>
+<li><a href="../manual/object/ifs/websocket.md.html" class="notranslate">WebSocket</a></li>
+<li><a href="../manual/object/ifs/websocketmessage.md.html" class="notranslate">WebSocketMessage</a></li>
+<li><a href="../manual/object/ifs/webview.md.html" class="notranslate">WebView</a></li>
+<li><a href="../manual/object/ifs/worker.md.html" class="notranslate">Worker</a></li>
+<li><a href="../manual/object/ifs/x509cert.md.html" class="notranslate">X509Cert</a></li>
+<li><a href="../manual/object/ifs/x509crl.md.html" class="notranslate">X509Crl</a></li>
+<li><a href="../manual/object/ifs/x509req.md.html" class="notranslate">X509Req</a></li>
+<li><a href="../manual/object/ifs/xmlattr.md.html" class="notranslate">XmlAttr</a></li>
+<li><a href="../manual/object/ifs/xmlcdatasection.md.html" class="notranslate">XmlCDATASection</a></li>
+<li><a href="../manual/object/ifs/xmlcharacterdata.md.html" class="notranslate">XmlCharacterData</a></li>
+<li><a href="../manual/object/ifs/xmlcomment.md.html" class="notranslate">XmlComment</a></li>
+<li><a href="../manual/object/ifs/xmldocument.md.html" class="notranslate">XmlDocument</a></li>
+<li><a href="../manual/object/ifs/xmldocumenttype.md.html" class="notranslate">XmlDocumentType</a></li>
+<li><a href="../manual/object/ifs/xmlelement.md.html" class="notranslate">XmlElement</a></li>
+<li><a href="../manual/object/ifs/xmlnamednodemap.md.html" class="notranslate">XmlNamedNodeMap</a></li>
+<li><a href="../manual/object/ifs/xmlnode.md.html" class="notranslate">XmlNode</a></li>
+<li><a href="../manual/object/ifs/xmlnodelist.md.html" class="notranslate">XmlNodeList</a></li>
+<li><a href="../manual/object/ifs/xmlprocessinginstruction.md.html" class="notranslate">XmlProcessingInstruction</a></li>
+<li><a href="../manual/object/ifs/xmltext.md.html" class="notranslate">XmlText</a></li>
+<li><a href="../manual/object/ifs/zipfile.md.html" class="notranslate">ZipFile</a></li>
+<li><a href="../manual/object/ifs/object.md.html" class="notranslate">object</a></li>
+</ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社區模塊</font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../awesome/module/fib-session.md.html" class="notranslate">fib-session</a></li>
+<li><a href="../awesome/module/fib-pool.md.html" class="notranslate">fib-pool</a></li>
+<li><a href="../awesome/module/fib-orm.md.html" class="notranslate">fib-orm</a></li>
+<li><a href="../awesome/module/fib-app.md.html" class="notranslate">fib-app</a></li>
+<li><a href="../awesome/module/fib-kv.md.html" class="notranslate">fib-kv</a></li>
+<li><a href="../awesome/module/fib-rpc.md.html" class="notranslate">fib-rpc</a></li>
+<li><a href="../awesome/module/fib-qr.md.html" class="notranslate">fib-qr</a></li>
+<li><a href="../awesome/module/fib-pug.md.html" class="notranslate">fib-pug</a></li>
+<li><a href="../awesome/module/ejs.md.html" class="notranslate">ejs</a></li>
+<li><a href="../awesome/module/juicer.md.html" class="notranslate">Juicer</a></li>
+<li><a href="../awesome/module/highlight.js.md.html" class="notranslate">highlight.js</a></li>
+<li><a href="../awesome/module/marked.md.html" class="notranslate">marked</a></li>
+<li><a href="../awesome/module/node-cron.md.html" class="notranslate">node-cron</a></li>
+<li><a href="../awesome/module/debug.md.html" class="notranslate">debug</a></li>
+<li><a href="../awesome/module/benchmark.js.md.html" class="notranslate">benchmark.js</a></li>
+<li><a href="../awesome/module/sinon.md.html" class="notranslate">sinon</a></li>
+<li><a href="../awesome/module/node-mime.md.html" class="notranslate">node-mime</a></li>
+<li><a href="../awesome/module/validatorjs.md.html" class="notranslate">validatorjs</a></li>
+<li><a href="../awesome/module/superstruct.md.html" class="notranslate">superstruct</a></li>
+<li><a href="../awesome/module/cluster-server.md.html" class="notranslate">cluster-server</a></li>
+<li><a href="../awesome/module/synaptic.md.html" class="notranslate">synaptic</a></li>
+<li><a href="../awesome/module/source-map.md.html" class="notranslate">source-map</a></li>
+<li><a href="../awesome/module/json-format.md.html" class="notranslate">json-format</a></li>
+<li><a href="../awesome/module/viz.js.md.html" class="notranslate">viz.js</a></li>
+<li><a href="../awesome/module/nomnoml.md.html" class="notranslate">nomnoml</a></li>
+<li><a href="../awesome/module/pegjs.md.html" class="notranslate">pegjs</a></li>
+<li><a href="../awesome/module/uglify-js.md.html" class="notranslate">uglify-js</a></li>
+<li><a href="../awesome/module/js-beautify.md.html" class="notranslate">js-beautify</a></li>
+<li><a href="../awesome/module/chalk-animation.md.html" class="notranslate">chalk-animation</a></li>
+<li><a href="../awesome/module/jsrsasign.md.html" class="notranslate">jsrsasign</a></li>
+<li><a href="../awesome/module/crypto-js.md.html" class="notranslate">crypto-js</a></li>
+<li><a href="../awesome/module/ascii-table.md.html" class="notranslate">ascii-table</a></li>
+<li><a href="../awesome/module/logstream.md.html" class="notranslate">logstream</a></li>
+<li><a href="../awesome/module/ci.md.html" class="notranslate">ci</a></li>
+<li><a href="../awesome/module/fs-readdir-recursive.md.html" class="notranslate">fs-readdir-recursive</a></li>
+<li><a href="../awesome/module/mkdirp.md.html" class="notranslate">mkdirp</a></li>
+<li><a href="../awesome/module/rmdirr.md.html" class="notranslate">rmdirr</a></li>
+<li><a href="../awesome/module/detect-port.md.html" class="notranslate">detect-port</a></li>
+<li><a href="../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
+<li><a href="../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
+</ul>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <h1 id="同步和异步"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">同步和異步</font></font></h1>
+<h2 id="引言"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">引言</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">隨著Web 應用的不斷發展，JavaScript 作為一種廣泛使用的編程語言，也在不斷地發展和演變。</font><font style="vertical-align: inherit;">Web 前端開發中，JavaScript 主要被用於瀏覽器的UI 處理，UI 開發是典型的單線程事件驅動模式，因此JavaScript 也形成了以異步處理為主要編程範式。</font><font style="vertical-align: inherit;">但是在大規模複雜的應用中，異步編程帶來的問題和復雜性也越來越明顯。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Node.js 的出現為JavaScript 帶來了一種全新的異步編程範式：事件循環和回調函數。</font><font style="vertical-align: inherit;">這種編程範式具有高效、簡潔的特點，適用於高並發、I/O 密集型的場景。</font><font style="vertical-align: inherit;">然而，這種編程範式也帶來了它自己的問題和復雜性，尤其是在大規模複雜的應用中，程序員需要處理很多回調函數嵌套的問題，並且需要處理異步調用順序的問題，增加了程序的複雜性和難度。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">為了解決這些問題和難點，fibjs 應運而生。</font><font style="vertical-align: inherit;">fibjs 是一個主要為web 後端開發而設計的應用服務器開發框架，它建立在Google v8 JavaScript 引擎基礎上，並且選擇了和傳統的callback 不同的並發解決方案。</font><font style="vertical-align: inherit;">fibjs 利用fiber 在框架層隔離了異步調用帶來的業務複雜性，極大降低了開發難度，並減少因為用戶空間頻繁異步處理帶來的性能問題。</font><font style="vertical-align: inherit;">同時，與傳統的異步編程範式相比，它的同步編程範式更加可讀性強、邏輯簡單、易於維護的優勢。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在接下來的內容中，我們將介紹fibjs 的優點和特點，並通過實例來講解如何使用它的同步和異步編程解決方案。</font></font></p>
+<h2 id="fiber-简介"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fiber 簡介</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 是一個基於v8 引擎的高性能的JavaScript 服務器框架，主要面向Web 後端開發。</font><font style="vertical-align: inherit;">始於2009 年，目前已經擁有了很高的穩定性和生產力，在國內外有著廣泛的應用案例。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在fibjs 中，fiber 被用來解決業務邏輯和I/O 處理之間的問題。</font><font style="vertical-align: inherit;">fiber 與傳統的線程、協程、進程等概念不同，它是一種用戶級的輕量級線程，可以看作是一種協作式多任務處理機制。</font><font style="vertical-align: inherit;">fiber 可以在不同的上下文中執行業務邏輯和I/O 操作，內部通過預分配和循環利用來管理資源，相比於傳統的線程和進程，它具有更輕量級、更靈活、更高效的特點。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">與其它線程庫（如pthread、WinThread、Boost.Thread 等）相比，fiber 有以下優勢：</font></font></p>
+<ul>
+<li><p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">協作式調度</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：fiber 是協作式調度，不需要內核或操作系統搶占式調度，減少了頻繁地上下文切換，加快了程序的運行速度，同時避免了線程之間的競爭條件和死鎖問題。</font></font></p>
+</li>
+<li><p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">輕量級</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：每個fiber 只需消耗一個較小的棧空間，在多並發應用中可以創建大量的fiber，不會導致佔用過多內存的問題。</font></font></p>
+</li>
+<li><p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">高效性</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：fiber 是基於JavaScript 語言本身的特性實現，並且充分利用了v8 引擎的優越性能，速度比傳統的線程庫更快。</font></font></p>
+</li>
+</ul>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通過使用fiber，fibjs 可以將業務邏輯和I/O 處理分離，從而將異步調用封裝成同步調用的形式，使得編寫和維護代碼更加簡單和易讀，同時可以充分發揮JavaScript 語言的優點。</font></font></p>
+<h2 id="fibjs-中的同步编程"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 中的同步編程</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在異步編程中，由於回調函數的嵌套有可能導致代碼的可讀性變差，容易產生回調地獄的問題，增加代碼的難度和調試的成本。</font><font style="vertical-align: inherit;">而同步編程範式更符合人類的思維模式，使得代碼結構更加清晰、易讀、易維護，可以極大地提高開發效率和代碼質量。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在fibjs 中，同步編程是一種十分流行和常用的編程範式，它使得代碼的結構和邏輯更加直觀，易於理解和維護。</font><font style="vertical-align: inherit;">一些同步編程的函數和模塊在fibjs 中得到了高度支持，例如util.sync、fs.readSync 等。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在fibjs 中，可以直接以同步方式調用內置對象的異步函數：</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">"fs"</span>);<font></font>
+<font></font>
+<span class="hljs-keyword">const</span> data = fs.readFile(<span class="hljs-string">"/path/to/file"</span>);
+<span class="hljs-built_in">console</span>.log(data);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">也可以把異步函數通過util.sync 和try…catch 包裝一下，可以讓fiber 獲得異步調用的返回值，從而實現同步的效果，例如：</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</div><span class="hljs-comment">// 安装模块</span>
+<span class="hljs-keyword">const</span> coroutine = <span class="hljs-built_in">require</span>(<span class="hljs-string">"coroutine"</span>);
+<span class="hljs-keyword">const</span> util = <span class="hljs-built_in">require</span>(<span class="hljs-string">"util"</span>);
+<span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">"fs"</span>);<font></font>
+<font></font>
+<span class="hljs-comment">// 定义读文件函数</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">readFile</span>(<span class="hljs-params">path</span>) </span>{
+  <span class="hljs-keyword">return</span> util.sync(fs.readFile)(path);<font></font>
+}<font></font>
+<font></font>
+<span class="hljs-comment">// 调用函数</span>
+<span class="hljs-keyword">const</span> data = readFile(<span class="hljs-string">"myfile.txt"</span>);
+<span class="hljs-built_in">console</span>.log(data);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在上面的例子中，我們定義了一個名為readFile 的函數，利用util.sync 將異步的fs.readFile 函數封裝成了同步函數，這個函數可以通過同步調用的方式直接返回數據。</font><font style="vertical-align: inherit;">這種同步調用方式和傳統的JavaScript 編程範式類似，不同的是，在fibjs 中不會阻塞線程，而是通過fiber 實現異步效果。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通過使用同步編程範式，我們可以大大降低異步編程帶來的嵌套和回調的問題，使得代碼更加易讀、易維護、易於調試。</font><font style="vertical-align: inherit;">在編寫複雜項目時，使用同步編程範式可以幫助我們更快地實現程序設計，並使代碼結構更清晰。</font></font></p>
+<h2 id="fibjs-中的异步编程"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 中的異步編程</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在fibjs 中，大多數異步方法（包括I/O 和網絡請求方法等）都可以同時支持同步和異步調用，這使得開發者可以隨時根據自己的編程需求來選擇使用哪種方式。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以fs.readFile() 為例，我們可以通過兩種方式來使用該方法：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">異步方式：通過傳遞一個回調函數來處理讀取文件的結果，例如：</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6</div><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">"fs"</span>);<font></font>
+<font></font>
+fs.readFile(<span class="hljs-string">"/path/to/file"</span>, (err, data) =&gt; {
+  <span class="hljs-keyword">if</span> (err) <span class="hljs-keyword">throw</span> err;
+  <span class="hljs-built_in">console</span>.log(data);<font></font>
+});<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">這種方式適用於需要在讀取文件完成後執行某些操作的情況。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">同步方式：通過不傳遞回調函數來獲得文件的內容，例如：</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4</div><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">"fs"</span>);<font></font>
+<font></font>
+<span class="hljs-keyword">const</span> data = fs.readFile(<span class="hljs-string">"/path/to/file"</span>);
+<span class="hljs-built_in">console</span>.log(data);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在此示例中，我們通過讀取文件的返回值data 來獲取文件的內容，不需要在等待文件讀取完成的回調函數執行完畢後才能繼續執行操作。</font><font style="vertical-align: inherit;">這種方式適用於需要在讀取文件完成前執行某些操作的情況。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可以看到，這種同時支持同步和異步調用的特點，使得開發者可以根據自己的需求和開發場景選擇使用不同的方式。</font><font style="vertical-align: inherit;">在某些情況下，同步方式的代碼可讀性更高，更易於維護和調試；而在某些情況下，異步方式可以更好地提高代碼的響應速度和性能。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">然而，在使用同步方式的時候也需要注意，在一些場景下，這種方式可能會阻塞當前fiber。</font><font style="vertical-align: inherit;">因此，我們需要根據實際需求來選擇合適的編程方式。</font></font></p>
+<h2 id="结论"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">結論</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在本文中，我們介紹了fibjs 的同步編程風格和異步編程解決方案以及它們的優點和應用場景。</font><font style="vertical-align: inherit;">我們提到，fibjs 能夠通過利用fiber 隔離業務邏輯和異步處理帶來的性能問題，降低操作複雜度和提高代碼開發效率。</font><font style="vertical-align: inherit;">同時，我們也強調了fibjs 在I/O 處理和內存管理等方面的優勢，這為開發、測試和維護帶來了極大的便利。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">最後，我們鼓勵讀者深入探索fibjs，以及參與到fibjs 的貢獻和社區活動中。</font><font style="vertical-align: inherit;">我們相信，fibjs 會繼續以它強大的性能和易用性不斷地吸引開源社區的關注和支持。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">👉 【</font></font><a href="server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服務端模塊熱更新</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">】</font></font></p>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../js/common.js"></script><script type="text/javascript" src="../../../js/docs.js"></script></body></html>

@@ -4,7 +4,9 @@
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
 <li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Una vida millor comença amb una prova</font></font></a></li>
 <li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Trobeu assassins de rendiment</font></font></a></li>
+<li><a href="../../../guide/sync.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sincrònic i asíncron</font></font></a></li>
 <li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Actualització en calent del mòdul del servidor</font></font></a></li>
+<li><a href="../../../guide/web.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pràctiques d'aplicacions web d'alt rendiment</font></font></a></li>
 <li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enrutament de dominis</font></font></a></li>
 <li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ús del certificat X509 en fibjs</font></font></a></li>
 <li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Afegeix un mòdul natiu</font></font></a></li>
@@ -388,7 +390,7 @@ fs.writeFile(<span class="hljs-string">'/path/to/file'</span>, content, <span cl
 </ul>
 <hr>
 <h3 id="lchmod" class="notranslate">lchmod</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Estableix el permís d'accés del fitxer especificat. Si el fitxer és un enllaç suau, el permís del fitxer apuntant no es canviarà. Només està disponible a les plataformes de la sèrie macOS i BSD</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Estableix el permís d'accés del fitxer especificat. Si el fitxer és un enllaç suau, no es canviarà el permís del fitxer apuntant. Només està disponible a les plataformes de la sèrie macOS i BSD</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> fs.lchmod(<span class="hljs-built_in">String</span> path,<font></font>
     Integer mode) <span class="hljs-keyword">async</span>;
@@ -556,7 +558,7 @@ fs.writeFile(<span class="hljs-string">'/path/to/file'</span>, content, <span cl
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
 <ul>
 <li><span class="notranslate">fd</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, descriptor de fitxer</font></font></li>
-<li><span class="notranslate">uid</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Sencer, identificador d'usuari</font></font></li>
+<li><span class="notranslate">uid</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, identificador d'usuari</font></font></li>
 <li><span class="notranslate">gid</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Enter, identificador de grup</font></font></li>
 </ul>
 <hr>
@@ -827,7 +829,7 @@ fs.writeFile(<span class="hljs-string">'/path/to/file'</span>, content, <span cl
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
 <ul>
 <li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica el nom del fitxer</font></font></li>
-<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, especifica les dades binàries per escriure</font></font></li>
+<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, especifica les dades binàries a escriure</font></font></li>
 </ul>
 <hr>
 <h3 id="appendFile" class="notranslate">appendFile</h3>
@@ -839,7 +841,7 @@ fs.writeFile(<span class="hljs-string">'/path/to/file'</span>, content, <span cl
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Paràmetres de trucada:</font></font></p>
 <ul>
 <li><span class="notranslate">fname</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica el nom del fitxer</font></font></li>
-<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, especifica les dades binàries per escriure</font></font></li>
+<li><span class="notranslate">data</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, especifica les dades binàries a escriure</font></font></li>
 </ul>
 <hr>
 <h3 id="setZipFS" class="notranslate">setZipFS</h3>
@@ -1018,7 +1020,7 @@ fs.writeFile(<span class="hljs-string">'/path/to/file'</span>, content, <span cl
 <ul>
 <li><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">objecte</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fins i tot si la devolució de trucada ja no és</font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">No s'informarà cap error a la devolució de trucada de l'esdeveniment d'observació</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fins i tot si la devolució de trucada ja no és</font></font><a href="../../object/ifs/statswatcher.md.html" class="notranslate">StatsWatcher</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">No es notificarà cap error a la devolució de trucada de l'esdeveniment d'observació</font></font></p>
 <h2 id="常量"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">constant</font></font></h2>
 <h3 id="SEEK_SET" class="notranslate">SEEK_SET</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">buscar constant del mètode, passar a la posició absoluta</font></font></strong></p>

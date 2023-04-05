@@ -21,4 +21,4 @@ fibjs --prof-process fibjs-xxxx.log prof.svg
 
 色块的颜色有两类，一类是红色，一类是蓝色。在 fibjs 的 profiler 里，红色代表  JavaScript 运算，蓝色代表 io 操作或者 Native 运算。根据你需要解决的问题不同，所需要关注的区域也会不同。比如你需要解决 cpu 占用过高的问题，此时需要关注红色的色块；而如果你的应用，cpu 占用不高，但是响应却比较慢，就就需要关注蓝色的色块。靠近顶部越大的色块，越是需要关注和优化的重点。
 
-👉 【[服务端模块热更新](server-hot-update.md)】
+👉 【[同步和异步](sync.md)】

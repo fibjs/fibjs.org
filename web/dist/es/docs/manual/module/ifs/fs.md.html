@@ -4,7 +4,9 @@
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
 <li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Una vida mejor comienza con una prueba</font></font></a></li>
 <li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Encuentra asesinos de rendimiento</font></font></a></li>
+<li><a href="../../../guide/sync.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">síncrono y asíncrono</font></font></a></li>
 <li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Actualización en caliente del módulo del servidor</font></font></a></li>
+<li><a href="../../../guide/web.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Prácticas de aplicaciones web de alto rendimiento</font></font></a></li>
 <li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enrutamiento de dominio</font></font></a></li>
 <li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Uso del certificado X509 en fibjs</font></font></a></li>
 <li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Añadir módulo nativo</font></font></a></li>
@@ -371,7 +373,7 @@ fs.writeFile(<span class="hljs-string">'/path/to/file'</span>, content, <span cl
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mode es un entero opcional que especifica el comportamiento de la operación de copia. </font><font style="vertical-align: inherit;">Es posible crear una máscara que consista en un OR bit a bit de dos o más valores (como</font></font><a href="fs.md.html#constants" class="notranslate">fs.constants</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.COPYFILE_EXCL |</font></font><a href="fs.md.html#constants" class="notranslate">fs.constants</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.COPYFILE_FICLONE).</font></font></p>
 <ul>
 <li><a href="fs.md.html#constants" class="notranslate">fs.constants</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.COPYFILE_EXCL: si dest ya existe, la operación de copia fallará.</font></font></li>
-<li><a href="fs.md.html#constants" class="notranslate">fs.constants</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.COPYFILE_FICLONE: la operación de copia intentará crear un enlace de copia en escritura. </font><font style="vertical-align: inherit;">Si la plataforma no admite la copia en escritura, se utiliza un mecanismo de copia de respaldo.</font></font></li>
+<li><a href="fs.md.html#constants" class="notranslate">fs.constants</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.COPYFILE_FICLONE: la operación de copia intentará crear un enlace de copia en escritura. </font><font style="vertical-align: inherit;">Si la plataforma no admite la copia en escritura, se utiliza un mecanismo de copia de reserva.</font></font></li>
 <li><a href="fs.md.html#constants" class="notranslate">fs.constants</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.COPYFILE_FICLONE_FORCE: la operación de copia intentará crear un enlace de copia en escritura. </font><font style="vertical-align: inherit;">Si la plataforma no admite la copia en escritura, la operación de copia fallará.</font></font></li>
 </ul>
 <hr>
@@ -482,7 +484,7 @@ fs.writeFile(<span class="hljs-string">'/path/to/file'</span>, content, <span cl
 </ul>
 <hr>
 <h3 id="symlink" class="notranslate">symlink</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Crear un archivo de enlace blando</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Crear un archivo de enlace suave</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">static</span> fs.symlink(<span class="hljs-built_in">String</span> target,
@@ -497,7 +499,7 @@ fs.writeFile(<span class="hljs-string">'/path/to/file'</span>, content, <span cl
 </ul>
 <hr>
 <h3 id="truncate" class="notranslate">truncate</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Modifique el tamaño del archivo, si la longitud especificada es mayor que el tamaño del archivo de origen, se rellenará con '\0'; de lo contrario, se perderá el exceso de contenido del archivo</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Modifique el tamaño del archivo, si la longitud especificada es mayor que el tamaño del archivo de origen, se completará con '\0'; de lo contrario, se perderá el exceso de contenido del archivo</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> fs.truncate(<span class="hljs-built_in">String</span> path,<font></font>
     Integer len) <span class="hljs-keyword">async</span>;

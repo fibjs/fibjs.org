@@ -1,10 +1,12 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Объект Redis — JavaScript на волокне</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Переключить навигацию</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/redis.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/redis.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/redis.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/redis.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/redis.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/redis.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/redis.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/redis.md.html">Italiano</a> <a href="../../../../../nl/docs/manual/object/ifs/redis.md.html">Nederlands</a> <a href="../../../../../ru/docs/manual/object/ifs/redis.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/redis.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/redis.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/redis.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Встроенный объект объекта</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Поиск" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="поисковый ввод" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">титульная страница</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">встроенный объект</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Объект Redis</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">руководство по развитию</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Объект Redis — JavaScript на волокне</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Переключить навигацию</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/redis.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/redis.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/redis.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/redis.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/redis.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/redis.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/redis.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/redis.md.html">Italiano</a> <a href="../../../../../nl/docs/manual/object/ifs/redis.md.html">Nederlands</a> <a href="../../../../../ru/docs/manual/object/ifs/redis.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/redis.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/redis.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/redis.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Встроенный объект объекта</font></font></span><div class="search"><input type="text" class="searchbox" placeholder="Поиск"></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">титульная страница</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">встроенный объект</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Объект Redis</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">руководство по развитию</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Что такое фибы?</font></font></a></li>
 <li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Установить операционную среду</font></font></a></li>
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
 <li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Лучшая жизнь начинается с испытания</font></font></a></li>
 <li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Найдите убийц производительности</font></font></a></li>
+<li><a href="../../../guide/sync.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">синхронный и асинхронный</font></font></a></li>
 <li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Горячее обновление серверного модуля</font></font></a></li>
+<li><a href="../../../guide/web.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Практика высокопроизводительных веб-приложений</font></font></a></li>
 <li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Маршрутизация домена</font></font></a></li>
 <li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Использование сертификата X509 в fibjs</font></font></a></li>
 <li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Добавить нативный модуль</font></font></a></li>
@@ -203,14 +205,14 @@
 <li><a href="../../../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
 <li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
 </ul>
- </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="对象-Redis" data-unique="对象-Redis"></div><h1 id="对象-Redis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Объект Redis</font></font></h1>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <h1 id="对象-Redis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Объект Redis</font></font></h1>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Клиентский объект базы данных Redis</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Для создания базы данных Redis и управления ею метод создания:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">var</span> db = <span class="hljs-built_in">require</span>(<span class="hljs-string">"db"</span>);
 <span class="hljs-keyword">var</span> test = <span class="hljs-keyword">new</span> db.openRedis(<span class="hljs-string">"redis-server"</span>);
 </code></pre>
-<div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">отношения наследования</font></font></h2>
+<h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">отношения наследования</font></font></h2>
 <div class="dot notranslate">
 <!-- Generated by graphviz version 2.40.1 (20161225.0304)
  -->
@@ -292,13 +294,13 @@
 </svg>
 </div>
 
-<div name="成员属性" data-unique="成员属性"></div><h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">атрибут члена</font></font></h2>
-<div name="onsuberror" data-unique="onsuberror"></div><h3 id="onsuberror" class="notranslate">onsuberror</h3>
+<h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">атрибут члена</font></font></h2>
+<h3 id="onsuberror" class="notranslate">onsuberror</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Функция, запрос и установка функции обработки ошибок, обратный вызов, когда у подпрограммы есть ошибка или сеть прервана, когда происходит обратный вызов, все подпрограммы этого объекта будут завершены</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Function</span> Redis.onsuberror;
 </code></pre>
-<div name="成员函数" data-unique="成员函数"></div><h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">функция-член</font></font></h2>
-<div name="command" data-unique="command"></div><h3 id="command" class="notranslate">command</h3>
+<h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">функция-член</font></font></h2>
+<h3 id="command" class="notranslate">command</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">основной метод команды redis</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Value Redis.command(<span class="hljs-built_in">String</span> cmd,<font></font>
@@ -314,7 +316,7 @@
 <li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, возвращает результат, возвращенный сервером</font></font></li>
 </ul>
 <hr>
-<div name="set" data-unique="set"></div><h3 id="set" class="notranslate">set</h3>
+<h3 id="set" class="notranslate">set</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Свяжите значение строкового значения с ключом, если ключ уже содержит другие значения, SET перезапишет старое значение, независимо от типа</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -329,7 +331,7 @@
 <li><span class="notranslate">ttl</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long, задайте время жизни ключа в миллисекундах, если ttl равно 0, то не задавайте время жизни</font></font></li>
 </ul>
 <hr>
-<div name="setNX" data-unique="setNX"></div><h3 id="setNX" class="notranslate">setNX</h3>
+<h3 id="setNX" class="notranslate">setNX</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Установите значение ключа в значение тогда и только тогда, когда ключ не существует. </font><font style="vertical-align: inherit;">Если данный ключ уже существует, SETNX ничего не делает.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -344,7 +346,7 @@
 <li><span class="notranslate">ttl</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long, задайте время жизни ключа в миллисекундах, если ttl равно 0, то не задавайте время жизни</font></font></li>
 </ul>
 <hr>
-<div name="setXX" data-unique="setXX"></div><h3 id="setXX" class="notranslate">setXX</h3>
+<h3 id="setXX" class="notranslate">setXX</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Установите значение ключа в значение и задайте ключ, только если ключ уже существует.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -359,7 +361,7 @@
 <li><span class="notranslate">ttl</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long, задайте время жизни ключа в миллисекундах, если ttl равно 0, то не задавайте время жизни</font></font></li>
 </ul>
 <hr>
-<div name="mset" data-unique="mset"></div><h3 id="mset" class="notranslate">mset</h3>
+<h3 id="mset" class="notranslate">mset</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Установите одну или несколько пар ключ-значение одновременно. </font><font style="vertical-align: inherit;">Если данный ключ уже существует, MSET перезапишет старое значение новым значением.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Redis.mset(<span class="hljs-built_in">Object</span> kvs);
 </code></pre>
@@ -376,7 +378,7 @@
 <li><span class="notranslate">kvs</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., указывает список ключей/значений, который необходимо установить</font></font></li>
 </ul>
 <hr>
-<div name="msetNX" data-unique="msetNX"></div><h3 id="msetNX" class="notranslate">msetNX</h3>
+<h3 id="msetNX" class="notranslate">msetNX</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Одновременно установить одну или несколько пар ключ-значение тогда и только тогда, когда ни один из заданных ключей не существует</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Redis.msetNX(<span class="hljs-built_in">Object</span> kvs);
 </code></pre>
@@ -393,7 +395,7 @@
 <li><span class="notranslate">kvs</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: ..., указывает список ключей/значений, который необходимо установить</font></font></li>
 </ul>
 <hr>
-<div name="append" data-unique="append"></div><h3 id="append" class="notranslate">append</h3>
+<h3 id="append" class="notranslate">append</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Если ключ уже существует и является строкой, команда добавления добавляет значение в конец исходного значения ключа. </font><font style="vertical-align: inherit;">Если ключ не существует, добавление просто устанавливает для данного ключа значение</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Redis.append(Buffer key,<font></font>
@@ -409,7 +411,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, после добавления значения длина строки в ключе</font></font></li>
 </ul>
 <hr>
-<div name="setRange" data-unique="setRange"></div><h3 id="setRange" class="notranslate">setRange</h3>
+<h3 id="setRange" class="notranslate">setRange</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Перезаписывает строковое значение, хранящееся в данном ключе, параметром значения, начиная со смещения offset</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -421,14 +423,14 @@
 <ul>
 <li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, укажите ключ для изменения</font></font></li>
 <li><span class="notranslate">offset</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, указывает измененное смещение в байтах.</font></font></li>
-<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, указав данные для перезаписи</font></font></li>
+<li><span class="notranslate">value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, укажите данные для перезаписи</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">возвращаемый результат:</font></font></p>
 <ul>
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, после изменения длина строки</font></font></li>
 </ul>
 <hr>
-<div name="getRange" data-unique="getRange"></div><h3 id="getRange" class="notranslate">getRange</h3>
+<h3 id="getRange" class="notranslate">getRange</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Возвращает подстроку строкового значения в ключе.Диапазон перехвата строки определяется двумя смещениями начала и конца (включая начало и конец)</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -447,7 +449,7 @@
 <li><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, перехваченная подстрока</font></font></li>
 </ul>
 <hr>
-<div name="strlen" data-unique="strlen"></div><h3 id="strlen" class="notranslate">strlen</h3>
+<h3 id="strlen" class="notranslate">strlen</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Возвращает длину строкового значения, сохраненного по ключу. </font><font style="vertical-align: inherit;">Возвращает ошибку, когда ключ не хранит строковое значение</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Redis.strlen(Buffer key);
 </code></pre>
@@ -460,7 +462,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, длина строкового значения. </font><font style="vertical-align: inherit;">Возвращает 0, если ключ не существует</font></font></li>
 </ul>
 <hr>
-<div name="bitcount" data-unique="bitcount"></div><h3 id="bitcount" class="notranslate">bitcount</h3>
+<h3 id="bitcount" class="notranslate">bitcount</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Подсчитывает количество битов, установленных в 1 в данной строке</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -471,7 +473,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Параметры вызова:</font></font></p>
 <ul>
 <li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, укажите ключ для вычисления</font></font></li>
-<li><span class="notranslate">start</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, указывает начальный байт для вычисления, могут использоваться отрицательные значения, -1 означает последний байт, а -2 означает предпоследний байт и т. д.</font></font></li>
+<li><span class="notranslate">start</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: целое число, указывает начальный байт для вычисления, могут использоваться отрицательные значения, -1 означает последний байт, а -2 означает предпоследний байт и т. д.</font></font></li>
 <li><span class="notranslate">end</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Целое число, указывает конечный байт для вычисления, могут использоваться отрицательные значения, -1 означает последний байт, а -2 означает предпоследний байт и т. д.</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">возвращаемый результат:</font></font></p>
@@ -479,7 +481,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, количество битов равно 1</font></font></li>
 </ul>
 <hr>
-<div name="get" data-unique="get"></div><h3 id="get" class="notranslate">get</h3>
+<h3 id="get" class="notranslate">get</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Возвращает строковое значение, связанное с ключом, или возвращает специальное значение Null, если ключ не существует.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer Redis.get(Buffer key);
 </code></pre>
@@ -492,7 +494,7 @@
 <li><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, если ключ не существует, вернуть Null, иначе вернуть значение ключа</font></font></li>
 </ul>
 <hr>
-<div name="mget" data-unique="mget"></div><h3 id="mget" class="notranslate">mget</h3>
+<h3 id="mget" class="notranslate">mget</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Возвращает все (одно или несколько) значений для данного ключа. </font><font style="vertical-align: inherit;">Если ключ не существует в данном ключе, то этот ключ возвращает специальное значение nil.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>NArray Redis.mget(<span class="hljs-built_in">Array</span> keys);
 </code></pre>
@@ -517,7 +519,7 @@
 <li><span class="notranslate">NArray</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, список, содержащий все значения для данного ключа</font></font></li>
 </ul>
 <hr>
-<div name="getset" data-unique="getset"></div><h3 id="getset" class="notranslate">getset</h3>
+<h3 id="getset" class="notranslate">getset</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Установите значение данного ключа в значение и верните старое значение ключа (старое значение)</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Buffer Redis.getset(Buffer key,<font></font>
@@ -533,7 +535,7 @@
 <li><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, возвращает старое значение для данного ключа</font></font></li>
 </ul>
 <hr>
-<div name="decr" data-unique="decr"></div><h3 id="decr" class="notranslate">decr</h3>
+<h3 id="decr" class="notranslate">decr</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Вычесть декремент из значения, сохраненного ключом</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Long Redis.decr(Buffer key,<font></font>
@@ -549,7 +551,7 @@
 <li><span class="notranslate">Long</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, после вычитания num значение ключа</font></font></li>
 </ul>
 <hr>
-<div name="incr" data-unique="incr"></div><h3 id="incr" class="notranslate">incr</h3>
+<h3 id="incr" class="notranslate">incr</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Увеличить значение, сохраненное ключом</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Long Redis.incr(Buffer key,<font></font>
@@ -565,7 +567,7 @@
 <li><span class="notranslate">Long</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, после добавления num значение ключа</font></font></li>
 </ul>
 <hr>
-<div name="setBit" data-unique="setBit"></div><h3 id="setBit" class="notranslate">setBit</h3>
+<h3 id="setBit" class="notranslate">setBit</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Для строкового значения, хранящегося по ключу, установите или очистите бит по указанному смещению</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -584,7 +586,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, указывает бит, в котором изначально было сохранено смещение</font></font></li>
 </ul>
 <hr>
-<div name="getBit" data-unique="getBit"></div><h3 id="getBit" class="notranslate">getBit</h3>
+<h3 id="getBit" class="notranslate">getBit</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Для строкового значения, хранящегося по ключу, получить бит с указанным смещением (бит)</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Redis.getBit(Buffer key,<font></font>
@@ -600,7 +602,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, строковое значение указывает бит по смещению</font></font></li>
 </ul>
 <hr>
-<div name="exists" data-unique="exists"></div><h3 id="exists" class="notranslate">exists</h3>
+<h3 id="exists" class="notranslate">exists</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Проверить, существует ли данный ключ</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> Redis.exists(Buffer key);
 </code></pre>
@@ -613,7 +615,7 @@
 <li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, если ключ существует, вернуть True, иначе вернуть False</font></font></li>
 </ul>
 <hr>
-<div name="type" data-unique="type"></div><h3 id="type" class="notranslate">type</h3>
+<h3 id="type" class="notranslate">type</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Возвращает тип значения, сохраненного ключом</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Redis.type(Buffer key);
 </code></pre>
@@ -626,7 +628,7 @@
 <li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, возвращает тип значения, хранящегося в ключе, возможное значение — none (ключ не существует) string (строка) list (список) set (коллекция) zset (упорядоченный набор)</font></font><a href="../../module/ifs/hash.md.html" class="notranslate">hash</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(хеш-таблица)</font></font></li>
 </ul>
 <hr>
-<div name="keys" data-unique="keys"></div><h3 id="keys" class="notranslate">keys</h3>
+<h3 id="keys" class="notranslate">keys</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Найти все ключи, соответствующие заданному шаблону шаблона</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>NArray Redis.keys(<span class="hljs-built_in">String</span> pattern);
 </code></pre>
@@ -639,7 +641,7 @@
 <li><span class="notranslate">NArray</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, список ключей, соответствующих заданному шаблону</font></font></li>
 </ul>
 <hr>
-<div name="del" data-unique="del"></div><h3 id="del" class="notranslate">del</h3>
+<h3 id="del" class="notranslate">del</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Удалите один или несколько заданных ключей, несуществующие ключи будут проигнорированы.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Redis.del(<span class="hljs-built_in">Array</span> keys);
 </code></pre>
@@ -664,7 +666,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, количество удаленных ключей</font></font></li>
 </ul>
 <hr>
-<div name="expire" data-unique="expire"></div><h3 id="expire" class="notranslate">expire</h3>
+<h3 id="expire" class="notranslate">expire</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Установите время жизни для данного ключа, когда срок действия ключа истечет, он будет удален автоматически</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Boolean</span> Redis.expire(Buffer key,<font></font>
@@ -680,7 +682,7 @@
 <li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, если ключ существует, вернуть True, иначе вернуть False</font></font></li>
 </ul>
 <hr>
-<div name="ttl" data-unique="ttl"></div><h3 id="ttl" class="notranslate">ttl</h3>
+<h3 id="ttl" class="notranslate">ttl</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Возвращает оставшееся время жизни для данного ключа</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Long Redis.ttl(Buffer key);
 </code></pre>
@@ -693,7 +695,7 @@
 <li><span class="notranslate">Long</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, возвращает оставшееся время жизни ключа в миллисекундах, возвращает -2, если ключ не существует, возвращает -1, если ключ существует, но не устанавливает оставшееся время жизни</font></font></li>
 </ul>
 <hr>
-<div name="persist" data-unique="persist"></div><h3 id="persist" class="notranslate">persist</h3>
+<h3 id="persist" class="notranslate">persist</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Удалите время жизни данного ключа, преобразовав этот ключ из «изменчивого» (ключ со сроком действия) в «долговременный» (ключ без срока действия и с неограниченным сроком действия).</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> Redis.persist(Buffer key);
 </code></pre>
@@ -706,7 +708,7 @@
 <li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, если ключ существует, вернуть True, иначе вернуть False</font></font></li>
 </ul>
 <hr>
-<div name="rename" data-unique="rename"></div><h3 id="rename" class="notranslate">rename</h3>
+<h3 id="rename" class="notranslate">rename</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Переименуйте ключ в newkey и верните ошибку, если ключ совпадает с newkey или ключ не существует.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Redis.rename(Buffer key,<font></font>
@@ -718,7 +720,7 @@
 <li><span class="notranslate">newkey</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, укажите целевой ключ для переименования</font></font></li>
 </ul>
 <hr>
-<div name="renameNX" data-unique="renameNX"></div><h3 id="renameNX" class="notranslate">renameNX</h3>
+<h3 id="renameNX" class="notranslate">renameNX</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Переименуйте ключ в новый ключ тогда и только тогда, когда новый ключ не существует, и верните ошибку, если ключ не существует.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Boolean</span> Redis.renameNX(Buffer key,<font></font>
@@ -734,7 +736,7 @@
 <li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, когда модификация прошла успешно, вернуть True, если новый ключ уже существует, вернуть False</font></font></li>
 </ul>
 <hr>
-<div name="sub" data-unique="sub"></div><h3 id="sub" class="notranslate">sub</h3>
+<h3 id="sub" class="notranslate">sub</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Подпишитесь на информацию о данном канале и автоматически вызывайте func при появлении сообщения. func содержит два параметра, канал и сообщение по очереди. Одна и та же функция в том же канале будет вызываться только один раз</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Redis.sub(Buffer channel,
@@ -754,7 +756,7 @@
 <li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Объект, указывает отношение сопоставления каналов, имя атрибута объекта будет использоваться в качестве имени канала, а значение атрибута будет использоваться в качестве функции обратного вызова.</font></font></li>
 </ul>
 <hr>
-<div name="unsub" data-unique="unsub"></div><h3 id="unsub" class="notranslate">unsub</h3>
+<h3 id="unsub" class="notranslate">unsub</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Отписаться от всех обратных вызовов для данного канала</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Redis.unsub(Buffer channel);
 </code></pre>
@@ -790,7 +792,7 @@
 <li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Объект, указывает отношение сопоставления каналов, имя атрибута объекта будет использоваться в качестве имени канала, а значение атрибута будет использоваться в качестве функции обратного вызова.</font></font></li>
 </ul>
 <hr>
-<div name="psub" data-unique="psub"></div><h3 id="psub" class="notranslate">psub</h3>
+<h3 id="psub" class="notranslate">psub</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Подпишитесь на группу информации о канале в соответствии с шаблоном. Когда появляется сообщение, функция func вызывается автоматически. Функция содержит три параметра: канал, сообщение и шаблон в последовательности. Тот же шаблон и одна и та же функция будет вызвана только один раз. .</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Redis.psub(<span class="hljs-built_in">String</span> pattern,
@@ -810,7 +812,7 @@
 <li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Объект, указывает отношение сопоставления каналов, имя атрибута объекта будет использоваться в качестве шаблона канала, а значение атрибута будет использоваться в качестве функции обратного вызова.</font></font></li>
 </ul>
 <hr>
-<div name="unpsub" data-unique="unpsub"></div><h3 id="unpsub" class="notranslate">unpsub</h3>
+<h3 id="unpsub" class="notranslate">unpsub</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Обратный вызов для отмены подписки на все каналы из заданного шаблона</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Redis.unpsub(<span class="hljs-built_in">String</span> pattern);
 </code></pre>
@@ -846,7 +848,7 @@
 <li><span class="notranslate">map</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Объект, указывает отношение сопоставления каналов, имя атрибута объекта будет использоваться в качестве шаблона канала, а значение атрибута будет использоваться в качестве функции обратного вызова.</font></font></li>
 </ul>
 <hr>
-<div name="pub" data-unique="pub"></div><h3 id="pub" class="notranslate">pub</h3>
+<h3 id="pub" class="notranslate">pub</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Отправить информационное сообщение на указанный канал канала</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Redis.pub(Buffer channel,<font></font>
@@ -862,7 +864,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, количество клиентов, получивших это сообщение</font></font></li>
 </ul>
 <hr>
-<div name="getHash" data-unique="getHash"></div><h3 id="getHash" class="notranslate">getHash</h3>
+<h3 id="getHash" class="notranslate">getHash</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Получить объект Hash указанного ключа.Этот объект является клиентом, содержащим указанный ключ.Только при вызове его метода будет работать база данных</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>RedisHash Redis.getHash(Buffer key);
 </code></pre>
@@ -875,7 +877,7 @@
 <li><a href="redishash.md.html" class="notranslate">RedisHash</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, возвращает объект Hash, содержащий указанный ключ</font></font></li>
 </ul>
 <hr>
-<div name="getList" data-unique="getList"></div><h3 id="getList" class="notranslate">getList</h3>
+<h3 id="getList" class="notranslate">getList</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Получить объект List указанного ключа.Этот объект является клиентом, который содержит указанный ключ.Только при вызове его метода будет работать база данных</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>RedisList Redis.getList(Buffer key);
 </code></pre>
@@ -888,7 +890,7 @@
 <li><a href="redislist.md.html" class="notranslate">RedisList</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, возвращает объект List, содержащий указанный ключ</font></font></li>
 </ul>
 <hr>
-<div name="getSet" data-unique="getSet"></div><h3 id="getSet" class="notranslate">getSet</h3>
+<h3 id="getSet" class="notranslate">getSet</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Получить объект Set указанного ключа.Этот объект является клиентом, содержащим указанный ключ.Только при вызове его метода будет работать база данных</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>RedisSet Redis.getSet(Buffer key);
 </code></pre>
@@ -901,7 +903,7 @@
 <li><a href="redisset.md.html" class="notranslate">RedisSet</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, возвращает объект Set, содержащий указанный ключ</font></font></li>
 </ul>
 <hr>
-<div name="getSortedSet" data-unique="getSortedSet"></div><h3 id="getSortedSet" class="notranslate">getSortedSet</h3>
+<h3 id="getSortedSet" class="notranslate">getSortedSet</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Получить объект SortedSet указанного ключа.Этот объект является клиентом, содержащим указанный ключ.Только при вызове его метода будет работать база данных</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>RedisSortedSet Redis.getSortedSet(Buffer key);
 </code></pre>
@@ -914,7 +916,7 @@
 <li><a href="redissortedset.md.html" class="notranslate">RedisSortedSet</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, возвращает объект SortedSet, содержащий указанный ключ</font></font></li>
 </ul>
 <hr>
-<div name="dump" data-unique="dump"></div><h3 id="dump" class="notranslate">dump</h3>
+<h3 id="dump" class="notranslate">dump</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Сериализуйте данный ключ и верните сериализованное значение, используйте команду восстановления, чтобы десериализовать это значение в ключ Redis.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer Redis.dump(Buffer key);
 </code></pre>
@@ -927,7 +929,7 @@
 <li><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, возвращает значение после сериализации, если ключ не существует, то возвращает null</font></font></li>
 </ul>
 <hr>
-<div name="restore" data-unique="restore"></div><h3 id="restore" class="notranslate">restore</h3>
+<h3 id="restore" class="notranslate">restore</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Десериализовать данное сериализованное значение и связать его с данным ключом</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -942,12 +944,12 @@
 <li><span class="notranslate">ttl</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Long, задайте время жизни ключа в миллисекундах, если ttl равно 0, то не задавайте время жизни</font></font></li>
 </ul>
 <hr>
-<div name="close" data-unique="close"></div><h3 id="close" class="notranslate">close</h3>
+<h3 id="close" class="notranslate">close</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Закрыть текущее соединение с базой данных или транзакцию</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Redis.close();
 </code></pre>
 <hr>
-<div name="toString" data-unique="toString"></div><h3 id="toString" class="notranslate">toString</h3>
+<h3 id="toString" class="notranslate">toString</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Возвращает строковое представление объекта, как правило, возвращает «[Native Object]», объект может быть переопределен в соответствии с его собственными характеристиками.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Redis.toString();
 </code></pre>
@@ -956,7 +958,7 @@
 <li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, возвращает строковое представление объекта</font></font></li>
 </ul>
 <hr>
-<div name="toJSON" data-unique="toJSON"></div><h3 id="toJSON" class="notranslate">toJSON</h3>
+<h3 id="toJSON" class="notranslate">toJSON</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Возвращает представление объекта в формате JSON, обычно возвращает набор читаемых свойств, определенных объектом.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value Redis.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
@@ -968,4 +970,4 @@
 <ul>
 <li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, который возвращает сериализуемое значение JSON</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Поддержите нас</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Поддержите нас</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

@@ -4,7 +4,9 @@
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
 <li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Una vida mejor comienza con una prueba</font></font></a></li>
 <li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Encuentra asesinos de rendimiento</font></font></a></li>
+<li><a href="../../../guide/sync.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">síncrono y asíncrono</font></font></a></li>
 <li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Actualización en caliente del módulo del servidor</font></font></a></li>
+<li><a href="../../../guide/web.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Prácticas de aplicaciones web de alto rendimiento</font></font></a></li>
 <li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enrutamiento de dominio</font></font></a></li>
 <li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Uso del certificado X509 en fibjs</font></font></a></li>
 <li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Añadir módulo nativo</font></font></a></li>
@@ -212,7 +214,7 @@
 <li><a href="../../object/ifs/sslserver.md.html" class="notranslate">SslServer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: objeto de servidor SSL, que es conveniente para construir un servidor SSL multifibra estándar.</font></font></li>
 </ol>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Abajo a</font></font><a href="ssl.md.html#Server" class="notranslate">ssl.Server</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Como ejemplo, presente el uso del módulo ssl.</font></font></p>
-<p><a href="ssl.md.html#Server" class="notranslate">ssl.Server</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">es un servidor SSL básico que proporciona un servicio web basado en SSL. </font><font style="vertical-align: inherit;">usar</font></font><a href="ssl.md.html#Server" class="notranslate">ssl.Server</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La clase puede crear rápidamente un servidor basado en SSL/TLS y es compatible con todas las funciones básicas de los servicios TCP/HTTP. </font><font style="vertical-align: inherit;">Tiene las siguientes características:</font></font></p>
+<p><a href="ssl.md.html#Server" class="notranslate">ssl.Server</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">es un servidor SSL básico que proporciona un servicio web basado en SSL. </font><font style="vertical-align: inherit;">usar</font></font><a href="ssl.md.html#Server" class="notranslate">ssl.Server</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La clase puede crear rápidamente un servidor basado en SSL/TLS y es compatible con todas las características básicas de los servicios TCP/HTTP. </font><font style="vertical-align: inherit;">Tiene las siguientes características:</font></font></p>
 <ul>
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Viene con el administrador de certificados X.509, admite múltiples certificados de nombre de dominio, comodines, certificados SAN y otras funciones.</font></font></li>
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tiene la misma interfaz y uso que el servidor TCP, y el código de la capa superior no necesita preocuparse por la diferencia entre la conexión SSL y la conexión TCP.</font></font></li>
@@ -283,7 +285,7 @@ svr.start();<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">url</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, especifica el protocolo de conexión, que puede ser: ssl://host:port</font></font></li>
+<li><span class="notranslate">url</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica el protocolo de conexión, que puede ser: ssl://host:puerto</font></font></li>
 <li><span class="notranslate">timeout</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique el tiempo de espera en milisegundos, el valor predeterminado es 0</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">resultado devuelto:</font></font></p>
@@ -302,7 +304,7 @@ svr.start();<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">url</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, especifica el protocolo de conexión, que puede ser: ssl://host:port</font></font></li>
+<li><span class="notranslate">url</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica el protocolo de conexión, que puede ser: ssl://host:puerto</font></font></li>
 <li><span class="notranslate">crt</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="../../object/ifs/x509cert.md.html" class="notranslate">X509Cert</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, el certificado utilizado para enviar al servidor para autenticar al cliente</font></font></li>
 <li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="../../object/ifs/pkey.md.html" class="notranslate">PKey</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, la clave privada utilizada para hablar con el cliente</font></font></li>
 <li><span class="notranslate">timeout</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, especifique el tiempo de espera en milisegundos, el valor predeterminado es 0</font></font></li>
@@ -325,7 +327,7 @@ svr.start();<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de llamada:</font></font></p>
 <ul>
-<li><span class="notranslate">url</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, especifica el protocolo de conexión, que puede ser: ssl://host:port</font></font></li>
+<li><span class="notranslate">url</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Cadena, especifica el protocolo de conexión, que puede ser: ssl://host:puerto</font></font></li>
 <li><span class="notranslate">verification</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Entero, modo de verificación de certificado</font></font></li>
 <li><span class="notranslate">crt</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="../../object/ifs/x509cert.md.html" class="notranslate">X509Cert</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, el certificado utilizado para enviar al servidor para autenticar al cliente</font></font></li>
 <li><span class="notranslate">key</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">:</font></font><a href="../../object/ifs/pkey.md.html" class="notranslate">PKey</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, la clave privada utilizada para hablar con el cliente</font></font></li>

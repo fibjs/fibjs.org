@@ -4,7 +4,9 @@
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
 <li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Unha vida mellor comeza cunha proba</font></font></a></li>
 <li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Busca asasinas de rendemento</font></font></a></li>
+<li><a href="../../../guide/sync.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sincrónicos e asíncronos</font></font></a></li>
 <li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Actualización en caliente do módulo do servidor</font></font></a></li>
+<li><a href="../../../guide/web.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Prácticas de aplicacións web de alto rendemento</font></font></a></li>
 <li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enrutamento de dominios</font></font></a></li>
 <li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Uso do certificado X509 en fibjs</font></font></a></li>
 <li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Engadir módulo nativo</font></font></a></li>
@@ -210,7 +212,7 @@
 2</div><span class="hljs-keyword">var</span> db = <span class="hljs-built_in">require</span>(<span class="hljs-string">"db"</span>);
 <span class="hljs-keyword">var</span> test = db.openLevelDB(<span class="hljs-string">"test.db"</span>);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">en,</font></font><a href="../../module/ifs/db.md.html" class="notranslate">db</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">É o obxecto de operación de base de datos de fibjs, o método openLevelDB úsase para abrir a base de datos leveldb, test.db é o nome da base de datos e a función devolve</font></font><a href="../../module/ifs/test.md.html" class="notranslate">test</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">O obxecto é o obxecto que opera a base de datos.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">en,</font></font><a href="../../module/ifs/db.md.html" class="notranslate">db</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">É o obxecto de operación da base de datos de fibjs, o método openLevelDB úsase para abrir a base de datos leveldb, test.db é o nome da base de datos e a función devolve</font></font><a href="../../module/ifs/test.md.html" class="notranslate">test</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">O obxecto é o obxecto que opera a base de datos.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">As principais operacións soportadas polos obxectos LevelDB inclúen:</font></font></p>
 <ul>
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">set(key, value): Establece un dato clave-valor, se o valor clave non existe, insira novos datos.</font></font></li>
@@ -218,7 +220,7 @@
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">has(key): determina se existe a chave especificada.</font></font></li>
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">remove(key): elimina todos os valores do valor da chave especificado.</font></font></li>
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">forEach(func): enumera todos os pares clave-valor da base de datos.</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">between(from, to, func): enumera os pares clave-valor cuxo valor-chave está entre de e ata na base de datos.</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">between(from, to, func): enumera os pares clave-valor cuxo valor clave está entre de e ata na base de datos.</font></font></li>
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">toJSON(clave): devolve a representación en formato JSON do obxecto e, xeralmente, devolve o conxunto de propiedades lexibles definidas polo obxecto.</font></font></li>
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">begin(): Abre unha transacción na base de datos actual.</font></font></li>
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">commit(): confirma a transacción actual.</font></font></li>
@@ -307,7 +309,7 @@ test.close();<font></font>
 
 <h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">función de membro</font></font></h2>
 <h3 id="has" class="notranslate">has</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Comproba se os datos coa clave especificada existen na base de datos</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Comprobe se os datos co valor de clave especificado existen na base de datos</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> LevelDB.has(Buffer key) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Parámetros de chamada:</font></font></p>

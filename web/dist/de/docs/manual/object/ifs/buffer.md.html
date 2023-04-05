@@ -1,12 +1,14 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Objektpuffer – JavaScript auf Fiber</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Navigation umschalten</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/buffer.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/buffer.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/buffer.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/buffer.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/buffer.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/buffer.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/buffer.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/buffer.md.html">Italiano</a> <a href="../../../../../nl/docs/manual/object/ifs/buffer.md.html">Nederlands</a> <a href="../../../../../ru/docs/manual/object/ifs/buffer.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/buffer.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/buffer.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/buffer.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objekt eingebautes Objekt</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Suchen" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="Sucheingabe" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Titelseite</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">eingebautes Objekt</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objektpuffer</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entwicklungsleitfaden</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
-<li><a href="../../../guide/about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Was ist fibjs?</font></font></a></li>
-<li><a href="../../../guide/install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Installieren Sie die Betriebsumgebung</font></font></a></li>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../../../imgs/icon.png"><title>Objektpuffer – JavaScript auf Fiber</title><link href="../../../../../css/common.css" rel="stylesheet"><link href="../../../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../../../index.html"><img src="../../../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../../../index.html">HOME</a></li><li><a href="../../../guide/readme.md.html">GUIDE</a></li><li><a href="../../module/readme.md.html">MODULE</a></li><li><a href="../readme.md.html">OBJECT</a></li><li><a href="../../../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../../../docs/manual/object/ifs/buffer.md.html">中文</a> <a href="../../../../../ca/docs/manual/object/ifs/buffer.md.html">Catalan</a> <a href="../../../../../de/docs/manual/object/ifs/buffer.md.html">Deutsch</a> <a href="../../../../../en/docs/manual/object/ifs/buffer.md.html">English</a> <a href="../../../../../es/docs/manual/object/ifs/buffer.md.html">Español</a> <a href="../../../../../fr/docs/manual/object/ifs/buffer.md.html">Français</a> <a href="../../../../../gl/docs/manual/object/ifs/buffer.md.html">Galego</a> <a href="../../../../../it/docs/manual/object/ifs/buffer.md.html">Italiano</a> <a href="../../../../../nl/docs/manual/object/ifs/buffer.md.html">Nederlands</a> <a href="../../../../../ru/docs/manual/object/ifs/buffer.md.html">Русский</a> <a href="../../../../../ja/docs/manual/object/ifs/buffer.md.html">日本語</a> <a href="../../../../../ko/docs/manual/object/ifs/buffer.md.html">한국어</a> <a href="../../../../../zh-tw/docs/manual/object/ifs/buffer.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objekt eingebautes Objekt</font></font></span><div class="search"><input type="text" class="searchbox" placeholder="Suchen"></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Titelseite</font></font></a></li><li><a href="../readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">eingebautes Objekt</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objektpuffer</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entwicklungsleitfaden</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<li><a href="../../../guide/about.md.html">fibjs 是什么？</a></li>
+<li><a href="../../../guide/install.md.html">安装运行环境</a></li>
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
-<li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ein besseres Leben beginnt mit einer Prüfung</font></font></a></li>
-<li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Leistungskiller finden</font></font></a></li>
-<li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Hot-Update des Servermoduls</font></font></a></li>
-<li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Domain-Routing</font></font></a></li>
-<li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Verwendung des X509-Zertifikats in fibjs</font></font></a></li>
+<li><a href="../../../guide/test.md.html">美好生活从测试开始</a></li>
+<li><a href="../../../guide/profiler.md.html">找出性能杀手</a></li>
+<li><a href="../../../guide/sync.md.html">同步和异步</a></li>
+<li><a href="../../../guide/server-hot-update.md.html">服务端模块热更新</a></li>
+<li><a href="../../../guide/web.md.html">高性能 Web 应用程序实践</a></li>
+<li><a href="../../../guide/host-routes.md.html">域名路由</a></li>
+<li><a href="../../../guide/x509.md.html">fibjs 中 X509 证书的使用</a></li>
 <li><a href="../../../guide/contribute.md.html">添加 native 模块</a></li>
 </ul>
  </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Grundmodul</font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
@@ -203,12 +205,12 @@
 <li><a href="../../../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
 <li><a href="../../../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
 </ul>
- </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="对象-Buffer" data-unique="对象-Buffer"></div><h1 id="对象-Buffer"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objektpuffer</font></font></h1>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <h1 id="对象-Buffer"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objektpuffer</font></font></h1>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Binäres Daten-Cache-Objekt für</font></font><a href="../../module/ifs/io.md.html" class="notranslate">io</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Datenverarbeitung zum Lesen und Schreiben</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Das Buffer-Objekt ist eine globale Basisklasse und kann jederzeit direkt mit new Buffer(...) erstellt werden:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> buf = <span class="hljs-keyword">new</span> Buffer();
 </code></pre>
-<div name="继承关系" data-unique="继承关系"></div><h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Erbverhältnis</font></font></h2>
+<h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Erbverhältnis</font></font></h2>
 <div class="dot notranslate">
 <!-- Generated by graphviz version 2.40.1 (20161225.0304)
  -->
@@ -332,8 +334,8 @@
 </svg>
 </div>
 
-<div name="构造函数" data-unique="构造函数"></div><h2 id="构造函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Konstrukteur</font></font></h2>
-<div name="Buffer" data-unique="Buffer"></div><h3 id="Buffer" class="notranslate">Buffer</h3>
+<h2 id="构造函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Konstrukteur</font></font></h2>
+<h3 id="Buffer" class="notranslate">Buffer</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cache-Objekt-Konstruktor</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">new</span> Buffer(<span class="hljs-built_in">Array</span> datas);
 </code></pre>
@@ -392,13 +394,13 @@
 <ul>
 <li><span class="notranslate">size</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Ganzzahl, anfängliche Puffergröße</font></font></li>
 </ul>
-<div name="操作符" data-unique="操作符"></div><h2 id="操作符"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Operator</font></font></h2>
-<div name="operator[]" data-unique="operator[]"></div><h3 id="operator[]" class="notranslate">operator[]</h3>
+<h2 id="操作符"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Operator</font></font></h2>
+<h3 id="operator[]" class="notranslate">operator[]</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cache-Objekte können mithilfe von Indizes direkt auf binäre Daten zugreifen</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer[];
 </code></pre>
 <hr>
-<div name="@iterator" data-unique="@iterator"></div><h3 id="@iterator" class="notranslate">@iterator</h3>
+<h3 id="@iterator" class="notranslate">@iterator</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ein Iterator zum Abfragen der Elemente des aktuellen Objekts</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Iterator Buffer.@iterator();
 </code></pre>
@@ -406,13 +408,13 @@
 <ul>
 <li><a href="iterator.md.html" class="notranslate">Iterator</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt einen Iterator über die Elemente des aktuellen Objekts zurück</font></font></li>
 </ul>
-<div name="对象" data-unique="对象"></div><h2 id="对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objekt</font></font></h2>
-<div name="Buffer8" data-unique="Buffer8"></div><h3 id="Buffer" class="notranslate">Buffer</h3>
+<h2 id="对象"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objekt</font></font></h2>
+<h3 id="Buffer" class="notranslate">Buffer</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Binäres Daten-Cache-Objekt für</font></font><a href="../../module/ifs/io.md.html" class="notranslate">io</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Datenverarbeitung zum Lesen und Schreiben</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer <span class="hljs-keyword">new</span> Buffer;
 </code></pre>
-<div name="静态函数" data-unique="静态函数"></div><h2 id="静态函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">statische Funktion</font></font></h2>
-<div name="isBuffer" data-unique="isBuffer"></div><h3 id="isBuffer" class="notranslate">isBuffer</h3>
+<h2 id="静态函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">statische Funktion</font></font></h2>
+<h3 id="isBuffer" class="notranslate">isBuffer</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Überprüft, ob die angegebene Variable ein Buffer-Objekt ist</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> Buffer.isBuffer(Value v);
 </code></pre>
@@ -425,7 +427,7 @@
 <li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, ob das eingehende Objekt ein Buffer-Objekt ist</font></font></li>
 </ul>
 <hr>
-<div name="from" data-unique="from"></div><h3 id="from" class="notranslate">from</h3>
+<h3 id="from" class="notranslate">from</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buffer-Objekte aus anderen Buffers erstellen</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -477,7 +479,7 @@
 <li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt eine Buffer-Instanz zurück</font></font></li>
 </ul>
 <hr>
-<div name="concat" data-unique="concat"></div><h3 id="concat" class="notranslate">concat</h3>
+<h3 id="concat" class="notranslate">concat</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Verketten Sie Daten aus mehreren Puffern</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> Buffer Buffer.concat(<span class="hljs-built_in">Array</span> buflist,<font></font>
@@ -493,7 +495,7 @@
 <li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, das neue Buffer-Objekt, das nach dem Spleißen generiert wird</font></font></li>
 </ul>
 <hr>
-<div name="alloc" data-unique="alloc"></div><h3 id="alloc" class="notranslate">alloc</h3>
+<h3 id="alloc" class="notranslate">alloc</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Weist einen neuen Puffer der angegebenen Länge zu. </font><font style="vertical-align: inherit;">Wenn die Größe 0 ist, wird ein Puffer der Länge Null erstellt.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -548,7 +550,7 @@
 <li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, das gefüllte neue Buffer-Objekt</font></font></li>
 </ul>
 <hr>
-<div name="allocUnsafe" data-unique="allocUnsafe"></div><h3 id="allocUnsafe" class="notranslate">allocUnsafe</h3>
+<h3 id="allocUnsafe" class="notranslate">allocUnsafe</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Weist einen neuen Puffer der angegebenen Länge zu. </font><font style="vertical-align: inherit;">Wenn die Größe 0 ist, wird ein Puffer der Länge Null erstellt.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Buffer Buffer.allocUnsafe(Integer size);
 </code></pre>
@@ -561,7 +563,7 @@
 <li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, ein neues Buffer-Objekt der angegebenen Größe</font></font></li>
 </ul>
 <hr>
-<div name="allocUnsafeSlow" data-unique="allocUnsafeSlow"></div><h3 id="allocUnsafeSlow" class="notranslate">allocUnsafeSlow</h3>
+<h3 id="allocUnsafeSlow" class="notranslate">allocUnsafeSlow</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Weist einen neuen Puffer der angegebenen Länge zu. </font><font style="vertical-align: inherit;">Wenn die Größe 0 ist, wird ein Puffer der Länge Null erstellt.</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Buffer Buffer.allocUnsafeSlow(Integer size);
 </code></pre>
@@ -574,7 +576,7 @@
 <li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, ein neues Buffer-Objekt der angegebenen Größe</font></font></li>
 </ul>
 <hr>
-<div name="byteLength" data-unique="byteLength"></div><h3 id="byteLength" class="notranslate">byteLength</h3>
+<h3 id="byteLength" class="notranslate">byteLength</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gibt die tatsächliche Bytelänge der Zeichenfolge zurück</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> Integer Buffer.byteLength(<span class="hljs-built_in">String</span> str,
@@ -635,7 +637,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt die tatsächliche Bytelänge zurück</font></font></li>
 </ul>
 <hr>
-<div name="compare" data-unique="compare"></div><h3 id="compare" class="notranslate">compare</h3>
+<h3 id="compare" class="notranslate">compare</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Das Vergleichen von buf1 und buf2 wird häufig zum Sortieren zwischen Buffer-Instanzen verwendet.Diese Methode entspricht buf1.compare(buf2).</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> Integer Buffer.compare(Buffer buf1,<font></font>
@@ -651,7 +653,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt die Vergleichsbytelänge zurück</font></font></li>
 </ul>
 <hr>
-<div name="isEncoding" data-unique="isEncoding"></div><h3 id="isEncoding" class="notranslate">isEncoding</h3>
+<h3 id="isEncoding" class="notranslate">isEncoding</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Überprüfen Sie, ob das Codierungsformat unterstützt wird</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> Buffer.isEncoding(<span class="hljs-built_in">String</span> codec);
 </code></pre>
@@ -663,23 +665,23 @@
 <ul>
 <li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, unterstützt es</font></font></li>
 </ul>
-<div name="成员属性" data-unique="成员属性"></div><h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mitgliedsattribut</font></font></h2>
-<div name="length" data-unique="length"></div><h3 id="length" class="notranslate">length</h3>
+<h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mitgliedsattribut</font></font></h2>
+<h3 id="length" class="notranslate">length</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ganzzahl, ruft die Größe des zwischengespeicherten Objekts ab</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer Buffer.length;
 </code></pre>
 <hr>
-<div name="byteOffset" data-unique="byteOffset"></div><h3 id="byteOffset" class="notranslate">byteOffset</h3>
+<h3 id="byteOffset" class="notranslate">byteOffset</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ganzzahl, erhält den Offset-Wert des Cache-Objekts</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly Integer Buffer.byteOffset;
 </code></pre>
 <hr>
-<div name="buffer" data-unique="buffer"></div><h3 id="buffer" class="notranslate">buffer</h3>
+<h3 id="buffer" class="notranslate">buffer</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ArrayBuffer, gibt gepufferte Daten im ArrayBuffer-Format zurück</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>readonly <span class="hljs-built_in">ArrayBuffer</span> Buffer.buffer;
 </code></pre>
-<div name="成员函数" data-unique="成员函数"></div><h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mitgliedsfunktion</font></font></h2>
-<div name="resize" data-unique="resize"></div><h3 id="resize" class="notranslate">resize</h3>
+<h2 id="成员函数"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mitgliedsfunktion</font></font></h2>
+<h3 id="resize" class="notranslate">resize</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Größe des Cache-Objekts ändern</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer.resize(Integer sz);
 </code></pre>
@@ -688,7 +690,7 @@
 <li><span class="notranslate">sz</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Integer, gibt die neue Größe an</font></font></li>
 </ul>
 <hr>
-<div name="append" data-unique="append"></div><h3 id="append" class="notranslate">append</h3>
+<h3 id="append" class="notranslate">append</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Schreiben Sie einen Satz binärer Daten an das Ende des Cache-Objekts</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer.append(Buffer data);
 </code></pre>
@@ -708,7 +710,7 @@
 <li><span class="notranslate">codec</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: String, gibt das Codierungsformat an, die zulässigen Werte sind: "</font></font><a href="../../module/ifs/hex.md.html" class="notranslate">hex</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">", "utf8" oder</font></font><a href="../../module/ifs/iconv.md.html" class="notranslate">iconv</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vom Modul unterstützte Zeichensätze</font></font></li>
 </ul>
 <hr>
-<div name="write" data-unique="write"></div><h3 id="write" class="notranslate">write</h3>
+<h3 id="write" class="notranslate">write</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Schreiben Sie die angegebene Zeichenfolge in das Cache-Objekt, die Zeichenfolge ist standardmäßig utf-8, und nur ein Teil der Daten wird geschrieben, wenn sie außerhalb der Grenzen liegen</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -763,7 +765,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, die Länge der geschriebenen Datenbytes</font></font></li>
 </ul>
 <hr>
-<div name="fill" data-unique="fill"></div><h3 id="fill" class="notranslate">fill</h3>
+<h3 id="fill" class="notranslate">fill</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Füllen Sie die angegebenen Inhaltsdaten für das Buffer-Objekt</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -818,7 +820,7 @@
 <li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt das aktuelle Buffer-Objekt zurück</font></font></li>
 </ul>
 <hr>
-<div name="indexOf" data-unique="indexOf"></div><h3 id="indexOf" class="notranslate">indexOf</h3>
+<h3 id="indexOf" class="notranslate">indexOf</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gibt die Position zurück, an der bestimmte Daten zuerst im Puffer erscheinen</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.indexOf(Integer v,<font></font>
@@ -864,7 +866,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt die gefundene Position zurück, gibt -1 zurück, wenn nicht gefunden</font></font></li>
 </ul>
 <hr>
-<div name="compare29" data-unique="compare29"></div><h3 id="compare" class="notranslate">compare</h3>
+<h3 id="compare" class="notranslate">compare</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pufferinhalte vergleichen</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.compare(Buffer buf);
 </code></pre>
@@ -877,7 +879,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, Inhaltsvergleichsergebnis</font></font></li>
 </ul>
 <hr>
-<div name="copy" data-unique="copy"></div><h3 id="copy" class="notranslate">copy</h3>
+<h3 id="copy" class="notranslate">copy</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Daten aus dem Quell-Cache-Objektbereich in den Ziel-Cache-Objektbereich kopieren</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -899,7 +901,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, die Bytelänge der kopierten Daten</font></font></li>
 </ul>
 <hr>
-<div name="set" data-unique="set"></div><h3 id="set" class="notranslate">set</h3>
+<h3 id="set" class="notranslate">set</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Daten aus dem Quell-Cache-Objektbereich in den Ziel-Cache-Objektbereich kopieren</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.set(Buffer src,<font></font>
@@ -915,7 +917,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, die Bytelänge der kopierten Daten</font></font></li>
 </ul>
 <hr>
-<div name="readUInt8" data-unique="readUInt8"></div><h3 id="readUInt8" class="notranslate">readUInt8</h3>
+<h3 id="readUInt8" class="notranslate">readUInt8</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Liest einen 8-Bit-Ganzzahlwert ohne Vorzeichen aus dem Cache-Objekt</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.readUInt8(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
@@ -928,7 +930,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt den gelesenen ganzzahligen Wert zurück</font></font></li>
 </ul>
 <hr>
-<div name="readUInt16LE" data-unique="readUInt16LE"></div><h3 id="readUInt16LE" class="notranslate">readUInt16LE</h3>
+<h3 id="readUInt16LE" class="notranslate">readUInt16LE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Liest einen 16-Bit-Ganzzahlwert ohne Vorzeichen aus dem Cache-Objekt, der in Low-Endian-Reihenfolge gespeichert ist</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.readUInt16LE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
@@ -941,7 +943,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt den gelesenen ganzzahligen Wert zurück</font></font></li>
 </ul>
 <hr>
-<div name="readUInt16BE" data-unique="readUInt16BE"></div><h3 id="readUInt16BE" class="notranslate">readUInt16BE</h3>
+<h3 id="readUInt16BE" class="notranslate">readUInt16BE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Liest einen 16-Bit-Ganzzahlwert ohne Vorzeichen aus dem Cache-Objekt, gespeichert in High-Endian</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.readUInt16BE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
@@ -954,7 +956,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt den gelesenen ganzzahligen Wert zurück</font></font></li>
 </ul>
 <hr>
-<div name="readUInt32LE" data-unique="readUInt32LE"></div><h3 id="readUInt32LE" class="notranslate">readUInt32LE</h3>
+<h3 id="readUInt32LE" class="notranslate">readUInt32LE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Liest einen 32-Bit-Ganzzahlwert ohne Vorzeichen aus dem Cache-Objekt, gespeichert in Low-Endian</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Number</span> Buffer.readUInt32LE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
@@ -967,7 +969,7 @@
 <li><span class="notranslate">Number</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt den gelesenen ganzzahligen Wert zurück</font></font></li>
 </ul>
 <hr>
-<div name="readUInt32BE" data-unique="readUInt32BE"></div><h3 id="readUInt32BE" class="notranslate">readUInt32BE</h3>
+<h3 id="readUInt32BE" class="notranslate">readUInt32BE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Liest einen 32-Bit-Ganzzahlwert ohne Vorzeichen aus dem Cache-Objekt, gespeichert in High-Endian</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Number</span> Buffer.readUInt32BE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
@@ -980,7 +982,7 @@
 <li><span class="notranslate">Number</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt den gelesenen ganzzahligen Wert zurück</font></font></li>
 </ul>
 <hr>
-<div name="readUIntLE" data-unique="readUIntLE"></div><h3 id="readUIntLE" class="notranslate">readUIntLE</h3>
+<h3 id="readUIntLE" class="notranslate">readUIntLE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Liest einen vorzeichenlosen ganzzahligen Wert aus dem Cache-Objekt, der maximal 48 Bit unterstützt und in Low-Endian-Reihenfolge gespeichert wird</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Number</span> Buffer.readUIntLE(Integer offset = <span class="hljs-number">0</span>,<font></font>
@@ -996,7 +998,7 @@
 <li><span class="notranslate">Number</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt den gelesenen ganzzahligen Wert zurück</font></font></li>
 </ul>
 <hr>
-<div name="readUIntBE" data-unique="readUIntBE"></div><h3 id="readUIntBE" class="notranslate">readUIntBE</h3>
+<h3 id="readUIntBE" class="notranslate">readUIntBE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Liest einen vorzeichenlosen ganzzahligen Wert aus dem Cache-Objekt, bis zu 48 Bit, gespeichert in High Endian</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Number</span> Buffer.readUIntBE(Integer offset = <span class="hljs-number">0</span>,<font></font>
@@ -1012,7 +1014,7 @@
 <li><span class="notranslate">Number</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt den gelesenen ganzzahligen Wert zurück</font></font></li>
 </ul>
 <hr>
-<div name="readInt64LE" data-unique="readInt64LE"></div><h3 id="readInt64LE" class="notranslate">readInt64LE</h3>
+<h3 id="readInt64LE" class="notranslate">readInt64LE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Liest einen 64-Bit-Ganzzahlwert aus dem Cache-Objekt, gespeichert in Low-Endian</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Long Buffer.readInt64LE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
@@ -1025,7 +1027,7 @@
 <li><span class="notranslate">Long</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt den gelesenen ganzzahligen Wert zurück</font></font></li>
 </ul>
 <hr>
-<div name="readInt64BE" data-unique="readInt64BE"></div><h3 id="readInt64BE" class="notranslate">readInt64BE</h3>
+<h3 id="readInt64BE" class="notranslate">readInt64BE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Liest einen 64-Bit-Ganzzahlwert aus dem Cache-Objekt, gespeichert in High-Endian</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Long Buffer.readInt64BE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
@@ -1038,7 +1040,7 @@
 <li><span class="notranslate">Long</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt den gelesenen ganzzahligen Wert zurück</font></font></li>
 </ul>
 <hr>
-<div name="readInt8" data-unique="readInt8"></div><h3 id="readInt8" class="notranslate">readInt8</h3>
+<h3 id="readInt8" class="notranslate">readInt8</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Liest einen 8-Bit-Ganzzahlwert aus dem Cache-Objekt</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.readInt8(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
@@ -1051,7 +1053,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt den gelesenen ganzzahligen Wert zurück</font></font></li>
 </ul>
 <hr>
-<div name="readInt16LE" data-unique="readInt16LE"></div><h3 id="readInt16LE" class="notranslate">readInt16LE</h3>
+<h3 id="readInt16LE" class="notranslate">readInt16LE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Liest einen 16-Bit-Ganzzahlwert aus dem Cache-Objekt, gespeichert in Low-Endian-Reihenfolge</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.readInt16LE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
@@ -1064,7 +1066,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt den gelesenen ganzzahligen Wert zurück</font></font></li>
 </ul>
 <hr>
-<div name="readInt16BE" data-unique="readInt16BE"></div><h3 id="readInt16BE" class="notranslate">readInt16BE</h3>
+<h3 id="readInt16BE" class="notranslate">readInt16BE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Liest einen 16-Bit-Ganzzahlwert aus dem Cache-Objekt, gespeichert in High-Endian</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.readInt16BE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
@@ -1077,7 +1079,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt den gelesenen ganzzahligen Wert zurück</font></font></li>
 </ul>
 <hr>
-<div name="readInt32LE" data-unique="readInt32LE"></div><h3 id="readInt32LE" class="notranslate">readInt32LE</h3>
+<h3 id="readInt32LE" class="notranslate">readInt32LE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Liest einen 32-Bit-Ganzzahlwert aus dem Cache-Objekt, gespeichert in Low-Endian-Reihenfolge</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.readInt32LE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
@@ -1090,7 +1092,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt den gelesenen ganzzahligen Wert zurück</font></font></li>
 </ul>
 <hr>
-<div name="readInt32BE" data-unique="readInt32BE"></div><h3 id="readInt32BE" class="notranslate">readInt32BE</h3>
+<h3 id="readInt32BE" class="notranslate">readInt32BE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Liest einen 32-Bit-Ganzzahlwert aus dem Cache-Objekt, gespeichert in High-Endian</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Integer Buffer.readInt32BE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
@@ -1103,7 +1105,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt den gelesenen ganzzahligen Wert zurück</font></font></li>
 </ul>
 <hr>
-<div name="readIntLE" data-unique="readIntLE"></div><h3 id="readIntLE" class="notranslate">readIntLE</h3>
+<h3 id="readIntLE" class="notranslate">readIntLE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Liest einen ganzzahligen Wert aus dem Cache-Objekt, der maximal 48 Bit unterstützt und in Low-Endian-Reihenfolge gespeichert wird</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Number</span> Buffer.readIntLE(Integer offset = <span class="hljs-number">0</span>,<font></font>
@@ -1119,7 +1121,7 @@
 <li><span class="notranslate">Number</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt den gelesenen ganzzahligen Wert zurück</font></font></li>
 </ul>
 <hr>
-<div name="readIntBE" data-unique="readIntBE"></div><h3 id="readIntBE" class="notranslate">readIntBE</h3>
+<h3 id="readIntBE" class="notranslate">readIntBE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Liest einen ganzzahligen Wert aus dem Cache-Objekt, der maximal 48 Bit unterstützt und in High-Endian-Reihenfolge gespeichert wird</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-built_in">Number</span> Buffer.readIntBE(Integer offset = <span class="hljs-number">0</span>,<font></font>
@@ -1135,7 +1137,7 @@
 <li><span class="notranslate">Number</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt den gelesenen ganzzahligen Wert zurück</font></font></li>
 </ul>
 <hr>
-<div name="writeInt64LE" data-unique="writeInt64LE"></div><h3 id="writeInt64LE" class="notranslate">writeInt64LE</h3>
+<h3 id="writeInt64LE" class="notranslate">writeInt64LE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Schreiben Sie einen 64-Bit-Ganzzahlwert in das Cache-Objekt, der in Low-Endian-Reihenfolge gespeichert wird</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeInt64LE(Long value,<font></font>
@@ -1151,7 +1153,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, offset plus die Anzahl der geschriebenen Bytes</font></font></li>
 </ul>
 <hr>
-<div name="writeInt64BE" data-unique="writeInt64BE"></div><h3 id="writeInt64BE" class="notranslate">writeInt64BE</h3>
+<h3 id="writeInt64BE" class="notranslate">writeInt64BE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Schreiben Sie einen 64-Bit-Ganzzahlwert in das Cache-Objekt, gespeichert in High-Endian</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeInt64BE(Long value,<font></font>
@@ -1167,7 +1169,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, offset plus die Anzahl der geschriebenen Bytes</font></font></li>
 </ul>
 <hr>
-<div name="readFloatLE" data-unique="readFloatLE"></div><h3 id="readFloatLE" class="notranslate">readFloatLE</h3>
+<h3 id="readFloatLE" class="notranslate">readFloatLE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Liest eine Fließkommazahl aus dem Cache-Objekt, gespeichert in Little-Endian</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Number</span> Buffer.readFloatLE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
@@ -1180,7 +1182,7 @@
 <li><span class="notranslate">Number</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt die gelesene Gleitkommazahl zurück</font></font></li>
 </ul>
 <hr>
-<div name="readFloatBE" data-unique="readFloatBE"></div><h3 id="readFloatBE" class="notranslate">readFloatBE</h3>
+<h3 id="readFloatBE" class="notranslate">readFloatBE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Liest eine Fließkommazahl aus dem Cache-Objekt, gespeichert in Big Endian</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Number</span> Buffer.readFloatBE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
@@ -1193,7 +1195,7 @@
 <li><span class="notranslate">Number</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt die gelesene Gleitkommazahl zurück</font></font></li>
 </ul>
 <hr>
-<div name="readDoubleLE" data-unique="readDoubleLE"></div><h3 id="readDoubleLE" class="notranslate">readDoubleLE</h3>
+<h3 id="readDoubleLE" class="notranslate">readDoubleLE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Liest eine Gleitkommazahl mit doppelter Genauigkeit aus dem Cache-Objekt, die in Little-Endian gespeichert ist</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Number</span> Buffer.readDoubleLE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
@@ -1206,7 +1208,7 @@
 <li><span class="notranslate">Number</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt die gelesene Gleitkommazahl mit doppelter Genauigkeit zurück</font></font></li>
 </ul>
 <hr>
-<div name="readDoubleBE" data-unique="readDoubleBE"></div><h3 id="readDoubleBE" class="notranslate">readDoubleBE</h3>
+<h3 id="readDoubleBE" class="notranslate">readDoubleBE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Liest eine Gleitkommazahl mit doppelter Genauigkeit aus dem Cache-Objekt, gespeichert in High-Endian</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Number</span> Buffer.readDoubleBE(Integer offset = <span class="hljs-number">0</span>);
 </code></pre>
@@ -1219,7 +1221,7 @@
 <li><span class="notranslate">Number</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt die gelesene Gleitkommazahl mit doppelter Genauigkeit zurück</font></font></li>
 </ul>
 <hr>
-<div name="writeUInt8" data-unique="writeUInt8"></div><h3 id="writeUInt8" class="notranslate">writeUInt8</h3>
+<h3 id="writeUInt8" class="notranslate">writeUInt8</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Schreibt einen vorzeichenlosen 8-Bit-Ganzzahlwert in das Pufferobjekt</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeUInt8(Integer value,<font></font>
@@ -1235,7 +1237,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, offset plus die Anzahl der geschriebenen Bytes</font></font></li>
 </ul>
 <hr>
-<div name="writeUInt16LE" data-unique="writeUInt16LE"></div><h3 id="writeUInt16LE" class="notranslate">writeUInt16LE</h3>
+<h3 id="writeUInt16LE" class="notranslate">writeUInt16LE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Schreiben Sie einen 16-Bit-Ganzzahlwert ohne Vorzeichen in das Cache-Objekt, der in Low-Endian-Reihenfolge gespeichert wird</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeUInt16LE(Integer value,<font></font>
@@ -1251,7 +1253,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, offset plus die Anzahl der geschriebenen Bytes</font></font></li>
 </ul>
 <hr>
-<div name="writeUInt16BE" data-unique="writeUInt16BE"></div><h3 id="writeUInt16BE" class="notranslate">writeUInt16BE</h3>
+<h3 id="writeUInt16BE" class="notranslate">writeUInt16BE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Schreiben Sie einen 16-Bit-Ganzzahlwert ohne Vorzeichen in das Cache-Objekt, gespeichert in High-Endian</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeUInt16BE(Integer value,<font></font>
@@ -1267,7 +1269,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, offset plus die Anzahl der geschriebenen Bytes</font></font></li>
 </ul>
 <hr>
-<div name="writeUInt32LE" data-unique="writeUInt32LE"></div><h3 id="writeUInt32LE" class="notranslate">writeUInt32LE</h3>
+<h3 id="writeUInt32LE" class="notranslate">writeUInt32LE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Schreiben Sie einen 32-Bit-Ganzzahlwert ohne Vorzeichen in das Cache-Objekt, der in Low-Endian-Reihenfolge gespeichert wird</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeUInt32LE(Long value,<font></font>
@@ -1283,7 +1285,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, offset plus die Anzahl der geschriebenen Bytes</font></font></li>
 </ul>
 <hr>
-<div name="writeUInt32BE" data-unique="writeUInt32BE"></div><h3 id="writeUInt32BE" class="notranslate">writeUInt32BE</h3>
+<h3 id="writeUInt32BE" class="notranslate">writeUInt32BE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Schreiben Sie einen 32-Bit-Ganzzahlwert ohne Vorzeichen in das Cache-Objekt, gespeichert in High-Endian</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeUInt32BE(Long value,<font></font>
@@ -1299,7 +1301,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, offset plus die Anzahl der geschriebenen Bytes</font></font></li>
 </ul>
 <hr>
-<div name="writeUIntLE" data-unique="writeUIntLE"></div><h3 id="writeUIntLE" class="notranslate">writeUIntLE</h3>
+<h3 id="writeUIntLE" class="notranslate">writeUIntLE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Schreiben Sie einen vorzeichenlosen ganzzahligen Wert in das Cache-Objekt, der maximal 48 Bit unterstützt und in Low-Endian-Reihenfolge gespeichert wird</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -1318,7 +1320,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, offset plus die Anzahl der geschriebenen Bytes</font></font></li>
 </ul>
 <hr>
-<div name="writeUIntBE" data-unique="writeUIntBE"></div><h3 id="writeUIntBE" class="notranslate">writeUIntBE</h3>
+<h3 id="writeUIntBE" class="notranslate">writeUIntBE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Schreiben Sie einen vorzeichenlosen ganzzahligen Wert in das Cache-Objekt, der maximal 48 Bit unterstützt und in High-Endian-Reihenfolge gespeichert wird</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -1337,7 +1339,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, offset plus die Anzahl der geschriebenen Bytes</font></font></li>
 </ul>
 <hr>
-<div name="writeInt8" data-unique="writeInt8"></div><h3 id="writeInt8" class="notranslate">writeInt8</h3>
+<h3 id="writeInt8" class="notranslate">writeInt8</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Schreibt einen 8-Bit-Ganzzahlwert in das Cache-Objekt</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeInt8(Integer value,<font></font>
@@ -1353,7 +1355,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, offset plus die Anzahl der geschriebenen Bytes</font></font></li>
 </ul>
 <hr>
-<div name="writeInt16LE" data-unique="writeInt16LE"></div><h3 id="writeInt16LE" class="notranslate">writeInt16LE</h3>
+<h3 id="writeInt16LE" class="notranslate">writeInt16LE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Schreiben Sie einen 16-Bit-Ganzzahlwert in das Cache-Objekt, der in Low-Endian-Reihenfolge gespeichert wird</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeInt16LE(Integer value,<font></font>
@@ -1369,7 +1371,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, offset plus die Anzahl der geschriebenen Bytes</font></font></li>
 </ul>
 <hr>
-<div name="writeInt16BE" data-unique="writeInt16BE"></div><h3 id="writeInt16BE" class="notranslate">writeInt16BE</h3>
+<h3 id="writeInt16BE" class="notranslate">writeInt16BE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Schreiben Sie einen 16-Bit-Ganzzahlwert in das Cache-Objekt, gespeichert in High-Endian</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeInt16BE(Integer value,<font></font>
@@ -1385,7 +1387,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, offset plus die Anzahl der geschriebenen Bytes</font></font></li>
 </ul>
 <hr>
-<div name="writeInt32LE" data-unique="writeInt32LE"></div><h3 id="writeInt32LE" class="notranslate">writeInt32LE</h3>
+<h3 id="writeInt32LE" class="notranslate">writeInt32LE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Schreiben Sie einen 32-Bit-Ganzzahlwert in das Cache-Objekt, der in Low-Endian-Reihenfolge gespeichert wird</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeInt32LE(Integer value,<font></font>
@@ -1401,7 +1403,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, offset plus die Anzahl der geschriebenen Bytes</font></font></li>
 </ul>
 <hr>
-<div name="writeInt32BE" data-unique="writeInt32BE"></div><h3 id="writeInt32BE" class="notranslate">writeInt32BE</h3>
+<h3 id="writeInt32BE" class="notranslate">writeInt32BE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Schreiben Sie einen 32-Bit-Ganzzahlwert in das Cache-Objekt, gespeichert in High-Endian</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeInt32BE(Integer value,<font></font>
@@ -1417,7 +1419,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, offset plus die Anzahl der geschriebenen Bytes</font></font></li>
 </ul>
 <hr>
-<div name="writeIntLE" data-unique="writeIntLE"></div><h3 id="writeIntLE" class="notranslate">writeIntLE</h3>
+<h3 id="writeIntLE" class="notranslate">writeIntLE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Schreiben Sie einen ganzzahligen Wert in das Cache-Objekt, der maximal 48 Bit unterstützt und in Low-Endian-Reihenfolge gespeichert wird</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -1436,7 +1438,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, offset plus die Anzahl der geschriebenen Bytes</font></font></li>
 </ul>
 <hr>
-<div name="writeIntBE" data-unique="writeIntBE"></div><h3 id="writeIntBE" class="notranslate">writeIntBE</h3>
+<h3 id="writeIntBE" class="notranslate">writeIntBE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Schreiben Sie einen ganzzahligen Wert in das Cache-Objekt, der maximal 48 Bit unterstützt und in High-Endian-Reihenfolge gespeichert wird</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -1455,7 +1457,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, offset plus die Anzahl der geschriebenen Bytes</font></font></li>
 </ul>
 <hr>
-<div name="writeFloatLE" data-unique="writeFloatLE"></div><h3 id="writeFloatLE" class="notranslate">writeFloatLE</h3>
+<h3 id="writeFloatLE" class="notranslate">writeFloatLE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Schreiben Sie eine Gleitkommazahl in das Cache-Objekt, gespeichert in Low-Endian</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeFloatLE(<span class="hljs-built_in">Number</span> value,<font></font>
@@ -1471,7 +1473,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, offset plus die Anzahl der geschriebenen Bytes</font></font></li>
 </ul>
 <hr>
-<div name="writeFloatBE" data-unique="writeFloatBE"></div><h3 id="writeFloatBE" class="notranslate">writeFloatBE</h3>
+<h3 id="writeFloatBE" class="notranslate">writeFloatBE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Schreiben Sie eine Fließkommazahl in das Cache-Objekt, gespeichert in High Endian</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeFloatBE(<span class="hljs-built_in">Number</span> value,<font></font>
@@ -1487,8 +1489,8 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, offset plus die Anzahl der geschriebenen Bytes</font></font></li>
 </ul>
 <hr>
-<div name="writeDoubleLE" data-unique="writeDoubleLE"></div><h3 id="writeDoubleLE" class="notranslate">writeDoubleLE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Schreiben Sie eine Gleitkommazahl mit doppelter Genauigkeit in das Cache-Objekt, die in Low-Endian-Reihenfolge gespeichert wird</font></font></strong></p>
+<h3 id="writeDoubleLE" class="notranslate">writeDoubleLE</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Schreiben Sie eine Gleitkommazahl mit doppelter Genauigkeit in das Cache-Objekt, die in Low-Endian-Reihenfolge gespeichert ist</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeDoubleLE(<span class="hljs-built_in">Number</span> value,<font></font>
     Integer offset);<font></font>
@@ -1503,7 +1505,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, offset plus die Anzahl der geschriebenen Bytes</font></font></li>
 </ul>
 <hr>
-<div name="writeDoubleBE" data-unique="writeDoubleBE"></div><h3 id="writeDoubleBE" class="notranslate">writeDoubleBE</h3>
+<h3 id="writeDoubleBE" class="notranslate">writeDoubleBE</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Schreiben Sie eine Gleitkommazahl mit doppelter Genauigkeit in das Cache-Objekt, die in High Endian gespeichert ist</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Integer Buffer.writeDoubleBE(<span class="hljs-built_in">Number</span> value,<font></font>
@@ -1519,7 +1521,7 @@
 <li><span class="notranslate">Integer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, offset plus die Anzahl der geschriebenen Bytes</font></font></li>
 </ul>
 <hr>
-<div name="slice" data-unique="slice"></div><h3 id="slice" class="notranslate">slice</h3>
+<h3 id="slice" class="notranslate">slice</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gibt ein neues Pufferobjekt zurück, das die Daten vom angegebenen Anfang bis zum Ende des Puffers enthält</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer Buffer.slice(Integer start = <span class="hljs-number">0</span>);
 </code></pre>
@@ -1547,7 +1549,7 @@
 <li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt ein neues Cache-Objekt zurück</font></font></li>
 </ul>
 <hr>
-<div name="join" data-unique="join"></div><h3 id="join" class="notranslate">join</h3>
+<h3 id="join" class="notranslate">join</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Fügen Sie alle Elemente des aktuellen Objekts in eine Zeichenfolge ein</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Buffer.join(<span class="hljs-built_in">String</span> separator = <span class="hljs-string">","</span>);
 </code></pre>
@@ -1560,7 +1562,7 @@
 <li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt die resultierende Zeichenfolge zurück</font></font></li>
 </ul>
 <hr>
-<div name="reverse" data-unique="reverse"></div><h3 id="reverse" class="notranslate">reverse</h3>
+<h3 id="reverse" class="notranslate">reverse</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gibt ein neues Cache-Objekt zurück, das die Daten des aktuellen Objekts in umgekehrter Reihenfolge enthält</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Buffer Buffer.reverse();
 </code></pre>
@@ -1569,7 +1571,7 @@
 <li><span class="notranslate">Buffer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt ein neues Cache-Objekt zurück</font></font></li>
 </ul>
 <hr>
-<div name="equals" data-unique="equals"></div><h3 id="equals" class="notranslate">equals</h3>
+<h3 id="equals" class="notranslate">equals</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vergleicht das aktuelle Objekt mit dem angegebenen Objekt auf Gleichheit</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Boolean</span> Buffer.equals(object expected);
 </code></pre>
@@ -1582,7 +1584,7 @@
 <li><span class="notranslate">Boolean</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt das Ergebnis des Objektvergleichs zurück</font></font></li>
 </ul>
 <hr>
-<div name="hex" data-unique="hex"></div><h3 id="hex" class="notranslate">hex</h3>
+<h3 id="hex" class="notranslate">hex</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Zwischenspeichern Sie Objektinhalte mit hexadezimaler Codierung</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Buffer.hex();
 </code></pre>
@@ -1591,7 +1593,7 @@
 <li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt die codierte Zeichenfolge zurück</font></font></li>
 </ul>
 <hr>
-<div name="base32" data-unique="base32"></div><h3 id="base32" class="notranslate">base32</h3>
+<h3 id="base32" class="notranslate">base32</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">verwenden</font></font><a href="../../module/ifs/base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Codieren Sie den Inhalt des Cache-Objekts</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Buffer.base32();
 </code></pre>
@@ -1600,7 +1602,7 @@
 <li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt die codierte Zeichenfolge zurück</font></font></li>
 </ul>
 <hr>
-<div name="base58" data-unique="base58"></div><h3 id="base58" class="notranslate">base58</h3>
+<h3 id="base58" class="notranslate">base58</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">verwenden</font></font><a href="../../module/ifs/base58.md.html" class="notranslate">base58</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Codieren Sie den Inhalt des Cache-Objekts</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Buffer.base58();
 </code></pre>
@@ -1609,7 +1611,7 @@
 <li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt die codierte Zeichenfolge zurück</font></font></li>
 </ul>
 <hr>
-<div name="base64" data-unique="base64"></div><h3 id="base64" class="notranslate">base64</h3>
+<h3 id="base64" class="notranslate">base64</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">verwenden</font></font><a href="../../module/ifs/base64.md.html" class="notranslate">base64</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Codieren Sie den Inhalt des Cache-Objekts</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">String</span> Buffer.base64();
 </code></pre>
@@ -1618,7 +1620,7 @@
 <li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt die codierte Zeichenfolge zurück</font></font></li>
 </ul>
 <hr>
-<div name="keys" data-unique="keys"></div><h3 id="keys" class="notranslate">keys</h3>
+<h3 id="keys" class="notranslate">keys</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">gibt ein Array aller Binärdaten zurück</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Iterator Buffer.keys();
 </code></pre>
@@ -1627,7 +1629,7 @@
 <li><a href="iterator.md.html" class="notranslate">Iterator</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt einen Iterator zurück, der den Index der Objektdaten enthält</font></font></li>
 </ul>
 <hr>
-<div name="values" data-unique="values"></div><h3 id="values" class="notranslate">values</h3>
+<h3 id="values" class="notranslate">values</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">gibt ein Array aller Binärdaten zurück</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Iterator Buffer.values();
 </code></pre>
@@ -1636,8 +1638,8 @@
 <li><a href="iterator.md.html" class="notranslate">Iterator</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt einen Iterator zurück, der die Datenwerte des Objekts enthält</font></font></li>
 </ul>
 <hr>
-<div name="entries" data-unique="entries"></div><h3 id="entries" class="notranslate">entries</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gibt einen Iterator zurück, der Objektdaten [Index, Byte]-Paare enthält</font></font></strong></p>
+<h3 id="entries" class="notranslate">entries</h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gibt einen Iterator zurück, der die Objektdaten [Index, Byte]-Paare enthält</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Iterator Buffer.entries();
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Rückgabeergebnis:</font></font></p>
@@ -1645,7 +1647,7 @@
 <li><a href="iterator.md.html" class="notranslate">Iterator</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, ein Iterator von [Index, Byte]-Paaren</font></font></li>
 </ul>
 <hr>
-<div name="forEach" data-unique="forEach"></div><h3 id="forEach" class="notranslate">forEach</h3>
+<h3 id="forEach" class="notranslate">forEach</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Führt die angegebene Funktion einmal für jedes Element des Objekts aus</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div>Buffer.forEach(<span class="hljs-built_in">Function</span> callback,<font></font>
@@ -1657,7 +1659,7 @@
 <li><span class="notranslate">thisArg</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Wert, der als Wert von this verwendet wird, wenn die Callback-Funktion callback ausgeführt wird</font></font></li>
 </ul>
 <hr>
-<div name="toArray" data-unique="toArray"></div><h3 id="toArray" class="notranslate">toArray</h3>
+<h3 id="toArray" class="notranslate">toArray</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">gibt ein Array aller Binärdaten zurück</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-built_in">Array</span> Buffer.toArray();
 </code></pre>
@@ -1666,7 +1668,7 @@
 <li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt ein Array zurück, das die Objektdaten enthält</font></font></li>
 </ul>
 <hr>
-<div name="toString" data-unique="toString"></div><h3 id="toString" class="notranslate">toString</h3>
+<h3 id="toString" class="notranslate">toString</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gibt die codierte Zeichenfolge der Binärdaten zurück</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -1716,7 +1718,7 @@
 <li><span class="notranslate">String</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, gibt eine Zeichenfolgendarstellung des Objekts zurück</font></font></li>
 </ul>
 <hr>
-<div name="toJSON" data-unique="toJSON"></div><h3 id="toJSON" class="notranslate">toJSON</h3>
+<h3 id="toJSON" class="notranslate">toJSON</h3>
 <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gibt die Darstellung des Objekts im JSON-Format zurück, gibt im Allgemeinen eine Sammlung lesbarer Eigenschaften zurück, die durch das Objekt definiert sind</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value Buffer.toJSON(<span class="hljs-built_in">String</span> key = <span class="hljs-string">""</span>);
 </code></pre>
@@ -1728,4 +1730,4 @@
 <ul>
 <li><span class="notranslate">Value</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, die einen JSON-serialisierbaren Wert zurückgibt</font></font></li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Unterstützen Sie uns</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Unterstützen Sie uns</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

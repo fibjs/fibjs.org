@@ -4,7 +4,9 @@
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
 <li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">더 나은 삶은 시험에서 시작됩니다</font></font></a></li>
 <li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">성능 킬러 찾기</font></font></a></li>
+<li><a href="../../../guide/sync.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">동기 및 비동기</font></font></a></li>
 <li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">서버 모듈 핫 업데이트</font></font></a></li>
+<li><a href="../../../guide/web.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">고성능 웹 애플리케이션 사례</font></font></a></li>
 <li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">도메인 라우팅</font></font></a></li>
 <li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs에서 X509 인증서 사용</font></font></a></li>
 <li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">네이티브 모듈 추가</font></font></a></li>
@@ -64,7 +66,7 @@
 <li><a href="zip.md.html" class="notranslate">zip</a></li>
 <li><a href="zlib.md.html" class="notranslate">zlib</a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">내장 객체</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">내장 개체</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../../object/ifs/blskey.md.html" class="notranslate">BlsKey</a></li>
 <li><a href="../../object/ifs/buffer.md.html" class="notranslate">Buffer</a></li>
 <li><a href="../../object/ifs/bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
@@ -298,7 +300,7 @@ coroutine.start(bar);<font></font>
 <li><span class="notranslate">Array</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 함수 실행 결과의 배열을 반환합니다.</font></font></li>
 </ul>
 <hr>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">병렬로 함수를 실행하여 일련의 데이터를 처리하고 반환될 때까지 기다림</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">함수를 병렬로 실행하여 일련의 데이터를 처리하고 반환될 때까지 기다림</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Array</span> coroutine.parallel(<span class="hljs-built_in">Array</span> datas,
@@ -356,7 +358,7 @@ coroutine.start(bar);<font></font>
 </ul>
 <hr>
 <h3 id="sleep" class="notranslate">sleep</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 시간 동안 현재 파이버 일시 중지</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지정된 시간 동안 현재 섬유를 일시 중단</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> coroutine.sleep(Integer ms = <span class="hljs-number">0</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">호출 매개변수:</font></font></p>
@@ -380,7 +382,7 @@ coroutine.start(bar);<font></font>
 </code></pre>
 <hr>
 <h3 id="loglevel" class="notranslate">loglevel</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">정수, 수정 및 쿼리</font></font><a href="vm.md.html" class="notranslate">vm</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">출력 정보를 필터링하는 데 사용되는 출력 수준, 기본값은</font></font><a href="console.md.html#NOTSET" class="notranslate">console.NOTSET</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 모든 출력</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">정수, 수정 및 쿼리</font></font><a href="vm.md.html" class="notranslate">vm</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">출력 정보를 필터링하는 데 사용되는 출력 수준, 기본값은 다음과 같습니다.</font></font><a href="console.md.html#NOTSET" class="notranslate">console.NOTSET</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, 모든 출력</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Integer coroutine.loglevel;
 </code></pre>
  </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© 저작권 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지원</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

@@ -4,7 +4,9 @@
 <li><a href="../../../guide/hello.md.html" class="notranslate">hello, world</a></li>
 <li><a href="../../../guide/test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Een beter leven begint met een test</font></font></a></li>
 <li><a href="../../../guide/profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vind prestatiemoordenaars</font></font></a></li>
+<li><a href="../../../guide/sync.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">synchroon en asynchroon</font></font></a></li>
 <li><a href="../../../guide/server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Hot-update voor servermodule</font></font></a></li>
+<li><a href="../../../guide/web.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Praktijken voor hoogwaardige webapplicaties</font></font></a></li>
 <li><a href="../../../guide/host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Domeinroutering</font></font></a></li>
 <li><a href="../../../guide/x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gebruik van X509-certificaat in fibjs</font></font></a></li>
 <li><a href="../../../guide/contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Native module toevoegen</font></font></a></li>
@@ -257,7 +259,7 @@ conn.onmessage = <span class="hljs-function"><span class="hljs-params">e</span> 
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Oproepparameters:</font></font></p>
 <ul>
-<li><span class="notranslate">accept</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Functie, de verbindingssuccesverwerkingsfunctie, de callback zal twee parameters doorgeven, de eerste parameter is de ontvangen</font></font><a href="../../object/ifs/websocket.md.html" class="notranslate">WebSocket</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Object, de tweede parameter is de handdruk</font></font><a href="../../object/ifs/httprequest.md.html" class="notranslate">HttpRequest</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">voorwerp</font></font></li>
+<li><span class="notranslate">accept</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Functie, de verbindingssuccesverwerkingsfunctie, de callback zal twee parameters doorgeven, de eerste parameter is de ontvangen</font></font><a href="../../object/ifs/websocket.md.html" class="notranslate">WebSocket</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Object, de tweede parameter is de handshake</font></font><a href="../../object/ifs/httprequest.md.html" class="notranslate">HttpRequest</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">voorwerp</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">retour resultaat:</font></font></p>
 <ul>
@@ -273,7 +275,7 @@ conn.onmessage = <span class="hljs-function"><span class="hljs-params">e</span> 
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Oproepparameters:</font></font></p>
 <ul>
 <li><span class="notranslate">opts</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Object, verbindingsopties, standaard is {}</font></font></li>
-<li><span class="notranslate">accept</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Functie, de verbindingssuccesverwerkingsfunctie, de callback zal twee parameters doorgeven, de eerste parameter is de ontvangen</font></font><a href="../../object/ifs/websocket.md.html" class="notranslate">WebSocket</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Object, de tweede parameter is de handdruk</font></font><a href="../../object/ifs/httprequest.md.html" class="notranslate">HttpRequest</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">voorwerp</font></font></li>
+<li><span class="notranslate">accept</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: Functie, de verbindingssuccesverwerkingsfunctie, de callback zal twee parameters doorgeven, de eerste parameter is de ontvangen</font></font><a href="../../object/ifs/websocket.md.html" class="notranslate">WebSocket</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Object, de tweede parameter is de handshake</font></font><a href="../../object/ifs/httprequest.md.html" class="notranslate">HttpRequest</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">voorwerp</font></font></li>
 </ul>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">retour resultaat:</font></font></p>
 <ul>
@@ -305,7 +307,7 @@ conn.onmessage = <span class="hljs-function"><span class="hljs-params">e</span> 
 </code></pre>
 <hr>
 <h3 id="CLOSE" class="notranslate">CLOSE</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Geef websocket-berichttype 8 op, de verbinding is gesloten</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Geef websocket-berichttype 8 op, de verbinding is verbroken</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ws.CLOSE = <span class="hljs-number">8</span>;
 </code></pre>
 <hr>
@@ -325,7 +327,7 @@ conn.onmessage = <span class="hljs-function"><span class="hljs-params">e</span> 
 </code></pre>
 <hr>
 <h3 id="OPEN" class="notranslate">OPEN</h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">specificeren</font></font><a href="../../object/ifs/websocket.md.html" class="notranslate">WebSocket</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">staat, die de open staat aangeeft</font></font></strong></p>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">specificeren</font></font><a href="../../object/ifs/websocket.md.html" class="notranslate">WebSocket</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">stand, geopend</font></font></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> ws.OPEN = <span class="hljs-number">1</span>;
 </code></pre>
 <hr>
