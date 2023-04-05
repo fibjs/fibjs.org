@@ -213,7 +213,7 @@
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">inflate: データを解凍します。</font></font></li>
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">gzip: gzip 圧縮形式。</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">zlib を使用する前に、使用する圧縮アルゴリズムに従っていずれかを選択する必要があります。</font><font style="vertical-align: inherit;">zlib の定数定義モジュール</font></font><code>constants</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">内の。</font><font style="vertical-align: inherit;">たとえば、モジュール宣言には deflate 圧縮アルゴリズムを使用します。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">zlib を使用する前に、使用する圧縮アルゴリズムに従っていずれかを選択する必要があります。</font><font style="vertical-align: inherit;">zlib の定数を参照して、対応する圧縮アルゴリズムを選択できます。</font><font style="vertical-align: inherit;">たとえば、モジュール宣言には deflate 圧縮アルゴリズムを使用します。</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -234,13 +234,13 @@
     BEST_SPEED,<font></font>
     BEST_COMPRESSION,<font></font>
     DEFAULT_COMPRESSION<font></font>
-} = <span class="hljs-built_in">require</span>(<span class="hljs-string">'constants'</span>); <span class="hljs-comment">// 省略引用常量的方法</span><font></font>
+} = <span class="hljs-built_in">require</span>(<span class="hljs-string">'zlib'</span>);<font></font>
 <font></font>
-<span class="hljs-comment">// 压缩数据</span>
+<span class="hljs-comment">// compress data</span>
 <span class="hljs-keyword">const</span> deflated = zlib.deflate(<span class="hljs-string">'hello, world'</span>, BEST_SPEED);
 <span class="hljs-built_in">console</span>.log(deflated.toString());<font></font>
 <font></font>
-<span class="hljs-comment">// 解压数据</span>
+<span class="hljs-comment">// decompress data</span>
 <span class="hljs-keyword">const</span> inflated = zlib.inflate(deflated);
 <span class="hljs-built_in">console</span>.log(inflated.toString());
 </code></pre>

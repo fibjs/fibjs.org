@@ -137,19 +137,19 @@ var server = new http.Server(8080, {
   '/ws': ws.upgrade(function(conn, req) {
     console.log('a client connected.');
 
-    // 监听消息事件
+    // listening for message events
     conn.onmessage = function(evt) {
       console.log('received message: ', evt.data);
-      // echo 消息回客户端
+      // echo the message back to client
       conn.send('Server: ' + evt.data);
     };
 
-    // 监听关闭事件
+    // listening for close events
     conn.onclose = function(code, reason) {
       console.log('closed.');
     };
 
-    // 监听错误事件
+    // listening for error events
     conn.onerror = function(err) {
       console.log(err);
     };
@@ -170,28 +170,28 @@ var ws = require("ws");
 var http = require("http");
 var db = require("db");
 
-// 创建一个 MySQL 数据库连接对象
+// open a mysql connection
 var mysql = db.openMySQL("mysql://root:password@localhost/dbname");
 
 var server = new http.Server(8080, {
   "/ws": ws.upgrade(function(conn, req) {
     console.log("a client connected.");
 
-    // 监听消息事件
+    // listening for message events
     conn.onmessage = function(evt) {
       console.log("received message: ", evt.data);
 
-      // 查询数据库，返回满足条件的记录
+      // use execute to query the data
       var rs = mysql.execute("SELECT * FROM user WHERE name=?", evt.data.toString());
       conn.send(JSON.stringify(rs));
     };
 
-    // 监听关闭事件
+    // listening for close events
     conn.onclose = function(code, reason) {
       console.log("closed.");
     };
 
-    // 监听错误事件
+    // listening for error events
     conn.onerror = function(err) {
       console.log(err);
     };
@@ -212,25 +212,25 @@ server.start();
 ```JavaScript
 var ws = require('ws');
 
-// 创建 WebSocket 实例
+// create a WebSocket object and connect to ws://localhost:8080/ws
 var conn = new ws.Socket('ws://localhost:8080/ws');
 
-// 监听打开事件
+// listening for open events
 conn.onopen = function() {
   conn.send('hello');
 }
 
-// 监听消息事件
+// listening for message events
 conn.onmessage = function(evt) {
   console.log('received message:', evt.data);
 }
 
-// 监听关闭事件
+// listening for close events
 conn.onclose = function(code, reason) {
   console.log('closed.');
 }
 
-// 监听错误事件
+// listening for error events
 conn.onerror = function(err) {
   console.log(err);
 }

@@ -220,7 +220,7 @@
 <span class="hljs-keyword">var</span> xmlStr = fs.readFile(<span class="hljs-string">'test.xml'</span>);
 <span class="hljs-keyword">var</span> xmlDoc = xml.parse(xmlStr);<font></font>
 <font></font>
-<span class="hljs-built_in">console</span>.log(xmlDoc.documentElement.nodeName); <span class="hljs-comment">// 输出 xml 根节点名称</span>
+<span class="hljs-built_in">console</span>.log(xmlDoc.documentElement.nodeName); <span class="hljs-comment">// output root node name</span>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在上面的代碼中，我們使用</font></font><a href="fs.md.html" class="notranslate">fs</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模塊的readFile 方法讀取了一個xml 文件，然後使用xml 模塊的parse 方法解析該xml 文件，並返回一個</font></font><a href="../../object/ifs/xmldocument.md.html" class="notranslate">XmlDocument</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">對象xmlDoc。</font><font style="vertical-align: inherit;">然後，我們就可以通過xmlDoc.documentElement 訪問xml 文檔的根元素了。</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">要解析html 文件，你只需稍微修改一下代碼：</font></font></p>
@@ -236,7 +236,7 @@
 <span class="hljs-keyword">var</span> htmlStr = fs.readFile(<span class="hljs-string">'test.html'</span>);
 <span class="hljs-keyword">var</span> xmlDoc = xml.parse(htmlStr, <span class="hljs-string">'text/html'</span>);<font></font>
 <font></font>
-<span class="hljs-built_in">console</span>.log(xmlDoc.documentElement.nodeName); <span class="hljs-comment">// 输出 html 根节点名称</span>
+<span class="hljs-built_in">console</span>.log(xmlDoc.documentElement.nodeName); <span class="hljs-comment">// output root node name</span>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在這裡，我們同樣使用了</font></font><a href="fs.md.html" class="notranslate">fs</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模塊的readFile 方法讀取了一個html 文件，但我們在調用xml 模塊的parse 方法時指定了第二個參數為'text/html'，這樣xml 模塊就會按照html 的語法規則解析文件。</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">解析後的Xml 文檔對像都是</font></font><a href="../../object/ifs/xmldocument.md.html" class="notranslate">XmlDocument</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">類型，其屬性和方法都可以參考xml 對像模型（DOM）進行操作。</font></font></p>

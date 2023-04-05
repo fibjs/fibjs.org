@@ -225,10 +225,10 @@
 
 <span class="hljs-keyword">const</span> url = <span class="hljs-string">'https://www.example.com/path/to/page?foo=bar&amp;baz=qux'</span>;
 
-<span class="hljs-keyword">const</span> search = <span class="hljs-keyword">new</span> URL(url).search; <span class="hljs-comment">// 获取 URL 中的查询参数部分</span>
-<span class="hljs-keyword">const</span> query = querystring.parse(search.slice(<span class="hljs-number">1</span>)); <span class="hljs-comment">// 解析查询参数为对象</span>
+<span class="hljs-keyword">const</span> search = <span class="hljs-keyword">new</span> URL(url).search; <span class="hljs-comment">// return '?foo=bar&amp;baz=qux'</span>
+<span class="hljs-keyword">const</span> query = querystring.parse(search.slice(<span class="hljs-number">1</span>)); <span class="hljs-comment">// parse query string</span>
 
-<span class="hljs-built_in">console</span>.log(query); <span class="hljs-comment">// 输出 { foo: 'bar', baz: 'qux' }</span>
+<span class="hljs-built_in">console</span>.log(query); <span class="hljs-comment">// output { foo: 'bar', baz: 'qux' }</span>
 </code></pre>
 <p>以上代码先获取了一个 URL，然后从中提取出查询参数部分，并使用 <code>querystring.parse()</code> 函数将其解析为对象，最后将对象打印出来。</p>
 <p>接下来，示例说明如何使用 <code>querystring</code> 模块将对象序列化为 URL 查询参数字符串：</p>
@@ -250,7 +250,7 @@
 
 <span class="hljs-keyword">const</span> query = querystring.stringify(obj);
 
-<span class="hljs-built_in">console</span>.log(query); <span class="hljs-comment">// 输出 "foo=bar&amp;baz=qux"</span>
+<span class="hljs-built_in">console</span>.log(query); <span class="hljs-comment">// output "foo=bar&amp;baz=qux"</span>
 </code></pre>
 <p>以上代码中，首先定义了一个对象，然后使用 <code>querystring.stringify()</code> 函数将其序列化为 URL 查询参数字符串，最后将字符串打印出来。</p>
 <p>可以发现，使用 <code>querystring</code> 模块可以方便地对 URL 查询参数进行解析和序列化，减少了对字符串的繁琐处理，提高了代码的可读性和可维护性。</p>

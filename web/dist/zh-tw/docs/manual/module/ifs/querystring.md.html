@@ -225,10 +225,10 @@
 <font></font>
 <span class="hljs-keyword">const</span> url = <span class="hljs-string">'https://www.example.com/path/to/page?foo=bar&amp;baz=qux'</span>;<font></font>
 <font></font>
-<span class="hljs-keyword">const</span> search = <span class="hljs-keyword">new</span> URL(url).search; <span class="hljs-comment">// 获取 URL 中的查询参数部分</span>
-<span class="hljs-keyword">const</span> query = querystring.parse(search.slice(<span class="hljs-number">1</span>)); <span class="hljs-comment">// 解析查询参数为对象</span><font></font>
+<span class="hljs-keyword">const</span> search = <span class="hljs-keyword">new</span> URL(url).search; <span class="hljs-comment">// return '?foo=bar&amp;baz=qux'</span>
+<span class="hljs-keyword">const</span> query = querystring.parse(search.slice(<span class="hljs-number">1</span>)); <span class="hljs-comment">// parse query string</span><font></font>
 <font></font>
-<span class="hljs-built_in">console</span>.log(query); <span class="hljs-comment">// 输出 { foo: 'bar', baz: 'qux' }</span>
+<span class="hljs-built_in">console</span>.log(query); <span class="hljs-comment">// output { foo: 'bar', baz: 'qux' }</span>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以上代碼先獲取了一個URL，然後從中提取出查詢參數部分，並使用 </font></font><code>querystring.parse()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 函數將其解析為對象，最後將對像打印出來。</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">接下來，示例說明如何使用 </font></font><code>querystring</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 模塊將對象序列化為URL 查詢參數字符串：</font></font></p>
@@ -250,7 +250,7 @@
 <font></font>
 <span class="hljs-keyword">const</span> query = querystring.stringify(obj);<font></font>
 <font></font>
-<span class="hljs-built_in">console</span>.log(query); <span class="hljs-comment">// 输出 "foo=bar&amp;baz=qux"</span>
+<span class="hljs-built_in">console</span>.log(query); <span class="hljs-comment">// output "foo=bar&amp;baz=qux"</span>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以上代碼中，首先定義了一個對象，然後使用 </font></font><code>querystring.stringify()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 函數將其序列化為URL 查詢參數字符串，最後將字符串打印出來。</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可以發現，使用 </font></font><code>querystring</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 模塊可以方便地對URL 查詢參數進行解析和序列化，減少了對字符串的繁瑣處理，提高了代碼的可讀性和可維護性。</font></font></p>

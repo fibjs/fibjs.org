@@ -7,14 +7,13 @@ const mq = require('mq')
 
 const rt = new mq.Routing();
 
-// 使得 routes 支持 *.fibjs.org 解析
+// support *.fibjs.org in Routing
 rt.host('*.fibjs.org', ...)
-// 使得 routes 支持 api.fibjs.org 解析
+// support api.fibjs.org in Routing
 rt.host('api.fibjs.org', ...)
-// 使得 routes 支持 www.fibjs.org, other.fibjs.org, *.fibjs.org 解析
+// support fibjs.org in Routing
 rt.host('fibjs.org', ...)
 
-// `rt.host(...args)` 实际上是 `rt.append('host', ...args)` 的别名
 rt.append('host', 'fibjs.org', ...)
 ```
 
@@ -32,7 +31,7 @@ const mq = require('mq')
 const http = require('http')
 
 const fileRoutes = new mq.Routing();
-// 对域名 file.fibjs.org 的请求, 以 fileHandler 响应
+// support file.fibjs.org in Routing
 fileRoutes.host('file.fibjs.org', http.fileHandler(FILE_DIR))
 ```
 

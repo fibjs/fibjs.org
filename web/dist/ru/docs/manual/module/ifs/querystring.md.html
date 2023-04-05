@@ -225,10 +225,10 @@
 <font></font>
 <span class="hljs-keyword">const</span> url = <span class="hljs-string">'https://www.example.com/path/to/page?foo=bar&amp;baz=qux'</span>;<font></font>
 <font></font>
-<span class="hljs-keyword">const</span> search = <span class="hljs-keyword">new</span> URL(url).search; <span class="hljs-comment">// 获取 URL 中的查询参数部分</span>
-<span class="hljs-keyword">const</span> query = querystring.parse(search.slice(<span class="hljs-number">1</span>)); <span class="hljs-comment">// 解析查询参数为对象</span><font></font>
+<span class="hljs-keyword">const</span> search = <span class="hljs-keyword">new</span> URL(url).search; <span class="hljs-comment">// return '?foo=bar&amp;baz=qux'</span>
+<span class="hljs-keyword">const</span> query = querystring.parse(search.slice(<span class="hljs-number">1</span>)); <span class="hljs-comment">// parse query string</span><font></font>
 <font></font>
-<span class="hljs-built_in">console</span>.log(query); <span class="hljs-comment">// 输出 { foo: 'bar', baz: 'qux' }</span>
+<span class="hljs-built_in">console</span>.log(query); <span class="hljs-comment">// output { foo: 'bar', baz: 'qux' }</span>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Приведенный выше код сначала получает URL-адрес, затем извлекает из него часть параметра запроса, использует </font></font><code>querystring.parse()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">функцию для его анализа в объект и, наконец, распечатывает объект.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Далее пример того, как использовать </font></font><code>querystring</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">модуль для сериализации объекта в строку параметра запроса URL:</font></font></p>
@@ -250,7 +250,7 @@
 <font></font>
 <span class="hljs-keyword">const</span> query = querystring.stringify(obj);<font></font>
 <font></font>
-<span class="hljs-built_in">console</span>.log(query); <span class="hljs-comment">// 输出 "foo=bar&amp;baz=qux"</span>
+<span class="hljs-built_in">console</span>.log(query); <span class="hljs-comment">// output "foo=bar&amp;baz=qux"</span>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">В приведенном выше коде сначала определяется объект, затем </font></font><code>querystring.stringify()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">функция его сериализации в строку параметра запроса URL, и, наконец, строка выводится на печать.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Можно обнаружить, что параметры запроса URL можно легко разобрать и сериализовать с помощью </font></font><code>querystring</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">модуля , который уменьшает громоздкую обработку строк и улучшает читаемость и удобство сопровождения кода.</font></font></p>

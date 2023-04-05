@@ -225,10 +225,10 @@
 <font></font>
 <span class="hljs-keyword">const</span> url = <span class="hljs-string">'https://www.example.com/path/to/page?foo=bar&amp;baz=qux'</span>;<font></font>
 <font></font>
-<span class="hljs-keyword">const</span> search = <span class="hljs-keyword">new</span> URL(url).search; <span class="hljs-comment">// 获取 URL 中的查询参数部分</span>
-<span class="hljs-keyword">const</span> query = querystring.parse(search.slice(<span class="hljs-number">1</span>)); <span class="hljs-comment">// 解析查询参数为对象</span><font></font>
+<span class="hljs-keyword">const</span> search = <span class="hljs-keyword">new</span> URL(url).search; <span class="hljs-comment">// return '?foo=bar&amp;baz=qux'</span>
+<span class="hljs-keyword">const</span> query = querystring.parse(search.slice(<span class="hljs-number">1</span>)); <span class="hljs-comment">// parse query string</span><font></font>
 <font></font>
-<span class="hljs-built_in">console</span>.log(query); <span class="hljs-comment">// 输出 { foo: 'bar', baz: 'qux' }</span>
+<span class="hljs-built_in">console</span>.log(query); <span class="hljs-comment">// output { foo: 'bar', baz: 'qux' }</span>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">위의 코드는 먼저 URL을 얻은 다음 여기에서 쿼리 매개 변수 부분을 추출하고 </font></font><code>querystring.parse()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">함수를 개체로 구문 분석하고 마지막으로 개체를 인쇄합니다.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">다음은 </font></font><code>querystring</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">모듈을 .</font></font></p>
@@ -250,7 +250,7 @@
 <font></font>
 <span class="hljs-keyword">const</span> query = querystring.stringify(obj);<font></font>
 <font></font>
-<span class="hljs-built_in">console</span>.log(query); <span class="hljs-comment">// 输出 "foo=bar&amp;baz=qux"</span>
+<span class="hljs-built_in">console</span>.log(query); <span class="hljs-comment">// output "foo=bar&amp;baz=qux"</span>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">위의 코드에서 개체가 먼저 정의된 다음 </font></font><code>querystring.stringify()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">함수를 URL 쿼리 매개 변수 문자열로 직렬화하고 마지막으로 문자열이 인쇄됩니다.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">URL 쿼리 매개변수는 </font></font><code>querystring</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">모듈을 , 이는 번거로운 문자열 처리를 줄이고 코드의 가독성과 유지 관리성을 향상시킵니다.</font></font></p>

@@ -221,8 +221,8 @@
 } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'multibase'</span>);<font></font>
 <font></font>
 <span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
-<span class="hljs-keyword">const</span> data = crypto.randomBytes(<span class="hljs-number">10</span>); <span class="hljs-comment">// 生成 10 Bytes 的二进制数据</span>
-<span class="hljs-keyword">const</span> encodedStr = encode(data, <span class="hljs-string">'base32'</span>); <span class="hljs-comment">// 将数据编码为 base32</span>
+<span class="hljs-keyword">const</span> data = crypto.randomBytes(<span class="hljs-number">10</span>); <span class="hljs-comment">// generate 10 bytes random data</span>
+<span class="hljs-keyword">const</span> encodedStr = encode(data, <span class="hljs-string">'base32'</span>); <span class="hljs-comment">// encode data to base32 string</span>
 <span class="hljs-built_in">console</span>.log(encodedStr); <span class="hljs-comment">// ==&gt; "bpgwnvztqmlbo5fy"</span>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Decodifique la cadena anterior a datos binarios sin procesar:</font></font></p>
@@ -235,7 +235,7 @@
     decode<font></font>
 } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'multibase'</span>);<font></font>
 <font></font>
-<span class="hljs-keyword">const</span> data = decode(<span class="hljs-string">'bpgwnvztqmlbo5fy'</span>, <span class="hljs-string">'base32'</span>); <span class="hljs-comment">// 将字符串解码为原始的二进制数据</span>
+<span class="hljs-keyword">const</span> data = decode(<span class="hljs-string">'bpgwnvztqmlbo5fy'</span>, <span class="hljs-string">'base32'</span>); <span class="hljs-comment">// decode base32 string to data</span>
 <span class="hljs-built_in">console</span>.log(data); <span class="hljs-comment">// ==&gt; &lt;Buffer a7 55 3d 33 ca 97 ac 0d aa 40&gt;</span>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Como puede ver, a través de multibase, codificamos los datos binarios originales como</font></font><a href="base32.md.html" class="notranslate">base32</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">y puede decodificar esta cadena en datos binarios sin procesar.</font></font></p>

@@ -242,11 +242,11 @@
 11
 12</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);<font></font>
 <font></font>
-<span class="hljs-comment">// 读取 x509 证书</span>
+<span class="hljs-comment">// load the cert</span>
 <span class="hljs-keyword">const</span> cert = crypto.loadCert(<span class="hljs-string">'server.crt'</span>);
 <span class="hljs-built_in">console</span>.log(cert.subject);<font></font>
 <font></font>
-<span class="hljs-comment">// 创建 x509 证书请求</span>
+<span class="hljs-comment">// create x509 certificate request</span>
 <span class="hljs-keyword">let</span> pky = crypto.PKey.from(private_pem);
 <span class="hljs-keyword">let</span> req = <span class="hljs-keyword">new</span> crypto.X509Req(<span class="hljs-string">"CN=localhost,O=fibjs"</span>, pky);
 <span class="hljs-keyword">let</span> derReq = req.der();
@@ -289,10 +289,10 @@
 3
 4
 5</div><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
-<span class="hljs-keyword">const</span> ks = pky.pem();    <span class="hljs-comment">// 导出私钥文本</span>
-<span class="hljs-keyword">const</span> cs = cert.pem(); <span class="hljs-comment">// 导出证书文本</span>
-fs.writeFile(<span class="hljs-string">'mycert.key'</span>, ks); <span class="hljs-comment">// 保存私钥</span>
-fs.writeFile(<span class="hljs-string">'mycert.pem'</span>, cs); <span class="hljs-comment">// 保存证书</span>
+<span class="hljs-keyword">const</span> ks = pky.pem();    <span class="hljs-comment">// export pem format data of the private key</span>
+<span class="hljs-keyword">const</span> cs = cert.pem(); <span class="hljs-comment">// export pem format data of the cert</span>
+fs.writeFile(<span class="hljs-string">'mycert.key'</span>, ks); <span class="hljs-comment">// save the key</span>
+fs.writeFile(<span class="hljs-string">'mycert.pem'</span>, cs); <span class="hljs-comment">// save the cert</span>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El codi anterior completa tot el procés des de la generació de la clau privada fins a l'emmagatzematge del certificat autofirmat. </font><font style="vertical-align: inherit;">Aquest certificat es pot utilitzar per provar i desenvolupar aplicacions relacionades amb la seguretat.</font></font></p>
 <h3 id="加载证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">certificat de càrrega</font></font></h3>
@@ -315,8 +315,8 @@ fs.writeFile(<span class="hljs-string">'mycert.pem'</span>, cs); <span class="hl
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">El certificat x509 emmagatzema la clau pública i la informació de la signatura xifrada, de manera que quan s'utilitza el certificat, la clau pública del certificat s'ha d'analitzar per facilitar el xifratge i el desxifrat de dades. </font><font style="vertical-align: inherit;">La classe PKey converteix una cadena de clau pública/privada en format PEM en un objecte de clau pública/privada. </font><font style="vertical-align: inherit;">El codi següent es pot utilitzar per llegir una cadena de clau pública/privada en format PEM i crear un objecte PKey:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">const</span> privateKey = fs.readFile(<span class="hljs-string">'private.pem'</span>); <span class="hljs-comment">// 读取 PEM 格式的私钥</span>
-<span class="hljs-keyword">const</span> pKey = crypto.PKey.from(privateKey); <span class="hljs-comment">// 生成 PKey 对象</span>
+2</div><span class="hljs-keyword">const</span> privateKey = fs.readFile(<span class="hljs-string">'private.pem'</span>); <span class="hljs-comment">// load the data from file</span>
+<span class="hljs-keyword">const</span> pKey = crypto.PKey.from(privateKey); <span class="hljs-comment">// load from pem format data</span>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">O utilitzeu crypto.loadPKey per llegir directament:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
@@ -341,22 +341,16 @@ fs.writeFile(<span class="hljs-string">'mycert.pem'</span>, cs); <span class="hl
 11
 12
 13
-14
-15
-16
-17</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);<font></font>
+14</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);<font></font>
 <font></font>
-<span class="hljs-comment">// 读取证书文件，生成 X509Cert 对象</span>
 <span class="hljs-keyword">const</span> cert = crypto.loadCert(<span class="hljs-string">'path/to/cert.pem'</span>);<font></font>
 <font></font>
-<span class="hljs-comment">// 获取证书基本信息</span>
 <span class="hljs-keyword">const</span> subjectName = cert.subject;
 <span class="hljs-keyword">const</span> issuerName = cert.issuer;
 <span class="hljs-keyword">const</span> validFromDate = cert.notBefore;
 <span class="hljs-keyword">const</span> expirationDate = cert.notAfter;
 <span class="hljs-keyword">const</span> serialNumber = cert.serial;<font></font>
 <font></font>
-<span class="hljs-comment">// 打印证书基本信息</span>
 <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`证书主题名称: <span class="hljs-subst">${subjectName}</span>`</span>);
 <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`证书颁发者名称: <span class="hljs-subst">${issuerName}</span>`</span>);
 <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`证书有效期: <span class="hljs-subst">${validFromDate.toLocaleString()}</span> ~ <span class="hljs-subst">${expirationDate.toLocaleString()}</span>`</span>);
@@ -372,16 +366,10 @@ fs.writeFile(<span class="hljs-string">'mycert.pem'</span>, cs); <span class="hl
 6
 7
 8
-9
-10
-11
-12</div><span class="hljs-comment">// 读取 CA 证书文件，生成 X509Cert 对象</span>
-<span class="hljs-keyword">const</span> caCert = crypto.loadCert(<span class="hljs-string">'path/to/ca.crt'</span>);<font></font>
+9</div><span class="hljs-keyword">const</span> caCert = crypto.loadCert(<span class="hljs-string">'path/to/ca.crt'</span>);<font></font>
 <font></font>
-<span class="hljs-comment">// 验证证书的合法性</span>
 <span class="hljs-keyword">const</span> verifyResult = cert.verify(caCert);<font></font>
 <font></font>
-<span class="hljs-comment">// 验证结果</span>
 <span class="hljs-keyword">if</span> (verifyResult !== <span class="hljs-number">0</span>) {
   <span class="hljs-built_in">console</span>.error(<span class="hljs-string">'证书验证失败'</span>, verifyResult);<font></font>
 } <span class="hljs-keyword">else</span> {
@@ -401,11 +389,11 @@ fs.writeFile(<span class="hljs-string">'mycert.pem'</span>, cs); <span class="hl
 8
 9
 10</div><span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">"http"</span>);
-<span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">"crypto"</span>);
-<span class="hljs-comment">// 加载证书和密钥文件</span>
+<span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">"crypto"</span>);<font></font>
+<font></font>
 <span class="hljs-keyword">const</span> cert = crypto.loadCert(<span class="hljs-string">"server.crt"</span>);
-<span class="hljs-keyword">const</span> key = crypto.loadPKey(<span class="hljs-string">"server.key"</span>);
-<span class="hljs-comment">//创建 https 服务器并启动</span>
+<span class="hljs-keyword">const</span> key = crypto.loadPKey(<span class="hljs-string">"server.key"</span>);<font></font>
+<font></font>
 <span class="hljs-keyword">const</span> server = <span class="hljs-keyword">new</span> http.HttpsServer(cert, key, <span class="hljs-number">8443</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req</span>) </span>{<font></font>
     req.response.write(<span class="hljs-string">`Hello, fibjs!`</span>);<font></font>
 });<font></font>

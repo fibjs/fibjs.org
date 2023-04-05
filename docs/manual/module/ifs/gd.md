@@ -6,14 +6,14 @@ gd 模块是对图像进行处理的模块，提供了创建、操作、存储�
 ```JavaScript
 var gd = require('gd');
 
-var img = gd.create(440, 240); // 创建一张 440x240 的 TRUECOLOR 图像
+var img = gd.create(440, 240); // create a 440x240 truecolor image
 
-var r = img.colorAllocate(255, 0, 0); // 分配颜色
+var r = img.colorAllocate(255, 0, 0); // allocate two colors
 var b = img.colorAllocate(0, 0, 255);
-img.rectangle(40, 40, 50, 50, r); // 绘制一个矩形
-img.filledEllipse(80, 100, 30, 50, b); // 填充一个椭圆
+img.rectangle(40, 40, 50, 50, r); // draw a rectangle
+img.filledEllipse(80, 100, 30, 50, b); // fill a ellipse
 
-var data = img.getData(gd.PNG); // 将图像保存为 PNG 格式
+var data = img.getData(gd.PNG); // save image as PNG data
 ```
 
 在这个示例中，我们首先使用 create() 方法创建一张 440x240 的 TRUECOLOR 图像，并用 colorAllocate() 方法分配了两种颜色，接着使用 rectangle() 方法绘制矩形，在矩形的右上方绘制了一个填充的椭圆，最后使用 getData() 方法将图像保存为 PNG 格式的二进制数据。

@@ -210,7 +210,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Podemos usalo do seguinte xeito:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">const</span> util = <span class="hljs-built_in">require</span>(<span class="hljs-string">'util'</span>)
-<span class="hljs-keyword">const</span> c = <span class="hljs-keyword">new</span> util.LruCache(<span class="hljs-number">10</span>, <span class="hljs-number">100</span>) <span class="hljs-comment">// 缓存最大尺寸为10，元素失效时间为100ms</span>
+<span class="hljs-keyword">const</span> c = <span class="hljs-keyword">new</span> util.LruCache(<span class="hljs-number">10</span>, <span class="hljs-number">100</span>) <span class="hljs-comment">// create a LruCache instance with size 10 and timeout 100ms</span>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Entre eles, set() é unha interface para establecer pares clave-valor:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>LruCache.set(<span class="hljs-built_in">String</span> name, Value value);
@@ -231,16 +231,16 @@
 12
 13
 14
-15</div><span class="hljs-keyword">var</span> c = <span class="hljs-keyword">new</span> util.LruCache(<span class="hljs-number">10</span>, <span class="hljs-number">1000</span>); <span class="hljs-comment">// 最多缓存 10 个值，1 秒之后数据过期</span><font></font>
+15</div><span class="hljs-keyword">var</span> c = <span class="hljs-keyword">new</span> util.LruCache(<span class="hljs-number">10</span>, <span class="hljs-number">1000</span>); <span class="hljs-comment">// create a LruCache instance with size 10 and timeout 1000ms</span><font></font>
 <font></font>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">get_data</span>(<span class="hljs-params">name</span>) </span>{
-    <span class="hljs-comment">// 从其他数据源查询数据，如数据库、缓存、文件等</span>
+    <span class="hljs-comment">// return data from backend</span>
     <span class="hljs-comment">// ...</span>
     <span class="hljs-keyword">var</span> data = {
         <span class="hljs-string">'name'</span>: name,
         <span class="hljs-string">'value'</span>: <span class="hljs-built_in">Math</span>.random()<font></font>
     };<font></font>
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'update data: '</span> + <span class="hljs-built_in">JSON</span>.stringify(data)); <span class="hljs-comment">// 记录缓存更新的信息</span>
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'update data: '</span> + <span class="hljs-built_in">JSON</span>.stringify(data)); <span class="hljs-comment">// output infomation to console</span>
     <span class="hljs-keyword">return</span> data;<font></font>
 }<font></font>
 <font></font>
@@ -251,8 +251,8 @@
 <pre><code class="lang-sh"><div class="line-numbers">1
 2
 3</div>update data: {<span class="hljs-string">"name"</span>:<span class="hljs-string">"a"</span>,<span class="hljs-string">"value"</span>:0.4019124971556616}<font></font>
-{<span class="hljs-string">"name"</span>:<span class="hljs-string">"a"</span>,<span class="hljs-string">"value"</span>:0.4019124971556616} // 第一次查询需要缓存数据，会调用 updater 函数<font></font>
-{<span class="hljs-string">"name"</span>:<span class="hljs-string">"a"</span>,<span class="hljs-string">"value"</span>:0.4019124971556616} // 第二次查询直接从缓存中获取数据，不需要再调用 updater 函数
+{<span class="hljs-string">"name"</span>:<span class="hljs-string">"a"</span>,<span class="hljs-string">"value"</span>:0.4019124971556616} // updater will be called to update cache data when cache is empty<font></font>
+{<span class="hljs-string">"name"</span>:<span class="hljs-string">"a"</span>,<span class="hljs-string">"value"</span>:0.4019124971556616} // updater will not be called when cache is not empty
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cando use LruCache específicamente, recoméndase aos desenvolvedores que sigan as seguintes mellores prácticas:</font></font></p>
 <ul>

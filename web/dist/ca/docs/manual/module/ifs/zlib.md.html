@@ -213,7 +213,7 @@
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">inflar: descomprimir dades;</font></font></li>
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">gzip: format de compressió gzip.</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Abans d'utilitzar zlib, heu de triar un d'ells segons l'algorisme de compressió que voleu utilitzar. </font><font style="vertical-align: inherit;">Podeu consultar les constants </font></font><code>constants</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">del per seleccionar l'algorisme de compressió corresponent. </font><font style="vertical-align: inherit;">Per exemple, utilitzem l'algorisme de compressió desinflat per a declaracions de mòduls:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Abans d'utilitzar zlib, heu de triar un d'ells segons l'algorisme de compressió que voleu utilitzar. </font><font style="vertical-align: inherit;">Podeu consultar les constants de zlib per seleccionar l'algorisme de compressió corresponent. </font><font style="vertical-align: inherit;">Per exemple, utilitzem l'algorisme de compressió desinflat per a declaracions de mòduls:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -234,13 +234,13 @@
     BEST_SPEED,<font></font>
     BEST_COMPRESSION,<font></font>
     DEFAULT_COMPRESSION<font></font>
-} = <span class="hljs-built_in">require</span>(<span class="hljs-string">'constants'</span>); <span class="hljs-comment">// 省略引用常量的方法</span><font></font>
+} = <span class="hljs-built_in">require</span>(<span class="hljs-string">'zlib'</span>);<font></font>
 <font></font>
-<span class="hljs-comment">// 压缩数据</span>
+<span class="hljs-comment">// compress data</span>
 <span class="hljs-keyword">const</span> deflated = zlib.deflate(<span class="hljs-string">'hello, world'</span>, BEST_SPEED);
 <span class="hljs-built_in">console</span>.log(deflated.toString());<font></font>
 <font></font>
-<span class="hljs-comment">// 解压数据</span>
+<span class="hljs-comment">// decompress data</span>
 <span class="hljs-keyword">const</span> inflated = zlib.inflate(deflated);
 <span class="hljs-built_in">console</span>.log(inflated.toString());
 </code></pre>

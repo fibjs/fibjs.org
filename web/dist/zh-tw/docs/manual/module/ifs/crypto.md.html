@@ -217,7 +217,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在使用加密算法之前，需要先創建一個密鑰對象，比如以下創建一個 </font></font><code>AES</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 密鑰對象的示例：</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
-<span class="hljs-keyword">const</span> key = crypto.randomBytes(<span class="hljs-number">16</span>); <span class="hljs-comment">// 生成 16 字节的随机数作为 AES 密钥</span>
+<span class="hljs-keyword">const</span> key = crypto.randomBytes(<span class="hljs-number">16</span>); <span class="hljs-comment">// generate a 16-byte random key</span>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">接下來，使用 </font></font><code>Cipher</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 對象來對明文進行加密：</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
@@ -226,7 +226,7 @@
 4</div><span class="hljs-keyword">const</span> c = <span class="hljs-keyword">new</span> crypto.Cipher(crypto.AES, crypto.ECB, key);
 <span class="hljs-keyword">const</span> data = <span class="hljs-string">'hello, world'</span>;
 <span class="hljs-keyword">const</span> encrypted = c.encrypt(data).hex();
-<span class="hljs-built_in">console</span>.log(encrypted); <span class="hljs-comment">// 输出加密后的结果</span>
+<span class="hljs-built_in">console</span>.log(encrypted); <span class="hljs-comment">// output encrypted data</span>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以上示例中，創建了一個 </font></font><code>AES</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 加密的 </font></font><code>Cipher</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 對象，使用 </font></font><code>encrypt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 方法對明文進行加密，並返回加密結果。</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">除了對稱加密算法，</font></font><code>crypto</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模塊還可以支持非對稱加密算法和摘要算法。</font><font style="vertical-align: inherit;">比如以下示例是使用 </font></font><code>PKey</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 和 </font></font><code>Digest</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 對象實現SHA256 加密的代碼：</font></font></p>
@@ -235,12 +235,12 @@
 3
 4
 5
-6</div><span class="hljs-keyword">const</span> privateKey = crypto.loadPKey(<span class="hljs-string">'private.pem'</span>); <span class="hljs-comment">// 读取私钥文件</span>
+6</div><span class="hljs-keyword">const</span> privateKey = crypto.loadPKey(<span class="hljs-string">'private.pem'</span>); <span class="hljs-comment">// read private key from file</span>
 <span class="hljs-keyword">const</span> data = <span class="hljs-string">'hello, world'</span>;
 <span class="hljs-keyword">const</span> digest = <span class="hljs-keyword">new</span> crypto.Digest(hash.SHA256);<font></font>
 digest.update(data);<font></font>
 <span class="hljs-keyword">const</span> signature = privateKey.sign(digest.digest());
-<span class="hljs-built_in">console</span>.log(signature); <span class="hljs-comment">// 输出签名结果</span>
+<span class="hljs-built_in">console</span>.log(signature); <span class="hljs-comment">// output signature</span>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在以上示例中，首先讀取了一個私鑰文件，並準備了輸入數據。</font><font style="vertical-align: inherit;">然後，創建了一個SHA256 的 </font></font><code>Digest</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 對象，使用 </font></font><code>update</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 方法把數據加入到Hash 計算中。</font><font style="vertical-align: inherit;">在計算完成後，使用 </font></font><code>privateKey.sign</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 方法進行簽名，並輸出簽名結果。</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">綜上所述，</font></font><code>crypto</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">模塊提供了多種加密算法、摘要算法以及相關對象，這些功能可以幫助我們實現多方面的安全需求，比如對稱和非對稱加密、數字簽名和加密驗證等。</font></font></p>

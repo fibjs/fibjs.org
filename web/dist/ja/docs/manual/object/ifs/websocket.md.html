@@ -246,12 +246,12 @@ svr.start();<font></font>
 12</div><span class="hljs-keyword">var</span> ws = <span class="hljs-built_in">require</span>(<span class="hljs-string">"ws"</span>);<font></font>
 <font></font>
 <span class="hljs-keyword">var</span> conn = <span class="hljs-keyword">new</span> ws.Socket(<span class="hljs-string">"ws://127.0.0.1/ws"</span>);
-<span class="hljs-comment">// WebSocket 连接成功时触发 onopen 事件</span>
+<span class="hljs-comment">// emit open event</span>
 conn.onopen = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"websocket connected"</span>);<font></font>
     conn.send(<span class="hljs-string">"hi"</span>);<font></font>
 };<font></font>
-<span class="hljs-comment">// WebSocket 接收到消息时触发 onmessage 事件</span>
+<span class="hljs-comment">// emit close event</span>
 conn.onmessage = <span class="hljs-function"><span class="hljs-params">evt</span> =&gt;</span> {
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"websocket receive: "</span> + evt.data);<font></font>
 };<font></font>
@@ -383,12 +383,12 @@ conn.onmessage = <span class="hljs-function"><span class="hljs-params">evt</span
 6
 7
 8</div>{
-    <span class="hljs-string">"protocol"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// 指定握手协议，缺省为空</span>
-    <span class="hljs-string">"origin"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// 指定握手时模拟的源，缺省为空</span>
-    <span class="hljs-string">"perMessageDeflate"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 指定是否支持压缩，缺省不支持</span>
-    <span class="hljs-string">"maxPayload"</span>: <span class="hljs-number">67108864</span>, <span class="hljs-comment">// 指定最大数据包尺寸，缺省为 67108864</span>
-    <span class="hljs-string">"httpClient"</span>: hc, <span class="hljs-comment">// 自定义 httpClient 对象，缺省使用全局 httpClient</span>
-    <span class="hljs-string">"headers"</span>: <span class="hljs-comment">// 指定 http(s) 连接时携带的 header，缺省为 {}，</span><font></font>
+    <span class="hljs-string">"protocol"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// specify the sub-protocol, default is ""</span>
+    <span class="hljs-string">"origin"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// specify the origin, default is ""</span>
+    <span class="hljs-string">"perMessageDeflate"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// specify whether to enable permessage-deflate, default is false</span>
+    <span class="hljs-string">"maxPayload"</span>: <span class="hljs-number">67108864</span>, <span class="hljs-comment">// specify the max payload size, default is 64MB</span>
+    <span class="hljs-string">"httpClient"</span>: hc, <span class="hljs-comment">// specify the http client, default is null, use the global http client</span>
+    <span class="hljs-string">"headers"</span>: <span class="hljs-comment">// specify the http headers, default is {}</span><font></font>
 }<font></font>
 </code></pre>
 <h2 id="静态属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">静的プロパティ</font></font></h2>

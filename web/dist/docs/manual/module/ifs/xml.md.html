@@ -220,7 +220,7 @@
 <span class="hljs-keyword">var</span> xmlStr = fs.readFile(<span class="hljs-string">'test.xml'</span>);
 <span class="hljs-keyword">var</span> xmlDoc = xml.parse(xmlStr);
 
-<span class="hljs-built_in">console</span>.log(xmlDoc.documentElement.nodeName); <span class="hljs-comment">// 输出 xml 根节点名称</span>
+<span class="hljs-built_in">console</span>.log(xmlDoc.documentElement.nodeName); <span class="hljs-comment">// output root node name</span>
 </code></pre>
 <p>在上面的代码中，我们使用 <a href=fs.md.html class ="notranslate">fs</a> 模块的 readFile 方法读取了一个 xml 文件，然后使用 xml 模块的 parse 方法解析该 xml 文件，并返回一个 <a href=../../object/ifs/xmldocument.md.html class ="notranslate">XmlDocument</a> 对象 xmlDoc。然后，我们就可以通过 xmlDoc.documentElement 访问 xml 文档的根元素了。</p>
 <p>要解析 html 文件，你只需稍微修改一下代码：</p>
@@ -236,7 +236,7 @@
 <span class="hljs-keyword">var</span> htmlStr = fs.readFile(<span class="hljs-string">'test.html'</span>);
 <span class="hljs-keyword">var</span> xmlDoc = xml.parse(htmlStr, <span class="hljs-string">'text/html'</span>);
 
-<span class="hljs-built_in">console</span>.log(xmlDoc.documentElement.nodeName); <span class="hljs-comment">// 输出 html 根节点名称</span>
+<span class="hljs-built_in">console</span>.log(xmlDoc.documentElement.nodeName); <span class="hljs-comment">// output root node name</span>
 </code></pre>
 <p>在这里，我们同样使用了 <a href=fs.md.html class ="notranslate">fs</a> 模块的 readFile 方法读取了一个 html 文件，但我们在调用 xml 模块的 parse 方法时指定了第二个参数为 ‘text/html’，这样 xml 模块就会按照 html 的语法规则解析文件。</p>
 <p>解析后的 Xml 文档对象都是 <a href=../../object/ifs/xmldocument.md.html class ="notranslate">XmlDocument</a> 类型，其属性和方法都可以参考 xml 对象模型（DOM）进行操作。</p>

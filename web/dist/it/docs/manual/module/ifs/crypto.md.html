@@ -217,7 +217,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Prima di utilizzare l'algoritmo di crittografia, è necessario creare un oggetto chiave, come il seguente esempio di creazione di un oggetto </font></font><code>AES</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">chiave :</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
-<span class="hljs-keyword">const</span> key = crypto.randomBytes(<span class="hljs-number">16</span>); <span class="hljs-comment">// 生成 16 字节的随机数作为 AES 密钥</span>
+<span class="hljs-keyword">const</span> key = crypto.randomBytes(<span class="hljs-number">16</span>); <span class="hljs-comment">// generate a 16-byte random key</span>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Successivamente, utilizza </font></font><code>Cipher</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">l'oggetto per crittografare il testo in chiaro:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
@@ -226,7 +226,7 @@
 4</div><span class="hljs-keyword">const</span> c = <span class="hljs-keyword">new</span> crypto.Cipher(crypto.AES, crypto.ECB, key);
 <span class="hljs-keyword">const</span> data = <span class="hljs-string">'hello, world'</span>;
 <span class="hljs-keyword">const</span> encrypted = c.encrypt(data).hex();
-<span class="hljs-built_in">console</span>.log(encrypted); <span class="hljs-comment">// 输出加密后的结果</span>
+<span class="hljs-built_in">console</span>.log(encrypted); <span class="hljs-comment">// output encrypted data</span>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nell'esempio precedente, viene creato un oggetto </font></font><code>AES</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">crittografato </font></font><code>Cipher</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, il testo in chiaro viene crittografato utilizzando </font></font><code>encrypt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">il metodo e viene restituito il risultato crittografato.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Oltre agli algoritmi di crittografia simmetrica, </font></font><code>crypto</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">il modulo può supportare anche algoritmi di crittografia asimmetrica e algoritmi digest. </font><font style="vertical-align: inherit;">Ad esempio, l'esempio seguente è il codice per implementare la crittografia SHA256 </font><font style="vertical-align: inherit;">utilizzando </font></font><code>PKey</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">e oggetti:</font></font><code>Digest</code><font style="vertical-align: inherit;"></font></p>
@@ -235,12 +235,12 @@
 3
 4
 5
-6</div><span class="hljs-keyword">const</span> privateKey = crypto.loadPKey(<span class="hljs-string">'private.pem'</span>); <span class="hljs-comment">// 读取私钥文件</span>
+6</div><span class="hljs-keyword">const</span> privateKey = crypto.loadPKey(<span class="hljs-string">'private.pem'</span>); <span class="hljs-comment">// read private key from file</span>
 <span class="hljs-keyword">const</span> data = <span class="hljs-string">'hello, world'</span>;
 <span class="hljs-keyword">const</span> digest = <span class="hljs-keyword">new</span> crypto.Digest(hash.SHA256);<font></font>
 digest.update(data);<font></font>
 <span class="hljs-keyword">const</span> signature = privateKey.sign(digest.digest());
-<span class="hljs-built_in">console</span>.log(signature); <span class="hljs-comment">// 输出签名结果</span>
+<span class="hljs-built_in">console</span>.log(signature); <span class="hljs-comment">// output signature</span>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nell'esempio precedente, prima viene letto un file di chiave privata e vengono preparati i dati di input. </font><font style="vertical-align: inherit;">Quindi, viene creato un </font></font><code>Digest</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">oggetto e </font></font><code>update</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">i dati vengono aggiunti al calcolo Hash utilizzando il metodo. </font><font style="vertical-align: inherit;">Una volta completato il calcolo, utilizzare </font></font><code>privateKey.sign</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">il metodo per firmare ed emettere il risultato della firma.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Per riassumere, </font></font><code>crypto</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">il modulo fornisce una varietà di algoritmi di crittografia, algoritmi digest e oggetti correlati.Queste funzioni possono aiutarci a soddisfare vari requisiti di sicurezza, come la crittografia simmetrica e asimmetrica, la firma digitale e la verifica della crittografia.</font></font></p>

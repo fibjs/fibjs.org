@@ -245,12 +245,12 @@
     spawn<font></font>
 } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'child_process'</span>);<font></font>
 <font></font>
-<span class="hljs-comment">// 子进程使用父进程的 stdio。</span>
+<span class="hljs-comment">// child process uses parent's stdio</span>
 spawn(<span class="hljs-string">'prg'</span>, [], {
     <span class="hljs-attr">stdio</span>: <span class="hljs-string">'inherit'</span><font></font>
 });<font></font>
 <font></font>
-<span class="hljs-comment">// 衍生的子进程只共享 stderr。</span>
+<span class="hljs-comment">// child process uses parent's stderr</span>
 spawn(<span class="hljs-string">'prg'</span>, [], {
     <span class="hljs-attr">stdio</span>: [<span class="hljs-string">'pipe'</span>, <span class="hljs-string">'pipe'</span>, process.stderr]<font></font>
 });<font></font>
@@ -296,14 +296,14 @@ spawn(<span class="hljs-string">'prg'</span>, [], {
 8
 9
 10</div>{
-    <span class="hljs-string">"cwd"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// 子进程的当前的工作目录，缺省使用当前目录</span>
-    <span class="hljs-string">"stdio"</span>: <span class="hljs-built_in">Array</span> | <span class="hljs-built_in">String</span>, <span class="hljs-comment">// 子进程 stdio 配置</span>
-    <span class="hljs-string">"env"</span>: {}, <span class="hljs-comment">// 环境变量的键值对</span>
-    <span class="hljs-string">"detached"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 子进程将会变成一个进程组的领导者，缺省为 false</span>
-    <span class="hljs-string">"uid"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// 设置用户进程的ID</span>
-    <span class="hljs-string">"gid"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// 设置进程组的ID</span>
-    <span class="hljs-string">"windowsVerbatimArguments"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 在 Windows上不执行引号或转义参数。 在 Unix 上被忽略。 当指定外壳且为 CMD 时，此选项将自动设置为true，缺省为 false</span>
-    <span class="hljs-string">"windowsHide"</span>: <span class="hljs-literal">false</span> <span class="hljs-comment">// 隐藏通常在Windows系统上创建的子进程控制台窗口，缺省为 false</span><font></font>
+    <span class="hljs-string">"cwd"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// working directory of the child process, default to current directory</span>
+    <span class="hljs-string">"stdio"</span>: <span class="hljs-built_in">Array</span> | <span class="hljs-built_in">String</span>, <span class="hljs-comment">// working directory of the child process, default to current directory</span>
+    <span class="hljs-string">"env"</span>: {}, <span class="hljs-comment">// key-value pairs of environment variables to add to the child's environment</span>
+    <span class="hljs-string">"detached"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// child process will be a leader of a new process group, default to false</span>
+    <span class="hljs-string">"uid"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// configure the user identity of the process</span>
+    <span class="hljs-string">"gid"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// configure the group identity of the process</span>
+    <span class="hljs-string">"windowsVerbatimArguments"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// do not execute any quote or escape processing on Windows. Ignored on Unix. When specified, the command line string is passed directly to the underlying operating system shell without any processing whatsoever. This is set to true automatically when the shell option is specified and is CMD.</span>
+    <span class="hljs-string">"windowsHide"</span>: <span class="hljs-literal">false</span> <span class="hljs-comment">// hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.</span><font></font>
 }<font></font>
 </code></pre>
 <hr>
@@ -332,14 +332,14 @@ spawn(<span class="hljs-string">'prg'</span>, [], {
 8
 9
 10</div>{
-    <span class="hljs-string">"cwd"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// 子进程的当前的工作目录，缺省使用当前目录</span>
-    <span class="hljs-string">"stdio"</span>: <span class="hljs-built_in">Array</span> | <span class="hljs-built_in">String</span>, <span class="hljs-comment">// 子进程 stdio 配置</span>
-    <span class="hljs-string">"env"</span>: {}, <span class="hljs-comment">// 环境变量的键值对</span>
-    <span class="hljs-string">"detached"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 子进程将会变成一个进程组的领导者，缺省为 false</span>
-    <span class="hljs-string">"uid"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// 设置用户进程的ID</span>
-    <span class="hljs-string">"gid"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// 设置进程组的ID</span>
-    <span class="hljs-string">"windowsVerbatimArguments"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 在 Windows上不执行引号或转义参数。 在 Unix 上被忽略。 当指定外壳且为 CMD 时，此选项将自动设置为true，缺省为 false</span>
-    <span class="hljs-string">"windowsHide"</span>: <span class="hljs-literal">false</span> <span class="hljs-comment">// 隐藏通常在Windows系统上创建的子进程控制台窗口，缺省为 false</span><font></font>
+    <span class="hljs-string">"cwd"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// working directory of the child process, default to current directory</span>
+    <span class="hljs-string">"stdio"</span>: <span class="hljs-built_in">Array</span> | <span class="hljs-built_in">String</span>, <span class="hljs-comment">// working directory of the child process, default to current directory</span>
+    <span class="hljs-string">"env"</span>: {}, <span class="hljs-comment">// key-value pairs of environment variables to add to the child's environment</span>
+    <span class="hljs-string">"detached"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// child process will be a leader of a new process group, default to false</span>
+    <span class="hljs-string">"uid"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// configure the user identity of the process</span>
+    <span class="hljs-string">"gid"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// con</span>
+    <span class="hljs-string">"windowsVerbatimArguments"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// do not execute any quote or escape processing on Windows. Ignored on Unix. When specified, the command line string is passed directly to the underlying operating system shell without any processing whatsoever. This is set to true automatically when the shell option is specified and is CMD.</span>
+    <span class="hljs-string">"windowsHide"</span>: <span class="hljs-literal">false</span> <span class="hljs-comment">// hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.</span><font></font>
 }<font></font>
 </code></pre>
 <hr>
@@ -369,14 +369,14 @@ spawn(<span class="hljs-string">'prg'</span>, [], {
 8
 9
 10</div>{
-    <span class="hljs-string">"cwd"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// 子进程的当前的工作目录，缺省使用当前目录</span>
-    <span class="hljs-string">"env"</span>: {}, <span class="hljs-comment">// 环境变量的键值对</span>
-    <span class="hljs-string">"encoding"</span>: <span class="hljs-string">"utf8"</span>, <span class="hljs-comment">// 指定返回结果的编码，缺省为 utf8</span>
-    <span class="hljs-string">"detached"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 子进程将会变成一个进程组的领导者，缺省为 false</span>
-    <span class="hljs-string">"uid"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// 设置用户进程的ID</span>
-    <span class="hljs-string">"gid"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// 设置进程组的ID</span>
-    <span class="hljs-string">"windowsVerbatimArguments"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 在 Windows上不执行引号或转义参数。 在 Unix 上被忽略。 当指定外壳且为 CMD 时，此选项将自动设置为true，缺省为 false</span>
-    <span class="hljs-string">"windowsHide"</span>: <span class="hljs-literal">false</span> <span class="hljs-comment">// 隐藏通常在Windows系统上创建的子进程控制台窗口，缺省为 false</span><font></font>
+    <span class="hljs-string">"cwd"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// working directory of the child process, default to current directory</span>
+    <span class="hljs-string">"env"</span>: {}, <span class="hljs-comment">// key-value pairs of environment variables to add to the child's environment</span>
+    <span class="hljs-string">"encoding"</span>: <span class="hljs-string">"utf8"</span>, <span class="hljs-comment">// specify the character encoding used to decode the stdout and stderr output</span>
+    <span class="hljs-string">"detached"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// child process will be a leader of a new process group, default to false</span>
+    <span class="hljs-string">"uid"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// configure the user identity of the process</span>
+    <span class="hljs-string">"gid"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// con</span>
+    <span class="hljs-string">"windowsVerbatimArguments"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// do not execute any quote or escape processing on Windows. Ignored on Unix. When specified, the command line string is passed directly to the underlying operating system shell without any processing whatsoever. This is set to true automatically when the shell option is specified and is CMD.</span>
+    <span class="hljs-string">"windowsHide"</span>: <span class="hljs-literal">false</span> <span class="hljs-comment">// hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.</span><font></font>
 }<font></font>
 </code></pre>
 <hr>
@@ -409,14 +409,14 @@ spawn(<span class="hljs-string">'prg'</span>, [], {
 8
 9
 10</div>{
-    <span class="hljs-string">"cwd"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// 子进程的当前的工作目录，缺省使用当前目录</span>
-    <span class="hljs-string">"env"</span>: {}, <span class="hljs-comment">// 环境变量的键值对</span>
-    <span class="hljs-string">"encoding"</span>: <span class="hljs-string">"utf8"</span>, <span class="hljs-comment">// 指定返回结果的编码，缺省为 utf8</span>
-    <span class="hljs-string">"detached"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 子进程将会变成一个进程组的领导者，缺省为 false</span>
-    <span class="hljs-string">"uid"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// 设置用户进程的ID</span>
-    <span class="hljs-string">"gid"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// 设置进程组的ID</span>
-    <span class="hljs-string">"windowsVerbatimArguments"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 在 Windows上不执行引号或转义参数。 在 Unix 上被忽略。 当指定外壳且为 CMD 时，此选项将自动设置为true，缺省为 false</span>
-    <span class="hljs-string">"windowsHide"</span>: <span class="hljs-literal">false</span> <span class="hljs-comment">// 隐藏通常在Windows系统上创建的子进程控制台窗口，缺省为 false</span><font></font>
+    <span class="hljs-string">"cwd"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// working directory of the child process, default to current directory</span>
+    <span class="hljs-string">"env"</span>: {}, <span class="hljs-comment">// key-value pairs of environment variables to add to the child's environment</span>
+    <span class="hljs-string">"encoding"</span>: <span class="hljs-string">"utf8"</span>, <span class="hljs-comment">// specify the character encoding used to decode the stdout and stderr output</span>
+    <span class="hljs-string">"detached"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// child process will be a leader of a new process group, default to false</span>
+    <span class="hljs-string">"uid"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// configure the user identity of the process</span>
+    <span class="hljs-string">"gid"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// con</span>
+    <span class="hljs-string">"windowsVerbatimArguments"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// do not execute any quote or escape processing on Windows. Ignored on Unix. When specified, the command line string is passed directly to the underlying operating system shell without any processing whatsoever. This is set to true automatically when the shell option is specified and is CMD.</span>
+    <span class="hljs-string">"windowsHide"</span>: <span class="hljs-literal">false</span> <span class="hljs-comment">// hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.</span><font></font>
 }<font></font>
 </code></pre>
 <hr>
@@ -445,14 +445,14 @@ spawn(<span class="hljs-string">'prg'</span>, [], {
 8
 9
 10</div>{
-    <span class="hljs-string">"cwd"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// 子进程的当前的工作目录，缺省使用当前目录</span>
-    <span class="hljs-string">"env"</span>: {}, <span class="hljs-comment">// 环境变量的键值对</span>
-    <span class="hljs-string">"encoding"</span>: <span class="hljs-string">"utf8"</span>, <span class="hljs-comment">// 指定返回结果的编码，缺省为 utf8</span>
-    <span class="hljs-string">"detached"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 子进程将会变成一个进程组的领导者，缺省为 false</span>
-    <span class="hljs-string">"uid"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// 设置用户进程的ID</span>
-    <span class="hljs-string">"gid"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// 设置进程组的ID</span>
-    <span class="hljs-string">"windowsVerbatimArguments"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 在 Windows上不执行引号或转义参数。 在 Unix 上被忽略。 当指定外壳且为 CMD 时，此选项将自动设置为true，缺省为 false</span>
-    <span class="hljs-string">"windowsHide"</span>: <span class="hljs-literal">false</span> <span class="hljs-comment">// 隐藏通常在Windows系统上创建的子进程控制台窗口，缺省为 false</span><font></font>
+    <span class="hljs-string">"cwd"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// working directory of the child process, default to current directory</span>
+    <span class="hljs-string">"env"</span>: {}, <span class="hljs-comment">// key-value pairs of environment variables to add to the child's environment</span>
+    <span class="hljs-string">"encoding"</span>: <span class="hljs-string">"utf8"</span>, <span class="hljs-comment">// specify the character encoding used to decode the stdout and stderr output</span>
+    <span class="hljs-string">"detached"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// child process will be a leader of a new process group, default to false</span>
+    <span class="hljs-string">"uid"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// configure the user identity of the process</span>
+    <span class="hljs-string">"gid"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// con</span>
+    <span class="hljs-string">"windowsVerbatimArguments"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// do not execute any quote or escape processing on Windows. Ignored on Unix. When specified, the command line string is passed directly to the underlying operating system shell without any processing whatsoever. This is set to true automatically when the shell option is specified and is CMD.</span>
+    <span class="hljs-string">"windowsHide"</span>: <span class="hljs-literal">false</span> <span class="hljs-comment">// hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.</span><font></font>
 }<font></font>
 </code></pre>
 <hr>
@@ -485,14 +485,14 @@ spawn(<span class="hljs-string">'prg'</span>, [], {
 8
 9
 10</div>{
-    <span class="hljs-string">"cwd"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// 子进程的当前的工作目录，缺省使用当前目录</span>
-    <span class="hljs-string">"stdio"</span>: <span class="hljs-built_in">Array</span> | <span class="hljs-built_in">String</span>, <span class="hljs-comment">// 子进程 stdio 配置</span>
-    <span class="hljs-string">"env"</span>: {}, <span class="hljs-comment">// 环境变量的键值对</span>
-    <span class="hljs-string">"detached"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 子进程将会变成一个进程组的领导者，缺省为 false</span>
-    <span class="hljs-string">"uid"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// 设置用户进程的ID</span>
-    <span class="hljs-string">"gid"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// 设置进程组的ID</span>
-    <span class="hljs-string">"windowsVerbatimArguments"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 在 Windows上不执行引号或转义参数。 在 Unix 上被忽略。 当指定外壳且为 CMD 时，此选项将自动设置为true，缺省为 false</span>
-    <span class="hljs-string">"windowsHide"</span>: <span class="hljs-literal">false</span> <span class="hljs-comment">// 隐藏通常在Windows系统上创建的子进程控制台窗口，缺省为 false</span><font></font>
+    <span class="hljs-string">"cwd"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// working directory of the child process, default to current directory</span>
+    <span class="hljs-string">"stdio"</span>: <span class="hljs-built_in">Array</span> | <span class="hljs-built_in">String</span>, <span class="hljs-comment">// working directory of the child process, default to current directory</span>
+    <span class="hljs-string">"env"</span>: {}, <span class="hljs-comment">// key-value pairs of environment variables to add to the child's environment</span>
+    <span class="hljs-string">"detached"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// child process will be a leader of a new process group, default to false</span>
+    <span class="hljs-string">"uid"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// configure the user identity of the process</span>
+    <span class="hljs-string">"gid"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// con</span>
+    <span class="hljs-string">"windowsVerbatimArguments"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// do not execute any quote or escape processing on Windows. Ignored on Unix. When specified, the command line string is passed directly to the underlying operating system shell without any processing whatsoever. This is set to true automatically when the shell option is specified and is CMD.</span>
+    <span class="hljs-string">"windowsHide"</span>: <span class="hljs-literal">false</span> <span class="hljs-comment">// hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.</span><font></font>
 }<font></font>
 </code></pre>
 <hr>
@@ -521,14 +521,14 @@ spawn(<span class="hljs-string">'prg'</span>, [], {
 8
 9
 10</div>{
-    <span class="hljs-string">"cwd"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// 子进程的当前的工作目录，缺省使用当前目录</span>
-    <span class="hljs-string">"stdio"</span>: <span class="hljs-built_in">Array</span> | <span class="hljs-built_in">String</span>, <span class="hljs-comment">// 子进程 stdio 配置</span>
-    <span class="hljs-string">"env"</span>: {}, <span class="hljs-comment">// 环境变量的键值对</span>
-    <span class="hljs-string">"detached"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 子进程将会变成一个进程组的领导者，缺省为 false</span>
-    <span class="hljs-string">"uid"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// 设置用户进程的ID</span>
-    <span class="hljs-string">"gid"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// 设置进程组的ID</span>
-    <span class="hljs-string">"windowsVerbatimArguments"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 在 Windows上不执行引号或转义参数。 在 Unix 上被忽略。 当指定外壳且为 CMD 时，此选项将自动设置为true，缺省为 false</span>
-    <span class="hljs-string">"windowsHide"</span>: <span class="hljs-literal">false</span> <span class="hljs-comment">// 隐藏通常在Windows系统上创建的子进程控制台窗口，缺省为 false</span><font></font>
+    <span class="hljs-string">"cwd"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// working directory of the child process, default to current directory</span>
+    <span class="hljs-string">"stdio"</span>: <span class="hljs-built_in">Array</span> | <span class="hljs-built_in">String</span>, <span class="hljs-comment">// working directory of the child process, default to current directory</span>
+    <span class="hljs-string">"env"</span>: {}, <span class="hljs-comment">// key-value pairs of environment variables to add to the child's environment</span>
+    <span class="hljs-string">"detached"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// child process will be a leader of a new process group, default to false</span>
+    <span class="hljs-string">"uid"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// configure the user identity of the process</span>
+    <span class="hljs-string">"gid"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// con</span>
+    <span class="hljs-string">"windowsVerbatimArguments"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// do not execute any quote or escape processing on Windows. Ignored on Unix. When specified, the command line string is passed directly to the underlying operating system shell without any processing whatsoever. This is set to true automatically when the shell option is specified and is CMD.</span>
+    <span class="hljs-string">"windowsHide"</span>: <span class="hljs-literal">false</span> <span class="hljs-comment">// hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.</span><font></font>
 }<font></font>
 </code></pre>
 <hr>
@@ -560,13 +560,13 @@ spawn(<span class="hljs-string">'prg'</span>, [], {
 7
 8
 9</div>{
-    <span class="hljs-string">"cwd"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// 子进程的当前的工作目录，缺省使用当前目录</span>
-    <span class="hljs-string">"env"</span>: {}, <span class="hljs-comment">// 环境变量的键值对</span>
-    <span class="hljs-string">"detached"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 子进程将会变成一个进程组的领导者，缺省为 false</span>
-    <span class="hljs-string">"uid"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// 设置用户进程的ID</span>
-    <span class="hljs-string">"gid"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// 设置进程组的ID</span>
-    <span class="hljs-string">"windowsVerbatimArguments"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 在 Windows上不执行引号或转义参数。 在 Unix 上被忽略。 当指定外壳且为 CMD 时，此选项将自动设置为true，缺省为 false</span>
-    <span class="hljs-string">"windowsHide"</span>: <span class="hljs-literal">false</span> <span class="hljs-comment">// 隐藏通常在Windows系统上创建的子进程控制台窗口，缺省为 false</span><font></font>
+    <span class="hljs-string">"cwd"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// working directory of the child process, default to current directory</span>
+    <span class="hljs-string">"env"</span>: {}, <span class="hljs-comment">// key-value pairs of environment variables to add to the child's environment</span>
+    <span class="hljs-string">"detached"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// child process will be a leader of a new process group, default to false</span>
+    <span class="hljs-string">"uid"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// configure the user identity of the process</span>
+    <span class="hljs-string">"gid"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// con</span>
+    <span class="hljs-string">"windowsVerbatimArguments"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// do not execute any quote or escape processing on Windows. Ignored on Unix. When specified, the command line string is passed directly to the underlying operating system shell without any processing whatsoever. This is set to true automatically when the shell option is specified and is CMD.</span>
+    <span class="hljs-string">"windowsHide"</span>: <span class="hljs-literal">false</span> <span class="hljs-comment">// hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.</span><font></font>
 }<font></font>
 </code></pre>
 <hr>
@@ -594,13 +594,13 @@ spawn(<span class="hljs-string">'prg'</span>, [], {
 7
 8
 9</div>{
-    <span class="hljs-string">"cwd"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// 子进程的当前的工作目录，缺省使用当前目录</span>
-    <span class="hljs-string">"env"</span>: {}, <span class="hljs-comment">// 环境变量的键值对</span>
-    <span class="hljs-string">"detached"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 子进程将会变成一个进程组的领导者，缺省为 false</span>
-    <span class="hljs-string">"uid"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// 设置用户进程的ID</span>
-    <span class="hljs-string">"gid"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// 设置进程组的ID</span>
-    <span class="hljs-string">"windowsVerbatimArguments"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 在 Windows上不执行引号或转义参数。 在 Unix 上被忽略。 当指定外壳且为 CMD 时，此选项将自动设置为true，缺省为 false</span>
-    <span class="hljs-string">"windowsHide"</span>: <span class="hljs-literal">false</span> <span class="hljs-comment">// 隐藏通常在Windows系统上创建的子进程控制台窗口，缺省为 false</span><font></font>
+    <span class="hljs-string">"cwd"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// working directory of the child process, default to current directory</span>
+    <span class="hljs-string">"env"</span>: {}, <span class="hljs-comment">// key-value pairs of environment variables to add to the child's environment</span>
+    <span class="hljs-string">"detached"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// child process will be a leader of a new process group, default to false</span>
+    <span class="hljs-string">"uid"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// configure the user identity of the process</span>
+    <span class="hljs-string">"gid"</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// con</span>
+    <span class="hljs-string">"windowsVerbatimArguments"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// do not execute any quote or escape processing on Windows. Ignored on Unix. When specified, the command line string is passed directly to the underlying operating system shell without any processing whatsoever. This is set to true automatically when the shell option is specified and is CMD.</span>
+    <span class="hljs-string">"windowsHide"</span>: <span class="hljs-literal">false</span> <span class="hljs-comment">// hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.</span><font></font>
 }<font></font>
 </code></pre>
  </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org | </font></font><a href="../../../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apóyanos</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../../../js/common.js"></script><script type="text/javascript" src="../../../../../js/docs.js"></script></body></html>

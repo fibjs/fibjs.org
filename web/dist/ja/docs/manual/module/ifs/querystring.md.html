@@ -225,10 +225,10 @@
 <font></font>
 <span class="hljs-keyword">const</span> url = <span class="hljs-string">'https://www.example.com/path/to/page?foo=bar&amp;baz=qux'</span>;<font></font>
 <font></font>
-<span class="hljs-keyword">const</span> search = <span class="hljs-keyword">new</span> URL(url).search; <span class="hljs-comment">// 获取 URL 中的查询参数部分</span>
-<span class="hljs-keyword">const</span> query = querystring.parse(search.slice(<span class="hljs-number">1</span>)); <span class="hljs-comment">// 解析查询参数为对象</span><font></font>
+<span class="hljs-keyword">const</span> search = <span class="hljs-keyword">new</span> URL(url).search; <span class="hljs-comment">// return '?foo=bar&amp;baz=qux'</span>
+<span class="hljs-keyword">const</span> query = querystring.parse(search.slice(<span class="hljs-number">1</span>)); <span class="hljs-comment">// parse query string</span><font></font>
 <font></font>
-<span class="hljs-built_in">console</span>.log(query); <span class="hljs-comment">// 输出 { foo: 'bar', baz: 'qux' }</span>
+<span class="hljs-built_in">console</span>.log(query); <span class="hljs-comment">// output { foo: 'bar', baz: 'qux' }</span>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上記のコードは、最初に URL を取得し、そこからクエリ パラメータ部分を抽出し、</font></font><code>querystring.parse()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">関数それをオブジェクトに解析し、最後にオブジェクトを出力します。</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">次に、</font></font><code>querystring</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">モジュールを。</font></font></p>
@@ -250,7 +250,7 @@
 <font></font>
 <span class="hljs-keyword">const</span> query = querystring.stringify(obj);<font></font>
 <font></font>
-<span class="hljs-built_in">console</span>.log(query); <span class="hljs-comment">// 输出 "foo=bar&amp;baz=qux"</span>
+<span class="hljs-built_in">console</span>.log(query); <span class="hljs-comment">// output "foo=bar&amp;baz=qux"</span>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上記のコードでは、最初にオブジェクトが定義され、次に</font></font><code>querystring.stringify()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">関数URL クエリ パラメータ文字列にシリアライズされ、最後に文字列が出力されます。</font></font></p>
 <p><font style="vertical-align: inherit;"></font><code>querystring</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">モジュールを</font><font style="vertical-align: inherit;">使用すると、URL クエリ パラメータを簡単に解析およびシリアル化できることがわかります。これにより、面倒な文字列の処理が減り、コードの可読性と保守性が向上します。</font></font></p>

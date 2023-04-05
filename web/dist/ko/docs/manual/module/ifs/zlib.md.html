@@ -213,7 +213,7 @@
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">팽창: 데이터 압축 해제;</font></font></li>
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">gzip: gzip 압축 형식.</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">zlib를 사용하기 전에 사용하려는 압축 알고리즘에 따라 둘 중 하나를 선택해야 합니다. </font><font style="vertical-align: inherit;">zlib의 상수 정의 모듈 </font></font><code>constants</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">에서 . </font><font style="vertical-align: inherit;">예를 들어, 모듈 선언에 deflate 압축 알고리즘을 사용합니다.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">zlib를 사용하기 전에 사용하려는 압축 알고리즘에 따라 둘 중 하나를 선택해야 합니다. </font><font style="vertical-align: inherit;">zlib의 상수를 참조하여 해당 압축 알고리즘을 선택할 수 있습니다. </font><font style="vertical-align: inherit;">예를 들어, 모듈 선언에 deflate 압축 알고리즘을 사용합니다.</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -234,13 +234,13 @@
     BEST_SPEED,<font></font>
     BEST_COMPRESSION,<font></font>
     DEFAULT_COMPRESSION<font></font>
-} = <span class="hljs-built_in">require</span>(<span class="hljs-string">'constants'</span>); <span class="hljs-comment">// 省略引用常量的方法</span><font></font>
+} = <span class="hljs-built_in">require</span>(<span class="hljs-string">'zlib'</span>);<font></font>
 <font></font>
-<span class="hljs-comment">// 压缩数据</span>
+<span class="hljs-comment">// compress data</span>
 <span class="hljs-keyword">const</span> deflated = zlib.deflate(<span class="hljs-string">'hello, world'</span>, BEST_SPEED);
 <span class="hljs-built_in">console</span>.log(deflated.toString());<font></font>
 <font></font>
-<span class="hljs-comment">// 解压数据</span>
+<span class="hljs-comment">// decompress data</span>
 <span class="hljs-keyword">const</span> inflated = zlib.inflate(deflated);
 <span class="hljs-built_in">console</span>.log(inflated.toString());
 </code></pre>

@@ -494,23 +494,23 @@
 22</div><span class="hljs-keyword">var</span> vm = <span class="hljs-built_in">require</span>(<span class="hljs-string">'vm'</span>);
 <span class="hljs-keyword">var</span> sbox = <span class="hljs-keyword">new</span> vm.SandBox({});
 
-<span class="hljs-comment">// 编译 typescript 脚本为 js 并加载</span>
+<span class="hljs-comment">// compile ts to js and load</span>
 sbox.setModuleCompiler(<span class="hljs-string">'.ts'</span>, tsCompiler);
 <span class="hljs-keyword">var</span> mod_ts = sbox.require(<span class="hljs-string">'./a.ts'</span>);
 
-<span class="hljs-comment">// 编译 coffee 脚本为 js 并加载</span>
+<span class="hljs-comment">// compile coffee to js and load</span>
 sbox.setModuleCompiler(<span class="hljs-string">'.coffee'</span>, cafeCompiler);
 <span class="hljs-keyword">var</span> mod_coffee = sbox.require(<span class="hljs-string">'./a.coffee'</span>);
 
-<span class="hljs-comment">// 编译 jsx 脚本为 js 并加载</span>
+<span class="hljs-comment">// compile jsx to js and load</span>
 sbox.setModuleCompiler(<span class="hljs-string">'.jsx'</span>, reactCompiler);
 <span class="hljs-keyword">var</span> mod_react = sbox.require(<span class="hljs-string">'./a.jsx'</span>);
 
-<span class="hljs-comment">// 编译 yml 脚本为自定义的内容(如 API 集合) 并加载</span>
+<span class="hljs-comment">// compile yaml to rest and load</span>
 sbox.setModuleCompiler(<span class="hljs-string">'.yml'</span>, yaml2Rest)
 sbox.setModuleCompiler(<span class="hljs-string">'.yaml'</span>, yaml2Rest)
 
-<span class="hljs-comment">// 编译 markdown 为自定义的内容(如 html 字符串或 XmlDocument 对象) 并加载</span>
+<span class="hljs-comment">// compile markdown to html and load</span>
 sbox.setModuleCompiler(<span class="hljs-string">'.md'</span>, mdCompiler)
 sbox.setModuleCompiler(<span class="hljs-string">'.markdown'</span>, mdCompiler)
 </code></pre>

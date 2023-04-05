@@ -249,17 +249,17 @@
 10
 11
 12
-13</div><span class="hljs-comment">// 安装模块</span>
+13</div><span class="hljs-comment">// load module</span>
 <span class="hljs-keyword">const</span> coroutine = <span class="hljs-built_in">require</span>(<span class="hljs-string">"coroutine"</span>);
 <span class="hljs-keyword">const</span> util = <span class="hljs-built_in">require</span>(<span class="hljs-string">"util"</span>);
 <span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">"fs"</span>);
 
-<span class="hljs-comment">// 定义读文件函数</span>
+<span class="hljs-comment">// use util.sync to wrap fs.readFile</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">readFile</span>(<span class="hljs-params">path</span>) </span>{
   <span class="hljs-keyword">return</span> util.sync(fs.readFile)(path);
 }
 
-<span class="hljs-comment">// 调用函数</span>
+<span class="hljs-comment">// call the sync function</span>
 <span class="hljs-keyword">const</span> data = readFile(<span class="hljs-string">"myfile.txt"</span>);
 <span class="hljs-built_in">console</span>.log(data);
 </code></pre>

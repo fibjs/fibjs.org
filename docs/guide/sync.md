@@ -40,17 +40,17 @@ console.log(data);
 也可以把异步函数通过 util.sync 和 try…catch 包装一下，可以让 fiber 获得异步调用的返回值，从而实现同步的效果，例如：
 
 ```JavaScript
-// 安装模块
+// load module
 const coroutine = require("coroutine");
 const util = require("util");
 const fs = require("fs");
 
-// 定义读文件函数
+// use util.sync to wrap fs.readFile
 function readFile(path) {
   return util.sync(fs.readFile)(path);
 }
 
-// 调用函数
+// call the sync function
 const data = readFile("myfile.txt");
 console.log(data);
 ```

@@ -213,7 +213,7 @@
 <li>inflate：解压数据；</li>
 <li>gzip：gzip 压缩格式。</li>
 </ul>
-<p>在使用 zlib 前，需要先根据需要使用的压缩算法选择其中一种。可以参考 zlib 的常量定义模块 <code>constants</code> 中的常量来选择相应的压缩算法。比如，我们使用 deflate 压缩算法进行模块说明：</p>
+<p>在使用 zlib 前，需要先根据需要使用的压缩算法选择其中一种。可以参考 zlib 的常量来选择相应的压缩算法。比如，我们使用 deflate 压缩算法进行模块说明：</p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -234,13 +234,13 @@
     BEST_SPEED,
     BEST_COMPRESSION,
     DEFAULT_COMPRESSION
-} = <span class="hljs-built_in">require</span>(<span class="hljs-string">'constants'</span>); <span class="hljs-comment">// 省略引用常量的方法</span>
+} = <span class="hljs-built_in">require</span>(<span class="hljs-string">'zlib'</span>);
 
-<span class="hljs-comment">// 压缩数据</span>
+<span class="hljs-comment">// compress data</span>
 <span class="hljs-keyword">const</span> deflated = zlib.deflate(<span class="hljs-string">'hello, world'</span>, BEST_SPEED);
 <span class="hljs-built_in">console</span>.log(deflated.toString());
 
-<span class="hljs-comment">// 解压数据</span>
+<span class="hljs-comment">// decompress data</span>
 <span class="hljs-keyword">const</span> inflated = zlib.inflate(deflated);
 <span class="hljs-built_in">console</span>.log(inflated.toString());
 </code></pre>

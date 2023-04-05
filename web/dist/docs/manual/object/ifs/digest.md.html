@@ -221,16 +221,16 @@
 11
 12
 13</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-keyword">require</span>(<span class="hljs-string">'crypto'</span>);
-<span class="hljs-comment">// 创建 SHA-512 摘要运算对象</span>
+<span class="hljs-comment">// create a SHA-512 digest object</span>
 <span class="hljs-keyword">const</span> digest = crypto.createHash(<span class="hljs-string">'sha512'</span>);
-<span class="hljs-comment">// 更新数据</span>
+<span class="hljs-comment">// update digest with data</span>
 digest.update(<span class="hljs-string">'hello'</span>);
 digest.update(<span class="hljs-string">'world'</span>);
-<span class="hljs-comment">// 获取二进制结果</span>
+<span class="hljs-comment">// get digest result</span>
 <span class="hljs-keyword">const</span> <span class="hljs-keyword">result</span> = digest.digest();
 console.log(<span class="hljs-keyword">result</span>);
 
-<span class="hljs-comment">// 生成指定编码的结果</span>
+<span class="hljs-comment">// output result in hex and base64</span>
 console.log(<span class="hljs-keyword">result</span>.toString(<span class="hljs-string">'hex'</span>));
 console.log(<span class="hljs-keyword">result</span>.toString(<span class="hljs-string">'base64'</span>));
 </code></pre><p>上述代码中，使用 <code>crypto.createHash()</code> 方法创建了一个 SHA-512 摘要运算对象，可以通过 <code>update()</code> 方法逐步添加要进行摘要的数据，并通过 <code>digest()</code> 方法获取摘要结果。</p>

@@ -246,9 +246,9 @@
     Worker<font></font>
 } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'worker_threads'</span>);<font></font>
 <font></font>
-<span class="hljs-comment">// 将耗时计算交给 Worker 来做</span>
+<span class="hljs-comment">// create a worker thread</span>
 <span class="hljs-keyword">const</span> fib = <span class="hljs-keyword">new</span> Worker(__dirname + <span class="hljs-string">'/fib-worker.js'</span>);
-<span class="hljs-comment">// 通过 on 和 postMessage 在主线程和工作线程之间发送消息</span>
+<span class="hljs-comment">// receive the result from the worker thread</span>
 fib.onmessage = <span class="hljs-function">(<span class="hljs-params">ev</span>) =&gt;</span> {
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'result: '</span>, ev.data);<font></font>
 };<font></font>

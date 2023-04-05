@@ -383,19 +383,19 @@ svr.start();<font></font>
   <span class="hljs-string">'/ws'</span>: ws.upgrade(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">conn, req</span>) </span>{
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'a client connected.'</span>);<font></font>
 <font></font>
-    <span class="hljs-comment">// 监听消息事件</span>
+    <span class="hljs-comment">// listening for message events</span>
     conn.onmessage = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">evt</span>) </span>{
       <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'received message: '</span>, evt.data);
-      <span class="hljs-comment">// echo 消息回客户端</span>
+      <span class="hljs-comment">// echo the message back to client</span>
       conn.send(<span class="hljs-string">'Server: '</span> + evt.data);<font></font>
     };<font></font>
 <font></font>
-    <span class="hljs-comment">// 监听关闭事件</span>
+    <span class="hljs-comment">// listening for close events</span>
     conn.onclose = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">code, reason</span>) </span>{
       <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'closed.'</span>);<font></font>
     };<font></font>
 <font></font>
-    <span class="hljs-comment">// 监听错误事件</span>
+    <span class="hljs-comment">// listening for error events</span>
     conn.onerror = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>{
       <span class="hljs-built_in">console</span>.log(err);<font></font>
     };<font></font>
@@ -444,28 +444,28 @@ server.start();<font></font>
 <span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">"http"</span>);
 <span class="hljs-keyword">var</span> db = <span class="hljs-built_in">require</span>(<span class="hljs-string">"db"</span>);<font></font>
 <font></font>
-<span class="hljs-comment">// 创建一个 MySQL 数据库连接对象</span>
+<span class="hljs-comment">// open a mysql connection</span>
 <span class="hljs-keyword">var</span> mysql = db.openMySQL(<span class="hljs-string">"mysql://root:password@localhost/dbname"</span>);<font></font>
 <font></font>
 <span class="hljs-keyword">var</span> server = <span class="hljs-keyword">new</span> http.Server(<span class="hljs-number">8080</span>, {
   <span class="hljs-string">"/ws"</span>: ws.upgrade(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">conn, req</span>) </span>{
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"a client connected."</span>);<font></font>
 <font></font>
-    <span class="hljs-comment">// 监听消息事件</span>
+    <span class="hljs-comment">// listening for message events</span>
     conn.onmessage = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">evt</span>) </span>{
       <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"received message: "</span>, evt.data);<font></font>
 <font></font>
-      <span class="hljs-comment">// 查询数据库，返回满足条件的记录</span>
+      <span class="hljs-comment">// use execute to query the data</span>
       <span class="hljs-keyword">var</span> rs = mysql.execute(<span class="hljs-string">"SELECT * FROM user WHERE name=?"</span>, evt.data.toString());<font></font>
       conn.send(<span class="hljs-built_in">JSON</span>.stringify(rs));<font></font>
     };<font></font>
 <font></font>
-    <span class="hljs-comment">// 监听关闭事件</span>
+    <span class="hljs-comment">// listening for close events</span>
     conn.onclose = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">code, reason</span>) </span>{
       <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"closed."</span>);<font></font>
     };<font></font>
 <font></font>
-    <span class="hljs-comment">// 监听错误事件</span>
+    <span class="hljs-comment">// listening for error events</span>
     conn.onerror = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>{
       <span class="hljs-built_in">console</span>.log(err);<font></font>
     };<font></font>
@@ -504,25 +504,25 @@ server.start();<font></font>
 23
 24</div><span class="hljs-keyword">var</span> ws = <span class="hljs-built_in">require</span>(<span class="hljs-string">'ws'</span>);<font></font>
 <font></font>
-<span class="hljs-comment">// 创建 WebSocket 实例</span>
+<span class="hljs-comment">// create a WebSocket object and connect to ws://localhost:8080/ws</span>
 <span class="hljs-keyword">var</span> conn = <span class="hljs-keyword">new</span> ws.Socket(<span class="hljs-string">'ws://localhost:8080/ws'</span>);<font></font>
 <font></font>
-<span class="hljs-comment">// 监听打开事件</span>
+<span class="hljs-comment">// listening for open events</span>
 conn.onopen = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{<font></font>
   conn.send(<span class="hljs-string">'hello'</span>);<font></font>
 }<font></font>
 <font></font>
-<span class="hljs-comment">// 监听消息事件</span>
+<span class="hljs-comment">// listening for message events</span>
 conn.onmessage = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">evt</span>) </span>{
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'received message:'</span>, evt.data);<font></font>
 }<font></font>
 <font></font>
-<span class="hljs-comment">// 监听关闭事件</span>
+<span class="hljs-comment">// listening for close events</span>
 conn.onclose = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">code, reason</span>) </span>{
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'closed.'</span>);<font></font>
 }<font></font>
 <font></font>
-<span class="hljs-comment">// 监听错误事件</span>
+<span class="hljs-comment">// listening for error events</span>
 conn.onerror = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>{
   <span class="hljs-built_in">console</span>.log(err);<font></font>
 }<font></font>

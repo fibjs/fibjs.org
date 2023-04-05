@@ -217,7 +217,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">암호화 알고리즘을 사용하기 전에 키 개체를 만드는 다음 예와 같이 </font></font><code>AES</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">키 .</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
-<span class="hljs-keyword">const</span> key = crypto.randomBytes(<span class="hljs-number">16</span>); <span class="hljs-comment">// 生成 16 字节的随机数作为 AES 密钥</span>
+<span class="hljs-keyword">const</span> key = crypto.randomBytes(<span class="hljs-number">16</span>); <span class="hljs-comment">// generate a 16-byte random key</span>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">다음으로 </font></font><code>Cipher</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체를 일반 텍스트를 암호화합니다.</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
@@ -226,7 +226,7 @@
 4</div><span class="hljs-keyword">const</span> c = <span class="hljs-keyword">new</span> crypto.Cipher(crypto.AES, crypto.ECB, key);
 <span class="hljs-keyword">const</span> data = <span class="hljs-string">'hello, world'</span>;
 <span class="hljs-keyword">const</span> encrypted = c.encrypt(data).hex();
-<span class="hljs-built_in">console</span>.log(encrypted); <span class="hljs-comment">// 输出加密后的结果</span>
+<span class="hljs-built_in">console</span>.log(encrypted); <span class="hljs-comment">// output encrypted data</span>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">위의 예에서는 </font></font><code>AES</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">암호화된 </font><font style="vertical-align: inherit;">메서드를</font></font><code>Cipher</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 사용하여 평문을 암호화 하고 암호화된 결과를 반환합니다.</font></font><code>encrypt</code><font style="vertical-align: inherit;"></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">대칭 암호화 알고리즘 외에도 </font></font><code>crypto</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">모듈은 비대칭 암호화 알고리즘 및 다이제스트 알고리즘도 지원할 수 있습니다. </font></font><code>PKey</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">예를 들어 다음 예제는 및</font><font style="vertical-align: inherit;"> 개체를 사용하여 </font></font><code>Digest</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SHA256 암호화를 구현하는 코드 입니다.</font></font></p>
@@ -235,12 +235,12 @@
 3
 4
 5
-6</div><span class="hljs-keyword">const</span> privateKey = crypto.loadPKey(<span class="hljs-string">'private.pem'</span>); <span class="hljs-comment">// 读取私钥文件</span>
+6</div><span class="hljs-keyword">const</span> privateKey = crypto.loadPKey(<span class="hljs-string">'private.pem'</span>); <span class="hljs-comment">// read private key from file</span>
 <span class="hljs-keyword">const</span> data = <span class="hljs-string">'hello, world'</span>;
 <span class="hljs-keyword">const</span> digest = <span class="hljs-keyword">new</span> crypto.Digest(hash.SHA256);<font></font>
 digest.update(data);<font></font>
 <span class="hljs-keyword">const</span> signature = privateKey.sign(digest.digest());
-<span class="hljs-built_in">console</span>.log(signature); <span class="hljs-comment">// 输出签名结果</span>
+<span class="hljs-built_in">console</span>.log(signature); <span class="hljs-comment">// output signature</span>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">위의 예에서는 먼저 개인 키 파일을 읽고 입력 데이터를 준비합니다. </font><font style="vertical-align: inherit;">그런 다음 SHA256 </font></font><code>Digest</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개체가 </font></font><code>update</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">메서드를 사용하여 해시 계산에 데이터가 추가됩니다. </font><font style="vertical-align: inherit;">계산이 완료되면 서명하는 </font></font><code>privateKey.sign</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">방법을 서명 결과를 출력합니다.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">요약하면 </font></font><code>crypto</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">모듈은 다양한 암호화 알고리즘, 다이제스트 알고리즘 및 관련 개체를 제공하며 이러한 기능은 대칭 및 비대칭 암호화, 디지털 서명 및 암호화 검증과 같은 다양한 보안 요구 사항을 달성하는 데 도움이 될 수 있습니다.</font></font></p>

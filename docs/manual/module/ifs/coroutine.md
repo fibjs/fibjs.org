@@ -10,7 +10,7 @@ const coroutine = require('coroutine');
 
 function foo() {
     console.log('start foo');
-    coroutine.sleep(1000); // 让出 CPU，让其他 fiber 运行
+    coroutine.sleep(1000); // enter sleep mode
     console.log('end foo');
 }
 

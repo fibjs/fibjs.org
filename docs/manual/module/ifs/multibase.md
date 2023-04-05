@@ -11,8 +11,8 @@ const {
 } = require('multibase');
 
 const crypto = require('crypto');
-const data = crypto.randomBytes(10); // 生成 10 Bytes 的二进制数据
-const encodedStr = encode(data, 'base32'); // 将数据编码为 base32
+const data = crypto.randomBytes(10); // generate 10 bytes random data
+const encodedStr = encode(data, 'base32'); // encode data to base32 string
 console.log(encodedStr); // ==> "bpgwnvztqmlbo5fy"
 ```
 
@@ -23,7 +23,7 @@ const {
     decode
 } = require('multibase');
 
-const data = decode('bpgwnvztqmlbo5fy', 'base32'); // 将字符串解码为原始的二进制数据
+const data = decode('bpgwnvztqmlbo5fy', 'base32'); // decode base32 string to data
 console.log(data); // ==> <Buffer a7 55 3d 33 ca 97 ac 0d aa 40>
 ```
 

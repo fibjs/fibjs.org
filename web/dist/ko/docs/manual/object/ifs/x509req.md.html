@@ -221,10 +221,10 @@
 2
 3
 4
-5</div><span class="hljs-comment">// 获取证书请求对象的 DER 格式的编码</span>
+5</div><span class="hljs-comment">// return the DER format of the certificate request</span>
 <span class="hljs-keyword">let</span> derReq = req.der();<font></font>
 <font></font>
-<span class="hljs-comment">// 获取证书请求对象的 PEM 格式的编码</span>
+<span class="hljs-comment">// return the PEM format of the certificate request</span>
 <span class="hljs-keyword">let</span> pemReq = req.pem();
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509Req 개체에 서명하여 공식 인증서 개체를 생성하는 것도 가능합니다. 예를 들면 다음과 같습니다.</font></font></p>
@@ -235,12 +235,12 @@
 5
 6
 7</div><span class="hljs-keyword">let</span> opt = {
-    <span class="hljs-attr">notBefore</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">'2019-01-01'</span>) <span class="hljs-comment">// 证书生效时间</span><font></font>
+    <span class="hljs-attr">notBefore</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">'2019-01-01'</span>) <span class="hljs-comment">// valid from 2019-01-01</span><font></font>
         ,<font></font>
-    <span class="hljs-attr">notAfter</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">'2029-12-31'</span>) <span class="hljs-comment">// 证书失效时间</span><font></font>
+    <span class="hljs-attr">notAfter</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">'2029-12-31'</span>) <span class="hljs-comment">// valid to 2029-12-31</span><font></font>
 };<font></font>
 <span class="hljs-keyword">let</span> crt = req.sign(<span class="hljs-string">"CN=myy.mkx"</span>, pky, opt);
-<span class="hljs-comment">// CN=myy.mkx 是证书的签发者, 可添加扩展信息</span>
+<span class="hljs-comment">// CN=myy.mkx is the issuer of the certificate</span>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509Req 개체의 역할은 인증서 자체가 아니라 x509 인증서 요청을 생성하는 것임을 유의해야 합니다. 유효한 인증서를 얻으려면 서명이 필요합니다. </font><font style="vertical-align: inherit;">동시에 서명 인증서에 사용된 공개 키는 인증서 요청에 사용된 공개 키와 일치해야 합니다.</font></font></p>
 <h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">상속 관계</font></font></h2>
@@ -413,12 +413,12 @@
 6
 7
 8</div>{
-    <span class="hljs-attr">ca</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 证书为 ca，缺省为 false</span>
-    <span class="hljs-attr">pathlen</span>: <span class="hljs-number">-1</span>, <span class="hljs-comment">// 证书深度，缺省为 -1</span>
-    <span class="hljs-attr">notBefore</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// 证书生效时间，缺省为当前时间</span>
-    <span class="hljs-attr">notAfter</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// 证书失效时间，缺省为 notBefore 后一年</span>
-    <span class="hljs-attr">usage</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// 证书使用范围，接收：digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment, keyAgreement, keyCertSign, cRLSign</span>
-    <span class="hljs-attr">type</span>: <span class="hljs-string">""</span> <span class="hljs-comment">// 证书 Netscape 证书类型，接收：client, server, email, objsign, reserved, sslCA, emailCA, objCA</span><font></font>
+    <span class="hljs-attr">ca</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// specify if the certificate is a CA certificate, default is false</span>
+    <span class="hljs-attr">pathlen</span>: <span class="hljs-number">-1</span>, <span class="hljs-comment">// specify the path length of the certificate, default is -1</span>
+    <span class="hljs-attr">notBefore</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// specify the certificate valid from date, default is current date</span>
+    <span class="hljs-attr">notAfter</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// specify the certificate valid to date, default is 365 days after current date</span>
+    <span class="hljs-attr">usage</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// specify the certificate usage, accept: digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment, keyAgreement, keyCertSign, cRLSign</span>
+    <span class="hljs-attr">type</span>: <span class="hljs-string">""</span> <span class="hljs-comment">// specify the certificate Netscape certificate type, accept: client, server, email, objsign, reserved, sslCA, emailCA, objCA</span><font></font>
 }<font></font>
 </code></pre>
 <hr>

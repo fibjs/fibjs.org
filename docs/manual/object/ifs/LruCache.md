@@ -5,7 +5,7 @@ LruCache(Least Recently Used Cache) 是用来维护LRU缓存的类。它可以�
 
 ```JavaScript
 const util = require('util')
-const c = new util.LruCache(10, 100) // 缓存最大尺寸为10，元素失效时间为100ms
+const c = new util.LruCache(10, 100) // create a LruCache instance with size 10 and timeout 100ms
 ```
 
 其中，set() 是设置键值对的接口：
@@ -19,16 +19,16 @@ name 参数指定要设定的键值，value 参数指定要设定的值。
 `LruCache` 的 `get` 方法可以用回调函数的方式更新缓存数据：
 
 ```JavaScript
-var c = new util.LruCache(10, 1000); // 最多缓存 10 个值，1 秒之后数据过期
+var c = new util.LruCache(10, 1000); // create a LruCache instance with size 10 and timeout 1000ms
 
 function get_data(name) {
-    // 从其他数据源查询数据，如数据库、缓存、文件等
+    // return data from backend
     // ...
     var data = {
         'name': name,
         'value': Math.random()
     };
-    console.log('update data: ' + JSON.stringify(data)); // 记录缓存更新的信息
+    console.log('update data: ' + JSON.stringify(data)); // output infomation to console
     return data;
 }
 
@@ -39,8 +39,8 @@ console.log(c.get('a', get_data));
 执行结果：
 ```sh
 update data: {"name":"a","value":0.4019124971556616}
-{"name":"a","value":0.4019124971556616} // 第一次查询需要缓存数据，会调用 updater 函数
-{"name":"a","value":0.4019124971556616} // 第二次查询直接从缓存中获取数据，不需要再调用 updater 函数
+{"name":"a","value":0.4019124971556616} // updater will be called to update cache data when cache is empty
+{"name":"a","value":0.4019124971556616} // updater will not be called when cache is not empty
 ```
 
 具体使用 LruCache 时，建议开发人员遵循以下的最佳实践：

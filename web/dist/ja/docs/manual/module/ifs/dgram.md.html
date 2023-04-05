@@ -219,7 +219,7 @@
 <pre><code><div class="line-numbers">1
 2
 3</div>sock.on(<span class="hljs-string">'message'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(msg, rinfo)</span> </span>{
-<span class="hljs-comment">// 处理数据包消息</span><font></font>
+<span class="hljs-comment">// process received message</span><font></font>
 });<font></font>
 </code></pre></li>
 <li><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">指定された宛先アドレスに UDP パケット メッセージを送信します。</font></font></p>
@@ -227,9 +227,9 @@
 2
 3
 4
-5</div><span class="hljs-built_in">var</span> msg = <span class="hljs-params">...</span>; <span class="hljs-comment">// 待发送数据包消息</span>
-<span class="hljs-built_in">var</span> port = <span class="hljs-params">...</span>; <span class="hljs-comment">// 目标端口</span>
-<span class="hljs-built_in">var</span> host = <span class="hljs-params">...</span>; <span class="hljs-comment">// 目标地址</span>
+5</div><span class="hljs-built_in">var</span> msg = <span class="hljs-params">...</span>; <span class="hljs-comment">// message to send</span>
+<span class="hljs-built_in">var</span> port = <span class="hljs-params">...</span>; <span class="hljs-comment">// destination port</span>
+<span class="hljs-built_in">var</span> host = <span class="hljs-params">...</span>; <span class="hljs-comment">// destination host</span>
 <span class="hljs-built_in">var</span> <span class="hljs-built_in">bytes</span> = sock.send(msg, <span class="hljs-number">0</span>, msg.length, port, host);<font></font>
 console.<span class="hljs-keyword">log</span>(<span class="hljs-string">'UDP message sent to '</span> + host + <span class="hljs-string">':'</span> + port);
 </code></pre></li>
@@ -261,11 +261,11 @@ console.<span class="hljs-keyword">log</span>(<span class="hljs-string">'UDP mes
 5
 6
 7</div>{
-    <span class="hljs-string">"type"</span>: <span class="hljs-string">"udp4"</span> | <span class="hljs-string">"udp6"</span>, <span class="hljs-comment">// 必填</span>
-    <span class="hljs-string">"reuseAddr"</span>: <span class="hljs-literal">true</span> | <span class="hljs-literal">false</span>, <span class="hljs-comment">// 若设置为 true，socket.bind() 则会重用地址，即时另一个进程已经在其上面绑定了一个套接字。 默认是 false</span>
-    <span class="hljs-string">"ipv6Only"</span>: <span class="hljs-literal">true</span> | <span class="hljs-literal">false</span>, <span class="hljs-comment">// 若设置为 true，socket.bind() 将只接收 IPv6 的数据包。 默认是 false</span>
-    <span class="hljs-string">"recvBufferSize"</span>: <span class="hljs-number">1024</span>, <span class="hljs-comment">// 设置 SO_RCVBUF 套接字值</span>
-    <span class="hljs-string">"sendBufferSize"</span>: <span class="hljs-number">1024</span> <span class="hljs-comment">//设置 SO_RCVBUF 套接字值</span><font></font>
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"udp4"</span> | <span class="hljs-string">"udp6"</span>, <span class="hljs-comment">// socket type</span>
+    <span class="hljs-string">"reuseAddr"</span>: <span class="hljs-literal">true</span> | <span class="hljs-literal">false</span>, <span class="hljs-comment">// reuse address, default is false</span>
+    <span class="hljs-string">"ipv6Only"</span>: <span class="hljs-literal">true</span> | <span class="hljs-literal">false</span>, <span class="hljs-comment">// only accept IPv6 packets, default is false</span>
+    <span class="hljs-string">"recvBufferSize"</span>: <span class="hljs-number">1024</span>, <span class="hljs-comment">// specify the size of the receive buffer</span>
+    <span class="hljs-string">"sendBufferSize"</span>: <span class="hljs-number">1024</span> <span class="hljs-comment">// specify the size of the send buffer</span><font></font>
 }<font></font>
 </code></pre>
 <hr>
@@ -290,12 +290,12 @@ console.<span class="hljs-keyword">log</span>(<span class="hljs-string">'UDP mes
 4
 5
 6
-7</div>{<font></font>
-    "type": "udp4" | "udp6", // 必填<font></font>
-    "reuseAddr": true | false, // 若设置为 true，socket.bind() 则会重用地址，即时另一个进程已经在其上面绑定了一个套接字。 默认是 false<font></font>
-    "ipv6Only": true | false, // 若设置为 true，socket.bind() 将只接收 IPv6 的数据包。 默认是 false<font></font>
-    "recvBufferSize": # # #, // 设置 SO_RCVBUF 套接字值<font></font>
-    "sendBufferSize": # # # //设置 SO_RCVBUF 套接字值<font></font>
+7</div>{
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"udp4"</span> | <span class="hljs-string">"udp6"</span>, <span class="hljs-comment">// socket type</span>
+    <span class="hljs-string">"reuseAddr"</span>: <span class="hljs-literal">true</span> | <span class="hljs-literal">false</span>, <span class="hljs-comment">// reuse address, default is false</span>
+    <span class="hljs-string">"ipv6Only"</span>: <span class="hljs-literal">true</span> | <span class="hljs-literal">false</span>, <span class="hljs-comment">// only accept IPv6 packets, default is false</span>
+    <span class="hljs-string">"recvBufferSize"</span>: <span class="hljs-number">1024</span>, <span class="hljs-comment">// specify the size of the receive buffer</span>
+    <span class="hljs-string">"sendBufferSize"</span>: <span class="hljs-number">1024</span> <span class="hljs-comment">// specify the size of the send buffer</span><font></font>
 }<font></font>
 </code></pre>
 <hr>

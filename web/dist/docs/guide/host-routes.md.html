@@ -218,19 +218,17 @@
 9
 10
 11
-12
-13</div><span class="hljs-keyword">const</span> mq = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mq'</span>)
+12</div><span class="hljs-keyword">const</span> mq = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mq'</span>)
 
 <span class="hljs-keyword">const</span> rt = <span class="hljs-keyword">new</span> mq.Routing();
 
-<span class="hljs-comment">// 使得 routes 支持 *.fibjs.org 解析</span>
+<span class="hljs-comment">// support *.fibjs.org in Routing</span>
 rt.host(<span class="hljs-string">'*.fibjs.org'</span>, ...)
-<span class="hljs-comment">// 使得 routes 支持 api.fibjs.org 解析</span>
+<span class="hljs-comment">// support api.fibjs.org in Routing</span>
 rt.host(<span class="hljs-string">'api.fibjs.org'</span>, ...)
-<span class="hljs-comment">// 使得 routes 支持 www.fibjs.org, other.fibjs.org, *.fibjs.org 解析</span>
+<span class="hljs-comment">// support fibjs.org in Routing</span>
 rt.host(<span class="hljs-string">'fibjs.org'</span>, ...)
 
-<span class="hljs-comment">// `rt.host(...args)` 实际上是 `rt.append('host', ...args)` 的别名</span>
 rt.append(<span class="hljs-string">'host'</span>, <span class="hljs-string">'fibjs.org'</span>, ...)
 </code></pre>
 <p>我们来看一些例子.</p>
@@ -247,7 +245,7 @@ rt.append(<span class="hljs-string">'host'</span>, <span class="hljs-string">'fi
 <span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>)
 
 <span class="hljs-keyword">const</span> fileRoutes = <span class="hljs-keyword">new</span> mq.Routing();
-<span class="hljs-comment">// 对域名 file.fibjs.org 的请求, 以 fileHandler 响应</span>
+<span class="hljs-comment">// support file.fibjs.org in Routing</span>
 fileRoutes.host(<span class="hljs-string">'file.fibjs.org'</span>, http.fileHandler(FILE_DIR))
 </code></pre>
 <h3 id="前端资源-host">前端资源 host</h3>

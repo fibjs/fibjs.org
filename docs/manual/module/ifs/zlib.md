@@ -7,7 +7,7 @@ zlib 主要由以下 3 个函数组成：
 - inflate：解压数据；
 - gzip：gzip 压缩格式。
 
-在使用 zlib 前，需要先根据需要使用的压缩算法选择其中一种。可以参考 zlib 的常量定义模块 `constants` 中的常量来选择相应的压缩算法。比如，我们使用 deflate 压缩算法进行模块说明：
+在使用 zlib 前，需要先根据需要使用的压缩算法选择其中一种。可以参考 zlib 的常量来选择相应的压缩算法。比如，我们使用 deflate 压缩算法进行模块说明：
 
 ```JavaScript
 const zlib = require('zlib');
@@ -16,13 +16,13 @@ const {
     BEST_SPEED,
     BEST_COMPRESSION,
     DEFAULT_COMPRESSION
-} = require('constants'); // 省略引用常量的方法
+} = require('zlib');
 
-// 压缩数据
+// compress data
 const deflated = zlib.deflate('hello, world', BEST_SPEED);
 console.log(deflated.toString());
 
-// 解压数据
+// decompress data
 const inflated = zlib.inflate(deflated);
 console.log(inflated.toString());
 ```

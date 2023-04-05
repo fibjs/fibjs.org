@@ -44,7 +44,7 @@ function new_web() {
     }).require("./web.js", __dirname);
 }
 
-// 每 1s 重新载入一遍 ./web.js 文件以更新 srv 的 handler
+// update svr.handler every 1 second.
 coroutine.start(function() {
     while (true) {
         coroutine.sleep(1000);

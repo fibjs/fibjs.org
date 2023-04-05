@@ -246,7 +246,7 @@
 3
 4</div><span class="hljs-built_in">console</span>.add({
     <span class="hljs-attr">type</span>: <span class="hljs-string">"console"</span>,
-    <span class="hljs-attr">levels</span>: [<span class="hljs-built_in">console</span>.INFO, <span class="hljs-built_in">console</span>.ERROR] <span class="hljs-comment">// 选项，省略则输出全部级别日志</span><font></font>
+    <span class="hljs-attr">levels</span>: [<span class="hljs-built_in">console</span>.INFO, <span class="hljs-built_in">console</span>.ERROR] <span class="hljs-comment">// optional, default is all levels</span><font></font>
 });<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">syslog is only available on posix platforms:</font></font></p>
@@ -274,18 +274,12 @@
 4
 5
 6
-7
-8
-9
-10</div><span class="hljs-built_in">console</span>.add({
+7</div><span class="hljs-built_in">console</span>.add({
     <span class="hljs-attr">type</span>: <span class="hljs-string">"file"</span>,
     <span class="hljs-attr">levels</span>: [<span class="hljs-built_in">console</span>.INFO, <span class="hljs-built_in">console</span>.ERROR],
-    <span class="hljs-comment">// 必选项，指定日志输出文件，可使用 s% 指定插入日期位置，不指定则添加在结尾</span>
-    <span class="hljs-attr">path</span>: <span class="hljs-string">"path/to/file_%s.log"</span>,
-    <span class="hljs-comment">// 选项，可选值为 "day", "hour", "minute", "###k", "###m", "###g"，缺省为 "1m"</span>
-    <span class="hljs-attr">split</span>: <span class="hljs-string">"30m"</span>,
-    <span class="hljs-comment">// 选项，可选范围为 2-128，缺省为 128</span>
-    <span class="hljs-attr">count</span>: <span class="hljs-number">10</span><font></font>
+    <span class="hljs-attr">path</span>: <span class="hljs-string">"path/to/file_%s.log"</span>, <span class="hljs-comment">// specifies the log output file, can use %s to specify the insertion date location, or add at the end if not specified</span>
+    <span class="hljs-attr">split</span>: <span class="hljs-string">"30m"</span>, <span class="hljs-comment">// Optional values are "day", "hour", "minute", "####k", "####m", "####g", default is "1m"</span>
+    <span class="hljs-attr">count</span>: <span class="hljs-number">10</span> <span class="hljs-comment">// option, selectable from 2 to 128, default is 128</span><font></font>
 });<font></font>
 </code></pre>
 <hr>
@@ -506,11 +500,11 @@
 5
 6
 7</div>{
-    <span class="hljs-string">"colors"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 指定是否输出 ansi 作色字符串，缺省为 false</span>
-    <span class="hljs-string">"depth"</span>: <span class="hljs-number">2</span>, <span class="hljs-comment">// 指定格式化 object 时递归的次数，缺省为 2</span>
-    <span class="hljs-string">"table"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 指定输出 table 格式，缺省为 false</span>
-    <span class="hljs-string">"encode_string"</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 指定表格中的字符串是否编码，缺省为 true</span>
-    <span class="hljs-string">"fields"</span>: [], <span class="hljs-comment">// 当 table 为 true 时指定显示字段</span><font></font>
+    <span class="hljs-string">"colors"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// specify if output should be colorized, defaults to false</span>
+    <span class="hljs-string">"depth"</span>: <span class="hljs-number">2</span>, <span class="hljs-comment">// specify the max depth of the output, defaults to 2</span>
+    <span class="hljs-string">"table"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// specify if output should be a table, defaults to false</span>
+    <span class="hljs-string">"encode_string"</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// specify if string should be encoded, defaults to true</span>
+    <span class="hljs-string">"fields"</span>: [], <span class="hljs-comment">// specify the fields to be displayed, defaults to all</span><font></font>
 }<font></font>
 </code></pre>
 <hr>

@@ -217,7 +217,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Abans d'utilitzar l'algorisme de xifratge, heu de crear un objecte clau, com ara l'exemple següent de creació d'un objecte </font></font><code>AES</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">clau :</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
-<span class="hljs-keyword">const</span> key = crypto.randomBytes(<span class="hljs-number">16</span>); <span class="hljs-comment">// 生成 16 字节的随机数作为 AES 密钥</span>
+<span class="hljs-keyword">const</span> key = crypto.randomBytes(<span class="hljs-number">16</span>); <span class="hljs-comment">// generate a 16-byte random key</span>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A continuació, utilitzeu </font></font><code>Cipher</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">l'objecte per xifrar el text pla:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
@@ -226,7 +226,7 @@
 4</div><span class="hljs-keyword">const</span> c = <span class="hljs-keyword">new</span> crypto.Cipher(crypto.AES, crypto.ECB, key);
 <span class="hljs-keyword">const</span> data = <span class="hljs-string">'hello, world'</span>;
 <span class="hljs-keyword">const</span> encrypted = c.encrypt(data).hex();
-<span class="hljs-built_in">console</span>.log(encrypted); <span class="hljs-comment">// 输出加密后的结果</span>
+<span class="hljs-built_in">console</span>.log(encrypted); <span class="hljs-comment">// output encrypted data</span>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A l'exemple anterior, es crea un objecte </font></font><code>AES</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">xifrat </font></font><code>Cipher</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, el text sense format es xifra mitjançant </font></font><code>encrypt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">el mètode i es retorna el resultat xifrat.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A més dels algorismes de xifratge simètric, </font></font><code>crypto</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">el mòdul també pot suportar algorismes de xifratge asimètric i algorismes de resum. </font><font style="vertical-align: inherit;">Per exemple, l'exemple següent és el codi per implementar el xifratge SHA256 </font><font style="vertical-align: inherit;">utilitzant </font></font><code>PKey</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">i objectes:</font></font><code>Digest</code><font style="vertical-align: inherit;"></font></p>
@@ -235,12 +235,12 @@
 3
 4
 5
-6</div><span class="hljs-keyword">const</span> privateKey = crypto.loadPKey(<span class="hljs-string">'private.pem'</span>); <span class="hljs-comment">// 读取私钥文件</span>
+6</div><span class="hljs-keyword">const</span> privateKey = crypto.loadPKey(<span class="hljs-string">'private.pem'</span>); <span class="hljs-comment">// read private key from file</span>
 <span class="hljs-keyword">const</span> data = <span class="hljs-string">'hello, world'</span>;
 <span class="hljs-keyword">const</span> digest = <span class="hljs-keyword">new</span> crypto.Digest(hash.SHA256);<font></font>
 digest.update(data);<font></font>
 <span class="hljs-keyword">const</span> signature = privateKey.sign(digest.digest());
-<span class="hljs-built_in">console</span>.log(signature); <span class="hljs-comment">// 输出签名结果</span>
+<span class="hljs-built_in">console</span>.log(signature); <span class="hljs-comment">// output signature</span>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A l'exemple anterior, primer es llegeix un fitxer de clau privada i es preparen les dades d'entrada. </font><font style="vertical-align: inherit;">A continuació, es crea un </font></font><code>Digest</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">objecte i </font></font><code>update</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">les dades s'afegeixen al càlcul Hash mitjançant el mètode. </font><font style="vertical-align: inherit;">Un cop finalitzat el càlcul, utilitzeu </font></font><code>privateKey.sign</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">el mètode per signar i sortir el resultat de la signatura.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">En resum, </font></font><code>crypto</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">el mòdul ofereix una varietat d'algorismes de xifratge, algorismes de resum i objectes relacionats. Aquestes funcions ens poden ajudar a assolir diversos requisits de seguretat, com ara el xifratge simètric i asimètric, la signatura digital i la verificació del xifratge.</font></font></p>

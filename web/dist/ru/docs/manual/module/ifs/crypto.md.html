@@ -217,7 +217,7 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Перед использованием алгоритма шифрования необходимо создать объект ключа, например следующий пример создания объекта </font></font><code>AES</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ключа :</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
-<span class="hljs-keyword">const</span> key = crypto.randomBytes(<span class="hljs-number">16</span>); <span class="hljs-comment">// 生成 16 字节的随机数作为 AES 密钥</span>
+<span class="hljs-keyword">const</span> key = crypto.randomBytes(<span class="hljs-number">16</span>); <span class="hljs-comment">// generate a 16-byte random key</span>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Затем используйте </font></font><code>Cipher</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">объект для шифрования открытого текста:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
@@ -226,7 +226,7 @@
 4</div><span class="hljs-keyword">const</span> c = <span class="hljs-keyword">new</span> crypto.Cipher(crypto.AES, crypto.ECB, key);
 <span class="hljs-keyword">const</span> data = <span class="hljs-string">'hello, world'</span>;
 <span class="hljs-keyword">const</span> encrypted = c.encrypt(data).hex();
-<span class="hljs-built_in">console</span>.log(encrypted); <span class="hljs-comment">// 输出加密后的结果</span>
+<span class="hljs-built_in">console</span>.log(encrypted); <span class="hljs-comment">// output encrypted data</span>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">В приведенном выше примере создается </font></font><code>AES</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">зашифрованный </font></font><code>Cipher</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, открытый текст шифруется с помощью </font></font><code>encrypt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">метода и возвращается зашифрованный результат.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">В дополнение к алгоритмам симметричного шифрования </font></font><code>crypto</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">модуль также может поддерживать алгоритмы асимметричного шифрования и алгоритмы дайджеста. </font><font style="vertical-align: inherit;">Например, следующий пример представляет собой код для реализации шифрования SHA256 </font><font style="vertical-align: inherit;">с использованием объектов </font></font><code>PKey</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">и :</font></font><code>Digest</code><font style="vertical-align: inherit;"></font></p>
@@ -235,12 +235,12 @@
 3
 4
 5
-6</div><span class="hljs-keyword">const</span> privateKey = crypto.loadPKey(<span class="hljs-string">'private.pem'</span>); <span class="hljs-comment">// 读取私钥文件</span>
+6</div><span class="hljs-keyword">const</span> privateKey = crypto.loadPKey(<span class="hljs-string">'private.pem'</span>); <span class="hljs-comment">// read private key from file</span>
 <span class="hljs-keyword">const</span> data = <span class="hljs-string">'hello, world'</span>;
 <span class="hljs-keyword">const</span> digest = <span class="hljs-keyword">new</span> crypto.Digest(hash.SHA256);<font></font>
 digest.update(data);<font></font>
 <span class="hljs-keyword">const</span> signature = privateKey.sign(digest.digest());
-<span class="hljs-built_in">console</span>.log(signature); <span class="hljs-comment">// 输出签名结果</span>
+<span class="hljs-built_in">console</span>.log(signature); <span class="hljs-comment">// output signature</span>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">В приведенном выше примере сначала считывается файл закрытого ключа и подготавливаются входные данные. </font><font style="vertical-align: inherit;">Затем создается </font></font><code>Digest</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">объект , и </font></font><code>update</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">данные добавляются к вычислению хэша с помощью метода. </font><font style="vertical-align: inherit;">После завершения расчета используйте </font></font><code>privateKey.sign</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">метод для подписи и вывода результата подписи.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Подводя итог, можно сказать, </font></font><code>crypto</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">что модуль предоставляет различные алгоритмы шифрования, дайджест-алгоритмы и связанные объекты.Эти функции могут помочь нам выполнить различные требования безопасности, такие как симметричное и асимметричное шифрование, цифровая подпись и проверка шифрования.</font></font></p>

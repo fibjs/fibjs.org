@@ -6,25 +6,25 @@ SQLite 对象是内置模块 [db](../../module/ifs/db.md) 的一个成员，主�
 ```JavaScript
 var db = require('db')
 
-// 根据以上代码示例中的代码，获取一个 SQLite 数据库连接对象
+// open a SQLite database
 var sqlite = db.openSQLite('test.db')
 
-// 创建表
+// use execute method to create a table
 sqlite.execute('CREATE TABLE test (id INT PRIMARY KEY NOT NULL, name TEXT NOT NULL, age INT NOT NULL)')
 
-// 插入数据
+// use execute method to insert data
 sqlite.execute('INSERT INTO test (id, name, age) VALUES (?, ?, ?)', 1, 'Alice', 18)
 sqlite.execute('INSERT INTO test (id, name, age) VALUES (?, ?, ?)', 2, 'Bob', 20)
 sqlite.execute('INSERT INTO test (id, name, age) VALUES (?, ?, ?)', 3, 'Charlie', 22)
 
-// 查询数据
+// use execute method to query data
 var rs = sqlite.execute('SELECT * FROM test')
 console.log(rs)
 
-// 更新数据
+// use execute method to update data
 sqlite.execute('UPDATE test SET name=?, age=? WHERE id=?', 'Marry', 19, 1)
 
-// 删除数据
+// use execute method to delete data
 sqlite.execute('DELETE FROM test WHERE id=?', 2)
 ```
 

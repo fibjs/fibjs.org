@@ -226,12 +226,12 @@
 12</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
 <span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);<font></font>
 <font></font>
-<span class="hljs-comment">// 加载 PEM 格式文件</span>
+<span class="hljs-comment">// load a PEM format CRL</span>
 <span class="hljs-keyword">var</span> pemFile = <span class="hljs-string">'./mycrl.pem'</span>;
 <span class="hljs-keyword">var</span> pemText = fs.readFile(pemFile).toString();
 <span class="hljs-keyword">var</span> crl = <span class="hljs-keyword">new</span> crypto.X509Crl(pemText);<font></font>
 <font></font>
-<span class="hljs-comment">// 显示撤销列表中的证书吊销序列号</span>
+<span class="hljs-comment">// output serials of revoked certificates</span>
 <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; crl.serials.length; i++) {
     <span class="hljs-built_in">console</span>.log(crl.serials[i]);<font></font>
 }<font></font>

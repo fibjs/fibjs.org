@@ -224,17 +224,17 @@
 14
 15</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">"crypto"</span>);
 
-<span class="hljs-comment">// 生成密钥对</span>
+<span class="hljs-comment">// generate a secp256k1 key</span>
 <span class="hljs-keyword">const</span> key = crypto.generateKey(<span class="hljs-string">"secp256k1"</span>);
 <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Private key:"</span>, key.pem());
 <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Public key:"</span>, key.publicKey.pem());
 
 <span class="hljs-keyword">const</span> message = <span class="hljs-string">"Hello, fibjs!"</span>;
-<span class="hljs-comment">// 签名消息</span>
+<span class="hljs-comment">// sign a message</span>
 <span class="hljs-keyword">const</span> sig = key.sign(message);
 <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Signature:"</span>, sig.hex());
 
-<span class="hljs-comment">// 验证消息</span>
+<span class="hljs-comment">// very the signature</span>
 <span class="hljs-keyword">const</span> verify = key.verify(message, sig);
 <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Verify result:"</span>, verify);
 </code></pre>

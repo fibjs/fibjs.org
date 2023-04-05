@@ -23,10 +23,10 @@ const ssl = require('ssl');
 const http = require('http');
 const crypto = require('crypto');
 
-// 读取 SSL 证书和私钥
+// read cert and key
 let key = crypto.loadPKey('mycert.key');
 let cert = crypto.loadCert('mycert.pem');
-// 创建 SSL 服务器
+// create ssl server
 const svr = new ssl.Server(cert, key, 8080, s => {
     var data;
 
@@ -36,7 +36,7 @@ const svr = new ssl.Server(cert, key, 8080, s => {
     }
 });
 
-// 启动服务器
+// start server
 svr.start();
 ```
 

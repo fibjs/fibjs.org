@@ -227,7 +227,7 @@ opts 包含请求的附加选项，支持的内容如下：
 
 ```JavaScript
 {
-    "method": "GET", //指定 http 请求方法：GET, POST 等
+    "method": "GET", // specify the http request method: GET, POST, etc, default: GET.
     "protocol": "http",
     "slashes": true,
     "username": "",
@@ -240,7 +240,7 @@ opts 包含请求的附加选项，支持的内容如下：
     "json": {},
     "pack": {},
     "headers": {},
-    "response_body": SeekableStream // 指定接受 resposne 数据的流
+    "response_body": SeekableStream // specify the response.body stream
 }
 ```
 
@@ -265,7 +265,7 @@ opts 包含请求的附加选项，支持的内容如下：
 
 ```JavaScript
 {
-    "method": "GET", //指定 http 请求方法：GET, POST 等
+    "method": "GET", // specify the http request method: GET, POST, etc, default: GET.
     "protocol": "http",
     "slashes": true,
     "username": "",
@@ -300,7 +300,7 @@ opts 包含请求的附加选项，支持的内容如下：
 
 ```JavaScript
 {
-    "method": "GET", //指定 http 请求方法：GET, POST 等
+    "method": "GET", // specify the http request method: GET, POST, etc, default: GET.
     "protocol": "http",
     "slashes": true,
     "username": "",
@@ -338,7 +338,7 @@ opts 包含请求的附加选项，支持的内容如下：
 
 ```JavaScript
 {
-    "method": "GET", //指定 http 请求方法：GET, POST 等
+    "method": "GET", // specify the http request method: GET, POST, etc, default: GET.
     "protocol": "http",
     "slashes": true,
     "username": "",
@@ -376,7 +376,7 @@ opts 包含请求的附加选项，支持的内容如下：
 
 ```JavaScript
 {
-    "method": "GET", //指定 http 请求方法：GET, POST 等
+    "method": "GET", // specify the http request method: GET, POST, etc, default: GET.
     "protocol": "http",
     "slashes": true,
     "username": "",
@@ -414,7 +414,7 @@ opts 包含请求的附加选项，支持的内容如下：
 
 ```JavaScript
 {
-    "method": "GET", //指定 http 请求方法：GET, POST 等
+    "method": "GET", // specify the http request method: GET, POST, etc, default: GET.
     "protocol": "http",
     "slashes": true,
     "username": "",
@@ -452,7 +452,7 @@ opts 包含请求的附加选项，支持的内容如下：
 
 ```JavaScript
 {
-    "method": "GET", //指定 http 请求方法：GET, POST 等
+    "method": "GET", // specify the http request method: GET, POST, etc, default: GET.
     "protocol": "http",
     "slashes": true,
     "username": "",
@@ -490,7 +490,7 @@ opts 包含请求的附加选项，支持的内容如下：
 
 ```JavaScript
 {
-    "method": "GET", //指定 http 请求方法：GET, POST 等
+    "method": "GET", // specify the http request method: GET, POST, etc, default: GET.
     "protocol": "http",
     "slashes": true,
     "username": "",
@@ -528,7 +528,7 @@ opts 包含请求的附加选项，支持的内容如下：
 
 ```JavaScript
 {
-    "method": "GET", //指定 http 请求方法：GET, POST 等
+    "method": "GET", // specify the http request method: GET, POST, etc, default: GET.
     "protocol": "http",
     "slashes": true,
     "username": "",

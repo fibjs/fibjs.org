@@ -231,25 +231,25 @@
 21
 22</div><span class="hljs-keyword">var</span> db = <span class="hljs-built_in">require</span>(<span class="hljs-string">'db'</span>)<font></font>
 <font></font>
-<span class="hljs-comment">// 根据以上代码示例中的代码，获取一个 SQLite 数据库连接对象</span>
+<span class="hljs-comment">// open a SQLite database</span>
 <span class="hljs-keyword">var</span> sqlite = db.openSQLite(<span class="hljs-string">'test.db'</span>)<font></font>
 <font></font>
-<span class="hljs-comment">// 创建表</span>
+<span class="hljs-comment">// use execute method to create a table</span>
 sqlite.execute(<span class="hljs-string">'CREATE TABLE test (id INT PRIMARY KEY NOT NULL, name TEXT NOT NULL, age INT NOT NULL)'</span>)<font></font>
 <font></font>
-<span class="hljs-comment">// 插入数据</span>
+<span class="hljs-comment">// use execute method to insert data</span>
 sqlite.execute(<span class="hljs-string">'INSERT INTO test (id, name, age) VALUES (?, ?, ?)'</span>, <span class="hljs-number">1</span>, <span class="hljs-string">'Alice'</span>, <span class="hljs-number">18</span>)<font></font>
 sqlite.execute(<span class="hljs-string">'INSERT INTO test (id, name, age) VALUES (?, ?, ?)'</span>, <span class="hljs-number">2</span>, <span class="hljs-string">'Bob'</span>, <span class="hljs-number">20</span>)<font></font>
 sqlite.execute(<span class="hljs-string">'INSERT INTO test (id, name, age) VALUES (?, ?, ?)'</span>, <span class="hljs-number">3</span>, <span class="hljs-string">'Charlie'</span>, <span class="hljs-number">22</span>)<font></font>
 <font></font>
-<span class="hljs-comment">// 查询数据</span>
+<span class="hljs-comment">// use execute method to query data</span>
 <span class="hljs-keyword">var</span> rs = sqlite.execute(<span class="hljs-string">'SELECT * FROM test'</span>)
 <span class="hljs-built_in">console</span>.log(rs)<font></font>
 <font></font>
-<span class="hljs-comment">// 更新数据</span>
+<span class="hljs-comment">// use execute method to update data</span>
 sqlite.execute(<span class="hljs-string">'UPDATE test SET name=?, age=? WHERE id=?'</span>, <span class="hljs-string">'Marry'</span>, <span class="hljs-number">19</span>, <span class="hljs-number">1</span>)<font></font>
 <font></font>
-<span class="hljs-comment">// 删除数据</span>
+<span class="hljs-comment">// use execute method to delete data</span>
 sqlite.execute(<span class="hljs-string">'DELETE FROM test WHERE id=?'</span>, <span class="hljs-number">2</span>)
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SQLite también tiene un módulo vec_index incorporado.Podemos crear un índice para el campo vectorial en la base de datos SQLite, buscar en función del campo vectorial y obtener el conjunto de vectores más cercano al vector de destino. </font><font style="vertical-align: inherit;">Admite el uso de matrices de tipos numéricos para representar vectores, como: [1, 2, 3] y admite dimensiones vectoriales. </font><font style="vertical-align: inherit;">Además, vec_index admite operaciones por lotes dentro de una transacción.</font></font></p>

@@ -236,7 +236,7 @@
 
 <span class="hljs-keyword">var</span> svr = <span class="hljs-keyword">new</span> http.Server(<span class="hljs-number">8080</span>, {
     <span class="hljs-string">'/websocket'</span>: ws.upgrade(<span class="hljs-function">(<span class="hljs-params">conn, req</span>) =&gt;</span> {
-        <span class="hljs-comment">// 这里发生了客户端连接</span>
+        <span class="hljs-comment">// emit message event</span>
         conn.onmessage = <span class="hljs-function"><span class="hljs-params">e</span> =&gt;</span> {
             <span class="hljs-keyword">if</span> (e.data.type == ws.TEXT) {
                 <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`接收到客户端发来的消息 <span class="hljs-subst">${e.data}</span>`</span>);

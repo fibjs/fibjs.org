@@ -244,10 +244,10 @@
 <span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);
 <span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);<font></font>
 <font></font>
-<span class="hljs-comment">// 读取 SSL 证书和私钥</span>
+<span class="hljs-comment">// read cert and key</span>
 <span class="hljs-keyword">let</span> key = crypto.loadPKey(<span class="hljs-string">'mycert.key'</span>);
 <span class="hljs-keyword">let</span> cert = crypto.loadCert(<span class="hljs-string">'mycert.pem'</span>);
-<span class="hljs-comment">// 创建 SSL 服务器</span>
+<span class="hljs-comment">// create ssl server</span>
 <span class="hljs-keyword">const</span> svr = <span class="hljs-keyword">new</span> ssl.Server(cert, key, <span class="hljs-number">8080</span>, s =&gt; {
     <span class="hljs-keyword">var</span> data;<font></font>
 <font></font>
@@ -257,7 +257,7 @@
     }<font></font>
 });<font></font>
 <font></font>
-<span class="hljs-comment">// 启动服务器</span><font></font>
+<span class="hljs-comment">// start server</span><font></font>
 svr.start();<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">위의 코드에서 먼저 SSL 인증서와 개인 키 파일을 읽은 다음 SSL 서버 인스턴스를 만듭니다. </font><font style="vertical-align: inherit;">서버의 콜백 기능에서는 클라이언트로부터 데이터를 받은 후 데이터를 대문자로 변환하고 쓰기 기능을 통해 클라이언트에게 데이터를 반환한다.</font></font></p>

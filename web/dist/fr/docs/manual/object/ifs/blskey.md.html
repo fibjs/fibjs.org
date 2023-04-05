@@ -232,7 +232,7 @@
 18
 19</div><span class="hljs-keyword">var</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);<font></font>
 <font></font>
-<span class="hljs-comment">// 创建一个私钥</span>
+<span class="hljs-comment">// create a private key</span>
 <span class="hljs-keyword">var</span> privateKey = <span class="hljs-keyword">new</span> crypto.BlsKey({
     <span class="hljs-string">'kty'</span>: <span class="hljs-string">'EC'</span>,
     <span class="hljs-string">'crv'</span>: <span class="hljs-string">'BLS12-381-G1'</span>,
@@ -240,11 +240,11 @@
     <span class="hljs-string">'d'</span>: <span class="hljs-string">'zE-pf24p-l0IT_lMcrX0gStTcsx_k1f7DnJmrN8V7ZU'</span>,<font></font>
 });<font></font>
 <font></font>
-<span class="hljs-comment">// 签名消息</span>
+<span class="hljs-comment">// sign a message</span>
 <span class="hljs-keyword">var</span> message = <span class="hljs-string">'这是一条需要签名的消息'</span>;
 <span class="hljs-keyword">var</span> signature = privateKey.sign(message);<font></font>
 <font></font>
-<span class="hljs-comment">// 验证签名</span>
+<span class="hljs-comment">// verify the signature</span>
 <span class="hljs-keyword">var</span> publicKey = privateKey.publicKey;
 <span class="hljs-keyword">var</span> verify = publicKey.verify(message, signature);<font></font>
 <font></font>

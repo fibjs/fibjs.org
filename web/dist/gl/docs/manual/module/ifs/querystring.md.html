@@ -225,10 +225,10 @@
 <font></font>
 <span class="hljs-keyword">const</span> url = <span class="hljs-string">'https://www.example.com/path/to/page?foo=bar&amp;baz=qux'</span>;<font></font>
 <font></font>
-<span class="hljs-keyword">const</span> search = <span class="hljs-keyword">new</span> URL(url).search; <span class="hljs-comment">// 获取 URL 中的查询参数部分</span>
-<span class="hljs-keyword">const</span> query = querystring.parse(search.slice(<span class="hljs-number">1</span>)); <span class="hljs-comment">// 解析查询参数为对象</span><font></font>
+<span class="hljs-keyword">const</span> search = <span class="hljs-keyword">new</span> URL(url).search; <span class="hljs-comment">// return '?foo=bar&amp;baz=qux'</span>
+<span class="hljs-keyword">const</span> query = querystring.parse(search.slice(<span class="hljs-number">1</span>)); <span class="hljs-comment">// parse query string</span><font></font>
 <font></font>
-<span class="hljs-built_in">console</span>.log(query); <span class="hljs-comment">// 输出 { foo: 'bar', baz: 'qux' }</span>
+<span class="hljs-built_in">console</span>.log(query); <span class="hljs-comment">// output { foo: 'bar', baz: 'qux' }</span>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">O código anterior obtén primeiro un URL, despois extrae a parte do parámetro de consulta, usa </font></font><code>querystring.parse()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">a función para analizalo nun obxecto e, finalmente, imprime o obxecto.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A continuación, un exemplo de como usar </font></font><code>querystring</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">o módulo para serializar un obxecto nunha cadea de parámetros de consulta de URL:</font></font></p>
@@ -250,7 +250,7 @@
 <font></font>
 <span class="hljs-keyword">const</span> query = querystring.stringify(obj);<font></font>
 <font></font>
-<span class="hljs-built_in">console</span>.log(query); <span class="hljs-comment">// 输出 "foo=bar&amp;baz=qux"</span>
+<span class="hljs-built_in">console</span>.log(query); <span class="hljs-comment">// output "foo=bar&amp;baz=qux"</span>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">No código anterior, primeiro defínese un obxecto, despois utilízase </font></font><code>querystring.stringify()</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">a función serializalo nunha cadea de parámetros de consulta de URL e, finalmente, imprímese a cadea.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pódese comprobar que os parámetros de consulta de URL pódense analizar e serializar facilmente mediante </font></font><code>querystring</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">o módulo , o que reduce o engorroso procesamento das cadeas e mellora a lexibilidade e o mantemento do código.</font></font></p>

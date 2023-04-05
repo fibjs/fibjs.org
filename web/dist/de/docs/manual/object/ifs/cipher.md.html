@@ -215,7 +215,7 @@
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
-<span class="hljs-keyword">const</span> key = crypto.randomBytes(<span class="hljs-number">16</span>); <span class="hljs-comment">// 生成 16 字节的随机数作为 AES 密钥</span>
+<span class="hljs-keyword">const</span> key = crypto.randomBytes(<span class="hljs-number">16</span>); <span class="hljs-comment">// generate a 16-byte random key</span>
 <span class="hljs-keyword">const</span> cipher = <span class="hljs-keyword">new</span> crypto.Cipher(crypto.AES, crypto.ECB, key);
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Im obigen Code verwenden wir </font></font><code>randomBytes</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">die Methode um eine 16-Byte-Zufallszahl als AES-Schlüssel zu generieren. </font><font style="vertical-align: inherit;">Dann haben wir ein Cipher-Objekt für den AES-Algorithmus erstellt, indem wir den ECB-Block-Cipher-Arbeitsmodus und die generierte Zufallszahl als Schlüssel verwendet haben.</font></font></p>
@@ -224,7 +224,7 @@
 2
 3</div><span class="hljs-keyword">const</span> plaintext = <span class="hljs-string">'Hello, world!'</span>;
 <span class="hljs-keyword">const</span> encrypted = cipher.encrypt(plaintext);
-<span class="hljs-built_in">console</span>.log(encrypted); <span class="hljs-comment">// 输出加密后的结果</span>
+<span class="hljs-built_in">console</span>.log(encrypted); <span class="hljs-comment">// output encrypted data</span>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Im obigen Code verwenden wir </font></font><code>encrypt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">die Methode um </font></font><code>Hello, world!</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">die Zeichenfolge zu verschlüsseln und das verschlüsselte Ergebnis auszugeben.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Für den obigen Code müssen Sie die folgenden Punkte beachten:</font></font></p>
@@ -237,7 +237,7 @@
 2
 3</div><span class="hljs-keyword">const</span> decipher = <span class="hljs-keyword">new</span> crypto.Cipher(crypto.AES, crypto.ECB, key);
 <span class="hljs-keyword">const</span> decrypted = decipher.decrypt(encrypted);
-<span class="hljs-built_in">console</span>.log(decrypted.toString()); <span class="hljs-comment">// 输出解密后的结果</span>
+<span class="hljs-built_in">console</span>.log(decrypted.toString()); <span class="hljs-comment">// output decrypted data</span>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Hier erstellen wir ein neues Cipher-Objekt, verwenden denselben Schlüssel- und Kennwort-Arbeitsmodus und verwenden </font></font><code>decrypt</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">die Methode zum Entschlüsseln der verschlüsselten Daten. </font><font style="vertical-align: inherit;">Das entschlüsselte Ergebnis ist a</font></font><a href="buffer.md.html" class="notranslate">Buffer</a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Objekt, das zur korrekten Ausgabe in einen String konvertiert werden muss.</font></font></p>
 <h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Erbverhältnis</font></font></h2>

@@ -14,7 +14,7 @@ var watcher = fs.watch((eventType, filename) => {
 
 watcher.close();
 
-// 带回调地调用
+// calling fs.watch with callback and options
 fs.watch('./tmp', {
     encoding: 'buffer'
 }, (eventType, filename) => {

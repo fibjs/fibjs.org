@@ -10,14 +10,14 @@ hash 模块主要用于实现消息摘要算法，是实现加密算法中，非
 ```JavaScript
 const hash = require('hash');
 
-// 创建 `MD5` digest 对象
+// create a MD5 digest object
 const digest = hash.digest(hash.MD5);
 
-// 更新数据
+// update digest with data
 const data = 'hello, world';
 digest.update(data);
 
-// 获取摘要结果
+// output result in hex
 const result = digest.digest('hex');
 console.log(result);
 ```

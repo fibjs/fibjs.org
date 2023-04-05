@@ -265,8 +265,8 @@
 5</div><span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);<font></font>
 <font></font>
 <span class="hljs-keyword">const</span> cookie = <span class="hljs-keyword">new</span> http.Cookie(<span class="hljs-string">'my_cookie_name'</span>, <span class="hljs-string">'my_cookie_value'</span>);
-<span class="hljs-keyword">delete</span> cookie.server; <span class="hljs-comment">//移除指定 httponly cookie</span>
-cookie.expires = <span class="hljs-number">-1</span>; <span class="hljs-comment">// 将过期时间改为已过期时间，浏览器会自动删除该 cookie</span>
+<span class="hljs-keyword">delete</span> cookie.server; <span class="hljs-comment">// delete server property</span>
+cookie.expires = <span class="hljs-number">-1</span>; <span class="hljs-comment">// set expires to -1</span>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">No código de exemplo anterior, usamos a instrución delete para eliminar o atributo do servidor (cookie só HTTP) do obxecto cookie. </font><font style="vertical-align: inherit;">Ademais, para eliminar a cookie engadida máis recentemente, establecemos o valor do atributo expires en -1.</font></font></p>
 <h2 id="继承关系"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">relación de herdanza</font></font></h2>
@@ -341,13 +341,13 @@ cookie.expires = <span class="hljs-number">-1</span>; <span class="hljs-comment"
 7
 8
 9</div>{
-    <span class="hljs-string">"name"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// 指定创建的 cookie 名称</span>
-    <span class="hljs-string">"value"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// 指定创建的 cookie 值</span>
-    <span class="hljs-string">"expires"</span>: <span class="hljs-built_in">Date</span>, <span class="hljs-comment">// 指定创建的 cookie 过期时间</span>
-    <span class="hljs-string">"domain"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// 指定创建的 cookie 的域名范围</span>
-    <span class="hljs-string">"path"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// 指定创建的 cookie 的路径范围</span>
-    <span class="hljs-string">"secure"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 指定创建的 cookie 是否仅通过 https 传递</span>
-    <span class="hljs-string">"httpOnly"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 指定创建的 cookie 仅允许 http 请求</span><font></font>
+    <span class="hljs-string">"name"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// specify the name of the cookie</span>
+    <span class="hljs-string">"value"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// specify the value of the cookie</span>
+    <span class="hljs-string">"expires"</span>: <span class="hljs-built_in">Date</span>, <span class="hljs-comment">// specify the expires time of the cookie</span>
+    <span class="hljs-string">"domain"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// specify the domain of the cookie</span>
+    <span class="hljs-string">"path"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// specify the path of the cookie</span>
+    <span class="hljs-string">"secure"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// specify the secure of the cookie</span>
+    <span class="hljs-string">"httpOnly"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// specify the httpOnly of the cookie</span><font></font>
 }<font></font>
 </code></pre>
 <hr>
@@ -372,11 +372,11 @@ cookie.expires = <span class="hljs-number">-1</span>; <span class="hljs-comment"
 5
 6
 7</div>{
-    <span class="hljs-string">"expires"</span>: <span class="hljs-built_in">Date</span>, <span class="hljs-comment">// 指定创建的 cookie 过期时间</span>
-    <span class="hljs-string">"domain"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// 指定创建的 cookie 的域名范围</span>
-    <span class="hljs-string">"path"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// 指定创建的 cookie 的路径范围</span>
-    <span class="hljs-string">"secure"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 指定创建的 cookie 是否仅通过 https 传递</span>
-    <span class="hljs-string">"httpOnly"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 指定创建的 cookie 仅允许 http 请求</span><font></font>
+    <span class="hljs-string">"expires"</span>: <span class="hljs-built_in">Date</span>, <span class="hljs-comment">// specify the expires time of the cookie</span>
+    <span class="hljs-string">"domain"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// specify the domain of the cookie</span>
+    <span class="hljs-string">"path"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// specify the path of the cookie</span>
+    <span class="hljs-string">"secure"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// specify the secure of the cookie</span>
+    <span class="hljs-string">"httpOnly"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// specify the httpOnly of the cookie</span><font></font>
 }<font></font>
 </code></pre>
 <h2 id="成员属性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">atributo de membro</font></font></h2>

@@ -244,10 +244,10 @@
 <span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);
 <span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);<font></font>
 <font></font>
-<span class="hljs-comment">// 读取 SSL 证书和私钥</span>
+<span class="hljs-comment">// read cert and key</span>
 <span class="hljs-keyword">let</span> key = crypto.loadPKey(<span class="hljs-string">'mycert.key'</span>);
 <span class="hljs-keyword">let</span> cert = crypto.loadCert(<span class="hljs-string">'mycert.pem'</span>);
-<span class="hljs-comment">// 创建 SSL 服务器</span>
+<span class="hljs-comment">// create ssl server</span>
 <span class="hljs-keyword">const</span> svr = <span class="hljs-keyword">new</span> ssl.Server(cert, key, <span class="hljs-number">8080</span>, s =&gt; {
     <span class="hljs-keyword">var</span> data;<font></font>
 <font></font>
@@ -257,7 +257,7 @@
     }<font></font>
 });<font></font>
 <font></font>
-<span class="hljs-comment">// 启动服务器</span><font></font>
+<span class="hljs-comment">// start server</span><font></font>
 svr.start();<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Im obigen Code lesen wir zuerst das SSL-Zertifikat und die privaten Schlüsseldateien und erstellen dann eine SSL-Serverinstanz. </font><font style="vertical-align: inherit;">Konvertieren Sie in der Callback-Funktion des Servers nach Erhalt der Daten vom Client die Daten in Großbuchstaben und geben Sie die Daten über die Write-Funktion an den Client zurück.</font></font></p>
