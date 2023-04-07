@@ -58,7 +58,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    HttpCollection [tooltip="HttpCollection", fillcolor="lightgray", id="me", label="{HttpCollection|operator[String]\l|clear()\lhas()\lfirst()\lall()\ladd()\lset()\lremove()\ldelete()\lsort()\lkeys()\lvalues()\l}"];
+    HttpCollection [tooltip="HttpCollection", fillcolor="lightgray", id="me", label="{HttpCollection|operator[String]\l|clear()\lhas()\lfirst()\lget()\lall()\ladd()\lset()\lremove()\ldelete()\lsort()\lkeys()\lvalues()\l}"];
 
     object -> HttpCollection [dir=back];
 }
@@ -102,6 +102,20 @@ Boolean HttpCollection.has(String name);
 
 ```JavaScript
 Variant HttpCollection.first(String name);
+```
+
+调用参数:
+* name: String, 指定要查询的键值
+
+返回结果:
+* Variant, 返回键值所对应的值，若不存在，则返回 undefined
+
+--------------------------
+### get
+**查询指定键值的第一个值，等同于 first**
+
+```JavaScript
+Variant HttpCollection.get(String name);
 ```
 
 调用参数:

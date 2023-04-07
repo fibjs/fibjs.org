@@ -221,7 +221,7 @@
 10</div><span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);
 
 <span class="hljs-keyword">var</span> svr = <span class="hljs-keyword">new</span> http.Server(<span class="hljs-number">8080</span>, (req) =&gt; {
-    <span class="hljs-keyword">var</span> name = req.query.first(<span class="hljs-string">'name'</span>);
+    <span class="hljs-keyword">var</span> name = req.query.get(<span class="hljs-string">'name'</span>);
     <span class="hljs-keyword">var</span> msg = name ? <span class="hljs-string">`Hello <span class="hljs-subst">${name}</span>!`</span> : <span class="hljs-string">'Hello world!'</span>;
 
     req.response.write(msg);

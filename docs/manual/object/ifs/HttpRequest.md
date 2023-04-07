@@ -9,7 +9,7 @@ HttpRequest 是用来处理 HTTP 请求的类， 它允许你创建 HTTP 请求�
 const http = require('http');
 
 var svr = new http.Server(8080, (req) => {
-    var name = req.query.first('name');
+    var name = req.query.get('name');
     var msg = name ? `Hello ${name}!` : 'Hello world!';
 
     req.response.write(msg);

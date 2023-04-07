@@ -60,7 +60,7 @@ server.start();
 const http = require('http');
 
 const server = new http.Server(8080, (req) => {
-    var name = req.query.first('name');
+    var name = req.query.get('name');
     var msg = name ? `Hello ${name}!` : 'Hello world!';
     req.response.write(msg);
 });
@@ -73,7 +73,7 @@ server.start();
 const http = require('http');
 
 const server = new http.Server(8080, (req) => {
-    if (req.headers.first('auth') === 'ok') {
+    if (req.headers.get('auth') === 'ok') {
         req.response.write('Hello World!');
     } else {
         req.response.write('Access Denied!');
