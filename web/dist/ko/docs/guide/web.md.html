@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../imgs/icon.png"><title>고성능 웹 애플리케이션 실습 - Fiber의 JavaScript</title><link href="../../../css/common.css" rel="stylesheet"><link href="../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">탐색 전환</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../index.html"><img src="../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../index.html">HOME</a></li><li><a href="readme.md.html">GUIDE</a></li><li><a href="../manual/module/readme.md.html">MODULE</a></li><li><a href="../manual/object/readme.md.html">OBJECT</a></li><li><a href="../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../docs/guide/web.md.html">中文</a> <a href="../../../ca/docs/guide/web.md.html">Catalan</a> <a href="../../../de/docs/guide/web.md.html">Deutsch</a> <a href="../../../en/docs/guide/web.md.html">English</a> <a href="../../../es/docs/guide/web.md.html">Español</a> <a href="../../../fr/docs/guide/web.md.html">Français</a> <a href="../../../gl/docs/guide/web.md.html">Galego</a> <a href="../../../it/docs/guide/web.md.html">Italiano</a> <a href="../../../nl/docs/guide/web.md.html">Nederlands</a> <a href="../../../ru/docs/guide/web.md.html">Русский</a> <a href="../../../ja/docs/guide/web.md.html">日本語</a> <a href="../../../ko/docs/guide/web.md.html">한국어</a> <a href="../../../zh-tw/docs/guide/web.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">가이드 개발 가이드</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="찾다" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="검색 입력" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">첫 장</font></font></a></li><li><a href="readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개발 가이드</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">고성능 웹 애플리케이션 사례</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개발 가이드</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../imgs/icon.png"><title>고성능 웹 애플리케이션 실습 - Fiber의 JavaScript</title><link href="../../../css/common.css" rel="stylesheet"><link href="../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">탐색 전환</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../index.html"><img src="../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../index.html">HOME</a></li><li><a href="readme.md.html">GUIDE</a></li><li><a href="../manual/module/readme.md.html">MODULE</a></li><li><a href="../manual/object/readme.md.html">OBJECT</a></li><li><a href="../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../docs/guide/web.md.html">中文</a> <a href="../../../ca/docs/guide/web.md.html">Catalan</a> <a href="../../../de/docs/guide/web.md.html">Deutsch</a> <a href="../../../en/docs/guide/web.md.html">English</a> <a href="../../../es/docs/guide/web.md.html">Español</a> <a href="../../../fr/docs/guide/web.md.html">Français</a> <a href="../../../gl/docs/guide/web.md.html">Galego</a> <a href="../../../it/docs/guide/web.md.html">Italiano</a> <a href="../../../nl/docs/guide/web.md.html">Nederlands</a> <a href="../../../ru/docs/guide/web.md.html">Русский</a> <a href="../../../ja/docs/guide/web.md.html">日本語</a> <a href="../../../ko/docs/guide/web.md.html">한국어</a> <a href="../../../zh-tw/docs/guide/web.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">가이드 개발 가이드</font></font></span><div class="search"><input type="text" class="searchbox" placeholder="찾다"></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">첫 장</font></font></a></li><li><a href="readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개발 가이드</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">고성능 웹 애플리케이션 사례</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개발 가이드</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs가 무엇인가요?</font></font></a></li>
 <li><a href="install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">운영 환경 설치</font></font></a></li>
 <li><a href="hello.md.html" class="notranslate">hello, world</a></li>
@@ -205,15 +205,15 @@
 <li><a href="../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
 <li><a href="../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
 </ul>
- </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="高性能-Web-应用程序实践" data-unique="高性能-Web-应用程序实践"></div><h1 id="高性能-Web-应用程序实践"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">고성능 웹 애플리케이션 사례</font></font></h1>
-<div name="介绍" data-unique="介绍"></div><h2 id="介绍"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">소개하다</font></font></h2>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <h1 id="高性能-Web-应用程序实践"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">고성능 웹 애플리케이션 사례</font></font></h1>
+<h2 id="介绍"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">소개하다</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs는 주로 웹 백엔드 개발용으로 설계된 고성능 애플리케이션 서버 프레임워크입니다. </font><font style="vertical-align: inherit;">Google v8 JavaScript 엔진을 기반으로 구축되었으며 기존 콜백과 다른 동시성 솔루션을 선택합니다. </font><font style="vertical-align: inherit;">fibjs는 섬유를 사용하여 프레임워크 계층에서 비동기 호출로 인한 비즈니스 복잡성을 격리하여 개발의 어려움을 크게 줄이고 사용자 공간에서 빈번한 비동기 처리로 인해 발생하는 성능 문제를 줄입니다.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs의 설계는 성능에 큰 관심을 기울였습니다.내장된 네트워크 IO 및 HTTP 모듈은 이벤트 기반 논블로킹 I/O 모델을 채택하여 개발자가 고신뢰성 서버 응용 프로그램을 쉽게 구현할 수 있습니다. </font><font style="vertical-align: inherit;">그리고 하단 레이어가 C++로 구현되기 때문에 fibjs는 성능이 뛰어나고 높은 동시 액세스를 쉽게 처리할 수 있으며 매우 안정적이고 신뢰할 수 있는 서비스를 제공합니다.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">동시에 fibjs는 TCP 프로토콜을 기반으로 하는 전이중 통신 프로토콜인 WebSocket도 지원하며 브라우저와 서버 사이에 중단 없는 연결을 설정하여 실시간 양방향 데이터 전송을 실현할 수 있습니다. 모든 형식 전송의 데이터를 지원합니다. </font><font style="vertical-align: inherit;">WebSocket을 사용하면 통신 효과가 더 좋은 실시간 통신 응용 프로그램을 쉽게 구현할 수 있습니다.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">즉, fibjs는 고성능, 고신뢰성을 강조할 뿐만 아니라 WebSocket과 같은 실시간 통신 기능을 제공하여 고속 웹 애플리케이션 개발에 매우 ​​적합한 프레임워크입니다.</font></font></p>
-<div name="开发环境搭建" data-unique="开发环境搭建"></div><h2 id="开发环境搭建"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개발 환경 구축</font></font></h2>
+<h2 id="开发环境搭建"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개발 환경 구축</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 개발을 시작하기 전에 먼저 개발 환경을 준비해야 합니다. </font><font style="vertical-align: inherit;">이 장에서는 fibjs 설치 방법, fibjs 도구를 사용하여 프로젝트를 초기화하는 방법 및 IDE 통합 개발 환경을 사용하는 방법을 소개합니다.</font></font></p>
-<div name="安装-fibjs" data-unique="安装-fibjs"></div><h3 id="安装-fibjs"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 설치</font></font></h3>
+<h3 id="安装-fibjs"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 설치</font></font></h3>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">운영 체제에 따라 fibjs를 설치하는 방법도 약간 다릅니다.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Linux 및 macOS 사용자의 경우 다음 명령을 사용하여 fibjs를 설치할 수 있습니다.</font></font></p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>curl -s https://fibjs.org/download/installer.sh | sh
@@ -222,14 +222,14 @@
 <pre><code class="lang-sh"><div class="line-numbers">1</div>brew install fibjs
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Windows 사용자의 경우 fibjs 공식 웹 사이트에서 설치 프로그램을 다운로드한 다음 지침에 따라 설치해야 합니다.</font></font></p>
-<div name="使用-fibjs-–init-创建新项目" data-unique="使用-fibjs-–init-创建新项目"></div><h3 id="使用-fibjs-–init-创建新项目"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs --init로 새 프로젝트 만들기</font></font></h3>
+<h3 id="使用-fibjs-–init-创建新项目"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs --init로 새 프로젝트 만들기</font></font></h3>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs를 설치한 후 fibjs 도구를 사용하여 새 프로젝트를 빠르게 만들 수 있습니다. </font><font style="vertical-align: inherit;">다음 명령을 사용하여 기본 프로젝트 템플릿을 만들 수 있습니다.</font></font></p>
 <pre><code class="lang-sh"><div class="line-numbers">1</div>fibjs --init
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이 명령은 프로젝트의 기본 정보와 종속성 정보를 저장하는 데 사용되는 package.json을 포함하여 현재 디렉터리에 새 프로젝트 구조를 만듭니다.</font></font></p>
-<div name="编写-Web-应用程序" data-unique="编写-Web-应用程序"></div><h2 id="编写-Web-应用程序"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">웹 애플리케이션 작성</font></font></h2>
+<h2 id="编写-Web-应用程序"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">웹 애플리케이션 작성</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">웹 애플리케이션 개발은 현재 fibjs에 가장 일반적으로 사용되는 애플리케이션 시나리오입니다. fibjs는 웹 애플리케이션을 더 빠르게 구축하는 데 도움이 되는 일련의 도구와 모듈을 제공합니다.</font></font></p>
-<div name="编写-HTTP-服务器" data-unique="编写-HTTP-服务器"></div><h3 id="编写-HTTP-服务器"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">HTTP 서버 작성</font></font></h3>
+<h3 id="编写-HTTP-服务器"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">HTTP 서버 작성</font></font></h3>
 <ul>
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">먼저 http 모듈을 가져옵니다.</font></font></li>
 <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">http.Server를 인스턴스화하고 요청을 수신합니다.</font></font></li>
@@ -247,7 +247,7 @@
 });<font></font>
 server.start();<font></font>
 </code></pre>
-<div name="解析-URL-参数和请求体" data-unique="解析-URL-参数和请求体"></div><h3 id="解析-URL-参数和请求体"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">URL 매개변수 및 요청 본문 구문 분석</font></font></h3>
+<h3 id="解析-URL-参数和请求体"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">URL 매개변수 및 요청 본문 구문 분석</font></font></h3>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">URL 매개변수와 요청 본문을 구문 분석하는 것은 매우 중요하며 다양한 서버 응용 프로그램에 적용됩니다. </font><font style="vertical-align: inherit;">fibjs에서 들어오는 URL 매개변수는 req.query를 통해 직접 구문 분석할 수 있으며 요청 본문은 req.body를 통해 읽습니다.</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -265,7 +265,7 @@ server.start();<font></font>
 });<font></font>
 server.start();<font></font>
 </code></pre>
-<div name="实现接口访问控制" data-unique="实现接口访问控制"></div><h3 id="实现接口访问控制"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">인터페이스 액세스 제어 구현</font></font></h3>
+<h3 id="实现接口访问控制"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">인터페이스 액세스 제어 구현</font></font></h3>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">인터페이스를 통한 사용자 액세스 제한은 매우 일반적인 시나리오입니다. </font><font style="vertical-align: inherit;">아래는 간단한 예입니다.</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -287,7 +287,7 @@ server.start();<font></font>
 });<font></font>
 server.start();<font></font>
 </code></pre>
-<div name="增加路由处理" data-unique="增加路由处理"></div><h3 id="增加路由处理"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">라우팅 처리 추가</font></font></h3>
+<h3 id="增加路由处理"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">라우팅 처리 추가</font></font></h3>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">라우팅은 웹 애플리케이션에서 가장 중요한 개념 중 하나로 수신된 요청을 특정 규칙에 따라 프로세서에 배포하는 것을 말합니다. </font><font style="vertical-align: inherit;">fibjs에서는 고유한 라우팅 모듈을 작성하고 http 서버에 바인딩한 다음 사용자 지정 라우팅 구문 분석을 통해 URL 일치 및 해당 처리를 수행할 수 있습니다.</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -324,7 +324,7 @@ svr.start();<font></font>
 });<font></font>
 svr.start();<font></font>
 </code></pre>
-<div name="错误处理与日志记录" data-unique="错误处理与日志记录"></div><h3 id="错误处理与日志记录"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">오류 처리 및 로깅</font></font></h3>
+<h3 id="错误处理与日志记录"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">오류 처리 및 로깅</font></font></h3>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs에서는 try-catch 블록을 통해 논리적 예외를 catch하고 로그 파일에 출력하여 디버깅 기록을 남길 수 있으며 치명적인 예외인 경우 상위 프레임워크로 직접 던져 처리할 수 있습니다.</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -346,9 +346,36 @@ svr.start();<font></font>
     }<font></font>
 });<font></font>
 </code></pre>
-<div name="WebSocket" data-unique="WebSocket"></div><h2 id="WebSocket"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">웹소켓</font></font></h2>
+<h3 id="跨域请求"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">교차 도메인 요청</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs에서는 enableCrossOrigin 메서드를 사용하여 원본 간 요청을 허용할 수 있습니다. </font><font style="vertical-align: inherit;">다음은 http 서버를 만들고 원본 간 요청을 허용하는 방법에 대한 샘플 코드입니다.</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8</div><span class="hljs-keyword">const</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);<font></font>
+<font></font>
+<span class="hljs-keyword">const</span> server = <span class="hljs-keyword">new</span> http.Server(<span class="hljs-number">8080</span>, (req) =&gt; {<font></font>
+    req.response.write(<span class="hljs-string">'Hello World!'</span>);<font></font>
+});<font></font>
+<font></font>
+server.enableCrossOrigin(); <span class="hljs-comment">// enable cross domain request</span><font></font>
+server.start();<font></font>
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">위의 예에서는 포트 8080에 http 서버를 생성했습니다. </font><font style="vertical-align: inherit;">enableCrossOrigin() 메서드는 원본 간 요청을 허용합니다.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">enableCrossOrigin을 사용하여 원본 간 요청을 허용하는 경우 allowHeaders 매개변수를 전달하여 수신이 허용되는 원본 간 헤더를 지정할 수 있습니다. </font><font style="vertical-align: inherit;">기본적으로 allowHeaders 값은 Content-Type입니다.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">샘플 코드는 다음과 같습니다.</font></font></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-comment">// enable "Content-Type" and "Authorization" headers in cross domain request</span>
+server.enableCrossOrigin(<span class="hljs-string">"Content-Type, Authorization"</span>);
+</code></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">위의 코드에서 allowHeaders의 값은 "Content-Type, Authorization"이며, 이는 서버가 "Content-Type" 및 "Authorization"이라는 두 개의 교차 도메인 헤더 수신을 허용함을 나타냅니다. </font><font style="vertical-align: inherit;">요청에 다른 헤더가 포함되어 있으면 서버에서 거부됩니다.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">enableCrossOrigin 설정을 사용하여 도메인 간 헤더 수신을 허용하는 경우 도메인 간 요청을 보낼 때 해당 요청 헤더도 설정해야 합니다. 그렇지 않으면 서버에서도 거부됩니다.</font></font></p>
+<h2 id="WebSocket"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">웹소켓</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">WebSocket 프로토콜은 TCP 프로토콜을 기반으로 하는 전이중 통신 프로토콜로, 브라우저와 서버 사이에 중단 없는 연결을 설정하고 실시간 양방향 데이터 전송을 실현할 수 있으며 모든 형식의 데이터 전송을 지원할 수 있습니다. </font><font style="vertical-align: inherit;">fibjs에서 WebSocket 지원 모듈은 WebSocket 서버 및 클라이언트 개발을 실현할 수 있는 해당 API 인터페이스를 제공합니다.</font></font></p>
-<div name="使用-fibjs-原生-WebSocket-模块实现-WebSocket-服务器端" data-unique="使用-fibjs-原生-WebSocket-模块实现-WebSocket-服务器端"></div><h3 id="使用-fibjs-原生-WebSocket-模块实现-WebSocket-服务器端"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 기본 WebSocket 모듈을 사용하여 WebSocket 서버 측 구현</font></font></h3>
+<h3 id="使用-fibjs-原生-WebSocket-模块实现-WebSocket-服务器端"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 기본 WebSocket 모듈을 사용하여 WebSocket 서버 측 구현</font></font></h3>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">서버 측에서 업그레이드 기능을 통해 HTTP 요청을 WebSocket 연결로 변환할 수 있습니다. </font><font style="vertical-align: inherit;">http 서버 객체를 생성할 때 ws.upgrade(callback)를 사용하여 http.start() 메서드에 전달하여 http 요청을 WebSocket으로 변환할 수 있습니다.</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -405,7 +432,7 @@ svr.start();<font></font>
 server.start();<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">위의 예에서 클라이언트가 보낸 메시지 이벤트와 서버와 클라이언트 간의 연결 종료 이벤트를 모니터링할 수 있습니다. </font><font style="vertical-align: inherit;">서버가 클라이언트 메시지를 받으면 동일한 메시지를 다시 클라이언트로 보냅니다. </font><font style="vertical-align: inherit;">이 시점에서 간단한 WebSocket 지점 간 통신이 실현됩니다.</font></font></p>
-<div name="实现与数据存储的交互" data-unique="实现与数据存储的交互"></div><h3 id="实现与数据存储的交互"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Datastore와의 상호 작용 구현</font></font></h3>
+<h3 id="实现与数据存储的交互"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Datastore와의 상호 작용 구현</font></font></h3>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">통신을 위해 WebSocket을 사용할 때 단순한 메시지 송수신 외에도 영구 저장 및 데이터 쿼리와 같은 작업도 고려해야 합니다. </font><font style="vertical-align: inherit;">이때 데이터베이스를 사용해야 하며 fibjs의 내장 db 모듈을 사용하여 데이터베이스와 상호 작용할 수 있습니다.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">샘플 코드는 다음과 같습니다.</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
@@ -477,7 +504,7 @@ server.start();<font></font>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">위의 예제에서는 먼저 db 모듈의 openMySQL 메소드를 사용하여 MySQL 데이터베이스 연결 객체인 mysql을 생성한 다음, 조건에 맞는 레코드를 얻기 위해 클라이언트로부터 메시지를 들은 후 execute 메소드를 사용하여 SQL 쿼리를 직접 실행합니다. </font><font style="vertical-align: inherit;">마지막으로 쿼리 결과는 WebSocket 프로토콜을 통해 클라이언트로 다시 전송됩니다.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">실제 개발에서는 예외 처리 및 데이터 보안이 잘 이루어져야 한다는 점에 유의해야 합니다.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">요약하면 db 모듈을 통해 WebSocket 프로토콜과 결합된 데이터베이스와 쉽게 상호 작용하여 실시간 고성능 웹 애플리케이션을 구현할 수 있습니다.</font></font></p>
-<div name="实现-WebSocket-客户端与服务器端通信" data-unique="实现-WebSocket-客户端与服务器端通信"></div><h3 id="实现-WebSocket-客户端与服务器端通信"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">WebSocket 클라이언트-서버 통신 구현</font></font></h3>
+<h3 id="实现-WebSocket-客户端与服务器端通信"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">WebSocket 클라이언트-서버 통신 구현</font></font></h3>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">클라이언트 측에서 WebSocket 인스턴스를 생성하고 URL을 지정하여 WebSocket 서버에 연결한 다음 서버에 메시지를 보낼 수 있습니다.</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -528,19 +555,19 @@ conn.onerror = <span class="hljs-function"><span class="hljs-keyword">function</
 }<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">위의 클라이언트 코드에서 WebSocket 인스턴스를 생성하고 URL을 지정하고 성공적으로 연결되면 서버에 메시지를 보낼 수 있습니다. </font><font style="vertical-align: inherit;">서버가 클라이언트 메시지를 받으면 동일한 메시지를 다시 클라이언트로 보냅니다. </font><font style="vertical-align: inherit;">이 시점에서 간단한 WebSocket 지점 간 통신이 실현됩니다.</font></font></p>
-<div name="WebSocket-的优势和使用场景" data-unique="WebSocket-的优势和使用场景"></div><h3 id="WebSocket-的优势和使用场景"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">WebSocket의 장점 및 사용 시나리오</font></font></h3>
+<h3 id="WebSocket-的优势和使用场景"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">WebSocket의 장점 및 사용 시나리오</font></font></h3>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">WebSocket 프로토콜에는 일반적인 양방향 통신 모델이 있어 서버가 적극적으로 클라이언트에 데이터를 푸시할 수 있으며 채팅, 온라인 게임 및 기타 실시간 및 높은 즉시성이 필요한 경우를 구현하는 데 자주 사용됩니다. </font><font style="vertical-align: inherit;">다른 전송 프로토콜과 비교할 때 WebSocket 프로토콜은 다음과 같은 이점이 있습니다.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">• 높은 실시간 성능, 양방향 통신 지원 • 간단한 프로토콜 사양, 사용하기 쉬움 • 다수의 동시 연결 처리 가능 • 긴 연결 지원, 네트워크 전송 시간 단축</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">WebSocket의 가장 일반적인 사용 시나리오에는 웹 채팅, 게임 배틀, 온라인 플레이 및 인스턴트 메시징 등이 포함됩니다.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">요약하면 WebSocket 지원 모듈을 사용하면 구현이 매우 간단하고 개발자가 자신의 웹 응용 프로그램을 신속하게 구축할 수 있습니다.</font></font></p>
-<div name="单元测试" data-unique="单元测试"></div><h2 id="单元测试"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">단위 테스트</font></font></h2>
-<div name="测试框架和测试方法" data-unique="测试框架和测试方法"></div><h3 id="测试框架和测试方法"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">테스트 프레임워크 및 테스트 방법</font></font></h3>
+<h2 id="单元测试"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">단위 테스트</font></font></h2>
+<h3 id="测试框架和测试方法"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">테스트 프레임워크 및 테스트 방법</font></font></h3>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">소프트웨어 개발 프로세스에서 테스트는 매우 중요한 링크이며 단위 테스트는 중요한 부분입니다.단위 테스트는 코드가 설계 및 요구 사항을 충족하는지 여부를 효과적으로 검증하고 코드 수정 시 발생하는 오류를 방지할 수 있습니다. </font><font style="vertical-align: inherit;">일반적으로 단위 테스트의 원칙은 각 기능과 방법의 입력과 출력이 올바른지 확인하기 위해 각 기능과 방법을 테스트하는 것입니다.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">테스트 프레임워크는 테스트 케이스 관리, 실행 및 보고와 같은 기능을 제공하는 테스트 케이스 작성, 실행 및 검증을 위한 코드 기반입니다. </font><font style="vertical-align: inherit;">JavaScript 및 Node.js에서 널리 사용되는 단위 테스트 프레임워크에는 Mocha, Jest 및 Jasmine이 포함됩니다. </font><font style="vertical-align: inherit;">fibjs에는 자체 테스트 프레임워크인 테스트 모듈도 있습니다.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">단위 테스트 과정에서 일반적으로 사용되는 테스트 방법으로는 블랙박스 테스트와 화이트박스 테스트가 있다.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">블랙박스 테스트는 함수 내부의 구현 세부 사항을 고려하지 않고 함수의 입력과 출력만 고려하는 테스트 방법입니다. </font><font style="vertical-align: inherit;">블랙박스 테스트는 요구사항 분석 및 설계 사양을 기반으로 테스트 케이스 분석 및 실행을 통해 프로그램에 논리 오류, 경계 오류 및 보안 문제가 있는지 확인합니다. </font><font style="vertical-align: inherit;">테스트 프로세스가 간단하고 테스트 결과가 신뢰할 수 있다는 장점이 있지만 모든 프로그램 경로를 테스트할 수 없다는 단점이 있습니다.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">화이트 박스 테스트는 조건문, 루프문, 재귀, 코드 커버리지 등 함수의 내부 구현 세부 사항을 고려하는 테스트 방법입니다. </font><font style="vertical-align: inherit;">이러한 테스트를 통해 공유 데이터와 코드 간의 상호 작용에서 가능한 문제를 찾을 수 있습니다. </font><font style="vertical-align: inherit;">화이트박스 테스트의 장점은 모든 프로그램 경로를 커버할 수 있다는 점이며 단점은 테스트 프로세스가 더 복잡하고 테스트 결과가 환경 및 구현 방법에 따라 영향을 받는다는 점입니다.</font></font></p>
-<div name="使用-test-模块编写测试用例" data-unique="使用-test-模块编写测试用例"></div><h3 id="使用-test-模块编写测试用例"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">테스트 모듈을 사용하여 테스트 케이스 작성</font></font></h3>
+<h3 id="使用-test-模块编写测试用例"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">테스트 모듈을 사용하여 테스트 케이스 작성</font></font></h3>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs에서는 테스트 모듈을 사용하여 웹 서버에 대한 테스트 사례를 작성할 수 있습니다. </font><font style="vertical-align: inherit;">다음은 간단한 예입니다.</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -573,7 +600,7 @@ test.run();<font></font>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이 예제에서는 describe 및 it 함수를 사용하여 테스트 모듈과 테스트 사례를 각각 정의하고 assertion 검증을 위해 assert 함수를 사용합니다.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">describe 함수에서 각각 다른 시나리오를 테스트하기 위해 여러 it 함수를 정의할 수 있습니다. </font><font style="vertical-align: inherit;">각 it 함수에서 http.get 함수를 사용하여 HTTP GET 요청을 시뮬레이트하고 요청 응답을 얻고 assertTrue 및 assertEqual과 같은 어설션 검증을 수행할 수 있습니다.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">테스트 케이스를 작성함으로써 기능 및 모듈의 정확성을 효과적으로 테스트하고 제품 품질을 보장하며 코드 유지 관리성을 향상시킬 수 있습니다.</font></font></p>
-<div name="热更新" data-unique="热更新"></div><h2 id="热更新"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">핫 업데이트</font></font></h2>
+<h2 id="热更新"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">핫 업데이트</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">핫 업데이트는 서비스를 중단하지 않고 서버 코드를 업데이트하는 것을 말합니다. </font><font style="vertical-align: inherit;">프로그램 개발 과정에서 빠른 반복을 위해 코드를 수정하고 새로운 기능을 추가해야 하는 경우가 많습니다. </font><font style="vertical-align: inherit;">핫 업데이트를 사용하면 새 코드를 사용하여 서비스를 중지하지 않고도 반복 작업을 보다 효율적으로 완료할 수 있습니다.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs에서는 SandBox 모듈을 사용하여 원활한 핫 업데이트를 달성할 수 있습니다. </font><font style="vertical-align: inherit;">SandBox 모듈은 안전한 실행 환경을 제공하고 전역 변수 및 기타 기능을 시뮬레이션할 수 있습니다. </font><font style="vertical-align: inherit;">구체적인 구현에 대해서는 다음 단계를 참조하십시오.</font></font></p>
 <ul>
@@ -616,7 +643,7 @@ fs.watch(FILE_PATH, (event, filename) =&gt; {<font></font>
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">이 코드에서는 먼저 프로그램이 시작될 때 web.js에 코드를 한 번 로드한 다음 SandBox 인스턴스를 만들고 인스턴스에 코드를 로드합니다. </font><font style="vertical-align: inherit;">그런 다음 새 HTTP 서버를 만들고 처리기의 메서드를 사용하여 요청을 처리했습니다.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">코드에서 fs.watch를 사용하여 web.js 파일의 변경 사항을 모니터링하고 파일이 변경되면 코드를 다시 로드하고 핸들러에서 구현을 업데이트합니다.</font></font></p>
-<div name="性能优化" data-unique="性能优化"></div><h2 id="性能优化"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">성능 최적화</font></font></h2>
+<h2 id="性能优化"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">성능 최적화</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">개발 과정에서 종종 성능 문제에 직면해야 합니다. </font><font style="vertical-align: inherit;">코드를 최적화하고 성능을 향상시키는 것은 개발자에게 필요한 기술 중 하나입니다. </font><font style="vertical-align: inherit;">fibjs에서는 CPU 프로파일러를 사용하여 프로그램의 실행 상태를 분석하고 코드를 최적화할 수 있습니다.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs에서는 명령줄 매개변수 --prof만 사용하여 fibjs를 시작하면 됩니다. 즉, CPU 프로파일러를 시작할 수 있습니다(기본 간격은 1000ms). </font><font style="vertical-align: inherit;">보다 정밀한 분석 로그가 필요한 경우 --prof-interval 파라미터를 사용하여 로그 간격을 설정할 수 있습니다. </font><font style="vertical-align: inherit;">예를 들어:</font></font></p>
 <pre><code class="lang-sh"><div class="line-numbers">1
@@ -632,7 +659,7 @@ $ fibjs --prof --prof-interval=10ms test.js <span class="hljs-comment"># 启动 
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">생성된 화염 다이어그램에서 각 색상 블록은 기록 지점을 나타냅니다. 색상 블록이 길수록 기록된 횟수가 많으며 각 라인은 호출 스택 레이어를 나타내고 레이어가 많을수록 호출 레이어가 많습니다. 스택의 반전, 색상 블록이 낮을수록 원래 기능이 더 많습니다.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">색상 블록에는 두 가지 유형이 있습니다. 하나는 빨간색이고 다른 하나는 파란색입니다. </font><font style="vertical-align: inherit;">fibjs의 프로파일러에서 빨간색은 JavaScript 작업을 나타내고 파란색은 io 작업 또는 기본 작업을 나타냅니다. </font><font style="vertical-align: inherit;">해결해야 할 문제에 따라 집중해야 할 영역이 달라집니다. </font><font style="vertical-align: inherit;">예를 들어 CPU 사용량이 많은 문제를 해결해야 하는 경우 이때 빨간색 블록에 주의해야 하며 애플리케이션이 CPU 사용량은 적지만 응답이 느린 경우 파란색 블록에 주의해야 합니다. 차단하다. </font><font style="vertical-align: inherit;">상단 근처의 색상 블록이 클수록 더 많은 주의와 최적화가 필요합니다.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">더 많은 CPU 리소스를 차지하는 기능을 조정하거나, 비동기 방식을 통해 IO를 구현하거나, 작성 시 코드를 최적화할 수 있습니다.</font></font></p>
-<div name="部署上线" data-unique="部署上线"></div><h2 id="部署上线"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">온라인 배포</font></font></h2>
+<h2 id="部署上线"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">온라인 배포</font></font></h2>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">프로젝트를 프로덕션 환경에서 실행하려면 프로젝트를 컴파일하고 배포해야 합니다. </font><font style="vertical-align: inherit;">여기서는 package.json 파일을 사용하여 컴파일 및 배포를 구성하는 방법을 소개합니다.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">프로젝트에서 package.json을 사용하여 프로젝트 종속성을 관리하고 컴파일 및 배포를 구성할 수 있습니다. </font><font style="vertical-align: inherit;">간단한 예제 package.json을 예로 들어 보겠습니다.</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
@@ -656,4 +683,4 @@ $ fibjs --prof --prof-interval=10ms test.js <span class="hljs-comment"># 启动 
 <pre><code class="lang-sh"><div class="line-numbers">1</div>fibjs app.js
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">👉【</font></font><a href="host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">도메인 네임 라우팅</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">】</font></font></p>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© 저작권 2012-2021 fibjs.org | </font></font><a href="../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지원</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../js/common.js"></script><script type="text/javascript" src="../../../js/docs.js"></script></body></html>
+ </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© 저작권 2012-2021 fibjs.org | </font></font><a href="../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">지원</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../js/common.js"></script><script type="text/javascript" src="../../../js/docs.js"></script></body></html>

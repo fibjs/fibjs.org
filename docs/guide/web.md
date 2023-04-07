@@ -122,6 +122,31 @@ const server = new http.Server(8080, (req) => {
     }
 });
 ```
+### 跨域请求
+
+在 fibjs 中，我们可以使用 enableCrossOrigin 这个方法来允许跨域请求。以下是如何通过创建 http 服务器并允许跨域请求的示例代码：
+```JavaScript
+const http = require('http');
+
+const server = new http.Server(8080, (req) => {
+    req.response.write('Hello World!');
+});
+
+server.enableCrossOrigin(); // enable cross domain request
+server.start();
+```
+在上面的例子中，我们以 8080 端口创建了一个 http 服务器。enableCrossOrigin() 方法允许跨域请求。
+
+在使用 enableCrossOrigin 允许跨域请求时，可以通过传递一个参数 allowHeaders 来指定允许接收的跨域 Header。默认情况下，allowHeaders 值为 Content-Type。
+
+示例代码如下：
+```JavaScript
+// enable "Content-Type" and "Authorization" headers in cross domain request
+server.enableCrossOrigin("Content-Type, Authorization");
+```
+在上述代码中，allowHeaders 的值为 "Content-Type, Authorization"，表示服务器允许接收 "Content-Type" 和 "Authorization" 这两个跨域 Header。如果请求中包含其他 header，则会被服务器拒绝。
+
+需要注意的是，当我们使用 enableCrossOrigin 设置允许接收跨域 Header 时，也需要在发送跨域请求时设置相应的 request header，否则同样会被服务器拒绝。
 ## WebSocket
 
 WebSocket 协议是一种基于 TCP 协议的全双工通信协议，在浏览器和服务器之间建立起一个不断开的连接，可以实现实时双向数据传输，并且可以支持任意格式的数据传输。在 fibjs 中，WebSocket 支持模块提供了相应的 API 接口，可以实现 WebSocket 服务器端和客户端的开发。
