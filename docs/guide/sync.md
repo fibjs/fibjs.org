@@ -38,7 +38,6 @@ const data = fs.readFile("/path/to/file");
 console.log(data);
 ```
 也可以把异步函数通过 util.sync 和 try…catch 包装一下，可以让 fiber 获得异步调用的返回值，从而实现同步的效果，例如：
-
 ```JavaScript
 // load module
 const coroutine = require("coroutine");
@@ -56,7 +55,34 @@ console.log(data);
 ```
 在上面的例子中，我们定义了一个名为 readFile 的函数，利用 util.sync 将异步的 fs.readFile 函数封装成了同步函数，这个函数可以通过同步调用的方式直接返回数据。这种同步调用方式和传统的 JavaScript 编程范式类似，不同的是，在 fibjs 中不会阻塞线程，而是通过 fiber 实现异步效果。
 
-通过使用同步编程范式，我们可以大大降低异步编程带来的嵌套和回调的问题，使得代码更加易读、易维护、易于调试。在编写复杂项目时，使用同步编程范式可以帮助我们更快地实现程序设计，并使代码结构更清晰。
+### util.sync 的原理
+util.sync 是内核的一个高效的包裹函数，下面的 JavaScript 代码可以实现类似的功能：
+```JavaScript
+const coroutine = require("coroutine");
+
+function sync(func) {
+  return function _warp() {
+    var ev = new coroutine.Event();
+    var e, r;
+
+    func.apply(this, [
+      ...arguments,
+      function (err, result) {
+        e = err;
+        r = result;
+        ev.set();
+      }
+    ]);
+
+    ev.wait();
+    if (e)
+      throw e;
+
+    return r;
+  }
+}
+```
+这段代码定义了一个用于将异步回调函数转换为同步调用函数的工具函数 sync。它接收一个函数 func，并返回一个新的函数 _wrap。这个新函数实现了将原函数转换为同步调用的功能。在 _wrap 函数中，首先创建了一个新的 Event 对象 ev，用于线程调度和等待异步回调结果。之后使用 apply 方法将指定参数和一个新的回调函数作为参数，调用原函数 func。在调用的过程中，发生了异步回调，新的回调函数将返回的结果存储到变量 e 和 r 中，并唤醒 Event 对象。最后根据变量 e 来决定是否抛出异常，或者返回变量 r。这个函数实现了将异步回调函数转换为同步调用的一个解决方案，能够提高函数的可读性和可维护性。
 
 ## fibjs 中的异步编程
 

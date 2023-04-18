@@ -264,7 +264,55 @@
 <span class="hljs-built_in">console</span>.log(data);
 </code></pre>
 <p>在上面的例子中，我们定义了一个名为 readFile 的函数，利用 util.sync 将异步的 fs.readFile 函数封装成了同步函数，这个函数可以通过同步调用的方式直接返回数据。这种同步调用方式和传统的 JavaScript 编程范式类似，不同的是，在 fibjs 中不会阻塞线程，而是通过 fiber 实现异步效果。</p>
-<p>通过使用同步编程范式，我们可以大大降低异步编程带来的嵌套和回调的问题，使得代码更加易读、易维护、易于调试。在编写复杂项目时，使用同步编程范式可以帮助我们更快地实现程序设计，并使代码结构更清晰。</p>
+<h3 id="util.sync-的原理">util.sync 的原理</h3>
+<p>util.sync 是内核的一个高效的包裹函数，下面的 JavaScript 代码可以实现类似的功能：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23</div><span class="hljs-keyword">const</span> coroutine = <span class="hljs-built_in">require</span>(<span class="hljs-string">"coroutine"</span>);
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sync</span>(<span class="hljs-params">func</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_warp</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">var</span> ev = <span class="hljs-keyword">new</span> coroutine.Event();
+    <span class="hljs-keyword">var</span> e, r;
+
+    func.apply(<span class="hljs-keyword">this</span>, [
+      ...arguments,
+      <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err, result</span>) </span>{
+        e = err;
+        r = result;
+        ev.set();
+      }
+    ]);
+
+    ev.wait();
+    <span class="hljs-keyword">if</span> (e)
+      <span class="hljs-keyword">throw</span> e;
+
+    <span class="hljs-keyword">return</span> r;
+  }
+}
+</code></pre>
+<p>这段代码定义了一个用于将异步回调函数转换为同步调用函数的工具函数 sync。它接收一个函数 func，并返回一个新的函数 _wrap。这个新函数实现了将原函数转换为同步调用的功能。在 _wrap 函数中，首先创建了一个新的 Event 对象 ev，用于线程调度和等待异步回调结果。之后使用 apply 方法将指定参数和一个新的回调函数作为参数，调用原函数 func。在调用的过程中，发生了异步回调，新的回调函数将返回的结果存储到变量 e 和 r 中，并唤醒 Event 对象。最后根据变量 e 来决定是否抛出异常，或者返回变量 r。这个函数实现了将异步回调函数转换为同步调用的一个解决方案，能够提高函数的可读性和可维护性。</p>
 <h2 id="fibjs-中的异步编程">fibjs 中的异步编程</h2>
 <p>在 fibjs 中，大多数异步方法（包括 I/O 和网络请求方法等）都可以同时支持同步和异步调用，这使得开发者可以随时根据自己的编程需求来选择使用哪种方式。</p>
 <p>以 fs.readFile() 为例，我们可以通过两种方式来使用该方法：</p>
