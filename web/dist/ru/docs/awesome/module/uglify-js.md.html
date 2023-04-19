@@ -456,8 +456,8 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Когда изменение разрешено, но вы хотите предотвратить искажение определенных имен, вы можете объявить эти имена с помощью </font></font><code>--mangle reserved</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">— передать список имен, разделенных запятыми, например:</font></font></p>
 <pre><code><div class="line-numbers">1</div><span class="hljs-function"><span class="hljs-title">uglifyjs</span></span> ... -m reserved=[<span class="hljs-string">'$'</span>,<span class="hljs-string">'require'</span>,<span class="hljs-string">'exports'</span>]
 </code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">чтобы предотвратить </font><font style="vertical-align: inherit;">изменение имен </font></font><code>require</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">и </font></font><code>exports</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font><code>$</code><font style="vertical-align: inherit;"></font></p>
-<h3 id="CLI-mangling-property-names-(--mangle-props)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Изменение имен свойств CLI ( </font></font><code>--mangle-props</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">)</font></font></h3>
-<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Примечание.</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ЭТО ВОЗМОЖНО НАРУШИТ ВАШ КОД. Изменение имен свойств — это отдельный шаг, отличный от изменения имен переменных. Перейдите,
+<h3 id="CLI-mangling-property-names-(`--mangle-props`)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Изменение имен свойств CLI ( </font></font><code>--mangle-props</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">)</font></font></h3>
+<p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Примечание.</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ЭТО ВОЗМОЖНО НАРУШИТ ВАШ КОД. Изменение имен свойств — это отдельный шаг, отличный от изменения имен переменных. Передайте,
  </font></font><code>--mangle-props</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">чтобы включить его. Это изменит все свойства во входном коде, за исключением встроенных свойств DOM и свойств в ядре JavaScript. классы, например:</font></font></p>
 <pre><code class="lang-javascript"><div class="line-numbers">1
 2
@@ -496,7 +496,7 @@ x[<span class="hljs-string">"baz_"</span>] = <span class="hljs-number">3</span>;
 </code></pre>
 <pre><code class="lang-javascript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> x={<span class="hljs-attr">o</span>:<span class="hljs-number">0</span>,<span class="hljs-attr">_</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">calc</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._+<span class="hljs-keyword">this</span>.o}};x.l=<span class="hljs-number">2</span>,x.o=<span class="hljs-number">3</span>,<span class="hljs-built_in">console</span>.log(x.calc());
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Комбинация параметров свойств мангла:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Комбинирование параметров свойств мангла:</font></font></p>
 <pre><code class="lang-bash"><div class="line-numbers">1</div>$ uglifyjs example.js -c -m --mangle-props regex=/_$/,reserved=[bar_]
 </code></pre>
 <pre><code class="lang-javascript"><div class="line-numbers">1</div><span class="hljs-keyword">var</span> x={<span class="hljs-attr">o</span>:<span class="hljs-number">0</span>,<span class="hljs-attr">_</span>:<span class="hljs-number">1</span>,<span class="hljs-attr">calc</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._+<span class="hljs-keyword">this</span>.o}};x.bar_=<span class="hljs-number">2</span>,x.o=<span class="hljs-number">3</span>,<span class="hljs-built_in">console</span>.log(x.calc());
@@ -515,7 +515,7 @@ $ uglifyjs file3.js file4.js --mangle-props --name-cache /tmp/cache.json -o part
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Теперь </font></font><code>part1.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">и </font></font><code>part2.js</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">будут согласовываться друг с другом с точки зрения искаженных имен свойств.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Использование кэша имен не требуется, если вы сжимаете все свои файлы одним вызовом UglifyJS.</font></font></p>
-<h3 id="Mangling-unquoted-names-(--mangle-props-keep_quoted)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Изменение имен без кавычек ( </font></font><code>--mangle-props keep_quoted</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">)</font></font></h3>
+<h3 id="Mangling-unquoted-names-(`--mangle-props-keep_quoted`)"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Изменение имен без кавычек ( </font></font><code>--mangle-props keep_quoted</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">)</font></font></h3>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Использование имени свойства в кавычках ( </font></font><code>o["foo"]</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">) резервирует имя свойства ( </font></font><code>foo</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">), чтобы оно не искажалось во всем скрипте, даже если оно используется в стиле без кавычек ( </font></font><code>o.foo</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">). Пример:</font></font></p>
 <pre><code class="lang-javascript"><div class="line-numbers">1
 2
@@ -718,7 +718,7 @@ fs.writeFileSync(cacheFileName, <span class="hljs-built_in">JSON</span>.stringif
 <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify(result.error));
 <span class="hljs-comment">// {"message":"Unexpected token: keyword (else)","filename":"foo.js","line":1,"col":7,"pos":7}</span>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Примечание: в отличие от </font></font><a href="mailto:`uglify-js@2.x"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">`uglify-js@2.x</font></font></a><code>, the</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 3.x` API не выдает ошибок, для достижения аналогичного эффекта можно сделать следующее:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Примечание: в отличие от </font></font><code>uglify-js@2.x</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font></font><code>3.x</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">API не выдает ошибок, для достижения аналогичного эффекта можно сделать следующее:</font></font></p>
 <pre><code class="lang-javascript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">var</span> result = UglifyJS.minify(code, options);
 <span class="hljs-keyword">if</span> (result.error) <span class="hljs-keyword">throw</span> result.error;
@@ -878,7 +878,7 @@ fs.writeFileSync(cacheFileName, <span class="hljs-built_in">JSON</span>.stringif
 <li><p><code>dead_code</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(по умолчанию: </font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">) -- удалить недостижимый код</font></font></p>
 </li>
 <li><p><code>drop_console</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(по умолчанию: </font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">) -- Передать </font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, чтобы отменить вызовы
- </font></font><code>console.*</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">функций. Если вы хотите отбросить конкретный вызов функции, например, </font></font><code>console.info</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">и/или сохранить побочные эффекты от аргументов функции после отбрасывания вызова функции, используйте </font></font><code>pure_funcs</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">вместо этого.</font></font></p>
+ </font></font><code>console.*</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">функций. Если вы хотите отказаться от вызова определенной функции, например, </font></font><code>console.info</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">и/или сохранить побочные эффекты от аргументов функции после удаления вызова функции, используйте </font></font><code>pure_funcs</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">вместо этого.</font></font></p>
 </li>
 <li><p><code>drop_debugger</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(по умолчанию: </font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">) -- удалить </font></font><code>debugger;</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">операторы</font></font></p>
 </li>
@@ -969,7 +969,7 @@ fs.writeFileSync(cacheFileName, <span class="hljs-built_in">JSON</span>.stringif
 <li><p><code>unsafe_regexp</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(по умолчанию: </font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">) -- включить замену переменных значениями
  </font></font><code>RegExp</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">так же, как если бы они были константами.</font></font></p>
 </li>
-<li><p><code>unsafe_undefined</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(по умолчанию: </font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">) -- заменить, </font></font><code>void 0</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">если в области видимости есть имя переменной </font></font><code>undefined</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(имя переменной будет искажено, как правило, сокращено до одного символа)</font></font></p>
+<li><p><code>unsafe_undefined</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(по умолчанию: </font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">) -- заменить, </font></font><code>void 0</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">если в области видимости есть имя переменной </font></font><code>undefined</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(имя переменной будет искажено, обычно оно сокращается до одного символа)</font></font></p>
 </li>
 <li><p><code>unused</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(по умолчанию: </font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">) -- удалить неиспользуемые функции и переменные (простые прямые назначения переменных не считаются ссылками, если не установлено значение </font></font><code>"keep_assign"</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">)</font></font></p>
 </li>
@@ -1055,7 +1055,7 @@ UglifyJS.minify(code, { <span class="hljs-attr">mangle</span>: { <span class="hl
 </li>
 <li><p><code>max_line_len</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(по умолчанию </font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">) -- максимальная длина строки (для углифированного кода)</font></font></p>
 </li>
-<li><p><code>preamble</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(по умолчанию </font></font><code>null</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">) -- при передаче это должна быть строка, которая будет добавлена ​​к выходным данным буквально. Исходная карта будет скорректирована для этого текста. Например, можно использовать для вставки комментария, содержащего информацию о лицензии.</font></font></p>
+<li><p><code>preamble</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(по умолчанию </font></font><code>null</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">) -- при передаче это должна быть строка, которая будет добавлена ​​к выходным данным буквально. Исходная карта будет адаптирована для этого текста. Например, можно использовать для вставки комментария, содержащего информацию о лицензии.</font></font></p>
 </li>
 <li><p><code>preserve_line</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(по умолчанию </font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">) — пройти </font></font><code>true</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, чтобы сохранить строки, но это работает, только если </font></font><code>beautify</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">установлено значение </font></font><code>false</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
 </li>
@@ -1103,7 +1103,7 @@ UglifyJS.minify(code, { <span class="hljs-attr">mangle</span>: { <span class="hl
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Несмотря на то, что у него есть «@preserve», комментарий будет потерян, потому что внутренняя функция </font></font><code>g</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(которая является узлом AST, к которому прикреплен комментарий) отбрасывается компрессором как не указанная.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Самые безопасные комментарии для размещения информации об авторских правах (или другой информации, которую необходимо сохранить в выводе) — это комментарии, прикрепленные к узлам верхнего уровня.</font></font></p>
-<h3 id="The-unsafe-compress-option"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Варианты </font></font><code>unsafe</code> <code>compress</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">_</font></font></h3>
+<h3 id="The-`unsafe`-`compress`-option"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Варианты </font></font><code>unsafe</code> <code>compress</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">_</font></font></h3>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Он разрешает некоторые преобразования, которые </font></font><em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">могут</font></font></em><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> нарушить логику кода в определенных надуманных случаях, но должны подойти для большей части кода. Вы можете попробовать его в своем собственном коде, он должен уменьшить минимизированный размер. Вот что происходит, когда этот флажок установлен:</font></font></p>
 <ul>
 <li><code>new Array(1, 2, 3)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">или </font></font><code>Array(1, 2, 3)</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">→</font></font><code>[ 1, 2, 3 ]</code></li>
@@ -1131,7 +1131,7 @@ UglifyJS.minify(code, { <span class="hljs-attr">mangle</span>: { <span class="hl
 </code></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">и создайте свой код следующим образом:</font></font></p>
 <pre><code><div class="line-numbers">1</div>uglifyjs build/defines<span class="hljs-number">.</span><span class="hljs-keyword">js</span> <span class="hljs-keyword">js</span>/foo<span class="hljs-number">.</span><span class="hljs-keyword">js</span> <span class="hljs-keyword">js</span>/bar<span class="hljs-number">.</span><span class="hljs-keyword">js</span>... -c
-</code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">UglifyJS заметит константы и, поскольку их нельзя изменить, будет оценивать ссылки на них как само значение и, как обычно, отбрасывать недостижимый код. Сборка будет содержать объявления, если вы их используете. Если вы ориентируетесь на среды &lt; ES6, которые </font></font><code>const</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">не not support </font></font><code>const</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, </font><font style="vertical-align: inherit;">достаточно использовать </font></font><code>var</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">with (включено по умолчанию).</font></font><code>reduce_vars</code><font style="vertical-align: inherit;"></font></p>
+</code></pre><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">UglifyJS заметит константы и, поскольку их нельзя изменить, будет оценивать ссылки на них как само значение и, как обычно, отбрасывать недостижимый код. Сборка будет содержать объявления, если вы их используете. Если вы ориентируетесь на среды &lt; ES6, которые </font></font><code>const</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">не not support </font></font><code>const</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, должно быть достаточно использования </font></font><code>var</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">with </font></font><code>reduce_vars</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(включено по умолчанию).</font></font></p>
 <h3 id="Conditional-compilation-API" class="notranslate">Conditional compilation API</h3>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Вы также можете использовать условную компиляцию через программный API, с той разницей, что имя свойства является </font></font><code>global_defs</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">и является свойством компрессора:</font></font></p>
 <pre><code class="lang-javascript"><div class="line-numbers">1
@@ -1184,7 +1184,7 @@ UglifyJS.minify(code, { <span class="hljs-attr">mangle</span>: { <span class="hl
 }).code;<font></font>
 <span class="hljs-comment">// returns: '"console.log"("hello");'</span>
 </code></pre>
-<h3 id="Using-native-Uglify-AST-with-minify()"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Использование родного Uglify AST с</font></font><code>minify()</code></h3>
+<h3 id="Using-native-Uglify-AST-with-`minify()`"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Использование родного Uglify AST с</font></font><code>minify()</code></h3>
 <pre><code class="lang-javascript"><div class="line-numbers">1
 2
 3
@@ -1274,31 +1274,31 @@ UglifyJS.minify(code, { <span class="hljs-attr">mangle</span>: { <span class="hl
 <td style="text-align:right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">-</font></font></td>
 </tr>
 <tr>
-<td><a href="mailto:uglify-js@3.0.24"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">uglify-js@3.0.24</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> mangle=false, сжатие=false</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">uglify-js@3.0.24 mangle=false, сжатие=false</font></font></td>
 <td style="text-align:right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">316 600</font></font></td>
 <td style="text-align:right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">85 245</font></font></td>
 <td style="text-align:right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">0,70</font></font></td>
 </tr>
 <tr>
-<td><a href="mailto:uglify-js@3.0.24"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">uglify-js@3.0.24</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> mangle=true, сжатие=false</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">uglify-js@3.0.24 mangle=true, сжатие=false</font></font></td>
 <td style="text-align:right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">220 216</font></font></td>
 <td style="text-align:right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">72 730</font></font></td>
 <td style="text-align:right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1.13</font></font></td>
 </tr>
 <tr>
-<td><a href="mailto:butternut@0.4.6"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">баттернат @ 0,4,6</font></font></a></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">баттернат @ 0,4,6</font></font></td>
 <td style="text-align:right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">217 568</font></font></td>
 <td style="text-align:right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">72 738</font></font></td>
 <td style="text-align:right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1,41</font></font></td>
 </tr>
 <tr>
-<td><a href="mailto:uglify-js@3.0.24"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">uglify-js@3.0.24</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> mangle=true, сжатие=true</font></font></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">uglify-js@3.0.24 mangle=true, сжатие=true</font></font></td>
 <td style="text-align:right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">212 511</font></font></td>
 <td style="text-align:right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">71 560</font></font></td>
 <td style="text-align:right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">3,36</font></font></td>
 </tr>
 <tr>
-<td><a href="mailto:babili@0.1.4"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">бабили@0.1.4</font></font></a></td>
+<td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">бабили@0.1.4</font></font></td>
 <td style="text-align:right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">210 713</font></font></td>
 <td style="text-align:right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">72 140</font></font></td>
 <td style="text-align:right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">12,64</font></font></td>
@@ -1311,7 +1311,7 @@ UglifyJS.minify(code, { <span class="hljs-attr">mangle</span>: { <span class="hl
 <pre><code class="lang-js"><div class="line-numbers">1</div>UglifyJS.minify(code, { <span class="hljs-attr">compress</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">mangle</span>: <span class="hljs-literal">true</span> });
 </code></pre>
 <h4 id="Source-maps-and-debugging"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Исходные карты и отладка</font></font></h4>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Известно, что различные </font></font><code>compress</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">преобразования, которые упрощают, переупорядочивают, встраивают и удаляют код, отрицательно сказываются на отладке с помощью исходных карт. Это ожидается, поскольку код оптимизируется, а сопоставления часто просто невозможны, поскольку некоторый код больше не существует. Для максимальной точности в исходном коде при отладке карты отключите опцию Uglify </font></font><code>compress</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">и просто используйте </font></font><code>mangle</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Известно, что различные </font></font><code>compress</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">преобразования, которые упрощают, переупорядочивают, встраивают и удаляют код, отрицательно сказываются на отладке с помощью карт исходного кода. Это ожидается, поскольку код оптимизируется, а сопоставления часто просто невозможны, поскольку некоторый код больше не существует. Для максимальной точности в исходном коде при отладке карты отключите опцию Uglify </font></font><code>compress</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">и просто используйте </font></font><code>mangle</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
 <h3 id="Compiler-assumptions" class="notranslate">Compiler assumptions</h3>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Чтобы обеспечить лучшую оптимизацию, компилятор делает различные предположения:</font></font></p>
 <ul>

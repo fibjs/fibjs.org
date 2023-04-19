@@ -1,7 +1,7 @@
 # 安装运行环境
 对于常用的 UNIX 操作系统，比如 Mac OS X, Linux 和 FreeBSD，建议在终端使用下面的命令直接安装:
 ```sh
-curl -s http://fibjs.org/download/installer.sh | sh
+curl -s https://fibjs.org/download/installer.sh | sh
 ```
 在 Mac OS X 下，也可以选择使用 Homebrew 来安装最新版的 fibjs:
 ```sh
