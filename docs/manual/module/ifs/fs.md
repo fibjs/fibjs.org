@@ -270,6 +270,20 @@ static Stat fs.lstat(String path) async;
 * [Stat](../../object/ifs/Stat.md), 返回文件的基础信息
 
 --------------------------
+### fstat
+**查询指定文件的基础信息**
+
+```JavaScript
+static Stat fs.fstat(FileHandle fd) async;
+```
+
+调用参数:
+* fd: [FileHandle](../../object/ifs/FileHandle.md), 文件描述符对象
+
+返回结果:
+* [Stat](../../object/ifs/Stat.md), 返回文件的基础信息
+
+--------------------------
 ### readlink
 **读取指定的软连接文件, windows 下不支持此方法**
 
@@ -330,7 +344,7 @@ static fs.truncate(String path,
 **根据文件描述符，读取文件内容**
 
 ```JavaScript
-static Integer fs.read(Integer fd,
+static Integer fs.read(FileHandle fd,
     Buffer buffer,
     Integer offset = 0,
     Integer length = 0,
@@ -338,7 +352,7 @@ static Integer fs.read(Integer fd,
 ```
 
 调用参数:
-* fd: Integer, 文件描述符
+* fd: [FileHandle](../../object/ifs/FileHandle.md), 文件描述符对象
 * buffer: [Buffer](../../object/ifs/Buffer.md), 读取结果写入的 [Buffer](../../object/ifs/Buffer.md) 对象
 * offset: Integer, [Buffer](../../object/ifs/Buffer.md) 写入偏移量， 默认为 0
 * length: Integer, 文件读取字节数，默认为 0
@@ -352,12 +366,12 @@ static Integer fs.read(Integer fd,
 **根据文件描述符，改变文件模式。只在 POSIX 系统有效。**
 
 ```JavaScript
-static fs.fchmod(Integer fd,
+static fs.fchmod(FileHandle fd,
     Integer mode) async;
 ```
 
 调用参数:
-* fd: Integer, 文件描述符
+* fd: [FileHandle](../../object/ifs/FileHandle.md), 文件描述符对象
 * mode: Integer, 文件的模式
 
 --------------------------
@@ -365,13 +379,13 @@ static fs.fchmod(Integer fd,
 **根据文件描述符，改变所有者。只在 POSIX 系统有效。**
 
 ```JavaScript
-static fs.fchown(Integer fd,
+static fs.fchown(FileHandle fd,
     Integer uid,
     Integer gid) async;
 ```
 
 调用参数:
-* fd: Integer, 文件描述符
+* fd: [FileHandle](../../object/ifs/FileHandle.md), 文件描述符对象
 * uid: Integer, 用户id
 * gid: Integer, 组id
 
@@ -380,22 +394,22 @@ static fs.fchown(Integer fd,
 **根据文件描述符，同步数据到磁盘**
 
 ```JavaScript
-static fs.fdatasync(Integer fd) async;
+static fs.fdatasync(FileHandle fd) async;
 ```
 
 调用参数:
-* fd: Integer, 文件描述符
+* fd: [FileHandle](../../object/ifs/FileHandle.md), 文件描述符对象
 
 --------------------------
 ### fsync
 **根据文件描述符，同步数据到磁盘**
 
 ```JavaScript
-static fs.fsync(Integer fd) async;
+static fs.fsync(FileHandle fd) async;
 ```
 
 调用参数:
-* fd: Integer, 文件描述符
+* fd: [FileHandle](../../object/ifs/FileHandle.md), 文件描述符对象
 
 --------------------------
 ### readdir
@@ -455,7 +469,7 @@ static SeekableStream fs.openFile(String fname,
 **打开文件描述符**
 
 ```JavaScript
-static Integer fs.open(String fname,
+static FileHandle fs.open(String fname,
     String flags = "r",
     Integer mode = 0666) async;
 ```
@@ -466,7 +480,7 @@ static Integer fs.open(String fname,
 * mode: Integer, 当创建文件的时候，指定文件的模式，默认 0666
 
 返回结果:
-* Integer, 返回打开的文件描述符
+* [FileHandle](../../object/ifs/FileHandle.md), 返回打开的文件描述符
 
 参数 flags 支持的方式如下：
 - 'r' 只读方式，文件不存在则抛出错误。
@@ -481,11 +495,11 @@ static Integer fs.open(String fname,
 **关闭文件描述符**
 
 ```JavaScript
-static fs.close(Integer fd) async;
+static fs.close(FileHandle fd) async;
 ```
 
 调用参数:
-* fd: Integer, 文件描述符
+* fd: [FileHandle](../../object/ifs/FileHandle.md), 文件描述符对象
 
 --------------------------
 ### openTextStream
@@ -585,7 +599,7 @@ static Array fs.readLines(String fname,
 **根据文件描述符，向文件写入内容**
 
 ```JavaScript
-static Integer fs.write(Integer fd,
+static Integer fs.write(FileHandle fd,
     Buffer buffer,
     Integer offset = 0,
     Integer length = -1,
@@ -593,7 +607,7 @@ static Integer fs.write(Integer fd,
 ```
 
 调用参数:
-* fd: Integer, 文件描述符
+* fd: [FileHandle](../../object/ifs/FileHandle.md), 文件描述符对象
 * buffer: [Buffer](../../object/ifs/Buffer.md), 待写入的 [Buffer](../../object/ifs/Buffer.md) 对象
 * offset: Integer, [Buffer](../../object/ifs/Buffer.md) 数据读取偏移量， 默认为 0
 * length: Integer, 文件写入字节数，默认为 -1
@@ -606,14 +620,14 @@ static Integer fs.write(Integer fd,
 **根据文件描述符，向文件写入内容**
 
 ```JavaScript
-static Integer fs.write(Integer fd,
+static Integer fs.write(FileHandle fd,
     String string,
     Integer position = -1,
     String encoding = "utf8") async;
 ```
 
 调用参数:
-* fd: Integer, 文件描述符
+* fd: [FileHandle](../../object/ifs/FileHandle.md), 文件描述符对象
 * string: String, 待写入的字符串
 * position: Integer, 文件写入取位置，默认为当前文件位置
 * encoding: String, 指定解码方式，缺省解码 utf8

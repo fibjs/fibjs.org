@@ -102,20 +102,6 @@ static DbConnection db.openPSQL(String connString) async;
 为了建立与 PostgresSQL 的连接，必须安装 PostgresSQL 的 odbc 驱动。
 
 --------------------------
-### openMongoDB
-**打开一个 mongodb 数据库**
-
-```JavaScript
-static MongoDB db.openMongoDB(String connString) async;
-```
-
-调用参数:
-* connString: String, 数据库描述
-
-返回结果:
-* [MongoDB](../../object/ifs/MongoDB.md), 返回数据库连接对象
-
---------------------------
 ### openLevelDB
 **打开一个 leveldb 数据库**
 

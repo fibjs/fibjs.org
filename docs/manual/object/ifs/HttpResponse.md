@@ -27,7 +27,7 @@ digraph {
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     Message [tooltip="Message", URL="Message.md", label="{Message|new Message()\l|TEXT\lBINARY\l|value\lparams\ltype\ldata\lbody\llength\lstream\llastError\l|read()\lreadAll()\lwrite()\ljson()\lpack()\lend()\lisEnded()\lclear()\lsendTo()\lreadFrom()\l}"];
     HttpMessage [tooltip="HttpMessage", URL="HttpMessage.md", label="{HttpMessage|protocol\lheaders\lkeepAlive\lupgrade\lmaxHeadersCount\lmaxBodySize\lsocket\l|hasHeader()\lfirstHeader()\lallHeader()\laddHeader()\lsetHeader()\lremoveHeader()\l}"];
-    HttpResponse [tooltip="HttpResponse", fillcolor="lightgray", id="me", label="{HttpResponse|new HttpResponse()\l|statusCode\lstatusMessage\lok\lcookies\l|writeHead()\laddCookie()\lredirect()\lsendHeader()\l}"];
+    HttpResponse [tooltip="HttpResponse", fillcolor="lightgray", id="me", label="{HttpResponse|new HttpResponse()\l|statusCode\lstatusMessage\lstatus\lok\lcookies\l|writeHead()\laddCookie()\lredirect()\lsendHeader()\l}"];
 
     object -> Message [dir=back];
     Message -> HttpMessage [dir=back];
@@ -76,6 +76,14 @@ Integer HttpResponse.statusCode;
 
 ```JavaScript
 String HttpResponse.statusMessage;
+```
+
+--------------------------
+### status
+**Integer, 查询和设置响应消息的返回状态，等同于 statusCode**
+
+```JavaScript
+Integer HttpResponse.status;
 ```
 
 --------------------------

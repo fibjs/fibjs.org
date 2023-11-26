@@ -9,7 +9,7 @@
   - [process](ifs/process.md) - 进程处理模块，用以管理当前进程的资源
   - [timers](ifs/timers.md) - timers 模块是一个内置模块，提供了一些与时间相关的函数和对象，包括 setTimeout()、setInterval()、clearInterval()、clearTimeout() 等等
   - [tty](ifs/tty.md) - tty 模块
-  - [vm](ifs/vm.md) - 安全沙箱模块，用于隔离不同安全等级的运行环境
+  - [vm](ifs/vm.md) - 沙箱模块，用于隔离不同安全等级的运行环境
   - [worker_threads](ifs/worker_threads.md) - worker 基础模块
 * File System
   - [fs](ifs/fs.md) - fs 模块是文件系统操作模块。它提供了读取文件、写入文件、打开文件、关闭文件、更改文件权限等磁盘 I/O 操作，支持同步和异步两种用法。fs 模块还提供了文件监视器功能，可以监听文件系统中文件和目录的变化，并回调指定的函数。
@@ -61,3 +61,4 @@
 * Constants
   - [constants](ifs/constants.md) - 常用常量定义模块
   - [fs_constants](ifs/fs_constants.md) - fs 模块常用常量定义模块
+* [types](ifs/types.md) - types 模块提供了对数据类型判断的工具函数

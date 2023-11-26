@@ -130,6 +130,21 @@ static String process.cwd();
 * String, 返回当前系统路径
 
 --------------------------
+### dlopen
+**动态加载 C++ Addons**
+
+```JavaScript
+static process.dlopen(Object module,
+    String filename,
+    Integer flags = 1);
+```
+
+调用参数:
+* module: Object, 指定要加载的模块
+* filename: String, 指定要加载的模块文件名
+* flags: Integer, 指定加载模块的方式，缺省为 1
+
+--------------------------
 ### chdir
 **修改操作系统当前工作路径**
 
@@ -274,6 +289,65 @@ static process.setuid(Integer id);
 
 调用参数:
 * id: Integer, 指定要设置的用户 id
+
+--------------------------
+### emitWarning
+**发出自定义或特定于应用程序的进程警告。可以通过向 'warning' 事件添加处理程序来监听这些事件**
+
+```JavaScript
+static process.emitWarning(Value warning,
+    Object options);
+```
+
+调用参数:
+* warning: Value, 指定要发出的警告
+* options: Object, 指定警告的选项
+
+ 选项包含以下内容：
+
+```JavaScript
+{
+    "type": "Warning", // specifies the name of the type of warning issued. Default value: 'Warning'
+    "code": "", // specify the unique identifier of the warning instance issued
+    "detail": "" // specify additional text for warnings
+}
+```
+
+使用方法如下：
+
+```JavaScript
+const {
+    emitWarning
+} = require('process');
+
+// Emit a warning with a code and additional detail.
+emitWarning('Something happened!', {
+    code: 'MY_WARNING',
+    detail: 'This is some additional information',
+});
+
+process.on('warning', (warning) => {
+    console.warn(warning.name); // 'Warning'
+    console.warn(warning.message); // 'Something happened!'
+    console.warn(warning.code); // 'MY_WARNING'
+    console.warn(warning.stack); // Stack trace
+    console.warn(warning.detail); // 'This is some additional information'
+});
+```
+
+--------------------------
+**发出自定义或特定于应用程序的进程警告。可以通过向 'warning' 事件添加处理程序来监听这些事件**
+
+```JavaScript
+static process.emitWarning(Value warning,
+    String type = "Warning",
+    String code = "");
+```
+
+调用参数:
+* warning: Value, 指定要发出的警告
+* type: String, 指定发出的警告类型的名称。默认值：'Warning'
+* code: String, 指定发出的警告实例的唯一标识符
 
 --------------------------
 ### disconnect

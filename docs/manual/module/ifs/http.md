@@ -506,10 +506,10 @@ opts 包含请求的附加选项，支持的内容如下：
 ## 静态属性
         
 ### STATUS_CODES
-**Array, 返回标准的 HTTP 响应状态码的集合，以及各自的简短描述。**
+**Object, 返回标准的 HTTP 响应状态码的集合，以及各自的简短描述。**
 
 ```JavaScript
-static readonly Array http.STATUS_CODES;
+static readonly Object http.STATUS_CODES;
 ```
 
 --------------------------

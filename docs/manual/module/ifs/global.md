@@ -64,13 +64,11 @@ performance global.performance;
 **运行一个脚本**
 
 ```JavaScript
-static global.run(String fname,
-    Array argv = []);
+static global.run(String fname);
 ```
 
 调用参数:
 * fname: String, 指定要运行的脚本路径
-* argv: Array, 指定要运行的参数，此参数可在脚本内使用 argv 获取
 
 --------------------------
 ### require
@@ -311,14 +309,6 @@ static global.GC();
 
 ## 静态属性
         
-### Master
-**[Worker](../../object/ifs/Worker.md), [Worker](../../object/ifs/Worker.md) 宿主对象，仅在 [Worker](../../object/ifs/Worker.md) 入口脚本有效**
-
-```JavaScript
-static readonly Worker global.Master;
-```
-
---------------------------
 ### global
 **Object, 全局对象**
 
@@ -327,26 +317,10 @@ static readonly Object new global;
 ```
 
 --------------------------
-### argv
-**Array, 获取当前脚本的运行参数，启动 js 获取进程启动参数，run 执行的脚本获取传递的参数**
+### globalThis
+**Object, 全局对象**
 
 ```JavaScript
-static readonly Array global.argv;
-```
-
---------------------------
-### __filename
-**String, 当前脚本文件名**
-
-```JavaScript
-static readonly String global.__filename;
-```
-
---------------------------
-### __dirname
-**String, 当前脚本所在目录**
-
-```JavaScript
-static readonly String global.__dirname;
+static readonly Object global.globalThis;
 ```
 

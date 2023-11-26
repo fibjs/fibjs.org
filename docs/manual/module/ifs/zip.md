@@ -53,13 +53,13 @@ static Boolean zip.isZipFile(String filename) async;
 ```JavaScript
 static ZipFile zip.open(String path,
     String mod = "r",
-    String codec = "utf-8") async;
+    String codec = "utf8") async;
 ```
 
 调用参数:
 * path: String, 文件路径
 * mod: String, 打开文件模式, "r"代表读取, "w"代表创建, "a"代表在zip文件后追加
-* codec: String, 设置 zip 文件编码方式，缺省为 "utf-8"
+* codec: String, 设置 zip 文件编码方式，缺省为 "utf8"
 
 返回结果:
 * [ZipFile](../../object/ifs/ZipFile.md), 返回zip文件对象
@@ -70,13 +70,13 @@ static ZipFile zip.open(String path,
 ```JavaScript
 static ZipFile zip.open(Buffer data,
     String mod = "r",
-    String codec = "utf-8") async;
+    String codec = "utf8") async;
 ```
 
 调用参数:
 * data: [Buffer](../../object/ifs/Buffer.md), zip文件数据
 * mod: String, 打开文件模式, "r"代表读取, "w"代表创建, "a"代表在zip文件后追加
-* codec: String, 设置 zip 文件编码方式，缺省为 "utf-8"
+* codec: String, 设置 zip 文件编码方式，缺省为 "utf8"
 
 返回结果:
 * [ZipFile](../../object/ifs/ZipFile.md), 返回zip文件对象
@@ -87,13 +87,13 @@ static ZipFile zip.open(Buffer data,
 ```JavaScript
 static ZipFile zip.open(SeekableStream strm,
     String mod = "r",
-    String codec = "utf-8") async;
+    String codec = "utf8") async;
 ```
 
 调用参数:
 * strm: [SeekableStream](../../object/ifs/SeekableStream.md), zip文件流
 * mod: String, 打开文件模式, "r"代表读取, "w"代表创建, "a"代表在zip文件后追加
-* codec: String, 设置 zip 文件编码方式，缺省为 "utf-8"
+* codec: String, 设置 zip 文件编码方式，缺省为 "utf8"
 
 返回结果:
 * [ZipFile](../../object/ifs/ZipFile.md), 返回zip文件对象

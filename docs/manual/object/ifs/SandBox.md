@@ -1,5 +1,5 @@
 # 对象 SandBox
-安全沙箱对象，用于管理一个独立的运行空间
+隔离沙箱对象，用于管理一个独立的运行空间
 
  所有的代码都运行在自己的沙箱中，全局的 require 会调用当前沙箱加载模块，沙箱会通过 require 传递给加载的沙箱。下面的示例创建一个沙箱，限制只允许访问全局基础模块中的 [assert](../../module/ifs/assert.md) 模块，并添加 a 和 b 两个定制模块：
 
@@ -13,6 +13,8 @@ var sbox = new vm.SandBox({
 
 var mod_in_sbox = sbox.require('./path/to/mod');
 ```
+
+需要注意，SandBox 不是防攻击的安全沙箱，SandBox 只是一个独立的运行空间，可以用来隔离不同的代码，避免相互干扰，但是不能防止恶意代码。
 
 ## 继承关系
 ```dot
@@ -29,7 +31,7 @@ digraph {
 ## 构造函数
         
 ### SandBox
-**构造一个新的安全沙箱对象，并初始化基础模块**
+**构造一个新的隔离沙箱对象，并初始化基础模块**
 
 ```JavaScript
 new SandBox(Object mods = {});
@@ -39,7 +41,7 @@ new SandBox(Object mods = {});
 * mods: Object, 指定要添加的模块对象字典
 
 --------------------------
-**构造一个新的安全沙箱对象，并初始化基础模块**
+**构造一个新的隔离沙箱对象，并初始化基础模块**
 
 ```JavaScript
 new SandBox(Object mods,
@@ -51,7 +53,7 @@ new SandBox(Object mods,
 * require: Function, 自定义 require 函数，当模块不存在时，先调用自定义函数，无返回再从文件中加载
 
 --------------------------
-**构造一个独立 Global 新的安全沙箱对象，并初始化基础模块**
+**构造一个独立 Global 新的隔离沙箱对象，并初始化基础模块**
 
 ```JavaScript
 new SandBox(Object mods,
@@ -63,7 +65,7 @@ new SandBox(Object mods,
 * global: Object, 指定初始化的 Global 属性
 
 --------------------------
-**构造一个独立 Global 新的安全沙箱对象，并初始化基础模块**
+**构造一个独立 Global 新的隔离沙箱对象，并初始化基础模块**
 
 ```JavaScript
 new SandBox(Object mods,
@@ -190,13 +192,11 @@ SandBox.freeze();
 **运行一个脚本**
 
 ```JavaScript
-SandBox.run(String fname,
-    Array argv = []);
+SandBox.run(String fname);
 ```
 
 调用参数:
 * fname: String, 指定要运行的脚本路径，此路径与当前运行脚本无关，必须为绝对路径
-* argv: Array, 指定要运行的参数，此参数可在脚本内使用 argv 获取
 
 --------------------------
 ### resolve

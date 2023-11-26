@@ -25,3 +25,19 @@ Worker worker_threads.Worker;
 static readonly Boolean worker_threads.isMainThread;
 ```
 
+--------------------------
+### parentPort
+**[Worker](../../object/ifs/Worker.md), 查询当前 [Worker](../../object/ifs/Worker.md) 的父线程**
+
+```JavaScript
+static readonly Worker worker_threads.parentPort;
+```
+
+--------------------------
+### workerData
+**Value, 查询父线程通过 [Worker](../../object/ifs/Worker.md) 构造函数传给该线程的的数据的克隆**
+
+```JavaScript
+static readonly Value worker_threads.workerData;
+```
+

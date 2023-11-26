@@ -97,12 +97,14 @@ readonly Integer Socket.fd;
 
 ```JavaScript
 Socket.connect(String host,
-    Integer port = 0) async;
+    Integer port,
+    Integer timeout = 0) async;
 ```
 
 调用参数:
 * host: String, 指定对方地址或主机名，也可以指向 unix socket 和 Windows pipe 路径
-* port: Integer, 指定对方端口，连接 unix socket 和 Windows pipe 时，忽略此参数
+* port: Integer, 指定对方端口，连接 unix socket 和 Windows pipe 时，此参数需要为 0
+* timeout: Integer, 指定超时时间，单位是毫秒，默认为 0
 
 --------------------------
 ### bind

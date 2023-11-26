@@ -25,6 +25,7 @@ digraph {
     WebView [tooltip="WebView", URL="WebView.md", label="{WebView}"];
     Worker [tooltip="Worker", URL="Worker.md", label="{Worker}"];
     Fiber [tooltip="Fiber", URL="Fiber.md", label="{Fiber}"];
+    FileHandle [tooltip="FileHandle", URL="FileHandle.md", label="{FileHandle}"];
     Handler [tooltip="Handler", URL="Handler.md", label="{Handler}"];
     Chain [tooltip="Chain", URL="Chain.md", label="{Chain}"];
     HttpHandler [tooltip="HttpHandler", URL="HttpHandler.md", label="{HttpHandler}"];
@@ -50,10 +51,6 @@ digraph {
     HttpRequest [tooltip="HttpRequest", URL="HttpRequest.md", label="{HttpRequest}"];
     HttpResponse [tooltip="HttpResponse", URL="HttpResponse.md", label="{HttpResponse}"];
     WebSocketMessage [tooltip="WebSocketMessage", URL="WebSocketMessage.md", label="{WebSocketMessage}"];
-    MongoCollection [tooltip="MongoCollection", URL="MongoCollection.md", label="{MongoCollection}"];
-    MongoCursor [tooltip="MongoCursor", URL="MongoCursor.md", label="{MongoCursor}"];
-    MongoDB [tooltip="MongoDB", URL="MongoDB.md", label="{MongoDB}"];
-    MongoID [tooltip="MongoID", URL="MongoID.md", label="{MongoID}"];
     PKey [tooltip="PKey", URL="PKey.md", label="{PKey}"];
     ECKey [tooltip="ECKey", URL="ECKey.md", label="{ECKey}"];
     BlsKey [tooltip="BlsKey", URL="BlsKey.md", label="{BlsKey}"];
@@ -64,6 +61,7 @@ digraph {
     RedisSet [tooltip="RedisSet", URL="RedisSet.md", label="{RedisSet}"];
     RedisSortedSet [tooltip="RedisSortedSet", URL="RedisSortedSet.md", label="{RedisSortedSet}"];
     SandBox [tooltip="SandBox", URL="SandBox.md", label="{SandBox}"];
+    Script [tooltip="Script", URL="Script.md", label="{Script}"];
     Smtp [tooltip="Smtp", URL="Smtp.md", label="{Smtp}"];
     Stat [tooltip="Stat", URL="Stat.md", label="{Stat}"];
     Stream [tooltip="Stream", URL="Stream.md", label="{Stream}"];
@@ -120,6 +118,7 @@ digraph {
     EventEmitter -> WebView [dir=back];
     EventEmitter -> Worker [dir=back];
     object -> Fiber [dir=back];
+    object -> FileHandle [dir=back];
     object -> Handler [dir=back];
     Handler -> Chain [dir=back];
     Handler -> HttpHandler [dir=back];
@@ -145,10 +144,6 @@ digraph {
     HttpMessage -> HttpRequest [dir=back];
     HttpMessage -> HttpResponse [dir=back];
     Message -> WebSocketMessage [dir=back];
-    object -> MongoCollection [dir=back];
-    object -> MongoCursor [dir=back];
-    object -> MongoDB [dir=back];
-    object -> MongoID [dir=back];
     object -> PKey [dir=back];
     PKey -> ECKey [dir=back];
     ECKey -> BlsKey [dir=back];
@@ -159,6 +154,7 @@ digraph {
     object -> RedisSet [dir=back];
     object -> RedisSortedSet [dir=back];
     object -> SandBox [dir=back];
+    object -> Script [dir=back];
     object -> Smtp [dir=back];
     object -> Stat [dir=back];
     object -> Stream [dir=back];

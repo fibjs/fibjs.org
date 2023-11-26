@@ -107,7 +107,7 @@ static Stream net.connect(String url,
 
 调用参数:
 * url: String, 指定连接的协议，可以是：tcp://host:port 或者 [ssl](ssl.md)://host:port，也可以是：unix:/usr/local/proc1 或者 pipe://./pipe/proc1，连接 pipe 时需要用 `/` 替换 `\`
-* timeout: Integer, 指定超时时间，单位是毫秒，默认为0
+* timeout: Integer, 指定超时时间，单位是毫秒，默认为 0
 
 返回结果:
 * [Stream](../../object/ifs/Stream.md), 返回连接成功的 [Socket](../../object/ifs/Socket.md) 或者 [SslSocket](../../object/ifs/SslSocket.md) 对象
@@ -123,7 +123,7 @@ static Smtp net.openSmtp(String url,
 
 调用参数:
 * url: String, 指定连接的协议，可以是：tcp://host:port 或者 [ssl](ssl.md)://host:port
-* timeout: Integer, 指定超时时间，单位是毫秒，默认为0
+* timeout: Integer, 指定超时时间，单位是毫秒，默认为 0
 
 返回结果:
 * [Smtp](../../object/ifs/Smtp.md), 返回连接成功的 [Smtp](../../object/ifs/Smtp.md) 对象

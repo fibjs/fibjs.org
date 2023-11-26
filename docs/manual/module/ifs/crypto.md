@@ -190,7 +190,7 @@ static PKey crypto.loadPKey(String filename);
 **生成指定尺寸的随机数，使用 havege 生成器**
 
 ```JavaScript
-static Buffer crypto.randomBytes(Integer size) async;
+static Buffer crypto.randomBytes(Integer size = 16) async;
 ```
 
 调用参数:
@@ -204,7 +204,7 @@ static Buffer crypto.randomBytes(Integer size) async;
 **生成指定尺寸的低强度随机数，使用快速的算法**
 
 ```JavaScript
-static Buffer crypto.simpleRandomBytes(Integer size) async;
+static Buffer crypto.simpleRandomBytes(Integer size = 16) async;
 ```
 
 调用参数:
@@ -218,7 +218,7 @@ static Buffer crypto.simpleRandomBytes(Integer size) async;
 **生成指定尺寸的伪随机数，使用 entropy 生成器**
 
 ```JavaScript
-static Buffer crypto.pseudoRandomBytes(Integer size) async;
+static Buffer crypto.pseudoRandomBytes(Integer size = 16) async;
 ```
 
 调用参数:

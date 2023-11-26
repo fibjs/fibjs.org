@@ -87,6 +87,52 @@ msgpack encoding.msgpack;
 
 ## 静态函数
         
+### isEncoding
+**判断指定的编码是否支持**
+
+```JavaScript
+static Boolean encoding.isEncoding(String codec);
+```
+
+调用参数:
+* codec: String, 指定编码格式，允许值为："[hex](hex.md)", "[base32](base32.md)", "[base58](base58.md)", "[base64](base64.md)", "utf8", 或者 [iconv](iconv.md) 模块支持的字符集
+
+返回结果:
+* Boolean, 返回编码是否支持
+
+--------------------------
+### encode
+**将 [Buffer](../../object/ifs/Buffer.md) 编码为字符串**
+
+```JavaScript
+static String encoding.encode(Buffer data,
+    String codec = "utf8");
+```
+
+调用参数:
+* data: [Buffer](../../object/ifs/Buffer.md), 初始化字符串，字符串将以 utf-8 格式写入
+* codec: String, 指定编码格式，允许值为："[hex](hex.md)", "[base32](base32.md)", "[base58](base58.md)", "[base64](base64.md)", "utf8", 或者 [iconv](iconv.md) 模块支持的字符集，缺省为 "utf8"
+
+返回结果:
+* String, 返回编码的字符串
+
+--------------------------
+### decode
+**将字符串解码为 [Buffer](../../object/ifs/Buffer.md)**
+
+```JavaScript
+static Buffer encoding.decode(String str,
+    String codec = "utf8");
+```
+
+调用参数:
+* str: String, 初始化字符串，字符串将以 utf-8 格式写入
+* codec: String, 指定编码格式，允许值为："[hex](hex.md)", "[base32](base32.md)", "[base58](base58.md)", "[base64](base64.md)", "utf8", 或者 [iconv](iconv.md) 模块支持的字符集，缺省为 "utf8"
+
+返回结果:
+* [Buffer](../../object/ifs/Buffer.md), 返回解码的 [Buffer](../../object/ifs/Buffer.md)
+
+--------------------------
 ### jsstr
 **将字符串编码为 javascript 转义字符串，用以在 javascript 代码中包含文本**
 

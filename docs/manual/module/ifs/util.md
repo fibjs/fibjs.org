@@ -80,6 +80,14 @@ TextDecoder util.TextDecoder;
 TextEncoder util.TextEncoder;
 ```
 
+--------------------------
+### types
+**[types](types.md) 模块提供了对数据类型判断的工具函数。**
+
+```JavaScript
+types util.types;
+```
+
 ## 静态函数
         
 ### format
@@ -147,6 +155,8 @@ static String util.inspect(Value obj,
     "depth": 2, // specify the max depth of the output, defaults to 2
     "table": false, // specify if output should be a table, defaults to false
     "encode_string": true, // specify if string should be encoded, defaults to true
+    "maxArrayLength": 100, // specify max number of array elements to show, set to 0 or negative to show no elements, defaults to 100
+    "maxStringLength": 10000, // specify max string length to output, set to 0 or negative to show no strings, defaults to 10000
     "fields": [], // specify the fields to be displayed, defaults to all
 }
 ```

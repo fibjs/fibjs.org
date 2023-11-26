@@ -56,6 +56,21 @@ Digest Digest.update(Buffer data);
 * Digest, 返回信息摘要对象本身
 
 --------------------------
+**更新字符串摘要信息**
+
+```JavaScript
+Digest Digest.update(String data,
+    String codec = "utf8");
+```
+
+调用参数:
+* data: String, 字符串数据
+* codec: String, 指定编码格式，允许值为："buffer", "[hex](../../module/ifs/hex.md)", "[base32](../../module/ifs/base32.md)", "[base58](../../module/ifs/base58.md)", "[base64](../../module/ifs/base64.md)", "utf8", 或者 [iconv](../../module/ifs/iconv.md) 模块支持的字符集
+
+返回结果:
+* Digest, 返回信息摘要对象本身
+
+--------------------------
 ### digest
 **计算并返回摘要**
 
@@ -89,7 +104,7 @@ opts 支持以下参数:
 
 ```JavaScript
 {
-    alg: 0， 指定签名的 hash 算法， 仅在 RSA 时有效， 缺省为 0. 支持算法: 0 = NONE,
+    alg: 0 指定签名的 hash 算法， 仅在 RSA 时有效， 缺省为 0. 支持算法: 0 = NONE,
     1 = MD5,
     2 = SHA1,
     3 = SHA224,
@@ -97,8 +112,6 @@ opts 支持以下参数:
     5 = SHA384,
     6 = SHA512,
     7 = RIPEMD160
-    to: pk,
-    指定验证方公钥， 仅在 ecsdsa 或 sm2 时有效
 }
 ```
 
@@ -124,7 +137,7 @@ opts 支持以下参数:
 
 ```JavaScript
 {
-    alg: 0， 指定签名的 hash 算法， 仅在 RSA 时有效， 缺省为 0. 支持算法: 0 = NONE,
+    alg: 0 指定签名的 hash 算法， 仅在 RSA 时有效， 缺省为 0. 支持算法: 0 = NONE,
     1 = MD5,
     2 = SHA1,
     3 = SHA224,
@@ -132,8 +145,6 @@ opts 支持以下参数:
     5 = SHA384,
     6 = SHA512,
     7 = RIPEMD160
-    to: pk,
-    指定验证方公钥， 仅在 ecsdsa 或 sm2 时有效
 }
 ```
 

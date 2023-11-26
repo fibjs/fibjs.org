@@ -25,10 +25,10 @@ Url 类的常用属性和方法如下：
 
 ```JavaScript
 const {
-    Url
+    URL
 } = require('url');
 
-const url = new Url('http://www.baidu.com/s?ie=UTF-8&wd=fibjs#hash');
+const url = new URL('http://www.baidu.com/s?ie=UTF-8&wd=fibjs#hash');
 console.log(url.protocol); // 'http:'
 console.log(url.host); // 'www.baidu.com'
 console.log(url.path); // '/s?ie=UTF-8&wd=fibjs'
@@ -96,4 +96,45 @@ static String url.resolve(String _from,
 
 返回结果:
 * String, 返回得到的绝对路径
+
+--------------------------
+### fileURLToPath
+**将一个 url 对象转换为跨平台相关的绝对路径**
+
+```JavaScript
+static String url.fileURLToPath(UrlObject url);
+```
+
+调用参数:
+* url: [UrlObject](../../object/ifs/UrlObject.md), 指定需要转换的 url 对象
+
+返回结果:
+* String, 返回转换后的绝对路径
+
+--------------------------
+**将一个 url 字符串转换为跨平台相关的绝对路径**
+
+```JavaScript
+static String url.fileURLToPath(String url);
+```
+
+调用参数:
+* url: String, 指定需要转换的 url 字符串
+
+返回结果:
+* String, 返回转换后的绝对路径
+
+--------------------------
+### pathToFileURL
+**将一个跨平台相关的绝对路径转换为 url 对象**
+
+```JavaScript
+static UrlObject url.pathToFileURL(String path);
+```
+
+调用参数:
+* path: String, 指定需要转换的绝对路径
+
+返回结果:
+* [UrlObject](../../object/ifs/UrlObject.md), 返回转换后的 url 对象
 

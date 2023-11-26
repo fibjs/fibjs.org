@@ -173,6 +173,76 @@ static Digest hash.sm3(PKey pubKey,
 * [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
 
 --------------------------
+### sha3_256
+**创建一个 SHA3_256 信息摘要运算对象**
+
+```JavaScript
+static Digest hash.sha3_256(Buffer data = NULL);
+```
+
+调用参数:
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
+
+返回结果:
+* [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
+
+--------------------------
+### sha3_384
+**创建一个 SHA3_384 信息摘要运算对象**
+
+```JavaScript
+static Digest hash.sha3_384(Buffer data = NULL);
+```
+
+调用参数:
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
+
+返回结果:
+* [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
+
+--------------------------
+### sha3_512
+**创建一个 SHA3_512 信息摘要运算对象**
+
+```JavaScript
+static Digest hash.sha3_512(Buffer data = NULL);
+```
+
+调用参数:
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
+
+返回结果:
+* [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
+
+--------------------------
+### shake128
+**创建一个 SHAKE128 信息摘要运算对象**
+
+```JavaScript
+static Digest hash.shake128(Buffer data = NULL);
+```
+
+调用参数:
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
+
+返回结果:
+* [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
+
+--------------------------
+### shake256
+**创建一个 SHAKE256 信息摘要运算对象**
+
+```JavaScript
+static Digest hash.shake256(Buffer data = NULL);
+```
+
+调用参数:
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
+
+返回结果:
+* [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
+
+--------------------------
 ### keccak256
 **创建一个 KECCAK256 信息摘要运算对象**
 
@@ -436,6 +506,86 @@ static Digest hash.hmac_sm3(PKey pubKey,
 * [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
 
 --------------------------
+### hmac_sha3_256
+**创建一个 SHA3_256 信息摘要签名运算对象**
+
+```JavaScript
+static Digest hash.hmac_sha3_256(Buffer key,
+    Buffer data = NULL);
+```
+
+调用参数:
+* key: [Buffer](../../object/ifs/Buffer.md), 二进制签名密钥
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
+
+返回结果:
+* [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
+
+--------------------------
+### hmac_sha3_384
+**创建一个 SHA3_384 信息摘要签名运算对象**
+
+```JavaScript
+static Digest hash.hmac_sha3_384(Buffer key,
+    Buffer data = NULL);
+```
+
+调用参数:
+* key: [Buffer](../../object/ifs/Buffer.md), 二进制签名密钥
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
+
+返回结果:
+* [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
+
+--------------------------
+### hmac_shake128
+**创建一个 SHAKE128 信息摘要签名运算对象**
+
+```JavaScript
+static Digest hash.hmac_shake128(Buffer key,
+    Buffer data = NULL);
+```
+
+调用参数:
+* key: [Buffer](../../object/ifs/Buffer.md), 二进制签名密钥
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
+
+返回结果:
+* [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
+
+--------------------------
+### hmac_shake256
+**创建一个 SHAKE256 信息摘要签名运算对象**
+
+```JavaScript
+static Digest hash.hmac_shake256(Buffer key,
+    Buffer data = NULL);
+```
+
+调用参数:
+* key: [Buffer](../../object/ifs/Buffer.md), 二进制签名密钥
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
+
+返回结果:
+* [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
+
+--------------------------
+### hmac_sha3_512
+**创建一个 SHA3_512 信息摘要签名运算对象**
+
+```JavaScript
+static Digest hash.hmac_sha3_512(Buffer key,
+    Buffer data = NULL);
+```
+
+调用参数:
+* key: [Buffer](../../object/ifs/Buffer.md), 二进制签名密钥
+* data: [Buffer](../../object/ifs/Buffer.md), 创建同时更新的二进制数据，缺省为 null，不更新数据
+
+返回结果:
+* [Digest](../../object/ifs/Digest.md), 返回构造的信息摘要对象
+
+--------------------------
 ### hmac_keccak256
 **创建一个 KECCAK256 信息摘要签名运算对象**
 
@@ -613,11 +763,51 @@ const hash.SM3 = 8;
 ```
 
 --------------------------
+### SHA3_256
+**SHA3_256 信息摘要算法标识常量**
+
+```JavaScript
+const hash.SHA3_256 = 9;
+```
+
+--------------------------
+### SHA3_384
+**SHA3_384 信息摘要算法标识常量**
+
+```JavaScript
+const hash.SHA3_384 = 10;
+```
+
+--------------------------
+### SHA3_512
+**SHA3_512 信息摘要算法标识常量**
+
+```JavaScript
+const hash.SHA3_512 = 11;
+```
+
+--------------------------
+### SHAKE128
+**SHAKE128 信息摘要算法标识常量**
+
+```JavaScript
+const hash.SHAKE128 = 12;
+```
+
+--------------------------
+### SHAKE256
+**SHAKE256 信息摘要算法标识常量**
+
+```JavaScript
+const hash.SHAKE256 = 13;
+```
+
+--------------------------
 ### KECCAK256
 **KECCAK256 信息摘要算法标识常量**
 
 ```JavaScript
-const hash.KECCAK256 = 9;
+const hash.KECCAK256 = 14;
 ```
 
 --------------------------
@@ -625,7 +815,7 @@ const hash.KECCAK256 = 9;
 **KECCAK384 信息摘要算法标识常量**
 
 ```JavaScript
-const hash.KECCAK384 = 10;
+const hash.KECCAK384 = 15;
 ```
 
 --------------------------
@@ -633,7 +823,7 @@ const hash.KECCAK384 = 10;
 **KECCAK512 信息摘要算法标识常量**
 
 ```JavaScript
-const hash.KECCAK512 = 11;
+const hash.KECCAK512 = 16;
 ```
 
 --------------------------
@@ -641,7 +831,7 @@ const hash.KECCAK512 = 11;
 **BLAKE2S 信息摘要算法标识常量**
 
 ```JavaScript
-const hash.BLAKE2S = 12;
+const hash.BLAKE2S = 17;
 ```
 
 --------------------------
@@ -649,7 +839,7 @@ const hash.BLAKE2S = 12;
 **BLAKE2B 信息摘要算法标识常量**
 
 ```JavaScript
-const hash.BLAKE2B = 13;
+const hash.BLAKE2B = 18;
 ```
 
 --------------------------
@@ -657,7 +847,7 @@ const hash.BLAKE2B = 13;
 **BLAKE2SP 信息摘要算法标识常量**
 
 ```JavaScript
-const hash.BLAKE2SP = 14;
+const hash.BLAKE2SP = 19;
 ```
 
 --------------------------
@@ -665,6 +855,6 @@ const hash.BLAKE2SP = 14;
 **BLAKE2BP 信息摘要算法标识常量**
 
 ```JavaScript
-const hash.BLAKE2BP = 15;
+const hash.BLAKE2BP = 20;
 ```
 

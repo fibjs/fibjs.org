@@ -38,7 +38,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
-    DgramSocket [tooltip="DgramSocket", fillcolor="lightgray", id="me", label="{DgramSocket|bind()\lsend()\laddress()\lclose()\lgetRecvBufferSize()\lgetSendBufferSize()\lsetRecvBufferSize()\lsetSendBufferSize()\lsetBroadcast()\lref()\lunref()\l}"];
+    DgramSocket [tooltip="DgramSocket", fillcolor="lightgray", id="me", label="{DgramSocket|bind()\lsend()\laddress()\lclose()\lgetRecvBufferSize()\lgetSendBufferSize()\laddMembership()\ldropMembership()\lsetMulticastTTL()\lsetRecvBufferSize()\lsetSendBufferSize()\lsetBroadcast()\lref()\lunref()\l}"];
 
     object -> EventEmitter [dir=back];
     EventEmitter -> DgramSocket [dir=back];
@@ -167,6 +167,43 @@ Integer DgramSocket.getSendBufferSize();
 
 返回结果:
 * Integer, 返回查询结果
+
+--------------------------
+### addMembership
+**使用 IP_ADD_MEMBERSHIP 套接字选项加入给定 multicastAddress 和 multicastInterface 处的多播组。如果未指定 multicastInterface 参数，操作系统将选择一个接口并向其添加成员资格。要向每个可用接口添加成员资格，请多次调用 addMembership ，每个接口调用一次。**
+
+```JavaScript
+DgramSocket.addMembership(String multicastAddress,
+    String multicastInterface = "");
+```
+
+调用参数:
+* multicastAddress: String, 指定要加入的多播组地址
+* multicastInterface: String, 指定要加入的多播组接口
+
+--------------------------
+### dropMembership
+**使用 IP_DROP_MEMBERSHIP 套接字选项在 multicastAddress 处留下多播组。当套接字关闭或进程终止时，内核会自动调用此方法，因此大多数应用程序永远没有理由调用此方法。**
+
+```JavaScript
+DgramSocket.dropMembership(String multicastAddress,
+    String multicastInterface = "");
+```
+
+调用参数:
+* multicastAddress: String, 指定要删除的多播组地址
+* multicastInterface: String, 指定要删除的多播组接口
+
+--------------------------
+### setMulticastTTL
+**设置 IP_MULTICAST_TTL 套接字选项**
+
+```JavaScript
+DgramSocket.setMulticastTTL(Integer ttl);
+```
+
+调用参数:
+* ttl: Integer, 指定要设置的 ttl，ttl 参数可以介于 0 和 255 之间。大多数系统上的默认值为 1。
 
 --------------------------
 ### setRecvBufferSize

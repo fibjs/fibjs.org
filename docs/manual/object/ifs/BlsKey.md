@@ -41,7 +41,7 @@ digraph {
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     PKey [tooltip="PKey", URL="PKey.md", label="{PKey|new PKey()\l|from()\l|name\lkeySize\lalg\lpublicKey\l|isPrivate()\lclone()\lpem()\lder()\ljson()\lequals()\lencrypt()\ldecrypt()\lsign()\lverify()\l}"];
     ECKey [tooltip="ECKey", URL="ECKey.md", label="{ECKey|new ECKey()\l|recover()\l|curve\l|computeSecret()\l}"];
-    BlsKey [tooltip="BlsKey", fillcolor="lightgray", id="me", label="{BlsKey|new BlsKey()\l|aggregateSignature()\laggregatePublicKey()\l}"];
+    BlsKey [tooltip="BlsKey", fillcolor="lightgray", id="me", label="{BlsKey|new BlsKey()\l|aggregateSignature()\laggregatePublicKey()\l|bbs_suite\l|bbsSign()\lbbsVerify()\lproofGen()\lproofVerify()\l}"];
 
     object -> PKey [dir=back];
     PKey -> ECKey [dir=back];
@@ -102,11 +102,11 @@ static Buffer BlsKey.aggregateSignature(Array sigs);
 **合并一组公钥为一个单一公钥**
 
 ```JavaScript
-static BlsKey BlsKey.aggregatePublicKey(Array sigs);
+static BlsKey BlsKey.aggregatePublicKey(Array keys);
 ```
 
 调用参数:
-* sigs: Array, 待合并的一组公钥
+* keys: Array, 待合并的一组公钥
 
 返回结果:
 * BlsKey, 返回合并的单一公钥
@@ -222,6 +222,14 @@ EC 公钥：
 
 ## 成员属性
         
+### bbs_suite
+**String, BBS 签名的加密套件，缺省为 Bls12381Sha256，可修改为 Bls12381Shake256，仅支持 BLS12-381-G2 曲线**
+
+```JavaScript
+String BlsKey.bbs_suite;
+```
+
+--------------------------
 ### curve
 **String, 返回当前算法的椭圆曲线名称**
 
@@ -250,7 +258,7 @@ readonly Integer BlsKey.keySize;
 **String, 返回和设置当前对象签名算法**
 
 ```JavaScript
-String BlsKey.alg;
+readonly String BlsKey.alg;
 ```
 
 --------------------------
@@ -266,6 +274,114 @@ readonly PKey BlsKey.publicKey;
 
 ## 成员函数
         
+### bbsSign
+**使用当前私钥签名一组消息，仅支持 BLS12-381-G2 曲线**
+
+```JavaScript
+Buffer BlsKey.bbsSign(Array messages,
+    Object opts = {}) async;
+```
+
+调用参数:
+* messages: Array, 指定待签署的消息数组
+* opts: Object, 指定签名选项
+
+返回结果:
+* [Buffer](Buffer.md), 返回签署的消息
+
+opts 支持以下参数:
+
+```JavaScript
+{
+    header: Buffer | string // specified header for signature, default is empty
+}
+```
+
+--------------------------
+### bbsVerify
+**使用当前公钥验证签名，仅支持 BLS12-381-G2 曲线**
+
+```JavaScript
+Boolean BlsKey.bbsVerify(Array messages,
+    Buffer sig,
+    Object opts = {}) async;
+```
+
+调用参数:
+* messages: Array, 指定完整的消息数组
+* sig: [Buffer](Buffer.md), 指定要验证的签名
+* opts: Object, 指定验证选项
+
+返回结果:
+* Boolean, 返回验证后的结果
+
+opts 支持以下参数:
+
+```JavaScript
+{
+    header: Buffer | string // specified header for signature, default is empty
+}
+```
+
+--------------------------
+### proofGen
+**使用当前公钥和签名生成一个证明，仅支持 BLS12-381-G2 曲线**
+
+```JavaScript
+Buffer BlsKey.proofGen(Buffer sig,
+    Array messages,
+    Array idx,
+    Object opts = {}) async;
+```
+
+调用参数:
+* sig: [Buffer](Buffer.md), 指定生成证明时使用的签名
+* messages: Array, 指定完整的消息数组
+* idx: Array, 指定生成证明时使用的消息索引，索引以 1 为基数
+* opts: Object, 指定证明选项
+
+返回结果:
+* [Buffer](Buffer.md), 返回生成的证明
+
+opts 支持以下参数:
+
+```JavaScript
+{
+    header: Buffer | string, // specified header for signature, default is empty
+    proof_header: Buffer | string // specified header for proof, default is empty
+}
+```
+
+--------------------------
+### proofVerify
+**使用当前公钥验证证明，仅支持 BLS12-381-G2 曲线**
+
+```JavaScript
+Boolean BlsKey.proofVerify(Array messages,
+    Array idx,
+    Buffer proof,
+    Object opts = {}) async;
+```
+
+调用参数:
+* messages: Array, 指定根据索引过滤的消息数组
+* idx: Array, 指定证明使用的消息索引，索引以 1 为基数
+* proof: [Buffer](Buffer.md), 指定生成的证明
+* opts: Object, 指定证明选项
+
+返回结果:
+* Boolean, 返回验证后的结果
+
+opts 支持以下参数:
+
+```JavaScript
+{
+    header: Buffer | string, // specified header for signature, default is empty
+    proof_header: Buffer | string // specified header for proof, default is empty
+}
+```
+
+--------------------------
 ### computeSecret
 **使用当前算法计算椭圆曲线 Diffie-Hellman (ECDH) 共享密钥**
 
@@ -341,7 +457,7 @@ opts 支持以下参数:
 
 ```JavaScript
 {
-    compress: false， 指定签名以压缩方式输出公钥
+    compress: false // specify whether to output public key in compressed form
 }
 ```
 
@@ -353,11 +469,11 @@ opts 支持以下参数:
 **比较两个公/私钥是否相同**
 
 ```JavaScript
-Boolean BlsKey.equals(PKey key);
+Boolean BlsKey.equals(object key);
 ```
 
 调用参数:
-* key: [PKey](PKey.md), 指定对方的公/私钥
+* key: [object](object.md), 指定对方的公/私钥
 
 返回结果:
 * Boolean, 相同则返回 true
@@ -400,7 +516,7 @@ Buffer BlsKey.sign(Buffer data,
 ```
 
 调用参数:
-* data: [Buffer](Buffer.md), 指定要签名的数据
+* data: [Buffer](Buffer.md), 指定要签名的数据，当算法为 RSA，需对入参以 alg 指定的算法做 [hash](../../module/ifs/hash.md)
 * opts: Object, 指定签名选项
 
 返回结果:
@@ -410,19 +526,9 @@ opts 支持以下参数:
 
 ```JavaScript
 {
-    alg: 0， 指定签名的 hash 算法， 仅在 RSA 时有效， 缺省为 0. 支持算法: 0 = NONE,
-    1 = MD5,
-    2 = SHA1,
-    3 = SHA224,
-    4 = SHA256,
-    5 = SHA384,
-    6 = SHA512,
-    7 = RIPEMD160
-    to: pk,
-    指定验证方公钥， 仅在 ecsdsa 或 sm2 时有效
-    format: "der",
-    指定签名格式， 可选为 der 和 raw， 缺省为 der
-    recoverable: false 指定返回可恢复签名， 仅在 secp256k1 有效
+    alg: 0, // specify the hash algorithm for signing, only valid for RSA, default is 0. Supported algorithms: 0=NONE,1=MD5,2=SHA1,3=SHA224,4=SHA256,5=SHA384,6=SHA512,7=RIPEMD160
+    format: "der", // specify the signature format, default is der, supported formats: der, raw
+    recoverable: false // specify whether to return a recoverable signature, only valid for secp256k1
 }
 ```
 
@@ -448,18 +554,8 @@ opts 支持以下参数:
 
 ```JavaScript
 {
-    alg: 0， 指定签名的 hash 算法， 仅在 RSA 时有效， 缺省为 0. 支持算法: 0 = NONE,
-    1 = MD5,
-    2 = SHA1,
-    3 = SHA224,
-    4 = SHA256,
-    5 = SHA384,
-    6 = SHA512,
-    7 = RIPEMD160
-    to: pk,
-    指定验证方公钥， 仅在 ecsdsa 或 sm2 时有效
-    format: "der",
-    指定签名格式， 可选为 der 和 raw， 缺省为 der
+    alg: 0, // specify the hash algorithm for signing, only valid for RSA, default is 0. Supported algorithms: 0=NONE,1=MD5,2=SHA1,3=SHA224,4=SHA256,5=SHA384,6=SHA512,7=RIPEMD160
+    format: "der" // specify the signature format, default is der, supported formats: der, raw
 }
 ```
 

@@ -16,6 +16,7 @@
 * [FSWatcher](ifs/FSWatcher.md) - 文件系统观察对象
 * [Fiber](ifs/Fiber.md) - 纤程操作对象，此对象不可直接创建
 * [File](ifs/File.md) - 文件操作对象，用于二进制文件读写
+* [FileHandle](ifs/FileHandle.md) - 文件句柄对象
 * [Handler](ifs/Handler.md) - 消息处理器接口
 * [HeapGraphEdge](ifs/HeapGraphEdge.md) - HeapGraphEdge表示两个HeapGraphNode节点间的关联，从上游节点到下游节点
 * [HeapGraphNode](ifs/HeapGraphNode.md) - HeapGraphNode表示堆视图中的一个节点
@@ -38,10 +39,6 @@
 * [LruCache](ifs/LruCache.md) - LruCache(Least Recently Used Cache) 是用来维护LRU缓存的类。它可以存储一定数量的值，并且保持了容器的尺寸。当新数据进来时，如果容器还没有到达尺寸限制，新数据可以直接加入到容器中。如果容器已满，则容器将淘汰最近最少使用的数据
 * [MemoryStream](ifs/MemoryStream.md) - 内存流对象
 * [Message](ifs/Message.md) - 基础消息对象
-* [MongoCollection](ifs/MongoCollection.md) - mongodb 数据库数据集对象
-* [MongoCursor](ifs/MongoCursor.md) - mongodb 数据库数据游标对象
-* [MongoDB](ifs/MongoDB.md) - mongodb 数据库连接对象
-* [MongoID](ifs/MongoID.md) - mongodb 数据库数据唯一标识对象，用于存储传递 oid
 * [MySQL](ifs/MySQL.md) - MySQL 对象是用于操作 MySQL 数据库的类,
 * [Odbc](ifs/Odbc.md) - Odbc 数据库连接对象
 * [PKey](ifs/PKey.md) - PKey 是内置的 crypto 模块提供的对象，它表示一对密钥：公钥和私钥。PKey 支持在 JS 中生成密钥、载入密钥、存储密钥以及对加密过程进行管理
@@ -53,7 +50,8 @@
 * [RedisSortedSet](ifs/RedisSortedSet.md) - Redis 数据库客户端 SortedSet 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库
 * [Routing](ifs/Routing.md) - 消息处理器路由对象
 * [SQLite](ifs/SQLite.md) - SQLite 对象是内置模块 db 的一个成员，主要负责 SQLite 数据库的连接和操作，可用于 SQLite 数据库的创建、查询、插入、更新等操作。同时，SQLite 对象也提供了一些类似备份、格式化 SQL 等高级操作。SQLite 连接对象还支持事务操作
-* [SandBox](ifs/SandBox.md) - 安全沙箱对象，用于管理一个独立的运行空间
+* [SandBox](ifs/SandBox.md) - 隔离沙箱对象，用于管理一个独立的运行空间
+* [Script](ifs/Script.md) - Script 脚本编译和运行对象
 * [SeekableStream](ifs/SeekableStream.md) - 可移动当前指针的流对象接口
 * [Semaphore](ifs/Semaphore.md) - 纤程信号量对象
 * [Service](ifs/Service.md) - 系统服务管理对象

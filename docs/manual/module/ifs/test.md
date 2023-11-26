@@ -219,6 +219,44 @@ static test.afterEach(Function func);
 * func: Function, 事件函数
 
 --------------------------
+### mustCall
+**测试一个函数必须被调用指定次数**
+
+```JavaScript
+static Function test.mustCall(Function func);
+```
+
+调用参数:
+* func: Function, 被测试的函数
+
+返回结果:
+* Function, 返回被包裹的函数
+
+--------------------------
+### mustNotCall
+**测试一个函数必须不被调用**
+
+```JavaScript
+static Function test.mustNotCall(Function func);
+```
+
+调用参数:
+* func: Function, 被测试的函数
+
+返回结果:
+* Function, 返回被包裹的函数
+
+--------------------------
+**测试一个函数必须不被调用**
+
+```JavaScript
+static Function test.mustNotCall();
+```
+
+返回结果:
+* Function, 返回被包裹的函数
+
+--------------------------
 ### run
 **开始执行定义的测试模块**
 

@@ -15,7 +15,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     Stream [tooltip="Stream", URL="Stream.md", label="{Stream|fd\l|read()\lwrite()\lflush()\lclose()\lcopyTo()\l}"];
-    TTYOutputStream [tooltip="TTYOutputStream", fillcolor="lightgray", id="me", label="{TTYOutputStream|isTTY\lcolumns\lrows\l|clearLine()\lclearScreenDown()\lgetWindowSize()\l}"];
+    TTYOutputStream [tooltip="TTYOutputStream", fillcolor="lightgray", id="me", label="{TTYOutputStream|isTTY\lcolumns\lrows\l|clearLine()\lclearScreenDown()\lcursorTo()\lmoveCursor()\lgetWindowSize()\l}"];
 
     object -> Stream [dir=back];
     Stream -> TTYOutputStream [dir=back];
@@ -79,6 +79,32 @@ dir 的方向:
 ```JavaScript
 TTYOutputStream.clearScreenDown();
 ```
+
+--------------------------
+### cursorTo
+**将光标移动到指定位置**
+
+```JavaScript
+TTYOutputStream.cursorTo(Integer x,
+    Integer y = -1) async;
+```
+
+调用参数:
+* x: Integer, 指定的列数
+* y: Integer, 指定的行数，缺省为 -1，表示不改变行数
+
+--------------------------
+### moveCursor
+**将光标移动指定的偏移量**
+
+```JavaScript
+TTYOutputStream.moveCursor(Integer dx,
+    Integer dy) async;
+```
+
+调用参数:
+* dx: Integer, 指定的列偏移量
+* dy: Integer, 指定的行偏移量
 
 --------------------------
 ### getWindowSize

@@ -42,6 +42,7 @@
 * [test](ifs/test.md)
 * [timers](ifs/timers.md)
 * [tty](ifs/tty.md)
+* [types](ifs/types.md)
 * [url](ifs/url.md)
 * [util](ifs/util.md)
 * [uuid](ifs/uuid.md)

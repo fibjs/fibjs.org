@@ -240,7 +240,7 @@ readonly Integer ECKey.keySize;
 **String, 返回和设置当前对象签名算法**
 
 ```JavaScript
-String ECKey.alg;
+readonly String ECKey.alg;
 ```
 
 --------------------------
@@ -331,7 +331,7 @@ opts 支持以下参数:
 
 ```JavaScript
 {
-    compress: false， 指定签名以压缩方式输出公钥
+    compress: false // specify whether to output public key in compressed form
 }
 ```
 
@@ -343,11 +343,11 @@ opts 支持以下参数:
 **比较两个公/私钥是否相同**
 
 ```JavaScript
-Boolean ECKey.equals(PKey key);
+Boolean ECKey.equals(object key);
 ```
 
 调用参数:
-* key: [PKey](PKey.md), 指定对方的公/私钥
+* key: [object](object.md), 指定对方的公/私钥
 
 返回结果:
 * Boolean, 相同则返回 true
@@ -390,7 +390,7 @@ Buffer ECKey.sign(Buffer data,
 ```
 
 调用参数:
-* data: [Buffer](Buffer.md), 指定要签名的数据
+* data: [Buffer](Buffer.md), 指定要签名的数据，当算法为 RSA，需对入参以 alg 指定的算法做 [hash](../../module/ifs/hash.md)
 * opts: Object, 指定签名选项
 
 返回结果:
@@ -400,19 +400,9 @@ opts 支持以下参数:
 
 ```JavaScript
 {
-    alg: 0， 指定签名的 hash 算法， 仅在 RSA 时有效， 缺省为 0. 支持算法: 0 = NONE,
-    1 = MD5,
-    2 = SHA1,
-    3 = SHA224,
-    4 = SHA256,
-    5 = SHA384,
-    6 = SHA512,
-    7 = RIPEMD160
-    to: pk,
-    指定验证方公钥， 仅在 ecsdsa 或 sm2 时有效
-    format: "der",
-    指定签名格式， 可选为 der 和 raw， 缺省为 der
-    recoverable: false 指定返回可恢复签名， 仅在 secp256k1 有效
+    alg: 0, // specify the hash algorithm for signing, only valid for RSA, default is 0. Supported algorithms: 0=NONE,1=MD5,2=SHA1,3=SHA224,4=SHA256,5=SHA384,6=SHA512,7=RIPEMD160
+    format: "der", // specify the signature format, default is der, supported formats: der, raw
+    recoverable: false // specify whether to return a recoverable signature, only valid for secp256k1
 }
 ```
 
@@ -438,18 +428,8 @@ opts 支持以下参数:
 
 ```JavaScript
 {
-    alg: 0， 指定签名的 hash 算法， 仅在 RSA 时有效， 缺省为 0. 支持算法: 0 = NONE,
-    1 = MD5,
-    2 = SHA1,
-    3 = SHA224,
-    4 = SHA256,
-    5 = SHA384,
-    6 = SHA512,
-    7 = RIPEMD160
-    to: pk,
-    指定验证方公钥， 仅在 ecsdsa 或 sm2 时有效
-    format: "der",
-    指定签名格式， 可选为 der 和 raw， 缺省为 der
+    alg: 0, // specify the hash algorithm for signing, only valid for RSA, default is 0. Supported algorithms: 0=NONE,1=MD5,2=SHA1,3=SHA224,4=SHA256,5=SHA384,6=SHA512,7=RIPEMD160
+    format: "der" // specify the signature format, default is der, supported formats: der, raw
 }
 ```
 
