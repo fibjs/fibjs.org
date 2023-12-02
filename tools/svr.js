@@ -12,7 +12,7 @@ const app = new AcmeApp({
     handler: hdr,
 });
 
-svr.start();
+app.start();
 
 const disableSync = !!process.env.FIBJS_DOC_NO_SYNC
 if (!disableSync)
