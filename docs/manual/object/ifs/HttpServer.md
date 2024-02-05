@@ -30,7 +30,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     TcpServer [tooltip="TcpServer", URL="TcpServer.md", label="{TcpServer|new TcpServer()\l|socket\lhandler\l|start()\lstop()\l}"];
-    HttpServer [tooltip="HttpServer", fillcolor="lightgray", id="me", label="{HttpServer|new HttpServer()\l|maxHeadersCount\lmaxBodySize\lenableEncoding\lserverName\l|enableCrossOrigin()\l}"];
+    HttpServer [tooltip="HttpServer", fillcolor="lightgray", id="me", label="{HttpServer|new HttpServer()\l|maxHeadersCount\lmaxHeaderSize\lmaxBodySize\lenableEncoding\lserverName\l|enableCrossOrigin()\l}"];
     HttpsServer [tooltip="HttpsServer", URL="HttpsServer.md", label="{HttpsServer}"];
 
     object -> TcpServer [dir=back];
@@ -86,6 +86,14 @@ new HttpServer(String addr,
 
 ```JavaScript
 Integer HttpServer.maxHeadersCount;
+```
+
+--------------------------
+### maxHeaderSize
+**Integer, 查询和设置最大请求头长度，缺省为 8192**
+
+```JavaScript
+Integer HttpServer.maxHeaderSize;
 ```
 
 --------------------------

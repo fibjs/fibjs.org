@@ -49,7 +49,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    LevelDB [tooltip="LevelDB", fillcolor="lightgray", id="me", label="{LevelDB|has()\lget()\lmget()\lset()\lmset()\lmremove()\lremove()\lforEach()\lbetween()\lbegin()\lcommit()\lclose()\l}"];
+    LevelDB [tooltip="LevelDB", fillcolor="lightgray", id="me", label="{LevelDB|has()\lget()\lmget()\lset()\lmset()\lmremove()\lremove()\lfirstKey()\llastKey()\lforEach()\lbegin()\lcommit()\lclose()\l}"];
 
     object -> LevelDB [dir=back];
 }
@@ -145,6 +145,28 @@ LevelDB.remove(Buffer key) async;
 * key: [Buffer](Buffer.md), 指定要删除的键值
 
 --------------------------
+### firstKey
+**查询最小的 key**
+
+```JavaScript
+Buffer LevelDB.firstKey() async;
+```
+
+返回结果:
+* [Buffer](Buffer.md), 返回最小的 key
+
+--------------------------
+### lastKey
+**查询最大的 key**
+
+```JavaScript
+Buffer LevelDB.lastKey() async;
+```
+
+返回结果:
+* [Buffer](Buffer.md), 返回最大的 key
+
+--------------------------
 ### forEach
 **枚举数据库中所有的键值对**
 
@@ -167,11 +189,33 @@ test.forEach(function(value, key) {
 ```
 
 --------------------------
-### between
-**枚举数据库中键值在 from 和 to 之间的键值对**
+**枚举数据库中所有的键值对**
 
 ```JavaScript
-LevelDB.between(Buffer from,
+LevelDB.forEach(Buffer from,
+    Function func);
+```
+
+调用参数:
+* from: [Buffer](Buffer.md), 枚举的最小键值，枚举时包含此键值
+* func: Function, 枚举回调函数
+
+回调函数有两个参数，(value, key)
+
+```JavaScript
+var db = require("db");
+var test = new db.openLevelDB("test.db");
+
+test.forEach("aaa", "bbb", function(value, key) {
+    ...
+});
+```
+
+--------------------------
+**枚举数据库中所有的键值对**
+
+```JavaScript
+LevelDB.forEach(Buffer from,
     Buffer to,
     Function func);
 ```
@@ -187,7 +231,82 @@ LevelDB.between(Buffer from,
 var db = require("db");
 var test = new db.openLevelDB("test.db");
 
-test.between("aaa", "bbb", function(value, key) {
+test.forEach("aaa", "bbb", function(value, key) {
+    ...
+});
+```
+
+--------------------------
+**枚举数据库中所有的键值对**
+
+```JavaScript
+LevelDB.forEach(Object opt,
+    Function func);
+```
+
+调用参数:
+* opt: Object, 枚举选项，支持 skip, limit, reverse
+* func: Function, 枚举回调函数
+
+回调函数有两个参数，(value, key)
+
+```JavaScript
+var db = require("db");
+var test = new db.openLevelDB("test.db");
+
+test.forEach(function(value, key) {
+    ...
+});
+```
+
+--------------------------
+**枚举数据库中所有的键值对**
+
+```JavaScript
+LevelDB.forEach(Buffer from,
+    Object opt,
+    Function func);
+```
+
+调用参数:
+* from: [Buffer](Buffer.md), 枚举的最小键值，枚举时包含此键值
+* opt: Object, 枚举选项，支持 skip, limit, reverse
+* func: Function, 枚举回调函数
+
+回调函数有两个参数，(value, key)
+
+```JavaScript
+var db = require("db");
+var test = new db.openLevelDB("test.db");
+
+test.forEach("aaa", "bbb", function(value, key) {
+    ...
+});
+```
+
+--------------------------
+**枚举数据库中所有的键值对**
+
+```JavaScript
+LevelDB.forEach(Buffer from,
+    Buffer to,
+    Object opt,
+    Function func);
+```
+
+调用参数:
+* from: [Buffer](Buffer.md), 枚举的最小键值，枚举时包含此键值
+* to: [Buffer](Buffer.md), 枚举的最大键值，枚举时不包含此键值
+* opt: Object, 枚举选项，支持 skip, limit, reverse
+* func: Function, 枚举回调函数
+
+回调函数有两个参数，(value, key)
+
+```JavaScript
+var db = require("db");
+var test = new db.openLevelDB("test.db");
+
+test.forEach("aaa", "bbb", function(value, key) {
     ...
 });
 ```

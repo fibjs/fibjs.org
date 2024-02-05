@@ -8,7 +8,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     XmlNode [tooltip="XmlNode", URL="XmlNode.md", label="{XmlNode|nodeType\lnodeName\lnodeValue\lownerDocument\lparentNode\lchildNodes\lchildren\lfirstChild\llastChild\lpreviousSibling\lnextSibling\lfirstElementChild\llastElementChild\lpreviousElementSibling\lnextElementSibling\ltextContent\l|hasChildNodes()\lnormalize()\lcloneNode()\llookupPrefix()\llookupNamespaceURI()\linsertBefore()\linsertAfter()\lappendChild()\lreplaceChild()\lremoveChild()\l}"];
-    XmlElement [tooltip="XmlElement", fillcolor="lightgray", id="me", label="{XmlElement|namespaceURI\lprefix\llocalName\ltagName\lid\linnerHTML\lclassName\lattributes\l|getAttribute()\lgetAttributeNS()\lsetAttribute()\lsetAttributeNS()\lremoveAttribute()\lremoveAttributeNS()\lhasAttribute()\lhasAttributeNS()\lgetElementsByTagName()\lgetElementsByTagNameNS()\lgetElementById()\lgetElementsByClassName()\l}"];
+    XmlElement [tooltip="XmlElement", fillcolor="lightgray", id="me", label="{XmlElement|namespaceURI\lprefix\llocalName\ltagName\lid\linnerHTML\louterHTML\lclassName\lattributes\l|getAttribute()\lgetAttributeNS()\lsetAttribute()\lsetAttributeNS()\lremoveAttribute()\lremoveAttributeNS()\lhasAttribute()\lhasAttributeNS()\lgetElementsByTagName()\lgetElementsByTagNameNS()\lgetElementById()\lgetElementsByClassName()\l}"];
 
     object -> XmlNode [dir=back];
     XmlNode -> XmlElement [dir=back];
@@ -58,10 +58,18 @@ String XmlElement.id;
 
 --------------------------
 ### innerHTML
-**String, 查询和设置选定元素的 HTML 文本，仅在 html 模式有效。查询时，返回元素节点内所有子节点的 HTML 编码；设置时，删除所有子节点，并用指定的 HTML 解码后替换它们。**
+**String, 查询和设置选定元素后代的 HTML 文本，仅在 html 模式有效。查询时，返回元素节点内所有子节点的 HTML 编码；设置时，删除所有子节点，并用指定的 HTML 解码后替换它们。**
 
 ```JavaScript
 String XmlElement.innerHTML;
+```
+
+--------------------------
+### outerHTML
+**String, 查询选定元素及其后代的 HTML 文本，仅在 html 模式有效。查询时，返回元素及节点内所有子节点的 HTML 编码。**
+
+```JavaScript
+readonly String XmlElement.outerHTML;
 ```
 
 --------------------------

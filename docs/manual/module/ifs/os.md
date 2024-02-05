@@ -263,31 +263,6 @@ static Object os.networkInterfaces();
 * Object, 返回网卡信息
 
 --------------------------
-### printerInfo
-**查询当前主机的打印机信息**
-
-```JavaScript
-static Array os.printerInfo();
-```
-
-返回结果:
-* Array, 返回打印机信息
-
---------------------------
-### openPrinter
-**创建一个打印机输出对象**
-
-```JavaScript
-static BufferedStream os.openPrinter(String name) async;
-```
-
-调用参数:
-* name: String, 打印机名称
-
-返回结果:
-* [BufferedStream](../../object/ifs/BufferedStream.md), 返回打印机输出对象
-
---------------------------
 ### platform
 **查询当前平台名称**
 

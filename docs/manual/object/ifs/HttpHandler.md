@@ -20,7 +20,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     Handler [tooltip="Handler", URL="Handler.md", label="{Handler|new Handler()\l|invoke()\l}"];
-    HttpHandler [tooltip="HttpHandler", fillcolor="lightgray", id="me", label="{HttpHandler|new HttpHandler()\l|maxHeadersCount\lmaxBodySize\lenableEncoding\lserverName\lhandler\l|enableCrossOrigin()\l}"];
+    HttpHandler [tooltip="HttpHandler", fillcolor="lightgray", id="me", label="{HttpHandler|new HttpHandler()\l|maxHeadersCount\lmaxHeaderSize\lmaxBodySize\lenableEncoding\lserverName\lhandler\l|enableCrossOrigin()\l}"];
 
     object -> Handler [dir=back];
     Handler -> HttpHandler [dir=back];
@@ -46,6 +46,14 @@ new HttpHandler(Handler hdlr);
 
 ```JavaScript
 Integer HttpHandler.maxHeadersCount;
+```
+
+--------------------------
+### maxHeaderSize
+**Integer, 查询和设置最大请求头长度，缺省为 8192**
+
+```JavaScript
+Integer HttpHandler.maxHeaderSize;
 ```
 
 --------------------------

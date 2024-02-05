@@ -338,6 +338,33 @@ static console.alert(...args);
 记录用于警报错误日志信息。通常用于输出警报错误信息。非常重要。为最高级别信息。
 
 --------------------------
+### trace
+**输出当前调用堆栈**
+
+```JavaScript
+static console.trace(String fmt,
+    ...args);
+```
+
+调用参数:
+* fmt: String, 格式化字符串
+* args: ..., 可选参数列表
+
+通过日志输出当前调用堆栈。
+
+--------------------------
+**输出当前调用堆栈**
+
+```JavaScript
+static console.trace(...args);
+```
+
+调用参数:
+* args: ..., 可选参数列表
+
+通过日志输出当前调用堆栈。
+
+--------------------------
 ### dir
 **用 JSON 格式输出对象**
 
@@ -419,19 +446,6 @@ static console.timeEnd(String label = "time");
 
 调用参数:
 * label: String, 标题，缺省为空字符串。
-
---------------------------
-### trace
-**输出当前调用堆栈**
-
-```JavaScript
-static console.trace(String label = "trace");
-```
-
-调用参数:
-* label: String, 标题，缺省为空字符串。
-
-通过日志输出当前调用堆栈。
 
 --------------------------
 ### assert

@@ -553,6 +553,22 @@ static Boolean http.enableEncoding;
 ```
 
 --------------------------
+### maxHeadersCount
+**Integer, 查询和设置最大请求头个数，缺省为 128**
+
+```JavaScript
+static Integer http.maxHeadersCount;
+```
+
+--------------------------
+### maxHeaderSize
+**Integer, 查询和设置最大请求头长度，缺省为 8192**
+
+```JavaScript
+static Integer http.maxHeaderSize;
+```
+
+--------------------------
 ### maxBodySize
 **Integer, 查询和设置 body 最大尺寸，以 MB 为单位，缺省为 -1，不限制尺寸**
 

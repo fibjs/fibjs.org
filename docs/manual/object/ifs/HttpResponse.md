@@ -26,7 +26,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     Message [tooltip="Message", URL="Message.md", label="{Message|new Message()\l|TEXT\lBINARY\l|value\lparams\ltype\ldata\lbody\llength\lstream\llastError\l|read()\lreadAll()\lwrite()\ljson()\lpack()\lend()\lisEnded()\lclear()\lsendTo()\lreadFrom()\l}"];
-    HttpMessage [tooltip="HttpMessage", URL="HttpMessage.md", label="{HttpMessage|protocol\lheaders\lkeepAlive\lupgrade\lmaxHeadersCount\lmaxBodySize\lsocket\l|hasHeader()\lfirstHeader()\lallHeader()\laddHeader()\lsetHeader()\lremoveHeader()\l}"];
+    HttpMessage [tooltip="HttpMessage", URL="HttpMessage.md", label="{HttpMessage|protocol\lheaders\lkeepAlive\lupgrade\lmaxHeadersCount\lmaxHeaderSize\lmaxBodySize\lsocket\l|hasHeader()\lfirstHeader()\lallHeader()\laddHeader()\lsetHeader()\lremoveHeader()\l}"];
     HttpResponse [tooltip="HttpResponse", fillcolor="lightgray", id="me", label="{HttpResponse|new HttpResponse()\l|statusCode\lstatusMessage\lstatus\lok\lcookies\l|writeHead()\laddCookie()\lredirect()\lsendHeader()\l}"];
 
     object -> Message [dir=back];
@@ -140,6 +140,14 @@ Boolean HttpResponse.upgrade;
 
 ```JavaScript
 Integer HttpResponse.maxHeadersCount;
+```
+
+--------------------------
+### maxHeaderSize
+**Integer, 查询和设置最大请求头长度，缺省为 8192**
+
+```JavaScript
+Integer HttpResponse.maxHeaderSize;
 ```
 
 --------------------------

@@ -430,15 +430,23 @@ static NArray fs.readdir(String path) async;
 
 ```JavaScript
 static NArray fs.readdir(String path,
-    Object opts) async;
+    Object opts = {}) async;
 ```
 
 调用参数:
 * path: String, 指定查询的目录
-* opts: Object, 指定参数，暂时不支持
+* opts: Object, 指定参数
 
 返回结果:
 * NArray, 返回目录的文件信息数组
+
+参数 opts 支持的选项如下：
+
+```JavaScript
+{
+    "recursive": false // specify whether all subdirectories should be watched or only the current directory
+}
+```
 
 --------------------------
 ### openFile
@@ -654,12 +662,64 @@ static fs.writeTextFile(String fname,
 
 ```JavaScript
 static fs.writeFile(String fname,
-    Buffer data) async;
+    Buffer data,
+    String opt = "binary") async;
 ```
 
 调用参数:
 * fname: String, 指定文件名
 * data: [Buffer](../../object/ifs/Buffer.md), 指定要写入的二进制数据
+* opt: String, 指定写入选项，将被忽略
+
+--------------------------
+**创建二进制文件，并写入内容**
+
+```JavaScript
+static fs.writeFile(String fname,
+    Buffer data,
+    Object options) async;
+```
+
+调用参数:
+* fname: String, 指定文件名
+* data: [Buffer](../../object/ifs/Buffer.md), 指定要写入的二进制数据
+* options: Object, 指定写入选项，将被忽略
+
+--------------------------
+**创建文件，并写入内容**
+
+```JavaScript
+static fs.writeFile(String fname,
+    String data,
+    String opt = "utf8") async;
+```
+
+调用参数:
+* fname: String, 指定文件名
+* data: String, 指定要写入的数据
+* opt: String, 指定写入选项
+
+--------------------------
+**创建文件，并写入内容**
+
+```JavaScript
+static fs.writeFile(String fname,
+    String data,
+    Object options) async;
+```
+
+调用参数:
+* fname: String, 指定文件名
+* data: String, 指定要写入的数据
+* options: Object, 指定写入选项
+
+options 支持的选项如下：
+
+```JavaScript
+{
+    "encoding": "utf8" // specify the encoding, default is utf8.
+}
+```
 
 --------------------------
 ### appendFile

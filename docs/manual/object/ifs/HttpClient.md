@@ -47,7 +47,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    HttpClient [tooltip="HttpClient", fillcolor="lightgray", id="me", label="{HttpClient|new HttpClient()\l|cookies\ltimeout\lenableCookie\lautoRedirect\lenableEncoding\lmaxBodySize\luserAgent\lpoolSize\lpoolTimeout\lhttp_proxy\lhttps_proxy\lsslVerification\l|setClientCert()\lrequest()\lget()\lpost()\ldel()\lput()\lpatch()\lhead()\l}"];
+    HttpClient [tooltip="HttpClient", fillcolor="lightgray", id="me", label="{HttpClient|new HttpClient()\l|cookies\ltimeout\lenableCookie\lautoRedirect\lenableEncoding\lmaxHeadersCount\lmaxHeaderSize\lmaxBodySize\luserAgent\lpoolSize\lpoolTimeout\lhttp_proxy\lhttps_proxy\lsslVerification\l|setClientCert()\lrequest()\lget()\lpost()\ldel()\lput()\lpatch()\lhead()\l}"];
 
     object -> HttpClient [dir=back];
 }
@@ -101,6 +101,22 @@ Boolean HttpClient.autoRedirect;
 
 ```JavaScript
 Boolean HttpClient.enableEncoding;
+```
+
+--------------------------
+### maxHeadersCount
+**Integer, 查询和设置最大请求头个数，缺省为 128**
+
+```JavaScript
+Integer HttpClient.maxHeadersCount;
+```
+
+--------------------------
+### maxHeaderSize
+**Integer, 查询和设置最大请求头长度，缺省为 8192**
+
+```JavaScript
+Integer HttpClient.maxHeaderSize;
 ```
 
 --------------------------
