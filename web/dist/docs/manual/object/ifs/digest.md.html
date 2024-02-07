@@ -56,6 +56,7 @@
 <li><a href=../../module/ifs/test.md.html class ="notranslate">test</a></li>
 <li><a href=../../module/ifs/timers.md.html class ="notranslate">timers</a></li>
 <li><a href=../../module/ifs/tty.md.html class ="notranslate">tty</a></li>
+<li><a href=../../module/ifs/types.md.html class ="notranslate">types</a></li>
 <li><a href=../../module/ifs/url.md.html class ="notranslate">url</a></li>
 <li><a href=../../module/ifs/util.md.html class ="notranslate">util</a></li>
 <li><a href=../../module/ifs/uuid.md.html class ="notranslate">uuid</a></li>
@@ -84,6 +85,7 @@
 <li><a href=fswatcher.md.html class ="notranslate">FSWatcher</a></li>
 <li><a href=fiber.md.html class ="notranslate">Fiber</a></li>
 <li><a href=file.md.html class ="notranslate">File</a></li>
+<li><a href=filehandle.md.html class ="notranslate">FileHandle</a></li>
 <li><a href=handler.md.html class ="notranslate">Handler</a></li>
 <li><a href=heapgraphedge.md.html class ="notranslate">HeapGraphEdge</a></li>
 <li><a href=heapgraphnode.md.html class ="notranslate">HeapGraphNode</a></li>
@@ -106,10 +108,6 @@
 <li><a href=lrucache.md.html class ="notranslate">LruCache</a></li>
 <li><a href=memorystream.md.html class ="notranslate">MemoryStream</a></li>
 <li><a href=message.md.html class ="notranslate">Message</a></li>
-<li><a href=mongocollection.md.html class ="notranslate">MongoCollection</a></li>
-<li><a href=mongocursor.md.html class ="notranslate">MongoCursor</a></li>
-<li><a href=mongodb.md.html class ="notranslate">MongoDB</a></li>
-<li><a href=mongoid.md.html class ="notranslate">MongoID</a></li>
 <li><a href=mysql.md.html class ="notranslate">MySQL</a></li>
 <li><a href=odbc.md.html class ="notranslate">Odbc</a></li>
 <li><a href=pkey.md.html class ="notranslate">PKey</a></li>
@@ -122,6 +120,7 @@
 <li><a href=routing.md.html class ="notranslate">Routing</a></li>
 <li><a href=sqlite.md.html class ="notranslate">SQLite</a></li>
 <li><a href=sandbox.md.html class ="notranslate">SandBox</a></li>
+<li><a href=script.md.html class ="notranslate">Script</a></li>
 <li><a href=seekablestream.md.html class ="notranslate">SeekableStream</a></li>
 <li><a href=semaphore.md.html class ="notranslate">Semaphore</a></li>
 <li><a href=service.md.html class ="notranslate">Service</a></li>
@@ -301,6 +300,21 @@ console.log(<span class="hljs-keyword">result</span>.toString(<span class="hljs-
 <li><span class="notranslate">Digest</span>, 返回信息摘要对象本身</li>
 </ul>
 <hr>
+<p><strong>更新字符串摘要信息</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div>Digest Digest.update(<span class="hljs-built_in">String</span> data,
+    <span class="hljs-built_in">String</span> codec = <span class="hljs-string">"utf8"</span>);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">data</span>: String, 字符串数据</li>
+<li><span class="notranslate">codec</span>: String, 指定编码格式，允许值为：&quot;buffer&quot;, &quot;<a href=../../module/ifs/hex.md.html class ="notranslate">hex</a>&quot;, &quot;<a href=../../module/ifs/base32.md.html class ="notranslate">base32</a>&quot;, &quot;<a href=../../module/ifs/base58.md.html class ="notranslate">base58</a>&quot;, &quot;<a href=../../module/ifs/base64.md.html class ="notranslate">base64</a>&quot;, &quot;utf8&quot;, 或者 <a href=../../module/ifs/iconv.md.html class ="notranslate">iconv</a> 模块支持的字符集</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><span class="notranslate">Digest</span>, 返回信息摘要对象本身</li>
+</ul>
+<hr>
 <h3 id="digest" class ="notranslate">digest</h3>
 <p><strong>计算并返回摘要</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Value Digest.digest(<span class="hljs-built_in">String</span> codec = <span class="hljs-string">"buffer"</span>);
@@ -339,10 +353,8 @@ console.log(<span class="hljs-keyword">result</span>.toString(<span class="hljs-
 7
 8
 9
-10
-11
-12</div>{
-    <span class="hljs-attr">alg</span>: <span class="hljs-number">0</span>， 指定签名的 hash 算法， 仅在 RSA 时有效， 缺省为 <span class="hljs-number">0.</span> 支持算法: <span class="hljs-number">0</span> = NONE,
+10</div>{
+    <span class="hljs-attr">alg</span>: <span class="hljs-number">0</span> 指定签名的 hash 算法， 仅在 RSA 时有效， 缺省为 <span class="hljs-number">0.</span> 支持算法: <span class="hljs-number">0</span> = NONE,
     <span class="hljs-number">1</span> = MD5,
     <span class="hljs-number">2</span> = SHA1,
     <span class="hljs-number">3</span> = SHA224,
@@ -350,8 +362,6 @@ console.log(<span class="hljs-keyword">result</span>.toString(<span class="hljs-
     <span class="hljs-number">5</span> = SHA384,
     <span class="hljs-number">6</span> = SHA512,
     <span class="hljs-number">7</span> = RIPEMD160
-    <span class="hljs-attr">to</span>: pk,
-    指定验证方公钥， 仅在 ecsdsa 或 sm2 时有效
 }
 </code></pre>
 <hr>
@@ -383,10 +393,8 @@ console.log(<span class="hljs-keyword">result</span>.toString(<span class="hljs-
 7
 8
 9
-10
-11
-12</div>{
-    <span class="hljs-attr">alg</span>: <span class="hljs-number">0</span>， 指定签名的 hash 算法， 仅在 RSA 时有效， 缺省为 <span class="hljs-number">0.</span> 支持算法: <span class="hljs-number">0</span> = NONE,
+10</div>{
+    <span class="hljs-attr">alg</span>: <span class="hljs-number">0</span> 指定签名的 hash 算法， 仅在 RSA 时有效， 缺省为 <span class="hljs-number">0.</span> 支持算法: <span class="hljs-number">0</span> = NONE,
     <span class="hljs-number">1</span> = MD5,
     <span class="hljs-number">2</span> = SHA1,
     <span class="hljs-number">3</span> = SHA224,
@@ -394,8 +402,6 @@ console.log(<span class="hljs-keyword">result</span>.toString(<span class="hljs-
     <span class="hljs-number">5</span> = SHA384,
     <span class="hljs-number">6</span> = SHA512,
     <span class="hljs-number">7</span> = RIPEMD160
-    <span class="hljs-attr">to</span>: pk,
-    指定验证方公钥， 仅在 ecsdsa 或 sm2 时有效
 }
 </code></pre>
 <hr>
@@ -420,4 +426,4 @@ console.log(<span class="hljs-keyword">result</span>.toString(<span class="hljs-
 <ul>
 <li><span class="notranslate">Value</span>, 返回包含可 JSON 序列化的值</li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>
+ <div class=commentbox></div></div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2024 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script src=https://unpkg.com/commentbox.io/dist/commentBox.min.js></script><script>commentBox('5670558372986880-proj')</script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

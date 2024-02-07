@@ -1,17 +1,17 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../imgs/icon.png"><title>fibjs 中X509 證書的使用- JavaScript on Fiber</title><link href="../../../css/common.css" rel="stylesheet"><link href="../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Toggle navigation</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../index.html"><img src="../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../index.html">HOME</a></li><li><a href="readme.md.html">GUIDE</a></li><li><a href="../manual/module/readme.md.html">MODULE</a></li><li><a href="../manual/object/readme.md.html">OBJECT</a></li><li><a href="../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../docs/guide/x509.md.html">中文</a> <a href="../../../ca/docs/guide/x509.md.html">Catalan</a> <a href="../../../de/docs/guide/x509.md.html">Deutsch</a> <a href="../../../en/docs/guide/x509.md.html">English</a> <a href="../../../es/docs/guide/x509.md.html">Español</a> <a href="../../../fr/docs/guide/x509.md.html">Français</a> <a href="../../../gl/docs/guide/x509.md.html">Galego</a> <a href="../../../it/docs/guide/x509.md.html">Italiano</a> <a href="../../../nl/docs/guide/x509.md.html">Nederlands</a> <a href="../../../ru/docs/guide/x509.md.html">Русский</a> <a href="../../../ja/docs/guide/x509.md.html">日本語</a> <a href="../../../ko/docs/guide/x509.md.html">한국어</a> <a href="../../../zh-tw/docs/guide/x509.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Guide 開髮指南</font></font></span><div class="search"><input type="text" class="searchbox" placeholder="Search"></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">首頁</font></font></a></li><li><a href="readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">開髮指南</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 中X509 證書的使用</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">開髮指南</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../imgs/icon.png"><title>fibjs 中X509 憑證的使用- JavaScript on Fiber</title><link href="../../../css/common.css" rel="stylesheet"><link href="../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Toggle navigation</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../index.html"><img src="../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../index.html">HOME</a></li><li><a href="readme.md.html">GUIDE</a></li><li><a href="../manual/module/readme.md.html">MODULE</a></li><li><a href="../manual/object/readme.md.html">OBJECT</a></li><li><a href="../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../docs/guide/x509.md.html">中文</a> <a href="../../../ca/docs/guide/x509.md.html">Catalan</a> <a href="../../../de/docs/guide/x509.md.html">Deutsch</a> <a href="../../../en/docs/guide/x509.md.html">English</a> <a href="../../../es/docs/guide/x509.md.html">Español</a> <a href="../../../fr/docs/guide/x509.md.html">Français</a> <a href="../../../gl/docs/guide/x509.md.html">Galego</a> <a href="../../../it/docs/guide/x509.md.html">Italiano</a> <a href="../../../nl/docs/guide/x509.md.html">Nederlands</a> <a href="../../../ru/docs/guide/x509.md.html">Русский</a> <a href="../../../ja/docs/guide/x509.md.html">日本語</a> <a href="../../../ko/docs/guide/x509.md.html">한국어</a> <a href="../../../zh-tw/docs/guide/x509.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Guide 開髮指南</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Search" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="search input" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">首頁</font></font></a></li><li><a href="readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">開發指南</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 中X509 憑證的使用</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">開發指南</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 是什麼？</font></font></a></li>
-<li><a href="install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安裝運行環境</font></font></a></li>
+<li><a href="install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安裝運作環境</font></font></a></li>
 <li><a href="hello.md.html" class="notranslate">hello, world</a></li>
-<li><a href="test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">美好生活從測試開始</font></font></a></li>
-<li><a href="profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">找出性能殺手</font></font></a></li>
-<li><a href="sync.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">同步和異步</font></font></a></li>
-<li><a href="server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服務端模塊熱更新</font></font></a></li>
-<li><a href="web.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">高性能Web 應用程序實踐</font></font></a></li>
+<li><a href="test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">美好生活從測驗開始</font></font></a></li>
+<li><a href="profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">找出效能殺手</font></font></a></li>
+<li><a href="sync.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">同步和非同步</font></font></a></li>
+<li><a href="server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服務端模組熱更新</font></font></a></li>
+<li><a href="web.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">高效能Web 應用程式實踐</font></font></a></li>
 <li><a href="host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">域名路由</font></font></a></li>
-<li class="active"><a href="x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 中X509 證書的使用</font></font></a></li>
-<li><a href="contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加native 模塊</font></font></a></li>
+<li class="active"><a href="x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 中X509 憑證的使用</font></font></a></li>
+<li><a href="contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">新增native 模組</font></font></a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">基礎模塊</font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">基礎模組</font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../manual/module/ifs/assert.md.html" class="notranslate">assert</a></li>
 <li><a href="../manual/module/ifs/base32.md.html" class="notranslate">base32</a></li>
 <li><a href="../manual/module/ifs/base58.md.html" class="notranslate">base58</a></li>
@@ -56,6 +56,7 @@
 <li><a href="../manual/module/ifs/test.md.html" class="notranslate">test</a></li>
 <li><a href="../manual/module/ifs/timers.md.html" class="notranslate">timers</a></li>
 <li><a href="../manual/module/ifs/tty.md.html" class="notranslate">tty</a></li>
+<li><a href="../manual/module/ifs/types.md.html" class="notranslate">types</a></li>
 <li><a href="../manual/module/ifs/url.md.html" class="notranslate">url</a></li>
 <li><a href="../manual/module/ifs/util.md.html" class="notranslate">util</a></li>
 <li><a href="../manual/module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
@@ -66,7 +67,7 @@
 <li><a href="../manual/module/ifs/zip.md.html" class="notranslate">zip</a></li>
 <li><a href="../manual/module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">內置對象</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">內建對象</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../manual/object/ifs/blskey.md.html" class="notranslate">BlsKey</a></li>
 <li><a href="../manual/object/ifs/buffer.md.html" class="notranslate">Buffer</a></li>
 <li><a href="../manual/object/ifs/bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
@@ -84,6 +85,7 @@
 <li><a href="../manual/object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a></li>
 <li><a href="../manual/object/ifs/fiber.md.html" class="notranslate">Fiber</a></li>
 <li><a href="../manual/object/ifs/file.md.html" class="notranslate">File</a></li>
+<li><a href="../manual/object/ifs/filehandle.md.html" class="notranslate">FileHandle</a></li>
 <li><a href="../manual/object/ifs/handler.md.html" class="notranslate">Handler</a></li>
 <li><a href="../manual/object/ifs/heapgraphedge.md.html" class="notranslate">HeapGraphEdge</a></li>
 <li><a href="../manual/object/ifs/heapgraphnode.md.html" class="notranslate">HeapGraphNode</a></li>
@@ -106,10 +108,6 @@
 <li><a href="../manual/object/ifs/lrucache.md.html" class="notranslate">LruCache</a></li>
 <li><a href="../manual/object/ifs/memorystream.md.html" class="notranslate">MemoryStream</a></li>
 <li><a href="../manual/object/ifs/message.md.html" class="notranslate">Message</a></li>
-<li><a href="../manual/object/ifs/mongocollection.md.html" class="notranslate">MongoCollection</a></li>
-<li><a href="../manual/object/ifs/mongocursor.md.html" class="notranslate">MongoCursor</a></li>
-<li><a href="../manual/object/ifs/mongodb.md.html" class="notranslate">MongoDB</a></li>
-<li><a href="../manual/object/ifs/mongoid.md.html" class="notranslate">MongoID</a></li>
 <li><a href="../manual/object/ifs/mysql.md.html" class="notranslate">MySQL</a></li>
 <li><a href="../manual/object/ifs/odbc.md.html" class="notranslate">Odbc</a></li>
 <li><a href="../manual/object/ifs/pkey.md.html" class="notranslate">PKey</a></li>
@@ -122,6 +120,7 @@
 <li><a href="../manual/object/ifs/routing.md.html" class="notranslate">Routing</a></li>
 <li><a href="../manual/object/ifs/sqlite.md.html" class="notranslate">SQLite</a></li>
 <li><a href="../manual/object/ifs/sandbox.md.html" class="notranslate">SandBox</a></li>
+<li><a href="../manual/object/ifs/script.md.html" class="notranslate">Script</a></li>
 <li><a href="../manual/object/ifs/seekablestream.md.html" class="notranslate">SeekableStream</a></li>
 <li><a href="../manual/object/ifs/semaphore.md.html" class="notranslate">Semaphore</a></li>
 <li><a href="../manual/object/ifs/service.md.html" class="notranslate">Service</a></li>
@@ -163,7 +162,7 @@
 <li><a href="../manual/object/ifs/zipfile.md.html" class="notranslate">ZipFile</a></li>
 <li><a href="../manual/object/ifs/object.md.html" class="notranslate">object</a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社區模塊</font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社群模組</font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../awesome/module/fib-session.md.html" class="notranslate">fib-session</a></li>
 <li><a href="../awesome/module/fib-pool.md.html" class="notranslate">fib-pool</a></li>
 <li><a href="../awesome/module/fib-orm.md.html" class="notranslate">fib-orm</a></li>
@@ -205,30 +204,30 @@
 <li><a href="../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
 <li><a href="../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
 </ul>
- </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <h1 id="fibjs-中-X509-证书的使用"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 中X509 證書的使用</font></font></h1>
-<h2 id="背景介绍"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">背景介紹</font></font></h2>
-<h3 id="什么是-x509-证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">什麼是x509 證書</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">x509 證書是基於國際標準的公鑰認證服務（PKI）體系中，最常用的一種數字證書格式。</font><font style="vertical-align: inherit;">它能夠用於認證和加密，在互聯網上廣泛應用於SSL/TLS 協議以及其他類型的網絡應用。</font><font style="vertical-align: inherit;">x509 證書採用了公鑰/私鑰認證機制，並且能夠保證數據傳輸的保密性、完整性和真實性等。</font></font></p>
-<h3 id="x509-证书在什么场景中用到"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">x509 證書在什麼場景中用到</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在互聯網上，x509 證書最常用的場景是用於TLS/SSL 協議中的證書認證，保證客戶端與服務端之間傳輸的數據使用安全通道進行加密並且是經過驗證的。</font><font style="vertical-align: inherit;">x509 證書還可以用於VPN/SSH 等基於公私鑰加密的應用協議中的身份認證。</font></font></p>
-<h3 id="fibjs-支持-x509-证书的处理"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 支持x509 證書的處理</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 支持x509 證書的處理，提供了crypto 模塊中的X509Cert、X509Req 等類來進行證書的讀取、創建和簽名等操作。</font><font style="vertical-align: inherit;">可以通過這些類獲取證書的有效期、公鑰、頒發者、主題名稱等信息，以及對證書進行簽名、驗證等操作。</font><font style="vertical-align: inherit;">同時，fibjs 還提供了HttpsServer 類來支持HTTPS 的證書認證和加密連接，使得在fibjs 中使用x509 證書變得更加容易。</font></font></p>
-<h2 id="X509-模块的介绍"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509 模塊的介紹</font></font></h2>
-<h3 id="X509-模块是什么"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509 模塊是什麼</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在fibjs 的crypto 模塊中，提供了X509Cert、X509Req 等類來進行x509 證書的讀取、創建和簽名等操作。</font><font style="vertical-align: inherit;">X509 模塊是一個用於處理x509 證書的模塊，提供了對證書的解析、創建和驗證等操作。</font></font></p>
-<h3 id="X509-模块的作用"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509 模塊的作用</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509 模塊的作用是對x509 證書進行操作，可以通過該模塊讀取已有的x509 證書，獲取證書的有效期、公鑰、頒發者、主題名稱等信息。</font><font style="vertical-align: inherit;">同時, X509 模塊也可以創建x509 證書請求和簽名證書，方式如用於TLS/SSL 協議中的證書認證。</font></font></p>
-<h3 id="X509-模块的-API"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509 模塊的API</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以下是X509 模塊中比較重要的API 列表：</font></font></p>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="fibjs-中-X509-证书的使用" data-unique="fibjs-中-X509-证书的使用"></div><h1 id="fibjs-中-X509-证书的使用"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 中X509 憑證的使用</font></font></h1>
+<div name="背景介绍" data-unique="背景介绍"></div><h2 id="背景介绍"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">背景介紹</font></font></h2>
+<div name="什么是-x509-证书" data-unique="什么是-x509-证书"></div><h3 id="什么是-x509-证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">什麼是x509 證書</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">x509 憑證是基於國際標準的公鑰認證服務（PKI）體系中，最常用的一種數位憑證格式。它能夠用於認證和加密，在互聯網上廣泛應用於SSL/TLS 協定以及其他類型的網路應用。 x509 憑證採用了公鑰/私鑰認證機制，並且能夠保證資料傳輸的保密性、完整性和真實性等。</font></font></p>
+<div name="x509-证书在什么场景中用到" data-unique="x509-证书在什么场景中用到"></div><h3 id="x509-证书在什么场景中用到"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">x509 證書在什麼場景中用到</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在互聯網上，x509 憑證最常用的場景是用於TLS/SSL 協定中的憑證認證，確保客戶端與服務端之間傳輸的資料使用安全通道進行加密並且是經過驗證的。 x509 憑證也可以用於VPN/SSH 等基於公私鑰加密的應用程式協定中的身份認證。</font></font></p>
+<div name="fibjs-支持-x509-证书的处理" data-unique="fibjs-支持-x509-证书的处理"></div><h3 id="fibjs-支持-x509-证书的处理"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 支援x509 憑證的處理</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 支援x509 憑證的處理，提供了crypto 模組中的X509Cert、X509Req 等類別來進行憑證的讀取、建立和簽章等操作。可以透過這些類別取得憑證的有效期限、公鑰、頒發者、主題名稱等信息，以及對憑證進行簽署、驗證等操作。同時，fibjs 也提供了HttpsServer 類別來支援HTTPS 的憑證認證和加密連接，使得在fibjs 中使用x509 憑證變得更加容易。</font></font></p>
+<div name="X509-模块的介绍" data-unique="X509-模块的介绍"></div><h2 id="X509-模块的介绍"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509 模組的介紹</font></font></h2>
+<div name="X509-模块是什么" data-unique="X509-模块是什么"></div><h3 id="X509-模块是什么"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509 模組是什麼</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在fibjs 的crypto 模組中，提供了X509Cert、X509Req 等類別來進行x509 憑證的讀取、建立和簽署等操作。 X509 模組是一個用於處理x509 憑證的模組，提供了對憑證的解析、建立和驗證等操作。</font></font></p>
+<div name="X509-模块的作用" data-unique="X509-模块的作用"></div><h3 id="X509-模块的作用"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509 模組的作用</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509 模組的作用是對x509 證書進行操作，可以透過此模組讀取現有的x509 證書，取得證書的有效期限、公鑰、頒發者、主題名稱等資訊。同時, X509 模組也可以建立x509 憑證要求和簽章證書，方式如用於TLS/SSL 協定中的憑證認證。</font></font></p>
+<div name="X509-模块的-API" data-unique="X509-模块的-API"></div><h3 id="X509-模块的-API"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509 模組的API</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以下是X509 模組中比較重要的API 清單：</font></font></p>
 <ul>
-<li><span class="notranslate">X509Cert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 用於讀取和操作x509 證書的類。</font></font></li>
-<li><span class="notranslate">X509Req</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 用於創建x509 證書請求的類。</font></font></li>
-<li><span class="notranslate">verify</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 通過CA 證書對驗證x509 證書。</font></font></li>
-<li><span class="notranslate">SslServer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 提供基於x509 證書的認證服務的類。</font></font></li>
-<li><span class="notranslate">SslSocket</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 提供基於x509 證書的認證服務的套接字收發數據操作的類。</font></font></li>
+<li><span class="notranslate">X509Cert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 用於讀取和操作x509 憑證的類別。</font></font></li>
+<li><span class="notranslate">X509Req</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 用於建立x509 憑證請求的類別。</font></font></li>
+<li><span class="notranslate">verify</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 透過CA 憑證對驗證x509 憑證。</font></font></li>
+<li><span class="notranslate">SslServer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 提供基於x509 證書的認證服務的類別。</font></font></li>
+<li><span class="notranslate">SslSocket</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: 提供基於x509 憑證的認證服務的套接字收發資料操作的類別。</font></font></li>
 </ul>
-<h3 id="示例代码"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">示例代碼</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以下是讀取x509 證書和創建x509 證書請求的示例代碼：</font></font></p>
+<div name="示例代码" data-unique="示例代码"></div><h3 id="示例代码"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">範例程式碼</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以下是讀取x509 憑證和建立x509 憑證請求的範例程式碼：</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -253,26 +252,26 @@
 <span class="hljs-keyword">let</span> pemReq = req.pem();
 <span class="hljs-built_in">console</span>.log(pemReq);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以上示例代碼通過X509Cert 類讀取了一個已有的x509 證書，並輸出了證書的主題名稱subject。</font><font style="vertical-align: inherit;">同時，示例代碼還演示瞭如何通過X509Req 創建x509 證書請求，並輸出了PEM 格式的請求信息。</font></font></p>
-<h2 id="X509-模块的使用"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509 模塊的使用</font></font></h2>
-<h3 id="生成自签名证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">生成自簽名證書</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">生成自簽名證書的過程比較簡單，一般需要完成以下步驟：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以上範例程式碼透過X509Cert 類別讀取了一個現有的x509 證書，並輸出了證書的主題名稱subject。同時，範例程式碼也示範如何透過X509Req 建立x509 憑證請求，並輸出了PEM 格式的請求資訊。</font></font></p>
+<div name="X509-模块的使用" data-unique="X509-模块的使用"></div><h2 id="X509-模块的使用"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509 模組的使用</font></font></h2>
+<div name="生成自签名证书" data-unique="生成自签名证书"></div><h3 id="生成自签名证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">產生自簽名憑證</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">產生自簽名憑證的過程比較簡單，一般需要完成以下步驟：</font></font></p>
 <ul>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">生成PKey（私鑰）</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">生成X509Req（證書請求）</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用X509Req 生成X509Cert（正式證書）</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">保存證書</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">產生PKey（私鑰）</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">產生X509Req（憑證請求）</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用X509Req 產生X509Cert（正式憑證）</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">儲存證書</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通過這些步驟，可以自己生成一個用於測試和開發環境的x509 證書。</font><font style="vertical-align: inherit;">下面是具體的實現：</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用以下代碼創建PKey 對象。</font><font style="vertical-align: inherit;">其中，from() 方法可以通過一個PEM 格式的字符串或者一個Buffer 來創建PKey 對象。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">透過這些步驟，可以自行產生一個用於測試和開發環境的x509 憑證。以下是具體的實作：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用以下程式碼建立PKey 物件。其中，from() 方法可以透過一個PEM 格式的字串或一個Buffer 來建立PKey 物件。</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
 <span class="hljs-keyword">const</span> pky = crypto.PKey.from(private_pem);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用以下代碼創建X509Req 對象。</font><font style="vertical-align: inherit;">其中，X509Req 的第一個參數是主題可分辨名稱（Subject Name），字符串格式為key1=value1,key2=value2。</font><font style="vertical-align: inherit;">第二個參數是先前創建的PKey 對象，用於證書籤名。</font><font style="vertical-align: inherit;">例如：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用以下程式碼建立X509Req 物件。其中，X509Req 的第一個參數是主題可分辨名稱（Subject Name），字串格式為key1=value1,key2=value2。第二個參數是先前建立的PKey 對象，用於憑證簽章。例如：</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">let</span> xrq = <span class="hljs-keyword">new</span> crypto.X509Req(<span class="hljs-string">"CN=localhost,O=fibjs"</span>, pky);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用以下代碼創建X509Cert（正式證書）。</font><font style="vertical-align: inherit;">具體操作是調用X509Req 的sign() 方法，該方法接受三個參數：證書頒發機構的名稱、用於簽名的PKey 對象、以及其他相關信息。</font><font style="vertical-align: inherit;">例如，下列示例中，將X509Req 對象簽名為自簽名證書，簽名機構為本身，證書有效期為10 年：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用以下程式碼建立X509Cert（正式證書）。具體操作是呼叫X509Req 的sign() 方法，該方法接受三個參數：憑證授權單位的名稱、用於簽署的PKey 物件、以及其他相關資訊。例如，在下列範例中，將X509Req 物件簽署為自簽名證書，簽章機構為本身，證書有效期限為10 年：</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -283,7 +282,7 @@
 };<font></font>
 <span class="hljs-keyword">const</span> cert = xrq.sign(<span class="hljs-string">"CN=localhost,O=fibjs"</span>, pky, opt);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用以下代碼將PKey 和X509Cert 保存到本地文件。</font><font style="vertical-align: inherit;">由於證書是使用PEM 格式保存的，因此可以使用pem() 方法將證書對象轉化為字符串，然後直接保存到文件中：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用以下程式碼將PKey 和X509Cert 儲存到本機檔案。由於憑證是使用PEM 格式儲存的，因此可以使用pem() 方法將憑證物件轉換為字串，然後直接儲存到檔案中：</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -294,40 +293,40 @@
 fs.writeFile(<span class="hljs-string">'mycert.key'</span>, ks); <span class="hljs-comment">// save the key</span>
 fs.writeFile(<span class="hljs-string">'mycert.pem'</span>, cs); <span class="hljs-comment">// save the cert</span>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以上代碼完成了從生成私鑰到存儲自簽名證書的整個過程。</font><font style="vertical-align: inherit;">可以通過這個證書來測試和開發安全相關的應用程序。</font></font></p>
-<h3 id="加载证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">加載證書</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">加載證書是使用x509 證書時的一項重要操作。</font><font style="vertical-align: inherit;">下面介紹如何加載證書文件和加載公鑰私鑰。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">為了使用x509 證書，必須首先將證書文件讀取到內存中，並將其轉換為x509 證書對象。</font><font style="vertical-align: inherit;">以下是如何加載證書文件的步驟：</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在fibjs 的JavaScript 程序中，可以使用fs 模塊的相關API 來讀取文件。</font><font style="vertical-align: inherit;">例如，使用以下代碼讀取PEM 格式的證書文件：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以上程式碼完成了從產生私鑰到儲存自簽名憑證的整個過程。可以透過這個憑證來測試和開發安全相關的應用程式。</font></font></p>
+<div name="加载证书" data-unique="加载证书"></div><h3 id="加载证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">載入證書</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">載入憑證是使用x509 憑證時的一項重要操作。以下介紹如何載入憑證檔案和載入公鑰私鑰。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">為了使用x509 證書，必須先將證書檔案讀取到記憶體中，並將其轉換為x509 證書物件。以下是如何載入證書檔案的步驟：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在fibjs 的JavaScript 程式中，可以使用fs 模組的相關API 來讀取檔案。例如，使用以下程式碼讀取PEM 格式的憑證檔案：</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
 <span class="hljs-keyword">const</span> certData = fs.readFile(<span class="hljs-string">'server.crt'</span>);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">讀取文件後，必須使用X509Cert 對象將證書文件內容轉換為x509 證書：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">讀取檔案後，必須使用X509Cert 物件將憑證檔案內容轉換為x509 憑證：</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
 <span class="hljs-keyword">const</span> cert = <span class="hljs-keyword">new</span> crypto.X509Cert(certData);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">經過以上步驟，可以加載本地的x509 證書文件。</font><font style="vertical-align: inherit;">也可以使用crypto.loadCert 直接讀取證書：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">經過以上步驟，可以載入本地的x509 憑證檔案。也可以使用crypto.loadCert 直接讀取憑證：</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
 <span class="hljs-keyword">const</span> cert = crypto.loadCert(<span class="hljs-string">'server.crt'</span>);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">x509 證書中保存著公鑰和加密後的簽名信息，因此需要在使用證書時，將證書中的公鑰解析出來，以方便對數據進行加密和解密。</font><font style="vertical-align: inherit;">PKey 類可以將PEM 格式的公鑰/私鑰字符串轉換為公鑰/私鑰對象。</font><font style="vertical-align: inherit;">可以使用以下代碼讀取PEM 格式的公鑰/私鑰字符串，並創建PKey 對象:</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">x509 憑證中保存著公鑰和加密後的簽章訊息，因此需要在使用憑證時，將憑證中的公鑰解析出來，以方便對資料進行加密和解密。 PKey 類別可以將PEM 格式的公鑰/私鑰字串轉換為公鑰/私鑰物件。可以使用以下程式碼讀取PEM 格式的公鑰/私鑰字串，並建立PKey 物件:</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">const</span> privateKey = fs.readFile(<span class="hljs-string">'private.pem'</span>); <span class="hljs-comment">// load the data from file</span>
 <span class="hljs-keyword">const</span> pKey = crypto.PKey.from(privateKey); <span class="hljs-comment">// load from pem format data</span>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">或者使用crypto.loadPKey 直接讀取：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">或使用crypto.loadPKey 直接讀取：</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
 <span class="hljs-keyword">const</span> pKey = crypto.loadPKey(<span class="hljs-string">'private.pem'</span>);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">經過以上步驟，可以將公鑰/私鑰文件轉換為PKey 對象。</font></font></p>
-<h3 id="解析证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">解析證書</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">證書是SSL/TLS 交互中重要的組成部分，用於身份身份驗證和數據傳輸的加密。</font><font style="vertical-align: inherit;">現在，我們來了解如何在fibjs 中解析一個證書。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我們可以使用crypto 模塊的X509Cert 類，通過讀取一個DER/PEM 格式的證書文件構建一個證書對象，緊接著可以獲取證書的一些基本信息，例如獲取證書的主題名稱、頒發者名稱、有效期等等信息。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">示例代碼如下：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">經過以上步驟，可以將公鑰/私鑰檔案轉換為PKey 物件。</font></font></p>
+<div name="解析证书" data-unique="解析证书"></div><h3 id="解析证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">解析憑證</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">憑證是SSL/TLS 互動中重要的組成部分，用於身份驗證和資料傳輸的加密。現在，我們來了解如何在fibjs 中解析一個憑證。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">我們可以使用crypto 模組的X509Cert 類，透過讀取一個DER/PEM 格式的憑證檔案建立一個憑證對象，緊接著可以取得憑證的一些基本信息，例如取得憑證的主題名稱、頒發者名稱、有效期限等等訊息。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">範例程式碼如下：</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -356,8 +355,8 @@ fs.writeFile(<span class="hljs-string">'mycert.pem'</span>, cs); <span class="hl
 <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`证书有效期: <span class="hljs-subst">${validFromDate.toLocaleString()}</span> ~ <span class="hljs-subst">${expirationDate.toLocaleString()}</span>`</span>);
 <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`证书序列号: <span class="hljs-subst">${serialNumber}</span>`</span>);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">當需要使用一個證書時，我們需要驗證這個證書的合法性，關鍵是要確定證書是由一個可信的組織頒發的。</font><font style="vertical-align: inherit;">可以使用X509Cert 中的verify 方法來檢查證書的合法性，常見的驗證方式是通過驗證證書的鏈，確保證書被受信任的CA 頒發。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">示例代碼如下：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">當需要使用一個憑證時，我們需要驗證這個憑證的合法性，關鍵是要確定憑證是由一個可信任的組織頒發的。可以使用X509Cert 中的verify 方法來檢查憑證的合法性，常見的驗證方式是透過驗證憑證的鏈，確保憑證被受信任的CA 所頒發。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">範例程式碼如下：</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -376,9 +375,9 @@ fs.writeFile(<span class="hljs-string">'mycert.pem'</span>, cs); <span class="hl
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'证书验证通过'</span>);<font></font>
 }<font></font>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在此示例代碼中，我們首先讀取指定的CA 證書，生成一個X509Cert 對象，接著使用證書對像上的verify 方法驗證需要驗證的證書，並獲取驗證結果。</font><font style="vertical-align: inherit;">你可以通過比較驗證結果是否等於0 來判斷證書是否合法。</font><font style="vertical-align: inherit;">如果驗證結果不為0，則說明驗證失敗，此時應當停止使用該證書。</font></font></p>
-<h3 id="使用证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用證書</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在使用https 服務器時，需要確保使用的證書已經添加到服務器上。</font><font style="vertical-align: inherit;">以下是一個簡單的示例，通過crypto 模塊加載證書和私鑰文件：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在此範例程式碼中，我們首先讀取指定的CA 證書，產生一個X509Cert 對象，接著使用證書對像上的verify 方法驗證需要驗證的證書，並取得驗證結果。你可以透過比較驗證結果是否等於0 來判斷憑證是否合法。如果驗證結果不為0，則表示驗證失敗，此時應停止使用該憑證。</font></font></p>
+<div name="使用证书" data-unique="使用证书"></div><h3 id="使用证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用證書</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用https 伺服器時，需要確保使用的憑證已新增至伺服器。以下是一個簡單的範例，透過crypto 模組載入憑證和私鑰檔案：</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -399,27 +398,27 @@ fs.writeFile(<span class="hljs-string">'mycert.pem'</span>, cs); <span class="hl
 });<font></font>
 server.start();<font></font>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在上面的示例中，我們通過loadCert 和loadPKey 函數加載了server.crt 和server.key 文件，然後使用HttpsServer 對象創建了一個服務，並用加載的證書和密鑰文件啟動服務。</font></font></p>
-<h2 id="X509-模块的注意事项"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509 模塊的注意事項</font></font></h2>
-<h3 id="证书的安全性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">證書的安全性</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509 模塊提供了證書的創建、處理等功能，證書的安全性必須得到保障，這需要特別注意以下幾點：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在上面的範例中，我們透過loadCert 和loadPKey 函數載入了server.crt 和server.key 文件，然後使用HttpsServer 物件建立了一個服務，並用載入的憑證和金鑰檔案啟動服務。</font></font></p>
+<div name="X509-模块的注意事项" data-unique="X509-模块的注意事项"></div><h2 id="X509-模块的注意事项"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509 模組的注意事項</font></font></h2>
+<div name="证书的安全性" data-unique="证书的安全性"></div><h3 id="证书的安全性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">憑證的安全性</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509 模組提供了憑證的建立、處理等功能，憑證的安全性必須得到保障，這需要特別注意以下幾點：</font></font></p>
 <ul>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">私鑰的安全性。</font><font style="vertical-align: inherit;">私鑰是證書的重要組成部分，必須得到嚴格保護。</font><font style="vertical-align: inherit;">在證書的使用過程中，應該盡可能地將私鑰存儲在安全的地方，並合理設置訪問權限。</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">證書的傳輸安全。</font><font style="vertical-align: inherit;">在證書的交換和使用過程中，必須採用安全的傳輸方式，避免證書被竊取或篡改。</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">證書的驗證安全。</font><font style="vertical-align: inherit;">證書驗證是確保證書有效和安全性的重要環節，必須嚴格按照證書的驗證規則來進行驗證，以避免偽造的證書誤導使用者。</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">私鑰的安全性。私鑰是憑證的重要組成部分，必須嚴格保護。在憑證的使用過程中，應該盡可能地將私鑰儲存在安全的地方，並合理地設定存取權限。</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">證書的傳輸安全。在憑證的交換和使用過程中，必須採用安全的傳輸方式，避免憑證被竊取或竄改。</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">證書的驗證安全性。證書驗證是確保證書有效且安全性的重要環節，必須嚴格遵守證書的驗證規則來驗證，以避免偽造的證書誤導使用者。</font></font></li>
 </ul>
-<h3 id="证书的有效期"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">證書的有效期</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">證書的有效期是指從證書發行日期到證書過期日期之間的這段時間。</font><font style="vertical-align: inherit;">證書的有效期限制了證書的使用時間，在證書過期之前，證書持有人可以使用證書，但在證書過期之後，證書將失去其有效性。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">因此，在使用證書之前，必須先檢查證書的有效期，以避免使用已經過期的證書。</font><font style="vertical-align: inherit;">同時，在證書過期之前，應該儘早地更新證書，以確保證書的可用性。</font></font></p>
-<h3 id="证书的信任机制"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">證書的信任機制</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">證書的信任機制是證書能否被客戶端或服務器端信任的關鍵因素。</font><font style="vertical-align: inherit;">通常情況下，客戶端或服務器端只信任由可信機構(CA)簽發和承認的證書。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在使用證書之前，必須確定證書的信任問題。</font><font style="vertical-align: inherit;">可以通過檢查證書的頒發機構、證書的主題可分辨名稱等方式來判斷證書是否可信任。</font></font></p>
-<h3 id="证书的更新机制"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">證書的更新機制</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">證書的更新機制是確保證書一直有效並且安全的重要環節。</font><font style="vertical-align: inherit;">通常情況下，證書的更新主要包括兩個方面：</font></font></p>
+<div name="证书的有效期" data-unique="证书的有效期"></div><h3 id="证书的有效期"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">證書的有效期限</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">憑證的有效期限是指從憑證發行日期到憑證過期日期之間的這段時間。證書的有效期限限制了證書的使用時間，在證書過期之前，證書持有人可以使用證書，但在證書過期之後，證書將失去其有效性。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">因此，在使用憑證之前，必須先檢查憑證的有效期，以避免使用已過期的憑證。同時，在證書過期之前，應儘早更新證書，以確保證書的可用性。</font></font></p>
+<div name="证书的信任机制" data-unique="证书的信任机制"></div><h3 id="证书的信任机制"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">憑證的信任機制</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">憑證的信任機制是憑證能否被客戶端或伺服器端信任的關鍵因素。通常情況下，客戶端或伺服器端只信任由可信任機構(CA)簽發和承認的憑證。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在使用憑證之前，必須確定憑證的信任問題。可以透過檢查憑證的頒發機構、憑證的主題可分辨名稱等方式來判斷憑證是否可信任。</font></font></p>
+<div name="证书的更新机制" data-unique="证书的更新机制"></div><h3 id="证书的更新机制"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">憑證的更新機制</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">憑證的更新機制是確保憑證一直有效且安全的重要環節。通常情況下，證書的更新主要包括兩個方面：</font></font></p>
 <ul>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">證書過期後的更新。</font><font style="vertical-align: inherit;">在證書過期後，必須重新申請證書，並按照相應的規則進行簽名和驗證，以確保證書的有效性。</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">證書擴展和更新。</font><font style="vertical-align: inherit;">在證書的使用過程中，如果需要擴展或更新證書的信息，可以通過重新申請證書並進行簽名和驗證的方式來實現。</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">證書過期後的更新。在證書過期後，必須重新申請證書，並按照相應的規則進行簽署和驗證，以確保證書的有效性。</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">證書擴充和更新。在證書的使用過程中，如果需要擴展或更新證書的信息，可以透過重新申請證書並進行簽名和驗證的方式來實現。</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">綜上所述，X509 模塊提供了證書的創建、處理等功能，是確保證書安全、可信和有效的重要環節。</font><font style="vertical-align: inherit;">在使用和管理證書的過程中，必須遵循相應的規則和要求，以確保證書的有效性和安全性。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">👉 【</font></font><a href="contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加native 模塊</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">】</font></font></p>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../js/common.js"></script><script type="text/javascript" src="../../../js/docs.js"></script></body></html>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">綜上所述，X509 模組提供了憑證的建立、處理等功能，是確保憑證安全、可信任和有效的重要環節。在使用和管理證書的過程中，必須遵循相應的規則和要求，以確保證書的有效性和安全性。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">👉 【</font></font><a href="contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">新增native 模組</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">】</font></font></p>
+ <div class="commentbox" id="commentbox" data-loaded="true"><iframe src="https://app.commentbox.io/5670558372986880-proj?id=commentbox&amp;url=file%3A%2F%2F%2FUsers%2Flion%2Fworks%2Ffibjs%2Fdocs%2Fweb%2Fdist%2Fdocs%2Fguide%2Fx509.md.html%23commentbox&amp;tlc_param=tlc&amp;background_color=&amp;text_color=&amp;subtext_color=&amp;sort_order=best" frameborder="0" scrolling="no" style="width: 100%" height="298px" data-comments-loaded="true"></iframe></div></div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2024 fibjs.org |</font></font><a href="../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script><script>commentBox('5670558372986880-proj')</script><script type="text/javascript" src="../../../js/common.js"></script><script type="text/javascript" src="../../../js/docs.js"></script></body></html>

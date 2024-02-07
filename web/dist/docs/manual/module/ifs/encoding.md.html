@@ -56,6 +56,7 @@
 <li><a href=test.md.html class ="notranslate">test</a></li>
 <li><a href=timers.md.html class ="notranslate">timers</a></li>
 <li><a href=tty.md.html class ="notranslate">tty</a></li>
+<li><a href=types.md.html class ="notranslate">types</a></li>
 <li><a href=url.md.html class ="notranslate">url</a></li>
 <li><a href=util.md.html class ="notranslate">util</a></li>
 <li><a href=uuid.md.html class ="notranslate">uuid</a></li>
@@ -84,6 +85,7 @@
 <li><a href=../../object/ifs/fswatcher.md.html class ="notranslate">FSWatcher</a></li>
 <li><a href=../../object/ifs/fiber.md.html class ="notranslate">Fiber</a></li>
 <li><a href=../../object/ifs/file.md.html class ="notranslate">File</a></li>
+<li><a href=../../object/ifs/filehandle.md.html class ="notranslate">FileHandle</a></li>
 <li><a href=../../object/ifs/handler.md.html class ="notranslate">Handler</a></li>
 <li><a href=../../object/ifs/heapgraphedge.md.html class ="notranslate">HeapGraphEdge</a></li>
 <li><a href=../../object/ifs/heapgraphnode.md.html class ="notranslate">HeapGraphNode</a></li>
@@ -106,10 +108,6 @@
 <li><a href=../../object/ifs/lrucache.md.html class ="notranslate">LruCache</a></li>
 <li><a href=../../object/ifs/memorystream.md.html class ="notranslate">MemoryStream</a></li>
 <li><a href=../../object/ifs/message.md.html class ="notranslate">Message</a></li>
-<li><a href=../../object/ifs/mongocollection.md.html class ="notranslate">MongoCollection</a></li>
-<li><a href=../../object/ifs/mongocursor.md.html class ="notranslate">MongoCursor</a></li>
-<li><a href=../../object/ifs/mongodb.md.html class ="notranslate">MongoDB</a></li>
-<li><a href=../../object/ifs/mongoid.md.html class ="notranslate">MongoID</a></li>
 <li><a href=../../object/ifs/mysql.md.html class ="notranslate">MySQL</a></li>
 <li><a href=../../object/ifs/odbc.md.html class ="notranslate">Odbc</a></li>
 <li><a href=../../object/ifs/pkey.md.html class ="notranslate">PKey</a></li>
@@ -122,6 +120,7 @@
 <li><a href=../../object/ifs/routing.md.html class ="notranslate">Routing</a></li>
 <li><a href=../../object/ifs/sqlite.md.html class ="notranslate">SQLite</a></li>
 <li><a href=../../object/ifs/sandbox.md.html class ="notranslate">SandBox</a></li>
+<li><a href=../../object/ifs/script.md.html class ="notranslate">Script</a></li>
 <li><a href=../../object/ifs/seekablestream.md.html class ="notranslate">SeekableStream</a></li>
 <li><a href=../../object/ifs/semaphore.md.html class ="notranslate">Semaphore</a></li>
 <li><a href=../../object/ifs/service.md.html class ="notranslate">Service</a></li>
@@ -263,6 +262,51 @@
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>msgpack encoding.msgpack;
 </code></pre>
 <h2 id="静态函数">静态函数</h2>
+<h3 id="isEncoding" class ="notranslate">isEncoding</h3>
+<p><strong>判断指定的编码是否支持</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> encoding.isEncoding(<span class="hljs-built_in">String</span> codec);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">codec</span>: String, 指定编码格式，允许值为：&quot;<a href=hex.md.html class ="notranslate">hex</a>&quot;, &quot;<a href=base32.md.html class ="notranslate">base32</a>&quot;, &quot;<a href=base58.md.html class ="notranslate">base58</a>&quot;, &quot;<a href=base64.md.html class ="notranslate">base64</a>&quot;, &quot;utf8&quot;, 或者 <a href=iconv.md.html class ="notranslate">iconv</a> 模块支持的字符集</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><span class="notranslate">Boolean</span>, 返回编码是否支持</li>
+</ul>
+<hr>
+<h3 id="encode" class ="notranslate">encode</h3>
+<p><strong>将 <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a> 编码为字符串</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> encoding.encode(Buffer data,
+    <span class="hljs-built_in">String</span> codec = <span class="hljs-string">"utf8"</span>);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">data</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 初始化字符串，字符串将以 utf-8 格式写入</li>
+<li><span class="notranslate">codec</span>: String, 指定编码格式，允许值为：&quot;<a href=hex.md.html class ="notranslate">hex</a>&quot;, &quot;<a href=base32.md.html class ="notranslate">base32</a>&quot;, &quot;<a href=base58.md.html class ="notranslate">base58</a>&quot;, &quot;<a href=base64.md.html class ="notranslate">base64</a>&quot;, &quot;utf8&quot;, 或者 <a href=iconv.md.html class ="notranslate">iconv</a> 模块支持的字符集，缺省为 &quot;utf8&quot;</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><span class="notranslate">String</span>, 返回编码的字符串</li>
+</ul>
+<hr>
+<h3 id="decode" class ="notranslate">decode</h3>
+<p><strong>将字符串解码为 <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Buffer encoding.decode(<span class="hljs-built_in">String</span> str,
+    <span class="hljs-built_in">String</span> codec = <span class="hljs-string">"utf8"</span>);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">str</span>: String, 初始化字符串，字符串将以 utf-8 格式写入</li>
+<li><span class="notranslate">codec</span>: String, 指定编码格式，允许值为：&quot;<a href=hex.md.html class ="notranslate">hex</a>&quot;, &quot;<a href=base32.md.html class ="notranslate">base32</a>&quot;, &quot;<a href=base58.md.html class ="notranslate">base58</a>&quot;, &quot;<a href=base64.md.html class ="notranslate">base64</a>&quot;, &quot;utf8&quot;, 或者 <a href=iconv.md.html class ="notranslate">iconv</a> 模块支持的字符集，缺省为 &quot;utf8&quot;</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 返回解码的 <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a></li>
+</ul>
+<hr>
 <h3 id="jsstr" class ="notranslate">jsstr</h3>
 <p><strong>将字符串编码为 javascript 转义字符串，用以在 javascript 代码中包含文本</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
@@ -317,4 +361,4 @@
 <ul>
 <li><span class="notranslate">String</span>, 返回解码的字符串</li>
 </ul>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>
+ <div class=commentbox></div></div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2024 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script src=https://unpkg.com/commentbox.io/dist/commentBox.min.js></script><script>commentBox('5670558372986880-proj')</script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

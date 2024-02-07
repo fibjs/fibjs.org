@@ -1,17 +1,17 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../imgs/icon.png"><title>同步和異步- JavaScript on Fiber</title><link href="../../../css/common.css" rel="stylesheet"><link href="../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Toggle navigation</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../index.html"><img src="../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../index.html">HOME</a></li><li><a href="readme.md.html">GUIDE</a></li><li><a href="../manual/module/readme.md.html">MODULE</a></li><li><a href="../manual/object/readme.md.html">OBJECT</a></li><li><a href="../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../docs/guide/sync.md.html">中文</a> <a href="../../../ca/docs/guide/sync.md.html">Catalan</a> <a href="../../../de/docs/guide/sync.md.html">Deutsch</a> <a href="../../../en/docs/guide/sync.md.html">English</a> <a href="../../../es/docs/guide/sync.md.html">Español</a> <a href="../../../fr/docs/guide/sync.md.html">Français</a> <a href="../../../gl/docs/guide/sync.md.html">Galego</a> <a href="../../../it/docs/guide/sync.md.html">Italiano</a> <a href="../../../nl/docs/guide/sync.md.html">Nederlands</a> <a href="../../../ru/docs/guide/sync.md.html">Русский</a> <a href="../../../ja/docs/guide/sync.md.html">日本語</a> <a href="../../../ko/docs/guide/sync.md.html">한국어</a> <a href="../../../zh-tw/docs/guide/sync.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Guide 開髮指南</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Search" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="search input" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">首頁</font></font></a></li><li><a href="readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">開髮指南</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">同步和異步</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">開髮指南</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../imgs/icon.png"><title>同步和非同步- JavaScript on Fiber</title><link href="../../../css/common.css" rel="stylesheet"><link href="../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Toggle navigation</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../index.html"><img src="../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../index.html">HOME</a></li><li><a href="readme.md.html">GUIDE</a></li><li><a href="../manual/module/readme.md.html">MODULE</a></li><li><a href="../manual/object/readme.md.html">OBJECT</a></li><li><a href="../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../docs/guide/sync.md.html">中文</a> <a href="../../../ca/docs/guide/sync.md.html">Catalan</a> <a href="../../../de/docs/guide/sync.md.html">Deutsch</a> <a href="../../../en/docs/guide/sync.md.html">English</a> <a href="../../../es/docs/guide/sync.md.html">Español</a> <a href="../../../fr/docs/guide/sync.md.html">Français</a> <a href="../../../gl/docs/guide/sync.md.html">Galego</a> <a href="../../../it/docs/guide/sync.md.html">Italiano</a> <a href="../../../nl/docs/guide/sync.md.html">Nederlands</a> <a href="../../../ru/docs/guide/sync.md.html">Русский</a> <a href="../../../ja/docs/guide/sync.md.html">日本語</a> <a href="../../../ko/docs/guide/sync.md.html">한국어</a> <a href="../../../zh-tw/docs/guide/sync.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Guide 開髮指南</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="Search" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="search input" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">首頁</font></font></a></li><li><a href="readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">開發指南</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">同步和非同步</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">開發指南</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 是什麼？</font></font></a></li>
-<li><a href="install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安裝運行環境</font></font></a></li>
+<li><a href="install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">安裝運作環境</font></font></a></li>
 <li><a href="hello.md.html" class="notranslate">hello, world</a></li>
-<li><a href="test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">美好生活從測試開始</font></font></a></li>
-<li><a href="profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">找出性能殺手</font></font></a></li>
-<li class="active"><a href="sync.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">同步和異步</font></font></a></li>
-<li><a href="server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服務端模塊熱更新</font></font></a></li>
-<li><a href="web.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">高性能Web 應用程序實踐</font></font></a></li>
+<li><a href="test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">美好生活從測驗開始</font></font></a></li>
+<li><a href="profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">找出效能殺手</font></font></a></li>
+<li class="active"><a href="sync.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">同步和非同步</font></font></a></li>
+<li><a href="server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服務端模組熱更新</font></font></a></li>
+<li><a href="web.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">高效能Web 應用程式實踐</font></font></a></li>
 <li><a href="host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">域名路由</font></font></a></li>
-<li><a href="x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 中X509 證書的使用</font></font></a></li>
-<li><a href="contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加native 模塊</font></font></a></li>
+<li><a href="x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 中X509 憑證的使用</font></font></a></li>
+<li><a href="contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">新增native 模組</font></font></a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">基礎模塊</font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">基礎模組</font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../manual/module/ifs/assert.md.html" class="notranslate">assert</a></li>
 <li><a href="../manual/module/ifs/base32.md.html" class="notranslate">base32</a></li>
 <li><a href="../manual/module/ifs/base58.md.html" class="notranslate">base58</a></li>
@@ -56,6 +56,7 @@
 <li><a href="../manual/module/ifs/test.md.html" class="notranslate">test</a></li>
 <li><a href="../manual/module/ifs/timers.md.html" class="notranslate">timers</a></li>
 <li><a href="../manual/module/ifs/tty.md.html" class="notranslate">tty</a></li>
+<li><a href="../manual/module/ifs/types.md.html" class="notranslate">types</a></li>
 <li><a href="../manual/module/ifs/url.md.html" class="notranslate">url</a></li>
 <li><a href="../manual/module/ifs/util.md.html" class="notranslate">util</a></li>
 <li><a href="../manual/module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
@@ -66,7 +67,7 @@
 <li><a href="../manual/module/ifs/zip.md.html" class="notranslate">zip</a></li>
 <li><a href="../manual/module/ifs/zlib.md.html" class="notranslate">zlib</a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">內置對象</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_object" aria-controls="collapse_object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">內建對象</font></font></a></h4></div><div id="collapse_object" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../manual/object/ifs/blskey.md.html" class="notranslate">BlsKey</a></li>
 <li><a href="../manual/object/ifs/buffer.md.html" class="notranslate">Buffer</a></li>
 <li><a href="../manual/object/ifs/bufferedstream.md.html" class="notranslate">BufferedStream</a></li>
@@ -84,6 +85,7 @@
 <li><a href="../manual/object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a></li>
 <li><a href="../manual/object/ifs/fiber.md.html" class="notranslate">Fiber</a></li>
 <li><a href="../manual/object/ifs/file.md.html" class="notranslate">File</a></li>
+<li><a href="../manual/object/ifs/filehandle.md.html" class="notranslate">FileHandle</a></li>
 <li><a href="../manual/object/ifs/handler.md.html" class="notranslate">Handler</a></li>
 <li><a href="../manual/object/ifs/heapgraphedge.md.html" class="notranslate">HeapGraphEdge</a></li>
 <li><a href="../manual/object/ifs/heapgraphnode.md.html" class="notranslate">HeapGraphNode</a></li>
@@ -106,10 +108,6 @@
 <li><a href="../manual/object/ifs/lrucache.md.html" class="notranslate">LruCache</a></li>
 <li><a href="../manual/object/ifs/memorystream.md.html" class="notranslate">MemoryStream</a></li>
 <li><a href="../manual/object/ifs/message.md.html" class="notranslate">Message</a></li>
-<li><a href="../manual/object/ifs/mongocollection.md.html" class="notranslate">MongoCollection</a></li>
-<li><a href="../manual/object/ifs/mongocursor.md.html" class="notranslate">MongoCursor</a></li>
-<li><a href="../manual/object/ifs/mongodb.md.html" class="notranslate">MongoDB</a></li>
-<li><a href="../manual/object/ifs/mongoid.md.html" class="notranslate">MongoID</a></li>
 <li><a href="../manual/object/ifs/mysql.md.html" class="notranslate">MySQL</a></li>
 <li><a href="../manual/object/ifs/odbc.md.html" class="notranslate">Odbc</a></li>
 <li><a href="../manual/object/ifs/pkey.md.html" class="notranslate">PKey</a></li>
@@ -122,6 +120,7 @@
 <li><a href="../manual/object/ifs/routing.md.html" class="notranslate">Routing</a></li>
 <li><a href="../manual/object/ifs/sqlite.md.html" class="notranslate">SQLite</a></li>
 <li><a href="../manual/object/ifs/sandbox.md.html" class="notranslate">SandBox</a></li>
+<li><a href="../manual/object/ifs/script.md.html" class="notranslate">Script</a></li>
 <li><a href="../manual/object/ifs/seekablestream.md.html" class="notranslate">SeekableStream</a></li>
 <li><a href="../manual/object/ifs/semaphore.md.html" class="notranslate">Semaphore</a></li>
 <li><a href="../manual/object/ifs/service.md.html" class="notranslate">Service</a></li>
@@ -163,7 +162,7 @@
 <li><a href="../manual/object/ifs/zipfile.md.html" class="notranslate">ZipFile</a></li>
 <li><a href="../manual/object/ifs/object.md.html" class="notranslate">object</a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社區模塊</font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">社群模組</font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../awesome/module/fib-session.md.html" class="notranslate">fib-session</a></li>
 <li><a href="../awesome/module/fib-pool.md.html" class="notranslate">fib-pool</a></li>
 <li><a href="../awesome/module/fib-orm.md.html" class="notranslate">fib-orm</a></li>
@@ -205,29 +204,29 @@
 <li><a href="../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
 <li><a href="../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
 </ul>
- </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="同步和异步" data-unique="同步和异步"></div><h1 id="同步和异步"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">同步和異步</font></font></h1>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="同步和异步" data-unique="同步和异步"></div><h1 id="同步和异步"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">同步和非同步</font></font></h1>
 <div name="引言" data-unique="引言"></div><h2 id="引言"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">引言</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">隨著Web 應用的不斷發展，JavaScript 作為一種廣泛使用的編程語言，也在不斷地發展和演變。</font><font style="vertical-align: inherit;">Web 前端開發中，JavaScript 主要被用於瀏覽器的UI 處理，UI 開發是典型的單線程事件驅動模式，因此JavaScript 也形成了以異步處理為主要編程範式。</font><font style="vertical-align: inherit;">但是在大規模複雜的應用中，異步編程帶來的問題和復雜性也越來越明顯。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Node.js 的出現為JavaScript 帶來了一種全新的異步編程範式：事件循環和回調函數。</font><font style="vertical-align: inherit;">這種編程範式具有高效、簡潔的特點，適用於高並發、I/O 密集型的場景。</font><font style="vertical-align: inherit;">然而，這種編程範式也帶來了它自己的問題和復雜性，尤其是在大規模複雜的應用中，程序員需要處理很多回調函數嵌套的問題，並且需要處理異步調用順序的問題，增加了程序的複雜性和難度。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">為了解決這些問題和難點，fibjs 應運而生。</font><font style="vertical-align: inherit;">fibjs 是一個主要為web 後端開發而設計的應用服務器開發框架，它建立在Google v8 JavaScript 引擎基礎上，並且選擇了和傳統的callback 不同的並發解決方案。</font><font style="vertical-align: inherit;">fibjs 利用fiber 在框架層隔離了異步調用帶來的業務複雜性，極大降低了開發難度，並減少因為用戶空間頻繁異步處理帶來的性能問題。</font><font style="vertical-align: inherit;">同時，與傳統的異步編程範式相比，它的同步編程範式更加可讀性強、邏輯簡單、易於維護的優勢。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在接下來的內容中，我們將介紹fibjs 的優點和特點，並通過實例來講解如何使用它的同步和異步編程解決方案。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">隨著Web 應用的不斷發展，JavaScript 作為一種廣泛使用的程式語言，也不斷地發展和演變。在 Web 前端開發中，JavaScript 主要用於瀏覽器的UI 處理，UI 開發是典型的單執行緒事件驅動模式，因此JavaScript 也形成了以非同步處理為主要程式設計範式。但是在大規模複雜的應用中，非同步程式設計帶來的問題和複雜性也越來越明顯。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Node.js 的出現為JavaScript 帶來了一個全新的非同步程式設計範式：事件循環和回呼函數。這種程式設計範式具有高效、簡潔的特點，適用於高並發、I/O 密集的場景。然而，這種程式設計範式也帶來了它自己的問題和複雜性，尤其是在大規模複雜的應用中，程式設計師需要處理很多回呼函數巢狀的問題，並且需要處理非同步呼叫順序的問題，增加了程序的複雜性和難度。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">為了解決這些問題和困難點，fibjs 應運而生。 fibjs 是一個主要為web 後端開發而設計的應用程式伺服器開發框架，它建立在Google v8 JavaScript 引擎基礎上，並且選擇了和傳統的callback 不同的並發解決方案。 fibjs 利用fiber 在框架層隔離了非同步呼叫所帶來的業務複雜性，極大降低了開發難度，並減少因為使用者空間頻繁非同步處理所帶來的效能問題。同時，與傳統的非同步程式設計範式相比，它的同步程式設計範式更可讀性強、邏輯簡單、易於維護的優勢。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在接下來的內容中，我們將介紹fibjs 的優點和特點，並透過實例來講解如何使用它的同步和非同步程式解決方案。</font></font></p>
 <div name="fiber-简介" data-unique="fiber-简介"></div><h2 id="fiber-简介"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fiber 簡介</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 是一個基於v8 引擎的高性能的JavaScript 服務器框架，主要面向Web 後端開發。</font><font style="vertical-align: inherit;">始於2009 年，目前已經擁有了很高的穩定性和生產力，在國內外有著廣泛的應用案例。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在fibjs 中，fiber 被用來解決業務邏輯和I/O 處理之間的問題。</font><font style="vertical-align: inherit;">fiber 與傳統的線程、協程、進程等概念不同，它是一種用戶級的輕量級線程，可以看作是一種協作式多任務處理機制。</font><font style="vertical-align: inherit;">fiber 可以在不同的上下文中執行業務邏輯和I/O 操作，內部通過預分配和循環利用來管理資源，相比於傳統的線程和進程，它具有更輕量級、更靈活、更高效的特點。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 是一個基於v8 引擎的高效能的JavaScript 伺服器框架，主要在Web 後端開發。始於2009 年，目前已經擁有了很高的穩定性和生產力，在國內外有著廣泛的應用案例。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在fibjs 中，fiber 被用來解決業務邏輯和I/O 處理之間的問題。 fiber 與傳統的線程、協程、進程等概念不同，它是一種用戶級的輕量級線程，可以看作是一種協作式多任務處理機制。 fiber 可以在不同的上下文中執行業務邏輯和I/O 操作，內部透過預先分配和循環利用來管理資源，相比於傳統的線程和進程，它具有更輕量級、更靈活、更高效的特點。</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">與其它線程庫（如pthread、WinThread、Boost.Thread 等）相比，fiber 有以下優勢：</font></font></p>
 <ul>
-<li><p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">協作式調度</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：fiber 是協作式調度，不需要內核或操作系統搶占式調度，減少了頻繁地上下文切換，加快了程序的運行速度，同時避免了線程之間的競爭條件和死鎖問題。</font></font></p>
+<li><p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">協作式調度</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：fiber 是協作式調度，不需要核心或作業系統搶佔式調度，減少了頻繁地上下文切換，加快了程式的運行速度，同時避免了執行緒之間的競爭條件和死鎖問題。</font></font></p>
 </li>
-<li><p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">輕量級</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：每個fiber 只需消耗一個較小的棧空間，在多並發應用中可以創建大量的fiber，不會導致佔用過多內存的問題。</font></font></p>
+<li><p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">輕量級</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：每個fiber 只需消耗一個較小的堆疊空間，在多重並發應用中可以創建大量的fiber，不會導致佔用過多記憶體的問題。</font></font></p>
 </li>
 <li><p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">高效性</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：fiber 是基於JavaScript 語言本身的特性實現，並且充分利用了v8 引擎的優越性能，速度比傳統的線程庫更快。</font></font></p>
 </li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">通過使用fiber，fibjs 可以將業務邏輯和I/O 處理分離，從而將異步調用封裝成同步調用的形式，使得編寫和維護代碼更加簡單和易讀，同時可以充分發揮JavaScript 語言的優點。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">透過使用fiber，fibjs 可以將業務邏輯和I/O 處理分離，從而將非同步呼叫封裝成同步呼叫的形式，使得編寫和維護程式碼更加簡單且易讀，同時可以充分發揮JavaScript 語言的優點。</font></font></p>
 <div name="fibjs-中的同步编程" data-unique="fibjs-中的同步编程"></div><h2 id="fibjs-中的同步编程"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 中的同步編程</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在異步編程中，由於回調函數的嵌套有可能導致代碼的可讀性變差，容易產生回調地獄的問題，增加代碼的難度和調試的成本。</font><font style="vertical-align: inherit;">而同步編程範式更符合人類的思維模式，使得代碼結構更加清晰、易讀、易維護，可以極大地提高開發效率和代碼質量。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在fibjs 中，同步編程是一種十分流行和常用的編程範式，它使得代碼的結構和邏輯更加直觀，易於理解和維護。</font><font style="vertical-align: inherit;">一些同步編程的函數和模塊在fibjs 中得到了高度支持，例如util.sync、fs.readSync 等。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在fibjs 中，可以直接以同步方式調用內置對象的異步函數：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在非同步程式設計中，由於回呼函數的巢狀有可能導致程式碼的可讀性變差，容易產生回呼地獄的問題，增加程式碼的難度和除錯的成本。而同步程式設計範式更符合人類的思考模式，使得程式碼結構更加清晰、易讀、易於維護，可以大幅提升開發效率和程式碼品質。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在fibjs 中，同步程式設計是一種十分流行且常用的程式設計範式，它使得程式碼的結構和邏輯更加直觀，易於理解和維護。一些同步編程的函數和模組在fibjs 中得到了高度支持，例如util.sync、fs.readSync 等。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在fibjs 中，可以直接以同步方式呼叫內建物件的非同步函數：</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -236,7 +235,7 @@
 <span class="hljs-keyword">const</span> data = fs.readFile(<span class="hljs-string">"/path/to/file"</span>);
 <span class="hljs-built_in">console</span>.log(data);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">也可以把異步函數通過util.sync 和try…catch 包裝一下，可以讓fiber 獲得異步調用的返回值，從而實現同步的效果，例如：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">也可以把非同步函數透過util.sync 和try…catch 包裝一下，可以讓fiber 得到非同步呼叫的回傳值，從而實現同步的效果，例如：</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -263,9 +262,9 @@
 <span class="hljs-keyword">const</span> data = readFile(<span class="hljs-string">"myfile.txt"</span>);
 <span class="hljs-built_in">console</span>.log(data);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在上面的例子中，我們定義了一個名為readFile 的函數，利用util.sync 將異步的fs.readFile 函數封裝成了同步函數，這個函數可以通過同步調用的方式直接返回數據。</font><font style="vertical-align: inherit;">這種同步調用方式和傳統的JavaScript 編程範式類似，不同的是，在fibjs 中不會阻塞線程，而是通過fiber 實現異步效果。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在上面的範例中，我們定義了一個名為readFile 的函數，利用util.sync 將非同步的fs.readFile 函數封裝成了同步函數，這個函數可以透過同步呼叫的方式直接傳回資料。這種同步呼叫方式和傳統的JavaScript 程式設計範式類似，不同的是，在fibjs 中不會阻塞線程，而是透過fiber 實現非同步效果。</font></font></p>
 <div name="util.sync-的原理" data-unique="util.sync-的原理"></div><h3 id="util.sync-的原理"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">util.sync 的原理</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">util.sync 是內核的一個高效的包裹函數，下面的JavaScript 代碼可以實現類似的功能：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">util.sync 是核心的一個高效的包裹函數，而下面的JavaScript 程式碼可以實現類似的功能：</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -312,11 +311,11 @@
   }<font></font>
 }<font></font>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">這段代碼定義了一個用於將異步回調函數轉換為同步調用函數的工具函數sync。</font><font style="vertical-align: inherit;">它接收一個函數func，並返回一個新的函數_wrap。</font><font style="vertical-align: inherit;">這個新函數實現了將原函數轉換為同步調用的功能。</font><font style="vertical-align: inherit;">在_wrap 函數中，首先創建了一個新的Event 對象ev，用於線程調度和等待異步回調結果。</font><font style="vertical-align: inherit;">之後使用apply 方法將指定參數和一個新的回調函數作為參數，調用原函數func。</font><font style="vertical-align: inherit;">在調用的過程中，發生了異步回調，新的回調函數將返回的結果存儲到變量e 和r 中，並喚醒Event 對象。</font><font style="vertical-align: inherit;">最後根據變量e 來決定是否拋出異常，或者返回變量r。</font><font style="vertical-align: inherit;">這個函數實現了將異步回調函數轉換為同步調用的一個解決方案，能夠提高函數的可讀性和可維護性。</font></font></p>
-<div name="fibjs-中的异步编程" data-unique="fibjs-中的异步编程"></div><h2 id="fibjs-中的异步编程"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 中的異步編程</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在fibjs 中，大多數異步方法（包括I/O 和網絡請求方法等）都可以同時支持同步和異步調用，這使得開發者可以隨時根據自己的編程需求來選擇使用哪種方式。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以fs.readFile() 為例，我們可以通過兩種方式來使用該方法：</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">異步方式：通過傳遞一個回調函數來處理讀取文件的結果，例如：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">這段程式碼定義了一個用於將非同步回呼函數轉換為同步呼叫函數的工具函數sync。它接收一個函數func，並傳回一個新的函數_wrap。這個新函數實作了將原函數轉換為同步呼叫的功能。在_wrap 函數中，首先建立了一個新的Event 物件ev，用於執行緒調度和等待非同步回調結果。之後使用apply 方法將指定參數和新的回呼函數作為參數，呼叫原函數func。在呼叫的過程中，發生了非同步回調，新的回呼函數將傳回的結果儲存到變數e 和r 中，並喚醒Event 物件。最後根據變數e 來決定是否拋出異常，或傳回變數r。這個函數實現了將非同步回呼函數轉換為同步呼叫的解決方案，能夠提高函數的可讀性和可維護性。</font></font></p>
+<div name="fibjs-中的异步编程" data-unique="fibjs-中的异步编程"></div><h2 id="fibjs-中的异步编程"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs 中的非同步編程</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在fibjs 中，大多數非同步方法（包括I/O 和網路請求方法等）都可以同時支援同步和非同步調用，這使得開發者可以隨時根據自己的程式需求來選擇使用哪種方式。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以fs.readFile() 為例，我們可以用兩種方式來使用此方法：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">非同步方式：透過傳遞一個回呼函數來處理讀取檔案的結果，例如：</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -329,8 +328,8 @@ fs.readFile(<span class="hljs-string">"/path/to/file"</span>, (err, data) =&gt; 
   <span class="hljs-built_in">console</span>.log(data);<font></font>
 });<font></font>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">這種方式適用於需要在讀取文件完成後執行某些操作的情況。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">同步方式：通過不傳遞回調函數來獲得文件的內容，例如：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">這種方式適用於需要在讀取檔案完成後執行某些操作的情況。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">同步方式：透過不傳遞回呼函數來獲得文件的內容，例如：</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -339,11 +338,11 @@ fs.readFile(<span class="hljs-string">"/path/to/file"</span>, (err, data) =&gt; 
 <span class="hljs-keyword">const</span> data = fs.readFile(<span class="hljs-string">"/path/to/file"</span>);
 <span class="hljs-built_in">console</span>.log(data);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在此示例中，我們通過讀取文件的返回值data 來獲取文件的內容，不需要在等待文件讀取完成的回調函數執行完畢後才能繼續執行操作。</font><font style="vertical-align: inherit;">這種方式適用於需要在讀取文件完成前執行某些操作的情況。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可以看到，這種同時支持同步和異步調用的特點，使得開發者可以根據自己的需求和開發場景選擇使用不同的方式。</font><font style="vertical-align: inherit;">在某些情況下，同步方式的代碼可讀性更高，更易於維護和調試；而在某些情況下，異步方式可以更好地提高代碼的響應速度和性能。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">然而，在使用同步方式的時候也需要注意，在一些場景下，這種方式可能會阻塞當前fiber。</font><font style="vertical-align: inherit;">因此，我們需要根據實際需求來選擇合適的編程方式。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在此範例中，我們透過讀取檔案的回傳值data 來取得檔案的內容，不需要在等待檔案讀取完成的回呼函數執行完畢後才能繼續執行操作。這種方式適用於需要在讀取檔案完成前執行某些操作的情況。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">可以看到，這種同時支援同步和非同步呼叫的特點，使得開發者可以根據自己的需求和開發場景選擇使用不同的方式。在某些情況下，同步方式的程式碼可讀性更高，更易於維護和調試；而在某些情況下，非同步方式可以更好地提高程式碼的回應速度和效能。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">然而，在使用同步方式的時候也需要注意，在某些場景下，這種方式可能會阻塞目前fiber。因此，我們需要根據實際需求來選擇合適的程式設計方式。</font></font></p>
 <div name="结论" data-unique="结论"></div><h2 id="结论"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">結論</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在本文中，我們介紹了fibjs 的同步編程風格和異步編程解決方案以及它們的優點和應用場景。</font><font style="vertical-align: inherit;">我們提到，fibjs 能夠通過利用fiber 隔離業務邏輯和異步處理帶來的性能問題，降低操作複雜度和提高代碼開發效率。</font><font style="vertical-align: inherit;">同時，我們也強調了fibjs 在I/O 處理和內存管理等方面的優勢，這為開發、測試和維護帶來了極大的便利。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">最後，我們鼓勵讀者深入探索fibjs，以及參與到fibjs 的貢獻和社區活動中。</font><font style="vertical-align: inherit;">我們相信，fibjs 會繼續以它強大的性能和易用性不斷地吸引開源社區的關注和支持。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">👉 【</font></font><a href="server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服務端模塊熱更新</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">】</font></font></p>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../js/common.js"></script><script type="text/javascript" src="../../../js/docs.js"></script></body></html>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">在本文中，我們介紹了fibjs 的同步程式設計風格和非同步程式解決方案以及它們的優點和應用場景。我們提到，fibjs 能夠透過利用fiber 隔離業務邏輯和非同步處理所帶來的效能問題，降低操作複雜度並提高程式碼開發效率。同時，我們也強調了fibjs 在I/O 處理和記憶體管理等方面的優勢，這為開發、測試和維護帶來了極大的便利。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">最後，我們鼓勵讀者深入探索fibjs，以及參與fibjs 的貢獻和社區活動。我們相信，fibjs 會繼續以它強大的效能和易用性不斷吸引開源社群的關注和支援。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">👉 【</font></font><a href="server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">服務端模組熱更新</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">】</font></font></p>
+ <div class="commentbox" id="commentbox" data-loaded="true"><iframe src="https://app.commentbox.io/5670558372986880-proj?id=commentbox&amp;url=file%3A%2F%2F%2FUsers%2Flion%2Fworks%2Ffibjs%2Fdocs%2Fweb%2Fdist%2Fdocs%2Fguide%2Fsync.md.html%23commentbox&amp;tlc_param=tlc&amp;background_color=&amp;text_color=&amp;subtext_color=&amp;sort_order=best" frameborder="0" scrolling="no" style="width: 100%" height="298px" data-comments-loaded="true"></iframe></div></div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2024 fibjs.org |</font></font><a href="../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支持我們</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script><script>commentBox('5670558372986880-proj')</script><script type="text/javascript" src="../../../js/common.js"></script><script type="text/javascript" src="../../../js/docs.js"></script></body></html>

@@ -56,6 +56,7 @@
 <li><a href=test.md.html class ="notranslate">test</a></li>
 <li><a href=timers.md.html class ="notranslate">timers</a></li>
 <li><a href=tty.md.html class ="notranslate">tty</a></li>
+<li><a href=types.md.html class ="notranslate">types</a></li>
 <li><a href=url.md.html class ="notranslate">url</a></li>
 <li><a href=util.md.html class ="notranslate">util</a></li>
 <li><a href=uuid.md.html class ="notranslate">uuid</a></li>
@@ -84,6 +85,7 @@
 <li><a href=../../object/ifs/fswatcher.md.html class ="notranslate">FSWatcher</a></li>
 <li><a href=../../object/ifs/fiber.md.html class ="notranslate">Fiber</a></li>
 <li><a href=../../object/ifs/file.md.html class ="notranslate">File</a></li>
+<li><a href=../../object/ifs/filehandle.md.html class ="notranslate">FileHandle</a></li>
 <li><a href=../../object/ifs/handler.md.html class ="notranslate">Handler</a></li>
 <li><a href=../../object/ifs/heapgraphedge.md.html class ="notranslate">HeapGraphEdge</a></li>
 <li><a href=../../object/ifs/heapgraphnode.md.html class ="notranslate">HeapGraphNode</a></li>
@@ -106,10 +108,6 @@
 <li><a href=../../object/ifs/lrucache.md.html class ="notranslate">LruCache</a></li>
 <li><a href=../../object/ifs/memorystream.md.html class ="notranslate">MemoryStream</a></li>
 <li><a href=../../object/ifs/message.md.html class ="notranslate">Message</a></li>
-<li><a href=../../object/ifs/mongocollection.md.html class ="notranslate">MongoCollection</a></li>
-<li><a href=../../object/ifs/mongocursor.md.html class ="notranslate">MongoCursor</a></li>
-<li><a href=../../object/ifs/mongodb.md.html class ="notranslate">MongoDB</a></li>
-<li><a href=../../object/ifs/mongoid.md.html class ="notranslate">MongoID</a></li>
 <li><a href=../../object/ifs/mysql.md.html class ="notranslate">MySQL</a></li>
 <li><a href=../../object/ifs/odbc.md.html class ="notranslate">Odbc</a></li>
 <li><a href=../../object/ifs/pkey.md.html class ="notranslate">PKey</a></li>
@@ -122,6 +120,7 @@
 <li><a href=../../object/ifs/routing.md.html class ="notranslate">Routing</a></li>
 <li><a href=../../object/ifs/sqlite.md.html class ="notranslate">SQLite</a></li>
 <li><a href=../../object/ifs/sandbox.md.html class ="notranslate">SandBox</a></li>
+<li><a href=../../object/ifs/script.md.html class ="notranslate">Script</a></li>
 <li><a href=../../object/ifs/seekablestream.md.html class ="notranslate">SeekableStream</a></li>
 <li><a href=../../object/ifs/semaphore.md.html class ="notranslate">Semaphore</a></li>
 <li><a href=../../object/ifs/service.md.html class ="notranslate">Service</a></li>
@@ -481,6 +480,28 @@
 </ul>
 <p>记录用于警报错误日志信息。通常用于输出警报错误信息。非常重要。为最高级别信息。</p>
 <hr>
+<h3 id="trace" class ="notranslate">trace</h3>
+<p><strong>输出当前调用堆栈</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.trace(<span class="hljs-built_in">String</span> fmt,
+    ...args);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">fmt</span>: String, 格式化字符串</li>
+<li><span class="notranslate">args</span>: ..., 可选参数列表</li>
+</ul>
+<p>通过日志输出当前调用堆栈。</p>
+<hr>
+<p><strong>输出当前调用堆栈</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.trace(...args);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">args</span>: ..., 可选参数列表</li>
+</ul>
+<p>通过日志输出当前调用堆栈。</p>
+<hr>
 <h3 id="dir" class ="notranslate">dir</h3>
 <p><strong>用 JSON 格式输出对象</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
@@ -499,11 +520,15 @@
 4
 5
 6
-7</div>{
+7
+8
+9</div>{
     <span class="hljs-string">"colors"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// specify if output should be colorized, defaults to false</span>
     <span class="hljs-string">"depth"</span>: <span class="hljs-number">2</span>, <span class="hljs-comment">// specify the max depth of the output, defaults to 2</span>
     <span class="hljs-string">"table"</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// specify if output should be a table, defaults to false</span>
     <span class="hljs-string">"encode_string"</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// specify if string should be encoded, defaults to true</span>
+    <span class="hljs-string">"maxArrayLength"</span>: <span class="hljs-number">100</span>, <span class="hljs-comment">// specify max number of array elements to show, set to 0 or negative to show no elements, defaults to 100</span>
+    <span class="hljs-string">"maxStringLength"</span>: <span class="hljs-number">10000</span>, <span class="hljs-comment">// specify max string length to output, set to 0 or negative to show no strings, defaults to 10000</span>
     <span class="hljs-string">"fields"</span>: [], <span class="hljs-comment">// specify the fields to be displayed, defaults to all</span>
 }
 </code></pre>
@@ -554,16 +579,6 @@
 <ul>
 <li><span class="notranslate">label</span>: String, 标题，缺省为空字符串。</li>
 </ul>
-<hr>
-<h3 id="trace" class ="notranslate">trace</h3>
-<p><strong>输出当前调用堆栈</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">console</span>.trace(<span class="hljs-built_in">String</span> label = <span class="hljs-string">"trace"</span>);
-</code></pre>
-<p>调用参数:</p>
-<ul>
-<li><span class="notranslate">label</span>: String, 标题，缺省为空字符串。</li>
-</ul>
-<p>通过日志输出当前调用堆栈。</p>
 <hr>
 <h3 id="assert" class ="notranslate">assert</h3>
 <p><strong>断言测试，如果测试值为假，则报错</strong></p>
@@ -714,4 +729,4 @@
 <p><strong>loglevel 级别常量</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> <span class="hljs-built_in">console</span>.NOTSET = <span class="hljs-number">10</span>;
 </code></pre>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>
+ <div class=commentbox></div></div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2024 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script src=https://unpkg.com/commentbox.io/dist/commentBox.min.js></script><script>commentBox('5670558372986880-proj')</script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

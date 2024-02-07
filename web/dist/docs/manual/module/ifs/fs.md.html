@@ -56,6 +56,7 @@
 <li><a href=test.md.html class ="notranslate">test</a></li>
 <li><a href=timers.md.html class ="notranslate">timers</a></li>
 <li><a href=tty.md.html class ="notranslate">tty</a></li>
+<li><a href=types.md.html class ="notranslate">types</a></li>
 <li><a href=url.md.html class ="notranslate">url</a></li>
 <li><a href=util.md.html class ="notranslate">util</a></li>
 <li><a href=uuid.md.html class ="notranslate">uuid</a></li>
@@ -84,6 +85,7 @@
 <li><a href=../../object/ifs/fswatcher.md.html class ="notranslate">FSWatcher</a></li>
 <li><a href=../../object/ifs/fiber.md.html class ="notranslate">Fiber</a></li>
 <li><a href=../../object/ifs/file.md.html class ="notranslate">File</a></li>
+<li><a href=../../object/ifs/filehandle.md.html class ="notranslate">FileHandle</a></li>
 <li><a href=../../object/ifs/handler.md.html class ="notranslate">Handler</a></li>
 <li><a href=../../object/ifs/heapgraphedge.md.html class ="notranslate">HeapGraphEdge</a></li>
 <li><a href=../../object/ifs/heapgraphnode.md.html class ="notranslate">HeapGraphNode</a></li>
@@ -106,10 +108,6 @@
 <li><a href=../../object/ifs/lrucache.md.html class ="notranslate">LruCache</a></li>
 <li><a href=../../object/ifs/memorystream.md.html class ="notranslate">MemoryStream</a></li>
 <li><a href=../../object/ifs/message.md.html class ="notranslate">Message</a></li>
-<li><a href=../../object/ifs/mongocollection.md.html class ="notranslate">MongoCollection</a></li>
-<li><a href=../../object/ifs/mongocursor.md.html class ="notranslate">MongoCursor</a></li>
-<li><a href=../../object/ifs/mongodb.md.html class ="notranslate">MongoDB</a></li>
-<li><a href=../../object/ifs/mongoid.md.html class ="notranslate">MongoID</a></li>
 <li><a href=../../object/ifs/mysql.md.html class ="notranslate">MySQL</a></li>
 <li><a href=../../object/ifs/odbc.md.html class ="notranslate">Odbc</a></li>
 <li><a href=../../object/ifs/pkey.md.html class ="notranslate">PKey</a></li>
@@ -122,6 +120,7 @@
 <li><a href=../../object/ifs/routing.md.html class ="notranslate">Routing</a></li>
 <li><a href=../../object/ifs/sqlite.md.html class ="notranslate">SQLite</a></li>
 <li><a href=../../object/ifs/sandbox.md.html class ="notranslate">SandBox</a></li>
+<li><a href=../../object/ifs/script.md.html class ="notranslate">Script</a></li>
 <li><a href=../../object/ifs/seekablestream.md.html class ="notranslate">SeekableStream</a></li>
 <li><a href=../../object/ifs/semaphore.md.html class ="notranslate">Semaphore</a></li>
 <li><a href=../../object/ifs/service.md.html class ="notranslate">Service</a></li>
@@ -457,6 +456,19 @@ fs.writeFile(<span class="hljs-string">'/path/to/file'</span>, content, <span cl
 <li><a href=../../object/ifs/stat.md.html class ="notranslate">Stat</a>, 返回文件的基础信息</li>
 </ul>
 <hr>
+<h3 id="fstat" class ="notranslate">fstat</h3>
+<p><strong>查询指定文件的基础信息</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> Stat fs.fstat(FileHandle fd) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">fd</span>: <a href=../../object/ifs/filehandle.md.html class ="notranslate">FileHandle</a>, 文件描述符对象</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><a href=../../object/ifs/stat.md.html class ="notranslate">Stat</a>, 返回文件的基础信息</li>
+</ul>
+<hr>
 <h3 id="readlink" class ="notranslate">readlink</h3>
 <p><strong>读取指定的软连接文件, windows 下不支持此方法</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">String</span> fs.readlink(<span class="hljs-built_in">String</span> path) <span class="hljs-keyword">async</span>;
@@ -516,7 +528,7 @@ fs.writeFile(<span class="hljs-string">'/path/to/file'</span>, content, <span cl
 2
 3
 4
-5</div><span class="hljs-keyword">static</span> Integer fs.read(Integer fd,
+5</div><span class="hljs-keyword">static</span> Integer fs.read(FileHandle fd,
     Buffer buffer,
     Integer offset = <span class="hljs-number">0</span>,
     Integer length = <span class="hljs-number">0</span>,
@@ -524,7 +536,7 @@ fs.writeFile(<span class="hljs-string">'/path/to/file'</span>, content, <span cl
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li><span class="notranslate">fd</span>: Integer, 文件描述符</li>
+<li><span class="notranslate">fd</span>: <a href=../../object/ifs/filehandle.md.html class ="notranslate">FileHandle</a>, 文件描述符对象</li>
 <li><span class="notranslate">buffer</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 读取结果写入的 <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a> 对象</li>
 <li><span class="notranslate">offset</span>: Integer, <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a> 写入偏移量， 默认为 0</li>
 <li><span class="notranslate">length</span>: Integer, 文件读取字节数，默认为 0</li>
@@ -538,12 +550,12 @@ fs.writeFile(<span class="hljs-string">'/path/to/file'</span>, content, <span cl
 <h3 id="fchmod" class ="notranslate">fchmod</h3>
 <p><strong>根据文件描述符，改变文件模式。只在 POSIX 系统有效。</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">static</span> fs.fchmod(Integer fd,
+2</div><span class="hljs-keyword">static</span> fs.fchmod(FileHandle fd,
     Integer mode) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li><span class="notranslate">fd</span>: Integer, 文件描述符</li>
+<li><span class="notranslate">fd</span>: <a href=../../object/ifs/filehandle.md.html class ="notranslate">FileHandle</a>, 文件描述符对象</li>
 <li><span class="notranslate">mode</span>: Integer, 文件的模式</li>
 </ul>
 <hr>
@@ -551,33 +563,33 @@ fs.writeFile(<span class="hljs-string">'/path/to/file'</span>, content, <span cl
 <p><strong>根据文件描述符，改变所有者。只在 POSIX 系统有效。</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
-3</div><span class="hljs-keyword">static</span> fs.fchown(Integer fd,
+3</div><span class="hljs-keyword">static</span> fs.fchown(FileHandle fd,
     Integer uid,
     Integer gid) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li><span class="notranslate">fd</span>: Integer, 文件描述符</li>
+<li><span class="notranslate">fd</span>: <a href=../../object/ifs/filehandle.md.html class ="notranslate">FileHandle</a>, 文件描述符对象</li>
 <li><span class="notranslate">uid</span>: Integer, 用户id</li>
 <li><span class="notranslate">gid</span>: Integer, 组id</li>
 </ul>
 <hr>
 <h3 id="fdatasync" class ="notranslate">fdatasync</h3>
 <p><strong>根据文件描述符，同步数据到磁盘</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> fs.fdatasync(Integer fd) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> fs.fdatasync(FileHandle fd) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li><span class="notranslate">fd</span>: Integer, 文件描述符</li>
+<li><span class="notranslate">fd</span>: <a href=../../object/ifs/filehandle.md.html class ="notranslate">FileHandle</a>, 文件描述符对象</li>
 </ul>
 <hr>
 <h3 id="fsync" class ="notranslate">fsync</h3>
 <p><strong>根据文件描述符，同步数据到磁盘</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> fs.fsync(Integer fd) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> fs.fsync(FileHandle fd) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li><span class="notranslate">fd</span>: Integer, 文件描述符</li>
+<li><span class="notranslate">fd</span>: <a href=../../object/ifs/filehandle.md.html class ="notranslate">FileHandle</a>, 文件描述符对象</li>
 </ul>
 <hr>
 <h3 id="readdir" class ="notranslate">readdir</h3>
@@ -596,17 +608,24 @@ fs.writeFile(<span class="hljs-string">'/path/to/file'</span>, content, <span cl
 <p><strong>读取指定目录的文件信息</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">static</span> NArray fs.readdir(<span class="hljs-built_in">String</span> path,
-    <span class="hljs-built_in">Object</span> opts) <span class="hljs-keyword">async</span>;
+    <span class="hljs-built_in">Object</span> opts = {}) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">path</span>: String, 指定查询的目录</li>
-<li><span class="notranslate">opts</span>: Object, 指定参数，暂时不支持</li>
+<li><span class="notranslate">opts</span>: Object, 指定参数</li>
 </ul>
 <p>返回结果:</p>
 <ul>
 <li><span class="notranslate">NArray</span>, 返回目录的文件信息数组</li>
 </ul>
+<p>参数 opts 支持的选项如下：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div>{
+    <span class="hljs-string">"recursive"</span>: <span class="hljs-literal">false</span> <span class="hljs-comment">// specify whether all subdirectories should be watched or only the current directory</span>
+}
+</code></pre>
 <hr>
 <h3 id="openFile" class ="notranslate">openFile</h3>
 <p><strong>打开文件，用于读取，写入，或者同时读写</strong></p>
@@ -637,7 +656,7 @@ fs.writeFile(<span class="hljs-string">'/path/to/file'</span>, content, <span cl
 <p><strong>打开文件描述符</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
-3</div><span class="hljs-keyword">static</span> Integer fs.open(<span class="hljs-built_in">String</span> fname,
+3</div><span class="hljs-keyword">static</span> FileHandle fs.open(<span class="hljs-built_in">String</span> fname,
     <span class="hljs-built_in">String</span> flags = <span class="hljs-string">"r"</span>,
     Integer mode = <span class="hljs-number">0666</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
@@ -649,7 +668,7 @@ fs.writeFile(<span class="hljs-string">'/path/to/file'</span>, content, <span cl
 </ul>
 <p>返回结果:</p>
 <ul>
-<li><span class="notranslate">Integer</span>, 返回打开的文件描述符</li>
+<li><a href=../../object/ifs/filehandle.md.html class ="notranslate">FileHandle</a>, 返回打开的文件描述符</li>
 </ul>
 <p>参数 flags 支持的方式如下：</p>
 <ul>
@@ -663,11 +682,11 @@ fs.writeFile(<span class="hljs-string">'/path/to/file'</span>, content, <span cl
 <hr>
 <h3 id="close" class ="notranslate">close</h3>
 <p><strong>关闭文件描述符</strong></p>
-<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> fs.close(Integer fd) <span class="hljs-keyword">async</span>;
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> fs.close(FileHandle fd) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li><span class="notranslate">fd</span>: Integer, 文件描述符</li>
+<li><span class="notranslate">fd</span>: <a href=../../object/ifs/filehandle.md.html class ="notranslate">FileHandle</a>, 文件描述符对象</li>
 </ul>
 <hr>
 <h3 id="openTextStream" class ="notranslate">openTextStream</h3>
@@ -768,7 +787,7 @@ fs.writeFile(<span class="hljs-string">'/path/to/file'</span>, content, <span cl
 2
 3
 4
-5</div><span class="hljs-keyword">static</span> Integer fs.write(Integer fd,
+5</div><span class="hljs-keyword">static</span> Integer fs.write(FileHandle fd,
     Buffer buffer,
     Integer offset = <span class="hljs-number">0</span>,
     Integer length = <span class="hljs-number">-1</span>,
@@ -776,7 +795,7 @@ fs.writeFile(<span class="hljs-string">'/path/to/file'</span>, content, <span cl
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li><span class="notranslate">fd</span>: Integer, 文件描述符</li>
+<li><span class="notranslate">fd</span>: <a href=../../object/ifs/filehandle.md.html class ="notranslate">FileHandle</a>, 文件描述符对象</li>
 <li><span class="notranslate">buffer</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 待写入的 <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a> 对象</li>
 <li><span class="notranslate">offset</span>: Integer, <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a> 数据读取偏移量， 默认为 0</li>
 <li><span class="notranslate">length</span>: Integer, 文件写入字节数，默认为 -1</li>
@@ -791,14 +810,14 @@ fs.writeFile(<span class="hljs-string">'/path/to/file'</span>, content, <span cl
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
-4</div><span class="hljs-keyword">static</span> Integer fs.write(Integer fd,
+4</div><span class="hljs-keyword">static</span> Integer fs.write(FileHandle fd,
     <span class="hljs-built_in">String</span> string,
     Integer position = <span class="hljs-number">-1</span>,
     <span class="hljs-built_in">String</span> encoding = <span class="hljs-string">"utf8"</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
-<li><span class="notranslate">fd</span>: Integer, 文件描述符</li>
+<li><span class="notranslate">fd</span>: <a href=../../object/ifs/filehandle.md.html class ="notranslate">FileHandle</a>, 文件描述符对象</li>
 <li><span class="notranslate">string</span>: String, 待写入的字符串</li>
 <li><span class="notranslate">position</span>: Integer, 文件写入取位置，默认为当前文件位置</li>
 <li><span class="notranslate">encoding</span>: String, 指定解码方式，缺省解码 utf8</li>
@@ -823,14 +842,66 @@ fs.writeFile(<span class="hljs-string">'/path/to/file'</span>, content, <span cl
 <h3 id="writeFile" class ="notranslate">writeFile</h3>
 <p><strong>创建二进制文件，并写入内容</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
-2</div><span class="hljs-keyword">static</span> fs.writeFile(<span class="hljs-built_in">String</span> fname,
-    Buffer data) <span class="hljs-keyword">async</span>;
+2
+3</div><span class="hljs-keyword">static</span> fs.writeFile(<span class="hljs-built_in">String</span> fname,
+    Buffer data,
+    <span class="hljs-built_in">String</span> opt = <span class="hljs-string">"binary"</span>) <span class="hljs-keyword">async</span>;
 </code></pre>
 <p>调用参数:</p>
 <ul>
 <li><span class="notranslate">fname</span>: String, 指定文件名</li>
 <li><span class="notranslate">data</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 指定要写入的二进制数据</li>
+<li><span class="notranslate">opt</span>: String, 指定写入选项，将被忽略</li>
 </ul>
+<hr>
+<p><strong>创建二进制文件，并写入内容</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> fs.writeFile(<span class="hljs-built_in">String</span> fname,
+    Buffer data,
+    <span class="hljs-built_in">Object</span> options) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">fname</span>: String, 指定文件名</li>
+<li><span class="notranslate">data</span>: <a href=../../object/ifs/buffer.md.html class ="notranslate">Buffer</a>, 指定要写入的二进制数据</li>
+<li><span class="notranslate">options</span>: Object, 指定写入选项，将被忽略</li>
+</ul>
+<hr>
+<p><strong>创建文件，并写入内容</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> fs.writeFile(<span class="hljs-built_in">String</span> fname,
+    <span class="hljs-built_in">String</span> data,
+    <span class="hljs-built_in">String</span> opt = <span class="hljs-string">"utf8"</span>) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">fname</span>: String, 指定文件名</li>
+<li><span class="notranslate">data</span>: String, 指定要写入的数据</li>
+<li><span class="notranslate">opt</span>: String, 指定写入选项</li>
+</ul>
+<hr>
+<p><strong>创建文件，并写入内容</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> fs.writeFile(<span class="hljs-built_in">String</span> fname,
+    <span class="hljs-built_in">String</span> data,
+    <span class="hljs-built_in">Object</span> options) <span class="hljs-keyword">async</span>;
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">fname</span>: String, 指定文件名</li>
+<li><span class="notranslate">data</span>: String, 指定要写入的数据</li>
+<li><span class="notranslate">options</span>: Object, 指定写入选项</li>
+</ul>
+<p>options 支持的选项如下：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div>{
+    <span class="hljs-string">"encoding"</span>: <span class="hljs-string">"utf8"</span> <span class="hljs-comment">// specify the encoding, default is utf8.</span>
+}
+</code></pre>
 <hr>
 <h3 id="appendFile" class ="notranslate">appendFile</h3>
 <p><strong>创建二进制文件，并写入内容</strong></p>
@@ -1036,4 +1107,4 @@ fs.writeFile(<span class="hljs-string">'/path/to/file'</span>, content, <span cl
 <p><strong>seek 方式常量，移动到文件结尾的相对位置</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">const</span> fs.SEEK_END = <span class="hljs-number">2</span>;
 </code></pre>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>
+ <div class=commentbox></div></div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2024 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script src=https://unpkg.com/commentbox.io/dist/commentBox.min.js></script><script>commentBox('5670558372986880-proj')</script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

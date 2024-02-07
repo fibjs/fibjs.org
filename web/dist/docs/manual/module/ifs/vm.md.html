@@ -56,6 +56,7 @@
 <li><a href=test.md.html class ="notranslate">test</a></li>
 <li><a href=timers.md.html class ="notranslate">timers</a></li>
 <li><a href=tty.md.html class ="notranslate">tty</a></li>
+<li><a href=types.md.html class ="notranslate">types</a></li>
 <li><a href=url.md.html class ="notranslate">url</a></li>
 <li><a href=util.md.html class ="notranslate">util</a></li>
 <li><a href=uuid.md.html class ="notranslate">uuid</a></li>
@@ -84,6 +85,7 @@
 <li><a href=../../object/ifs/fswatcher.md.html class ="notranslate">FSWatcher</a></li>
 <li><a href=../../object/ifs/fiber.md.html class ="notranslate">Fiber</a></li>
 <li><a href=../../object/ifs/file.md.html class ="notranslate">File</a></li>
+<li><a href=../../object/ifs/filehandle.md.html class ="notranslate">FileHandle</a></li>
 <li><a href=../../object/ifs/handler.md.html class ="notranslate">Handler</a></li>
 <li><a href=../../object/ifs/heapgraphedge.md.html class ="notranslate">HeapGraphEdge</a></li>
 <li><a href=../../object/ifs/heapgraphnode.md.html class ="notranslate">HeapGraphNode</a></li>
@@ -106,10 +108,6 @@
 <li><a href=../../object/ifs/lrucache.md.html class ="notranslate">LruCache</a></li>
 <li><a href=../../object/ifs/memorystream.md.html class ="notranslate">MemoryStream</a></li>
 <li><a href=../../object/ifs/message.md.html class ="notranslate">Message</a></li>
-<li><a href=../../object/ifs/mongocollection.md.html class ="notranslate">MongoCollection</a></li>
-<li><a href=../../object/ifs/mongocursor.md.html class ="notranslate">MongoCursor</a></li>
-<li><a href=../../object/ifs/mongodb.md.html class ="notranslate">MongoDB</a></li>
-<li><a href=../../object/ifs/mongoid.md.html class ="notranslate">MongoID</a></li>
 <li><a href=../../object/ifs/mysql.md.html class ="notranslate">MySQL</a></li>
 <li><a href=../../object/ifs/odbc.md.html class ="notranslate">Odbc</a></li>
 <li><a href=../../object/ifs/pkey.md.html class ="notranslate">PKey</a></li>
@@ -122,6 +120,7 @@
 <li><a href=../../object/ifs/routing.md.html class ="notranslate">Routing</a></li>
 <li><a href=../../object/ifs/sqlite.md.html class ="notranslate">SQLite</a></li>
 <li><a href=../../object/ifs/sandbox.md.html class ="notranslate">SandBox</a></li>
+<li><a href=../../object/ifs/script.md.html class ="notranslate">Script</a></li>
 <li><a href=../../object/ifs/seekablestream.md.html class ="notranslate">SeekableStream</a></li>
 <li><a href=../../object/ifs/semaphore.md.html class ="notranslate">Semaphore</a></li>
 <li><a href=../../object/ifs/service.md.html class ="notranslate">Service</a></li>
@@ -206,8 +205,8 @@
 <li><a href=../../../awesome/module/rakuten.md.html class ="notranslate">Rakuten</a></li>
 </ul>
  </div></div></div>  </div></div><div class=content><div class=social-share data-sites=weibo,twitter data-description=分享></div> <h1 id="模块-vm">模块 vm</h1>
-<p>安全沙箱模块，用于隔离不同安全等级的运行环境</p>
-<p>通过建立安全沙箱，可以限制脚本运行时可以接触的资源，隔离不同脚本执行环境，并可以为不同的环境定制基础模块，以保障整体运行环境的安全。</p>
+<p>沙箱模块，用于隔离不同安全等级的运行环境</p>
+<p>通过建立隔离沙箱，可以限制脚本运行时可以接触的资源，隔离不同脚本执行环境，并可以为不同的环境定制基础模块，以保障整体运行环境的安全。</p>
 <p>下面的示例创建一个沙箱，限制只允许访问全局基础模块中的 <a href=assert.md.html class ="notranslate">assert</a> 模块，并添加 a 和 b 两个定制模块：</p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -230,4 +229,143 @@
 <p><strong>创建一个 <a href=../../object/ifs/sandbox.md.html class ="notranslate">SandBox</a> 对象，参见 <a href=../../object/ifs/sandbox.md.html class ="notranslate">SandBox</a></strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div>SandBox vm.SandBox;
 </code></pre>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>
+<hr>
+<h3 id="Script" class ="notranslate">Script</h3>
+<p><strong>创建一个 <a href=../../object/ifs/script.md.html class ="notranslate">Script</a> 对象，参见 <a href=../../object/ifs/script.md.html class ="notranslate">Script</a></strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div>Script vm.Script;
+</code></pre>
+<h2 id="静态函数">静态函数</h2>
+<h3 id="createContext" class ="notranslate">createContext</h3>
+<p><strong>创建一个上下文对象</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Object</span> vm.createContext(<span class="hljs-built_in">Object</span> contextObject = {},
+    <span class="hljs-built_in">Object</span> opts = {});
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">contextObject</span>: Object, 指定将被上下文化的对象</li>
+<li><span class="notranslate">opts</span>: Object, 指定上下文选项</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><span class="notranslate">Object</span>, 返回上下文对象</li>
+</ul>
+<hr>
+<h3 id="isContext" class ="notranslate">isContext</h3>
+<p><strong>如果给定的 <a href=../../object/ifs/object.md.html class ="notranslate">object</a> 对象已使用 <a href=vm.md.html#createContext class ="notranslate">vm.createContext</a>() 进行上下文化，则返回 true</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> <span class="hljs-built_in">Boolean</span> vm.isContext(<span class="hljs-built_in">Object</span> contextObject);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">contextObject</span>: Object, 指定要检查的对象</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><span class="notranslate">Boolean</span>, 如果给定的 <a href=../../object/ifs/object.md.html class ="notranslate">object</a> 对象已使用 <a href=vm.md.html#createContext class ="notranslate">vm.createContext</a>() 进行上下文化，则返回 true</li>
+</ul>
+<hr>
+<h3 id="runInContext" class ="notranslate">runInContext</h3>
+<p><strong>在给定 contextifiedObject 内运行 code 指定的代码并返回结果</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> Value vm.runInContext(<span class="hljs-built_in">String</span> code,
+    <span class="hljs-built_in">Object</span> contextifiedObject,
+    <span class="hljs-built_in">Object</span> opts = {});
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">code</span>: String, 指定要编译和运行的脚本代码</li>
+<li><span class="notranslate">contextifiedObject</span>: Object, 指定运行时的上下文对象</li>
+<li><span class="notranslate">opts</span>: Object, 指定运行选项</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><span class="notranslate">Value</span>, 返回运行结果</li>
+</ul>
+<hr>
+<p><strong>在给定 contextifiedObject 内运行 code 指定的代码并返回结果</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> Value vm.runInContext(<span class="hljs-built_in">String</span> code,
+    <span class="hljs-built_in">Object</span> contextifiedObject,
+    <span class="hljs-built_in">String</span> filename);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">code</span>: String, 指定要编译和运行的脚本代码</li>
+<li><span class="notranslate">contextifiedObject</span>: Object, 指定运行时的上下文对象</li>
+<li><span class="notranslate">filename</span>: String, 指定脚本文件名</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><span class="notranslate">Value</span>, 返回运行结果</li>
+</ul>
+<hr>
+<h3 id="runInNewContext" class ="notranslate">runInNewContext</h3>
+<p><strong>使用给定的 contextObject 在创建的上下文中, 在其中运行 code 指定的代码并返回结果</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> Value vm.runInNewContext(<span class="hljs-built_in">String</span> code,
+    <span class="hljs-built_in">Object</span> contextObject = {},
+    <span class="hljs-built_in">Object</span> opts = {});
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">code</span>: String, 指定要编译和运行的脚本代码</li>
+<li><span class="notranslate">contextObject</span>: Object, 指定将被上下文化的对象</li>
+<li><span class="notranslate">opts</span>: Object, 指定运行选项</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><span class="notranslate">Value</span>, 返回运行结果</li>
+</ul>
+<hr>
+<p><strong>使用给定的 contextObject 在创建的上下文中, 在其中运行 code 指定的代码并返回结果</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> Value vm.runInNewContext(<span class="hljs-built_in">String</span> code,
+    <span class="hljs-built_in">Object</span> contextObject = {},
+    <span class="hljs-built_in">String</span> filename);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">code</span>: String, 指定要编译和运行的脚本代码</li>
+<li><span class="notranslate">contextObject</span>: Object, 指定将被上下文化的对象</li>
+<li><span class="notranslate">filename</span>: String, 指定脚本文件名</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><span class="notranslate">Value</span>, 返回运行结果</li>
+</ul>
+<hr>
+<h3 id="runInThisContext" class ="notranslate">runInThisContext</h3>
+<p><strong>在当前上下文内内运行 code 指定的代码并返回结果</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Value vm.runInThisContext(<span class="hljs-built_in">String</span> code,
+    <span class="hljs-built_in">Object</span> opts = {});
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">code</span>: String, 指定要编译和运行的脚本代码</li>
+<li><span class="notranslate">opts</span>: Object, 指定运行选项</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><span class="notranslate">Value</span>, 返回运行结果</li>
+</ul>
+<hr>
+<p><strong>在当前上下文内内运行 code 指定的代码并返回结果</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> Value vm.runInThisContext(<span class="hljs-built_in">String</span> code,
+    <span class="hljs-built_in">String</span> filename);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">code</span>: String, 指定要编译和运行的脚本代码</li>
+<li><span class="notranslate">filename</span>: String, 指定脚本文件名</li>
+</ul>
+<p>返回结果:</p>
+<ul>
+<li><span class="notranslate">Value</span>, 返回运行结果</li>
+</ul>
+ <div class=commentbox></div></div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2024 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script src=https://unpkg.com/commentbox.io/dist/commentBox.min.js></script><script>commentBox('5670558372986880-proj')</script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>

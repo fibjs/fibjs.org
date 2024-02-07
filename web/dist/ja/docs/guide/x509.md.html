@@ -1,15 +1,15 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../imgs/icon.png"><title>fibjs での X509 証明書の使用 - ファイバー上の JavaScript</title><link href="../../../css/common.css" rel="stylesheet"><link href="../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ナビゲーションを切り替える</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../index.html"><img src="../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../index.html">HOME</a></li><li><a href="readme.md.html">GUIDE</a></li><li><a href="../manual/module/readme.md.html">MODULE</a></li><li><a href="../manual/object/readme.md.html">OBJECT</a></li><li><a href="../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../docs/guide/x509.md.html">中文</a> <a href="../../../ca/docs/guide/x509.md.html">Catalan</a> <a href="../../../de/docs/guide/x509.md.html">Deutsch</a> <a href="../../../en/docs/guide/x509.md.html">English</a> <a href="../../../es/docs/guide/x509.md.html">Español</a> <a href="../../../fr/docs/guide/x509.md.html">Français</a> <a href="../../../gl/docs/guide/x509.md.html">Galego</a> <a href="../../../it/docs/guide/x509.md.html">Italiano</a> <a href="../../../nl/docs/guide/x509.md.html">Nederlands</a> <a href="../../../ru/docs/guide/x509.md.html">Русский</a> <a href="../../../ja/docs/guide/x509.md.html">日本語</a> <a href="../../../ko/docs/guide/x509.md.html">한국어</a> <a href="../../../zh-tw/docs/guide/x509.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ガイド開発ガイド</font></font></span><div class="search"><input type="text" class="searchbox" placeholder="検索"></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">表紙</font></font></a></li><li><a href="readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">開発ガイド</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs での X509 証明書の使用</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">開発ガイド</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><link rel="icon" type="image/png" href="../../../imgs/icon.png"><title>fibjs での X509 証明書の使用 - JavaScript on Fiber</title><link href="../../../css/common.css" rel="stylesheet"><link href="../../../css/docs.css" rel="stylesheet"></head><body><div class="navbar navbar-default navbar-static-top" role="navigation"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ナビゲーションを切り替え</font></font></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="../../index.html"><img src="../../../imgs/logo-dark.png"></a></div><div id="navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right notranslate"><li><a href="../../index.html">HOME</a></li><li><a href="readme.md.html">GUIDE</a></li><li><a href="../manual/module/readme.md.html">MODULE</a></li><li><a href="../manual/object/readme.md.html">OBJECT</a></li><li><a href="../awesome/readme.md.html">AWESOME</a></li><li><a href="../../../download/index.html">DOWNLOAD</a></li><li class="nav-item dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">LANGUAGE</a><div class="dropdown-menu"><a href="../../../docs/guide/x509.md.html">中文</a> <a href="../../../ca/docs/guide/x509.md.html">Catalan</a> <a href="../../../de/docs/guide/x509.md.html">Deutsch</a> <a href="../../../en/docs/guide/x509.md.html">English</a> <a href="../../../es/docs/guide/x509.md.html">Español</a> <a href="../../../fr/docs/guide/x509.md.html">Français</a> <a href="../../../gl/docs/guide/x509.md.html">Galego</a> <a href="../../../it/docs/guide/x509.md.html">Italiano</a> <a href="../../../nl/docs/guide/x509.md.html">Nederlands</a> <a href="../../../ru/docs/guide/x509.md.html">Русский</a> <a href="../../../ja/docs/guide/x509.md.html">日本語</a> <a href="../../../ko/docs/guide/x509.md.html">한국어</a> <a href="../../../zh-tw/docs/guide/x509.md.html">繁體中文</a></div></li></ul></div></div></div><div class="band"><div class="container"><span class="group"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ガイド開発ガイド</font></font></span><div class="search"><span class="algolia-autocomplete" style="position: relative; display: inline-block; direction: ltr;"><input type="text" class="searchbox ds-input" placeholder="検索" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-label="検索入力" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: Avenir, &quot;Segoe UI&quot;, Arial, &quot;Hiragino Sans GB&quot;, 冬青黑, &quot;Microsoft YaHei&quot;, 微软雅黑, SimSun, 宋体, Helvetica, Tahoma, &quot;Arial sans-serif&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span class="ds-dropdown-menu" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto;"><div class="ds-dataset-1"></div></span></span></div></div></div><div class="container"><ol class="breadcrumb"><li><a href="../../index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">表紙</font></font></a></li><li><a href="readme.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">開発ガイド</font></font></a></li><li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs での X509 証明書の使用</font></font></li></ol></div><div class="page-body"><div class="container"><div class="sidebar hidden-xs"><div class="panel-group" id="accordion" role="tablist">  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_guide" aria-controls="collapse_guide"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">開発ガイド</font></font></a></h4></div><div id="collapse_guide" class="panel-collapse collapse in" aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="about.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjsとは何ですか？</font></font></a></li>
-<li><a href="install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">動作環境のインストール</font></font></a></li>
+<li><a href="install.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">動作環境をインストールする</font></font></a></li>
 <li><a href="hello.md.html" class="notranslate">hello, world</a></li>
-<li><a href="test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">より良い人生はテストから始まります</font></font></a></li>
-<li><a href="profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">パフォーマンス キラーを見つける</font></font></a></li>
+<li><a href="test.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">より良い生活はテストから始まります</font></font></a></li>
+<li><a href="profiler.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">パフォーマンスキラーを見つける</font></font></a></li>
 <li><a href="sync.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">同期と非同期</font></font></a></li>
 <li><a href="server-hot-update.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">サーバーモジュールのホットアップデート</font></font></a></li>
-<li><a href="web.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ハイ パフォーマンス Web アプリケーションの実践</font></font></a></li>
-<li><a href="host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ドメイン ルーティング</font></font></a></li>
+<li><a href="web.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">高パフォーマンスの Web アプリケーションの実践</font></font></a></li>
+<li><a href="host-routes.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ドメイン名のルーティング</font></font></a></li>
 <li class="active"><a href="x509.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs での X509 証明書の使用</font></font></a></li>
-<li><a href="contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ネイティブモジュールを追加</font></font></a></li>
+<li><a href="contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ネイティブモジュールを追加する</font></font></a></li>
 </ul>
  </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_module" aria-controls="collapse_module"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">基本モジュール</font></font></a></h4></div><div id="collapse_module" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../manual/module/ifs/assert.md.html" class="notranslate">assert</a></li>
@@ -56,6 +56,7 @@
 <li><a href="../manual/module/ifs/test.md.html" class="notranslate">test</a></li>
 <li><a href="../manual/module/ifs/timers.md.html" class="notranslate">timers</a></li>
 <li><a href="../manual/module/ifs/tty.md.html" class="notranslate">tty</a></li>
+<li><a href="../manual/module/ifs/types.md.html" class="notranslate">types</a></li>
 <li><a href="../manual/module/ifs/url.md.html" class="notranslate">url</a></li>
 <li><a href="../manual/module/ifs/util.md.html" class="notranslate">util</a></li>
 <li><a href="../manual/module/ifs/uuid.md.html" class="notranslate">uuid</a></li>
@@ -84,6 +85,7 @@
 <li><a href="../manual/object/ifs/fswatcher.md.html" class="notranslate">FSWatcher</a></li>
 <li><a href="../manual/object/ifs/fiber.md.html" class="notranslate">Fiber</a></li>
 <li><a href="../manual/object/ifs/file.md.html" class="notranslate">File</a></li>
+<li><a href="../manual/object/ifs/filehandle.md.html" class="notranslate">FileHandle</a></li>
 <li><a href="../manual/object/ifs/handler.md.html" class="notranslate">Handler</a></li>
 <li><a href="../manual/object/ifs/heapgraphedge.md.html" class="notranslate">HeapGraphEdge</a></li>
 <li><a href="../manual/object/ifs/heapgraphnode.md.html" class="notranslate">HeapGraphNode</a></li>
@@ -106,10 +108,6 @@
 <li><a href="../manual/object/ifs/lrucache.md.html" class="notranslate">LruCache</a></li>
 <li><a href="../manual/object/ifs/memorystream.md.html" class="notranslate">MemoryStream</a></li>
 <li><a href="../manual/object/ifs/message.md.html" class="notranslate">Message</a></li>
-<li><a href="../manual/object/ifs/mongocollection.md.html" class="notranslate">MongoCollection</a></li>
-<li><a href="../manual/object/ifs/mongocursor.md.html" class="notranslate">MongoCursor</a></li>
-<li><a href="../manual/object/ifs/mongodb.md.html" class="notranslate">MongoDB</a></li>
-<li><a href="../manual/object/ifs/mongoid.md.html" class="notranslate">MongoID</a></li>
 <li><a href="../manual/object/ifs/mysql.md.html" class="notranslate">MySQL</a></li>
 <li><a href="../manual/object/ifs/odbc.md.html" class="notranslate">Odbc</a></li>
 <li><a href="../manual/object/ifs/pkey.md.html" class="notranslate">PKey</a></li>
@@ -122,6 +120,7 @@
 <li><a href="../manual/object/ifs/routing.md.html" class="notranslate">Routing</a></li>
 <li><a href="../manual/object/ifs/sqlite.md.html" class="notranslate">SQLite</a></li>
 <li><a href="../manual/object/ifs/sandbox.md.html" class="notranslate">SandBox</a></li>
+<li><a href="../manual/object/ifs/script.md.html" class="notranslate">Script</a></li>
 <li><a href="../manual/object/ifs/seekablestream.md.html" class="notranslate">SeekableStream</a></li>
 <li><a href="../manual/object/ifs/semaphore.md.html" class="notranslate">Semaphore</a></li>
 <li><a href="../manual/object/ifs/service.md.html" class="notranslate">Service</a></li>
@@ -163,7 +162,7 @@
 <li><a href="../manual/object/ifs/zipfile.md.html" class="notranslate">ZipFile</a></li>
 <li><a href="../manual/object/ifs/object.md.html" class="notranslate">object</a></li>
 </ul>
- </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">コミュニティ モジュール</font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
+ </div></div></div>  <div class="panel"><div class="panel-heading" role="tab" id="headingOne"><h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapse_awesome" aria-controls="collapse_awesome"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">コミュニティモジュール</font></font></a></h4></div><div id="collapse_awesome" class="panel-collapse collapse " aria-labelledby="headingOne"><div class="panel-body"> <ul>
 <li><a href="../awesome/module/fib-session.md.html" class="notranslate">fib-session</a></li>
 <li><a href="../awesome/module/fib-pool.md.html" class="notranslate">fib-pool</a></li>
 <li><a href="../awesome/module/fib-orm.md.html" class="notranslate">fib-orm</a></li>
@@ -205,30 +204,30 @@
 <li><a href="../awesome/module/bitcoinjs-lib.md.html" class="notranslate">bitcoinjs-lib</a></li>
 <li><a href="../awesome/module/rakuten.md.html" class="notranslate">Rakuten</a></li>
 </ul>
- </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <h1 id="fibjs-中-X509-证书的使用"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs での X509 証明書の使用</font></font></h1>
-<h2 id="背景介绍"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">背景紹介</font></font></h2>
-<h3 id="什么是-x509-证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">x509 証明書とは</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">x509 証明書は、国際標準に基づく公開鍵認証サービス (PKI) システムで最も一般的に使用されるデジタル証明書形式です。</font><font style="vertical-align: inherit;">認証と暗号化に使用でき、インターネット上の SSL/TLS プロトコルやその他の種類のネットワーク アプリケーションで広く使用されています。</font><font style="vertical-align: inherit;">x509 証明書は、公開鍵/秘密鍵認証メカニズムを採用しており、データ転送の機密性、完全性、および信頼性を保証できます。</font></font></p>
-<h3 id="x509-证书在什么场景中用到"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">x509 証明書はどのようなシナリオで使用されますか?</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">インターネットでは、x509 証明書が TLS/SSL プロトコルの証明書認証に最もよく使用され、クライアントとサーバー間で送信されるデータが安全なチャネルを使用して暗号化され、認証されるようにします。</font><font style="vertical-align: inherit;">x509 証明書は、VPN/SSH などの公開鍵と秘密鍵の暗号化に基づくアプリケーション プロトコルでの ID 認証にも使用できます。</font></font></p>
-<h3 id="fibjs-支持-x509-证书的处理"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs は x509 証明書処理をサポートします</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs は x509 証明書の処理をサポートし、暗号モジュールで X509Cert や X509Req などのクラスを提供して、証明書の読み取り、作成、署名を行います。</font><font style="vertical-align: inherit;">これらのクラスを使用して、証明書の有効期間、公開鍵、発行者、サブジェクト名などの情報を取得し、証明書の署名や検証などの操作を実行できます。</font><font style="vertical-align: inherit;">同時に、fibjs は HTTPS 証明書認証と暗号化された接続をサポートする HttpsServer クラスも提供し、fibjs で x509 証明書を簡単に使用できるようにします。</font></font></p>
-<h2 id="X509-模块的介绍"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509 モジュールの紹介</font></font></h2>
-<h3 id="X509-模块是什么"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509 モジュールとは</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs の crypto モジュールでは、x509 証明書の読み取り、作成、および署名を行うために、X509Cert や X509Req などのクラスが提供されています。</font><font style="vertical-align: inherit;">X509 モジュールは、x509 証明書を処理するためのモジュールであり、証明書の解析、作成、検証などの操作を提供します。</font></font></p>
-<h3 id="X509-模块的作用"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509 モジュールの役割</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509 モジュールの機能は、x509 証明書を操作することで、既存の x509 証明書を読み取り、証明書の有効期間、公開鍵、発行者、サブジェクト名などの情報を取得することができます。</font><font style="vertical-align: inherit;">同時に、X509 モジュールは、TLS/SSL プロトコルでの証明書認証などのために、x509 証明書要求と署名証明書を作成することもできます。</font></font></p>
-<h3 id="X509-模块的-API"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509モジュールのAPI</font></font></h3>
+ </div></div></div>  </div></div><div class="content"><div class="social-share share-component" data-sites="weibo,twitter" data-description="分享"></div> <div name="fibjs-中-X509-证书的使用" data-unique="fibjs-中-X509-证书的使用"></div><h1 id="fibjs-中-X509-证书的使用"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs での X509 証明書の使用</font></font></h1>
+<div name="背景介绍" data-unique="背景介绍"></div><h2 id="背景介绍"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">背景の紹介</font></font></h2>
+<div name="什么是-x509-证书" data-unique="什么是-x509-证书"></div><h3 id="什么是-x509-证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">x509証明書とは何ですか</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">x509 証明書は、国際標準に基づく公開キー認証サービス (PKI) システムで最も一般的に使用されるデジタル証明書形式です。これは認証と暗号化に使用でき、インターネット上の SSL/TLS プロトコルやその他の種類のネットワーク アプリケーションで広く使用されています。 x509 証明書は公開キー/秘密キー認証メカニズムを使用し、データ送信の機密性、完全性、および信頼性を保証できます。</font></font></p>
+<div name="x509-证书在什么场景中用到" data-unique="x509-证书在什么场景中用到"></div><h3 id="x509-证书在什么场景中用到"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">x509 証明書はどのようなシナリオで使用されますか?</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">インターネットでは、x509 証明書で最も一般的に使用されるシナリオは、クライアントとサーバー間で送信されるデータが安全なチャネルを使用して暗号化され、検証されることを保証する、TLS/SSL プロトコルでの証明書認証です。 x509 証明書は、VPN/SSH などの公開キーおよび秘密キーの暗号化に基づくアプリケーション プロトコルでの ID 認証にも使用できます。</font></font></p>
+<div name="fibjs-支持-x509-证书的处理" data-unique="fibjs-支持-x509-证书的处理"></div><h3 id="fibjs-支持-x509-证书的处理"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs は x509 証明書処理をサポートします</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs は x509 証明書の処理をサポートし、証明書の読み取り、作成、署名などの操作を実行するための暗号モジュールに X509Cert や X509Req などのクラスを提供します。これらのクラスを使用して、証明書の有効期間、公開キー、発行者、サブジェクト名などの情報を取得したり、証明書の署名や検証などの操作を実行したりできます。同時に、fibjs は HTTPS 証明書認証と暗号化された接続をサポートする HttpsServer クラスも提供し、fibjs での x509 証明書の使用を容易にします。</font></font></p>
+<div name="X509-模块的介绍" data-unique="X509-模块的介绍"></div><h2 id="X509-模块的介绍"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509モジュールの紹介</font></font></h2>
+<div name="X509-模块是什么" data-unique="X509-模块是什么"></div><h3 id="X509-模块是什么"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509モジュールとは何ですか?</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs の暗号モジュールでは、x509 証明書の読み取り、作成、署名などの操作を実行するための X509Cert や X509Req などのクラスが提供されます。 X509 モジュールは、x509 証明書を処理するためのモジュールであり、証明書の解析、作成、検証などの操作を提供します。</font></font></p>
+<div name="X509-模块的作用" data-unique="X509-模块的作用"></div><h3 id="X509-模块的作用"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509モジュールの機能</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509 モジュールの機能は x509 証明書を操作することであり、このモジュールを使用して既存の x509 証明書を読み取り、証明書の有効期間、公開鍵、発行者、サブジェクト名などの情報を取得できます。同時に、X509 モジュールは、TLS/SSL プロトコルでの証明書認証などのために、x509 証明書要求と署名証明書を作成することもできます。</font></font></p>
+<div name="X509-模块的-API" data-unique="X509-模块的-API"></div><h3 id="X509-模块的-API"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509モジュールAPI</font></font></h3>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以下は、X509 モジュールのより重要な API のリストです。</font></font></p>
 <ul>
-<li><span class="notranslate">X509Cert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: x509 証明書を読み取って操作するためのクラス。</font></font></li>
-<li><span class="notranslate">X509Req</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: x509 証明書要求を作成するためのクラス。</font></font></li>
-<li><span class="notranslate">verify</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: CA 証明書ペアに対して x509 証明書を検証します。</font></font></li>
-<li><span class="notranslate">SslServer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: x509 証明書に基づく認証サービスを提供するクラス。</font></font></li>
-<li><span class="notranslate">SslSocket</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: x509証明書ベースの認証サービスに基づくソケット送受信データ操作を提供するクラス。</font></font></li>
+<li><span class="notranslate">X509Cert</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: x509 証明書を読み取り、操作するためのクラス。</font></font></li>
+<li><span class="notranslate">X509Req</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: x509 証明書リクエストの作成に使用されるクラス。</font></font></li>
+<li><span class="notranslate">verify</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: CA 証明書ペアを介して x509 証明書を検証します。</font></font></li>
+<li><span class="notranslate">SslServer</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: x509 証明書に基づいた認証サービスを提供するクラス。</font></font></li>
+<li><span class="notranslate">SslSocket</span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">: x509 証明書に基づく認証サービスのためのソケットのデータ送受信操作を提供するクラス。</font></font></li>
 </ul>
-<h3 id="示例代码"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">サンプルコード</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">x509 証明書を読み取り、x509 証明書要求を作成するサンプル コードを次に示します。</font></font></p>
+<div name="示例代码" data-unique="示例代码"></div><h3 id="示例代码"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">サンプルコード</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">以下は、x509 証明書を読み取り、x509 証明書リクエストを作成するサンプル コードです。</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -253,26 +252,26 @@
 <span class="hljs-keyword">let</span> pemReq = req.pem();
 <span class="hljs-built_in">console</span>.log(pemReq);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上記のサンプル コードは、X509Cert クラスを通じて既存の x509 証明書を読み取り、証明書のサブジェクト名を出力します。</font><font style="vertical-align: inherit;">同時に、サンプル コードは、X509Req を使用して x509 証明書要求を作成し、要求情報を PEM 形式で出力する方法も示しています。</font></font></p>
-<h2 id="X509-模块的使用"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509 モジュールの使用</font></font></h2>
-<h3 id="生成自签名证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">自己署名証明書を生成する</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">自己署名証明書を生成するプロセスは比較的単純です。通常、次の手順を完了する必要があります。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上記のサンプル コードは、X509Cert クラスを通じて既存の x509 証明書を読み取り、証明書のサブジェクト名を出力します。同時に、サンプル コードは、X509Req を通じて x509 証明書リクエストを作成し、リクエスト情報を PEM 形式で出力する方法も示しています。</font></font></p>
+<div name="X509-模块的使用" data-unique="X509-模块的使用"></div><h2 id="X509-模块的使用"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509モジュールの使用方法</font></font></h2>
+<div name="生成自签名证书" data-unique="生成自签名证书"></div><h3 id="生成自签名证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">自己署名証明書を生成する</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">自己署名証明書を生成するプロセスは比較的簡単で、通常は次の手順を実行する必要があります。</font></font></p>
 <ul>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">PKey (秘密鍵) を生成する</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509Req (証明書要求) の生成</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509Req を使用して X509Cert (公式証明書) を生成します。</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">証明書を保存</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">PKey（秘密鍵）の生成</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509Req（証明書リクエスト）の生成</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509Req を使用して X509Cert (正式な証明書) を生成する</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">証明書を保存する</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">これらの手順により、テストおよび開発環境で使用する x509 証明書を自分で生成できます。</font><font style="vertical-align: inherit;">具体的な実装は次のとおりです。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">次のコードを使用して PKey オブジェクトを作成します。</font><font style="vertical-align: inherit;">その中でも from() メソッドは、PEM 形式の文字列または Buffer を介して PKey オブジェクトを作成できます。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">これらの手順を使用すると、テスト環境および開発環境で使用する独自の x509 証明書を生成できます。具体的な実装は次のとおりです。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">次のコードを使用して PKey オブジェクトを作成します。このうち、from() メソッドは、PEM 形式の文字列またはバッファを通じて PKey オブジェクトを作成できます。</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
 <span class="hljs-keyword">const</span> pky = crypto.PKey.from(private_pem);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">次のコードを使用して X509Req オブジェクトを作成します。</font><font style="vertical-align: inherit;">その中で、X509Req の最初のパラメーターはサブジェクトの識別名 (Subject Name) であり、文字列形式は key1=value1、key2=value2 です。</font><font style="vertical-align: inherit;">2 番目のパラメーターは、証明書の署名に使用される、以前に作成された PKey オブジェクトです。</font><font style="vertical-align: inherit;">例えば：</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">次のコードを使用して、X509Req オブジェクトを作成します。このうち、X509Req の最初のパラメータはサブジェクト識別名 (Subject Name) であり、文字列形式は key1=value1,key2=value2 です。 2 番目のパラメーターは、証明書の署名に使用される、以前に作成された PKey オブジェクトです。例えば：</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">let</span> xrq = <span class="hljs-keyword">new</span> crypto.X509Req(<span class="hljs-string">"CN=localhost,O=fibjs"</span>, pky);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509Cert (公式証明書) を作成するには、次のコードを使用します。</font><font style="vertical-align: inherit;">具体的な操作は、X509Req の sign() メソッドを呼び出すことです。このメソッドは、認証局の名前、署名に使用される PKey オブジェクト、およびその他の関連情報の 3 つのパラメーターを受け取ります。</font><font style="vertical-align: inherit;">たとえば、次の例では、X509Req オブジェクトは自己署名証明書として署名され、署名機関はそれ自体であり、証明書は 10 年間有効です。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">次のコードを使用して、X509Cert (公式証明書) を作成します。具体的な操作は、X509Req のsign() メソッドを呼び出すことです。このメソッドは、認証局の名前、署名に使用される PKey オブジェクト、およびその他の関連情報の 3 つのパラメーターを受け入れます。たとえば、次の例では、X509Req オブジェクトは自己署名証明書で署名されており、署名機関はそれ自体であり、証明書の有効期間は 10 年間です。</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -283,7 +282,7 @@
 };<font></font>
 <span class="hljs-keyword">const</span> cert = xrq.sign(<span class="hljs-string">"CN=localhost,O=fibjs"</span>, pky, opt);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">次のコードを使用して、PKey と X509Cert をローカル ファイルに保存します。</font><font style="vertical-align: inherit;">証明書は PEM 形式で保存されるため、pem() メソッドを使用して証明書オブジェクトを文字列に変換し、ファイルに直接保存できます。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">次のコードを使用して、PKey と X509Cert をローカル ファイルに保存します。証明書は PEM 形式で保存されるため、 pem() メソッドを使用して証明書オブジェクトを文字列に変換し、ファイルに直接保存できます。</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -294,26 +293,26 @@
 fs.writeFile(<span class="hljs-string">'mycert.key'</span>, ks); <span class="hljs-comment">// save the key</span>
 fs.writeFile(<span class="hljs-string">'mycert.pem'</span>, cs); <span class="hljs-comment">// save the cert</span>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上記のコードは、秘密鍵の生成から自己署名証明書の保存までのプロセス全体を完了します。</font><font style="vertical-align: inherit;">この証明書は、セキュリティ関連のアプリケーションのテストと開発に使用できます。</font></font></p>
-<h3 id="加载证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">証明書をロードする</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">x509 証明書を使用する場合、証明書のロードは重要な操作です。</font><font style="vertical-align: inherit;">証明書ファイルの読み込みと、公開鍵と秘密鍵の読み込みについて説明します。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">x509 証明書を使用するには、まず証明書ファイルをメモリに読み込み、x509 証明書オブジェクトに変換する必要があります。</font><font style="vertical-align: inherit;">証明書ファイルをロードする手順は次のとおりです。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs の JavaScript プログラムでは、fs モジュールの関連 API を使用してファイルを読み取ることができます。</font><font style="vertical-align: inherit;">たとえば、次のコードを使用して、PEM 形式の証明書ファイルを読み取ります。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上記のコードは、秘密キーの生成から自己署名証明書の保存までのプロセス全体を完了します。この証明書を使用して、セキュリティ関連のアプリケーションをテストおよび開発できます。</font></font></p>
+<div name="加载证书" data-unique="加载证书"></div><h3 id="加载证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">証明書をロードする</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">証明書のロードは、x509 証明書を使用する場合の重要な操作です。以下に、証明書ファイルをロードし、公開キーと秘密キーをロードする方法を説明します。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">x509 証明書を使用するには、まず証明書ファイルをメモリに読み込んで、x509 証明書オブジェクトに変換する必要があります。証明書ファイルをロードする手順は次のとおりです。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fibjs JavaScript プログラムでは、fs モジュールの関連 API を使用してファイルを読み取ることができます。たとえば、PEM 形式の証明書ファイルを読み取るには、次のコードを使用します。</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
 <span class="hljs-keyword">const</span> certData = fs.readFile(<span class="hljs-string">'server.crt'</span>);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ファイルを読み取った後、X509Cert オブジェクトを使用して、証明書ファイルの内容を x509 証明書に変換する必要があります。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ファイルを読み取った後、X509Cert オブジェクトを使用して証明書ファイルの内容を x509 証明書に変換する必要があります。</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
 <span class="hljs-keyword">const</span> cert = <span class="hljs-keyword">new</span> crypto.X509Cert(certData);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上記の手順の後、ローカルの x509 証明書ファイルを読み込むことができます。</font><font style="vertical-align: inherit;">証明書は、crypto.loadCert を使用して直接読み取ることもできます。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上記の手順を完了すると、ローカルの x509 証明書ファイルをロードできます。 crypto.loadCert を使用して証明書を直接読み取ることもできます。</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
 <span class="hljs-keyword">const</span> cert = crypto.loadCert(<span class="hljs-string">'server.crt'</span>);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">x509 証明書には公開鍵と暗号化された署名情報が格納されているため、証明書を使用する場合は、証明書の公開鍵を解析してデータの暗号化と復号化を容易にする必要があります。</font><font style="vertical-align: inherit;">PKey クラスは、PEM 形式の公開/秘密鍵文字列を公開/秘密鍵オブジェクトに変換します。</font><font style="vertical-align: inherit;">次のコードを使用して、公開鍵/秘密鍵の文字列を PEM 形式で読み取り、PKey オブジェクトを作成できます。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">x509 証明書には公開キーと暗号化された署名情報が保存されるため、証明書を使用する場合は、データの暗号化と復号化を容易にするために証明書内の公開キーを解析する必要があります。 PKey クラスは、PEM 形式の公開キー/秘密キー文字列を公開キー/秘密キー オブジェクトに変換できます。次のコードを使用して、PEM 形式の公開キー/秘密キー文字列を読み取り、PKey オブジェクトを作成できます。</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2</div><span class="hljs-keyword">const</span> privateKey = fs.readFile(<span class="hljs-string">'private.pem'</span>); <span class="hljs-comment">// load the data from file</span>
 <span class="hljs-keyword">const</span> pKey = crypto.PKey.from(privateKey); <span class="hljs-comment">// load from pem format data</span>
@@ -323,10 +322,10 @@ fs.writeFile(<span class="hljs-string">'mycert.pem'</span>, cs); <span class="hl
 2</div><span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
 <span class="hljs-keyword">const</span> pKey = crypto.loadPKey(<span class="hljs-string">'private.pem'</span>);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上記の手順の後、公開鍵/秘密鍵ファイルを PKey オブジェクトに変換できます。</font></font></p>
-<h3 id="解析证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">証明書の解析</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">証明書は SSL/TLS 相互作用の重要な部分であり、データ転送の認証と暗号化に使用されます。</font><font style="vertical-align: inherit;">それでは、fibjs で証明書を解析する方法を見てみましょう。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">crypto モジュールの X509Cert クラスを使用して、DER/PEM 形式の証明書ファイルを読み取って証明書オブジェクトを構築し、サブジェクト名、発行者名、有効期間など、証明書の基本情報を取得できます。証明書の。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上記の手順を完了すると、公開キー/秘密キー ファイルを PKey オブジェクトに変換できます。</font></font></p>
+<div name="解析证书" data-unique="解析证书"></div><h3 id="解析证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">証明書を解析する</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">証明書は SSL/TLS 通信の重要なコンポーネントであり、データ送信の認証と暗号化に使用されます。次に、fibjs で証明書を解析する方法を学びましょう。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">暗号モジュールの X509Cert クラスを使用して、DER/PEM 形式の証明書ファイルを読み取ることで証明書オブジェクトを構築し、証明書のサブジェクト名、発行者名、有効期間など、証明書に関する基本情報を取得できます。など。</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">サンプルコードは次のとおりです。</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -356,7 +355,7 @@ fs.writeFile(<span class="hljs-string">'mycert.pem'</span>, cs); <span class="hl
 <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`证书有效期: <span class="hljs-subst">${validFromDate.toLocaleString()}</span> ~ <span class="hljs-subst">${expirationDate.toLocaleString()}</span>`</span>);
 <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`证书序列号: <span class="hljs-subst">${serialNumber}</span>`</span>);
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">証明書を使用する必要がある場合は、証明書の有効性を検証する必要があります. 重要なのは、証明書が信頼できる組織によって発行されていることを確認することです. </font><font style="vertical-align: inherit;">You can use the verify method in X509Cert to check the valid of the certificate. 一般的な検証方法は、証明書チェーンを検証して、証明書が信頼できる CA によって発行されていることを確認することです。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">証明書を使用する必要がある場合、証明書の正当性を検証する必要がありますが、重要なのは、証明書が信頼できる組織によって発行されたものであることを確認することです。 X509Cert の verify メソッドを使用して、証明書の有効性を確認できます。一般的な検証方法は、証明書チェーンを検証して、証明書が信頼された CA によって発行されたことを確認することです。</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">サンプルコードは次のとおりです。</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
@@ -376,9 +375,9 @@ fs.writeFile(<span class="hljs-string">'mycert.pem'</span>, cs); <span class="hl
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'证书验证通过'</span>);<font></font>
 }<font></font>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">このサンプル コードでは、まず指定された CA 証明書を読み取り、X509Cert オブジェクトを生成し、証明書オブジェクトに対して verify メソッドを使用して検証対象の証明書を検証し、検証結果を取得します。</font><font style="vertical-align: inherit;">検証結果が0に等しいかどうかを比較することで、証明書が正当であるかどうかを判断できます。</font><font style="vertical-align: inherit;">検証結果が 0 でない場合は、検証が失敗したことを意味し、この時点で証明書を停止する必要があります。</font></font></p>
-<h3 id="使用证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用証明書</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">https サーバーを使用する場合は、使用する証明書がサーバーに追加されていることを確認する必要があります。</font><font style="vertical-align: inherit;">これは、crypto モジュールを介して証明書と秘密鍵ファイルをロードする簡単な例です。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">このサンプル コードでは、まず指定された CA 証明書を読み取り、X509Cert オブジェクトを生成し、証明書オブジェクトの verify メソッドを使用して検証が必要な証明書を検証し、検証結果を取得します。検証結果が 0 かどうかを比較することで、証明書が正当であるかどうかを判断できます。検証結果が 0 でない場合は、検証が失敗したことを意味するため、証明書の使用を停止する必要があります。</font></font></p>
+<div name="使用证书" data-unique="使用证书"></div><h3 id="使用证书"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">証明書を使用する</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">https サーバーを使用する場合は、使用する証明書がサーバーに追加されていることを確認する必要があります。以下は、暗号化モジュールを介して証明書ファイルと秘密鍵ファイルをロードする簡単な例です。</font></font></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1
 2
 3
@@ -399,27 +398,27 @@ fs.writeFile(<span class="hljs-string">'mycert.pem'</span>, cs); <span class="hl
 });<font></font>
 server.start();<font></font>
 </code></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上記の例では、loadCert 関数と loadPKey 関数を使用して server.crt ファイルと server.key ファイルを読み込み、HttpsServer オブジェクトを使用してサービスを作成し、読み込まれた証明書とキー ファイルを使用してサービスを開始しました。</font></font></p>
-<h2 id="X509-模块的注意事项"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509 モジュールに関する注意事項</font></font></h2>
-<h3 id="证书的安全性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">証明書のセキュリティ</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509 モジュールは、証明書の作成や処理などの機能を提供し、証明書のセキュリティを保証する必要があるため、次の点に特に注意する必要があります。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上の例では、loadCert 関数とloadPKey 関数を使用してserver.crt ファイルとserver.key ファイルをロードし、次に HttpsServer オブジェクトを使用してサービスを作成し、ロードされた証明書とキー ファイルを使用してサービスを開始しました。</font></font></p>
+<div name="X509-模块的注意事项" data-unique="X509-模块的注意事项"></div><h2 id="X509-模块的注意事项"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509モジュールに関する注意事項</font></font></h2>
+<div name="证书的安全性" data-unique="证书的安全性"></div><h3 id="证书的安全性"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">証明書のセキュリティ</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">X509 モジュールは、証明書の作成や処理などの機能を提供しますが、証明書の安全性が保証される必要があるため、次の点に特に注意する必要があります。</font></font></p>
 <ul>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">秘密鍵のセキュリティ。</font><font style="vertical-align: inherit;">秘密鍵は証明書の重要な部分であり、厳重に保護する必要があります。</font><font style="vertical-align: inherit;">証明書の使用中、秘密鍵はできるだけ安全な場所に保管し、アクセス権を適切に設定する必要があります。</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">証明書の転送は安全です。</font><font style="vertical-align: inherit;">証明書の交換および使用中は、証明書の盗難や改ざんを防ぐために、安全な送信方法を採用する必要があります。</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">証明書検証セキュリティ。</font><font style="vertical-align: inherit;">証明書の検証は、証明書の有効性とセキュリティを確保するための重要なリンクであり、偽造された証明書でユーザーを誤解させないように、証明書検証規則に厳密に従って検証する必要があります。</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">秘密鍵のセキュリティ。秘密キーは証明書の重要な部分であり、厳密に保護する必要があります。証明書を使用する際は、秘密鍵を可能な限り安全な場所に保管し、アクセス許可を適切に設定する必要があります。</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">証明書の送信は安全です。証明書の交換および使用中は、証明書の盗難や改ざんを防ぐために、安全な送信方法を使用する必要があります。</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">証明書の検証は安全です。証明書の検証は、証明書の有効性とセキュリティを確保するための重要な手順です。偽造された証明書がユーザーに誤解を与えないよう、証明書検証規則に厳密に従って検証を実行する必要があります。</font></font></li>
 </ul>
-<h3 id="证书的有效期"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">証明書の有効期間</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">証明書の有効期間とは、証明書の発行日から証明書の有効期限までの期間を指します。</font><font style="vertical-align: inherit;">証明書の有効期間は、証明書の使用時間を制限します.証明書の有効期限が切れる前に、証明書の所有者は証明書を使用できますが、証明書の有効期限が切れると、証明書はその有効性を失います.</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">したがって、証明書を使用する前に、期限切れの証明書を使用しないように、証明書の有効期間を確認する必要があります。</font><font style="vertical-align: inherit;">同時に、証明書の有効期限が切れる前に、できるだけ早く証明書を更新して、証明書の有用性を確保する必要があります。</font></font></p>
-<h3 id="证书的信任机制"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">証明書信頼メカニズム</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">証明書の信頼メカニズムは、クライアントまたはサーバーが証明書を信頼できるかどうかの重要な要素です。</font><font style="vertical-align: inherit;">通常、クライアントまたはサーバーは、信頼できる機関 (CA) によって発行および承認された証明書のみを信頼します。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">証明書を使用する前に、証明書に関する信頼の問題を特定する必要があります。</font><font style="vertical-align: inherit;">証明書の発行機関や証明書のサブジェクトの識別名などを確認することで、証明書が信頼できるかどうかを判断できます。</font></font></p>
-<h3 id="证书的更新机制"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">証明書の更新メカニズム</font></font></h3>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">証明書の更新メカニズムは、証明書が常に有効で安全であることを保証する重要なリンクです。</font><font style="vertical-align: inherit;">通常、証明書の更新には主に次の 2 つの側面があります。</font></font></p>
+<div name="证书的有效期" data-unique="证书的有效期"></div><h3 id="证书的有效期"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">証明書の有効期間</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">証明書の有効期間とは、証明書の発行日から証明書の有効期限までの期間を指します。証明書の有効期間は、証明書の使用時間を制限します。証明書の有効期限が切れる前は、証明書所有者は証明書を使用できますが、証明書の有効期限が切れると、証明書の有効性が失われます。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">したがって、証明書を使用する前に、証明書の有効期間を確認し、期限切れの証明書を使用しないようにする必要があります。同時に、証明書を確実に利用できるように、期限が切れる前にできるだけ早く証明書を更新する必要があります。</font></font></p>
+<div name="证书的信任机制" data-unique="证书的信任机制"></div><h3 id="证书的信任机制"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">証明書の信頼メカニズム</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">証明書の信頼メカニズムは、証明書がクライアントまたはサーバーによって信頼できるかどうかを決定する重要な要素です。通常、クライアントまたはサーバーは、信頼された機関 (CA) によって署名され認識された証明書のみを信頼します。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">証明書を使用する前に、証明書の信頼性の問題を判断する必要があります。証明書が信頼できるかどうかは、証明書の発行局、証明書のサブジェクト識別名などを確認することで判断できます。</font></font></p>
+<div name="证书的更新机制" data-unique="证书的更新机制"></div><h3 id="证书的更新机制"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">証明書更新メカニズム</font></font></h3>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">証明書更新メカニズムは、証明書が有効で安全な状態を維持するために重要な部分です。通常、証明書の更新には主に次の 2 つの側面が含まれます。</font></font></p>
 <ul>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">証明書の有効期限が切れた後の更新。</font><font style="vertical-align: inherit;">証明書の有効期限が切れた後、証明書を再申請し、対応する規則に従って署名および検証して、証明書の有効性を確認する必要があります。</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">証明書の延長と更新。</font><font style="vertical-align: inherit;">証明書の使用中に、証明書の情報を拡張または更新する必要がある場合は、証明書を再申請し、署名と検証を行うことで実現できます。</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">証明書の有効期限が切れた後の更新。証明書の有効期限が切れたら、証明書を再申請し、対応するルールに従って署名および検証して、証明書の有効性を確認する必要があります。</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">証明書の延長と更新。証明書の使用中に証明書情報を拡張または更新する必要がある場合は、証明書を再申請し、署名および検証することで行うことができます。</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">要約すると、X509 モジュールは、証明書の作成や処理などの機能を提供し、証明書のセキュリティ、信頼性、および有効性を確保するための重要なリンクです。</font><font style="vertical-align: inherit;">証明書を使用および管理するプロセスでは、証明書の有効性とセキュリティを確保するために、対応する規則と要件に従う必要があります。</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">👉【</font></font><a href="contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ネイティブモジュール追加</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">】</font></font></p>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2021 fibjs.org |</font></font><a href="../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">サポートしてください</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script type="text/javascript" src="../../../js/common.js"></script><script type="text/javascript" src="../../../js/docs.js"></script></body></html>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">要約すると、X509 モジュールは証明書の作成、処理、その他の機能を提供し、証明書のセキュリティ、信頼性、有効性を確保するための重要なリンクです。証明書の使用および管理のプロセスでは、証明書の有効性とセキュリティを確保するために、対応するルールと要件に従う必要があります。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">👉【</font></font><a href="contribute.md.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ネイティブモジュールを追加</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">】</font></font></p>
+ <div class="commentbox" id="commentbox" data-loaded="true"><iframe src="https://app.commentbox.io/5670558372986880-proj?id=commentbox&amp;url=file%3A%2F%2F%2FUsers%2Flion%2Fworks%2Ffibjs%2Fdocs%2Fweb%2Fdist%2Fdocs%2Fguide%2Fx509.md.html%23commentbox&amp;tlc_param=tlc&amp;background_color=&amp;text_color=&amp;subtext_color=&amp;sort_order=best" frameborder="0" scrolling="no" style="width: 100%" height="298px" data-comments-loaded="true"></iframe></div></div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id="toc" class="tocify"></div></div></div></div><div class="footer"><div class="container"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© Copyright 2012-2024 fibjs.org |</font></font><a href="../../support.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">サポートしてください</font></font></a></div></div><a id="back-to-top" href="#" class="btn btn-default btn-lg back-to-top" role="button" title="" data-toggle="tooltip" data-placement="left" data-original-title=""><span class="glyphicon glyphicon-chevron-up"></span></a><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script><script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script><script>commentBox('5670558372986880-proj')</script><script type="text/javascript" src="../../../js/common.js"></script><script type="text/javascript" src="../../../js/docs.js"></script></body></html>

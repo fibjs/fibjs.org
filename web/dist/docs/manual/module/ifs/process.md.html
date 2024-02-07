@@ -56,6 +56,7 @@
 <li><a href=test.md.html class ="notranslate">test</a></li>
 <li><a href=timers.md.html class ="notranslate">timers</a></li>
 <li><a href=tty.md.html class ="notranslate">tty</a></li>
+<li><a href=types.md.html class ="notranslate">types</a></li>
 <li><a href=url.md.html class ="notranslate">url</a></li>
 <li><a href=util.md.html class ="notranslate">util</a></li>
 <li><a href=uuid.md.html class ="notranslate">uuid</a></li>
@@ -84,6 +85,7 @@
 <li><a href=../../object/ifs/fswatcher.md.html class ="notranslate">FSWatcher</a></li>
 <li><a href=../../object/ifs/fiber.md.html class ="notranslate">Fiber</a></li>
 <li><a href=../../object/ifs/file.md.html class ="notranslate">File</a></li>
+<li><a href=../../object/ifs/filehandle.md.html class ="notranslate">FileHandle</a></li>
 <li><a href=../../object/ifs/handler.md.html class ="notranslate">Handler</a></li>
 <li><a href=../../object/ifs/heapgraphedge.md.html class ="notranslate">HeapGraphEdge</a></li>
 <li><a href=../../object/ifs/heapgraphnode.md.html class ="notranslate">HeapGraphNode</a></li>
@@ -106,10 +108,6 @@
 <li><a href=../../object/ifs/lrucache.md.html class ="notranslate">LruCache</a></li>
 <li><a href=../../object/ifs/memorystream.md.html class ="notranslate">MemoryStream</a></li>
 <li><a href=../../object/ifs/message.md.html class ="notranslate">Message</a></li>
-<li><a href=../../object/ifs/mongocollection.md.html class ="notranslate">MongoCollection</a></li>
-<li><a href=../../object/ifs/mongocursor.md.html class ="notranslate">MongoCursor</a></li>
-<li><a href=../../object/ifs/mongodb.md.html class ="notranslate">MongoDB</a></li>
-<li><a href=../../object/ifs/mongoid.md.html class ="notranslate">MongoID</a></li>
 <li><a href=../../object/ifs/mysql.md.html class ="notranslate">MySQL</a></li>
 <li><a href=../../object/ifs/odbc.md.html class ="notranslate">Odbc</a></li>
 <li><a href=../../object/ifs/pkey.md.html class ="notranslate">PKey</a></li>
@@ -122,6 +120,7 @@
 <li><a href=../../object/ifs/routing.md.html class ="notranslate">Routing</a></li>
 <li><a href=../../object/ifs/sqlite.md.html class ="notranslate">SQLite</a></li>
 <li><a href=../../object/ifs/sandbox.md.html class ="notranslate">SandBox</a></li>
+<li><a href=../../object/ifs/script.md.html class ="notranslate">Script</a></li>
 <li><a href=../../object/ifs/seekablestream.md.html class ="notranslate">SeekableStream</a></li>
 <li><a href=../../object/ifs/semaphore.md.html class ="notranslate">Semaphore</a></li>
 <li><a href=../../object/ifs/service.md.html class ="notranslate">Service</a></li>
@@ -312,6 +311,21 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {
 <li><span class="notranslate">String</span>, 返回当前系统路径</li>
 </ul>
 <hr>
+<h3 id="dlopen" class ="notranslate">dlopen</h3>
+<p><strong>动态加载 C++ Addons</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> process.dlopen(<span class="hljs-built_in">Object</span> <span class="hljs-built_in">module</span>,
+    <span class="hljs-built_in">String</span> filename,
+    Integer flags = <span class="hljs-number">1</span>);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">module</span>: Object, 指定要加载的模块</li>
+<li><span class="notranslate">filename</span>: String, 指定要加载的模块文件名</li>
+<li><span class="notranslate">flags</span>: Integer, 指定加载模块的方式，缺省为 1</li>
+</ul>
+<hr>
 <h3 id="chdir" class ="notranslate">chdir</h3>
 <p><strong>修改操作系统当前工作路径</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> process.chdir(<span class="hljs-built_in">String</span> directory);
@@ -444,6 +458,79 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {
 <li><span class="notranslate">id</span>: Integer, 指定要设置的用户 id</li>
 </ul>
 <hr>
+<h3 id="emitWarning" class ="notranslate">emitWarning</h3>
+<p><strong>发出自定义或特定于应用程序的进程警告。可以通过向 &#39;warning&#39; 事件添加处理程序来监听这些事件</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2</div><span class="hljs-keyword">static</span> process.emitWarning(Value warning,
+    <span class="hljs-built_in">Object</span> options);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">warning</span>: Value, 指定要发出的警告</li>
+<li><p>options: Object, 指定警告的选项</p>
+<p>选项包含以下内容：</p>
+</li>
+</ul>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5</div>{
+    <span class="hljs-string">"type"</span>: <span class="hljs-string">"Warning"</span>, <span class="hljs-comment">// specifies the name of the type of warning issued. Default value: 'Warning'</span>
+    <span class="hljs-string">"code"</span>: <span class="hljs-string">""</span>, <span class="hljs-comment">// specify the unique identifier of the warning instance issued</span>
+    <span class="hljs-string">"detail"</span>: <span class="hljs-string">""</span> <span class="hljs-comment">// specify additional text for warnings</span>
+}
+</code></pre>
+<p>使用方法如下：</p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17</div><span class="hljs-keyword">const</span> {
+    emitWarning
+} = <span class="hljs-built_in">require</span>(<span class="hljs-string">'process'</span>);
+
+<span class="hljs-comment">// Emit a warning with a code and additional detail.</span>
+emitWarning(<span class="hljs-string">'Something happened!'</span>, {
+    <span class="hljs-attr">code</span>: <span class="hljs-string">'MY_WARNING'</span>,
+    <span class="hljs-attr">detail</span>: <span class="hljs-string">'This is some additional information'</span>,
+});
+
+process.on(<span class="hljs-string">'warning'</span>, (warning) =&gt; {
+    <span class="hljs-built_in">console</span>.warn(warning.name); <span class="hljs-comment">// 'Warning'</span>
+    <span class="hljs-built_in">console</span>.warn(warning.message); <span class="hljs-comment">// 'Something happened!'</span>
+    <span class="hljs-built_in">console</span>.warn(warning.code); <span class="hljs-comment">// 'MY_WARNING'</span>
+    <span class="hljs-built_in">console</span>.warn(warning.stack); <span class="hljs-comment">// Stack trace</span>
+    <span class="hljs-built_in">console</span>.warn(warning.detail); <span class="hljs-comment">// 'This is some additional information'</span>
+});
+</code></pre>
+<hr>
+<p><strong>发出自定义或特定于应用程序的进程警告。可以通过向 &#39;warning&#39; 事件添加处理程序来监听这些事件</strong></p>
+<pre><code class="lang-JavaScript"><div class="line-numbers">1
+2
+3</div><span class="hljs-keyword">static</span> process.emitWarning(Value warning,
+    <span class="hljs-built_in">String</span> type = <span class="hljs-string">"Warning"</span>,
+    <span class="hljs-built_in">String</span> code = <span class="hljs-string">""</span>);
+</code></pre>
+<p>调用参数:</p>
+<ul>
+<li><span class="notranslate">warning</span>: Value, 指定要发出的警告</li>
+<li><span class="notranslate">type</span>: String, 指定发出的警告类型的名称。默认值：&#39;Warning&#39;</li>
+<li><span class="notranslate">code</span>: String, 指定发出的警告实例的唯一标识符</li>
+</ul>
+<hr>
 <h3 id="disconnect" class ="notranslate">disconnect</h3>
 <p><strong>关闭与父进程的 ipc 管道</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> process.disconnect();
@@ -532,4 +619,4 @@ process.on(<span class="hljs-string">'SIGINT'</span>, () =&gt; {
 <p><strong>Boolean, 查询与父进程的管道是否正常连接</strong></p>
 <pre><code class="lang-JavaScript"><div class="line-numbers">1</div><span class="hljs-keyword">static</span> readonly <span class="hljs-built_in">Boolean</span> process.connected;
 </code></pre>
- </div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2021 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>
+ <div class=commentbox></div></div><div class="sidebar hidden-sm hidden-xs hidden-md"><div id=toc></div></div></div></div><div class=footer><div class=container>&copy; Copyright 2012-2024 fibjs.org | <a href=../../../../support.html>支持我们</a></div></div><a id=back-to-top href=# class="btn btn-default btn-lg back-to-top" role=button title="" data-toggle=tooltip data-placement=left><span class="glyphicon glyphicon-chevron-up"></span></a><script type=text/javascript src=https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js></script><script src=https://unpkg.com/commentbox.io/dist/commentBox.min.js></script><script>commentBox('5670558372986880-proj')</script><script type=text/javascript src=../../../../js/common.js></script><script type=text/javascript src=../../../../js/docs.js></script></body></html>
