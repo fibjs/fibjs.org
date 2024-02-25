@@ -32,9 +32,9 @@
 * [HttpServer](ifs/HttpServer.md) - HttpServer 是内置对象之一，它是用于创建 HTTP 服务器的对象。一个 HttpServer 对象包含两个必传的参数：端口和事件处理接口对象。在事件处理接口对象中，具体的实现方式可以是简单的回调函数，也可以使用复杂的路由、链式处理数组等方式
 * [HttpUploadData](ifs/HttpUploadData.md) - 包含 multipart 的一个条目数据
 * [HttpsServer](ifs/HttpsServer.md) - HttpsServer 是用于创建 https 服务器的对象，HttpsServer 对象可以使用 HttpServer 所有的接口函数和属性。HttpsServer 对象可以通过在创建时传入之前使用 openssl 生成的证书对象 (X509Cert 类型) 和密钥对象 (PKey 类型)，从而为客户端提供 ssl 加密保护的服务
-* [Image](ifs/Image.md) - 图像处理对象，用以对图像进行转换，绘制，存储等操作
 * [Iterator](ifs/Iterator.md) - 迭代器对象，用于遍历集合数据
-* [LevelDB](ifs/LevelDB.md) - evelDB 是 fibjs 内置的数据库操作对象，用于创建和管理键值对形式的字典对象。使用 LevelDB 对象，可轻松实现键值对数据的存储、查询、删除、枚举等操作。它基于 Google 开源的 LevelDB 实现，具有高效、可靠、可扩展等优点
+* [KeyObject](ifs/KeyObject.md) - KeyObject 类来表示对称或非对称密钥，每种密钥公开不同的功能
+* [LevelDB](ifs/LevelDB.md) - LevelDB 是 fibjs 内置的数据库操作对象，用于创建和管理键值对形式的字典对象。使用 LevelDB 对象，可轻松实现键值对数据的存储、查询、删除、枚举等操作。它基于 Google 开源的 LevelDB 实现，具有高效、可靠、可扩展等优点
 * [Lock](ifs/Lock.md) - Lock 是一个内建对象，它可以用来控制纤程并发访问, 可以通过一个纤程获取锁，来阻止其他纤程同时获取。Lock 可以通过 coroutine.Lock() 函数创建
 * [LruCache](ifs/LruCache.md) - LruCache(Least Recently Used Cache) 是用来维护LRU缓存的类。它可以存储一定数量的值，并且保持了容器的尺寸。当新数据进来时，如果容器还没有到达尺寸限制，新数据可以直接加入到容器中。如果容器已满，则容器将淘汰最近最少使用的数据
 * [MemoryStream](ifs/MemoryStream.md) - 内存流对象
@@ -55,6 +55,7 @@
 * [SeekableStream](ifs/SeekableStream.md) - 可移动当前指针的流对象接口
 * [Semaphore](ifs/Semaphore.md) - 纤程信号量对象
 * [Service](ifs/Service.md) - 系统服务管理对象
+* [Sign](ifs/Sign.md) - 用于生成签名的实用程序
 * [Smtp](ifs/Smtp.md) - Smtp对象
 * [Socket](ifs/Socket.md) - 网络套接口对象
 * [SslHandler](ifs/SslHandler.md) - ssl 协议转换处理器
@@ -71,6 +72,7 @@
 * [TextEncoder](ifs/TextEncoder.md) - TextEncoder 编码对象
 * [Timer](ifs/Timer.md) - 定时器处理器对象
 * [UrlObject](ifs/UrlObject.md) - UrlObject 是用于表示 URL 信息的一种对象，我们可以方便地使用 UrlObject 对象表示和操作一个 URL 地址。
+* [Verify](ifs/Verify.md) - 用于验证签名的实用程序
 * [WebSocket](ifs/WebSocket.md) - WebSocket 是一种基于 TCP 协议的全双工通信协议，在浏览器和服务器之间建立起一个不断开的连接，可以实现实时双向数据传输，并且可以支持任意格式的数据传输。在 fibjs 中，WebSocket 支持模块提供了相应的 API 接口，可以实现 WebSocket 服务器端和客户端的开发
 * [WebSocketMessage](ifs/WebSocketMessage.md) - `WebSocketMessage` 是 WebSocket 协议中的一种消息类型，它封装了 WebSocket 传输协议中各类消息的数据格式和处理方式，可用于 WebSocket 客户端和服务端双方通信。
 * [WebView](ifs/WebView.md) - 浏览器窗口对象

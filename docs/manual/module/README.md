@@ -53,12 +53,12 @@
   - [test](ifs/test.md) - test 模块是一个测试框架，结合断言模块 `assert` 可以方便地编写各种测试用例
 * Utility
   - [db](ifs/db.md) - 数据库访问模块
-  - [gd](ifs/gd.md) - gd 模块是对图像进行处理的模块，提供了创建、操作、存储图像的功能，并提供了丰富的颜色、过滤器、绘制等相关操作。
   - [registry](ifs/registry.md) - registry 模块是一个操作 Windows 注册表（Registry）的模块。它提供了访问注册表的方法和常量，可以读取、修改、删除、添加等操作。registry 模块提供的操作方式和 Windows 应用程序使用的方式类似，但却是在 FibJS 中提供了能力。常量有常见的 Root、 数据类型等常量，还有一些用于不同操作的返回值的常量
+  - [types](ifs/types.md) - types 模块提供了对数据类型判断的工具函数
   - [util](ifs/util.md) - util 模块提供了对数据类型的判断、对象属性的复制、模版字符串的解析、事件处理等实用的工具函数
   - [uuid](ifs/uuid.md) - uuid 模块提供唯一 id 的创建于操作。它可以用于生成符合各种不同要求的 UUID(Universally Unique Identifier)
   - [xml](ifs/xml.md) - xml 处理模块，可以使用 xml 模块解析和处理 xml 和 html 文件
 * Constants
   - [constants](ifs/constants.md) - 常用常量定义模块
   - [fs_constants](ifs/fs_constants.md) - fs 模块常用常量定义模块
-* [types](ifs/types.md) - types 模块提供了对数据类型判断的工具函数
+  - [crypto_constants](ifs/crypto_constants.md) - crypto 模块常用常量定义模块

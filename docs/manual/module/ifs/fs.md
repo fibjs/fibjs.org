@@ -49,7 +49,7 @@ fs.writeFile('/path/to/file', content, function(err) {
 ## 对象
         
 ### constants
-**fs模块的常量对象**
+**fs模块的常量对象，参见 [fs_constants](fs_constants.md)**
 
 ```JavaScript
 fs_constants fs.constants;

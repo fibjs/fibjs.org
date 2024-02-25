@@ -39,8 +39,8 @@ digraph {
     HttpCollection [tooltip="HttpCollection", URL="HttpCollection.md", label="{HttpCollection}"];
     HttpCookie [tooltip="HttpCookie", URL="HttpCookie.md", label="{HttpCookie}"];
     HttpUploadData [tooltip="HttpUploadData", URL="HttpUploadData.md", label="{HttpUploadData}"];
-    Image [tooltip="Image", URL="Image.md", label="{Image}"];
     Iterator [tooltip="Iterator", URL="Iterator.md", label="{Iterator}"];
+    KeyObject [tooltip="KeyObject", URL="KeyObject.md", label="{KeyObject}"];
     LevelDB [tooltip="LevelDB", URL="LevelDB.md", label="{LevelDB}"];
     Lock [tooltip="Lock", URL="Lock.md", label="{Lock}"];
     Condition [tooltip="Condition", URL="Condition.md", label="{Condition}"];
@@ -62,6 +62,7 @@ digraph {
     RedisSortedSet [tooltip="RedisSortedSet", URL="RedisSortedSet.md", label="{RedisSortedSet}"];
     SandBox [tooltip="SandBox", URL="SandBox.md", label="{SandBox}"];
     Script [tooltip="Script", URL="Script.md", label="{Script}"];
+    Sign [tooltip="Sign", URL="Sign.md", label="{Sign}"];
     Smtp [tooltip="Smtp", URL="Smtp.md", label="{Smtp}"];
     Stat [tooltip="Stat", URL="Stat.md", label="{Stat}"];
     Stream [tooltip="Stream", URL="Stream.md", label="{Stream}"];
@@ -83,6 +84,7 @@ digraph {
     TextEncoder [tooltip="TextEncoder", URL="TextEncoder.md", label="{TextEncoder}"];
     Timer [tooltip="Timer", URL="Timer.md", label="{Timer}"];
     UrlObject [tooltip="UrlObject", URL="UrlObject.md", label="{UrlObject}"];
+    Verify [tooltip="Verify", URL="Verify.md", label="{Verify}"];
     X509Cert [tooltip="X509Cert", URL="X509Cert.md", label="{X509Cert}"];
     X509Crl [tooltip="X509Crl", URL="X509Crl.md", label="{X509Crl}"];
     X509Req [tooltip="X509Req", URL="X509Req.md", label="{X509Req}"];
@@ -132,8 +134,8 @@ digraph {
     object -> HttpCollection [dir=back];
     object -> HttpCookie [dir=back];
     object -> HttpUploadData [dir=back];
-    object -> Image [dir=back];
     object -> Iterator [dir=back];
+    object -> KeyObject [dir=back];
     object -> LevelDB [dir=back];
     object -> Lock [dir=back];
     Lock -> Condition [dir=back];
@@ -155,6 +157,7 @@ digraph {
     object -> RedisSortedSet [dir=back];
     object -> SandBox [dir=back];
     object -> Script [dir=back];
+    object -> Sign [dir=back];
     object -> Smtp [dir=back];
     object -> Stat [dir=back];
     object -> Stream [dir=back];
@@ -176,6 +179,7 @@ digraph {
     object -> TextEncoder [dir=back];
     object -> Timer [dir=back];
     object -> UrlObject [dir=back];
+    object -> Verify [dir=back];
     object -> X509Cert [dir=back];
     object -> X509Crl [dir=back];
     object -> X509Req [dir=back];
