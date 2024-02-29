@@ -86,6 +86,8 @@ digraph {
     UrlObject [tooltip="UrlObject", URL="UrlObject.md", label="{UrlObject}"];
     Verify [tooltip="Verify", URL="Verify.md", label="{Verify}"];
     X509Cert [tooltip="X509Cert", URL="X509Cert.md", label="{X509Cert}"];
+    X509Certificate [tooltip="X509Certificate", URL="X509Certificate.md", label="{X509Certificate}"];
+    X509CertificateRequest [tooltip="X509CertificateRequest", URL="X509CertificateRequest.md", label="{X509CertificateRequest}"];
     X509Crl [tooltip="X509Crl", URL="X509Crl.md", label="{X509Crl}"];
     X509Req [tooltip="X509Req", URL="X509Req.md", label="{X509Req}"];
     XmlAttr [tooltip="XmlAttr", URL="XmlAttr.md", label="{XmlAttr}"];
@@ -181,6 +183,8 @@ digraph {
     object -> UrlObject [dir=back];
     object -> Verify [dir=back];
     object -> X509Cert [dir=back];
+    object -> X509Certificate [dir=back];
+    object -> X509CertificateRequest [dir=back];
     object -> X509Crl [dir=back];
     object -> X509Req [dir=back];
     object -> XmlAttr [dir=back];

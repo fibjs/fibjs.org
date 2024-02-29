@@ -78,6 +78,8 @@
 * [WebView](ifs/WebView.md) - 浏览器窗口对象
 * [Worker](ifs/Worker.md) - Worker 对象是用于创建子线程的对象，可以在程序中创建和处理子线程。一个 Worker 对象可以理解为一个在与主线程不同的线程中执行的 JavaScript 进程。 Worker 不与主线程共享内存，不会阻塞主线程，是一种主流的异步编程方式
 * [X509Cert](ifs/X509Cert.md) - X509Cert 是 crypto 模块中表示 x509 证书的对象，这个对象主要包括了从一个 DER 或者 PEM 格式的证书数据以及证书链数据构建出来的证书信息和方法，可以进行证书的解析和验证等操作
+* [X509Certificate](ifs/X509Certificate.md) - 封装 X509 证书并提供信息读取
+* [X509CertificateRequest](ifs/X509CertificateRequest.md) - X509CertificateRequest 对象是用于创建 x509 证书请求的对象，属于 crypto 模块
 * [X509Crl](ifs/X509Crl.md) - X509Crl 对象是 crypto 模块中的一个对象，用来表示 X509 撤销证书，即证书的吊销列表，与 CA 相关的操作如 X509 证书链的验证都会用到撤销列表信息
 * [X509Req](ifs/X509Req.md) - X509Req 对象是用于创建 x509 证书请求的对象，属于 crypto 模块
 * [XmlAttr](ifs/XmlAttr.md) - XmlAttr 对象表示 XmlElement 对象的属性

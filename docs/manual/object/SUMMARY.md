@@ -77,6 +77,8 @@
 * [WebView](ifs/WebView.md)
 * [Worker](ifs/Worker.md)
 * [X509Cert](ifs/X509Cert.md)
+* [X509Certificate](ifs/X509Certificate.md)
+* [X509CertificateRequest](ifs/X509CertificateRequest.md)
 * [X509Crl](ifs/X509Crl.md)
 * [X509Req](ifs/X509Req.md)
 * [XmlAttr](ifs/XmlAttr.md)

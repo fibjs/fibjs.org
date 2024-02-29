@@ -106,6 +106,14 @@ X509Crl crypto.X509Crl;
 X509Req crypto.X509Req;
 ```
 
+--------------------------
+### X509Certificate
+**[X509Certificate](../../object/ifs/X509Certificate.md) 构造函数，参见 [X509Certificate](../../object/ifs/X509Certificate.md)**
+
+```JavaScript
+X509Certificate crypto.X509Certificate;
+```
+
 ## 静态函数
         
 ### getHashes
@@ -426,6 +434,48 @@ static KeyObject crypto.createSecretKey(String key,
 
 返回结果:
 * [KeyObject](../../object/ifs/KeyObject.md), 返回对称加密的解密对象
+
+--------------------------
+### createCertificateRequest
+**创建一个新的证书请求对象**
+
+```JavaScript
+static X509CertificateRequest crypto.createCertificateRequest(Buffer csr);
+```
+
+调用参数:
+* csr: [Buffer](../../object/ifs/Buffer.md), 指定 PEM 格式的证书请求的数据
+
+返回结果:
+* [X509CertificateRequest](../../object/ifs/X509CertificateRequest.md), 返回证书请求对象
+
+--------------------------
+**创建一个新的证书请求对象**
+
+```JavaScript
+static X509CertificateRequest crypto.createCertificateRequest(Object options);
+```
+
+调用参数:
+* options: Object, 指定创建证书请求的选项
+
+返回结果:
+* [X509CertificateRequest](../../object/ifs/X509CertificateRequest.md), 返回证书请求对象
+
+options 内的参数会用于调用 [crypto.createPrivateKey](crypto.md#createPrivateKey) 创建私钥对象，此外还支持指定 subject 和 hashAlgorithm。示例如下：
+
+```JavaScript
+var pk = crypto.createPrivateKey(rsa4096_pem);
+var req = crypto.createCertificateRequest({
+    key: pk,
+    hashAlgorithm: 'sha256', // 缺省为 'sha256'
+    subject: {
+        C: "CN",
+        O: "baoz.cn",
+        CN: "baoz.me"
+    }
+});
+```
 
 --------------------------
 ### loadCert
