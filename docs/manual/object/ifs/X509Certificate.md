@@ -12,7 +12,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    X509Certificate [tooltip="X509Certificate", fillcolor="lightgray", id="me", label="{X509Certificate|new X509Certificate()\l|subject\lserialNumber\lpublicKey\lsubjectAltName\linfoAccess\lissuer\lca\lpathlen\lkeyUsage\ltype\lvalidFrom\lvalidTo\lraw\lpem\lfingerprint\lfingerprint256\lfingerprint512\l|checkEmail()\lcheckHost()\lcheckIP()\lcheckIssued()\lcheckPrivateKey()\lverify()\l}"];
+    X509Certificate [tooltip="X509Certificate", fillcolor="lightgray", id="me", label="{X509Certificate|new X509Certificate()\l|subject\lserialNumber\lpublicKey\lsubjectAltName\linfoAccess\lissuer\lca\lpathlen\lkeyUsage\ltype\lvalidFrom\lvalidTo\lraw\lpem\lfingerprint\lfingerprint256\lfingerprint512\l|next()\lcheckEmail()\lcheckHost()\lcheckIP()\lcheckIssued()\lcheckPrivateKey()\lverify()\l}"];
 
     object -> X509Certificate [dir=back];
 }
@@ -21,17 +21,34 @@ digraph {
 ## 构造函数
         
 ### X509Certificate
-**从证书创建一个 X509Certificate 对象**
+**从证书创建 X509Certificate 对象**
 
 ```JavaScript
 new X509Certificate(Buffer cert);
 ```
 
 调用参数:
-* cert: [Buffer](Buffer.md), 证书的二进制数据
+* cert: [Buffer](Buffer.md), PEM 格式证书的二进制数据
 
 返回结果:
 * 返回一个 X509Certificate 对象
+
+如果 cert 中包含多个证书，则返回的对象将包含第一个证书，并且 next() 方法将返回下一个证书
+
+--------------------------
+**从一组证书创建 X509Certificate 对象**
+
+```JavaScript
+new X509Certificate(Array certs);
+```
+
+调用参数:
+* certs: Array, PEM 格式证书的数组
+
+返回结果:
+* 返回一个 X509Certificate 对象
+
+如果 cert 中包含多个证书，则返回的对象将包含第一个证书，并且 next() 方法将返回下一个证书
 
 ## 成员属性
         
@@ -172,6 +189,17 @@ readonly String X509Certificate.fingerprint512;
 
 ## 成员函数
         
+### next
+**证书链的下一个证书**
+
+```JavaScript
+X509Certificate X509Certificate.next();
+```
+
+返回结果:
+* X509Certificate, 返回下一个证书
+
+--------------------------
 ### checkEmail
 **检查证书是否与给定的电子邮件地址匹配**
 

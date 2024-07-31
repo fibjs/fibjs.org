@@ -40,6 +40,15 @@ console.log(inflated.toString());
 
 在使用 `zlib` 模块时需要注意的是，如果要同时压缩和解压数据，建议先使用 `deflate` 对数据进行压缩之后再使用 `inflate` 对数据进行解压缩，避免出现错误。而对于不同的压缩格式和算法，还有其他的类和方法进行压缩和解压缩，可以参考以下文档进行使用。
 
+## 对象
+        
+### constants
+**zlib 模块的常量对象，参见 [zlib_constants](zlib_constants.md)**
+
+```JavaScript
+zlib_constants zlib.constants;
+```
+
 ## 静态函数
         
 ### createDeflate

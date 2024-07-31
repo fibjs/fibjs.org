@@ -25,7 +25,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Digest [tooltip="Digest", fillcolor="lightgray", id="me", label="{Digest|size\l|update()\ldigest()\lsign()\lverify()\l}"];
+    Digest [tooltip="Digest", fillcolor="lightgray", id="me", label="{Digest|size\l|update()\ldigest()\l}"];
 
     object -> Digest [dir=back];
 }
@@ -83,70 +83,6 @@ Value Digest.digest(String codec = "buffer");
 
 返回结果:
 * Value, 返回指定编码的摘要表示
-
---------------------------
-### sign
-**签名并返回摘要**
-
-```JavaScript
-Buffer Digest.sign(PKey key,
-    Object opts = {}) async;
-```
-
-调用参数:
-* key: [PKey](PKey.md), 签名的私钥
-* opts: Object, 指定签名选项
-
-返回结果:
-* [Buffer](Buffer.md), 返回签名后的数据
-
-opts 支持以下参数:
-
-```JavaScript
-{
-    alg: 0 指定签名的 hash 算法， 仅在 RSA 时有效， 缺省为 0. 支持算法: 0 = NONE,
-    1 = MD5,
-    2 = SHA1,
-    3 = SHA224,
-    4 = SHA256,
-    5 = SHA384,
-    6 = SHA512,
-    7 = RIPEMD160
-}
-```
-
---------------------------
-### verify
-**验证签名是否一致**
-
-```JavaScript
-Boolean Digest.verify(PKey key,
-    Buffer sign,
-    Object opts = {}) async;
-```
-
-调用参数:
-* key: [PKey](PKey.md), 验证签名的公钥
-* sign: [Buffer](Buffer.md), 指定要验证的签名
-* opts: Object, 指定验证选项
-
-返回结果:
-* Boolean, 返回验证后的结果
-
-opts 支持以下参数:
-
-```JavaScript
-{
-    alg: 0 指定签名的 hash 算法， 仅在 RSA 时有效， 缺省为 0. 支持算法: 0 = NONE,
-    1 = MD5,
-    2 = SHA1,
-    3 = SHA224,
-    4 = SHA256,
-    5 = SHA384,
-    6 = SHA512,
-    7 = RIPEMD160
-}
-```
 
 --------------------------
 ### toString

@@ -53,7 +53,7 @@ new UrlObject(Object args);
 ```
 
 调用参数:
-* args: Object, 指定构造参数的字典对象，支持的字段有：protocol, slashes, username, password, hostname, port, pathname, query, [hash](../../module/ifs/hash.md)
+* args: Object, 指定构造参数的字典对象，支持的字段有：protocol, slashes, username, password, hostname, port, pathname, query, hash
 
 --------------------------
 **UrlObject 对象构造函数，使用 [url](../../module/ifs/url.md) 字符串构造**
@@ -215,7 +215,7 @@ UrlObject.format(Object args);
 ```
 
 调用参数:
-* args: Object, 指定构造参数的字典对象，支持的字段有：protocol, slashes, username, password, hostname, port, pathname, query, [hash](../../module/ifs/hash.md)
+* args: Object, 指定构造参数的字典对象，支持的字段有：protocol, slashes, username, password, hostname, port, pathname, query, hash
 
 --------------------------
 ### resolve

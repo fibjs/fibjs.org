@@ -25,7 +25,7 @@
   - [net](ifs/net.md) - 网络访问模块
   - [punycode](ifs/punycode.md) - punycode 国际化域名转换模块
   - [querystring](ifs/querystring.md) - querystring 模块提供了一些用于解析和序列化 URL 查询参数的实用函数，使用 querystring 模块可以方便地将 URL 查询参数解析为对象或字符串，也可以将对象序列化为 URL 查询参数字符串
-  - [ssl](ifs/ssl.md) - ssl 模块是 fibjs 内置的加密模块，可以用于建立网络连接的 SSL 超文本传输协议。该模块提供加密验证，客户端和服务器可以确保连接是安全的
+  - [tls](ifs/tls.md) - tls 模块是 fibjs 内置的加密模块，可以用于建立网络连接的 tls/ssl 超文本传输协议。该模块提供加密验证，客户端和服务器可以确保连接是安全的
   - [url](ifs/url.md) - url 处理模块，url 模块提供了 Url 类，用于处理 URL 相关的操作，包括解析、组装、拼接等
   - [ws](ifs/ws.md) - websocket 支持模块
 * Encoding
@@ -40,8 +40,7 @@
   - [msgpack](ifs/msgpack.md) - msgpack是一种比 JSON 更轻量的数据交换格式，它可以将 JSON 对象序列化为二进制数据，以达到更快、更高效的数据交换效果
   - [string_decoder](ifs/string_decoder.md) - 解码 Buffer 到字符串
 * Crypto
-  - [crypto](ifs/crypto.md) - `crypto` 模块是 `fibjs` 内置的加密算法模块。它提供了对称加密、非对称加密、摘要算法、密码学随机数生成器等功能。在使用之前，需要通过 `require('crypto')` 加载该模块。
-  - [hash](ifs/hash.md) - hash 模块主要用于实现消息摘要算法，是实现加密算法中，非常重要的一个子模块。同时，消息摘要算法也是许多加密算法的基础。
+  - [crypto](ifs/crypto.md) - `crypto` 模块是 `fibjs` 内置的加密算法模块。它提供了对称加密、非对称加密、摘要算法、密码学随机数生成器等功能。在使用之前，需要通过 `require('crypto')` 加载该模块
 * Compress
   - [zip](ifs/zip.md) - zip 模块是一个用于文件压缩和解压缩的模块。它提供了压缩、解压缩、查找和枚举 zip 文件中的文件列表等操作
   - [zlib](ifs/zlib.md) - zlib 是内置的压缩模块，支持 gzip、deflate、zlib 等多种压缩格式和模式
@@ -62,3 +61,5 @@
   - [constants](ifs/constants.md) - 常用常量定义模块
   - [fs_constants](ifs/fs_constants.md) - fs 模块常用常量定义模块
   - [crypto_constants](ifs/crypto_constants.md) - crypto 模块常用常量定义模块
+* [rtc](ifs/rtc.md) - WebRTC 网络实时通信模块
+* [zlib_constants](ifs/zlib_constants.md) - zlib 模块常用常量定义模块

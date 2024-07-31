@@ -43,11 +43,13 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    EventEmitter [tooltip="EventEmitter", fillcolor="lightgray", id="me", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
+    EventEmitter [tooltip="EventEmitter", fillcolor="lightgray", id="me", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\laddEventListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveEventListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
+    AbortSignal [tooltip="AbortSignal", URL="AbortSignal.md", label="{AbortSignal}"];
     ChildProcess [tooltip="ChildProcess", URL="ChildProcess.md", label="{ChildProcess}"];
     DgramSocket [tooltip="DgramSocket", URL="DgramSocket.md", label="{DgramSocket}"];
     FSWatcher [tooltip="FSWatcher", URL="FSWatcher.md", label="{FSWatcher}"];
-    LruCache [tooltip="LruCache", URL="LruCache.md", label="{LruCache}"];
+    RTCDataChannel [tooltip="RTCDataChannel", URL="RTCDataChannel.md", label="{RTCDataChannel}"];
+    RTCPeerConnection [tooltip="RTCPeerConnection", URL="RTCPeerConnection.md", label="{RTCPeerConnection}"];
     Service [tooltip="Service", URL="Service.md", label="{Service}"];
     StatsWatcher [tooltip="StatsWatcher", URL="StatsWatcher.md", label="{StatsWatcher}"];
     WebSocket [tooltip="WebSocket", URL="WebSocket.md", label="{WebSocket}"];
@@ -55,10 +57,12 @@ digraph {
     Worker [tooltip="Worker", URL="Worker.md", label="{Worker}"];
 
     object -> EventEmitter [dir=back];
+    EventEmitter -> AbortSignal [dir=back];
     EventEmitter -> ChildProcess [dir=back];
     EventEmitter -> DgramSocket [dir=back];
     EventEmitter -> FSWatcher [dir=back];
-    EventEmitter -> LruCache [dir=back];
+    EventEmitter -> RTCDataChannel [dir=back];
+    EventEmitter -> RTCPeerConnection [dir=back];
     EventEmitter -> Service [dir=back];
     EventEmitter -> StatsWatcher [dir=back];
     EventEmitter -> WebSocket [dir=back];
@@ -151,6 +155,27 @@ Object EventEmitter.addListener(Object map);
 
 返回结果:
 * Object, 返回事件对象本身，便于链式调用
+
+--------------------------
+### addEventListener
+**绑定一个事件处理函数到对象**
+
+```JavaScript
+Object EventEmitter.addEventListener(String ev,
+    Function func,
+    Object options = {});
+```
+
+调用参数:
+* ev: String, 指定事件的名称
+* func: Function, 指定事件处理函数
+* options: Object, 指定事件处理函数的选项
+
+返回结果:
+* Object, 返回事件对象本身，便于链式调用
+
+options 参数是一个对象，它可以包含以下属性：
+- once: 如果为 true，则事件处理函数只会触发一次，触发后会被移除
 
 --------------------------
 ### prependListener
@@ -319,6 +344,24 @@ Object EventEmitter.removeListener(Object map);
 
 调用参数:
 * map: Object, 指定事件映射关系，对象属性名称作为事件名称，属性的值作为事件处理函数
+
+返回结果:
+* Object, 返回事件对象本身，便于链式调用
+
+--------------------------
+### removeEventListener
+**从对象处理队列中取消指定函数**
+
+```JavaScript
+Object EventEmitter.removeEventListener(String ev,
+    Function func,
+    Object options = {});
+```
+
+调用参数:
+* ev: String, 指定事件的名称
+* func: Function, 指定事件处理函数
+* options: Object, 指定事件处理函数的选项
 
 返回结果:
 * Object, 返回事件对象本身，便于链式调用

@@ -1,24 +1,5 @@
-# 对象 StatsWatcher
-文件 Stats 观察对象
-
-当调用 `fs.watchFile(target, onchange)` 成功时, 返回该类型对象
-
-```JavaScript
-var fs = require("fs");
-var statsWatcher = fs.watchFile(target, (curStat, prevStat) => {
-    // process
-    // ...
-
-    statsWatcher.unref();
-});
-```
-
-**注意** 当且**仅当**被观察的目标文件 target 的 mtime 属性发生变化时才会触发 onchange 回调
-
-单纯地访问(access)目标文件 target 不会触发 onchange 回调.
-
-如果调用 `fs.watchFile(target)` 时, target 表示的文件或目录还不存在, 则onchange 回调**不会**被调用, 一直到该 target 被创建, 该回调才会开始被调用.
-如果在 watcher 工作途中, )目标文件被删除, 则后续不会再有回调产生
+# 对象 AbortSignal
+brief 该对象允许您与异步操作（例如提取请求）进行通信，并在需要时通过 [AbortController](AbortController.md) 对象中止它
 
 ## 继承关系
 ```dot
@@ -27,10 +8,10 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\laddEventListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveEventListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
-    StatsWatcher [tooltip="StatsWatcher", fillcolor="lightgray", id="me", label="{StatsWatcher|onchange\l|close()\lref()\lunref()\l}"];
+    AbortSignal [tooltip="AbortSignal", fillcolor="lightgray", id="me", label="{AbortSignal|aborted\lonabort\l|abort()\l}"];
 
     object -> EventEmitter [dir=back];
-    EventEmitter -> StatsWatcher [dir=back];
+    EventEmitter -> AbortSignal [dir=back];
 }
 ```
 
@@ -40,57 +21,44 @@ digraph {
 **Integer, 默认全局最大监听器数**
 
 ```JavaScript
-static Integer StatsWatcher.defaultMaxListeners;
+static Integer AbortSignal.defaultMaxListeners;
 ```
 
 ## 成员属性
         
-### onchange
-**Function, 查询和绑定"文件改变"事件，相当于 on("change", func);**
+### aborted
+**Boolean, 用于检查是否已请求中止**
 
 ```JavaScript
-Function StatsWatcher.onchange;
+readonly Boolean AbortSignal.aborted;
+```
+
+--------------------------
+### onabort
+**Function, 事件处理程序，当中止请求时触发**
+
+```JavaScript
+readonly Function AbortSignal.onabort;
 ```
 
 ## 成员函数
         
-### close
-**停止对目标文件路径的观察, 清除引用计数(不再 hold 进程)**
+### abort
+**用于中止一个或多个 Web 请求**
 
 ```JavaScript
-StatsWatcher.close();
+AbortSignal.abort(String reason = "AbortError");
 ```
 
---------------------------
-### ref
-**增加引用计数, 告知 fibjs 只要该 watcher 还在使用就不要退出进程,**
-
-```JavaScript
-StatsWatcher StatsWatcher.ref();
-```
-
-返回结果:
-* StatsWatcher, 返回 StatsWatcher 本身
-
-经由 `fs.watchFile()` 得到的 StatsWatcher 默认已调用了该方法, 即默认就会 hold 进程.
-
---------------------------
-### unref
-**减少引用计数**
-
-```JavaScript
-StatsWatcher StatsWatcher.unref();
-```
-
-返回结果:
-* StatsWatcher, 返回 StatsWatcher 本身
+调用参数:
+* reason: String, 一个可选的字符串，用于描述中止请求的原因
 
 --------------------------
 ### on
 **绑定一个事件处理函数到对象**
 
 ```JavaScript
-Object StatsWatcher.on(String ev,
+Object AbortSignal.on(String ev,
     Function func);
 ```
 
@@ -105,7 +73,7 @@ Object StatsWatcher.on(String ev,
 **绑定一个事件处理函数到对象**
 
 ```JavaScript
-Object StatsWatcher.on(Object map);
+Object AbortSignal.on(Object map);
 ```
 
 调用参数:
@@ -119,7 +87,7 @@ Object StatsWatcher.on(Object map);
 **绑定一个事件处理函数到对象**
 
 ```JavaScript
-Object StatsWatcher.addListener(String ev,
+Object AbortSignal.addListener(String ev,
     Function func);
 ```
 
@@ -134,7 +102,7 @@ Object StatsWatcher.addListener(String ev,
 **绑定一个事件处理函数到对象**
 
 ```JavaScript
-Object StatsWatcher.addListener(Object map);
+Object AbortSignal.addListener(Object map);
 ```
 
 调用参数:
@@ -148,7 +116,7 @@ Object StatsWatcher.addListener(Object map);
 **绑定一个事件处理函数到对象**
 
 ```JavaScript
-Object StatsWatcher.addEventListener(String ev,
+Object AbortSignal.addEventListener(String ev,
     Function func,
     Object options = {});
 ```
@@ -169,7 +137,7 @@ options 参数是一个对象，它可以包含以下属性：
 **绑定一个事件处理函数到对象起始**
 
 ```JavaScript
-Object StatsWatcher.prependListener(String ev,
+Object AbortSignal.prependListener(String ev,
     Function func);
 ```
 
@@ -184,7 +152,7 @@ Object StatsWatcher.prependListener(String ev,
 **绑定一个事件处理函数到对象起始**
 
 ```JavaScript
-Object StatsWatcher.prependListener(Object map);
+Object AbortSignal.prependListener(Object map);
 ```
 
 调用参数:
@@ -198,7 +166,7 @@ Object StatsWatcher.prependListener(Object map);
 **绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次**
 
 ```JavaScript
-Object StatsWatcher.once(String ev,
+Object AbortSignal.once(String ev,
     Function func);
 ```
 
@@ -213,7 +181,7 @@ Object StatsWatcher.once(String ev,
 **绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次**
 
 ```JavaScript
-Object StatsWatcher.once(Object map);
+Object AbortSignal.once(Object map);
 ```
 
 调用参数:
@@ -227,7 +195,7 @@ Object StatsWatcher.once(Object map);
 **绑定一个事件处理函数到对象起始**
 
 ```JavaScript
-Object StatsWatcher.prependOnceListener(String ev,
+Object AbortSignal.prependOnceListener(String ev,
     Function func);
 ```
 
@@ -242,7 +210,7 @@ Object StatsWatcher.prependOnceListener(String ev,
 **绑定一个事件处理函数到对象起始**
 
 ```JavaScript
-Object StatsWatcher.prependOnceListener(Object map);
+Object AbortSignal.prependOnceListener(Object map);
 ```
 
 调用参数:
@@ -256,7 +224,7 @@ Object StatsWatcher.prependOnceListener(Object map);
 **从对象处理队列中取消指定函数**
 
 ```JavaScript
-Object StatsWatcher.off(String ev,
+Object AbortSignal.off(String ev,
     Function func);
 ```
 
@@ -271,7 +239,7 @@ Object StatsWatcher.off(String ev,
 **取消对象处理队列中的全部函数**
 
 ```JavaScript
-Object StatsWatcher.off(String ev);
+Object AbortSignal.off(String ev);
 ```
 
 调用参数:
@@ -284,7 +252,7 @@ Object StatsWatcher.off(String ev);
 **从对象处理队列中取消指定函数**
 
 ```JavaScript
-Object StatsWatcher.off(Object map);
+Object AbortSignal.off(Object map);
 ```
 
 调用参数:
@@ -298,7 +266,7 @@ Object StatsWatcher.off(Object map);
 **从对象处理队列中取消指定函数**
 
 ```JavaScript
-Object StatsWatcher.removeListener(String ev,
+Object AbortSignal.removeListener(String ev,
     Function func);
 ```
 
@@ -313,7 +281,7 @@ Object StatsWatcher.removeListener(String ev,
 **取消对象处理队列中的全部函数**
 
 ```JavaScript
-Object StatsWatcher.removeListener(String ev);
+Object AbortSignal.removeListener(String ev);
 ```
 
 调用参数:
@@ -326,7 +294,7 @@ Object StatsWatcher.removeListener(String ev);
 **从对象处理队列中取消指定函数**
 
 ```JavaScript
-Object StatsWatcher.removeListener(Object map);
+Object AbortSignal.removeListener(Object map);
 ```
 
 调用参数:
@@ -340,7 +308,7 @@ Object StatsWatcher.removeListener(Object map);
 **从对象处理队列中取消指定函数**
 
 ```JavaScript
-Object StatsWatcher.removeEventListener(String ev,
+Object AbortSignal.removeEventListener(String ev,
     Function func,
     Object options = {});
 ```
@@ -358,7 +326,7 @@ Object StatsWatcher.removeEventListener(String ev,
 **从对象处理队列中取消所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。**
 
 ```JavaScript
-Object StatsWatcher.removeAllListeners(String ev);
+Object AbortSignal.removeAllListeners(String ev);
 ```
 
 调用参数:
@@ -371,7 +339,7 @@ Object StatsWatcher.removeAllListeners(String ev);
 **从对象处理队列中取消所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。**
 
 ```JavaScript
-Object StatsWatcher.removeAllListeners(Array evs = []);
+Object AbortSignal.removeAllListeners(Array evs = []);
 ```
 
 调用参数:
@@ -385,7 +353,7 @@ Object StatsWatcher.removeAllListeners(Array evs = []);
 **监听器的默认限制的数量，仅用于兼容**
 
 ```JavaScript
-StatsWatcher.setMaxListeners(Integer n);
+AbortSignal.setMaxListeners(Integer n);
 ```
 
 调用参数:
@@ -396,7 +364,7 @@ StatsWatcher.setMaxListeners(Integer n);
 **获取监听器的默认限制的数量，仅用于兼容**
 
 ```JavaScript
-Integer StatsWatcher.getMaxListeners();
+Integer AbortSignal.getMaxListeners();
 ```
 
 返回结果:
@@ -407,7 +375,7 @@ Integer StatsWatcher.getMaxListeners();
 **查询对象指定事件的监听器数组**
 
 ```JavaScript
-Array StatsWatcher.listeners(String ev);
+Array AbortSignal.listeners(String ev);
 ```
 
 调用参数:
@@ -421,7 +389,7 @@ Array StatsWatcher.listeners(String ev);
 **查询对象指定事件的监听器数量**
 
 ```JavaScript
-Integer StatsWatcher.listenerCount(String ev);
+Integer AbortSignal.listenerCount(String ev);
 ```
 
 调用参数:
@@ -434,7 +402,7 @@ Integer StatsWatcher.listenerCount(String ev);
 **查询对象指定事件的监听器数量**
 
 ```JavaScript
-Integer StatsWatcher.listenerCount(Value o,
+Integer AbortSignal.listenerCount(Value o,
     String ev);
 ```
 
@@ -450,7 +418,7 @@ Integer StatsWatcher.listenerCount(Value o,
 **查询监听器事件名称**
 
 ```JavaScript
-Array StatsWatcher.eventNames();
+Array AbortSignal.eventNames();
 ```
 
 返回结果:
@@ -461,7 +429,7 @@ Array StatsWatcher.eventNames();
 **主动触发一个事件**
 
 ```JavaScript
-Boolean StatsWatcher.emit(String ev,
+Boolean AbortSignal.emit(String ev,
     ...args);
 ```
 
@@ -477,7 +445,7 @@ Boolean StatsWatcher.emit(String ev,
 **返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
 
 ```JavaScript
-String StatsWatcher.toString();
+String AbortSignal.toString();
 ```
 
 返回结果:
@@ -488,7 +456,7 @@ String StatsWatcher.toString();
 **返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
 
 ```JavaScript
-Value StatsWatcher.toJSON(String key = "");
+Value AbortSignal.toJSON(String key = "");
 ```
 
 调用参数:

@@ -35,6 +35,14 @@ TextEncoder global.TextEncoder;
 ```
 
 --------------------------
+### AbortController
+**控制器对象，用于在需要时中止一个或多个 Web 请求，参见 [AbortController](../../object/ifs/AbortController.md) 对象。**
+
+```JavaScript
+AbortController global.AbortController;
+```
+
+--------------------------
 ### console
 **控制台访问对象**
 

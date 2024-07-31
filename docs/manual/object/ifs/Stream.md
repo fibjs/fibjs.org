@@ -16,7 +16,7 @@ digraph {
     MemoryStream [tooltip="MemoryStream", URL="MemoryStream.md", label="{MemoryStream}"];
     RangeStream [tooltip="RangeStream", URL="RangeStream.md", label="{RangeStream}"];
     Socket [tooltip="Socket", URL="Socket.md", label="{Socket}"];
-    SslSocket [tooltip="SslSocket", URL="SslSocket.md", label="{SslSocket}"];
+    TLSSocket [tooltip="TLSSocket", URL="TLSSocket.md", label="{TLSSocket}"];
     TTYInputStream [tooltip="TTYInputStream", URL="TTYInputStream.md", label="{TTYInputStream}"];
     TTYOutputStream [tooltip="TTYOutputStream", URL="TTYOutputStream.md", label="{TTYOutputStream}"];
 
@@ -27,7 +27,7 @@ digraph {
     SeekableStream -> MemoryStream [dir=back];
     SeekableStream -> RangeStream [dir=back];
     Stream -> Socket [dir=back];
-    Stream -> SslSocket [dir=back];
+    Stream -> TLSSocket [dir=back];
     Stream -> TTYInputStream [dir=back];
     Stream -> TTYOutputStream [dir=back];
 }

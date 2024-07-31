@@ -47,7 +47,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    HttpClient [tooltip="HttpClient", fillcolor="lightgray", id="me", label="{HttpClient|new HttpClient()\l|cookies\ltimeout\lenableCookie\lautoRedirect\lenableEncoding\lmaxHeadersCount\lmaxHeaderSize\lmaxBodySize\luserAgent\lpoolSize\lpoolTimeout\lhttp_proxy\lhttps_proxy\lsslVerification\l|setClientCert()\lrequest()\lget()\lpost()\ldel()\lput()\lpatch()\lhead()\l}"];
+    HttpClient [tooltip="HttpClient", fillcolor="lightgray", id="me", label="{HttpClient|new HttpClient()\l|cookies\ltimeout\lenableCookie\lautoRedirect\lenableEncoding\lmaxHeadersCount\lmaxHeaderSize\lmaxBodySize\luserAgent\lpoolSize\lpoolTimeout\lhttp_proxy\lhttps_proxy\l|request()\lget()\lpost()\ldel()\lput()\lpatch()\lhead()\l}"];
 
     object -> HttpClient [dir=back];
 }
@@ -61,6 +61,40 @@ digraph {
 ```JavaScript
 new HttpClient();
 ```
+
+--------------------------
+**HttpClient 构造函数，创建一个新的HttpClient对象**
+
+```JavaScript
+new HttpClient(SecureContext context);
+```
+
+调用参数:
+* context: [SecureContext](SecureContext.md), 指定创建 HttpClient 使用的安全上下文
+
+--------------------------
+**HttpClient 构造函数，创建一个新的HttpClient对象**
+
+```JavaScript
+new HttpClient(Object options);
+```
+
+调用参数:
+* options: Object, 使用 [tls.createSecureContext](../../module/ifs/tls.md#createSecureContext) 创建安全上下文需要的选项
+
+options 除用于创建 [SecureContext](SecureContext.md) 的属性之外，还需提供以下属性：
+- timeout: 指定超时时间
+- enableCookie: 指定是否启用 cookie 功能
+- autoRedirect: 指定是否启用自动重定向功能
+- enableEncoding: 指定是否启用自动解压缩功能
+- maxHeadersCount: 指定最大请求头个数
+- maxHeaderSize: 指定最大请求头长度
+- maxBodySize: 指定 body 最大尺寸
+- userAgent: 指定浏览器标识
+- poolSize: 指定 keep-alive 最大缓存连接数
+- poolTimeout: 指定 keep-alive 缓存连接超时时间
+- http_proxy: 指定 [http](../../module/ifs/http.md) 代理地址
+- https_Proxy: 指定 https 代理地址
 
 ## 成员属性
         
@@ -167,29 +201,8 @@ String HttpClient.http_proxy;
 String HttpClient.https_proxy;
 ```
 
---------------------------
-### sslVerification
-**Integer, 查询和设置连接 https 时的证书验证模式, 参考 [ssl](../../module/ifs/ssl.md) 模块的 VERIFY_* 常量, 默认值为 [ssl.verification](../../module/ifs/ssl.md#verification)**
-
-```JavaScript
-Integer HttpClient.sslVerification;
-```
-
 ## 成员函数
         
-### setClientCert
-**设定缺省客户端证书**
-
-```JavaScript
-HttpClient.setClientCert(X509Cert crt,
-    PKey key);
-```
-
-调用参数:
-* crt: [X509Cert](X509Cert.md), 证书，用于发送给服务器验证客户端
-* key: [PKey](PKey.md), 私钥，用于与客户端会话
-
---------------------------
 ### request
 **发送 [http](../../module/ifs/http.md) 请求到指定的流对象，并返回结果**
 

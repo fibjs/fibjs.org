@@ -29,7 +29,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    TcpServer [tooltip="TcpServer", URL="TcpServer.md", label="{TcpServer|new TcpServer()\l|socket\lhandler\l|start()\lstop()\l}"];
+    TcpServer [tooltip="TcpServer", URL="TcpServer.md", label="{TcpServer|new TcpServer()\l|socket\ltimeout\lhandler\l|start()\lstop()\l}"];
     HttpServer [tooltip="HttpServer", fillcolor="lightgray", id="me", label="{HttpServer|new HttpServer()\l|maxHeadersCount\lmaxHeaderSize\lmaxBodySize\lenableEncoding\lserverName\l|enableCrossOrigin()\l}"];
     HttpsServer [tooltip="HttpsServer", URL="HttpsServer.md", label="{HttpsServer}"];
 
@@ -126,6 +126,14 @@ String HttpServer.serverName;
 
 ```JavaScript
 readonly Socket HttpServer.socket;
+```
+
+--------------------------
+### timeout
+**Integer, 查询和设置超时时间，单位毫秒，此超时时间用于设置接收到的新连接**
+
+```JavaScript
+Integer HttpServer.timeout;
 ```
 
 --------------------------

@@ -12,14 +12,14 @@ digraph {
     HttpHandler [tooltip="HttpHandler", URL="HttpHandler.md", label="{HttpHandler}"];
     HttpRepeater [tooltip="HttpRepeater", URL="HttpRepeater.md", label="{HttpRepeater}"];
     Routing [tooltip="Routing", URL="Routing.md", label="{Routing}"];
-    SslHandler [tooltip="SslHandler", URL="SslHandler.md", label="{SslHandler}"];
+    TLSHandler [tooltip="TLSHandler", URL="TLSHandler.md", label="{TLSHandler}"];
 
     object -> Handler [dir=back];
     Handler -> Chain [dir=back];
     Handler -> HttpHandler [dir=back];
     Handler -> HttpRepeater [dir=back];
     Handler -> Routing [dir=back];
-    Handler -> SslHandler [dir=back];
+    Handler -> TLSHandler [dir=back];
 }
 ```
 

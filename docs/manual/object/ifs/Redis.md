@@ -366,7 +366,7 @@ String Redis.type(Buffer key);
 * key: [Buffer](Buffer.md), 指定要查询的 key
 
 返回结果:
-* String, 返回 key 所储存的值的类型，可能的值为 none(key不存在) string(字符串) list(列表) set(集合) zset(有序集) [hash](../../module/ifs/hash.md)(哈希表)
+* String, 返回 key 所储存的值的类型，可能的值为 none(key不存在) string(字符串) list(列表) set(集合) zset(有序集) hash(哈希表)
 
 --------------------------
 ### keys

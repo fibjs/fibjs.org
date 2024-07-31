@@ -49,7 +49,7 @@ Smtp.connect(String url) async;
 ```
 
 调用参数:
-* url: String, 指定连接的协议，可以是：tcp://host:port 或者 [ssl](../../module/ifs/ssl.md)://host:port
+* url: String, 指定连接的协议，可以是：tcp://host:port 或者 ssl://host:port
 
 --------------------------
 ### command

@@ -39,7 +39,7 @@ static assert.Function(Value actual = undefined,
 **测试数值为真，为假则断言失败**
 
 ```JavaScript
-static assert.ok(Value actual = undefined,
+static assert.ok(Value actual,
     String msg = "");
 ```
 
@@ -52,7 +52,7 @@ static assert.ok(Value actual = undefined,
 **测试数值为假，为真则断言失败**
 
 ```JavaScript
-static assert.notOk(Value actual = undefined,
+static assert.notOk(Value actual,
     String msg = "");
 ```
 
@@ -65,8 +65,8 @@ static assert.notOk(Value actual = undefined,
 **测试数值等于预期值，不相等则断言失败**
 
 ```JavaScript
-static assert.equal(Value actual = undefined,
-    Value expected = undefined,
+static assert.equal(Value actual,
+    Value expected,
     String msg = "");
 ```
 
@@ -80,8 +80,8 @@ static assert.equal(Value actual = undefined,
 **测试数值不等于预期值，相等则断言失败**
 
 ```JavaScript
-static assert.notEqual(Value actual = undefined,
-    Value expected = undefined,
+static assert.notEqual(Value actual,
+    Value expected,
     String msg = "");
 ```
 
@@ -95,8 +95,8 @@ static assert.notEqual(Value actual = undefined,
 **测试数值严格等于预期值，不相等则断言失败**
 
 ```JavaScript
-static assert.strictEqual(Value actual = undefined,
-    Value expected = undefined,
+static assert.strictEqual(Value actual,
+    Value expected,
     String msg = "");
 ```
 
@@ -110,8 +110,8 @@ static assert.strictEqual(Value actual = undefined,
 **测试数值不严格等于预期值，相等则断言失败**
 
 ```JavaScript
-static assert.notStrictEqual(Value actual = undefined,
-    Value expected = undefined,
+static assert.notStrictEqual(Value actual,
+    Value expected,
     String msg = "");
 ```
 
@@ -125,8 +125,8 @@ static assert.notStrictEqual(Value actual = undefined,
 **测试数值深度等于预期值，不相等则断言失败**
 
 ```JavaScript
-static assert.deepEqual(Value actual = undefined,
-    Value expected = undefined,
+static assert.deepEqual(Value actual,
+    Value expected,
     String msg = "");
 ```
 
@@ -140,8 +140,8 @@ static assert.deepEqual(Value actual = undefined,
 **测试数值不深度等于预期值，相等则断言失败**
 
 ```JavaScript
-static assert.notDeepEqual(Value actual = undefined,
-    Value expected = undefined,
+static assert.notDeepEqual(Value actual,
+    Value expected,
     String msg = "");
 ```
 

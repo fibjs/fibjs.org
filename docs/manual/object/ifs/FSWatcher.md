@@ -31,7 +31,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
+    EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\laddEventListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveEventListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
     FSWatcher [tooltip="FSWatcher", fillcolor="lightgray", id="me", label="{FSWatcher|onchange\lonclose\lonerror\l|close()\l}"];
 
     object -> EventEmitter [dir=back];
@@ -139,6 +139,27 @@ Object FSWatcher.addListener(Object map);
 
 返回结果:
 * Object, 返回事件对象本身，便于链式调用
+
+--------------------------
+### addEventListener
+**绑定一个事件处理函数到对象**
+
+```JavaScript
+Object FSWatcher.addEventListener(String ev,
+    Function func,
+    Object options = {});
+```
+
+调用参数:
+* ev: String, 指定事件的名称
+* func: Function, 指定事件处理函数
+* options: Object, 指定事件处理函数的选项
+
+返回结果:
+* Object, 返回事件对象本身，便于链式调用
+
+options 参数是一个对象，它可以包含以下属性：
+- once: 如果为 true，则事件处理函数只会触发一次，触发后会被移除
 
 --------------------------
 ### prependListener
@@ -307,6 +328,24 @@ Object FSWatcher.removeListener(Object map);
 
 调用参数:
 * map: Object, 指定事件映射关系，对象属性名称作为事件名称，属性的值作为事件处理函数
+
+返回结果:
+* Object, 返回事件对象本身，便于链式调用
+
+--------------------------
+### removeEventListener
+**从对象处理队列中取消指定函数**
+
+```JavaScript
+Object FSWatcher.removeEventListener(String ev,
+    Function func,
+    Object options = {});
+```
+
+调用参数:
+* ev: String, 指定事件的名称
+* func: Function, 指定事件处理函数
+* options: Object, 指定事件处理函数的选项
 
 返回结果:
 * Object, 返回事件对象本身，便于链式调用

@@ -57,14 +57,6 @@ console.log(str2) // => 'foo:bar baz'
 
 ## 对象
         
-### LruCache
-**LRU(least recently used) 缓存对象，参见 [LruCache](../../object/ifs/LruCache.md) 对象。**
-
-```JavaScript
-LruCache util.LruCache;
-```
-
---------------------------
 ### TextDecoder
 **[TextDecoder](../../object/ifs/TextDecoder.md) 解码对象，参见 [TextDecoder](../../object/ifs/TextDecoder.md) 对象。**
 

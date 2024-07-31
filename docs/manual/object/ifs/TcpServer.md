@@ -32,15 +32,15 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    TcpServer [tooltip="TcpServer", fillcolor="lightgray", id="me", label="{TcpServer|new TcpServer()\l|socket\lhandler\l|start()\lstop()\l}"];
+    TcpServer [tooltip="TcpServer", fillcolor="lightgray", id="me", label="{TcpServer|new TcpServer()\l|socket\ltimeout\lhandler\l|start()\lstop()\l}"];
     HttpServer [tooltip="HttpServer", URL="HttpServer.md", label="{HttpServer}"];
     HttpsServer [tooltip="HttpsServer", URL="HttpsServer.md", label="{HttpsServer}"];
-    SslServer [tooltip="SslServer", URL="SslServer.md", label="{SslServer}"];
+    TLSServer [tooltip="TLSServer", URL="TLSServer.md", label="{TLSServer}"];
 
     object -> TcpServer [dir=back];
     TcpServer -> HttpServer [dir=back];
     HttpServer -> HttpsServer [dir=back];
-    TcpServer -> SslServer [dir=back];
+    TcpServer -> TLSServer [dir=back];
 }
 ```
 
@@ -91,6 +91,14 @@ new TcpServer(String addr,
 
 ```JavaScript
 readonly Socket TcpServer.socket;
+```
+
+--------------------------
+### timeout
+**Integer, 查询和设置超时时间，单位毫秒，此超时时间用于设置接收到的新连接**
+
+```JavaScript
+Integer TcpServer.timeout;
 ```
 
 --------------------------

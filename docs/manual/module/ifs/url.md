@@ -13,7 +13,7 @@ Url 类的常用属性和方法如下：
 - port：URL 的端口部分。
 - pathname：URL 的路径部分。
 - search：URL 的查询参数字符串。
-- [hash](hash.md)：URL 的 [hash](hash.md) 部分。
+- hash：URL 的 hash 部分。
 
 方法：
 
@@ -58,7 +58,7 @@ static String url.format(Object args);
 ```
 
 调用参数:
-* args: Object, 指定构造参数的字典对象，支持的字段有：protocol, slashes, username, password, hostname, port, pathname, query, [hash](hash.md)
+* args: Object, 指定构造参数的字典对象，支持的字段有：protocol, slashes, username, password, hostname, port, pathname, query, hash
 
 返回结果:
 * String, 返回构造成功的字符串
