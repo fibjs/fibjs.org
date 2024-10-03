@@ -63,7 +63,7 @@ new Lock();
 **获取锁的拥有权**
 
 ```JavaScript
-Boolean Lock.acquire(Boolean blocking = true);
+Boolean Lock.acquire(Boolean blocking = true) async;
 ```
 
 调用参数:

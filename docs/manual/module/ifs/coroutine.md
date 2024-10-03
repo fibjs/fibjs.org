@@ -194,11 +194,3 @@ static Integer coroutine.spareFibers;
 static readonly Integer coroutine.vmid;
 ```
 
---------------------------
-### loglevel
-**Integer, 修改和查询本 [vm](vm.md) 的输出级别，用以过滤输出信息，缺省为 [console.NOTSET](console.md#NOTSET)，全部输出**
-
-```JavaScript
-static Integer coroutine.loglevel;
-```
-

@@ -47,7 +47,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    HttpClient [tooltip="HttpClient", fillcolor="lightgray", id="me", label="{HttpClient|new HttpClient()\l|cookies\ltimeout\lenableCookie\lautoRedirect\lenableEncoding\lmaxHeadersCount\lmaxHeaderSize\lmaxBodySize\luserAgent\lpoolSize\lpoolTimeout\lhttp_proxy\lhttps_proxy\l|request()\lget()\lpost()\ldel()\lput()\lpatch()\lhead()\l}"];
+    HttpClient [tooltip="HttpClient", fillcolor="lightgray", id="me", label="{HttpClient|new HttpClient()\l|cookies\lkeepAlive\ltimeout\lenableCookie\lautoRedirect\lenableEncoding\lmaxHeadersCount\lmaxHeaderSize\lmaxBodySize\luserAgent\lpoolSize\lpoolTimeout\lhttp_proxy\lhttps_proxy\l|request()\lget()\lpost()\ldel()\lput()\lpatch()\lhead()\l}"];
 
     object -> HttpClient [dir=back];
 }
@@ -83,6 +83,7 @@ new HttpClient(Object options);
 * options: Object, 使用 [tls.createSecureContext](../../module/ifs/tls.md#createSecureContext) 创建安全上下文需要的选项
 
 options 除用于创建 [SecureContext](SecureContext.md) 的属性之外，还需提供以下属性：
+- keepAlive: 指定是否保持连接
 - timeout: 指定超时时间
 - enableCookie: 指定是否启用 cookie 功能
 - autoRedirect: 指定是否启用自动重定向功能
@@ -103,6 +104,14 @@ options 除用于创建 [SecureContext](SecureContext.md) 的属性之外，还�
 
 ```JavaScript
 readonly NArray HttpClient.cookies;
+```
+
+--------------------------
+### keepAlive
+**Boolean, 查询和设定是否保持连接**
+
+```JavaScript
+Boolean HttpClient.keepAlive;
 ```
 
 --------------------------
@@ -264,6 +273,7 @@ opts 包含请求的附加选项，支持的内容如下：
     "hostname": "",
     "port": "",
     "pathname": "",
+    "keepAlive": unknown, // If not specified, the default settings of the client will be used.
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
@@ -302,6 +312,7 @@ opts 包含请求的附加选项，支持的内容如下：
     "hostname": "",
     "port": "",
     "pathname": "",
+    "keepAlive": unknown, // If not specified, the default settings of the client will be used.
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
@@ -337,6 +348,7 @@ opts 包含请求的附加选项，支持的内容如下：
     "hostname": "",
     "port": "",
     "pathname": "",
+    "keepAlive": unknown, // If not specified, the default settings of the client will be used.
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
@@ -375,6 +387,7 @@ opts 包含请求的附加选项，支持的内容如下：
     "hostname": "",
     "port": "",
     "pathname": "",
+    "keepAlive": unknown, // If not specified, the default settings of the client will be used.
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
@@ -413,6 +426,7 @@ opts 包含请求的附加选项，支持的内容如下：
     "hostname": "",
     "port": "",
     "pathname": "",
+    "keepAlive": unknown, // If not specified, the default settings of the client will be used.
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
@@ -451,6 +465,7 @@ opts 包含请求的附加选项，支持的内容如下：
     "hostname": "",
     "port": "",
     "pathname": "",
+    "keepAlive": unknown, // If not specified, the default settings of the client will be used.
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
@@ -489,6 +504,7 @@ opts 包含请求的附加选项，支持的内容如下：
     "hostname": "",
     "port": "",
     "pathname": "",
+    "keepAlive": unknown, // If not specified, the default settings of the client will be used.
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
@@ -527,6 +543,7 @@ opts 包含请求的附加选项，支持的内容如下：
     "hostname": "",
     "port": "",
     "pathname": "",
+    "keepAlive": unknown, // If not specified, the default settings of the client will be used.
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
@@ -565,6 +582,7 @@ opts 包含请求的附加选项，支持的内容如下：
     "hostname": "",
     "port": "",
     "pathname": "",
+    "keepAlive": unknown, // If not specified, the default settings of the client will be used.
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},

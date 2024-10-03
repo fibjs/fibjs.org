@@ -1,22 +1,23 @@
 # 对象 WebView
-浏览器窗口对象
+浏览器窗口对象，WebView 是一个嵌入浏览器的窗口组件.
 
-WebView 是一个嵌入浏览器的窗口组件，目前仅支持 windows, macOS(10.10+). 在 windows 使用 IE/Edge 内核, 在 macOS 使用 WKWebView.
-
+### 消息通信
 由于 WebView 内的 JavaScript 程序与 fibjs 并不在同一个引擎内，所以如果需要与宿主程序进行通讯，需要通过消息进行。
 
-WebView 用于通讯的对象是 external，external 支持一个方法 postMessage 和两个事件 onmessage、onclose。
+WebView 用于通讯的对象是 window，支持方法 postMessage 和 message 事件。
 
 一个简单的通讯示例代码如下：
 
 ```JavaScript
 // index.js
 var gui = require('gui');
-var webview = gui.open('fs://index.html');
+var webview = gui.open('https://fibjs.org/index.html');
 
-webview.onmessage = msg => console.log(msg);
+webview.addEventListener("message", function(msg) {
+    console.log(msg);
+});
 
-webview.onload = evt => webview.postMessage("hello from fibjs");
+webview.postMessage("hello from fibjs");
 
 webview.wait();
 ```
@@ -24,33 +25,31 @@ webview.wait();
 index.html 的内容如下：
 ```html
 <script>
-    external.onclose = function() {
-    }
-
-    external.onmessage = function(msg){
+    window.addEventListener("message", function (msg) {
         external.postMessage("send back: " + msg);
-    };
+    });
 </script>
 ```
-
-在用户窗口关闭之前，会触发 external.onclose 事件，external.onclose 可以决定是否关闭。如果 external.onclose 返回 false，则此次操作取消，否则将关闭窗口。
-
-以下的例子，会在用户点关闭后等待 5 秒后再关闭窗口。
+### 关闭窗口
+如果需要在 WebView 内关闭窗口，可以调用 window.close。
 ```html
 <script lang="JavaScript">
-    var bClose = false;
-    external.onclose = function () {
-        if (!bClose) {
-            setTimeout(function () {
-                bClose = true;
-                window.close();
-            }, 5000);
-            return false;
-        }
-    }
+   document.getElementById('close').addEventListener('click', function () {
+       window.close();
+   });
 </script>
 ```
-上面的代码中，因为 window.close 本身也会触发 onclose 事件，所以需要增加一个开关变量，用于识别是否需要处理此次事件。
+### 拖动窗口
+在有些应用里，需要在 WebView 内实现拖动窗口的功能，可以通过以下代码实现：
+```html
+<script>
+   document.getElementById('dragRegion').addEventListener('mousedown', function (event) {
+       if (event.button === 0) { // Check if the left mouse button is pressed
+           window.drag();
+       }
+   });
+</script>
+```
 
 ## 继承关系
 ```dot
@@ -59,7 +58,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\laddEventListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveEventListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
-    WebView [tooltip="WebView", fillcolor="lightgray", id="me", label="{WebView|onopen\lonload\lonaddress\lontitle\lonmove\lonresize\lonclosed\lonmessage\londownload\l|loadUrl()\lgetUrl()\lsetHtml()\lreload()\lgoBack()\lgoForward()\lprint()\lexecuteJavaScript()\lclose()\lpostMessage()\l}"];
+    WebView [tooltip="WebView", fillcolor="lightgray", id="me", label="{WebView|onopen\lonmove\lonresize\lonclose\lonmessage\l|loadURL()\lloadFile()\lgetUrl()\lsetHtml()\lreload()\lgoBack()\lgoForward()\leval()\lsetTitle()\lgetTitle()\lclose()\lpostMessage()\l}"];
 
     object -> EventEmitter [dir=back];
     EventEmitter -> WebView [dir=back];
@@ -82,30 +81,6 @@ static Integer WebView.defaultMaxListeners;
 
 ```JavaScript
 Function WebView.onopen;
-```
-
---------------------------
-### onload
-**Function, 查询和绑定加载成功事件，相当于 on("load", func);**
-
-```JavaScript
-Function WebView.onload;
-```
-
---------------------------
-### onaddress
-**Function, 查询和绑定页面地址变化事件，相当于 on("address", func);**
-
-```JavaScript
-Function WebView.onaddress;
-```
-
---------------------------
-### ontitle
-**Function, 查询和绑定页面标题改变事件，相当于 on("title", func);**
-
-```JavaScript
-Function WebView.ontitle;
 ```
 
 --------------------------
@@ -143,11 +118,11 @@ webview.onresize = evt => console.log(evt.width, evt.height);
 ```
 
 --------------------------
-### onclosed
+### onclose
 **Function, 查询和绑定窗口关闭事件，WebView 关闭后会触发此时间，相当于 on("closed", func);**
 
 ```JavaScript
-Function WebView.onclosed;
+Function WebView.onclose;
 ```
 
 --------------------------
@@ -158,25 +133,28 @@ Function WebView.onclosed;
 Function WebView.onmessage;
 ```
 
---------------------------
-### ondownload
-**Function, 查询和绑定接受 webview 内下载事务状态变化事件，相当于 on("download", func);**
-
-```JavaScript
-Function WebView.ondownload;
-```
-
 ## 成员函数
         
-### loadUrl
+### loadURL
 **加载指定 [url](../../module/ifs/url.md) 的页面**
 
 ```JavaScript
-WebView.loadUrl(String url) async;
+WebView.loadURL(String url) async;
 ```
 
 调用参数:
 * url: String, 指定的 [url](../../module/ifs/url.md)
+
+--------------------------
+### loadFile
+**加载指定文件的页面**
+
+```JavaScript
+WebView.loadFile(String file) async;
+```
+
+调用参数:
+* file: String, 指定的文件
 
 --------------------------
 ### getUrl
@@ -225,26 +203,37 @@ WebView.goForward() async;
 ```
 
 --------------------------
-### print
-**打印当前窗口文档**
-
-```JavaScript
-WebView.print(Integer mode = 1) async;
-```
-
-调用参数:
-* mode: Integer, 打印参数，0: 快速打印; 1: 标准打印; 2: 打印预览。缺省为 1
-
---------------------------
-### executeJavaScript
+### eval
 **在当前窗口运行一段 JavaScript 代码**
 
 ```JavaScript
-WebView.executeJavaScript(String code) async;
+WebView.eval(String code) async;
 ```
 
 调用参数:
 * code: String, 指定要执行的 JavaScript 代码
+
+--------------------------
+### setTitle
+**设置窗口的标题**
+
+```JavaScript
+WebView.setTitle(String title) async;
+```
+
+调用参数:
+* title: String, 指定窗口的标题
+
+--------------------------
+### getTitle
+**查询窗口的标题**
+
+```JavaScript
+String WebView.getTitle() async;
+```
+
+返回结果:
+* String, 返回窗口的标题
 
 --------------------------
 ### close

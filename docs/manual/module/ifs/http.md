@@ -102,13 +102,11 @@ HttpRepeater http.Repeater;
 
 ```JavaScript
 static Handler http.fileHandler(String root,
-    Object mimes = {},
     Boolean autoIndex = false);
 ```
 
 调用参数:
 * root: String, 文件根路径
-* mimes: Object, 扩展 mime 设置
 * autoIndex: Boolean, 是否支持浏览目录文件，缺省为 false，不支持
 
 返回结果:
@@ -179,6 +177,7 @@ opts 包含请求的附加选项，支持的内容如下：
     "hostname": "",
     "port": "",
     "pathname": "",
+    "keepAlive": unknown, // If not specified, the default settings of the client will be used.
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
@@ -217,6 +216,7 @@ opts 包含请求的附加选项，支持的内容如下：
     "hostname": "",
     "port": "",
     "pathname": "",
+    "keepAlive": unknown, // If not specified, the default settings of the client will be used.
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
@@ -252,6 +252,7 @@ opts 包含请求的附加选项，支持的内容如下：
     "hostname": "",
     "port": "",
     "pathname": "",
+    "keepAlive": unknown, // If not specified, the default settings of the client will be used.
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
@@ -290,6 +291,7 @@ opts 包含请求的附加选项，支持的内容如下：
     "hostname": "",
     "port": "",
     "pathname": "",
+    "keepAlive": unknown, // If not specified, the default settings of the client will be used.
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
@@ -328,6 +330,7 @@ opts 包含请求的附加选项，支持的内容如下：
     "hostname": "",
     "port": "",
     "pathname": "",
+    "keepAlive": unknown, // If not specified, the default settings of the client will be used.
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
@@ -366,6 +369,7 @@ opts 包含请求的附加选项，支持的内容如下：
     "hostname": "",
     "port": "",
     "pathname": "",
+    "keepAlive": unknown, // If not specified, the default settings of the client will be used.
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
@@ -404,6 +408,7 @@ opts 包含请求的附加选项，支持的内容如下：
     "hostname": "",
     "port": "",
     "pathname": "",
+    "keepAlive": unknown, // If not specified, the default settings of the client will be used.
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
@@ -442,6 +447,7 @@ opts 包含请求的附加选项，支持的内容如下：
     "hostname": "",
     "port": "",
     "pathname": "",
+    "keepAlive": unknown, // If not specified, the default settings of the client will be used.
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
@@ -480,6 +486,7 @@ opts 包含请求的附加选项，支持的内容如下：
     "hostname": "",
     "port": "",
     "pathname": "",
+    "keepAlive": unknown, // If not specified, the default settings of the client will be used.
     "query": {},
     "body": SeekableStream | Buffer | String | {},
     "json": {},
@@ -505,6 +512,14 @@ static readonly Object http.STATUS_CODES;
 
 ```JavaScript
 static readonly NArray http.cookies;
+```
+
+--------------------------
+### keepAlive
+**Boolean, 查询和设定是否保持连接**
+
+```JavaScript
+static Boolean http.keepAlive;
 ```
 
 --------------------------

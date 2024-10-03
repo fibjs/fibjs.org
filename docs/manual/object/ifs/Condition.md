@@ -80,7 +80,7 @@ new Condition(Lock lock);
 **等待一个条件变量**
 
 ```JavaScript
-Boolean Condition.wait(Integer timeout = -1);
+Boolean Condition.wait(Integer timeout = -1) async;
 ```
 
 调用参数:
@@ -110,7 +110,7 @@ Condition.notifyAll();
 **获取锁的拥有权**
 
 ```JavaScript
-Boolean Condition.acquire(Boolean blocking = true);
+Boolean Condition.acquire(Boolean blocking = true) async;
 ```
 
 调用参数:

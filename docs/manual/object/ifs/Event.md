@@ -94,7 +94,7 @@ Event.clear();
 **等待一个事件**
 
 ```JavaScript
-Event.wait();
+Event.wait() async;
 ```
 
 --------------------------
@@ -102,7 +102,7 @@ Event.wait();
 **获取锁的拥有权**
 
 ```JavaScript
-Boolean Event.acquire(Boolean blocking = true);
+Boolean Event.acquire(Boolean blocking = true) async;
 ```
 
 调用参数:

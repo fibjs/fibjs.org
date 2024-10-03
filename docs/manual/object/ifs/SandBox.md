@@ -15,6 +15,13 @@ var mod_in_sbox = sbox.require('./path/to/mod');
 ```
 
 需要注意，SandBox 不是防攻击的安全沙箱，SandBox 只是一个独立的运行空间，可以用来隔离不同的代码，避免相互干扰，但是不能防止恶意代码。
+如果要加载 ECMAScript 模块，可以使用以下代码：
+
+```JavaScript
+import vm from 'vm';
+var sbox = new vm.SandBox();
+var mod = await sbox.import('./a.mjs', __dirname);
+```
 
 ## 继承关系
 ```dot
@@ -22,7 +29,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    SandBox [tooltip="SandBox", fillcolor="lightgray", id="me", label="{SandBox|new SandBox()\l|global\lmodules\l|addBuiltinModules()\ladd()\laddScript()\lremove()\lhas()\lclone()\lfreeze()\lrun()\lresolve()\lrequire()\lsetModuleCompiler()\l}"];
+    SandBox [tooltip="SandBox", fillcolor="lightgray", id="me", label="{SandBox|new SandBox()\l|global\lmodules\l|addBuiltinModules()\ladd()\laddScript()\lremove()\lhas()\lclone()\lfreeze()\lrun()\lresolve()\lrequire()\limport()\lsetModuleCompiler()\l}"];
 
     object -> SandBox [dir=back];
 }
@@ -216,7 +223,7 @@ String SandBox.resolve(String id,
 
 --------------------------
 ### require
-**加载一个模块并返回模块对象**
+**加载一个模块并返回模块对象，require 不能加载 ECMAScript 模块**
 
 ```JavaScript
 Value SandBox.require(String id,
@@ -229,6 +236,22 @@ Value SandBox.require(String id,
 
 返回结果:
 * Value, 返回加载的模块对象
+
+--------------------------
+### import
+**异步加载一个模块并返回模块对象，可以加载 ECMAScript 模块，也可以加载 CommonJS 模块**
+
+```JavaScript
+Promise SandBox.import(String id,
+    String base);
+```
+
+调用参数:
+* id: String, 指定要加载的模块名称
+* base: String, 指定查找路径
+
+返回结果:
+* Promise, 返回加载的模块对象
 
 --------------------------
 ### setModuleCompiler

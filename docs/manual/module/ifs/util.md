@@ -154,6 +154,64 @@ static String util.inspect(Value obj,
 ```
 
 --------------------------
+### debuglog
+**创建一个 [Logger](../../object/ifs/Logger.md) 对象，根据环境变量 NODE_DEBUG 有条件地输出调试信息**
+
+```JavaScript
+static Logger util.debuglog(String section);
+```
+
+调用参数:
+* section: String, 指定的调试区域
+
+返回结果:
+* [Logger](../../object/ifs/Logger.md), 返回一个 [Logger](../../object/ifs/Logger.md) 对象
+
+--------------------------
+**创建一个 [Logger](../../object/ifs/Logger.md) 对象，根据环境变量 NODE_DEBUG 有条件地输出调试信息**
+
+```JavaScript
+static Logger util.debuglog(String section,
+    Function fn);
+```
+
+调用参数:
+* section: String, 指定的调试区域
+* fn: Function, 第一次调用日志函数时调用的回调，其函数参数是一个更优化的日志函数
+
+返回结果:
+* [Logger](../../object/ifs/Logger.md), 返回一个 [Logger](../../object/ifs/Logger.md) 对象
+
+--------------------------
+### debug
+**创建一个 [Logger](../../object/ifs/Logger.md) 对象，根据环境变量 NODE_DEBUG 有条件地输出调试信息。是 debuglog 的别名**
+
+```JavaScript
+static Logger util.debug(String section);
+```
+
+调用参数:
+* section: String, 指定的调试区域
+
+返回结果:
+* [Logger](../../object/ifs/Logger.md), 返回一个 [Logger](../../object/ifs/Logger.md) 对象
+
+--------------------------
+**创建一个 [Logger](../../object/ifs/Logger.md) 对象，根据环境变量 NODE_DEBUG 有条件地输出调试信息。是 debuglog 的别名**
+
+```JavaScript
+static Logger util.debug(String section,
+    Function fn);
+```
+
+调用参数:
+* section: String, 指定的调试区域
+* fn: Function, 第一次调用日志函数时调用的回调，其函数参数是一个更优化的日志函数
+
+返回结果:
+* [Logger](../../object/ifs/Logger.md), 返回一个 [Logger](../../object/ifs/Logger.md) 对象
+
+--------------------------
 ### deprecate
 **封装给定的函数，本函数仅为兼容，并不输出警告**
 

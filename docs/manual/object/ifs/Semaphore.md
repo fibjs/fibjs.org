@@ -55,7 +55,7 @@ new Semaphore(Integer value = 1);
 **等待一个信号量**
 
 ```JavaScript
-Boolean Semaphore.wait(Integer timeout = -1);
+Boolean Semaphore.wait(Integer timeout = -1) async;
 ```
 
 调用参数:
@@ -88,7 +88,7 @@ Boolean Semaphore.trywait();
 **获取锁的拥有权**
 
 ```JavaScript
-Boolean Semaphore.acquire(Boolean blocking = true);
+Boolean Semaphore.acquire(Boolean blocking = true) async;
 ```
 
 调用参数:

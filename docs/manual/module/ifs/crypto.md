@@ -26,6 +26,14 @@ KeyObject crypto.KeyObject;
 X509Certificate crypto.X509Certificate;
 ```
 
+--------------------------
+### webcrypto
+**WebCrypto API 模块**
+
+```JavaScript
+webcrypto crypto.webcrypto;
+```
+
 ## 静态函数
         
 ### getHashes
@@ -233,9 +241,9 @@ static KeyObject crypto.createPrivateKey(Object key);
 
 参数 key 用于指定创建私钥的配置属性，支持的属性包括:
 - key: PEM 字符串，DER 二进制 或者 JWK 格式对象
-- format: 必须是 'pem', 'der', 'jwk' 或 'raw'。默认值: 'pem'
+- format: 必须是 'pem', 'der', 'jwk' 或 'raw'。默认值: 'pem'。Bls12381G1/Bls12381G2 仅支持 'raw'
 - type: 必须是 'pkcs1', 'pkcs8' 或 'sec1'。仅当 format 为 'der' 时才需要此选项，否则忽略
-- namedCurve: 当 format 为 'raw' 时用于指定 key 的曲线名称，可以是 EC 曲线名，SM2 或者 Ed25519/Ed448/X25519/X448
+- namedCurve: 当 format 为 'raw' 时用于指定 key 的曲线名称，可以是 EC 曲线名，或者 SM2/Ed25519/Ed448/X25519/X448/Bls12381G1/Bls12381G2
 - passphrase: 用于解密的密码字符串
 - [encoding](encoding.md): 当 key 是字符串时使用的字符串编码
 
@@ -283,7 +291,7 @@ static KeyObject crypto.createPublicKey(Object key);
 - key: PEM 字符串，DER 二进制 或者 JWK 格式对象
 - format: 必须是 'pem', 'der', 'jwk' 或 'raw'。默认值: 'pem'
 - type: 必须是 'pkcs1', 或 'sec1'。仅当 format 为 'der' 时才需要此选项，否则忽略
-- namedCurve: 当 format 为 'raw' 时用于指定 key 的曲线名称，可以是 EC 曲线名，SM2 或者 Ed25519/Ed448/X25519/X448
+- namedCurve: 当 format 为 'raw' 时用于指定 key 的曲线名称，可以是 EC 曲线名，或者 SM2/Ed25519/Ed448/X25519/X448/Bls12381G1/Bls12381G2
 - [encoding](encoding.md): 当 key 是字符串时使用的字符串编码
 
 --------------------------
@@ -461,7 +469,7 @@ static Buffer crypto.randomFill(Buffer buffer,
 
 --------------------------
 ### generateKeyPair
-**生成给定 type 的新非对称密钥对。目前支持 RSA、RSA-PSS、DSA、EC、Ed25519、Ed448、X25519、X448、SM2**
+**生成给定 type 的新非对称密钥对。目前支持 RSA、RSA-PSS、DSA、EC、Ed25519、Ed448、X25519、X448、SM2、Bls12381G1、Bls12381G2**
 
 ```JavaScript
 static (Variant publicKey, Variant privateKey) crypto.generateKeyPair(String type,
@@ -469,7 +477,7 @@ static (Variant publicKey, Variant privateKey) crypto.generateKeyPair(String typ
 ```
 
 调用参数:
-* type: String, 指定要生成的密钥类型，必须是 'rsa'、'rsa-pss'、'dsa'、'ec'、'ed25519'、'x25519'、'x448' 或 'sm2'
+* type: String, 指定要生成的密钥类型，必须是 'rsa'、'rsa-pss'、'dsa'、'ec'、'ed25519'、'x25519'、'x448'、'sm2'、'Bls12381G1'、'Bls12381G2'
 * options: Object, 指定生成密钥的选项
 
 返回结果:
@@ -846,4 +854,252 @@ key 内的参数会用于调用 [crypto.createPublicKey](crypto.md#createPublicK
  - RSA_PKCS1_PADDING（默认）
  - RSA_PKCS1_PSS_PADDING，RSA_PKCS1_PSS_PADDING 将使用 MGF1，其哈希函数与用于对 RFC 4055 第 3.1 节中指定的消息进行签名的哈希函数相同
 - saltLength 当填充为 RSA_PKCS1_PSS_PADDING 时的盐长度。特殊值 RSA_PSS_SALTLEN_DIGEST 将盐长度设置为摘要大小，RSA_PSS_SALTLEN_MAX_SIGN（默认）将其设置为最大允许值
+
+--------------------------
+### timingSafeEqual
+**比较给定的两个数据是否相等，使用时间常量比较，防止时间侧信道攻击**
+
+```JavaScript
+static Boolean crypto.timingSafeEqual(Buffer a,
+    Buffer b);
+```
+
+调用参数:
+* a: [Buffer](../../object/ifs/Buffer.md), 指定要比较的数据
+* b: [Buffer](../../object/ifs/Buffer.md), 指定要比较的数据
+
+返回结果:
+* Boolean, 返回比较结果
+
+--------------------------
+### bbsSign
+**使用 Bls12381G2 进行 BBS 签名的函数**
+
+```JavaScript
+static Buffer crypto.bbsSign(Array messages,
+    Buffer privateKey) async;
+```
+
+调用参数:
+* messages: Array, 指定要签名的一组消息
+* privateKey: [Buffer](../../object/ifs/Buffer.md), 指定私钥，必须是 Bls12381G2 的私钥
+
+返回结果:
+* [Buffer](../../object/ifs/Buffer.md), 返回签名后的数据
+
+--------------------------
+**使用 Bls12381G2 进行 BBS 签名的函数**
+
+```JavaScript
+static Buffer crypto.bbsSign(Array messages,
+    KeyObject privateKey) async;
+```
+
+调用参数:
+* messages: Array, 指定要签名的一组消息
+* privateKey: [KeyObject](../../object/ifs/KeyObject.md), 指定私钥，必须是 Bls12381G2 的私钥
+
+返回结果:
+* [Buffer](../../object/ifs/Buffer.md), 返回签名后的数据
+
+--------------------------
+**使用 Bls12381G2 进行 BBS 签名的函数**
+
+```JavaScript
+static Buffer crypto.bbsSign(Array messages,
+    Object key) async;
+```
+
+调用参数:
+* messages: Array, 指定要签名的一组消息
+* key: Object, 指定私钥和选项
+
+返回结果:
+* [Buffer](../../object/ifs/Buffer.md), 返回签名后的数据
+
+key 内的参数会用于调用 [crypto.createPrivateKey](crypto.md#createPrivateKey) 创建私钥对象，此外还支持以下签名参数：
+ - suite: 必须是 'Bls12381Sha256', 'Bls12381Shake256'。默认值: 'Bls12381Sha256'
+ - header: 用于签名的附加数据
+
+--------------------------
+### bbsVerify
+**使用 Bls12381G2 进行 BBS 验证的函数**
+
+```JavaScript
+static Boolean crypto.bbsVerify(Array messages,
+    Buffer publicKey,
+    Buffer signature) async;
+```
+
+调用参数:
+* messages: Array, 指定要验证的一组消息
+* publicKey: [Buffer](../../object/ifs/Buffer.md), 指定公钥，必须是 Bls12381G2 的公钥
+* signature: [Buffer](../../object/ifs/Buffer.md), 指定签名数据
+
+返回结果:
+* Boolean, 返回验证结果
+
+--------------------------
+**使用 Bls12381G2 进行 BBS 验证的函数**
+
+```JavaScript
+static Boolean crypto.bbsVerify(Array messages,
+    KeyObject publicKey,
+    Buffer signature) async;
+```
+
+调用参数:
+* messages: Array, 指定要验证的一组消息
+* publicKey: [KeyObject](../../object/ifs/KeyObject.md), 指定公钥，必须是 Bls12381G2 的公钥
+* signature: [Buffer](../../object/ifs/Buffer.md), 指定签名数据
+
+返回结果:
+* Boolean, 返回验证结果
+
+--------------------------
+**使用 Bls12381G2 进行 BBS 验证的函数**
+
+```JavaScript
+static Boolean crypto.bbsVerify(Array messages,
+    Object key,
+    Buffer signature) async;
+```
+
+调用参数:
+* messages: Array, 指定要验证的一组消息
+* key: Object, 指定公钥和选项
+* signature: [Buffer](../../object/ifs/Buffer.md), 指定签名数据
+
+返回结果:
+* Boolean, 返回验证结果
+
+key 内的参数会用于调用 [crypto.createPublicKey](crypto.md#createPublicKey) 创建公钥对象，此外还支持以下签名参数：
+ - suite: 必须是 'Bls12381Sha256', 'Bls12381Shake256'。默认值: 'Bls12381Sha256'
+ - header: 用于签名的附加数据
+
+--------------------------
+### proofGen
+**使用 Bls12381G2 生成 BBS 选择证明的函数**
+
+```JavaScript
+static Buffer crypto.proofGen(Buffer signature,
+    Array messages,
+    Array index,
+    Buffer publicKey) async;
+```
+
+调用参数:
+* signature: [Buffer](../../object/ifs/Buffer.md), 指定 BBS 签名
+* messages: Array, 指定要签名的一组消息
+* index: Array, 指定要选择的证明的索引
+* publicKey: [Buffer](../../object/ifs/Buffer.md), 指定公钥，必须是 Bls12381G2 的公钥
+
+返回结果:
+* [Buffer](../../object/ifs/Buffer.md), 返回证明数据
+
+--------------------------
+**使用 Bls12381G2 生成 BBS 选择证明的函数**
+
+```JavaScript
+static Buffer crypto.proofGen(Buffer signature,
+    Array messages,
+    Array index,
+    KeyObject publicKey) async;
+```
+
+调用参数:
+* signature: [Buffer](../../object/ifs/Buffer.md), 指定 BBS 签名
+* messages: Array, 指定要签名的一组消息
+* index: Array, 指定要选择的证明的索引
+* publicKey: [KeyObject](../../object/ifs/KeyObject.md), 指定公钥，必须是 Bls12381G2 的公钥
+
+返回结果:
+* [Buffer](../../object/ifs/Buffer.md), 返回证明数据
+
+--------------------------
+**使用 Bls12381G2 生成 BBS 选择证明的函数**
+
+```JavaScript
+static Buffer crypto.proofGen(Buffer signature,
+    Array messages,
+    Array index,
+    Object key) async;
+```
+
+调用参数:
+* signature: [Buffer](../../object/ifs/Buffer.md), 指定 BBS 签名
+* messages: Array, 指定要签名的一组消息
+* index: Array, 指定要选择的证明的索引
+* key: Object, 指定公钥和选项
+
+返回结果:
+* [Buffer](../../object/ifs/Buffer.md), 返回证明数据
+
+key 内的参数会用于调用 [crypto.createPublicKey](crypto.md#createPublicKey) 创建公钥对象，此外还支持以下签名参数：
+ - suite: 必须是 'Bls12381Sha256', 'Bls12381Shake256'。默认值: 'Bls12381Sha256'
+ - header: 用于签名的附加数据
+ - proof_header: 用于证明的附加数据
+
+--------------------------
+### proofVerify
+**使用 Bls12381G2 验证 BBS 选择证明的函数**
+
+```JavaScript
+static Boolean crypto.proofVerify(Array messages,
+    Array index,
+    Buffer publicKey,
+    Buffer proof) async;
+```
+
+调用参数:
+* messages: Array, 指定要验证的一组消息
+* index: Array, 指定要选择的证明的索引
+* publicKey: [Buffer](../../object/ifs/Buffer.md), 指定公钥，必须是 Bls12381G2 的公钥
+* proof: [Buffer](../../object/ifs/Buffer.md), 指定证明数据
+
+返回结果:
+* Boolean, 返回验证结果
+
+--------------------------
+**使用 Bls12381G2 验证 BBS 选择证明的函数**
+
+```JavaScript
+static Boolean crypto.proofVerify(Array messages,
+    Array index,
+    KeyObject publicKey,
+    Buffer proof) async;
+```
+
+调用参数:
+* messages: Array, 指定要验证的一组消息
+* index: Array, 指定要选择的证明的索引
+* publicKey: [KeyObject](../../object/ifs/KeyObject.md), 指定公钥，必须是 Bls12381G2 的公钥
+* proof: [Buffer](../../object/ifs/Buffer.md), 指定证明数据
+
+返回结果:
+* Boolean, 返回验证结果
+
+--------------------------
+**使用 Bls12381G2 验证 BBS 选择证明的函数**
+
+```JavaScript
+static Boolean crypto.proofVerify(Array messages,
+    Array index,
+    Object key,
+    Buffer proof) async;
+```
+
+调用参数:
+* messages: Array, 指定要验证的一组消息
+* index: Array, 指定要选择的证明的索引
+* key: Object, 指定公钥和选项
+* proof: [Buffer](../../object/ifs/Buffer.md), 指定证明数据
+
+返回结果:
+* Boolean, 返回验证结果
+
+key 内的参数会用于调用 [crypto.createPublicKey](crypto.md#createPublicKey) 创建公钥对象，此外还支持以下签名参数：
+ - suite: 必须是 'Bls12381Sha256', 'Bls12381Shake256'。默认值: 'Bls12381Sha256'
+ - header: 用于签名的附加数据
+ - proof_header: 用于证明的附加数据
 

@@ -13,7 +13,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Script [tooltip="Script", fillcolor="lightgray", id="me", label="{Script|new Script()\l|runInContext()\lrunInNewContext()\lrunInThisContext()\l}"];
+    Script [tooltip="Script", fillcolor="lightgray", id="me", label="{Script|new Script()\l|runInContext()\lrunInNewContext()\lrunInThisContext()\lcreateCachedData()\l}"];
 
     object -> Script [dir=back];
 }
@@ -79,6 +79,17 @@ Value Script.runInThisContext(Object opts = {});
 
 返回结果:
 * Value, 返回运行结果
+
+--------------------------
+### createCachedData
+**根据当前 Script 对象创建代码缓存**
+
+```JavaScript
+Buffer Script.createCachedData();
+```
+
+返回结果:
+* [Buffer](Buffer.md), 返回代码缓存数据
 
 --------------------------
 ### toString

@@ -43,6 +43,14 @@ AbortController global.AbortController;
 ```
 
 --------------------------
+### CryptoKey
+**[CryptoKey](../../object/ifs/CryptoKey.md) 类来表示对称或非对称密钥，每种密钥公开不同的功能**
+
+```JavaScript
+CryptoKey global.CryptoKey;
+```
+
+--------------------------
 ### console
 **控制台访问对象**
 
@@ -64,6 +72,14 @@ process global.process;
 
 ```JavaScript
 performance global.performance;
+```
+
+--------------------------
+### crypto
+**w3c [webcrypto](webcrypto.md) 标准的加密模块**
+
+```JavaScript
+webcrypto global.crypto;
 ```
 
 ## 静态函数

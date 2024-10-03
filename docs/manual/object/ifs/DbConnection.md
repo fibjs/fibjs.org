@@ -1,7 +1,7 @@
 # 对象 DbConnection
 DBConnection 是数据库连接的基类，用于建立和维护一个数据库连接会话。其实现了连接的基本操作，并作为派生类的基础。同时支持开始事务、提交事务、回滚事务等操作。
 
-DBConnection 的子类包括：[Odbc](Odbc.md)、[MySQL](MySQL.md)、[SQLite](SQLite.md)，通过实例化每个子类，我们可以很方便地访问不同种类的数据库。
+DBConnection 的子类包括：Odbc、[MySQL](MySQL.md)、[SQLite](SQLite.md)，通过实例化每个子类，我们可以很方便地访问不同种类的数据库。
 
 DBConnection 不能直接创建，只能通过 [db.open](../../module/ifs/db.md#open) 等方法创建，例如：
 ```js
@@ -17,12 +17,10 @@ digraph {
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     DbConnection [tooltip="DbConnection", fillcolor="lightgray", id="me", label="{DbConnection|type\l|close()\luse()\lbegin()\lcommit()\lrollback()\ltrans()\lexecute()\lcreateTable()\ldropTable()\lcreateIndex()\ldropIndex()\linsert()\lfind()\lcount()\lupdate()\lremove()\lformat()\l}"];
     MySQL [tooltip="MySQL", URL="MySQL.md", label="{MySQL}"];
-    Odbc [tooltip="Odbc", URL="Odbc.md", label="{Odbc}"];
     SQLite [tooltip="SQLite", URL="SQLite.md", label="{SQLite}"];
 
     object -> DbConnection [dir=back];
     DbConnection -> MySQL [dir=back];
-    DbConnection -> Odbc [dir=back];
     DbConnection -> SQLite [dir=back];
 }
 ```

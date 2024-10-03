@@ -41,6 +41,8 @@
   - [string_decoder](ifs/string_decoder.md) - 解码 Buffer 到字符串
 * Crypto
   - [crypto](ifs/crypto.md) - `crypto` 模块是 `fibjs` 内置的加密算法模块。它提供了对称加密、非对称加密、摘要算法、密码学随机数生成器等功能。在使用之前，需要通过 `require('crypto')` 加载该模块
+  - [subtle](ifs/subtle.md) - 提供对 SubtleCrypto API 的访问
+  - [webcrypto](ifs/webcrypto.md) - WebCrypto API 模块
 * Compress
   - [zip](ifs/zip.md) - zip 模块是一个用于文件压缩和解压缩的模块。它提供了压缩、解压缩、查找和枚举 zip 文件中的文件列表等操作
   - [zlib](ifs/zlib.md) - zlib 是内置的压缩模块，支持 gzip、deflate、zlib 等多种压缩格式和模式
@@ -61,5 +63,6 @@
   - [constants](ifs/constants.md) - 常用常量定义模块
   - [fs_constants](ifs/fs_constants.md) - fs 模块常用常量定义模块
   - [crypto_constants](ifs/crypto_constants.md) - crypto 模块常用常量定义模块
+* [mime](ifs/mime.md) - MIME 解析模块
 * [rtc](ifs/rtc.md) - WebRTC 网络实时通信模块
 * [zlib_constants](ifs/zlib_constants.md) - zlib 模块常用常量定义模块

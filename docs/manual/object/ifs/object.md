@@ -10,9 +10,9 @@ digraph {
     AbortController [tooltip="AbortController", URL="AbortController.md", label="{AbortController}"];
     Buffer [tooltip="Buffer", URL="Buffer.md", label="{Buffer}"];
     Cipher [tooltip="Cipher", URL="Cipher.md", label="{Cipher}"];
+    CryptoKey [tooltip="CryptoKey", URL="CryptoKey.md", label="{CryptoKey}"];
     DbConnection [tooltip="DbConnection", URL="DbConnection.md", label="{DbConnection}"];
     MySQL [tooltip="MySQL", URL="MySQL.md", label="{MySQL}"];
-    Odbc [tooltip="Odbc", URL="Odbc.md", label="{Odbc}"];
     SQLite [tooltip="SQLite", URL="SQLite.md", label="{SQLite}"];
     Digest [tooltip="Digest", URL="Digest.md", label="{Digest}"];
     EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter}"];
@@ -49,6 +49,7 @@ digraph {
     Condition [tooltip="Condition", URL="Condition.md", label="{Condition}"];
     Event [tooltip="Event", URL="Event.md", label="{Event}"];
     Semaphore [tooltip="Semaphore", URL="Semaphore.md", label="{Semaphore}"];
+    Logger [tooltip="Logger", URL="Logger.md", label="{Logger}"];
     Message [tooltip="Message", URL="Message.md", label="{Message}"];
     HttpMessage [tooltip="HttpMessage", URL="HttpMessage.md", label="{HttpMessage}"];
     HttpRequest [tooltip="HttpRequest", URL="HttpRequest.md", label="{HttpRequest}"];
@@ -106,9 +107,9 @@ digraph {
     object -> AbortController [dir=back];
     object -> Buffer [dir=back];
     object -> Cipher [dir=back];
+    object -> CryptoKey [dir=back];
     object -> DbConnection [dir=back];
     DbConnection -> MySQL [dir=back];
-    DbConnection -> Odbc [dir=back];
     DbConnection -> SQLite [dir=back];
     object -> Digest [dir=back];
     object -> EventEmitter [dir=back];
@@ -145,6 +146,7 @@ digraph {
     Lock -> Condition [dir=back];
     Lock -> Event [dir=back];
     Lock -> Semaphore [dir=back];
+    object -> Logger [dir=back];
     object -> Message [dir=back];
     Message -> HttpMessage [dir=back];
     HttpMessage -> HttpRequest [dir=back];
