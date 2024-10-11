@@ -26,7 +26,7 @@ index.html 的内容如下：
 ```html
 <script>
     window.addEventListener("message", function (msg) {
-        external.postMessage("send back: " + msg);
+        window.postMessage("send back: " + msg);
     });
 </script>
 ```
@@ -58,7 +58,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\laddEventListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveEventListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
-    WebView [tooltip="WebView", fillcolor="lightgray", id="me", label="{WebView|onopen\lonmove\lonresize\lonclose\lonmessage\l|loadURL()\lloadFile()\lgetUrl()\lsetHtml()\lreload()\lgoBack()\lgoForward()\leval()\lsetTitle()\lgetTitle()\lclose()\lpostMessage()\l}"];
+    WebView [tooltip="WebView", fillcolor="lightgray", id="me", label="{WebView|onopen\lonmove\lonresize\lonfocus\lonblur\lonclose\lonmessage\l|loadURL()\lloadFile()\lgetUrl()\lsetHtml()\lreload()\lgoBack()\lgoForward()\leval()\lsetTitle()\lgetTitle()\lgetMenu()\lclose()\lpostMessage()\l}"];
 
     object -> EventEmitter [dir=back];
     EventEmitter -> WebView [dir=back];
@@ -115,6 +115,22 @@ var gui = require('gui');
 var webview = gui.open('fs://index.html');
 
 webview.onresize = evt => console.log(evt.width, evt.height);
+```
+
+--------------------------
+### onfocus
+**Function, 查询和绑定窗口获得焦点事件，相当于 on("focus", func);**
+
+```JavaScript
+Function WebView.onfocus;
+```
+
+--------------------------
+### onblur
+**Function, 查询和绑定窗口失去焦点事件，相当于 on("blur", func);**
+
+```JavaScript
+Function WebView.onblur;
 ```
 
 --------------------------
@@ -234,6 +250,17 @@ String WebView.getTitle() async;
 
 返回结果:
 * String, 返回窗口的标题
+
+--------------------------
+### getMenu
+**查询窗口的菜单**
+
+```JavaScript
+Menu WebView.getMenu();
+```
+
+返回结果:
+* [Menu](Menu.md), 返回窗口的菜单
 
 --------------------------
 ### close

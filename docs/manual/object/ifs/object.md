@@ -20,10 +20,13 @@ digraph {
     ChildProcess [tooltip="ChildProcess", URL="ChildProcess.md", label="{ChildProcess}"];
     DgramSocket [tooltip="DgramSocket", URL="DgramSocket.md", label="{DgramSocket}"];
     FSWatcher [tooltip="FSWatcher", URL="FSWatcher.md", label="{FSWatcher}"];
+    Menu [tooltip="Menu", URL="Menu.md", label="{Menu}"];
+    MenuItem [tooltip="MenuItem", URL="MenuItem.md", label="{MenuItem}"];
     RTCDataChannel [tooltip="RTCDataChannel", URL="RTCDataChannel.md", label="{RTCDataChannel}"];
     RTCPeerConnection [tooltip="RTCPeerConnection", URL="RTCPeerConnection.md", label="{RTCPeerConnection}"];
     Service [tooltip="Service", URL="Service.md", label="{Service}"];
     StatsWatcher [tooltip="StatsWatcher", URL="StatsWatcher.md", label="{StatsWatcher}"];
+    Tray [tooltip="Tray", URL="Tray.md", label="{Tray}"];
     WebSocket [tooltip="WebSocket", URL="WebSocket.md", label="{WebSocket}"];
     WebView [tooltip="WebView", URL="WebView.md", label="{WebView}"];
     Worker [tooltip="Worker", URL="Worker.md", label="{Worker}"];
@@ -117,10 +120,13 @@ digraph {
     EventEmitter -> ChildProcess [dir=back];
     EventEmitter -> DgramSocket [dir=back];
     EventEmitter -> FSWatcher [dir=back];
+    EventEmitter -> Menu [dir=back];
+    EventEmitter -> MenuItem [dir=back];
     EventEmitter -> RTCDataChannel [dir=back];
     EventEmitter -> RTCPeerConnection [dir=back];
     EventEmitter -> Service [dir=back];
     EventEmitter -> StatsWatcher [dir=back];
+    EventEmitter -> Tray [dir=back];
     EventEmitter -> WebSocket [dir=back];
     EventEmitter -> WebView [dir=back];
     EventEmitter -> Worker [dir=back];

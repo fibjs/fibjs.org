@@ -1,41 +1,180 @@
-# 对象 EventEmitter
-EventEmitter 是事件触发对象，它可以被用于建立观察者模式，支持事件触发的对象均继承于此
+# 对象 Menu
+菜单管理对象，用于窗口显示菜单
 
-当一个事件被触发时，所有与该事件相关联的监听器会以异步方式被调用。它还允许我们创建具有高度可定制性和灵活性的代码。
-
-常用函数包括：addListener/on、once、removeListener/off、removeAllListeners 和 emit。
-
-下面是一个示例代码：
+Menu 可以使用以下方式创建：
 
 ```JavaScript
-var fs = require('fs');
-var EventEmitter = require('events');
-var event = new EventEmitter();
-
-event.on('read_file', function(filename) {
-    fs.readFile(filename, 'utf8', function(err, data) {
-        if (err) {
-            event.emit('error', err);
-            return;
-        }
-        event.emit('show_content', data);
-    });
-});
-
-event.on('error', function(err) {
-    console.log(`Error ${err}`);
-});
-
-event.on('show_content', function(content) {
-    console.log(content);
-});
-
-event.emit('read_file', 'test.txt');
+var menu = gui.createMenu([{
+        label: 'File',
+        submenu: [{
+                label: 'New',
+                onclick: function() {
+                    console.log('New clicked');
+                }
+            },
+            {
+                label: 'Open',
+                onclick: function() {
+                    console.log('Open clicked');
+                }
+            },
+            {
+                label: 'Save',
+                onclick: function() {
+                    console.log('Save clicked');
+                }
+            },
+            {
+                label: 'Save As',
+                onclick: function() {
+                    console.log('Save As clicked');
+                }
+            },
+            {
+                label: 'Close',
+                onclick: function() {
+                    console.log('Close clicked');
+                }
+            }
+        ]
+    },
+    {
+        label: 'Edit',
+        submenu: [{
+                label: 'Undo',
+                onclick: function() {
+                    console.log('Undo clicked');
+                }
+            },
+            {
+                label: 'Redo',
+                onclick: function() {
+                    console.log('Redo clicked');
+                }
+            },
+            {
+                type: 'separator'
+            },
+            {
+                label: 'Cut',
+                onclick: function() {
+                    console.log('Cut clicked');
+                }
+            },
+            {
+                label: 'Copy',
+                onclick: function() {
+                    console.log('Copy clicked');
+                }
+            },
+            {
+                label: 'Paste',
+                onclick: function() {
+                    console.log('Paste clicked');
+                }
+            }
+        ]
+    },
+    {
+        label: 'Help',
+        submenu: [{
+            label: 'About',
+            onclick: function() {
+                console.log('About clicked');
+            }
+        }]
+    }
+]);
 ```
 
-上述示例代码，当运行时，事件emitter实例event首先监听'read_file'事件，然后在事件触发时(`event.emit('read_file', 'test.txt')`)触发读取文件的操作。当读取成功后，会触发'show_content'事件，此时监听了'show_content'事件的函数就会被执行并显示文件内容。如果在读取文件过程中发生错误，则会触发'error'事件，此时操作失败的情况就得到了应对。
+或者在创建窗口时内置创建：
 
-这种模式在应对异步操作的业务场景中具有很好的优越性。
+```JavaScript
+var win = gui.open({
+    url: 'http://fibjs.org',
+    menu: [{
+            label: 'File',
+            submenu: [{
+                    label: 'New',
+                    onclick: function() {
+                        console.log('New clicked');
+                    }
+                },
+                {
+                    label: 'Open',
+                    onclick: function() {
+                        console.log('Open clicked');
+                    }
+                },
+                {
+                    label: 'Save',
+                    onclick: function() {
+                        console.log('Save clicked');
+                    }
+                },
+                {
+                    label: 'Save As',
+                    onclick: function() {
+                        console.log('Save As clicked');
+                    }
+                },
+                {
+                    label: 'Close',
+                    onclick: function() {
+                        console.log('Close clicked');
+                    }
+                }
+            ]
+        },
+        {
+            label: 'Edit',
+            submenu: [{
+                    label: 'Undo',
+                    onclick: function() {
+                        console.log('Undo clicked');
+                    }
+                },
+                {
+                    label: 'Redo',
+                    onclick: function() {
+                        console.log('Redo clicked');
+                    }
+                },
+                {
+                    type: 'separator'
+                },
+                {
+                    label: 'Cut',
+                    onclick: function() {
+                        console.log('Cut clicked');
+                    }
+                },
+                {
+                    label: 'Copy',
+                    onclick: function() {
+                        console.log('Copy clicked');
+                    }
+                },
+                {
+                    label: 'Paste',
+                    onclick: function() {
+                        console.log('Paste clicked');
+                    }
+                }
+            ]
+        },
+        {
+            label: 'Help',
+            submenu: [{
+                label: 'About',
+                onclick: function() {
+                    console.log('About clicked');
+                }
+            }]
+        }
+    ]
+});
+```
 
 ## 继承关系
 ```dot
@@ -43,56 +182,25 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    EventEmitter [tooltip="EventEmitter", fillcolor="lightgray", id="me", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\laddEventListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveEventListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
-    AbortSignal [tooltip="AbortSignal", URL="AbortSignal.md", label="{AbortSignal}"];
-    ChildProcess [tooltip="ChildProcess", URL="ChildProcess.md", label="{ChildProcess}"];
-    DgramSocket [tooltip="DgramSocket", URL="DgramSocket.md", label="{DgramSocket}"];
-    FSWatcher [tooltip="FSWatcher", URL="FSWatcher.md", label="{FSWatcher}"];
-    Menu [tooltip="Menu", URL="Menu.md", label="{Menu}"];
-    MenuItem [tooltip="MenuItem", URL="MenuItem.md", label="{MenuItem}"];
-    RTCDataChannel [tooltip="RTCDataChannel", URL="RTCDataChannel.md", label="{RTCDataChannel}"];
-    RTCPeerConnection [tooltip="RTCPeerConnection", URL="RTCPeerConnection.md", label="{RTCPeerConnection}"];
-    Service [tooltip="Service", URL="Service.md", label="{Service}"];
-    StatsWatcher [tooltip="StatsWatcher", URL="StatsWatcher.md", label="{StatsWatcher}"];
-    Tray [tooltip="Tray", URL="Tray.md", label="{Tray}"];
-    WebSocket [tooltip="WebSocket", URL="WebSocket.md", label="{WebSocket}"];
-    WebView [tooltip="WebView", URL="WebView.md", label="{WebView}"];
-    Worker [tooltip="Worker", URL="Worker.md", label="{Worker}"];
+    EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\laddEventListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveEventListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
+    Menu [tooltip="Menu", fillcolor="lightgray", id="me", label="{Menu|operator[]\l|length\l|append()\linsert()\lremove()\l}"];
 
     object -> EventEmitter [dir=back];
-    EventEmitter -> AbortSignal [dir=back];
-    EventEmitter -> ChildProcess [dir=back];
-    EventEmitter -> DgramSocket [dir=back];
-    EventEmitter -> FSWatcher [dir=back];
     EventEmitter -> Menu [dir=back];
-    EventEmitter -> MenuItem [dir=back];
-    EventEmitter -> RTCDataChannel [dir=back];
-    EventEmitter -> RTCPeerConnection [dir=back];
-    EventEmitter -> Service [dir=back];
-    EventEmitter -> StatsWatcher [dir=back];
-    EventEmitter -> Tray [dir=back];
-    EventEmitter -> WebSocket [dir=back];
-    EventEmitter -> WebView [dir=back];
-    EventEmitter -> Worker [dir=back];
 }
 ```
 
-## 构造函数
+## 操作符
         
-### EventEmitter
-**构造函数**
+### operator[]
+**获取菜单项，通过索引获取菜单中的菜单项。**
 
 ```JavaScript
-new EventEmitter();
+readonly MenuItem Menu[];
 ```
 
-## 对象
-        
-**事件触发对象**
-
-```JavaScript
-EventEmitter new EventEmitter;
-```
+返回结果:
+* 菜单项对象
 
 ## 静态属性
         
@@ -100,16 +208,60 @@ EventEmitter new EventEmitter;
 **Integer, 默认全局最大监听器数**
 
 ```JavaScript
-static Integer EventEmitter.defaultMaxListeners;
+static Integer Menu.defaultMaxListeners;
+```
+
+## 成员属性
+        
+### length
+**Integer, 获取菜单项数量**
+
+```JavaScript
+readonly Integer Menu.length;
 ```
 
 ## 成员函数
         
+### append
+**添加菜单项，将一个菜单项添加到菜单中。**
+
+```JavaScript
+Menu.append(Object item);
+```
+
+调用参数:
+* item: Object, 菜单项对象
+
+--------------------------
+### insert
+**插入菜单项，在指定位置插入一个菜单项。**
+
+```JavaScript
+Menu.insert(Integer pos,
+    Object item);
+```
+
+调用参数:
+* pos: Integer, 插入位置的索引
+* item: Object, 菜单项对象
+
+--------------------------
+### remove
+**@rief 移除菜单项，从菜单中移除指定位置的菜单项。**
+
+```JavaScript
+Menu.remove(Integer pos);
+```
+
+调用参数:
+* pos: Integer, 要移除的菜单项的索引
+
+--------------------------
 ### on
 **绑定一个事件处理函数到对象**
 
 ```JavaScript
-Object EventEmitter.on(String ev,
+Object Menu.on(String ev,
     Function func);
 ```
 
@@ -124,7 +276,7 @@ Object EventEmitter.on(String ev,
 **绑定一个事件处理函数到对象**
 
 ```JavaScript
-Object EventEmitter.on(Object map);
+Object Menu.on(Object map);
 ```
 
 调用参数:
@@ -138,7 +290,7 @@ Object EventEmitter.on(Object map);
 **绑定一个事件处理函数到对象**
 
 ```JavaScript
-Object EventEmitter.addListener(String ev,
+Object Menu.addListener(String ev,
     Function func);
 ```
 
@@ -153,7 +305,7 @@ Object EventEmitter.addListener(String ev,
 **绑定一个事件处理函数到对象**
 
 ```JavaScript
-Object EventEmitter.addListener(Object map);
+Object Menu.addListener(Object map);
 ```
 
 调用参数:
@@ -167,7 +319,7 @@ Object EventEmitter.addListener(Object map);
 **绑定一个事件处理函数到对象**
 
 ```JavaScript
-Object EventEmitter.addEventListener(String ev,
+Object Menu.addEventListener(String ev,
     Function func,
     Object options = {});
 ```
@@ -188,7 +340,7 @@ options 参数是一个对象，它可以包含以下属性：
 **绑定一个事件处理函数到对象起始**
 
 ```JavaScript
-Object EventEmitter.prependListener(String ev,
+Object Menu.prependListener(String ev,
     Function func);
 ```
 
@@ -203,7 +355,7 @@ Object EventEmitter.prependListener(String ev,
 **绑定一个事件处理函数到对象起始**
 
 ```JavaScript
-Object EventEmitter.prependListener(Object map);
+Object Menu.prependListener(Object map);
 ```
 
 调用参数:
@@ -217,7 +369,7 @@ Object EventEmitter.prependListener(Object map);
 **绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次**
 
 ```JavaScript
-Object EventEmitter.once(String ev,
+Object Menu.once(String ev,
     Function func);
 ```
 
@@ -232,7 +384,7 @@ Object EventEmitter.once(String ev,
 **绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次**
 
 ```JavaScript
-Object EventEmitter.once(Object map);
+Object Menu.once(Object map);
 ```
 
 调用参数:
@@ -246,7 +398,7 @@ Object EventEmitter.once(Object map);
 **绑定一个事件处理函数到对象起始**
 
 ```JavaScript
-Object EventEmitter.prependOnceListener(String ev,
+Object Menu.prependOnceListener(String ev,
     Function func);
 ```
 
@@ -261,7 +413,7 @@ Object EventEmitter.prependOnceListener(String ev,
 **绑定一个事件处理函数到对象起始**
 
 ```JavaScript
-Object EventEmitter.prependOnceListener(Object map);
+Object Menu.prependOnceListener(Object map);
 ```
 
 调用参数:
@@ -275,7 +427,7 @@ Object EventEmitter.prependOnceListener(Object map);
 **从对象处理队列中取消指定函数**
 
 ```JavaScript
-Object EventEmitter.off(String ev,
+Object Menu.off(String ev,
     Function func);
 ```
 
@@ -290,7 +442,7 @@ Object EventEmitter.off(String ev,
 **取消对象处理队列中的全部函数**
 
 ```JavaScript
-Object EventEmitter.off(String ev);
+Object Menu.off(String ev);
 ```
 
 调用参数:
@@ -303,7 +455,7 @@ Object EventEmitter.off(String ev);
 **从对象处理队列中取消指定函数**
 
 ```JavaScript
-Object EventEmitter.off(Object map);
+Object Menu.off(Object map);
 ```
 
 调用参数:
@@ -317,7 +469,7 @@ Object EventEmitter.off(Object map);
 **从对象处理队列中取消指定函数**
 
 ```JavaScript
-Object EventEmitter.removeListener(String ev,
+Object Menu.removeListener(String ev,
     Function func);
 ```
 
@@ -332,7 +484,7 @@ Object EventEmitter.removeListener(String ev,
 **取消对象处理队列中的全部函数**
 
 ```JavaScript
-Object EventEmitter.removeListener(String ev);
+Object Menu.removeListener(String ev);
 ```
 
 调用参数:
@@ -345,7 +497,7 @@ Object EventEmitter.removeListener(String ev);
 **从对象处理队列中取消指定函数**
 
 ```JavaScript
-Object EventEmitter.removeListener(Object map);
+Object Menu.removeListener(Object map);
 ```
 
 调用参数:
@@ -359,7 +511,7 @@ Object EventEmitter.removeListener(Object map);
 **从对象处理队列中取消指定函数**
 
 ```JavaScript
-Object EventEmitter.removeEventListener(String ev,
+Object Menu.removeEventListener(String ev,
     Function func,
     Object options = {});
 ```
@@ -377,7 +529,7 @@ Object EventEmitter.removeEventListener(String ev,
 **从对象处理队列中取消所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。**
 
 ```JavaScript
-Object EventEmitter.removeAllListeners(String ev);
+Object Menu.removeAllListeners(String ev);
 ```
 
 调用参数:
@@ -390,7 +542,7 @@ Object EventEmitter.removeAllListeners(String ev);
 **从对象处理队列中取消所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。**
 
 ```JavaScript
-Object EventEmitter.removeAllListeners(Array evs = []);
+Object Menu.removeAllListeners(Array evs = []);
 ```
 
 调用参数:
@@ -404,7 +556,7 @@ Object EventEmitter.removeAllListeners(Array evs = []);
 **监听器的默认限制的数量，仅用于兼容**
 
 ```JavaScript
-EventEmitter.setMaxListeners(Integer n);
+Menu.setMaxListeners(Integer n);
 ```
 
 调用参数:
@@ -415,7 +567,7 @@ EventEmitter.setMaxListeners(Integer n);
 **获取监听器的默认限制的数量，仅用于兼容**
 
 ```JavaScript
-Integer EventEmitter.getMaxListeners();
+Integer Menu.getMaxListeners();
 ```
 
 返回结果:
@@ -426,7 +578,7 @@ Integer EventEmitter.getMaxListeners();
 **查询对象指定事件的监听器数组**
 
 ```JavaScript
-Array EventEmitter.listeners(String ev);
+Array Menu.listeners(String ev);
 ```
 
 调用参数:
@@ -440,7 +592,7 @@ Array EventEmitter.listeners(String ev);
 **查询对象指定事件的监听器数量**
 
 ```JavaScript
-Integer EventEmitter.listenerCount(String ev);
+Integer Menu.listenerCount(String ev);
 ```
 
 调用参数:
@@ -453,7 +605,7 @@ Integer EventEmitter.listenerCount(String ev);
 **查询对象指定事件的监听器数量**
 
 ```JavaScript
-Integer EventEmitter.listenerCount(Value o,
+Integer Menu.listenerCount(Value o,
     String ev);
 ```
 
@@ -469,7 +621,7 @@ Integer EventEmitter.listenerCount(Value o,
 **查询监听器事件名称**
 
 ```JavaScript
-Array EventEmitter.eventNames();
+Array Menu.eventNames();
 ```
 
 返回结果:
@@ -480,7 +632,7 @@ Array EventEmitter.eventNames();
 **主动触发一个事件**
 
 ```JavaScript
-Boolean EventEmitter.emit(String ev,
+Boolean Menu.emit(String ev,
     ...args);
 ```
 
@@ -496,7 +648,7 @@ Boolean EventEmitter.emit(String ev,
 **返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
 
 ```JavaScript
-String EventEmitter.toString();
+String Menu.toString();
 ```
 
 返回结果:
@@ -507,7 +659,7 @@ String EventEmitter.toString();
 **返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
 
 ```JavaScript
-Value EventEmitter.toJSON(String key = "");
+Value Menu.toJSON(String key = "");
 ```
 
 调用参数:

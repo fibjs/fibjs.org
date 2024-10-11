@@ -38,6 +38,8 @@
 * [Lock](ifs/Lock.md) - Lock 是一个内建对象，它可以用来控制纤程并发访问, 可以通过一个纤程获取锁，来阻止其他纤程同时获取。Lock 可以通过 coroutine.Lock() 函数创建
 * [Logger](ifs/Logger.md) - 日志对象，用于记录日志信息
 * [MemoryStream](ifs/MemoryStream.md) - 内存流对象
+* [Menu](ifs/Menu.md) - 菜单管理对象，用于窗口显示菜单
+* [MenuItem](ifs/MenuItem.md) - 菜单项接口，继承自 EventEmitter。
 * [Message](ifs/Message.md) - 基础消息对象
 * [MySQL](ifs/MySQL.md) - MySQL 对象是用于操作 MySQL 数据库的类,
 * [RTCDataChannel](ifs/RTCDataChannel.md) - RTCDataChannel接口定义了一个双向的数据通道
@@ -74,6 +76,7 @@
 * [TextDecoder](ifs/TextDecoder.md) - TextDecoder 解码对象
 * [TextEncoder](ifs/TextEncoder.md) - TextEncoder 编码对象
 * [Timer](ifs/Timer.md) - 定时器处理器对象
+* [Tray](ifs/Tray.md) - 系统状态图标，用于在系统托盘中显示一个图标
 * [UrlObject](ifs/UrlObject.md) - UrlObject 是用于表示 URL 信息的一种对象，我们可以方便地使用 UrlObject 对象表示和操作一个 URL 地址。
 * [Verify](ifs/Verify.md) - 用于验证签名的实用程序
 * [WebSocket](ifs/WebSocket.md) - WebSocket 是一种基于 TCP 协议的全双工通信协议，在浏览器和服务器之间建立起一个不断开的连接，可以实现实时双向数据传输，并且可以支持任意格式的数据传输。在 fibjs 中，WebSocket 支持模块提供了相应的 API 接口，可以实现 WebSocket 服务器端和客户端的开发

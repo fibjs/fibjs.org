@@ -21,10 +21,12 @@
   - [dgram](ifs/dgram.md) - dgram 基础模块之一，主要用于实现 UDP 数据包 socket 的封装。
   - [dns](ifs/dns.md) - dns 域名查询模块
   - [http](ifs/http.md) - http 模块封装了 HTTP 请求和响应的处理，让我们可以轻松地创建一个 http 服务器，也可以模拟客户端发起 http 请求。使用 http 模块，开发者可以很方便地编写和处理 HTTP 协议相关的代码
+  - [mime](ifs/mime.md) - MIME 解析模块
   - [mq](ifs/mq.md) - 消息队列模块
   - [net](ifs/net.md) - 网络访问模块
   - [punycode](ifs/punycode.md) - punycode 国际化域名转换模块
   - [querystring](ifs/querystring.md) - querystring 模块提供了一些用于解析和序列化 URL 查询参数的实用函数，使用 querystring 模块可以方便地将 URL 查询参数解析为对象或字符串，也可以将对象序列化为 URL 查询参数字符串
+  - [rtc](ifs/rtc.md) - WebRTC 网络实时通信模块
   - [tls](ifs/tls.md) - tls 模块是 fibjs 内置的加密模块，可以用于建立网络连接的 tls/ssl 超文本传输协议。该模块提供加密验证，客户端和服务器可以确保连接是安全的
   - [url](ifs/url.md) - url 处理模块，url 模块提供了 Url 类，用于处理 URL 相关的操作，包括解析、组装、拼接等
   - [ws](ifs/ws.md) - websocket 支持模块
@@ -63,6 +65,4 @@
   - [constants](ifs/constants.md) - 常用常量定义模块
   - [fs_constants](ifs/fs_constants.md) - fs 模块常用常量定义模块
   - [crypto_constants](ifs/crypto_constants.md) - crypto 模块常用常量定义模块
-* [mime](ifs/mime.md) - MIME 解析模块
-* [rtc](ifs/rtc.md) - WebRTC 网络实时通信模块
-* [zlib_constants](ifs/zlib_constants.md) - zlib 模块常用常量定义模块
+  - [zlib_constants](ifs/zlib_constants.md) - zlib 模块常用常量定义模块
