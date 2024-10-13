@@ -183,7 +183,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\laddEventListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveEventListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
-    Menu [tooltip="Menu", fillcolor="lightgray", id="me", label="{Menu|operator[]\l|length\l|append()\linsert()\lremove()\l}"];
+    Menu [tooltip="Menu", fillcolor="lightgray", id="me", label="{Menu|operator[]\l|length\l|append()\linsert()\lremove()\lgetMenuItemById()\l}"];
 
     object -> EventEmitter [dir=back];
     EventEmitter -> Menu [dir=back];
@@ -255,6 +255,20 @@ Menu.remove(Integer pos);
 
 调用参数:
 * pos: Integer, 要移除的菜单项的索引
+
+--------------------------
+### getMenuItemById
+**获取菜单项，通过 id 获取菜单中的菜单项。**
+
+```JavaScript
+MenuItem Menu.getMenuItemById(String id);
+```
+
+调用参数:
+* id: String, 菜单项的 id
+
+返回结果:
+* [MenuItem](MenuItem.md), 菜单项对象，如果没有找到返回 null
 
 --------------------------
 ### on

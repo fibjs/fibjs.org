@@ -13,7 +13,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Buffer [tooltip="Buffer", fillcolor="lightgray", id="me", label="{Buffer|new Buffer()\l|Buffer\l|alloc()\lallocUnsafe()\lallocUnsafeSlow()\lfrom()\lconcat()\lisBuffer()\lisEncoding()\lbyteLength()\lcompare()\l|length\l|write()\lfill()\lcopy()\lset()\lreadUInt8()\lreadUInt16LE()\lreadUInt16BE()\lreadUInt32LE()\lreadUInt32BE()\lreadUIntLE()\lreadUIntBE()\lreadInt64LE()\lreadInt64BE()\lreadInt8()\lreadInt16LE()\lreadInt16BE()\lreadInt32LE()\lreadInt32BE()\lreadIntLE()\lreadIntBE()\lreadFloatLE()\lreadFloatBE()\lreadDoubleLE()\lreadDoubleBE()\lwriteUInt8()\lwriteUInt16LE()\lwriteUInt16BE()\lwriteUInt32LE()\lwriteUInt32BE()\lwriteUIntLE()\lwriteUIntBE()\lwriteInt8()\lwriteInt16LE()\lwriteInt16BE()\lwriteInt32LE()\lwriteInt32BE()\lwriteInt64LE()\lwriteInt64BE()\lwriteIntLE()\lwriteIntBE()\lwriteFloatLE()\lwriteFloatBE()\lwriteDoubleLE()\lwriteDoubleBE()\lindexOf()\lslice()\lequals()\lcompare()\ltoString()\ltoArray()\lhex()\lbase32()\lbase58()\lbase64()\l}"];
+    Buffer [tooltip="Buffer", fillcolor="lightgray", id="me", label="{Buffer|new Buffer()\l|Buffer\l|alloc()\lallocUnsafe()\lallocUnsafeSlow()\lfrom()\lconcat()\lisBuffer()\lisEncoding()\lbyteLength()\lcompare()\l|length\l|write()\lfill()\lcopy()\lset()\lreadUInt8()\lreadUInt16LE()\lreadUInt16BE()\lreadUInt32LE()\lreadUInt32BE()\lreadUIntLE()\lreadUIntBE()\lreadInt64LE()\lreadInt64BE()\lreadInt8()\lreadInt16LE()\lreadInt16BE()\lreadInt32LE()\lreadInt32BE()\lreadIntLE()\lreadIntBE()\lreadFloatLE()\lreadFloatBE()\lreadDoubleLE()\lreadDoubleBE()\lwriteUInt8()\lwriteUInt16LE()\lwriteUInt16BE()\lwriteUInt32LE()\lwriteUInt32BE()\lwriteUIntLE()\lwriteUIntBE()\lwriteInt8()\lwriteInt16LE()\lwriteInt16BE()\lwriteInt32LE()\lwriteInt32BE()\lwriteInt64LE()\lwriteInt64BE()\lwriteIntLE()\lwriteIntBE()\lwriteFloatLE()\lwriteFloatBE()\lwriteDoubleLE()\lwriteDoubleBE()\lindexOf()\llastIndexOf()\lslice()\lequals()\lcompare()\ltoString()\ltoArray()\lhex()\lbase32()\lbase58()\lbase64()\l}"];
 
     object -> Buffer [dir=back];
 }
@@ -1197,6 +1197,52 @@ Integer Buffer.indexOf(Buffer v,
 
 ```JavaScript
 Integer Buffer.indexOf(String v,
+    Integer offset = 0);
+```
+
+调用参数:
+* v: String, 待查找数据，如果未指定 offset，默认从起始位开始
+* offset: Integer, 起始查找位置
+
+返回结果:
+* Integer, 返回查找到的位置，未找到返回 -1
+
+--------------------------
+### lastIndexOf
+**返回某个指定数据在 Buffer 中最后出现的位置**
+
+```JavaScript
+Integer Buffer.lastIndexOf(Integer v,
+    Integer offset = 0);
+```
+
+调用参数:
+* v: Integer, 待查找数据，如果未指定 offset，默认从起始位开始
+* offset: Integer, 起始查找位置
+
+返回结果:
+* Integer, 返回查找到的位置，未找到返回 -1
+
+--------------------------
+**返回某个指定数据在 Buffer 中最后出现的位置**
+
+```JavaScript
+Integer Buffer.lastIndexOf(Buffer v,
+    Integer offset = 0);
+```
+
+调用参数:
+* v: Buffer, 待查找数据，如果未指定 offset，默认从起始位开始
+* offset: Integer, 起始查找位置
+
+返回结果:
+* Integer, 返回查找到的位置，未找到返回 -1
+
+--------------------------
+**返回某个指定数据在 Buffer 中最后出现的位置**
+
+```JavaScript
+Integer Buffer.lastIndexOf(String v,
     Integer offset = 0);
 ```
 

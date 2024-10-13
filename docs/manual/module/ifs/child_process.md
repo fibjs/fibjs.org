@@ -74,7 +74,7 @@ options 支持的内容如下：
 ```JavaScript
 {
     "cwd": "", // working directory of the child process, default to current directory
-    "stdio": Array | String, // working directory of the child process, default to current directory
+    "stdio": Array | String, // configure the pipes that are established between the parent and child process
     "env": {}, // key-value pairs of environment variables to add to the child's environment
     "detached": false, // child process will be a leader of a new process group, default to false
     "uid": 0, // configure the user identity of the process
@@ -104,7 +104,7 @@ options 支持的内容如下：
 ```JavaScript
 {
     "cwd": "", // working directory of the child process, default to current directory
-    "stdio": Array | String, // working directory of the child process, default to current directory
+    "stdio": Array | String, // configure the pipes that are established between the parent and child process
     "env": {}, // key-value pairs of environment variables to add to the child's environment
     "detached": false, // child process will be a leader of a new process group, default to false
     "uid": 0, // configure the user identity of the process
@@ -119,7 +119,7 @@ options 支持的内容如下：
 **在 shell 中执行一个命令并缓冲输出，当以回调方式执行时，函数将返回子进程对象**
 
 ```JavaScript
-static (Variant stdout, Variant stderr) child_process.exec(String command,
+static (Variant stdout, Variant stderr, Integer exitCode) child_process.exec(String command,
     Object options = {}) async;
 ```
 
@@ -128,7 +128,7 @@ static (Variant stdout, Variant stderr) child_process.exec(String command,
 * options: Object, 指定创建参数
 
 返回结果:
-* (Variant stdout, Variant stderr), 返回子进程的 stdio 输出内容
+* (Variant stdout, Variant stderr, Integer exitCode), 返回子进程的 stdio 输出内容
 
 options 支持的内容如下：
 
@@ -150,7 +150,7 @@ options 支持的内容如下：
 **直接执行所指定的文件并缓冲输出，当以回调方式执行时，函数将返回子进程对象**
 
 ```JavaScript
-static (Variant stdout, Variant stderr) child_process.execFile(String command,
+static (Variant stdout, Variant stderr, Integer exitCode) child_process.execFile(String command,
     Array args,
     Object options = {}) async;
 ```
@@ -161,7 +161,7 @@ static (Variant stdout, Variant stderr) child_process.execFile(String command,
 * options: Object, 指定创建参数
 
 返回结果:
-* (Variant stdout, Variant stderr), 返回子进程的 stdio 输出内容
+* (Variant stdout, Variant stderr, Integer exitCode), 返回子进程的 stdio 输出内容
 
 options 支持的内容如下：
 
@@ -182,7 +182,7 @@ options 支持的内容如下：
 **直接执行所指定的文件并缓冲输出，当以回调方式执行时，函数将返回子进程对象**
 
 ```JavaScript
-static (Variant stdout, Variant stderr) child_process.execFile(String command,
+static (Variant stdout, Variant stderr, Integer exitCode) child_process.execFile(String command,
     Object options = {}) async;
 ```
 
@@ -191,7 +191,7 @@ static (Variant stdout, Variant stderr) child_process.execFile(String command,
 * options: Object, 指定创建参数
 
 返回结果:
-* (Variant stdout, Variant stderr), 返回子进程的 stdio 输出内容
+* (Variant stdout, Variant stderr, Integer exitCode), 返回子进程的 stdio 输出内容
 
 options 支持的内容如下：
 
@@ -231,7 +231,7 @@ options 支持的内容如下：
 ```JavaScript
 {
     "cwd": "", // working directory of the child process, default to current directory
-    "stdio": Array | String, // working directory of the child process, default to current directory
+    "stdio": Array | String, // configure the pipes that are established between the parent and child process
     "env": {}, // key-value pairs of environment variables to add to the child's environment
     "detached": false, // child process will be a leader of a new process group, default to false
     "uid": 0, // configure the user identity of the process
@@ -261,7 +261,7 @@ options 支持的内容如下：
 ```JavaScript
 {
     "cwd": "", // working directory of the child process, default to current directory
-    "stdio": Array | String, // working directory of the child process, default to current directory
+    "stdio": Array | String, // configure the pipes that are established between the parent and child process
     "env": {}, // key-value pairs of environment variables to add to the child's environment
     "detached": false, // child process will be a leader of a new process group, default to false
     "uid": 0, // configure the user identity of the process
@@ -294,7 +294,7 @@ options 支持的内容如下：
 ```JavaScript
 {
     "cwd": "", // working directory of the child process, default to current directory
-    "stdio": Array | String, // working directory of the child process, default to current directory
+    "stdio": Array | String, // configure the pipes that are established between the parent and child process
     "env": {}, // key-value pairs of environment variables to add to the child's environment
     "detached": false, // child process will be a leader of a new process group, default to false
     "uid": 0, // configure the user identity of the process
@@ -324,7 +324,7 @@ options 支持的内容如下：
 ```JavaScript
 {
     "cwd": "", // working directory of the child process, default to current directory
-    "stdio": Array | String, // working directory of the child process, default to current directory
+    "stdio": Array | String, // configure the pipes that are established between the parent and child process
     "env": {}, // key-value pairs of environment variables to add to the child's environment
     "detached": false, // child process will be a leader of a new process group, default to false
     "uid": 0, // configure the user identity of the process
@@ -393,5 +393,58 @@ options 支持的内容如下：
     "windowsVerbatimArguments": false, // do not execute any quote or escape processing on Windows. Ignored on Unix. When specified, the command line string is passed directly to the underlying operating system shell without any processing whatsoever. This is set to true automatically when the shell option is specified and is CMD.
     "windowsHide": false // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
 }
+```
+
+--------------------------
+### sh
+**用字符串模版语法在 shell 中执行一个命令并缓冲输出**
+
+```JavaScript
+static String child_process.sh(Array strings,
+    ...args) async;
+```
+
+调用参数:
+* strings: Array, 指定要运行的命令
+* args: ..., 指定字符串参数列表
+
+返回结果:
+* String, 返回子进程的 stdio 输出内容
+
+sh 是对 exec 方法的再次封装，用于快速执行 shell 命令，支持字符串模版语法，例如：
+
+```JavaScript
+const $ = require("child_process").sh;
+var ret = $`ls -l`;
+console.log(ret);
+```
+
+因为 sh 是个模版函数，所以可以很方便地在命令中使用模版，例如：
+
+```JavaScript
+const $ = require("child_process").sh;
+var ret = $`ls -l ${__dirname}`;
+console.log(ret);
+```
+
+你也可以很方便地在命令中引入数组，例如：
+
+```JavaScript
+const $ = require("child_process").sh;
+const words = [
+    "hello",
+    "world"
+]
+var ret = $`echo ${words}`;
+console.log(ret);
+```
+
+sh 会自动删除命令返回的最后一个换行，以方便在下一次命令中使用，例如：
+
+```JavaScript
+const $ = require("child_process").sh;
+var world = $`echo world`;
+var ret = $`echo hello ${world}`;
+console.log(ret);
 ```
 
