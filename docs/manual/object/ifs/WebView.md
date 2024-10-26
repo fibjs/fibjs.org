@@ -55,7 +55,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\laddEventListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveEventListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
-    WebView [tooltip="WebView", fillcolor="lightgray", id="me", label="{WebView|onloading\lonload\lonmove\lonresize\lonfocus\lonblur\lonclose\lonmessage\l|loadURL()\lloadFile()\lgetUrl()\lsetHtml()\lgetHtml()\lisReady()\lreload()\lgoBack()\lgoForward()\leval()\lsetTitle()\lgetTitle()\lisVisible()\lshow()\lhide()\lsetSize()\lgetSize()\lsetPosition()\lgetPosition()\lisActived()\lactive()\lgetMenu()\lcapturePage()\lclose()\lpostMessage()\l}"];
+    WebView [tooltip="WebView", fillcolor="lightgray", id="me", label="{WebView|onloading\lonload\lonmove\lonresize\lonfocus\lonblur\lonclose\lonmessage\l|loadUrl()\lloadFile()\lgetUrl()\lsetHtml()\lgetHtml()\lisReady()\lreload()\lgoBack()\lgoForward()\leval()\lsetTitle()\lgetTitle()\lisVisible()\lshow()\lhide()\lsetSize()\lgetSize()\lsetPosition()\lgetPosition()\lisActived()\lactive()\lgetMenu()\lcapturePage()\lclose()\lpostMessage()\l}"];
 
     object -> EventEmitter [dir=back];
     EventEmitter -> WebView [dir=back];
@@ -156,11 +156,11 @@ Function WebView.onmessage;
 
 ## 成员函数
         
-### loadURL
+### loadUrl
 **加载指定 [url](../../module/ifs/url.md) 的页面**
 
 ```JavaScript
-WebView.loadURL(String url) async;
+WebView.loadUrl(String url) async;
 ```
 
 调用参数:
