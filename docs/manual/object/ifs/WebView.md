@@ -1,7 +1,6 @@
 # 对象 WebView
 浏览器窗口对象，WebView 是一个嵌入浏览器的窗口组件.
 
-### 消息通信
 由于 WebView 内的 JavaScript 程序与 fibjs 并不在同一个引擎内，所以如果需要与宿主程序进行通讯，需要通过消息进行。
 
 WebView 用于通讯的对象是 window，支持方法 postMessage 和 message 事件。
@@ -30,7 +29,6 @@ index.html 的内容如下：
     });
 </script>
 ```
-### 关闭窗口
 如果需要在 WebView 内关闭窗口，可以调用 window.close。
 ```html
 <script lang="JavaScript">
@@ -39,7 +37,6 @@ index.html 的内容如下：
    });
 </script>
 ```
-### 拖动窗口
 在有些应用里，需要在 WebView 内实现拖动窗口的功能，可以通过以下代码实现：
 ```html
 <script>
@@ -58,7 +55,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\laddEventListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveEventListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
-    WebView [tooltip="WebView", fillcolor="lightgray", id="me", label="{WebView|onopen\lonmove\lonresize\lonfocus\lonblur\lonclose\lonmessage\l|loadURL()\lloadFile()\lgetUrl()\lsetHtml()\lreload()\lgoBack()\lgoForward()\leval()\lsetTitle()\lgetTitle()\lgetMenu()\lclose()\lpostMessage()\l}"];
+    WebView [tooltip="WebView", fillcolor="lightgray", id="me", label="{WebView|onloading\lonload\lonmove\lonresize\lonfocus\lonblur\lonclose\lonmessage\l|loadURL()\lloadFile()\lgetUrl()\lsetHtml()\lgetHtml()\lisReady()\lreload()\lgoBack()\lgoForward()\leval()\lsetTitle()\lgetTitle()\lisVisible()\lshow()\lhide()\lsetSize()\lgetSize()\lsetPosition()\lgetPosition()\lisActived()\lactive()\lgetMenu()\lcapturePage()\lclose()\lpostMessage()\l}"];
 
     object -> EventEmitter [dir=back];
     EventEmitter -> WebView [dir=back];
@@ -76,11 +73,19 @@ static Integer WebView.defaultMaxListeners;
 
 ## 成员属性
         
-### onopen
-**Function, 查询和绑定加载成功事件，相当于 on("open", func);**
+### onloading
+**Function, 查询和绑定窗口开始加载事件，相当于 on("loading", func);**
 
 ```JavaScript
-Function WebView.onopen;
+Function WebView.onloading;
+```
+
+--------------------------
+### onload
+**Function, 查询和绑定窗口加载 完成事件，相当于 on("load", func);**
+
+```JavaScript
+Function WebView.onload;
 ```
 
 --------------------------
@@ -195,6 +200,28 @@ WebView.setHtml(String html) async;
 * html: String, 设置的 html
 
 --------------------------
+### getHtml
+**获取 webview 的页面 html**
+
+```JavaScript
+String WebView.getHtml() async;
+```
+
+返回结果:
+* String, 返回 webview 的页面 html
+
+--------------------------
+### isReady
+**查询当前页面是否加载完成**
+
+```JavaScript
+Boolean WebView.isReady() async;
+```
+
+返回结果:
+* Boolean, 返回当前页面是否加载完成
+
+--------------------------
 ### reload
 **刷新当前页面**
 
@@ -223,11 +250,14 @@ WebView.goForward() async;
 **在当前窗口运行一段 JavaScript 代码**
 
 ```JavaScript
-WebView.eval(String code) async;
+Variant WebView.eval(String code) async;
 ```
 
 调用参数:
 * code: String, 指定要执行的 JavaScript 代码
+
+返回结果:
+* Variant, 返回执行结果
 
 --------------------------
 ### setTitle
@@ -252,6 +282,100 @@ String WebView.getTitle() async;
 * String, 返回窗口的标题
 
 --------------------------
+### isVisible
+**设置窗口是否可见**
+
+```JavaScript
+Boolean WebView.isVisible() async;
+```
+
+返回结果:
+* Boolean, 返回窗口是否可见
+
+--------------------------
+### show
+**显示窗口**
+
+```JavaScript
+WebView.show() async;
+```
+
+--------------------------
+### hide
+**隐藏窗口**
+
+```JavaScript
+WebView.hide() async;
+```
+
+--------------------------
+### setSize
+**设置窗口的尺寸**
+
+```JavaScript
+WebView.setSize(Integer width,
+    Integer height) async;
+```
+
+调用参数:
+* width: Integer, 指定窗口的宽度
+* height: Integer, 指定窗口的高度
+
+--------------------------
+### getSize
+**查询窗口的尺寸**
+
+```JavaScript
+NArray WebView.getSize() async;
+```
+
+返回结果:
+* NArray, 返回窗口的尺寸，返回值为一个数组，第一个元素为宽度，第二个元素为高度
+
+--------------------------
+### setPosition
+**设置窗口的位置**
+
+```JavaScript
+WebView.setPosition(Integer left,
+    Integer top) async;
+```
+
+调用参数:
+* left: Integer, 指定窗口的左上角 x 坐标
+* top: Integer, 指定窗口的左上角 y 坐标
+
+--------------------------
+### getPosition
+**查询窗口的位置**
+
+```JavaScript
+NArray WebView.getPosition() async;
+```
+
+返回结果:
+* NArray, 返回窗口的位置，返回值为一个数组，第一个元素为 x 坐标，第二个元素为 y 坐标
+
+--------------------------
+### isActived
+**查询窗口是否是激活窗口**
+
+```JavaScript
+Boolean WebView.isActived() async;
+```
+
+返回结果:
+* Boolean, 返回窗口是否是激活窗口
+
+--------------------------
+### active
+**激活窗口**
+
+```JavaScript
+WebView.active() async;
+```
+
+--------------------------
 ### getMenu
 **查询窗口的菜单**
 
@@ -261,6 +385,17 @@ Menu WebView.getMenu();
 
 返回结果:
 * [Menu](Menu.md), 返回窗口的菜单
+
+--------------------------
+### capturePage
+**截取当前窗口的图像**
+
+```JavaScript
+Buffer WebView.capturePage() async;
+```
+
+返回结果:
+* [Buffer](Buffer.md), 返回截取的图像
 
 --------------------------
 ### close

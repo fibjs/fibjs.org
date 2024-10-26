@@ -7,6 +7,15 @@ gui 模块
 var gui = require('gui');
 ```
 
+## 对象
+        
+### WebView
+**浏览器窗口对象，[WebView](../../object/ifs/WebView.md) 是一个嵌入浏览器的窗口组件**
+
+```JavaScript
+WebView gui.WebView;
+```
+
 ## 静态函数
         
 ### open
@@ -33,6 +42,11 @@ static WebView gui.open(String url,
     "right": 100, // spcify the top position of the window, default position is center of the screen, not work in gtk4
     "width": 100, // specify the width of the window, default is system auto set
     "height": 100, // specify the height of the window, default is system auto set
+    "visible": true, // specify whether the window is visible, default is true
+    "minWidth": 0, // specify the minimum width of the window, default is 0
+    "minHeight": 0, // specify the minimum height of the window, default is 0
+    "maxWidth": 0, // specify the maximum width of the window, default is no limit
+    "maxHeight": 0, // specify the maximum height of the window, default is no limit
     "frame": true, // specify whether the window has frame, default is true
     "caption": true, // specify whether the window has caption, default is true
     "resizable": true, // specify whether the window is resizable, default is true
@@ -70,6 +84,11 @@ static WebView gui.openFile(String file,
     "right": 100, // spcify the top position of the window, default position is center of the screen, not work in gtk4
     "width": 100, // specify the width of the window, default is system auto set
     "height": 100, // specify the height of the window, default is system auto set
+    "visible": true, // specify whether the window is visible, default is true
+    "minWidth": 0, // specify the minimum width of the window, default is 0
+    "minHeight": 0, // specify the minimum height of the window, default is 0
+    "maxWidth": 0, // specify the maximum width of the window, default is no limit
+    "maxHeight": 0, // specify the maximum height of the window, default is no limit
     "frame": true, // specify whether the window has frame, default is true
     "caption": true, // specify whether the window has caption, default is true
     "resizable": true, // specify whether the window is resizable, default is true
@@ -107,6 +126,11 @@ static WebView gui.open(Object opt = {});
     "right": 100, // spcify the top position of the window, default position is center of the screen, not work in gtk4
     "width": 100, // specify the width of the window, default is system auto set
     "height": 100, // specify the height of the window, default is system auto set
+    "visible": true, // specify whether the window is visible, default is true
+    "minWidth": 0, // specify the minimum width of the window, default is 0
+    "minHeight": 0, // specify the minimum height of the window, default is 0
+    "maxWidth": 0, // specify the maximum width of the window, default is no limit
+    "maxHeight": 0, // specify the maximum height of the window, default is no limit
     "frame": true, // specify whether the window has frame, default is true
     "caption": true, // specify whether the window has caption, default is true
     "resizable": true, // specify whether the window is resizable, default is true
@@ -184,4 +208,56 @@ static Tray gui.createTray(Object opt = {});
     "menu": menu, // specify the menu of the tray, default is null
 }
 ```
+
+--------------------------
+### alert
+**弹出一个消息框**
+
+```JavaScript
+static gui.alert(String message) async;
+```
+
+调用参数:
+* message: String, 消息内容
+
+--------------------------
+**弹出一个消息框**
+
+```JavaScript
+static gui.alert(String title,
+    String message) async;
+```
+
+调用参数:
+* title: String, 消息标题
+* message: String, 消息内容
+
+--------------------------
+### confirm
+**弹出一个确认框**
+
+```JavaScript
+static Boolean gui.confirm(String message) async;
+```
+
+调用参数:
+* message: String, 消息内容
+
+返回结果:
+* Boolean, 返回用户的选择结果
+
+--------------------------
+**弹出一个确认框**
+
+```JavaScript
+static Boolean gui.confirm(String title,
+    String message) async;
+```
+
+调用参数:
+* title: String, 消息标题
+* message: String, 消息内容
+
+返回结果:
+* Boolean, 返回用户的选择结果
 
