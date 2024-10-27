@@ -103,11 +103,7 @@ fibjs fbuild . ../myAppExecutable --gui
 {
   "name": "myApp",
   "version": "1.0.0",
-  "description": "My fibjs
-
- application
-
-",
+  "description": "My fibjs application",
   "main": "index.js",
   "author": "Your Name",
   "license": "MIT",
