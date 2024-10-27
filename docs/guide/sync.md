@@ -84,13 +84,13 @@ function sync(func) {
 ```
 这段代码定义了一个用于将异步回调函数转换为同步调用函数的工具函数 sync。它接收一个函数 func，并返回一个新的函数 _wrap。这个新函数实现了将原函数转换为同步调用的功能。在 _wrap 函数中，首先创建了一个新的 Event 对象 ev，用于线程调度和等待异步回调结果。之后使用 apply 方法将指定参数和一个新的回调函数作为参数，调用原函数 func。在调用的过程中，发生了异步回调，新的回调函数将返回的结果存储到变量 e 和 r 中，并唤醒 Event 对象。最后根据变量 e 来决定是否抛出异常，或者返回变量 r。这个函数实现了将异步回调函数转换为同步调用的一个解决方案，能够提高函数的可读性和可维护性。
 
-## fibjs 中的异步编程
+### fibjs 中的异步编程
 
 在 fibjs 中，大多数异步方法（包括 I/O 和网络请求方法等）都可以同时支持同步和异步调用，这使得开发者可以随时根据自己的编程需求来选择使用哪种方式。
 
 以 fs.readFile() 为例，我们可以通过两种方式来使用该方法：
 
-异步方式：通过传递一个回调函数来处理读取文件的结果，例如：
+#### 异步方式：通过传递一个回调函数来处理读取文件的结果，例如：
 ```JavaScript
 const fs = require("fs");
 
@@ -101,7 +101,7 @@ fs.readFile("/path/to/file", (err, data) => {
 ```
 这种方式适用于需要在读取文件完成后执行某些操作的情况。
 
-同步方式：通过不传递回调函数来获得文件的内容，例如：
+#### 同步方式：通过不传递回调函数来获得文件的内容，例如：
 ```JavaScript
 const fs = require("fs");
 
@@ -113,6 +113,46 @@ console.log(data);
 可以看到，这种同时支持同步和异步调用的特点，使得开发者可以根据自己的需求和开发场景选择使用不同的方式。在某些情况下，同步方式的代码可读性更高，更易于维护和调试；而在某些情况下，异步方式可以更好地提高代码的响应速度和性能。
 
 然而，在使用同步方式的时候也需要注意，在一些场景下，这种方式可能会阻塞当前 fiber。因此，我们需要根据实际需求来选择合适的编程方式。
+
+### 使用 async/await 进行异步编程
+
+fibjs 还内置支持 async/await 的异步编程方式，使得异步代码的编写更加简洁和易读。以下是两种使用 async/await 的方式：
+
+#### 使用 fs.readFileAsync
+```JavaScript
+const fs = require("fs");
+
+async function readFileAsync() {
+  try {
+    const data = await fs.readFileAsync("/path/to/file");
+    console.log(data);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+readFileAsync();
+```
+这种方式通过 async/await 语法，使得异步代码看起来像同步代码一样，极大地提高了代码的可读性和可维护性。
+
+#### 使用 fs.promises.readFile
+```JavaScript
+const fs = require("fs").promises;
+
+async function readFileWithPromises() {
+  try {
+    const data = await fs.readFile("/path/to/file");
+    console.log(data);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+readFileWithPromises();
+```
+这种方式使用了 fs.promises 模块，同样通过 async/await 语法来处理异步操作，使得代码更加简洁和易读。
+
+通过以上示例可以看出，fibjs 提供了多种异步编程方式，开发者可以根据自己的需求和开发场景选择最合适的方式来编写代码。
 
 ## 结论
 在本文中，我们介绍了 fibjs 的同步编程风格和异步编程解决方案以及它们的优点和应用场景。我们提到，fibjs 能够通过利用 fiber 隔离业务逻辑和异步处理带来的性能问题，降低操作复杂度和提高代码开发效率。同时，我们也强调了 fibjs 在 I/O 处理和内存管理等方面的优势，这为开发、测试和维护带来了极大的便利。

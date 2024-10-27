@@ -9,5 +9,7 @@
 * [服务端模块热更新](server-hot-update.md)
 * [高性能 Web 应用程序实践](web.md)
 * [域名路由](host-routes.md)
+* [fibjs 桌面应用开发指南](gui.md)
+* [打包发布  fibjs 应用](build.md)
 * [fibjs 中 X509 证书的使用](x509.md)
 * [添加 native 模块](contribute.md)
