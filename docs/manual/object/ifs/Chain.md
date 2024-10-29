@@ -34,11 +34,11 @@ digraph {
 **构造一个消息处理器链处理对象**
 
 ```JavaScript
-new Chain(Array hdlrs);
+new Chain(Handler hdlrs[]);
 ```
 
 调用参数:
-* hdlrs: Array, 处理器数组
+* hdlrs[]: [Handler](Handler.md), 处理器数组
 
 ## 成员函数
         
@@ -46,11 +46,11 @@ new Chain(Array hdlrs);
 **添加处理器数组**
 
 ```JavaScript
-Chain.append(Array hdlrs);
+Chain.append(Handler hdlrs[]);
 ```
 
 调用参数:
-* hdlrs: Array, 处理器数组
+* hdlrs[]: [Handler](Handler.md), 处理器数组
 
 --------------------------
 **添加处理器**

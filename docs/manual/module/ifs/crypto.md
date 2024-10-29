@@ -876,12 +876,12 @@ static Boolean crypto.timingSafeEqual(Buffer a,
 **使用 Bls12381G2 进行 BBS 签名的函数**
 
 ```JavaScript
-static Buffer crypto.bbsSign(Array messages,
+static Buffer crypto.bbsSign(Buffer messages[],
     Buffer privateKey) async;
 ```
 
 调用参数:
-* messages: Array, 指定要签名的一组消息
+* messages[]: [Buffer](../../object/ifs/Buffer.md), 指定要签名的一组消息
 * privateKey: [Buffer](../../object/ifs/Buffer.md), 指定私钥，必须是 Bls12381G2 的私钥
 
 返回结果:
@@ -891,12 +891,12 @@ static Buffer crypto.bbsSign(Array messages,
 **使用 Bls12381G2 进行 BBS 签名的函数**
 
 ```JavaScript
-static Buffer crypto.bbsSign(Array messages,
+static Buffer crypto.bbsSign(Buffer messages[],
     KeyObject privateKey) async;
 ```
 
 调用参数:
-* messages: Array, 指定要签名的一组消息
+* messages[]: [Buffer](../../object/ifs/Buffer.md), 指定要签名的一组消息
 * privateKey: [KeyObject](../../object/ifs/KeyObject.md), 指定私钥，必须是 Bls12381G2 的私钥
 
 返回结果:
@@ -906,12 +906,12 @@ static Buffer crypto.bbsSign(Array messages,
 **使用 Bls12381G2 进行 BBS 签名的函数**
 
 ```JavaScript
-static Buffer crypto.bbsSign(Array messages,
+static Buffer crypto.bbsSign(Buffer messages[],
     Object key) async;
 ```
 
 调用参数:
-* messages: Array, 指定要签名的一组消息
+* messages[]: [Buffer](../../object/ifs/Buffer.md), 指定要签名的一组消息
 * key: Object, 指定私钥和选项
 
 返回结果:
@@ -926,13 +926,13 @@ key 内的参数会用于调用 [crypto.createPrivateKey](crypto.md#createPrivat
 **使用 Bls12381G2 进行 BBS 验证的函数**
 
 ```JavaScript
-static Boolean crypto.bbsVerify(Array messages,
+static Boolean crypto.bbsVerify(Buffer messages[],
     Buffer publicKey,
     Buffer signature) async;
 ```
 
 调用参数:
-* messages: Array, 指定要验证的一组消息
+* messages[]: [Buffer](../../object/ifs/Buffer.md), 指定要验证的一组消息
 * publicKey: [Buffer](../../object/ifs/Buffer.md), 指定公钥，必须是 Bls12381G2 的公钥
 * signature: [Buffer](../../object/ifs/Buffer.md), 指定签名数据
 
@@ -943,13 +943,13 @@ static Boolean crypto.bbsVerify(Array messages,
 **使用 Bls12381G2 进行 BBS 验证的函数**
 
 ```JavaScript
-static Boolean crypto.bbsVerify(Array messages,
+static Boolean crypto.bbsVerify(Buffer messages[],
     KeyObject publicKey,
     Buffer signature) async;
 ```
 
 调用参数:
-* messages: Array, 指定要验证的一组消息
+* messages[]: [Buffer](../../object/ifs/Buffer.md), 指定要验证的一组消息
 * publicKey: [KeyObject](../../object/ifs/KeyObject.md), 指定公钥，必须是 Bls12381G2 的公钥
 * signature: [Buffer](../../object/ifs/Buffer.md), 指定签名数据
 
@@ -960,13 +960,13 @@ static Boolean crypto.bbsVerify(Array messages,
 **使用 Bls12381G2 进行 BBS 验证的函数**
 
 ```JavaScript
-static Boolean crypto.bbsVerify(Array messages,
+static Boolean crypto.bbsVerify(Buffer messages[],
     Object key,
     Buffer signature) async;
 ```
 
 调用参数:
-* messages: Array, 指定要验证的一组消息
+* messages[]: [Buffer](../../object/ifs/Buffer.md), 指定要验证的一组消息
 * key: Object, 指定公钥和选项
 * signature: [Buffer](../../object/ifs/Buffer.md), 指定签名数据
 
@@ -983,15 +983,15 @@ key 内的参数会用于调用 [crypto.createPublicKey](crypto.md#createPublicK
 
 ```JavaScript
 static Buffer crypto.proofGen(Buffer signature,
-    Array messages,
-    Array index,
+    Buffer messages[],
+    Integer index[],
     Buffer publicKey) async;
 ```
 
 调用参数:
 * signature: [Buffer](../../object/ifs/Buffer.md), 指定 BBS 签名
-* messages: Array, 指定要签名的一组消息
-* index: Array, 指定要选择的证明的索引
+* messages[]: [Buffer](../../object/ifs/Buffer.md), 指定要签名的一组消息
+* index[]: Integer, 指定要选择的证明的索引
 * publicKey: [Buffer](../../object/ifs/Buffer.md), 指定公钥，必须是 Bls12381G2 的公钥
 
 返回结果:
@@ -1002,15 +1002,15 @@ static Buffer crypto.proofGen(Buffer signature,
 
 ```JavaScript
 static Buffer crypto.proofGen(Buffer signature,
-    Array messages,
-    Array index,
+    Buffer messages[],
+    Integer index[],
     KeyObject publicKey) async;
 ```
 
 调用参数:
 * signature: [Buffer](../../object/ifs/Buffer.md), 指定 BBS 签名
-* messages: Array, 指定要签名的一组消息
-* index: Array, 指定要选择的证明的索引
+* messages[]: [Buffer](../../object/ifs/Buffer.md), 指定要签名的一组消息
+* index[]: Integer, 指定要选择的证明的索引
 * publicKey: [KeyObject](../../object/ifs/KeyObject.md), 指定公钥，必须是 Bls12381G2 的公钥
 
 返回结果:
@@ -1021,15 +1021,15 @@ static Buffer crypto.proofGen(Buffer signature,
 
 ```JavaScript
 static Buffer crypto.proofGen(Buffer signature,
-    Array messages,
-    Array index,
+    Buffer messages[],
+    Integer index[],
     Object key) async;
 ```
 
 调用参数:
 * signature: [Buffer](../../object/ifs/Buffer.md), 指定 BBS 签名
-* messages: Array, 指定要签名的一组消息
-* index: Array, 指定要选择的证明的索引
+* messages[]: [Buffer](../../object/ifs/Buffer.md), 指定要签名的一组消息
+* index[]: Integer, 指定要选择的证明的索引
 * key: Object, 指定公钥和选项
 
 返回结果:
@@ -1045,15 +1045,15 @@ key 内的参数会用于调用 [crypto.createPublicKey](crypto.md#createPublicK
 **使用 Bls12381G2 验证 BBS 选择证明的函数**
 
 ```JavaScript
-static Boolean crypto.proofVerify(Array messages,
-    Array index,
+static Boolean crypto.proofVerify(Buffer messages[],
+    Integer index[],
     Buffer publicKey,
     Buffer proof) async;
 ```
 
 调用参数:
-* messages: Array, 指定要验证的一组消息
-* index: Array, 指定要选择的证明的索引
+* messages[]: [Buffer](../../object/ifs/Buffer.md), 指定要验证的一组消息
+* index[]: Integer, 指定要选择的证明的索引
 * publicKey: [Buffer](../../object/ifs/Buffer.md), 指定公钥，必须是 Bls12381G2 的公钥
 * proof: [Buffer](../../object/ifs/Buffer.md), 指定证明数据
 
@@ -1064,15 +1064,15 @@ static Boolean crypto.proofVerify(Array messages,
 **使用 Bls12381G2 验证 BBS 选择证明的函数**
 
 ```JavaScript
-static Boolean crypto.proofVerify(Array messages,
-    Array index,
+static Boolean crypto.proofVerify(Buffer messages[],
+    Integer index[],
     KeyObject publicKey,
     Buffer proof) async;
 ```
 
 调用参数:
-* messages: Array, 指定要验证的一组消息
-* index: Array, 指定要选择的证明的索引
+* messages[]: [Buffer](../../object/ifs/Buffer.md), 指定要验证的一组消息
+* index[]: Integer, 指定要选择的证明的索引
 * publicKey: [KeyObject](../../object/ifs/KeyObject.md), 指定公钥，必须是 Bls12381G2 的公钥
 * proof: [Buffer](../../object/ifs/Buffer.md), 指定证明数据
 
@@ -1083,15 +1083,15 @@ static Boolean crypto.proofVerify(Array messages,
 **使用 Bls12381G2 验证 BBS 选择证明的函数**
 
 ```JavaScript
-static Boolean crypto.proofVerify(Array messages,
-    Array index,
+static Boolean crypto.proofVerify(Buffer messages[],
+    Integer index[],
     Object key,
     Buffer proof) async;
 ```
 
 调用参数:
-* messages: Array, 指定要验证的一组消息
-* index: Array, 指定要选择的证明的索引
+* messages[]: [Buffer](../../object/ifs/Buffer.md), 指定要验证的一组消息
+* index[]: Integer, 指定要选择的证明的索引
 * key: Object, 指定公钥和选项
 * proof: [Buffer](../../object/ifs/Buffer.md), 指定证明数据
 

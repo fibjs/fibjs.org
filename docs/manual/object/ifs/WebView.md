@@ -17,8 +17,6 @@ webview.addEventListener("message", function(msg) {
 });
 
 webview.postMessage("hello from fibjs");
-
-webview.wait();
 ```
 
 index.html 的内容如下：

@@ -39,11 +39,11 @@ new X509Certificate(Buffer cert);
 **从一组证书创建 X509Certificate 对象**
 
 ```JavaScript
-new X509Certificate(Array certs);
+new X509Certificate(Buffer certs[]);
 ```
 
 调用参数:
-* certs: Array, PEM 格式证书的数组
+* certs[]: [Buffer](Buffer.md), PEM 格式证书的数组
 
 返回结果:
 * 返回一个 X509Certificate 对象

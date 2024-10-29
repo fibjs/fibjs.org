@@ -58,11 +58,11 @@ new HttpRepeater(String url);
 **HttpRepeater 构造函数，创建一个新的 HttpRepeater 对象**
 
 ```JavaScript
-new HttpRepeater(Array urls);
+new HttpRepeater(String urls[]);
 ```
 
 调用参数:
-* urls: Array, 指定一组后端服务器 [url](../../module/ifs/url.md)
+* urls[]: String, 指定一组后端服务器 [url](../../module/ifs/url.md)
 
 ## 成员属性
         
@@ -87,11 +87,11 @@ readonly HttpClient HttpRepeater.client;
 **加载一组新的后端 [url](../../module/ifs/url.md)**
 
 ```JavaScript
-HttpRepeater.load(Array urls);
+HttpRepeater.load(String urls[]);
 ```
 
 调用参数:
-* urls: Array, 指定一组后端服务器 [url](../../module/ifs/url.md)
+* urls[]: String, 指定一组后端服务器 [url](../../module/ifs/url.md)
 
 --------------------------
 ### invoke

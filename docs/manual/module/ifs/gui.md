@@ -150,11 +150,11 @@ static WebView gui.openFile(String file,
 **创建一个菜单对象**
 
 ```JavaScript
-static Menu gui.createMenu(Array items = []);
+static Menu gui.createMenu(Object items[] = []);
 ```
 
 调用参数:
-* items: Array, 菜单项数组
+* items[]: Object, 菜单项数组
 
 返回结果:
 * [Menu](../../object/ifs/Menu.md), 返回创建的菜单对象
@@ -262,4 +262,25 @@ static Boolean gui.confirm(String title,
 
 返回结果:
 * Boolean, 返回用户的选择结果
+
+--------------------------
+### chooseFile
+**弹出一个选择文件对话框**
+
+```JavaScript
+static NArray gui.chooseFile(Object options) async;
+```
+
+调用参数:
+* options: Object, 选择文件对话框参数
+
+返回结果:
+* NArray, 返回用户选择的文件数组
+
+options 支持以下参数:
+ - title: 对话框标题
+ - type: 对话框类型，"openFile"、"openDirectory"、"saveFile"，默认为 "openFile"
+ - defaultPath: 默认打开的路径
+ - multiple: 是否允许多选，默认为 false
+ - filters: 文件过滤器数组，每个元素为一个对象，包含 name 和 extensions 两个属性，extensions 为一个扩展名数组
 

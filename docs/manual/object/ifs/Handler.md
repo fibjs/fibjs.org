@@ -29,11 +29,11 @@ digraph {
 **构造一个消息处理器链处理对象**
 
 ```JavaScript
-new Handler(Array hdlrs);
+new Handler(Handler hdlrs[]);
 ```
 
 调用参数:
-* hdlrs: Array, 处理器数组
+* hdlrs[]: Handler, 处理器数组
 
 --------------------------
 **创建一个消息处理器路由对象**
