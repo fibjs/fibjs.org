@@ -81,7 +81,7 @@
 * [Verify](ifs/Verify.md) - 用于验证签名的实用程序
 * [WebSocket](ifs/WebSocket.md) - WebSocket 是一种基于 TCP 协议的全双工通信协议，在浏览器和服务器之间建立起一个不断开的连接，可以实现实时双向数据传输，并且可以支持任意格式的数据传输。在 fibjs 中，WebSocket 支持模块提供了相应的 API 接口，可以实现 WebSocket 服务器端和客户端的开发
 * [WebSocketMessage](ifs/WebSocketMessage.md) - `WebSocketMessage` 是 WebSocket 协议中的一种消息类型，它封装了 WebSocket 传输协议中各类消息的数据格式和处理方式，可用于 WebSocket 客户端和服务端双方通信。
-* [WebView](ifs/WebView.md) - 浏览器窗口对象，WebView 是一个嵌入浏览器的窗口组件.
+* [WebView](ifs/WebView.md) - WebView 对象，嵌入式浏览器窗口组件。
 * [Worker](ifs/Worker.md) - Worker 对象是用于创建子线程的对象，可以在程序中创建和处理子线程。一个 Worker 对象可以理解为一个在与主线程不同的线程中执行的 JavaScript 进程。 Worker 不与主线程共享内存，不会阻塞主线程，是一种主流的异步编程方式
 * [X509Certificate](ifs/X509Certificate.md) - 封装 X509 证书并提供信息读取
 * [X509CertificateRequest](ifs/X509CertificateRequest.md) - X509CertificateRequest 对象是用于创建 x509 证书请求的对象，属于 crypto 模块

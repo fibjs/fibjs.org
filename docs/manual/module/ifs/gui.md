@@ -55,6 +55,7 @@ static WebView gui.open(String url,
     "maximize": false, // specify whether the window is maximized, default is false
     "fullscreen": false, // specify whether the window is fullscreen, default is false
     "devtools": false, // specify whether the DevTools in WebView is enabled, default is false
+    "app": {}, // specify the app object that can be remote call in WebView, default is undefined
 }
 ```
 
@@ -97,6 +98,7 @@ static WebView gui.open(Object opt = {});
     "maximize": false, // specify whether the window is maximized, default is false
     "fullscreen": false, // specify whether the window is fullscreen, default is false
     "devtools": false, // specify whether the DevTools in WebView is enabled, default is false
+    "app": {}, // specify the app object that can be remote call in WebView, default is undefined
 }
 ```
 
@@ -140,6 +142,7 @@ static WebView gui.openFile(String file,
     "maximize": false, // specify whether the window is maximized, default is false
     "fullscreen": false, // specify whether the window is fullscreen, default is false
     "devtools": false, // specify whether the DevTools in WebView is enabled, default is false
+    "app": {}, // specify the app object that can be remote call in WebView, default is undefined
 }
 ```
 

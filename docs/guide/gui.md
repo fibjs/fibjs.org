@@ -77,6 +77,7 @@ var webview = gui.open('https://fibjs.org/index.html', options);
 - `maximize`: 指定窗口是否最大化，默认值为 `false`
 - `fullscreen`: 指定窗口是否全屏，默认值为 `false`
 - `devtools`: 指定是否启用 WebView 的开发者工具，默认值为 `false`
+- `app`: 指定 WebView 内用于 API 调用的对象，是一个包含一组方法和子对象的对象，默认值为 undefined
 
 ### 自动居中
 
@@ -105,6 +106,67 @@ webview.postMessage("hello from fibjs");
 <script>
     window.addEventListener("message", function (msg) { 
         window.postMessage("send back: " + msg);
+    });
+</script>
+```
+
+#### app API 接口
+
+WebView 支持更方便的 app API 接口。WebView 内用于 API 调用的对象是 `window.app`，可以在创建 WebView 时通过 `app` 参数指定 API 接口，API 接口的方法可以在 WebView 内通过 `await window.app...` 调用。
+
+以下是一个简单的调用示例代码：
+```javascript
+const gui = require('gui');
+const coroutine = require('coroutine');
+
+const win = gui.open({
+    devtools: true,
+    app: {
+        test: async function (a, b, c, d) {
+            console.log('test', a, b, c, d);
+            await coroutine.sleepAsync(1000);
+            return a + b + c + d + 1000;
+        },
+        test1: {
+            test2: function (a, b, c, d) {
+                console.log('test2', a, b, c, d);
+                coroutine.sleep(1000);
+                return a + b + c + d + 2000;
+            }
+        }
+    }
+});
+
+win.eval(`
+(async function test() {
+    console.log("test(1,2,3,4): " + await window.app.test(1,2,3,4));
+    console.log("test1.test2(1,2,3,4): " + await window.app.test1.test2(1,2,3,4));
+    console.log('test');
+})();
+```
+
+#### 关闭窗口
+
+如果需要在 WebView 内关闭窗口，可以调用 `window.close`。需要注意，在 macOS 下的全屏窗口会因为 macOS 的机制而阻止关闭。
+
+```html
+<script lang="JavaScript">
+    document.getElementById('close').addEventListener('click', function () {
+        window.close();
+    });
+</script>
+```
+
+#### 实现拖动窗口
+
+在某些应用中，需要在 WebView 内实现拖动窗口的功能，可以通过以下代码实现：
+
+```html
+<script>
+    document.getElementById('dragRegion').addEventListener('mousedown', function (event) {
+        if (event.button === 0) { // 检查是否按下了左键
+            window.drag();
+        }
     });
 </script>
 ```

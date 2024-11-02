@@ -20,13 +20,11 @@ digraph {
     ChildProcess [tooltip="ChildProcess", URL="ChildProcess.md", label="{ChildProcess}"];
     DgramSocket [tooltip="DgramSocket", URL="DgramSocket.md", label="{DgramSocket}"];
     FSWatcher [tooltip="FSWatcher", URL="FSWatcher.md", label="{FSWatcher}"];
-    Menu [tooltip="Menu", URL="Menu.md", label="{Menu}"];
     MenuItem [tooltip="MenuItem", URL="MenuItem.md", label="{MenuItem}"];
     RTCDataChannel [tooltip="RTCDataChannel", URL="RTCDataChannel.md", label="{RTCDataChannel}"];
     RTCPeerConnection [tooltip="RTCPeerConnection", URL="RTCPeerConnection.md", label="{RTCPeerConnection}"];
     Service [tooltip="Service", URL="Service.md", label="{Service}"];
     StatsWatcher [tooltip="StatsWatcher", URL="StatsWatcher.md", label="{StatsWatcher}"];
-    Tray [tooltip="Tray", URL="Tray.md", label="{Tray}"];
     WebSocket [tooltip="WebSocket", URL="WebSocket.md", label="{WebSocket}"];
     WebView [tooltip="WebView", URL="WebView.md", label="{WebView}"];
     Worker [tooltip="Worker", URL="Worker.md", label="{Worker}"];
@@ -53,6 +51,7 @@ digraph {
     Event [tooltip="Event", URL="Event.md", label="{Event}"];
     Semaphore [tooltip="Semaphore", URL="Semaphore.md", label="{Semaphore}"];
     Logger [tooltip="Logger", URL="Logger.md", label="{Logger}"];
+    Menu [tooltip="Menu", URL="Menu.md", label="{Menu}"];
     Message [tooltip="Message", URL="Message.md", label="{Message}"];
     HttpMessage [tooltip="HttpMessage", URL="HttpMessage.md", label="{HttpMessage}"];
     HttpRequest [tooltip="HttpRequest", URL="HttpRequest.md", label="{HttpRequest}"];
@@ -89,6 +88,7 @@ digraph {
     TextDecoder [tooltip="TextDecoder", URL="TextDecoder.md", label="{TextDecoder}"];
     TextEncoder [tooltip="TextEncoder", URL="TextEncoder.md", label="{TextEncoder}"];
     Timer [tooltip="Timer", URL="Timer.md", label="{Timer}"];
+    Tray [tooltip="Tray", URL="Tray.md", label="{Tray}"];
     UrlObject [tooltip="UrlObject", URL="UrlObject.md", label="{UrlObject}"];
     Verify [tooltip="Verify", URL="Verify.md", label="{Verify}"];
     X509Certificate [tooltip="X509Certificate", URL="X509Certificate.md", label="{X509Certificate}"];
@@ -120,13 +120,11 @@ digraph {
     EventEmitter -> ChildProcess [dir=back];
     EventEmitter -> DgramSocket [dir=back];
     EventEmitter -> FSWatcher [dir=back];
-    EventEmitter -> Menu [dir=back];
     EventEmitter -> MenuItem [dir=back];
     EventEmitter -> RTCDataChannel [dir=back];
     EventEmitter -> RTCPeerConnection [dir=back];
     EventEmitter -> Service [dir=back];
     EventEmitter -> StatsWatcher [dir=back];
-    EventEmitter -> Tray [dir=back];
     EventEmitter -> WebSocket [dir=back];
     EventEmitter -> WebView [dir=back];
     EventEmitter -> Worker [dir=back];
@@ -153,6 +151,7 @@ digraph {
     Lock -> Event [dir=back];
     Lock -> Semaphore [dir=back];
     object -> Logger [dir=back];
+    object -> Menu [dir=back];
     object -> Message [dir=back];
     Message -> HttpMessage [dir=back];
     HttpMessage -> HttpRequest [dir=back];
@@ -189,6 +188,7 @@ digraph {
     object -> TextDecoder [dir=back];
     object -> TextEncoder [dir=back];
     object -> Timer [dir=back];
+    object -> Tray [dir=back];
     object -> UrlObject [dir=back];
     object -> Verify [dir=back];
     object -> X509Certificate [dir=back];
