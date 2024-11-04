@@ -159,4 +159,4 @@ readFileWithPromises();
 
 最后，我们鼓励读者深入探索 fibjs，以及参与到 fibjs 的贡献和社区活动中。我们相信，fibjs 会继续以它强大的性能和易用性不断地吸引开源社区的关注和支持。
 
-👉 【[服务端模块热更新](server-hot-update.md)】
+👉 【[使用 fibjs 的 ECMAScript 模块 (ESM)](esm.md)】

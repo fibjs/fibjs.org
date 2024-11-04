@@ -6,6 +6,8 @@
 * [美好生活从测试开始](test.md)
 * [找出性能杀手](profiler.md)
 * [同步和异步](sync.md)
+* [使用 fibjs 的 ECMAScript 模块 (ESM)](esm.md)
+* [在 fibjs 中使用 TypeScript](ts.md)
 * [服务端模块热更新](server-hot-update.md)
 * [高性能 Web 应用程序实践](web.md)
 * [域名路由](host-routes.md)
