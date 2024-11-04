@@ -1,14 +1,10 @@
 # 同步和异步
 
-
-## 引言
 随着 Web 应用的不断发展，JavaScript 作为一种广泛使用的编程语言，也在不断地发展和演变。Web 前端开发中，JavaScript 主要被用于浏览器的 UI 处理，UI 开发是典型的单线程事件驱动模式，因此 JavaScript 也形成了以异步处理为主要编程范式。但是在大规模复杂的应用中，异步编程带来的问题和复杂性也越来越明显。
 
 Node.js 的出现为 JavaScript 带来了一种全新的异步编程范式：事件循环和回调函数。这种编程范式具有高效、简洁的特点，适用于高并发、I/O 密集型的场景。然而，这种编程范式也带来了它自己的问题和复杂性，尤其是在大规模复杂的应用中，程序员需要处理很多回调函数嵌套的问题，并且需要处理异步调用顺序的问题，增加了程序的复杂性和难度。
 
 为了解决这些问题和难点，fibjs 应运而生。fibjs 是一个主要为 web 后端开发而设计的应用服务器开发框架，它建立在 Google v8 JavaScript 引擎基础上，并且选择了和传统的 callback 不同的并发解决方案。fibjs 利用 fiber 在框架层隔离了异步调用带来的业务复杂性，极大降低了开发难度，并减少因为用户空间频繁异步处理带来的性能问题。同时，与传统的异步编程范式相比，它的同步编程范式更加可读性强、逻辑简单、易于维护的优势。
-
-在接下来的内容中，我们将介绍 fibjs 的优点和特点，并通过实例来讲解如何使用它的同步和异步编程解决方案。
 
 ## fiber 简介
 fibjs 是一个基于 v8 引擎的高性能的 JavaScript 服务器框架，主要面向 Web 后端开发。始于 2009 年，目前已经拥有了很高的稳定性和生产力，在国内外有着广泛的应用案例。
@@ -18,9 +14,7 @@ fibjs 是一个基于 v8 引擎的高性能的 JavaScript 服务器框架，主�
 与其它线程库（如 pthread、WinThread、Boost.Thread 等）相比，fiber 有以下优势：
 
 - **协作式调度**：fiber 是协作式调度，不需要内核或操作系统抢占式调度，减少了频繁地上下文切换，加快了程序的运行速度，同时避免了线程之间的竞争条件和死锁问题。
-
 - **轻量级**：每个 fiber 只需消耗一个较小的栈空间，在多并发应用中可以创建大量的 fiber，不会导致占用过多内存的问题。
-
 - **高效性**：fiber 是基于 JavaScript 语言本身的特性实现，并且充分利用了 v8 引擎的优越性能，速度比传统的线程库更快。
 
 通过使用 fiber，fibjs 可以将业务逻辑和 I/O 处理分离，从而将异步调用封装成同步调用的形式，使得编写和维护代码更加简单和易读，同时可以充分发挥 JavaScript 语言的优点。
@@ -45,9 +39,7 @@ const util = require("util");
 const fs = require("fs");
 
 // use util.sync to wrap fs.readFile
-function readFile(path) {
-  return util.sync(fs.readFile)(path);
-}
+const readFile = util.sync(fs.readFile);
 
 // call the sync function
 const data = readFile("myfile.txt");
@@ -84,13 +76,13 @@ function sync(func) {
 ```
 这段代码定义了一个用于将异步回调函数转换为同步调用函数的工具函数 sync。它接收一个函数 func，并返回一个新的函数 _wrap。这个新函数实现了将原函数转换为同步调用的功能。在 _wrap 函数中，首先创建了一个新的 Event 对象 ev，用于线程调度和等待异步回调结果。之后使用 apply 方法将指定参数和一个新的回调函数作为参数，调用原函数 func。在调用的过程中，发生了异步回调，新的回调函数将返回的结果存储到变量 e 和 r 中，并唤醒 Event 对象。最后根据变量 e 来决定是否抛出异常，或者返回变量 r。这个函数实现了将异步回调函数转换为同步调用的一个解决方案，能够提高函数的可读性和可维护性。
 
-### fibjs 中的异步编程
-
+## fibjs 中的异步编程
 在 fibjs 中，大多数异步方法（包括 I/O 和网络请求方法等）都可以同时支持同步和异步调用，这使得开发者可以随时根据自己的编程需求来选择使用哪种方式。
 
 以 fs.readFile() 为例，我们可以通过两种方式来使用该方法：
 
-#### 异步方式：通过传递一个回调函数来处理读取文件的结果，例如：
+### 异步方式
+通过传递一个回调函数来处理读取文件的结果，例如：
 ```JavaScript
 const fs = require("fs");
 
@@ -101,7 +93,8 @@ fs.readFile("/path/to/file", (err, data) => {
 ```
 这种方式适用于需要在读取文件完成后执行某些操作的情况。
 
-#### 同步方式：通过不传递回调函数来获得文件的内容，例如：
+### 同步方式
+通过不传递回调函数来获得文件的内容，例如：
 ```JavaScript
 const fs = require("fs");
 
@@ -114,11 +107,10 @@ console.log(data);
 
 然而，在使用同步方式的时候也需要注意，在一些场景下，这种方式可能会阻塞当前 fiber。因此，我们需要根据实际需求来选择合适的编程方式。
 
-### 使用 async/await 进行异步编程
-
+## 使用 async/await 进行异步编程
 fibjs 还内置支持 async/await 的异步编程方式，使得异步代码的编写更加简洁和易读。以下是两种使用 async/await 的方式：
 
-#### 使用 fs.readFileAsync
+### 使用 fs.readFileAsync
 ```JavaScript
 const fs = require("fs");
 
@@ -135,7 +127,7 @@ readFileAsync();
 ```
 这种方式通过 async/await 语法，使得异步代码看起来像同步代码一样，极大地提高了代码的可读性和可维护性。
 
-#### 使用 fs.promises.readFile
+### 使用 fs.promises.readFile
 ```JavaScript
 const fs = require("fs").promises;
 

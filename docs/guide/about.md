@@ -1,91 +1,82 @@
-# fibjs 是什么？
-fibjs 是一个专为 web 后端开发设计的应用服务器开发框架。它构建在 Google V8 JavaScript 引擎的基础上，并采用与传统回调不同的并发解决方案。fibjs 使用 fiber（纤程）在框架层面上隔离了异步调用所带来的业务复杂性，大大降低了开发难度，并减少了因用户空间频繁的异步处理而导致的性能问题。
+# 什么是 fibjs？
 
-由于历史原因，JavaScript 主要被用于处理浏览器的 UI。UI 开发是典型的单线程事件驱动模式，因此 JavaScript 逐渐形成了以异步处理为主要编程范式。
+fibjs 是一个专为 Web 后端开发设计的高性能应用服务器开发框架。它基于 Google V8 JavaScript 引擎，采用与传统回调不同的并发解决方案。通过使用 fiber（纤程），fibjs 在框架层面上隔离了异步调用的复杂性，大大降低了开发难度，并减少了因频繁异步处理导致的性能问题。
 
-随着 JavaScript 的成功，越来越多的人开始将 JavaScript 应用于其他场景。与此同时，人们也越来越意识到在许多场景中，异步处理并不是最合适的选择。
+## 为什么选择 fibjs？
 
-## 返璞归真，敏捷开发
-fibjs 在框架层面使用 fiber（纤程）隔离了异步调用所带来的业务复杂性，将 I/O 的异步处理封装为更直观的同步调用。工程师只需按照通常的同步业务逻辑编写代码，即可享受异步处理所带来的巨大便利。
+### 返璞归真，简化开发
 
-以下这段代码摘自 mysql 模块的文档：
+JavaScript 作为一种广泛应用于浏览器端的编程语言，其异步处理机制在前端开发中得到了充分的发挥。然而，在后端开发中，异步编程往往会增加代码的复杂性，导致难以维护和调试。fibjs 通过引入 fiber 技术，将异步操作封装为同步调用，极大地简化了后端开发的流程。
+
+#### 异步编程的挑战
+
+在传统的 JavaScript 后端开发中，异步编程是不可避免的。无论是处理数据库查询、文件读写，还是网络请求，开发者都需要面对回调地狱（callback hell）和复杂的错误处理逻辑。以下是一个典型的异步代码示例：
+
 ```JavaScript
 conn.beginTransaction(err => {
-    if (err) {
-        throw err;
-    }
-    conn.query('INSERT INTO posts SET title=?', title,
-        (error, results, fields) => {
-            if (error) {
-                return conn.rollback(() => {
-                    throw error;
-                });
-            }
-
-            var log = 'Post ' + results.insertId + ' added';
-
-            conn.query('INSERT INTO log SET data=?', log,
-                (error, results, fields) => {
-                    if (error) {
-                        return conn.rollback(() => {
-                            throw error;
-                        });
-                    }
-                    conn.commit((err) => {
-                        if (err) {
-                            return conn.rollback(() => {
-                                throw err;
-                            });
-                        }
-                        console.log('success!');
-                    });
-                });
+    if (err) throw err;
+    conn.query('INSERT INTO posts SET title=?', title, (error, results) => {
+        if (error) return conn.rollback(() => { throw error; });
+        var log = 'Post ' + results.insertId + ' added';
+        conn.query('INSERT INTO log SET data=?', log, (error) => {
+            if (error) return conn.rollback(() => { throw error; });
+            conn.commit(err => {
+                if (err) return conn.rollback(() => { throw err; });
+                console.log('success!');
+            });
         });
+    });
 });
 ```
-在 fibjs 中，完成同样的工作，代码如下：
+
+从上面的代码可以看出，嵌套的回调函数使得代码结构复杂，难以阅读和维护。每个异步操作都需要处理错误，并在错误发生时进行回滚操作，这进一步增加了代码的复杂性。
+
+#### fiber 技术的优势
+
+fibjs 通过引入 fiber 技术，将异步操作封装为同步调用，使得代码更加简洁和直观。fiber 是一种轻量级的线程，可以在不阻塞主线程的情况下执行异步操作。以下是使用 fibjs 的同步代码示例：
+
 ```JavaScript
 conn.trans(() => {
     var result = conn.execute('INSERT INTO posts SET title=?', title);
-    var log = 'Post ' + results.insertId + ' added';
+    var log = 'Post ' + result.insertId + ' added';
     conn.execute('INSERT INTO log SET data=?', log);
 });
 console.log('success!');
 ```
-如果你追求简洁，你甚至可以把代码写成这样：
+
+通过使用 fiber 技术，开发者可以像编写同步代码一样编写异步操作，避免了回调地狱的问题。代码结构更加清晰，逻辑更加直观，极大地提高了开发效率。
+
+#### 更简洁的代码
+
+fibjs 还提供了更简洁的代码写法，使得开发者可以在一行代码中完成多个异步操作：
+
 ```JavaScript
 conn.trans(() => conn.execute('INSERT INTO log SET data=?',
-        'Post ' + conn.execute('INSERT INTO posts SET title=?', title).insertId +
-        ' added'));
+    'Post ' + conn.execute('INSERT INTO posts SET title=?', title).insertId + ' added'));
 console.log('success!');
 ```
-通过比较，我们可以明显看到不同编程风格所带来的差异。较少的代码意味着较少的错误，随着代码的减少，代码的逻辑也会更加清晰。这种情况下，不论是开发还是维护工作都会获益。
 
-## 拥抱高能
-尽管扩展服务器来提高响应速度是相对容易的，但性能仍然是选择一个开发框架时的重要考虑因素之一。随着 ES7 的推出，async 作为一种新的异步开发模式被引入到 JavaScript 中。然而，当我们享受 async 带来的同步编程风格时，也必须面对它对性能的影响。
+这种写法不仅减少了代码量，还进一步简化了逻辑，使得代码更加易读和易维护。
 
-为了比较不同编程风格带来的性能差异，我们可以使用以下测试代码：
+#### 性能优势
+
+除了简化代码结构，fiber 技术还带来了显著的性能提升。以下是不同编程风格的性能测试代码：
+
 ```JavaScript
 var count = 1000;
 
 async function test_async(n) {
-    if (n == count)
-        return;
+    if (n == count) return;
     await test_async(n + 1);
 }
 
 function test_callback(n, cb) {
-    if (n == count)
-        return cb();
-
-    test_callback(n + 1, () => {
-        cb();
-    });
+    if (n == count) return cb();
+    test_callback(n + 1, () => { cb(); });
 }
 
 function test_sync(n) {
-    if (n == count)
-        return;
+    if (n == count) return;
     test_sync(n + 1);
 }
 
@@ -95,9 +86,7 @@ async function test() {
     console.timeEnd("async");
 
     console.time("callback");
-    test_callback(0, () => {
-        console.timeEnd("callback");
-    });
+    test_callback(0, () => { console.timeEnd("callback"); });
 
     console.time("sync");
     test_sync(0);
@@ -106,28 +95,21 @@ async function test() {
 
 test();
 ```
-在最新的 v8 下，这段代码的运行结果如下：
+
+在最新的 V8 引擎下，运行结果如下：
+
 ```sh
 async: 0.539ms
 callback: 0.221ms
 sync: 0.061ms
 ```
-从测试结果中，我们可以清楚地看到，当广泛应用 async 后，服务器将花费大量时间来处理 async 函数的调用和返回。我们在一些实际的服务端应用测试中也发现了这一点。然而，这种急剧下降的性能是完全无法接受的。
 
-与此相比，fibjs 使用 fiber 技术，充分利用了 JavaScript 语言本身的特性，并最大限度地发挥了 V8 引擎的优越性能。工程师可以轻而易举地将服务器的性能发挥到极致。
+从结果可以看出，async 函数的性能远低于同步函数，而 fibjs 的 fiber 技术则能充分发挥 V8 引擎的性能优势。
 
-## 灵活选择范式而不被绑架
-选择使用 fibjs 并不意味着你必须使用同步的开发风格。实际上，fibjs 支持你所熟悉的各种异步编程范式，并且可以灵活地在同步风格和异步风格之间切换。
+#### 灵活的编程范式
 
-然而，无论是回调函数还是 async，它们都有一个致命的缺陷，那就是传染性。如果一个函数是回调函数或 async 函数，那么所有依赖于它的其他函数也必须是回调函数或 async 函数。在大规模软件开发中，这将导致巨大的开发成本。
+fibjs 支持各种异步编程范式，并允许在同步和异步风格之间灵活切换。通过 `util.sync` 函数，fibjs 可以将回调函数或异步函数转变为同步函数，避免异步范式的传染性问题。以下是一个示例代码：
 
-以一个简单的服务器开发场景为例。在项目初期，我们选择将 session 数据存储在内存中，此时，我们可以使用同步方式直接读取和存储数据，并基于此开发完整的业务功能。随着业务规模的扩大，我们需要将 session 数据存储到 Redis 或 MongoDB 中，此时，我们就需要将与 session 相关的操作改为异步模式。
-
-理论上，我们可以逐个修改每个函数，使它们符合所依赖函数的要求，但这要求我们完全了解所有模块并具备修改它们的能力。在多人协作开发或使用第三方模块时，这几乎是不可能的。
-
-因此，在所有通用模块中，都应同时提供同步和异步接口，以平衡异步和性能之间的关系。而普通开发者通常会选择仅提供异步接口，从而导致性能问题。
-
-在 fibjs 中，你可以轻松解决类似问题，避免不受控制地传播显式异步：
 ```JavaScript
 var util = require('util');
 
@@ -147,9 +129,25 @@ data = session_get(sid);
 data = util.sync(async_session_get)(sid);
 data = util.sync(callback_session_get)(sid);
 ```
-fibjs 提供了 util.sync 函数，可以将回调函数或异步函数转变为同步函数并直接调用。借助这种方式，我们可以轻松地整合不同编程范式的模块，并最小化开发成本，将它们转变为同步范式，有效地避免范式传染带来的灾难。
 
-## 开始体验
-准备好开始一场愉快的开发经历了吗？那么，从安装开始吧。
+通过这种方式，开发者可以根据具体需求选择合适的编程范式，进一步提高开发效率和代码质量。
+
+#### 代码维护和可读性
+
+使用 fiber 技术的另一个显著优势是代码的可维护性和可读性得到了极大的提升。传统的异步代码由于嵌套的回调函数和复杂的错误处理逻辑，往往难以阅读和理解。而使用 fibjs 后，代码结构更加扁平化，逻辑更加直观，开发者可以更容易地追踪代码执行流程，发现和修复问题。
+
+#### 生态系统和社区支持
+
+fibjs 拥有丰富的生态系统和活跃的社区支持。开发者可以方便地找到各种插件和扩展，满足不同的开发需求。同时，社区中的其他开发者也会分享他们的经验和最佳实践，帮助新手快速上手并提高开发水平。
+
+#### 未来展望
+
+随着 JavaScript 语言和 V8 引擎的不断发展，fibjs 也在不断进化和优化。未来，fibjs 将继续致力于提升性能和简化开发流程，为开发者提供更强大的工具和更优质的开发体验。
+
+fibjs 通过引入 fiber 技术，将异步操作封装为同步调用，极大地简化了后端开发的流程。开发者可以像编写同步代码一样编写异步操作，避免了回调地狱的问题，代码结构更加清晰，逻辑更加直观，极大地提高了开发效率。同时，fiber 技术还带来了显著的性能提升，使得 fibjs 成为后端开发的理想选择。
+
+## 开始体验 fibjs
+
+准备好开始愉快的开发体验了吗？从安装开始吧！
 
 👉 【[安装运行环境](install.md)】
