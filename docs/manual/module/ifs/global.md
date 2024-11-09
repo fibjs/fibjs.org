@@ -323,14 +323,6 @@ static Buffer global.atob(String data);
 返回结果:
 * [Buffer](../../object/ifs/Buffer.md), 返回解码的二进制数据
 
---------------------------
-### gc
-**强制要求进行垃圾回收**
-
-```JavaScript
-static global.gc();
-```
-
 ## 静态属性
         
 ### global

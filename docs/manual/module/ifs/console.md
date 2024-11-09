@@ -53,7 +53,7 @@ console.add("event");
 ```
 
 --------------------------
-**添加 console 输出系统，支持的设备为 console, syslog, event 和 file，最多可以添加 10 个输出**
+**添加 console 输出系统，支持的设备为 console, syslog, event, nslog 和 file，最多可以添加 10 个输出**
 
 ```JavaScript
 static console.add(Object cfg);
@@ -87,6 +87,15 @@ event 仅在 windows 平台有效：
 ```JavaScript
 console.add({
     type: "event",
+    levels: [console.INFO, console.ERROR]
+});
+```
+
+nslog 仅在 Darwin 平台有效：
+
+```JavaScript
+console.add({
+    type: "nslog",
     levels: [console.INFO, console.ERROR]
 });
 ```

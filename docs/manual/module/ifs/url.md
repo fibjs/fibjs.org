@@ -54,6 +54,19 @@ UrlObject url.URL;
 **参数构造 [UrlObject](../../object/ifs/UrlObject.md) 对象**
 
 ```JavaScript
+static String url.format(String href);
+```
+
+调用参数:
+* href: String, 指定需要解析的 url 字符串
+
+返回结果:
+* String, 返回构造成功的字符串
+
+--------------------------
+**参数构造 [UrlObject](../../object/ifs/UrlObject.md) 对象**
+
+```JavaScript
 static String url.format(Object args);
 ```
 
@@ -102,11 +115,13 @@ static String url.resolve(String _from,
 **将一个 url 对象转换为跨平台相关的绝对路径**
 
 ```JavaScript
-static String url.fileURLToPath(UrlObject url);
+static String url.fileURLToPath(UrlObject url,
+    Object options = {});
 ```
 
 调用参数:
 * url: [UrlObject](../../object/ifs/UrlObject.md), 指定需要转换的 url 对象
+* options: Object, 指定转换选项, 可选值为：windows: true/false, 是否转换为 windows 路径
 
 返回结果:
 * String, 返回转换后的绝对路径
@@ -115,11 +130,13 @@ static String url.fileURLToPath(UrlObject url);
 **将一个 url 字符串转换为跨平台相关的绝对路径**
 
 ```JavaScript
-static String url.fileURLToPath(String url);
+static String url.fileURLToPath(String url,
+    Object options = {});
 ```
 
 调用参数:
 * url: String, 指定需要转换的 url 字符串
+* options: Object, 指定转换选项, 可选值为：windows: true/false, 是否转换为 windows 路径
 
 返回结果:
 * String, 返回转换后的绝对路径
@@ -129,12 +146,42 @@ static String url.fileURLToPath(String url);
 **将一个跨平台相关的绝对路径转换为 url 对象**
 
 ```JavaScript
-static UrlObject url.pathToFileURL(String path);
+static UrlObject url.pathToFileURL(String path,
+    Object options = {});
 ```
 
 调用参数:
 * path: String, 指定需要转换的绝对路径
+* options: Object, 指定转换选项, 可选值为：windows: true/false, 是否转换为 windows 路径
 
 返回结果:
 * [UrlObject](../../object/ifs/UrlObject.md), 返回转换后的 url 对象
+
+--------------------------
+### domainToASCII
+**返回 domain 的 ASCII 编码**
+
+```JavaScript
+static String url.domainToASCII(String domain);
+```
+
+调用参数:
+* domain: String, 指定需要编码的 domain
+
+返回结果:
+* String, 返回编码后的 domain
+
+--------------------------
+### domainToUnicode
+**返回 domain 的 Unicode 编码**
+
+```JavaScript
+static String url.domainToUnicode(String domain);
+```
+
+调用参数:
+* domain: String, 指定需要编码的 domain
+
+返回结果:
+* String, 返回编码后的 domain
 

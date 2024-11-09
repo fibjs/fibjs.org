@@ -37,7 +37,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    UrlObject [tooltip="UrlObject", fillcolor="lightgray", id="me", label="{UrlObject|new UrlObject()\l|href\lprotocol\lslashes\lauth\lusername\lpassword\lhost\lhostname\lport\lpath\lpathname\lsearch\lquery\lhash\lsearchParams\l|parse()\lformat()\lresolve()\lnormalize()\l}"];
+    UrlObject [tooltip="UrlObject", fillcolor="lightgray", id="me", label="{UrlObject|new UrlObject()\l|parse()\lcanParse()\l|href\lprotocol\lorigin\lauth\lusername\lpassword\lhost\lhostname\lport\lpath\lpathname\lsearch\lquery\lhash\lsearchParams\l|resolve()\l}"];
 
     object -> UrlObject [dir=back];
 }
@@ -49,7 +49,7 @@ digraph {
 **UrlObject 对象构造函数，使用参数构造**
 
 ```JavaScript
-new UrlObject(Object args);
+new UrlObject(Object args = {});
 ```
 
 调用参数:
@@ -59,15 +59,46 @@ new UrlObject(Object args);
 **UrlObject 对象构造函数，使用 [url](../../module/ifs/url.md) 字符串构造**
 
 ```JavaScript
-new UrlObject(String url = "",
-    Boolean parseQueryString = false,
-    Boolean slashesDenoteHost = false);
+new UrlObject(String url,
+    String base = "");
 ```
 
 调用参数:
-* url: String, 指定构造 [url](../../module/ifs/url.md) 字符串
-* parseQueryString: Boolean, 指定是否解析 query
-* slashesDenoteHost: Boolean, 默认为false, 如果设置为true，则从字符串'//'之后到下一个'/'之前的字符串会被解析为host，例如'//foo/bar', 结果应该是{host: 'foo', pathname: '/bar'}而不是{pathname: '//foo/bar'}
+* url: String, 指定需要解析的 [url](../../module/ifs/url.md) 字符串
+* base: String, 指定基础 [url](../../module/ifs/url.md) 字符串
+
+## 静态函数
+        
+### parse
+**解析一个 [url](../../module/ifs/url.md) 字符串**
+
+```JavaScript
+static UrlObject UrlObject.parse(String url,
+    String base = "");
+```
+
+调用参数:
+* url: String, 指定需要解析的 [url](../../module/ifs/url.md) 字符串
+* base: String, 指定基础 [url](../../module/ifs/url.md) 字符串
+
+返回结果:
+* UrlObject, 返回包含解析数据的对象
+
+--------------------------
+### canParse
+**检查相对于 base 的 [url](../../module/ifs/url.md) 是否可以解析**
+
+```JavaScript
+static Boolean UrlObject.canParse(String url,
+    String base = "");
+```
+
+调用参数:
+* url: String, 指定需要解析的 [url](../../module/ifs/url.md) 字符串
+* base: String, 指定基础 [url](../../module/ifs/url.md) 字符串
+
+返回结果:
+* Boolean, 返回是否可以解析的布尔值
 
 ## 成员属性
         
@@ -87,11 +118,11 @@ String UrlObject.protocol;
 ```
 
 --------------------------
-### slashes
-**Boolean, 查询和设置当前 UrlObject 对象是否包含双斜杠**
+### origin
+**String, @brieg 查询当前 UrlObject 对象中的来源**
 
 ```JavaScript
-Boolean UrlObject.slashes;
+readonly String UrlObject.origin;
 ```
 
 --------------------------
@@ -99,7 +130,7 @@ Boolean UrlObject.slashes;
 **String, 查询和设置当前 UrlObject 对象中的完整验证字符串，由 username 和 password 属性组装而成**
 
 ```JavaScript
-String UrlObject.auth;
+readonly String UrlObject.auth;
 ```
 
 --------------------------
@@ -144,10 +175,10 @@ String UrlObject.port;
 
 --------------------------
 ### path
-**String, 查询和设置当前 UrlObject 对象中的请求完整路径（含请求），由 pathname 和 query 组装而成**
+**String, 查询当前 UrlObject 对象中的请求完整路径（含请求），由 pathname 和 query 组装而成**
 
 ```JavaScript
-String UrlObject.path;
+readonly String UrlObject.path;
 ```
 
 --------------------------
@@ -192,32 +223,6 @@ readonly HttpCollection UrlObject.searchParams;
 
 ## 成员函数
         
-### parse
-**解析一个 [url](../../module/ifs/url.md) 字符串**
-
-```JavaScript
-UrlObject.parse(String url,
-    Boolean parseQueryString = false,
-    Boolean slashesDenoteHost = false);
-```
-
-调用参数:
-* url: String, 指定需要解析的 [url](../../module/ifs/url.md) 字符串
-* parseQueryString: Boolean, 指定是否解析 query
-* slashesDenoteHost: Boolean, 默认为false, 如果设置为true，则从字符串'//'之后到下一个'/'之前的字符串会被解析为host，例如'//foo/bar', 结果应该是{host: 'foo', pathname: '/bar'}而不是{pathname: '//foo/bar'}
-
---------------------------
-### format
-**使用指定的参数构造 UrlObject**
-
-```JavaScript
-UrlObject.format(Object args);
-```
-
-调用参数:
-* args: Object, 指定构造参数的字典对象，支持的字段有：protocol, slashes, username, password, hostname, port, pathname, query, hash
-
---------------------------
 ### resolve
 **重定位 [url](../../module/ifs/url.md) 路径，自动识别新路径为相对路径还是绝对路径**
 
@@ -230,14 +235,6 @@ UrlObject UrlObject.resolve(String url);
 
 返回结果:
 * UrlObject, 返回包含重定位数据的对象
-
---------------------------
-### normalize
-**标准化路径**
-
-```JavaScript
-UrlObject.normalize();
-```
 
 --------------------------
 ### toString
