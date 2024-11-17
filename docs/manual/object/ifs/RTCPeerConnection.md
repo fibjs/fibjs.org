@@ -49,6 +49,7 @@ options 参数是一个对象，包含以下属性：
    - icePwd: ICE 密码
    - certPem: 证书 PEM 格式
    - keyPem: 私钥 PEM 格式
+   - keyPass: 私钥密码
 
 ## 静态属性
         

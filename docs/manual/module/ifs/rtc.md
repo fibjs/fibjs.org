@@ -214,3 +214,20 @@ setSctpSettings 方法用于设置 WebRTC 全局 SCTP 参数，新设置的参�
    - `maxRetransmitAttempts` - 最大重传尝试次数（默认值: 5）
    - `heartbeatIntervalMs` - 心跳间隔时间，以毫秒为单位（默认值: 10s）
 
+## 静态属性
+        
+### loglevel
+**String, 查询和设置 WebRTC 日志级别**
+
+```JavaScript
+static String rtc.loglevel;
+```
+
+loglevel 属性用于查询和设置 WebRTC 日志级别，新设置的级别会立即生效。支持以下级别：
+   - `none` - 不输出日志
+   - `error` - 输出错误日志
+   - `warning` - 输出警告日志
+   - `info` - 输出信息日志
+   - `debug` - 输出调试日志
+   - `verbose` - 输出详细日志
+
