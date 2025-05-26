@@ -147,6 +147,22 @@ static String path.fullpath(String path);
 * String, 返回转换的全路径
 
 --------------------------
+### matchesGlob
+**识别给定的路径是否匹配给定的模式**
+
+```JavaScript
+static Boolean path.matchesGlob(String path,
+    String pattern);
+```
+
+调用参数:
+* path: String, 给定需要识别的路径
+* pattern: String, 指定匹配的模式
+
+返回结果:
+* Boolean, 返回匹配结果
+
+--------------------------
 ### isAbsolute
 **识别给定的路径是否是绝对路径**
 

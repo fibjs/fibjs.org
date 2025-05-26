@@ -37,7 +37,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    UrlObject [tooltip="UrlObject", fillcolor="lightgray", id="me", label="{UrlObject|new UrlObject()\l|parse()\lcanParse()\l|href\lprotocol\lorigin\lauth\lusername\lpassword\lhost\lhostname\lport\lpath\lpathname\lsearch\lquery\lhash\lsearchParams\l|resolve()\l}"];
+    UrlObject [tooltip="UrlObject", fillcolor="lightgray", id="me", label="{UrlObject|new UrlObject()\l|parse()\lcanParse()\l|href\lprotocol\lslashes\lorigin\lauth\lusername\lpassword\lhost\lhostname\lport\lpath\lpathname\lsearch\lquery\lhash\lsearchParams\l|resolve()\l}"];
 
     object -> UrlObject [dir=back];
 }
@@ -115,6 +115,14 @@ String UrlObject.href;
 
 ```JavaScript
 String UrlObject.protocol;
+```
+
+--------------------------
+### slashes
+**Boolean, 查询和设置当前 UrlObject 对象是否包含双斜杠**
+
+```JavaScript
+Boolean UrlObject.slashes;
 ```
 
 --------------------------

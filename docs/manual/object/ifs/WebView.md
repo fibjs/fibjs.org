@@ -88,7 +88,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\laddEventListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveEventListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
-    WebView [tooltip="WebView", fillcolor="lightgray", id="me", label="{WebView|onloading\lonload\lonmove\lonresize\lonfocus\lonblur\lonclose\lonmessage\l|loadUrl()\lloadFile()\lgetUrl()\lsetHtml()\lgetHtml()\lisReady()\lwaitFor()\lreload()\lgoBack()\lgoForward()\leval()\lsetTitle()\lgetTitle()\lisVisible()\lshow()\lhide()\lsetSize()\lgetSize()\lsetPosition()\lgetPosition()\lisActived()\lactive()\lgetMenu()\ltakeScreenshot()\lclose()\lpostMessage()\l}"];
+    WebView [tooltip="WebView", fillcolor="lightgray", id="me", label="{WebView|loadUrl()\lloadFile()\lgetUrl()\lsetHtml()\lgetHtml()\lisReady()\lwaitFor()\lreload()\lgoBack()\lgoForward()\leval()\lsetTitle()\lgetTitle()\lisVisible()\lshow()\lhide()\lsetSize()\lgetSize()\lsetPosition()\lgetPosition()\lisActived()\lactive()\lgetMenu()\ltakeScreenshot()\lclose()\lpostMessage()\l|event loading\levent load\levent move\levent resize\levent focus\levent blur\levent close\levent message\l}"];
 
     object -> EventEmitter [dir=back];
     EventEmitter -> WebView [dir=back];
@@ -102,89 +102,6 @@ digraph {
 
 ```JavaScript
 static Integer WebView.defaultMaxListeners;
-```
-
-## 成员属性
-        
-### onloading
-**Function, 查询和绑定窗口开始加载事件，相当于 on("loading", func);**
-
-```JavaScript
-Function WebView.onloading;
-```
-
---------------------------
-### onload
-**Function, 查询和绑定窗口加载 完成事件，相当于 on("load", func);**
-
-```JavaScript
-Function WebView.onload;
-```
-
---------------------------
-### onmove
-**Function, 查询和绑定窗口移动事件，相当于 on("move", func);**
-
-```JavaScript
-Function WebView.onmove;
-```
-
-以下示例会在窗口移动时输出窗口的左上角坐标：
-
-```JavaScript
-var gui = require('gui');
-var webview = gui.open('fs://index.html');
-
-webview.onmove = evt => console.log(evt.left, evt.top);
-```
-
---------------------------
-### onresize
-**Function, 查询和绑定窗口尺寸改变事件，相当于 on("size", func);**
-
-```JavaScript
-Function WebView.onresize;
-```
-
-以下示例会在窗口改变大小时输出窗口的尺寸：
-
-```JavaScript
-var gui = require('gui');
-var webview = gui.open('fs://index.html');
-
-webview.onresize = evt => console.log(evt.width, evt.height);
-```
-
---------------------------
-### onfocus
-**Function, 查询和绑定窗口获得焦点事件，相当于 on("focus", func);**
-
-```JavaScript
-Function WebView.onfocus;
-```
-
---------------------------
-### onblur
-**Function, 查询和绑定窗口失去焦点事件，相当于 on("blur", func);**
-
-```JavaScript
-Function WebView.onblur;
-```
-
---------------------------
-### onclose
-**Function, 查询和绑定窗口关闭事件，WebView 关闭后会触发此时间，相当于 on("closed", func);**
-
-```JavaScript
-Function WebView.onclose;
-```
-
---------------------------
-### onmessage
-**Function, 查询和绑定接受 webview 内 postMessage 消息事件，相当于 on("message", func);**
-
-```JavaScript
-Function WebView.onmessage;
 ```
 
 ## 成员函数
@@ -875,4 +792,87 @@ Value WebView.toJSON(String key = "");
 
 返回结果:
 * Value, 返回包含可 JSON 序列化的值
+
+## 事件
+        
+### loading
+**查询和绑定窗口开始加载事件，相当于 on("loading", func);**
+
+```JavaScript
+event WebView.loading();
+```
+
+--------------------------
+### load
+**查询和绑定窗口加载 完成事件，相当于 on("load", func);**
+
+```JavaScript
+event WebView.load();
+```
+
+--------------------------
+### move
+**查询和绑定窗口移动事件，相当于 on("move", func);**
+
+```JavaScript
+event WebView.move();
+```
+
+以下示例会在窗口移动时输出窗口的左上角坐标：
+
+```JavaScript
+var gui = require('gui');
+var webview = gui.open('fs://index.html');
+
+webview.onmove = evt => console.log(evt.left, evt.top);
+```
+
+--------------------------
+### resize
+**查询和绑定窗口尺寸改变事件，相当于 on("size", func);**
+
+```JavaScript
+event WebView.resize();
+```
+
+以下示例会在窗口改变大小时输出窗口的尺寸：
+
+```JavaScript
+var gui = require('gui');
+var webview = gui.open('fs://index.html');
+
+webview.onresize = evt => console.log(evt.width, evt.height);
+```
+
+--------------------------
+### focus
+**查询和绑定窗口获得焦点事件，相当于 on("focus", func);**
+
+```JavaScript
+event WebView.focus();
+```
+
+--------------------------
+### blur
+**查询和绑定窗口失去焦点事件，相当于 on("blur", func);**
+
+```JavaScript
+event WebView.blur();
+```
+
+--------------------------
+### close
+**查询和绑定窗口关闭事件，WebView 关闭后会触发此时间，相当于 on("closed", func);**
+
+```JavaScript
+event WebView.close();
+```
+
+--------------------------
+### message
+**查询和绑定接受 webview 内 postMessage 消息事件，相当于 on("message", func);**
+
+```JavaScript
+event WebView.message();
+```
 

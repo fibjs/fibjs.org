@@ -10,27 +10,6 @@ var dgram = require('dgram');
 var sock = dgram.createSocket('udp4');
 ```
 
-## 事件
-DgramSocket 继承于 [EventEmitter](EventEmitter.md)，对象的状态变化，以及数据接受，都是以事件的方式实现。
-
-### close 事件
-** `close` 事件将在使用 `close()` 关闭一个 `socket` 之后触发。该事件一旦触发，这个 `socket` 上将不会触发新的 `message` 事件。**
-
-### error 事件
-** 当有任何错误发生时，`error` 事件将被触发。 **
-
-### listening 事件
-** 当一个 `socket` 开始监听数据包信息时，`listening` 事件将被触发。该事件会在创建 UDP socket 之后被立即触发。 **
-
-### message 事件
-** 当有新的数据包被 `socket` 接收时，`message` 事件会被触发。`msg` 和 `rinfo` 会作为参数传递到该事件的处理函数中。 **
-- msg: [Buffer](Buffer.md)，消息
-- rinfo: Object，远程地址信息
-   - address: string，发送方地址
-   - family: string，地址类型 ('IPv4' or 'IPv6')
-   - port: number，发送者端口
-   - size: number，消息大小
-
 ## 继承关系
 ```dot
 digraph {
@@ -38,7 +17,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\laddEventListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveEventListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
-    DgramSocket [tooltip="DgramSocket", fillcolor="lightgray", id="me", label="{DgramSocket|bind()\lsend()\laddress()\lclose()\lgetRecvBufferSize()\lgetSendBufferSize()\laddMembership()\ldropMembership()\lsetMulticastTTL()\lsetRecvBufferSize()\lsetSendBufferSize()\lsetBroadcast()\lref()\lunref()\l}"];
+    DgramSocket [tooltip="DgramSocket", fillcolor="lightgray", id="me", label="{DgramSocket|bind()\lsend()\laddress()\lclose()\lgetRecvBufferSize()\lgetSendBufferSize()\laddMembership()\ldropMembership()\lsetMulticastTTL()\lsetRecvBufferSize()\lsetSendBufferSize()\lsetBroadcast()\lref()\lunref()\l|event close\levent error\levent listening\levent message\l}"];
 
     object -> EventEmitter [dir=back];
     EventEmitter -> DgramSocket [dir=back];
@@ -671,4 +650,42 @@ Value DgramSocket.toJSON(String key = "");
 
 返回结果:
 * Value, 返回包含可 JSON 序列化的值
+
+## 事件
+        
+### close
+**`close` 事件将在使用 `close()` 关闭一个 `socket` 之后触发。该事件一旦触发，这个 `socket` 上将不会触发新的 `message` 事件**
+
+```JavaScript
+event DgramSocket.close();
+```
+
+--------------------------
+### error
+**当有任何错误发生时，`error` 事件将被触发**
+
+```JavaScript
+event DgramSocket.error();
+```
+
+--------------------------
+### listening
+**当一个 `socket` 开始监听数据包信息时，`listening` 事件将被触发。该事件会在创建 UDP socket 之后被立即触发**
+
+```JavaScript
+event DgramSocket.listening();
+```
+
+--------------------------
+### message
+**当有新的数据包被 `socket` 接收时，`message` 事件会被触发。`msg` 和 `rinfo` 会作为参数传递到该事件的处理函数中。**
+
+```JavaScript
+event DgramSocket.message(Buffer msg,
+    NObject rinfo);
+```
+
+调用参数:
+* msg: [Buffer](Buffer.md), 接收到的数据包
+* rinfo: NObject, 包含接收数据包的远程信息的对象。该对象包含 `address`、`port` 和 `family` 属性，分别表示远程地址、端口和协议族。
 

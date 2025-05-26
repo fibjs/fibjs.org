@@ -17,7 +17,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\laddEventListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveEventListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
-    RTCPeerConnection [tooltip="RTCPeerConnection", fillcolor="lightgray", id="me", label="{RTCPeerConnection|new RTCPeerConnection()\l|connectionState\liceConnectionState\liceGatheringState\llocalDescription\lremoteDescription\lremoteFingerprint\lsignalingState\lonconnectionstatechange\londatachannel\lonicecandidate\loniceconnectionstatechange\lonicegatheringstatechange\lonlocaldescription\lonsignalingstatechange\lontrack\l|createDataChannel()\lsetLocalDescription()\lsetRemoteDescription()\laddIceCandidate()\lcreateOffer()\lcreateAnswer()\lgetStats()\lclose()\l}"];
+    RTCPeerConnection [tooltip="RTCPeerConnection", fillcolor="lightgray", id="me", label="{RTCPeerConnection|new RTCPeerConnection()\l|connectionState\liceConnectionState\liceGatheringState\llocalDescription\lremoteDescription\lremoteFingerprint\lsignalingState\l|createDataChannel()\lsetLocalDescription()\lsetRemoteDescription()\laddIceCandidate()\lcreateOffer()\lcreateAnswer()\lgetStats()\lclose()\l|event connectionstatechange\levent datachannel\levent icecandidate\levent iceconnectionstatechange\levent icegatheringstatechange\levent localdescription\levent signalingstatechange\levent track\l}"];
 
     object -> EventEmitter [dir=back];
     EventEmitter -> RTCPeerConnection [dir=back];
@@ -115,70 +115,6 @@ readonly Object RTCPeerConnection.remoteFingerprint;
 
 ```JavaScript
 readonly String RTCPeerConnection.signalingState;
-```
-
---------------------------
-### onconnectionstatechange
-**Function, 连接状态变更事件**
-
-```JavaScript
-Function RTCPeerConnection.onconnectionstatechange;
-```
-
---------------------------
-### ondatachannel
-**Function, 数据通道事件**
-
-```JavaScript
-Function RTCPeerConnection.ondatachannel;
-```
-
---------------------------
-### onicecandidate
-**Function, ICE 候选项事件**
-
-```JavaScript
-Function RTCPeerConnection.onicecandidate;
-```
-
---------------------------
-### oniceconnectionstatechange
-**Function, ICE 连接状态变更事件**
-
-```JavaScript
-Function RTCPeerConnection.oniceconnectionstatechange;
-```
-
---------------------------
-### onicegatheringstatechange
-**Function, ICE 收集状态变更事件**
-
-```JavaScript
-Function RTCPeerConnection.onicegatheringstatechange;
-```
-
---------------------------
-### onlocaldescription
-**Function, 本地描述变更事件**
-
-```JavaScript
-Function RTCPeerConnection.onlocaldescription;
-```
-
---------------------------
-### onsignalingstatechange
-**Function, 信令状态变更事件**
-
-```JavaScript
-Function RTCPeerConnection.onsignalingstatechange;
-```
-
---------------------------
-### ontrack
-**Function, 媒体轨道事件**
-
-```JavaScript
-Function RTCPeerConnection.ontrack;
 ```
 
 ## 成员函数
@@ -720,4 +656,69 @@ Value RTCPeerConnection.toJSON(String key = "");
 
 返回结果:
 * Value, 返回包含可 JSON 序列化的值
+
+## 事件
+        
+### connectionstatechange
+**连接状态变更事件**
+
+```JavaScript
+event RTCPeerConnection.connectionstatechange();
+```
+
+--------------------------
+### datachannel
+**数据通道事件**
+
+```JavaScript
+event RTCPeerConnection.datachannel();
+```
+
+--------------------------
+### icecandidate
+**ICE 候选项事件**
+
+```JavaScript
+event RTCPeerConnection.icecandidate();
+```
+
+--------------------------
+### iceconnectionstatechange
+**ICE 连接状态变更事件**
+
+```JavaScript
+event RTCPeerConnection.iceconnectionstatechange();
+```
+
+--------------------------
+### icegatheringstatechange
+**ICE 收集状态变更事件**
+
+```JavaScript
+event RTCPeerConnection.icegatheringstatechange();
+```
+
+--------------------------
+### localdescription
+**本地描述变更事件**
+
+```JavaScript
+event RTCPeerConnection.localdescription();
+```
+
+--------------------------
+### signalingstatechange
+**信令状态变更事件**
+
+```JavaScript
+event RTCPeerConnection.signalingstatechange();
+```
+
+--------------------------
+### track
+**媒体轨道事件**
+
+```JavaScript
+event RTCPeerConnection.track();
+```
 

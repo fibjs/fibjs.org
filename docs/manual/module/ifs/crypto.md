@@ -34,6 +34,14 @@ X509Certificate crypto.X509Certificate;
 webcrypto crypto.webcrypto;
 ```
 
+--------------------------
+### subtle
+**提供对 SubtleCrypto API 的访问**
+
+```JavaScript
+subtle crypto.subtle;
+```
+
 ## 静态函数
         
 ### getHashes

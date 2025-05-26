@@ -449,6 +449,53 @@ static NArray fs.readdir(String path,
 ```
 
 --------------------------
+### glob
+**根据文件名模式，搜索指定目录的文件列表**
+
+```JavaScript
+static NArray fs.glob(String pattern,
+    Object opts = {}) async;
+```
+
+调用参数:
+* pattern: String, 指定文件名模式
+* opts: Object, 指定参数
+
+返回结果:
+* NArray, 返回文件列表
+
+参数 opts 支持的选项如下：
+
+```JavaScript
+{
+    "cwd": "", // specify a different working directory, default to current directory
+}
+```
+
+--------------------------
+**根据文件名模式，搜索指定目录的文件列表**
+
+```JavaScript
+static NArray fs.glob(String patterns[],
+    Object opts = {}) async;
+```
+
+调用参数:
+* patterns[]: String, 指定一组文件名模式
+* opts: Object, 指定参数
+
+返回结果:
+* NArray, 返回文件列表
+
+参数 opts 支持的选项如下：
+
+```JavaScript
+{
+    "cwd": "", // specify a different working directory, default to current directory
+}
+```
+
+--------------------------
 ### openFile
 **打开文件，用于读取，写入，或者同时读写**
 

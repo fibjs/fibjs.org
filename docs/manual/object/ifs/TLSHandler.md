@@ -18,7 +18,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Handler [tooltip="Handler", URL="Handler.md", label="{Handler|new Handler()\l|invoke()\l}"];
+    Handler [tooltip="Handler", URL="Handler.md", label="{Handler|new Handler()\l|isRouting()\linvoke()\l}"];
     TLSHandler [tooltip="TLSHandler", fillcolor="lightgray", id="me", label="{TLSHandler|new TLSHandler()\l|secureContext\lhandler\l|setSecureContext()\l}"];
 
     object -> Handler [dir=back];
@@ -90,6 +90,17 @@ TLSHandler.setSecureContext(Object options);
 
 调用参数:
 * options: Object, 使用 [tls.createSecureContext](../../module/ifs/tls.md#createSecureContext) 创建安全上下文需要的选项
+
+--------------------------
+### isRouting
+**查询当前处理器是否支持路由**
+
+```JavaScript
+Boolean TLSHandler.isRouting();
+```
+
+返回结果:
+* Boolean, 返回当前处理器是否支持路由
 
 --------------------------
 ### invoke

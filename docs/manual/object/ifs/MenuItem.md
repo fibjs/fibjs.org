@@ -8,7 +8,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\laddEventListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveEventListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
-    MenuItem [tooltip="MenuItem", fillcolor="lightgray", id="me", label="{MenuItem|id\ltype\licon\llabel\ltooltip\lenabled\lchecked\lsubmenu\lonclick\l}"];
+    MenuItem [tooltip="MenuItem", fillcolor="lightgray", id="me", label="{MenuItem|id\ltype\licon\llabel\ltooltip\lenabled\lchecked\lsubmenu\l|event click\l}"];
 
     object -> EventEmitter [dir=back];
     EventEmitter -> MenuItem [dir=back];
@@ -87,14 +87,6 @@ Boolean MenuItem.checked;
 
 ```JavaScript
 readonly Menu MenuItem.submenu;
-```
-
---------------------------
-### onclick
-**Function, 菜单项的点击事件处理函数。**
-
-```JavaScript
-Function MenuItem.onclick;
 ```
 
 ## 成员函数
@@ -509,4 +501,13 @@ Value MenuItem.toJSON(String key = "");
 
 返回结果:
 * Value, 返回包含可 JSON 序列化的值
+
+## 事件
+        
+### click
+**菜单项的点击事件处理函数。**
+
+```JavaScript
+event MenuItem.click();
+```
 

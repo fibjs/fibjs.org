@@ -8,7 +8,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\laddEventListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveEventListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
-    RTCDataChannel [tooltip="RTCDataChannel", fillcolor="lightgray", id="me", label="{RTCDataChannel|id\llabel\lprotocol\lbufferedAmount\lonopen\lonmessage\lonclose\lonerror\lonbufferedamountlow\l|send()\lclose()\l}"];
+    RTCDataChannel [tooltip="RTCDataChannel", fillcolor="lightgray", id="me", label="{RTCDataChannel|id\llabel\lprotocol\lbufferedAmount\l|send()\lclose()\l|event open\levent message\levent close\levent error\levent bufferedamountlow\l}"];
 
     object -> EventEmitter [dir=back];
     EventEmitter -> RTCDataChannel [dir=back];
@@ -55,46 +55,6 @@ readonly String RTCDataChannel.protocol;
 
 ```JavaScript
 readonly Number RTCDataChannel.bufferedAmount;
-```
-
---------------------------
-### onopen
-**Function, 通道打开事件，当通道打开时触发**
-
-```JavaScript
-Function RTCDataChannel.onopen;
-```
-
---------------------------
-### onmessage
-**Function, 通道消息事件，当接收到消息时触发**
-
-```JavaScript
-Function RTCDataChannel.onmessage;
-```
-
---------------------------
-### onclose
-**Function, 通道关闭事件，当通道关闭时触发**
-
-```JavaScript
-Function RTCDataChannel.onclose;
-```
-
---------------------------
-### onerror
-**Function, 通道错误事件，当通道发生错误时触发**
-
-```JavaScript
-Function RTCDataChannel.onerror;
-```
-
---------------------------
-### onbufferedamountlow
-**Function, 通道缓冲区低事件，当通道缓冲区低时触发**
-
-```JavaScript
-Function RTCDataChannel.onbufferedamountlow;
 ```
 
 ## 成员函数
@@ -538,4 +498,45 @@ Value RTCDataChannel.toJSON(String key = "");
 
 返回结果:
 * Value, 返回包含可 JSON 序列化的值
+
+## 事件
+        
+### open
+**通道打开事件，当通道打开时触发**
+
+```JavaScript
+event RTCDataChannel.open();
+```
+
+--------------------------
+### message
+**通道消息事件，当接收到消息时触发**
+
+```JavaScript
+event RTCDataChannel.message();
+```
+
+--------------------------
+### close
+**通道关闭事件，当通道关闭时触发**
+
+```JavaScript
+event RTCDataChannel.close();
+```
+
+--------------------------
+### error
+**通道错误事件，当通道发生错误时触发**
+
+```JavaScript
+event RTCDataChannel.error();
+```
+
+--------------------------
+### bufferedamountlow
+**通道缓冲区低事件，当通道缓冲区低时触发**
+
+```JavaScript
+event RTCDataChannel.bufferedamountlow();
+```
 

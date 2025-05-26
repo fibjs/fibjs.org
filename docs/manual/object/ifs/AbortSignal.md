@@ -8,7 +8,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\laddEventListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveEventListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
-    AbortSignal [tooltip="AbortSignal", fillcolor="lightgray", id="me", label="{AbortSignal|aborted\lonabort\l|abort()\l}"];
+    AbortSignal [tooltip="AbortSignal", fillcolor="lightgray", id="me", label="{AbortSignal|aborted\l|abort()\l|event abort\l}"];
 
     object -> EventEmitter [dir=back];
     EventEmitter -> AbortSignal [dir=back];
@@ -31,14 +31,6 @@ static Integer AbortSignal.defaultMaxListeners;
 
 ```JavaScript
 readonly Boolean AbortSignal.aborted;
-```
-
---------------------------
-### onabort
-**Function, 事件处理程序，当中止请求时触发**
-
-```JavaScript
-readonly Function AbortSignal.onabort;
 ```
 
 ## 成员函数
@@ -464,4 +456,13 @@ Value AbortSignal.toJSON(String key = "");
 
 返回结果:
 * Value, 返回包含可 JSON 序列化的值
+
+## 事件
+        
+### abort
+**事件处理程序，当中止请求时触发**
+
+```JavaScript
+event AbortSignal.abort();
+```
 

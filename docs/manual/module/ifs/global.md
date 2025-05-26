@@ -75,6 +75,14 @@ performance global.performance;
 ```
 
 --------------------------
+### PerformanceObserver
+**[PerformanceObserver](../../object/ifs/PerformanceObserver.md) 接口用于观察性能记录的接口**
+
+```JavaScript
+PerformanceObserver global.PerformanceObserver;
+```
+
+--------------------------
 ### crypto
 **w3c [webcrypto](webcrypto.md) 标准的加密模块**
 
@@ -96,7 +104,7 @@ static global.run(String fname);
 
 --------------------------
 ### require
-**加载一个模块并返回模块对象，更多信息参阅 @ref module**
+**加载一个模块并返回模块对象，更多信息参阅 @ref [module](module.md)**
 
 ```JavaScript
 static Value global.require(String id);

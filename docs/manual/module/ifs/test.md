@@ -1,5 +1,5 @@
 # 模块 test
-test 模块是一个测试框架，结合断言模块 `assert` 可以方便地编写各种测试用例
+test 模块是一个测试框架，结合断言模块 `assert` 可以方便地编写各种测试用例，可作为函数调用
 
 在 `fibjs` 中引入 `test` 模块常常需要先进行 `test setup` 操作：
 
@@ -75,8 +75,40 @@ assert(condition, String message);
 
 ## 对象
         
+### test
+**测试框架模块，指向本模块，可作为函数调用**
+
+```JavaScript
+test new test;
+```
+
+--------------------------
+### it
+**测试框架模块，指向本模块，可作为函数调用**
+
+```JavaScript
+test test.it;
+```
+
+--------------------------
+### suite
+**测试套件模块，可作为函数调用，参见 [test_suite](test_suite.md)**
+
+```JavaScript
+test_suite test.suite;
+```
+
+--------------------------
+### describe
+**测试套件模块，可作为函数调用，参见 [test_suite](test_suite.md)**
+
+```JavaScript
+test_suite test.describe;
+```
+
+--------------------------
 ### assert
-**断言测试模块，如果测试值为假，则报错，报错行为可设定继续运行或者错误抛出**
+**断言测试模块，可作为函数调用，如果测试值为假，则报错，报错行为可设定继续运行或者错误抛出**
 
 ```JavaScript
 assert test.assert;
@@ -84,21 +116,21 @@ assert test.assert;
 
 ## 静态函数
         
-### describe
-**定义一个测试模块，可嵌套定义**
+### Function
+**定义一个测试项目**
 
 ```JavaScript
-static test.describe(String name,
+static test.Function(String name,
     Function block);
 ```
 
 调用参数:
-* name: String, 定义模块名称
-* block: Function, 模块初始化代码
+* name: String, 定义项目名称
+* block: Function, 测试内容
 
 --------------------------
 ### xdescribe
-**暂停测试的模块定义，[test.setup](test.md#setup) 后可使用 describe.skip 调用**
+**暂停测试套件定义**
 
 ```JavaScript
 static test.xdescribe(String name,
@@ -111,7 +143,7 @@ static test.xdescribe(String name,
 
 --------------------------
 ### odescribe
-**独立测试的模块定义，[test.setup](test.md#setup) 后可使用 describe.only 调用**
+**独立测试套件定义**
 
 ```JavaScript
 static test.odescribe(String name,
@@ -123,21 +155,8 @@ static test.odescribe(String name,
 * block: Function, 模块初始化代码
 
 --------------------------
-### it
-**定义一个测试项目**
-
-```JavaScript
-static test.it(String name,
-    Function block);
-```
-
-调用参数:
-* name: String, 定义项目名称
-* block: Function, 测试内容
-
---------------------------
 ### xit
-**暂停测试的项目定义，[test.setup](test.md#setup) 后可使用 it.skip 调用**
+**暂停测试的项目定义**
 
 ```JavaScript
 static test.xit(String name,
@@ -149,8 +168,21 @@ static test.xit(String name,
 * block: Function, 测试内容
 
 --------------------------
+### skip
+**暂停测试的项目定义**
+
+```JavaScript
+static test.skip(String name,
+    Function block);
+```
+
+调用参数:
+* name: String, 定义项目名称
+* block: Function, 测试内容
+
+--------------------------
 ### oit
-**独立测试的项目定义，[test.setup](test.md#setup) 后可使用 it.only 调用**
+**独立测试的项目定义**
 
 ```JavaScript
 static test.oit(String name,
@@ -162,8 +194,21 @@ static test.oit(String name,
 * block: Function, 测试内容
 
 --------------------------
+### only
+**独立测试的项目定义**
+
+```JavaScript
+static test.only(String name,
+    Function block);
+```
+
+调用参数:
+* name: String, 定义项目名称
+* block: Function, 测试内容
+
+--------------------------
 ### todo
-**计划项目定义，[test.setup](test.md#setup) 后可使用 it.todo 调用**
+**计划项目定义**
 
 ```JavaScript
 static test.todo(String name,

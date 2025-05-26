@@ -19,6 +19,7 @@ digraph {
     AbortSignal [tooltip="AbortSignal", URL="AbortSignal.md", label="{AbortSignal}"];
     ChildProcess [tooltip="ChildProcess", URL="ChildProcess.md", label="{ChildProcess}"];
     DgramSocket [tooltip="DgramSocket", URL="DgramSocket.md", label="{DgramSocket}"];
+    EventSource [tooltip="EventSource", URL="EventSource.md", label="{EventSource}"];
     FSWatcher [tooltip="FSWatcher", URL="FSWatcher.md", label="{FSWatcher}"];
     MenuItem [tooltip="MenuItem", URL="MenuItem.md", label="{MenuItem}"];
     RTCDataChannel [tooltip="RTCDataChannel", URL="RTCDataChannel.md", label="{RTCDataChannel}"];
@@ -57,6 +58,11 @@ digraph {
     HttpRequest [tooltip="HttpRequest", URL="HttpRequest.md", label="{HttpRequest}"];
     HttpResponse [tooltip="HttpResponse", URL="HttpResponse.md", label="{HttpResponse}"];
     WebSocketMessage [tooltip="WebSocketMessage", URL="WebSocketMessage.md", label="{WebSocketMessage}"];
+    PerformanceEntry [tooltip="PerformanceEntry", URL="PerformanceEntry.md", label="{PerformanceEntry}"];
+    PerformanceMark [tooltip="PerformanceMark", URL="PerformanceMark.md", label="{PerformanceMark}"];
+    PerformanceMeasure [tooltip="PerformanceMeasure", URL="PerformanceMeasure.md", label="{PerformanceMeasure}"];
+    PerformanceObserver [tooltip="PerformanceObserver", URL="PerformanceObserver.md", label="{PerformanceObserver}"];
+    PerformanceObserverEntryList [tooltip="PerformanceObserverEntryList", URL="PerformanceObserverEntryList.md", label="{PerformanceObserverEntryList}"];
     RTCIceCandidate [tooltip="RTCIceCandidate", URL="RTCIceCandidate.md", label="{RTCIceCandidate}"];
     RTCSessionDescription [tooltip="RTCSessionDescription", URL="RTCSessionDescription.md", label="{RTCSessionDescription}"];
     Redis [tooltip="Redis", URL="Redis.md", label="{Redis}"];
@@ -119,6 +125,7 @@ digraph {
     EventEmitter -> AbortSignal [dir=back];
     EventEmitter -> ChildProcess [dir=back];
     EventEmitter -> DgramSocket [dir=back];
+    EventEmitter -> EventSource [dir=back];
     EventEmitter -> FSWatcher [dir=back];
     EventEmitter -> MenuItem [dir=back];
     EventEmitter -> RTCDataChannel [dir=back];
@@ -157,6 +164,11 @@ digraph {
     HttpMessage -> HttpRequest [dir=back];
     HttpMessage -> HttpResponse [dir=back];
     Message -> WebSocketMessage [dir=back];
+    object -> PerformanceEntry [dir=back];
+    PerformanceEntry -> PerformanceMark [dir=back];
+    PerformanceEntry -> PerformanceMeasure [dir=back];
+    object -> PerformanceObserver [dir=back];
+    object -> PerformanceObserverEntryList [dir=back];
     object -> RTCIceCandidate [dir=back];
     object -> RTCSessionDescription [dir=back];
     object -> Redis [dir=back];

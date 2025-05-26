@@ -20,7 +20,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Handler [tooltip="Handler", URL="Handler.md", label="{Handler|new Handler()\l|invoke()\l}"];
+    Handler [tooltip="Handler", URL="Handler.md", label="{Handler|new Handler()\l|isRouting()\linvoke()\l}"];
     Chain [tooltip="Chain", fillcolor="lightgray", id="me", label="{Chain|new Chain()\l|append()\l}"];
 
     object -> Handler [dir=back];
@@ -61,6 +61,17 @@ Chain.append(Handler hdlr);
 
 调用参数:
 * hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
+
+--------------------------
+### isRouting
+**查询当前处理器是否支持路由**
+
+```JavaScript
+Boolean Chain.isRouting();
+```
+
+返回结果:
+* Boolean, 返回当前处理器是否支持路由
 
 --------------------------
 ### invoke

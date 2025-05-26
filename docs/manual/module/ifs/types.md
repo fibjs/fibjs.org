@@ -500,3 +500,157 @@ static Boolean types.isBuffer(Value v);
 返回结果:
 * Boolean, 如果是函数 [Buffer](../../object/ifs/Buffer.md) 对象则返回 True
 
+--------------------------
+### isBigIntObject
+**检测给定的变量是否是 BigInt 对象，而不是原始类型**
+
+```JavaScript
+static Boolean types.isBigIntObject(Value v);
+```
+
+调用参数:
+* v: Value, 给定需要检测的变量
+
+返回结果:
+* Boolean, 如果是 BigInt 对象则返回 True
+
+--------------------------
+### isBooleanObject
+**检测给定的变量是否是 Boolean 对象，而不是原始类型**
+
+```JavaScript
+static Boolean types.isBooleanObject(Value v);
+```
+
+调用参数:
+* v: Value, 给定需要检测的变量
+
+返回结果:
+* Boolean, 如果是 Boolean 对象则返回 True
+
+--------------------------
+### isNumberObject
+**检测给定的变量是否是 Number 对象，而不是原始类型**
+
+```JavaScript
+static Boolean types.isNumberObject(Value v);
+```
+
+调用参数:
+* v: Value, 给定需要检测的变量
+
+返回结果:
+* Boolean, 如果是 Number 对象则返回 True
+
+--------------------------
+### isStringObject
+**检测给定的变量是否是 String 对象，而不是原始类型**
+
+```JavaScript
+static Boolean types.isStringObject(Value v);
+```
+
+调用参数:
+* v: Value, 给定需要检测的变量
+
+返回结果:
+* Boolean, 如果是 String 对象则返回 True
+
+--------------------------
+### isSymbolObject
+**检测给定的变量是否是 Symbol 对象，而不是原始类型**
+
+```JavaScript
+static Boolean types.isSymbolObject(Value v);
+```
+
+调用参数:
+* v: Value, 给定需要检测的变量
+
+返回结果:
+* Boolean, 如果是 Symbol 对象则返回 True
+
+--------------------------
+### isWeakMap
+**检测给定的变量是否是 WeakMap 类型**
+
+```JavaScript
+static Boolean types.isWeakMap(Value v);
+```
+
+调用参数:
+* v: Value, 给定需要检测的变量
+
+返回结果:
+* Boolean, 如果是 WeakMap 类型则返回 True
+
+--------------------------
+### isWeakSet
+**检测给定的变量是否是 WeakSet 类型**
+
+```JavaScript
+static Boolean types.isWeakSet(Value v);
+```
+
+调用参数:
+* v: Value, 给定需要检测的变量
+
+返回结果:
+* Boolean, 如果是 WeakSet 类型则返回 True
+
+--------------------------
+### isArrayBuffer
+**检测给定的变量是否是 ArrayBuffer 类型**
+
+```JavaScript
+static Boolean types.isArrayBuffer(Value v);
+```
+
+调用参数:
+* v: Value, 给定需要检测的变量
+
+返回结果:
+* Boolean, 如果是 ArrayBuffer 类型则返回 True
+
+--------------------------
+### isArrayBufferView
+**检测给定的变量是否是 ArrayBufferView 类型**
+
+```JavaScript
+static Boolean types.isArrayBufferView(Value v);
+```
+
+调用参数:
+* v: Value, 给定需要检测的变量
+
+返回结果:
+* Boolean, 如果是 ArrayBufferView 类型则返回 True
+
+--------------------------
+### isBigInt64Array
+**检测给定的变量是否是 BigInt64Array 类型**
+
+```JavaScript
+static Boolean types.isBigInt64Array(Value v);
+```
+
+调用参数:
+* v: Value, 给定需要检测的变量
+
+返回结果:
+* Boolean, 如果是 BigInt64Array 类型则返回 True
+
+--------------------------
+### isBigUint64Array
+**检测给定的变量是否是 BigUint64Array 类型**
+
+```JavaScript
+static Boolean types.isBigUint64Array(Value v);
+```
+
+调用参数:
+* v: Value, 给定需要检测的变量
+
+返回结果:
+* Boolean, 如果是 BigUint64Array 类型则返回 True
+

@@ -95,6 +95,14 @@ HttpHandler http.Handler;
 HttpRepeater http.Repeater;
 ```
 
+--------------------------
+### EventSource
+**创建一个事件源接口，用于服务器推送事件，参见 [EventSource](../../object/ifs/EventSource.md)**
+
+```JavaScript
+EventSource http.EventSource;
+```
+
 ## 静态函数
         
 ### fileHandler
@@ -568,6 +576,14 @@ static Integer http.maxHeadersCount;
 
 ```JavaScript
 static Integer http.maxHeaderSize;
+```
+
+--------------------------
+### maxChunkSize
+**Integer, 查询和设置 chunk 最大尺寸，以 MB 为单位，缺省为 2**
+
+```JavaScript
+static Integer http.maxChunkSize;
 ```
 
 --------------------------

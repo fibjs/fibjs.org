@@ -27,7 +27,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\laddEventListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveEventListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
-    StatsWatcher [tooltip="StatsWatcher", fillcolor="lightgray", id="me", label="{StatsWatcher|onchange\l|close()\lref()\lunref()\l}"];
+    StatsWatcher [tooltip="StatsWatcher", fillcolor="lightgray", id="me", label="{StatsWatcher|close()\lref()\lunref()\l|event change\l}"];
 
     object -> EventEmitter [dir=back];
     EventEmitter -> StatsWatcher [dir=back];
@@ -41,15 +41,6 @@ digraph {
 
 ```JavaScript
 static Integer StatsWatcher.defaultMaxListeners;
-```
-
-## 成员属性
-        
-### onchange
-**Function, 查询和绑定"文件改变"事件，相当于 on("change", func);**
-
-```JavaScript
-Function StatsWatcher.onchange;
 ```
 
 ## 成员函数
@@ -496,4 +487,13 @@ Value StatsWatcher.toJSON(String key = "");
 
 返回结果:
 * Value, 返回包含可 JSON 序列化的值
+
+## 事件
+        
+### change
+**查询和绑定"文件改变"事件，相当于 on("change", func);**
+
+```JavaScript
+event StatsWatcher.change();
+```
 

@@ -32,7 +32,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\laddEventListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveEventListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
-    FSWatcher [tooltip="FSWatcher", fillcolor="lightgray", id="me", label="{FSWatcher|onchange\lonclose\lonerror\l|close()\l}"];
+    FSWatcher [tooltip="FSWatcher", fillcolor="lightgray", id="me", label="{FSWatcher|close()\l|event change\levent close\levent error\l}"];
 
     object -> EventEmitter [dir=back];
     EventEmitter -> FSWatcher [dir=back];
@@ -46,31 +46,6 @@ digraph {
 
 ```JavaScript
 static Integer FSWatcher.defaultMaxListeners;
-```
-
-## 成员属性
-        
-### onchange
-**Function, 查询和绑定"文件改变"事件，相当于 on("change", func);**
-
-```JavaScript
-Function FSWatcher.onchange;
-```
-
---------------------------
-### onclose
-**Function, 查询和绑定"watcher 关闭"的事件，相当于 on("close", func);**
-
-```JavaScript
-Function FSWatcher.onclose;
-```
-
---------------------------
-### onerror
-**Function, 查询和绑定"错误发生"的事件，相当于 on("error", func);**
-
-```JavaScript
-Function FSWatcher.onerror;
 ```
 
 ## 成员函数
@@ -493,4 +468,29 @@ Value FSWatcher.toJSON(String key = "");
 
 返回结果:
 * Value, 返回包含可 JSON 序列化的值
+
+## 事件
+        
+### change
+**查询和绑定"文件改变"事件，相当于 on("change", func);**
+
+```JavaScript
+event FSWatcher.change();
+```
+
+--------------------------
+### close
+**查询和绑定"watcher 关闭"的事件，相当于 on("close", func);**
+
+```JavaScript
+event FSWatcher.close();
+```
+
+--------------------------
+### error
+**查询和绑定"错误发生"的事件，相当于 on("error", func);**
+
+```JavaScript
+event FSWatcher.error();
+```
 

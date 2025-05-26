@@ -34,7 +34,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Handler [tooltip="Handler", URL="Handler.md", label="{Handler|new Handler()\l|invoke()\l}"];
+    Handler [tooltip="Handler", URL="Handler.md", label="{Handler|new Handler()\l|isRouting()\linvoke()\l}"];
     HttpRepeater [tooltip="HttpRepeater", fillcolor="lightgray", id="me", label="{HttpRepeater|new HttpRepeater()\l|urls\lclient\l|load()\l}"];
 
     object -> Handler [dir=back];
@@ -92,6 +92,17 @@ HttpRepeater.load(String urls[]);
 
 调用参数:
 * urls[]: String, 指定一组后端服务器 [url](../../module/ifs/url.md)
+
+--------------------------
+### isRouting
+**查询当前处理器是否支持路由**
+
+```JavaScript
+Boolean HttpRepeater.isRouting();
+```
+
+返回结果:
+* Boolean, 返回当前处理器是否支持路由
 
 --------------------------
 ### invoke

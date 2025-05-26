@@ -49,7 +49,10 @@ static WebView gui.open(String url,
     "maxWidth": 0, // specify the maximum width of the window, default is no limit
     "maxHeight": 0, // specify the maximum height of the window, default is no limit
     "frame": true, // specify whether the window has frame, default is true
-    "caption": true, // specify whether the window has caption, default is true
+    "titlebar": "show" | { // specify the titlebar style: "show" (default), "hide", "transparent"
+        "style": "show", // specify the titlebar style: "show" (default), "hide", "transparent"
+        "height": "nprmal" // specify the titlebar height: "normal" (default), "tall", not work in macos
+    },
     "resizable": true, // specify whether the window is resizable, default is true
     "menu": menu, // specify the menu of the window, can be a Menu object or a menu item array, default is null
     "maximize": false, // specify whether the window is maximized, default is false
@@ -92,7 +95,10 @@ static WebView gui.open(Object opt = {});
     "maxWidth": 0, // specify the maximum width of the window, default is no limit
     "maxHeight": 0, // specify the maximum height of the window, default is no limit
     "frame": true, // specify whether the window has frame, default is true
-    "caption": true, // specify whether the window has caption, default is true
+    "titlebar": "show" | { // specify the titlebar style: "show" (default), "hide", "transparent"
+        "style": "show", // specify the titlebar style: "show" (default), "hide", "transparent"
+        "height": "nprmal" // specify the titlebar height: "normal" (default), "tall", not work in macos
+    },
     "resizable": true, // specify whether the window is resizable, default is true
     "menu": menu, // specify the menu of the window, can be a Menu object or a menu item array, default is null
     "maximize": false, // specify whether the window is maximized, default is false
@@ -136,7 +142,10 @@ static WebView gui.openFile(String file,
     "maxWidth": 0, // specify the maximum width of the window, default is no limit
     "maxHeight": 0, // specify the maximum height of the window, default is no limit
     "frame": true, // specify whether the window has frame, default is true
-    "caption": true, // specify whether the window has caption, default is true
+    "titlebar": "show" | { // specify the titlebar style: "show" (default), "hide", "transparent"
+        "style": "show", // specify the titlebar style: "show" (default), "hide", "transparent"
+        "height": "nprmal" // specify the titlebar height: "normal" (default), "tall", not work in macos
+    },
     "resizable": true, // specify whether the window is resizable, default is true
     "menu": menu, // specify the menu of the window, can be a Menu object or a menu item array, default is null
     "maximize": false, // specify whether the window is maximized, default is false
@@ -265,6 +274,39 @@ static Boolean gui.confirm(String title,
 
 返回结果:
 * Boolean, 返回用户的选择结果
+
+--------------------------
+### input
+**弹出一个输入框**
+
+```JavaScript
+static String gui.input(String message,
+    Boolean password = false) async;
+```
+
+调用参数:
+* message: String, 消息内容
+* password: Boolean, 是否为密码输入，默认为 false
+
+返回结果:
+* String, 返回用户输入的内容
+
+--------------------------
+**弹出一个输入框**
+
+```JavaScript
+static String gui.input(String title,
+    String message,
+    Boolean password = false) async;
+```
+
+调用参数:
+* title: String, 消息标题
+* message: String, 消息内容
+* password: Boolean, 是否为密码输入，默认为 false
+
+返回结果:
+* String, 返回用户输入的内容
 
 --------------------------
 ### chooseFile

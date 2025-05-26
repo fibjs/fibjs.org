@@ -13,6 +13,7 @@
 * [Digest](ifs/Digest.md) - 信息摘要对象
 * [Event](ifs/Event.md) - Event 模块提供了一个事件对象，用于协同共享数据操作。它允许多个纤程（协程）之间进行同步操作，以实现协作式多任务。事件对象有 wait，pulse 和 clear 三个方法，wait 方法将阻塞当前纤程，直至事件被触发，pulse 方法将唤醒所有等待该事件的纤程，而 clear 方法则将事件标志重置为 false。通过使用 coroutine.Event 模块，开发者可以控制纤程之间的执行顺序和数据共享，实现复杂业务逻辑。
 * [EventEmitter](ifs/EventEmitter.md) - EventEmitter 是事件触发对象，它可以被用于建立观察者模式，支持事件触发的对象均继承于此
+* [EventSource](ifs/EventSource.md) - 事件源接口，用于服务器推送事件
 * [FSWatcher](ifs/FSWatcher.md) - 文件系统观察对象
 * [Fiber](ifs/Fiber.md) - 纤程操作对象，此对象不可直接创建
 * [File](ifs/File.md) - 文件操作对象，用于二进制文件读写
@@ -42,6 +43,11 @@
 * [MenuItem](ifs/MenuItem.md) - 菜单项接口，继承自 EventEmitter。
 * [Message](ifs/Message.md) - 基础消息对象
 * [MySQL](ifs/MySQL.md) - MySQL 对象是用于操作 MySQL 数据库的类,
+* [PerformanceEntry](ifs/PerformanceEntry.md) - PerformanceEntry 接口提供了 performance 记录的通用属性
+* [PerformanceMark](ifs/PerformanceMark.md) - PerformanceMark 接口提供了 performance mark 记录的详细信息。
+* [PerformanceMeasure](ifs/PerformanceMeasure.md) - PerformanceMeasure 接口提供了 performance measure 记录的详细信息。
+* [PerformanceObserver](ifs/PerformanceObserver.md) - PerformanceObserver 接口用于观察性能记录的接口
+* [PerformanceObserverEntryList](ifs/PerformanceObserverEntryList.md) - PerformanceObserverEntryList 对象包含了 PerformanceObserver 观察到的 performance 记录的详细信息
 * [RTCDataChannel](ifs/RTCDataChannel.md) - RTCDataChannel接口定义了一个双向的数据通道
 * [RTCIceCandidate](ifs/RTCIceCandidate.md) - WebRTC ICE 候选参数对象
 * [RTCPeerConnection](ifs/RTCPeerConnection.md) - RTCPeerConnection 定义 WebRTC 连接的方法和属性

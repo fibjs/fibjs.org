@@ -47,7 +47,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    HttpClient [tooltip="HttpClient", fillcolor="lightgray", id="me", label="{HttpClient|new HttpClient()\l|cookies\lkeepAlive\ltimeout\lenableCookie\lautoRedirect\lenableEncoding\lmaxHeadersCount\lmaxHeaderSize\lmaxBodySize\luserAgent\lpoolSize\lpoolTimeout\lhttp_proxy\lhttps_proxy\l|request()\lget()\lpost()\ldel()\lput()\lpatch()\lhead()\l}"];
+    HttpClient [tooltip="HttpClient", fillcolor="lightgray", id="me", label="{HttpClient|new HttpClient()\l|cookies\lkeepAlive\ltimeout\lenableCookie\lautoRedirect\lenableEncoding\lmaxHeadersCount\lmaxHeaderSize\lmaxChunkSize\lmaxBodySize\luserAgent\lpoolSize\lpoolTimeout\lhttp_proxy\lhttps_proxy\l|request()\lget()\lpost()\ldel()\lput()\lpatch()\lhead()\l}"];
 
     object -> HttpClient [dir=back];
 }
@@ -160,6 +160,14 @@ Integer HttpClient.maxHeadersCount;
 
 ```JavaScript
 Integer HttpClient.maxHeaderSize;
+```
+
+--------------------------
+### maxChunkSize
+**Integer, 查询和设置 chunk 最大尺寸，以 MB 为单位，缺省为 2**
+
+```JavaScript
+Integer HttpClient.maxChunkSize;
 ```
 
 --------------------------

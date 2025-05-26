@@ -42,7 +42,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Message [tooltip="Message", URL="Message.md", label="{Message|new Message()\l|TEXT\lBINARY\l|value\lparams\ltype\ldata\lbody\llength\lstream\llastError\l|read()\lreadAll()\lwrite()\ljson()\lpack()\lend()\lisEnded()\lclear()\lsendTo()\lreadFrom()\l}"];
+    Message [tooltip="Message", URL="Message.md", label="{Message|new Message()\l|TEXT\lBINARY\l|sent\lvalue\lparams\ltype\ldata\lbody\llength\lstream\llastError\l|read()\lreadAll()\lwrite()\ljson()\lpack()\lend()\lisEnded()\lclear()\lsendTo()\lreadFrom()\l}"];
     WebSocketMessage [tooltip="WebSocketMessage", fillcolor="lightgray", id="me", label="{WebSocketMessage|new WebSocketMessage()\l|masked\lcompress\lmaxSize\l}"];
 
     object -> Message [dir=back];
@@ -108,6 +108,14 @@ Boolean WebSocketMessage.compress;
 
 ```JavaScript
 Integer WebSocketMessage.maxSize;
+```
+
+--------------------------
+### sent
+**Boolean, 当前消息是否已经发送**
+
+```JavaScript
+readonly Boolean WebSocketMessage.sent;
 ```
 
 --------------------------
@@ -291,22 +299,26 @@ WebSocketMessage.clear();
 **发送格式化消息到给定的流对象**
 
 ```JavaScript
-WebSocketMessage.sendTo(Stream stm) async;
+WebSocketMessage.sendTo(Stream stm,
+    Object options = {}) async;
 ```
 
 调用参数:
 * stm: [Stream](Stream.md), 指定接收格式化消息的流对象
+* options: Object, 指定发送选项
 
 --------------------------
 ### readFrom
 **从给定的缓存流对象中读取格式化消息，并解析填充对象**
 
 ```JavaScript
-WebSocketMessage.readFrom(Stream stm) async;
+WebSocketMessage.readFrom(Stream stm,
+    Object options = {}) async;
 ```
 
 调用参数:
 * stm: [Stream](Stream.md), 指定读取格式化消息的流对象
+* options: Object, 指定读取选项
 
 --------------------------
 ### toString

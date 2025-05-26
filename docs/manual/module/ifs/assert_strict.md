@@ -1,17 +1,17 @@
-# 模块 assert
-断言测试模块，如果测试值为假，则报错，报错行为可设定继续运行或者错误抛出
+# 模块 assert_strict
+严格断言测试模块，如果测试值为假，则报错，报错行为可设定继续运行或者错误抛出
 
 引用方法：
 
 ```JavaScript
-var assert = require('assert');
+var assert = require('assert').strict;
 ```
 
 或者通过 [test](test.md) 模块引用：
 
 ```JavaScript
 var test = require('test');
-var assert = test.assert;
+var assert = test.assert.strict;
 ```
 
 或者通过 [test.setup](test.md#setup) 配置：
@@ -23,18 +23,10 @@ require("test").setup();
 ## 对象
         
 ### ok
-**测试数值为真，为假则断言失败，是 assert 模块的别名**
+**测试数值为真，为假则断言失败，是 [assert](assert.md) 模块的别名**
 
 ```JavaScript
-assert assert.ok;
-```
-
---------------------------
-### strict
-**严格测试模块，参见 [assert_strict](assert_strict.md) 模块**
-
-```JavaScript
-assert_strict assert.strict;
+assert assert_strict.ok;
 ```
 
 ## 静态函数
@@ -43,7 +35,7 @@ assert_strict assert.strict;
 **测试数值为真，为假则断言失败**
 
 ```JavaScript
-static assert.Function(Value actual = undefined,
+static assert_strict.Function(Value actual = undefined,
     String msg = "");
 ```
 
@@ -52,22 +44,11 @@ static assert.Function(Value actual = undefined,
 * msg: String, 断言失败时的提示信息
 
 --------------------------
-### fail
-**断言失败，直接抛出错误**
-
-```JavaScript
-static assert.fail(String msg = "");
-```
-
-调用参数:
-* msg: String, 断言失败时的提示信息
-
---------------------------
 ### notOk
 **测试数值为假，为真则断言失败**
 
 ```JavaScript
-static assert.notOk(Value actual,
+static assert_strict.notOk(Value actual,
     String msg = "");
 ```
 
@@ -80,7 +61,7 @@ static assert.notOk(Value actual,
 **测试数值等于预期值，不相等则断言失败**
 
 ```JavaScript
-static assert.equal(Value actual,
+static assert_strict.equal(Value actual,
     Value expected,
     String msg = "");
 ```
@@ -95,7 +76,7 @@ static assert.equal(Value actual,
 **测试数值不等于预期值，相等则断言失败**
 
 ```JavaScript
-static assert.notEqual(Value actual,
+static assert_strict.notEqual(Value actual,
     Value expected,
     String msg = "");
 ```
@@ -110,7 +91,7 @@ static assert.notEqual(Value actual,
 **测试数值严格等于预期值，不相等则断言失败**
 
 ```JavaScript
-static assert.strictEqual(Value actual,
+static assert_strict.strictEqual(Value actual,
     Value expected,
     String msg = "");
 ```
@@ -125,7 +106,7 @@ static assert.strictEqual(Value actual,
 **测试数值不严格等于预期值，相等则断言失败**
 
 ```JavaScript
-static assert.notStrictEqual(Value actual,
+static assert_strict.notStrictEqual(Value actual,
     Value expected,
     String msg = "");
 ```
@@ -140,7 +121,7 @@ static assert.notStrictEqual(Value actual,
 **测试数值深度等于预期值，不相等则断言失败**
 
 ```JavaScript
-static assert.deepEqual(Value actual,
+static assert_strict.deepEqual(Value actual,
     Value expected,
     String msg = "");
 ```
@@ -155,7 +136,7 @@ static assert.deepEqual(Value actual,
 **测试数值不深度等于预期值，相等则断言失败**
 
 ```JavaScript
-static assert.notDeepEqual(Value actual,
+static assert_strict.notDeepEqual(Value actual,
     Value expected,
     String msg = "");
 ```
@@ -170,7 +151,7 @@ static assert.notDeepEqual(Value actual,
 **测试数值严格深度等于预期值，不相等则断言失败**
 
 ```JavaScript
-static assert.deepStrictEqual(Value actual,
+static assert_strict.deepStrictEqual(Value actual,
     Value expected,
     String msg = "");
 ```
@@ -185,7 +166,7 @@ static assert.deepStrictEqual(Value actual,
 **测试数值不严格深度等于预期值，相等则断言失败**
 
 ```JavaScript
-static assert.notDeepStrictEqual(Value actual,
+static assert_strict.notDeepStrictEqual(Value actual,
     Value expected,
     String msg = "");
 ```
@@ -200,7 +181,7 @@ static assert.notDeepStrictEqual(Value actual,
 **测试字符串包含预期字符串，否则断言失败**
 
 ```JavaScript
-static assert.match(String actual,
+static assert_strict.match(String actual,
     RegExp expected,
     String msg = "");
 ```
@@ -215,7 +196,7 @@ static assert.match(String actual,
 **测试字符串不包含预期字符串，否则断言失败**
 
 ```JavaScript
-static assert.doesNotMatch(String actual,
+static assert_strict.doesNotMatch(String actual,
     RegExp expected,
     String msg = "");
 ```
@@ -230,7 +211,7 @@ static assert.doesNotMatch(String actual,
 **测试数值近似等于预期值，否则断言失败**
 
 ```JavaScript
-static assert.closeTo(Value actual,
+static assert_strict.closeTo(Value actual,
     Value expected,
     Value delta,
     String msg = "");
@@ -247,7 +228,7 @@ static assert.closeTo(Value actual,
 **测试数值不近似等于预期值，否则断言失败**
 
 ```JavaScript
-static assert.notCloseTo(Value actual,
+static assert_strict.notCloseTo(Value actual,
     Value expected,
     Value delta,
     String msg = "");
@@ -264,7 +245,7 @@ static assert.notCloseTo(Value actual,
 **测试数值小于预期值，大于或等于则断言失败**
 
 ```JavaScript
-static assert.lessThan(Value actual,
+static assert_strict.lessThan(Value actual,
     Value expected,
     String msg = "");
 ```
@@ -279,7 +260,7 @@ static assert.lessThan(Value actual,
 **测试数值不小于预期值，小于则断言失败**
 
 ```JavaScript
-static assert.notLessThan(Value actual,
+static assert_strict.notLessThan(Value actual,
     Value expected,
     String msg = "");
 ```
@@ -294,7 +275,7 @@ static assert.notLessThan(Value actual,
 **测试数值大于预期值，小于或等于则断言失败**
 
 ```JavaScript
-static assert.greaterThan(Value actual,
+static assert_strict.greaterThan(Value actual,
     Value expected,
     String msg = "");
 ```
@@ -309,7 +290,7 @@ static assert.greaterThan(Value actual,
 **测试数值不大于预期值，大于则断言失败**
 
 ```JavaScript
-static assert.notGreaterThan(Value actual,
+static assert_strict.notGreaterThan(Value actual,
     Value expected,
     String msg = "");
 ```
@@ -324,7 +305,7 @@ static assert.notGreaterThan(Value actual,
 **测试变量存在，为假则断言失败**
 
 ```JavaScript
-static assert.exist(Value actual,
+static assert_strict.exist(Value actual,
     String msg = "");
 ```
 
@@ -337,7 +318,7 @@ static assert.exist(Value actual,
 **测试变量不存在，为真则断言失败**
 
 ```JavaScript
-static assert.notExist(Value actual,
+static assert_strict.notExist(Value actual,
     String msg = "");
 ```
 
@@ -350,7 +331,7 @@ static assert.notExist(Value actual,
 **测试数值为布尔值真，否则断言失败**
 
 ```JavaScript
-static assert.isTrue(Value actual,
+static assert_strict.isTrue(Value actual,
     String msg = "");
 ```
 
@@ -363,7 +344,7 @@ static assert.isTrue(Value actual,
 **测试数值不为布尔值真，否则断言失败**
 
 ```JavaScript
-static assert.isNotTrue(Value actual,
+static assert_strict.isNotTrue(Value actual,
     String msg = "");
 ```
 
@@ -376,7 +357,7 @@ static assert.isNotTrue(Value actual,
 **测试数值为布尔值假，否则断言失败**
 
 ```JavaScript
-static assert.isFalse(Value actual,
+static assert_strict.isFalse(Value actual,
     String msg = "");
 ```
 
@@ -389,7 +370,7 @@ static assert.isFalse(Value actual,
 **测试数值不为布尔值假，否则断言失败**
 
 ```JavaScript
-static assert.isNotFalse(Value actual,
+static assert_strict.isNotFalse(Value actual,
     String msg = "");
 ```
 
@@ -402,7 +383,7 @@ static assert.isNotFalse(Value actual,
 **测试数值为 Null，否则断言失败**
 
 ```JavaScript
-static assert.isNull(Value actual,
+static assert_strict.isNull(Value actual,
     String msg = "");
 ```
 
@@ -415,7 +396,7 @@ static assert.isNull(Value actual,
 **测试数值不为 Null，否则断言失败**
 
 ```JavaScript
-static assert.isNotNull(Value actual,
+static assert_strict.isNotNull(Value actual,
     String msg = "");
 ```
 
@@ -428,7 +409,7 @@ static assert.isNotNull(Value actual,
 **测试数值为 undefined，否则断言失败**
 
 ```JavaScript
-static assert.isUndefined(Value actual,
+static assert_strict.isUndefined(Value actual,
     String msg = "");
 ```
 
@@ -441,7 +422,7 @@ static assert.isUndefined(Value actual,
 **测试数值不为 undefined，否则断言失败**
 
 ```JavaScript
-static assert.isDefined(Value actual,
+static assert_strict.isDefined(Value actual,
     String msg = "");
 ```
 
@@ -454,7 +435,7 @@ static assert.isDefined(Value actual,
 **测试数值为函数，否则断言失败**
 
 ```JavaScript
-static assert.isFunction(Value actual,
+static assert_strict.isFunction(Value actual,
     String msg = "");
 ```
 
@@ -467,7 +448,7 @@ static assert.isFunction(Value actual,
 **测试数值不为函数，否则断言失败**
 
 ```JavaScript
-static assert.isNotFunction(Value actual,
+static assert_strict.isNotFunction(Value actual,
     String msg = "");
 ```
 
@@ -480,7 +461,7 @@ static assert.isNotFunction(Value actual,
 **测试数值为对象，否则断言失败**
 
 ```JavaScript
-static assert.isObject(Value actual,
+static assert_strict.isObject(Value actual,
     String msg = "");
 ```
 
@@ -493,7 +474,7 @@ static assert.isObject(Value actual,
 **测试数值不为对象，否则断言失败**
 
 ```JavaScript
-static assert.isNotObject(Value actual,
+static assert_strict.isNotObject(Value actual,
     String msg = "");
 ```
 
@@ -506,7 +487,7 @@ static assert.isNotObject(Value actual,
 **测试数值为数组，否则断言失败**
 
 ```JavaScript
-static assert.isArray(Value actual,
+static assert_strict.isArray(Value actual,
     String msg = "");
 ```
 
@@ -519,7 +500,7 @@ static assert.isArray(Value actual,
 **测试数值不为数组，否则断言失败**
 
 ```JavaScript
-static assert.isNotArray(Value actual,
+static assert_strict.isNotArray(Value actual,
     String msg = "");
 ```
 
@@ -532,7 +513,7 @@ static assert.isNotArray(Value actual,
 **测试数值为字符串，否则断言失败**
 
 ```JavaScript
-static assert.isString(Value actual,
+static assert_strict.isString(Value actual,
     String msg = "");
 ```
 
@@ -545,7 +526,7 @@ static assert.isString(Value actual,
 **测试数值不为字符串，否则断言失败**
 
 ```JavaScript
-static assert.isNotString(Value actual,
+static assert_strict.isNotString(Value actual,
     String msg = "");
 ```
 
@@ -558,7 +539,7 @@ static assert.isNotString(Value actual,
 **测试数值为数字，否则断言失败**
 
 ```JavaScript
-static assert.isNumber(Value actual,
+static assert_strict.isNumber(Value actual,
     String msg = "");
 ```
 
@@ -571,7 +552,7 @@ static assert.isNumber(Value actual,
 **测试数值不为数字，否则断言失败**
 
 ```JavaScript
-static assert.isNotNumber(Value actual,
+static assert_strict.isNotNumber(Value actual,
     String msg = "");
 ```
 
@@ -584,7 +565,7 @@ static assert.isNotNumber(Value actual,
 **测试数值为布尔，否则断言失败**
 
 ```JavaScript
-static assert.isBoolean(Value actual,
+static assert_strict.isBoolean(Value actual,
     String msg = "");
 ```
 
@@ -597,7 +578,7 @@ static assert.isBoolean(Value actual,
 **测试数值不为布尔，否则断言失败**
 
 ```JavaScript
-static assert.isNotBoolean(Value actual,
+static assert_strict.isNotBoolean(Value actual,
     String msg = "");
 ```
 
@@ -610,7 +591,7 @@ static assert.isNotBoolean(Value actual,
 **测试数值为给定类型，否则断言失败**
 
 ```JavaScript
-static assert.typeOf(Value actual,
+static assert_strict.typeOf(Value actual,
     String type,
     String msg = "");
 ```
@@ -625,7 +606,7 @@ static assert.typeOf(Value actual,
 **测试数值不为给定类型，否则断言失败**
 
 ```JavaScript
-static assert.notTypeOf(Value actual,
+static assert_strict.notTypeOf(Value actual,
     String type,
     String msg = "");
 ```
@@ -640,7 +621,7 @@ static assert.notTypeOf(Value actual,
 **测试对象中包含指定属性，否则断言失败**
 
 ```JavaScript
-static assert.property(Value object,
+static assert_strict.property(Value object,
     Value prop,
     String msg = "");
 ```
@@ -655,7 +636,7 @@ static assert.property(Value object,
 **测试对象中不包含指定属性，否则断言失败**
 
 ```JavaScript
-static assert.notProperty(Value object,
+static assert_strict.notProperty(Value object,
     Value prop,
     String msg = "");
 ```
@@ -670,7 +651,7 @@ static assert.notProperty(Value object,
 **深度测试对象中包含指定属性，否则断言失败**
 
 ```JavaScript
-static assert.deepProperty(Value object,
+static assert_strict.deepProperty(Value object,
     Value prop,
     String msg = "");
 ```
@@ -685,7 +666,7 @@ static assert.deepProperty(Value object,
 **深度测试对象中不包含指定属性，否则断言失败**
 
 ```JavaScript
-static assert.notDeepProperty(Value object,
+static assert_strict.notDeepProperty(Value object,
     Value prop,
     String msg = "");
 ```
@@ -700,7 +681,7 @@ static assert.notDeepProperty(Value object,
 **测试对象中指定属性的值为给定值，否则断言失败**
 
 ```JavaScript
-static assert.propertyVal(Value object,
+static assert_strict.propertyVal(Value object,
     Value prop,
     Value value,
     String msg = "");
@@ -717,7 +698,7 @@ static assert.propertyVal(Value object,
 **测试对象中指定属性的值不为给定值，否则断言失败**
 
 ```JavaScript
-static assert.propertyNotVal(Value object,
+static assert_strict.propertyNotVal(Value object,
     Value prop,
     Value value,
     String msg = "");
@@ -734,7 +715,7 @@ static assert.propertyNotVal(Value object,
 **深度测试对象中指定属性的值为给定值，否则断言失败**
 
 ```JavaScript
-static assert.deepPropertyVal(Value object,
+static assert_strict.deepPropertyVal(Value object,
     Value prop,
     Value value,
     String msg = "");
@@ -751,7 +732,7 @@ static assert.deepPropertyVal(Value object,
 **深度测试对象中指定属性的值不为给定值，否则断言失败**
 
 ```JavaScript
-static assert.deepPropertyNotVal(Value object,
+static assert_strict.deepPropertyNotVal(Value object,
     Value prop,
     Value value,
     String msg = "");
@@ -768,7 +749,7 @@ static assert.deepPropertyNotVal(Value object,
 **测试给定的代码会抛出错误，未抛出则断言失败**
 
 ```JavaScript
-static assert.throws(Function block,
+static assert_strict.throws(Function block,
     String msg = "");
 ```
 
@@ -780,7 +761,7 @@ static assert.throws(Function block,
 **测试给定的代码会抛出错误，未抛出则断言失败**
 
 ```JavaScript
-static assert.throws(Function block,
+static assert_strict.throws(Function block,
     Value error,
     String msg = "");
 ```
@@ -795,7 +776,7 @@ static assert.throws(Function block,
 **测试给定的代码不会抛出错误，抛出则断言失败**
 
 ```JavaScript
-static assert.doesNotThrow(Function block,
+static assert_strict.doesNotThrow(Function block,
     String msg = "");
 ```
 
@@ -808,7 +789,7 @@ static assert.doesNotThrow(Function block,
 **测试给定的代码会抛出错误，未抛出则断言失败**
 
 ```JavaScript
-static Promise assert.rejects(Function block,
+static Promise assert_strict.rejects(Function block,
     String msg = "");
 ```
 
@@ -823,7 +804,7 @@ static Promise assert.rejects(Function block,
 **测试给定的代码会抛出错误，未抛出则断言失败**
 
 ```JavaScript
-static Promise assert.rejects(Function block,
+static Promise assert_strict.rejects(Function block,
     Value error,
     String msg = "");
 ```
@@ -840,7 +821,7 @@ static Promise assert.rejects(Function block,
 **测试给定的代码会抛出错误，未抛出则断言失败**
 
 ```JavaScript
-static Promise assert.rejects(Promise result,
+static Promise assert_strict.rejects(Promise result,
     String msg = "");
 ```
 
@@ -855,7 +836,7 @@ static Promise assert.rejects(Promise result,
 **测试给定的代码会抛出错误，未抛出则断言失败**
 
 ```JavaScript
-static Promise assert.rejects(Promise result,
+static Promise assert_strict.rejects(Promise result,
     Value error,
     String msg = "");
 ```
@@ -873,7 +854,7 @@ static Promise assert.rejects(Promise result,
 **如果参数为真，则抛出**
 
 ```JavaScript
-static assert.ifError(Value object = undefined);
+static assert_strict.ifError(Value object = undefined);
 ```
 
 调用参数:
@@ -885,6 +866,6 @@ static assert.ifError(Value object = undefined);
 **Function, 断言错误对象**
 
 ```JavaScript
-static readonly Function assert.AssertionError;
+static readonly Function assert_strict.AssertionError;
 ```
 

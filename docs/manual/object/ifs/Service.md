@@ -8,7 +8,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\laddEventListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveEventListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
-    Service [tooltip="Service", fillcolor="lightgray", id="me", label="{Service|new Service()\l|install()\lremove()\lstart()\lstop()\lrestart()\lisInstalled()\lisRunning()\l|name\lonstop\lonpause\loncontinue\l|run()\l}"];
+    Service [tooltip="Service", fillcolor="lightgray", id="me", label="{Service|new Service()\l|install()\lremove()\lstart()\lstop()\lrestart()\lisInstalled()\lisRunning()\l|name\l|run()\l|event stop\levent pause\levent continue\l}"];
 
     object -> EventEmitter [dir=back];
     EventEmitter -> Service [dir=back];
@@ -137,30 +137,6 @@ static Integer Service.defaultMaxListeners;
 
 ```JavaScript
 String Service.name;
-```
-
---------------------------
-### onstop
-**Function, 查询和绑定服务停止事件，相当于 on("stop", func);**
-
-```JavaScript
-Function Service.onstop;
-```
-
---------------------------
-### onpause
-**Function, 查询和绑定服务暂停事件，相当于 on("pause", func);**
-
-```JavaScript
-Function Service.onpause;
-```
-
---------------------------
-### oncontinue
-**Function, 查询和绑定服务恢复事件，相当于 on("continue", func);**
-
-```JavaScript
-Function Service.oncontinue;
 ```
 
 ## 成员函数
@@ -583,4 +559,29 @@ Value Service.toJSON(String key = "");
 
 返回结果:
 * Value, 返回包含可 JSON 序列化的值
+
+## 事件
+        
+### stop
+**查询和绑定服务停止事件，相当于 on("stop", func);**
+
+```JavaScript
+event Service.stop();
+```
+
+--------------------------
+### pause
+**查询和绑定服务暂停事件，相当于 on("pause", func);**
+
+```JavaScript
+event Service.pause();
+```
+
+--------------------------
+### continue
+**查询和绑定服务恢复事件，相当于 on("continue", func);**
+
+```JavaScript
+event Service.continue();
+```
 

@@ -22,20 +22,20 @@ digraph {
 readonly Integer HeapGraphNode.type;
 ```
 
-- [profiler.Node_Hidden](../../module/ifs/profiler.md#Node_Hidden),         隐藏节点，当显示给用户时可以被过滤掉
-- [profiler.Node_Array](../../module/ifs/profiler.md#Node_Array),          数组
-- [profiler.Node_String](../../module/ifs/profiler.md#Node_String),         字符串
-- [profiler.Node_Object](../../module/ifs/profiler.md#Node_Object),         JS对象（字符串和数组除外）
-- [profiler.Node_Code](../../module/ifs/profiler.md#Node_Code),           编译后的代码
-- [profiler.Node_Closure](../../module/ifs/profiler.md#Node_Closure),        函数闭包
-- [profiler.Node_RegExp](../../module/ifs/profiler.md#Node_RegExp),         正则表达式
-- [profiler.Node_HeapNumber](../../module/ifs/profiler.md#Node_HeapNumber),     堆中排好序的数字
-- [profiler.Node_Native](../../module/ifs/profiler.md#Node_Native),         Native对象（非v8堆上的）
-- [profiler.Node_Synthetic](../../module/ifs/profiler.md#Node_Synthetic),      Synthetic对象
-- [profiler.Node_ConsString](../../module/ifs/profiler.md#Node_ConsString),     拼接的字符串
-- [profiler.Node_SlicedString](../../module/ifs/profiler.md#Node_SlicedString),   分割的字符串
-- [profiler.Node_Symbol](../../module/ifs/profiler.md#Node_Symbol),         符号（ES6）
-- [profiler.Node_SimdValue](../../module/ifs/profiler.md#Node_SimdValue),      堆中排好序的SIMD值(ES7)
+- profiler.Node_Hidden,         隐藏节点，当显示给用户时可以被过滤掉
+- profiler.Node_Array,          数组
+- profiler.Node_String,         字符串
+- profiler.Node_Object,         JS对象（字符串和数组除外）
+- profiler.Node_Code,           编译后的代码
+- profiler.Node_Closure,        函数闭包
+- profiler.Node_RegExp,         正则表达式
+- profiler.Node_HeapNumber,     堆中排好序的数字
+- profiler.Node_Native,         Native对象（非[v8](../../module/ifs/v8.md)堆上的）
+- profiler.Node_Synthetic,      Synthetic对象
+- profiler.Node_ConsString,     拼接的字符串
+- profiler.Node_SlicedString,   分割的字符串
+- profiler.Node_Symbol,         符号（ES6）
+- profiler.Node_SimdValue,      堆中排好序的SIMD值(ES7)
 
 --------------------------
 ### name

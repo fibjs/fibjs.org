@@ -76,7 +76,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\laddEventListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveEventListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
-    Worker [tooltip="Worker", fillcolor="lightgray", id="me", label="{Worker|new Worker()\l|onload\lonmessage\lonerror\l|postMessage()\l}"];
+    Worker [tooltip="Worker", fillcolor="lightgray", id="me", label="{Worker|new Worker()\l|postMessage()\l|event load\levent message\levent error\l}"];
 
     object -> EventEmitter [dir=back];
     EventEmitter -> Worker [dir=back];
@@ -104,31 +104,6 @@ new Worker(String path,
 
 ```JavaScript
 static Integer Worker.defaultMaxListeners;
-```
-
-## 成员属性
-        
-### onload
-**Function, 查询和绑定接受 load 消息事件，相当于 on("load", func);**
-
-```JavaScript
-Function Worker.onload;
-```
-
---------------------------
-### onmessage
-**Function, 查询和绑定接受 postMessage 消息事件，相当于 on("message", func);**
-
-```JavaScript
-Function Worker.onmessage;
-```
-
---------------------------
-### onerror
-**Function, 查询和绑定接受 error 消息事件，相当于 on("error", func);**
-
-```JavaScript
-Function Worker.onerror;
 ```
 
 ## 成员函数
@@ -554,4 +529,29 @@ Value Worker.toJSON(String key = "");
 
 返回结果:
 * Value, 返回包含可 JSON 序列化的值
+
+## 事件
+        
+### load
+**查询和绑定接受 load 消息事件，相当于 on("load", func);**
+
+```JavaScript
+event Worker.load();
+```
+
+--------------------------
+### message
+**查询和绑定接受 postMessage 消息事件，相当于 on("message", func);**
+
+```JavaScript
+event Worker.message();
+```
+
+--------------------------
+### error
+**查询和绑定接受 error 消息事件，相当于 on("error", func);**
+
+```JavaScript
+event Worker.error();
+```
 

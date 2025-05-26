@@ -80,6 +80,14 @@ TextEncoder util.TextEncoder;
 types util.types;
 ```
 
+--------------------------
+### colors
+**[colors](colors.md) 模块提供了一组颜色常量，用于设置控制台输出颜色。**
+
+```JavaScript
+colors util.colors;
+```
+
 ## 静态函数
         
 ### format
@@ -624,6 +632,22 @@ static Boolean util.isDeepEqual(Value actual,
 * Boolean, 如果深度相等则返回 True
 
 --------------------------
+### isDeepStrictEqual
+**测试数值严格深度等于预期值**
+
+```JavaScript
+static Boolean util.isDeepStrictEqual(Value actual,
+    Value expected);
+```
+
+调用参数:
+* actual: Value, 要测试的数值
+* expected: Value, 预期的数值
+
+返回结果:
+* Boolean, 如果严格深度相等则返回 True
+
+--------------------------
 ### has
 **查询指定对象是否包含给定的键**
 
@@ -989,12 +1013,12 @@ static Buffer util.compile(String srcname,
 调用参数:
 * srcname: String, 指定要添加的脚本名称
 * script: String, 指定要编译的脚本代码
-* mode: Integer, 编译模式，0: module, 1: script, 2: worker，缺省为 0
+* mode: Integer, 编译模式，0: [module](module.md), 1: script, 2: worker，缺省为 0
 
 返回结果:
 * [Buffer](../../object/ifs/Buffer.md), 返回编译出的二进制代码
 
-[util.compile](util.md#compile) 可以将脚本编译为 v8 内部运行数据块(非机器执行代码)。编译以后的代码，保存为 *.jsc 后，可以由 run 和 require 直接加载执行。
+[util.compile](util.md#compile) 可以将脚本编译为 [v8](v8.md) 内部运行数据块(非机器执行代码)。编译以后的代码，保存为 *.jsc 后，可以由 run 和 require 直接加载执行。
 
 由于编译之后，目标代码将不能逆向获取源代码，依赖于 Function.toString 的程序将不能正常运行。
 

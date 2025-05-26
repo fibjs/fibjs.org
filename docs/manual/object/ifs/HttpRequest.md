@@ -28,8 +28,8 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Message [tooltip="Message", URL="Message.md", label="{Message|new Message()\l|TEXT\lBINARY\l|value\lparams\ltype\ldata\lbody\llength\lstream\llastError\l|read()\lreadAll()\lwrite()\ljson()\lpack()\lend()\lisEnded()\lclear()\lsendTo()\lreadFrom()\l}"];
-    HttpMessage [tooltip="HttpMessage", URL="HttpMessage.md", label="{HttpMessage|protocol\lheaders\lkeepAlive\lupgrade\lmaxHeadersCount\lmaxHeaderSize\lmaxBodySize\lsocket\l|hasHeader()\lfirstHeader()\lallHeader()\laddHeader()\lsetHeader()\lremoveHeader()\l}"];
+    Message [tooltip="Message", URL="Message.md", label="{Message|new Message()\l|TEXT\lBINARY\l|sent\lvalue\lparams\ltype\ldata\lbody\llength\lstream\llastError\l|read()\lreadAll()\lwrite()\ljson()\lpack()\lend()\lisEnded()\lclear()\lsendTo()\lreadFrom()\l}"];
+    HttpMessage [tooltip="HttpMessage", URL="HttpMessage.md", label="{HttpMessage|protocol\lheaders\lkeepAlive\lupgrade\lmaxHeadersCount\lmaxHeaderSize\lmaxChunkSize\lmaxBodySize\lsocket\l|hasHeader()\lfirstHeader()\lallHeader()\laddHeader()\lsetHeader()\lremoveHeader()\l}"];
     HttpRequest [tooltip="HttpRequest", fillcolor="lightgray", id="me", label="{HttpRequest|new HttpRequest()\l|response\lmethod\laddress\lqueryString\lcookies\lform\lquery\l}"];
 
     object -> Message [dir=back];
@@ -170,6 +170,14 @@ Integer HttpRequest.maxHeaderSize;
 ```
 
 --------------------------
+### maxChunkSize
+**Integer, 查询和设置 chunk 最大尺寸，以 MB 为单位，缺省为 2**
+
+```JavaScript
+Integer HttpRequest.maxChunkSize;
+```
+
+--------------------------
 ### maxBodySize
 **Integer, 查询和设置 body 最大尺寸，以 MB 为单位，缺省为 64**
 
@@ -183,6 +191,14 @@ Integer HttpRequest.maxBodySize;
 
 ```JavaScript
 readonly Stream HttpRequest.socket;
+```
+
+--------------------------
+### sent
+**Boolean, 当前消息是否已经发送**
+
+```JavaScript
+readonly Boolean HttpRequest.sent;
 ```
 
 --------------------------
@@ -489,22 +505,26 @@ HttpRequest.clear();
 **发送格式化消息到给定的流对象**
 
 ```JavaScript
-HttpRequest.sendTo(Stream stm) async;
+HttpRequest.sendTo(Stream stm,
+    Object options = {}) async;
 ```
 
 调用参数:
 * stm: [Stream](Stream.md), 指定接收格式化消息的流对象
+* options: Object, 指定发送选项
 
 --------------------------
 ### readFrom
 **从给定的缓存流对象中读取格式化消息，并解析填充对象**
 
 ```JavaScript
-HttpRequest.readFrom(Stream stm) async;
+HttpRequest.readFrom(Stream stm,
+    Object options = {}) async;
 ```
 
 调用参数:
 * stm: [Stream](Stream.md), 指定读取格式化消息的流对象
+* options: Object, 指定读取选项
 
 --------------------------
 ### toString

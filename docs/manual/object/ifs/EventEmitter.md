@@ -47,6 +47,7 @@ digraph {
     AbortSignal [tooltip="AbortSignal", URL="AbortSignal.md", label="{AbortSignal}"];
     ChildProcess [tooltip="ChildProcess", URL="ChildProcess.md", label="{ChildProcess}"];
     DgramSocket [tooltip="DgramSocket", URL="DgramSocket.md", label="{DgramSocket}"];
+    EventSource [tooltip="EventSource", URL="EventSource.md", label="{EventSource}"];
     FSWatcher [tooltip="FSWatcher", URL="FSWatcher.md", label="{FSWatcher}"];
     MenuItem [tooltip="MenuItem", URL="MenuItem.md", label="{MenuItem}"];
     RTCDataChannel [tooltip="RTCDataChannel", URL="RTCDataChannel.md", label="{RTCDataChannel}"];
@@ -61,6 +62,7 @@ digraph {
     EventEmitter -> AbortSignal [dir=back];
     EventEmitter -> ChildProcess [dir=back];
     EventEmitter -> DgramSocket [dir=back];
+    EventEmitter -> EventSource [dir=back];
     EventEmitter -> FSWatcher [dir=back];
     EventEmitter -> MenuItem [dir=back];
     EventEmitter -> RTCDataChannel [dir=back];

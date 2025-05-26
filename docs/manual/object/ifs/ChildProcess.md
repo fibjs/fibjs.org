@@ -13,7 +13,7 @@ digraph {
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
     EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\laddEventListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveEventListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
-    ChildProcess [tooltip="ChildProcess", fillcolor="lightgray", id="me", label="{ChildProcess|connected\lpid\lexitCode\lstdin\lstdout\lstderr\lonexit\lonmessage\l|kill()\ljoin()\ldisconnect()\lsend()\lusage()\l}"];
+    ChildProcess [tooltip="ChildProcess", fillcolor="lightgray", id="me", label="{ChildProcess|connected\lpid\lkilled\lexitCode\lstdin\lstdout\lstderr\l|kill()\ljoin()\ldisconnect()\lsend()\lusage()\l|event exit\levent message\l}"];
 
     object -> EventEmitter [dir=back];
     EventEmitter -> ChildProcess [dir=back];
@@ -47,6 +47,14 @@ readonly Integer ChildProcess.pid;
 ```
 
 --------------------------
+### killed
+**Boolean, 查询当前对象指向的进程是否已经退出**
+
+```JavaScript
+readonly Boolean ChildProcess.killed;
+```
+
+--------------------------
 ### exitCode
 **Integer, 查询和设置当前进程的退出码**
 
@@ -76,22 +84,6 @@ readonly Stream ChildProcess.stdout;
 
 ```JavaScript
 readonly Stream ChildProcess.stderr;
-```
-
---------------------------
-### onexit
-**Function, 查询和绑定进程退出事件，相当于 on("exit", func);**
-
-```JavaScript
-Function ChildProcess.onexit;
-```
-
---------------------------
-### onmessage
-**Function, 查询和绑定子进程消息事件，相当于 on("message", func);**
-
-```JavaScript
-Function ChildProcess.onmessage;
 ```
 
 ## 成员函数
@@ -583,4 +575,21 @@ Value ChildProcess.toJSON(String key = "");
 
 返回结果:
 * Value, 返回包含可 JSON 序列化的值
+
+## 事件
+        
+### exit
+**查询和绑定进程退出事件，相当于 on("exit", func);**
+
+```JavaScript
+event ChildProcess.exit();
+```
+
+--------------------------
+### message
+**查询和绑定子进程消息事件，相当于 on("message", func);**
+
+```JavaScript
+event ChildProcess.message();
+```
 

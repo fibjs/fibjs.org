@@ -5,6 +5,7 @@
   - [coroutine](ifs/coroutine.md) - 并发控制模块
   - [global](ifs/global.md) - 全局对象，所有脚本均可以访问的基础对象
   - [gui](ifs/gui.md) - gui 模块
+  - [module](ifs/module.md) - 基础模块管理
   - [os](ifs/os.md) - `os` 模块是核心模块之一，用于运行的操作系统函数。它提供了与操作系统交互的实用程序功能，包括文件地址、文件路径、网络接口、主机名、操作系统类型等
   - [process](ifs/process.md) - 进程处理模块，用以管理当前进程的资源
   - [timers](ifs/timers.md) - timers 模块是一个内置模块，提供了一些与时间相关的函数和对象，包括 setTimeout()、setInterval()、clearInterval()、clearTimeout() 等等
@@ -52,9 +53,11 @@
   - [assert](ifs/assert.md) - 断言测试模块，如果测试值为假，则报错，报错行为可设定继续运行或者错误抛出
   - [performance](ifs/performance.md) - performance 基础性能监控模块
   - [perf_hooks](ifs/perf_hooks.md) - perf_hooks 基础模块
-  - [profiler](ifs/profiler.md) - 内存 profiler 模块
-  - [test](ifs/test.md) - test 模块是一个测试框架，结合断言模块 `assert` 可以方便地编写各种测试用例
+  - [v8](ifs/v8.md) - 内存 v8 模块
+  - [test](ifs/test.md) - test 模块是一个测试框架，结合断言模块 `assert` 可以方便地编写各种测试用例，可作为函数调用
+  - [test_suite](ifs/test_suite.md) - test_suite 模块是一个测试套件模块，可作为函数调用
 * Utility
+  - [colors](ifs/colors.md) - 颜色模块
   - [db](ifs/db.md) - 数据库访问模块
   - [registry](ifs/registry.md) - registry 模块是一个操作 Windows 注册表（Registry）的模块。它提供了访问注册表的方法和常量，可以读取、修改、删除、添加等操作。registry 模块提供的操作方式和 Windows 应用程序使用的方式类似，但却是在 FibJS 中提供了能力。常量有常见的 Root、 数据类型等常量，还有一些用于不同操作的返回值的常量
   - [types](ifs/types.md) - types 模块提供了对数据类型判断的工具函数
@@ -66,3 +69,4 @@
   - [fs_constants](ifs/fs_constants.md) - fs 模块常用常量定义模块
   - [crypto_constants](ifs/crypto_constants.md) - crypto 模块常用常量定义模块
   - [zlib_constants](ifs/zlib_constants.md) - zlib 模块常用常量定义模块
+* [assert_strict](ifs/assert_strict.md) - 严格断言测试模块，如果测试值为假，则报错，报错行为可设定继续运行或者错误抛出

@@ -7,7 +7,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Handler [tooltip="Handler", fillcolor="lightgray", id="me", label="{Handler|new Handler()\l|invoke()\l}"];
+    Handler [tooltip="Handler", fillcolor="lightgray", id="me", label="{Handler|new Handler()\l|isRouting()\linvoke()\l}"];
     Chain [tooltip="Chain", URL="Chain.md", label="{Chain}"];
     HttpHandler [tooltip="HttpHandler", URL="HttpHandler.md", label="{HttpHandler}"];
     HttpRepeater [tooltip="HttpRepeater", URL="HttpRepeater.md", label="{HttpRepeater}"];
@@ -67,6 +67,17 @@ new Handler(String hdlr);
 
 ## 成员函数
         
+### isRouting
+**查询当前处理器是否支持路由**
+
+```JavaScript
+Boolean Handler.isRouting();
+```
+
+返回结果:
+* Boolean, 返回当前处理器是否支持路由
+
+--------------------------
 ### invoke
 **处理一个消息或对象**
 
