@@ -1,5 +1,5 @@
 import 'common';
-import 'js/icons';
+import 'js/enhancements';
 
 var downloadOsSelected = "Linux"
 var downloadTargetSelected = ""
@@ -30,8 +30,7 @@ if (downloadOsSelected == "Linux") {
 function checkStatus() {
     if (!downloadTargetSelected) {
         $('.download-detail-arch').attr('disabled', true);
-        $('.download-detail-arch').css('background-color', '#f5f5f5');
-        $('.download-detail-arch').css('color', '#333333');
+        $('.download-detail-arch').addClass('download-detail-arch-disabled');
     }
 }
 
@@ -49,15 +48,12 @@ $('.download-detail-os').click(function (e) {
     }
     lastArchSelectedDom = undefined
     $('.download-detail').attr('disabled', false);
-    $('.download-detail').css('background-color', '#ffffff');
-    $('.download-detail-os').css('background-color', '#fff');
-    $('.download-detail-os').css('color', '#333333');
+    $('.download-detail-os').removeClass('active');
+    $('.download-detail-os').removeClass('download-detail-os-default');
     downloadTargetSelected = ""
-    $('.download-detail-target').css('background-color', '#fff');
-    $('.download-detail-target').css('color', '#333333');
+    $('.download-detail-target').removeClass('active');
 
-    e.target.style.backgroundColor = '#0088cc';
-    e.target.style.color = '#ffffff';
+    $(e.target).addClass('active');
     downloadTargetSelected = ""
     downloadArchSelected = ""
     downloadTypeSelected = ""
@@ -84,50 +80,44 @@ $('.download-detail-target').click(function (e) {
     }
     downloadArchSelected = ""
     $('.download-detail-arch').attr('disabled', false);
-    $('.download-detail-arch').css('background-color', '#fff');
-    $('.download-detail-arch').css('color', '#333333');
+    $('.download-detail-arch').removeClass('active');
     downloadTypeSelected = ""
-    $('.download-detail-target').css('background-color', '#fff');
-    $('.download-detail-target').css('color', '#333333');
+    $('.download-detail-target').removeClass('active');
     downloadTargetSelected = e.target.innerText;
-    e.target.style.backgroundColor = '#0088cc';
-    e.target.style.color = '#ffffff';
+    $(e.target).addClass('active');
     changeArchDisable(e.target.innerText);
     generateDownloadUrl()
 });
 
 const changeArchDisable = (target) => {
+    $('.download-detail-arch').removeClass('download-detail-arch-disabled');
+
     if (target === 'Glib') {
         $('.download-detail-arch').attr('disabled', false);
         if (lastArchSelectedDom) {
-            lastArchSelectedDom.target.style.backgroundColor = '#0088cc';
-            lastArchSelectedDom.target.style.color = '#ffffff';
+            $(lastArchSelectedDom.target).addClass('active');
             downloadArchSelected = lastArchSelectedDom.target.innerText;
         } else {
             lastArchSelectedDom = undefined
             downloadArchSelected = ''
         }
     } else if (target === 'Musl' || downloadOsSelected === 'Windows') {
-        $('.download-detail-arch-dismusl').attr('disabled', true);
-        $('.download-detail-arch-dismusl').css('background-color', '#f5f5f5');
+        $('.download-detail-arch-dismusl').attr('disabled', true).addClass('download-detail-arch-disabled');
         if (lastArchSelectedDom && (
             lastArchSelectedDom.target.innerText === 'x64'
             || lastArchSelectedDom.target.innerText === 'ia32'
             || lastArchSelectedDom.target.innerText === 'arm64'
         )
         ) {
-            lastArchSelectedDom.target.style.backgroundColor = '#0088cc';
-            lastArchSelectedDom.target.style.color = '#ffffff';
+            $(lastArchSelectedDom.target).addClass('active');
             downloadArchSelected = lastArchSelectedDom.target.innerText;
         } else {
             lastArchSelectedDom = undefined
             downloadArchSelected = ''
         }
     } else if (target === 'Android') {
-        $('.download-detail-arch-dismusl').attr('disabled', true);
-        $('.download-detail-arch-dismusl').css('background-color', '#f5f5f5');
-        $('.download-detail-arch-arm').attr('disabled', false);
-        $('.download-detail-arch-arm').css('background-color', '#ffffff');
+        $('.download-detail-arch-dismusl').attr('disabled', true).addClass('download-detail-arch-disabled');
+        $('.download-detail-arch-arm').attr('disabled', false).removeClass('download-detail-arch-disabled');
         if (lastArchSelectedDom && (
             lastArchSelectedDom.target.innerText === 'x64'
             || lastArchSelectedDom.target.innerText === 'ia32'
@@ -135,33 +125,28 @@ const changeArchDisable = (target) => {
             || lastArchSelectedDom.target.innerText === 'arm64'
         )
         ) {
-            lastArchSelectedDom.target.style.backgroundColor = '#0088cc';
-            lastArchSelectedDom.target.style.color = '#ffffff';
+            $(lastArchSelectedDom.target).addClass('active');
             downloadArchSelected = lastArchSelectedDom.target.innerText;
         } else {
             lastArchSelectedDom = undefined
             downloadArchSelected = ''
         }
     } else if (downloadOsSelected === 'Darwin') {
-        $('.download-detail-arch-disdarwin').attr('disabled', true);
-        $('.download-detail-arch-disdarwin').css('background-color', '#f5f5f5');
+        $('.download-detail-arch-disdarwin').attr('disabled', true).addClass('download-detail-arch-disabled');
         if (lastArchSelectedDom && (
             lastArchSelectedDom.target.innerText === 'x64'
             || lastArchSelectedDom.target.innerText === 'arm64'
         )
         ) {
-            lastArchSelectedDom.target.style.backgroundColor = '#0088cc';
-            lastArchSelectedDom.target.style.color = '#ffffff';
+            $(lastArchSelectedDom.target).addClass('active');
             downloadArchSelected = lastArchSelectedDom.target.innerText;
         } else {
             lastArchSelectedDom = undefined
             downloadArchSelected = ''
         }
     } else {
-        $('.download-detail-arch-dismusl').attr('disabled', false);
-        $('.download-detail-arch-dismusl').css('background-color', '#ffffff');
-        $('.download-detail-arch-arm').attr('disabled', false);
-        $('.download-detail-arch-arm').css('background-color', '#ffffff');
+        $('.download-detail-arch-dismusl').attr('disabled', false).removeClass('download-detail-arch-disabled');
+        $('.download-detail-arch-arm').attr('disabled', false).removeClass('download-detail-arch-disabled');
     }
 }
 
@@ -170,12 +155,10 @@ $('.download-detail-arch').click(function (e) {
         return;
     }
     lastArchSelectedDom = e;
-    $('.download-detail-arch').css('background-color', '#fff');
-    $('.download-detail-arch').css('color', '#333333');
+    $('.download-detail-arch').removeClass('active');
     changeArchDisable(downloadTargetSelected);
     downloadTypeSelected = ''
-    e.target.style.backgroundColor = '#0088cc';
-    e.target.style.color = '#ffffff';
+    $(e.target).addClass('active');
     downloadArchSelected = e.target.innerText;
     generateDownloadUrl()
 });
@@ -232,7 +215,7 @@ function generateDownloadUrl() {
     var binaryExt = downloadOsSelected === 'Windows' ? ext = '.exe' : ext = ''
     $('.download-detail-type-binary').text('fibjs' + '-' + latestVersion + '-' + name3 + '-' + name4 + binaryExt)
     $('.download-detail-type-source').text('fibjs' + '-' + latestVersion + '-' + name3 + '-' + name4 + sourceExt)
-    $('.download-detail-type').css('display', 'inline-block');
+    $('.download-detail-type').css('display', 'none').fadeIn(300).css('display', 'inline-block');
     if (downloadOsSelected === 'Windows' && downloadTargetSelected === 'GUI') {
         $('.download-detail-type-install').css('display', 'none')
     } else {

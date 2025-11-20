@@ -2,6 +2,7 @@ import 'common';
 import 'jquery-ui';
 import 'jquery.tocify';
 import 'social-share.js/src/js/social-share';
+import 'js/enhancements';
 import './docs.css';
 
 //Executes your code when the DOM is ready.  Acts the same as $(document).ready().

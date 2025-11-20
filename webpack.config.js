@@ -37,13 +37,24 @@ function cssLoaders(options) {
             return loader + (options.sourceMap ? extraParamChar + 'sourceMap' : '')
         }).join('!')
 
-        return ExtractTextPlugin.extract(sourceLoader)
+        return ExtractTextPlugin.extract(sourceLoader, {
+            publicPath: '../'
+        })
     }
 
     return {
         css: generateLoaders(['css']),
         less: generateLoaders(['css', 'less'])
     }
+}
+
+function escape(html, encode) {
+    return html
+        .replace(!encode ? /&(?!#?\w+;)/g : /&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
 }
 
 function styleLoaders(options) {
@@ -67,25 +78,50 @@ marked.setOptions({
         if (lang)
             try {
                 res = highlight.highlight(lang, code).value;
-            } catch (e) {}
+            } catch (e) { }
 
         if (!res)
             try {
                 res = highlight.highlightAuto(code).value;
-            } catch (e) {}
+            } catch (e) { }
 
         if (!res)
             res = code;
 
-        var lines = res.split('\n').length;
-        var nums = [];
-
-        for (var i = 0; i < lines; i++)
-            nums.push(i + 1);
-
-        return '<div class="line-numbers">' + nums.join('\n') + '</div>' + res;
+        return res;
     }
 });
+
+marked.Renderer.prototype.code = function (code, lang, escaped) {
+    if (this.options.highlight) {
+        var out = this.options.highlight(code, lang);
+        if (out != null && out !== code) {
+            escaped = true;
+            code = out;
+        }
+    }
+
+    var lines = code.split('\n').length;
+    var nums = [];
+    for (var i = 1; i <= lines; i++) {
+        nums.push(i);
+    }
+
+    if (!lang) {
+        return '<pre class="code-block"><code>' +
+            (escaped ? code : escape(code, true)) +
+            '</code></pre>';
+    }
+
+    return '<div class="code-wrapper">' +
+        '<div class="line-numbers">' + nums.join('\n') + '</div>' +
+        '<div class="code-content">' +
+        '<pre><code class="' + this.options.langPrefix + lang + '">' +
+        (escaped ? code : escape(code, true)) +
+        '</code></pre>' +
+        '</div>' +
+        '</div>';
+};
 
 marked.Renderer.prototype.heading = function (text, level, raw) {
     return '<h' +
@@ -160,7 +196,7 @@ function build_docs() {
 
     try {
         old_dot_cache = JSON.parse(fs.readFileSync(path.join(__dirname, "web/dot_cache.json")).toString());
-    } catch (e) {}
+    } catch (e) { }
 
     var _tmpl = ejs.compile(fs.readFileSync(path.join(config.dist, 'docs.html')).toString());
 
@@ -308,31 +344,31 @@ var webpack_config = {
     },
     module: {
         loaders: [{
-                test: /\.(png|jpg)$/,
-                loader: 'url',
-                query: {
-                    limit: 8192,
-                    name: 'imgs/[name].[ext]'
-                },
-                exclude: /node_modules/
-            }, {
-                test: /\.js$/,
-                loader: 'babel',
-                exclude: /node_modules/
-            }, {
-                test: /\.(html|htm|shtml)$/,
-                loader: 'includes'
-            }, {
-                test: /\.(woff2?|eot|ttf|otf|svg)(\?.*)?$/,
-                loader: 'url',
-                query: {
-                    limit: 10000,
-                    name: 'fonts/[name].[ext]'
-                }
+            test: /\.(png|jpg)$/,
+            loader: 'url',
+            query: {
+                limit: 8192,
+                name: 'imgs/[name].[ext]'
             },
-            styleLoaders({
-                extract: true
-            })
+            exclude: /node_modules/
+        }, {
+            test: /\.js$/,
+            loader: 'babel',
+            exclude: /node_modules/
+        }, {
+            test: /\.(html|htm|shtml)$/,
+            loader: 'includes'
+        }, {
+            test: /\.(woff2?|eot|ttf|otf|svg)(\?.*)?$/,
+            loader: 'url',
+            query: {
+                limit: 10000,
+                name: 'fonts/[name].[ext]'
+            }
+        },
+        styleLoaders({
+            extract: true
+        })
         ]
     },
     includes: {
