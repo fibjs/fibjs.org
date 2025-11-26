@@ -3,6 +3,14 @@ var fs = require('fs');
 var os = require('os');
 var webpack = require('webpack')
 
+// Patch global to avoid localStorage access error in Node.js 25
+try {
+    Object.defineProperty(global, 'localStorage', {
+        get: function () { return undefined; },
+        configurable: true
+    });
+} catch (e) { }
+
 var recursiveReadSync = require('recursive-readdir-sync');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
