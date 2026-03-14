@@ -302,7 +302,7 @@ describe('Web server test', () => {
     it('should return hello world', () => {
         var r = http.get('http://localhost:8080/hello');
         assert.equal(r.statusCode, 200);
-        assert.equal(r.data.toString(), 'Hello World');
+        assert.equal(r.text(), 'Hello World');
     });
 });
 

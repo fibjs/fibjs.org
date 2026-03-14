@@ -59,7 +59,7 @@ describe('hello, test', () => {
     it('hello, fibjs', () => {
         var r = http.get('http://127.0.0.1:8080/hello/fibjs');
         assert.equal(r.statusCode, 200);
-        assert.equal(r.data.toString(), 'hello, fibjs. I love you.');
+        assert.equal(r.text(), 'hello, fibjs. I love you.');
     });
 });
 
@@ -75,7 +75,7 @@ var http = require('http');
 function test_get(url, rep) {
     var r = http.get('http://127.0.0.1:8080' + url);
     assert.equal(r.statusCode, 200);
-    assert.equal(r.data.toString(), rep);
+    assert.equal(r.text(), rep);
 }
 
 describe('hello, test', () => {
@@ -109,7 +109,7 @@ var http = require('http');
 function test_get(url, rep) {
     var r = http.get('http://127.0.0.1:8080' + url);
     assert.equal(r.statusCode, 200);
-    assert.equal(r.data.toString(), rep);
+    assert.equal(r.text(), rep);
 }
 
 describe('hello, test', () => {
@@ -173,7 +173,7 @@ coroutine.sleep(100);
 function test_get(url, rep) {
     var r = http.get('http://127.0.0.1:8080' + url);
     assert.equal(r.statusCode, 200);
-    assert.equal(r.data.toString(), rep);
+    assert.equal(r.text(), rep);
 }
 
 describe('hello, test', () => {
