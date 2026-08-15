@@ -1,5 +1,18 @@
 # 模块 tls
-tls 模块是 fibjs 内置的加密模块，可以用于建立网络连接的 tls/ssl 超文本传输协议。该模块提供加密验证，客户端和服务器可以确保连接是安全的
+tls 模块是 fibjs 内置的加密模块，用于建立 tls/ssl 加密网络连接，提供加密验证，确保客户端和服务器之间的连接是安全的
+
+模块的主要能力：
+
+- **安全上下文**：`createSecureContext` 创建 [SecureContext](../../object/ifs/SecureContext.md) 对象，维护 CA 证书、证书链、私钥等 TLS 配置；
+- **服务器**：`createServer` 创建 [TLSServer](../../object/ifs/TLSServer.md)，支持指定 [SecureContext](../../object/ifs/SecureContext.md) 或直接传 TLS 选项；
+- **客户端**：`connect` 以多种形式建立 tls/ssl 连接，支持 URL、端口与主机名、选项对象三种形式；
+- **对象别名**：`TLSSocket`、`Handler`（[TLSHandler](../../object/ifs/TLSHandler.md)）、`Server`（[TLSServer](../../object/ifs/TLSServer.md)）。
+
+引用方式：
+
+```JavaScript
+var tls = require('tls');
+```
 
 ## 对象
         
@@ -28,6 +41,37 @@ TLSServer tls.Server;
 
 ## 静态函数
         
+### createServer
+**创建一个 TLS 服务器**
+
+```JavaScript
+static TLSServer tls.createServer(SecureContext context,
+    Handler listener);
+```
+
+调用参数:
+* context: [SecureContext](../../object/ifs/SecureContext.md), 指定安全上下文
+* listener: [Handler](../../object/ifs/Handler.md), 连接处理函数
+
+返回结果:
+* [TLSServer](../../object/ifs/TLSServer.md), 返回未绑定端口的 [TLSServer](../../object/ifs/TLSServer.md) 对象，需调用 listen() 启动
+
+--------------------------
+**创建一个 TLS 服务器**
+
+```JavaScript
+static TLSServer tls.createServer(Object options,
+    Handler listener);
+```
+
+调用参数:
+* options: Object, 创建安全上下文的选项
+* listener: [Handler](../../object/ifs/Handler.md), 连接处理函数
+
+返回结果:
+* [TLSServer](../../object/ifs/TLSServer.md), 返回未绑定端口的 [TLSServer](../../object/ifs/TLSServer.md) 对象，需调用 listen() 启动
+
+--------------------------
 ### createSecureContext
 **创建一个 [SecureContext](../../object/ifs/SecureContext.md) 对象，用于在 tls 模块中维护安全上下文**
 
@@ -75,6 +119,34 @@ static SecureContext tls.createSecureContext(Boolean isServer = false);
 
 --------------------------
 ### connect
+**根据主机名和端口号创建一个 tls/ssl 连接**
+
+```JavaScript
+static Stream tls.connect(Object options) async;
+```
+
+调用参数:
+* options: Object, 指定连接的选项
+
+返回结果:
+* [Stream](../../object/ifs/Stream.md), 返回 tls/ssl 连接对象
+
+--------------------------
+**根据主机名和端口号创建一个 tls/ssl 连接，并在连接建立后触发 connect 事件**
+
+```JavaScript
+static Stream tls.connect(Object options,
+    Function connectListener) async;
+```
+
+调用参数:
+* options: Object, 指定连接的选项
+* connectListener: Function, 指定 once 的 connect 事件监听器
+
+返回结果:
+* [Stream](../../object/ifs/Stream.md), 返回连接的 [Socket](../../object/ifs/Socket.md) 对象
+
+--------------------------
 **根据 [url](url.md) 创建一个 tls/ssl 连接**
 
 ```JavaScript
@@ -111,15 +183,185 @@ static Stream tls.connect(String url,
 
 ```JavaScript
 static Stream tls.connect(String url,
-    Object optionns) async;
+    Object options) async;
 ```
 
 调用参数:
 * url: String, 指定连接的 URL
-* optionns: Object, 指定连接的选项
+* options: Object, 指定连接的选项
 
 返回结果:
 * [Stream](../../object/ifs/Stream.md), 返回 tls/ssl 连接对象
+
+--------------------------
+**根据主机名和端口号创建一个 tls/ssl 连接**
+
+```JavaScript
+static Stream tls.connect(Integer port,
+    String host = "localhost",
+    Object options = {}) async;
+```
+
+调用参数:
+* port: Integer, 指定连接的端口号
+* host: String, 指定连接的主机名，缺省为 "localhost"
+* options: Object, 指定连接的选项
+
+返回结果:
+* [Stream](../../object/ifs/Stream.md), 返回 tls/ssl 连接对象
+
+--------------------------
+**根据 [url](url.md) 创建一个 tls/ssl 连接，并在连接建立后触发 connect 事件**
+
+```JavaScript
+static Stream tls.connect(String url,
+    Function connectListener) async;
+```
+
+调用参数:
+* url: String, 指定连接的 URL
+* connectListener: Function, 指定 once 的 connect 事件监听器
+
+返回结果:
+* [Stream](../../object/ifs/Stream.md), 返回连接的 [Socket](../../object/ifs/Socket.md) 对象
+
+--------------------------
+**根据 [url](url.md) 创建一个 tls/ssl 连接，并在连接建立后触发 connect 事件**
+
+```JavaScript
+static Stream tls.connect(String url,
+    Integer timeout,
+    Function connectListener) async;
+```
+
+调用参数:
+* url: String, 指定连接的 URL
+* timeout: Integer, 指定连接超时时间，默认为 0
+* connectListener: Function, 指定 once 的 connect 事件监听器
+
+返回结果:
+* [Stream](../../object/ifs/Stream.md), 返回连接的 [Socket](../../object/ifs/Socket.md) 对象
+
+--------------------------
+**根据 [url](url.md) 创建一个 tls/ssl 连接，并在连接建立后触发 connect 事件**
+
+```JavaScript
+static Stream tls.connect(String url,
+    SecureContext secureContext,
+    Function connectListener) async;
+```
+
+调用参数:
+* url: String, 指定连接的 URL
+* secureContext: [SecureContext](../../object/ifs/SecureContext.md), 指定安全上下文
+* connectListener: Function, 指定 once 的 connect 事件监听器
+
+返回结果:
+* [Stream](../../object/ifs/Stream.md), 返回连接的 [Socket](../../object/ifs/Socket.md) 对象
+
+--------------------------
+**根据 [url](url.md) 创建一个 tls/ssl 连接，并在连接建立后触发 connect 事件**
+
+```JavaScript
+static Stream tls.connect(String url,
+    SecureContext secureContext,
+    Integer timeout,
+    Function connectListener) async;
+```
+
+调用参数:
+* url: String, 指定连接的 URL
+* secureContext: [SecureContext](../../object/ifs/SecureContext.md), 指定安全上下文
+* timeout: Integer, 指定连接超时时间，默认为 0
+* connectListener: Function, 指定 once 的 connect 事件监听器
+
+返回结果:
+* [Stream](../../object/ifs/Stream.md), 返回连接的 [Socket](../../object/ifs/Socket.md) 对象
+
+--------------------------
+**根据 [url](url.md) 创建一个 tls/ssl 连接，并在连接建立后触发 connect 事件**
+
+```JavaScript
+static Stream tls.connect(String url,
+    Object options,
+    Function connectListener) async;
+```
+
+调用参数:
+* url: String, 指定连接的 URL
+* options: Object, 指定连接的选项
+* connectListener: Function, 指定 once 的 connect 事件监听器
+
+返回结果:
+* [Stream](../../object/ifs/Stream.md), 返回连接的 [Socket](../../object/ifs/Socket.md) 对象
+
+--------------------------
+**根据主机名和端口号创建一个 tls/ssl 连接，并在连接建立后触发 connect 事件**
+
+```JavaScript
+static Stream tls.connect(Integer port,
+    Function connectListener) async;
+```
+
+调用参数:
+* port: Integer, 指定连接的端口号
+* connectListener: Function, 指定 once 的 connect 事件监听器
+
+返回结果:
+* [Stream](../../object/ifs/Stream.md), 返回连接的 [Socket](../../object/ifs/Socket.md) 对象
+
+--------------------------
+**根据主机名和端口号创建一个 tls/ssl 连接，并在连接建立后触发 connect 事件**
+
+```JavaScript
+static Stream tls.connect(Integer port,
+    String host,
+    Function connectListener) async;
+```
+
+调用参数:
+* port: Integer, 指定连接的端口号
+* host: String, 指定连接的主机名
+* connectListener: Function, 指定 once 的 connect 事件监听器
+
+返回结果:
+* [Stream](../../object/ifs/Stream.md), 返回连接的 [Socket](../../object/ifs/Socket.md) 对象
+
+--------------------------
+**根据主机名和端口号创建一个 tls/ssl 连接，并在连接建立后触发 connect 事件**
+
+```JavaScript
+static Stream tls.connect(Integer port,
+    Object options,
+    Function connectListener) async;
+```
+
+调用参数:
+* port: Integer, 指定连接的端口号
+* options: Object, 指定连接的选项
+* connectListener: Function, 指定 once 的 connect 事件监听器
+
+返回结果:
+* [Stream](../../object/ifs/Stream.md), 返回连接的 [Socket](../../object/ifs/Socket.md) 对象
+
+--------------------------
+**根据主机名和端口号创建一个 tls/ssl 连接，并在连接建立后触发 connect 事件**
+
+```JavaScript
+static Stream tls.connect(Integer port,
+    String host,
+    Object options,
+    Function connectListener) async;
+```
+
+调用参数:
+* port: Integer, 指定连接的端口号
+* host: String, 指定连接的主机名
+* options: Object, 指定连接的选项
+* connectListener: Function, 指定 once 的 connect 事件监听器
+
+返回结果:
+* [Stream](../../object/ifs/Stream.md), 返回连接的 [Socket](../../object/ifs/Socket.md) 对象
 
 ## 静态属性
         

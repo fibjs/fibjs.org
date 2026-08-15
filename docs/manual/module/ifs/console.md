@@ -3,11 +3,19 @@
 
 console 模块是一个核心模块，它提供了类似于浏览器中 console 对象的功能，可以将信息输出到控制台，方便调试和输出信息。
 
+模块的主要能力：
+
+- **分级日志**：`log`、`debug`、`info`、`notice`、`warn`、`error`、`crit`、`alert` 按严重程度分级输出，通过 `loglevel` 过滤；`trace` 输出调用堆栈；
+- **输出设备管理**：`add`/`use` 将输出发送到 console、syslog、event、nslog、file 等设备，`reset` 恢复默认；
+- **格式化输出**：`dir` 以 JSON 格式输出对象，`table` 以表格输出，`print` 输出不记日志且不换行；
+- **交互**：`readLine` 读取用户输入，`getpass` 读取密码，`moveTo`/`hideCursor`/`showCursor`/`clear` 控制光标与屏幕；
+- **计时**：`time`/`timeElapse`/`timeEnd` 计时代码执行时间。
+
 console 模块中最常用的方法是 log()，该方法可以将任何 JavaScript 值打印到控制台，并自动添加换行符。除了 log() 方法外，还有 info()、warn()、error() 方法，分别用于输出信息、警告和错误，它们的功能和 log() 方法基本相同，只是在控制台中显示的样式不同。
 
 console 模块还提供了 dir() 方法，用于将一个对象的属性和方法以可读性更强的形式输出到控制台，方便调试复杂的对象。另外，还有 time() 和 timeEnd() 方法，用于在控制台中计时代码执行的时间，并输出时间差。
 
-除了以上常用的方法，console 模块还提供了一些其他的方法，如 [assert](assert.md)()、notic()、trace() 等，可以在不同的情况下方便地进行调试和信息输出。
+除了以上常用的方法，console 模块还提供了一些其他的方法，如 [assert](assert.md)()、notice()、trace() 等，可以在不同的情况下方便地进行调试和信息输出。
 
 console 模块是一个非常实用的模块，可以在开发过程中提高调试效率，方便快捷地输出各种信息。
 
@@ -18,6 +26,14 @@ console 模块是一个非常实用的模块，可以在开发过程中提高调
 
 ```JavaScript
 assert console.assert;
+```
+
+--------------------------
+### Console
+**Console 构造函数，用于创建输出到指定流的新 Console 实例**
+
+```JavaScript
+ConsoleObject console.Console;
 ```
 
 ## 静态函数
@@ -106,7 +122,7 @@ file 日志：
 console.add({
     type: "file",
     levels: [console.INFO, console.ERROR],
-    path: "path/to/file_%s.log", // specifies the log output file, can use %s to specify the insertion date location, or add at the end if not specified
+    path: "path/to/file_%s.log", // Specify the log output file, you can use %s to specify the date insertion position, if not specified, it will be added to the end
     split: "30m", // Optional values are "day", "hour", "minute", "####k", "####m", "####g", default is "1m"
     count: 10 // option, selectable from 2 to 128, default is 128
 });
@@ -216,7 +232,7 @@ file 日志：
 console.use({
     type: "file",
     levels: [console.INFO, console.ERROR],
-    path: "path/to/file_%s.log", // specifies the log output file, can use %s to specify the insertion date location, or add at the end if not specified
+    path: "path/to/file_%s.log", // Specify the log output file, you can use %s to specify the date insertion position, if not specified, it will be added to the end
     split: "30m", // Optional values are "day", "hour", "minute", "####k", "####m", "####g", default is "1m"
     count: 10 // option, selectable from 2 to 128, default is 128
 });
@@ -563,13 +579,13 @@ static console.dir(Value obj,
 
 ```JavaScript
 {
-    "colors": false, // specify if output should be colorized, defaults to false
-    "depth": 2, // specify the max depth of the output, defaults to 2
-    "table": false, // specify if output should be a table, defaults to false
-    "encode_string": true, // specify if string should be encoded, defaults to true
-    "maxArrayLength": 100, // specify max number of array elements to show, set to 0 or negative to show no elements, defaults to 100
-    "maxStringLength": 10000, // specify max string length to output, set to 0 or negative to show no strings, defaults to 10000
-    "fields": [], // specify the fields to be displayed, defaults to all
+    "colors": false, // Specify whether to color the output, default is false
+    "depth": 2, // Specify the maximum depth of output, default is 2
+    "table": false, // Specify whether to output in table format, default is false
+    "encode_string": true, // Specify whether to encode strings, default is true
+    "maxArrayLength": 100, // Specify the maximum number of array elements to display, set to 0 or negative to not display elements, default is 100
+    "maxStringLength": 10000, // Specify the maximum length of output strings, set to 0 or negative to not display strings, default is 10000
+    "fields": [], // Specify the fields to display, default is all
 }
 ```
 
@@ -745,7 +761,7 @@ static readonly Integer console.height;
 ## 常量
         
 ### FATAL
-**loglevel 级别常量**
+**loglevel 级别常量，致命错误，最严重级别**
 
 ```JavaScript
 const console.FATAL = 0;
@@ -753,7 +769,7 @@ const console.FATAL = 0;
 
 --------------------------
 ### ALERT
-**loglevel 级别常量**
+**loglevel 级别常量，警报级别**
 
 ```JavaScript
 const console.ALERT = 1;
@@ -761,7 +777,7 @@ const console.ALERT = 1;
 
 --------------------------
 ### CRIT
-**loglevel 级别常量**
+**loglevel 级别常量，严重错误级别**
 
 ```JavaScript
 const console.CRIT = 2;
@@ -769,7 +785,7 @@ const console.CRIT = 2;
 
 --------------------------
 ### ERROR
-**loglevel 级别常量**
+**loglevel 级别常量，错误级别**
 
 ```JavaScript
 const console.ERROR = 3;
@@ -777,7 +793,7 @@ const console.ERROR = 3;
 
 --------------------------
 ### WARN
-**loglevel 级别常量**
+**loglevel 级别常量，警告级别**
 
 ```JavaScript
 const console.WARN = 4;
@@ -785,7 +801,7 @@ const console.WARN = 4;
 
 --------------------------
 ### NOTICE
-**loglevel 级别常量**
+**loglevel 级别常量，提示级别**
 
 ```JavaScript
 const console.NOTICE = 5;
@@ -793,7 +809,7 @@ const console.NOTICE = 5;
 
 --------------------------
 ### INFO
-**loglevel 级别常量**
+**loglevel 级别常量，信息级别**
 
 ```JavaScript
 const console.INFO = 6;
@@ -801,7 +817,7 @@ const console.INFO = 6;
 
 --------------------------
 ### DEBUG
-**loglevel 级别常量**
+**loglevel 级别常量，调试级别**
 
 ```JavaScript
 const console.DEBUG = 7;
@@ -817,7 +833,7 @@ const console.PRINT = 9;
 
 --------------------------
 ### NOTSET
-**loglevel 级别常量**
+**loglevel 级别常量，全部输出，缺省级别**
 
 ```JavaScript
 const console.NOTSET = 10;

@@ -40,6 +40,14 @@ console.log(xmlDoc.documentElement.nodeName); // output root node name
 XmlDocument xml.Document;
 ```
 
+--------------------------
+### DOMParser
+**[DOMParser](../../object/ifs/DOMParser.md) 接口，用于将字符串解析为 DOM 文档，参见 [DOMParser](../../object/ifs/DOMParser.md) 对象**
+
+```JavaScript
+DOMParser xml.DOMParser;
+```
+
 ## 静态函数
         
 ### parse
@@ -120,6 +128,22 @@ const xml.CDATA_SECTION_NODE = 4;
 ```
 
 --------------------------
+### ENTITY_REFERENCE_NODE
+**[XmlNode](../../object/ifs/XmlNode.md) 的 nodeType 属性常量，表示节点为 EntityReference 对象（已废弃）**
+
+```JavaScript
+const xml.ENTITY_REFERENCE_NODE = 5;
+```
+
+--------------------------
+### ENTITY_NODE
+**[XmlNode](../../object/ifs/XmlNode.md) 的 nodeType 属性常量，表示节点为 Entity 对象（已废弃）**
+
+```JavaScript
+const xml.ENTITY_NODE = 6;
+```
+
+--------------------------
 ### PROCESSING_INSTRUCTION_NODE
 **[XmlNode](../../object/ifs/XmlNode.md) 的 nodeType 属性常量，表示节点为 [XmlProcessingInstruction](../../object/ifs/XmlProcessingInstruction.md) 对象**
 
@@ -149,5 +173,21 @@ const xml.DOCUMENT_NODE = 9;
 
 ```JavaScript
 const xml.DOCUMENT_TYPE_NODE = 10;
+```
+
+--------------------------
+### DOCUMENT_FRAGMENT_NODE
+**[XmlNode](../../object/ifs/XmlNode.md) 的 nodeType 属性常量，表示节点为 [XmlDocumentFragment](../../object/ifs/XmlDocumentFragment.md) 对象**
+
+```JavaScript
+const xml.DOCUMENT_FRAGMENT_NODE = 11;
+```
+
+--------------------------
+### NOTATION_NODE
+**[XmlNode](../../object/ifs/XmlNode.md) 的 nodeType 属性常量，表示节点为 Notation 对象（已废弃）**
+
+```JavaScript
+const xml.NOTATION_NODE = 12;
 ```
 

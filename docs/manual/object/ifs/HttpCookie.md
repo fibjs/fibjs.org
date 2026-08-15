@@ -46,7 +46,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    HttpCookie [tooltip="HttpCookie", fillcolor="lightgray", id="me", label="{HttpCookie|new HttpCookie()\l|name\lvalue\ldomain\lpath\lexpires\lhttpOnly\lsecure\l|parse()\lmatch()\l}"];
+    HttpCookie [tooltip="HttpCookie", fillcolor="lightgray", id="me", label="{HttpCookie|new HttpCookie()\l|name\lvalue\ldomain\lpath\lexpires\lhttpOnly\lsecure\l|parse()\lparseRaw()\lmatch()\l}"];
 
     object -> HttpCookie [dir=back];
 }
@@ -172,6 +172,21 @@ HttpCookie.parse(String header);
 
 调用参数:
 * header: String, 指定需要解析的 header 字符串
+
+--------------------------
+### parseRaw
+**解析给定的字符串，填充 cookie 对象，不对 name 和 value 进行 URL 解码**
+
+```JavaScript
+HttpCookie.parseRaw(String header);
+```
+
+调用参数:
+* header: String, 指定需要解析的 header 字符串
+
+按照 RFC 6265，cookie 值是不透明字符串，Set-Cookie 头中的 %XX 应当原样保留。
+解析服务端发来的原始 Set-Cookie 头时请使用本方法；
+parse 方法会进行 URL 解码，与 toString 保持往返。
 
 --------------------------
 ### match

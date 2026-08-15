@@ -16,6 +16,20 @@ static test_suite.Function(String name,
 * block: Function, 测试内容
 
 --------------------------
+**定义一个测试套件（带选项），可嵌套定义**
+
+```JavaScript
+static test_suite.Function(String name,
+    Object options,
+    Function block);
+```
+
+调用参数:
+* name: String, 定义项目名称
+* options: Object, 测试选项，支持: { skip, todo, only }
+* block: Function, 测试内容
+
+--------------------------
 ### skip
 **暂停测试套件的项目定义**
 
@@ -39,5 +53,32 @@ static test_suite.only(String name,
 
 调用参数:
 * name: String, 定义项目名称
+* block: Function, 测试内容
+
+--------------------------
+### todo
+**计划测试套件定义**
+
+```JavaScript
+static test_suite.todo(String name,
+    Function block);
+```
+
+调用参数:
+* name: String, 定义项目名称
+* block: Function, 测试内容
+
+--------------------------
+**计划测试套件定义（带选项）**
+
+```JavaScript
+static test_suite.todo(String name,
+    Object options,
+    Function block);
+```
+
+调用参数:
+* name: String, 定义项目名称
+* options: Object, 测试选项，支持: { skip, todo, only }
 * block: Function, 测试内容
 

@@ -1,27 +1,46 @@
 # 内置对象
 * [AbortController](ifs/AbortController.md) - 控制器对象，用于在需要时中止一个或多个 Web 请求
 * [AbortSignal](ifs/AbortSignal.md) - brief 该对象允许您与异步操作（例如提取请求）进行通信，并在需要时通过 AbortController 对象中止它
+* [AsyncLocalStorage](ifs/AsyncLocalStorage.md) - 该对象允许您在异步操作中存储和检索数据
+* [AsyncResource](ifs/AsyncResource.md) - AsyncResource 是用于嵌入异步上下文跟踪的类。
+* [Blob](ifs/Blob.md) - Blob 对象用于表示不可变的原始数据块，兼容 Web 标准 Blob API。
 * [Buffer](ifs/Buffer.md) - 二进制数据缓存对象，用于 io 读写的数据处理
 * [BufferedStream](ifs/BufferedStream.md) - 缓存读取对象
 * [Chain](ifs/Chain.md) - 消息处理器链处理对象
 * [ChildProcess](ifs/ChildProcess.md) - 子进程对象
 * [Cipher](ifs/Cipher.md) - 对称加密算法对象
 * [Condition](ifs/Condition.md) - 条件变量对象
+* [ConsoleObject](ifs/ConsoleObject.md) - 日志对象，用于记录日志信息
 * [CryptoKey](ifs/CryptoKey.md) - CryptoKey 类来表示对称或非对称密钥，每种密钥公开不同的功能
+* [DOMEvent](ifs/DOMEvent.md) - DOMEvent 表示一个 W3C DOM 事件对象
+* [DOMParser](ifs/DOMParser.md) - DOMParser 接口提供将 XML 或 HTML 源代码字符串解析为 DOM Document 的能力
+* [DOMTokenList](ifs/DOMTokenList.md) - DOMTokenList 对象，表示一组空格分隔的标记，常用于 classList 属性
 * [DbConnection](ifs/DbConnection.md) - DBConnection 是数据库连接的基类，用于建立和维护一个数据库连接会话。其实现了连接的基本操作，并作为派生类的基础。同时支持开始事务、提交事务、回滚事务等操作。
+* [Deflate](ifs/Deflate.md) - Deflate 压缩编解码器，使用 deflate 算法压缩数据(zlib格式)
+* [DeflateRaw](ifs/DeflateRaw.md) - DeflateRaw 压缩编解码器，使用 deflate 算法压缩数据(raw格式，不含zlib头)
 * [DgramSocket](ifs/DgramSocket.md) - dgram.Socket 对象是一个封装了数据包函数功能的 EventEmitter。
 * [Digest](ifs/Digest.md) - 信息摘要对象
+* [DirEntry](ifs/DirEntry.md) - 表示目录项的信息
+* [ECDH](ifs/ECDH.md) - ECDH 对象
 * [Event](ifs/Event.md) - Event 模块提供了一个事件对象，用于协同共享数据操作。它允许多个纤程（协程）之间进行同步操作，以实现协作式多任务。事件对象有 wait，pulse 和 clear 三个方法，wait 方法将阻塞当前纤程，直至事件被触发，pulse 方法将唤醒所有等待该事件的纤程，而 clear 方法则将事件标志重置为 false。通过使用 coroutine.Event 模块，开发者可以控制纤程之间的执行顺序和数据共享，实现复杂业务逻辑。
 * [EventEmitter](ifs/EventEmitter.md) - EventEmitter 是事件触发对象，它可以被用于建立观察者模式，支持事件触发的对象均继承于此
 * [EventSource](ifs/EventSource.md) - 事件源接口，用于服务器推送事件
 * [FSWatcher](ifs/FSWatcher.md) - 文件系统观察对象
 * [Fiber](ifs/Fiber.md) - 纤程操作对象，此对象不可直接创建
-* [File](ifs/File.md) - 文件操作对象，用于二进制文件读写
+* [File](ifs/File.md) - File 对象用于表示文件系统中的文件，兼容 Web 标准 File API。
 * [FileHandle](ifs/FileHandle.md) - 文件句柄对象
+* [FileStream](ifs/FileStream.md) - 文件操作对象，用于二进制文件读写
+* [FormData](ifs/FormData.md) - FormData 是用于管理 HTTP 表单数据（multipart/form-data）的容器类，继承自 HttpCollection。
+* [Gunzip](ifs/Gunzip.md) - Gunzip 解压缩编解码器，解压 gzip 压缩的数据
+* [Gzip](ifs/Gzip.md) - Gzip 压缩编解码器，使用 gzip 算法压缩数据
 * [Handler](ifs/Handler.md) - 消息处理器接口
+* [Headers](ifs/Headers.md) - Headers 是一个专门用于处理 HTTP 头部信息的容器类，继承自 HttpCollection
 * [HeapGraphEdge](ifs/HeapGraphEdge.md) - HeapGraphEdge表示两个HeapGraphNode节点间的关联，从上游节点到下游节点
 * [HeapGraphNode](ifs/HeapGraphNode.md) - HeapGraphNode表示堆视图中的一个节点
 * [HeapSnapshot](ifs/HeapSnapshot.md) - HeapSnapshots记录JS堆在某个时刻的状态
+* [Http2Server](ifs/Http2Server.md) - Http2Server 是高并发 HTTP/2 服务器
+* [Http2Session](ifs/Http2Session.md) - Http2Session 表示活动的 HTTP/2 会话，管理连接和所有流
+* [Http2Stream](ifs/Http2Stream.md) - Http2Stream 是表示 Http2Session 中单个 HTTP/2 流的对象
 * [HttpClient](ifs/HttpClient.md) - HttpClient 是针对 HTTP 客户端功能设计的类库，提供了基本的 HTTP/HTTPS 请求、代理访问、cookie 管理等功能
 * [HttpCollection](ifs/HttpCollection.md) - HttpCollection 是一个通用容器，用于处理 http 消息中的 headers, query, form, cookie 数据
 * [HttpCookie](ifs/HttpCookie.md) - HttpCookie 是 HTTP 协议封装的 cookie 对象，它提供了获取、设置 cookie 的各个属性，同时也支持多个 cookie 的组织与处理，是 http.Request 和 http.Response 两个对象都支持的一个重要属性
@@ -33,15 +52,19 @@
 * [HttpServer](ifs/HttpServer.md) - HttpServer 是内置对象之一，它是用于创建 HTTP 服务器的对象。一个 HttpServer 对象包含两个必传的参数：端口和事件处理接口对象。在事件处理接口对象中，具体的实现方式可以是简单的回调函数，也可以使用复杂的路由、链式处理数组等方式
 * [HttpUploadData](ifs/HttpUploadData.md) - 包含 multipart 的一个条目数据
 * [HttpsServer](ifs/HttpsServer.md) - HttpsServer 是用于创建 https 服务器的对象，HttpsServer 对象可以使用 HttpServer 所有的接口函数和属性。HttpsServer 对象可以通过在创建时传入之前使用 openssl 生成的证书对象 (X509Cert 类型) 和密钥对象 (PKey 类型)，从而为客户端提供 tls/ssl 加密保护的服务
+* [Inflate](ifs/Inflate.md) - Inflate 解压缩编解码器，解压 deflate 算法压缩的数据(zlib格式)
+* [InflateRaw](ifs/InflateRaw.md) - InflateRaw 解压缩编解码器，解压 deflate 算法压缩的数据(raw格式)
 * [Iterator](ifs/Iterator.md) - 迭代器对象，用于遍历集合数据
 * [KeyObject](ifs/KeyObject.md) - KeyObject 类来表示对称或非对称密钥，每种密钥公开不同的功能
 * [LevelDB](ifs/LevelDB.md) - LevelDB 是 fibjs 内置的数据库操作对象，用于创建和管理键值对形式的字典对象。使用 LevelDB 对象，可轻松实现键值对数据的存储、查询、删除、枚举等操作。它基于 Google 开源的 LevelDB 实现，具有高效、可靠、可扩展等优点
 * [Lock](ifs/Lock.md) - Lock 是一个内建对象，它可以用来控制纤程并发访问, 可以通过一个纤程获取锁，来阻止其他纤程同时获取。Lock 可以通过 coroutine.Lock() 函数创建
-* [Logger](ifs/Logger.md) - 日志对象，用于记录日志信息
 * [MemoryStream](ifs/MemoryStream.md) - 内存流对象
 * [Menu](ifs/Menu.md) - 菜单管理对象，用于窗口显示菜单
 * [MenuItem](ifs/MenuItem.md) - 菜单项接口，继承自 EventEmitter。
 * [Message](ifs/Message.md) - 基础消息对象
+* [MessageChannel](ifs/MessageChannel.md) - MessageChannel provides a pair of connected MessagePort objects
+* [MessageEvent](ifs/MessageEvent.md) - MessageEvent represents a message received by a target object
+* [MessagePort](ifs/MessagePort.md) - MessagePort represents one end of a message channel
 * [MySQL](ifs/MySQL.md) - MySQL 对象是用于操作 MySQL 数据库的类,
 * [PerformanceEntry](ifs/PerformanceEntry.md) - PerformanceEntry 接口提供了 performance 记录的通用属性
 * [PerformanceMark](ifs/PerformanceMark.md) - PerformanceMark 接口提供了 performance mark 记录的详细信息。
@@ -72,6 +95,7 @@
 * [Stat](ifs/Stat.md) - 文件的基础信息对象
 * [StatsWatcher](ifs/StatsWatcher.md) - 文件 Stats 观察对象
 * [Stream](ifs/Stream.md) - 流操作对象，用于二进制数据流读写
+* [StreamReader](ifs/StreamReader.md) - StreamReader 对象，兼容 WHATWG ReadableStreamDefaultReader 接口的轻量级读取器
 * [StringDecoder](ifs/StringDecoder.md) - 流解码对象
 * [TLSHandler](ifs/TLSHandler.md) - tls/ssl 协议转换处理器
 * [TLSServer](ifs/TLSServer.md) - tls 服务器对象，可方便创建一个标准多纤程 tls/ssl 服务器
@@ -83,19 +107,24 @@
 * [TextEncoder](ifs/TextEncoder.md) - TextEncoder 编码对象
 * [Timer](ifs/Timer.md) - 定时器处理器对象
 * [Tray](ifs/Tray.md) - 系统状态图标，用于在系统托盘中显示一个图标
-* [UrlObject](ifs/UrlObject.md) - UrlObject 是用于表示 URL 信息的一种对象，我们可以方便地使用 UrlObject 对象表示和操作一个 URL 地址。
+* [URLSearchParams](ifs/URLSearchParams.md) - URLSearchParams 是一个专门用于处理 URL 查询参数的容器类，继承自 HttpCollection
+* [Unzip](ifs/Unzip.md) - Unzip 解压缩编解码器，自动检测 gzip 或 deflate 格式并解压
+* [UrlObject](ifs/UrlObject.md) - URL 对象，实现 WHATWG URL 标准，用于解析、构造和操作 URL
 * [Verify](ifs/Verify.md) - 用于验证签名的实用程序
 * [WebSocket](ifs/WebSocket.md) - WebSocket 是一种基于 TCP 协议的全双工通信协议，在浏览器和服务器之间建立起一个不断开的连接，可以实现实时双向数据传输，并且可以支持任意格式的数据传输。在 fibjs 中，WebSocket 支持模块提供了相应的 API 接口，可以实现 WebSocket 服务器端和客户端的开发
 * [WebSocketMessage](ifs/WebSocketMessage.md) - `WebSocketMessage` 是 WebSocket 协议中的一种消息类型，它封装了 WebSocket 传输协议中各类消息的数据格式和处理方式，可用于 WebSocket 客户端和服务端双方通信。
 * [WebView](ifs/WebView.md) - WebView 对象，嵌入式浏览器窗口组件。
 * [Worker](ifs/Worker.md) - Worker 对象是用于创建子线程的对象，可以在程序中创建和处理子线程。一个 Worker 对象可以理解为一个在与主线程不同的线程中执行的 JavaScript 进程。 Worker 不与主线程共享内存，不会阻塞主线程，是一种主流的异步编程方式
+* [WorkerMessage](ifs/WorkerMessage.md) - WorkerMessage 是用于 Worker 线程通信的消息对象。通过 postMessage() 发送消息时，接收方的 message 事件会将本对象作为事件参数传入。data 属性包含传递的值。
 * [X509Certificate](ifs/X509Certificate.md) - 封装 X509 证书并提供信息读取
 * [X509CertificateRequest](ifs/X509CertificateRequest.md) - X509CertificateRequest 对象是用于创建 x509 证书请求的对象，属于 crypto 模块
+* [XMLSerializer](ifs/XMLSerializer.md) - XMLSerializer 接口提供将 DOM 树序列化为 XML 字符串的能力
 * [XmlAttr](ifs/XmlAttr.md) - XmlAttr 对象表示 XmlElement 对象的属性
 * [XmlCDATASection](ifs/XmlCDATASection.md) - XmlCDATASection 对象表示文档中的 CDATA 区段
 * [XmlCharacterData](ifs/XmlCharacterData.md) - XmlCharacterData 接口提供了 XmlText 和 XmlComment 节点的常用功能
 * [XmlComment](ifs/XmlComment.md) - XmlComment 对象表示文档中注释节点的内容
 * [XmlDocument](ifs/XmlDocument.md) - XmlDocument 是  xml 模块的一个对象，它代表整个 XML 文档，提供了对整个文档的访问入口
+* [XmlDocumentFragment](ifs/XmlDocumentFragment.md) - XmlDocumentFragment 对象表示一个轻量级的文档对象，能够容纳文档的某个部分
 * [XmlDocumentType](ifs/XmlDocumentType.md) - XmlDocumentType 对象用于访问 XML 所定义的实体
 * [XmlElement](ifs/XmlElement.md) - XmlElement 对象表示 XML 文档中的元素
 * [XmlNamedNodeMap](ifs/XmlNamedNodeMap.md) - XmlNamedNodeMap 对象表示一个无顺序的属性列表
@@ -104,4 +133,5 @@
 * [XmlProcessingInstruction](ifs/XmlProcessingInstruction.md) - XmlProcessingInstruction 对象表示 xml 处理指令
 * [XmlText](ifs/XmlText.md) - XmlText 对象表示元素或属性的文本内容
 * [ZipFile](ifs/ZipFile.md) - ZipFile 对象是 zip 格式文件压缩解压模块中的重要对象，提供了对 zip 文件的读写访问
+* [ZlibCodec](ifs/ZlibCodec.md) - ZlibCodec 是 zlib 压缩解压缩编解码器的基类，提供 zlib 类构造函数接口
 * [object](ifs/object.md) - 基础对象，所有对象均继承于此

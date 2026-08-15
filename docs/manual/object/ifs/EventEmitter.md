@@ -43,20 +43,53 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    EventEmitter [tooltip="EventEmitter", fillcolor="lightgray", id="me", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\laddEventListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveEventListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
+    EventEmitter [tooltip="EventEmitter", fillcolor="lightgray", id="me", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|addAbortListener()\lonce()\lon()\l|defaultMaxListeners\l|on()\laddListener()\laddEventListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveEventListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\lrawListeners()\llistenerCount()\leventNames()\lemit()\l}"];
     AbortSignal [tooltip="AbortSignal", URL="AbortSignal.md", label="{AbortSignal}"];
     ChildProcess [tooltip="ChildProcess", URL="ChildProcess.md", label="{ChildProcess}"];
     DgramSocket [tooltip="DgramSocket", URL="DgramSocket.md", label="{DgramSocket}"];
     EventSource [tooltip="EventSource", URL="EventSource.md", label="{EventSource}"];
     FSWatcher [tooltip="FSWatcher", URL="FSWatcher.md", label="{FSWatcher}"];
+    Http2Session [tooltip="Http2Session", URL="Http2Session.md", label="{Http2Session}"];
+    HttpClient [tooltip="HttpClient", URL="HttpClient.md", label="{HttpClient}"];
     MenuItem [tooltip="MenuItem", URL="MenuItem.md", label="{MenuItem}"];
+    Message [tooltip="Message", URL="Message.md", label="{Message}"];
+    HttpMessage [tooltip="HttpMessage", URL="HttpMessage.md", label="{HttpMessage}"];
+    HttpRequest [tooltip="HttpRequest", URL="HttpRequest.md", label="{HttpRequest}"];
+    HttpResponse [tooltip="HttpResponse", URL="HttpResponse.md", label="{HttpResponse}"];
+    WebSocketMessage [tooltip="WebSocketMessage", URL="WebSocketMessage.md", label="{WebSocketMessage}"];
+    WorkerMessage [tooltip="WorkerMessage", URL="WorkerMessage.md", label="{WorkerMessage}"];
+    MessagePort [tooltip="MessagePort", URL="MessagePort.md", label="{MessagePort}"];
     RTCDataChannel [tooltip="RTCDataChannel", URL="RTCDataChannel.md", label="{RTCDataChannel}"];
     RTCPeerConnection [tooltip="RTCPeerConnection", URL="RTCPeerConnection.md", label="{RTCPeerConnection}"];
     Service [tooltip="Service", URL="Service.md", label="{Service}"];
     StatsWatcher [tooltip="StatsWatcher", URL="StatsWatcher.md", label="{StatsWatcher}"];
+    Stream [tooltip="Stream", URL="Stream.md", label="{Stream}"];
+    BufferedStream [tooltip="BufferedStream", URL="BufferedStream.md", label="{BufferedStream}"];
+    Http2Stream [tooltip="Http2Stream", URL="Http2Stream.md", label="{Http2Stream}"];
+    SeekableStream [tooltip="SeekableStream", URL="SeekableStream.md", label="{SeekableStream}"];
+    FileStream [tooltip="FileStream", URL="FileStream.md", label="{FileStream}"];
+    MemoryStream [tooltip="MemoryStream", URL="MemoryStream.md", label="{MemoryStream}"];
+    RangeStream [tooltip="RangeStream", URL="RangeStream.md", label="{RangeStream}"];
+    Socket [tooltip="Socket", URL="Socket.md", label="{Socket}"];
+    TLSSocket [tooltip="TLSSocket", URL="TLSSocket.md", label="{TLSSocket}"];
+    TTYInputStream [tooltip="TTYInputStream", URL="TTYInputStream.md", label="{TTYInputStream}"];
+    TTYOutputStream [tooltip="TTYOutputStream", URL="TTYOutputStream.md", label="{TTYOutputStream}"];
+    TcpServer [tooltip="TcpServer", URL="TcpServer.md", label="{TcpServer}"];
+    Http2Server [tooltip="Http2Server", URL="Http2Server.md", label="{Http2Server}"];
+    HttpServer [tooltip="HttpServer", URL="HttpServer.md", label="{HttpServer}"];
+    HttpsServer [tooltip="HttpsServer", URL="HttpsServer.md", label="{HttpsServer}"];
+    TLSServer [tooltip="TLSServer", URL="TLSServer.md", label="{TLSServer}"];
     WebSocket [tooltip="WebSocket", URL="WebSocket.md", label="{WebSocket}"];
     WebView [tooltip="WebView", URL="WebView.md", label="{WebView}"];
     Worker [tooltip="Worker", URL="Worker.md", label="{Worker}"];
+    ZlibCodec [tooltip="ZlibCodec", URL="ZlibCodec.md", label="{ZlibCodec}"];
+    Deflate [tooltip="Deflate", URL="Deflate.md", label="{Deflate}"];
+    DeflateRaw [tooltip="DeflateRaw", URL="DeflateRaw.md", label="{DeflateRaw}"];
+    Gunzip [tooltip="Gunzip", URL="Gunzip.md", label="{Gunzip}"];
+    Gzip [tooltip="Gzip", URL="Gzip.md", label="{Gzip}"];
+    Inflate [tooltip="Inflate", URL="Inflate.md", label="{Inflate}"];
+    InflateRaw [tooltip="InflateRaw", URL="InflateRaw.md", label="{InflateRaw}"];
+    Unzip [tooltip="Unzip", URL="Unzip.md", label="{Unzip}"];
 
     object -> EventEmitter [dir=back];
     EventEmitter -> AbortSignal [dir=back];
@@ -64,14 +97,47 @@ digraph {
     EventEmitter -> DgramSocket [dir=back];
     EventEmitter -> EventSource [dir=back];
     EventEmitter -> FSWatcher [dir=back];
+    EventEmitter -> Http2Session [dir=back];
+    EventEmitter -> HttpClient [dir=back];
     EventEmitter -> MenuItem [dir=back];
+    EventEmitter -> Message [dir=back];
+    Message -> HttpMessage [dir=back];
+    HttpMessage -> HttpRequest [dir=back];
+    HttpMessage -> HttpResponse [dir=back];
+    Message -> WebSocketMessage [dir=back];
+    Message -> WorkerMessage [dir=back];
+    EventEmitter -> MessagePort [dir=back];
     EventEmitter -> RTCDataChannel [dir=back];
     EventEmitter -> RTCPeerConnection [dir=back];
     EventEmitter -> Service [dir=back];
     EventEmitter -> StatsWatcher [dir=back];
+    EventEmitter -> Stream [dir=back];
+    Stream -> BufferedStream [dir=back];
+    Stream -> Http2Stream [dir=back];
+    Stream -> SeekableStream [dir=back];
+    SeekableStream -> FileStream [dir=back];
+    SeekableStream -> MemoryStream [dir=back];
+    SeekableStream -> RangeStream [dir=back];
+    Stream -> Socket [dir=back];
+    Stream -> TLSSocket [dir=back];
+    Stream -> TTYInputStream [dir=back];
+    Stream -> TTYOutputStream [dir=back];
+    EventEmitter -> TcpServer [dir=back];
+    TcpServer -> Http2Server [dir=back];
+    TcpServer -> HttpServer [dir=back];
+    HttpServer -> HttpsServer [dir=back];
+    TcpServer -> TLSServer [dir=back];
     EventEmitter -> WebSocket [dir=back];
     EventEmitter -> WebView [dir=back];
     EventEmitter -> Worker [dir=back];
+    EventEmitter -> ZlibCodec [dir=back];
+    ZlibCodec -> Deflate [dir=back];
+    ZlibCodec -> DeflateRaw [dir=back];
+    ZlibCodec -> Gunzip [dir=back];
+    ZlibCodec -> Gzip [dir=back];
+    ZlibCodec -> Inflate [dir=back];
+    ZlibCodec -> InflateRaw [dir=back];
+    ZlibCodec -> Unzip [dir=back];
 }
 ```
 
@@ -81,8 +147,11 @@ digraph {
 **构造函数**
 
 ```JavaScript
-new EventEmitter();
+new EventEmitter(Object options = {});
 ```
+
+调用参数:
+* options: Object, 选项对象，支持 captureRejections 等
 
 ## 对象
         
@@ -91,6 +160,72 @@ new EventEmitter();
 ```JavaScript
 EventEmitter new EventEmitter;
 ```
+
+## 静态函数
+        
+### addAbortListener
+**监听一个 [AbortSignal](AbortSignal.md) 的 abort 事件，返回一个可释放的对象**
+
+```JavaScript
+static Object EventEmitter.addAbortListener(EventEmitter signal,
+    Function func);
+```
+
+调用参数:
+* signal: EventEmitter, 要监听的 [AbortSignal](AbortSignal.md) 对象
+* func: Function, abort 事件的处理函数
+
+返回结果:
+* Object, 返回一个包含 `[Symbol.dispose]` 方法的 Disposable 对象
+
+返回的对象包含 `[Symbol.dispose]()` 方法，调用后将移除监听器。如果信号已中止，则监听器会被立即调用。
+
+--------------------------
+### once
+**创建一个 Promise，等待指定事件触发一次后解析**
+
+```JavaScript
+static Object EventEmitter.once(EventEmitter emitter,
+    Value ev,
+    Object options = {});
+```
+
+调用参数:
+* emitter: EventEmitter, 要监听的事件触发器对象
+* ev: Value, 指定事件的名称
+* options: Object, 可选参数对象
+
+返回结果:
+* Object, 返回 Promise，以事件参数数组解析
+
+返回一个 Promise，当目标事件触发时以事件参数数组解析。如果在此期间触发 'error' 事件（且监听的不是 'error' 事件本身），Promise 将被拒绝。
+
+options 参数可包含：
+- signal: [AbortSignal](AbortSignal.md)，用于取消等待
+
+--------------------------
+### on
+**创建一个异步迭代器，持续监听指定事件**
+
+```JavaScript
+static Object EventEmitter.on(EventEmitter emitter,
+    Value ev,
+    Object options = {});
+```
+
+调用参数:
+* emitter: EventEmitter, 要监听的事件触发器对象
+* ev: Value, 指定事件的名称
+* options: Object, 可选参数对象
+
+返回结果:
+* Object, 返回 AsyncIterator 对象
+
+返回一个 AsyncIterator，每次事件触发时产出事件参数数组。如果触发 'error' 事件，迭代器将抛出错误。
+
+options 参数可包含：
+- signal: [AbortSignal](AbortSignal.md)，用于取消迭代
+- close: 字符串数组，指定结束迭代的事件名称
 
 ## 静态属性
         
@@ -107,12 +242,12 @@ static Integer EventEmitter.defaultMaxListeners;
 **绑定一个事件处理函数到对象**
 
 ```JavaScript
-Object EventEmitter.on(String ev,
+Object EventEmitter.on(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -136,12 +271,12 @@ Object EventEmitter.on(Object map);
 **绑定一个事件处理函数到对象**
 
 ```JavaScript
-Object EventEmitter.addListener(String ev,
+Object EventEmitter.addListener(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -165,13 +300,13 @@ Object EventEmitter.addListener(Object map);
 **绑定一个事件处理函数到对象**
 
 ```JavaScript
-Object EventEmitter.addEventListener(String ev,
+Object EventEmitter.addEventListener(Value ev,
     Function func,
     Object options = {});
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 * options: Object, 指定事件处理函数的选项
 
@@ -186,12 +321,12 @@ options 参数是一个对象，它可以包含以下属性：
 **绑定一个事件处理函数到对象起始**
 
 ```JavaScript
-Object EventEmitter.prependListener(String ev,
+Object EventEmitter.prependListener(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -215,12 +350,12 @@ Object EventEmitter.prependListener(Object map);
 **绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次**
 
 ```JavaScript
-Object EventEmitter.once(String ev,
+Object EventEmitter.once(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -244,12 +379,12 @@ Object EventEmitter.once(Object map);
 **绑定一个事件处理函数到对象起始**
 
 ```JavaScript
-Object EventEmitter.prependOnceListener(String ev,
+Object EventEmitter.prependOnceListener(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -273,12 +408,12 @@ Object EventEmitter.prependOnceListener(Object map);
 **从对象处理队列中取消指定函数**
 
 ```JavaScript
-Object EventEmitter.off(String ev,
+Object EventEmitter.off(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -288,11 +423,11 @@ Object EventEmitter.off(String ev,
 **取消对象处理队列中的全部函数**
 
 ```JavaScript
-Object EventEmitter.off(String ev);
+Object EventEmitter.off(Value ev);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 
 返回结果:
 * Object, 返回事件对象本身，便于链式调用
@@ -315,12 +450,12 @@ Object EventEmitter.off(Object map);
 **从对象处理队列中取消指定函数**
 
 ```JavaScript
-Object EventEmitter.removeListener(String ev,
+Object EventEmitter.removeListener(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -330,11 +465,11 @@ Object EventEmitter.removeListener(String ev,
 **取消对象处理队列中的全部函数**
 
 ```JavaScript
-Object EventEmitter.removeListener(String ev);
+Object EventEmitter.removeListener(Value ev);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 
 返回结果:
 * Object, 返回事件对象本身，便于链式调用
@@ -357,13 +492,13 @@ Object EventEmitter.removeListener(Object map);
 **从对象处理队列中取消指定函数**
 
 ```JavaScript
-Object EventEmitter.removeEventListener(String ev,
+Object EventEmitter.removeEventListener(Value ev,
     Function func,
     Object options = {});
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 * options: Object, 指定事件处理函数的选项
 
@@ -375,11 +510,11 @@ Object EventEmitter.removeEventListener(String ev,
 **从对象处理队列中取消所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。**
 
 ```JavaScript
-Object EventEmitter.removeAllListeners(String ev);
+Object EventEmitter.removeAllListeners(Value ev);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 
 返回结果:
 * Object, 返回事件对象本身，便于链式调用
@@ -424,11 +559,25 @@ Integer EventEmitter.getMaxListeners();
 **查询对象指定事件的监听器数组**
 
 ```JavaScript
-Array EventEmitter.listeners(String ev);
+Array EventEmitter.listeners(Value ev);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
+
+返回结果:
+* Array, 返回指定事件的监听器数组
+
+--------------------------
+### rawListeners
+**查询对象指定事件的监听器数组，包含 once 包装函数**
+
+```JavaScript
+Array EventEmitter.rawListeners(Value ev);
+```
+
+调用参数:
+* ev: Value, 指定事件的名称
 
 返回结果:
 * Array, 返回指定事件的监听器数组
@@ -438,11 +587,11 @@ Array EventEmitter.listeners(String ev);
 **查询对象指定事件的监听器数量**
 
 ```JavaScript
-Integer EventEmitter.listenerCount(String ev);
+Integer EventEmitter.listenerCount(Value ev);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 
 返回结果:
 * Integer, 返回指定事件的监听器数量
@@ -452,12 +601,12 @@ Integer EventEmitter.listenerCount(String ev);
 
 ```JavaScript
 Integer EventEmitter.listenerCount(Value o,
-    String ev);
+    Value ev);
 ```
 
 调用参数:
 * o: Value, 指定查询的对象
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 
 返回结果:
 * Integer, 返回指定事件的监听器数量
@@ -478,12 +627,12 @@ Array EventEmitter.eventNames();
 **主动触发一个事件**
 
 ```JavaScript
-Boolean EventEmitter.emit(String ev,
+Boolean EventEmitter.emit(Value ev,
     ...args);
 ```
 
 调用参数:
-* ev: String, 事件名称
+* ev: Value, 事件名称
 * args: ..., 事件参数，将会传递给事件处理函数
 
 返回结果:

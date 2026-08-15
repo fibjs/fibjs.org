@@ -13,7 +13,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    TextEncoder [tooltip="TextEncoder", fillcolor="lightgray", id="me", label="{TextEncoder|new TextEncoder()\l|encoding\l|encode()\l}"];
+    TextEncoder [tooltip="TextEncoder", fillcolor="lightgray", id="me", label="{TextEncoder|new TextEncoder()\l|encoding\l|encode()\lencodeInto()\l}"];
 
     object -> TextEncoder [dir=back];
 }
@@ -58,6 +58,22 @@ Buffer TextEncoder.encode(String data = "",
 
 返回结果:
 * [Buffer](Buffer.md), 返回编码的二进制数据
+
+--------------------------
+### encodeInto
+**将文本编码到目标缓冲区**
+
+```JavaScript
+Object TextEncoder.encodeInto(String source,
+    Buffer destination);
+```
+
+调用参数:
+* source: String, 要编码的文本
+* destination: [Buffer](Buffer.md), 写入的目标缓冲区
+
+返回结果:
+* Object, 返回包含 read 和 written 属性的对象
 
 --------------------------
 ### toString

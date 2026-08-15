@@ -58,9 +58,15 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    HttpCollection [tooltip="HttpCollection", fillcolor="lightgray", id="me", label="{HttpCollection|operator[String]\l|clear()\lhas()\lfirst()\lget()\lall()\ladd()\lset()\lremove()\ldelete()\lsort()\lkeys()\lvalues()\l}"];
+    HttpCollection [tooltip="HttpCollection", fillcolor="lightgray", id="me", label="{HttpCollection|operator[String]\literator()\l|clear()\lhas()\lfirst()\lget()\lall()\lgetAll()\lappend()\lset()\lremove()\ldelete()\lsort()\lforEach()\lkeys()\lvalues()\lentries()\l}"];
+    FormData [tooltip="FormData", URL="FormData.md", label="{FormData}"];
+    Headers [tooltip="Headers", URL="Headers.md", label="{Headers}"];
+    URLSearchParams [tooltip="URLSearchParams", URL="URLSearchParams.md", label="{URLSearchParams}"];
 
     object -> HttpCollection [dir=back];
+    HttpCollection -> FormData [dir=back];
+    HttpCollection -> Headers [dir=back];
+    HttpCollection -> URLSearchParams [dir=back];
 }
 ```
 
@@ -72,6 +78,17 @@ digraph {
 ```JavaScript
 Variant HttpCollection[String];
 ```
+
+--------------------------
+### @iterator
+**查询当前对象元素的迭代器**
+
+```JavaScript
+Iterator HttpCollection.@iterator();
+```
+
+返回结果:
+* [Iterator](Iterator.md), 返回当前对象元素的迭代器
 
 ## 成员函数
         
@@ -139,11 +156,25 @@ NObject HttpCollection.all(String name = "");
 * NObject, 返回键值所对应全部值的数组，若数据不存在，则返回 null
 
 --------------------------
-### add
+### getAll
+**查询指定键值的全部值**
+
+```JavaScript
+NArray HttpCollection.getAll(String name);
+```
+
+调用参数:
+* name: String, 指定要查询的键值
+
+返回结果:
+* NArray, 返回键值所对应全部值的数组，若数据不存在，则返回 null
+
+--------------------------
+### append
 **添加一个键值数据，添加数据并不修改已存在的键值的数据**
 
 ```JavaScript
-HttpCollection.add(Object map);
+HttpCollection.append(Object map);
 ```
 
 调用参数:
@@ -153,7 +184,7 @@ HttpCollection.add(Object map);
 **添加一个键值的一组数据，添加数据并不修改已存在的键值的数据**
 
 ```JavaScript
-HttpCollection.add(String name,
+HttpCollection.append(String name,
     Array values);
 ```
 
@@ -162,10 +193,20 @@ HttpCollection.add(String name,
 * values: Array, 指定要添加的一组数据
 
 --------------------------
+**添加一组数据，添加数据并不修改已存在的键值的数据**
+
+```JavaScript
+HttpCollection.append(Array entries);
+```
+
+调用参数:
+* entries: Array, 指定要添加的一组数据，格式为 [[<key>, <value>]]
+
+--------------------------
 **添加一个键值数据，添加数据并不修改已存在的键值的数据**
 
 ```JavaScript
-HttpCollection.add(String name,
+HttpCollection.append(String name,
     Variant value);
 ```
 
@@ -239,26 +280,60 @@ HttpCollection.sort();
 ```
 
 --------------------------
+### forEach
+**遍历容器内的内容**
+
+```JavaScript
+HttpCollection.forEach(Function callback);
+```
+
+调用参数:
+* callback: Function, 指定遍历时调用的函数，函数参数为 (value, key, [object](object.md))
+
+--------------------------
+**遍历容器内的内容**
+
+```JavaScript
+HttpCollection.forEach(Function callback,
+    Value thisArg);
+```
+
+调用参数:
+* callback: Function, 指定遍历时调用的函数，函数参数为 (value, key, [object](object.md))
+* thisArg: Value, 指定回调函数的 this 对象
+
+--------------------------
 ### keys
 **查询容器内的键值**
 
 ```JavaScript
-NArray HttpCollection.keys();
+Iterator HttpCollection.keys();
 ```
 
 返回结果:
-* NArray, 返回包含所有键值的数组
+* [Iterator](Iterator.md), 返回包含所有键值的迭代器
 
 --------------------------
 ### values
 **查询容器内的数值**
 
 ```JavaScript
-NArray HttpCollection.values();
+Iterator HttpCollection.values();
 ```
 
 返回结果:
-* NArray, 返回包含所有数值的数组
+* [Iterator](Iterator.md), 返回包含所有数值的迭代器
+
+--------------------------
+### entries
+**查询容器内的键值和数值**
+
+```JavaScript
+Iterator HttpCollection.entries();
+```
+
+返回结果:
+* [Iterator](Iterator.md), 返回包含所有键值和数值的迭代器
 
 --------------------------
 ### toString

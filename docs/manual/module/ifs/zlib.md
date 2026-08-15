@@ -49,6 +49,62 @@ console.log(inflated.toString());
 zlib_constants zlib.constants;
 ```
 
+--------------------------
+### Gzip
+**[Gzip](../../object/ifs/Gzip.md) 压缩类**
+
+```JavaScript
+Gzip zlib.Gzip;
+```
+
+--------------------------
+### Gunzip
+**[Gunzip](../../object/ifs/Gunzip.md) 解压缩类**
+
+```JavaScript
+Gunzip zlib.Gunzip;
+```
+
+--------------------------
+### Deflate
+**[Deflate](../../object/ifs/Deflate.md) 压缩类**
+
+```JavaScript
+Deflate zlib.Deflate;
+```
+
+--------------------------
+### Inflate
+**[Inflate](../../object/ifs/Inflate.md) 解压缩类**
+
+```JavaScript
+Inflate zlib.Inflate;
+```
+
+--------------------------
+### DeflateRaw
+**[DeflateRaw](../../object/ifs/DeflateRaw.md) 压缩类**
+
+```JavaScript
+DeflateRaw zlib.DeflateRaw;
+```
+
+--------------------------
+### InflateRaw
+**[InflateRaw](../../object/ifs/InflateRaw.md) 解压缩类**
+
+```JavaScript
+InflateRaw zlib.InflateRaw;
+```
+
+--------------------------
+### Unzip
+**[Unzip](../../object/ifs/Unzip.md) 自动检测解压缩类**
+
+```JavaScript
+Unzip zlib.Unzip;
+```
+
 ## 静态函数
         
 ### createDeflate
@@ -157,6 +213,21 @@ static Buffer zlib.deflate(Buffer data,
 * [Buffer](../../object/ifs/Buffer.md), 返回压缩后的二进制数据
 
 --------------------------
+**使用 deflate 算法压缩数据(zlib格式)**
+
+```JavaScript
+static Buffer zlib.deflate(Buffer data,
+    Object options) async;
+```
+
+调用参数:
+* data: [Buffer](../../object/ifs/Buffer.md), 给定要压缩的数据
+* options: Object, 指定压缩选项，支持的选项包括：
+
+返回结果:
+* [Buffer](../../object/ifs/Buffer.md), 返回压缩后的二进制数据
+
+--------------------------
 ### deflateTo
 **使用 deflate 算法压缩数据到流对象中(zlib格式)**
 
@@ -197,6 +268,21 @@ static Buffer zlib.inflate(Buffer data,
 调用参数:
 * data: [Buffer](../../object/ifs/Buffer.md), 给定压缩后的数据
 * maxSize: Integer, 指定解压缩尺寸限制，缺省为 -1，不限制
+
+返回结果:
+* [Buffer](../../object/ifs/Buffer.md), 返回解压缩后的二进制数据
+
+--------------------------
+**解压缩 deflate 算法压缩的数据(zlib格式)**
+
+```JavaScript
+static Buffer zlib.inflate(Buffer data,
+    Object options) async;
+```
+
+调用参数:
+* data: [Buffer](../../object/ifs/Buffer.md), 给定压缩后的数据
+* options: Object, 指定解压缩选项，支持的选项包括：
 
 返回结果:
 * [Buffer](../../object/ifs/Buffer.md), 返回解压缩后的二进制数据
@@ -245,6 +331,21 @@ static Buffer zlib.gzip(Buffer data) async;
 * [Buffer](../../object/ifs/Buffer.md), 返回压缩后的二进制数据
 
 --------------------------
+**使用 gzip 算法压缩数据**
+
+```JavaScript
+static Buffer zlib.gzip(Buffer data,
+    Object options) async;
+```
+
+调用参数:
+* data: [Buffer](../../object/ifs/Buffer.md), 给定要压缩的数据
+* options: Object, 指定压缩选项，支持的选项包括：
+
+返回结果:
+* [Buffer](../../object/ifs/Buffer.md), 返回压缩后的二进制数据
+
+--------------------------
 ### gzipTo
 **使用 gzip 算法压缩数据到流对象中**
 
@@ -281,6 +382,21 @@ static Buffer zlib.gunzip(Buffer data,
 调用参数:
 * data: [Buffer](../../object/ifs/Buffer.md), 给定压缩后的数据
 * maxSize: Integer, 指定解压缩尺寸限制，缺省为 -1，不限制
+
+返回结果:
+* [Buffer](../../object/ifs/Buffer.md), 返回解压缩后的二进制数据
+
+--------------------------
+**解压缩 gzip 算法压缩的数据**
+
+```JavaScript
+static Buffer zlib.gunzip(Buffer data,
+    Object options) async;
+```
+
+调用参数:
+* data: [Buffer](../../object/ifs/Buffer.md), 给定压缩后的数据
+* options: Object, 指定解压缩选项，支持的选项包括：
 
 返回结果:
 * [Buffer](../../object/ifs/Buffer.md), 返回解压缩后的二进制数据
@@ -331,6 +447,21 @@ static Buffer zlib.deflateRaw(Buffer data,
 * [Buffer](../../object/ifs/Buffer.md), 返回压缩后的二进制数据
 
 --------------------------
+**使用 deflate 算法压缩数据(deflateRaw)**
+
+```JavaScript
+static Buffer zlib.deflateRaw(Buffer data,
+    Object options) async;
+```
+
+调用参数:
+* data: [Buffer](../../object/ifs/Buffer.md), 给定要压缩的数据
+* options: Object, 指定压缩选项，支持的选项包括：
+
+返回结果:
+* [Buffer](../../object/ifs/Buffer.md), 返回压缩后的二进制数据
+
+--------------------------
 ### deflateRawTo
 **使用 deflate 算法压缩数据到流对象中(deflateRaw)**
 
@@ -376,6 +507,21 @@ static Buffer zlib.inflateRaw(Buffer data,
 * [Buffer](../../object/ifs/Buffer.md), 返回解压缩后的二进制数据
 
 --------------------------
+**解压缩 deflate 算法压缩的数据(inflateRaw)**
+
+```JavaScript
+static Buffer zlib.inflateRaw(Buffer data,
+    Object options) async;
+```
+
+调用参数:
+* data: [Buffer](../../object/ifs/Buffer.md), 给定压缩后的数据
+* options: Object, 指定解压缩选项，支持的选项包括：
+
+返回结果:
+* [Buffer](../../object/ifs/Buffer.md), 返回解压缩后的二进制数据
+
+--------------------------
 ### inflateRawTo
 **解压缩 deflate 算法压缩的数据到流对象中(inflateRaw)**
 
@@ -395,6 +541,158 @@ static zlib.inflateRawTo(Buffer data,
 
 ```JavaScript
 static zlib.inflateRawTo(Stream src,
+    Stream stm,
+    Integer maxSize = -1) async;
+```
+
+调用参数:
+* src: [Stream](../../object/ifs/Stream.md), 给定要解压缩的数据所在的流
+* stm: [Stream](../../object/ifs/Stream.md), 指定存储解压缩数据的流
+* maxSize: Integer, 指定解压缩尺寸限制，缺省为 -1，不限制
+
+--------------------------
+### createZip
+**创建一个 [zip](zip.md) 流对象**
+
+```JavaScript
+static Stream zlib.createZip(Stream to,
+    Integer level = DEFAULT_COMPRESSION);
+```
+
+调用参数:
+* to: [Stream](../../object/ifs/Stream.md), 用于存储处理结果的流
+* level: Integer, 指定压缩级别，缺省为 DEFAULT_COMPRESSION
+
+返回结果:
+* [Stream](../../object/ifs/Stream.md), 返回封装过的流对象
+
+--------------------------
+### createUnzip
+**创建一个 unzip 流对象**
+
+```JavaScript
+static Stream zlib.createUnzip(Stream to,
+    Integer maxSize = -1);
+```
+
+调用参数:
+* to: [Stream](../../object/ifs/Stream.md), 用于存储处理结果的流
+* maxSize: Integer, 指定解压缩尺寸限制，缺省为 -1，不限制
+
+返回结果:
+* [Stream](../../object/ifs/Stream.md), 返回封装过的流对象
+
+--------------------------
+### zip
+**使用 [zip](zip.md) 算法压缩数据**
+
+```JavaScript
+static Buffer zlib.zip(Buffer data,
+    Integer level = DEFAULT_COMPRESSION) async;
+```
+
+调用参数:
+* data: [Buffer](../../object/ifs/Buffer.md), 给定要压缩的数据
+* level: Integer, 指定压缩级别，缺省为 DEFAULT_COMPRESSION
+
+返回结果:
+* [Buffer](../../object/ifs/Buffer.md), 返回压缩后的二进制数据
+
+--------------------------
+**使用 [zip](zip.md) 算法压缩数据**
+
+```JavaScript
+static Buffer zlib.zip(Buffer data,
+    Object options) async;
+```
+
+调用参数:
+* data: [Buffer](../../object/ifs/Buffer.md), 给定要压缩的数据
+* options: Object, 指定压缩选项，支持的选项包括：
+
+返回结果:
+* [Buffer](../../object/ifs/Buffer.md), 返回压缩后的二进制数据
+
+--------------------------
+### zipTo
+**使用 [zip](zip.md) 算法压缩数据到流对象中**
+
+```JavaScript
+static zlib.zipTo(Buffer data,
+    Stream stm,
+    Integer level = DEFAULT_COMPRESSION) async;
+```
+
+调用参数:
+* data: [Buffer](../../object/ifs/Buffer.md), 给定要压缩的数据
+* stm: [Stream](../../object/ifs/Stream.md), 指定存储压缩数据的流
+* level: Integer, 指定压缩级别，缺省为 DEFAULT_COMPRESSION
+
+--------------------------
+**使用 [zip](zip.md) 算法压缩源流中的数据到流对象中**
+
+```JavaScript
+static zlib.zipTo(Stream src,
+    Stream stm,
+    Integer level = DEFAULT_COMPRESSION) async;
+```
+
+调用参数:
+* src: [Stream](../../object/ifs/Stream.md), 给定要压缩的数据所在的流
+* stm: [Stream](../../object/ifs/Stream.md), 指定存储压缩数据的流
+* level: Integer, 指定压缩级别，缺省为 DEFAULT_COMPRESSION
+
+--------------------------
+### unzip
+**解压缩 [zip](zip.md) 算法压缩的数据**
+
+```JavaScript
+static Buffer zlib.unzip(Buffer data,
+    Integer maxSize = -1) async;
+```
+
+调用参数:
+* data: [Buffer](../../object/ifs/Buffer.md), 给定压缩后的数据
+* maxSize: Integer, 指定解压缩尺寸限制，缺省为 -1，不限制
+
+返回结果:
+* [Buffer](../../object/ifs/Buffer.md), 返回解压缩后的二进制数据
+
+--------------------------
+**解压缩 [zip](zip.md) 算法压缩的数据**
+
+```JavaScript
+static Buffer zlib.unzip(Buffer data,
+    Object options) async;
+```
+
+调用参数:
+* data: [Buffer](../../object/ifs/Buffer.md), 给定压缩后的数据
+* options: Object, 指定解压缩选项，支持的选项包括：
+
+返回结果:
+* [Buffer](../../object/ifs/Buffer.md), 返回解压缩后的二进制数据
+
+--------------------------
+### unzipTo
+**解压缩 [zip](zip.md) 算法压缩的数据到流对象中**
+
+```JavaScript
+static zlib.unzipTo(Buffer data,
+    Stream stm,
+    Integer maxSize = -1) async;
+```
+
+调用参数:
+* data: [Buffer](../../object/ifs/Buffer.md), 给定要解压缩的数据
+* stm: [Stream](../../object/ifs/Stream.md), 指定存储解压缩数据的流
+* maxSize: Integer, 指定解压缩尺寸限制，缺省为 -1，不限制
+
+--------------------------
+**解压缩源流中 [zip](zip.md) 算法压缩的数据到流对象中**
+
+```JavaScript
+static zlib.unzipTo(Stream src,
     Stream stm,
     Integer maxSize = -1) async;
 ```

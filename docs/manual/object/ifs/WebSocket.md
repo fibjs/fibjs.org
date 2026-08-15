@@ -6,11 +6,12 @@ WebSocket 支持模块只是 WebSocket 协议的一个实现，需要在 HTTP �
 启动WebSocket服务器示例：
 
 ```JavaScript
-var ws = require('ws');
 var http = require('http');
 
 var svr = new http.Server(80, {
-    '/ws': ws.upgrade(conn => {
+    '/ws': WebSocket.upgrade({
+        protocols: ['json', 'text']
+    }, conn => {
         conn.onmessage = e => {
             conn.send('fibjs:' + e.data);
         };
@@ -22,12 +23,10 @@ svr.start();
 在客户端中与上述服务器建立连接的示例：
 
 ```JavaScript
-var ws = require("ws");
-
-var conn = new ws.Socket("ws://127.0.0.1/ws");
+var conn = new WebSocket("ws://127.0.0.1/ws", ['json', 'text']);
 // emit open event
 conn.onopen = () => {
-    console.log("websocket connected");
+    console.log("websocket connected with protocol:", conn.protocol);
     conn.send("hi");
 };
 // emit close event
@@ -42,8 +41,8 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\laddEventListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveEventListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
-    WebSocket [tooltip="WebSocket", fillcolor="lightgray", id="me", label="{WebSocket|new WebSocket()\l|url\lprotocol\lorigin\lreadyState\l|close()\lsend()\lref()\lunref()\l|event open\levent message\levent close\levent error\l}"];
+    EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|addAbortListener()\lonce()\lon()\l|defaultMaxListeners\l|on()\laddListener()\laddEventListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveEventListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\lrawListeners()\llistenerCount()\leventNames()\lemit()\l}"];
+    WebSocket [tooltip="WebSocket", fillcolor="lightgray", id="me", label="{WebSocket|new WebSocket()\l|Message\l|upgrade()\l|CONTINUE\lTEXT\lBINARY\lCLOSE\lPING\lPONG\lCONNECTING\lOPEN\lCLOSING\lCLOSED\l|url\lprotocol\lorigin\lreadyState\l|close()\lsend()\lref()\lunref()\l|event open\levent message\levent close\levent error\l}"];
 
     object -> EventEmitter [dir=back];
     EventEmitter -> WebSocket [dir=back];
@@ -71,6 +70,20 @@ new WebSocket(String url,
 
 ```JavaScript
 new WebSocket(String url,
+    String protocols[],
+    String origin = "");
+```
+
+调用参数:
+* url: String, 指定连接的服务器
+* protocols[]: String, 指定握手时的候选子协议列表
+* origin: String, 指定握手时模拟的源，缺省为 ""
+
+--------------------------
+**WebSocket 构造函数**
+
+```JavaScript
+new WebSocket(String url,
     Object opts);
 ```
 
@@ -83,6 +96,7 @@ opts 包含请求的附加选项，支持的内容如下：
 ```JavaScript
 {
     "protocol": "", // specify the sub-protocol, default is ""
+    "protocols": [], // specify candidate sub-protocols, takes precedence over protocol when provided
     "origin": "", // specify the origin, default is ""
     "perMessageDeflate": false, // specify whether to enable permessage-deflate, default is false
     "maxPayload": 67108864, // specify the max payload size, default is 64MB
@@ -91,6 +105,120 @@ opts 包含请求的附加选项，支持的内容如下：
 }
 ```
 
+## 对象
+        
+### Message
+**[WebSocketMessage](WebSocketMessage.md) 类，用于创建 WebSocket 协议消息，参见 [WebSocketMessage](WebSocketMessage.md) 对象**
+
+```JavaScript
+WebSocketMessage WebSocket.Message;
+```
+
+## 静态函数
+        
+### upgrade
+**创建一个 WebSocket 协议处理器，接收 [http](../../module/ifs/http.md) 的升级请求并握手，生成 WebSocket 对象**
+
+```JavaScript
+static Handler WebSocket.upgrade(Function accept);
+```
+
+调用参数:
+* accept: Function, 连接成功处理函数，回调将传递两个参数，第一个是收到的 WebSocket 对象，第二个是握手时的 [HttpRequest](HttpRequest.md) 对象
+
+返回结果:
+* [Handler](Handler.md), 返回协议处理器，可与 [HttpServer](HttpServer.md), [Chain](Chain.md), [Routing](Routing.md) 等配合使用
+
+--------------------------
+**创建一个 WebSocket 协议处理器，接收 [http](../../module/ifs/http.md) 的升级请求并握手，生成 WebSocket 对象**
+
+```JavaScript
+static Handler WebSocket.upgrade(Object opts,
+    Function accept);
+```
+
+调用参数:
+* opts: Object, 连接选项，缺省为 {}
+* accept: Function, 连接成功处理函数，回调将传递两个参数，第一个是收到的 WebSocket 对象，第二个是握手时的 [HttpRequest](HttpRequest.md) 对象
+
+返回结果:
+* [Handler](Handler.md), 返回协议处理器，可与 [HttpServer](HttpServer.md), [Chain](Chain.md), [Routing](Routing.md) 等配合使用
+
+opts 支持使用 `protocol` 或 `protocols` 指定服务端可接受的子协议，并在握手成功时回写 `Sec-WebSocket-Protocol`，例如：
+
+```JavaScript
+WebSocket.upgrade({
+    protocols: ['json', 'text']
+}, conn => {
+    console.log(conn.protocol); // selected sub-protocol
+})
+```
+
+--------------------------
+### addAbortListener
+**监听一个 [AbortSignal](AbortSignal.md) 的 abort 事件，返回一个可释放的对象**
+
+```JavaScript
+static Object WebSocket.addAbortListener(EventEmitter signal,
+    Function func);
+```
+
+调用参数:
+* signal: [EventEmitter](EventEmitter.md), 要监听的 [AbortSignal](AbortSignal.md) 对象
+* func: Function, abort 事件的处理函数
+
+返回结果:
+* Object, 返回一个包含 `[Symbol.dispose]` 方法的 Disposable 对象
+
+返回的对象包含 `[Symbol.dispose]()` 方法，调用后将移除监听器。如果信号已中止，则监听器会被立即调用。
+
+--------------------------
+### once
+**创建一个 Promise，等待指定事件触发一次后解析**
+
+```JavaScript
+static Object WebSocket.once(EventEmitter emitter,
+    Value ev,
+    Object options = {});
+```
+
+调用参数:
+* emitter: [EventEmitter](EventEmitter.md), 要监听的事件触发器对象
+* ev: Value, 指定事件的名称
+* options: Object, 可选参数对象
+
+返回结果:
+* Object, 返回 Promise，以事件参数数组解析
+
+返回一个 Promise，当目标事件触发时以事件参数数组解析。如果在此期间触发 'error' 事件（且监听的不是 'error' 事件本身），Promise 将被拒绝。
+
+options 参数可包含：
+- signal: [AbortSignal](AbortSignal.md)，用于取消等待
+
+--------------------------
+### on
+**创建一个异步迭代器，持续监听指定事件**
+
+```JavaScript
+static Object WebSocket.on(EventEmitter emitter,
+    Value ev,
+    Object options = {});
+```
+
+调用参数:
+* emitter: [EventEmitter](EventEmitter.md), 要监听的事件触发器对象
+* ev: Value, 指定事件的名称
+* options: Object, 可选参数对象
+
+返回结果:
+* Object, 返回 AsyncIterator 对象
+
+返回一个 AsyncIterator，每次事件触发时产出事件参数数组。如果触发 'error' 事件，迭代器将抛出错误。
+
+options 参数可包含：
+- signal: [AbortSignal](AbortSignal.md)，用于取消迭代
+- close: 字符串数组，指定结束迭代的事件名称
+
 ## 静态属性
         
 ### defaultMaxListeners
@@ -98,6 +226,87 @@ opts 包含请求的附加选项，支持的内容如下：
 
 ```JavaScript
 static Integer WebSocket.defaultMaxListeners;
+```
+
+## 常量
+        
+### CONTINUE
+**指定 WebSocket 消息类型 0，表示一个 continuation 帧**
+
+```JavaScript
+const WebSocket.CONTINUE = 0;
+```
+
+--------------------------
+### TEXT
+**指定 WebSocket 消息类型 1，表示一个 text 帧**
+
+```JavaScript
+const WebSocket.TEXT = 1;
+```
+
+--------------------------
+### BINARY
+**指定 WebSocket 消息类型 2，表示一个 binary 帧**
+
+```JavaScript
+const WebSocket.BINARY = 2;
+```
+
+--------------------------
+### CLOSE
+**指定 WebSocket 消息类型 8，连接关闭**
+
+```JavaScript
+const WebSocket.CLOSE = 8;
+```
+
+--------------------------
+### PING
+**指定 WebSocket 消息类型 9，表示一个 ping 帧**
+
+```JavaScript
+const WebSocket.PING = 9;
+```
+
+--------------------------
+### PONG
+**指定 WebSocket 消息类型 10，表示一个 pong 帧**
+
+```JavaScript
+const WebSocket.PONG = 10;
+```
+
+--------------------------
+### CONNECTING
+**指定 WebSocket 状态，表示正在连接**
+
+```JavaScript
+const WebSocket.CONNECTING = 0;
+```
+
+--------------------------
+### OPEN
+**指定 WebSocket 状态，表示已连接**
+
+```JavaScript
+const WebSocket.OPEN = 1;
+```
+
+--------------------------
+### CLOSING
+**指定 WebSocket 状态，表示正在关闭**
+
+```JavaScript
+const WebSocket.CLOSING = 2;
+```
+
+--------------------------
+### CLOSED
+**指定 WebSocket 状态，表示已关闭**
+
+```JavaScript
+const WebSocket.CLOSED = 3;
 ```
 
 ## 成员属性
@@ -127,7 +336,7 @@ readonly String WebSocket.origin;
 
 --------------------------
 ### readyState
-**Integer, 查询当前对象的连接状态，参见 [ws](../../module/ifs/ws.md)**
+**Integer, 查询当前对象的连接状态，参见 ws**
 
 ```JavaScript
 readonly Integer WebSocket.readyState;
@@ -195,12 +404,12 @@ WebSocket WebSocket.unref();
 **绑定一个事件处理函数到对象**
 
 ```JavaScript
-Object WebSocket.on(String ev,
+Object WebSocket.on(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -224,12 +433,12 @@ Object WebSocket.on(Object map);
 **绑定一个事件处理函数到对象**
 
 ```JavaScript
-Object WebSocket.addListener(String ev,
+Object WebSocket.addListener(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -253,13 +462,13 @@ Object WebSocket.addListener(Object map);
 **绑定一个事件处理函数到对象**
 
 ```JavaScript
-Object WebSocket.addEventListener(String ev,
+Object WebSocket.addEventListener(Value ev,
     Function func,
     Object options = {});
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 * options: Object, 指定事件处理函数的选项
 
@@ -274,12 +483,12 @@ options 参数是一个对象，它可以包含以下属性：
 **绑定一个事件处理函数到对象起始**
 
 ```JavaScript
-Object WebSocket.prependListener(String ev,
+Object WebSocket.prependListener(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -303,12 +512,12 @@ Object WebSocket.prependListener(Object map);
 **绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次**
 
 ```JavaScript
-Object WebSocket.once(String ev,
+Object WebSocket.once(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -332,12 +541,12 @@ Object WebSocket.once(Object map);
 **绑定一个事件处理函数到对象起始**
 
 ```JavaScript
-Object WebSocket.prependOnceListener(String ev,
+Object WebSocket.prependOnceListener(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -361,12 +570,12 @@ Object WebSocket.prependOnceListener(Object map);
 **从对象处理队列中取消指定函数**
 
 ```JavaScript
-Object WebSocket.off(String ev,
+Object WebSocket.off(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -376,11 +585,11 @@ Object WebSocket.off(String ev,
 **取消对象处理队列中的全部函数**
 
 ```JavaScript
-Object WebSocket.off(String ev);
+Object WebSocket.off(Value ev);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 
 返回结果:
 * Object, 返回事件对象本身，便于链式调用
@@ -403,12 +612,12 @@ Object WebSocket.off(Object map);
 **从对象处理队列中取消指定函数**
 
 ```JavaScript
-Object WebSocket.removeListener(String ev,
+Object WebSocket.removeListener(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -418,11 +627,11 @@ Object WebSocket.removeListener(String ev,
 **取消对象处理队列中的全部函数**
 
 ```JavaScript
-Object WebSocket.removeListener(String ev);
+Object WebSocket.removeListener(Value ev);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 
 返回结果:
 * Object, 返回事件对象本身，便于链式调用
@@ -445,13 +654,13 @@ Object WebSocket.removeListener(Object map);
 **从对象处理队列中取消指定函数**
 
 ```JavaScript
-Object WebSocket.removeEventListener(String ev,
+Object WebSocket.removeEventListener(Value ev,
     Function func,
     Object options = {});
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 * options: Object, 指定事件处理函数的选项
 
@@ -463,11 +672,11 @@ Object WebSocket.removeEventListener(String ev,
 **从对象处理队列中取消所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。**
 
 ```JavaScript
-Object WebSocket.removeAllListeners(String ev);
+Object WebSocket.removeAllListeners(Value ev);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 
 返回结果:
 * Object, 返回事件对象本身，便于链式调用
@@ -512,11 +721,25 @@ Integer WebSocket.getMaxListeners();
 **查询对象指定事件的监听器数组**
 
 ```JavaScript
-Array WebSocket.listeners(String ev);
+Array WebSocket.listeners(Value ev);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
+
+返回结果:
+* Array, 返回指定事件的监听器数组
+
+--------------------------
+### rawListeners
+**查询对象指定事件的监听器数组，包含 once 包装函数**
+
+```JavaScript
+Array WebSocket.rawListeners(Value ev);
+```
+
+调用参数:
+* ev: Value, 指定事件的名称
 
 返回结果:
 * Array, 返回指定事件的监听器数组
@@ -526,11 +749,11 @@ Array WebSocket.listeners(String ev);
 **查询对象指定事件的监听器数量**
 
 ```JavaScript
-Integer WebSocket.listenerCount(String ev);
+Integer WebSocket.listenerCount(Value ev);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 
 返回结果:
 * Integer, 返回指定事件的监听器数量
@@ -540,12 +763,12 @@ Integer WebSocket.listenerCount(String ev);
 
 ```JavaScript
 Integer WebSocket.listenerCount(Value o,
-    String ev);
+    Value ev);
 ```
 
 调用参数:
 * o: Value, 指定查询的对象
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 
 返回结果:
 * Integer, 返回指定事件的监听器数量
@@ -566,12 +789,12 @@ Array WebSocket.eventNames();
 **主动触发一个事件**
 
 ```JavaScript
-Boolean WebSocket.emit(String ev,
+Boolean WebSocket.emit(Value ev,
     ...args);
 ```
 
 调用参数:
-* ev: String, 事件名称
+* ev: Value, 事件名称
 * args: ..., 事件参数，将会传递给事件处理函数
 
 返回结果:

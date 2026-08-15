@@ -7,13 +7,134 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\laddEventListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveEventListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
-    AbortSignal [tooltip="AbortSignal", fillcolor="lightgray", id="me", label="{AbortSignal|aborted\l|abort()\l|event abort\l}"];
+    EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|addAbortListener()\lonce()\lon()\l|defaultMaxListeners\l|on()\laddListener()\laddEventListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveEventListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\lrawListeners()\llistenerCount()\leventNames()\lemit()\l}"];
+    AbortSignal [tooltip="AbortSignal", fillcolor="lightgray", id="me", label="{AbortSignal|abort()\ltimeout()\lany()\l|aborted\lreason\l|throwIfAborted()\l|event abort\l}"];
 
     object -> EventEmitter [dir=back];
     EventEmitter -> AbortSignal [dir=back];
 }
 ```
+
+## 静态函数
+        
+### abort
+**用于中止一个或多个 Web 请求**
+
+```JavaScript
+static AbortSignal AbortSignal.abort(String reason = "AbortError");
+```
+
+调用参数:
+* reason: String, 一个可选的字符串，用于描述中止请求的原因
+
+返回结果:
+* AbortSignal, 返回一个 AbortSignal 对象
+
+--------------------------
+**用于中止一个或多个 Web 请求**
+
+```JavaScript
+static AbortSignal AbortSignal.abort(Value reason);
+```
+
+调用参数:
+* reason: Value, 一个任意类型的值，用于描述中止请求的原因
+
+返回结果:
+* AbortSignal, 返回一个 AbortSignal 对象
+
+--------------------------
+### timeout
+**创建一个会在超时后自动中止的 AbortSignal**
+
+```JavaScript
+static AbortSignal AbortSignal.timeout(Number ms);
+```
+
+调用参数:
+* ms: Number, 超时时间（毫秒）
+
+返回结果:
+* AbortSignal, 返回一个将在 ms 毫秒后中止的 AbortSignal 对象
+
+--------------------------
+### any
+**创建一个在任意给定信号中止时即中止的 AbortSignal**
+
+```JavaScript
+static AbortSignal AbortSignal.any(Array signals);
+```
+
+调用参数:
+* signals: Array, 一个 AbortSignal 对象的数组
+
+返回结果:
+* AbortSignal, 返回一个复合的 AbortSignal 对象
+
+--------------------------
+### addAbortListener
+**监听一个 AbortSignal 的 abort 事件，返回一个可释放的对象**
+
+```JavaScript
+static Object AbortSignal.addAbortListener(EventEmitter signal,
+    Function func);
+```
+
+调用参数:
+* signal: [EventEmitter](EventEmitter.md), 要监听的 AbortSignal 对象
+* func: Function, abort 事件的处理函数
+
+返回结果:
+* Object, 返回一个包含 `[Symbol.dispose]` 方法的 Disposable 对象
+
+返回的对象包含 `[Symbol.dispose]()` 方法，调用后将移除监听器。如果信号已中止，则监听器会被立即调用。
+
+--------------------------
+### once
+**创建一个 Promise，等待指定事件触发一次后解析**
+
+```JavaScript
+static Object AbortSignal.once(EventEmitter emitter,
+    Value ev,
+    Object options = {});
+```
+
+调用参数:
+* emitter: [EventEmitter](EventEmitter.md), 要监听的事件触发器对象
+* ev: Value, 指定事件的名称
+* options: Object, 可选参数对象
+
+返回结果:
+* Object, 返回 Promise，以事件参数数组解析
+
+返回一个 Promise，当目标事件触发时以事件参数数组解析。如果在此期间触发 'error' 事件（且监听的不是 'error' 事件本身），Promise 将被拒绝。
+
+options 参数可包含：
+- signal: AbortSignal，用于取消等待
+
+--------------------------
+### on
+**创建一个异步迭代器，持续监听指定事件**
+
+```JavaScript
+static Object AbortSignal.on(EventEmitter emitter,
+    Value ev,
+    Object options = {});
+```
+
+调用参数:
+* emitter: [EventEmitter](EventEmitter.md), 要监听的事件触发器对象
+* ev: Value, 指定事件的名称
+* options: Object, 可选参数对象
+
+返回结果:
+* Object, 返回 AsyncIterator 对象
+
+返回一个 AsyncIterator，每次事件触发时产出事件参数数组。如果触发 'error' 事件，迭代器将抛出错误。
+
+options 参数可包含：
+- signal: AbortSignal，用于取消迭代
+- close: 字符串数组，指定结束迭代的事件名称
 
 ## 静态属性
         
@@ -33,29 +154,34 @@ static Integer AbortSignal.defaultMaxListeners;
 readonly Boolean AbortSignal.aborted;
 ```
 
-## 成员函数
-        
-### abort
-**用于中止一个或多个 Web 请求**
+--------------------------
+### reason
+**Value, 获取中止请求的原因**
 
 ```JavaScript
-AbortSignal.abort(String reason = "AbortError");
+readonly Value AbortSignal.reason;
 ```
 
-调用参数:
-* reason: String, 一个可选的字符串，用于描述中止请求的原因
+## 成员函数
+        
+### throwIfAborted
+**如果请求已中止，则抛出异常**
+
+```JavaScript
+AbortSignal.throwIfAborted();
+```
 
 --------------------------
 ### on
 **绑定一个事件处理函数到对象**
 
 ```JavaScript
-Object AbortSignal.on(String ev,
+Object AbortSignal.on(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -79,12 +205,12 @@ Object AbortSignal.on(Object map);
 **绑定一个事件处理函数到对象**
 
 ```JavaScript
-Object AbortSignal.addListener(String ev,
+Object AbortSignal.addListener(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -108,13 +234,13 @@ Object AbortSignal.addListener(Object map);
 **绑定一个事件处理函数到对象**
 
 ```JavaScript
-Object AbortSignal.addEventListener(String ev,
+Object AbortSignal.addEventListener(Value ev,
     Function func,
     Object options = {});
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 * options: Object, 指定事件处理函数的选项
 
@@ -129,12 +255,12 @@ options 参数是一个对象，它可以包含以下属性：
 **绑定一个事件处理函数到对象起始**
 
 ```JavaScript
-Object AbortSignal.prependListener(String ev,
+Object AbortSignal.prependListener(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -158,12 +284,12 @@ Object AbortSignal.prependListener(Object map);
 **绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次**
 
 ```JavaScript
-Object AbortSignal.once(String ev,
+Object AbortSignal.once(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -187,12 +313,12 @@ Object AbortSignal.once(Object map);
 **绑定一个事件处理函数到对象起始**
 
 ```JavaScript
-Object AbortSignal.prependOnceListener(String ev,
+Object AbortSignal.prependOnceListener(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -216,12 +342,12 @@ Object AbortSignal.prependOnceListener(Object map);
 **从对象处理队列中取消指定函数**
 
 ```JavaScript
-Object AbortSignal.off(String ev,
+Object AbortSignal.off(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -231,11 +357,11 @@ Object AbortSignal.off(String ev,
 **取消对象处理队列中的全部函数**
 
 ```JavaScript
-Object AbortSignal.off(String ev);
+Object AbortSignal.off(Value ev);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 
 返回结果:
 * Object, 返回事件对象本身，便于链式调用
@@ -258,12 +384,12 @@ Object AbortSignal.off(Object map);
 **从对象处理队列中取消指定函数**
 
 ```JavaScript
-Object AbortSignal.removeListener(String ev,
+Object AbortSignal.removeListener(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -273,11 +399,11 @@ Object AbortSignal.removeListener(String ev,
 **取消对象处理队列中的全部函数**
 
 ```JavaScript
-Object AbortSignal.removeListener(String ev);
+Object AbortSignal.removeListener(Value ev);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 
 返回结果:
 * Object, 返回事件对象本身，便于链式调用
@@ -300,13 +426,13 @@ Object AbortSignal.removeListener(Object map);
 **从对象处理队列中取消指定函数**
 
 ```JavaScript
-Object AbortSignal.removeEventListener(String ev,
+Object AbortSignal.removeEventListener(Value ev,
     Function func,
     Object options = {});
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 * options: Object, 指定事件处理函数的选项
 
@@ -318,11 +444,11 @@ Object AbortSignal.removeEventListener(String ev,
 **从对象处理队列中取消所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。**
 
 ```JavaScript
-Object AbortSignal.removeAllListeners(String ev);
+Object AbortSignal.removeAllListeners(Value ev);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 
 返回结果:
 * Object, 返回事件对象本身，便于链式调用
@@ -367,11 +493,25 @@ Integer AbortSignal.getMaxListeners();
 **查询对象指定事件的监听器数组**
 
 ```JavaScript
-Array AbortSignal.listeners(String ev);
+Array AbortSignal.listeners(Value ev);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
+
+返回结果:
+* Array, 返回指定事件的监听器数组
+
+--------------------------
+### rawListeners
+**查询对象指定事件的监听器数组，包含 once 包装函数**
+
+```JavaScript
+Array AbortSignal.rawListeners(Value ev);
+```
+
+调用参数:
+* ev: Value, 指定事件的名称
 
 返回结果:
 * Array, 返回指定事件的监听器数组
@@ -381,11 +521,11 @@ Array AbortSignal.listeners(String ev);
 **查询对象指定事件的监听器数量**
 
 ```JavaScript
-Integer AbortSignal.listenerCount(String ev);
+Integer AbortSignal.listenerCount(Value ev);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 
 返回结果:
 * Integer, 返回指定事件的监听器数量
@@ -395,12 +535,12 @@ Integer AbortSignal.listenerCount(String ev);
 
 ```JavaScript
 Integer AbortSignal.listenerCount(Value o,
-    String ev);
+    Value ev);
 ```
 
 调用参数:
 * o: Value, 指定查询的对象
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 
 返回结果:
 * Integer, 返回指定事件的监听器数量
@@ -421,12 +561,12 @@ Array AbortSignal.eventNames();
 **主动触发一个事件**
 
 ```JavaScript
-Boolean AbortSignal.emit(String ev,
+Boolean AbortSignal.emit(Value ev,
     ...args);
 ```
 
 调用参数:
-* ev: String, 事件名称
+* ev: Value, 事件名称
 * args: ..., 事件参数，将会传递给事件处理函数
 
 返回结果:

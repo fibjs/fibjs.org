@@ -70,11 +70,11 @@ pathObject 支持的字段如下：
 
 ```JavaScript
 {
-    "dir": "", // specify the directory of the path
-    "root": "", // specify the root of the path
-    "base": "", // specify the base of the path, it's the combination of name and ext
-    "name": "", // specify the name of the path
-    "ext": "", // specify the ext of the path
+    "dir": "", // Specify the directory of the path
+    "root": "", // Specify the root of the path
+    "base": "", // Specify the base name of the path, which is the combination of name and ext
+    "name": "", // Specify the name of the path
+    "ext": "", // Specify the extension of the path
 }
 ```
 
@@ -212,22 +212,6 @@ see: https://msdn.microsoft.com/library/windows/desktop/aa365247(v=vs.85).aspx#n
 
 ## 静态属性
         
-### sep
-**String, 查询当前操作系统的路径分割字符，posix 返回 '/', windows 返回  '\\'**
-
-```JavaScript
-static readonly String path_posix.sep;
-```
-
---------------------------
-### delimiter
-**String, 查询当前操作系统的多路径组合字符，posix 返回 ':', windows 返回  ';'**
-
-```JavaScript
-static readonly String path_posix.delimiter;
-```
-
---------------------------
 ### posix
 **Object, posix 实现，参见 path_posix**
 
@@ -241,5 +225,22 @@ static readonly Object path_posix.posix;
 
 ```JavaScript
 static readonly Object path_posix.win32;
+```
+
+## 常量
+        
+### sep
+**查询当前操作系统的路径分割字符，posix 返回 '/', windows 返回  '\\'**
+
+```JavaScript
+const path_posix.sep = "/";
+```
+
+--------------------------
+### delimiter
+**查询当前操作系统的多路径组合字符，posix 返回 ':', windows 返回  ';'**
+
+```JavaScript
+const path_posix.delimiter = ":";
 ```
 

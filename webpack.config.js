@@ -208,9 +208,7 @@ function build_docs() {
 
     var _tmpl = ejs.compile(fs.readFileSync(path.join(config.dist, 'docs.html')).toString());
 
-    function read_doc(p) {
-        var md = fs.readFileSync(p).toString();
-
+    function render_md(md, basePath) {
         md = md.replace(/```\s*(\S+)((.|\n)*?)```/g, (txt, lang, code) => {
             return render[lang] ? render[lang](txt, lang, code) : txt;
         });
@@ -237,7 +235,7 @@ function build_docs() {
             so = so.toLowerCase() + ".html";
             if (s2)
                 so += s2;
-            so = "/" + path.join(path.dirname(p), so);
+            so = "/" + path.join(path.dirname(basePath), so);
             so = 'href="' + so + '"';
             return so;
         });
@@ -245,9 +243,33 @@ function build_docs() {
         return html;
     }
 
+    function read_doc(p) {
+        return render_md(fs.readFileSync(p).toString(), p);
+    }
+
+    // 根目录总 SUMMARY.md 按 "# 分组标题" 分区，提取各分组导航
+    var masterSummary = fs.readFileSync(path.join(config.from, 'SUMMARY.md')).toString();
+    var sections = {};
+    var cur = null;
+    var buf = [];
+
+    masterSummary.split('\n').forEach(function (line) {
+        var m = /^#\s+(.+?)\s*$/.exec(line);
+        if (m) {
+            if (cur)
+                sections[cur] = buf.join('\n');
+            cur = m[1];
+            buf = [];
+        } else if (cur)
+            buf.push(line);
+    });
+
+    if (cur)
+        sections[cur] = buf.join('\n');
+
     for (var g in groups) {
         groups[g].url = "/" + path.join(config.from, groups[g].path, 'readme.md.html');
-        groups[g].toc = read_doc(path.join(config.from, groups[g].path, 'SUMMARY.md'));
+        groups[g].toc = render_md(sections[groups[g].title] || '', path.join(config.from, 'SUMMARY.md'));
     }
 
     function test_group(p) {
@@ -260,7 +282,7 @@ function build_docs() {
 
     recursiveReadSync(config.from).forEach(function (file) {
         var basename = path.basename(file);
-        if (basename.charAt(0) !== '.') {
+        if (basename.charAt(0) !== '.' && basename !== 'SUMMARY.md' && basename !== 'INDEX.md') {
 
             var p = path.relative(config.from, file.toLowerCase());
             p = path.join(config.to, p);

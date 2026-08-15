@@ -1,6 +1,16 @@
 # 模块 process
 进程处理模块，用以管理当前进程的资源
 
+模块的主要能力：
+
+- **进程信息**：`argv`、`execArgv`、`version`、`execPath`、`arch`、`platform`、`pid`、`ppid`、`env` 等属性；
+- **进程控制**：`exit` 退出进程、`exitCode` 退出码、`cwd`/`chdir` 工作路径、`umask`、`uptime`、`hrtime` 计时、`kill` 发送信号；
+- **资源报告**：`cpuUsage`、`memoryUsage`、`resourceUsage`；
+- **调度**：`nextTick` 启动纤程执行函数；
+- **标准流**：`stdin`、`stdout`、`stderr`；
+- **父子进程通信**：`send`、`disconnect`、`connected`；
+- **进程事件**：`beforeExit`、`exit`、`unhandledRejection`、`warning`、信号事件（详见下文）。
+
 引用方法：
 
 ```JavaScript
@@ -20,6 +30,17 @@ process.on('beforeExit', exitCode => {});
 正常情况下，如果没有额外的工作被添加到任务队列，fibjs 进程会结束。但是如果 `beforeExit` 事件绑定的监听器的回调函数中，启动了一个新的任务，比如开启一个 fiber，那么 fibjs 进程会继续运行。
 
 [process.exitCode](process.md#exitCode) 作为唯一的参数值传递给 `beforeExit` 事件监听器的回调函数。如果进程由于显式的原因而将要终止，例如直接调用 [process.exit](process.md#exit) 或抛出未捕获的异常，`beforeExit`事件不会被触发。
+
+### unhandledRejection 事件
+**当 Promise 被拒绝且没有绑定错误处理时，事件 `unhandledRejection` 会被触发**
+
+```JavaScript
+process.on('unhandledRejection', (reason, promise) => {});
+```
+
+`unhandledRejection` 事件监听器的回调函数有两个入参：第一个是拒绝原因 `reason`，第二个是被拒绝的 `promise` 对象。
+
+如果 `unhandledRejection` 事件没有绑定任何监听器，fibjs 会在打印错误后以退出码 1 终止进程（与 node >= 15 行为一致），`beforeExit` 事件不会被触发。
 
 ### exit 事件
 **当 fibjs 退出时，事件 `exit` 会被触发，一旦所有与 `exit` 事件绑定的监听器执行完成，进程会终止**
@@ -156,6 +177,17 @@ static process.chdir(String directory);
 * directory: String, 指定设定的新路径
 
 --------------------------
+### loadEnvFile
+**从 dotenv 文件加载环境变量到 [process.env](process.md#env)**
+
+```JavaScript
+static process.loadEnvFile(String path = "");
+```
+
+调用参数:
+* path: String, 指定 dotenv 文件路径，空字符串时默认读取当前目录下的 .env
+
+--------------------------
 ### uptime
 **查询运行环境运行时间，以秒为单位**
 
@@ -234,28 +266,28 @@ resourceUsage 生成类似以下结果：
 
 ```JavaScript
 {
-    "userCPUTime": 132379, // 用户 CPU 时间(微秒)，与 process.cpuUsage().user 相同
-    "systemCPUTime": 50507, // 系统 CPU 时间(微秒)，与 process.cpuUsage().system 相同
-    "maxRSS": 8622080, // 最大物理内存使用量(KB)
-    "sharedMemorySize": 0, // 共享内存大小(不支持)
-    "unsharedDataSize": 0, // 非共享数据大小(不支持)
-    "unsharedStackSize": 0, // 非共享栈大小(不支持)
-    "minorPageFault": 2, // 次要页面错误次数
-    "majorPageFault": 0, // 主要页面错误次数(Windows 不支持)
-    "swappedOut": 0, // 交换到磁盘次数(不支持)
-    "fsRead": 100, // 文件系统读取次数
-    "fsWrite": 50, // 文件系统写入次数
-    "ipcSent": 0, // IPC 消息发送次数(不支持)
-    "ipcReceived": 0, // IPC 消息接收次数(不支持)
-    "signalsCount": 0, // 信号接收次数(不支持)
-    "voluntaryContextSwitches": 1000, // 主动上下文切换次数(Windows 不支持)
-    "involuntaryContextSwitches": 500 // 被动上下文切换次数(Windows 不支持)
+    "userCPUTime": 132379, // User CPU time (microseconds), same as process.cpuUsage().user
+    "systemCPUTime": 50507, // System CPU time (microseconds), same as process.cpuUsage().system
+    "maxRSS": 8622080, // Maximum physical memory usage (KB)
+    "sharedMemorySize": 0, // Shared memory size (not supported)
+    "unsharedDataSize": 0, // Unshared data size (not supported)
+    "unsharedStackSize": 0, // Unshared stack size (not supported)
+    "minorPageFault": 2, // Number of minor page faults
+    "majorPageFault": 0, // Number of major page faults (not supported on Windows)
+    "swappedOut": 0, // Number of times swapped out (not supported)
+    "fsRead": 100, // Number of filesystem reads
+    "fsWrite": 50, // Number of filesystem writes
+    "ipcSent": 0, // Number of IPC messages sent (not supported)
+    "ipcReceived": 0, // Number of IPC messages received (not supported)
+    "signalsCount": 0, // Number of signals received (not supported)
+    "voluntaryContextSwitches": 1000, // Number of voluntary context switches (not supported on Windows)
+    "involuntaryContextSwitches": 500 // Number of involuntary context switches (not supported on Windows)
 }
 ```
 
 --------------------------
 ### nextTick
-**启动一个纤程**
+**启动一个纤程执行指定的函数**
 
 ```JavaScript
 static process.nextTick(Function func,
@@ -265,6 +297,8 @@ static process.nextTick(Function func,
 调用参数:
 * func: Function, 制定纤程执行的函数
 * args: ..., 可变参数序列，此序列会在纤程内传递给函数
+
+回调在当前同步代码执行完毕后启动,多个 nextTick 回调按注册顺序执行;args 中的参数将传递给函数。
 
 --------------------------
 ### binding
@@ -384,6 +418,31 @@ static process.emitWarning(Value warning,
 * code: String, 指定发出的警告实例的唯一标识符
 
 --------------------------
+### kill
+**向指定的进程发送一个信号**
+
+```JavaScript
+static process.kill(Integer pid,
+    Integer signal);
+```
+
+调用参数:
+* pid: Integer, 指定进程的 id
+* signal: Integer, 指定发送的信号编号
+
+--------------------------
+**向指定的进程发送一个信号**
+
+```JavaScript
+static process.kill(Integer pid,
+    String signal = "SIGTERM");
+```
+
+调用参数:
+* pid: Integer, 指定进程的 id
+* signal: String, 指定发送的信号名称，默认为 SIGTERM
+
+--------------------------
 ### disconnect
 **关闭与父进程的 ipc 管道**
 
@@ -408,7 +467,7 @@ static process.send(Value msg);
 **Array, 返回当前进程的命令行参数**
 
 ```JavaScript
-static readonly Array process.argv;
+static Array process.argv;
 ```
 
 --------------------------
@@ -468,6 +527,14 @@ static readonly String process.platform;
 ```
 
 --------------------------
+### release
+**Object, 返回当前构建的发布元数据，name 设为 'node'**
+
+```JavaScript
+static readonly Object process.release;
+```
+
+--------------------------
 ### pid
 **Integer, 读取当前对象指向的进程的 id**
 
@@ -521,5 +588,14 @@ static Integer process.exitCode;
 
 ```JavaScript
 static readonly Boolean process.connected;
+```
+
+## 常量
+        
+### title
+**当前进程标题，固定为 'fibjs'**
+
+```JavaScript
+const process.title = "fibjs";
 ```
 

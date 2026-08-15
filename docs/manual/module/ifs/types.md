@@ -654,3 +654,157 @@ static Boolean types.isBigUint64Array(Value v);
 返回结果:
 * Boolean, 如果是 BigUint64Array 类型则返回 True
 
+--------------------------
+### isFloat16Array
+**检测给定的变量是否是 Float16Array 类型**
+
+```JavaScript
+static Boolean types.isFloat16Array(Value v);
+```
+
+调用参数:
+* v: Value, 给定需要检测的变量
+
+返回结果:
+* Boolean, 如果是 Float16Array 类型则返回 True
+
+--------------------------
+### isAnyArrayBuffer
+**检测给定的变量是否是 ArrayBuffer 或 SharedArrayBuffer 类型**
+
+```JavaScript
+static Boolean types.isAnyArrayBuffer(Value v);
+```
+
+调用参数:
+* v: Value, 给定需要检测的变量
+
+返回结果:
+* Boolean, 如果是 ArrayBuffer 或 SharedArrayBuffer 类型则返回 True
+
+--------------------------
+### isSharedArrayBuffer
+**检测给定的变量是否是 SharedArrayBuffer 类型**
+
+```JavaScript
+static Boolean types.isSharedArrayBuffer(Value v);
+```
+
+调用参数:
+* v: Value, 给定需要检测的变量
+
+返回结果:
+* Boolean, 如果是 SharedArrayBuffer 类型则返回 True
+
+--------------------------
+### isArgumentsObject
+**检测给定的变量是否是 arguments 对象**
+
+```JavaScript
+static Boolean types.isArgumentsObject(Value v);
+```
+
+调用参数:
+* v: Value, 给定需要检测的变量
+
+返回结果:
+* Boolean, 如果是 arguments 对象则返回 True
+
+--------------------------
+### isBoxedPrimitive
+**检测给定的变量是否是装箱的原始类型对象（如 new Boolean()、new String() 等）**
+
+```JavaScript
+static Boolean types.isBoxedPrimitive(Value v);
+```
+
+调用参数:
+* v: Value, 给定需要检测的变量
+
+返回结果:
+* Boolean, 如果是装箱的原始类型对象则返回 True
+
+--------------------------
+### isGeneratorFunction
+**检测给定的变量是否是 GeneratorFunction 类型**
+
+```JavaScript
+static Boolean types.isGeneratorFunction(Value v);
+```
+
+调用参数:
+* v: Value, 给定需要检测的变量
+
+返回结果:
+* Boolean, 如果是 GeneratorFunction 类型则返回 True
+
+--------------------------
+### isGeneratorObject
+**检测给定的变量是否是 Generator 对象**
+
+```JavaScript
+static Boolean types.isGeneratorObject(Value v);
+```
+
+调用参数:
+* v: Value, 给定需要检测的变量
+
+返回结果:
+* Boolean, 如果是 Generator 对象则返回 True
+
+--------------------------
+### isProxy
+**检测给定的变量是否是 Proxy 实例**
+
+```JavaScript
+static Boolean types.isProxy(Value v);
+```
+
+调用参数:
+* v: Value, 给定需要检测的变量
+
+返回结果:
+* Boolean, 如果是 Proxy 实例则返回 True
+
+--------------------------
+### isModuleNamespaceObject
+**检测给定的变量是否是 Module Namespace 对象**
+
+```JavaScript
+static Boolean types.isModuleNamespaceObject(Value v);
+```
+
+调用参数:
+* v: Value, 给定需要检测的变量
+
+返回结果:
+* Boolean, 如果是 Module Namespace 对象则返回 True
+
+--------------------------
+### isCryptoKey
+**检测给定的变量是否是 [CryptoKey](../../object/ifs/CryptoKey.md) 类型**
+
+```JavaScript
+static Boolean types.isCryptoKey(Value v);
+```
+
+调用参数:
+* v: Value, 给定需要检测的变量
+
+返回结果:
+* Boolean, 如果是 [CryptoKey](../../object/ifs/CryptoKey.md) 类型则返回 True
+
+--------------------------
+### isKeyObject
+**检测给定的变量是否是 [KeyObject](../../object/ifs/KeyObject.md) 类型**
+
+```JavaScript
+static Boolean types.isKeyObject(Value v);
+```
+
+调用参数:
+* v: Value, 给定需要检测的变量
+
+返回结果:
+* Boolean, 如果是 [KeyObject](../../object/ifs/KeyObject.md) 类型则返回 True
+

@@ -31,11 +31,11 @@ Iterator Iterator.@iterator();
 **迭代下一个元素**
 
 ```JavaScript
-(Value value, Boolean done) Iterator.next();
+(Variant value, Boolean done) Iterator.next() async;
 ```
 
 返回结果:
-* (Value value, Boolean done), 返回下一个元素，或者标记迭代结束
+* (Variant value, Boolean done), 返回下一个元素，或者标记迭代结束
 
 --------------------------
 ### toString

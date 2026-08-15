@@ -13,7 +13,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    TextDecoder [tooltip="TextDecoder", fillcolor="lightgray", id="me", label="{TextDecoder|new TextDecoder()\l|encoding\l|decode()\l}"];
+    TextDecoder [tooltip="TextDecoder", fillcolor="lightgray", id="me", label="{TextDecoder|new TextDecoder()\l|encoding\lfatal\lignoreBOM\l|decode()\l}"];
 
     object -> TextDecoder [dir=back];
 }
@@ -40,6 +40,22 @@ new TextDecoder(String codec = "utf8",
 
 ```JavaScript
 readonly String TextDecoder.encoding;
+```
+
+--------------------------
+### fatal
+**Boolean, 查询解码错误时是否抛出异常**
+
+```JavaScript
+readonly Boolean TextDecoder.fatal;
+```
+
+--------------------------
+### ignoreBOM
+**Boolean, 查询是否忽略 BOM**
+
+```JavaScript
+readonly Boolean TextDecoder.ignoreBOM;
 ```
 
 ## 成员函数

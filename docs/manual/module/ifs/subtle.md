@@ -9,22 +9,7 @@ SubtleCrypto API 模块提供了一组用于加密和解密的函数。可以通
 **计算给定数据的哈希值**
 
 ```JavaScript
-static Buffer subtle.digest(String algorithm,
-    Buffer data) promise;
-```
-
-调用参数:
-* algorithm: String, 指定哈希算法
-* data: [Buffer](../../object/ifs/Buffer.md), 指定要计算哈希值的数据
-
-返回结果:
-* [Buffer](../../object/ifs/Buffer.md), 返回计算得到的哈希值
-
---------------------------
-**计算给定数据的哈希值**
-
-```JavaScript
-static Buffer subtle.digest(Object algorithm,
+static ArrayBuffer subtle.digest(Object algorithm,
     Buffer data) promise;
 ```
 
@@ -33,7 +18,7 @@ static Buffer subtle.digest(Object algorithm,
 * data: [Buffer](../../object/ifs/Buffer.md), 指定要计算哈希值的数据
 
 返回结果:
-* [Buffer](../../object/ifs/Buffer.md), 返回计算得到的哈希值
+* ArrayBuffer, 返回计算得到的哈希值
 
 algorithm 的 name 属性指定哈希算法，例如：
 ```
@@ -41,6 +26,21 @@ algorithm 的 name 属性指定哈希算法，例如：
     name: "SHA-256"
 }
 ```
+
+--------------------------
+**计算给定数据的哈希值**
+
+```JavaScript
+static ArrayBuffer subtle.digest(String algorithm,
+    Buffer data) promise;
+```
+
+调用参数:
+* algorithm: String, 指定哈希算法
+* data: [Buffer](../../object/ifs/Buffer.md), 指定要计算哈希值的数据
+
+返回结果:
+* ArrayBuffer, 返回计算得到的哈希值
 
 --------------------------
 ### exportKey
@@ -77,7 +77,45 @@ static Variant subtle.generateKey(Object algorithm,
 * Variant, 返回生成的 key
 
 --------------------------
+**生成一个新的 key**
+
+```JavaScript
+static Variant subtle.generateKey(String algorithm,
+    Boolean extractable,
+    Array usages) promise;
+```
+
+调用参数:
+* algorithm: String, 指定生成 key 的算法
+* extractable: Boolean, 指定 key 是否可以导出到外部
+* usages: Array, 指定 key 的用途
+
+返回结果:
+* Variant, 返回生成的 key
+
+--------------------------
 ### importKey
+**导入 key**
+
+```JavaScript
+static CryptoKey subtle.importKey(String format,
+    Value keyData,
+    String algorithm,
+    Boolean extractable,
+    Array usages) promise;
+```
+
+调用参数:
+* format: String, 导入的格式，可以是 'raw'，'pkcs8'，'spki' 或 'jwk'.
+* keyData: Value, 包含 key 数据的对象
+* algorithm: String, 指定 key 的算法
+* extractable: Boolean, 指定 key 是否可以导出到外部
+* usages: Array, 指定 key 的用途
+
+返回结果:
+* [CryptoKey](../../object/ifs/CryptoKey.md), 返回导入的 key
+
+--------------------------
 **导入 key**
 
 ```JavaScript
@@ -103,7 +141,7 @@ static CryptoKey subtle.importKey(String format,
 **使用 key 对数据进行签名**
 
 ```JavaScript
-static Buffer subtle.sign(Object algorithm,
+static ArrayBuffer subtle.sign(Object algorithm,
     CryptoKey key,
     Buffer data) promise;
 ```
@@ -114,7 +152,24 @@ static Buffer subtle.sign(Object algorithm,
 * data: [Buffer](../../object/ifs/Buffer.md), 指定要签名的数据
 
 返回结果:
-* [Buffer](../../object/ifs/Buffer.md), 返回签名后的数据
+* ArrayBuffer, 返回签名后的数据
+
+--------------------------
+**使用 key 对数据进行签名**
+
+```JavaScript
+static ArrayBuffer subtle.sign(String algorithm,
+    CryptoKey key,
+    Buffer data) promise;
+```
+
+调用参数:
+* algorithm: String, 指定签名算法
+* key: [CryptoKey](../../object/ifs/CryptoKey.md), 指定用于签名的 key
+* data: [Buffer](../../object/ifs/Buffer.md), 指定要签名的数据
+
+返回结果:
+* ArrayBuffer, 返回签名后的数据
 
 --------------------------
 ### verify
@@ -135,4 +190,58 @@ static Boolean subtle.verify(Object algorithm,
 
 返回结果:
 * Boolean, 返回验签结果
+
+--------------------------
+**使用 key 对数据进行验签**
+
+```JavaScript
+static Boolean subtle.verify(String algorithm,
+    CryptoKey key,
+    Buffer signature,
+    Buffer data) promise;
+```
+
+调用参数:
+* algorithm: String, 指定签名算法
+* key: [CryptoKey](../../object/ifs/CryptoKey.md), 指定用于验签的 key
+* signature: [Buffer](../../object/ifs/Buffer.md), 指定签名数据
+* data: [Buffer](../../object/ifs/Buffer.md), 指定要验签的数据
+
+返回结果:
+* Boolean, 返回验签结果
+
+--------------------------
+### deriveBits
+**从基本密钥派生出位数组**
+
+```JavaScript
+static ArrayBuffer subtle.deriveBits(Object algorithm,
+    CryptoKey baseKey,
+    Integer length = -1) promise;
+```
+
+调用参数:
+* algorithm: Object, 指定派生算法
+* baseKey: [CryptoKey](../../object/ifs/CryptoKey.md), 指定用于派生的基本密钥
+* length: Integer, 指定派生的位数
+
+返回结果:
+* ArrayBuffer, 返回派生得到的位数组
+
+--------------------------
+**从基本密钥派生出位数组**
+
+```JavaScript
+static ArrayBuffer subtle.deriveBits(String algorithm,
+    CryptoKey baseKey,
+    Integer length = -1) promise;
+```
+
+调用参数:
+* algorithm: String, 指定派生算法
+* baseKey: [CryptoKey](../../object/ifs/CryptoKey.md), 指定用于派生的基本密钥
+* length: Integer, 指定派生的位数
+
+返回结果:
+* ArrayBuffer, 返回派生得到的位数组
 

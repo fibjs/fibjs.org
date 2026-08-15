@@ -122,7 +122,7 @@ String StringDecoder.fillLast(Buffer buf);
 ```
 
 调用参数:
-* buf: [Buffer](Buffer.md), A [Buffer](Buffer.md) containing the bytes to decode.
+* buf: [Buffer](Buffer.md), 包含要解码字节的 [Buffer](Buffer.md)。
 
 返回结果:
 * String, 解码后的字符串.

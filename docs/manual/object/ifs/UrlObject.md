@@ -1,34 +1,67 @@
 # 对象 UrlObject
-UrlObject 是用于表示 URL 信息的一种对象，我们可以方便地使用 UrlObject 对象表示和操作一个 URL 地址。
+URL 对象，实现 WHATWG URL 标准，用于解析、构造和操作 URL
 
-UrlObject 封装了许多有用的方法和属性，例如 parse 和 format 等方法，可以快速地对 URL 进行解析和格式化。
+UrlObject 提供了完整的 URL 处理功能，兼容现代 Web 标准 URL API。它支持 URL 的解析、构造、修改和格式化，并提供了丰富的属性和方法来操作 URL 的各个组成部分。
 
-对于 UrlObject 对象，我们可以通过以下方式进行创建：
+## 主要特性
 
-1. 使用 [url](../../module/ifs/url.md) 字符串创建 UrlObject。在该方法中，parse 自动将 URL 进行解析，如果 URL 不合法，将抛出异常：
+- **标准兼容**: 实现 WHATWG URL 标准
+- **Unicode 支持**: 完整支持国际化域名 (IDN) 和 Unicode 字符
+- **查询参数**: 集成 [URLSearchParams](URLSearchParams.md) 提供强大的查询参数操作
+- **路径处理**: 自动处理路径规范化和相对路径解析
+
+## 创建 URL 对象
+
+### 1. 使用字符串创建
 
 ```JavaScript
 const url = require('url');
 
-const parsedURL = url.parse('https://www.google.com');
-console.log(parsedURL);
+// Use full URL string
+const myURL = new URL('https://user:pass@example.com:8080/path?query=value#hash');
+
+// Use relative URL and base URL
+const relativeURL = new URL('/api/users', 'https://example.com');
+console.log(relativeURL.href); // 'https://example.com/api/users'
 ```
 
-2. 使用构造参数创建 UrlObject：
+### 2. 使用对象构造
 
 ```JavaScript
-const url = require('url');
-
-const parsedURL = new url.URL({
+const myURL = new URL({
     protocol: 'https:',
-    hostname: 'www.google.com',
-    pathname: '/search',
-    query: {
-        q: 'hello world',
-    }
+    hostname: 'example.com',
+    port: '8080',
+    pathname: '/api/data',
+    search: '?format=json'
 });
+```
 
-console.log(parsedURL);
+## URL 组成部分
+
+一个完整的 URL 包含以下部分：
+```
+https://user:pass@example.com:8080/path/to/resource?query=value#fragment
+\___/   \______/ \_________/ \__/\________________/\___________/ \______/
+  |        |         |        |          |             |          |
+protocol   auth      host     port     pathname        search      hash
+         \___________________/
+                  origin
+```
+
+## 常用方法
+
+```JavaScript
+const myURL = new URL('https://example.com/old-path');
+
+// Parse URL string
+const parsed = URL.parse('https://example.com/path');
+
+// Check if URL is valid
+const isValid = URL.canParse('https://example.com');
+
+// Redirect to new path
+const newURL = myURL.resolve('../new-path');
 ```
 
 ## 继承关系
@@ -46,17 +79,17 @@ digraph {
 ## 构造函数
         
 ### UrlObject
-**UrlObject 对象构造函数，使用参数构造**
+**使用参数对象构造 URL 对象**
 
 ```JavaScript
 new UrlObject(Object args = {});
 ```
 
 调用参数:
-* args: Object, 指定构造参数的字典对象，支持的字段有：protocol, slashes, username, password, hostname, port, pathname, query, hash
+* args: Object, 构造参数对象，支持的字段有：protocol, slashes, username, password, hostname, port, pathname, query, hash
 
 --------------------------
-**UrlObject 对象构造函数，使用 [url](../../module/ifs/url.md) 字符串构造**
+**使用 URL 字符串构造 URL 对象**
 
 ```JavaScript
 new UrlObject(String url,
@@ -64,13 +97,13 @@ new UrlObject(String url,
 ```
 
 调用参数:
-* url: String, 指定需要解析的 [url](../../module/ifs/url.md) 字符串
-* base: String, 指定基础 [url](../../module/ifs/url.md) 字符串
+* url: String, 要解析的 URL 字符串，可以是绝对 URL 或相对 URL
+* base: String, 基础 URL 字符串，当 [url](../../module/ifs/url.md) 参数是相对 URL 时使用
 
 ## 静态函数
         
 ### parse
-**解析一个 [url](../../module/ifs/url.md) 字符串**
+**解析 URL 字符串并返回 URL 对象，解析失败时返回 null**
 
 ```JavaScript
 static UrlObject UrlObject.parse(String url,
@@ -78,15 +111,15 @@ static UrlObject UrlObject.parse(String url,
 ```
 
 调用参数:
-* url: String, 指定需要解析的 [url](../../module/ifs/url.md) 字符串
-* base: String, 指定基础 [url](../../module/ifs/url.md) 字符串
+* url: String, 要解析的 URL 字符串
+* base: String, 基础 URL 字符串，当 [url](../../module/ifs/url.md) 是相对 URL 时使用
 
 返回结果:
-* UrlObject, 返回包含解析数据的对象
+* UrlObject, 成功时返回 UrlObject 对象，解析失败时返回 null
 
 --------------------------
 ### canParse
-**检查相对于 base 的 [url](../../module/ifs/url.md) 是否可以解析**
+**检查 URL 字符串是否可以成功解析**
 
 ```JavaScript
 static Boolean UrlObject.canParse(String url,
@@ -94,155 +127,189 @@ static Boolean UrlObject.canParse(String url,
 ```
 
 调用参数:
-* url: String, 指定需要解析的 [url](../../module/ifs/url.md) 字符串
-* base: String, 指定基础 [url](../../module/ifs/url.md) 字符串
+* url: String, 要检查的 URL 字符串
+* base: String, 基础 URL 字符串，当 [url](../../module/ifs/url.md) 是相对 URL 时使用
 
 返回结果:
-* Boolean, 返回是否可以解析的布尔值
+* Boolean, 可以解析返回 true，否则返回 false
 
 ## 成员属性
         
 ### href
-**String, 查询和设置当前 UrlObject 对象中的完整 [url](../../module/ifs/url.md) 地址描述，此描述由其他所有属性组装而成**
+**String, 完整的 URL 字符串**
 
 ```JavaScript
 String UrlObject.href;
 ```
 
+获取或设置完整的 URL 字符串。设置此属性时会自动解析并更新其他属性。
+
 --------------------------
 ### protocol
-**String, 查询和设置当前 UrlObject 对象中的协议名称**
+**String, URL 协议部分（包含冒号）**
 
 ```JavaScript
 String UrlObject.protocol;
 ```
 
+例如：'[http](../../module/ifs/http.md):', 'https:', 'ftp:', 'file:' 等
+
 --------------------------
 ### slashes
-**Boolean, 查询和设置当前 UrlObject 对象是否包含双斜杠**
+**Boolean, 是否包含双斜杠**
 
 ```JavaScript
 Boolean UrlObject.slashes;
 ```
 
+指示 URL 是否使用双斜杠格式（如 [http](../../module/ifs/http.md)://）
+
 --------------------------
 ### origin
-**String, @brieg 查询当前 UrlObject 对象中的来源**
+**String, URL 的来源（协议 + 主机 + 端口）**
 
 ```JavaScript
 readonly String UrlObject.origin;
 ```
 
+只读属性，返回格式如：'https://example.com:8080'
+对于非网络协议（如 file:）返回 'null'
+
 --------------------------
 ### auth
-**String, 查询和设置当前 UrlObject 对象中的完整验证字符串，由 username 和 password 属性组装而成**
+**String, 认证信息（用户名:密码）**
 
 ```JavaScript
 readonly String UrlObject.auth;
 ```
 
+只读属性，返回格式如：'username:password'
+
 --------------------------
 ### username
-**String, 查询和设置当前 UrlObject 对象中的验证用户**
+**String, 用户名部分**
 
 ```JavaScript
 String UrlObject.username;
 ```
 
+URL 中的用户名，用于 HTTP 基础认证
+
 --------------------------
 ### password
-**String, 查询和设置当前 UrlObject 对象中的验证密码**
+**String, 密码部分**
 
 ```JavaScript
 String UrlObject.password;
 ```
 
+URL 中的密码，用于 HTTP 基础认证
+
 --------------------------
 ### host
-**String, 查询和设置当前 UrlObject 对象中的完整主机描述，由 hastname 和 port 组装而成**
+**String, 主机部分（主机名 + 端口）**
 
 ```JavaScript
 String UrlObject.host;
 ```
 
+包含主机名和端口号，格式如：'example.com:8080'
+
 --------------------------
 ### hostname
-**String, 查询和设置当前 UrlObject 对象中的主机名**
+**String, 主机名部分**
 
 ```JavaScript
 String UrlObject.hostname;
 ```
 
+不包含端口号的主机名，支持 IPv4、IPv6 和域名
+
 --------------------------
 ### port
-**String, 查询和设置当前 UrlObject 对象中的端口号**
+**String, 端口号**
 
 ```JavaScript
 String UrlObject.port;
 ```
 
+字符串形式的端口号，空字符串表示使用默认端口
+
 --------------------------
 ### path
-**String, 查询当前 UrlObject 对象中的请求完整路径（含请求），由 pathname 和 query 组装而成**
+**String, 完整路径（路径 + 查询字符串）**
 
 ```JavaScript
 readonly String UrlObject.path;
 ```
 
+只读属性，包含 pathname 和 search，格式如：'/[path](../../module/ifs/path.md)?query=value'
+
 --------------------------
 ### pathname
-**String, 查询和设置当前 UrlObject 对象中的路径**
+**String, URL 路径部分**
 
 ```JavaScript
 String UrlObject.pathname;
 ```
 
+URL 中的路径部分，总是以 '/' 开头
+
 --------------------------
 ### search
-**String, 查询和设置当前 UrlObject 对象中的请求字符串（含“?”），等效于“?”+query**
+**String, 查询字符串（包含问号）**
 
 ```JavaScript
 String UrlObject.search;
 ```
 
+格式如：'?key1=value1&key2=value2'，空查询时为空字符串
+
 --------------------------
 ### query
-**Value, 查询和设置当前 UrlObject 对象中的请求字符串（ 不含“?”）**
+**Value, 查询参数值**
 
 ```JavaScript
 Value UrlObject.query;
 ```
 
+可以是字符串或对象，设置对象时会自动序列化为查询字符串
+
 --------------------------
 ### hash
-**String, 查询和设置当前 UrlObject 对象中的请求锚点（含“\#”）**
+**String, URL 片段标识符（包含井号）**
 
 ```JavaScript
 String UrlObject.hash;
 ```
 
+格式如：'#section'，没有片段时为空字符串
+
 --------------------------
 ### searchParams
-**[HttpCollection](HttpCollection.md), 查询当前 UrlObject 对象中的请求字符串（ 不含“?”）**
+**[URLSearchParams](URLSearchParams.md), URL 查询参数对象**
 
 ```JavaScript
-readonly HttpCollection UrlObject.searchParams;
+readonly URLSearchParams UrlObject.searchParams;
 ```
+
+只读属性，返回 [URLSearchParams](URLSearchParams.md) 对象用于操作查询参数
+与 URL 对象双向绑定，修改会自动更新 search 和 query 属性
 
 ## 成员函数
         
 ### resolve
-**重定位 [url](../../module/ifs/url.md) 路径，自动识别新路径为相对路径还是绝对路径**
+**解析相对 URL 并返回新的绝对 URL 对象**
 
 ```JavaScript
 UrlObject UrlObject.resolve(String url);
 ```
 
 调用参数:
-* url: String, 指定新的路径
+* url: String, 要解析的相对或绝对 URL 字符串
 
 返回结果:
-* UrlObject, 返回包含重定位数据的对象
+* UrlObject, 返回解析后的新 UrlObject 对象
 
 --------------------------
 ### toString

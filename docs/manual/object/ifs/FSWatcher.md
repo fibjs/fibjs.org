@@ -31,13 +31,79 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\laddEventListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveEventListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
-    FSWatcher [tooltip="FSWatcher", fillcolor="lightgray", id="me", label="{FSWatcher|close()\l|event change\levent close\levent error\l}"];
+    EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|addAbortListener()\lonce()\lon()\l|defaultMaxListeners\l|on()\laddListener()\laddEventListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveEventListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\lrawListeners()\llistenerCount()\leventNames()\lemit()\l}"];
+    FSWatcher [tooltip="FSWatcher", fillcolor="lightgray", id="me", label="{FSWatcher|close()\lref()\lunref()\l|event change\levent changeonly\levent renameonly\levent close\levent error\l}"];
 
     object -> EventEmitter [dir=back];
     EventEmitter -> FSWatcher [dir=back];
 }
 ```
+
+## 静态函数
+        
+### addAbortListener
+**监听一个 [AbortSignal](AbortSignal.md) 的 abort 事件，返回一个可释放的对象**
+
+```JavaScript
+static Object FSWatcher.addAbortListener(EventEmitter signal,
+    Function func);
+```
+
+调用参数:
+* signal: [EventEmitter](EventEmitter.md), 要监听的 [AbortSignal](AbortSignal.md) 对象
+* func: Function, abort 事件的处理函数
+
+返回结果:
+* Object, 返回一个包含 `[Symbol.dispose]` 方法的 Disposable 对象
+
+返回的对象包含 `[Symbol.dispose]()` 方法，调用后将移除监听器。如果信号已中止，则监听器会被立即调用。
+
+--------------------------
+### once
+**创建一个 Promise，等待指定事件触发一次后解析**
+
+```JavaScript
+static Object FSWatcher.once(EventEmitter emitter,
+    Value ev,
+    Object options = {});
+```
+
+调用参数:
+* emitter: [EventEmitter](EventEmitter.md), 要监听的事件触发器对象
+* ev: Value, 指定事件的名称
+* options: Object, 可选参数对象
+
+返回结果:
+* Object, 返回 Promise，以事件参数数组解析
+
+返回一个 Promise，当目标事件触发时以事件参数数组解析。如果在此期间触发 'error' 事件（且监听的不是 'error' 事件本身），Promise 将被拒绝。
+
+options 参数可包含：
+- signal: [AbortSignal](AbortSignal.md)，用于取消等待
+
+--------------------------
+### on
+**创建一个异步迭代器，持续监听指定事件**
+
+```JavaScript
+static Object FSWatcher.on(EventEmitter emitter,
+    Value ev,
+    Object options = {});
+```
+
+调用参数:
+* emitter: [EventEmitter](EventEmitter.md), 要监听的事件触发器对象
+* ev: Value, 指定事件的名称
+* options: Object, 可选参数对象
+
+返回结果:
+* Object, 返回 AsyncIterator 对象
+
+返回一个 AsyncIterator，每次事件触发时产出事件参数数组。如果触发 'error' 事件，迭代器将抛出错误。
+
+options 参数可包含：
+- signal: [AbortSignal](AbortSignal.md)，用于取消迭代
+- close: 字符串数组，指定结束迭代的事件名称
 
 ## 静态属性
         
@@ -58,16 +124,40 @@ FSWatcher.close();
 ```
 
 --------------------------
+### ref
+**增加引用计数, 告知 fibjs 只要该 watcher 还在使用就不要退出进程。**
+
+```JavaScript
+FSWatcher FSWatcher.ref();
+```
+
+返回结果:
+* FSWatcher, 返回 FSWatcher 本身
+
+当调用 [fs.watch](../../module/ifs/fs.md#watch)() 且 persistent 选项为 true（默认）时，FSWatcher 会自动 ref。
+
+--------------------------
+### unref
+**减少引用计数，允许进程在该 watcher 仍然活跃时退出。**
+
+```JavaScript
+FSWatcher FSWatcher.unref();
+```
+
+返回结果:
+* FSWatcher, 返回 FSWatcher 本身
+
+--------------------------
 ### on
 **绑定一个事件处理函数到对象**
 
 ```JavaScript
-Object FSWatcher.on(String ev,
+Object FSWatcher.on(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -91,12 +181,12 @@ Object FSWatcher.on(Object map);
 **绑定一个事件处理函数到对象**
 
 ```JavaScript
-Object FSWatcher.addListener(String ev,
+Object FSWatcher.addListener(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -120,13 +210,13 @@ Object FSWatcher.addListener(Object map);
 **绑定一个事件处理函数到对象**
 
 ```JavaScript
-Object FSWatcher.addEventListener(String ev,
+Object FSWatcher.addEventListener(Value ev,
     Function func,
     Object options = {});
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 * options: Object, 指定事件处理函数的选项
 
@@ -141,12 +231,12 @@ options 参数是一个对象，它可以包含以下属性：
 **绑定一个事件处理函数到对象起始**
 
 ```JavaScript
-Object FSWatcher.prependListener(String ev,
+Object FSWatcher.prependListener(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -170,12 +260,12 @@ Object FSWatcher.prependListener(Object map);
 **绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次**
 
 ```JavaScript
-Object FSWatcher.once(String ev,
+Object FSWatcher.once(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -199,12 +289,12 @@ Object FSWatcher.once(Object map);
 **绑定一个事件处理函数到对象起始**
 
 ```JavaScript
-Object FSWatcher.prependOnceListener(String ev,
+Object FSWatcher.prependOnceListener(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -228,12 +318,12 @@ Object FSWatcher.prependOnceListener(Object map);
 **从对象处理队列中取消指定函数**
 
 ```JavaScript
-Object FSWatcher.off(String ev,
+Object FSWatcher.off(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -243,11 +333,11 @@ Object FSWatcher.off(String ev,
 **取消对象处理队列中的全部函数**
 
 ```JavaScript
-Object FSWatcher.off(String ev);
+Object FSWatcher.off(Value ev);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 
 返回结果:
 * Object, 返回事件对象本身，便于链式调用
@@ -270,12 +360,12 @@ Object FSWatcher.off(Object map);
 **从对象处理队列中取消指定函数**
 
 ```JavaScript
-Object FSWatcher.removeListener(String ev,
+Object FSWatcher.removeListener(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -285,11 +375,11 @@ Object FSWatcher.removeListener(String ev,
 **取消对象处理队列中的全部函数**
 
 ```JavaScript
-Object FSWatcher.removeListener(String ev);
+Object FSWatcher.removeListener(Value ev);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 
 返回结果:
 * Object, 返回事件对象本身，便于链式调用
@@ -312,13 +402,13 @@ Object FSWatcher.removeListener(Object map);
 **从对象处理队列中取消指定函数**
 
 ```JavaScript
-Object FSWatcher.removeEventListener(String ev,
+Object FSWatcher.removeEventListener(Value ev,
     Function func,
     Object options = {});
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 * options: Object, 指定事件处理函数的选项
 
@@ -330,11 +420,11 @@ Object FSWatcher.removeEventListener(String ev,
 **从对象处理队列中取消所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。**
 
 ```JavaScript
-Object FSWatcher.removeAllListeners(String ev);
+Object FSWatcher.removeAllListeners(Value ev);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 
 返回结果:
 * Object, 返回事件对象本身，便于链式调用
@@ -379,11 +469,25 @@ Integer FSWatcher.getMaxListeners();
 **查询对象指定事件的监听器数组**
 
 ```JavaScript
-Array FSWatcher.listeners(String ev);
+Array FSWatcher.listeners(Value ev);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
+
+返回结果:
+* Array, 返回指定事件的监听器数组
+
+--------------------------
+### rawListeners
+**查询对象指定事件的监听器数组，包含 once 包装函数**
+
+```JavaScript
+Array FSWatcher.rawListeners(Value ev);
+```
+
+调用参数:
+* ev: Value, 指定事件的名称
 
 返回结果:
 * Array, 返回指定事件的监听器数组
@@ -393,11 +497,11 @@ Array FSWatcher.listeners(String ev);
 **查询对象指定事件的监听器数量**
 
 ```JavaScript
-Integer FSWatcher.listenerCount(String ev);
+Integer FSWatcher.listenerCount(Value ev);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 
 返回结果:
 * Integer, 返回指定事件的监听器数量
@@ -407,12 +511,12 @@ Integer FSWatcher.listenerCount(String ev);
 
 ```JavaScript
 Integer FSWatcher.listenerCount(Value o,
-    String ev);
+    Value ev);
 ```
 
 调用参数:
 * o: Value, 指定查询的对象
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 
 返回结果:
 * Integer, 返回指定事件的监听器数量
@@ -433,12 +537,12 @@ Array FSWatcher.eventNames();
 **主动触发一个事件**
 
 ```JavaScript
-Boolean FSWatcher.emit(String ev,
+Boolean FSWatcher.emit(Value ev,
     ...args);
 ```
 
 调用参数:
-* ev: String, 事件名称
+* ev: Value, 事件名称
 * args: ..., 事件参数，将会传递给事件处理函数
 
 返回结果:
@@ -477,6 +581,31 @@ Value FSWatcher.toJSON(String key = "");
 ```JavaScript
 event FSWatcher.change();
 ```
+
+当文件发生任何变化（内容修改或重命名）时触发。
+回调函数签名: (eventType: 'change' | 'rename', filename: string | [Buffer](Buffer.md)) => void
+
+--------------------------
+### changeonly
+**查询和绑定"仅内容改变"事件，相当于 on("changeonly", func);**
+
+```JavaScript
+event FSWatcher.changeonly();
+```
+
+仅当文件内容修改时触发（不包括重命名）。
+回调函数签名: (eventType: 'change', filename: string | [Buffer](Buffer.md)) => void
+
+--------------------------
+### renameonly
+**查询和绑定"仅重命名"事件，相当于 on("renameonly", func);**
+
+```JavaScript
+event FSWatcher.renameonly();
+```
+
+仅当文件重命名时触发（不包括内容修改）。
+回调函数签名: (eventType: 'rename', filename: string | [Buffer](Buffer.md)) => void
 
 --------------------------
 ### close

@@ -7,7 +7,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    XmlAttr [tooltip="XmlAttr", fillcolor="lightgray", id="me", label="{XmlAttr|localName\lvalue\lname\lnamespaceURI\lprefix\lnodeName\lnodeValue\l}"];
+    XmlAttr [tooltip="XmlAttr", fillcolor="lightgray", id="me", label="{XmlAttr|localName\lvalue\lname\lnamespaceURI\lprefix\lnodeName\lnodeValue\l|cloneNode()\l}"];
 
     object -> XmlAttr [dir=back];
 }
@@ -72,6 +72,17 @@ String XmlAttr.nodeValue;
 
 ## 成员函数
         
+### cloneNode
+**复制 XmlAttr 对象**
+
+```JavaScript
+XmlAttr XmlAttr.cloneNode();
+```
+
+返回结果:
+* XmlAttr, 返回 XmlAttr 对象的副本
+
+--------------------------
 ### toString
 **返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
 

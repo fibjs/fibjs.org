@@ -212,22 +212,6 @@ see: https://msdn.microsoft.com/library/windows/desktop/aa365247(v=vs.85).aspx#n
 
 ## 静态属性
         
-### sep
-**String, 查询当前操作系统的路径分割字符，posix 返回 '/', windows 返回  '\\'**
-
-```JavaScript
-static readonly String path_win32.sep;
-```
-
---------------------------
-### delimiter
-**String, 查询当前操作系统的多路径组合字符，posix 返回 ':', windows 返回  ';'**
-
-```JavaScript
-static readonly String path_win32.delimiter;
-```
-
---------------------------
 ### posix
 **Object, posix 实现，参见 [path_posix](path_posix.md)**
 
@@ -241,5 +225,22 @@ static readonly Object path_win32.posix;
 
 ```JavaScript
 static readonly Object path_win32.win32;
+```
+
+## 常量
+        
+### sep
+**查询当前操作系统的路径分割字符，posix 返回 '/', windows 返回  '\\'**
+
+```JavaScript
+const path_win32.sep = "\";
+```
+
+--------------------------
+### delimiter
+**查询当前操作系统的多路径组合字符，posix 返回 ':', windows 返回  ';'**
+
+```JavaScript
+const path_win32.delimiter = ";";
 ```
 

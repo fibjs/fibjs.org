@@ -11,11 +11,23 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    FileHandle [tooltip="FileHandle", fillcolor="lightgray", id="me", label="{FileHandle|fd\l|chmod()\lstat()\lread()\lwrite()\lclose()\l}"];
+    FileHandle [tooltip="FileHandle", fillcolor="lightgray", id="me", label="{FileHandle|new FileHandle()\l|fd\l|chmod()\lstat()\lread()\lwrite()\lreadFile()\lwriteFile()\lclose()\l}"];
 
     object -> FileHandle [dir=back];
 }
 ```
+
+## 构造函数
+        
+### FileHandle
+**FileHandle 构造函数，从文件描述符创建文件句柄**
+
+```JavaScript
+new FileHandle(Integer fd);
+```
+
+调用参数:
+* fd: Integer, 文件描述符数值
 
 ## 成员属性
         
@@ -54,7 +66,7 @@ Stat FileHandle.stat() async;
 **根据文件描述符，读取文件内容**
 
 ```JavaScript
-Integer FileHandle.read(Buffer buffer,
+(Integer bytesRead, Buffer buffer) FileHandle.read(Buffer buffer,
     Integer offset = 0,
     Integer length = 0,
     Integer position = -1) async;
@@ -67,7 +79,31 @@ Integer FileHandle.read(Buffer buffer,
 * position: Integer, 文件读取位置，默认为当前文件位置
 
 返回结果:
-* Integer, 实际读取的字节数
+* (Integer bytesRead, [Buffer](Buffer.md) buffer), 返回包含 bytesRead 和 buffer 属性的对象
+
+--------------------------
+**根据文件描述符，读取文件内容**
+
+```JavaScript
+(Integer bytesRead, Buffer buffer) FileHandle.read(Object options) async;
+```
+
+调用参数:
+* options: Object, 指定读取选项
+
+返回结果:
+* (Integer bytesRead, [Buffer](Buffer.md) buffer), 返回包含 bytesRead 和 buffer 属性的对象
+
+options 支持以下属性：
+
+```JavaScript
+{
+    "buffer": Buffer.alloc(16384), // 读取结果写入的 Buffer 对象，未提供时自动分配
+    "offset": 0, // Buffer 写入偏移量，默认为 0
+    "length": 0, // 读取字节数，默认为 buffer.length - offset
+    "position": -1 // 文件读取位置，默认为当前文件位置
+}
+```
 
 --------------------------
 ### write
@@ -105,6 +141,118 @@ Integer FileHandle.write(String string,
 
 返回结果:
 * Integer, 实际写入的字节数
+
+--------------------------
+### readFile
+**读取文件的全部内容**
+
+```JavaScript
+Variant FileHandle.readFile(String encoding = "") async;
+```
+
+调用参数:
+* encoding: String, 指定解码方式，缺省不解码
+
+返回结果:
+* Variant, 返回文件内容
+
+--------------------------
+**读取文件的全部内容**
+
+```JavaScript
+Variant FileHandle.readFile(Object options) async;
+```
+
+调用参数:
+* options: Object, 指定读取选项
+
+返回结果:
+* Variant, 返回文件内容
+
+options 支持以下选项：
+
+```JavaScript
+{
+    "encoding": "utf8" // 指定编码，默认为 utf8。
+}
+```
+
+--------------------------
+### writeFile
+**将数据写入文件，替换其内容**
+
+```JavaScript
+Integer FileHandle.writeFile(Buffer data,
+    String opt = "binary") async;
+```
+
+调用参数:
+* data: [Buffer](Buffer.md), 待写入的数据
+* opt: String, 指定写入选项，将被忽略
+
+返回结果:
+* Integer, 实际写入的字节数
+
+--------------------------
+**将数据写入文件，替换其内容**
+
+```JavaScript
+Integer FileHandle.writeFile(String data,
+    String opt = "utf8") async;
+```
+
+调用参数:
+* data: String, 待写入的数据
+* opt: String, 指定写入选项
+
+返回结果:
+* Integer, 实际写入的字节数
+
+--------------------------
+**将数据写入文件，替换其内容**
+
+```JavaScript
+Integer FileHandle.writeFile(Buffer data,
+    Object options) async;
+```
+
+调用参数:
+* data: [Buffer](Buffer.md), 待写入的数据
+* options: Object, 指定写入选项
+
+返回结果:
+* Integer, 实际写入的字节数
+
+options 支持以下选项：
+
+```JavaScript
+{
+    "encoding": "utf8" // 指定编码，默认为 utf8。
+}
+```
+
+--------------------------
+**将数据写入文件，替换其内容**
+
+```JavaScript
+Integer FileHandle.writeFile(String data,
+    Object options) async;
+```
+
+调用参数:
+* data: String, 待写入的数据
+* options: Object, 指定写入选项
+
+返回结果:
+* Integer, 实际写入的字节数
+
+options 支持以下选项：
+
+```JavaScript
+{
+    "encoding": "utf8" // 指定编码，默认为 utf8。
+}
+```
 
 --------------------------
 ### close

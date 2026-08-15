@@ -1,7 +1,7 @@
 # 对象 Stat
 文件的基础信息对象
 
-Stat 对象通过 [fs.stat](../../module/ifs/fs.md#stat), [File.stat](File.md#stat), [fs.readdir](../../module/ifs/fs.md#readdir) 查询，不可独立创建
+Stat 对象通过 [fs.stat](../../module/ifs/fs.md#stat), [FileStream.stat](FileStream.md#stat), [fs.readdir](../../module/ifs/fs.md#readdir) 查询，不可独立创建
 
 ## 继承关系
 ```dot
@@ -9,7 +9,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Stat [tooltip="Stat", fillcolor="lightgray", id="me", label="{Stat|name\ldev\lino\lmode\lnlink\luid\lgid\lrdev\lsize\lblksize\lblocks\lmtime\lmtimeMs\latime\latimeMs\lctime\lctimeMs\lbirthtime\lbirthtimeMs\l|isWritable()\lisReadable()\lisExecutable()\lisHidden()\lisBlockDevice()\lisCharacterDevice()\lisDirectory()\lisFIFO()\lisFile()\lisSymbolicLink()\lisMemory()\lisSocket()\l}"];
+    Stat [tooltip="Stat", fillcolor="lightgray", id="me", label="{Stat|name\ldev\lino\lmode\lnlink\luid\lgid\lrdev\lsize\lblksize\lblocks\lmtime\lmtimeMs\lmtimeNs\latime\latimeMs\latimeNs\lctime\lctimeMs\lctimeNs\lbirthtime\lbirthtimeMs\lbirthtimeNs\l|isWritable()\lisReadable()\lisExecutable()\lisHidden()\lisBlockDevice()\lisCharacterDevice()\lisDirectory()\lisFIFO()\lisFile()\lisSymbolicLink()\lisMemory()\lisSocket()\l}"];
 
     object -> Stat [dir=back];
 }
@@ -121,6 +121,14 @@ readonly Number Stat.mtimeMs;
 ```
 
 --------------------------
+### mtimeNs
+**Long, 文件最后修改时间(ns)，仅在 bigint 为 true 时有效**
+
+```JavaScript
+readonly Long Stat.mtimeNs;
+```
+
+--------------------------
 ### atime
 **Date, 文件最后访问时间**
 
@@ -137,8 +145,16 @@ readonly Number Stat.atimeMs;
 ```
 
 --------------------------
+### atimeNs
+**Long, 文件最后访问时间(ns)，仅在 bigint 为 true 时有效**
+
+```JavaScript
+readonly Long Stat.atimeNs;
+```
+
+--------------------------
 ### ctime
-**Date, 文件创建时间**
+**Date, 文件状态修改时间**
 
 ```JavaScript
 readonly Date Stat.ctime;
@@ -146,10 +162,18 @@ readonly Date Stat.ctime;
 
 --------------------------
 ### ctimeMs
-**Number, 文件创建时间(ms)**
+**Number, 文件状态修改时间(ms)**
 
 ```JavaScript
 readonly Number Stat.ctimeMs;
+```
+
+--------------------------
+### ctimeNs
+**Long, 文件状态修改时间(ns)，仅在 bigint 为 true 时有效**
+
+```JavaScript
+readonly Long Stat.ctimeNs;
 ```
 
 --------------------------
@@ -166,6 +190,14 @@ readonly Date Stat.birthtime;
 
 ```JavaScript
 readonly Number Stat.birthtimeMs;
+```
+
+--------------------------
+### birthtimeNs
+**Long, 文件产生时间(ns)，仅在 bigint 为 true 时有效**
+
+```JavaScript
+readonly Long Stat.birthtimeNs;
 ```
 
 ## 成员函数

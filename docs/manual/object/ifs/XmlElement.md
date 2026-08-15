@@ -7,8 +7,8 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    XmlNode [tooltip="XmlNode", URL="XmlNode.md", label="{XmlNode|nodeType\lnodeName\lnodeValue\lownerDocument\lparentNode\lchildNodes\lchildren\lfirstChild\llastChild\lpreviousSibling\lnextSibling\lfirstElementChild\llastElementChild\lpreviousElementSibling\lnextElementSibling\ltextContent\l|hasChildNodes()\lnormalize()\lcloneNode()\llookupPrefix()\llookupNamespaceURI()\linsertBefore()\linsertAfter()\lappendChild()\lreplaceChild()\lremoveChild()\l}"];
-    XmlElement [tooltip="XmlElement", fillcolor="lightgray", id="me", label="{XmlElement|namespaceURI\lprefix\llocalName\ltagName\lid\linnerHTML\louterHTML\lclassName\lattributes\l|getAttribute()\lgetAttributeNS()\lsetAttribute()\lsetAttributeNS()\lremoveAttribute()\lremoveAttributeNS()\lhasAttribute()\lhasAttributeNS()\lgetElementsByTagName()\lgetElementsByTagNameNS()\lgetElementById()\lgetElementsByClassName()\l}"];
+    XmlNode [tooltip="XmlNode", URL="XmlNode.md", label="{XmlNode|nodeType\lnodeName\lnodeValue\lownerDocument\lparentNode\lparentElement\lchildNodes\lchildren\lfirstChild\llastChild\lpreviousSibling\lnextSibling\lfirstElementChild\llastElementChild\lpreviousElementSibling\lnextElementSibling\ltextContent\lisConnected\l|hasChildNodes()\lnormalize()\lcloneNode()\llookupPrefix()\llookupNamespaceURI()\linsertBefore()\linsertAfter()\lappendChild()\lreplaceChild()\lremoveChild()\lremove()\lreplaceWith()\lbefore()\lafter()\lcontains()\lgetRootNode()\lcompareDocumentPosition()\lisEqualNode()\lisSameNode()\l}"];
+    XmlElement [tooltip="XmlElement", fillcolor="lightgray", id="me", label="{XmlElement|namespaceURI\lprefix\llocalName\ltagName\lid\linnerHTML\louterHTML\lclassName\lclassList\ldataset\lcontent\lattributes\l|hasAttributes()\lgetAttribute()\lgetAttributeNS()\lgetAttributeNode()\lgetAttributeNodeNS()\lsetAttribute()\lsetAttributeNS()\lsetAttributeNode()\lremoveAttribute()\lremoveAttributeNS()\lremoveAttributeNode()\lhasAttribute()\lhasAttributeNS()\lgetElementsByTagName()\lgetElementsByTagNameNS()\lgetElementById()\lgetElementsByClassName()\lquerySelector()\lquerySelectorAll()\lmatches()\lclosest()\lappend()\lprepend()\lreplaceChildren()\linsertAdjacentElement()\linsertAdjacentHTML()\linsertAdjacentText()\ltoggleAttribute()\l}"];
 
     object -> XmlNode [dir=back];
     XmlNode -> XmlElement [dir=back];
@@ -69,7 +69,7 @@ String XmlElement.innerHTML;
 **String, 查询选定元素及其后代的 HTML 文本，仅在 html 模式有效。查询时，返回元素及节点内所有子节点的 HTML 编码。**
 
 ```JavaScript
-readonly String XmlElement.outerHTML;
+String XmlElement.outerHTML;
 ```
 
 --------------------------
@@ -78,6 +78,30 @@ readonly String XmlElement.outerHTML;
 
 ```JavaScript
 String XmlElement.className;
+```
+
+--------------------------
+### classList
+**[DOMTokenList](DOMTokenList.md), 返回一个 [DOMTokenList](DOMTokenList.md) 对象，包含元素的 class 属性的标记列表，仅在 html 模式有效**
+
+```JavaScript
+readonly DOMTokenList XmlElement.classList;
+```
+
+--------------------------
+### dataset
+**Object, 返回一个对象，包含元素所有 data-* 属性的键值对，仅在 html 模式有效。属性名会从 data-xxx-yyy 格式转换为 xxxYyy 驼峰格式**
+
+```JavaScript
+readonly Object XmlElement.dataset;
+```
+
+--------------------------
+### content
+**[XmlDocumentFragment](XmlDocumentFragment.md), 返回 template 元素的内容，仅对 template 元素有效，返回一个包含其子节点的 DocumentFragment**
+
+```JavaScript
+readonly XmlDocumentFragment XmlElement.content;
 ```
 
 --------------------------
@@ -156,6 +180,14 @@ readonly XmlDocument XmlElement.ownerDocument;
 
 ```JavaScript
 readonly XmlNode XmlElement.parentNode;
+```
+
+--------------------------
+### parentElement
+**XmlElement, 可返回某节点的父元素，如果父节点不是元素节点则返回 null**
+
+```JavaScript
+readonly XmlElement XmlElement.parentElement;
 ```
 
 --------------------------
@@ -246,8 +278,27 @@ readonly XmlNode XmlElement.nextElementSibling;
 String XmlElement.textContent;
 ```
 
+--------------------------
+### isConnected
+**Boolean, 返回当前节点是否连接到文档中**
+
+```JavaScript
+readonly Boolean XmlElement.isConnected;
+```
+
 ## 成员函数
         
+### hasAttributes
+**查询当前元素是否拥有任何属性**
+
+```JavaScript
+Boolean XmlElement.hasAttributes();
+```
+
+返回结果:
+* Boolean, 如果当前元素拥有属性则返回 true，否则返回 false
+
+--------------------------
 ### getAttribute
 **通过名称查询属性的值**
 
@@ -276,6 +327,40 @@ String XmlElement.getAttributeNS(String namespaceURI,
 
 返回结果:
 * String, 返回属性的值
+
+--------------------------
+### getAttributeNode
+**返回指定名称的属性节点**
+
+```JavaScript
+XmlAttr XmlElement.getAttributeNode(String name);
+```
+
+调用参数:
+* name: String, 指定查询的属性名
+
+返回结果:
+* [XmlAttr](XmlAttr.md), 返回指定名称的 [XmlAttr](XmlAttr.md) 对象，如果没有具有指定名称的属性，则返回 NULL
+
+该方法返回一个 [XmlAttr](XmlAttr.md) 对象，表示当前元素的指定名称的属性。如果没有具有指定名称的属性，则返回 NULL。
+
+--------------------------
+### getAttributeNodeNS
+**返回具有命名空间 URI 和名称的属性节点**
+
+```JavaScript
+XmlAttr XmlElement.getAttributeNodeNS(String namespaceURI,
+    String localName);
+```
+
+调用参数:
+* namespaceURI: String, 指定查询的命名空间 URI
+* localName: String, 指定查询的属性名
+
+返回结果:
+* [XmlAttr](XmlAttr.md), 返回指定名称的 [XmlAttr](XmlAttr.md) 对象，如果没有具有指定名称的属性，则返回 NULL
+
+该方法返回一个 [XmlAttr](XmlAttr.md) 对象，表示当前元素的指定命名空间 URI 和名称的属性。如果没有具有指定名称的属性，则返回 NULL。
 
 --------------------------
 ### setAttribute
@@ -310,6 +395,22 @@ XmlElement.setAttributeNS(String namespaceURI,
 该方法与 setAttribute 方法类似，只是要创建或设置的属性由命名空间 URI 和限定名（由名字空间前缀、冒号和名字空间中的本地名构成）共同指定。除了可以改变一个属性的值以外，使用该方法还可以改变属性的名字空间前缀
 
 --------------------------
+### setAttributeNode
+**设置指定的属性对象**
+
+```JavaScript
+XmlAttr XmlElement.setAttributeNode(XmlAttr attr);
+```
+
+调用参数:
+* attr: [XmlAttr](XmlAttr.md), 指定要设置的 [XmlAttr](XmlAttr.md) 对象
+
+返回结果:
+* [XmlAttr](XmlAttr.md), 返回被替换的 [XmlAttr](XmlAttr.md) 对象，如果没有被替换则返回 NULL
+
+该方法将指定的 [XmlAttr](XmlAttr.md) 对象设置为当前元素的属性。如果当前元素已经有同名的属性，则该方法将替换它
+
+--------------------------
 ### removeAttribute
 **通过名称删除指定的属性**
 
@@ -332,6 +433,22 @@ XmlElement.removeAttributeNS(String namespaceURI,
 调用参数:
 * namespaceURI: String, 指定要删除的命名空间 URI
 * localName: String, 指定删除的属性名
+
+--------------------------
+### removeAttributeNode
+**删除指定的属性节点**
+
+```JavaScript
+XmlAttr XmlElement.removeAttributeNode(XmlAttr attr);
+```
+
+调用参数:
+* attr: [XmlAttr](XmlAttr.md), 指定要删除的 [XmlAttr](XmlAttr.md) 对象
+
+返回结果:
+* [XmlAttr](XmlAttr.md), 返回被删除的 [XmlAttr](XmlAttr.md) 对象，如果没有被删除则返回 NULL
+
+该方法将从当前元素的属性列表中删除指定的 [XmlAttr](XmlAttr.md) 对象。如果当前元素没有指定的属性，则该方法无效
 
 --------------------------
 ### hasAttribute
@@ -432,6 +549,198 @@ XmlNodeList XmlElement.getElementsByClassName(String className);
 * [XmlNodeList](XmlNodeList.md), 文档树中具有指定 class 名的 XmlElement 节点的 [XmlNodeList](XmlNodeList.md) 集合。返回的元素节点的顺序就是它们在源文档中出现的顺序。
 
 该方法将返回一个 [XmlNodeList](XmlNodeList.md) 对象（可以作为只读数组处理），该对象存放文档中具有指定 class 名的所有 XmlElement 节点，它们存放的顺序就是在源文档中出现的顺序。 [XmlNodeList](XmlNodeList.md) 对象是“活”的，即如果在文档中添加或删除了指定标签名的元素，它的内容会自动进行必要的更新。
+
+--------------------------
+### querySelector
+**返回符合指定 CSS 选择器的元素的 [XmlNodeList](XmlNodeList.md)**
+
+```JavaScript
+XmlElement XmlElement.querySelector(String selectors);
+```
+
+调用参数:
+* selectors: String, 指定 CSS 选择器
+
+返回结果:
+* XmlElement, 符合指定 CSS 选择器的 XmlElement 节点
+
+该方法将返回一个 [XmlNodeList](XmlNodeList.md) 对象（可以作为只读数组处理），该对象存放文档中符合指定 CSS 选择器的所有 XmlElement 节点，它们存放的顺序就是在源文档中出现的顺序。 [XmlNodeList](XmlNodeList.md) 对象是“活”的，即如果在文档中添加或删除了符合指定选择器的元素，它的内容会自动进行必要的更新。
+
+--------------------------
+### querySelectorAll
+**返回符合指定 CSS 选择器的所有元素的 [XmlNodeList](XmlNodeList.md)**
+
+```JavaScript
+XmlNodeList XmlElement.querySelectorAll(String selectors);
+```
+
+调用参数:
+* selectors: String, 指定 CSS 选择器
+
+返回结果:
+* [XmlNodeList](XmlNodeList.md), 符合指定 CSS 选择器的 XmlElement 节点的 [XmlNodeList](XmlNodeList.md) 集合。返回的元素节点的顺序就是它们在源文档中出现的顺序。
+
+该方法将返回一个 [XmlNodeList](XmlNodeList.md) 对象（可以作为只读数组处理），该对象存放文档中符合指定 CSS 选择器的所有 XmlElement 节点，它们存放的顺序就是在源文档中出现的顺序。 [XmlNodeList](XmlNodeList.md) 对象是“活”的，即如果在文档中添加或删除了符合指定选择器的元素，它的内容会自动进行必要的更新。
+
+--------------------------
+### matches
+**查询当前元素是否匹配指定的 CSS 选择器**
+
+```JavaScript
+Boolean XmlElement.matches(String selectors);
+```
+
+调用参数:
+* selectors: String, 指定 CSS 选择器
+
+返回结果:
+* Boolean, 如果当前元素匹配指定选择器，则返回 true，否则返回 false
+
+--------------------------
+### closest
+**向上查找匹配指定 CSS 选择器的祖先元素**
+
+```JavaScript
+XmlElement XmlElement.closest(String selectors);
+```
+
+调用参数:
+* selectors: String, 指定 CSS 选择器
+
+返回结果:
+* XmlElement, 返回匹配的最近祖先元素，如果没有匹配则返回 null
+
+--------------------------
+### append
+**在当前元素的子节点末尾添加一个或多个节点**
+
+```JavaScript
+XmlElement.append(...nodes);
+```
+
+调用参数:
+* nodes: ..., 要添加的一个或多个节点，可以是节点对象或字符串
+
+该方法将指定的节点添加到当前元素的子节点列表末尾。字符串参数会自动转换为文本节点。
+
+--------------------------
+### prepend
+**在当前元素的子节点开头添加一个或多个节点**
+
+```JavaScript
+XmlElement.prepend(...nodes);
+```
+
+调用参数:
+* nodes: ..., 要添加的一个或多个节点，可以是节点对象或字符串
+
+该方法将指定的节点添加到当前元素的子节点列表开头。字符串参数会自动转换为文本节点。
+
+--------------------------
+### replaceChildren
+**替换当前元素的所有子节点**
+
+```JavaScript
+XmlElement.replaceChildren(...nodes);
+```
+
+调用参数:
+* nodes: ..., 要设置的一个或多个节点，可以是节点对象或字符串
+
+该方法将当前元素的所有子节点替换为指定的节点。字符串参数会自动转换为文本节点。如果不传入任何参数，则清空所有子节点。
+
+--------------------------
+### insertAdjacentElement
+**在指定位置插入一个元素节点**
+
+```JavaScript
+XmlElement XmlElement.insertAdjacentElement(String position,
+    XmlElement element);
+```
+
+调用参数:
+* position: String, 指定插入位置
+* element: XmlElement, 要插入的元素节点
+
+返回结果:
+* XmlElement, 返回插入的元素，如果插入失败则返回 null
+
+position 参数可以是以下值之一：
+- 'beforebegin': 在当前元素之前插入
+- 'afterbegin': 在当前元素的第一个子节点之前插入
+- 'beforeend': 在当前元素的最后一个子节点之后插入
+- 'afterend': 在当前元素之后插入
+
+--------------------------
+### insertAdjacentHTML
+**在指定位置插入 HTML 文本**
+
+```JavaScript
+XmlElement.insertAdjacentHTML(String position,
+    String html);
+```
+
+调用参数:
+* position: String, 指定插入位置
+* html: String, 要插入的 HTML 文本
+
+position 参数可以是以下值之一：
+- 'beforebegin': 在当前元素之前插入
+- 'afterbegin': 在当前元素的第一个子节点之前插入
+- 'beforeend': 在当前元素的最后一个子节点之后插入
+- 'afterend': 在当前元素之后插入
+
+--------------------------
+### insertAdjacentText
+**在指定位置插入文本节点**
+
+```JavaScript
+XmlElement.insertAdjacentText(String position,
+    String text);
+```
+
+调用参数:
+* position: String, 指定插入位置
+* text: String, 要插入的文本
+
+position 参数可以是以下值之一：
+- 'beforebegin': 在当前元素之前插入
+- 'afterbegin': 在当前元素的第一个子节点之前插入
+- 'beforeend': 在当前元素的最后一个子节点之后插入
+- 'afterend': 在当前元素之后插入
+
+--------------------------
+### toggleAttribute
+**切换元素上的布尔属性**
+
+```JavaScript
+Boolean XmlElement.toggleAttribute(String name);
+```
+
+调用参数:
+* name: String, 要切换的属性名称
+
+返回结果:
+* Boolean, 如果操作后属性存在则返回 true，否则返回 false
+
+如果属性存在则移除，如果不存在则添加。
+
+--------------------------
+**切换元素上的布尔属性**
+
+```JavaScript
+Boolean XmlElement.toggleAttribute(String name,
+    Boolean force);
+```
+
+调用参数:
+* name: String, 要切换的属性名称
+* force: Boolean, 如果为 true 则强制添加属性，如果为 false 则强制移除属性
+
+返回结果:
+* Boolean, 如果操作后属性存在则返回 true，否则返回 false
+
+根据 force 参数强制添加或移除属性。
 
 --------------------------
 ### hasChildNodes
@@ -581,6 +890,137 @@ XmlNode XmlElement.removeChild(XmlNode oldChild);
 
 返回结果:
 * [XmlNode](XmlNode.md), 如删除成功，此方法可返回被删除的节点，如失败，则返回 null
+
+--------------------------
+### remove
+**从当前节点中删除自身**
+
+```JavaScript
+XmlNode XmlElement.remove();
+```
+
+返回结果:
+* [XmlNode](XmlNode.md), 返回被删除的节点
+
+该方法将从当前节点的父节点中删除当前节点，并返回当前节点。注意：如果当前节点没有父节点，则此方法无效。
+
+--------------------------
+### replaceWith
+**用一个或多个节点替换当前节点**
+
+```JavaScript
+XmlElement.replaceWith(...nodes);
+```
+
+调用参数:
+* nodes: ..., 要替换当前节点的一个或多个节点
+
+该方法将当前节点从其父节点中移除，并在原位置插入指定的新节点。如果当前节点没有父节点，则此方法无效。
+
+--------------------------
+### before
+**在当前节点之前插入一个或多个节点**
+
+```JavaScript
+XmlElement.before(...nodes);
+```
+
+调用参数:
+* nodes: ..., 要插入的一个或多个节点，可以是节点对象或字符串
+
+该方法将指定的节点插入到当前节点之前，与当前节点处于同一父节点下。如果当前节点没有父节点，则此方法无效。
+
+--------------------------
+### after
+**在当前节点之后插入一个或多个节点**
+
+```JavaScript
+XmlElement.after(...nodes);
+```
+
+调用参数:
+* nodes: ..., 要插入的一个或多个节点，可以是节点对象或字符串
+
+该方法将指定的节点插入到当前节点之后，与当前节点处于同一父节点下。如果当前节点没有父节点，则此方法无效。
+
+--------------------------
+### contains
+**检查当前节点是否包含指定的节点**
+
+```JavaScript
+Boolean XmlElement.contains(XmlNode node);
+```
+
+调用参数:
+* node: [XmlNode](XmlNode.md), 要检查的节点
+
+返回结果:
+* Boolean, 如果当前节点包含指定节点则返回 true，否则返回 false
+
+--------------------------
+### getRootNode
+**返回当前节点的根节点**
+
+```JavaScript
+XmlNode XmlElement.getRootNode();
+```
+
+返回结果:
+* [XmlNode](XmlNode.md), 返回根节点
+
+--------------------------
+### compareDocumentPosition
+**比较两个节点在文档中的位置关系**
+
+```JavaScript
+Integer XmlElement.compareDocumentPosition(XmlNode other);
+```
+
+调用参数:
+* other: [XmlNode](XmlNode.md), 要比较的节点
+
+返回结果:
+* Integer, 返回位掩码表示的位置关系
+
+返回一个位掩码，表示两个节点的位置关系：
+- DOCUMENT_POSITION_DISCONNECTED (1): 两个节点不在同一文档中
+- DOCUMENT_POSITION_PRECEDING (2): 参数节点在当前节点之前
+- DOCUMENT_POSITION_FOLLOWING (4): 参数节点在当前节点之后
+- DOCUMENT_POSITION_CONTAINS (8): 参数节点包含当前节点
+- DOCUMENT_POSITION_CONTAINED_BY (16): 当前节点包含参数节点
+- DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC (32): 位置关系由实现决定
+
+--------------------------
+### isEqualNode
+**检查两个节点是否结构相等**
+
+```JavaScript
+Boolean XmlElement.isEqualNode(XmlNode other);
+```
+
+调用参数:
+* other: [XmlNode](XmlNode.md), 要比较的节点
+
+返回结果:
+* Boolean, 如果两个节点结构相等则返回 true，否则返回 false
+
+两个节点结构相等意味着它们具有相同的类型、相同的属性值、相同的子节点结构等。
+
+--------------------------
+### isSameNode
+**检查两个节点是否是同一个节点**
+
+```JavaScript
+Boolean XmlElement.isSameNode(XmlNode other);
+```
+
+调用参数:
+* other: [XmlNode](XmlNode.md), 要比较的节点
+
+返回结果:
+* Boolean, 如果是同一节点则返回 true，否则返回 false
+
+与 === 运算符作用相同，检查两个引用是否指向同一对象。
 
 --------------------------
 ### toString

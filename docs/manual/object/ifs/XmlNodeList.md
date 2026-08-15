@@ -7,7 +7,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    XmlNodeList [tooltip="XmlNodeList", fillcolor="lightgray", id="me", label="{XmlNodeList|operator[]\l|length\l|item()\l}"];
+    XmlNodeList [tooltip="XmlNodeList", fillcolor="lightgray", id="me", label="{XmlNodeList|operator[]\literator()\l|length\l|item()\lforEach()\lkeys()\lvalues()\lentries()\l}"];
 
     object -> XmlNodeList [dir=back];
 }
@@ -21,6 +21,17 @@ digraph {
 ```JavaScript
 readonly XmlNode XmlNodeList[];
 ```
+
+--------------------------
+### @iterator
+**查询当前对象元素的迭代器**
+
+```JavaScript
+Iterator XmlNodeList.@iterator();
+```
+
+返回结果:
+* [Iterator](Iterator.md), 返回当前对象元素的迭代器
 
 ## 成员属性
         
@@ -45,6 +56,50 @@ XmlNode XmlNodeList.item(Integer index);
 
 返回结果:
 * [XmlNode](XmlNode.md), 指定索引号的节点
+
+--------------------------
+### forEach
+**对列表中的每个节点执行一次指定的回调函数**
+
+```JavaScript
+XmlNodeList.forEach(Function callback);
+```
+
+调用参数:
+* callback: Function, 对每个节点执行的回调函数，接收三个参数：当前节点、索引、节点列表本身
+
+--------------------------
+### keys
+**返回一个迭代器，用于遍历节点列表中每个节点的索引**
+
+```JavaScript
+Iterator XmlNodeList.keys();
+```
+
+返回结果:
+* [Iterator](Iterator.md), 返回索引迭代器
+
+--------------------------
+### values
+**返回一个迭代器，用于遍历节点列表中每个节点的值**
+
+```JavaScript
+Iterator XmlNodeList.values();
+```
+
+返回结果:
+* [Iterator](Iterator.md), 返回值迭代器
+
+--------------------------
+### entries
+**返回一个迭代器，用于遍历节点列表中每个节点的 [索引, 值] 对**
+
+```JavaScript
+Iterator XmlNodeList.entries();
+```
+
+返回结果:
+* [Iterator](Iterator.md), 返回键值对迭代器
 
 --------------------------
 ### toString

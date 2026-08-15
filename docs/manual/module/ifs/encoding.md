@@ -3,7 +3,6 @@
 
 下面是 `encoding` 模块提供的各个子模块的简要介绍：
 
-- `iconv`：用于处理各种编码之间的转换。
 - `base64`：提供了一些对 Base64 编解码的支持，可以将字符串编码为 Base64 格式，也可以将 Base64 格式解码为字符串。
 - `base32`：提供了对 Base32 编解码的支持，可以将给定的数据进行 Base32 编码并返回编码后的字符串。也可以将 Base32 编码的字符串解码为原始的数据。
 - `hex`：提供了对十六进制编解码的支持，可以将给定的数据进行十六进制编码，并返回编码后的字符串。也可以将十六进制编码的字符串解码为原始的数据。
@@ -14,7 +13,7 @@
 
 `encoding` 模块中的大部分子模块都包含了编码与解码两个函数，使用这些函数可以将特定格式的数据进行编码或解码。使用这些编解码模块时，需要根据模块的类型等特点来选择最适合的模块，才能保证编码和解码的正确性。
 
-encoding` 模块的引用方式：
+`encoding` 模块的引用方式：
 
 ```JavaScript
 var encoding = require('encoding');
@@ -62,14 +61,6 @@ multibase encoding.multibase;
 ```
 
 --------------------------
-### iconv
-**[iconv](iconv.md) 编码与解码模块**
-
-```JavaScript
-iconv encoding.iconv;
-```
-
---------------------------
 ### json
 **[json](json.md) 编码与解码模块**
 
@@ -95,7 +86,7 @@ static Boolean encoding.isEncoding(String codec);
 ```
 
 调用参数:
-* codec: String, 指定编码格式，允许值为："[hex](hex.md)", "[base32](base32.md)", "[base58](base58.md)", "[base64](base64.md)", "utf8", 或者 [iconv](iconv.md) 模块支持的字符集
+* codec: String, 指定编码格式，允许值为："[hex](hex.md)", "[base32](base32.md)", "[base58](base58.md)", "[base64](base64.md)", "utf8", 或者 ICU 支持的字符集
 
 返回结果:
 * Boolean, 返回编码是否支持
@@ -111,7 +102,7 @@ static String encoding.encode(Buffer data,
 
 调用参数:
 * data: [Buffer](../../object/ifs/Buffer.md), 初始化字符串，字符串将以 utf-8 格式写入
-* codec: String, 指定编码格式，允许值为："[hex](hex.md)", "[base32](base32.md)", "[base58](base58.md)", "[base64](base64.md)", "utf8", 或者 [iconv](iconv.md) 模块支持的字符集，缺省为 "utf8"
+* codec: String, 指定编码格式，允许值为："[hex](hex.md)", "[base32](base32.md)", "[base58](base58.md)", "[base64](base64.md)", "utf8", 或者 ICU 支持的字符集，缺省为 "utf8"
 
 返回结果:
 * String, 返回编码的字符串
@@ -127,7 +118,7 @@ static Buffer encoding.decode(String str,
 
 调用参数:
 * str: String, 初始化字符串，字符串将以 utf-8 格式写入
-* codec: String, 指定编码格式，允许值为："[hex](hex.md)", "[base32](base32.md)", "[base58](base58.md)", "[base64](base64.md)", "utf8", 或者 [iconv](iconv.md) 模块支持的字符集，缺省为 "utf8"
+* codec: String, 指定编码格式，允许值为："[hex](hex.md)", "[base32](base32.md)", "[base58](base58.md)", "[base64](base64.md)", "utf8", 或者 ICU 支持的字符集，缺省为 "utf8"
 
 返回结果:
 * [Buffer](../../object/ifs/Buffer.md), 返回解码的 [Buffer](../../object/ifs/Buffer.md)
@@ -167,11 +158,13 @@ static String encoding.encodeURI(String url);
 **[url](url.md) 部件字符串安全编码**
 
 ```JavaScript
-static String encoding.encodeURIComponent(String url);
+static String encoding.encodeURIComponent(String url,
+    Boolean formEncoded = false);
 ```
 
 调用参数:
 * url: String, 要编码的 [url](url.md)
+* formEncoded: Boolean, 是否使用application/x-www-form-urlencoded格式编码（空格编码为+），缺省为false
 
 返回结果:
 * String, 返回编码的字符串

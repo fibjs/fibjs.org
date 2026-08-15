@@ -50,7 +50,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Fiber [tooltip="Fiber", fillcolor="lightgray", id="me", label="{Fiber|id\lcaller\lstack\lstack_usage\l|join()\l}"];
+    Fiber [tooltip="Fiber", fillcolor="lightgray", id="me", label="{Fiber|id\lstack\lstack_usage\l|join()\l}"];
 
     object -> Fiber [dir=back];
 }
@@ -63,14 +63,6 @@ digraph {
 
 ```JavaScript
 readonly Long Fiber.id;
-```
-
---------------------------
-### caller
-**Fiber, 查询纤程的调用纤程**
-
-```JavaScript
-readonly Fiber Fiber.caller;
 ```
 
 --------------------------

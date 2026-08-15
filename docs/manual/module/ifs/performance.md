@@ -122,6 +122,29 @@ static NArray performance.getEntriesByName(String name,
 * NArray, 返回所有性能记录
 
 --------------------------
+### markResourceTiming
+**标记资源时间（兼容性空实现）**
+
+```JavaScript
+static performance.markResourceTiming(Value timingInfo,
+    String requestedUrl,
+    String initiatorType,
+    Value global,
+    String cacheState,
+    Value bodyInfo,
+    Integer responseStatus);
+```
+
+调用参数:
+* timingInfo: Value, 时间信息对象
+* requestedUrl: String, 请求的 URL
+* initiatorType: String, 发起者类型
+* global: Value, 全局对象
+* cacheState: String, 缓存状态
+* bodyInfo: Value, 请求体信息
+* responseStatus: Integer, 响应状态码
+
+--------------------------
 ### now
 **查询当前进程时间**
 

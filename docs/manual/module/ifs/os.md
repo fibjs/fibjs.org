@@ -104,6 +104,14 @@ console.log(cpus);
 Service os.Service;
 ```
 
+--------------------------
+### constants
+**os 模块的常量对象，参见 [os_constants](os_constants.md)**
+
+```JavaScript
+os_constants os.constants;
+```
+
 ## 静态函数
         
 ### hostname

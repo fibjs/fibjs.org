@@ -1,13 +1,6 @@
 # 模块 test
 test 模块是一个测试框架，结合断言模块 `assert` 可以方便地编写各种测试用例，可作为函数调用
 
-在 `fibjs` 中引入 `test` 模块常常需要先进行 `test setup` 操作：
-
-```JavaScript
-var test = require('test');
-test.setup();
-```
-
 在编写测试用例前通常需要先定义一个测试模块用来描述测试内容。
 
 - describe
@@ -129,6 +122,20 @@ static test.Function(String name,
 * block: Function, 测试内容
 
 --------------------------
+**定义一个测试项目（带选项）**
+
+```JavaScript
+static test.Function(String name,
+    Object options,
+    Function block);
+```
+
+调用参数:
+* name: String, 定义项目名称
+* options: Object, 测试选项，支持: { skip, todo, only }
+* block: Function, 测试内容
+
+--------------------------
 ### xdescribe
 **暂停测试套件定义**
 
@@ -220,6 +227,30 @@ static test.todo(String name,
 * block: Function, 测试内容
 
 --------------------------
+**计划项目定义（带选项）**
+
+```JavaScript
+static test.todo(String name,
+    Object options,
+    Function block);
+```
+
+调用参数:
+* name: String, 定义项目名称
+* options: Object, 测试选项，支持: { skip, todo, only }
+* block: Function, 测试内容
+
+--------------------------
+**计划项目定义**
+
+```JavaScript
+static test.todo(String name);
+```
+
+调用参数:
+* name: String, 定义项目名称
+
+--------------------------
 ### before
 **定义当前测试模块进入事件**
 
@@ -300,66 +331,6 @@ static Function test.mustNotCall();
 
 返回结果:
 * Function, 返回被包裹的函数
-
---------------------------
-### run
-**开始执行定义的测试模块**
-
-```JavaScript
-static Object test.run(Integer mode = console.ERROR);
-```
-
-调用参数:
-* mode: Integer, 指定进行测试模式，ERROR 时，项目报错信息集中在报告后显示，低于 ERROR 时，输出信息随时显示，高于 ERROR 时，只显示报告
-
-返回结果:
-* Object, 返回测试结果
-
-测试运行完成后，将以以下形式返回测试结果：
-
-```JavaScript
-{
-    "total": 2, // number of total test cases
-    "pass": 2, // number of passed test cases
-    "fail": 0, // number of failed test cases
-    "skip": 0, // number of skipped test cases
-    "todo": 0, // number of todo test cases
-    "time": 0.000000, // time elapsed in seconds
-    "cases": [ // details of test cases
-        {
-            "name": "test", // name of test case
-            "time": 0.000000, // time elapsed in seconds
-            "result": true, // result of test case
-            "error": null // message of error if test case failed
-        },
-        {
-            "name": "sub cases", // name of sub test case
-            "total": 1, // number of total test cases
-            "pass": 1, // number of passed test cases
-            "fail": 0, // number of failed test cases
-            "skip": 0, // number of skipped test cases
-            "todo": 0, // number of todo test cases
-            "time": 0.000000, // time elapsed in seconds
-            "cases": [ // details of test cases
-                {
-                    "name": "test", // name of test case
-                    "time": 0.000000, // time elapsed in seconds
-                    "result": true, // result of test case
-                    "error": null // message of error if test case failed
-                }
-            ]
-        }
-    ]
-}
-```
-
---------------------------
-### setup
-**初始化当前脚本的测试环境，将 test 模块方法复制为当前脚本全局变量**
-
-```JavaScript
-static test.setup();
-```
 
 ## 静态属性
         

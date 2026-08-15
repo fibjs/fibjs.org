@@ -1,6 +1,14 @@
 # 模块 global
 全局对象，所有脚本均可以访问的基础对象
 
+全局对象提供以下能力：
+
+- **Web 标准对象**：`Buffer`、`URL`、`URLSearchParams`、`Blob`、`File`、`Headers`、`FormData`、`Request`、`Response`、`TextDecoder`、`TextEncoder`、`AbortController`、`AbortSignal`、`Event`、`EventTarget`、`MessagePort`、`MessageChannel`、`WebSocket`、`DOMParser`、`XMLSerializer` 等；
+- **核心模块**：`console`、`process`、`performance`、`crypto`；
+- **模块加载**：`require` 加载模块、`run` 运行脚本；
+- **定时器**：`setTimeout`、`setInterval`、`setImmediate` 等，行为与 [timers](timers.md) 模块同名函数一致；
+- **工具函数**：`btoa`/`atob` 编解码、`structuredClone` 深拷贝、`fetch` 发送请求、`queueMicrotask` 排入微任务。
+
 ## 对象
         
 ### Buffer
@@ -11,11 +19,67 @@ Buffer global.Buffer;
 ```
 
 --------------------------
+### URLSearchParams
+**创建一个 [URLSearchParams](../../object/ifs/URLSearchParams.md) 请求对象，参见 [URLSearchParams](../../object/ifs/URLSearchParams.md)**
+
+```JavaScript
+URLSearchParams global.URLSearchParams;
+```
+
+--------------------------
 ### URL
 **创建一个 [UrlObject](../../object/ifs/UrlObject.md) 请求对象，参见 [UrlObject](../../object/ifs/UrlObject.md)**
 
 ```JavaScript
 UrlObject global.URL;
+```
+
+--------------------------
+### Blob
+**创建一个 [Blob](../../object/ifs/Blob.md) 请求对象，参见 [Blob](../../object/ifs/Blob.md)**
+
+```JavaScript
+Blob global.Blob;
+```
+
+--------------------------
+### File
+**创建一个 [File](../../object/ifs/File.md) 请求对象，参见 [File](../../object/ifs/File.md)**
+
+```JavaScript
+File global.File;
+```
+
+--------------------------
+### Headers
+**创建一个 [Headers](../../object/ifs/Headers.md) 对象，参见 [Headers](../../object/ifs/Headers.md)**
+
+```JavaScript
+Headers global.Headers;
+```
+
+--------------------------
+### FormData
+**创建一个 [FormData](../../object/ifs/FormData.md) 对象，参见 [FormData](../../object/ifs/FormData.md)**
+
+```JavaScript
+FormData global.FormData;
+```
+
+--------------------------
+### Request
+**创建一个 [http](http.md) 请求对象，参见 [HttpRequest](../../object/ifs/HttpRequest.md)**
+
+```JavaScript
+HttpRequest global.Request;
+```
+
+--------------------------
+### Response
+**创建一个 Fetch API 响应对象，参见 [HttpResponse](../../object/ifs/HttpResponse.md)**
+
+```JavaScript
+HttpResponse global.Response;
 ```
 
 --------------------------
@@ -43,11 +107,91 @@ AbortController global.AbortController;
 ```
 
 --------------------------
+### AbortSignal
+**信号对象，用于与异步操作通信并中止它们，参见 [AbortSignal](../../object/ifs/AbortSignal.md) 对象。**
+
+```JavaScript
+AbortSignal global.AbortSignal;
+```
+
+--------------------------
+### Event
+**DOM 事件对象，表示一个 W3C 标准事件**
+
+```JavaScript
+DOMEvent global.Event;
+```
+
+--------------------------
+### EventTarget
+**DOM 事件目标对象，提供 Web 标准事件监听和分发机制**
+
+```JavaScript
+EventEmitter global.EventTarget;
+```
+
+--------------------------
+### MessageEvent
+**[MessageEvent](../../object/ifs/MessageEvent.md) 对象，表示目标对象接收到的消息**
+
+```JavaScript
+MessageEvent global.MessageEvent;
+```
+
+--------------------------
+### MessagePort
+**[MessagePort](../../object/ifs/MessagePort.md) 对象，表示消息通道的一端**
+
+```JavaScript
+MessagePort global.MessagePort;
+```
+
+--------------------------
+### MessageChannel
+**[MessageChannel](../../object/ifs/MessageChannel.md) 对象，提供一对已连接的 [MessagePort](../../object/ifs/MessagePort.md) 对象**
+
+```JavaScript
+MessageChannel global.MessageChannel;
+```
+
+--------------------------
 ### CryptoKey
 **[CryptoKey](../../object/ifs/CryptoKey.md) 类来表示对称或非对称密钥，每种密钥公开不同的功能**
 
 ```JavaScript
 CryptoKey global.CryptoKey;
+```
+
+--------------------------
+### DOMParser
+**[DOMParser](../../object/ifs/DOMParser.md) 接口，用于将字符串解析为 DOM 文档，参见 [DOMParser](../../object/ifs/DOMParser.md) 对象**
+
+```JavaScript
+DOMParser global.DOMParser;
+```
+
+--------------------------
+### XMLSerializer
+**[XMLSerializer](../../object/ifs/XMLSerializer.md) 接口，用于将 DOM 节点序列化为字符串，参见 [XMLSerializer](../../object/ifs/XMLSerializer.md) 对象**
+
+```JavaScript
+XMLSerializer global.XMLSerializer;
+```
+
+--------------------------
+### XMLDocument
+**XMLDocument 接口，代表 XML 文档，等同于 [XmlDocument](../../object/ifs/XmlDocument.md)**
+
+```JavaScript
+XmlDocument global.XMLDocument;
+```
+
+--------------------------
+### WebSocket
+**[WebSocket](../../object/ifs/WebSocket.md) 类，用于创建和管理 [WebSocket](../../object/ifs/WebSocket.md) 连接，参见 [WebSocket](../../object/ifs/WebSocket.md) 对象**
+
+```JavaScript
+WebSocket global.WebSocket;
 ```
 
 --------------------------
@@ -172,7 +316,7 @@ require 可用于加载基础模块，文件模块。
 
 --------------------------
 ### setTimeout
-**在指定的时间后调用函数**
+**在指定的时间后调用函数，行为与 [timers](timers.md) 模块同名函数一致**
 
 ```JavaScript
 static Timer global.setTimeout(Function callback,
@@ -182,7 +326,7 @@ static Timer global.setTimeout(Function callback,
 
 调用参数:
 * callback: Function, 指定回调函数
-* timeout: Number, 指定延时的时间，以毫秒为单位。超过 2^31 的话,立即执行。
+* timeout: Number, 指定延时的时间，以毫秒为单位，缺省为 1；小于 1 或大于 2^31-1 的值按 1ms 处理。
 * args: ..., 额外的参数，传入到指定的 callback 内，可选。
 
 返回结果:
@@ -201,7 +345,7 @@ static global.clearTimeout(Value t);
 
 --------------------------
 ### setInterval
-**每间隔指定的时间后调用函数**
+**每间隔指定的时间后调用函数，行为与 [timers](timers.md) 模块同名函数一致**
 
 ```JavaScript
 static Timer global.setInterval(Function callback,
@@ -211,7 +355,7 @@ static Timer global.setInterval(Function callback,
 
 调用参数:
 * callback: Function, 指定回调函数
-* timeout: Number, 指定间隔的时间，以毫秒为单位。超过 2^31 的话,立即执行。
+* timeout: Number, 指定间隔的时间，以毫秒为单位；小于 1 或大于 2^31-1 的值按 1ms 处理。
 * args: ..., 额外的参数，传入到指定的 callback 内，可选。
 
 返回结果:
@@ -240,7 +384,7 @@ static Timer global.setHrInterval(Function callback,
 
 调用参数:
 * callback: Function, 指定回调函数
-* timeout: Number, 指定间隔的时间，以毫秒为单位。超过 2^31 的话,立即执行。
+* timeout: Number, 指定间隔的时间，以毫秒为单位；小于 1 或大于 2^31-1 的值按 1ms 处理。
 * args: ..., 额外的参数，传入到指定的 callback 内，可选。
 
 返回结果:
@@ -306,13 +450,11 @@ static global.clearImmediate(Value t);
 **以 [base64](base64.md) 方式编码数据**
 
 ```JavaScript
-static String global.btoa(Buffer data,
-    Boolean url = false);
+static String global.btoa(String data);
 ```
 
 调用参数:
-* data: [Buffer](../../object/ifs/Buffer.md), 要编码的数据
-* url: Boolean, 指定是否使用 [url](url.md) 安全字符编码
+* data: String, 要编码的数据
 
 返回结果:
 * String, 返回编码的字符串
@@ -322,14 +464,101 @@ static String global.btoa(Buffer data,
 **以 [base64](base64.md) 方式解码字符串为二进制数据**
 
 ```JavaScript
-static Buffer global.atob(String data);
+static String global.atob(String data);
 ```
 
 调用参数:
 * data: String, 要解码的字符串
 
 返回结果:
-* [Buffer](../../object/ifs/Buffer.md), 返回解码的二进制数据
+* String, 返回解码的二进制数据
+
+--------------------------
+### structuredClone
+**创建一个值的深拷贝**
+
+```JavaScript
+static Value global.structuredClone(Value value,
+    Object options = {});
+```
+
+调用参数:
+* value: Value, 要克隆的值
+* options: Object, 可选参数对象，包含 transfer 数组
+
+返回结果:
+* Value, 返回克隆后的值
+
+使用结构化克隆算法创建给定值的深拷贝。支持循环引用。
+
+transfer 参数用于指定需要转移而非克隆的可转移对象列表（如 ArrayBuffer）。转移后，原对象将不可用。
+
+--------------------------
+### fetch
+**请求指定的 [url](url.md)，并返回结果，等同于 [http.request](http.md#request)([url](url.md), ...)**
+
+```JavaScript
+static HttpResponse global.fetch(String url,
+    Object opts = {}) promise;
+```
+
+调用参数:
+* url: String, 指定 [url](url.md)，必须是包含主机的完整 [url](url.md)
+* opts: Object, 指定附加信息
+
+返回结果:
+* [HttpResponse](../../object/ifs/HttpResponse.md), 返回服务器响应
+
+opts 包含请求的附加选项，支持的内容如下：
+
+```JavaScript
+{
+    "method": "GET", // specify the http request method: GET, POST, etc, default: GET.
+    "protocol": "http",
+    "slashes": true,
+    "username": "",
+    "password": "",
+    "hostname": "",
+    "port": "",
+    "pathname": "",
+    "keepAlive": unknown, // If not specified, the default settings of the client will be used.
+    "query": {},
+    "body": SeekableStream | Buffer | String | {},
+    "json": {},
+    "pack": {},
+    "headers": {}
+}
+```
+
+其中 body，[json](json.md)，pack 不得同时出现。缺省为 {}，不包含任何附加信息
+
+--------------------------
+**发送 Fetch 请求，接受 Request 对象**
+
+```JavaScript
+static HttpResponse global.fetch(HttpRequest request,
+    Object opts = {}) promise;
+```
+
+调用参数:
+* request: [HttpRequest](../../object/ifs/HttpRequest.md), Request 请求对象
+* opts: Object, 请求选项（可覆盖 request 中的字段）
+
+返回结果:
+* [HttpResponse](../../object/ifs/HttpResponse.md), 返回服务器响应对象
+
+--------------------------
+### queueMicrotask
+**将一个微任务排入队列执行**
+
+```JavaScript
+static global.queueMicrotask(Function callback);
+```
+
+调用参数:
+* callback: Function, 要作为微任务排入队列的函数
+
+回调函数将在当前任务完成后、下一个任务开始之前执行。
 
 ## 静态属性
         

@@ -119,6 +119,24 @@ static String util.format(...args);
 * String, 返回格式化后的字符串
 
 --------------------------
+### formatWithOptions
+**按照指定格式和 inspect 选项格式化变量**
+
+```JavaScript
+static String util.formatWithOptions(Object options,
+    String fmt,
+    ...args);
+```
+
+调用参数:
+* options: Object, 非字符串值使用的 inspect 选项
+* fmt: String, 格式化字符串
+* args: ..., 可选参数列表
+
+返回结果:
+* String, 返回格式化后的字符串
+
+--------------------------
 ### inherits
 **从一个构造函数 constructor 继承原型函数到另一个。构造函数的原型将被设置为一个新的从超类（superConstructor）创建的对象。**
 
@@ -130,6 +148,20 @@ static util.inherits(Value constructor,
 调用参数:
 * constructor: Value, 初始的构造函数
 * superConstructor: Value, 被继承的超类
+
+--------------------------
+### parseEnv
+**解析 dotenv 文件原始文本并返回键值对象**
+
+```JavaScript
+static Object util.parseEnv(String content);
+```
+
+调用参数:
+* content: String, dotenv 文件的原始内容
+
+返回结果:
+* Object, 返回解析后的键值对象
 
 --------------------------
 ### inspect
@@ -162,24 +194,63 @@ static String util.inspect(Value obj,
 ```
 
 --------------------------
-### debuglog
-**创建一个 [Logger](../../object/ifs/Logger.md) 对象，根据环境变量 NODE_DEBUG 有条件地输出调试信息**
+### styleText
+**为文本应用 ANSI 颜色/样式格式化**
 
 ```JavaScript
-static Logger util.debuglog(String section);
+static String util.styleText(String format[],
+    String text);
+```
+
+调用参数:
+* format[]: String, 格式名称数组
+* text: String, 要格式化的文本
+
+返回结果:
+* String, 返回格式化后的字符串
+
+当不支持颜色输出时（如非 TTY 环境、设置了 NO_COLOR），原样返回文本。
+
+支持的格式：bold、italic、underline、strikethrough、hidden、
+black、red、green、yellow、blue、magenta、cyan、white、
+bgBlack、bgRed、bgGreen、bgYellow、bgBlue、bgMagenta、bgCyan、bgWhite、
+gray/grey、blackBright、redBright、greenBright、yellowBright、blueBright、
+magentaBright、cyanBright、whiteBright
+
+--------------------------
+**为文本应用 ANSI 颜色/样式格式化**
+
+```JavaScript
+static String util.styleText(String format,
+    String text);
+```
+
+调用参数:
+* format: String, 格式名称
+* text: String, 要格式化的文本
+
+返回结果:
+* String, 返回格式化后的字符串
+
+--------------------------
+### debuglog
+**创建一个 [ConsoleObject](../../object/ifs/ConsoleObject.md) 对象，根据环境变量 NODE_DEBUG 有条件地输出调试信息**
+
+```JavaScript
+static ConsoleObject util.debuglog(String section);
 ```
 
 调用参数:
 * section: String, 指定的调试区域
 
 返回结果:
-* [Logger](../../object/ifs/Logger.md), 返回一个 [Logger](../../object/ifs/Logger.md) 对象
+* [ConsoleObject](../../object/ifs/ConsoleObject.md), 返回一个 [ConsoleObject](../../object/ifs/ConsoleObject.md) 对象
 
 --------------------------
-**创建一个 [Logger](../../object/ifs/Logger.md) 对象，根据环境变量 NODE_DEBUG 有条件地输出调试信息**
+**创建一个 [ConsoleObject](../../object/ifs/ConsoleObject.md) 对象，根据环境变量 NODE_DEBUG 有条件地输出调试信息**
 
 ```JavaScript
-static Logger util.debuglog(String section,
+static ConsoleObject util.debuglog(String section,
     Function fn);
 ```
 
@@ -188,27 +259,27 @@ static Logger util.debuglog(String section,
 * fn: Function, 第一次调用日志函数时调用的回调，其函数参数是一个更优化的日志函数
 
 返回结果:
-* [Logger](../../object/ifs/Logger.md), 返回一个 [Logger](../../object/ifs/Logger.md) 对象
+* [ConsoleObject](../../object/ifs/ConsoleObject.md), 返回一个 [ConsoleObject](../../object/ifs/ConsoleObject.md) 对象
 
 --------------------------
 ### debug
-**创建一个 [Logger](../../object/ifs/Logger.md) 对象，根据环境变量 NODE_DEBUG 有条件地输出调试信息。是 debuglog 的别名**
+**创建一个 [ConsoleObject](../../object/ifs/ConsoleObject.md) 对象，根据环境变量 NODE_DEBUG 有条件地输出调试信息。是 debuglog 的别名**
 
 ```JavaScript
-static Logger util.debug(String section);
+static ConsoleObject util.debug(String section);
 ```
 
 调用参数:
 * section: String, 指定的调试区域
 
 返回结果:
-* [Logger](../../object/ifs/Logger.md), 返回一个 [Logger](../../object/ifs/Logger.md) 对象
+* [ConsoleObject](../../object/ifs/ConsoleObject.md), 返回一个 [ConsoleObject](../../object/ifs/ConsoleObject.md) 对象
 
 --------------------------
-**创建一个 [Logger](../../object/ifs/Logger.md) 对象，根据环境变量 NODE_DEBUG 有条件地输出调试信息。是 debuglog 的别名**
+**创建一个 [ConsoleObject](../../object/ifs/ConsoleObject.md) 对象，根据环境变量 NODE_DEBUG 有条件地输出调试信息。是 debuglog 的别名**
 
 ```JavaScript
-static Logger util.debug(String section,
+static ConsoleObject util.debug(String section,
     Function fn);
 ```
 
@@ -217,7 +288,7 @@ static Logger util.debug(String section,
 * fn: Function, 第一次调用日志函数时调用的回调，其函数参数是一个更优化的日志函数
 
 返回结果:
-* [Logger](../../object/ifs/Logger.md), 返回一个 [Logger](../../object/ifs/Logger.md) 对象
+* [ConsoleObject](../../object/ifs/ConsoleObject.md), 返回一个 [ConsoleObject](../../object/ifs/ConsoleObject.md) 对象
 
 --------------------------
 ### deprecate
@@ -614,6 +685,160 @@ static Boolean util.isBuffer(Value v);
 
 返回结果:
 * Boolean, 如果是函数 [Buffer](../../object/ifs/Buffer.md) 对象则返回 True
+
+--------------------------
+### isFloat16Array
+**检测给定的变量是否是 Float16Array 类型**
+
+```JavaScript
+static Boolean util.isFloat16Array(Value v);
+```
+
+调用参数:
+* v: Value, 给定需要检测的变量
+
+返回结果:
+* Boolean, 如果是 Float16Array 类型则返回 True
+
+--------------------------
+### isAnyArrayBuffer
+**检测给定的变量是否是 ArrayBuffer 或 SharedArrayBuffer 类型**
+
+```JavaScript
+static Boolean util.isAnyArrayBuffer(Value v);
+```
+
+调用参数:
+* v: Value, 给定需要检测的变量
+
+返回结果:
+* Boolean, 如果是 ArrayBuffer 或 SharedArrayBuffer 类型则返回 True
+
+--------------------------
+### isSharedArrayBuffer
+**检测给定的变量是否是 SharedArrayBuffer 类型**
+
+```JavaScript
+static Boolean util.isSharedArrayBuffer(Value v);
+```
+
+调用参数:
+* v: Value, 给定需要检测的变量
+
+返回结果:
+* Boolean, 如果是 SharedArrayBuffer 类型则返回 True
+
+--------------------------
+### isArgumentsObject
+**检测给定的变量是否是 arguments 对象**
+
+```JavaScript
+static Boolean util.isArgumentsObject(Value v);
+```
+
+调用参数:
+* v: Value, 给定需要检测的变量
+
+返回结果:
+* Boolean, 如果是 arguments 对象则返回 True
+
+--------------------------
+### isBoxedPrimitive
+**检测给定的变量是否是装箱的原始类型对象（如 new Boolean()、new String() 等）**
+
+```JavaScript
+static Boolean util.isBoxedPrimitive(Value v);
+```
+
+调用参数:
+* v: Value, 给定需要检测的变量
+
+返回结果:
+* Boolean, 如果是装箱的原始类型对象则返回 True
+
+--------------------------
+### isGeneratorFunction
+**检测给定的变量是否是 GeneratorFunction 类型**
+
+```JavaScript
+static Boolean util.isGeneratorFunction(Value v);
+```
+
+调用参数:
+* v: Value, 给定需要检测的变量
+
+返回结果:
+* Boolean, 如果是 GeneratorFunction 类型则返回 True
+
+--------------------------
+### isGeneratorObject
+**检测给定的变量是否是 Generator 对象**
+
+```JavaScript
+static Boolean util.isGeneratorObject(Value v);
+```
+
+调用参数:
+* v: Value, 给定需要检测的变量
+
+返回结果:
+* Boolean, 如果是 Generator 对象则返回 True
+
+--------------------------
+### isProxy
+**检测给定的变量是否是 Proxy 实例**
+
+```JavaScript
+static Boolean util.isProxy(Value v);
+```
+
+调用参数:
+* v: Value, 给定需要检测的变量
+
+返回结果:
+* Boolean, 如果是 Proxy 实例则返回 True
+
+--------------------------
+### isModuleNamespaceObject
+**检测给定的变量是否是 Module Namespace 对象**
+
+```JavaScript
+static Boolean util.isModuleNamespaceObject(Value v);
+```
+
+调用参数:
+* v: Value, 给定需要检测的变量
+
+返回结果:
+* Boolean, 如果是 Module Namespace 对象则返回 True
+
+--------------------------
+### isCryptoKey
+**检测给定的变量是否是 [CryptoKey](../../object/ifs/CryptoKey.md) 类型**
+
+```JavaScript
+static Boolean util.isCryptoKey(Value v);
+```
+
+调用参数:
+* v: Value, 给定需要检测的变量
+
+返回结果:
+* Boolean, 如果是 [CryptoKey](../../object/ifs/CryptoKey.md) 类型则返回 True
+
+--------------------------
+### isKeyObject
+**检测给定的变量是否是 [KeyObject](../../object/ifs/KeyObject.md) 类型**
+
+```JavaScript
+static Boolean util.isKeyObject(Value v);
+```
+
+调用参数:
+* v: Value, 给定需要检测的变量
+
+返回结果:
+* Boolean, 如果是 [KeyObject](../../object/ifs/KeyObject.md) 类型则返回 True
 
 --------------------------
 ### isDeepEqual
@@ -1188,4 +1413,70 @@ static Object util.buildInfo();
     }
 }
 ```
+
+--------------------------
+### stripTypeScript
+**将 TypeScript 代码转换为 JavaScript，移除所有类型注解**
+
+```JavaScript
+static String util.stripTypeScript(String code);
+```
+
+调用参数:
+* code: String, TypeScript 源代码
+
+返回结果:
+* String, 返回转换后的 JavaScript 代码
+
+该方法使用 strip-only 模式，将 TypeScript 的类型语法替换为空格，保持源代码的行列位置不变。
+这对于需要调试或生成 source map 的场景非常有用。
+
+注意：strip-only 模式不支持以下语法：
+- enum（需要转换为 IIFE）
+- const enum（需要内联展开）
+- namespace（需要转换为 IIFE）
+- 构造函数参数属性（如 constructor(public x: string)）
+- import = require() 语法
+- export = 语法
+- 尖括号类型断言（如 <T>expr，请使用 as 语法）
+
+示例：
+
+```JavaScript
+var util = require('util');
+var ts = 'const x: string = "hello";';
+var js = util.stripTypeScript(ts);
+console.log(js); // 'const x         = "hello";'
+```
+
+--------------------------
+### getStringWidth
+**获取字符串的可视宽度，考虑全角字符、emoji 和 ANSI 转义序列**
+
+```JavaScript
+static Integer util.getStringWidth(String str);
+```
+
+调用参数:
+* str: String, 要计算宽度的字符串
+
+返回结果:
+* Integer, 返回字符串的可视宽度
+
+东亚宽度属性为 Fullwidth (F) 或 Wide (W) 的字符计为 2，大多数其他字符计为 1。
+控制字符和组合标记计为 0。ANSI 转义序列将被跳过。
+
+--------------------------
+### stripVTControlCharacters
+**从字符串中移除 ANSI 转义序列（VT 控制字符）**
+
+```JavaScript
+static String util.stripVTControlCharacters(String str);
+```
+
+调用参数:
+* str: String, 要处理的字符串
+
+返回结果:
+* String, 返回移除 ANSI 转义序列后的字符串
 

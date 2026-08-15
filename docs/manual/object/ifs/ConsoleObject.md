@@ -1,4 +1,4 @@
-# 对象 Logger
+# 对象 ConsoleObject
 日志对象，用于记录日志信息
 
 `Logger` 对象用于记录各种等级的日志信息。它是一个强大的工具，可以帮助开发者在开发和调试过程中记录和追踪应用程序的行为。通过记录日志信息，开发者可以更容易地发现和解决问题，提高代码的可靠性和可维护性。
@@ -27,34 +27,34 @@ var logger = util.debuglog('example');
 以下是一些使用 `Logger` 对象的示例：
 
 ```JavaScript
-// 创建 Logger 对象
+// Create Logger object
 var logger = util.debuglog('example');
 
-// 记录普通日志信息
+// Log general log information
 logger('This is a log message');
 logger.log('This is a log message with format: %s', 'example');
 
-// 记录调试日志信息
+// Log debug log information
 logger.debug('This is a debug message');
 
-// 记录警告日志信息
+// Log warning log information
 logger.warn('This is a warning message');
 logger.warning('This is a warning message');
 
-// 记录错误日志信息
+// Log error log information
 logger.error('This is an error message');
 
-// 记录关键错误日志信息
+// Log critical error log information
 logger.crit('This is a critical message');
 logger.critical('This is a critical message');
 
-// 记录警报错误日志信息
+// Log alert error log information
 logger.alert('This is an alert message');
 
-// 输出当前调用堆栈
+// Output current call stack
 logger.trace('This is a trace message');
 
-// 用 JSON 格式输出对象
+// Output object in JSON format
 logger.dir({
     key: 'value'
 }, {
@@ -71,11 +71,32 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Logger [tooltip="Logger", fillcolor="lightgray", id="me", label="{Logger|section\lenabled\l|Function()\llog()\ldebug()\linfo()\lnotice()\lwarn()\lwarning()\lerror()\lcrit()\lcritical()\lalert()\ltrace()\ldir()\l}"];
+    ConsoleObject [tooltip="ConsoleObject", fillcolor="lightgray", id="me", label="{ConsoleObject|new ConsoleObject()\l|section\lenabled\l|Function()\llog()\ldebug()\linfo()\lnotice()\lwarn()\lwarning()\lerror()\lcrit()\lcritical()\lalert()\ltrace()\ldir()\ltable()\ltime()\ltimeElapse()\ltimeEnd()\l}"];
 
-    object -> Logger [dir=back];
+    object -> ConsoleObject [dir=back];
 }
 ```
+
+## 构造函数
+        
+### ConsoleObject
+**ConsoleObject 构造函数，创建新的 ConsoleObject 对象**
+
+```JavaScript
+new ConsoleObject();
+```
+
+--------------------------
+**ConsoleObject 构造函数，创建新的 ConsoleObject 对象**
+
+```JavaScript
+new ConsoleObject(Value out,
+    Value err = undefined);
+```
+
+调用参数:
+* out: Value, 指定输出的可写流，默认为 [process.stdout](../../module/ifs/process.md#stdout)
+* err: Value, 指定错误输出的可写流，默认为 stdout
 
 ## 成员属性
         
@@ -83,7 +104,7 @@ digraph {
 **String, 查询当前日志对象的 section 名称**
 
 ```JavaScript
-readonly String Logger.section;
+readonly String ConsoleObject.section;
 ```
 
 --------------------------
@@ -91,7 +112,7 @@ readonly String Logger.section;
 **Boolean, 查询当前日志对象是否启用**
 
 ```JavaScript
-readonly Boolean Logger.enabled;
+readonly Boolean ConsoleObject.enabled;
 ```
 
 ## 成员函数
@@ -100,7 +121,7 @@ readonly Boolean Logger.enabled;
 **记录普通日志信息，与 info 等同**
 
 ```JavaScript
-Logger.Function(String fmt,
+ConsoleObject.Function(String fmt,
     ...args);
 ```
 
@@ -114,7 +135,7 @@ Logger.Function(String fmt,
 **记录普通日志信息，与 info 等同**
 
 ```JavaScript
-Logger.Function(...args);
+ConsoleObject.Function(...args);
 ```
 
 调用参数:
@@ -127,7 +148,7 @@ Logger.Function(...args);
 **记录普通日志信息，与 info 等同**
 
 ```JavaScript
-Logger.log(String fmt,
+ConsoleObject.log(String fmt,
     ...args);
 ```
 
@@ -141,7 +162,7 @@ Logger.log(String fmt,
 **记录普通日志信息，与 info 等同**
 
 ```JavaScript
-Logger.log(...args);
+ConsoleObject.log(...args);
 ```
 
 调用参数:
@@ -154,7 +175,7 @@ Logger.log(...args);
 **记录调试日志信息**
 
 ```JavaScript
-Logger.debug(String fmt,
+ConsoleObject.debug(String fmt,
     ...args);
 ```
 
@@ -168,7 +189,7 @@ Logger.debug(String fmt,
 **记录调试日志信息**
 
 ```JavaScript
-Logger.debug(...args);
+ConsoleObject.debug(...args);
 ```
 
 调用参数:
@@ -181,7 +202,7 @@ Logger.debug(...args);
 **记录普通日志信息，与 log 等同**
 
 ```JavaScript
-Logger.info(String fmt,
+ConsoleObject.info(String fmt,
     ...args);
 ```
 
@@ -195,7 +216,7 @@ Logger.info(String fmt,
 **记录普通日志信息，与 log 等同**
 
 ```JavaScript
-Logger.info(...args);
+ConsoleObject.info(...args);
 ```
 
 调用参数:
@@ -208,7 +229,7 @@ Logger.info(...args);
 **记录警告日志信息**
 
 ```JavaScript
-Logger.notice(String fmt,
+ConsoleObject.notice(String fmt,
     ...args);
 ```
 
@@ -222,7 +243,7 @@ Logger.notice(String fmt,
 **记录警告日志信息**
 
 ```JavaScript
-Logger.notice(...args);
+ConsoleObject.notice(...args);
 ```
 
 调用参数:
@@ -235,7 +256,7 @@ Logger.notice(...args);
 **记录警告日志信息，与 warning 等同**
 
 ```JavaScript
-Logger.warn(String fmt,
+ConsoleObject.warn(String fmt,
     ...args);
 ```
 
@@ -249,7 +270,7 @@ Logger.warn(String fmt,
 **记录警告日志信息，与 warning 等同**
 
 ```JavaScript
-Logger.warn(...args);
+ConsoleObject.warn(...args);
 ```
 
 调用参数:
@@ -262,7 +283,7 @@ Logger.warn(...args);
 **记录警告日志信息**
 
 ```JavaScript
-Logger.warning(String fmt,
+ConsoleObject.warning(String fmt,
     ...args);
 ```
 
@@ -276,7 +297,7 @@ Logger.warning(String fmt,
 **记录警告日志信息**
 
 ```JavaScript
-Logger.warning(...args);
+ConsoleObject.warning(...args);
 ```
 
 调用参数:
@@ -289,7 +310,7 @@ Logger.warning(...args);
 **记录错误日志信息**
 
 ```JavaScript
-Logger.error(String fmt,
+ConsoleObject.error(String fmt,
     ...args);
 ```
 
@@ -303,7 +324,7 @@ Logger.error(String fmt,
 **记录错误日志信息**
 
 ```JavaScript
-Logger.error(...args);
+ConsoleObject.error(...args);
 ```
 
 调用参数:
@@ -316,7 +337,7 @@ Logger.error(...args);
 **记录关键错误日志信息，与 critical 等同**
 
 ```JavaScript
-Logger.crit(String fmt,
+ConsoleObject.crit(String fmt,
     ...args);
 ```
 
@@ -330,7 +351,7 @@ Logger.crit(String fmt,
 **记录关键错误日志信息，与 critical 等同**
 
 ```JavaScript
-Logger.crit(...args);
+ConsoleObject.crit(...args);
 ```
 
 调用参数:
@@ -343,7 +364,7 @@ Logger.crit(...args);
 **记录关键错误日志信息**
 
 ```JavaScript
-Logger.critical(String fmt,
+ConsoleObject.critical(String fmt,
     ...args);
 ```
 
@@ -357,7 +378,7 @@ Logger.critical(String fmt,
 **记录关键错误日志信息**
 
 ```JavaScript
-Logger.critical(...args);
+ConsoleObject.critical(...args);
 ```
 
 调用参数:
@@ -370,7 +391,7 @@ Logger.critical(...args);
 **记录警报错误日志信息**
 
 ```JavaScript
-Logger.alert(String fmt,
+ConsoleObject.alert(String fmt,
     ...args);
 ```
 
@@ -384,7 +405,7 @@ Logger.alert(String fmt,
 **记录警报错误日志信息**
 
 ```JavaScript
-Logger.alert(...args);
+ConsoleObject.alert(...args);
 ```
 
 调用参数:
@@ -397,7 +418,7 @@ Logger.alert(...args);
 **输出当前调用堆栈**
 
 ```JavaScript
-Logger.trace(String fmt,
+ConsoleObject.trace(String fmt,
     ...args);
 ```
 
@@ -411,7 +432,7 @@ Logger.trace(String fmt,
 **输出当前调用堆栈**
 
 ```JavaScript
-Logger.trace(...args);
+ConsoleObject.trace(...args);
 ```
 
 调用参数:
@@ -424,7 +445,7 @@ Logger.trace(...args);
 **用 JSON 格式输出对象**
 
 ```JavaScript
-Logger.dir(Value obj,
+ConsoleObject.dir(Value obj,
     Object options = {});
 ```
 
@@ -447,11 +468,67 @@ Logger.dir(Value obj,
 ```
 
 --------------------------
+### table
+**用 JSON 格式输出对象**
+
+```JavaScript
+ConsoleObject.table(Value obj);
+```
+
+调用参数:
+* obj: Value, 给定要显示的对象
+
+--------------------------
+**用 JSON 格式输出对象**
+
+```JavaScript
+ConsoleObject.table(Value obj,
+    Array fields);
+```
+
+调用参数:
+* obj: Value, 给定要显示的对象
+* fields: Array, 给定要显示的字段
+
+--------------------------
+### time
+**启动一个计时器**
+
+```JavaScript
+ConsoleObject.time(String label = "time");
+```
+
+调用参数:
+* label: String, 标题，缺省为空字符串。
+
+--------------------------
+### timeElapse
+**输出指定计时器当前计时值**
+
+```JavaScript
+ConsoleObject.timeElapse(String label = "time");
+```
+
+调用参数:
+* label: String, 标题，缺省为空字符串。
+
+--------------------------
+### timeEnd
+**结束指定计时器，并输出最后计时值**
+
+```JavaScript
+ConsoleObject.timeEnd(String label = "time");
+```
+
+调用参数:
+* label: String, 标题，缺省为空字符串。
+
+--------------------------
 ### toString
 **返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
 
 ```JavaScript
-String Logger.toString();
+String ConsoleObject.toString();
 ```
 
 返回结果:
@@ -462,7 +539,7 @@ String Logger.toString();
 **返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
 
 ```JavaScript
-Value Logger.toJSON(String key = "");
+Value ConsoleObject.toJSON(String key = "");
 ```
 
 调用参数:

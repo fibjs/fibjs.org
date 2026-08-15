@@ -15,7 +15,7 @@ var child = child_process.spawn("ls");
 - 'pipe'：相当于 ['pipe', 'pipe', 'pipe']（默认值）。
 - 'ignore'：相当于 ['ignore', 'ignore', 'ignore']。
 - 'inherit'：相当于 ['inherit', 'inherit', 'inherit'] 或 [0, 1, 2]。
-- 'pty'：相当于 ['pty', 'pty', 'pty']。不支持 Windows。
+- 'pty'：相当于 ['pty', 'pty', 'pty']。
 
 否则， options.stdio 的值需是数组（其中每个索引对应于子进程中的文件描述符）。 文件描述符 0、1 和 2 分别对应于 stdin、stdout 和 stderr。 其他的文件描述符可以被指定用于在父进程和子进程之间创建其他的管道。 值可以是以下之一：
 
@@ -42,13 +42,13 @@ spawn('prg', [], {
 });
 ```
 
-对于同时使用 nodejs 的用户, 需注意
-- fibjs 的 `child_process.exec(command, args)` 和 nodejs 的同名 api 功能类似, 但在 windows 上, 并不会自动将 cmd.exe 作为 command 参数的执行环境;
-- fibjs 的 child_process.[spawn|exec|execFile|run] 是同步/回调一体的 async 风格函数:
+需要注意以下几点:
+- `child_process.exec(command, args)` 在 windows 上不会自动将 cmd.exe 作为 command 参数的执行环境;
+- child_process.[spawn|exec|execFile|run] 是同步/回调一体的 async 风格函数:
   - 如果最后一个参数不是函数, 则是同步的
   - 如果传递了函数作为最后一个参数, 则是异步的;
-- fibjs 的 child_process.[exec|execFile] 的返回结果是一个对象, 该对象和 nodejs 同名 api 返回的对象**完全不相同**
-- fibjs 的 `child_process.run` 在 nodejs 中没有对应 API
+- child_process.[exec|execFile] 的返回结果是一个对象, 该对象包含 stdout、stderr 等字段;
+- `child_process.run` 为 fibjs 特有 API
 
 ## 静态函数
         
@@ -80,7 +80,11 @@ options 支持的内容如下：
     "uid": 0, // configure the user identity of the process
     "gid": 0, // configure the group identity of the process
     "windowsVerbatimArguments": false, // do not execute any quote or escape processing on Windows. Ignored on Unix. When specified, the command line string is passed directly to the underlying operating system shell without any processing whatsoever. This is set to true automatically when the shell option is specified and is CMD.
-    "windowsHide": false // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
+    "windowsHide": false, // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
+    "timeout": 0, // the maximum amount of time (in milliseconds) the process is allowed to run. If timeout > 0, the process will be killed with killSignal after timeout milliseconds. Default: 0 (no timeout)
+    "killSignal": "SIGTERM", // the signal to use when the spawned process is killed by timeout or abort signal. Default: 'SIGTERM'
+    "cols": 80, // specify the initial number of columns for the PTY (only for stdio: 'pty')
+    "rows": 24 // specify the initial number of rows for the PTY (only for stdio: 'pty')
 }
 ```
 
@@ -108,9 +112,13 @@ options 支持的内容如下：
     "env": {}, // key-value pairs of environment variables to add to the child's environment
     "detached": false, // child process will be a leader of a new process group, default to false
     "uid": 0, // configure the user identity of the process
-    "gid": 0, // con
+    "gid": 0, // configure the group identity of the process
     "windowsVerbatimArguments": false, // do not execute any quote or escape processing on Windows. Ignored on Unix. When specified, the command line string is passed directly to the underlying operating system shell without any processing whatsoever. This is set to true automatically when the shell option is specified and is CMD.
-    "windowsHide": false // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
+    "windowsHide": false, // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
+    "timeout": 0, // the maximum amount of time (in milliseconds) the process is allowed to run. If timeout > 0, the process will be killed with killSignal after timeout milliseconds. Default: 0 (no timeout)
+    "killSignal": "SIGTERM", // the signal to use when the spawned process is killed by timeout or abort signal. Default: 'SIGTERM'
+    "cols": 80, // specify the initial number of columns for the PTY (only for stdio: 'pty')
+    "rows": 24 // specify the initial number of rows for the PTY (only for stdio: 'pty')
 }
 ```
 
@@ -141,7 +149,11 @@ options 支持的内容如下：
     "uid": 0, // configure the user identity of the process
     "gid": 0, // con
     "windowsVerbatimArguments": false, // do not execute any quote or escape processing on Windows. Ignored on Unix. When specified, the command line string is passed directly to the underlying operating system shell without any processing whatsoever. This is set to true automatically when the shell option is specified and is CMD.
-    "windowsHide": false // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
+    "windowsHide": false, // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
+    "cols": 80, // specify the initial number of columns for the PTY (only for stdio: 'pty')
+    "rows": 24, // specify the initial number of rows for the PTY (only for stdio: 'pty')
+    "timeout": 0, // the maximum amount of time (in milliseconds) the process is allowed to run, default to no limit
+    "killSignal": "SIGTERM" // the signal to be used when the spawned process will be killed by timeout, default to "SIGTERM"
 }
 ```
 
@@ -174,7 +186,11 @@ options 支持的内容如下：
     "uid": 0, // configure the user identity of the process
     "gid": 0, // con
     "windowsVerbatimArguments": false, // do not execute any quote or escape processing on Windows. Ignored on Unix. When specified, the command line string is passed directly to the underlying operating system shell without any processing whatsoever. This is set to true automatically when the shell option is specified and is CMD.
-    "windowsHide": false // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
+    "windowsHide": false, // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
+    "cols": 80, // specify the initial number of columns for the PTY (only for stdio: 'pty')
+    "rows": 24, // specify the initial number of rows for the PTY (only for stdio: 'pty')
+    "timeout": 0, // the maximum amount of time (in milliseconds) the process is allowed to run, default to no limit
+    "killSignal": "SIGTERM" // the signal to be used when the spawned process will be killed by timeout, default to "SIGTERM"
 }
 ```
 
@@ -204,7 +220,11 @@ options 支持的内容如下：
     "uid": 0, // configure the user identity of the process
     "gid": 0, // con
     "windowsVerbatimArguments": false, // do not execute any quote or escape processing on Windows. Ignored on Unix. When specified, the command line string is passed directly to the underlying operating system shell without any processing whatsoever. This is set to true automatically when the shell option is specified and is CMD.
-    "windowsHide": false // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
+    "windowsHide": false, // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
+    "cols": 80, // specify the initial number of columns for the PTY (only for stdio: 'pty')
+    "rows": 24, // specify the initial number of rows for the PTY (only for stdio: 'pty')
+    "timeout": 0, // the maximum amount of time (in milliseconds) the process is allowed to run, default to no limit
+    "killSignal": "SIGTERM" // the signal to be used when the spawned process will be killed by timeout, default to "SIGTERM"
 }
 ```
 
@@ -213,9 +233,9 @@ options 支持的内容如下：
 **用给定的命令发布一个子进程**
 
 ```JavaScript
-static (Integer pid, NArray output, Variant stdout, Variant stderr, Integer status, Variant error) child_process.spawnSync(String command,
+static (Integer pid, NArray output, Variant stdout, Variant stderr, Integer status, Variant signal, Variant error) child_process.spawnSync(String command,
     Array args,
-    Object options = {}) async;
+    Object options = {});
 ```
 
 调用参数:
@@ -224,7 +244,7 @@ static (Integer pid, NArray output, Variant stdout, Variant stderr, Integer stat
 * options: Object, 指定创建参数
 
 返回结果:
-* (Integer pid, NArray output, Variant stdout, Variant stderr, Integer status, Variant error), 返回子进程运行结果
+* (Integer pid, NArray output, Variant stdout, Variant stderr, Integer status, Variant signal, Variant error), 返回子进程运行结果
 
 options 支持的内容如下：
 
@@ -237,7 +257,11 @@ options 支持的内容如下：
     "uid": 0, // configure the user identity of the process
     "gid": 0, // configure the group identity of the process
     "windowsVerbatimArguments": false, // do not execute any quote or escape processing on Windows. Ignored on Unix. When specified, the command line string is passed directly to the underlying operating system shell without any processing whatsoever. This is set to true automatically when the shell option is specified and is CMD.
-    "windowsHide": false // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
+    "windowsHide": false, // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
+    "cols": 80, // specify the initial number of columns for the PTY (only for stdio: 'pty')
+    "rows": 24, // specify the initial number of rows for the PTY (only for stdio: 'pty')
+    "timeout": 0, // the maximum amount of time (in milliseconds) the process is allowed to run, default to no limit
+    "killSignal": "SIGTERM" // the signal to be used when the spawned process will be killed by timeout, default to "SIGTERM"
 }
 ```
 
@@ -245,8 +269,8 @@ options 支持的内容如下：
 **用给定的命令发布一个子进程**
 
 ```JavaScript
-static (Integer pid, NArray output, Variant stdout, Variant stderr, Integer status, Variant error) child_process.spawnSync(String command,
-    Object options = {}) async;
+static (Integer pid, NArray output, Variant stdout, Variant stderr, Integer status, Variant signal, Variant error) child_process.spawnSync(String command,
+    Object options = {});
 ```
 
 调用参数:
@@ -254,7 +278,7 @@ static (Integer pid, NArray output, Variant stdout, Variant stderr, Integer stat
 * options: Object, 指定创建参数
 
 返回结果:
-* (Integer pid, NArray output, Variant stdout, Variant stderr, Integer status, Variant error), 返回子进程运行结果
+* (Integer pid, NArray output, Variant stdout, Variant stderr, Integer status, Variant signal, Variant error), 返回子进程运行结果
 
 options 支持的内容如下：
 
@@ -267,7 +291,117 @@ options 支持的内容如下：
     "uid": 0, // configure the user identity of the process
     "gid": 0, // con
     "windowsVerbatimArguments": false, // do not execute any quote or escape processing on Windows. Ignored on Unix. When specified, the command line string is passed directly to the underlying operating system shell without any processing whatsoever. This is set to true automatically when the shell option is specified and is CMD.
-    "windowsHide": false // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
+    "windowsHide": false, // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
+    "cols": 80, // specify the initial number of columns for the PTY (only for stdio: 'pty')
+    "rows": 24, // specify the initial number of rows for the PTY (only for stdio: 'pty')
+    "timeout": 0, // the maximum amount of time (in milliseconds) the process is allowed to run, default to no limit
+    "killSignal": "SIGTERM" // the signal to be used when the spawned process will be killed by timeout, default to "SIGTERM"
+}
+```
+
+--------------------------
+### execSync
+**在 shell 中同步执行一个命令并缓冲输出**
+
+```JavaScript
+static Variant child_process.execSync(String command,
+    Object options = {});
+```
+
+调用参数:
+* command: String, 指定要运行的命令
+* options: Object, 指定创建参数
+
+返回结果:
+* Variant, 返回子进程的 stdout 输出内容，缺省为 [Buffer](../../object/ifs/Buffer.md)；options.encoding 指定编码时返回字符串
+
+options 支持的内容如下：
+
+```JavaScript
+{
+    "cwd": "", // working directory of the child process, default to current directory
+    "env": {}, // key-value pairs of environment variables to add to the child's environment
+    "encoding": "utf8", // specify the character encoding used to decode the stdout and stderr output
+    "detached": false, // child process will be a leader of a new process group, default to false
+    "uid": 0, // configure the user identity of the process
+    "gid": 0, // configure the group identity of the process
+    "windowsVerbatimArguments": false, // do not execute any quote or escape processing on Windows. Ignored on Unix. When specified, the command line string is passed directly to the underlying operating system shell without any processing whatsoever. This is set to true automatically when the shell option is specified and is CMD.
+    "windowsHide": false, // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
+    "cols": 80, // specify the initial number of columns for the PTY (only for stdio: 'pty')
+    "rows": 24, // specify the initial number of rows for the PTY (only for stdio: 'pty')
+    "timeout": 0, // the maximum amount of time (in milliseconds) the process is allowed to run, default to no limit
+    "killSignal": "SIGTERM" // the signal to be used when the spawned process will be killed by timeout, default to "SIGTERM"
+}
+```
+
+--------------------------
+### execFileSync
+**直接同步执行所指定的文件并缓冲输出**
+
+```JavaScript
+static Variant child_process.execFileSync(String command,
+    Array args,
+    Object options = {});
+```
+
+调用参数:
+* command: String, 指定要运行的命令
+* args: Array, 指定字符串参数列表
+* options: Object, 指定创建参数
+
+返回结果:
+* Variant, 返回子进程的 stdout 输出内容，缺省为 [Buffer](../../object/ifs/Buffer.md)；options.encoding 指定编码时返回字符串
+
+options 支持的内容如下：
+
+```JavaScript
+{
+    "cwd": "", // working directory of the child process, default to current directory
+    "env": {}, // key-value pairs of environment variables to add to the child's environment
+    "encoding": "utf8", // specify the character encoding used to decode the stdout and stderr output
+    "detached": false, // child process will be a leader of a new process group, default to false
+    "uid": 0, // configure the user identity of the process
+    "gid": 0, // configure the group identity of the process
+    "windowsVerbatimArguments": false, // do not execute any quote or escape processing on Windows. Ignored on Unix. When specified, the command line string is passed directly to the underlying operating system shell without any processing whatsoever. This is set to true automatically when the shell option is specified and is CMD.
+    "windowsHide": false, // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
+    "cols": 80, // specify the initial number of columns for the PTY (only for stdio: 'pty')
+    "rows": 24, // specify the initial number of rows for the PTY (only for stdio: 'pty')
+    "timeout": 0, // the maximum amount of time (in milliseconds) the process is allowed to run, default to no limit
+    "killSignal": "SIGTERM" // the signal to be used when the spawned process will be killed by timeout, default to "SIGTERM"
+}
+```
+
+--------------------------
+**直接同步执行所指定的文件并缓冲输出**
+
+```JavaScript
+static Variant child_process.execFileSync(String command,
+    Object options = {});
+```
+
+调用参数:
+* command: String, 指定要运行的命令
+* options: Object, 指定创建参数
+
+返回结果:
+* Variant, 返回子进程的 stdout 输出内容，缺省为 [Buffer](../../object/ifs/Buffer.md)；options.encoding 指定编码时返回字符串
+
+options 支持的内容如下：
+
+```JavaScript
+{
+    "cwd": "", // working directory of the child process, default to current directory
+    "env": {}, // key-value pairs of environment variables to add to the child's environment
+    "encoding": "utf8", // specify the character encoding used to decode the stdout and stderr output
+    "detached": false, // child process will be a leader of a new process group, default to false
+    "uid": 0, // configure the user identity of the process
+    "gid": 0, // configure the group identity of the process
+    "windowsVerbatimArguments": false, // do not execute any quote or escape processing on Windows. Ignored on Unix. When specified, the command line string is passed directly to the underlying operating system shell without any processing whatsoever. This is set to true automatically when the shell option is specified and is CMD.
+    "windowsHide": false, // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
+    "cols": 80, // specify the initial number of columns for the PTY (only for stdio: 'pty')
+    "rows": 24, // specify the initial number of rows for the PTY (only for stdio: 'pty')
+    "timeout": 0, // the maximum amount of time (in milliseconds) the process is allowed to run, default to no limit
+    "killSignal": "SIGTERM" // the signal to be used when the spawned process will be killed by timeout, default to "SIGTERM"
 }
 ```
 
@@ -300,7 +434,9 @@ options 支持的内容如下：
     "uid": 0, // configure the user identity of the process
     "gid": 0, // con
     "windowsVerbatimArguments": false, // do not execute any quote or escape processing on Windows. Ignored on Unix. When specified, the command line string is passed directly to the underlying operating system shell without any processing whatsoever. This is set to true automatically when the shell option is specified and is CMD.
-    "windowsHide": false // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
+    "windowsHide": false, // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
+    "cols": 80, // specify the initial number of columns for the PTY (only for stdio: 'pty')
+    "rows": 24 // specify the initial number of rows for the PTY (only for stdio: 'pty')
 }
 ```
 
@@ -330,7 +466,9 @@ options 支持的内容如下：
     "uid": 0, // configure the user identity of the process
     "gid": 0, // con
     "windowsVerbatimArguments": false, // do not execute any quote or escape processing on Windows. Ignored on Unix. When specified, the command line string is passed directly to the underlying operating system shell without any processing whatsoever. This is set to true automatically when the shell option is specified and is CMD.
-    "windowsHide": false // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
+    "windowsHide": false, // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
+    "cols": 80, // specify the initial number of columns for the PTY (only for stdio: 'pty')
+    "rows": 24 // specify the initial number of rows for the PTY (only for stdio: 'pty')
 }
 ```
 
@@ -362,7 +500,9 @@ options 支持的内容如下：
     "uid": 0, // configure the user identity of the process
     "gid": 0, // con
     "windowsVerbatimArguments": false, // do not execute any quote or escape processing on Windows. Ignored on Unix. When specified, the command line string is passed directly to the underlying operating system shell without any processing whatsoever. This is set to true automatically when the shell option is specified and is CMD.
-    "windowsHide": false // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
+    "windowsHide": false, // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
+    "cols": 80, // specify the initial number of columns for the PTY (only for stdio: 'pty')
+    "rows": 24 // specify the initial number of rows for the PTY (only for stdio: 'pty')
 }
 ```
 
@@ -391,7 +531,9 @@ options 支持的内容如下：
     "uid": 0, // configure the user identity of the process
     "gid": 0, // con
     "windowsVerbatimArguments": false, // do not execute any quote or escape processing on Windows. Ignored on Unix. When specified, the command line string is passed directly to the underlying operating system shell without any processing whatsoever. This is set to true automatically when the shell option is specified and is CMD.
-    "windowsHide": false // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
+    "windowsHide": false, // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
+    "cols": 80, // specify the initial number of columns for the PTY (only for stdio: 'pty')
+    "rows": 24 // specify the initial number of rows for the PTY (only for stdio: 'pty')
 }
 ```
 

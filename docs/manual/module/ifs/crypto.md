@@ -1,6 +1,17 @@
 # 模块 crypto
 `crypto` 模块是 `fibjs` 内置的加密算法模块。它提供了对称加密、非对称加密、摘要算法、密码学随机数生成器等功能。在使用之前，需要通过 `require('crypto')` 加载该模块
 
+模块的主要能力：
+
+- **摘要**：`createHash`、`createHmac`、`hash` 计算消息摘要与 HMAC；
+- **对称加密**：`createCipher`/`createCipheriv`、`createDecipher`/`createDecipheriv`；
+- **非对称加密**：`createSign`/`sign`、`createVerify`/`verify`、`privateEncrypt`/`publicDecrypt` 等公私钥加解密；
+- **密钥管理**：`createPrivateKey`、`createPublicKey`、`createSecretKey`、`generateKeyPair` 生成与导入密钥；
+- **密钥交换**：`createECDH`、`diffieHellman`、`hkdf`、`pbkdf2`、`scrypt` 派生与交换密钥；
+- **随机数**：`randomBytes`、`randomFill`、`getRandomValues`、`randomUUID`；
+- **证书**：`X509Certificate`、`createCertificateRequest`；
+- **其他**：`getHashes`/`getCiphers`/`getCurves` 查询支持列表，`timingSafeEqual` 常量时间比较，BBS 签名（`bbsSign`/`bbsVerify`/`proofGen`/`proofVerify`）。
+
 ## 对象
         
 ### constants
@@ -55,6 +66,20 @@ static Array crypto.getHashes();
 * Array, 返回支持的 hash 算法数组
 
 --------------------------
+### createECDH
+**根据给定的 ECC 曲线名称创建一个 [ECDH](../../object/ifs/ECDH.md) 对象**
+
+```JavaScript
+static ECDH crypto.createECDH(String curve);
+```
+
+调用参数:
+* curve: String, 指定 ECC 曲线名称
+
+返回结果:
+* [ECDH](../../object/ifs/ECDH.md), 返回 [ECDH](../../object/ifs/ECDH.md) 对象
+
+--------------------------
 ### createHash
 **根据给定的算法名称创建一个信息摘要对象**
 
@@ -85,6 +110,21 @@ static Digest crypto.createHmac(String algo,
 * [Digest](../../object/ifs/Digest.md), 返回信息摘要对象
 
 --------------------------
+**根据给定的算法名称创建一个 hmac 信息摘要对象**
+
+```JavaScript
+static Digest crypto.createHmac(String algo,
+    KeyObject key);
+```
+
+调用参数:
+* algo: String, 指定信息摘要对象的算法
+* key: [KeyObject](../../object/ifs/KeyObject.md), 签名密钥，[KeyObject](../../object/ifs/KeyObject.md) 类型
+
+返回结果:
+* [Digest](../../object/ifs/Digest.md), 返回信息摘要对象
+
+--------------------------
 ### getCiphers
 **获取 crypto 模块支持的的对称加密算法**
 
@@ -94,6 +134,37 @@ static Array crypto.getCiphers();
 
 返回结果:
 * Array, 返回支持的对称加密算法数组
+
+--------------------------
+### getCipherInfo
+**根据加密算法名称获取算法信息**
+
+```JavaScript
+static Object crypto.getCipherInfo(String name,
+    Object options = {});
+```
+
+调用参数:
+* name: String, 指定要查询的算法名称
+* options: Object, 可选参数，可指定 keyLength 和 ivLength 用于进一步过滤
+
+返回结果:
+* Object, 返回包含算法信息的对象，如果算法不存在或选项不匹配则返回 undefined。返回对象包含以下属性：name, nid, blockSize, ivLength, keyLength, mode
+
+--------------------------
+**根据加密算法 NID 获取算法信息**
+
+```JavaScript
+static Object crypto.getCipherInfo(Integer nid,
+    Object options = {});
+```
+
+调用参数:
+* nid: Integer, 指定要查询的算法 NID
+* options: Object, 可选参数，可指定 keyLength 和 ivLength 用于进一步过滤
+
+返回结果:
+* Object, 返回包含算法信息的对象，如果算法不存在或选项不匹配则返回 undefined。返回对象包含以下属性：name, nid, blockSize, ivLength, keyLength, mode
 
 --------------------------
 ### createCipher
@@ -398,7 +469,7 @@ options 内的参数会用于调用 [crypto.createPrivateKey](crypto.md#createPr
 var pk = crypto.createPrivateKey(rsa4096_pem);
 var req = crypto.createCertificateRequest({
     key: pk,
-    hashAlgorithm: 'sha256', // 缺省为 'sha256'，如果 key 是 SM2 类型，缺省为 'sm3'
+    hashAlgorithm: 'sha256', // Default is 'sha256', if key is SM2 type, default is 'sm3'
     subject: {
         C: "CN",
         O: "baoz.cn",
@@ -448,7 +519,7 @@ static Value crypto.hash(String algorithm,
 **生成指定尺寸的随机数，使用 havege 生成器**
 
 ```JavaScript
-static Buffer crypto.randomBytes(Integer size = 16) async;
+static Buffer crypto.randomBytes(Integer size = 16);
 ```
 
 调用参数:
@@ -474,6 +545,34 @@ static Buffer crypto.randomFill(Buffer buffer,
 
 返回结果:
 * [Buffer](../../object/ifs/Buffer.md), 返回生成的随机数
+
+--------------------------
+### getRandomValues
+**使用强随机数填充指定的 TypedArray**
+
+```JavaScript
+static TypedArray crypto.getRandomValues(TypedArray data);
+```
+
+调用参数:
+* data: TypedArray, 指定要填充的 TypedArray
+
+返回结果:
+* TypedArray, 返回填充后的 TypedArray
+
+--------------------------
+### randomUUID
+**生成一个随机的 RFC 4122 版本 4 的 UUID**
+
+```JavaScript
+static String crypto.randomUUID(Object options = {});
+```
+
+调用参数:
+* options: Object, 可选参数，可指定 disableEntropyCache 禁用熵缓存（该选项被忽略，仅为兼容性保留）
+
+返回结果:
+* String, 返回一个 UUID v4 字符串
 
 --------------------------
 ### generateKeyPair
@@ -531,7 +630,7 @@ static Buffer crypto.hkdf(String algoName,
 
 --------------------------
 ### pbkdf2
-**依据 rfc2898 根据明文 password 生成要求的二进制钥匙**
+**使用 pbkdf2 算法根据明文 password 生成要求的二进制钥匙**
 
 ```JavaScript
 static Buffer crypto.pbkdf2(Buffer password,
@@ -547,6 +646,26 @@ static Buffer crypto.pbkdf2(Buffer password,
 * iterations: Integer, 指定迭代次数
 * size: Integer, 指定钥匙尺寸
 * algoName: String, 指定要使用的 hash 算法，详见 hash 模块
+
+返回结果:
+* [Buffer](../../object/ifs/Buffer.md), 返回生成的二进制钥匙
+
+--------------------------
+### scrypt
+**使用 scrypt 算法生成密钥**
+
+```JavaScript
+static Buffer crypto.scrypt(Buffer password,
+    Buffer salt,
+    Integer keylen,
+    Object options = {}) async;
+```
+
+调用参数:
+* password: [Buffer](../../object/ifs/Buffer.md), 指定使用的密码
+* salt: [Buffer](../../object/ifs/Buffer.md), 指定使用的 salt
+* keylen: Integer, 指定要生成的密钥长度
+* options: Object, 指定可选参数，支持 N, r, p, maxmem
 
 返回结果:
 * [Buffer](../../object/ifs/Buffer.md), 返回生成的二进制钥匙

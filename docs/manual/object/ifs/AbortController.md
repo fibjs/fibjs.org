@@ -50,6 +50,16 @@ AbortController.abort(String reason = "AbortError");
 * reason: String, 一个可选的字符串，用于描述中止请求的原因
 
 --------------------------
+**用于中止一个或多个 Web 请求**
+
+```JavaScript
+AbortController.abort(Value reason);
+```
+
+调用参数:
+* reason: Value, 一个任意类型的值，用于描述中止请求的原因
+
+--------------------------
 ### toString
 **返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
 

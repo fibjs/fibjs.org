@@ -17,7 +17,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    XmlNode [tooltip="XmlNode", URL="XmlNode.md", label="{XmlNode|nodeType\lnodeName\lnodeValue\lownerDocument\lparentNode\lchildNodes\lchildren\lfirstChild\llastChild\lpreviousSibling\lnextSibling\lfirstElementChild\llastElementChild\lpreviousElementSibling\lnextElementSibling\ltextContent\l|hasChildNodes()\lnormalize()\lcloneNode()\llookupPrefix()\llookupNamespaceURI()\linsertBefore()\linsertAfter()\lappendChild()\lreplaceChild()\lremoveChild()\l}"];
+    XmlNode [tooltip="XmlNode", URL="XmlNode.md", label="{XmlNode|nodeType\lnodeName\lnodeValue\lownerDocument\lparentNode\lparentElement\lchildNodes\lchildren\lfirstChild\llastChild\lpreviousSibling\lnextSibling\lfirstElementChild\llastElementChild\lpreviousElementSibling\lnextElementSibling\ltextContent\lisConnected\l|hasChildNodes()\lnormalize()\lcloneNode()\llookupPrefix()\llookupNamespaceURI()\linsertBefore()\linsertAfter()\lappendChild()\lreplaceChild()\lremoveChild()\lremove()\lreplaceWith()\lbefore()\lafter()\lcontains()\lgetRootNode()\lcompareDocumentPosition()\lisEqualNode()\lisSameNode()\l}"];
     XmlCharacterData [tooltip="XmlCharacterData", URL="XmlCharacterData.md", label="{XmlCharacterData|data\llength\l|substringData()\lappendData()\linsertData()\ldeleteData()\lreplaceData()\l}"];
     XmlText [tooltip="XmlText", fillcolor="lightgray", id="me", label="{XmlText|splitText()\l}"];
     XmlCDATASection [tooltip="XmlCDATASection", URL="XmlCDATASection.md", label="{XmlCDATASection}"];
@@ -117,6 +117,14 @@ readonly XmlNode XmlText.parentNode;
 ```
 
 --------------------------
+### parentElement
+**[XmlElement](XmlElement.md), 可返回某节点的父元素，如果父节点不是元素节点则返回 null**
+
+```JavaScript
+readonly XmlElement XmlText.parentElement;
+```
+
+--------------------------
 ### childNodes
 **[XmlNodeList](XmlNodeList.md), 返回指定节点的子节点的节点列表**
 
@@ -202,6 +210,14 @@ readonly XmlNode XmlText.nextElementSibling;
 
 ```JavaScript
 String XmlText.textContent;
+```
+
+--------------------------
+### isConnected
+**Boolean, 返回当前节点是否连接到文档中**
+
+```JavaScript
+readonly Boolean XmlText.isConnected;
 ```
 
 ## 成员函数
@@ -439,6 +455,137 @@ XmlNode XmlText.removeChild(XmlNode oldChild);
 
 返回结果:
 * [XmlNode](XmlNode.md), 如删除成功，此方法可返回被删除的节点，如失败，则返回 null
+
+--------------------------
+### remove
+**从当前节点中删除自身**
+
+```JavaScript
+XmlNode XmlText.remove();
+```
+
+返回结果:
+* [XmlNode](XmlNode.md), 返回被删除的节点
+
+该方法将从当前节点的父节点中删除当前节点，并返回当前节点。注意：如果当前节点没有父节点，则此方法无效。
+
+--------------------------
+### replaceWith
+**用一个或多个节点替换当前节点**
+
+```JavaScript
+XmlText.replaceWith(...nodes);
+```
+
+调用参数:
+* nodes: ..., 要替换当前节点的一个或多个节点
+
+该方法将当前节点从其父节点中移除，并在原位置插入指定的新节点。如果当前节点没有父节点，则此方法无效。
+
+--------------------------
+### before
+**在当前节点之前插入一个或多个节点**
+
+```JavaScript
+XmlText.before(...nodes);
+```
+
+调用参数:
+* nodes: ..., 要插入的一个或多个节点，可以是节点对象或字符串
+
+该方法将指定的节点插入到当前节点之前，与当前节点处于同一父节点下。如果当前节点没有父节点，则此方法无效。
+
+--------------------------
+### after
+**在当前节点之后插入一个或多个节点**
+
+```JavaScript
+XmlText.after(...nodes);
+```
+
+调用参数:
+* nodes: ..., 要插入的一个或多个节点，可以是节点对象或字符串
+
+该方法将指定的节点插入到当前节点之后，与当前节点处于同一父节点下。如果当前节点没有父节点，则此方法无效。
+
+--------------------------
+### contains
+**检查当前节点是否包含指定的节点**
+
+```JavaScript
+Boolean XmlText.contains(XmlNode node);
+```
+
+调用参数:
+* node: [XmlNode](XmlNode.md), 要检查的节点
+
+返回结果:
+* Boolean, 如果当前节点包含指定节点则返回 true，否则返回 false
+
+--------------------------
+### getRootNode
+**返回当前节点的根节点**
+
+```JavaScript
+XmlNode XmlText.getRootNode();
+```
+
+返回结果:
+* [XmlNode](XmlNode.md), 返回根节点
+
+--------------------------
+### compareDocumentPosition
+**比较两个节点在文档中的位置关系**
+
+```JavaScript
+Integer XmlText.compareDocumentPosition(XmlNode other);
+```
+
+调用参数:
+* other: [XmlNode](XmlNode.md), 要比较的节点
+
+返回结果:
+* Integer, 返回位掩码表示的位置关系
+
+返回一个位掩码，表示两个节点的位置关系：
+- DOCUMENT_POSITION_DISCONNECTED (1): 两个节点不在同一文档中
+- DOCUMENT_POSITION_PRECEDING (2): 参数节点在当前节点之前
+- DOCUMENT_POSITION_FOLLOWING (4): 参数节点在当前节点之后
+- DOCUMENT_POSITION_CONTAINS (8): 参数节点包含当前节点
+- DOCUMENT_POSITION_CONTAINED_BY (16): 当前节点包含参数节点
+- DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC (32): 位置关系由实现决定
+
+--------------------------
+### isEqualNode
+**检查两个节点是否结构相等**
+
+```JavaScript
+Boolean XmlText.isEqualNode(XmlNode other);
+```
+
+调用参数:
+* other: [XmlNode](XmlNode.md), 要比较的节点
+
+返回结果:
+* Boolean, 如果两个节点结构相等则返回 true，否则返回 false
+
+两个节点结构相等意味着它们具有相同的类型、相同的属性值、相同的子节点结构等。
+
+--------------------------
+### isSameNode
+**检查两个节点是否是同一个节点**
+
+```JavaScript
+Boolean XmlText.isSameNode(XmlNode other);
+```
+
+调用参数:
+* other: [XmlNode](XmlNode.md), 要比较的节点
+
+返回结果:
+* Boolean, 如果是同一节点则返回 true，否则返回 false
+
+与 === 运算符作用相同，检查两个引用是否指向同一对象。
 
 --------------------------
 ### toString

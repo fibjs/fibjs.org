@@ -7,7 +7,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\laddEventListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveEventListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
+    EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|addAbortListener()\lonce()\lon()\l|defaultMaxListeners\l|on()\laddListener()\laddEventListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveEventListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\lrawListeners()\llistenerCount()\leventNames()\lemit()\l}"];
     Service [tooltip="Service", fillcolor="lightgray", id="me", label="{Service|new Service()\l|install()\lremove()\lstart()\lstop()\lrestart()\lisInstalled()\lisRunning()\l|name\l|run()\l|event stop\levent pause\levent continue\l}"];
 
     object -> EventEmitter [dir=back];
@@ -121,6 +121,71 @@ static Boolean Service.isRunning(String name);
 返回结果:
 * Boolean, 服务运行返回 True
 
+--------------------------
+### addAbortListener
+**监听一个 [AbortSignal](AbortSignal.md) 的 abort 事件，返回一个可释放的对象**
+
+```JavaScript
+static Object Service.addAbortListener(EventEmitter signal,
+    Function func);
+```
+
+调用参数:
+* signal: [EventEmitter](EventEmitter.md), 要监听的 [AbortSignal](AbortSignal.md) 对象
+* func: Function, abort 事件的处理函数
+
+返回结果:
+* Object, 返回一个包含 `[Symbol.dispose]` 方法的 Disposable 对象
+
+返回的对象包含 `[Symbol.dispose]()` 方法，调用后将移除监听器。如果信号已中止，则监听器会被立即调用。
+
+--------------------------
+### once
+**创建一个 Promise，等待指定事件触发一次后解析**
+
+```JavaScript
+static Object Service.once(EventEmitter emitter,
+    Value ev,
+    Object options = {});
+```
+
+调用参数:
+* emitter: [EventEmitter](EventEmitter.md), 要监听的事件触发器对象
+* ev: Value, 指定事件的名称
+* options: Object, 可选参数对象
+
+返回结果:
+* Object, 返回 Promise，以事件参数数组解析
+
+返回一个 Promise，当目标事件触发时以事件参数数组解析。如果在此期间触发 'error' 事件（且监听的不是 'error' 事件本身），Promise 将被拒绝。
+
+options 参数可包含：
+- signal: [AbortSignal](AbortSignal.md)，用于取消等待
+
+--------------------------
+### on
+**创建一个异步迭代器，持续监听指定事件**
+
+```JavaScript
+static Object Service.on(EventEmitter emitter,
+    Value ev,
+    Object options = {});
+```
+
+调用参数:
+* emitter: [EventEmitter](EventEmitter.md), 要监听的事件触发器对象
+* ev: Value, 指定事件的名称
+* options: Object, 可选参数对象
+
+返回结果:
+* Object, 返回 AsyncIterator 对象
+
+返回一个 AsyncIterator，每次事件触发时产出事件参数数组。如果触发 'error' 事件，迭代器将抛出错误。
+
+options 参数可包含：
+- signal: [AbortSignal](AbortSignal.md)，用于取消迭代
+- close: 字符串数组，指定结束迭代的事件名称
+
 ## 静态属性
         
 ### defaultMaxListeners
@@ -153,12 +218,12 @@ Service.run() async;
 **绑定一个事件处理函数到对象**
 
 ```JavaScript
-Object Service.on(String ev,
+Object Service.on(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -182,12 +247,12 @@ Object Service.on(Object map);
 **绑定一个事件处理函数到对象**
 
 ```JavaScript
-Object Service.addListener(String ev,
+Object Service.addListener(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -211,13 +276,13 @@ Object Service.addListener(Object map);
 **绑定一个事件处理函数到对象**
 
 ```JavaScript
-Object Service.addEventListener(String ev,
+Object Service.addEventListener(Value ev,
     Function func,
     Object options = {});
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 * options: Object, 指定事件处理函数的选项
 
@@ -232,12 +297,12 @@ options 参数是一个对象，它可以包含以下属性：
 **绑定一个事件处理函数到对象起始**
 
 ```JavaScript
-Object Service.prependListener(String ev,
+Object Service.prependListener(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -261,12 +326,12 @@ Object Service.prependListener(Object map);
 **绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次**
 
 ```JavaScript
-Object Service.once(String ev,
+Object Service.once(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -290,12 +355,12 @@ Object Service.once(Object map);
 **绑定一个事件处理函数到对象起始**
 
 ```JavaScript
-Object Service.prependOnceListener(String ev,
+Object Service.prependOnceListener(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -319,12 +384,12 @@ Object Service.prependOnceListener(Object map);
 **从对象处理队列中取消指定函数**
 
 ```JavaScript
-Object Service.off(String ev,
+Object Service.off(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -334,11 +399,11 @@ Object Service.off(String ev,
 **取消对象处理队列中的全部函数**
 
 ```JavaScript
-Object Service.off(String ev);
+Object Service.off(Value ev);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 
 返回结果:
 * Object, 返回事件对象本身，便于链式调用
@@ -361,12 +426,12 @@ Object Service.off(Object map);
 **从对象处理队列中取消指定函数**
 
 ```JavaScript
-Object Service.removeListener(String ev,
+Object Service.removeListener(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -376,11 +441,11 @@ Object Service.removeListener(String ev,
 **取消对象处理队列中的全部函数**
 
 ```JavaScript
-Object Service.removeListener(String ev);
+Object Service.removeListener(Value ev);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 
 返回结果:
 * Object, 返回事件对象本身，便于链式调用
@@ -403,13 +468,13 @@ Object Service.removeListener(Object map);
 **从对象处理队列中取消指定函数**
 
 ```JavaScript
-Object Service.removeEventListener(String ev,
+Object Service.removeEventListener(Value ev,
     Function func,
     Object options = {});
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 * options: Object, 指定事件处理函数的选项
 
@@ -421,11 +486,11 @@ Object Service.removeEventListener(String ev,
 **从对象处理队列中取消所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。**
 
 ```JavaScript
-Object Service.removeAllListeners(String ev);
+Object Service.removeAllListeners(Value ev);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 
 返回结果:
 * Object, 返回事件对象本身，便于链式调用
@@ -470,11 +535,25 @@ Integer Service.getMaxListeners();
 **查询对象指定事件的监听器数组**
 
 ```JavaScript
-Array Service.listeners(String ev);
+Array Service.listeners(Value ev);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
+
+返回结果:
+* Array, 返回指定事件的监听器数组
+
+--------------------------
+### rawListeners
+**查询对象指定事件的监听器数组，包含 once 包装函数**
+
+```JavaScript
+Array Service.rawListeners(Value ev);
+```
+
+调用参数:
+* ev: Value, 指定事件的名称
 
 返回结果:
 * Array, 返回指定事件的监听器数组
@@ -484,11 +563,11 @@ Array Service.listeners(String ev);
 **查询对象指定事件的监听器数量**
 
 ```JavaScript
-Integer Service.listenerCount(String ev);
+Integer Service.listenerCount(Value ev);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 
 返回结果:
 * Integer, 返回指定事件的监听器数量
@@ -498,12 +577,12 @@ Integer Service.listenerCount(String ev);
 
 ```JavaScript
 Integer Service.listenerCount(Value o,
-    String ev);
+    Value ev);
 ```
 
 调用参数:
 * o: Value, 指定查询的对象
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 
 返回结果:
 * Integer, 返回指定事件的监听器数量
@@ -524,12 +603,12 @@ Array Service.eventNames();
 **主动触发一个事件**
 
 ```JavaScript
-Boolean Service.emit(String ev,
+Boolean Service.emit(Value ev,
     ...args);
 ```
 
 调用参数:
-* ev: String, 事件名称
+* ev: Value, 事件名称
 * args: ..., 事件参数，将会传递给事件处理函数
 
 返回结果:

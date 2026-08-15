@@ -64,7 +64,7 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    DbConnection [tooltip="DbConnection", URL="DbConnection.md", label="{DbConnection|type\l|close()\luse()\lbegin()\lcommit()\lrollback()\ltrans()\lexecute()\lcreateTable()\ldropTable()\lcreateIndex()\ldropIndex()\linsert()\lfind()\lcount()\lupdate()\lremove()\lformat()\l}"];
+    DbConnection [tooltip="DbConnection", URL="DbConnection.md", label="{DbConnection|type\l|close()\luse()\lgetTables()\lgetTableInfo()\lbegin()\lcommit()\lrollback()\ltrans()\lexecute()\lformat()\l}"];
     SQLite [tooltip="SQLite", fillcolor="lightgray", id="me", label="{SQLite|fileName\ltimeout\l|backup()\l}"];
 
     object -> DbConnection [dir=back];
@@ -127,6 +127,31 @@ SQLite.use(String dbName) async;
 
 调用参数:
 * dbName: String, 指定数据库名
+
+--------------------------
+### getTables
+**获取当前数据库中所有表的信息**
+
+```JavaScript
+NArray SQLite.getTables() async;
+```
+
+返回结果:
+* NArray, 返回包含表信息的数组，每个元素包含表名和相关属性
+
+--------------------------
+### getTableInfo
+**获取指定表的详细信息**
+
+```JavaScript
+NArray SQLite.getTableInfo(String tableName) async;
+```
+
+调用参数:
+* tableName: String, 指定要查询的表名
+
+返回结果:
+* NArray, 返回包含表详细信息的数组，每个元素包含字段名、类型、长度、是否允许 NULL 等属性
 
 --------------------------
 ### begin
@@ -230,136 +255,7 @@ NArray SQLite.execute(String sql,
 * NArray, 返回包含结果记录的数组，如果请求是 UPDATE 或者 INSERT，返回结果还会包含 affected 和 insertId，mssql 不支持 insertId。
 
 --------------------------
-### createTable
-**创建数据表**
-
-```JavaScript
-SQLite.createTable(Object opts) async;
-```
-
-调用参数:
-* opts: Object, 参数列表
-
---------------------------
-### dropTable
-**删除数据表**
-
-```JavaScript
-SQLite.dropTable(Object opts) async;
-```
-
-调用参数:
-* opts: Object, 参数列表
-
---------------------------
-### createIndex
-**创建数据表索引**
-
-```JavaScript
-SQLite.createIndex(Object opts) async;
-```
-
-调用参数:
-* opts: Object, 参数列表
-
---------------------------
-### dropIndex
-**删除数据表索引**
-
-```JavaScript
-SQLite.dropIndex(Object opts) async;
-```
-
-调用参数:
-* opts: Object, 参数列表
-
---------------------------
-### insert
-**插入新记录**
-
-```JavaScript
-Number SQLite.insert(Object opts) async;
-```
-
-调用参数:
-* opts: Object, 参数列表
-
-返回结果:
-* Number, 返回包含插入的 id，如果引擎不支持则返回 0
-
---------------------------
-### find
-**根据指定的条件查询数据**
-
-```JavaScript
-NArray SQLite.find(Object opts) async;
-```
-
-调用参数:
-* opts: Object, 参数列表
-
-返回结果:
-* NArray, 返回包含结果记录
-
---------------------------
-### count
-**根据指定的条件统计数据记录数**
-
-```JavaScript
-Integer SQLite.count(Object opts) async;
-```
-
-调用参数:
-* opts: Object, 参数列表
-
-返回结果:
-* Integer, 返回包含结果记录数
-
---------------------------
-### update
-**根据指定的条件更新数据**
-
-```JavaScript
-Integer SQLite.update(Object opts) async;
-```
-
-调用参数:
-* opts: Object, 参数列表
-
-返回结果:
-* Integer, 返回包含更新的记录数
-
---------------------------
-### remove
-**根据指定的条件删除数据**
-
-```JavaScript
-Integer SQLite.remove(Object opts) async;
-```
-
-调用参数:
-* opts: Object, 可选参数列表
-
-返回结果:
-* Integer, 返回包含更新的记录数
-
---------------------------
 ### format
-**格式化一个 sql 命令，并返回格式化结果**
-
-```JavaScript
-String SQLite.format(String method,
-    Object opts);
-```
-
-调用参数:
-* method: String, 指定请求的方法
-* opts: Object, 可选参数列表
-
-返回结果:
-* String, 返回格式化之后的 sql 命令
-
---------------------------
 **格式化一个 sql 命令，并返回格式化结果**
 
 ```JavaScript

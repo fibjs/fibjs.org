@@ -12,13 +12,79 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|defaultMaxListeners\l|on()\laddListener()\laddEventListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveEventListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\llistenerCount()\leventNames()\lemit()\l}"];
-    ChildProcess [tooltip="ChildProcess", fillcolor="lightgray", id="me", label="{ChildProcess|connected\lpid\lkilled\lexitCode\lstdin\lstdout\lstderr\l|kill()\ljoin()\ldisconnect()\lsend()\lusage()\l|event exit\levent message\l}"];
+    EventEmitter [tooltip="EventEmitter", URL="EventEmitter.md", label="{EventEmitter|new EventEmitter()\l|EventEmitter\l|addAbortListener()\lonce()\lon()\l|defaultMaxListeners\l|on()\laddListener()\laddEventListener()\lprependListener()\lonce()\lprependOnceListener()\loff()\lremoveListener()\lremoveEventListener()\lremoveAllListeners()\lsetMaxListeners()\lgetMaxListeners()\llisteners()\lrawListeners()\llistenerCount()\leventNames()\lemit()\l}"];
+    ChildProcess [tooltip="ChildProcess", fillcolor="lightgray", id="me", label="{ChildProcess|connected\lcols\lrows\lpid\lkilled\lexitCode\lstdin\lstdout\lstderr\lstdio\l|kill()\ljoin()\ldisconnect()\lsend()\lresize()\lusage()\lref()\lunref()\l|event exit\levent message\levent spawn\levent disconnect\l}"];
 
     object -> EventEmitter [dir=back];
     EventEmitter -> ChildProcess [dir=back];
 }
 ```
+
+## 静态函数
+        
+### addAbortListener
+**监听一个 [AbortSignal](AbortSignal.md) 的 abort 事件，返回一个可释放的对象**
+
+```JavaScript
+static Object ChildProcess.addAbortListener(EventEmitter signal,
+    Function func);
+```
+
+调用参数:
+* signal: [EventEmitter](EventEmitter.md), 要监听的 [AbortSignal](AbortSignal.md) 对象
+* func: Function, abort 事件的处理函数
+
+返回结果:
+* Object, 返回一个包含 `[Symbol.dispose]` 方法的 Disposable 对象
+
+返回的对象包含 `[Symbol.dispose]()` 方法，调用后将移除监听器。如果信号已中止，则监听器会被立即调用。
+
+--------------------------
+### once
+**创建一个 Promise，等待指定事件触发一次后解析**
+
+```JavaScript
+static Object ChildProcess.once(EventEmitter emitter,
+    Value ev,
+    Object options = {});
+```
+
+调用参数:
+* emitter: [EventEmitter](EventEmitter.md), 要监听的事件触发器对象
+* ev: Value, 指定事件的名称
+* options: Object, 可选参数对象
+
+返回结果:
+* Object, 返回 Promise，以事件参数数组解析
+
+返回一个 Promise，当目标事件触发时以事件参数数组解析。如果在此期间触发 'error' 事件（且监听的不是 'error' 事件本身），Promise 将被拒绝。
+
+options 参数可包含：
+- signal: [AbortSignal](AbortSignal.md)，用于取消等待
+
+--------------------------
+### on
+**创建一个异步迭代器，持续监听指定事件**
+
+```JavaScript
+static Object ChildProcess.on(EventEmitter emitter,
+    Value ev,
+    Object options = {});
+```
+
+调用参数:
+* emitter: [EventEmitter](EventEmitter.md), 要监听的事件触发器对象
+* ev: Value, 指定事件的名称
+* options: Object, 可选参数对象
+
+返回结果:
+* Object, 返回 AsyncIterator 对象
+
+返回一个 AsyncIterator，每次事件触发时产出事件参数数组。如果触发 'error' 事件，迭代器将抛出错误。
+
+options 参数可包含：
+- signal: [AbortSignal](AbortSignal.md)，用于取消迭代
+- close: 字符串数组，指定结束迭代的事件名称
 
 ## 静态属性
         
@@ -36,6 +102,22 @@ static Integer ChildProcess.defaultMaxListeners;
 
 ```JavaScript
 readonly Boolean ChildProcess.connected;
+```
+
+--------------------------
+### cols
+**Integer, 查询当前终端的列数**
+
+```JavaScript
+readonly Integer ChildProcess.cols;
+```
+
+--------------------------
+### rows
+**Integer, 查询当前终端的行数**
+
+```JavaScript
+readonly Integer ChildProcess.rows;
 ```
 
 --------------------------
@@ -86,6 +168,17 @@ readonly Stream ChildProcess.stdout;
 readonly Stream ChildProcess.stderr;
 ```
 
+--------------------------
+### stdio
+**Array, 读取当前对象指向进程的标准 IO 对象列表**
+
+```JavaScript
+readonly Array ChildProcess.stdio;
+```
+
+数组中包含子进程的标准 IO 流,与 spawn 时传入的 stdio 选项对应。管道项为
+[Stream](Stream.md) 对象,其他项为 null。
+
 ## 成员函数
         
 ### kill
@@ -102,7 +195,7 @@ ChildProcess.kill(Integer signal);
 **杀掉当前对象指向的进程，并传递信号**
 
 ```JavaScript
-ChildProcess.kill(String signal);
+ChildProcess.kill(String signal = "SIGTERM");
 ```
 
 调用参数:
@@ -139,6 +232,19 @@ ChildProcess.send(Value msg);
 * msg: Value, 指定发送的消息
 
 --------------------------
+### resize
+**调整当前子进程的终端大小**
+
+```JavaScript
+ChildProcess.resize(Integer cols,
+    Integer rows);
+```
+
+调用参数:
+* cols: Integer, 终端的列数
+* rows: Integer, 终端的行数
+
+--------------------------
 ### usage
 **查询当前进程占用的内存和花费的时间**
 
@@ -165,16 +271,38 @@ Object ChildProcess.usage();
 - rss 返回进程当前占用物理内存大小
 
 --------------------------
+### ref
+**维持 fibjs 进程不退出，在对象绑定期间阻止 fibjs 进程退出**
+
+```JavaScript
+ChildProcess ChildProcess.ref();
+```
+
+返回结果:
+* ChildProcess, 返回当前对象
+
+--------------------------
+### unref
+**允许 fibjs 进程退出，在对象绑定期间允许 fibjs 进程退出**
+
+```JavaScript
+ChildProcess ChildProcess.unref();
+```
+
+返回结果:
+* ChildProcess, 返回当前对象
+
+--------------------------
 ### on
 **绑定一个事件处理函数到对象**
 
 ```JavaScript
-Object ChildProcess.on(String ev,
+Object ChildProcess.on(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -198,12 +326,12 @@ Object ChildProcess.on(Object map);
 **绑定一个事件处理函数到对象**
 
 ```JavaScript
-Object ChildProcess.addListener(String ev,
+Object ChildProcess.addListener(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -227,13 +355,13 @@ Object ChildProcess.addListener(Object map);
 **绑定一个事件处理函数到对象**
 
 ```JavaScript
-Object ChildProcess.addEventListener(String ev,
+Object ChildProcess.addEventListener(Value ev,
     Function func,
     Object options = {});
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 * options: Object, 指定事件处理函数的选项
 
@@ -248,12 +376,12 @@ options 参数是一个对象，它可以包含以下属性：
 **绑定一个事件处理函数到对象起始**
 
 ```JavaScript
-Object ChildProcess.prependListener(String ev,
+Object ChildProcess.prependListener(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -277,12 +405,12 @@ Object ChildProcess.prependListener(Object map);
 **绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次**
 
 ```JavaScript
-Object ChildProcess.once(String ev,
+Object ChildProcess.once(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -306,12 +434,12 @@ Object ChildProcess.once(Object map);
 **绑定一个事件处理函数到对象起始**
 
 ```JavaScript
-Object ChildProcess.prependOnceListener(String ev,
+Object ChildProcess.prependOnceListener(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -335,12 +463,12 @@ Object ChildProcess.prependOnceListener(Object map);
 **从对象处理队列中取消指定函数**
 
 ```JavaScript
-Object ChildProcess.off(String ev,
+Object ChildProcess.off(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -350,11 +478,11 @@ Object ChildProcess.off(String ev,
 **取消对象处理队列中的全部函数**
 
 ```JavaScript
-Object ChildProcess.off(String ev);
+Object ChildProcess.off(Value ev);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 
 返回结果:
 * Object, 返回事件对象本身，便于链式调用
@@ -377,12 +505,12 @@ Object ChildProcess.off(Object map);
 **从对象处理队列中取消指定函数**
 
 ```JavaScript
-Object ChildProcess.removeListener(String ev,
+Object ChildProcess.removeListener(Value ev,
     Function func);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 
 返回结果:
@@ -392,11 +520,11 @@ Object ChildProcess.removeListener(String ev,
 **取消对象处理队列中的全部函数**
 
 ```JavaScript
-Object ChildProcess.removeListener(String ev);
+Object ChildProcess.removeListener(Value ev);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 
 返回结果:
 * Object, 返回事件对象本身，便于链式调用
@@ -419,13 +547,13 @@ Object ChildProcess.removeListener(Object map);
 **从对象处理队列中取消指定函数**
 
 ```JavaScript
-Object ChildProcess.removeEventListener(String ev,
+Object ChildProcess.removeEventListener(Value ev,
     Function func,
     Object options = {});
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 * func: Function, 指定事件处理函数
 * options: Object, 指定事件处理函数的选项
 
@@ -437,11 +565,11 @@ Object ChildProcess.removeEventListener(String ev,
 **从对象处理队列中取消所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。**
 
 ```JavaScript
-Object ChildProcess.removeAllListeners(String ev);
+Object ChildProcess.removeAllListeners(Value ev);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 
 返回结果:
 * Object, 返回事件对象本身，便于链式调用
@@ -486,11 +614,25 @@ Integer ChildProcess.getMaxListeners();
 **查询对象指定事件的监听器数组**
 
 ```JavaScript
-Array ChildProcess.listeners(String ev);
+Array ChildProcess.listeners(Value ev);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
+
+返回结果:
+* Array, 返回指定事件的监听器数组
+
+--------------------------
+### rawListeners
+**查询对象指定事件的监听器数组，包含 once 包装函数**
+
+```JavaScript
+Array ChildProcess.rawListeners(Value ev);
+```
+
+调用参数:
+* ev: Value, 指定事件的名称
 
 返回结果:
 * Array, 返回指定事件的监听器数组
@@ -500,11 +642,11 @@ Array ChildProcess.listeners(String ev);
 **查询对象指定事件的监听器数量**
 
 ```JavaScript
-Integer ChildProcess.listenerCount(String ev);
+Integer ChildProcess.listenerCount(Value ev);
 ```
 
 调用参数:
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 
 返回结果:
 * Integer, 返回指定事件的监听器数量
@@ -514,12 +656,12 @@ Integer ChildProcess.listenerCount(String ev);
 
 ```JavaScript
 Integer ChildProcess.listenerCount(Value o,
-    String ev);
+    Value ev);
 ```
 
 调用参数:
 * o: Value, 指定查询的对象
-* ev: String, 指定事件的名称
+* ev: Value, 指定事件的名称
 
 返回结果:
 * Integer, 返回指定事件的监听器数量
@@ -540,12 +682,12 @@ Array ChildProcess.eventNames();
 **主动触发一个事件**
 
 ```JavaScript
-Boolean ChildProcess.emit(String ev,
+Boolean ChildProcess.emit(Value ev,
     ...args);
 ```
 
 调用参数:
-* ev: String, 事件名称
+* ev: Value, 事件名称
 * args: ..., 事件参数，将会传递给事件处理函数
 
 返回结果:
@@ -591,5 +733,21 @@ event ChildProcess.exit();
 
 ```JavaScript
 event ChildProcess.message();
+```
+
+--------------------------
+### spawn
+**查询和绑定子进程启动事件，相当于 on("spawn", func);**
+
+```JavaScript
+event ChildProcess.spawn();
+```
+
+--------------------------
+### disconnect
+**查询和绑定子进程断开连接事件，相当于 on("disconnect", func);**
+
+```JavaScript
+event ChildProcess.disconnect();
 ```
 
