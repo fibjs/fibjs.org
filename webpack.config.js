@@ -247,14 +247,15 @@ function build_docs() {
         return render_md(fs.readFileSync(p).toString(), p);
     }
 
-    // 根目录总 SUMMARY.md 按 "# 分组标题" 分区，提取各分组导航
+    // 根目录总 SUMMARY.md 按 "## 分组标题" 分区，提取各分组导航
+    //（首行 # Summary 为 GitBook 书标题，不参与分组；分组标题为 H2+）
     var masterSummary = fs.readFileSync(path.join(config.from, 'SUMMARY.md')).toString();
     var sections = {};
     var cur = null;
     var buf = [];
 
     masterSummary.split('\n').forEach(function (line) {
-        var m = /^#\s+(.+?)\s*$/.exec(line);
+        var m = /^#{2,}\s+(.+?)\s*$/.exec(line);
         if (m) {
             if (cur)
                 sections[cur] = buf.join('\n');

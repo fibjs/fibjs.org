@@ -1,5 +1,6 @@
 var fs = require('fs');
 var path = require('path');
+var child_process = require('child_process');
 
 var fibjsFolderBase = process.env.FIBJS_FOLDER || '';
 
@@ -19,4 +20,4 @@ var defs = parser(baseFolder);
 gen_docs(defs, path.join(docsFolderBase, './docs/manual'));
 
 process.chdir(docsFolderBase);
-process.run('npm', ['run', 'build']);
+child_process.run('npm', ['run', 'build']);
