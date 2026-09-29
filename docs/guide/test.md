@@ -219,4 +219,16 @@ fibjs --cov-process fibjs-xxxx.lcov out
 ![cov](./imgs/cov.png)
 可以看到，`main.js` 的代码覆盖达到了 100%，表示测试完全覆盖了业务逻辑。点击 `main.js` 进一步可以看到更详细的报告。
 
+### 排除不需要统计的文件
+
+一份报告里最占地方的是 `node_modules` 下的依赖：它们既不是测试的对象，又会被每个子进程各记一遍。用 `--cov-exclude`（或环境变量 `FIBJS_COV_EXCLUDE`）把这些文件排除掉，日志体积会小一个数量级：
+
+```sh
+fibjs --cov --cov-exclude='**/node_modules/**' test
+# 也可以从环境变量来，多个 glob 用 `;` 分隔，子进程会一并继承
+FIBJS_COV_EXCLUDE='**/node_modules/**;**/fixtures/**' fibjs --cov test
+```
+
+`--cov-exclude` 可以重复给出，匹配的文件不会被写进日志（既省日志体积，也省退出时的汇总开销）；未匹配的文件不受影响。日志里每条记录都是一次写完的，所以多个进程同时向同一个日志追加也不会把记录写散。
+
 👉 【[找出性能杀手](profiler.md)】
