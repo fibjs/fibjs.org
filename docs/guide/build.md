@@ -1,104 +1,104 @@
-# 打包发布  fibjs 应用
+# Packaging and Releasing a fibjs Application
 
-## 介绍
+## Introduction
 
-在软件开发中，跨环境部署应用程序是一个常见的挑战。fib-build 是一个专为 fibjs 环境设计的强大工具，旨在简化这一过程。它将应用程序目录打包成独立的可执行文件，使得 fibjs 应用程序的部署和分发变得简单。通过 fib-build，开发者可以生成一个包含所有依赖项和资源文件的单一可执行文件。这消除了用户单独安装 fibjs 的需求，确保应用程序可以在不同系统上无缝运行。通过简化部署过程，fib-build 提高了效率，减少了管理多个环境的复杂性。
+In software development, deploying applications across environments is a common challenge. fib-build is a powerful tool designed specifically for the fibjs environment, and it aims to simplify this process. It packages an application directory into a standalone executable, making fibjs applications easy to deploy and distribute. With fib-build, developers can generate a single executable that contains all dependencies and resource files. This eliminates the need for users to install fibjs separately and ensures that the application runs seamlessly on different systems. By simplifying the deployment process, fib-build improves efficiency and reduces the complexity of managing multiple environments.
 
-## 主要功能
+## Main Features
 
-### 综合单一可执行文件
+### Comprehensive Single Executable
 
-fib-build 擅长创建一个综合的单一可执行文件，包含整个 fibjs 应用程序。这不仅包括核心应用逻辑，还包括所有相关的资源文件和依赖项。通过将所有内容整合到一个可执行文件中，fib-build 消除了用户管理复杂环境设置或依赖项安装的需求。这一功能显著简化了部署过程，使用户可以通过一个命令运行应用程序，无论底层系统配置如何。
+fib-build excels at creating a comprehensive single executable that contains the entire fibjs application. This includes not only the core application logic but also all related resource files and dependencies. By consolidating everything into a single executable, fib-build eliminates the need for users to manage complex environment setups or dependency installations. This feature significantly simplifies the deployment process, allowing users to run the application with a single command regardless of the underlying system configuration.
 
-### 灵活的自定义基础可执行程序
+### Flexible Custom Base Executable
 
-fib-build 的一个突出特点是其在指定基础可执行程序方面的灵活性。用户可以选择使用当前的 fibjs 可执行文件作为默认基础文件，或者指定一个适用于各种操作系统和架构的不同可执行文件。这种自定义能力确保了打包的应用程序可以满足多样化的部署需求，提高了其在不同环境中的适应性和可用性。无论是针对 Windows、macOS 还是 Linux，fib-build 都提供了创建兼容且高效可执行文件的工具。
+A standout feature of fib-build is its flexibility in specifying the base executable. Users can choose to use the current fibjs executable as the default base file, or specify a different executable suitable for various operating systems and architectures. This customization capability ensures that packaged applications can meet diverse deployment needs, improving their adaptability and usability in different environments. Whether targeting Windows, macOS, or Linux, fib-build provides the tools to create compatible and efficient executables.
 
-### 强大的跨平台兼容性
+### Strong Cross-Platform Compatibility
 
-尽管通常建议在目标操作系统上生成可执行文件以避免兼容性问题，fib-build 支持跨平台打包。这一功能对在 macOS 环境中工作的开发者特别有利，因为它确保了可执行文件在 macOS 系统上的稳定性和兼容性。通过利用 fib-build 的跨平台功能，开发者可以简化工作流程，减少管理多个开发环境的开销。这使得 fib-build 成为团队无缝部署跨平台应用程序的宝贵工具。
+Although it is generally recommended to generate executables on the target operating system to avoid compatibility issues, fib-build supports cross-platform packaging. This feature is particularly beneficial for developers working in a macOS environment, because it ensures the stability and compatibility of executables on macOS systems. By leveraging the cross-platform capabilities of fib-build, developers can streamline their workflows and reduce the overhead of managing multiple development environments. This makes fib-build a valuable tool for teams that need to deploy cross-platform applications seamlessly.
 
-### 自动降级以确保兼容性
+### Automatic Fallback to Ensure Compatibility
 
-默认情况下，fib-build 使用嵌入资源的方式合并可执行文件和打包文件。然而，在某些平台（如 Linux MIPS、Linux Loong64、Alpine ARM64 等）上，这种方法可能会遇到兼容性问题。为了解决这个问题，fib-build 在打包过程中会自动检测这些不兼容的平台。当目标平台为这些平台时，它会自动降级到传统模式，将打包文件附加到可执行文件的末尾。这确保了在不同环境中的更好兼容性和可靠性，使部署过程更加顺畅和稳健。
+By default, fib-build merges the executable and the packaged files by embedding resources. However, on some platforms (such as Linux MIPS, Linux Loong64, Alpine ARM64, and others), this approach may encounter compatibility issues. To solve this problem, fib-build automatically detects these incompatible platforms during the packaging process. When the target platform is one of them, it automatically falls back to the legacy mode, appending the packaged files to the end of the executable. This ensures better compatibility and reliability in different environments, making the deployment process smoother and more robust.
 
-## 安装步骤
+## Installation Steps
 
-在开始使用 fib-build 之前，确保你的系统上已经安装了 fibjs。如果尚未安装，请访问 fibjs 安装指南来设置环境。一旦安装了 fibjs，导航到你的项目目录并使用以下命令安装 fib-build：
+Before you start using fib-build, make sure fibjs is already installed on your system. If it is not installed yet, refer to the fibjs installation guide to set up the environment. Once fibjs is installed, navigate to your project directory and install fib-build with the following command:
 
 ```sh
 cd your-project-directory
 fibjs --install fib-build
 ```
 
-## 使用方法
+## Usage
 
-安装完成后，可以通过命令行界面使用 fib-build 来打包 fibjs 应用程序。基本用法如下：
+After installation, you can use fib-build from the command-line interface to package fibjs applications. The basic usage is as follows:
 
 ```sh
 fibjs fbuild <folder> <outfile>
 ```
 
-### 参数说明
+### Parameters
 
-- `<folder>`：包含 fibjs 应用程序的目录。这是你的应用程序代码所在的根目录。通常是当前目录 (`.`)，但你也可以指定其他目录来处理其他项目。
-- `<outfile>`：必需。指定可执行文件的保存路径。建议不要将输出文件保存在项目目录中，以避免在下次打包过程中将其包含在内。这指定了生成的可执行文件的输出位置和名称。
+- `<folder>`: The directory containing the fibjs application. This is the root directory where your application code resides. It is usually the current directory (`.`), but you can also specify another directory to work with other projects.
+- `<outfile>`: Required. Specifies the path where the executable is saved. It is recommended not to save the output file in the project directory, to avoid including it in the next packaging run. This specifies the output location and name of the generated executable.
 
-### 可选参数
+### Optional Parameters
 
-- `--execfile=<file>`：指定基础可执行文件，例如特定的 fibjs 二进制文件。默认情况下，它使用当前运行的可执行文件。此选项允许你自定义用于打包的基础二进制文件，这对于兼容不同操作系统或特定版本的 fibjs 非常有用。
+- `--execfile=<file>`: Specifies the base executable, for example a specific fibjs binary. By default, it uses the currently running executable. This option lets you customize the base binary used for packaging, which is very useful for compatibility with different operating systems or specific versions of fibjs.
 
-- `--legacy`：使用传统模式将数据附加到输出文件的末尾。当嵌入资源模式在某些平台上遇到兼容性问题时，这非常有用。通过使用附加方法进行打包，可以确保在不同环境中的更好兼容性。
+- `--legacy`: Uses the legacy mode to append data to the end of the output file. This is useful when the embedded-resource mode encounters compatibility issues on some platforms. Packaging with the append method ensures better compatibility in different environments.
 
-- `--gui`：启用 GUI 模式。当指定此选项时，打包过程将在 Windows 上将可执行文件的子系统设置为 GUI。在 macOS 上，它将自动将应用程序打包为一个 bundle。这对于需要图形用户界面的应用程序特别有用，确保可执行文件在不同操作系统上正确运行。
+- `--gui`: Enables GUI mode. When this option is specified, the packaging process sets the executable's subsystem to GUI on Windows. On macOS, it automatically packages the application as a bundle. This is especially useful for applications that require a graphical user interface, ensuring that the executable runs correctly on different operating systems.
 
-这些参数确保了打包过程的灵活性，可以根据不同的部署需求进行定制，使创建优化和便携的 fibjs 应用程序变得更加容易。
+These parameters ensure the flexibility of the packaging process and allow it to be customized for different deployment requirements, making it easier to create optimized and portable fibjs applications.
 
-## 应用示例
+## Examples
 
-### 打包一个简单的 fibjs 应用程序
+### Packaging a Simple fibjs Application
 
-要打包一个简单的 fibjs 应用程序，假设你在包含 fibjs 应用程序的项目目录中。你想创建一个名为 myAppExecutable 的可执行文件。你可以通过在终端中运行以下命令来实现：
+To package a simple fibjs application, assume that you are in the project directory containing the fibjs application and that you want to create an executable named myAppExecutable. You can do this by running the following command in your terminal:
 
 ```sh
 cd your-project-directory
 fibjs fbuild . ../myAppExecutable
 ```
 
-此命令将当前目录的内容打包成一个名为 myAppExecutable 的可执行文件。
+This command packages the contents of the current directory into an executable named myAppExecutable.
 
-### 使用指定的 fibjs 可执行文件
+### Using a Specified fibjs Executable
 
-在某些情况下，你可能希望使用不同的 fibjs 二进制文件作为可执行文件的基础。这对于确保与不同操作系统或架构的兼容性非常有用。要指定不同的 fibjs 二进制文件，请使用 `--execfile` 选项：
+In some cases, you may want to use a different fibjs binary as the base of the executable. This is useful for ensuring compatibility with different operating systems or architectures. To specify a different fibjs binary, use the `--execfile` option:
 
 ```sh
 cd your-project-directory
 fibjs fbuild . ../myAppExecutable --execfile=path/to/other/fibjs
 ```
 
-此命令将当前目录打包成一个名为 myAppExecutable 的可执行文件，使用位于 path/to/other/fibjs 的指定 fibjs 二进制文件。
+This command packages the current directory into an executable named myAppExecutable, using the fibjs binary located at path/to/other/fibjs.
 
-### 使用传统模式
+### Using Legacy Mode
 
-如果在某些平台上嵌入资源模式遇到兼容性问题，可以使用 `--legacy` 选项将数据附加到输出文件的末尾：
+If the embedded-resource mode encounters compatibility issues on some platforms, you can use the `--legacy` option to append data to the end of the output file:
 
 ```sh
 cd your-project-directory
 fibjs fbuild . ../myAppExecutable --legacy
 ```
 
-此命令将当前目录的内容打包成一个名为 myAppExecutable 的可执行文件，使用传统模式。
+This command packages the contents of the current directory into an executable named myAppExecutable using legacy mode.
 
-### 启用 GUI 模式
+### Enabling GUI Mode
 
-如果你的应用程序需要图形用户界面，可以使用 `--gui` 选项启用 GUI 模式。在 Windows 上，这将把可执行文件的子系统设置为 GUI。在 macOS 上，它将自动将应用程序打包为一个 bundle。在 macOS 上打包为 bundle 时，`fbuild` 将使用 `package.json` 中的基本信息来创建 bundle。默认情况下，`fbuild` 将为 bundle 设置一个默认图标。如果你想指定一个自定义图标，可以在 `package.json` 中添加一个 `icon` 字段，指向你的自定义图标文件。
+If your application requires a graphical user interface, you can use the `--gui` option to enable GUI mode. On Windows, this sets the executable's subsystem to GUI. On macOS, it automatically packages the application as a bundle. When packaging as a bundle on macOS, `fbuild` uses the basic information in `package.json` to create the bundle. By default, `fbuild` sets a default icon for the bundle. If you want to specify a custom icon, you can add an `icon` field to `package.json` pointing to your custom icon file.
 
-示例命令：
+Example command:
 ```sh
 cd your-project-directory
 fibjs fbuild . ../myAppExecutable --gui
 ```
-示例 `package.json`：
+Example `package.json`:
 ```json
 {
   "name": "myApp",
@@ -111,19 +111,19 @@ fibjs fbuild . ../myAppExecutable --gui
 }
 ```
 
-此命令将当前目录的内容打包成一个名为 myAppExecutable 的可执行文件，并启用 GUI 模式。在 macOS 上，它将使用 `package.json` 中的信息创建一个 bundle，并设置 `icon` 字段中指定的自定义图标。
+This command packages the contents of the current directory into an executable named myAppExecutable with GUI mode enabled. On macOS, it creates a bundle using the information in `package.json` and sets the custom icon specified in the `icon` field.
 
-## 文件忽略规则
+## File Ignore Rules
 
-在构建过程中，fib-build 通过排除某些文件来优化打包。具体来说，它忽略：
+During the build process, fib-build optimizes packaging by excluding certain files. Specifically, it ignores:
 
-- 以点 (.) 开头的目录中的文件，例如 .git 或 .env。
-- 位于 fib-build 模块目录中的文件。
-- 位于 fib-inject 模块目录中的文件。
+- Files in directories that start with a dot (.), such as .git or .env.
+- Files located in the fib-build module directory.
+- Files located in the fib-inject module directory.
 
-你可以在 `package.json` 中添加一个 `ignore` 字段来指定要排除的其他文件或目录。`ignore` 字段可以是一个字符串或字符串数组。`ignore` 字段中使用的模式遵循  `.gitignore` 的语法。
+You can add an `ignore` field to `package.json` to specify additional files or directories to exclude. The `ignore` field can be a string or an array of strings. The patterns used in the `ignore` field follow the syntax of `.gitignore`.
 
-示例 `package.json`：
+Example `package.json`:
 ```json
 {
   "name": "myApp",
@@ -141,41 +141,41 @@ fibjs fbuild . ../myAppExecutable --gui
 }
 ```
 
-这种选择性排除确保了只有必要的组件被包含在最终的可执行文件中，从而生成一个更干净、更高效的包。通过省略不必要的文件，fib-build 创建了一个轻量且高性能的可执行文件，准备在各种环境中部署。
+This selective exclusion ensures that only the necessary components are included in the final executable, producing a cleaner and more efficient package. By omitting unnecessary files, fib-build creates a lightweight, high-performance executable that is ready to be deployed in various environments.
 
-## 常见问题及解决方案
+## Common Issues and Solutions
 
-### 在 macOS 上执行失败
+### Execution Fails on macOS
 
-如果在非 macOS 平台上创建的可执行文件在 macOS 上运行失败，通常是因为在其他操作系统上打包时应用程序未正确签名。macOS 要求应用程序签名以确保安全性和完整性。在 macOS 机器上打包可以确保应用程序正确签名，防止执行失败和安全警告。
+If an executable created on a non-macOS platform fails to run on macOS, it is usually because the application was not signed correctly when it was packaged on the other operating system. macOS requires applications to be signed to ensure security and integrity. Packaging on a macOS machine ensures that the application is signed correctly, preventing execution failures and security warnings.
 
-如果遇到此问题，可以尝试使用以下命令手动签名应用程序：
+If you encounter this problem, you can try signing the application manually with the following command:
 ```sh
 codesign -s - myAppExecutable
 ```
-此命令将签名 myAppExecutable，有助于解决 macOS 上的执行失败和安全警告。
+This command signs myAppExecutable and helps resolve execution failures and security warnings on macOS.
 
-### 输出文件在项目目录中
+### Output File Inside the Project Directory
 
-如果 `outfile` 参数设置为项目目录中的路径，生成的可执行文件将在下次打包过程中被包含。这会显著增加打包软件的大小。为避免此问题，建议指定项目目录外的输出路径。例如：
+If the `outfile` parameter is set to a path inside the project directory, the generated executable will be included in the next packaging run. This significantly increases the size of the packaged software. To avoid this problem, specify an output path outside the project directory. For example:
 
 ```sh
 fibjs fbuild <folder> ../myAppExecutable
 ```
 
-这确保了可执行文件保存在项目目录外，防止其被包含在后续的打包操作中。
+This ensures that the executable is saved outside the project directory, preventing it from being included in subsequent packaging operations.
 
-### 应用程序压缩
+### Application Compression
 
-要减少应用程序的大小，可以检查 fbuild 的输出。在构建过程中，fbuild 会以红色突出显示大于 16k 的文件，以黄色突出显示大于 4k 的文件。通过查看这些较大的文件，可以确定它们是否是运行时所必需的。如果它们不是必需的，可以删除它们并重新打包应用程序。这有助于创建一个更紧凑和高效的可执行文件。
+To reduce the size of your application, you can examine the output of fbuild. During the build process, fbuild highlights files larger than 16k in red and files larger than 4k in yellow. By looking at these larger files, you can determine whether they are needed at runtime. If they are not needed, you can delete them and repackage the application. This helps create a more compact and efficient executable.
 
-此外，你可以在 `package.json` 中使用 `ignore` 字段来排除不必要的文件。`ignore` 字段支持类似 
+In addition, you can use the `ignore` field in `package.json` to exclude unnecessary files. The `ignore` field supports pattern matching syntax like
 
 .gitignore
 
- 的模式匹配，允许你指定要排除的文件或目录。这可以显著减少最终可执行文件的大小。
+, which lets you specify files or directories to exclude. This can significantly reduce the size of the final executable.
 
-带有 `ignore` 字段的示例 `package.json`：
+Example `package.json` with an `ignore` field:
 ```json
 {
   "name": "myApp",
@@ -194,26 +194,26 @@ fibjs fbuild <folder> ../myAppExecutable
 }
 ```
 
-通过在 `ignore` 字段中指定不必要的文件，可以确保它们不被包含在最终包中，从而生成一个更高效和更小的可执行文件。
+By specifying unnecessary files in the `ignore` field, you can ensure that they are not included in the final package, producing a more efficient and smaller executable.
 
-### 平台兼容性问题
+### Platform Compatibility Issues
 
-尽管 fbuild 会自动检测平台兼容性并选择回退选项继续打包，但仍可能会出现意外的兼容性问题。如果打包文件崩溃或未按预期运行，可以手动添加 `--legacy` 选项，强制 fbuild 使用传统打包模式：
+Although fbuild automatically detects platform compatibility and chooses a fallback option so that packaging can continue, unexpected compatibility issues may still occur. If the packaged file crashes or does not run as expected, you can manually add the `--legacy` option to force fbuild to use the legacy packaging mode:
 
 ```sh
 fibjs fbuild <folder> ../myAppExecutable --legacy
 ```
 
-这有助于解决在某些平台上打包的应用程序无法正常运行的问题。
+This helps resolve problems where applications packaged on certain platforms do not run correctly.
 
-### 性能考虑
+### Performance Considerations
 
-虽然打包简化了部署过程，但需要注意的是，由于需要在运行时解包和部署文件，可执行文件的初始加载时间可能会增加。为减轻这一问题，可以考虑优化应用程序的启动过程，并尽量减少需要解包的文件数量。
+Although packaging simplifies the deployment process, note that the initial loading time of the executable may increase because files must be unpacked and deployed at runtime. To mitigate this, consider optimizing the startup process of your application and minimizing the number of files that need to be unpacked.
 
-## 结论
+## Conclusion
 
-fib-build 是一个强大的工具，可以简化 fibjs 应用程序的部署过程，使开发者能够轻松地在不同环境中分发和执行它们。通过遵循提供的步骤和建议，可以优化应用程序的部署过程，并提高其在各种环境中的适用性。
+fib-build is a powerful tool that simplifies the deployment of fibjs applications, enabling developers to distribute and run them easily in different environments. By following the steps and suggestions provided here, you can optimize your application's deployment process and improve its suitability in various environments.
 
-有关更详细的信息和高级功能，请参阅官方 fibjs 文档。通过这些资源，开发者可以更深入地了解如何有效利用 fib-build 来增强应用程序的可移植性和可用性。本指南概述了安装、使用步骤，并解决了常见问题，确保顺利的应用程序打包过程。无论你是经验丰富的开发者还是 fibjs 新手，了解 fib-build 的功能和特点将显著提升你的工作流程和应用程序的分发。
+For more detailed information and advanced features, refer to the official fibjs documentation. Through these resources, developers can gain a deeper understanding of how to effectively use fib-build to enhance the portability and usability of their applications. This guide has outlined the installation and usage steps and addressed common issues to ensure a smooth application packaging process. Whether you are an experienced developer or new to fibjs, understanding the capabilities and features of fib-build will significantly improve your workflow and the distribution of your applications.
 
-👉 【[fibjs 中 X509 证书的使用](x509.md)】
+👉 [Using X509 Certificates in fibjs](x509.md)

@@ -1,38 +1,137 @@
-# 对象 X509CertificateRequest
-X509CertificateRequest 对象是用于创建 x509 证书请求的对象，属于 [crypto](../../module/ifs/crypto.md) 模块
+# Object X509CertificateRequest
+An X.509 certificate request (CSR): a subject and a public key signed by the
 
-可以使用 crpto.createCertificateRequest 创建证书请求，例如：
+matching private key, ready to be turned into a certificate
+
+A CSR proves possession of a private key and asks an issuer to certify the public key. It
+is created by [crypto.createCertificateRequest](../../module/ifs/crypto.md#createCertificateRequest), either from an options [object](object.md) (key material
+plus subject) or by parsing an existing PEM request. Calling issue with an issuer private
+key signs the request and returns the resulting [X509Certificate](X509Certificate.md): the subject and public key
+are copied from the request, while the issuer name, validity, constraints and extensions
+come from the issue options. The request itself is not a certificate and has no chain.
+
+Concepts:
+
+- **Signing request**: a CSR carries the subject DN, the public key and attributes, and is
+  signed by the matching private key so that the issuer can verify that the requester owns
+  the key. checkPrivateKey performs that check; it is the only verification member here.
+- **Subject and extensions**: subject is the DN requested by the applicant; subjectAltName
+  and infoAccess expose extensions when a parsed request carries them. Requests created by
+  fibjs contain no extensions, so those members are undefined for them, and issue does not
+  copy them into the certificate.
+- **Issuing**: issue signs the request with the issuer's private key (which may differ from
+  the request key), copies the subject and public key, and adds the basic constraints, key
+  usage and Netscape type extensions from its options. The result is a regular
+  [X509Certificate](X509Certificate.md); verify it with the issuer public key to confirm the signature.
+- **PEM only**: createCertificateRequest parses PEM text and PEM bytes; a DER request is
+  rejected with ERR_OSSL_NO_START_LINE, like the [X509Certificate](X509Certificate.md) constructor.
+- **Node.js difference**: Node.js has no certificate request API; this class and
+  [crypto.createCertificateRequest](../../module/ifs/crypto.md#createCertificateRequest) are fibjs extensions.
+
+Obtained from:
+- `crypto.createCertificateRequest({ key, subject, hashAlgorithm })` — create a request
+  from key material;
+- `crypto.createCertificateRequest(pem)` — parse an existing PEM request from a string or a
+  [Buffer](Buffer.md).
+  The class is not exported as crypto.X509CertificateRequest, so the factory above is the
+  only way to obtain an instance.
+
+Example 1 — create a request and inspect it:
 
 ```JavaScript
-var crypto = require('crypto');
+const crypto = require('crypto');
 
-var pk = crypto.createPrivateKey(rsa4096_pem);
-var req = crypto.createCertificateRequest({
-    key: pk,
+const {
+    privateKey,
+    publicKey
+} = crypto.generateKeyPair('ec', {
+    namedCurve: 'prime256v1'
+});
+const req = crypto.createCertificateRequest({
+    key: privateKey,
     subject: {
-        C: "CN",
-        O: "baoz.cn",
-        CN: "baoz.me"
+        C: 'CN',
+        O: 'Example',
+        CN: 'example.com'
     }
 });
+
+console.log(req.subject.includes('CN=example.com')); // true
+console.log(req.publicKey.type, req.publicKey.asymmetricKeyType); // public ec
+console.log(req.pem.startsWith('-----BEGIN CERTIFICATE REQUEST-----')); // true
+console.log(req.subjectAltName); // undefined
+console.log(req.checkPrivateKey(privateKey)); // true
+try {
+    req.checkPrivateKey(publicKey);
+} catch (e) {
+    console.log(e.name, e.number); // Error 20024
+}
+
+// The PEM round-trips through the parser and the DER body matches
+const parsed = crypto.createCertificateRequest(req.pem);
+console.log(parsed.subject === req.subject); // true
+console.log(parsed.raw.equals(req.raw)); // true
 ```
 
-通过调用 X509CertificateRequest 的 issue 方法可以生成正式的证书对象，例如：
+Example 2 — sign the request and verify the certificate:
 
 ```JavaScript
-let crt = req.issue({
-    key: issuer_pk,
-    issuer: {
-        C: "CN",
-        O: "baoz.cn",
-        CN: "baoz.me"
+const crypto = require('crypto');
+
+const caKeys = crypto.generateKeyPair('ec', {
+    namedCurve: 'prime256v1'
+});
+const caCert = crypto.createCertificateRequest({
+        key: caKeys.privateKey,
+        subject: {
+            C: 'CN',
+            O: 'Example',
+            CN: 'Demo CA'
+        }
+    })
+    .issue({
+        key: caKeys.privateKey,
+        issuer: {
+            C: 'CN',
+            O: 'Example',
+            CN: 'Demo CA'
+        },
+        ca: true,
+        pathlen: 0
+    });
+
+const leafKeys = crypto.generateKeyPair('ec', {
+    namedCurve: 'prime256v1'
+});
+const req = crypto.createCertificateRequest({
+    key: leafKeys.privateKey,
+    subject: {
+        CN: 'shop.example.com'
     }
 });
+const cert = req.issue({
+    key: caKeys.privateKey, // the issuer key, not the request key
+    issuer: {
+        C: 'CN',
+        O: 'Example',
+        CN: 'Demo CA'
+    },
+    days: 7,
+    keyUsage: ['digitalSignature', 'keyEncipherment'],
+    type: ['server']
+});
+
+console.log(cert.subject.includes('CN=shop.example.com')); // true
+console.log(cert.issuer.includes('CN=Demo CA')); // true
+console.log(cert.ca, cert.pathlen); // false -1
+console.log(cert.keyUsage); // [ 'digitalSignature', 'keyEncipherment' ]
+console.log(cert.type); // [ 'server' ]
+console.log(cert.checkIssued(caCert)); // true
+console.log(cert.verify(caKeys.publicKey)); // true
+console.log(cert.checkPrivateKey(leafKeys.privateKey)); // true
 ```
 
-需要注意的是，X509CertificateRequest 对象的作用是创建 x509 证书请求，而不是证书本身，要想获得有效的证书还需要对其进行签名。同时，签名证书所使用的公钥必须和证书请求中使用的公钥一致。
-
-## 继承关系
+## Inheritance
 ```dot
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
@@ -44,135 +143,221 @@ digraph {
 }
 ```
 
-## 成员属性
+## Properties
         
 ### subject
-**String, 证书请求的主题**
+**String, The subject distinguished name of the request**
 
 ```JavaScript
 readonly String X509CertificateRequest.subject;
 ```
 
+One RDN per line in RFC 2253 form, for example `C=CN\nO=Example\nCN=example.com`, in
+the order the entries were passed to createCertificateRequest. A request created
+without a subject is valid, but reading this member then throws error 20024, so pass a
+subject when the name will be read.
+
 --------------------------
 ### publicKey
-**[KeyObject](KeyObject.md), 证书请求认证的公钥**
+**[KeyObject](KeyObject.md), The public key carried by the request**
 
 ```JavaScript
 readonly KeyObject X509CertificateRequest.publicKey;
 ```
 
+Returned as a public [KeyObject](KeyObject.md) (type 'public', asymmetricKeyType reports the algorithm),
+the key that issue copies into the certificate. Export it with [KeyObject.export](KeyObject.md#export), for
+example as SPKI PEM, to compare it with a certificate or hand it to another tool.
+
 --------------------------
 ### subjectAltName
-**String, 证书请求的主题备用名称**
+**String, The subject alternative names of the request**
 
 ```JavaScript
 readonly String X509CertificateRequest.subjectAltName;
 ```
 
+The same comma-separated OpenSSL text as [X509Certificate](X509Certificate.md)#subjectAltName (`DNS:name`,
+`IP Address:...`, `email:...`). Requests created by [crypto.createCertificateRequest](../../module/ifs/crypto.md#createCertificateRequest)
+never carry the extension, so this is undefined for them; a request parsed from another
+tool may expose it. issue does not copy it into the certificate, and passing a
+subjectAltName option to issue is ignored.
+
 --------------------------
 ### infoAccess
-**String, 证书请求的信息访问扩展，返回一个换行分隔的访问描述列表。每行开头为访问方法和访问位置的类型，后跟冒号和与访问位置关联的值**
+**String, The authority information access extension of the request**
 
 ```JavaScript
 readonly String X509CertificateRequest.infoAccess;
 ```
 
+One entry per line in the form `<method> - <location>`, the same format as
+[X509Certificate](X509Certificate.md)#infoAccess. Undefined for requests created by fibjs, which add no
+extensions, and not copied into the certificate by issue.
+
 --------------------------
 ### raw
-**[Buffer](Buffer.md), 证书请求的原始二进制数据**
+**[Buffer](Buffer.md), The DER [encoding](../../module/ifs/encoding.md) of the request**
 
 ```JavaScript
 readonly Buffer X509CertificateRequest.raw;
 ```
 
+A [Buffer](Buffer.md) with the raw PKCS#10 request, suitable for sending to a CA or storing. The
+parser accepts PEM only, so a DER request must be converted back (or the PEM kept)
+before it is parsed again.
+
 --------------------------
 ### pem
-**String, 证书请求的 PEM 编码**
+**String, The PEM [encoding](../../module/ifs/encoding.md) of the request**
 
 ```JavaScript
 readonly String X509CertificateRequest.pem;
 ```
 
-## 成员函数
+The `-----BEGIN CERTIFICATE REQUEST-----` text, accepted back by
+[crypto.createCertificateRequest](../../module/ifs/crypto.md#createCertificateRequest). toString() returns the same text, so a request can be
+logged or written to a file directly.
+
+## Methods
         
 ### checkPrivateKey
-**检查证书请求的公钥是否与给定的私钥签名匹配**
+**Checks whether a private key matches the request**
 
 ```JavaScript
 Boolean X509CertificateRequest.checkPrivateKey(KeyObject privateKey);
 ```
 
-调用参数:
-* privateKey: [KeyObject](KeyObject.md), 私钥
+Parameters:
+* privateKey: [KeyObject](KeyObject.md), the private key to check
 
-返回结果:
-* Boolean, 如果匹配，则返回 true，否则返回 false
+Returns:
+* Boolean, returns true when the key matches, false otherwise
+
+Returns true when privateKey is the private half of the public key in the request,
+false for another private key. The argument must be a private [KeyObject](KeyObject.md): a public or
+secret [KeyObject](KeyObject.md) throws Error [20024] with the message "key must be a private
+[KeyObject](KeyObject.md).", and a value that is not a [KeyObject](KeyObject.md) fails the argument type check with a
+TypeError [20005] ([X509Certificate](X509Certificate.md)#checkPrivateKey raises TypeError [20004] instead).
+A CA uses this check to confirm that the applicant owns the key before issuing.
+
+Example: prove the request owns a private key:
+
+```JavaScript
+const crypto = require('crypto');
+
+const {
+    privateKey,
+    publicKey
+} = crypto.generateKeyPair('ec', {
+    namedCurve: 'prime256v1'
+});
+const other = crypto.generateKeyPair('ec', {
+    namedCurve: 'prime256v1'
+});
+const req = crypto.createCertificateRequest({
+    key: privateKey,
+    subject: {
+        CN: 'example.com'
+    }
+});
+
+console.log(req.checkPrivateKey(privateKey)); // true
+console.log(req.checkPrivateKey(other.privateKey)); // false
+try {
+    req.checkPrivateKey(publicKey);
+} catch (e) {
+    console.log(e.name, e.number); // Error 20024
+}
+```
 
 --------------------------
 ### issue
-**根据请求内容签发正式证书**
+**Signs the request and returns the issued certificate**
 
 ```JavaScript
 X509Certificate X509CertificateRequest.issue(Object options);
 ```
 
-调用参数:
-* options: Object, 证书签发选项
+Parameters:
+* options: Object, the issuer key and the certificate fields to apply
 
-返回结果:
-* [X509Certificate](X509Certificate.md), 返回签发的证书对象
+Returns:
+* [X509Certificate](X509Certificate.md), returns the issued certificate
 
-options 内的参数会用于调用 [crypto.createPrivateKey](../../module/ifs/crypto.md#createPrivateKey) 创建私钥对象，此外还支持以下签名参数：
- - issuer: 签发者的主题信息，包含 key/value 对的 subject 信息
- - ca: 是否是 CA 证书，缺省为 false
- - pathlen: 证书链的最大长度，缺省为 -1
- - validFrom: 证书的生效时间，缺省为当前时间
- - validTo: 证书的失效时间，如果同时设定 days，则以 validTo 为准
- - days: 证书有效期，缺省为 100 天
- - hashAlgorithm: 签名的 hash 算法，缺省为 'sha256'
- - keyUsage: 证书的密钥用途，以数组形式提供，缺省为 []，支持的值有：
-   - 'digitalSignature': 数字签名
-   - 'nonRepudiation': 非否认
-   - 'keyEncipherment': 密钥加密
-   - 'dataEncipherment': 数据加密
-   - 'keyAgreement': 密钥协商
-   - 'keyCertSign': 证书签名
-   - 'cRLSign': CRL 签名
-   - 'encipherOnly': 加密
-   - 'decipherOnly': 解密
+The key entry selects the issuer private key as a private [KeyObject](KeyObject.md), a PEM string or a
+PEM [Buffer](Buffer.md); it is required, so omitting it throws TypeError [20002], and the request's
+own key is not used unless it is passed here as well. A raw DER [Buffer](Buffer.md) is not accepted
+(`Private key not recognized`); export it as PEM first. The subject and public key of
+the certificate are copied from the request; every other field comes from this [object](object.md):
+- issuer: the issuer subject as key/value pairs, for example
+  `{ C: 'CN', O: 'Example', CN: 'Demo CA' }`; when omitted the issuer name is empty
+  and reading the issued certificate's issuer throws error 20024;
+- ca: mark the certificate as a CA. Default: false;
+- pathlen: maximum number of intermediate CAs below this one, -1 for no constraint.
+  Default: -1;
+- validFrom: start of the validity window as a Date. Default: now;
+- validTo: end of the validity window as a Date; when set it wins over days;
+- days: validity length in days. Default: 100;
+- hashAlgorithm: signature digest, 'sha256' by default and 'sm3' for SM2 keys;
+- keyUsage: array built from 'digitalSignature', 'nonRepudiation', 'keyEncipherment',
+  'dataEncipherment', 'keyAgreement', 'keyCertSign', 'cRLSign' and 'encipherOnly'.
+  Default: none. 'decipherOnly' is not accepted;
+- type: Netscape type array built from 'client', 'server', 'email', 'objsign',
+  'reserved', 'sslCA', 'emailCA' and 'objCA'. Default: none.
 
-- type: 证书的 Nescape 类型，以数组形式提供，缺省为 []，支持的值有：
-   - 'client': 客户端
-   - 'server': 服务器
-   - 'email': 电子邮件
-   - 'objsign': 对象签名
-   - 'reserved': 保留
-   - 'sslCA': SSL CA
-   - 'emailCA': 电子邮件 CA
-   - 'objCA': 对象 CA
+Unknown entries, such as a subjectAltName array, are ignored, so the issued certificate
+has no SAN and its extension members are undefined. An unknown name inside keyUsage or
+type throws `unknown item: <name>`, and an unknown hashAlgorithm throws
+`unknown digest algorithm: '<name>'.`
 
 --------------------------
 ### toString
-**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
+**Returns the string form of the [object](object.md)**
 
 ```JavaScript
 String X509CertificateRequest.toString();
 ```
 
-返回结果:
-* String, 返回对象的字符串表示
+Returns:
+* String, returns the string form of the [object](object.md)
+
+The base implementation reports an error: a native [object](object.md) has no implicit
+text form, and only the classes whose value can be written as a string
+override the member. [Buffer](Buffer.md) returns its content decoded with the given
+[encoding](../../module/ifs/encoding.md), [HttpCookie](HttpCookie.md) returns "name=value", and so on; an override commonly
+accepts optional arguments ([Buffer.toString](Buffer.md#toString) takes [encoding](../../module/ifs/encoding.md), start and
+end) that are not part of this declaration.
+
+Calling the member on a class that does not override it throws
+"<Class>: the [object](object.md) can not be converted to string.", which is the
+behavior to rely on when probing whether a value has a string form. See
+toJSON for the serialization hook.
 
 --------------------------
 ### toJSON
-**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
+**Returns the JSON representation of the [object](object.md)**
 
 ```JavaScript
 Value X509CertificateRequest.toJSON(String key = "");
 ```
 
-调用参数:
-* key: String, 未使用
+Parameters:
+* key: String, the property name of the value being serialized
 
-返回结果:
-* Value, 返回包含可 JSON 序列化的值
+Returns:
+* Value, returns the JSON-serializable value
+
+JSON.stringify(value) calls value.toJSON(key) when the member exists and
+serializes the returned value in its place; the key argument carries the
+property name of the value inside its parent [object](object.md) (an empty string at
+the top level) and may be used to build a keyed form. The base
+implementation returns a plain [object](object.md) holding the readable properties of
+the instance, so a native [object](object.md) serializes without per-class code; a
+class with a portable shape such as [Buffer](Buffer.md) overrides it, and a JavaScript
+class may override it in the same way.
+
+The member is normally reached through JSON.stringify rather than called
+directly; calling it returns the same value JSON.stringify would
+serialize.
 

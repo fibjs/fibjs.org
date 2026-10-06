@@ -1,9 +1,45 @@
-# 对象 AsyncLocalStorage
-该对象允许您在异步操作中存储和检索数据
+# Object AsyncLocalStorage
+AsyncLocalStorage stores a value and makes it available to an asynchronous call chain, similar to thread-local storage; it is used to carry request-scoped data such as a request id, a user or a trace context across callbacks, promises and fibers without passing it as an argument
 
-AsyncLocalStorage 可用于在异步调用链中传递数据，类似于线程本地存储。每个异步操作都可以访问其创建时的存储数据，而不会与其他异步操作的数据混淆。
+An instance holds one store value per asynchronous execution context. The value is set with `run`
+or `enterWith` and read with `getStore`; every asynchronous operation created inside that context
+([timers](../../module/ifs/timers.md), I/O callbacks, promises, fibers) inherits the store at creation time, so data does not
+leak between concurrent operations. An instance can store any value; a store explicitly set to
+`undefined` is not distinguishable from no store unless the constructor defaultValue option is
+used.
 
-以下是一个简单的示例：
+Concepts:
+
+- **Continuation-local storage**: fibjs attaches the stores of all AsyncLocalStorage instances to
+  the asynchronous context of the current fiber; when a callback is scheduled its context is
+  captured and restored for the callback and everything it starts. This is why `run` isolates
+  concurrent operations while `enterWith` changes the current context in place.
+- **run vs enterWith**: `run(store, callback)` sets the store only for the callback and the
+  asynchronous operations it creates, then restores the previous context when the callback
+  returns or throws; it also passes extra arguments and returns the callback result.
+  `enterWith(store)` changes the store of the current execution context for the remainder of that
+  context, without a callback and without automatic restoration; prefer `run` unless a synchronous
+  code [path](../../module/ifs/path.md) needs the change.
+- **Scoping and restoration**: `exit(callback)` temporarily makes the store undefined inside the
+  callback and restores it afterwards; `disable()` stops propagation and makes `getStore` return
+  the default value until `run` or `enterWith` is called again. Nested calls, of the same instance
+  or of different instances, are restored in stack order.
+- **Captured scopes**: `AsyncLocalStorage.snapshot()` and `AsyncLocalStorage.bind(fn)` capture the
+  context at call time and run a function inside it later; they are the recommended way to keep
+  the correct store in event callbacks that outlive the context.
+- **Node.js comparison**: the API matches Node.js `async_hooks.AsyncLocalStorage`, including the
+  static `bind`/`snapshot` methods and the `name` property; the Node.js `withScope` helper for
+  `using` declarations is not provided, use `run` or `exit` instead.
+
+Import:
+
+```JavaScript
+const {
+    AsyncLocalStorage
+} = require('async_hooks');
+```
+
+Example 1 — request-scoped store across [timers](../../module/ifs/timers.md):
 
 ```JavaScript
 const {
@@ -15,13 +51,51 @@ als.run({
     requestId: 'req-123'
 }, () => {
     setTimeout(() => {
-        const store = als.getStore();
-        console.log(store.requestId); // Output: req-123
-    }, 100);
+        // the callback was created inside run, so the store is still there
+        console.log(als.getStore().requestId); // req-123
+    }, 10);
 });
+
+console.log(als.getStore()); // undefined
 ```
 
-## 继承关系
+Example 2 — bind a function and call it later outside the context:
+
+```JavaScript
+const {
+    AsyncLocalStorage
+} = require('async_hooks');
+const als = new AsyncLocalStorage();
+
+const read = als.run({
+    id: 1
+}, () => AsyncLocalStorage.bind(() => als.getStore().id));
+als.run({
+    id: 2
+}, () => console.log(read())); // 1
+```
+
+Example 3 — exit temporarily hides the store and disable stops tracking:
+
+```JavaScript
+const {
+    AsyncLocalStorage
+} = require('async_hooks');
+const als = new AsyncLocalStorage({
+    defaultValue: 'default'
+});
+
+als.run('run', () => {
+    console.log(als.getStore()); // run
+    console.log(als.exit(() => als.getStore())); // undefined
+    console.log(als.getStore()); // run
+});
+
+als.disable();
+console.log(als.getStore()); // default
+```
+
+## Inheritance
 ```dot
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
@@ -33,236 +107,329 @@ digraph {
 }
 ```
 
-## 构造函数
+## Constructors
         
 ### AsyncLocalStorage
-**创建一个新的 AsyncLocalStorage 实例**
+**Creates a new AsyncLocalStorage instance**
 
 ```JavaScript
 new AsyncLocalStorage(Object options = {});
 ```
 
-调用参数:
-* options: Object, 一个可选的对象，用于配置 AsyncLocalStorage 实例
+Parameters:
+* options: Object, an optional [object](object.md) used to configure the AsyncLocalStorage instance
 
-options 支持以下选项：
- - defaultValue: 指定默认值，当没有存储值时返回该值
- - name: 为 AsyncLocalStorage 实例指定一个名称，便于调试
-
-## 静态函数
-        
-### snapshot
-**创建一个快照函数，用于捕获当前的异步上下文**
+Each instance keeps its own set of stores, independent of the other instances. options
+supports the following options:
 
 ```JavaScript
-static Function AsyncLocalStorage.snapshot();
+// fragment: options
+({
+    "defaultValue": undefined, // value returned by getStore when there is no store
+    "name": "" // a name for the instance, for debugging; empty by default
+})
 ```
 
-返回结果:
-* Function, 返回一个函数，该函数接受一个回调并在捕获的上下文中执行它
+defaultValue is returned whenever getStore has no value to return for this instance; it is not
+used inside `exit`, where the store is explicitly undefined. name accepts any value, is
+converted to a string and is read back through the `name` property.
 
-返回的函数可以在任何时候调用，它会在捕获时的上下文中执行传入的回调函数。
-
-示例：
+## Static Methods
+        
+### snapshot
+**Creates a snapshot function that captures the current asynchronous context**
 
 ```JavaScript
+static Function(Function(...args) => Value callback, ...args) => Value AsyncLocalStorage.snapshot();
+```
+
+Returns:
+* Function(Function(...args) => Value callback, ...args) => Value, returns a function that takes a callback and executes it in the captured context
+
+The returned function can be called at any time; it runs the callback passed to it, plus any
+extra arguments, in the context captured at snapshot time, and returns the callback result. The
+restoration is temporary, so the caller's context is active again after the call.
+[AsyncLocalStorage.snapshot](AsyncLocalStorage.md#snapshot)() can replace [AsyncResource](AsyncResource.md) for simple context tracking, for example
+storing a snapshot in a class field and calling it from methods invoked elsewhere.
+
+Example — capture a context and restore it inside another run:
+
+```JavaScript
+const {
+    AsyncLocalStorage
+} = require('async_hooks');
+const als = new AsyncLocalStorage();
+
 const runInContext = als.run({
     id: 1
 }, () => AsyncLocalStorage.snapshot());
-// Later in a different context
 als.run({
     id: 2
 }, () => {
-    runInContext(() => {
-        console.log(als.getStore().id); // Output: 1
-    });
+    console.log(runInContext(() => als.getStore().id)); // 1
+    console.log(als.getStore().id); // 2, the current context was restored
 });
 ```
 
 --------------------------
 ### bind
-**将函数绑定到当前的异步上下文**
+**Binds a function to the current asynchronous context**
 
 ```JavaScript
-static Function AsyncLocalStorage.bind(Function fn);
+static Function(...args) => Value AsyncLocalStorage.bind(Function(...args) => Value fn);
 ```
 
-调用参数:
-* fn: Function, 要绑定的函数
+Parameters:
+* fn: Function(...args) => Value, the function to bind
 
-返回结果:
-* Function, 返回绑定到当前上下文的新函数
+Returns:
+* Function(...args) => Value, returns a new function bound to the current context
 
-返回一个新函数，该函数在调用时会在捕获时的异步上下文中执行原始函数。
-这对于确保回调函数在正确的上下文中执行非常有用。
+Returns a new function that restores the asynchronous context captured at bind time, calls fn
+with the arguments and `this` it receives, and returns the result; the caller's context is
+active again after the call. This is useful for event callbacks that may run long after the
+context was entered. The capture happens when bind is called, not when the bound function runs,
+so it must be called while the context to preserve is active. Node.js provides the same static
+method.
 
-示例：
+Example — bind inside one run and call the function inside another:
 
 ```JavaScript
+const {
+    AsyncLocalStorage
+} = require('async_hooks');
+const als = new AsyncLocalStorage();
+
 const bound = als.run({
     id: 1
-}, () => {
-    return AsyncLocalStorage.bind(() => als.getStore());
-});
+}, () => AsyncLocalStorage.bind(() => als.getStore().id));
 als.run({
     id: 2
-}, () => {
-    console.log(bound().id); // Output: 1
-});
+}, () => console.log(bound())); // 1
 ```
 
-## 成员属性
+## Properties
         
 ### name
-**String, 获取 AsyncLocalStorage 实例的名称**
+**String, Gets the name of the AsyncLocalStorage instance**
 
 ```JavaScript
 readonly String AsyncLocalStorage.name;
 ```
 
-名称在创建实例时通过 options.name 设置，用于调试目的。如果未设置，返回空字符串。
+The name is set through options.name when the instance is created, for debugging purposes; a
+non-string value is converted to its string form. If the option is omitted, an empty string is
+returned.
 
-## 成员函数
+## Methods
         
 ### disable
-**禁用当前 AsyncLocalStorage 实例**
+**Disables the current AsyncLocalStorage instance**
 
 ```JavaScript
 AsyncLocalStorage.disable();
 ```
 
-调用此方法后，getStore() 将返回 undefined（除非设置了 defaultValue），并且不再传播存储数据到后续的异步操作。
+After calling this method, getStore returns the defaultValue (or undefined when none is set),
+the store of the current context is removed, and stores are no longer propagated to
+asynchronous operations created from now on. The instance becomes usable again after `run` or
+`enterWith` is called, both of which clear the disabled state.
+
+Node.js provides the same member and also requires it before the instance can be collected.
+
+Example — disable, then re-enable with run:
+
+```JavaScript
+const {
+    AsyncLocalStorage
+} = require('async_hooks');
+const als = new AsyncLocalStorage();
+
+als.run('first', () => console.log(als.getStore())); // first
+als.disable();
+console.log(als.getStore()); // undefined
+als.run('second', () => console.log(als.getStore())); // second
+```
 
 --------------------------
 ### getStore
-**获取当前异步上下文中的存储数据**
+**Gets the store data of the current asynchronous context**
 
 ```JavaScript
 Value AsyncLocalStorage.getStore();
 ```
 
-返回结果:
-* Value, 返回当前上下文中的存储数据
+Returns:
+* Value, returns the store data of the current context
 
-如果在 run() 或 enterWith() 设置的上下文中调用，返回对应的存储数据。
-如果不在任何上下文中，返回 undefined 或创建实例时指定的 defaultValue。
+If called inside a context set by `run` or `enterWith`, the store of that context is returned;
+`exit` temporarily makes it undefined. If the instance has no store for the current context,
+the defaultValue option of the constructor is returned, and undefined when no default was set.
+Calling getStore on a disabled instance returns the default value.
 
 --------------------------
 ### enterWith
-**进入一个新的异步上下文，并设置存储数据**
+**Enters a new asynchronous context and sets the store data**
 
 ```JavaScript
 AsyncLocalStorage.enterWith(Value store);
 ```
 
-调用参数:
-* store: Value, 要存储的数据
+Parameters:
+* store: Value, the data to store
 
-与 run() 不同，enterWith() 不需要回调函数，它会在当前执行上下文中设置存储数据，
-该数据会传播到后续的所有异步操作，直到当前异步上下文结束。
+Unlike run, enterWith does not require a callback: it replaces the store of the current
+execution context, so the new value is seen by the rest of the synchronous code and by every
+asynchronous operation created afterwards in that context. Previously created and sibling
+contexts keep their own values, and there is no automatic restoration; use `run` when the store
+must be scoped to one call.
 
-示例：
+Example — enterWith persists through the operations created after it:
 
 ```JavaScript
+const {
+    AsyncLocalStorage
+} = require('async_hooks');
+const als = new AsyncLocalStorage();
+
 setImmediate(() => {
     als.enterWith({
         id: 1
     });
-    setTimeout(() => {
-        console.log(als.getStore().id); // Output: 1
-    }, 100);
+    console.log(als.getStore().id); // 1
+    setTimeout(() => console.log(als.getStore().id), 5); // 1
 });
 ```
 
 --------------------------
 ### run
-**在新的异步上下文中运行回调函数**
+**Runs a callback function in a new asynchronous context**
 
 ```JavaScript
 Value AsyncLocalStorage.run(Value store,
-    Function callback,
+    Function(...args) => Value callback,
     ...args);
 ```
 
-调用参数:
-* store: Value, 要存储的数据
-* callback: Function, 要执行的回调函数
-* args: ..., 传递给回调函数的参数
+Parameters:
+* store: Value, the data to store
+* callback: Function(...args) => Value, the callback function to execute
+* args: ..., the parameters passed to the callback function
 
-返回结果:
-* Value, 返回回调函数的返回值
+Returns:
+* Value, returns the return value of the callback function
 
-创建一个新的异步上下文，在该上下文中设置存储数据，然后执行回调函数。
-回调函数内部及其触发的所有异步操作都可以通过 getStore() 获取该存储数据。
-回调执行完毕后，上下文自动恢复到调用 run() 之前的状态。
+Creates a new context, sets the store data in it, then calls callback with the extra arguments
+passed to run and returns its result. The callback and every asynchronous operation created
+inside it can read the store through getStore; when the callback returns or throws, the
+previous context is restored, so the store never leaks to the caller.
 
-示例：
+This is the preferred way to set a store. If callback throws, the error is propagated to the
+caller of run after the context is restored.
+
+Example — the store follows asynchronous operations, not the caller:
 
 ```JavaScript
+const {
+    AsyncLocalStorage
+} = require('async_hooks');
+const als = new AsyncLocalStorage();
+
 const result = als.run({
     userId: 'user-1'
 }, (a, b) => {
-    console.log(als.getStore().userId); // Output: user-1
+    console.log(als.getStore().userId); // user-1
     return a + b;
 }, 10, 20);
-console.log(result); // Output: 30
+
+console.log(result, als.getStore()); // 30 undefined
 ```
 
 --------------------------
 ### exit
-**暂时退出当前异步上下文执行回调函数**
+**Temporarily exits the current asynchronous context to execute a callback function**
 
 ```JavaScript
-Value AsyncLocalStorage.exit(Function callback,
+Value AsyncLocalStorage.exit(Function(...args) => Value callback,
     ...args);
 ```
 
-调用参数:
-* callback: Function, 要执行的回调函数
-* args: ..., 传递给回调函数的参数
+Parameters:
+* callback: Function(...args) => Value, the callback function to execute
+* args: ..., the parameters passed to the callback function
 
-返回结果:
-* Value, 返回回调函数的返回值
+Returns:
+* Value, returns the return value of the callback function
 
-在回调执行期间，getStore() 将返回 undefined（或 defaultValue）。
-回调执行完毕后，恢复到原来的上下文。
+During the callback, getStore returns undefined even when the instance has a defaultValue; the
+asynchronous operations created inside the callback inherit the exited context. When the
+callback returns or throws, the original context is restored. The callback result is returned
+and extra arguments are passed through.
 
-示例：
+Example — the store is hidden inside exit and restored afterwards:
 
 ```JavaScript
+const {
+    AsyncLocalStorage
+} = require('async_hooks');
+const als = new AsyncLocalStorage();
+
 als.run({
     id: 1
 }, () => {
-    console.log(als.getStore().id); // Output: 1
-    als.exit(() => {
-        console.log(als.getStore()); // Output: undefined
-    });
-    console.log(als.getStore().id); // Output: 1
+    console.log(als.getStore().id); // 1
+    console.log(als.exit(() => als.getStore())); // undefined
+    console.log(als.getStore().id); // 1
 });
 ```
 
 --------------------------
 ### toString
-**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
+**Returns the string form of the [object](object.md)**
 
 ```JavaScript
 String AsyncLocalStorage.toString();
 ```
 
-返回结果:
-* String, 返回对象的字符串表示
+Returns:
+* String, returns the string form of the [object](object.md)
+
+The base implementation reports an error: a native [object](object.md) has no implicit
+text form, and only the classes whose value can be written as a string
+override the member. [Buffer](Buffer.md) returns its content decoded with the given
+[encoding](../../module/ifs/encoding.md), [HttpCookie](HttpCookie.md) returns "name=value", and so on; an override commonly
+accepts optional arguments ([Buffer.toString](Buffer.md#toString) takes [encoding](../../module/ifs/encoding.md), start and
+end) that are not part of this declaration.
+
+Calling the member on a class that does not override it throws
+"<Class>: the [object](object.md) can not be converted to string.", which is the
+behavior to rely on when probing whether a value has a string form. See
+toJSON for the serialization hook.
 
 --------------------------
 ### toJSON
-**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
+**Returns the JSON representation of the [object](object.md)**
 
 ```JavaScript
 Value AsyncLocalStorage.toJSON(String key = "");
 ```
 
-调用参数:
-* key: String, 未使用
+Parameters:
+* key: String, the property name of the value being serialized
 
-返回结果:
-* Value, 返回包含可 JSON 序列化的值
+Returns:
+* Value, returns the JSON-serializable value
+
+JSON.stringify(value) calls value.toJSON(key) when the member exists and
+serializes the returned value in its place; the key argument carries the
+property name of the value inside its parent [object](object.md) (an empty string at
+the top level) and may be used to build a keyed form. The base
+implementation returns a plain [object](object.md) holding the readable properties of
+the instance, so a native [object](object.md) serializes without per-class code; a
+class with a portable shape such as [Buffer](Buffer.md) overrides it, and a JavaScript
+class may override it in the same way.
+
+The member is normally reached through JSON.stringify rather than called
+directly; calling it returns the same value JSON.stringify would
+serialize.
 

@@ -1,23 +1,94 @@
-# 对象 DOMTokenList
-DOMTokenList 对象，表示一组空格分隔的标记，常用于 classList 属性
+# Object DOMTokenList
+The DOMTokenList [object](object.md) represents a set of space-separated tokens, commonly
 
-DOMTokenList 是表示一组空格分隔的标记的接口。它可以用于表示 CSS 类列表。
+used for the classList property of an element
 
-示例:
+DOMTokenList is the interface representing a set of space-separated tokens. In fibjs it
+wraps the class attribute of an element: reading re-parses the attribute and the
+mutation methods write the token set back, so the [object](object.md) is a live view rather than a
+copy. Token matching is case-sensitive. The interface is not constructible and not
+exported as a [global](../../module/ifs/global.md) (typeof DOMTokenList is undefined); the only way to obtain one is
+`element.classList` in HTML mode, while reading classList on an XML element throws an
+invalid-call error (20009).
+
+Concepts:
+
+- **Token parsing**: tokens are separated by space, tab, line feed, carriage return or
+  form feed; leading, trailing and repeated separators are ignored and empty tokens are
+  dropped. value keeps the raw attribute string while length and item() report the
+  parsed view, so a class attribute ` b   a ` yields value `" b   a "` but two tokens,
+  b and a.
+- **Live view**: the same DOMTokenList [object](object.md) is cached per element and every read
+  re-parses the current class attribute. Changing className or the class attribute
+  through the attribute methods is immediately visible through the list, and the
+  mutation methods write the normalized token set back to the attribute (single spaces
+  between tokens, no leading or trailing separator).
+- **Differences from MDN**: fibjs implements only the class-attribute use case.
+  supports(), forEach(), keys(), values(), entries() and the iteration protocol are not
+  available, so use length, item() and indexed access. add() silently ignores empty
+  tokens and tokens containing whitespace, where the standard throws a
+  SyntaxError/InvalidCharacterError. toggle() and replace() perform no validation at
+  all: an empty token can be written (it is invisible to later parses) and a token
+  containing spaces is written verbatim (it parses as several tokens later). value is
+  read-only here, while the standard defines it as settable.
+
+Obtained from:
+- `element.classList` — a cached, live DOMTokenList for the class attribute; HTML mode
+  only. There is no constructor and no [module](../../module/ifs/module.md) export.
+
+Example 1 — read and inspect the tokens of a class attribute:
 
 ```JavaScript
-var xml = require('xml');
-var doc = xml.parse('<div class="foo bar"></div>', 'text/html');
-var div = doc.documentElement;
-var classList = div.classList;
-console.log(classList.length); // 2
-console.log(classList.item(0)); // "foo"
-console.log(classList.contains("bar")); // true
-classList.add("baz");
-console.log(div.className); // "foo bar baz"
+const xml = require('xml');
+
+const doc = xml.parse('<html><body><p class="note  wide">Hi</p></body></html>',
+    'text/html');
+const para = doc.querySelector('p');
+const list = para.classList;
+
+console.log(list.value); // note  wide
+console.log(list.length); // 2
+console.log(list.item(0)); // note
+console.log(list[1]); // wide
+console.log(list.item(2)); // null
+console.log(list.contains('wide')); // true
 ```
 
-## 继承关系
+Example 2 — change the class of an element through the list:
+
+```JavaScript
+const xml = require('xml');
+
+const doc = xml.parse('<html><body><button class="btn">Go</button></body></html>',
+    'text/html');
+const button = doc.querySelector('button');
+
+button.classList.add('primary', 'btn'); // the duplicate is ignored
+button.classList.remove('btn');
+button.classList.toggle('disabled');
+console.log(button.className); // primary disabled
+console.log(String(button)); // <button class="primary disabled">Go</button>
+```
+
+Example 3 — the view is live and className stays authoritative:
+
+```JavaScript
+const xml = require('xml');
+
+const doc = xml.parse('<html><body><div class="a b"></div></body></html>',
+    'text/html');
+const div = doc.querySelector('div');
+const list = div.classList;
+
+console.log(list === div.classList); // true, the object is cached
+
+div.className = 'x y z'; // an external change is picked up
+console.log(list.length); // 3
+console.log(list.toggle('y')); // false, y was removed
+console.log(div.className); // x z
+```
+
+## Inheritance
 ```dot
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
@@ -29,137 +100,226 @@ digraph {
 }
 ```
 
-## 操作符
+## Operators
         
 ### operator[]
-**返回指定索引处的标记**
+**Returns the token at the specified index, or undefined when the index is**
 
 ```JavaScript
 readonly String DOMTokenList[];
 ```
 
-## 成员属性
+out of range
+
+The index is 0-based and applied to the parsed token set at the time of the read.
+Unlike item(), an out-of-range index yields undefined rather than null.
+
+## Properties
         
 ### length
-**Integer, 返回集合中的标记数量**
+**Integer, Returns the number of tokens in the set**
 
 ```JavaScript
 readonly Integer DOMTokenList.length;
 ```
 
+The value is recomputed on every read from the current class attribute, so it
+reflects external changes to className or to the class attribute. Empty tokens and
+duplicate separators are not counted.
+
 --------------------------
 ### value
-**String, 返回集合中所有标记的字符串表示，用空格分隔**
+**String, Returns the raw class attribute string**
 
 ```JavaScript
 readonly String DOMTokenList.value;
 ```
 
-## 成员函数
+Contrary to the standard the property is read-only (an assignment is silently
+ignored) and the string is returned verbatim, including repeated or leading
+separators: it is not the normalized form that the mutation methods write.
+An empty string is returned when the class attribute is absent. toString() and
+String(list) return the same value.
+
+## Methods
         
 ### item
-**返回指定索引处的标记**
+**Returns the token at the specified index**
 
 ```JavaScript
 String DOMTokenList.item(Integer index);
 ```
 
-调用参数:
-* index: Integer, 标记的索引
+Parameters:
+* index: Integer, the index of the token
 
-返回结果:
-* String, 返回标记字符串，如果索引超出范围则返回 null
+Returns:
+* String, returns the token string, or null if the index is out of range
+
+The index is 0-based; a negative index or an index greater than or equal to length
+returns null. A numeric string is accepted and converted.
 
 --------------------------
 ### contains
-**检查集合中是否包含指定的标记**
+**Checks whether the set contains the specified token**
 
 ```JavaScript
 Boolean DOMTokenList.contains(String token);
 ```
 
-调用参数:
-* token: String, 要检查的标记
+Parameters:
+* token: String, the token to check
 
-返回结果:
-* Boolean, 如果包含该标记则返回 true，否则返回 false
+Returns:
+* Boolean, returns true if the token is contained, otherwise false
+
+The comparison is case-sensitive and exact; an empty string never matches. A value
+that is not a string throws a type error (20005) instead of being converted.
 
 --------------------------
 ### add
-**向集合中添加一个或多个标记**
+**Adds one or more tokens to the set**
 
 ```JavaScript
 DOMTokenList.add(...tokens);
 ```
 
-调用参数:
-* tokens: ..., 要添加的标记，可变参数
+Parameters:
+* tokens: ..., the tokens to add, variadic parameter
+
+Tokens are appended in argument order and are written back to the class attribute
+separated by single spaces. Tokens that are empty, already present or contain
+whitespace are silently skipped (the standard throws for the last two cases).
+Arguments are converted with the usual type checks, so a number throws 20005.
+
+Example — add tokens and observe the normalized attribute:
+
+```JavaScript
+const xml = require('xml');
+
+const doc = xml.parse('<html><body><div class="a b"></div></body></html>',
+    'text/html');
+const div = doc.querySelector('div');
+
+div.classList.add('c', 'a', '', 'x y');
+console.log(div.className); // a b c
+```
 
 --------------------------
 ### remove
-**从集合中移除一个或多个标记**
+**Removes one or more tokens from the set**
 
 ```JavaScript
 DOMTokenList.remove(...tokens);
 ```
 
-调用参数:
-* tokens: ..., 要移除的标记，可变参数
+Parameters:
+* tokens: ..., the tokens to remove, variadic parameter
+
+Each named token is removed once (naming a duplicated token removes a single
+occurrence) and unknown tokens are ignored; the remaining tokens are written back
+separated by single spaces. Removing the last token leaves an empty class
+attribute. Arguments are converted with the usual type checks, so a number throws
+20005.
 
 --------------------------
 ### toggle
-**如果标记存在则移除它，否则添加它**
+**Removes the token if it exists, otherwise adds it**
 
 ```JavaScript
 Boolean DOMTokenList.toggle(String token,
     ...force);
 ```
 
-调用参数:
-* token: String, 要切换的标记
-* force: ..., 可选。如果为 true，则只添加标记；如果为 false，则只移除标记
+Parameters:
+* token: String, the token to toggle
+* force: ..., optional. If true, only adds the token; if false, only removes the token
 
-返回结果:
-* Boolean, 如果操作后标记存在则返回 true，否则返回 false
+Returns:
+* Boolean, returns true if the token is present after the operation, otherwise false
+
+Without force the return value tells whether the token is present after the call.
+With force the operation only adds (truthy) or only removes (falsy); the value is
+coerced with the usual boolean rules, so any non-empty string means true. fibjs
+performs no token validation here: an empty token is appended as-is and a token
+containing whitespace is written verbatim.
+
+Example — conditional toggling with the force argument:
+
+```JavaScript
+const xml = require('xml');
+
+const doc = xml.parse('<html><body><div class="menu"></div></body></html>',
+    'text/html');
+const div = doc.querySelector('div');
+
+div.classList.toggle('menu', true); // already there, no change
+div.classList.toggle('open', true); // force add
+console.log(div.className); // menu open
+console.log(div.classList.toggle('open', false)); // false
+console.log(div.className); // menu
+```
 
 --------------------------
 ### replace
-**用新标记替换现有标记**
+**Replaces an existing token with a new token**
 
 ```JavaScript
 Boolean DOMTokenList.replace(String oldToken,
     String newToken);
 ```
 
-调用参数:
-* oldToken: String, 要替换的标记
-* newToken: String, 新标记
+Parameters:
+* oldToken: String, the token to replace
+* newToken: String, the new token
 
-返回结果:
-* Boolean, 如果替换成功则返回 true，否则返回 false
+Returns:
+* Boolean, returns true if the replacement succeeded, otherwise false
+
+Returns false and leaves the set unchanged when oldToken is absent. When newToken
+is already present at another position, oldToken is simply removed; otherwise
+oldToken is overwritten in place, so its position is preserved. No token validation
+is performed: newToken is written verbatim even when it contains whitespace.
+Argument type errors throw 20005.
 
 --------------------------
 ### toString
-**返回集合中所有标记的字符串表示，用空格分隔**
+**Returns the string representation of the set**
 
 ```JavaScript
 String DOMTokenList.toString();
 ```
 
-返回结果:
-* String, 返回标记字符串
+Returns:
+* String, returns the token string
+
+Equivalent to value: the raw class attribute string, not a normalized token list.
+Called implicitly by string concatenation and by String(list).
 
 --------------------------
 ### toJSON
-**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
+**Returns the JSON representation of the [object](object.md)**
 
 ```JavaScript
 Value DOMTokenList.toJSON(String key = "");
 ```
 
-调用参数:
-* key: String, 未使用
+Parameters:
+* key: String, the property name of the value being serialized
 
-返回结果:
-* Value, 返回包含可 JSON 序列化的值
+Returns:
+* Value, returns the JSON-serializable value
+
+JSON.stringify(value) calls value.toJSON(key) when the member exists and
+serializes the returned value in its place; the key argument carries the
+property name of the value inside its parent [object](object.md) (an empty string at
+the top level) and may be used to build a keyed form. The base
+implementation returns a plain [object](object.md) holding the readable properties of
+the instance, so a native [object](object.md) serializes without per-class code; a
+class with a portable shape such as [Buffer](Buffer.md) overrides it, and a JavaScript
+class may override it in the same way.
+
+The member is normally reached through JSON.stringify rather than called
+directly; calling it returns the same value JSON.stringify would
+serialize.
 

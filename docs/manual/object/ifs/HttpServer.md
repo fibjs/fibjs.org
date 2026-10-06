@@ -1,29 +1,131 @@
-# 对象 HttpServer
-HttpServer 是内置对象之一，它是用于创建 HTTP 服务器的对象。一个 HttpServer 对象包含两个必传的参数：端口和事件处理接口对象。在事件处理接口对象中，具体的实现方式可以是简单的回调函数，也可以使用复杂的路由、链式处理数组等方式
+# Object HttpServer
+The HTTP server [object](object.md): a [TcpServer](TcpServer.md) plus [HttpHandler](HttpHandler.md) that serves requests by handlers
 
-[http](../../module/ifs/http.md) 服务器对象是将 [TcpServer](TcpServer.md) 和 [HttpHandler](HttpHandler.md) 组合封装的对象，方便快速搭建服务器，逻辑上相当于：
+`new [http.Server](../../module/ifs/http.md#Server)(port, hdlr)` binds the port immediately; the constructor forms without
+a port only store the handler and need listen() before connections are accepted. The
+embedded [HttpHandler](HttpHandler.md) parses requests, invokes the handler, applies the limits, automatic
+headers, CORS and optional compression, and keeps the connection alive for the next
+request. [HttpsServer](HttpsServer.md) is the TLS variant of the same [object](object.md).
 
-```JavaScript
-var svr = new net.TcpServer(addr, port, new http.Handler(function(req) {
-    ...
-}));
-```
+Concepts:
 
-下面是一个最简单的 HttpServer 的应用示例，它仅仅是对所有请求，返回字符串 hello world。
+- **[Handler](Handler.md) contract**: hdlr may be a [Handler](Handler.md) [object](object.md), an array of handlers (wrapped in a
+  [Chain](Chain.md) and invoked in order), a function, a routing map of pattern to handler, or a
+  [path](../../module/ifs/path.md)/address string that serves static files or forwards to another server. A function
+  is called with the [HttpRequest](HttpRequest.md), the capture groups of a routing map and the
+  [HttpResponse](HttpResponse.md): `(req, ...captures, res)`, so `(req)` and `(req, res)` both work. Write
+  the reply through res (or req.response, the same [object](object.md)). A returned value is treated
+  as the **next handler**, not as the response body: returning a function chains it,
+  returning a string tries to serve it as a file [path](../../module/ifs/path.md) or an [http](../../module/ifs/http.md)(s) address, and any
+  other value fails the reply with an internal error (500), so use a block body for
+  `(req) => { ... }` handlers.
+- **Lifecycle**: each accepted connection runs a parse-invoke-send loop, and the parsed
+  request and its response are reused across keep-alive requests. An exception thrown by
+  the handler is caught, logged as `[HttpHandler](HttpHandler.md): <error>` and answered with an empty 500;
+  a request that cannot be parsed (bad request line, header or body above a limit) is
+  answered with 400 and the connection is closed. There is no built-in 404: an untouched
+  response is a 200 with an empty body.
+- **Automatic headers**: a Server header is added unless the handler set one (serverName,
+  default `fibjs/<version>`), a plain 200 without Last-Modified or Cache-Control gets
+  `Cache-Control: no-cache, no-store` and `Expires: -1`, and a HEAD request receives
+  headers only. There is no automatic Date header.
+- **CORS**: enableCrossOrigin serves the CORS protocol for every handler: a request with
+  an Origin header gets Access-Control-Allow-Credentials and
+  Access-Control-Allow-Origin, and an OPTIONS preflight is answered directly with
+  Allow-Methods `*`, the configured Allow-[Headers](Headers.md) and Max-Age 1728000, without invoking
+  the handler.
+- **Limits and compression**: maxHeadersCount, maxHeaderSize and maxBodySize bound the
+  parsed request (a request over a limit is answered with 400); enableEncoding
+  compresses eligible text replies transparently when the client accepts gzip or
+  deflate. Node.js has no body limit and no automatic compression.
+- **Node.js differences**: Node passes `(req, res)` to a createServer listener and emits
+  request/upgrade/clientError events; fibjs accepts the handler forms above, adds
+  `req.response`, and forwards the [TcpServer](TcpServer.md) events.
+
+Obtained from:
+- `new [http.Server](../../module/ifs/http.md#Server)(port, hdlr)` / `new [http.Server](../../module/ifs/http.md#Server)(addr, port, hdlr)` — bound, ready for
+  start();
+- `new [http.Server](../../module/ifs/http.md#Server)(hdlr)` / `new [http.Server](../../module/ifs/http.md#Server)(addr, hdlr)` — call listen() to bind;
+- `http.createServer(hdlr)` — the same class without a port; listen() to start;
+- `http.Server` and `http.HttpsServer` — the [module](../../module/ifs/module.md) aliases of the two server classes.
+
+Example 1 — a routing map with captured segments:
 
 ```JavaScript
 const http = require('http');
-var svr = new http.Server(8080, (req) => {
-    req.response.write('hello, world');
+
+const server = new http.Server(0, {
+    '/hello/:name': (req, name) => {
+        req.response.write('Hello ' + name);
+    },
+    '/add/:a/:b': (req, a, b) => {
+        req.response.json({
+            sum: Number(a) + Number(b)
+        });
+    }
 });
-svr.start();
+server.start();
+const port = server.socket.localPort;
+
+console.log(http.getSync('http://127.0.0.1:' + port + '/hello/fibjs').text()); // Hello fibjs
+console.log(http.getSync('http://127.0.0.1:' + port + '/add/2/3').json().sum); // 5
+
+server.stop();
 ```
 
-从代码中可以看到，首先，我们导入了内置的 [http](../../module/ifs/http.md) 模块。然后我们创建了一个新的 HttpServer 对象，并且传入了两个必要参数：一个是端口号，另一个是具体的事件处理接口对象。在这个例子中，我们使用了一个简单的回调函数作为事件处理接口，用来响应来自 HTTP 请求的数据。其中 ``req.response.write('hello, world')`` 用于将我们的字符串 hello world 响应到客户端。
+Example 2 — a handler chain that shares work before the reply:
 
-在完成了 HttpServer 对象的创建之后，使用 ``svr.start()`` 来启动服务器，这样我们就能通过这个服务器接收来自 Internet 的 HTTP 请求了。
+```JavaScript
+const http = require('http');
 
-## 继承关系
+const server = new http.Server(0, [
+    (req) => {
+        req.response.setHeader('X-Server', 'fibjs');
+    },
+    (req) => {
+        if (req.address === '/echo')
+            req.response.write(req.text());
+        else
+            req.response.write('pass-through');
+    }
+]);
+server.start();
+const port = server.socket.localPort;
+
+const res = http.postSync('http://127.0.0.1:' + port + '/echo', {
+    body: 'payload'
+});
+console.log(res.text(), res.firstHeader('X-Server')); // payload fibjs
+
+server.stop();
+```
+
+Example 3 — handler errors and the request body limit:
+
+```JavaScript
+const http = require('http');
+
+const server = new http.Server(0, (req) => {
+    if (req.address === '/boom')
+        throw new Error('handler failed');
+    req.response.write('ok');
+});
+server.maxBodySize = 1; // MB
+server.start();
+const port = server.socket.localPort;
+
+console.log(http.getSync('http://127.0.0.1:' + port + '/').text()); // ok
+console.log(http.getSync('http://127.0.0.1:' + port + '/boom').statusCode); // 500
+
+const big = http.postSync('http://127.0.0.1:' + port + '/', {
+    body: 'x'.repeat(2 * 1024 * 1024)
+});
+console.log(big.statusCode); // 400
+
+server.stop();
+```
+
+## Inheritance
 ```dot
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
@@ -41,78 +143,116 @@ digraph {
 }
 ```
 
-## 构造函数
+## Constructors
         
 ### HttpServer
-**HttpServer 构造函数，在所有本机地址侦听**
+**Creates an HTTP server bound to a port**
 
 ```JavaScript
 new HttpServer(Integer port,
-    Handler hdlr);
+    Function(HttpRequest req, HttpResponse res) => Value hdlr);
 ```
 
-调用参数:
-* port: Integer, 指定 [http](../../module/ifs/http.md) 服务器侦听端口
-* hdlr: [Handler](Handler.md), [http](../../module/ifs/http.md) 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
+Parameters:
+* port: Integer, specifies the port on which the [http](../../module/ifs/http.md) server listens
+* hdlr: [Handler](Handler.md) | [Handler](Handler.md)[] | Function([HttpRequest](HttpRequest.md) req, [HttpResponse](HttpResponse.md) res) => Value | Object | String, the request handler
+
+Port 0 asks the operating system for a free port (read it back from
+socket.localPort). hdlr may be a [Handler](Handler.md) [object](object.md), an array of handlers (a [Chain](Chain.md)), a
+handler function `(req, res) => ...`, a routing map or a [path](../../module/ifs/path.md)/address string; see
+the class documentation for the contract. start() begins serving after the
+constructor bound the port; listen() is not needed and start() after listen() throws
+error 20009.
 
 --------------------------
-**HttpServer 构造函数**
+**Creates an HTTP server bound to an address and a port**
 
 ```JavaScript
 new HttpServer(String addr,
     Integer port,
-    Handler hdlr);
+    Function(HttpRequest req, HttpResponse res) => Value hdlr);
 ```
 
-调用参数:
-* addr: String, 指定 [http](../../module/ifs/http.md) 服务器侦听地址，为 "" 则在本机所有地址侦听
-* port: Integer, 指定 [http](../../module/ifs/http.md) 服务器侦听端口
-* hdlr: [Handler](Handler.md), [http](../../module/ifs/http.md) 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
+Parameters:
+* addr: String, the listening address; "" listens on all local addresses
+* port: Integer, specifies the port on which the [http](../../module/ifs/http.md) server listens
+* hdlr: [Handler](Handler.md) | [Handler](Handler.md)[] | Function([HttpRequest](HttpRequest.md) req, [HttpResponse](HttpResponse.md) res) => Value | Object | String, the request handler
+
+addr is the local address to bind: "" or "0.0.0.0" listens on every IPv4 interface,
+"::" on every IPv6 interface and a literal such as "127.0.0.1" or "::1" on one
+interface. Port 0 selects a free port. The handler forms and the lifecycle are the
+same as the other constructors; see the class documentation.
 
 --------------------------
-**HttpServer 构造函数**
+**Creates an HTTP server, taking the port from the address when it carries one**
 
 ```JavaScript
 new HttpServer(String addr,
-    Handler hdlr);
+    Function(HttpRequest req, HttpResponse res) => Value hdlr);
 ```
 
-调用参数:
-* addr: String, 指定 [http](../../module/ifs/http.md) 服务器侦听地址，为 "" 则在本机所有地址侦听
-* hdlr: [Handler](Handler.md), [http](../../module/ifs/http.md) 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
+Parameters:
+* addr: String, the listening address, optionally with a :port suffix
+* hdlr: [Handler](Handler.md) | [Handler](Handler.md)[] | Function([HttpRequest](HttpRequest.md) req, [HttpResponse](HttpResponse.md) res) => Value | Object | String, the request handler
+
+When addr contains a port (for example "127.0.0.1:8080") the server binds it
+immediately; otherwise the address is stored and listen() must be called. The
+handler forms and the lifecycle are the same as the other constructors; see the
+class documentation.
 
 --------------------------
-**HttpServer 构造函数，不绑定端口，需调用 listen() 启动**
+**Creates an HTTP server without binding a port; listen() must be called to start**
 
 ```JavaScript
-new HttpServer(Handler hdlr);
+new HttpServer(Function(HttpRequest req, HttpResponse res) => Value hdlr);
 ```
 
-调用参数:
-* hdlr: [Handler](Handler.md), [http](../../module/ifs/http.md) 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
+Parameters:
+* hdlr: [Handler](Handler.md) | [Handler](Handler.md)[] | Function([HttpRequest](HttpRequest.md) req, [HttpResponse](HttpResponse.md) res) => Value | Object | String, the request handler
 
-## 静态函数
+The handler is stored and the listener is created; call listen(port, addr) to bind
+and begin serving. This is the form [http.createServer](../../module/ifs/http.md#createServer)() uses. Do not call start()
+after listen(): the port is already bound and start() throws error 20009.
+
+## Static Methods
         
 ### addAbortListener
-**监听一个 [AbortSignal](AbortSignal.md) 的 abort 事件，返回一个可释放的对象**
+**Registers a one-shot abort handler on an [AbortSignal](AbortSignal.md)**
 
 ```JavaScript
 static Object HttpServer.addAbortListener(EventEmitter signal,
-    Function func);
+    Function(Object ev) func);
 ```
 
-调用参数:
-* signal: [EventEmitter](EventEmitter.md), 要监听的 [AbortSignal](AbortSignal.md) 对象
-* func: Function, abort 事件的处理函数
+Parameters:
+* signal: [EventEmitter](EventEmitter.md), the [AbortSignal](AbortSignal.md) [object](object.md) to listen to
+* func: Function(Object ev), the handler for the abort event
 
-返回结果:
-* Object, 返回一个包含 `[Symbol.dispose]` 方法的 Disposable 对象
+Returns:
+* Object, returns a Disposable [object](object.md) containing a `[Symbol.dispose]` method
 
-返回的对象包含 `[Symbol.dispose]()` 方法，调用后将移除监听器。如果信号已中止，则监听器会被立即调用。
+The handler is called at most once when the signal is aborted, and it is removed from the
+signal afterwards. If the signal is already aborted the handler is invoked synchronously.
+The returned [object](object.md) has a `[Symbol.dispose]()` method that removes the handler, so it can be
+released before the abort happens.
+
+Example — abort handling with automatic cleanup:
+
+```JavaScript
+const events = require('events');
+
+const controller = new AbortController();
+const disposable = events.addAbortListener(controller.signal,
+    () => console.log('aborted'));
+
+controller.abort(); // aborted
+disposable[Symbol.dispose](); // safe to call after the listener fired
+console.log(controller.signal.listenerCount('abort')); // 0
+```
 
 --------------------------
 ### once
-**创建一个 Promise，等待指定事件触发一次后解析**
+**Creates a Promise resolved by the next occurrence of an event**
 
 ```JavaScript
 static Object HttpServer.once(EventEmitter emitter,
@@ -120,22 +260,44 @@ static Object HttpServer.once(EventEmitter emitter,
     Object options = {});
 ```
 
-调用参数:
-* emitter: [EventEmitter](EventEmitter.md), 要监听的事件触发器对象
-* ev: Value, 指定事件的名称
-* options: Object, 可选参数对象
+Parameters:
+* emitter: [EventEmitter](EventEmitter.md), the event emitter [object](object.md) to listen to
+* ev: Value, the event name to listen for
+* options: Object, optional parameter [object](object.md)
 
-返回结果:
-* Object, 返回 Promise，以事件参数数组解析
+Returns:
+* Object, returns a Promise that resolves with the array of event parameters
 
-返回一个 Promise，当目标事件触发时以事件参数数组解析。如果在此期间触发 'error' 事件（且监听的不是 'error' 事件本身），Promise 将被拒绝。
+The Promise resolves with the array of the emit arguments when the event fires; it rejects
+when `error` is emitted while waiting, unless the waited event is `error` itself, or when
+the signal option aborts. The temporary listeners are removed when the Promise settles.
 
-options 参数可包含：
-- signal: [AbortSignal](AbortSignal.md)，用于取消等待
+options supports the following option:
+
+```JavaScript
+// fragment: options
+({
+    "signal": null // AbortSignal; aborting rejects the Promise with an AbortError
+});
+```
+
+Example — awaiting the next occurrence of an event:
+
+```JavaScript
+const EventEmitter = require('events');
+
+(async () => {
+    const emitter = new EventEmitter();
+    const waiting = EventEmitter.once(emitter, 'ready');
+
+    emitter.emit('ready', 200, 'ok');
+    console.log(JSON.stringify(await waiting)); // [200,"ok"]
+})();
+```
 
 --------------------------
 ### on
-**创建一个异步迭代器，持续监听指定事件**
+**Creates an async iterator that yields event occurrences**
 
 ```JavaScript
 static Object HttpServer.on(EventEmitter emitter,
@@ -143,117 +305,239 @@ static Object HttpServer.on(EventEmitter emitter,
     Object options = {});
 ```
 
-调用参数:
-* emitter: [EventEmitter](EventEmitter.md), 要监听的事件触发器对象
-* ev: Value, 指定事件的名称
-* options: Object, 可选参数对象
+Parameters:
+* emitter: [EventEmitter](EventEmitter.md), the event emitter [object](object.md) to listen to
+* ev: Value, the event name to listen for
+* options: Object, optional parameter [object](object.md)
 
-返回结果:
-* Object, 返回 AsyncIterator 对象
+Returns:
+* Object, returns an AsyncIterator [object](object.md)
 
-返回一个 AsyncIterator，每次事件触发时产出事件参数数组。如果触发 'error' 事件，迭代器将抛出错误。
+Each next() resolves with `{ value: [args...], done: false }` when the event fires and with
+`{ done: true }` after an event named in the `close` option fires or the signal aborts; an
+`error` event rejects the pending call. The listeners are registered when the iterator is
+created and removed when the iteration ends or the signal aborts.
 
-options 参数可包含：
-- signal: [AbortSignal](AbortSignal.md)，用于取消迭代
-- close: 字符串数组，指定结束迭代的事件名称
+options supports the following options:
 
-## 静态属性
+```JavaScript
+// fragment: options
+({
+    "signal": null, // AbortSignal; aborting rejects pending and future next() calls
+    "close": [] // event names; the first one to fire ends the iteration
+});
+```
+
+Example — iterating the occurrences of an event:
+
+```JavaScript
+const EventEmitter = require('events');
+
+(async () => {
+    const emitter = new EventEmitter();
+    const iterator = EventEmitter.on(emitter, 'data', {
+        close: ['end']
+    });
+
+    emitter.emit('data', 1);
+    emitter.emit('data', 2);
+    emitter.emit('end');
+
+    for await (const args of iterator)
+    console.log(JSON.stringify(args)); // [1] then [2]
+})();
+```
+
+## Static Properties
         
 ### defaultMaxListeners
-**Integer, 默认全局最大监听器数**
+**Integer, The [process](../../module/ifs/process.md)-wide default listener limit reported by getMaxListeners()**
 
 ```JavaScript
 static Integer HttpServer.defaultMaxListeners;
 ```
 
-## 成员属性
+Defaults to 10. Assigning a value changes getMaxListeners() for every emitter that never
+called setMaxListeners(); an emitter with an explicit limit keeps it. The limit is
+informational: fibjs never warns when the number of listeners exceeds it.
+
+## Properties
         
 ### maxHeadersCount
-**Integer, 查询和设置最大请求头个数，缺省为 128**
+**Integer, Queries and sets the maximum number of request headers, default 128**
 
 ```JavaScript
 Integer HttpServer.maxHeadersCount;
 ```
 
+Applied when each request is parsed; a request with more header lines is answered
+with 400 and the connection is closed. A negative value throws a RangeError (20006).
+Node.js has [http.Server](../../module/ifs/http.md#Server).maxHeadersCount for the same purpose.
+
 --------------------------
 ### maxHeaderSize
-**Integer, 查询和设置最大请求头长度，缺省为 8192**
+**Integer, Queries and sets the maximum length of one header line in bytes, default 8192**
 
 ```JavaScript
 Integer HttpServer.maxHeaderSize;
 ```
 
+A longer line makes the parser fail and the request is answered with 400; a negative
+value throws a RangeError (20006). Node.js uses the [process](../../module/ifs/process.md)-wide
+--max-[http](../../module/ifs/http.md)-header-size option instead.
+
 --------------------------
 ### maxBodySize
-**Integer, 查询和设置 body 最大尺寸，以 MB 为单位，缺省为 64**
+**Integer, Queries and sets the maximum request body size in MB, default 64**
 
 ```JavaScript
 Integer HttpServer.maxBodySize;
 ```
 
+A Content-Length or chunked body larger than this is rejected while parsing and the
+request is answered with 400; -1 disables the limit and 0 refuses every body. Node.js
+has no built-in body limit.
+
 --------------------------
 ### enableEncoding
-**Boolean, 自动解压缩功能开关，默认关闭**
+**Boolean, Enables automatic response compression, disabled by default**
 
 ```JavaScript
 Boolean HttpServer.enableEncoding;
 ```
 
+When on, a reply larger than 128 bytes and smaller than 64 MB is compressed with
+gzip or deflate when the client sent a matching Accept-Encoding and the
+Content-Type is text/* or a known compressible type; the handler adds
+Content-Encoding and replaces the body with the compressed one. An existing
+Content-Encoding disables it. Node.js has no automatic compression.
+
 --------------------------
 ### serverName
-**String, 查询和设置服务器名称，缺省为：fibjs/0.x.0**
+**String, Queries and sets the automatic Server header, default fibjs/<version>**
 
 ```JavaScript
 String HttpServer.serverName;
 ```
 
+Written when the handler did not set a Server header itself; an empty value writes
+an empty header. Node.js does not add a Server header.
+
+Example — replace the default server name:
+
+```JavaScript
+const http = require('http');
+
+const server = new http.Server(0, (req) => {
+    req.response.write('named');
+});
+server.serverName = 'my-app/1.0';
+server.start();
+const port = server.socket.localPort;
+
+const res = http.getSync('http://127.0.0.1:' + port + '/');
+console.log(res.firstHeader('Server')); // my-app/1.0
+
+server.stop();
+```
+
 --------------------------
 ### socket
-**[Socket](Socket.md), 服务器当前侦听的 [Socket](Socket.md) 对象**
+**[Socket](Socket.md), the [Socket](Socket.md) [object](object.md) the server is currently listening on**
 
 ```JavaScript
 readonly Socket HttpServer.socket;
 ```
 
+The underlying listening [Socket](Socket.md) exposes the bound family/localAddress/localPort; it is useful
+for diagnostics, but do not call accept on it because the server owns the accept loop. It
+throws when the server was created by the handler-only constructor and is not bound yet.
+Node.js hides the listening handle.
+
 --------------------------
 ### timeout
-**Integer, 查询和设置超时时间，单位毫秒，此超时时间用于设置接收到的新连接**
+**Integer, Queries and sets the timeout in milliseconds; this timeout is used for newly accepted connections**
 
 ```JavaScript
 Integer HttpServer.timeout;
 ```
 
+The default 0 means no timeout. The value is copied to each accepted [Socket](Socket.md) when the server
+accepts it, before the handler runs, so it bounds every recv/send of the handler unless the
+handler changes it. It does not apply to the listening socket itself.
+
 --------------------------
 ### handler
-**[Handler](Handler.md), 服务器当前事件处理接口对象**
+**[Handler](Handler.md), the current event handling interface [object](object.md) of the server**
 
 ```JavaScript
 Handler HttpServer.handler;
 ```
 
-## 成员函数
+The normalized [Handler](Handler.md) invoked for every connection. Assigning a value runs it through the
+[Handler](Handler.md) constructor: a function becomes a message handler wrapper, an array becomes a [Chain](Chain.md)
+and a [path](../../module/ifs/path.md)/address string or routing map is converted accordingly (see [net.createServer](../../module/ifs/net.md#createServer) for
+the accepted forms). The getter returns the last assigned [object](object.md).
+
+## Methods
         
 ### enableCrossOrigin
-**允许跨域请求**
+**Enables automatic CORS handling, including preflight requests**
 
 ```JavaScript
 HttpServer.enableCrossOrigin(String allowHeaders = "Content-Type");
 ```
 
-调用参数:
-* allowHeaders: String, 指定接受的 [http](../../module/ifs/http.md) 头字段
+Parameters:
+* allowHeaders: String, specifies the accepted [http](../../module/ifs/http.md) header fields
+
+Turns on the embedded handler's CORS mode: requests carrying an Origin header get
+Access-Control-Allow-Credentials: true and Access-Control-Allow-Origin echoing the
+origin, and an OPTIONS preflight is answered directly (200) with
+Access-Control-Allow-Methods: *, Access-Control-Allow-[Headers](Headers.md) set to allowHeaders
+and Access-Control-Max-Age: 1728000, without invoking the handler. Node.js has no
+built-in CORS support.
+
+Example — answer a preflight:
+
+```JavaScript
+const http = require('http');
+
+const server = new http.Server(0, (req) => {
+    req.response.write('cors');
+});
+server.enableCrossOrigin('X-Custom');
+server.start();
+const port = server.socket.localPort;
+
+const res = http.requestSync('OPTIONS', 'http://127.0.0.1:' + port + '/', {
+    headers: {
+        Origin: 'http://example.com'
+    }
+});
+console.log(res.statusCode); // 200
+console.log(res.firstHeader('Access-Control-Allow-Origin')); // http://example.com
+console.log(res.firstHeader('Access-Control-Allow-Headers')); // X-Custom
+
+server.stop();
+```
 
 --------------------------
 ### start
-**启动当前服务器**
+**Starts the current server**
 
 ```JavaScript
 HttpServer.start();
 ```
 
+Begins the accept loop and emits 'listening'. The server must already be bound: the
+constructors with a port/address bind in the constructor while the handler-only form needs
+listen(). Calling start on an unbound server or a second time fails with an invalid-call
+error. Each accepted client is passed to the 'connection' listeners and then to the handler.
+
 --------------------------
 ### listen
-**绑定地址和端口并开始侦听连接**
+**Binds the address and port and starts listening for connections**
 
 ```JavaScript
 HttpServer.listen(Integer port,
@@ -261,497 +545,778 @@ HttpServer.listen(Integer port,
     Integer backlog = -1) async;
 ```
 
-调用参数:
-* port: Integer, 指定 TCP 服务器侦听端口
-* addr: String, 指定 TCP 服务器侦听地址，"" 表示侦听本机所有地址
-* backlog: Integer, 指定连接队列的最大长度，-1 表示使用系统默认值
+Parameters:
+* port: Integer, specifies the TCP server listening port
+* addr: String, specifies the TCP server listening address; "" means listening on all local addresses
+* backlog: Integer, specifies the maximum length of the connection queue, -1 means using the system default
+
+ Binds and starts the accept loop in one call, emitting 'listening'. Port 0 asks the operating
+ system for an ephemeral port, read it from address(). backlog -1 passes the system default to
+ the operating system. A second listen on the same server throws ERR_SERVER_ALREADY_LISTEN,
+ and a failed bind (for example EADDRINUSE) carries syscall 'listen' like Node.js.
 
 --------------------------
 ### stop
-**关闭 socket中止正在运行的服务器**
+**Closes the socket and aborts the running server**
 
 ```JavaScript
 HttpServer.stop() async;
 ```
 
+Closes the listening socket and emits 'close' immediately; the accepted connections are not
+closed and keep running in their handler fibers (the handler owns them). Stopping a server
+that was never bound is a no-op. Node.js server.close() instead waits for the active
+connections to end before emitting 'close'.
+
 --------------------------
 ### close
-**关闭 socket中止正在运行的服务器，stop() 的别名**
+**Closes the socket and aborts the running server; an alias of stop()**
 
 ```JavaScript
 HttpServer.close() async;
 ```
 
+Identical to stop(), provided for the Node.js naming; both are awaitable.
+
 --------------------------
 ### address
-**返回一个包含服务器绑定地址、地址族和端口的对象。用于获取操作系统分配的地址时查找实际端口。**
+**Returns an [object](object.md) containing the server bound address, address family and port. Used to look up the actual port when the OS assigns the address.**
 
 ```JavaScript
 (String address, String family, Integer port) HttpServer.address();
 ```
 
-返回结果:
-* (String address, String family, Integer port), 返回服务器绑定的地址、地址族和端口
+Returns:
+* (String address, String family, Integer port), returns the address, address family and port bound by the server
+
+The result has the shape { address, family, port }, where family is 'IPv4' or 'IPv6' and port
+is the real port after listen(0). For a unix socket or Windows pipe the address is the bound
+[path](../../module/ifs/path.md) while family/port are placeholders ('IPv4'/0). The method throws before the server is
+bound (number 20009); Node.js returns null instead and returns the [path](../../module/ifs/path.md) string for pipe
+servers.
+
+Example — discovering the port assigned to listen(0):
+
+```JavaScript
+const net = require('net');
+
+const server = net.createServer((conn) => conn.close());
+server.listen(0, '127.0.0.1');
+
+const addr = server.address();
+console.log(addr.address, addr.family, addr.port > 0); // 127.0.0.1 IPv4 true
+
+server.stop();
+```
 
 --------------------------
 ### on
-**绑定一个事件处理函数到对象**
+**Appends an event handler to the emitter**
 
 ```JavaScript
 Object HttpServer.on(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to bind
+* func: Function(...args), the event handler function, called with the emit arguments
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+The listener is called with the arguments of emit() and `this` set to the emitter; the
+emitter itself is returned so registrations can be chained. The same function may be
+registered several times for one event and each copy is called. See the class documentation
+for the dispatch order.
 
 --------------------------
-**绑定一个事件处理函数到对象**
+**Appends several event handlers to the emitter**
 
 ```JavaScript
 Object HttpServer.on(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Every enumerable property of the map whose value is a function is registered under its
+property name. Properties are processed in order; a value that is not a function makes the
+call fail with an invalid-type error while entries processed before it stay registered.
+
+Example — registering several handlers at once:
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+emitter.on({
+    connect: () => console.log('connect'),
+    close: () => console.log('close')
+});
+
+emitter.emit('connect'); // connect
+emitter.emit('close'); // close
+```
 
 --------------------------
 ### addListener
-**绑定一个事件处理函数到对象**
+**Appends an event handler to the emitter**
 
 ```JavaScript
 Object HttpServer.addListener(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to bind
+* func: Function(...args), the event handler function
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Alias of on(ev, func), provided for Node.js compatibility.
 
 --------------------------
-**绑定一个事件处理函数到对象**
+**Appends several event handlers to the emitter**
 
 ```JavaScript
 Object HttpServer.addListener(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Alias of on(map), provided for Node.js compatibility.
 
 --------------------------
 ### addEventListener
-**绑定一个事件处理函数到对象**
+**Appends an event handler to the emitter with an options [object](object.md)**
 
 ```JavaScript
 Object HttpServer.addEventListener(Value ev,
-    Function func,
+    Function(...args) func,
     Object options = {});
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
-* options: Object, 指定事件处理函数的选项
+Parameters:
+* ev: Value, the event name to bind
+* func: Function(...args), the event handler function, called with the emit arguments
+* options: Object, the options of the event handler
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
 
-options 参数是一个对象，它可以包含以下属性：
-- once: 如果为 true，则事件处理函数只会触发一次，触发后会被移除
+Web-style alias of on(); the only supported option is `once`, which registers a one-shot
+handler exactly like once(). The listener receives the plain emit arguments and not an [Event](Event.md)
+[object](object.md); see the [DOMEvent](DOMEvent.md) class for the DOM-style event [object](object.md) used by [AbortSignal](AbortSignal.md) and
+fetch-style APIs.
+
+options supports the following option:
+
+```JavaScript
+// fragment: options
+({
+    "once": false // when true, the handler is removed before its single invocation
+});
+```
+
+Example — a one-shot DOM-style registration:
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+emitter.addEventListener('ping', () => console.log('ping'), {
+    once: true
+});
+
+emitter.emit('ping'); // ping
+console.log(emitter.emit('ping')); // false
+console.log(emitter.listenerCount('ping')); // 0
+```
 
 --------------------------
 ### prependListener
-**绑定一个事件处理函数到对象起始**
+**Inserts an event handler at the front of the queue**
 
 ```JavaScript
 Object HttpServer.prependListener(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to bind
+* func: Function(...args), the event handler function
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+The listener is called before the listeners registered with on()/addListener() the next time
+the event is emitted. When several prependListener() calls are made, the last one registered
+is called first, because every call inserts at the same position.
+
+Example — insertion at the front of the queue:
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+emitter.on('order', () => console.log('on'));
+emitter.prependListener('order', () => console.log('prepend'));
+
+emitter.emit('order'); // prepend, then on
+```
 
 --------------------------
-**绑定一个事件处理函数到对象起始**
+**Inserts several event handlers at the front of the queue**
 
 ```JavaScript
 Object HttpServer.prependListener(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Map form of prependListener(); every function property is inserted at the front, so the
+properties of the map are called in reverse order.
 
 --------------------------
 ### once
-**绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次**
+**Appends a one-shot event handler to the emitter**
 
 ```JavaScript
 Object HttpServer.once(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to bind
+* func: Function(...args), the event handler function
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+The handler is wrapped and removes itself from the queue before it is called, so it runs at
+most once. off() removes it when passed the original function, listeners() returns the
+original function, and rawListeners() returns the internal wrapper whose `_func` property
+holds the original. See Example 2 in the class documentation.
 
 --------------------------
-**绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次**
+**Appends several one-shot event handlers to the emitter**
 
 ```JavaScript
 Object HttpServer.once(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Map form of once(); every function property is registered as a one-shot listener under its
+property name.
 
 --------------------------
 ### prependOnceListener
-**绑定一个事件处理函数到对象起始**
+**Inserts a one-shot event handler at the front of the queue**
 
 ```JavaScript
 Object HttpServer.prependOnceListener(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to bind
+* func: Function(...args), the event handler function
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Combines prependListener() and once(): the handler is called first and only once, and it is
+removed before its invocation.
 
 --------------------------
-**绑定一个事件处理函数到对象起始**
+**Inserts several one-shot event handlers at the front of the queue**
 
 ```JavaScript
 Object HttpServer.prependOnceListener(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Map form of prependOnceListener(); every function property is inserted as a one-shot
+listener, and the properties of the map are called in reverse order.
 
 --------------------------
 ### off
-**从对象处理队列中取消指定函数**
+**Removes an event handler from the emitter**
 
 ```JavaScript
 Object HttpServer.off(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to unbind
+* func: Function(...args), the event handler function
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+The first matching listener is removed; when the same function was registered several times
+only one copy is removed per call, so repeat the call to remove the others. A once() wrapper
+is matched by its original function as well. Removing a listener emits the `removeListener`
+meta event after the removal.
 
 --------------------------
-**取消对象处理队列中的全部函数**
+**Removes all event handlers of one event**
 
 ```JavaScript
 Object HttpServer.off(Value ev);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
+Parameters:
+* ev: Value, the event name to unbind
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Every listener of the event is removed and `removeListener` is emitted once per removed
+listener. The call succeeds when the event has no listener.
+
+Example — removing every listener of one event:
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+emitter.on('data', () => console.log('first'));
+emitter.on('data', () => console.log('second'));
+
+emitter.off('data');
+console.log(emitter.emit('data')); // false
+```
 
 --------------------------
-**从对象处理队列中取消指定函数**
+**Removes several event handlers from the emitter**
 
 ```JavaScript
 Object HttpServer.off(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称作为事件名称，属性的值作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Every enumerable property of the map whose value is a function names an event from which
+that function is removed (one copy per event). A value that is not a function makes the call
+fail with an invalid-type error.
 
 --------------------------
 ### removeListener
-**从对象处理队列中取消指定函数**
+**Removes an event handler from the emitter**
 
 ```JavaScript
 Object HttpServer.removeListener(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to unbind
+* func: Function(...args), the event handler function
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Alias of off(ev, func), provided for Node.js compatibility.
 
 --------------------------
-**取消对象处理队列中的全部函数**
+**Removes all event handlers of one event**
 
 ```JavaScript
 Object HttpServer.removeListener(Value ev);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
+Parameters:
+* ev: Value, the event name to unbind
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Alias of off(ev), provided for Node.js compatibility.
 
 --------------------------
-**从对象处理队列中取消指定函数**
+**Removes several event handlers from the emitter**
 
 ```JavaScript
 Object HttpServer.removeListener(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称作为事件名称，属性的值作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Alias of off(map), provided for Node.js compatibility.
 
 --------------------------
 ### removeEventListener
-**从对象处理队列中取消指定函数**
+**Removes an event handler with an options [object](object.md)**
 
 ```JavaScript
 Object HttpServer.removeEventListener(Value ev,
-    Function func,
+    Function(...args) func,
     Object options = {});
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
-* options: Object, 指定事件处理函数的选项
+Parameters:
+* ev: Value, the event name to unbind
+* func: Function(...args), the event handler function
+* options: Object, the options of the event handler, ignored
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Web-style alias of off(ev, func); the options [object](object.md) is accepted and ignored, and a once()
+wrapper is matched by its original function like off().
 
 --------------------------
 ### removeAllListeners
-**从对象处理队列中取消所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。**
+**Removes all listeners of one event**
 
 ```JavaScript
 Object HttpServer.removeAllListeners(Value ev);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
+Parameters:
+* ev: Value, the event name to remove
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Equivalent to off(ev): every listener of the event is removed, including once() wrappers
+matched by their original function, and `removeListener` is emitted once per removal.
 
 --------------------------
-**从对象处理队列中取消所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。**
+**Removes all listeners of the given events, or of the whole emitter**
 
 ```JavaScript
 Object HttpServer.removeAllListeners(Array evs = []);
 ```
 
-调用参数:
-* evs: Array, 指定事件的名称
+Parameters:
+* evs: Array, the event names to remove
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+An empty array — including the no-argument call, because the parameter defaults to [] —
+clears every string-keyed event; symbol-keyed listeners are left in place, unlike Node.js
+which removes them too. A non-empty array clears each named event as
+removeAllListeners(ev) does.
+
+Example — clearing selected events and the whole emitter:
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+emitter.on('a', () => {});
+emitter.on('b', () => {});
+emitter.on('c', () => {});
+
+emitter.removeAllListeners(['a', 'b']);
+console.log(emitter.listenerCount('a'), emitter.listenerCount('c')); // 0 1
+
+emitter.removeAllListeners();
+console.log(emitter.eventNames().length); // 0
+```
 
 --------------------------
 ### setMaxListeners
-**监听器的默认限制的数量，仅用于兼容**
+**Stores a per-emitter listener limit**
 
 ```JavaScript
 HttpServer.setMaxListeners(Integer n);
 ```
 
-调用参数:
-* n: Integer, 指定事件的数量
+Parameters:
+* n: Integer, the number of events
+
+The value is reported by getMaxListeners() and is otherwise informational: fibjs never warns
+when the number of listeners exceeds it. This member exists for Node.js compatibility. A
+negative value throws; 0 is accepted and stored as-is, while Node.js treats 0 as unlimited.
 
 --------------------------
 ### getMaxListeners
-**获取监听器的默认限制的数量，仅用于兼容**
+**Returns the listener limit of the emitter**
 
 ```JavaScript
 Integer HttpServer.getMaxListeners();
 ```
 
-返回结果:
-* Integer, 返回默认限制数量
+Returns:
+* Integer, returns the default limit
+
+Returns the value set by setMaxListeners(), or the [process](../../module/ifs/process.md)-wide defaultMaxListeners (10)
+when no explicit value was set.
 
 --------------------------
 ### listeners
-**查询对象指定事件的监听器数组**
+**Returns a copy of the listener array of an event**
 
 ```JavaScript
 Array HttpServer.listeners(Value ev);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
+Parameters:
+* ev: Value, the event name to query
 
-返回结果:
-* Array, 返回指定事件的监听器数组
+Returns:
+* Array, returns the listener array of the specified event
+
+One-shot wrappers are unwrapped, so the result contains the functions passed to
+on()/once() and can be passed to off(); an unknown event produces an empty array.
+
+Example — once() listeners are returned unwrapped:
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+
+function onTick() {
+    console.log('tick');
+}
+
+emitter.once('tick', onTick);
+console.log(emitter.listeners('tick')[0] === onTick); // true
+console.log(emitter.rawListeners('tick')[0] === onTick); // false
+```
 
 --------------------------
 ### rawListeners
-**查询对象指定事件的监听器数组，包含 once 包装函数**
+**Returns the internal listener array of an event**
 
 ```JavaScript
 Array HttpServer.rawListeners(Value ev);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
+Parameters:
+* ev: Value, the event name to query
 
-返回结果:
-* Array, 返回指定事件的监听器数组
+Returns:
+* Array, returns the listener array of the specified event
+
+The array is not unwrapped: a listener registered with once() appears as the internal
+wrapper function whose `_func` property holds the original function. An unknown event
+produces an empty array.
 
 --------------------------
 ### listenerCount
-**查询对象指定事件的监听器数量**
+**Returns the number of listeners of an event**
 
 ```JavaScript
 Integer HttpServer.listenerCount(Value ev);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
+Parameters:
+* ev: Value, the event name to query
 
-返回结果:
-* Integer, 返回指定事件的监听器数量
+Returns:
+* Integer, returns the number of listeners of the specified event
+
+One-shot listeners count as one and an unknown event returns 0.
 
 --------------------------
-**查询对象指定事件的监听器数量**
+**Returns the number of listeners of an event on another [object](object.md)**
 
 ```JavaScript
 Integer HttpServer.listenerCount(Value o,
     Value ev);
 ```
 
-调用参数:
-* o: Value, 指定查询的对象
-* ev: Value, 指定事件的名称
+Parameters:
+* o: Value, the [object](object.md) to query
+* ev: Value, the event name to query
 
-返回结果:
-* Integer, 返回指定事件的监听器数量
+Returns:
+* Integer, returns the number of listeners of the specified event
+
+Counts without requiring the target to be an [EventEmitter](EventEmitter.md): any [object](object.md) with registered
+events can be queried. The call is normally written as
+`EventEmitter.listenerCount(target, 'data')`.
+
+Example — counting the listeners of another [object](object.md):
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+emitter.on('data', () => {});
+emitter.on('data', () => {});
+
+console.log(EventEmitter.listenerCount(emitter, 'data')); // 2
+```
 
 --------------------------
 ### eventNames
-**查询监听器事件名称**
+**Returns the names of the events with at least one listener**
 
 ```JavaScript
 Array HttpServer.eventNames();
 ```
 
-返回结果:
-* Array, 返回事件名称数组
+Returns:
+* Array, returns the array of event names
+
+Only string-keyed events are reported; symbol-keyed events are omitted and numeric event
+names are returned as numbers (Node.js also reports symbol events).
 
 --------------------------
 ### emit
-**主动触发一个事件**
+**Emits an event and returns whether a listener was called**
 
 ```JavaScript
 Boolean HttpServer.emit(Value ev,
     ...args);
 ```
 
-调用参数:
-* ev: Value, 事件名称
-* args: ..., 事件参数，将会传递给事件处理函数
+Parameters:
+* ev: Value, event name
+* args: ..., event parameters, which are passed to the event handler
 
-返回结果:
-* Boolean, 返回事件触发状态，有响应事件返回 true，否则返回 false
+Returns:
+* Boolean, returns whether the event had a listener to respond to it
+
+Listeners are called as described by the dispatch model in the class documentation: the
+first one runs synchronously on the current fiber, the remaining ones run in parallel
+fibers, and the call returns after all of them finish; an exception raised by a listener is
+thrown back to the caller. Emitting `error` with no listener throws instead of returning
+false: an Error argument is thrown as-is and any other value is wrapped in
+`Error("Unhandled error. (...)")`. [Event](Event.md) names are strings or symbols; `emit()` does not
+match a listener registered with a numeric name.
 
 --------------------------
 ### toString
-**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
+**Returns the string form of the [object](object.md)**
 
 ```JavaScript
 String HttpServer.toString();
 ```
 
-返回结果:
-* String, 返回对象的字符串表示
+Returns:
+* String, returns the string form of the [object](object.md)
+
+The base implementation reports an error: a native [object](object.md) has no implicit
+text form, and only the classes whose value can be written as a string
+override the member. [Buffer](Buffer.md) returns its content decoded with the given
+[encoding](../../module/ifs/encoding.md), [HttpCookie](HttpCookie.md) returns "name=value", and so on; an override commonly
+accepts optional arguments ([Buffer.toString](Buffer.md#toString) takes [encoding](../../module/ifs/encoding.md), start and
+end) that are not part of this declaration.
+
+Calling the member on a class that does not override it throws
+"<Class>: the [object](object.md) can not be converted to string.", which is the
+behavior to rely on when probing whether a value has a string form. See
+toJSON for the serialization hook.
 
 --------------------------
 ### toJSON
-**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
+**Returns the JSON representation of the [object](object.md)**
 
 ```JavaScript
 Value HttpServer.toJSON(String key = "");
 ```
 
-调用参数:
-* key: String, 未使用
+Parameters:
+* key: String, the property name of the value being serialized
 
-返回结果:
-* Value, 返回包含可 JSON 序列化的值
+Returns:
+* Value, returns the JSON-serializable value
 
-## 事件
+JSON.stringify(value) calls value.toJSON(key) when the member exists and
+serializes the returned value in its place; the key argument carries the
+property name of the value inside its parent [object](object.md) (an empty string at
+the top level) and may be used to build a keyed form. The base
+implementation returns a plain [object](object.md) holding the readable properties of
+the instance, so a native [object](object.md) serializes without per-class code; a
+class with a portable shape such as [Buffer](Buffer.md) overrides it, and a JavaScript
+class may override it in the same way.
+
+The member is normally reached through JSON.stringify rather than called
+directly; calling it returns the same value JSON.stringify would
+serialize.
+
+## Events
         
 ### listening
-**调用 start() 并完成绑定后触发**
+**Emitted after start() is called and binding completes**
 
 ```JavaScript
 event HttpServer.listening();
 ```
 
+Emitted synchronously by start()/listen(), after the socket is listening and before the first
+accept; observe it with on('listening') or the onlistening shorthand. Node.js emits
+'listening' asynchronously once the bind completes.
+
 --------------------------
 ### connection
-**建立新 TCP 连接时触发**
+**Emitted when a new TCP connection is established**
 
 ```JavaScript
 event HttpServer.connection(Socket socket);
 ```
 
-调用参数:
-* socket: [Socket](Socket.md), 新建立的 [Socket](Socket.md) 连接对象
+Parameters:
+* socket: [Socket](Socket.md), the newly established [Socket](Socket.md) connection [object](object.md)
+
+Emitted before the handler is invoked for the same [Socket](Socket.md), on the accepting fiber; a long
+listener delays further accepts, so offload work to the handler or to a new fiber. Node.js
+emits 'connection' with its socket in the same way.
 
 --------------------------
 ### error
-**发生错误时触发**
+**Emitted when an error occurs**
 
 ```JavaScript
-event HttpServer.error();
+event HttpServer.error(String msg);
 ```
+
+Parameters:
+* msg: String, the error message
+
+Emitted for accept-loop failures with a plain message string, not with an Error [object](object.md) as in
+Node.js. An exception thrown by the handler does not emit this event: it is logged and the
+connection is closed.
 
 --------------------------
 ### close
-**服务器关闭后触发**
+**Emitted after the server is closed**
 
 ```JavaScript
 event HttpServer.close();
 ```
+
+Emitted by stop()/close() immediately after the listening socket is closed, even when
+connections are still open. Node.js emits 'close' only after the server has stopped
+accepting and all connections have ended.
 

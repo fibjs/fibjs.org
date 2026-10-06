@@ -1,47 +1,158 @@
-# 对象 HttpClient
-HttpClient 是针对 HTTP 客户端功能设计的类库，提供了基本的 HTTP/HTTPS 请求、代理访问、cookie 管理等功能
+# Object HttpClient
+The HttpClient class provides an independent HTTP/HTTPS client: its own connection pool, cookie jar, defaults and optional TLS identity
 
-使用 HttpClient 可以轻松地访问和操作 web 页面，这里举一个简单的例子——在一个 web 页面上打印出其源代码：
+HttpClient is the [object](object.md) behind every client function of the [http](../../module/ifs/http.md) [module](../../module/ifs/module.md). It owns a pool of
+keep-alive connections, a cookie jar and the settings (`keepAlive`, `timeout`, `autoRedirect`,
+`enableEncoding`, `enableH2`, `userAgent`, the size limits and the proxy environment) used for
+its requests. The [module](../../module/ifs/module.md)-level functions (`http.getSync`, `http.request`, ...) share one hidden
+client configured by the [module](../../module/ifs/module.md) properties; create an HttpClient when you need different
+settings, an isolated cookie jar, a client certificate or simply a separate connection pool.
+
+Obtained from:
+- `new [http.Client](../../module/ifs/http.md#Client)(options)` — the class is exported as `[http.Client](../../module/ifs/http.md#Client)`; `http.Agent` is the
+  same [object](object.md), provided for Node.js compatibility;
+- `new [http.Client](../../module/ifs/http.md#Client)(secureContext)` — creates the client directly from a tls.SecureContext;
+- `new [http.Client](../../module/ifs/http.md#Client)({ ...[tls](../../module/ifs/tls.md) options, keepAlive, timeout, ... })` — the TLS options build the
+  secure context and the remaining properties set the client defaults.
+
+Concepts:
+
+- **Connection pool**: an HttpClient pools finished keep-alive connections in one idle list and
+  reuses them for later requests to the same host. `poolTimeout` (default 10000 ms) expires an
+  idle connection and `maxFreeSockets` (default 256) caps the number of idle connections kept
+  by the client as a whole, not per host as in Node.js. `maxSockets` and `maxTotalSockets` are
+  accepted for Node.js compatibility but are not enforced. `freeSockets`, `sockets` and
+  `totalSocketCount` are compatibility accessors: fibjs returns an empty [object](object.md) or 0 instead of
+  exposing the pool contents, and `destroy()` releases the pooled connections.
+- **Cookies**: the client keeps its own cookie jar (`cookies`). With `enableCookie` enabled
+  (the default) the Set-Cookie headers of every response are stored and matching cookies are
+  sent with later requests; two clients never share cookies.
+- **Redirects**: with `autoRedirect` enabled (the default) 301, 302, 303, 307 and 308 responses
+  are followed; 303 switches to GET and drops the body. There is no redirect count limit, but a
+  URL seen twice in one chain raises a cyclic redirect error; `redirect: 'manual'` on fetch
+  returns the redirect response instead.
+- **Timeouts and cancellation**: `timeout` (default 0, no timeout) is the maximum time of one
+  request in milliseconds and a per-request `timeout` option overrides it. An `AbortSignal`
+  passed with the request cancels it and fails it with an AbortError, or a TimeoutError when it
+  comes from [AbortSignal.timeout](AbortSignal.md#timeout).
+- **TLS and proxy**: the constructor options are passed to [tls.createSecureContext](../../module/ifs/tls.md#createSecureContext) (for example
+  `ca`, `cert`, `key`, `passphrase`, `ciphers`, `secureProtocol` and `rejectUnauthorized`), so
+  an HTTPS client can trust a private CA or present a client certificate. `proxyEnv` routes
+  HTTP/HTTPS requests through a proxy; connections to localhost, 127.0.0.1 and ::1 always
+  bypass it.
+- **HTTP/2**: with `enableH2` enabled (the default) HTTPS connections negotiate HTTP/2 through
+  ALPN. HTTP/2 sessions are cached [process](../../module/ifs/process.md)-wide by origin, proxy, SNI and TLS identity, so
+  clients with the same identity share them; `destroy()` clears that cache for every client.
+- **Node.js differences**: Node.js splits this role between `Agent` and `globalAgent` and has no
+  cookie jar, no automatic decompression and no automatic redirects; fibjs has `getName`
+  returning `protocol//host:port[:localAddress]` (Node returns `host:port:localAddress`), and
+  `defaultPort`/`protocol` only affect `getName()`.
+
+Example 1 — a client with its own defaults:
 
 ```JavaScript
 const http = require('http');
 
-const res = http.get('http://www.example.com/');
+const client = new http.Client({
+    timeout: 2000,
+    userAgent: 'my-app/1.0'
+});
 
-console.log(res.body.readAll().toString());
+const server = new http.Server(0, (req) => {
+    req.response.write(req.firstHeader('user-agent'));
+});
+server.start();
+const port = server.socket.localPort;
+
+const resp = client.getSync('http://127.0.0.1:' + port + '/');
+console.log(resp.text()); // my-app/1.0
+
+client.destroy();
+server.stop();
 ```
 
-在该例子中，通过 require 引入 [http](../../module/ifs/http.md) 模块，然后使用 [http.get](../../module/ifs/http.md#get) 发起一个 get 请求，其中 [url](../../module/ifs/url.md) 参数指定了请求的网址。因为 [http.get](../../module/ifs/http.md#get) 方法返回的是一个 [HttpResponse](HttpResponse.md) 对象，所以可以通过其 body 属性来访问请求返回的主体内容并通过 toString 方法将其转化为字符串。
-
-当请求的 [url](../../module/ifs/url.md) 是 https 类型而不是 [http](../../module/ifs/http.md) 类型时，代码只需要将 [http](../../module/ifs/http.md) 改为 https 即可：
+Example 2 — cookie jar and connection reuse in one client:
 
 ```JavaScript
 const http = require('http');
 
-const res = http.get('https://www.example.com/');
+const server = new http.Server(0, (req) => {
+    req.response.appendHeader('Set-Cookie', 'sid=42; path=/');
+    req.response.write(req.firstHeader('cookie') || 'no cookie');
+});
+server.start();
+const port = server.socket.localPort;
+const url = 'http://127.0.0.1:' + port + '/';
 
-console.log(res.body.readAll().toString());
+const client = new http.Client();
+console.log(client.getSync(url).text()); // no cookie
+console.log(client.getSync(url).text()); // sid=42
+
+client.destroy();
+server.stop();
 ```
 
-除此之外，还有通过 HttpClient 直接发起 POST 请求、设置 User-Agent 的例子：
+Example 3 — disable redirects and inspect the response:
 
 ```JavaScript
 const http = require('http');
 
-const httpClient = new http.Client();
-httpClient.userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36';
-const res = httpClient.post('http://www.example.com/post', {
-    json: {
-        name: 'fibjs',
-        version: '0.31.0'
+const server = new http.Server(0, (req) => {
+    if (req.address === '/old') {
+        req.response.redirect('/new');
+    } else {
+        req.response.write('target');
     }
 });
-console.log(res.body.readAll().toString());
+server.start();
+const port = server.socket.localPort;
+const url = 'http://127.0.0.1:' + port;
+
+const client = new http.Client({
+    autoRedirect: false
+});
+const resp = client.getSync(url + '/old');
+console.log(resp.statusCode, resp.firstHeader('location')); // 302 /new
+console.log(client.getSync(url + '/new').text()); // target
+
+client.destroy();
+server.stop();
 ```
 
-在该例子中，首先创建了一个 HttpClient 对象 httpClient，并设置其 userAgent 为浏览器的 User-Agent。然后通过它的 post 方法来发起一个 post 请求，其中参数 name 和 version 来指定请求的主体内容。最后将返回值的主体内容输出。
+Example 4 — timeout and per-request override:
 
-## 继承关系
+```JavaScript
+const http = require('http');
+const coroutine = require('coroutine');
+
+const server = new http.Server(0, (req) => {
+    if (req.address === '/slow') {
+        coroutine.sleep(500);
+    }
+    req.response.write('done');
+});
+server.start();
+const port = server.socket.localPort;
+const url = 'http://127.0.0.1:' + port;
+
+const client = new http.Client({
+    timeout: 100
+});
+try {
+    client.getSync(url + '/slow');
+} catch (e) {
+    console.log('timed out', e.number); // timed out 20021
+}
+// the per-request option overrides the client timeout
+console.log(client.getSync(url + '/slow', {
+    timeout: 1000
+}).text()); // done
+
+client.destroy();
+server.stop();
+```
+
+## Inheritance
 ```dot
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
@@ -55,71 +166,104 @@ digraph {
 }
 ```
 
-## 构造函数
+## Constructors
         
 ### HttpClient
-**HttpClient 构造函数，创建一个新的HttpClient对象**
+**HttpClient constructor, creates a new HttpClient [object](object.md)**
 
 ```JavaScript
 new HttpClient();
 ```
 
---------------------------
-**HttpClient 构造函数，创建一个新的HttpClient对象**
-
-```JavaScript
-new HttpClient(SecureContext context);
-```
-
-调用参数:
-* context: [SecureContext](SecureContext.md), 指定创建 HttpClient 使用的安全上下文
+The default options are keepAlive true, timeout 0, enableCookie/autoRedirect/enableEncoding/
+enableH2 true, maxHeadersCount 128, maxHeaderSize 8192, maxChunkSize 2, maxBodySize -1,
+poolTimeout 10000, maxFreeSockets 256, userAgent 'curl/8.14.1' and an empty proxyEnv.
 
 --------------------------
-**HttpClient 构造函数，创建一个新的HttpClient对象**
+**HttpClient constructor, creates a new HttpClient [object](object.md)**
 
 ```JavaScript
-new HttpClient(Object options);
+new HttpClient(SecureContext | Object options);
 ```
 
-调用参数:
-* options: Object, 使用 [tls.createSecureContext](../../module/ifs/tls.md#createSecureContext) 创建安全上下文需要的选项
+Parameters:
+* options: [SecureContext](SecureContext.md) | Object, the secure context or the options used to create one
 
-options 除用于创建 [SecureContext](SecureContext.md) 的属性之外，还需提供以下属性：
-- keepAlive: 指定是否保持连接
-- timeout: 指定超时时间
-- enableCookie: 指定是否启用 cookie 功能
-- autoRedirect: 指定是否启用自动重定向功能
-- enableEncoding: 指定是否启用自动解压缩功能
-- enableH2: 指定是否启用 HTTP/2 自动升级
-- maxHeadersCount: 指定最大请求头个数
-- maxHeaderSize: 指定最大请求头长度
-- maxBodySize: 指定 body 最大尺寸
-- userAgent: 指定浏览器标识
-- poolTimeout: 指定 keep-alive 缓存连接超时时间
-- proxyEnv: 指定代理配置环境变量，包含 HTTP_PROXY、HTTPS_PROXY、NO_PROXY 及其小写形式
+options may be the options [object](object.md) used to create the secure context (the same [object](object.md)
+[tls.createSecureContext](../../module/ifs/tls.md#createSecureContext) accepts: `ca`, `cert`, `key`, `passphrase`, `ciphers`,
+`secureProtocol`, `rejectUnauthorized`, ...), or the [SecureContext](SecureContext.md) [object](object.md) itself.
 
-## 静态函数
+In addition to the properties used to create a [SecureContext](SecureContext.md), options also accepts the
+client properties listed below; each one has the same meaning and default as the instance
+property of the same name:
+- keepAlive: specifies whether to keep the connection alive (default true)
+- timeout: specifies the request timeout in milliseconds (default 0, no timeout)
+- enableCookie: specifies whether to enable the cookie feature (default true)
+- autoRedirect: specifies whether to enable the automatic redirect feature (default true)
+- enableEncoding: specifies whether to enable the automatic decompression feature (default true)
+- enableH2: specifies whether to enable HTTP/2 automatic upgrade (default true)
+- maxHeadersCount: specifies the maximum number of request headers (default 128)
+- maxHeaderSize: specifies the maximum request header size in bytes (default 8192)
+- maxChunkSize: specifies the maximum chunk size in MB (default 2)
+- maxBodySize: specifies the maximum body size in MB (default -1, no limit)
+- userAgent: specifies the browser identifier (default 'curl/8.14.1')
+- poolTimeout: specifies the keep-alive cached connection timeout in ms (default 10000)
+- maxFreeSockets: specifies the maximum number of idle connections (default 256)
+- proxyEnv: specifies the proxy configuration environment variables, including HTTP_PROXY, HTTPS_PROXY, NO_PROXY and their lowercase forms
+
+Example — a client that trusts a private CA and identifies itself:
+
+```JavaScript
+// fragment: options
+new http.Client({
+    ca: fs.readFileSync('ca.pem'),
+    cert: fs.readFileSync('client.pem'),
+    key: fs.readFileSync('client-key.pem'),
+    rejectUnauthorized: true,
+    timeout: 5000,
+    userAgent: 'my-service/1.0'
+})
+```
+
+## Static Methods
         
 ### addAbortListener
-**监听一个 [AbortSignal](AbortSignal.md) 的 abort 事件，返回一个可释放的对象**
+**Registers a one-shot abort handler on an [AbortSignal](AbortSignal.md)**
 
 ```JavaScript
 static Object HttpClient.addAbortListener(EventEmitter signal,
-    Function func);
+    Function(Object ev) func);
 ```
 
-调用参数:
-* signal: [EventEmitter](EventEmitter.md), 要监听的 [AbortSignal](AbortSignal.md) 对象
-* func: Function, abort 事件的处理函数
+Parameters:
+* signal: [EventEmitter](EventEmitter.md), the [AbortSignal](AbortSignal.md) [object](object.md) to listen to
+* func: Function(Object ev), the handler for the abort event
 
-返回结果:
-* Object, 返回一个包含 `[Symbol.dispose]` 方法的 Disposable 对象
+Returns:
+* Object, returns a Disposable [object](object.md) containing a `[Symbol.dispose]` method
 
-返回的对象包含 `[Symbol.dispose]()` 方法，调用后将移除监听器。如果信号已中止，则监听器会被立即调用。
+The handler is called at most once when the signal is aborted, and it is removed from the
+signal afterwards. If the signal is already aborted the handler is invoked synchronously.
+The returned [object](object.md) has a `[Symbol.dispose]()` method that removes the handler, so it can be
+released before the abort happens.
+
+Example — abort handling with automatic cleanup:
+
+```JavaScript
+const events = require('events');
+
+const controller = new AbortController();
+const disposable = events.addAbortListener(controller.signal,
+    () => console.log('aborted'));
+
+controller.abort(); // aborted
+disposable[Symbol.dispose](); // safe to call after the listener fired
+console.log(controller.signal.listenerCount('abort')); // 0
+```
 
 --------------------------
 ### once
-**创建一个 Promise，等待指定事件触发一次后解析**
+**Creates a Promise resolved by the next occurrence of an event**
 
 ```JavaScript
 static Object HttpClient.once(EventEmitter emitter,
@@ -127,22 +271,44 @@ static Object HttpClient.once(EventEmitter emitter,
     Object options = {});
 ```
 
-调用参数:
-* emitter: [EventEmitter](EventEmitter.md), 要监听的事件触发器对象
-* ev: Value, 指定事件的名称
-* options: Object, 可选参数对象
+Parameters:
+* emitter: [EventEmitter](EventEmitter.md), the event emitter [object](object.md) to listen to
+* ev: Value, the event name to listen for
+* options: Object, optional parameter [object](object.md)
 
-返回结果:
-* Object, 返回 Promise，以事件参数数组解析
+Returns:
+* Object, returns a Promise that resolves with the array of event parameters
 
-返回一个 Promise，当目标事件触发时以事件参数数组解析。如果在此期间触发 'error' 事件（且监听的不是 'error' 事件本身），Promise 将被拒绝。
+The Promise resolves with the array of the emit arguments when the event fires; it rejects
+when `error` is emitted while waiting, unless the waited event is `error` itself, or when
+the signal option aborts. The temporary listeners are removed when the Promise settles.
 
-options 参数可包含：
-- signal: [AbortSignal](AbortSignal.md)，用于取消等待
+options supports the following option:
+
+```JavaScript
+// fragment: options
+({
+    "signal": null // AbortSignal; aborting rejects the Promise with an AbortError
+});
+```
+
+Example — awaiting the next occurrence of an event:
+
+```JavaScript
+const EventEmitter = require('events');
+
+(async () => {
+    const emitter = new EventEmitter();
+    const waiting = EventEmitter.once(emitter, 'ready');
+
+    emitter.emit('ready', 200, 'ok');
+    console.log(JSON.stringify(await waiting)); // [200,"ok"]
+})();
+```
 
 --------------------------
 ### on
-**创建一个异步迭代器，持续监听指定事件**
+**Creates an async iterator that yields event occurrences**
 
 ```JavaScript
 static Object HttpClient.on(EventEmitter emitter,
@@ -150,452 +316,683 @@ static Object HttpClient.on(EventEmitter emitter,
     Object options = {});
 ```
 
-调用参数:
-* emitter: [EventEmitter](EventEmitter.md), 要监听的事件触发器对象
-* ev: Value, 指定事件的名称
-* options: Object, 可选参数对象
+Parameters:
+* emitter: [EventEmitter](EventEmitter.md), the event emitter [object](object.md) to listen to
+* ev: Value, the event name to listen for
+* options: Object, optional parameter [object](object.md)
 
-返回结果:
-* Object, 返回 AsyncIterator 对象
+Returns:
+* Object, returns an AsyncIterator [object](object.md)
 
-返回一个 AsyncIterator，每次事件触发时产出事件参数数组。如果触发 'error' 事件，迭代器将抛出错误。
+Each next() resolves with `{ value: [args...], done: false }` when the event fires and with
+`{ done: true }` after an event named in the `close` option fires or the signal aborts; an
+`error` event rejects the pending call. The listeners are registered when the iterator is
+created and removed when the iteration ends or the signal aborts.
 
-options 参数可包含：
-- signal: [AbortSignal](AbortSignal.md)，用于取消迭代
-- close: 字符串数组，指定结束迭代的事件名称
+options supports the following options:
 
-## 静态属性
+```JavaScript
+// fragment: options
+({
+    "signal": null, // AbortSignal; aborting rejects pending and future next() calls
+    "close": [] // event names; the first one to fire ends the iteration
+});
+```
+
+Example — iterating the occurrences of an event:
+
+```JavaScript
+const EventEmitter = require('events');
+
+(async () => {
+    const emitter = new EventEmitter();
+    const iterator = EventEmitter.on(emitter, 'data', {
+        close: ['end']
+    });
+
+    emitter.emit('data', 1);
+    emitter.emit('data', 2);
+    emitter.emit('end');
+
+    for await (const args of iterator)
+    console.log(JSON.stringify(args)); // [1] then [2]
+})();
+```
+
+## Static Properties
         
 ### defaultMaxListeners
-**Integer, 默认全局最大监听器数**
+**Integer, The [process](../../module/ifs/process.md)-wide default listener limit reported by getMaxListeners()**
 
 ```JavaScript
 static Integer HttpClient.defaultMaxListeners;
 ```
 
-## 成员属性
+Defaults to 10. Assigning a value changes getMaxListeners() for every emitter that never
+called setMaxListeners(); an emitter with an explicit limit keeps it. The limit is
+informational: fibjs never warns when the number of listeners exceeds it.
+
+## Properties
         
 ### cookies
-**NArray, 返回[http](../../module/ifs/http.md)客户端的 [HttpCookie](HttpCookie.md) 对象列表**
+**[HttpCookie](HttpCookie.md), Returns the [HttpCookie](HttpCookie.md) [object](object.md) list of the [http](../../module/ifs/http.md) client**
 
 ```JavaScript
-readonly NArray HttpClient.cookies;
+readonly HttpCookie HttpClient.cookies;
 ```
+
+The jar of this client only: cookies collected from its responses are sent back on later
+requests to matching domains and paths. Two clients never share cookies; entries are updated
+in place when the same cookie is set again.
 
 --------------------------
 ### keepAlive
-**Boolean, 查询和设定是否保持连接**
+**Boolean, Queries and sets whether this client keeps connections alive**
 
 ```JavaScript
 Boolean HttpClient.keepAlive;
 ```
 
+Default true: a finished connection is kept in the client pool and reused for later requests
+to the same host until `poolTimeout` expires. Set to false to open one connection per
+request. A per-request `keepAlive` option overrides this setting.
+
 --------------------------
 ### timeout
-**Integer, 查询和设置超时时间 单位毫秒**
+**Integer, Queries and sets the timeout in milliseconds**
 
 ```JavaScript
 Integer HttpClient.timeout;
 ```
 
+Default 0, which means no timeout. The timeout covers a whole request; when it expires the
+request fails with error number 20021. A per-request `timeout` option overrides it, and
+`poolTimeout` separately controls idle pooled connections.
+
 --------------------------
 ### enableCookie
-**Boolean, cookie 功能开关，默认开启**
+**Boolean, Cookie feature switch, enabled by default**
 
 ```JavaScript
 Boolean HttpClient.enableCookie;
 ```
 
+When enabled, the Set-Cookie headers of responses are stored in `cookies` and matching
+cookies are sent with later requests. Set to false to ignore cookies completely.
+
 --------------------------
 ### autoRedirect
-**Boolean, 自动 redirect 功能开关，默认开启**
+**Boolean, Automatic redirect feature switch, enabled by default**
 
 ```JavaScript
 Boolean HttpClient.autoRedirect;
 ```
 
+When enabled, 301, 302, 303, 307 and 308 responses are followed automatically; 303 switches
+the request to GET and drops the body. There is no redirect count limit, but a URL visited
+twice raises a cyclic redirect error. When disabled, the redirect response itself is
+returned. Node.js never follows redirects automatically.
+
 --------------------------
 ### enableEncoding
-**Boolean, 自动解压缩功能开关，默认开启**
+**Boolean, Automatic decompression feature switch, enabled by default**
 
 ```JavaScript
 Boolean HttpClient.enableEncoding;
 ```
 
+When enabled, requests send `Accept-Encoding: gzip, deflate` and responses compressed with
+gzip or deflate are decompressed transparently, removing the Content-Encoding and
+Content-Length headers. When disabled, the raw compressed bytes are returned.
+
 --------------------------
 ### enableH2
-**Boolean, HTTP/2 自动升级开关，默认关闭**
+**Boolean, HTTP/2 automatic upgrade switch, enabled by default**
 
 ```JavaScript
 Boolean HttpClient.enableH2;
 ```
 
+When enabled, an HTTPS request negotiates the protocol through ALPN and uses HTTP/2 when
+the server supports it; the switch has no effect on plain HTTP requests. HTTP/2 sessions
+are cached [process](../../module/ifs/process.md)-wide and shared by origin, proxy, SNI and TLS identity; `destroy()`
+clears the cache. Set to false to use HTTP/1.1 only.
+
 --------------------------
 ### maxHeadersCount
-**Integer, 查询和设置最大请求头个数，缺省为 128**
+**Integer, Queries and sets the maximum number of request headers, default 128**
 
 ```JavaScript
 Integer HttpClient.maxHeadersCount;
 ```
 
+Applies to the messages parsed and generated by this client; a message can override it
+through its own `maxHeadersCount` property. Node.js defaults to 1000.
+
 --------------------------
 ### maxHeaderSize
-**Integer, 查询和设置最大请求头长度，缺省为 8192**
+**Integer, Queries and sets the maximum request header size in bytes, default 8192**
 
 ```JavaScript
 Integer HttpClient.maxHeaderSize;
 ```
 
+A response whose headers exceed the limit is rejected. Node.js defaults to 16384 bytes.
+
 --------------------------
 ### maxChunkSize
-**Integer, 查询和设置 chunk 最大尺寸，以 MB 为单位，缺省为 2**
+**Integer, Queries and sets the maximum chunk size in MB, default 2**
 
 ```JavaScript
 Integer HttpClient.maxChunkSize;
 ```
 
+Limits one chunk of a chunked request or response body; a chunk larger than the limit is
+rejected. Not a Node.js option.
+
 --------------------------
 ### maxBodySize
-**Integer, 查询和设置 body 最大尺寸，以 MB 为单位，缺省为 -1，不限制尺寸**
+**Integer, Queries and sets the maximum body size in MB, default -1, no size limit**
 
 ```JavaScript
 Integer HttpClient.maxBodySize;
 ```
 
+A response whose body exceeds the limit fails with error number 20024; 0 rejects every
+body. A HEAD response is exempt because it has no body. Not a Node.js option.
+
 --------------------------
 ### userAgent
-**String, 查询和设置 [http](../../module/ifs/http.md) 请求中的浏览器标识**
+**String, Queries and sets the browser identifier in [http](../../module/ifs/http.md) requests**
 
 ```JavaScript
 String HttpClient.userAgent;
 ```
 
+Default 'curl/8.14.1'. Sent as the User-Agent header when the request does not set one;
+assign an empty string to omit the header. Node.js sends no User-Agent by default.
+
 --------------------------
 ### poolTimeout
-**Integer, 查询和设置 keep-alive 缓存连接超时时间，缺省 10000 ms**
+**Integer, Queries and sets the keep-alive cached connection timeout, default 10000 ms**
 
 ```JavaScript
 Integer HttpClient.poolTimeout;
 ```
 
+An idle pooled connection older than this is closed when the client looks for a free
+connection or stores one. Setting it to 0 disables connection reuse.
+
 --------------------------
 ### proxyEnv
-**Object, 查询和设置代理配置环境变量，支持 HTTP_PROXY、HTTPS_PROXY、NO_PROXY 及其小写形式**
+**Object, Queries and sets the proxy configuration environment variables, supports HTTP_PROXY, HTTPS_PROXY, NO_PROXY and their lowercase forms**
 
 ```JavaScript
 Object HttpClient.proxyEnv;
 ```
 
+Default is an empty [object](object.md), which means no proxy. Assigning an [object](object.md) routes HTTP/HTTPS
+requests through the given proxy (`http_proxy`/`HTTP_PROXY` and `https_proxy`/`HTTPS_PROXY`),
+with `no_proxy`/`NO_PROXY` listing hosts that must connect directly. Connections to
+localhost, 127.0.0.1 and ::1 always bypass the proxy. Equivalent to the proxyEnv constructor
+option; see the [module](../../module/ifs/module.md) `setGlobalProxyFromEnv` for the matching env parser.
+
 --------------------------
 ### maxSockets
-**Integer, 查询和设置每个主机的最大连接数，缺省为无限制**
+**Integer, Queries and sets the maximum number of connections per host, default unlimited**
 
 ```JavaScript
 Integer HttpClient.maxSockets;
 ```
 
+Accepted and stored for Node.js compatibility, but fibjs does not enforce it: concurrent
+requests are not queued when the limit is reached. Node.js queues the excess requests.
+
 --------------------------
 ### maxTotalSockets
-**Integer, 查询和设置所有主机的最大连接总数，缺省为无限制**
+**Integer, Queries and sets the maximum total number of connections, default unlimited**
 
 ```JavaScript
 Integer HttpClient.maxTotalSockets;
 ```
 
+Accepted and stored for Node.js compatibility, but fibjs does not enforce it; only the
+number of idle pooled connections (`maxFreeSockets`) is limited.
+
 --------------------------
 ### maxFreeSockets
-**Integer, 查询和设置每个主机的最大空闲连接数，缺省为 256**
+**Integer, Queries and sets the maximum number of idle connections, default 256**
 
 ```JavaScript
 Integer HttpClient.maxFreeSockets;
 ```
 
+This client keeps one idle list for all hosts and drops the oldest entries beyond this
+number; Node.js applies maxFreeSockets per host instead. Ignored when `keepAlive` is false.
+
 --------------------------
 ### defaultPort
-**Integer, 查询和设置 getName() 中使用的默认端口，缺省为 80**
+**Integer, Queries and sets the default port used by getName(), default 80**
 
 ```JavaScript
 Integer HttpClient.defaultPort;
 ```
 
+Only used when building the connection pool key in getName(); it does not change the port
+of requests, which always comes from their URL.
+
 --------------------------
 ### protocol
-**String, 查询和设置 getName() 中使用的默认协议，缺省为 "[http](../../module/ifs/http.md):"**
+**String, Queries and sets the default protocol used by getName(), default "[http](../../module/ifs/http.md):"**
 
 ```JavaScript
 String HttpClient.protocol;
 ```
 
+Only used when building the connection pool key in getName(); it does not change the
+protocol of requests, which always comes from their URL.
+
 --------------------------
 ### freeSockets
-**Object, 返回以 host:port 为键的空闲连接映射**
+**Object, Returns the map of idle connections keyed by host:port**
 
 ```JavaScript
 readonly Object HttpClient.freeSockets;
 ```
 
+Node.js compatibility accessor: fibjs always returns an empty [object](object.md) because the internal
+pool is not exposed. Use `destroy()` to release the real pooled connections.
+
 --------------------------
 ### sockets
-**Object, 返回以 host:port 为键的使用中的连接映射**
+**Object, Returns the map of connections in use keyed by host:port**
 
 ```JavaScript
 readonly Object HttpClient.sockets;
 ```
 
+Node.js compatibility accessor: fibjs always returns an empty [object](object.md) because the internal
+pool is not exposed.
+
 --------------------------
 ### totalSocketCount
-**Integer, 返回所有主机的使用中连接总数**
+**Integer, Returns the total number of connections in use across all hosts**
 
 ```JavaScript
 readonly Integer HttpClient.totalSocketCount;
 ```
 
-## 成员函数
+Node.js compatibility accessor: fibjs always returns 0 because the internal pool is not
+exposed.
+
+## Methods
         
 ### getName
-**返回给定请求选项的唯一键，用于连接池**
+**Returns a unique key for the given request options, used for the connection pool**
 
 ```JavaScript
 String HttpClient.getName(Object options = {});
 ```
 
-调用参数:
-* options: Object, 请求选项
+Parameters:
+* options: Object, request options
 
-返回结果:
-* String, 返回连接池键字符串
+Returns:
+* String, returns the connection pool key string
+
+Reads `host` (default empty), `port` (default `defaultPort`) and `localAddress` from options
+and returns `protocol//host:port`, with `:localAddress` appended when one is given; the
+default result is therefore `http://:80`. This differs from Node.js, which returns
+`host:port:localAddress` without the protocol.
+
+Example — the pool key of a host:
+
+```JavaScript
+const http = require('http');
+const client = new http.Client({
+    protocol: 'https:',
+    defaultPort: 443
+});
+console.log(client.getName({
+    host: 'example.com',
+    port: 8443
+})); // https://example.com:8443
+```
 
 --------------------------
 ### destroy
-**销毁当前正在使用的所有连接**
+**Destroys all connections currently in use**
 
 ```JavaScript
 HttpClient.destroy();
 ```
 
+Clears the idle connection pool of this client and destroys every cached HTTP/2 session;
+the HTTP/2 cache is [process](../../module/ifs/process.md)-wide, so this also ends sessions being used by other clients.
+Call it when the client is no longer needed to release the sockets immediately.
+
 --------------------------
 ### request
-**发送 [http](../../module/ifs/http.md) 请求到指定的流对象，并返回结果**
+**Sends an [HttpRequest](HttpRequest.md) over an existing stream and returns it with the response**
 
 ```JavaScript
 HttpRequest HttpClient.request(Stream conn,
     HttpRequest req);
 ```
 
-调用参数:
-* conn: [Stream](Stream.md), 指定处理请求的流对象
-* req: [HttpRequest](HttpRequest.md), 要发送的 [HttpRequest](HttpRequest.md) 对象
+Parameters:
+* conn: [Stream](Stream.md), the stream [object](object.md) to [process](../../module/ifs/process.md) the request
+* req: [HttpRequest](HttpRequest.md), the [HttpRequest](HttpRequest.md) [object](object.md) to send
 
-返回结果:
-* [HttpRequest](HttpRequest.md), 返回服务器响应
+Returns:
+* [HttpRequest](HttpRequest.md), returns req, whose response property receives the server response
 
---------------------------
-**请求指定的 [url](../../module/ifs/url.md)，注册回调接收响应，返回 [HttpRequest](HttpRequest.md) 对象**
+This low-level form writes `req` to `conn` — any connected [Stream](Stream.md) such as a [net.Socket](../../module/ifs/net.md#Socket) or a
+[TLSSocket](TLSSocket.md) — instead of creating a connection from a URL; it blocks until the response is
+received and returns the same [HttpRequest](HttpRequest.md) [object](object.md) whose `response` property holds the reply.
+The request is sent with this client's settings, cookie jar and proxy configuration.
 
-```JavaScript
-HttpRequest HttpClient.request(String method,
-    String url,
-    Object opts = {});
-```
+The option-based overloads below are the usual entry points:
+- `request(opts)`, `request([url](../../module/ifs/url.md), opts)` and `request(method, [url](../../module/ifs/url.md), opts)` return an [HttpRequest](HttpRequest.md)
+  without sending it; `end()` sends it and the response arrives through the callback or the
+  `'response'` event;
+- the forms taking a callback register it before returning the request.
 
-调用参数:
-* method: String, 指定 [http](../../module/ifs/http.md) 请求方法：GET, POST 等
-* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
-* opts: Object, 指定附加信息
-
-返回结果:
-* [HttpRequest](HttpRequest.md), 返回 [HttpRequest](HttpRequest.md) 对象（可监听 'response' 事件接收响应）
-
-opts 包含请求的附加选项，支持的内容如下：
+opts supports the following fields:
 
 ```JavaScript
-{
-    "method": "GET", // specify the http request method: GET, POST, etc, default: GET.
-    "protocol": "http",
-    "slashes": true,
-    "username": "",
-    "password": "",
-    "hostname": "",
-    "port": "",
-    "pathname": "",
-    "path": "", // pathname 的别名，用于 request 选项。
-    "keepAlive": unknown, // If not specified, the default settings of the client will be used.
-    "timeout": 0, // 请求超时时间（毫秒），缺省使用客户端默认设置
-    "query": {},
-    "body": SeekableStream | Buffer | String | {},
-    "json": {},
-    "pack": {},
-    "headers": {},
-    "signal": AbortSignal // 用于取消请求的 AbortSignal 对象
-}
+// fragment: options
+({
+    method: 'GET', // request method, used by the opts-only form
+    protocol: 'http', // URL override fields: protocol/host/hostname/port/pathname/path/query/auth
+    hostname: '',
+    port: 80,
+    pathname: '/',
+    query: {},
+    headers: {}, // Headers object or plain object, added to the generated headers
+    body: null, // SeekableStream | Buffer | String | Object | FormData | URLSearchParams | Blob
+    json: null, // encoded as JSON, Content-Type: application/json
+    pack: null, // encoded as msgpack, Content-Type: application/msgpack
+    keepAlive: undefined, // overrides the client keepAlive for this request
+    timeout: undefined, // request timeout in ms, overrides the client timeout
+    signal: null, // AbortSignal used to cancel the request
+    agent: null // HttpClient that sends this request instead of this one
+})
 ```
 
-其中 body，[json](../../module/ifs/json.md)，pack 不得同时出现。缺省为 {}，不包含任何附加信息
+body, [json](../../module/ifs/json.md) and pack are mutually exclusive; `query` replaces the query string of the URL
+instead of merging with it. A string body is sent as application/x-www-form-urlencoded, a
+[Buffer](Buffer.md) as application/octet-stream, a plain [object](object.md) or [FormData](FormData.md) as multipart/form-data with a
+generated boundary, and [URLSearchParams](URLSearchParams.md) as application/x-www-form-urlencoded.
+
+Example — an event-style request through this client:
+
+```JavaScript
+const http = require('http');
+const coroutine = require('coroutine');
+
+const server = new http.Server(0, (req) => {
+    req.response.write('received: ' + (req.body ? req.body.readAll().toString() : ''));
+});
+server.start();
+const port = server.socket.localPort;
+
+const client = new http.Client();
+const done = new coroutine.Event();
+const req = client.request('POST', 'http://127.0.0.1:' + port + '/echo', (resp) => {
+    console.log(resp.text()); // received: hello
+    done.set();
+});
+req.end('hello'); // request() does not send before end()
+done.wait();
+
+client.destroy();
+server.stop();
+```
 
 --------------------------
-**请求 opts 指定的 [url](../../module/ifs/url.md)，并返回 [HttpRequest](HttpRequest.md) 对象**
+**Requests the [url](../../module/ifs/url.md) specified by opts and returns an [HttpRequest](HttpRequest.md) [object](object.md)**
 
 ```JavaScript
 HttpRequest HttpClient.request(Object opts);
 ```
 
-调用参数:
-* opts: Object, 指定附加信息
+Parameters:
+* opts: Object, the additional information
 
-返回结果:
-* [HttpRequest](HttpRequest.md), 返回 [HttpRequest](HttpRequest.md) 对象（可监听 'response' 事件接收响应）
+Returns:
+* [HttpRequest](HttpRequest.md), returns an [HttpRequest](HttpRequest.md) [object](object.md) (listen to the 'response' event to receive the response)
 
-opts 包含请求的附加选项，支持的内容如下：
-
-```JavaScript
-{
-    "method": "GET", // specify the http request method: GET, POST, etc, default: GET.
-    "protocol": "http",
-    "slashes": true,
-    "username": "",
-    "password": "",
-    "hostname": "",
-    "port": "",
-    "pathname": "",
-    "keepAlive": unknown, // If not specified, the default settings of the client will be used.
-    "timeout": 0, // 请求超时时间（毫秒），缺省使用客户端默认设置
-    "query": {},
-    "body": SeekableStream | Buffer | String | {},
-    "json": {},
-    "pack": {},
-    "headers": {},
-    "signal": AbortSignal // 用于取消请求的 AbortSignal 对象
-}
-```
-
-其中 body，[json](../../module/ifs/json.md)，pack 不得同时出现。缺省为 {}，不包含任何附加信息
+The returned request is not sent: call `end()` to send it. The response arrives through the
+callback given here or registered later, or through the `'response'` event; it is also
+stored in the `response` property. All opts fields are documented on request([Stream](Stream.md),
+[HttpRequest](HttpRequest.md)), the first request overload; unlike `get`, this function does not send
+automatically.
 
 --------------------------
-**请求指定的 [url](../../module/ifs/url.md)，并返回 [HttpRequest](HttpRequest.md) 对象**
+**Requests the [url](../../module/ifs/url.md) specified by opts, registers a callback to receive the response, and returns an [HttpRequest](HttpRequest.md) [object](object.md)**
+
+```JavaScript
+HttpRequest HttpClient.request(Object opts,
+    Function(HttpResponse resp) callback);
+```
+
+Parameters:
+* opts: Object, the additional information
+* callback: Function([HttpResponse](HttpResponse.md) resp), response callback function, receives [HttpResponse](HttpResponse.md) as a parameter
+
+Returns:
+* [HttpRequest](HttpRequest.md), returns an [HttpRequest](HttpRequest.md) [object](object.md)
+
+The callback is called with the [HttpResponse](HttpResponse.md) when the response arrives. The returned request
+must still be sent with `end()`; the request uses this client's settings and cookie jar.
+
+--------------------------
+**Requests the specified [url](../../module/ifs/url.md), registers a callback to receive the response, and returns an [HttpRequest](HttpRequest.md) [object](object.md)**
+
+```JavaScript
+HttpRequest HttpClient.request(String url,
+    Function(HttpResponse resp) callback);
+```
+
+Parameters:
+* url: String, the [url](../../module/ifs/url.md) to request; must be a complete [url](../../module/ifs/url.md) including the host
+* callback: Function([HttpResponse](HttpResponse.md) resp), response callback function, receives [HttpResponse](HttpResponse.md) as a parameter
+
+Returns:
+* [HttpRequest](HttpRequest.md), returns an [HttpRequest](HttpRequest.md) [object](object.md)
+
+The method defaults to GET. The returned request must still be sent with `end()`; the
+callback receives the [HttpResponse](HttpResponse.md) when the response arrives.
+
+--------------------------
+**Requests the specified [url](../../module/ifs/url.md) and returns an [HttpRequest](HttpRequest.md) [object](object.md)**
 
 ```JavaScript
 HttpRequest HttpClient.request(String url,
     Object opts = {});
 ```
 
-调用参数:
-* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
-* opts: Object, 指定附加信息
+Parameters:
+* url: String, the [url](../../module/ifs/url.md) to request; must be a complete [url](../../module/ifs/url.md) including the host
+* opts: Object, the additional information
 
-返回结果:
-* [HttpRequest](HttpRequest.md), 返回 [HttpRequest](HttpRequest.md) 对象（可监听 'response' 事件接收响应）
+Returns:
+* [HttpRequest](HttpRequest.md), returns an [HttpRequest](HttpRequest.md) [object](object.md) (listen to the 'response' event to receive the response)
 
-opts 包含请求的附加选项，支持的内容如下：
-
-```JavaScript
-{
-    "method": "GET", // specify the http request method: GET, POST, etc, default: GET.
-    "protocol": "http",
-    "slashes": true,
-    "username": "",
-    "password": "",
-    "hostname": "",
-    "port": "",
-    "pathname": "",
-    "keepAlive": unknown, // If not specified, the default settings of the client will be used.
-    "timeout": 0, // 请求超时时间（毫秒），缺省使用客户端默认设置
-    "query": {},
-    "body": SeekableStream | Buffer | String | {},
-    "json": {},
-    "pack": {},
-    "headers": {},
-    "signal": AbortSignal // 用于取消请求的 AbortSignal 对象
-}
-```
-
-其中 body，[json](../../module/ifs/json.md)，pack 不得同时出现。缺省为 {}，不包含任何附加信息
+The returned request is not sent: call `end()` to send it; the response is delivered to the
+callback (when given), to the `'response'` event and to the `response` property. This form
+is the async counterpart of requestSync([url](../../module/ifs/url.md), opts) on this client; use `get([url](../../module/ifs/url.md), opts)` when
+the method is GET and the request should be sent automatically.
 
 --------------------------
-**请求指定的 [url](../../module/ifs/url.md)，注册回调接收响应，返回 [HttpRequest](HttpRequest.md) 对象**
+**Requests the specified [url](../../module/ifs/url.md), registers a callback to receive the response, and returns an [HttpRequest](HttpRequest.md) [object](object.md)**
+
+```JavaScript
+HttpRequest HttpClient.request(String url,
+    Object opts,
+    Function(HttpResponse resp) callback);
+```
+
+Parameters:
+* url: String, the [url](../../module/ifs/url.md) to request; must be a complete [url](../../module/ifs/url.md) including the host
+* opts: Object, the additional information
+* callback: Function([HttpResponse](HttpResponse.md) resp), response callback function, receives [HttpResponse](HttpResponse.md) as a parameter
+
+Returns:
+* [HttpRequest](HttpRequest.md), returns an [HttpRequest](HttpRequest.md) [object](object.md)
+
+The method defaults to GET and the returned request must still be sent with `end()`; the
+callback is called with the [HttpResponse](HttpResponse.md). See the first request overload for the opts fields.
+
+--------------------------
+**Requests the specified [url](../../module/ifs/url.md), registers a callback to receive the response, and returns an [HttpRequest](HttpRequest.md) [object](object.md)**
+
+```JavaScript
+HttpRequest HttpClient.request(String method,
+    String url,
+    Function(HttpResponse resp) callback);
+```
+
+Parameters:
+* method: String, the [http](../../module/ifs/http.md) request method: GET, POST, etc.
+* url: String, the [url](../../module/ifs/url.md) to request; must be a complete [url](../../module/ifs/url.md) including the host
+* callback: Function([HttpResponse](HttpResponse.md) resp), response callback function, receives [HttpResponse](HttpResponse.md) as a parameter
+
+Returns:
+* [HttpRequest](HttpRequest.md), returns an [HttpRequest](HttpRequest.md) [object](object.md)
+
+The returned request must still be sent with `end()`; the callback is called with the
+[HttpResponse](HttpResponse.md) when it arrives.
+
+--------------------------
+**Requests the specified [url](../../module/ifs/url.md), registers a callback to receive the response, and returns an [HttpRequest](HttpRequest.md) [object](object.md)**
+
+```JavaScript
+HttpRequest HttpClient.request(String method,
+    String url,
+    Object opts = {});
+```
+
+Parameters:
+* method: String, the [http](../../module/ifs/http.md) request method: GET, POST, etc.
+* url: String, the [url](../../module/ifs/url.md) to request; must be a complete [url](../../module/ifs/url.md) including the host
+* opts: Object, the additional information
+
+Returns:
+* [HttpRequest](HttpRequest.md), returns an [HttpRequest](HttpRequest.md) [object](object.md) (listen to the 'response' event to receive the response)
+
+The general option form of the request family on this client; the returned request must
+still be sent with `end()`. See the first request overload for the opts fields.
+
+--------------------------
+**Requests the specified [url](../../module/ifs/url.md), registers a callback to receive the response, and returns an [HttpRequest](HttpRequest.md) [object](object.md)**
 
 ```JavaScript
 HttpRequest HttpClient.request(String method,
     String url,
     Object opts,
-    Function callback);
+    Function(HttpResponse resp) callback);
 ```
 
-调用参数:
-* method: String, 指定 [http](../../module/ifs/http.md) 请求方法：GET, POST 等
-* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
-* opts: Object, 指定附加信息
-* callback: Function, 响应回调函数，接收 [HttpResponse](HttpResponse.md) 作为参数
+Parameters:
+* method: String, the [http](../../module/ifs/http.md) request method: GET, POST, etc.
+* url: String, the [url](../../module/ifs/url.md) to request; must be a complete [url](../../module/ifs/url.md) including the host
+* opts: Object, the additional information
+* callback: Function([HttpResponse](HttpResponse.md) resp), response callback function, receives [HttpResponse](HttpResponse.md) as a parameter
 
-返回结果:
-* [HttpRequest](HttpRequest.md), 返回 [HttpRequest](HttpRequest.md) 对象
+Returns:
+* [HttpRequest](HttpRequest.md), returns an [HttpRequest](HttpRequest.md) [object](object.md)
 
---------------------------
-**请求 opts 指定的 [url](../../module/ifs/url.md)，注册回调接收响应，返回 [HttpRequest](HttpRequest.md) 对象**
-
-```JavaScript
-HttpRequest HttpClient.request(Object opts,
-    Function callback);
-```
-
-调用参数:
-* opts: Object, 指定附加信息
-* callback: Function, 响应回调函数，接收 [HttpResponse](HttpResponse.md) 作为参数
-
-返回结果:
-* [HttpRequest](HttpRequest.md), 返回 [HttpRequest](HttpRequest.md) 对象
-
---------------------------
-**请求指定的 [url](../../module/ifs/url.md)，注册回调接收响应，返回 [HttpRequest](HttpRequest.md) 对象**
-
-```JavaScript
-HttpRequest HttpClient.request(String url,
-    Object opts,
-    Function callback);
-```
-
-调用参数:
-* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
-* opts: Object, 指定附加信息
-* callback: Function, 响应回调函数，接收 [HttpResponse](HttpResponse.md) 作为参数
-
-返回结果:
-* [HttpRequest](HttpRequest.md), 返回 [HttpRequest](HttpRequest.md) 对象
-
---------------------------
-**请求指定的 [url](../../module/ifs/url.md)，注册回调接收响应，返回 [HttpRequest](HttpRequest.md) 对象**
-
-```JavaScript
-HttpRequest HttpClient.request(String url,
-    Function callback);
-```
-
-调用参数:
-* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
-* callback: Function, 响应回调函数，接收 [HttpResponse](HttpResponse.md) 作为参数
-
-返回结果:
-* [HttpRequest](HttpRequest.md), 返回 [HttpRequest](HttpRequest.md) 对象
-
---------------------------
-**请求指定的 [url](../../module/ifs/url.md)，注册回调接收响应，返回 [HttpRequest](HttpRequest.md) 对象**
-
-```JavaScript
-HttpRequest HttpClient.request(String method,
-    String url,
-    Function callback);
-```
-
-调用参数:
-* method: String, 指定 [http](../../module/ifs/http.md) 请求方法：GET, POST 等
-* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
-* callback: Function, 响应回调函数，接收 [HttpResponse](HttpResponse.md) 作为参数
-
-返回结果:
-* [HttpRequest](HttpRequest.md), 返回 [HttpRequest](HttpRequest.md) 对象
+The returned request must still be sent with `end()`; the callback is called with the
+[HttpResponse](HttpResponse.md). See the first request overload for the opts fields.
 
 --------------------------
 ### requestSync
-**请求指定的 [url](../../module/ifs/url.md)，并返回结果**
+**Requests the [url](../../module/ifs/url.md) specified by opts and returns the result**
+
+```JavaScript
+HttpResponse HttpClient.requestSync(Object opts) async;
+```
+
+Parameters:
+* opts: Object, the additional information
+
+Returns:
+* [HttpResponse](HttpResponse.md), returns the server response
+
+The request is sent through this client and blocks the current fiber until the response is
+received; the returned [HttpResponse](HttpResponse.md) has its body ready to read. The request uses this
+client's defaults, cookie jar and proxy configuration, and all URL fields can be given in
+opts instead of a [url](../../module/ifs/url.md) argument.
+
+opts supports the following fields:
+
+```JavaScript
+// fragment: options
+({
+    method: 'GET', // request method, used by the opts-only form
+    protocol: 'http', // URL override fields: protocol/host/hostname/port/pathname/path/query/auth
+    hostname: '',
+    port: 80,
+    pathname: '/',
+    query: {},
+    headers: {}, // Headers object or plain object, added to the generated headers
+    body: null, // SeekableStream | Buffer | String | Object | FormData | URLSearchParams | Blob
+    json: null, // encoded as JSON, Content-Type: application/json
+    pack: null, // encoded as msgpack, Content-Type: application/msgpack
+    keepAlive: undefined, // overrides the client keepAlive for this request
+    timeout: undefined, // request timeout in ms, overrides the client timeout
+    signal: null, // AbortSignal used to cancel the request
+    agent: null // HttpClient that sends this request instead of this one
+})
+```
+
+body, [json](../../module/ifs/json.md) and pack are mutually exclusive; `query` replaces the query string of the URL
+instead of merging with it. Without body/[json](../../module/ifs/json.md)/pack the request carries no body.
+
+Example — a sync request through an independent client:
+
+```JavaScript
+const http = require('http');
+
+const server = new http.Server(0, (req) => {
+    req.response.json({
+        path: req.address
+    });
+});
+server.start();
+const port = server.socket.localPort;
+
+const client = new http.Client();
+const resp = client.requestSync('http://127.0.0.1:' + port + '/status');
+console.log(resp.json()); // { path: '/status' }
+
+client.destroy();
+server.stop();
+```
+
+--------------------------
+**Requests the specified [url](../../module/ifs/url.md) with the GET method and returns the result, equivalent to request("GET", ...)**
+
+```JavaScript
+HttpResponse HttpClient.requestSync(String url,
+    Object opts = {}) async;
+```
+
+Parameters:
+* url: String, the [url](../../module/ifs/url.md) to request; must be a complete [url](../../module/ifs/url.md) including the host
+* opts: Object, the additional information
+
+Returns:
+* [HttpResponse](HttpResponse.md), returns the server response
+
+Blocks the current fiber and returns the [HttpResponse](HttpResponse.md) directly. A GET request carries no
+body; the opts fields documented on requestSync(opts) apply here as well, with `url`
+providing protocol, host, port and [path](../../module/ifs/path.md).
+
+--------------------------
+**Requests the specified [url](../../module/ifs/url.md) and returns the result**
 
 ```JavaScript
 HttpResponse HttpClient.requestSync(String method,
@@ -603,1240 +1000,1194 @@ HttpResponse HttpClient.requestSync(String method,
     Object opts = {}) async;
 ```
 
-调用参数:
-* method: String, 指定 [http](../../module/ifs/http.md) 请求方法：GET, POST 等
-* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
-* opts: Object, 指定附加信息
+Parameters:
+* method: String, the [http](../../module/ifs/http.md) request method: GET, POST, etc.
+* url: String, the [url](../../module/ifs/url.md) to request; must be a complete [url](../../module/ifs/url.md) including the host
+* opts: Object, the additional information
 
-返回结果:
-* [HttpResponse](HttpResponse.md), 返回服务器响应
+Returns:
+* [HttpResponse](HttpResponse.md), returns the server response
 
-opts 包含请求的附加选项，支持的内容如下：
-
-```JavaScript
-{
-    "method": "GET", // specify the http request method: GET, POST, etc, default: GET.
-    "protocol": "http",
-    "slashes": true,
-    "username": "",
-    "password": "",
-    "hostname": "",
-    "port": "",
-    "pathname": "",
-    "path": "", // pathname 的别名，用于 request 选项。
-    "keepAlive": unknown, // If not specified, the default settings of the client will be used.
-    "query": {},
-    "body": SeekableStream | Buffer | String | {},
-    "json": {},
-    "pack": {},
-    "headers": {}
-}
-```
-
-其中 body，[json](../../module/ifs/json.md)，pack 不得同时出现。缺省为 {}，不包含任何附加信息
-
---------------------------
-**请求 opts 指定的 [url](../../module/ifs/url.md)，并返回结果**
-
-```JavaScript
-HttpResponse HttpClient.requestSync(Object opts) async;
-```
-
-调用参数:
-* opts: Object, 指定附加信息
-
-返回结果:
-* [HttpResponse](HttpResponse.md), 返回服务器响应
-
-opts 包含请求的附加选项，支持的内容如下：
-
-```JavaScript
-{
-    "method": "GET", // specify the http request method: GET, POST, etc, default: GET.
-    "protocol": "http",
-    "slashes": true,
-    "username": "",
-    "password": "",
-    "hostname": "",
-    "port": "",
-    "pathname": "",
-    "keepAlive": unknown, // If not specified, the default settings of the client will be used.
-    "query": {},
-    "body": SeekableStream | Buffer | String | {},
-    "json": {},
-    "pack": {},
-    "headers": {}
-}
-```
-
-其中 body，[json](../../module/ifs/json.md)，pack 不得同时出现。缺省为 {}，不包含任何附加信息
-
---------------------------
-**用 GET 方法请求指定的 [url](../../module/ifs/url.md)，并返回结果，等同于 request("GET", ...)**
-
-```JavaScript
-HttpResponse HttpClient.requestSync(String url,
-    Object opts = {}) async;
-```
-
-调用参数:
-* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
-* opts: Object, 指定附加信息
-
-返回结果:
-* [HttpResponse](HttpResponse.md), 返回服务器响应
-
-opts 包含请求的附加选项，支持的内容如下：
-
-```JavaScript
-{
-    "method": "GET", // specify the http request method: GET, POST, etc, default: GET.
-    "protocol": "http",
-    "slashes": true,
-    "username": "",
-    "password": "",
-    "hostname": "",
-    "port": "",
-    "pathname": "",
-    "keepAlive": unknown, // If not specified, the default settings of the client will be used.
-    "query": {},
-    "body": SeekableStream | Buffer | String | {},
-    "json": {},
-    "pack": {},
-    "headers": {}
-}
-```
-
-其中 body，[json](../../module/ifs/json.md)，pack 不得同时出现。缺省为 {}，不包含任何附加信息
+Blocks the current fiber and returns the [HttpResponse](HttpResponse.md) directly. method selects the request
+method (default GET) and opts carries the fields documented on requestSync(opts).
 
 --------------------------
 ### getSync
-**用 GET 方法请求指定的 [url](../../module/ifs/url.md)，并返回结果，等同于 request("GET", ...)**
+**Requests the specified [url](../../module/ifs/url.md) with the GET method and returns the result, equivalent to request("GET", ...)**
 
 ```JavaScript
 HttpResponse HttpClient.getSync(String url,
     Object opts = {}) async;
 ```
 
-调用参数:
-* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
-* opts: Object, 指定附加信息
+Parameters:
+* url: String, the [url](../../module/ifs/url.md) to request; must be a complete [url](../../module/ifs/url.md) including the host
+* opts: Object, the additional information
 
-返回结果:
-* [HttpResponse](HttpResponse.md), 返回服务器响应
+Returns:
+* [HttpResponse](HttpResponse.md), returns the server response
 
-opts 包含请求的附加选项，支持的内容如下：
-
-```JavaScript
-{
-    "method": "GET", // specify the http request method: GET, POST, etc, default: GET.
-    "protocol": "http",
-    "slashes": true,
-    "username": "",
-    "password": "",
-    "hostname": "",
-    "port": "",
-    "pathname": "",
-    "keepAlive": unknown, // If not specified, the default settings of the client will be used.
-    "query": {},
-    "body": SeekableStream | Buffer | String | {},
-    "json": {},
-    "pack": {},
-    "headers": {}
-}
-```
-
-其中 body，[json](../../module/ifs/json.md)，pack 不得同时出现。缺省为 {}，不包含任何附加信息
+Blocks the current fiber and returns the [HttpResponse](HttpResponse.md) directly. A GET request carries no
+body, so body/[json](../../module/ifs/json.md)/pack are not accepted; the other opts fields of requestSync(opts) apply.
 
 --------------------------
 ### get
-**用 GET 方法请求指定的 [url](../../module/ifs/url.md)，注册回调接收响应，返回 [HttpRequest](HttpRequest.md) 对象**
+**Requests the specified [url](../../module/ifs/url.md) with the GET method and returns an [HttpRequest](HttpRequest.md) [object](object.md)**
 
 ```JavaScript
 HttpRequest HttpClient.get(String url,
     Object opts = {});
 ```
 
-调用参数:
-* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
-* opts: Object, 指定附加信息
+Parameters:
+* url: String, the [url](../../module/ifs/url.md) to request; must be a complete [url](../../module/ifs/url.md) including the host
+* opts: Object, the additional information
 
-返回结果:
-* [HttpRequest](HttpRequest.md), 返回 [HttpRequest](HttpRequest.md) 对象（可监听 'response' 事件接收响应）
+Returns:
+* [HttpRequest](HttpRequest.md), returns an [HttpRequest](HttpRequest.md) [object](object.md) (listen to the 'response' event to receive the response)
 
-opts 包含请求的附加选项，支持的内容如下：
-
-```JavaScript
-{
-    "protocol": "http",
-    "slashes": true,
-    "username": "",
-    "password": "",
-    "hostname": "",
-    "port": "",
-    "pathname": "",
-    "keepAlive": unknown, // If not specified, the default settings of the client will be used.
-    "timeout": 0, // 请求超时时间（毫秒），缺省使用客户端默认设置
-    "query": {},
-    "headers": {},
-    "signal": AbortSignal // 用于取消请求的 AbortSignal 对象
-}
-```
-
-缺省为 {}，不包含任何附加信息
+The returned request is sent automatically without calling `end()`; the response is
+delivered to the callback or the `'response'` event and stored in the `response` property.
+A GET request carries no body; the opts fields are the same as getSync([url](../../module/ifs/url.md), opts).
 
 --------------------------
-**用 GET 方法请求指定的 [url](../../module/ifs/url.md)，注册回调接收响应，返回 [HttpRequest](HttpRequest.md) 对象**
+**Requests the specified [url](../../module/ifs/url.md) with the GET method, registers a callback to receive the response, and returns an [HttpRequest](HttpRequest.md) [object](object.md)**
 
 ```JavaScript
 HttpRequest HttpClient.get(String url,
     Object opts,
-    Function callback);
+    Function(HttpResponse resp) callback);
 ```
 
-调用参数:
-* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
-* opts: Object, 指定附加信息
-* callback: Function, 响应回调函数，接收 [HttpResponse](HttpResponse.md) 作为参数
+Parameters:
+* url: String, the [url](../../module/ifs/url.md) to request; must be a complete [url](../../module/ifs/url.md) including the host
+* opts: Object, the additional information
+* callback: Function([HttpResponse](HttpResponse.md) resp), response callback function, receives [HttpResponse](HttpResponse.md) as a parameter
 
-返回结果:
-* [HttpRequest](HttpRequest.md), 返回 [HttpRequest](HttpRequest.md) 对象
+Returns:
+* [HttpRequest](HttpRequest.md), returns an [HttpRequest](HttpRequest.md) [object](object.md)
+
+The request is sent automatically (no `end()` needed); the callback receives the [HttpResponse](HttpResponse.md)
+when it arrives. See the get([url](../../module/ifs/url.md), opts) overload for the options.
 
 --------------------------
-**用 GET 方法请求指定的 [url](../../module/ifs/url.md)，注册回调接收响应，返回 [HttpRequest](HttpRequest.md) 对象**
+**Requests the specified [url](../../module/ifs/url.md) with the GET method, registers a callback to receive the response, and returns an [HttpRequest](HttpRequest.md) [object](object.md)**
 
 ```JavaScript
 HttpRequest HttpClient.get(String url,
-    Function callback);
+    Function(HttpResponse resp) callback);
 ```
 
-调用参数:
-* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
-* callback: Function, 响应回调函数，接收 [HttpResponse](HttpResponse.md) 作为参数
+Parameters:
+* url: String, the [url](../../module/ifs/url.md) to request; must be a complete [url](../../module/ifs/url.md) including the host
+* callback: Function([HttpResponse](HttpResponse.md) resp), response callback function, receives [HttpResponse](HttpResponse.md) as a parameter
 
-返回结果:
-* [HttpRequest](HttpRequest.md), 返回 [HttpRequest](HttpRequest.md) 对象
+Returns:
+* [HttpRequest](HttpRequest.md), returns an [HttpRequest](HttpRequest.md) [object](object.md)
+
+The request is sent automatically without calling `end()`; the callback receives the
+[HttpResponse](HttpResponse.md) when it arrives.
 
 --------------------------
 ### postSync
-**用 POST 方法请求指定的 [url](../../module/ifs/url.md)，并返回结果，等同于 request("POST", ...)**
+**Requests the specified [url](../../module/ifs/url.md) with the POST method and returns the result, equivalent to request("POST", ...)**
 
 ```JavaScript
 HttpResponse HttpClient.postSync(String url,
     Object opts = {}) async;
 ```
 
-调用参数:
-* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
-* opts: Object, 指定附加信息
+Parameters:
+* url: String, the [url](../../module/ifs/url.md) to request; must be a complete [url](../../module/ifs/url.md) including the host
+* opts: Object, the additional information
 
-返回结果:
-* [HttpResponse](HttpResponse.md), 返回服务器响应
+Returns:
+* [HttpResponse](HttpResponse.md), returns the server response
 
-opts 包含请求的附加选项，支持的内容如下：
-
-```JavaScript
-{
-    "method": "GET", // specify the http request method: GET, POST, etc, default: GET.
-    "protocol": "http",
-    "slashes": true,
-    "username": "",
-    "password": "",
-    "hostname": "",
-    "port": "",
-    "pathname": "",
-    "keepAlive": unknown, // If not specified, the default settings of the client will be used.
-    "query": {},
-    "body": SeekableStream | Buffer | String | {},
-    "json": {},
-    "pack": {},
-    "headers": {}
-}
-```
-
-其中 body，[json](../../module/ifs/json.md)，pack 不得同时出现。缺省为 {}，不包含任何附加信息
+Blocks the current fiber and returns the [HttpResponse](HttpResponse.md) directly. The request body is given
+by body, [json](../../module/ifs/json.md) or pack; a string body is sent as application/x-www-form-urlencoded, a plain
+[object](object.md) or [FormData](FormData.md) as multipart/form-data. See requestSync(opts) for the field list.
 
 --------------------------
 ### post
-**用 POST 方法请求指定的 [url](../../module/ifs/url.md)，注册回调接收响应，返回 [HttpRequest](HttpRequest.md) 对象**
+**Requests the specified [url](../../module/ifs/url.md) with the POST method and returns an [HttpRequest](HttpRequest.md) [object](object.md)**
 
 ```JavaScript
 HttpRequest HttpClient.post(String url,
     Object opts = {});
 ```
 
-调用参数:
-* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
-* opts: Object, 指定附加信息
+Parameters:
+* url: String, the [url](../../module/ifs/url.md) to request; must be a complete [url](../../module/ifs/url.md) including the host
+* opts: Object, the additional information
 
-返回结果:
-* [HttpRequest](HttpRequest.md), 返回 [HttpRequest](HttpRequest.md) 对象（可监听 'response' 事件接收响应）
+Returns:
+* [HttpRequest](HttpRequest.md), returns an [HttpRequest](HttpRequest.md) [object](object.md) (listen to the 'response' event to receive the response)
 
-opts 包含请求的附加选项，支持的内容如下：
-
-```JavaScript
-{
-    "protocol": "http",
-    "slashes": true,
-    "username": "",
-    "password": "",
-    "hostname": "",
-    "port": "",
-    "pathname": "",
-    "keepAlive": unknown, // If not specified, the default settings of the client will be used.
-    "timeout": 0, // 请求超时时间（毫秒），缺省使用客户端默认设置
-    "query": {},
-    "body": SeekableStream | Buffer | String | {},
-    "json": {},
-    "pack": {},
-    "headers": {},
-    "signal": AbortSignal // 用于取消请求的 AbortSignal 对象
-}
-```
-
-其中 body，[json](../../module/ifs/json.md)，pack 不得同时出现。缺省为 {}，不包含任何附加信息
+The returned request is not sent: call `end(data)` or `end()` to send it (the body may also
+be given by the body/[json](../../module/ifs/json.md)/pack options); the response is delivered to the callback or the
+`'response'` event. See the first request overload for the opts fields.
 
 --------------------------
-**用 POST 方法请求指定的 [url](../../module/ifs/url.md)，注册回调接收响应，返回 [HttpRequest](HttpRequest.md) 对象**
+**Requests the specified [url](../../module/ifs/url.md) with the POST method, registers a callback to receive the response, and returns an [HttpRequest](HttpRequest.md) [object](object.md)**
 
 ```JavaScript
 HttpRequest HttpClient.post(String url,
     Object opts,
-    Function callback);
+    Function(HttpResponse resp) callback);
 ```
 
-调用参数:
-* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
-* opts: Object, 指定附加信息
-* callback: Function, 响应回调函数，接收 [HttpResponse](HttpResponse.md) 作为参数
+Parameters:
+* url: String, the [url](../../module/ifs/url.md) to request; must be a complete [url](../../module/ifs/url.md) including the host
+* opts: Object, the additional information
+* callback: Function([HttpResponse](HttpResponse.md) resp), response callback function, receives [HttpResponse](HttpResponse.md) as a parameter
 
-返回结果:
-* [HttpRequest](HttpRequest.md), 返回 [HttpRequest](HttpRequest.md) 对象
+Returns:
+* [HttpRequest](HttpRequest.md), returns an [HttpRequest](HttpRequest.md) [object](object.md)
+
+The returned request must still be sent with `end()`; the callback receives the [HttpResponse](HttpResponse.md).
+The body may be passed to `end(data)` or given by the body/[json](../../module/ifs/json.md)/pack options.
 
 --------------------------
-**用 POST 方法请求指定的 [url](../../module/ifs/url.md)，注册回调接收响应，返回 [HttpRequest](HttpRequest.md) 对象**
+**Requests the specified [url](../../module/ifs/url.md) with the POST method, registers a callback to receive the response, and returns an [HttpRequest](HttpRequest.md) [object](object.md)**
 
 ```JavaScript
 HttpRequest HttpClient.post(String url,
-    Function callback);
+    Function(HttpResponse resp) callback);
 ```
 
-调用参数:
-* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
-* callback: Function, 响应回调函数，接收 [HttpResponse](HttpResponse.md) 作为参数
+Parameters:
+* url: String, the [url](../../module/ifs/url.md) to request; must be a complete [url](../../module/ifs/url.md) including the host
+* callback: Function([HttpResponse](HttpResponse.md) resp), response callback function, receives [HttpResponse](HttpResponse.md) as a parameter
 
-返回结果:
-* [HttpRequest](HttpRequest.md), 返回 [HttpRequest](HttpRequest.md) 对象
+Returns:
+* [HttpRequest](HttpRequest.md), returns an [HttpRequest](HttpRequest.md) [object](object.md)
+
+The returned request must still be sent with `end()`; the callback receives the [HttpResponse](HttpResponse.md)
+when it arrives.
 
 --------------------------
 ### delSync
-**用 DELETE 方法请求指定的 [url](../../module/ifs/url.md)，并返回结果，等同于 request("DELETE", ...)**
+**Requests the specified [url](../../module/ifs/url.md) with the DELETE method and returns the result, equivalent to request("DELETE", ...)**
 
 ```JavaScript
 HttpResponse HttpClient.delSync(String url,
     Object opts = {}) async;
 ```
 
-调用参数:
-* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
-* opts: Object, 指定附加信息
+Parameters:
+* url: String, the [url](../../module/ifs/url.md) to request; must be a complete [url](../../module/ifs/url.md) including the host
+* opts: Object, the additional information
 
-返回结果:
-* [HttpResponse](HttpResponse.md), 返回服务器响应
+Returns:
+* [HttpResponse](HttpResponse.md), returns the server response
 
-opts 包含请求的附加选项，支持的内容如下：
-
-```JavaScript
-{
-    "method": "GET", // specify the http request method: GET, POST, etc, default: GET.
-    "protocol": "http",
-    "slashes": true,
-    "username": "",
-    "password": "",
-    "hostname": "",
-    "port": "",
-    "pathname": "",
-    "keepAlive": unknown, // If not specified, the default settings of the client will be used.
-    "query": {},
-    "body": SeekableStream | Buffer | String | {},
-    "json": {},
-    "pack": {},
-    "headers": {}
-}
-```
-
-其中 body，[json](../../module/ifs/json.md)，pack 不得同时出现。缺省为 {}，不包含任何附加信息
+Blocks the current fiber and returns the [HttpResponse](HttpResponse.md) directly. A DELETE request normally
+has no body, but a body may be given like with postSync; the opts fields are the same as
+postSync([url](../../module/ifs/url.md), opts).
 
 --------------------------
 ### del
-**用 DELETE 方法请求指定的 [url](../../module/ifs/url.md)，注册回调接收响应，返回 [HttpRequest](HttpRequest.md) 对象**
+**Requests the specified [url](../../module/ifs/url.md) with the DELETE method and returns an [HttpRequest](HttpRequest.md) [object](object.md)**
 
 ```JavaScript
 HttpRequest HttpClient.del(String url,
     Object opts = {});
 ```
 
-调用参数:
-* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
-* opts: Object, 指定附加信息
+Parameters:
+* url: String, the [url](../../module/ifs/url.md) to request; must be a complete [url](../../module/ifs/url.md) including the host
+* opts: Object, the additional information
 
-返回结果:
-* [HttpRequest](HttpRequest.md), 返回 [HttpRequest](HttpRequest.md) 对象（可监听 'response' 事件接收响应）
+Returns:
+* [HttpRequest](HttpRequest.md), returns an [HttpRequest](HttpRequest.md) [object](object.md) (listen to the 'response' event to receive the response)
 
-opts 包含请求的附加选项，支持的内容如下：
-
-```JavaScript
-{
-    "protocol": "http",
-    "slashes": true,
-    "username": "",
-    "password": "",
-    "hostname": "",
-    "port": "",
-    "pathname": "",
-    "keepAlive": unknown, // If not specified, the default settings of the client will be used.
-    "timeout": 0, // 请求超时时间（毫秒），缺省使用客户端默认设置
-    "query": {},
-    "headers": {},
-    "signal": AbortSignal // 用于取消请求的 AbortSignal 对象
-}
-```
-
-缺省为 {}，不包含任何附加信息
+The returned request is not sent: call `end()` to send it. The opts fields are the same as
+post([url](../../module/ifs/url.md), opts); see the first request overload for the field list.
 
 --------------------------
-**用 DELETE 方法请求指定的 [url](../../module/ifs/url.md)，注册回调接收响应，返回 [HttpRequest](HttpRequest.md) 对象**
+**Requests the specified [url](../../module/ifs/url.md) with the DELETE method, registers a callback to receive the response, and returns an [HttpRequest](HttpRequest.md) [object](object.md)**
 
 ```JavaScript
 HttpRequest HttpClient.del(String url,
     Object opts,
-    Function callback);
+    Function(HttpResponse resp) callback);
 ```
 
-调用参数:
-* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
-* opts: Object, 指定附加信息
-* callback: Function, 响应回调函数，接收 [HttpResponse](HttpResponse.md) 作为参数
+Parameters:
+* url: String, the [url](../../module/ifs/url.md) to request; must be a complete [url](../../module/ifs/url.md) including the host
+* opts: Object, the additional information
+* callback: Function([HttpResponse](HttpResponse.md) resp), response callback function, receives [HttpResponse](HttpResponse.md) as a parameter
 
-返回结果:
-* [HttpRequest](HttpRequest.md), 返回 [HttpRequest](HttpRequest.md) 对象
+Returns:
+* [HttpRequest](HttpRequest.md), returns an [HttpRequest](HttpRequest.md) [object](object.md)
+
+The returned request must still be sent with `end()`; the callback receives the [HttpResponse](HttpResponse.md).
 
 --------------------------
-**用 DELETE 方法请求指定的 [url](../../module/ifs/url.md)，注册回调接收响应，返回 [HttpRequest](HttpRequest.md) 对象**
+**Requests the specified [url](../../module/ifs/url.md) with the DELETE method, registers a callback to receive the response, and returns an [HttpRequest](HttpRequest.md) [object](object.md)**
 
 ```JavaScript
 HttpRequest HttpClient.del(String url,
-    Function callback);
+    Function(HttpResponse resp) callback);
 ```
 
-调用参数:
-* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
-* callback: Function, 响应回调函数，接收 [HttpResponse](HttpResponse.md) 作为参数
+Parameters:
+* url: String, the [url](../../module/ifs/url.md) to request; must be a complete [url](../../module/ifs/url.md) including the host
+* callback: Function([HttpResponse](HttpResponse.md) resp), response callback function, receives [HttpResponse](HttpResponse.md) as a parameter
 
-返回结果:
-* [HttpRequest](HttpRequest.md), 返回 [HttpRequest](HttpRequest.md) 对象
+Returns:
+* [HttpRequest](HttpRequest.md), returns an [HttpRequest](HttpRequest.md) [object](object.md)
+
+The returned request must still be sent with `end()`; the callback receives the [HttpResponse](HttpResponse.md)
+when it arrives.
 
 --------------------------
 ### putSync
-**用 PUT 方法请求指定的 [url](../../module/ifs/url.md)，并返回结果，等同于 request("PUT", ...)**
+**Requests the specified [url](../../module/ifs/url.md) with the PUT method and returns the result, equivalent to request("PUT", ...)**
 
 ```JavaScript
 HttpResponse HttpClient.putSync(String url,
     Object opts = {}) async;
 ```
 
-调用参数:
-* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
-* opts: Object, 指定附加信息
+Parameters:
+* url: String, the [url](../../module/ifs/url.md) to request; must be a complete [url](../../module/ifs/url.md) including the host
+* opts: Object, the additional information
 
-返回结果:
-* [HttpResponse](HttpResponse.md), 返回服务器响应
+Returns:
+* [HttpResponse](HttpResponse.md), returns the server response
 
-opts 包含请求的附加选项，支持的内容如下：
-
-```JavaScript
-{
-    "method": "GET", // specify the http request method: GET, POST, etc, default: GET.
-    "protocol": "http",
-    "slashes": true,
-    "username": "",
-    "password": "",
-    "hostname": "",
-    "port": "",
-    "pathname": "",
-    "keepAlive": unknown, // If not specified, the default settings of the client will be used.
-    "query": {},
-    "body": SeekableStream | Buffer | String | {},
-    "json": {},
-    "pack": {},
-    "headers": {}
-}
-```
-
-其中 body，[json](../../module/ifs/json.md)，pack 不得同时出现。缺省为 {}，不包含任何附加信息
+Blocks the current fiber and returns the [HttpResponse](HttpResponse.md) directly. PUT replaces the target
+resource with the request body, which is given by the body/[json](../../module/ifs/json.md)/pack fields like with
+postSync; see requestSync(opts) for the field list.
 
 --------------------------
 ### put
-**用 PUT 方法请求指定的 [url](../../module/ifs/url.md)，注册回调接收响应，返回 [HttpRequest](HttpRequest.md) 对象**
+**Requests the specified [url](../../module/ifs/url.md) with the PUT method and returns an [HttpRequest](HttpRequest.md) [object](object.md)**
 
 ```JavaScript
 HttpRequest HttpClient.put(String url,
     Object opts = {});
 ```
 
-调用参数:
-* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
-* opts: Object, 指定附加信息
+Parameters:
+* url: String, the [url](../../module/ifs/url.md) to request; must be a complete [url](../../module/ifs/url.md) including the host
+* opts: Object, the additional information
 
-返回结果:
-* [HttpRequest](HttpRequest.md), 返回 [HttpRequest](HttpRequest.md) 对象（可监听 'response' 事件接收响应）
+Returns:
+* [HttpRequest](HttpRequest.md), returns an [HttpRequest](HttpRequest.md) [object](object.md) (listen to the 'response' event to receive the response)
 
-opts 包含请求的附加选项，支持的内容如下：
-
-```JavaScript
-{
-    "protocol": "http",
-    "slashes": true,
-    "username": "",
-    "password": "",
-    "hostname": "",
-    "port": "",
-    "pathname": "",
-    "keepAlive": unknown, // If not specified, the default settings of the client will be used.
-    "timeout": 0, // 请求超时时间（毫秒），缺省使用客户端默认设置
-    "query": {},
-    "body": SeekableStream | Buffer | String | {},
-    "json": {},
-    "pack": {},
-    "headers": {},
-    "signal": AbortSignal // 用于取消请求的 AbortSignal 对象
-}
-```
-
-其中 body，[json](../../module/ifs/json.md)，pack 不得同时出现。缺省为 {}，不包含任何附加信息
+The returned request is not sent: call `end(data)` or `end()` to send it. The opts fields
+are the same as post([url](../../module/ifs/url.md), opts).
 
 --------------------------
-**用 PUT 方法请求指定的 [url](../../module/ifs/url.md)，注册回调接收响应，返回 [HttpRequest](HttpRequest.md) 对象**
+**Requests the specified [url](../../module/ifs/url.md) with the PUT method, registers a callback to receive the response, and returns an [HttpRequest](HttpRequest.md) [object](object.md)**
 
 ```JavaScript
 HttpRequest HttpClient.put(String url,
     Object opts,
-    Function callback);
+    Function(HttpResponse resp) callback);
 ```
 
-调用参数:
-* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
-* opts: Object, 指定附加信息
-* callback: Function, 响应回调函数，接收 [HttpResponse](HttpResponse.md) 作为参数
+Parameters:
+* url: String, the [url](../../module/ifs/url.md) to request; must be a complete [url](../../module/ifs/url.md) including the host
+* opts: Object, the additional information
+* callback: Function([HttpResponse](HttpResponse.md) resp), response callback function, receives [HttpResponse](HttpResponse.md) as a parameter
 
-返回结果:
-* [HttpRequest](HttpRequest.md), 返回 [HttpRequest](HttpRequest.md) 对象
+Returns:
+* [HttpRequest](HttpRequest.md), returns an [HttpRequest](HttpRequest.md) [object](object.md)
+
+The returned request must still be sent with `end()`; the callback receives the [HttpResponse](HttpResponse.md).
 
 --------------------------
-**用 PUT 方法请求指定的 [url](../../module/ifs/url.md)，注册回调接收响应，返回 [HttpRequest](HttpRequest.md) 对象**
+**Requests the specified [url](../../module/ifs/url.md) with the PUT method, registers a callback to receive the response, and returns an [HttpRequest](HttpRequest.md) [object](object.md)**
 
 ```JavaScript
 HttpRequest HttpClient.put(String url,
-    Function callback);
+    Function(HttpResponse resp) callback);
 ```
 
-调用参数:
-* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
-* callback: Function, 响应回调函数，接收 [HttpResponse](HttpResponse.md) 作为参数
+Parameters:
+* url: String, the [url](../../module/ifs/url.md) to request; must be a complete [url](../../module/ifs/url.md) including the host
+* callback: Function([HttpResponse](HttpResponse.md) resp), response callback function, receives [HttpResponse](HttpResponse.md) as a parameter
 
-返回结果:
-* [HttpRequest](HttpRequest.md), 返回 [HttpRequest](HttpRequest.md) 对象
+Returns:
+* [HttpRequest](HttpRequest.md), returns an [HttpRequest](HttpRequest.md) [object](object.md)
+
+The returned request must still be sent with `end()`; the callback receives the [HttpResponse](HttpResponse.md)
+when it arrives.
 
 --------------------------
 ### patchSync
-**用 PATCH 方法请求指定的 [url](../../module/ifs/url.md)，并返回结果，等同于 request("PATCH", ...)**
+**Requests the specified [url](../../module/ifs/url.md) with the PATCH method and returns the result, equivalent to request("PATCH", ...)**
 
 ```JavaScript
 HttpResponse HttpClient.patchSync(String url,
     Object opts = {}) async;
 ```
 
-调用参数:
-* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
-* opts: Object, 指定附加信息
+Parameters:
+* url: String, the [url](../../module/ifs/url.md) to request; must be a complete [url](../../module/ifs/url.md) including the host
+* opts: Object, the additional information
 
-返回结果:
-* [HttpResponse](HttpResponse.md), 返回服务器响应
+Returns:
+* [HttpResponse](HttpResponse.md), returns the server response
 
-opts 包含请求的附加选项，支持的内容如下：
-
-```JavaScript
-{
-    "method": "GET", // specify the http request method: GET, POST, etc, default: GET.
-    "protocol": "http",
-    "slashes": true,
-    "username": "",
-    "password": "",
-    "hostname": "",
-    "port": "",
-    "pathname": "",
-    "keepAlive": unknown, // If not specified, the default settings of the client will be used.
-    "query": {},
-    "body": SeekableStream | Buffer | String | {},
-    "json": {},
-    "pack": {},
-    "headers": {}
-}
-```
-
-其中 body，[json](../../module/ifs/json.md)，pack 不得同时出现。缺省为 {}，不包含任何附加信息
+Blocks the current fiber and returns the [HttpResponse](HttpResponse.md) directly. PATCH applies a partial
+update with the request body, which is given by the body/[json](../../module/ifs/json.md)/pack fields like with
+postSync; see requestSync(opts) for the field list.
 
 --------------------------
 ### patch
-**用 PATCH 方法请求指定的 [url](../../module/ifs/url.md)，注册回调接收响应，返回 [HttpRequest](HttpRequest.md) 对象**
+**Requests the specified [url](../../module/ifs/url.md) with the PATCH method and returns an [HttpRequest](HttpRequest.md) [object](object.md)**
 
 ```JavaScript
 HttpRequest HttpClient.patch(String url,
     Object opts = {});
 ```
 
-调用参数:
-* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
-* opts: Object, 指定附加信息
+Parameters:
+* url: String, the [url](../../module/ifs/url.md) to request; must be a complete [url](../../module/ifs/url.md) including the host
+* opts: Object, the additional information
 
-返回结果:
-* [HttpRequest](HttpRequest.md), 返回 [HttpRequest](HttpRequest.md) 对象（可监听 'response' 事件接收响应）
+Returns:
+* [HttpRequest](HttpRequest.md), returns an [HttpRequest](HttpRequest.md) [object](object.md) (listen to the 'response' event to receive the response)
 
-opts 包含请求的附加选项，支持的内容如下：
-
-```JavaScript
-{
-    "protocol": "http",
-    "slashes": true,
-    "username": "",
-    "password": "",
-    "hostname": "",
-    "port": "",
-    "pathname": "",
-    "keepAlive": unknown, // If not specified, the default settings of the client will be used.
-    "timeout": 0, // 请求超时时间（毫秒），缺省使用客户端默认设置
-    "query": {},
-    "body": SeekableStream | Buffer | String | {},
-    "json": {},
-    "pack": {},
-    "headers": {},
-    "signal": AbortSignal // 用于取消请求的 AbortSignal 对象
-}
-```
-
-其中 body，[json](../../module/ifs/json.md)，pack 不得同时出现。缺省为 {}，不包含任何附加信息
+The returned request is not sent: call `end(data)` or `end()` to send it. The opts fields
+are the same as post([url](../../module/ifs/url.md), opts).
 
 --------------------------
-**用 PATCH 方法请求指定的 [url](../../module/ifs/url.md)，注册回调接收响应，返回 [HttpRequest](HttpRequest.md) 对象**
+**Requests the specified [url](../../module/ifs/url.md) with the PATCH method, registers a callback to receive the response, and returns an [HttpRequest](HttpRequest.md) [object](object.md)**
 
 ```JavaScript
 HttpRequest HttpClient.patch(String url,
     Object opts,
-    Function callback);
+    Function(HttpResponse resp) callback);
 ```
 
-调用参数:
-* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
-* opts: Object, 指定附加信息
-* callback: Function, 响应回调函数，接收 [HttpResponse](HttpResponse.md) 作为参数
+Parameters:
+* url: String, the [url](../../module/ifs/url.md) to request; must be a complete [url](../../module/ifs/url.md) including the host
+* opts: Object, the additional information
+* callback: Function([HttpResponse](HttpResponse.md) resp), response callback function, receives [HttpResponse](HttpResponse.md) as a parameter
 
-返回结果:
-* [HttpRequest](HttpRequest.md), 返回 [HttpRequest](HttpRequest.md) 对象
+Returns:
+* [HttpRequest](HttpRequest.md), returns an [HttpRequest](HttpRequest.md) [object](object.md)
+
+The returned request must still be sent with `end()`; the callback receives the [HttpResponse](HttpResponse.md).
 
 --------------------------
-**用 PATCH 方法请求指定的 [url](../../module/ifs/url.md)，注册回调接收响应，返回 [HttpRequest](HttpRequest.md) 对象**
+**Requests the specified [url](../../module/ifs/url.md) with the PATCH method, registers a callback to receive the response, and returns an [HttpRequest](HttpRequest.md) [object](object.md)**
 
 ```JavaScript
 HttpRequest HttpClient.patch(String url,
-    Function callback);
+    Function(HttpResponse resp) callback);
 ```
 
-调用参数:
-* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
-* callback: Function, 响应回调函数，接收 [HttpResponse](HttpResponse.md) 作为参数
+Parameters:
+* url: String, the [url](../../module/ifs/url.md) to request; must be a complete [url](../../module/ifs/url.md) including the host
+* callback: Function([HttpResponse](HttpResponse.md) resp), response callback function, receives [HttpResponse](HttpResponse.md) as a parameter
 
-返回结果:
-* [HttpRequest](HttpRequest.md), 返回 [HttpRequest](HttpRequest.md) 对象
+Returns:
+* [HttpRequest](HttpRequest.md), returns an [HttpRequest](HttpRequest.md) [object](object.md)
+
+The returned request must still be sent with `end()`; the callback receives the [HttpResponse](HttpResponse.md)
+when it arrives.
 
 --------------------------
 ### headSync
-**用 HEAD 方法请求指定的 [url](../../module/ifs/url.md)，并返回结果，等同于 request("PATCH", ...)**
+**Requests the specified [url](../../module/ifs/url.md) with the HEAD method and returns the result, equivalent to request("HEAD", ...)**
 
 ```JavaScript
 HttpResponse HttpClient.headSync(String url,
     Object opts = {}) async;
 ```
 
-调用参数:
-* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
-* opts: Object, 指定附加信息
+Parameters:
+* url: String, the [url](../../module/ifs/url.md) to request; must be a complete [url](../../module/ifs/url.md) including the host
+* opts: Object, the additional information
 
-返回结果:
-* [HttpResponse](HttpResponse.md), 返回服务器响应
+Returns:
+* [HttpResponse](HttpResponse.md), returns the server response
 
-opts 包含请求的附加选项，支持的内容如下：
-
-```JavaScript
-{
-    "method": "GET", // specify the http request method: GET, POST, etc, default: GET.
-    "protocol": "http",
-    "slashes": true,
-    "username": "",
-    "password": "",
-    "hostname": "",
-    "port": "",
-    "pathname": "",
-    "keepAlive": unknown, // If not specified, the default settings of the client will be used.
-    "query": {},
-    "body": SeekableStream | Buffer | String | {},
-    "json": {},
-    "pack": {},
-    "headers": {}
-}
-```
-
-其中 body，[json](../../module/ifs/json.md)，pack 不得同时出现。缺省为 {}，不包含任何附加信息
+Blocks the current fiber and returns the [HttpResponse](HttpResponse.md) directly. A HEAD response carries the
+status and headers of the equivalent GET but no body, so `resp.body` is empty; unlike GET,
+a HEAD response with a large Content-Length is not rejected by maxBodySize. The opts fields
+are the same as getSync([url](../../module/ifs/url.md), opts).
 
 --------------------------
 ### head
-**用 HEAD 方法请求指定的 [url](../../module/ifs/url.md)，注册回调接收响应，返回 [HttpRequest](HttpRequest.md) 对象**
+**Requests the specified [url](../../module/ifs/url.md) with the HEAD method and returns an [HttpRequest](HttpRequest.md) [object](object.md)**
 
 ```JavaScript
 HttpRequest HttpClient.head(String url,
     Object opts = {});
 ```
 
-调用参数:
-* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
-* opts: Object, 指定附加信息
+Parameters:
+* url: String, the [url](../../module/ifs/url.md) to request; must be a complete [url](../../module/ifs/url.md) including the host
+* opts: Object, the additional information
 
-返回结果:
-* [HttpRequest](HttpRequest.md), 返回 [HttpRequest](HttpRequest.md) 对象（可监听 'response' 事件接收响应）
+Returns:
+* [HttpRequest](HttpRequest.md), returns an [HttpRequest](HttpRequest.md) [object](object.md) (listen to the 'response' event to receive the response)
 
-opts 包含请求的附加选项，支持的内容如下：
-
-```JavaScript
-{
-    "protocol": "http",
-    "slashes": true,
-    "username": "",
-    "password": "",
-    "hostname": "",
-    "port": "",
-    "pathname": "",
-    "keepAlive": unknown, // If not specified, the default settings of the client will be used.
-    "timeout": 0, // 请求超时时间（毫秒），缺省使用客户端默认设置
-    "query": {},
-    "headers": {},
-    "signal": AbortSignal // 用于取消请求的 AbortSignal 对象
-}
-```
-
-缺省为 {}，不包含任何附加信息
+Like get(), the returned request is sent automatically without calling `end()`; only the
+status and headers of the response are received. See the get([url](../../module/ifs/url.md), opts) overload for the
+options.
 
 --------------------------
-**用 HEAD 方法请求指定的 [url](../../module/ifs/url.md)，注册回调接收响应，返回 [HttpRequest](HttpRequest.md) 对象**
+**Requests the specified [url](../../module/ifs/url.md) with the HEAD method, registers a callback to receive the response, and returns an [HttpRequest](HttpRequest.md) [object](object.md)**
 
 ```JavaScript
 HttpRequest HttpClient.head(String url,
     Object opts,
-    Function callback);
+    Function(HttpResponse resp) callback);
 ```
 
-调用参数:
-* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
-* opts: Object, 指定附加信息
-* callback: Function, 响应回调函数，接收 [HttpResponse](HttpResponse.md) 作为参数
+Parameters:
+* url: String, the [url](../../module/ifs/url.md) to request; must be a complete [url](../../module/ifs/url.md) including the host
+* opts: Object, the additional information
+* callback: Function([HttpResponse](HttpResponse.md) resp), response callback function, receives [HttpResponse](HttpResponse.md) as a parameter
 
-返回结果:
-* [HttpRequest](HttpRequest.md), 返回 [HttpRequest](HttpRequest.md) 对象
+Returns:
+* [HttpRequest](HttpRequest.md), returns an [HttpRequest](HttpRequest.md) [object](object.md)
+
+The request is sent automatically without calling `end()`; the callback receives the
+[HttpResponse](HttpResponse.md) when the headers arrive.
 
 --------------------------
-**用 HEAD 方法请求指定的 [url](../../module/ifs/url.md)，注册回调接收响应，返回 [HttpRequest](HttpRequest.md) 对象**
+**Requests the specified [url](../../module/ifs/url.md) with the HEAD method, registers a callback to receive the response, and returns an [HttpRequest](HttpRequest.md) [object](object.md)**
 
 ```JavaScript
 HttpRequest HttpClient.head(String url,
-    Function callback);
+    Function(HttpResponse resp) callback);
 ```
 
-调用参数:
-* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含主机的完整 [url](../../module/ifs/url.md)
-* callback: Function, 响应回调函数，接收 [HttpResponse](HttpResponse.md) 作为参数
+Parameters:
+* url: String, the [url](../../module/ifs/url.md) to request; must be a complete [url](../../module/ifs/url.md) including the host
+* callback: Function([HttpResponse](HttpResponse.md) resp), response callback function, receives [HttpResponse](HttpResponse.md) as a parameter
 
-返回结果:
-* [HttpRequest](HttpRequest.md), 返回 [HttpRequest](HttpRequest.md) 对象
+Returns:
+* [HttpRequest](HttpRequest.md), returns an [HttpRequest](HttpRequest.md) [object](object.md)
+
+The request is sent automatically without calling `end()`; the callback receives the
+[HttpResponse](HttpResponse.md) when it arrives.
 
 --------------------------
 ### fetch
-**使用 Web Fetch 标准发送请求，返回 [HttpResponse](HttpResponse.md) 对象**
+**Sends a request using the Web Fetch standard with an [HttpRequest](HttpRequest.md) [object](object.md) as the request source and returns an [HttpResponse](HttpResponse.md) [object](object.md)**
 
 ```JavaScript
-HttpResponse HttpClient.fetch(String url,
+HttpResponse HttpClient.fetch(HttpRequest | String request,
     Object opts = {}) async;
 ```
 
-调用参数:
-* url: String, 指定 [url](../../module/ifs/url.md)，必须是包含 host 的完整 [url](../../module/ifs/url.md)
-* opts: Object, 指定附加信息
+Parameters:
+* request: [HttpRequest](HttpRequest.md) | String, the request source
+* opts: Object, the additional information, can override the corresponding fields in request; following the Fetch
 
-返回结果:
-* [HttpResponse](HttpResponse.md), 返回 [HttpResponse](HttpResponse.md) 对象
+Returns:
+* [HttpResponse](HttpResponse.md), returns the server response, containing properties such as status, headers, body, ok, redirected, [url](../../module/ifs/url.md) and type
 
---------------------------
-**使用 Web Fetch 标准发送请求，以 [HttpRequest](HttpRequest.md) 对象作为请求源，返回 [HttpResponse](HttpResponse.md) 对象**
-
-```JavaScript
-HttpResponse HttpClient.fetch(HttpRequest request,
-    Object opts = {}) async;
-```
-
-调用参数:
-* request: [HttpRequest](HttpRequest.md), 请求源对象，提供 [url](../../module/ifs/url.md)、method、headers、body 等基础信息
-* opts: Object, 指定附加信息，可覆盖 request 中的对应字段
-
-返回结果:
-* [HttpResponse](HttpResponse.md), 返回服务器响应，包含 status、headers、body、ok、redirected、[url](../../module/ifs/url.md)、type 等属性
-
-opts 可覆盖 request 中的请求字段，支持的内容如下：
+The request is sent through this client, using its settings, cookie jar and proxy
+configuration. opts can override the request fields (`new Request(request, init)`
+semantics); the supported contents are as follows:
 
 ```JavaScript
-{
-    "method": "GET", // 覆盖 request 中的请求方法
-    "headers": {}, // 与 request.headers 合并，opts 中的同名头覆盖 request 中的
-    "body": SeekableStream | Buffer | String | {}, // 覆盖 request.body
-    "keepAlive": unknown, // 覆盖连接保持设置
-    "timeout": 0, // 请求超时时间（毫秒），缺省使用客户端默认设置
-    "redirect": "follow", // 重定向模式："follow"（默认）| "error" | "manual"
-    "signal": AbortSignal, // 用于取消请求的 AbortSignal 对象
-    "streaming": false // 是否以流模式返回响应体
-}
+// fragment: options
+({
+    method: 'GET', // overrides the request method; the method of an HttpRequest source is kept when not given
+    headers: {}, // when present it replaces the headers of the request source, like `new Request(request, init)`
+    body: null, // overrides the request body; a string body is sent as text/plain;charset=UTF-8
+    keepAlive: undefined, // overrides the keep-alive setting
+    timeout: undefined, // request timeout in ms, uses the client default settings by default
+    redirect: 'follow', // redirect mode: 'follow' (default) | 'error' | 'manual'
+    signal: null, // AbortSignal object used to cancel the request
+    streaming: false // whether to expose the response body as a stream instead of buffering it
+})
 ```
 
-其中 body，[json](../../module/ifs/json.md)，pack 不得同时出现。缺省为 {}，不覆盖任何 request 中的信息
+Following the Fetch standard a GET or HEAD request must not carry a body (a TypeError is
+thrown) and `headers` replaces the headers of the request source instead of merging them.
+`redirect: 'error'` fails with a TypeError when the server redirects and `redirect: 'manual'`
+returns the redirect response as it is, with `redirected` false; otherwise redirects are
+followed according to `autoRedirect`. An aborted request fails with an AbortError (a
+TimeoutError for [AbortSignal.timeout](AbortSignal.md#timeout)).
+
+Example — fetch a URL through this client:
+
+```JavaScript
+const http = require('http');
+
+const server = new http.Server(0, (req) => {
+    req.response.json({
+        ok: true
+    });
+});
+server.start();
+const port = server.socket.localPort;
+
+const client = new http.Client();
+const resp = client.fetch('http://127.0.0.1:' + port + '/api');
+console.log(resp.status, resp.ok, resp.json()); // 200 true { ok: true }
+
+client.destroy();
+server.stop();
+```
 
 --------------------------
 ### on
-**绑定一个事件处理函数到对象**
+**Appends an event handler to the emitter**
 
 ```JavaScript
 Object HttpClient.on(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to bind
+* func: Function(...args), the event handler function, called with the emit arguments
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+The listener is called with the arguments of emit() and `this` set to the emitter; the
+emitter itself is returned so registrations can be chained. The same function may be
+registered several times for one event and each copy is called. See the class documentation
+for the dispatch order.
 
 --------------------------
-**绑定一个事件处理函数到对象**
+**Appends several event handlers to the emitter**
 
 ```JavaScript
 Object HttpClient.on(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Every enumerable property of the map whose value is a function is registered under its
+property name. Properties are processed in order; a value that is not a function makes the
+call fail with an invalid-type error while entries processed before it stay registered.
+
+Example — registering several handlers at once:
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+emitter.on({
+    connect: () => console.log('connect'),
+    close: () => console.log('close')
+});
+
+emitter.emit('connect'); // connect
+emitter.emit('close'); // close
+```
 
 --------------------------
 ### addListener
-**绑定一个事件处理函数到对象**
+**Appends an event handler to the emitter**
 
 ```JavaScript
 Object HttpClient.addListener(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to bind
+* func: Function(...args), the event handler function
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Alias of on(ev, func), provided for Node.js compatibility.
 
 --------------------------
-**绑定一个事件处理函数到对象**
+**Appends several event handlers to the emitter**
 
 ```JavaScript
 Object HttpClient.addListener(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Alias of on(map), provided for Node.js compatibility.
 
 --------------------------
 ### addEventListener
-**绑定一个事件处理函数到对象**
+**Appends an event handler to the emitter with an options [object](object.md)**
 
 ```JavaScript
 Object HttpClient.addEventListener(Value ev,
-    Function func,
+    Function(...args) func,
     Object options = {});
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
-* options: Object, 指定事件处理函数的选项
+Parameters:
+* ev: Value, the event name to bind
+* func: Function(...args), the event handler function, called with the emit arguments
+* options: Object, the options of the event handler
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
 
-options 参数是一个对象，它可以包含以下属性：
-- once: 如果为 true，则事件处理函数只会触发一次，触发后会被移除
+Web-style alias of on(); the only supported option is `once`, which registers a one-shot
+handler exactly like once(). The listener receives the plain emit arguments and not an [Event](Event.md)
+[object](object.md); see the [DOMEvent](DOMEvent.md) class for the DOM-style event [object](object.md) used by [AbortSignal](AbortSignal.md) and
+fetch-style APIs.
+
+options supports the following option:
+
+```JavaScript
+// fragment: options
+({
+    "once": false // when true, the handler is removed before its single invocation
+});
+```
+
+Example — a one-shot DOM-style registration:
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+emitter.addEventListener('ping', () => console.log('ping'), {
+    once: true
+});
+
+emitter.emit('ping'); // ping
+console.log(emitter.emit('ping')); // false
+console.log(emitter.listenerCount('ping')); // 0
+```
 
 --------------------------
 ### prependListener
-**绑定一个事件处理函数到对象起始**
+**Inserts an event handler at the front of the queue**
 
 ```JavaScript
 Object HttpClient.prependListener(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to bind
+* func: Function(...args), the event handler function
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+The listener is called before the listeners registered with on()/addListener() the next time
+the event is emitted. When several prependListener() calls are made, the last one registered
+is called first, because every call inserts at the same position.
+
+Example — insertion at the front of the queue:
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+emitter.on('order', () => console.log('on'));
+emitter.prependListener('order', () => console.log('prepend'));
+
+emitter.emit('order'); // prepend, then on
+```
 
 --------------------------
-**绑定一个事件处理函数到对象起始**
+**Inserts several event handlers at the front of the queue**
 
 ```JavaScript
 Object HttpClient.prependListener(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Map form of prependListener(); every function property is inserted at the front, so the
+properties of the map are called in reverse order.
 
 --------------------------
 ### once
-**绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次**
+**Appends a one-shot event handler to the emitter**
 
 ```JavaScript
 Object HttpClient.once(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to bind
+* func: Function(...args), the event handler function
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+The handler is wrapped and removes itself from the queue before it is called, so it runs at
+most once. off() removes it when passed the original function, listeners() returns the
+original function, and rawListeners() returns the internal wrapper whose `_func` property
+holds the original. See Example 2 in the class documentation.
 
 --------------------------
-**绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次**
+**Appends several one-shot event handlers to the emitter**
 
 ```JavaScript
 Object HttpClient.once(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Map form of once(); every function property is registered as a one-shot listener under its
+property name.
 
 --------------------------
 ### prependOnceListener
-**绑定一个事件处理函数到对象起始**
+**Inserts a one-shot event handler at the front of the queue**
 
 ```JavaScript
 Object HttpClient.prependOnceListener(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to bind
+* func: Function(...args), the event handler function
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Combines prependListener() and once(): the handler is called first and only once, and it is
+removed before its invocation.
 
 --------------------------
-**绑定一个事件处理函数到对象起始**
+**Inserts several one-shot event handlers at the front of the queue**
 
 ```JavaScript
 Object HttpClient.prependOnceListener(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Map form of prependOnceListener(); every function property is inserted as a one-shot
+listener, and the properties of the map are called in reverse order.
 
 --------------------------
 ### off
-**从对象处理队列中取消指定函数**
+**Removes an event handler from the emitter**
 
 ```JavaScript
 Object HttpClient.off(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to unbind
+* func: Function(...args), the event handler function
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+The first matching listener is removed; when the same function was registered several times
+only one copy is removed per call, so repeat the call to remove the others. A once() wrapper
+is matched by its original function as well. Removing a listener emits the `removeListener`
+meta event after the removal.
 
 --------------------------
-**取消对象处理队列中的全部函数**
+**Removes all event handlers of one event**
 
 ```JavaScript
 Object HttpClient.off(Value ev);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
+Parameters:
+* ev: Value, the event name to unbind
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Every listener of the event is removed and `removeListener` is emitted once per removed
+listener. The call succeeds when the event has no listener.
+
+Example — removing every listener of one event:
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+emitter.on('data', () => console.log('first'));
+emitter.on('data', () => console.log('second'));
+
+emitter.off('data');
+console.log(emitter.emit('data')); // false
+```
 
 --------------------------
-**从对象处理队列中取消指定函数**
+**Removes several event handlers from the emitter**
 
 ```JavaScript
 Object HttpClient.off(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称作为事件名称，属性的值作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Every enumerable property of the map whose value is a function names an event from which
+that function is removed (one copy per event). A value that is not a function makes the call
+fail with an invalid-type error.
 
 --------------------------
 ### removeListener
-**从对象处理队列中取消指定函数**
+**Removes an event handler from the emitter**
 
 ```JavaScript
 Object HttpClient.removeListener(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to unbind
+* func: Function(...args), the event handler function
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Alias of off(ev, func), provided for Node.js compatibility.
 
 --------------------------
-**取消对象处理队列中的全部函数**
+**Removes all event handlers of one event**
 
 ```JavaScript
 Object HttpClient.removeListener(Value ev);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
+Parameters:
+* ev: Value, the event name to unbind
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Alias of off(ev), provided for Node.js compatibility.
 
 --------------------------
-**从对象处理队列中取消指定函数**
+**Removes several event handlers from the emitter**
 
 ```JavaScript
 Object HttpClient.removeListener(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称作为事件名称，属性的值作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Alias of off(map), provided for Node.js compatibility.
 
 --------------------------
 ### removeEventListener
-**从对象处理队列中取消指定函数**
+**Removes an event handler with an options [object](object.md)**
 
 ```JavaScript
 Object HttpClient.removeEventListener(Value ev,
-    Function func,
+    Function(...args) func,
     Object options = {});
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
-* options: Object, 指定事件处理函数的选项
+Parameters:
+* ev: Value, the event name to unbind
+* func: Function(...args), the event handler function
+* options: Object, the options of the event handler, ignored
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Web-style alias of off(ev, func); the options [object](object.md) is accepted and ignored, and a once()
+wrapper is matched by its original function like off().
 
 --------------------------
 ### removeAllListeners
-**从对象处理队列中取消所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。**
+**Removes all listeners of one event**
 
 ```JavaScript
 Object HttpClient.removeAllListeners(Value ev);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
+Parameters:
+* ev: Value, the event name to remove
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Equivalent to off(ev): every listener of the event is removed, including once() wrappers
+matched by their original function, and `removeListener` is emitted once per removal.
 
 --------------------------
-**从对象处理队列中取消所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。**
+**Removes all listeners of the given events, or of the whole emitter**
 
 ```JavaScript
 Object HttpClient.removeAllListeners(Array evs = []);
 ```
 
-调用参数:
-* evs: Array, 指定事件的名称
+Parameters:
+* evs: Array, the event names to remove
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+An empty array — including the no-argument call, because the parameter defaults to [] —
+clears every string-keyed event; symbol-keyed listeners are left in place, unlike Node.js
+which removes them too. A non-empty array clears each named event as
+removeAllListeners(ev) does.
+
+Example — clearing selected events and the whole emitter:
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+emitter.on('a', () => {});
+emitter.on('b', () => {});
+emitter.on('c', () => {});
+
+emitter.removeAllListeners(['a', 'b']);
+console.log(emitter.listenerCount('a'), emitter.listenerCount('c')); // 0 1
+
+emitter.removeAllListeners();
+console.log(emitter.eventNames().length); // 0
+```
 
 --------------------------
 ### setMaxListeners
-**监听器的默认限制的数量，仅用于兼容**
+**Stores a per-emitter listener limit**
 
 ```JavaScript
 HttpClient.setMaxListeners(Integer n);
 ```
 
-调用参数:
-* n: Integer, 指定事件的数量
+Parameters:
+* n: Integer, the number of events
+
+The value is reported by getMaxListeners() and is otherwise informational: fibjs never warns
+when the number of listeners exceeds it. This member exists for Node.js compatibility. A
+negative value throws; 0 is accepted and stored as-is, while Node.js treats 0 as unlimited.
 
 --------------------------
 ### getMaxListeners
-**获取监听器的默认限制的数量，仅用于兼容**
+**Returns the listener limit of the emitter**
 
 ```JavaScript
 Integer HttpClient.getMaxListeners();
 ```
 
-返回结果:
-* Integer, 返回默认限制数量
+Returns:
+* Integer, returns the default limit
+
+Returns the value set by setMaxListeners(), or the [process](../../module/ifs/process.md)-wide defaultMaxListeners (10)
+when no explicit value was set.
 
 --------------------------
 ### listeners
-**查询对象指定事件的监听器数组**
+**Returns a copy of the listener array of an event**
 
 ```JavaScript
 Array HttpClient.listeners(Value ev);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
+Parameters:
+* ev: Value, the event name to query
 
-返回结果:
-* Array, 返回指定事件的监听器数组
+Returns:
+* Array, returns the listener array of the specified event
+
+One-shot wrappers are unwrapped, so the result contains the functions passed to
+on()/once() and can be passed to off(); an unknown event produces an empty array.
+
+Example — once() listeners are returned unwrapped:
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+
+function onTick() {
+    console.log('tick');
+}
+
+emitter.once('tick', onTick);
+console.log(emitter.listeners('tick')[0] === onTick); // true
+console.log(emitter.rawListeners('tick')[0] === onTick); // false
+```
 
 --------------------------
 ### rawListeners
-**查询对象指定事件的监听器数组，包含 once 包装函数**
+**Returns the internal listener array of an event**
 
 ```JavaScript
 Array HttpClient.rawListeners(Value ev);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
+Parameters:
+* ev: Value, the event name to query
 
-返回结果:
-* Array, 返回指定事件的监听器数组
+Returns:
+* Array, returns the listener array of the specified event
+
+The array is not unwrapped: a listener registered with once() appears as the internal
+wrapper function whose `_func` property holds the original function. An unknown event
+produces an empty array.
 
 --------------------------
 ### listenerCount
-**查询对象指定事件的监听器数量**
+**Returns the number of listeners of an event**
 
 ```JavaScript
 Integer HttpClient.listenerCount(Value ev);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
+Parameters:
+* ev: Value, the event name to query
 
-返回结果:
-* Integer, 返回指定事件的监听器数量
+Returns:
+* Integer, returns the number of listeners of the specified event
+
+One-shot listeners count as one and an unknown event returns 0.
 
 --------------------------
-**查询对象指定事件的监听器数量**
+**Returns the number of listeners of an event on another [object](object.md)**
 
 ```JavaScript
 Integer HttpClient.listenerCount(Value o,
     Value ev);
 ```
 
-调用参数:
-* o: Value, 指定查询的对象
-* ev: Value, 指定事件的名称
+Parameters:
+* o: Value, the [object](object.md) to query
+* ev: Value, the event name to query
 
-返回结果:
-* Integer, 返回指定事件的监听器数量
+Returns:
+* Integer, returns the number of listeners of the specified event
+
+Counts without requiring the target to be an [EventEmitter](EventEmitter.md): any [object](object.md) with registered
+events can be queried. The call is normally written as
+`EventEmitter.listenerCount(target, 'data')`.
+
+Example — counting the listeners of another [object](object.md):
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+emitter.on('data', () => {});
+emitter.on('data', () => {});
+
+console.log(EventEmitter.listenerCount(emitter, 'data')); // 2
+```
 
 --------------------------
 ### eventNames
-**查询监听器事件名称**
+**Returns the names of the events with at least one listener**
 
 ```JavaScript
 Array HttpClient.eventNames();
 ```
 
-返回结果:
-* Array, 返回事件名称数组
+Returns:
+* Array, returns the array of event names
+
+Only string-keyed events are reported; symbol-keyed events are omitted and numeric event
+names are returned as numbers (Node.js also reports symbol events).
 
 --------------------------
 ### emit
-**主动触发一个事件**
+**Emits an event and returns whether a listener was called**
 
 ```JavaScript
 Boolean HttpClient.emit(Value ev,
     ...args);
 ```
 
-调用参数:
-* ev: Value, 事件名称
-* args: ..., 事件参数，将会传递给事件处理函数
+Parameters:
+* ev: Value, event name
+* args: ..., event parameters, which are passed to the event handler
 
-返回结果:
-* Boolean, 返回事件触发状态，有响应事件返回 true，否则返回 false
+Returns:
+* Boolean, returns whether the event had a listener to respond to it
+
+Listeners are called as described by the dispatch model in the class documentation: the
+first one runs synchronously on the current fiber, the remaining ones run in parallel
+fibers, and the call returns after all of them finish; an exception raised by a listener is
+thrown back to the caller. Emitting `error` with no listener throws instead of returning
+false: an Error argument is thrown as-is and any other value is wrapped in
+`Error("Unhandled error. (...)")`. [Event](Event.md) names are strings or symbols; `emit()` does not
+match a listener registered with a numeric name.
 
 --------------------------
 ### toString
-**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
+**Returns the string form of the [object](object.md)**
 
 ```JavaScript
 String HttpClient.toString();
 ```
 
-返回结果:
-* String, 返回对象的字符串表示
+Returns:
+* String, returns the string form of the [object](object.md)
+
+The base implementation reports an error: a native [object](object.md) has no implicit
+text form, and only the classes whose value can be written as a string
+override the member. [Buffer](Buffer.md) returns its content decoded with the given
+[encoding](../../module/ifs/encoding.md), [HttpCookie](HttpCookie.md) returns "name=value", and so on; an override commonly
+accepts optional arguments ([Buffer.toString](Buffer.md#toString) takes [encoding](../../module/ifs/encoding.md), start and
+end) that are not part of this declaration.
+
+Calling the member on a class that does not override it throws
+"<Class>: the [object](object.md) can not be converted to string.", which is the
+behavior to rely on when probing whether a value has a string form. See
+toJSON for the serialization hook.
 
 --------------------------
 ### toJSON
-**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
+**Returns the JSON representation of the [object](object.md)**
 
 ```JavaScript
 Value HttpClient.toJSON(String key = "");
 ```
 
-调用参数:
-* key: String, 未使用
+Parameters:
+* key: String, the property name of the value being serialized
 
-返回结果:
-* Value, 返回包含可 JSON 序列化的值
+Returns:
+* Value, returns the JSON-serializable value
+
+JSON.stringify(value) calls value.toJSON(key) when the member exists and
+serializes the returned value in its place; the key argument carries the
+property name of the value inside its parent [object](object.md) (an empty string at
+the top level) and may be used to build a keyed form. The base
+implementation returns a plain [object](object.md) holding the readable properties of
+the instance, so a native [object](object.md) serializes without per-class code; a
+class with a portable shape such as [Buffer](Buffer.md) overrides it, and a JavaScript
+class may override it in the same way.
+
+The member is normally reached through JSON.stringify rather than called
+directly; calling it returns the same value JSON.stringify would
+serialize.
 

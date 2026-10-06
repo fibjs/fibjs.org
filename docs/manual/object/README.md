@@ -1,137 +1,140 @@
-# 内置对象
-* [AbortController](ifs/AbortController.md) - 控制器对象，用于在需要时中止一个或多个 Web 请求
-* [AbortSignal](ifs/AbortSignal.md) - brief 该对象允许您与异步操作（例如提取请求）进行通信，并在需要时通过 AbortController 对象中止它
-* [AsyncLocalStorage](ifs/AsyncLocalStorage.md) - 该对象允许您在异步操作中存储和检索数据
-* [AsyncResource](ifs/AsyncResource.md) - AsyncResource 是用于嵌入异步上下文跟踪的类。
-* [Blob](ifs/Blob.md) - Blob 对象用于表示不可变的原始数据块，兼容 Web 标准 Blob API。
-* [Buffer](ifs/Buffer.md) - 二进制数据缓存对象，用于 io 读写的数据处理
-* [BufferedStream](ifs/BufferedStream.md) - 缓存读取对象
-* [Chain](ifs/Chain.md) - 消息处理器链处理对象
-* [ChildProcess](ifs/ChildProcess.md) - 子进程对象
-* [Cipher](ifs/Cipher.md) - 对称加密算法对象
-* [Condition](ifs/Condition.md) - 条件变量对象
-* [ConsoleObject](ifs/ConsoleObject.md) - 日志对象，用于记录日志信息
-* [CryptoKey](ifs/CryptoKey.md) - CryptoKey 类来表示对称或非对称密钥，每种密钥公开不同的功能
-* [DOMEvent](ifs/DOMEvent.md) - DOMEvent 表示一个 W3C DOM 事件对象
-* [DOMParser](ifs/DOMParser.md) - DOMParser 接口提供将 XML 或 HTML 源代码字符串解析为 DOM Document 的能力
-* [DOMTokenList](ifs/DOMTokenList.md) - DOMTokenList 对象，表示一组空格分隔的标记，常用于 classList 属性
-* [DbConnection](ifs/DbConnection.md) - DBConnection 是数据库连接的基类，用于建立和维护一个数据库连接会话。其实现了连接的基本操作，并作为派生类的基础。同时支持开始事务、提交事务、回滚事务等操作。
-* [Deflate](ifs/Deflate.md) - Deflate 压缩编解码器，使用 deflate 算法压缩数据(zlib格式)
-* [DeflateRaw](ifs/DeflateRaw.md) - DeflateRaw 压缩编解码器，使用 deflate 算法压缩数据(raw格式，不含zlib头)
-* [DgramSocket](ifs/DgramSocket.md) - dgram.Socket 对象是一个封装了数据包函数功能的 EventEmitter。
-* [Digest](ifs/Digest.md) - 信息摘要对象
-* [DirEntry](ifs/DirEntry.md) - 表示目录项的信息
-* [ECDH](ifs/ECDH.md) - ECDH 对象
-* [Event](ifs/Event.md) - Event 模块提供了一个事件对象，用于协同共享数据操作。它允许多个纤程（协程）之间进行同步操作，以实现协作式多任务。事件对象有 wait，pulse 和 clear 三个方法，wait 方法将阻塞当前纤程，直至事件被触发，pulse 方法将唤醒所有等待该事件的纤程，而 clear 方法则将事件标志重置为 false。通过使用 coroutine.Event 模块，开发者可以控制纤程之间的执行顺序和数据共享，实现复杂业务逻辑。
-* [EventEmitter](ifs/EventEmitter.md) - EventEmitter 是事件触发对象，它可以被用于建立观察者模式，支持事件触发的对象均继承于此
-* [EventSource](ifs/EventSource.md) - 事件源接口，用于服务器推送事件
-* [FSWatcher](ifs/FSWatcher.md) - 文件系统观察对象
-* [Fiber](ifs/Fiber.md) - 纤程操作对象，此对象不可直接创建
-* [File](ifs/File.md) - File 对象用于表示文件系统中的文件，兼容 Web 标准 File API。
-* [FileHandle](ifs/FileHandle.md) - 文件句柄对象
-* [FileStream](ifs/FileStream.md) - 文件操作对象，用于二进制文件读写
-* [FormData](ifs/FormData.md) - FormData 是用于管理 HTTP 表单数据（multipart/form-data）的容器类，继承自 HttpCollection。
-* [Gunzip](ifs/Gunzip.md) - Gunzip 解压缩编解码器，解压 gzip 压缩的数据
-* [Gzip](ifs/Gzip.md) - Gzip 压缩编解码器，使用 gzip 算法压缩数据
-* [Handler](ifs/Handler.md) - 消息处理器接口
-* [Headers](ifs/Headers.md) - Headers 是一个专门用于处理 HTTP 头部信息的容器类，继承自 HttpCollection
-* [HeapGraphEdge](ifs/HeapGraphEdge.md) - HeapGraphEdge表示两个HeapGraphNode节点间的关联，从上游节点到下游节点
-* [HeapGraphNode](ifs/HeapGraphNode.md) - HeapGraphNode表示堆视图中的一个节点
-* [HeapSnapshot](ifs/HeapSnapshot.md) - HeapSnapshots记录JS堆在某个时刻的状态
-* [Http2Server](ifs/Http2Server.md) - Http2Server 是高并发 HTTP/2 服务器
-* [Http2Session](ifs/Http2Session.md) - Http2Session 表示活动的 HTTP/2 会话，管理连接和所有流
-* [Http2Stream](ifs/Http2Stream.md) - Http2Stream 是表示 Http2Session 中单个 HTTP/2 流的对象
-* [HttpClient](ifs/HttpClient.md) - HttpClient 是针对 HTTP 客户端功能设计的类库，提供了基本的 HTTP/HTTPS 请求、代理访问、cookie 管理等功能
-* [HttpCollection](ifs/HttpCollection.md) - HttpCollection 是一个通用容器，用于处理 http 消息中的 headers, query, form, cookie 数据
-* [HttpCookie](ifs/HttpCookie.md) - HttpCookie 是 HTTP 协议封装的 cookie 对象，它提供了获取、设置 cookie 的各个属性，同时也支持多个 cookie 的组织与处理，是 http.Request 和 http.Response 两个对象都支持的一个重要属性
-* [HttpHandler](ifs/HttpHandler.md) - http 协议转换处理器
-* [HttpMessage](ifs/HttpMessage.md) - http 基础消息对象
-* [HttpRepeater](ifs/HttpRepeater.md) - HttpRepeater 是一个 HTTP 请求转发器，可以将 HTTP 请求转发到指定的后端服务器并获得响应。它常常用于需要在前端与多个服务端交互的复杂系统中，或者用于负载均衡
-* [HttpRequest](ifs/HttpRequest.md) - HttpRequest 是用来处理 HTTP 请求的类， 它允许你创建 HTTP 请求并与服务器交互。你可以使用它来向 Web 服务器发送 GET、POST 以及其它类型的 HTTP 请求
-* [HttpResponse](ifs/HttpResponse.md) - HttpResponse 是一个 HTTP 响应对象，使用 HttpRequest.response 对象完成 Http 服务端数据响应，或 http.request 请求返回服务器的响应数据
-* [HttpServer](ifs/HttpServer.md) - HttpServer 是内置对象之一，它是用于创建 HTTP 服务器的对象。一个 HttpServer 对象包含两个必传的参数：端口和事件处理接口对象。在事件处理接口对象中，具体的实现方式可以是简单的回调函数，也可以使用复杂的路由、链式处理数组等方式
-* [HttpUploadData](ifs/HttpUploadData.md) - 包含 multipart 的一个条目数据
-* [HttpsServer](ifs/HttpsServer.md) - HttpsServer 是用于创建 https 服务器的对象，HttpsServer 对象可以使用 HttpServer 所有的接口函数和属性。HttpsServer 对象可以通过在创建时传入之前使用 openssl 生成的证书对象 (X509Cert 类型) 和密钥对象 (PKey 类型)，从而为客户端提供 tls/ssl 加密保护的服务
-* [Inflate](ifs/Inflate.md) - Inflate 解压缩编解码器，解压 deflate 算法压缩的数据(zlib格式)
-* [InflateRaw](ifs/InflateRaw.md) - InflateRaw 解压缩编解码器，解压 deflate 算法压缩的数据(raw格式)
-* [Iterator](ifs/Iterator.md) - 迭代器对象，用于遍历集合数据
-* [KeyObject](ifs/KeyObject.md) - KeyObject 类来表示对称或非对称密钥，每种密钥公开不同的功能
-* [LevelDB](ifs/LevelDB.md) - LevelDB 是 fibjs 内置的数据库操作对象，用于创建和管理键值对形式的字典对象。使用 LevelDB 对象，可轻松实现键值对数据的存储、查询、删除、枚举等操作。它基于 Google 开源的 LevelDB 实现，具有高效、可靠、可扩展等优点
-* [Lock](ifs/Lock.md) - Lock 是一个内建对象，它可以用来控制纤程并发访问, 可以通过一个纤程获取锁，来阻止其他纤程同时获取。Lock 可以通过 coroutine.Lock() 函数创建
-* [MemoryStream](ifs/MemoryStream.md) - 内存流对象
-* [Menu](ifs/Menu.md) - 菜单管理对象，用于窗口显示菜单
-* [MenuItem](ifs/MenuItem.md) - 菜单项接口，继承自 EventEmitter。
-* [Message](ifs/Message.md) - 基础消息对象
-* [MessageChannel](ifs/MessageChannel.md) - MessageChannel provides a pair of connected MessagePort objects
-* [MessageEvent](ifs/MessageEvent.md) - MessageEvent represents a message received by a target object
-* [MessagePort](ifs/MessagePort.md) - MessagePort represents one end of a message channel
-* [MySQL](ifs/MySQL.md) - MySQL 对象是用于操作 MySQL 数据库的类,
-* [PerformanceEntry](ifs/PerformanceEntry.md) - PerformanceEntry 接口提供了 performance 记录的通用属性
-* [PerformanceMark](ifs/PerformanceMark.md) - PerformanceMark 接口提供了 performance mark 记录的详细信息。
-* [PerformanceMeasure](ifs/PerformanceMeasure.md) - PerformanceMeasure 接口提供了 performance measure 记录的详细信息。
-* [PerformanceObserver](ifs/PerformanceObserver.md) - PerformanceObserver 接口用于观察性能记录的接口
-* [PerformanceObserverEntryList](ifs/PerformanceObserverEntryList.md) - PerformanceObserverEntryList 对象包含了 PerformanceObserver 观察到的 performance 记录的详细信息
-* [RTCDataChannel](ifs/RTCDataChannel.md) - RTCDataChannel接口定义了一个双向的数据通道
-* [RTCIceCandidate](ifs/RTCIceCandidate.md) - WebRTC ICE 候选参数对象
-* [RTCPeerConnection](ifs/RTCPeerConnection.md) - RTCPeerConnection 定义 WebRTC 连接的方法和属性
-* [RTCSessionDescription](ifs/RTCSessionDescription.md) - WebRTC 会话描述对象
-* [RangeStream](ifs/RangeStream.md) - Range 查询流读取对象
-* [Redis](ifs/Redis.md) - Redis 数据库客户端对象
-* [RedisHash](ifs/RedisHash.md) - Redis 数据库客户端 Hash 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库
-* [RedisList](ifs/RedisList.md) - Redis 数据库客户端 List 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库
-* [RedisSet](ifs/RedisSet.md) - Redis 数据库客户端 Set 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库
-* [RedisSortedSet](ifs/RedisSortedSet.md) - Redis 数据库客户端 SortedSet 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库
-* [Routing](ifs/Routing.md) - 消息处理器路由对象
-* [SQLite](ifs/SQLite.md) - SQLite 对象是内置模块 db 的一个成员，主要负责 SQLite 数据库的连接和操作，可用于 SQLite 数据库的创建、查询、插入、更新等操作。同时，SQLite 对象也提供了一些类似备份、格式化 SQL 等高级操作。SQLite 连接对象还支持事务操作
-* [SandBox](ifs/SandBox.md) - 隔离沙箱对象，用于管理一个独立的运行空间
-* [Script](ifs/Script.md) - Script 脚本编译和运行对象
-* [SecureContext](ifs/SecureContext.md) - tls 安全上下文对象，用于多个 tls 连接共享基础配置
-* [SeekableStream](ifs/SeekableStream.md) - 可移动当前指针的流对象接口
-* [Semaphore](ifs/Semaphore.md) - 纤程信号量对象
-* [Service](ifs/Service.md) - 系统服务管理对象
-* [Sign](ifs/Sign.md) - 用于生成签名的实用程序
-* [Smtp](ifs/Smtp.md) - Smtp对象
-* [Socket](ifs/Socket.md) - 网络套接口对象
-* [Stat](ifs/Stat.md) - 文件的基础信息对象
-* [StatsWatcher](ifs/StatsWatcher.md) - 文件 Stats 观察对象
-* [Stream](ifs/Stream.md) - 流操作对象，用于二进制数据流读写
-* [StreamReader](ifs/StreamReader.md) - StreamReader 对象，兼容 WHATWG ReadableStreamDefaultReader 接口的轻量级读取器
-* [StringDecoder](ifs/StringDecoder.md) - 流解码对象
-* [TLSHandler](ifs/TLSHandler.md) - tls/ssl 协议转换处理器
-* [TLSServer](ifs/TLSServer.md) - tls 服务器对象，可方便创建一个标准多纤程 tls/ssl 服务器
-* [TLSSocket](ifs/TLSSocket.md) - tls/ssl 网络套接口对象
-* [TTYInputStream](ifs/TTYInputStream.md) - tty 读流对象, 用于对 tty 进行读取, 写入
-* [TTYOutputStream](ifs/TTYOutputStream.md) - tty 写流对象, 用于处理 tty 输出
-* [TcpServer](ifs/TcpServer.md) - TcpServer` 是高并发的 TCP Socket 服务器，可以用来创建一个初始状态下已经与客户端建立了 TCP 连接的 TCP 服务器
-* [TextDecoder](ifs/TextDecoder.md) - TextDecoder 解码对象
-* [TextEncoder](ifs/TextEncoder.md) - TextEncoder 编码对象
-* [Timer](ifs/Timer.md) - 定时器处理器对象
-* [Tray](ifs/Tray.md) - 系统状态图标，用于在系统托盘中显示一个图标
-* [URLSearchParams](ifs/URLSearchParams.md) - URLSearchParams 是一个专门用于处理 URL 查询参数的容器类，继承自 HttpCollection
-* [Unzip](ifs/Unzip.md) - Unzip 解压缩编解码器，自动检测 gzip 或 deflate 格式并解压
-* [UrlObject](ifs/UrlObject.md) - URL 对象，实现 WHATWG URL 标准，用于解析、构造和操作 URL
-* [Verify](ifs/Verify.md) - 用于验证签名的实用程序
-* [WebSocket](ifs/WebSocket.md) - WebSocket 是一种基于 TCP 协议的全双工通信协议，在浏览器和服务器之间建立起一个不断开的连接，可以实现实时双向数据传输，并且可以支持任意格式的数据传输。在 fibjs 中，WebSocket 支持模块提供了相应的 API 接口，可以实现 WebSocket 服务器端和客户端的开发
-* [WebSocketMessage](ifs/WebSocketMessage.md) - `WebSocketMessage` 是 WebSocket 协议中的一种消息类型，它封装了 WebSocket 传输协议中各类消息的数据格式和处理方式，可用于 WebSocket 客户端和服务端双方通信。
-* [WebView](ifs/WebView.md) - WebView 对象，嵌入式浏览器窗口组件。
-* [Worker](ifs/Worker.md) - Worker 对象是用于创建子线程的对象，可以在程序中创建和处理子线程。一个 Worker 对象可以理解为一个在与主线程不同的线程中执行的 JavaScript 进程。 Worker 不与主线程共享内存，不会阻塞主线程，是一种主流的异步编程方式
-* [WorkerMessage](ifs/WorkerMessage.md) - WorkerMessage 是用于 Worker 线程通信的消息对象。通过 postMessage() 发送消息时，接收方的 message 事件会将本对象作为事件参数传入。data 属性包含传递的值。
-* [X509Certificate](ifs/X509Certificate.md) - 封装 X509 证书并提供信息读取
-* [X509CertificateRequest](ifs/X509CertificateRequest.md) - X509CertificateRequest 对象是用于创建 x509 证书请求的对象，属于 crypto 模块
-* [XMLSerializer](ifs/XMLSerializer.md) - XMLSerializer 接口提供将 DOM 树序列化为 XML 字符串的能力
-* [XmlAttr](ifs/XmlAttr.md) - XmlAttr 对象表示 XmlElement 对象的属性
-* [XmlCDATASection](ifs/XmlCDATASection.md) - XmlCDATASection 对象表示文档中的 CDATA 区段
-* [XmlCharacterData](ifs/XmlCharacterData.md) - XmlCharacterData 接口提供了 XmlText 和 XmlComment 节点的常用功能
-* [XmlComment](ifs/XmlComment.md) - XmlComment 对象表示文档中注释节点的内容
-* [XmlDocument](ifs/XmlDocument.md) - XmlDocument 是  xml 模块的一个对象，它代表整个 XML 文档，提供了对整个文档的访问入口
-* [XmlDocumentFragment](ifs/XmlDocumentFragment.md) - XmlDocumentFragment 对象表示一个轻量级的文档对象，能够容纳文档的某个部分
-* [XmlDocumentType](ifs/XmlDocumentType.md) - XmlDocumentType 对象用于访问 XML 所定义的实体
-* [XmlElement](ifs/XmlElement.md) - XmlElement 对象表示 XML 文档中的元素
-* [XmlNamedNodeMap](ifs/XmlNamedNodeMap.md) - XmlNamedNodeMap 对象表示一个无顺序的属性列表
-* [XmlNode](ifs/XmlNode.md) - XmlNode 对象是整个 DOM 的基础数据类型
-* [XmlNodeList](ifs/XmlNodeList.md) - XmlNodeList 对象代表一个有顺序的节点列表
-* [XmlProcessingInstruction](ifs/XmlProcessingInstruction.md) - XmlProcessingInstruction 对象表示 xml 处理指令
-* [XmlText](ifs/XmlText.md) - XmlText 对象表示元素或属性的文本内容
-* [ZipFile](ifs/ZipFile.md) - ZipFile 对象是 zip 格式文件压缩解压模块中的重要对象，提供了对 zip 文件的读写访问
-* [ZlibCodec](ifs/ZlibCodec.md) - ZlibCodec 是 zlib 压缩解压缩编解码器的基类，提供 zlib 类构造函数接口
-* [object](ifs/object.md) - 基础对象，所有对象均继承于此
+# Built-in Objects
+* [AbortController](ifs/AbortController.md) - The controller object that owns an AbortSignal and cancels the operations listening to it
+* [AbortSignal](ifs/AbortSignal.md) - The signal that communicates cancellation to asynchronous operations
+* [AsyncLocalStorage](ifs/AsyncLocalStorage.md) - AsyncLocalStorage stores a value and makes it available to an asynchronous call chain, similar to thread-local storage; it is used to carry request-scoped data such as a request id, a user or a trace context across callbacks, promises and fibers without passing it as an argument
+* [AsyncResource](ifs/AsyncResource.md) - AsyncResource captures the asynchronous context at construction time so it can be restored later; it is the building block for wrapping callback-based APIs whose callbacks must run in the context of the operation that started them
+* [Blob](ifs/Blob.md) - An immutable container of raw bytes, the Web Blob API of fibjs
+* [Buffer](ifs/Buffer.md) - Fixed-length binary data buffer used by io, hashing, compression and network protocols
+* [BufferedStream](ifs/BufferedStream.md) - A buffered reader over any Stream, with text helpers
+* [CSSStyleDeclaration](ifs/CSSStyleDeclaration.md) - CSSStyleDeclaration is the live view of an element's inline `style` declaration block, obtained from the `style` property of an HTML-mode element
+* [Chain](ifs/Chain.md) - A message handler chain that runs a series of handlers in order
+* [ChildProcess](ifs/ChildProcess.md) - A handle to a child process created by spawn, fork or the callback form of exec, execFile and run
+* [Cipher](ifs/Cipher.md) - Symmetric cipher object that transforms a byte stream with a secret key
+* [Condition](ifs/Condition.md) - A condition variable: park fibers until shared state becomes true
+* [ConsoleObject](ifs/ConsoleObject.md) - Console-like logger bound to a pair of writable objects
+* [CryptoKey](ifs/CryptoKey.md) - Handle to a Web Crypto key: key material plus algorithm, extractable flag and usages
+* [DOMEvent](ifs/DOMEvent.md) - DOMEvent is the DOM-style event object installed as the global `Event` class: a value
+* [DOMParser](ifs/DOMParser.md) - DOMParser parses an HTML or XML source string into an XmlDocument; the class is a global and Node.js has no equivalent
+* [DOMStringMap](ifs/DOMStringMap.md) - DOMStringMap is the live camelCase view of the `data-*` attributes of an element, obtained from the `dataset` property
+* [DOMTokenList](ifs/DOMTokenList.md) - The DOMTokenList object represents a set of space-separated tokens, commonly
+* [DbConnection](ifs/DbConnection.md) - DbConnection is the base class of SQL database connections: it owns one session
+* [Deflate](ifs/Deflate.md) - Deflate is the Node.js compatible codec that compresses data to the zlib format
+* [DeflateRaw](ifs/DeflateRaw.md) - DeflateRaw is the Node.js compatible codec that compresses data to raw deflate
+* [DgramSocket](ifs/DgramSocket.md) - A UDP datagram socket: an EventEmitter endpoint that binds a local port, sends one datagram at a time to a destination, and delivers every received datagram through the 'message' event
+* [Digest](ifs/Digest.md) - Streaming message-digest (hash) object, also used for HMAC
+* [Dir](ifs/Dir.md) - Iterator over the entries of one directory, read one entry at a time
+* [DirEntry](ifs/DirEntry.md) - A directory entry: the name and the type of one item inside a directory
+* [ECDH](ifs/ECDH.md) - Elliptic-curve Diffie-Hellman key-agreement object
+* [Event](ifs/Event.md) - Event is the fiber-level event primitive of the coroutine module: a broadcast gate that
+* [EventEmitter](ifs/EventEmitter.md) - EventEmitter is the observer-pattern base class of the runtime; every class that can
+* [EventSource](ifs/EventSource.md) - A client for the Server-Sent Events protocol, the fibjs EventSource implementation
+* [FSWatcher](ifs/FSWatcher.md) - Watches a file or directory with the platform notification service
+* [Fiber](ifs/Fiber.md) - The handle of a fiber: identity, lifetime and fiber-local storage
+* [File](ifs/File.md) - An in-memory file: a Blob with a file name and a modification time
+* [FileHandle](ifs/FileHandle.md) - An open file descriptor: reads, writes and inspects one open file by position
+* [FileStream](ifs/FileStream.md) - Binary file stream: reads, writes and positions one open file
+* [FormData](ifs/FormData.md) - An ordered collection of form field names and values, inheriting from HttpCollection
+* [Gunzip](ifs/Gunzip.md) - Gunzip is the Node.js compatible codec that decompresses gzip data
+* [Gzip](ifs/Gzip.md) - Gzip is the Node.js compatible codec that compresses data to the gzip container
+* [Handler](ifs/Handler.md) - The message handler contract and the constructor that builds every handler form
+* [Headers](ifs/Headers.md) - The case-insensitive HTTP header collection of the Fetch API, inheriting from
+* [HeapGraphEdge](ifs/HeapGraphEdge.md) - A directed reference between two HeapGraphNode objects
+* [HeapGraphNode](ifs/HeapGraphNode.md) - A single object node in a heap snapshot graph
+* [HeapSnapshot](ifs/HeapSnapshot.md) - A captured view of the V8 heap as a graph of nodes and edges
+* [Http2Server](ifs/Http2Server.md) - an HTTP/2 server: it accepts TLS connections that negotiate the `h2` ALPN protocol
+* [Http2Session](ifs/Http2Session.md) - an HTTP/2 session: a TLS connection shared by many concurrent streams with its settings and lifecycle
+* [Http2Stream](ifs/Http2Stream.md) - one HTTP/2 stream: an independent request/response carried by a session, a duplex Stream
+* [HttpClient](ifs/HttpClient.md) - The HttpClient class provides an independent HTTP/HTTPS client: its own connection pool, cookie jar, defaults and optional TLS identity
+* [HttpCollection](ifs/HttpCollection.md) - HttpCollection is the ordered multi-map base class behind the HTTP collections of fibjs: Headers, URLSearchParams, FormData and the request cookie collection
+* [HttpCookie](ifs/HttpCookie.md) - HttpCookie represents one HTTP cookie: a name/value pair with the domain, path, expiry and security attributes that scope it
+* [HttpHandler](ifs/HttpHandler.md) - Turns a stream carrying HTTP messages into request/response handling
+* [HttpMessage](ifs/HttpMessage.md) - HTTP message base object: the protocol metadata shared by HttpRequest and HttpResponse
+* [HttpRepeater](ifs/HttpRepeater.md) - An HTTP request forwarder (reverse proxy) to one or more backend servers
+* [HttpRequest](ifs/HttpRequest.md) - The HTTP request message: what a server receives and what a client sends
+* [HttpResponse](ifs/HttpResponse.md) - The HTTP response message: what a handler writes and what a client receives
+* [HttpServer](ifs/HttpServer.md) - The HTTP server object: a TcpServer plus HttpHandler that serves requests by handlers
+* [HttpUploadData](ifs/HttpUploadData.md) - HttpUploadData describes one part of a multipart/form-data upload: its file name, media type, transfer encoding and content stream
+* [HttpsServer](ifs/HttpsServer.md) - The HTTPS server: an HttpServer whose connections are terminated by an embedded TLSServer
+* [Inflate](ifs/Inflate.md) - Inflate is the Node.js compatible codec that decompresses zlib-format data
+* [InflateRaw](ifs/InflateRaw.md) - InflateRaw is the Node.js compatible codec that decompresses raw deflate data
+* [Iterator](ifs/Iterator.md) - Iterator is the abstract base class of every fibjs object that yields values one by one
+* [KeyObject](ifs/KeyObject.md) - Opaque handle to symmetric or asymmetric key material
+* [LevelDB](ifs/LevelDB.md) - An embedded key-value store backed by LevelDB and kept in a directory
+* [Lock](ifs/Lock.md) - A reentrant mutual-exclusion lock between fibers
+* [MemoryStream](ifs/MemoryStream.md) - Memory stream object: a growable in-memory buffer used as a read/write stream
+* [Menu](ifs/Menu.md) - Ordered list of MenuItem objects, shown as a window menu bar or a tray menu
+* [MenuItem](ifs/MenuItem.md) - Menu item, one row of a native Menu, created from a plain object descriptor
+* [Message](ifs/Message.md) - Basic message object: the payload unit shared by the networking stacks
+* [MessageChannel](ifs/MessageChannel.md) - MessageChannel creates a connected pair of MessagePort objects
+* [MessageEvent](ifs/MessageEvent.md) - MessageEvent is the object a MessagePort delivers for a received message; the payload is available in its `data` property
+* [MessagePort](ifs/MessagePort.md) - MessagePort is one end of a message channel; a value posted to it is structured-cloned and delivered to the paired port
+* [MySQL](ifs/MySQL.md) - MySQL is the DbConnection implementation for MySQL servers
+* [PerformanceEntry](ifs/PerformanceEntry.md) - The base class of a timeline record, describing one mark or measure
+* [PerformanceMark](ifs/PerformanceMark.md) - A mark recorded in the performance timeline: a named timestamp with an optional detail
+* [PerformanceMeasure](ifs/PerformanceMeasure.md) - A measure computed from a start and an end: a duration entry with an optional detail
+* [PerformanceObserver](ifs/PerformanceObserver.md) - Observes performance entries and delivers them to a callback
+* [PerformanceObserverEntryList](ifs/PerformanceObserverEntryList.md) - The batch of performance entries passed to a PerformanceObserver callback
+* [RTCDataChannel](ifs/RTCDataChannel.md) - RTCDataChannel is one bidirectional data channel of an RTCPeerConnection
+* [RTCIceCandidate](ifs/RTCIceCandidate.md) - RTCIceCandidate holds one ICE candidate of a WebRTC session: a transport address at which a peer can be reached during the connectivity checks
+* [RTCPeerConnection](ifs/RTCPeerConnection.md) - RTCPeerConnection manages one WebRTC session: it negotiates the session through descriptions, gathers ICE candidates and hosts the data channels that carry the application data
+* [RTCSessionDescription](ifs/RTCSessionDescription.md) - RTCSessionDescription wraps one session description (SDP) of a WebRTC session
+* [RangeStream](ifs/RangeStream.md) - Range query stream reading object
+* [Redis](ifs/Redis.md) - A Redis connection: the general command surface and the typed key views
+* [RedisHash](ifs/RedisHash.md) - A view of one Redis hash key: field and value operations without repeating the key
+* [RedisList](ifs/RedisList.md) - A view of one Redis list key: element operations without repeating the key in every call
+* [RedisSet](ifs/RedisSet.md) - A view of one Redis set key: member operations without repeating the key
+* [RedisSortedSet](ifs/RedisSortedSet.md) - A view of one Redis sorted-set key: score-ordered member operations
+* [Routing](ifs/Routing.md) - Matches a message against routing rules and dispatches it to the first match
+* [SQLite](ifs/SQLite.md) - SQLite is the DbConnection implementation for SQLite databases: one file (or an
+* [SandBox](ifs/SandBox.md) - An isolated module registry that runs code with an optional standalone global object; use it to load untrusted or host-reloaded code without touching the host module table
+* [Script](ifs/Script.md) - A precompiled script: compiles source text once, then runs it in any context; use it instead of the one-shot vm.runIn* functions when the same code is executed repeatedly or across contexts
+* [SecureContext](ifs/SecureContext.md) - A TLS configuration shared by connections: certificates, trust store, protocol versions, ALPN list and verification flags
+* [SeekableStream](ifs/SeekableStream.md) - A stream whose current position can be queried and moved
+* [Semaphore](ifs/Semaphore.md) - A counting semaphore between fibers: limits concurrency and hands work from
+* [Service](ifs/Service.md) - A Windows system service: run a JavaScript function under the Service Control Manager
+* [Sign](ifs/Sign.md) - Streaming signature generator
+* [Smtp](ifs/Smtp.md) - A minimal SMTP client that talks to a mail server command by command
+* [Socket](ifs/Socket.md) - A network socket: a TCP, unix socket or Windows pipe endpoint used to connect, listen and transfer data
+* [Stat](ifs/Stat.md) - File status information object
+* [Statement](ifs/Statement.md) - Statement is a prepared statement created by DbConnection.prepare(): it can be
+* [StatsWatcher](ifs/StatsWatcher.md) - File Stats watcher object
+* [Stream](ifs/Stream.md) - The abstract byte-stream base class shared by every fibjs stream object
+* [StreamReader](ifs/StreamReader.md) - A lightweight reader over a fibjs Stream, shaped like a WHATWG reader
+* [StringDecoder](ifs/StringDecoder.md) - Decodes a byte stream into text chunk by chunk, holding back the incomplete tail of a multibyte character so that characters split across chunk boundaries survive
+* [TLSHandler](ifs/TLSHandler.md) - A TLS protocol handler: it upgrades each accepted raw stream to TLS and invokes the wrapped handler with the resulting TLSSocket
+* [TLSServer](ifs/TLSServer.md) - A TLS server: a fiber-per-connection TCP server whose listener receives an encrypted TLSSocket
+* [TLSSocket](ifs/TLSSocket.md) - An encrypted stream endpoint: the TLS counterpart of a Socket, reading and writing through an established TLS session
+* [TTYInputStream](ifs/TTYInputStream.md) - The readable side of a terminal: reads input and switches between cooked and raw mode
+* [TTYOutputStream](ifs/TTYOutputStream.md) - The writable side of a terminal: window size, resize events and ANSI cursor control
+* [TcpServer](ifs/TcpServer.md) - A fiber-per-connection TCP server: it binds an address and hands every accepted connection to a handler, one Socket and one fiber per client
+* [TextDecoder](ifs/TextDecoder.md) - Decodes bytes into JavaScript strings, the Web TextDecoder API of fibjs
+* [TextEncoder](ifs/TextEncoder.md) - Encodes JavaScript strings into bytes, the Web TextEncoder API of fibjs
+* [Timer](ifs/Timer.md) - Timer is the handle returned by every timer scheduling function; it controls the timer lifecycle: keep-alive, cancellation and state
+* [Tray](ifs/Tray.md) - System tray icon with an optional menu, created by gui.createTray
+* [URLSearchParams](ifs/URLSearchParams.md) - The ordered query-parameter collection of the URL Standard, inheriting from
+* [Unzip](ifs/Unzip.md) - Unzip is the Node.js compatible codec that decompresses gzip or zlib data by
+* [UrlObject](ifs/UrlObject.md) - URL object implementing the WHATWG URL standard and the legacy URL object at once
+* [Verify](ifs/Verify.md) - Streaming signature verifier
+* [WebSocket](ifs/WebSocket.md) - A WebSocket client and server endpoint, the fibjs implementation of the WebSocket API
+* [WebSocketMessage](ifs/WebSocketMessage.md) - The message object exchanged by WebSocket peers, a Message with frame metadata
+* [WebView](ifs/WebView.md) - WebView object, an embedded browser view owned by a desktop application window
+* [Worker](ifs/Worker.md) - Worker creates a JavaScript child thread and controls it; use it for CPU-bound work that would block the fiber scheduler of the main isolate
+* [X509Certificate](ifs/X509Certificate.md) - A parsed X.509 certificate: reads the subject, issuer, validity, extensions,
+* [X509CertificateRequest](ifs/X509CertificateRequest.md) - An X.509 certificate request (CSR): a subject and a public key signed by the
+* [XMLSerializer](ifs/XMLSerializer.md) - XMLSerializer serializes a DOM node into XML text; the class is a global and Node.js has no equivalent
+* [XmlAttr](ifs/XmlAttr.md) - The XmlAttr object represents one attribute of an XmlElement: a name, a value
+* [XmlCDATASection](ifs/XmlCDATASection.md) - The XmlCDATASection object represents a CDATA section in a document
+* [XmlCharacterData](ifs/XmlCharacterData.md) - The abstract interface that provides the character-handling members shared by
+* [XmlComment](ifs/XmlComment.md) - The XmlComment object represents the content of a comment node in a document
+* [XmlDocument](ifs/XmlDocument.md) - XmlDocument is the root of the fibjs XML/HTML DOM: it owns the node tree and
+* [XmlDocumentFragment](ifs/XmlDocumentFragment.md) - The XmlDocumentFragment object represents a lightweight document object that
+* [XmlDocumentType](ifs/XmlDocumentType.md) - The XmlDocumentType object represents the doctype declaration of a document
+* [XmlElement](ifs/XmlElement.md) - XmlElement is the element node type of the fibjs XML/HTML DOM: the only node that
+* [XmlNamedNodeMap](ifs/XmlNamedNodeMap.md) - The XmlNamedNodeMap object represents the attributes of an element as an
+* [XmlNode](ifs/XmlNode.md) - The abstract base interface of every node in the fibjs XML/HTML DOM: it defines
+* [XmlNodeList](ifs/XmlNodeList.md) - The XmlNodeList object represents an ordered list of nodes, 0-based and
+* [XmlProcessingInstruction](ifs/XmlProcessingInstruction.md) - The XmlProcessingInstruction object represents a processing instruction
+* [XmlText](ifs/XmlText.md) - The XmlText object represents a run of plain text in a document
+* [ZipFile](ifs/ZipFile.md) - The ZipFile object gives read and write access to the entries of a single zip archive
+* [ZlibCodec](ifs/ZlibCodec.md) - ZlibCodec is the base class of the Node.js compatible zlib codec classes; build
+* [object](ifs/object.md) - The base class of every native object and the hooks used to convert one

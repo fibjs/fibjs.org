@@ -1,158 +1,294 @@
-# 模块 process
-进程处理模块，用以管理当前进程的资源
+# Module process
+The process [module](module.md) describes and controls the current fibjs process: its arguments and environment, working directory, resources, exit and standard streams; useful for command line tools, service entry points and diagnostics
 
-模块的主要能力：
+Main capabilities:
 
-- **进程信息**：`argv`、`execArgv`、`version`、`execPath`、`arch`、`platform`、`pid`、`ppid`、`env` 等属性；
-- **进程控制**：`exit` 退出进程、`exitCode` 退出码、`cwd`/`chdir` 工作路径、`umask`、`uptime`、`hrtime` 计时、`kill` 发送信号；
-- **资源报告**：`cpuUsage`、`memoryUsage`、`resourceUsage`；
-- **调度**：`nextTick` 启动纤程执行函数；
-- **标准流**：`stdin`、`stdout`、`stderr`；
-- **父子进程通信**：`send`、`disconnect`、`connected`；
-- **进程事件**：`beforeExit`、`exit`、`unhandledRejection`、`warning`、信号事件（详见下文）。
+- **Runtime identity**: `argv`, `execArgv`, `execPath`, `version`, `versions`, `release`,
+  `arch`, `platform`, `pid`, `ppid`;
+- **Environment**: `env` (a live view of the operating system environment) and `loadEnvFile`;
+- **Control and exit**: `exit`, `exitCode`, `cwd`/`chdir`, `umask`, `kill`,
+  `getuid`/`getgid`/`setuid`/`setgid`;
+- **Timing and resources**: `uptime`, `hrtime`, `cpuUsage`, `memoryUsage`, `resourceUsage`;
+- **Scheduling**: `nextTick` runs a callback on a new fiber after the current synchronous block;
+- **Standard streams**: `stdin`, `stdout`, `stderr`, on descriptors 0/1/2;
+- **Parent-child channel**: `send`, `connected`, `disconnect` in a child started with an IPC channel;
+- **Diagnostics and extensions**: `emitWarning`, `dlopen`, `binding`, `getBuiltinModule`.
 
-引用方法：
+Concepts:
+
+- **Process lifetime and the fiber task queue**: JavaScript runs on fibers scheduled by the
+  runtime, so there is no single event loop; the process stays alive while the task queue
+  has work ([timers](timers.md), pending I/O, ref'd workers). When the queue drains, the `beforeExit`
+  event fires with the current `exitCode` and the process terminates unless a listener
+  starts new work. Calling `process.exit` or leaving a rejected promise with no handler
+  skips `beforeExit` and terminates at once, while an uncaught error still runs
+  `beforeExit` (with the value of `exitCode`) before the process exits with code 1.
+- **Exit semantics**: `exitCode` defaults to 0 and is what `exit()` with no argument
+  reports; `exit(code)` assigns the code first. Every exit [path](path.md) emits the `exit` event
+  synchronously with that code and then terminates, so only synchronous cleanup runs in
+  its listeners. The code reaches the operating system unchanged, while a shell observes
+  its low 8 bits. A rejected promise with no handler logs the reason and exits with code 1
+  unless a `unhandledRejection` listener exists.
+- **[Event](../../object/ifs/Event.md) model**: the [module](module.md) [object](../../object/ifs/object.md) is an [EventEmitter](../../object/ifs/EventEmitter.md); use `on`/`once`/`off`/`emit`/
+  `listeners` from the [EventEmitter](../../object/ifs/EventEmitter.md) class for `beforeExit`, `exit`, `unhandledRejection`,
+  `warning`, `disconnect`, `message` and the signal events. Signal delivery is preemptive:
+  on POSIX only `SIGINT` and `SIGTERM` reach a JavaScript listener, `SIGPIPE` is ignored
+  and every other signal keeps its operating system default action (which usually
+  terminates the process), and a `SIGINT`/`SIGTERM` without a listener terminates with
+  code 1 as well. On Windows the [console](console.md) control events are mapped to `SIGINT`.
+- **Arguments and environment**: `argv` holds the runner [path](path.md), the script [path](path.md) and the
+  user arguments, while fibjs runtime options (such as `--no-js-thread-affinity`) are
+  removed and reported by `execArgv`. `env` is backed by the operating system environment
+  instead of being a copy: reads, assignments, `delete`, `in` and `Object.keys` all reach
+  the process environment, values are strings, assigning `undefined` unsets a variable,
+  and assigning `TZ` or `LANG` applies the time zone or locale to the isolate at once.
+  `loadEnvFile` follows dotenv syntax and never overwrites a variable that is already set.
+- **Standard streams**: `stdin`, `stdout` and `stderr` are [Stream](../../object/ifs/Stream.md) objects on descriptors
+  0/1/2; when a descriptor is a terminal its stream is a [TTYInputStream](../../object/ifs/TTYInputStream.md) or
+  [TTYOutputStream](../../object/ifs/TTYOutputStream.md) with `isTTY` and terminal control methods. The [console](console.md) [module](module.md) writes to
+  these streams.
+- **Parent-child IPC**: only a child started with an IPC channel ([child_process.fork](child_process.md#fork), or
+  `stdio: 'ipc'`) receives NODE_CHANNEL_FD and with it `send`, `connected` and
+  `disconnect`; in any other process the three members are `undefined`, matching Node.js.
+  Messages are JSON-encoded and newline-framed, and a child reads
+  them lazily once a `message` listener is registered, so an IPC child without such a
+  listener is not kept alive by the channel.
+- **Node.js differences**: `uptime` measures the system uptime, not the time since the
+  process started; `version`/`versions` describe fibjs (the bundled Node-API version is
+  `versions.napi`); `release.name` stays `'node'` for compatibility and
+  `release.venderUrl` is a fibjs extension; `title` is writable but does not change the
+  operating system process name; `binding` is an internal compatibility shim;
+  `getuid`/`getgid` return 0 and `setuid`/`setgid` do nothing on Windows. `emitWarning`
+  is dropped silently when no `warning` listener is attached, while Node.js prints it to
+  stderr.
+
+Import:
 
 ```JavaScript
-var process = require('process');
+const process = require('process'); // also available as a global
 ```
 
-## 进程事件
-process 模块对象是 [EventEmitter](../../object/ifs/EventEmitter.md) 的实例，可以通过注册事件监听器响应进程级别的事件。
-
-### beforeExit 事件
-**当 fibjs 的任务已经为空，并且没有额外的工作被添加进来，事件 `beforeExit` 会被触发**
+Example 1 — inspect the runtime identity:
 
 ```JavaScript
-process.on('beforeExit', exitCode => {});
+const process = require('process');
+
+console.log(process.argv); // [runner, script, ...arguments]
+console.log(process.execPath);
+console.log(process.version, process.versions.fibjs, process.versions.node);
+console.log(process.pid, process.ppid, process.arch, process.platform);
+console.log(process.release.name); // node, kept for compatibility
 ```
 
-正常情况下，如果没有额外的工作被添加到任务队列，fibjs 进程会结束。但是如果 `beforeExit` 事件绑定的监听器的回调函数中，启动了一个新的任务，比如开启一个 fiber，那么 fibjs 进程会继续运行。
-
-[process.exitCode](process.md#exitCode) 作为唯一的参数值传递给 `beforeExit` 事件监听器的回调函数。如果进程由于显式的原因而将要终止，例如直接调用 [process.exit](process.md#exit) 或抛出未捕获的异常，`beforeExit`事件不会被触发。
-
-### unhandledRejection 事件
-**当 Promise 被拒绝且没有绑定错误处理时，事件 `unhandledRejection` 会被触发**
+Example 2 — read, set and delete environment variables:
 
 ```JavaScript
-process.on('unhandledRejection', (reason, promise) => {});
+const process = require('process');
+
+process.env.FIBJS_DEMO = 'hello';
+console.log(process.env.FIBJS_DEMO, typeof process.env.FIBJS_DEMO); // hello string
+console.log('FIBJS_DEMO' in process.env); // true
+
+process.env.FIBJS_DEMO = undefined; // unsets the variable
+console.log('FIBJS_DEMO' in process.env); // false
 ```
 
-`unhandledRejection` 事件监听器的回调函数有两个入参：第一个是拒绝原因 `reason`，第二个是被拒绝的 `promise` 对象。
-
-如果 `unhandledRejection` 事件没有绑定任何监听器，fibjs 会在打印错误后以退出码 1 终止进程（与 node >= 15 行为一致），`beforeExit` 事件不会被触发。
-
-### exit 事件
-**当 fibjs 退出时，事件 `exit` 会被触发，一旦所有与 `exit` 事件绑定的监听器执行完成，进程会终止**
+Example 3 — load a dotenv file without overwriting existing variables:
 
 ```JavaScript
-process.on('exit', exitCode => {});
-```
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+const process = require('process');
 
-`exit` 事件监听器的回调函数，只有一个入参，这个参数的值可以是 [process.exitCode](process.md#exitCode) 的属性值，或者是调用 [process.exit](process.md#exit) 方法时传入的 `exitCode` 值。
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-process-'));
+const file = path.join(dir, '.env');
+fs.writeFile(file, 'FIBJS_DEMO=from-file\nEXISTING=from-file\n');
 
-### Signal 事件
-**当 fibjs 进程接收到一个信号时，会触发信号事件，目前支持的信号有 SIGINT 和 SIGTERM。每个事件名称，以信号名称的大写表示 (比如事件'SIGINT' 对应信号 SIGINT)。**
+process.env.EXISTING = 'from-env';
+process.loadEnvFile(file);
+console.log(process.env.FIBJS_DEMO, process.env.EXISTING); // from-file from-env
 
-信号事件不同于其它进程事件，信号事件是抢占的，当信号发生时，无论当前在 [io](io.md) 操作，还是 JavaScript 运算，都会尽快触发相应事件。比如你可以用下面的代码，中断当前应用，并输出运行状态：
-
-```JavaScript
-var coroutine = require('coroutine');
-
-process.on('SIGINT', () => {
-    coroutine.fibers.forEach(f => console.error("Fiber %d:\n%s", f.id, f.stack));
-    process.exit();
+delete process.env.FIBJS_DEMO;
+delete process.env.EXISTING;
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
 });
 ```
 
-信号名称及其意义如下：
-* SIGINT：在终端运行时，可以被所有平台支持，通常可以通过 CTRL+C 触发。
-* SIGTERM：当进程被 kill 时触发此信号。Windows 下不支持。
+Example 4 — change the working directory and measure elapsed time:
 
-## 静态函数
+```JavaScript
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+const process = require('process');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-process-'));
+const previous = process.cwd();
+const start = process.hrtime();
+
+try {
+    process.chdir(dir);
+    fs.writeFile('relative.txt', 'resolved against the new directory');
+    console.log(fs.readFile('relative.txt', 'utf8'));
+} finally {
+    process.chdir(previous);
+}
+
+const elapsed = process.hrtime(start);
+console.log('chdir and write took about', elapsed[0] * 1e3 + elapsed[1] / 1e6, 'ms');
+
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
+```
+
+Example 5 — run code from the exit events:
+
+```JavaScript
+const process = require('process');
+
+process.on('beforeExit', (code) => console.log('beforeExit', code));
+process.on('exit', (code) => console.log('exit', code));
+
+process.exitCode = 0; // the natural exit reports this code
+console.log('the process ends when the task queue is empty');
+```
+
+Process events:
+
+- **`beforeExit`** — emitted with the current `exitCode` when the task queue drains; work
+  started by a listener keeps the process alive and the event can fire again later. It is
+  skipped by `exit` and by an unhandled rejection, but an uncaught error runs it before
+  the exit code becomes 1.
+- **`exit`** — emitted synchronously with the exit code on every termination [path](path.md); only
+  synchronous work runs in its listeners.
+- **`unhandledRejection`** — emitted with `(reason, promise)` for every rejected promise
+  without a handler when the outermost scope ends; without a listener the process logs
+  the reason and exits with code 1.
+- **`warning`** — receives the Error [object](../../object/ifs/object.md) built by `emitWarning`, with `name`,
+  `message`, `code` and `detail` properties.
+- **`disconnect`** and **`message`** — only in a child with an IPC channel; see
+  `connected` and `send`.
+- **`SIGINT`** and **`SIGTERM`** — preemptive, and the listener receives no arguments;
+  `SIGINT` also covers the Windows [console](console.md) control events.
+
+Notes:
+
+- `process.exit` does not return: a normal end of the program, an uncaught error and an
+  explicit exit all pass through the `exit` event, so flush or release resources before
+  returning from it.
+- The [module](module.md) [object](../../object/ifs/object.md) is shared by every script of an isolate; assigning `argv` or
+  `exitCode` changes the values seen by the whole isolate, and a worker isolate has its
+  own `process` [object](../../object/ifs/object.md).
+- On Windows `umask`, `getuid`/`getgid` and `setuid`/`setgid` are limited as described on
+  the members; signals other than `SIGINT` and `SIGTERM` cannot be observed from
+  JavaScript.
+
+## Static Methods
         
 ### umask
-**改变当前的 umask，Windows 不支持此方法**
+**Changes the current umask; not supported on Windows**
 
 ```JavaScript
-static Integer process.umask(Integer mask);
+static Integer process.umask(String | Integer mask);
 ```
 
-调用参数:
-* mask: Integer, 指定新的掩码
+Parameters:
+* mask: String | Integer, the new mask: a number, or an octal string (e.g: "0664")
 
-返回结果:
-* Integer, 返回之前的 mask
+Returns:
+* Integer, returns the previous mask
 
---------------------------
-**改变当前的 umask，Windows 不支持此方法**
-
-```JavaScript
-static Integer process.umask(String mask);
-```
-
-调用参数:
-* mask: String, 指定新的掩码， 字符串类型八进制(e.g: "0664")
-
-返回结果:
-* Integer, 返回之前的 mask
+The mask removes permission bits from newly created files and directories. A string
+mask is read as an octal number ("0664" and "664" are the same); any character
+outside '0'-'7' makes the call throw Error 20024 ("process: invalid octal string"),
+while a numeric mask is used as it is. The previous mask is returned and the new mask
+applies to the whole process.
 
 --------------------------
-**返回当前的 umask，Windows 不支持此方法**
+**Returns the current umask; not supported on Windows**
 
 ```JavaScript
 static Integer process.umask();
 ```
 
-返回结果:
-* Integer, 返回当前的 mask 值
+Returns:
+* Integer, returns the current mask value
+
+The mask is read (and restored) without changing it; see the other form for how a
+string mask is interpreted. On Windows the underlying CRT mask keeps only the read and
+write bits, so every mask reads back as 0o600.
 
 --------------------------
 ### hrtime
-**返回系统高精度时间，此时间与当前时间无关，仅用于高精度计时**
+**Returns the system high-resolution time; this time is unrelated to the current time and is only used for high-precision timing**
 
 ```JavaScript
 static Array process.hrtime(Array diff = []);
 ```
 
-调用参数:
-* diff: Array, 用于比较的初始时间
+Parameters:
+* diff: Array, the initial time to compare against
 
-返回结果:
-* Array, 返回计时时间，格式为 [seconds, nanoseconds]
+Returns:
+* Array, returns the measured time in the format [seconds, nanoseconds]
+
+The result is a two-element array `[seconds, nanoseconds]` from a monotonic clock that
+starts at system boot, so it never jumps when the wall clock is adjusted. Pass a
+previous result as diff to get the elapsed time; only an array of exactly two elements
+is subtracted, other arrays are ignored, and a value that is not an array throws a type
+error. `hrtime.bigint()` returns the same clock as one BigInt number of nanoseconds,
+matching Node.js.
 
 --------------------------
 ### exit
-**退出当前进程，并返回 exitCode 作为进程结果**
+**Exits the current process, using exitCode as the process result**
 
 ```JavaScript
 static process.exit();
 ```
 
+The `exit` event is emitted synchronously first, then the process terminates and the
+call never returns. Inside a worker isolate it stops that worker and reports the code
+to the parent through its exit event, leaving the main process running. The other
+overload takes the code directly and assigns it to `exitCode` before exiting.
+
 --------------------------
-**退出当前进程，并返回结果**
+**Exits the current process and returns the result**
 
 ```JavaScript
 static process.exit(Integer code);
 ```
 
-调用参数:
-* code: Integer, 返回进程结果
+Parameters:
+* code: Integer, the process result to return
+
+The code is assigned to `exitCode` and the process follows the same [path](path.md) as `exit()`:
+the `exit` event is emitted and the process terminates, so this call never returns.
+Use `exitCode` alone to end the program from normal code instead.
 
 --------------------------
 ### cwd
-**返回操作系统当前工作路径**
+**Returns the current working [path](path.md) of the operating system**
 
 ```JavaScript
 static String process.cwd();
 ```
 
-返回结果:
-* String, 返回当前系统路径
+Returns:
+* String, returns the current system [path](path.md)
+
+The [path](path.md) is absolute and starts as the directory the process was started in; it is
+cached and refreshed by `chdir`, so every [module](module.md) sees the new value at once. Relative
+paths passed to the [fs](fs.md) [module](module.md) are resolved against this directory.
 
 --------------------------
 ### dlopen
-**动态加载 C++ Addons**
+**Dynamically loads a C++ extension (Node-API / N-API extension)**
 
 ```JavaScript
 static process.dlopen(Object module,
@@ -160,115 +296,210 @@ static process.dlopen(Object module,
     Integer flags = 1);
 ```
 
-调用参数:
-* module: Object, 指定要加载的模块
-* filename: String, 指定要加载的模块文件名
-* flags: Integer, 指定加载模块的方式，缺省为 1
+Parameters:
+* module: Object, specifies the [module](module.md) to load
+* filename: String, specifies the file name of the [module](module.md) to load
+* flags: Integer, specifies how to load the [module](module.md), the default is 1
+
+First the dynamic library is opened with flags (the default is 1, i.e. [os.constants](os.md#constants).dlopen.RTLD_LAZY), then the extension's registration function completes initialization:
+A Node-API extension exports napi_register_module_v1; the exports [object](../../object/ifs/object.md) registered by this function is written to module.exports, and requiring a .node file ultimately goes through this [path](path.md) as well.
+
+Compatibility notes:
+- By default fibjs pins all JS of an isolate to one dedicated OS thread, which is consistent with Node.js's contract that "one napi_env corresponds to one OS thread";
+  therefore extensions that cache class constructors or runtime handles in thread-local storage (TLS) when the [module](module.md) is loaded work correctly;
+- When started with --no-js-thread-affinity, the isolate's JS fibers are scheduled back on the shared thread pool, and extensions that rely on TLS may fail randomly;
+- If an extension uses napi_tsfn_blocking on a full threadsafe function inside a callback coming from JS, it blocks the isolate's only
+  JS thread, while draining that queue also requires this thread, resulting in self-deadlock; Node.js's single-threaded event loop has the same limitation.
 
 --------------------------
 ### chdir
-**修改操作系统当前工作路径**
+**Changes the current working [path](path.md) of the operating system**
 
 ```JavaScript
 static process.chdir(String directory);
 ```
 
-调用参数:
-* directory: String, 指定设定的新路径
+Parameters:
+* directory: String, specifies the new [path](path.md) to set
+
+The [path](path.md) may be absolute or relative to the current directory and must name an
+existing directory, otherwise the call throws (Error 2, "no such file or directory").
+The change applies to the whole process because [fs](fs.md) resolves relative paths against it.
+
+Example — change into a temporary directory and restore afterwards:
+
+```JavaScript
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-chdir-'));
+const previous = process.cwd();
+
+try {
+    process.chdir(dir);
+    fs.writeFile('note.txt', 'relative to the new directory');
+    console.log(fs.readFile('note.txt', 'utf8'));
+} finally {
+    process.chdir(previous);
+}
+
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
+```
 
 --------------------------
 ### loadEnvFile
-**从 dotenv 文件加载环境变量到 [process.env](process.md#env)**
+**Loads environment variables from a dotenv file into [process.env](process.md#env)**
 
 ```JavaScript
 static process.loadEnvFile(String path = "");
 ```
 
-调用参数:
-* path: String, 指定 dotenv 文件路径，空字符串时默认读取当前目录下的 .env
+Parameters:
+* path: String, specifies the dotenv file [path](path.md); when empty, reads .env in the current directory by default
+
+The file uses `KEY=value` lines: blank lines and lines starting with `#` are ignored,
+`export KEY=value` is accepted, a value may be quoted, and a trailing comment after
+whitespace is stripped. Variables already present in the environment are not
+overwritten, and `TZ`/`LANG` values apply immediately. A missing file throws ENOENT;
+see the `--env-file-if-exists` command line option for the optional variant.
+
+Example — load a file while one variable is already set:
+
+```JavaScript
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-envfile-'));
+const file = path.join(dir, 'app.env');
+fs.writeFile(file, 'FROM_FILE=yes\nKEPT=file\n');
+
+process.env.KEPT = 'env';
+process.loadEnvFile(file);
+console.log(process.env.FROM_FILE, process.env.KEPT); // yes env
+
+delete process.env.FROM_FILE;
+delete process.env.KEPT;
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
+```
 
 --------------------------
 ### uptime
-**查询运行环境运行时间，以秒为单位**
+**Queries the uptime of the runtime environment, in seconds**
 
 ```JavaScript
 static Number process.uptime();
 ```
 
-返回结果:
-* Number, 返回表示时间的数值
+Returns:
+* Number, returns a numeric value representing the time
+
+The value is the uptime of the operating system counted by the monotonic clock, not
+the time since the fibjs process started as in Node.js, so a freshly started process
+can already report a very large number. Use `hrtime` for elapsed time inside the
+process.
 
 --------------------------
 ### cpuUsage
-**查询当前进程在用户和系统代码中花费的时间，其值为微秒值（百万分之一秒）**
+**Queries the time spent by the current process in user and system code, in microseconds (one millionth of a second)**
 
 ```JavaScript
-static Object process.cpuUsage(Object previousValue = {});
+static (Number user, Number system) process.cpuUsage(Object previousValue = {});
 ```
 
-调用参数:
-* previousValue: Object, 指定上一次查询的时间
+Parameters:
+* previousValue: Object, specifies the time of the previous query
 
-返回结果:
-* Object, 返回包含时间报告
+Returns:
+* (Number user, Number system), returns the time report
 
-内存报告生成类似以下结果：
+The result is cumulative and has `user` and `system` fields; pass a previous result as
+previousValue to receive the difference since then. Both fields of previousValue must
+be numbers, otherwise the call throws Error 20005. Node.js reports the same units, so
+the values are portable.
+
+The report is generated similar to the following:
 
 ```JavaScript
-{
+// fragment: report shape
+({
     "user": 132379,
     "system": 50507
-}
+})
 ```
 
-其中：
-- user 返回进程在用户代码中花费的时间
-- system 返回进程在系统代码中花费的时间
+Where:
+- user returns the time the process spent in user code
+- system returns the time the process spent in system code
 
 --------------------------
 ### memoryUsage
-**查询当前进程内存使用报告**
+**Queries the memory usage report of the current process**
 
 ```JavaScript
 static Object process.memoryUsage();
 ```
 
-返回结果:
-* Object, 返回包含内存报告
+Returns:
+* Object, returns the memory report
 
-内存报告生成类似以下结果：
+All values are in bytes:
+- rss returns the physical memory currently occupied by the process
+- heapTotal returns the heap memory size of the V8 engine
+- heapUsed returns the heap memory currently used by the V8 engine
+- external returns the memory kept by JavaScript objects outside the V8 heap
+- nativeObjects returns an [object](../../object/ifs/object.md) counting the live native objects by class name
+- ExtStrings returns the number of external strings currently alive
+
+Node.js returns rss/heapTotal/heapUsed/external/arrayBuffers, so `nativeObjects` and
+`ExtStrings` are fibjs extensions and `arrayBuffers` is not provided.
+
+The report is generated similar to the following:
 
 ```JavaScript
-{
+// fragment: report shape
+({
     "rss": 8622080,
     "heapTotal": 4083456,
-    "heapUsed": 1621800
-}
+    "heapUsed": 1621800,
+    "external": 52737,
+    "nativeObjects": {},
+    "ExtStrings": 874
+})
 ```
-
-其中：
-- rss 返回进程当前占用物理内存大小
-- heapTotal 返回 [v8](v8.md) 引擎堆内存大小
-- heapUsed 返回 [v8](v8.md) 引擎正在使用堆内存大小
 
 --------------------------
 ### resourceUsage
-**查询当前进程的资源使用报告**
+**Queries the resource usage report of the current process**
 
 ```JavaScript
-static Object process.resourceUsage();
+static (Number userCPUTime, Number systemCPUTime, Number maxRSS, Number sharedMemorySize, Number unsharedDataSize, Number unsharedStackSize, Number minorPageFault, Number majorPageFault, Number swappedOut, Number fsRead, Number fsWrite, Number ipcSent, Number ipcReceived, Number signalsCount, Number voluntaryContextSwitches, Number involuntaryContextSwitches) process.resourceUsage();
 ```
 
-返回结果:
-* Object, 返回包含资源使用报告的对象
+Returns:
+* (Number userCPUTime, Number systemCPUTime, Number maxRSS, Number sharedMemorySize, Number unsharedDataSize, Number unsharedStackSize, Number minorPageFault, Number majorPageFault, Number swappedOut, Number fsRead, Number fsWrite, Number ipcSent, Number ipcReceived, Number signalsCount, Number voluntaryContextSwitches, Number involuntaryContextSwitches), returns an [object](../../object/ifs/object.md) containing the resource usage report
 
-resourceUsage 生成类似以下结果：
+The report maps the operating system rusage counters: CPU times are in microseconds,
+maxRSS is in kilobytes on Linux and in bytes on macOS/BSD (the unit of the underlying
+rusage), and the remaining counters are plain numbers. Fields the kernel does not
+expose are 0 (marked below). The field names match Node.js resourceUsage(); only the
+maxRSS unit follows the platform as described above.
+
+resourceUsage generates results similar to the following:
 
 ```JavaScript
-{
+// fragment: report shape
+({
     "userCPUTime": 132379, // User CPU time (microseconds), same as process.cpuUsage().user
-    "systemCPUTime": 50507, // System CPU time (microseconds), same as process.cpuUsage().system
-    "maxRSS": 8622080, // Maximum physical memory usage (KB)
+    "systemCPUTime": 50507, // System CPU time (microseconds)
+    "maxRSS": 39384, // Maximum physical memory usage (KB on Linux)
     "sharedMemorySize": 0, // Shared memory size (not supported)
     "unsharedDataSize": 0, // Unshared data size (not supported)
     "unsharedStackSize": 0, // Unshared stack size (not supported)
@@ -280,131 +511,197 @@ resourceUsage 生成类似以下结果：
     "ipcSent": 0, // Number of IPC messages sent (not supported)
     "ipcReceived": 0, // Number of IPC messages received (not supported)
     "signalsCount": 0, // Number of signals received (not supported)
-    "voluntaryContextSwitches": 1000, // Number of voluntary context switches (not supported on Windows)
-    "involuntaryContextSwitches": 500 // Number of involuntary context switches (not supported on Windows)
-}
+    "voluntaryContextSwitches": 1000, // Voluntary switches (not on Windows)
+    "involuntaryContextSwitches": 500 // Involuntary switches (not on Windows)
+})
 ```
 
 --------------------------
 ### nextTick
-**启动一个纤程执行指定的函数**
+**Starts a fiber to execute the specified function**
 
 ```JavaScript
-static process.nextTick(Function func,
+static process.nextTick(Function(...args) func,
     ...args);
 ```
 
-调用参数:
-* func: Function, 制定纤程执行的函数
-* args: ..., 可变参数序列，此序列会在纤程内传递给函数
+Parameters:
+* func: Function(...args), specifies the function executed by the fiber
+* args: ..., variable argument sequence, passed to the function inside the fiber
 
-回调在当前同步代码执行完毕后启动,多个 nextTick 回调按注册顺序执行;args 中的参数将传递给函数。
+The callback starts after the current synchronous block finishes; callbacks run in
+registration order and args are passed through to the function. The nextTick queue is
+drained before the V8 micro-tasks (promise jobs and queueMicrotask) and then the
+[timers](timers.md), as described in the [global](global.md) [module](module.md). An exception thrown by the callback is an
+uncaught error of the isolate.
+
+Example — ordering of synchronous code, nextTick and a promise:
+
+```JavaScript
+const process = require('process');
+
+console.log('sync');
+process.nextTick(() => console.log('nextTick'));
+Promise.resolve().then(() => console.log('microtask'));
+```
 
 --------------------------
 ### binding
-**获取指定名称的内部模块**
+**Gets the internal [module](module.md) with the specified name**
 
 ```JavaScript
 static Value process.binding(String name);
 ```
 
-调用参数:
-* name: String, 指定要查询的内部模块名称
+Parameters:
+* name: String, specifies the name of the internal [module](module.md) to query
 
-返回结果:
-* Value, 返回指定的内部模块
+Returns:
+* Value, returns the specified internal [module](module.md)
+
+`'process'` returns the process [module](module.md) itself, `'[EventEmitter](../../object/ifs/EventEmitter.md)'` and `'[Buffer](../../object/ifs/Buffer.md)'` return
+those classes, and any other name is looked up among the registered native modules
+(for example `'[fs](fs.md)'` or `'[net](net.md)'`); an unknown name returns undefined. This is an internal
+compatibility shim, not the Node.js [process.binding](process.md#binding) API.
+
+--------------------------
+### getBuiltinModule
+**Gets the built-in [module](module.md) with the specified name; returns undefined if the [module](module.md) does not exist**
+
+```JavaScript
+static Value process.getBuiltinModule(String id);
+```
+
+Parameters:
+* id: String, specifies the name of the built-in [module](module.md) to get; the "node:" prefix may be omitted or included, and subpaths are supported, such as "[path](path.md)", "node:[path](path.md)/posix", "[fs](fs.md)/promises"
+
+Returns:
+* Value, returns the built-in [module](module.md) [object](../../object/ifs/object.md), or undefined if the [module](module.md) does not exist
+
+Built-in ids may be given with or without the `node:` prefix; `fibjs:` is accepted as
+well, and sub-[path](path.md) modules such as `[path](path.md)/posix`, `[fs](fs.md)/promises` or `stream/web` resolve
+too. The returned [object](../../object/ifs/object.md) is identical to the one require(id) returns (Node.js
+compatibility, v22.3 and later).
+
+Example — the result is the same [object](../../object/ifs/object.md) require returns:
+
+```JavaScript
+const process = require('process');
+
+console.log(process.getBuiltinModule('path') === require('path')); // true
+console.log(process.getBuiltinModule('fs/promises') === require('fs/promises')); // true
+console.log(process.getBuiltinModule('no/such/module')); // undefined
+```
 
 --------------------------
 ### getgid
-**查询当前进程的组 id**
+**Queries the group id of the current process**
 
 ```JavaScript
 static Integer process.getgid();
 ```
 
-返回结果:
-* Integer, 返回当前进程的组 id
+Returns:
+* Integer, returns the group id of the current process
+
+On POSIX the value is the effective group id used for file access checks; on Windows
+the call returns 0 because group ids do not exist there. See `setgid` for changing
+it.
 
 --------------------------
 ### getuid
-**查询当前进程的用户 id**
+**Queries the user id of the current process**
 
 ```JavaScript
 static Integer process.getuid();
 ```
 
-返回结果:
-* Integer, 返回当前进程的用户 id
+Returns:
+* Integer, returns the user id of the current process
+
+On POSIX the value is the effective user id used for file access checks; on Windows
+the call returns 0 because user ids do not exist there. See `setuid` for changing
+it.
 
 --------------------------
 ### setgid
-**设置当前进程的组 id**
+**Sets the group id of the current process**
 
 ```JavaScript
 static process.setgid(Integer id);
 ```
 
-调用参数:
-* id: Integer, 指定要设置的组 id
+Parameters:
+* id: Integer, specifies the group id to set
+
+Only a privileged process can change its group id; when the underlying call fails
+(for example without the required privileges) the error is ignored and the ids stay
+unchanged, unlike Node.js which reports the failure. On Windows the call does
+nothing.
 
 --------------------------
 ### setuid
-**设置当前进程的用户 id**
+**Sets the user id of the current process**
 
 ```JavaScript
 static process.setuid(Integer id);
 ```
 
-调用参数:
-* id: Integer, 指定要设置的用户 id
+Parameters:
+* id: Integer, specifies the user id to set
+
+Only a privileged process can change its user id; when the underlying call fails
+(for example without the required privileges) the error is ignored and the ids stay
+unchanged, unlike Node.js which reports the failure. On Windows the call does
+nothing.
 
 --------------------------
 ### emitWarning
-**发出自定义或特定于应用程序的进程警告。可以通过向 'warning' 事件添加处理程序来监听这些事件**
+**Emits a custom or application-specific process warning. These events can be listened to by adding a handler to the 'warning' event**
 
 ```JavaScript
 static process.emitWarning(Value warning,
     Object options);
 ```
 
-调用参数:
-* warning: Value, 指定要发出的警告
-* options: Object, 指定警告的选项
+Parameters:
+* warning: Value, specifies the warning to emit
+* options: Object, specifies the options of the warning
 
- 选项包含以下内容：
+A string warning is wrapped in an Error, while any other non-Error value throws Error
+20003. The warning is delivered asynchronously to the `warning` listeners of the
+process [object](../../object/ifs/object.md); without a listener it is dropped silently, whereas Node.js prints it
+to stderr. options may be omitted, and it supports the following properties:
 
 ```JavaScript
-{
-    "type": "Warning", // specifies the name of the type of warning issued. Default value: 'Warning'
-    "code": "", // specify the unique identifier of the warning instance issued
-    "detail": "" // specify additional text for warnings
-}
+// fragment: options
+({
+    "type": "Warning", // name of the warning; default 'Warning'
+    "code": "", // unique identifier of this warning instance
+    "detail": "" // additional text stored on the warning
+})
 ```
 
-使用方法如下：
+The listener receives an Error with `name`, `message`, `stack`, `code` and `detail`
+properties. The second overload takes type and code as plain arguments.
+
+Example — collect a warning through the warning event:
 
 ```JavaScript
-const {
-    emitWarning
-} = require('process');
-
-// Emit a warning with a code and additional detail.
-emitWarning('Something happened!', {
-    code: 'MY_WARNING',
-    detail: 'This is some additional information',
-});
+const process = require('process');
 
 process.on('warning', (warning) => {
-    console.warn(warning.name); // 'Warning'
-    console.warn(warning.message); // 'Something happened!'
-    console.warn(warning.code); // 'MY_WARNING'
-    console.warn(warning.stack); // Stack trace
-    console.warn(warning.detail); // 'This is some additional information'
+    console.log(warning.name, warning.message, warning.code, warning.detail);
+});
+
+process.emitWarning('Disk almost full', {
+    code: 'DISK_LOW',
+    detail: '92% used'
 });
 ```
 
 --------------------------
-**发出自定义或特定于应用程序的进程警告。可以通过向 'warning' 事件添加处理程序来监听这些事件**
+**Emits a custom or application-specific process warning. These events can be listened to by adding a handler to the 'warning' event**
 
 ```JavaScript
 static process.emitWarning(Value warning,
@@ -412,190 +709,290 @@ static process.emitWarning(Value warning,
     String code = "");
 ```
 
-调用参数:
-* warning: Value, 指定要发出的警告
-* type: String, 指定发出的警告类型的名称。默认值：'Warning'
-* code: String, 指定发出的警告实例的唯一标识符
+Parameters:
+* warning: Value, specifies the warning to emit
+* type: String, specifies the name of the type of warning issued. Default value: 'Warning'
+* code: String, specifies the unique identifier of the warning instance issued
+
+Shorthand form of the options overload: type defaults to 'Warning' and code to an
+empty string, and the warning carries no `detail`. The listener receives the same
+Error shape described there.
 
 --------------------------
 ### kill
-**向指定的进程发送一个信号**
+**Sends a signal to the specified process**
 
 ```JavaScript
 static process.kill(Integer pid,
-    Integer signal);
+    String | Integer signal = "SIGTERM");
 ```
 
-调用参数:
-* pid: Integer, 指定进程的 id
-* signal: Integer, 指定发送的信号编号
+Parameters:
+* pid: Integer, specifies the process id
+* signal: String | Integer, the signal to send: a number, or a name such as "SIGTERM"; the default is SIGTERM
 
---------------------------
-**向指定的进程发送一个信号**
+pid is an operating system process id; signal is a number or a signal name such as
+'SIGTERM' (the default), 'SIGKILL' or 'SIGUSR1'. Signal 0 only checks whether the
+process exists. An unknown name throws Error 20024 ("process: Unknown signal: ..."),
+and a failed delivery also throws Error 20024 with the operating system message. On
+Windows only the signals the platform can emulate (SIGINT/SIGTERM/SIGKILL and 0)
+work, and the pid must be positive.
+
+Example — check that this process is alive and report an unknown signal:
 
 ```JavaScript
-static process.kill(Integer pid,
-    String signal = "SIGTERM");
-```
+const process = require('process');
 
-调用参数:
-* pid: Integer, 指定进程的 id
-* signal: String, 指定发送的信号名称，默认为 SIGTERM
+console.log(process.kill(process.pid, 0)); // undefined, the signal was sent
+try {
+    process.kill(process.pid, 'NOT_A_SIGNAL');
+} catch (e) {
+    console.log(e.number, e.message); // 20024 process: Unknown signal: NOT_A_SIGNAL
+}
+```
 
 --------------------------
 ### disconnect
-**关闭与父进程的 ipc 管道**
+**Closes the ipc pipe to the parent process**
 
 ```JavaScript
 static process.disconnect();
 ```
 
+Available only in a child with an IPC channel. The `disconnect` event is emitted,
+`connected` becomes false and further `send` calls throw; calling it when no channel
+is open throws Error 20024. The child itself keeps running after the channel closes.
+
 --------------------------
 ### send
-**向父进程发送一个消息**
+**Sends a message to the parent process**
 
 ```JavaScript
 static process.send(Value msg);
 ```
 
-调用参数:
-* msg: Value, 指定发送的消息
+Parameters:
+* msg: Value, specifies the message to send
 
-## 静态属性
+Available only in a child with an IPC channel; the message is JSON-encoded and
+newline-framed, so it must be JSON-serializable. The parent receives it as a `message`
+event. After `disconnect` (or in a process without a channel) the call throws Error
+20009 ("[process.send](process.md#send): IPC channel is not available.").
+
+## Static Properties
         
 ### argv
-**Array, 返回当前进程的命令行参数**
+**Array, Returns the command line arguments of the current process**
 
 ```JavaScript
 static Array process.argv;
 ```
 
+The array holds the runner [path](path.md), the script [path](path.md) and the arguments after the script;
+fibjs runtime options are removed and reported by `execArgv` instead. The property is
+writable: assigning an array replaces the reported arguments for the whole isolate, and
+a worker isolate starts with its own list.
+
 --------------------------
 ### execArgv
-**Array, 返回当前进程的特殊命令行参数，这些参数被 fibjs 用于设置运行环境**
+**String, Returns the special command line arguments of the current process; these arguments are used by fibjs to configure the runtime environment**
 
 ```JavaScript
-static readonly Array process.execArgv;
+static readonly String process.execArgv;
 ```
+
+The fibjs runtime options are extracted before `argv` is built, so they never appear
+there; the array is empty when the process was started without options. Node.js reports
+the Node.js options through the same property.
 
 --------------------------
 ### version
-**String, 返回 fibjs 版本字符串**
+**String, Returns the fibjs version string**
 
 ```JavaScript
 static readonly String process.version;
 ```
 
+The value carries a leading `v` (for example `v0.38.0-dev`) and describes fibjs, not
+Node.js; use `versions.node` for the bundled Node-API compatibility version, because a
+feature [test](test.md) based on Node.js version numbers is not portable here.
+
 --------------------------
 ### versions
-**Object, 返回 fibjs 及组件的版本信息**
+**Object, Returns version information of fibjs and its components**
 
 ```JavaScript
 static readonly Object process.versions;
 ```
 
+The [object](../../object/ifs/object.md) contains `fibjs`, `node` (the Node.js version of the bundled Node-API
+headers), `platform`, `arch`, `git` (release builds), the compiler
+(`clang`/`gcc`/`msvc`), `date`, `debug` (debug builds only), `modules`, `napi`, the
+`vender` [object](../../object/ifs/object.md) with the bundled library versions and `builtins` with the names of the
+embedded modules.
+
 --------------------------
 ### execPath
-**String, 查询当前运行执行文件完整路径**
+**String, Queries the full [path](path.md) of the currently running executable file**
 
 ```JavaScript
 static readonly String process.execPath;
 ```
 
+The [path](path.md) comes from the operating system, so it is absolute even when the runner was
+started through `PATH`, and it names the fibjs executable rather than the script; see
+`argv` for the script [path](path.md).
+
 --------------------------
 ### env
-**Object, 查询当前进程的环境变量**
+**Object, Queries the environment variables of the current process**
 
 ```JavaScript
 static readonly Object process.env;
 ```
 
+The returned [object](../../object/ifs/object.md) is a live view of the operating system environment: reading,
+assigning, `delete`, the `in` operator and `Object.keys` all operate on the real
+environment, values are always strings, and assigning `undefined` unsets a variable.
+Assigning `TZ` or `LANG` applies the time zone or locale to the isolate immediately.
+See `loadEnvFile` for loading a dotenv file.
+
 --------------------------
 ### arch
-**String, 查询当前 cpu 环境，可能的结果为 'amd64', 'arm', 'arm64', 'ia32'**
+**String, Queries the CPU architecture of the runtime environment**
 
 ```JavaScript
 static readonly String process.arch;
 ```
 
+Possible results are 'x64', 'ia32', 'arm', 'arm64', 'mips', 'mips64', 'ppc64',
+'riscv64' and 'loong64'. The value is the build target of the fibjs binary and matches
+`os.arch` and `versions.arch`; Node.js reports the same names for the architectures it
+supports.
+
 --------------------------
 ### platform
-**String, 查询当前平台名称，可能的结果为 'darwin', 'freebsd', 'linux', 或 'win32'**
+**String, Queries the platform name of the runtime environment**
 
 ```JavaScript
 static readonly String process.platform;
 ```
 
+Possible results are 'linux', 'win32', 'darwin', 'freebsd', 'android' (Android) and
+'ios' (iPhone); the value is the build target of the binary and matches `os.platform`
+and `versions.platform`. Node.js uses the same names for these platforms.
+
 --------------------------
 ### release
-**Object, 返回当前构建的发布元数据，name 设为 'node'**
+**(String name, String sourceUrl, String venderUrl), Returns the release metadata of the current build; name is set to 'node'**
 
 ```JavaScript
-static readonly Object process.release;
+static readonly(String name, String sourceUrl, String venderUrl) process.release;
 ```
+
+The [object](../../object/ifs/object.md) has three fields: `name` is always 'node' so that libraries probing the
+Node.js release keep working, `sourceUrl` points to the fibjs repository and
+`venderUrl` to the dependency mirror (a fibjs extension). Node.js exposes a different
+set of fields, so only `name` is portable.
 
 --------------------------
 ### pid
-**Integer, 读取当前对象指向的进程的 id**
+**Integer, Returns the process id of the current process**
 
 ```JavaScript
 static readonly Integer process.pid;
 ```
 
+The value is the operating system process id, stable for the lifetime of the process;
+see `kill` for sending signals to a process id and `ppid` for the parent.
+
 --------------------------
 ### ppid
-**Integer, 读取当前对象指向的父进程的 id**
+**Integer, Returns the process id of the parent process**
 
 ```JavaScript
 static readonly Integer process.ppid;
 ```
 
+The value is read from the operating system on each access; on POSIX a process whose
+parent has exited is reparented, so the reported id can change. Available on Windows
+as well.
+
 --------------------------
 ### stdin
-**[Stream](../../object/ifs/Stream.md), 查询当前进程标准输入对象, 在 [tty](tty.md) 中为 [TTYInputStream](../../object/ifs/TTYInputStream.md), 否则为 [Stream](../../object/ifs/Stream.md)**
+**[Stream](../../object/ifs/Stream.md), Queries the standard input [object](../../object/ifs/object.md) of the current process; in a [tty](tty.md) it is [TTYInputStream](../../object/ifs/TTYInputStream.md), otherwise [Stream](../../object/ifs/Stream.md)**
 
 ```JavaScript
 static readonly Stream process.stdin;
 ```
 
+The descriptor is 0 and the [object](../../object/ifs/object.md) is shared by every script of the isolate. When the
+descriptor is a terminal the [object](../../object/ifs/object.md) is a [TTYInputStream](../../object/ifs/TTYInputStream.md) with `isTTY` and terminal
+control methods, otherwise it is a plain [Stream](../../object/ifs/Stream.md); a child whose descriptor 0 carries
+the IPC channel reports the channel here. Read it through the stream interface, for
+example with an [io.BufferedStream](io.md#BufferedStream) wrapper.
+
 --------------------------
 ### stdout
-**[Stream](../../object/ifs/Stream.md), 查询当前进程标准输出对象, 在 [tty](tty.md) 中为 [TTYOutputStream](../../object/ifs/TTYOutputStream.md), 否则为 [Stream](../../object/ifs/Stream.md)**
+**[Stream](../../object/ifs/Stream.md), Queries the standard output [object](../../object/ifs/object.md) of the current process; in a [tty](tty.md) it is [TTYOutputStream](../../object/ifs/TTYOutputStream.md), otherwise [Stream](../../object/ifs/Stream.md)**
 
 ```JavaScript
 static readonly Stream process.stdout;
 ```
 
+The descriptor is 1; the [console](console.md) [module](module.md) writes here, as does `stdout.write`, and `fd`
+reports 1. In a terminal the [object](../../object/ifs/object.md) is a [TTYOutputStream](../../object/ifs/TTYOutputStream.md) with `isTTY`, `columns` and
+`rows`, otherwise a plain [Stream](../../object/ifs/Stream.md) whose `isTTY` is false, so progress output should
+[test](test.md) `isTTY` before using terminal control sequences.
+
 --------------------------
 ### stderr
-**[Stream](../../object/ifs/Stream.md), 查询当前进程标准错误输出对象, 在 [tty](tty.md) 中为 [TTYOutputStream](../../object/ifs/TTYOutputStream.md), 否则为 [Stream](../../object/ifs/Stream.md)**
+**[Stream](../../object/ifs/Stream.md), Queries the standard error output [object](../../object/ifs/object.md) of the current process; in a [tty](tty.md) it is [TTYOutputStream](../../object/ifs/TTYOutputStream.md), otherwise [Stream](../../object/ifs/Stream.md)**
 
 ```JavaScript
 static readonly Stream process.stderr;
 ```
 
+The descriptor is 2; the [console](console.md) [module](module.md) writes `console.error` output and uncaught
+errors here, so diagnostics stay visible when stdout is redirected. The same TTY
+rules as stdout apply.
+
 --------------------------
 ### exitCode
-**Integer, 查询和设置当前进程的退出码**
+**Integer, Queries and sets the exit code of the current process**
 
 ```JavaScript
 static Integer process.exitCode;
 ```
 
+The value defaults to 0 and is reported by `exit()` with no argument and by the
+`beforeExit` and `exit` events. It is also the status of a natural end of the program:
+an uncaught error or a rejected promise with no handler replaces it with 1 before
+terminating.
+
 --------------------------
 ### connected
-**Boolean, 查询与父进程的管道是否正常连接**
+**Boolean, Queries whether the pipe to the parent process is properly connected**
 
 ```JavaScript
 static readonly Boolean process.connected;
 ```
 
-## 常量
+The property only exists in a child process started with an IPC channel (see
+[child_process.fork](child_process.md#fork) and the 'ipc' stdio type); it is true while the channel is open and
+false after `disconnect`. In any other process the member is undefined, as in
+Node.js.
+
+## Constants
         
 ### title
-**当前进程标题，固定为 'fibjs'**
+**Title of the current process, initialized to 'fibjs'**
 
 ```JavaScript
 const process.title = "fibjs";
 ```
+
+The property is writable, but fibjs does not change the operating system process name
+when it is assigned, unlike Node.js where `process.title` renames the process; the
+initial value is 'fibjs'.
 

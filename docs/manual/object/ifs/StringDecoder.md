@@ -1,7 +1,79 @@
-# 对象 StringDecoder
-流解码对象
+# Object StringDecoder
+Decodes a byte stream into text chunk by chunk, holding back the incomplete tail of a multibyte character so that characters split across chunk boundaries survive
 
-## 继承关系
+A StringDecoder is the streaming counterpart of the whole-buffer conversions in the [encoding](../../module/ifs/encoding.md) [module](../../module/ifs/module.md). Write each chunk as it arrives and the decoder returns the text that is complete, buffering up to three bytes of a partial UTF-8 sequence, half of a UTF-16 surrogate pair, or one or two bytes of a Base64 quantum until the next chunk completes it; `end` flushes the tail when the stream is over. Use it whenever a socket, file stream, decompressor or any other source can split the data at arbitrary byte offsets; decoding each chunk with `toString` would turn every split character into replacement characters.
+
+Concepts:
+
+- **Character boundaries**: a JavaScript string is a sequence of Unicode code points, but a UTF-8 character occupies one to four bytes (and a UTF-16 surrogate pair four bytes). A chunk boundary can fall in the middle of a character, and the bytes seen so far are meaningless until the character is complete; the decoder remembers them (`lastNeed`, `lastTotal` and `lastChar` expose that state) and prepends them to the next chunk.
+- **Per-[encoding](../../module/ifs/encoding.md) state**: `utf8` holds at most three bytes; `utf16le`/`ucs2` holds an odd byte or a high surrogate; `base64` holds one or two bytes and adds the missing padding on end; `hex`, `latin1`, `ascii` and the other pass-through codecs have no state at all, so their write is just a per-chunk `[Buffer](Buffer.md)#toString`.
+- **Error behavior**: a malformed UTF-8 sequence yields U+FFFD for the offending part instead of throwing; an unsupported [encoding](../../module/ifs/encoding.md) name is rejected by the constructor with an Error (number 20024), and a non-string argument with a TypeError (number 20005).
+
+Obtained from:
+- `new StringDecoder([encoding](../../module/ifs/encoding.md))` — create a decoder for one byte stream;
+- `require('[string_decoder](../../module/ifs/string_decoder.md)').StringDecoder` — the export of the [string_decoder](../../module/ifs/string_decoder.md) [module](../../module/ifs/module.md); `require('node:[string_decoder](../../module/ifs/string_decoder.md)').StringDecoder` is the same class, and there is no [global](../../module/ifs/global.md) `StringDecoder`. The [encoding](../../module/ifs/encoding.md) [module](../../module/ifs/module.md) does not export it: that [module](../../module/ifs/module.md) provides the whole-buffer conversions only.
+
+Example 1 — a multibyte character split across three chunks:
+
+```JavaScript
+const {
+    StringDecoder
+} = require('string_decoder');
+
+const decoder = new StringDecoder('utf8');
+const euro = Buffer.from('€', 'utf8'); // e2 82 ac
+
+console.log(decoder.write(euro.slice(0, 1))); // ''
+console.log(decoder.write(euro.slice(1, 2))); // ''
+console.log(decoder.write(euro.slice(2))); // €
+console.log(decoder.end()); // ''
+```
+
+Example 2 — chunk-by-chunk decoding versus per-chunk [Buffer](Buffer.md)#toString:
+
+```JavaScript
+const {
+    StringDecoder
+} = require('string_decoder');
+
+const chunks = [Buffer.from('price: '), Buffer.from([0xe2]), Buffer.from([0x82, 0xac])];
+
+// Decoding every chunk on its own loses the split character
+console.log(JSON.stringify(chunks.map((c) => c.toString('utf8')).join('')));
+// "price: \ufffd\ufffd\ufffd"
+
+// The decoder keeps the incomplete bytes and assembles the character
+const decoder = new StringDecoder('utf8');
+console.log(decoder.write(chunks[0]) + decoder.write(chunks[1]) +
+    decoder.write(chunks[2]) + decoder.end()); // price: €
+```
+
+Example 3 — the same chunking rules for utf16le and [base64](../../module/ifs/base64.md) streams:
+
+```JavaScript
+const {
+    StringDecoder
+} = require('string_decoder');
+
+// A surrogate pair split between chunks is reassembled
+const utf16 = new StringDecoder('utf16le');
+const thumbs = Buffer.from('👍', 'utf16le');
+console.log(utf16.write(thumbs.slice(0, 2))); // ''
+console.log(utf16.write(thumbs.slice(2))); // 👍
+
+// A base64 decoder turns the byte stream into Base64 text, whatever the chunking
+const base64 = new StringDecoder('base64');
+const parts = [Buffer.from('hel'), Buffer.from('lo')];
+console.log(base64.write(parts[0]) + base64.write(parts[1]) + base64.end());
+// aGVsbG8=, the same as Buffer.from('hello').toString('base64')
+```
+
+Notes:
+
+- The class follows Node.js's `string_decoder.StringDecoder` for the supported encodings and the chunk semantics. The errors differ: fibjs throws an Error with number 20024 for an unknown [encoding](../../module/ifs/encoding.md) where Node throws a TypeError, and `end` does not clear the pending state, so calling it twice returns the flush text twice while Node returns '' the second time.
+- `base32`, `base58` and `base64url` are rejected by the constructor even though `encoding.isEncoding` accepts them: they have no incremental decoder here.
+
+## Inheritance
 ```dot
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
@@ -13,142 +85,204 @@ digraph {
 }
 ```
 
-## 构造函数
+## Constructors
         
 ### StringDecoder
-**解码器构造函数**
+**Creates a decoder for the given [encoding](../../module/ifs/encoding.md)**
 
 ```JavaScript
 new StringDecoder(String encoding = "utf8");
 ```
 
-调用参数:
-* encoding: String, 解码编码. 默认 'utf8'.
+Parameters:
+* encoding: String, the [encoding](../../module/ifs/encoding.md) of the byte stream: "utf8", "utf16le", "ucs2", "[base64](../../module/ifs/base64.md)", "[hex](../../module/ifs/hex.md)", "latin1", "binary" or "ascii", default "utf8"
 
-## 成员属性
+The accepted names are `utf8`/`utf-8`, `utf16le`/`utf-16le`/`ucs2`, `base64`, `hex`, `latin1`/`binary` and `ascii`; the name is normalized (for example `ucs-2` becomes `utf16le`) and the canonical form is exposed by the `encoding` property. A name outside that list throws an Error with number 20024, even when `encoding.isEncoding` reports it as supported, because there is no incremental decoder for it; a non-string argument throws a TypeError with number 20005.
+
+## Properties
         
 ### lastNeed
-**Integer, 内部使用。**
+**Integer, Number of bytes still needed to complete the character held from the previous chunk**
 
 ```JavaScript
 Integer StringDecoder.lastNeed;
 ```
 
+Zero when no partial character is pending, otherwise 1-3 for utf8, 1-2 for [base64](../../module/ifs/base64.md) and 1-2 for utf16le. The value is maintained by write and exposed for compatibility with the Node.js internals; it is not cleared by end, and changing it by hand breaks the decoder.
+
 --------------------------
 ### lastTotal
-**Integer, 内部使用。**
+**Integer, Total number of bytes of the character held from the previous chunk**
 
 ```JavaScript
 Integer StringDecoder.lastTotal;
 ```
 
+Pairs with `lastNeed`: for utf8 a character that needs 3 bytes in total and still needs 2 reports `lastTotal` 3 and `lastNeed` 2; for utf16le a split surrogate reports 4 and 2; for [base64](../../module/ifs/base64.md) a held two-byte group reports 3. Internal state exposed for compatibility; do not modify.
+
 --------------------------
 ### lastChar
-**[Buffer](Buffer.md), 内部使用。**
+**[Buffer](Buffer.md), Scratch buffer holding the bytes of the character kept for the next chunk**
 
 ```JavaScript
 Buffer StringDecoder.lastChar;
 ```
 
+The [Buffer](Buffer.md) is allocated once with the maximum size of the [encoding](../../module/ifs/encoding.md)'s state (4 bytes for utf8 and utf16le, 3 for [base64](../../module/ifs/base64.md)), and only the bytes counted by `lastNeed` are meaningful while a character is pending; the rest is uninitialized. Internal state exposed for compatibility; do not modify.
+
 --------------------------
 ### encoding
-**String, 解码编码.内部使用。**
+**String, Canonical name of the decoder's [encoding](../../module/ifs/encoding.md)**
 
 ```JavaScript
 String StringDecoder.encoding;
 ```
 
-## 成员函数
+The constructor normalizes the name it was given: `utf-8` becomes `utf8`, `ucs-2` and `utf-16le` become `utf16le`, and `binary` becomes `latin1`. Read it to see which codec the decoder selects; assigning a new name changes later conversions but does not re-select the internal state machine, so only set it while the decoder is empty and the new name belongs to the same family.
+
+## Methods
         
 ### end
-**将内部存留的 buffer 作为字符返回。不完整的 UTF-8 和 UTF-16 字节会尝试补全。**
+**Flushes the decoder, decoding one final chunk first when one is given**
 
 ```JavaScript
-String StringDecoder.end();
+String StringDecoder.end(Buffer | String buf = "");
 ```
 
-返回结果:
-* String, 解码后的字符串.
+Parameters:
+* buf: [Buffer](Buffer.md) | String, the final chunk to decode before flushing, optional
 
---------------------------
-**将内部存留的 buffer 作为字符返回。不完整的 UTF-8 和 UTF-16 字节会尝试补全。**
+Returns:
+* String, the remaining text, with U+FFFD for a truncated utf8 character
+
+Once the stream is over, bytes still held for an incomplete character can no longer be completed: for utf8 they are returned as U+FFFD, for utf16le a held high surrogate is returned as a lone surrogate and a single trailing byte is dropped, and for [base64](../../module/ifs/base64.md) the missing padding is added. The pending state is not cleared, so calling end twice returns the same flush text; create a new decoder for a new stream.
+
+Example — flush a truncated utf8 character:
 
 ```JavaScript
-String StringDecoder.end(Buffer buf);
+const {
+    StringDecoder
+} = require('string_decoder');
+
+const decoder = new StringDecoder('utf8');
+decoder.write(Buffer.from([0xe2, 0x82])); // the first two bytes of €
+
+// The stream ends before the third byte arrives: one replacement character.
+console.log(JSON.stringify(decoder.end())); // "\ufffd"
 ```
-
-调用参数:
-* buf: [Buffer](Buffer.md), 需要解码的 [Buffer](Buffer.md). 在执行 end 之前，会先调用 write 将 buffer 写入。
-
-返回结果:
-* String, 解码后的字符串.
 
 --------------------------
 ### write
-**返回一个解码后的字符串, 确保任何非完整的末尾字符被省略此次不返回，并被存储在内部供下一次的 write 或者 end 方法使用。**
+**Decodes a chunk, holding back an incomplete trailing character**
 
 ```JavaScript
-String StringDecoder.write(Buffer buf);
+String StringDecoder.write(Buffer | String buf);
 ```
 
-调用参数:
-* buf: [Buffer](Buffer.md), 需要解码的 [Buffer](Buffer.md)。
+Parameters:
+* buf: [Buffer](Buffer.md) | String, the chunk to decode: a [Buffer](Buffer.md), or a string read as utf8 bytes
 
-返回结果:
-* String, 解码后的字符串.
+Returns:
+* String, the decoded text available so far, '' while a character is incomplete
+
+buf is appended to whatever the decoder kept from the previous chunk, and as much text as possible is returned. If the chunk ends in the middle of a character the incomplete bytes are kept and the return value is '' (or the complete part before them); the next write continues from there. A string argument is first converted to its utf8 bytes, so pass a [Buffer](Buffer.md) when the stream is not utf8.
+
+Example — a euro sign arriving byte by byte:
+
+```JavaScript
+const {
+    StringDecoder
+} = require('string_decoder');
+
+const decoder = new StringDecoder('utf8');
+const euro = Buffer.from('€', 'utf8'); // e2 82 ac
+
+console.log(decoder.write(euro.slice(0, 1))); // ''
+console.log(decoder.write(euro.slice(1, 2))); // ''
+console.log(decoder.write(euro.slice(2))); // €
+```
 
 --------------------------
 ### text
-**内部使用。.**
+**Decodes a chunk starting at the given offset; this is the internal per-chunk routine**
 
 ```JavaScript
-String StringDecoder.text(Buffer buf,
+String StringDecoder.text(Buffer | String buf,
     Integer offset);
 ```
 
-调用参数:
-* buf: [Buffer](Buffer.md), 需要解码的 [Buffer](Buffer.md)。
-* offset: Integer, 解码偏移量
+Parameters:
+* buf: [Buffer](Buffer.md) | String, the chunk to decode
+* offset: Integer, the index in buf where decoding starts
 
-返回结果:
-* String, 解码后的字符串.
+Returns:
+* String, the decoded part of the chunk, '' while a character is incomplete
+
+The write method uses it after consuming the bytes held from the previous chunk; offset selects where the still-undecoded part of buf starts. It reads and updates the same state as write (`lastNeed`, `lastTotal`, `lastChar`), so calling it by hand on a decoder that is also being written leaves the state inconsistent. It is exposed for compatibility with code that mirrors the Node.js internals; use write instead.
 
 --------------------------
 ### fillLast
-**内部使用。.**
+**Completes the held character with the leading bytes of a chunk; this is the internal routine**
 
 ```JavaScript
-String StringDecoder.fillLast(Buffer buf);
+String StringDecoder.fillLast(Buffer | String buf);
 ```
 
-调用参数:
-* buf: [Buffer](Buffer.md), 包含要解码字节的 [Buffer](Buffer.md)。
+Parameters:
+* buf: [Buffer](Buffer.md) | String, the new chunk whose leading bytes complete the pending character
 
-返回结果:
-* String, 解码后的字符串.
+Returns:
+* String, the completed character, or null when more bytes are needed
+
+It is the other half of the internal state machine: write calls it when bytes are pending, then continues with text from the offset it consumed. When the chunk is too short it stores what it can, decreases `lastNeed` and returns null so write knows that no text is available yet; with enough bytes it returns the completed character. Direct calls leave the state partially updated and are not a supported way to drive the decoder; use write instead.
 
 --------------------------
 ### toString
-**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
+**Returns the string form of the [object](object.md)**
 
 ```JavaScript
 String StringDecoder.toString();
 ```
 
-返回结果:
-* String, 返回对象的字符串表示
+Returns:
+* String, returns the string form of the [object](object.md)
+
+The base implementation reports an error: a native [object](object.md) has no implicit
+text form, and only the classes whose value can be written as a string
+override the member. [Buffer](Buffer.md) returns its content decoded with the given
+[encoding](../../module/ifs/encoding.md), [HttpCookie](HttpCookie.md) returns "name=value", and so on; an override commonly
+accepts optional arguments ([Buffer.toString](Buffer.md#toString) takes [encoding](../../module/ifs/encoding.md), start and
+end) that are not part of this declaration.
+
+Calling the member on a class that does not override it throws
+"<Class>: the [object](object.md) can not be converted to string.", which is the
+behavior to rely on when probing whether a value has a string form. See
+toJSON for the serialization hook.
 
 --------------------------
 ### toJSON
-**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
+**Returns the JSON representation of the [object](object.md)**
 
 ```JavaScript
 Value StringDecoder.toJSON(String key = "");
 ```
 
-调用参数:
-* key: String, 未使用
+Parameters:
+* key: String, the property name of the value being serialized
 
-返回结果:
-* Value, 返回包含可 JSON 序列化的值
+Returns:
+* Value, returns the JSON-serializable value
+
+JSON.stringify(value) calls value.toJSON(key) when the member exists and
+serializes the returned value in its place; the key argument carries the
+property name of the value inside its parent [object](object.md) (an empty string at
+the top level) and may be used to build a keyed form. The base
+implementation returns a plain [object](object.md) holding the readable properties of
+the instance, so a native [object](object.md) serializes without per-class code; a
+class with a portable shape such as [Buffer](Buffer.md) overrides it, and a JavaScript
+class may override it in the same way.
+
+The member is normally reached through JSON.stringify rather than called
+directly; calling it returns the same value JSON.stringify would
+serialize.
 

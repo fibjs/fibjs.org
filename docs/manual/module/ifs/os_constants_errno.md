@@ -1,16 +1,95 @@
-# 模块 os_constants_errno
-[os_constants](os_constants.md) errno 子模块，包含 POSIX 错误码常量
+# Module os_constants_errno
+The errno table of [os.constants](os.md#constants): the POSIX error codes of the running platform
 
-引用方法：
+The [object](../../object/ifs/object.md) is reached through `require('[os](os.md)').constants.errno` and is not requireable on its
+own. The names follow the C library and libuv; the numbers are the values of the host (on
+Linux x86-64 they match `<asm-generic/errno-base.h>` and `<asm-generic/errno.h>` exactly).
+Convert a numeric error into its name with this table, and use it to document the errors an
+operation can raise; the table itself is read-only.
+
+Concepts:
+
+- **Errors carry the name**: a failed call throws an Error whose `code` is the symbolic name
+  ('ENOENT'), so compare `e.code` rather than a number. On POSIX `e.errno` is the negated
+  libuv code (-2 for ENOENT) while this table holds the positive system value (2): compare
+  `-e.errno` with the table, or rely on `e.code`.
+- **Aliases**: EAGAIN and EWOULDBLOCK share one value, and so do ENOTSUP and EOPNOTSUPP
+  (11 and 95 on Linux); POSIX allows the unsupported-operation pair to differ, so [test](test.md) both
+  names when the code is not known.
+- **Platform**: the numbers are platform-specific; on Windows libuv uses its own mapping and
+  adds the WSA* codes. Never hardcode a number in portable code - look it up here at
+  runtime or compare names.
+
+Import:
 
 ```JavaScript
-var errno = require('os').constants.errno
+const errno = require('os').constants.errno;
 ```
 
-## 常量
+Example 1 — turn a caught error into its table entry:
+
+```JavaScript
+const errno = require('os').constants.errno;
+const fs = require('fs');
+
+try {
+    fs.unlink('/no-such-file-fibjs.txt');
+} catch (e) {
+    console.log(e.code); // ENOENT
+    console.log(-e.errno, errno.ENOENT); // 2 2
+    console.log(-e.errno === errno.ENOENT); // true
+}
+```
+
+Example 2 — common failures and their codes:
+
+```JavaScript
+const errno = require('os').constants.errno;
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-errno-'));
+fs.mkdir(path.join(dir, 'sub'));
+fs.writeFile(path.join(dir, 'sub', 'file.txt'), 'x');
+
+function codeOf(fn) {
+    try {
+        fn();
+    } catch (e) {
+        return e.code;
+    }
+    return 'no error';
+}
+console.log(codeOf(() => fs.mkdir(path.join(dir, 'sub')))); // EEXIST
+console.log(codeOf(() => fs.rmdir(path.join(dir, 'sub')))); // ENOTEMPTY
+console.log(codeOf(() => fs.unlink(path.join(dir, 'missing')))); // ENOENT
+console.log(errno.EEXIST, errno.ENOTEMPTY); // 17 39
+
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
+```
+
+Example 3 — representative values and aliases:
+
+```JavaScript
+const errno = require('os').constants.errno;
+
+// Permission, existence and timeout codes as reported by the host.
+console.log(errno.EACCES, errno.ENOENT, errno.ETIMEDOUT); // 13 2 110
+
+// Each alias pair shares a single value.
+console.log(errno.EAGAIN === errno.EWOULDBLOCK); // true
+console.log(errno.ENOTSUP === errno.EOPNOTSUPP); // true
+console.log(Object.keys(errno).length); // 79 on Linux
+```
+
+## Constants
         
 ### E2BIG
-**参数列表过长**
+**Argument list too long**
 
 ```JavaScript
 const os_constants_errno.E2BIG = 7;
@@ -18,7 +97,7 @@ const os_constants_errno.E2BIG = 7;
 
 --------------------------
 ### EACCES
-**权限不足**
+**Permission denied**
 
 ```JavaScript
 const os_constants_errno.EACCES = 13;
@@ -26,7 +105,7 @@ const os_constants_errno.EACCES = 13;
 
 --------------------------
 ### EADDRINUSE
-**地址已被占用**
+**Address already in use**
 
 ```JavaScript
 const os_constants_errno.EADDRINUSE = 98;
@@ -34,7 +113,7 @@ const os_constants_errno.EADDRINUSE = 98;
 
 --------------------------
 ### EADDRNOTAVAIL
-**地址不可用**
+**Address not available**
 
 ```JavaScript
 const os_constants_errno.EADDRNOTAVAIL = 99;
@@ -42,7 +121,7 @@ const os_constants_errno.EADDRNOTAVAIL = 99;
 
 --------------------------
 ### EAFNOSUPPORT
-**地址族不受支持**
+**Address family not supported**
 
 ```JavaScript
 const os_constants_errno.EAFNOSUPPORT = 97;
@@ -50,7 +129,7 @@ const os_constants_errno.EAFNOSUPPORT = 97;
 
 --------------------------
 ### EAGAIN
-**资源暂时不可用，可重试**
+**Resource temporarily unavailable, try again**
 
 ```JavaScript
 const os_constants_errno.EAGAIN = 11;
@@ -58,7 +137,7 @@ const os_constants_errno.EAGAIN = 11;
 
 --------------------------
 ### EALREADY
-**操作已在执行中**
+**Operation already in progress**
 
 ```JavaScript
 const os_constants_errno.EALREADY = 114;
@@ -66,7 +145,7 @@ const os_constants_errno.EALREADY = 114;
 
 --------------------------
 ### EBADF
-**无效的文件描述符**
+**Bad file descriptor**
 
 ```JavaScript
 const os_constants_errno.EBADF = 9;
@@ -74,7 +153,7 @@ const os_constants_errno.EBADF = 9;
 
 --------------------------
 ### EBADMSG
-**无效的消息**
+**Bad message**
 
 ```JavaScript
 const os_constants_errno.EBADMSG = 74;
@@ -82,7 +161,7 @@ const os_constants_errno.EBADMSG = 74;
 
 --------------------------
 ### EBUSY
-**设备或资源忙**
+**Device or resource busy**
 
 ```JavaScript
 const os_constants_errno.EBUSY = 16;
@@ -90,7 +169,7 @@ const os_constants_errno.EBUSY = 16;
 
 --------------------------
 ### ECANCELED
-**操作已取消**
+**Operation canceled**
 
 ```JavaScript
 const os_constants_errno.ECANCELED = 125;
@@ -98,7 +177,7 @@ const os_constants_errno.ECANCELED = 125;
 
 --------------------------
 ### ECHILD
-**没有子进程**
+**No child processes**
 
 ```JavaScript
 const os_constants_errno.ECHILD = 10;
@@ -106,7 +185,7 @@ const os_constants_errno.ECHILD = 10;
 
 --------------------------
 ### ECONNABORTED
-**连接被中止**
+**Connection aborted**
 
 ```JavaScript
 const os_constants_errno.ECONNABORTED = 103;
@@ -114,7 +193,7 @@ const os_constants_errno.ECONNABORTED = 103;
 
 --------------------------
 ### ECONNREFUSED
-**连接被拒绝**
+**Connection refused**
 
 ```JavaScript
 const os_constants_errno.ECONNREFUSED = 111;
@@ -122,7 +201,7 @@ const os_constants_errno.ECONNREFUSED = 111;
 
 --------------------------
 ### ECONNRESET
-**连接被重置**
+**Connection reset**
 
 ```JavaScript
 const os_constants_errno.ECONNRESET = 104;
@@ -130,7 +209,7 @@ const os_constants_errno.ECONNRESET = 104;
 
 --------------------------
 ### EDEADLK
-**资源死锁**
+**Resource deadlock avoided**
 
 ```JavaScript
 const os_constants_errno.EDEADLK = 35;
@@ -138,7 +217,7 @@ const os_constants_errno.EDEADLK = 35;
 
 --------------------------
 ### EDESTADDRREQ
-**需要目标地址**
+**Destination address required**
 
 ```JavaScript
 const os_constants_errno.EDESTADDRREQ = 89;
@@ -146,7 +225,7 @@ const os_constants_errno.EDESTADDRREQ = 89;
 
 --------------------------
 ### EDOM
-**数学参数超出函数定义域**
+**Mathematics argument out of domain of function**
 
 ```JavaScript
 const os_constants_errno.EDOM = 33;
@@ -154,7 +233,7 @@ const os_constants_errno.EDOM = 33;
 
 --------------------------
 ### EDQUOT
-**磁盘配额超限**
+**Disk quota exceeded**
 
 ```JavaScript
 const os_constants_errno.EDQUOT = 122;
@@ -162,7 +241,7 @@ const os_constants_errno.EDQUOT = 122;
 
 --------------------------
 ### EEXIST
-**文件已存在**
+**[File](../../object/ifs/File.md) exists**
 
 ```JavaScript
 const os_constants_errno.EEXIST = 17;
@@ -170,7 +249,7 @@ const os_constants_errno.EEXIST = 17;
 
 --------------------------
 ### EFAULT
-**无效的内存地址**
+**Bad address**
 
 ```JavaScript
 const os_constants_errno.EFAULT = 14;
@@ -178,7 +257,7 @@ const os_constants_errno.EFAULT = 14;
 
 --------------------------
 ### EFBIG
-**文件过大**
+**[File](../../object/ifs/File.md) too large**
 
 ```JavaScript
 const os_constants_errno.EFBIG = 27;
@@ -186,7 +265,7 @@ const os_constants_errno.EFBIG = 27;
 
 --------------------------
 ### EHOSTUNREACH
-**主机不可达**
+**Host is unreachable**
 
 ```JavaScript
 const os_constants_errno.EHOSTUNREACH = 113;
@@ -194,7 +273,7 @@ const os_constants_errno.EHOSTUNREACH = 113;
 
 --------------------------
 ### EIDRM
-**标识符已删除**
+**Identifier removed**
 
 ```JavaScript
 const os_constants_errno.EIDRM = 43;
@@ -202,7 +281,7 @@ const os_constants_errno.EIDRM = 43;
 
 --------------------------
 ### EILSEQ
-**非法字节序列**
+**Illegal byte sequence**
 
 ```JavaScript
 const os_constants_errno.EILSEQ = 84;
@@ -210,7 +289,7 @@ const os_constants_errno.EILSEQ = 84;
 
 --------------------------
 ### EINPROGRESS
-**操作正在进行中**
+**Operation in progress**
 
 ```JavaScript
 const os_constants_errno.EINPROGRESS = 115;
@@ -218,7 +297,7 @@ const os_constants_errno.EINPROGRESS = 115;
 
 --------------------------
 ### EINTR
-**被信号中断**
+**Interrupted system call**
 
 ```JavaScript
 const os_constants_errno.EINTR = 4;
@@ -226,7 +305,7 @@ const os_constants_errno.EINTR = 4;
 
 --------------------------
 ### EINVAL
-**无效的参数**
+**Invalid argument**
 
 ```JavaScript
 const os_constants_errno.EINVAL = 22;
@@ -234,7 +313,7 @@ const os_constants_errno.EINVAL = 22;
 
 --------------------------
 ### EIO
-**I/O 错误**
+**I/O error**
 
 ```JavaScript
 const os_constants_errno.EIO = 5;
@@ -242,7 +321,7 @@ const os_constants_errno.EIO = 5;
 
 --------------------------
 ### EISCONN
-**套接字已连接**
+**[Socket](../../object/ifs/Socket.md) is connected**
 
 ```JavaScript
 const os_constants_errno.EISCONN = 106;
@@ -250,7 +329,7 @@ const os_constants_errno.EISCONN = 106;
 
 --------------------------
 ### EISDIR
-**路径是目录**
+**Is a directory**
 
 ```JavaScript
 const os_constants_errno.EISDIR = 21;
@@ -258,7 +337,7 @@ const os_constants_errno.EISDIR = 21;
 
 --------------------------
 ### ELOOP
-**符号链接层数过多**
+**Too many levels of symbolic links**
 
 ```JavaScript
 const os_constants_errno.ELOOP = 40;
@@ -266,7 +345,7 @@ const os_constants_errno.ELOOP = 40;
 
 --------------------------
 ### EMFILE
-**打开的文件过多**
+**Too many open files**
 
 ```JavaScript
 const os_constants_errno.EMFILE = 24;
@@ -274,7 +353,7 @@ const os_constants_errno.EMFILE = 24;
 
 --------------------------
 ### EMLINK
-**链接数过多**
+**Too many links**
 
 ```JavaScript
 const os_constants_errno.EMLINK = 31;
@@ -282,7 +361,7 @@ const os_constants_errno.EMLINK = 31;
 
 --------------------------
 ### EMSGSIZE
-**消息过长**
+**[Message](../../object/ifs/Message.md) too long**
 
 ```JavaScript
 const os_constants_errno.EMSGSIZE = 90;
@@ -290,7 +369,7 @@ const os_constants_errno.EMSGSIZE = 90;
 
 --------------------------
 ### EMULTIHOP
-**多跳尝试**
+**Multihop attempted**
 
 ```JavaScript
 const os_constants_errno.EMULTIHOP = 72;
@@ -298,7 +377,7 @@ const os_constants_errno.EMULTIHOP = 72;
 
 --------------------------
 ### ENAMETOOLONG
-**文件名过长**
+**[File](../../object/ifs/File.md) name too long**
 
 ```JavaScript
 const os_constants_errno.ENAMETOOLONG = 36;
@@ -306,7 +385,7 @@ const os_constants_errno.ENAMETOOLONG = 36;
 
 --------------------------
 ### ENETDOWN
-**网络已关闭**
+**Network is down**
 
 ```JavaScript
 const os_constants_errno.ENETDOWN = 100;
@@ -314,7 +393,7 @@ const os_constants_errno.ENETDOWN = 100;
 
 --------------------------
 ### ENETRESET
-**连接被网络重置**
+**Network dropped connection on reset**
 
 ```JavaScript
 const os_constants_errno.ENETRESET = 102;
@@ -322,7 +401,7 @@ const os_constants_errno.ENETRESET = 102;
 
 --------------------------
 ### ENETUNREACH
-**网络不可达**
+**Network is unreachable**
 
 ```JavaScript
 const os_constants_errno.ENETUNREACH = 101;
@@ -330,7 +409,7 @@ const os_constants_errno.ENETUNREACH = 101;
 
 --------------------------
 ### ENFILE
-**系统文件表溢出**
+**Too many open files in system**
 
 ```JavaScript
 const os_constants_errno.ENFILE = 23;
@@ -338,7 +417,7 @@ const os_constants_errno.ENFILE = 23;
 
 --------------------------
 ### ENOBUFS
-**无可用缓冲区**
+**No buffer space available**
 
 ```JavaScript
 const os_constants_errno.ENOBUFS = 105;
@@ -346,7 +425,7 @@ const os_constants_errno.ENOBUFS = 105;
 
 --------------------------
 ### ENODATA
-**无可用数据**
+**No data available**
 
 ```JavaScript
 const os_constants_errno.ENODATA = 61;
@@ -354,7 +433,7 @@ const os_constants_errno.ENODATA = 61;
 
 --------------------------
 ### ENODEV
-**无此设备**
+**No such device**
 
 ```JavaScript
 const os_constants_errno.ENODEV = 19;
@@ -362,7 +441,7 @@ const os_constants_errno.ENODEV = 19;
 
 --------------------------
 ### ENOENT
-**文件或目录不存在**
+**No such file or directory**
 
 ```JavaScript
 const os_constants_errno.ENOENT = 2;
@@ -370,7 +449,7 @@ const os_constants_errno.ENOENT = 2;
 
 --------------------------
 ### ENOEXEC
-**可执行文件格式错误**
+**Exec format error**
 
 ```JavaScript
 const os_constants_errno.ENOEXEC = 8;
@@ -378,7 +457,7 @@ const os_constants_errno.ENOEXEC = 8;
 
 --------------------------
 ### ENOLCK
-**无可用锁**
+**No locks available**
 
 ```JavaScript
 const os_constants_errno.ENOLCK = 37;
@@ -386,7 +465,7 @@ const os_constants_errno.ENOLCK = 37;
 
 --------------------------
 ### ENOLINK
-**链接已断开**
+**Link has been severed**
 
 ```JavaScript
 const os_constants_errno.ENOLINK = 67;
@@ -394,7 +473,7 @@ const os_constants_errno.ENOLINK = 67;
 
 --------------------------
 ### ENOMEM
-**内存不足**
+**Out of memory**
 
 ```JavaScript
 const os_constants_errno.ENOMEM = 12;
@@ -402,7 +481,7 @@ const os_constants_errno.ENOMEM = 12;
 
 --------------------------
 ### ENOMSG
-**没有指定类型的消息**
+**No message of desired type**
 
 ```JavaScript
 const os_constants_errno.ENOMSG = 42;
@@ -410,7 +489,7 @@ const os_constants_errno.ENOMSG = 42;
 
 --------------------------
 ### ENOPROTOOPT
-**协议不可用**
+**Protocol not available**
 
 ```JavaScript
 const os_constants_errno.ENOPROTOOPT = 92;
@@ -418,7 +497,7 @@ const os_constants_errno.ENOPROTOOPT = 92;
 
 --------------------------
 ### ENOSPC
-**设备上没有剩余空间**
+**No space left on device**
 
 ```JavaScript
 const os_constants_errno.ENOSPC = 28;
@@ -426,7 +505,7 @@ const os_constants_errno.ENOSPC = 28;
 
 --------------------------
 ### ENOSR
-**没有可用的流资源**
+**No STREAM resources**
 
 ```JavaScript
 const os_constants_errno.ENOSR = 63;
@@ -434,7 +513,7 @@ const os_constants_errno.ENOSR = 63;
 
 --------------------------
 ### ENOSTR
-**不是流设备**
+**Not a STREAM**
 
 ```JavaScript
 const os_constants_errno.ENOSTR = 60;
@@ -442,7 +521,7 @@ const os_constants_errno.ENOSTR = 60;
 
 --------------------------
 ### ENOSYS
-**功能未实现**
+**Function not implemented**
 
 ```JavaScript
 const os_constants_errno.ENOSYS = 38;
@@ -450,7 +529,7 @@ const os_constants_errno.ENOSYS = 38;
 
 --------------------------
 ### ENOTCONN
-**套接字未连接**
+**[Socket](../../object/ifs/Socket.md) is not connected**
 
 ```JavaScript
 const os_constants_errno.ENOTCONN = 107;
@@ -458,7 +537,7 @@ const os_constants_errno.ENOTCONN = 107;
 
 --------------------------
 ### ENOTDIR
-**路径不是目录**
+**Not a directory**
 
 ```JavaScript
 const os_constants_errno.ENOTDIR = 20;
@@ -466,7 +545,7 @@ const os_constants_errno.ENOTDIR = 20;
 
 --------------------------
 ### ENOTEMPTY
-**目录非空**
+**Directory not empty**
 
 ```JavaScript
 const os_constants_errno.ENOTEMPTY = 39;
@@ -474,7 +553,7 @@ const os_constants_errno.ENOTEMPTY = 39;
 
 --------------------------
 ### ENOTSOCK
-**不是套接字**
+**Not a socket**
 
 ```JavaScript
 const os_constants_errno.ENOTSOCK = 88;
@@ -482,7 +561,7 @@ const os_constants_errno.ENOTSOCK = 88;
 
 --------------------------
 ### ENOTSUP
-**不支持的操作**
+**Operation not supported**
 
 ```JavaScript
 const os_constants_errno.ENOTSUP = 95;
@@ -490,7 +569,7 @@ const os_constants_errno.ENOTSUP = 95;
 
 --------------------------
 ### ENOTTY
-**不适当的 ioctl 操作**
+**Inappropriate ioctl for device**
 
 ```JavaScript
 const os_constants_errno.ENOTTY = 25;
@@ -498,7 +577,7 @@ const os_constants_errno.ENOTTY = 25;
 
 --------------------------
 ### ENXIO
-**无此设备或地址**
+**No such device or address**
 
 ```JavaScript
 const os_constants_errno.ENXIO = 6;
@@ -506,7 +585,7 @@ const os_constants_errno.ENXIO = 6;
 
 --------------------------
 ### EOPNOTSUPP
-**套接字不支持的操作**
+**Operation not supported on socket**
 
 ```JavaScript
 const os_constants_errno.EOPNOTSUPP = 95;
@@ -514,7 +593,7 @@ const os_constants_errno.EOPNOTSUPP = 95;
 
 --------------------------
 ### EOVERFLOW
-**数值过大**
+**Value too large to be stored in data type**
 
 ```JavaScript
 const os_constants_errno.EOVERFLOW = 75;
@@ -522,7 +601,7 @@ const os_constants_errno.EOVERFLOW = 75;
 
 --------------------------
 ### EPERM
-**操作不允许**
+**Operation not permitted**
 
 ```JavaScript
 const os_constants_errno.EPERM = 1;
@@ -530,7 +609,7 @@ const os_constants_errno.EPERM = 1;
 
 --------------------------
 ### EPIPE
-**管道破裂**
+**Broken pipe**
 
 ```JavaScript
 const os_constants_errno.EPIPE = 32;
@@ -538,7 +617,7 @@ const os_constants_errno.EPIPE = 32;
 
 --------------------------
 ### EPROTO
-**协议错误**
+**Protocol error**
 
 ```JavaScript
 const os_constants_errno.EPROTO = 71;
@@ -546,7 +625,7 @@ const os_constants_errno.EPROTO = 71;
 
 --------------------------
 ### EPROTONOSUPPORT
-**协议不受支持**
+**Protocol not supported**
 
 ```JavaScript
 const os_constants_errno.EPROTONOSUPPORT = 93;
@@ -554,7 +633,7 @@ const os_constants_errno.EPROTONOSUPPORT = 93;
 
 --------------------------
 ### EPROTOTYPE
-**套接字协议类型错误**
+**Protocol wrong type for socket**
 
 ```JavaScript
 const os_constants_errno.EPROTOTYPE = 91;
@@ -562,7 +641,7 @@ const os_constants_errno.EPROTOTYPE = 91;
 
 --------------------------
 ### ERANGE
-**结果超出范围**
+**Numerical result out of range**
 
 ```JavaScript
 const os_constants_errno.ERANGE = 34;
@@ -570,7 +649,7 @@ const os_constants_errno.ERANGE = 34;
 
 --------------------------
 ### EROFS
-**只读文件系统**
+**Read-only file system**
 
 ```JavaScript
 const os_constants_errno.EROFS = 30;
@@ -578,7 +657,7 @@ const os_constants_errno.EROFS = 30;
 
 --------------------------
 ### ESPIPE
-**无效的 seek 操作**
+**Invalid seek**
 
 ```JavaScript
 const os_constants_errno.ESPIPE = 29;
@@ -586,7 +665,7 @@ const os_constants_errno.ESPIPE = 29;
 
 --------------------------
 ### ESRCH
-**没有此进程**
+**No such [process](process.md)**
 
 ```JavaScript
 const os_constants_errno.ESRCH = 3;
@@ -594,7 +673,7 @@ const os_constants_errno.ESRCH = 3;
 
 --------------------------
 ### ESTALE
-**过期的文件句柄**
+**Stale file handle**
 
 ```JavaScript
 const os_constants_errno.ESTALE = 116;
@@ -602,7 +681,7 @@ const os_constants_errno.ESTALE = 116;
 
 --------------------------
 ### ETIME
-**定时器过期**
+**[Timer](../../object/ifs/Timer.md) expired**
 
 ```JavaScript
 const os_constants_errno.ETIME = 62;
@@ -610,7 +689,7 @@ const os_constants_errno.ETIME = 62;
 
 --------------------------
 ### ETIMEDOUT
-**操作超时**
+**Connection timed out**
 
 ```JavaScript
 const os_constants_errno.ETIMEDOUT = 110;
@@ -618,7 +697,7 @@ const os_constants_errno.ETIMEDOUT = 110;
 
 --------------------------
 ### ETXTBSY
-**文本文件忙**
+**Text file busy**
 
 ```JavaScript
 const os_constants_errno.ETXTBSY = 26;
@@ -626,7 +705,7 @@ const os_constants_errno.ETXTBSY = 26;
 
 --------------------------
 ### EWOULDBLOCK
-**操作会阻塞**
+**Operation would block**
 
 ```JavaScript
 const os_constants_errno.EWOULDBLOCK = 11;
@@ -634,7 +713,7 @@ const os_constants_errno.EWOULDBLOCK = 11;
 
 --------------------------
 ### EXDEV
-**跨设备链接**
+**Cross-device link**
 
 ```JavaScript
 const os_constants_errno.EXDEV = 18;

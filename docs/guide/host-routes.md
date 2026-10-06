@@ -1,6 +1,6 @@
-# 域名路由
+# Host Routing
 
-从 0.28.0 开始, `fibjs` 的 mq.Routing 对象支持 HOST 方法作为域名路由.
+Starting from 0.28.0, the mq.Routing object of `fibjs` supports the HOST method for host routing.
 
 ```javascript
 const mq = require('mq')
@@ -17,14 +17,14 @@ rt.host('fibjs.org', ...)
 rt.append('host', 'fibjs.org', ...)
 ```
 
-我们来看一些例子.
+Let's look at some examples.
 
-## 简单例子
+## Simple Examples
 
-### 简单的 fileHandlers
+### Simple fileHandlers
 
-假设域名 fibjs.org 已经被绑定到我们应用所在的机器(出于测试目的, 你也可以通过在本地修改 Hosts 达到这一绑定效果), 而我们希望通过 `file.fibjs.org` 可以下载机器上 FILE_DIR 目录的文件资源,
-我们可以这样做:
+Assume the domain fibjs.org has already been bound to the machine where our application runs (for testing purposes, you can also achieve this binding by modifying the local hosts file), and we want to download the file resources in the FILE_DIR directory on the machine through `file.fibjs.org`.
+We can do it like this:
 
 ```javascript
 const mq = require('mq')
@@ -35,9 +35,9 @@ const fileRoutes = new mq.Routing();
 fileRoutes.host('file.fibjs.org', http.fileHandler(FILE_DIR))
 ```
 
-### 前端资源 host
+### Front-end Asset Host
 
-典型的场景是, 编译好的前端应用可能会发布到机器上, 比如存到了 `/home/frontend/assets/` 目录
+A typical scenario is that a compiled front-end application may be published to the machine, for example stored in the `/home/frontend/assets/` directory
 
 ```bash
 /home/frontend/assets/index.html
@@ -47,15 +47,15 @@ fileRoutes.host('file.fibjs.org', http.fileHandler(FILE_DIR))
 /home/frontend/assets/chunk.d45858.js
 ```
 
-而我们希望通过 festatic.fibjs.org 获得这些资源, 则可以这样写:
+If we want to serve these assets through festatic.fibjs.org, we can write:
 
 ```javascript
 fileRoutes.host('festatic.fibjs.org', http.fileHandler('/home/frontend/assets/'))
 ```
 
-### api 服务器
+### API Server
 
-假设你的机器上存在 api 服务器, 你希望将他们统一到 `api.fibjs.org` 这个域名, 但分配不同的 path , 如:
+Assume there are API servers on your machine and you want to unify them under the `api.fibjs.org` host while assigning different paths, such as:
 
 API Server           | Usage  | Path
 --------------|:-----:|-----:|
@@ -63,14 +63,14 @@ http://127.0.0.1:3001  | User Service |  /user
 http://127.0.0.1:8080  | Biz1 |  /biz1
 http://127.0.0.1:9007  | Biz2 | /biz2
 
-那么你可以:
+Then you can do:
 
 ```javascript
 const mq = require('mq')
 
 const apiRoutes = new mq.Routing();
 
-// proxyTo 是代理请求到对应 origin 的函数
+// proxyTo is the function that proxies requests to the corresponding origin
 apiRoutes.host('api.fibjs.org', {
     '/user': (req) => proxyTo(req, `http://127.0.0.1:3001`),
     '/biz1': (req) => proxyTo(req, `http://127.0.0.1:8080`),
@@ -78,7 +78,7 @@ apiRoutes.host('api.fibjs.org', {
 })
 ```
 
-进一步的, 如果你希望其中的 '/biz1' 路径只接受 http POST 请求, 则可以:
+Furthermore, if you want the '/biz1' path to accept only HTTP POST requests, you can do:
 
 ```javascript
 const mq = require('mq')
@@ -92,14 +92,14 @@ apiRoutes.host('api.fibjs.org', {
 })
 ```
 
-**注意** api.fibjs.org 必须已经绑定到当前机器
+**Note** api.fibjs.org must already be bound to the current machine
 
-## 复杂例子
+## Complex Examples
 
-若无其它声明, 以下例子中, 存在以下函数:
+Unless otherwise stated, the following examples use the following functions:
 
 ```javascript
-// 生成带特定 host 的请求
+// generate a request with a specific host
 function getRequest({
     path = '/',
     host = 'www.fibjs.org'
@@ -107,23 +107,26 @@ function getRequest({
     const req = new http.Request()
 
     req.value = path
-    req.addHeader('host', host)
+    req.appendHeader('host', host)
     return req
 }
 
-// 以 method 尝试对 routes 发起一个 header: host=host 的请求
+// try to send a request with header host=host to routes using method
 function invokePathFromHost (path, host, method = 'GET') {
     const req = getRequest({ path, host })
     req.method = method
 
     mq.invoke(routes, req)
 
-    const result = req.response.body.readAll()
+    const body = req.response.body
+    if (!body) return null
+    body.rewind()
+    const result = body.readAll()
     return result ? result.toString() : result
 }
 ```
 
-### 域名分流
+### Host-based Routing
 
 ```javascript
 const mq = require('mq')
@@ -136,20 +139,20 @@ routes.host('api.fibjs.org', [
     {
         '/user/information': req => req.response.json({name: 'xicilion'}),
     },
-    req => req.response.body.rewind()
+    req => { const body = req.response.body; if (body) body.rewind() }
 ])
 
-// routes.host 方法可以多次调用
+// the routes.host method can be called multiple times
 routes.host('*.fibjs.org', [
     {
         '/': req => req.response.json({message: 'I am in root'}),
-        '/index.html': req => req.response.body.write(`<html><body>hello fibjs</body></html>`),
-        '/index.js': req => req.response.body.write(`console.log('hello world')`),
+        '/index.html': req => { req.response.write(`<html><body>hello fibjs</body></html>`) },
+        '/index.js': req => { req.response.write(`console.log('hello world')`) },
         '*': (req, domain) => {
             req.response.json({message: 'I am fallback'})
         }
     },
-    req => req.response.body.rewind()
+    req => { const body = req.response.body; if (body) body.rewind() }
 ])
 
 assert.equal( invokePathFromHost('/', 'www.fibjs.org'), `{"message":"I am in root"}` )
@@ -164,6 +167,6 @@ try {
 }
 ```
 
-接下来,你只需要将上例中的 routes 挂载到一个 http(s)Server, 它就可以开始工作了. 如果这个 server 监听了所在机器的默认端口(一般是 80), 则一个根据域名分流不同路由的网关服务就搭建好了 —— 这意味着, 完成同样的功能, 你可以仅使用 fibjs 的 mq.Routing 而不一定非要安装 nginx/apache/tomcat/iis 等传统网关服务.
+Next, you just need to mount the routes from the example above onto an http(s) Server, and it can start working. If this server listens on the machine's default port (usually 80), then a gateway service that routes traffic to different routes based on the host is ready — this means that to achieve the same functionality, you can just use fibjs's mq.Routing without necessarily installing traditional gateway services such as nginx/apache/tomcat/iis.
 
-👉 【[fibjs 桌面应用开发指南](gui.md)】
+👉 [fibjs Desktop Application Development Guide](gui.md)

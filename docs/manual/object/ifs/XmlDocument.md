@@ -1,33 +1,106 @@
-# 对象 XmlDocument
-XmlDocument 是  [xml](../../module/ifs/xml.md) 模块的一个对象，它代表整个 XML 文档，提供了对整个文档的访问入口
+# Object XmlDocument
+XmlDocument is the root of the fibjs XML/HTML DOM: it owns the node tree and
 
-XmlDocument 是一棵文档树的根，包含了整个 XML 文档中的所有节点。XmlDocument 对象同样提供了以下功能：
+provides the factory methods that create nodes, the document-level query methods and the
+entry points for parsing and serializing a whole document
 
-1. 创建元素节点、文本节点、注释和处理指令等
-2. 访问和修改文档属性和相关信息（如 DTD 注释及文档声明）
-3. 解析 XML 文档
+A document is created empty in XML mode (`new [xml.Document](../../module/ifs/xml.md#Document)()`), or with an html/head/body
+skeleton in HTML mode (`new [xml.Document](../../module/ifs/xml.md#Document)('text/html')`), and is filled by load() or by
+appending nodes produced by the create* factories. It is also what [xml.parse](../../module/ifs/xml.md#parse)() returns and
+what [XmlNode.ownerDocument](XmlNode.md#ownerDocument) points to. A document node may hold one document element, one
+doctype, processing instructions, comments and a document fragment; text is rejected.
 
-下面是使用 XmlDocument 对象解析一个 XML 文档的示例代码：
+Concepts:
+
+- **Document lifecycle**: `new [xml.Document](../../module/ifs/xml.md#Document)()` and the [global](../../module/ifs/global.md) `new XMLDocument()` build an
+  empty XML document. In HTML mode the constructor immediately builds an `html` element
+  containing `head` and `body`, and load() replaces the whole tree with the parsed one. In
+  XML mode load() appends the parsed nodes to the current document - it does not reset it,
+  so a second document element is silently dropped and a failed parse leaves the partial
+  tree behind. [xml.parse](../../module/ifs/xml.md#parse)() always returns a fresh document.
+- **Modes**: the mode is fixed when the document is created (`text/[xml](../../module/ifs/xml.md)` or `text/html`).
+  XML mode is case-sensitive and strict (malformed input throws); HTML mode uses a tolerant
+  tree builder, upper-cases the tag names of parsed elements, matches tag names
+  case-insensitively, wraps a fragment in html/head/body and serializes empty elements with
+  the HTML rules. head, title and body exist only in HTML mode and throw an invalid-call
+  error (20009) in XML mode.
+- **Creating nodes**: createElement/createElementNS, createTextNode, createComment,
+  createCDATASection, createProcessingInstruction and createDocumentFragment return nodes
+  owned by the document but detached until inserted. String parameters are validated, not
+  coerced, so a non-string argument throws a TypeError (20005). An element created with
+  createElementNS carries namespaceURI/prefix/localName but no xmlns declaration (see
+  [XmlNode](XmlNode.md) for the serialization rule).
+- **Import and adopt**: importNode copies a node from another document into this one (deep
+  by default) and leaves the source tree unchanged; adoptNode moves it (removing it from
+  its old parent and changing ownerDocument). A Document node cannot be imported or
+  adopted. Inserting a foreign node directly also adopts it - see [XmlNode](XmlNode.md).
+- **Querying**: getElementsByTagName/getElementsByTagNameNS, getElementById,
+  getElementsByClassName and querySelector/querySelectorAll search the whole document
+  (documentElement included, unlike the [XmlElement](XmlElement.md) methods, which search descendants only).
+  getElementById returns the first element in document order whose id attribute matches (an
+  empty or unknown id gives null). Every query returns an [XmlNodeList](XmlNodeList.md) snapshot that owns
+  strong references to its nodes, so results do not follow later mutations; the
+  document-level indexes are invalidated automatically, no refresh call is needed.
+- **Serialization**: toString() and [xml.serialize](../../module/ifs/xml.md#serialize)() produce the markup of the whole
+  document. The XML declaration is emitted only when the document has declaration
+  metadata: inputEncoding is filled by parsing and xmlStandalone is optional, and setting
+  xmlVersion (or parsing a declaration) switches the declaration on; the standalone value
+  is written only when a version is present. XML mode closes empty elements as `<tag/>`,
+  HTML mode uses void tags or `<tag></tag>`.
+
+Obtained from:
+- `xml.parse(source[, type][, options])` - parses and returns an XmlDocument;
+- `new [xml.Document](../../module/ifs/xml.md#Document)([type])` or the [global](../../module/ifs/global.md) `new XMLDocument([type])` - an empty XML
+  document, or an html/head/body skeleton in HTML mode;
+- `new [DOMParser](DOMParser.md)().parseFromString(source, mimeType)` - see the [DOMParser](DOMParser.md) interface;
+- `document.cloneNode()` - a copy of the whole document, declaration included.
+
+Example 1 - create a document from scratch and serialize it:
 
 ```JavaScript
-var xml = require('xml');
-var fs = require('fs');
+const xml = require('xml');
 
-var xmlStr = fs.readFile('test.xml');
-var xmlDoc = xml.parse(xmlStr);
+const doc = new xml.Document();
+const root = doc.createElement('note');
+root.appendChild(doc.createTextNode('hello'));
+root.appendChild(doc.createComment('tail'));
+doc.appendChild(root);
 
-// get document root node name
-var rootName = xmlDoc.documentElement.nodeName;
-console.log(`文档根节点名称是 ${rootName}`);
+console.log(doc.documentElement.nodeName); // note
+console.log(doc.toString()); // <note>hello<!--tail--></note>
 ```
 
-在上述代码中，我们首先使用 `fs` 模块的 `readFile()` 方法读取了一个 XML 文件，并将文件流赋值给变量 `xmlStr`。然后我们使用 `[xml](../../module/ifs/xml.md)` 模块的 `parse()` 方法解析该 XML 文件，并将解析后的 `XmlDocument` 对象赋值给变量 `xmlDoc`。最后我们使用 `xmlDoc` 的 `documentElement` 属性获取文档根节点，并获取其节点名称，输出到控制台上。
+Example 2 - copy a node between documents with importNode:
 
-由于 XmlDocument 是整个 XML 文档的入口，因此我们可以通过它获取和修改文档的相关信息。例如，我们可以通过 `xmlDoc.xmlVersion` 和 `xmlDoc.xmlStandalone` 分别获取和修改文档的 XML 版本和 standalone 属性。我们还可以通过 `xmlDoc.createProcessingInstruction()` 方法来创建新的处理指令节点。
+```JavaScript
+const xml = require('xml');
 
-XmlDocument 对象是一个非常强大的类型，为我们处理解析 XML 文件提供了很大的便利。
+const source = xml.parse('<catalog><book id="1">XML</book></catalog>');
+const target = new xml.Document();
+const book = target.importNode(source.getElementById('1'), true);
 
-## 继承关系
+target.appendChild(target.createElement('shelf')).appendChild(book);
+console.log(book.ownerDocument === target); // true
+console.log(source.documentElement.childNodes.length); // 1 (source unchanged)
+console.log(target.toString()); // <shelf><book id="1">XML</book></shelf>
+```
+
+Example 3 - work with an HTML document:
+
+```JavaScript
+const xml = require('xml');
+
+const doc = xml.parse('<html><head><title>Demo</title></head>' +
+    '<body><p class="x">a</p><p>b</p></body></html>', 'text/html');
+doc.body.setAttribute('id', 'page');
+
+console.log(doc.title); // Demo
+console.log(doc.getElementById('page').nodeName); // BODY
+console.log(doc.querySelectorAll('p').length); // 2
+console.log(doc.head.parentElement === doc.documentElement); // true
+```
+
+## Inheritance
 ```dot
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
@@ -41,816 +114,1206 @@ digraph {
 }
 ```
 
-## 构造函数
+## Constructors
         
 ### XmlDocument
-**构造一个 XmlDocument 对象**
+**Constructs a document in the requested mode**
 
 ```JavaScript
 new XmlDocument(String type = "text/xml");
 ```
 
-调用参数:
-* type: String, 指定文档对象的类型，缺省为 "text/[xml](../../module/ifs/xml.md)"，若需要处理 html 则需要指定 "text/html"
+Parameters:
+* type: String, the document mode, either "text/[xml](../../module/ifs/xml.md)" or "text/html"
 
-## 成员属性
+The optional type selects the parsing mode and is fixed for the life of the document.
+`text/[xml](../../module/ifs/xml.md)` (the default) builds an empty XML document; `text/html` immediately builds an
+html element with head and body children. Any other MIME type throws an Error (20004).
+The [global](../../module/ifs/global.md) `XMLDocument` class is the same constructor.
+
+## Properties
         
 ### inputEncoding
-**String, 返回用于文档的编码（在解析时）**
+**String, Returns the [encoding](../../module/ifs/encoding.md) detected while parsing, or null when it is unknown**
 
 ```JavaScript
 readonly String XmlDocument.inputEncoding;
 ```
 
+Set from the [encoding](../../module/ifs/encoding.md) pseudo-attribute of the XML declaration or, for a [Buffer](Buffer.md) parsed
+in HTML mode, from the charset of a meta tag (both the charset attribute and the
+[http](../../module/ifs/http.md)-equiv form are recognized). A document built from a string in HTML mode and a
+document parsed without a declaration report null. The property is read-only;
+assigning to it is ignored.
+
 --------------------------
 ### xmlStandalone
-**Boolean, 设置或返回文档是否为 standalone**
+**Boolean, Reads or writes the standalone flag of the XML declaration**
 
 ```JavaScript
 Boolean XmlDocument.xmlStandalone;
 ```
 
+null when the parsed document had no standalone pseudo-attribute and the member has not
+been assigned; assigning stores a boolean value and it is serialized only when the
+document also has a version (see toString). It does not affect parsing.
+
 --------------------------
 ### xmlVersion
-**String, 设置或返回文档的 XML 版本**
+**String, Reads or writes the version of the XML declaration**
 
 ```JavaScript
 String XmlDocument.xmlVersion;
 ```
 
+Reading returns "1.0" when the document was built without a declaration (the value is
+only stored once you assign one). The setter accepts a string only - a non-string
+argument throws a TypeError (20005). A non-empty version makes toString() emit the
+declaration, so setting it (with xmlStandalone and inputEncoding) documents the whole
+declaration.
+
 --------------------------
 ### doctype
-**[XmlDocumentType](XmlDocumentType.md), 返回与文档相关的文档类型声明（Document Type Declaration）**
+**[XmlDocumentType](XmlDocumentType.md), Returns the document type declaration, or null when the document has none**
 
 ```JavaScript
 readonly XmlDocumentType XmlDocument.doctype;
 ```
 
-对于没有 DTD 的 XML 文档，则返回 null。此属性可提供对 [XmlDocumentType](XmlDocumentType.md) 对象（ XmlDocument 的一个子节点）的直接访问。
+The returned [XmlDocumentType](XmlDocumentType.md) is the doctype child node itself (the same [object](object.md) as
+`childNodes[0]` when the declaration comes first). An HTML document parsed from
+`<!DOCTYPE html>` keeps it as well; a document built with the create* factories has
+none. A document accepts at most one doctype - appending a second throws an Error
+(20024). removeChild clears the slot, while [XmlNode.remove](XmlNode.md#remove)() and adoptNode() detach the
+node without clearing it, so this property then keeps reporting the detached doctype.
 
 --------------------------
 ### documentElement
-**[XmlElement](XmlElement.md), 返回文档的根节点**
+**[XmlElement](XmlElement.md), Returns the document element, or null when the document has no root element**
 
 ```JavaScript
 readonly XmlElement XmlDocument.documentElement;
 ```
 
+A document holds at most one element; appendChild/insertBefore/replaceChild reject a
+second one with an Error (20024). removeChild (and replaceChild) release the slot: after
+removing the root this property reads null and another element can be appended. The
+slot is a document-level field, so the generic [XmlNode.remove](XmlNode.md#remove)() and adoptNode() do not
+release it - they detach the element but the document still reports it here and keeps
+rejecting a second element; remove the root with removeChild when it must be replaced.
+
 --------------------------
 ### head
-**[XmlElement](XmlElement.md), 返回 HTML 文档的 head 节点，仅在 html 模式有效**
+**[XmlElement](XmlElement.md), Returns the head element of an HTML document**
 
 ```JavaScript
 readonly XmlElement XmlDocument.head;
 ```
 
+Only valid in HTML mode (an invalid-call error, 20009, is thrown in XML mode). The
+constructor and the HTML parser create a head element, so it is normally present; this
+member returns the first head element found under the document element.
+
 --------------------------
 ### title
-**String, 返回 HTML 文档的 title 节点的内容，仅在 html 模式有效**
+**String, Returns the text of the first title element of an HTML document**
 
 ```JavaScript
 readonly String XmlDocument.title;
 ```
 
+Only valid in HTML mode (20009 in XML mode). Returns the title's textContent, or an
+empty string when the document has no title element.
+
 --------------------------
 ### body
-**[XmlElement](XmlElement.md), 返回 HTML 文档的 body 节点，仅在 html 模式有效**
+**[XmlElement](XmlElement.md), Returns the body element of an HTML document**
 
 ```JavaScript
 readonly XmlElement XmlDocument.body;
 ```
 
+Only valid in HTML mode (20009 in XML mode); the constructor and the HTML parser create
+a body element, and parsed content is placed into it.
+
 --------------------------
 ### nodeType
-**Integer, 返回节点的节点类型**
+**Integer, Returns the type of the node, as one of the node type [constants](../../module/ifs/constants.md) of the [xml](../../module/ifs/xml.md)**
 
 ```JavaScript
 readonly Integer XmlDocument.nodeType;
 ```
 
-不同对象的 nodeType 会返回不同的值：
-- [XmlElement](XmlElement.md): ELEMENT_NODE(1)
-- [XmlAttr](XmlAttr.md): ATTRIBUTE_NODE(2)
-- [XmlText](XmlText.md): TEXT_NODE(3)
-- [XmlCDATASection](XmlCDATASection.md): CDATA_SECTION_NODE(4)
-- [XmlProcessingInstruction](XmlProcessingInstruction.md): PROCESSING_INSTRUCTION_NODE(7)
-- [XmlComment](XmlComment.md): COMMENT_NODE(8)
-- XmlDocument: DOCUMENT_NODE(9)
-- [XmlDocumentType](XmlDocumentType.md): DOCUMENT_TYPE_NODE(10)
+[module](../../module/ifs/module.md)
+
+The value is fixed when the node is created and cannot be changed. See the class
+comment for the value of every concrete node class; the deprecated ENTITY_NODE,
+ENTITY_REFERENCE_NODE and NOTATION_NODE [constants](../../module/ifs/constants.md) are declared for completeness but no
+fibjs node reports them. The [XmlAttr](XmlAttr.md) interface is not an [XmlNode](XmlNode.md) and has no nodeType,
+even though its conceptual type is ATTRIBUTE_NODE (2).
 
 --------------------------
 ### nodeName
-**String, 返回节点的名称，根据其类型**
+**String, Returns the name of the node, which is fixed per node type**
 
 ```JavaScript
 readonly String XmlDocument.nodeName;
 ```
 
-不同对象的 nodeName 会返回不同的值：
-- [XmlElement](XmlElement.md): element name
-- [XmlAttr](XmlAttr.md): 属性名称
-- [XmlText](XmlText.md): \#text
-- [XmlCDATASection](XmlCDATASection.md): \#cdata-section
-- [XmlProcessingInstruction](XmlProcessingInstruction.md): 返回指定目标 target
-- [XmlComment](XmlComment.md): \#comment
-- XmlDocument: \#document
-- [XmlDocumentType](XmlDocumentType.md): doctype 名称
+The value per concrete class:
+- [XmlElement](XmlElement.md): the tag name (tagName; upper-cased for elements parsed in HTML mode);
+- [XmlText](XmlText.md): `\#text`;
+- [XmlCDATASection](XmlCDATASection.md): `\#cdata-section`;
+- [XmlProcessingInstruction](XmlProcessingInstruction.md): the target;
+- [XmlComment](XmlComment.md): `\#comment`;
+- XmlDocument: `\#document`;
+- [XmlDocumentType](XmlDocumentType.md): the doctype name;
+- [XmlDocumentFragment](XmlDocumentFragment.md): `\#document-fragment`.
+The [XmlAttr](XmlAttr.md) interface declares its own nodeName (the attribute name).
 
 --------------------------
 ### nodeValue
-**String, 返回节点的名称，根据其类型**
+**String, Reads and writes the data carried by a leaf node**
 
 ```JavaScript
 String XmlDocument.nodeValue;
 ```
 
-不同对象的 nodeName 会返回不同的值：
-- [XmlElement](XmlElement.md): null
-- [XmlAttr](XmlAttr.md): 属性的值
-- [XmlText](XmlText.md): 节点的内容
-- [XmlCDATASection](XmlCDATASection.md): 节点的内容
-- [XmlProcessingInstruction](XmlProcessingInstruction.md): 返回指定内容 data
-- [XmlComment](XmlComment.md): 注释文本
-- XmlDocument: null
-- [XmlDocumentType](XmlDocumentType.md): null
+The value per node type:
+- [XmlText](XmlText.md), [XmlCDATASection](XmlCDATASection.md) and [XmlComment](XmlComment.md): the character data;
+- [XmlProcessingInstruction](XmlProcessingInstruction.md): the instruction data (not the target);
+- [XmlElement](XmlElement.md), XmlDocument, [XmlDocumentType](XmlDocumentType.md) and [XmlDocumentFragment](XmlDocumentFragment.md): null, and
+  assigning to them is silently ignored.
+
+The [XmlAttr](XmlAttr.md) interface declares its own nodeValue (the attribute value); the
+[XmlCharacterData](XmlCharacterData.md) interface adds data, length and the substring/append/insert/delete/
+replace members shared by text, CDATA and comment nodes.
 
 --------------------------
 ### ownerDocument
-**XmlDocument, 返回节点的根元素（XmlDocument 对象）**
+**XmlDocument, Returns the document that owns the node**
 
 ```JavaScript
 readonly XmlDocument XmlDocument.ownerDocument;
 ```
 
+The owner is the document that created the node, the importing document for importNode,
+the target document for an insertion across documents, and the new document after
+adoptNode; it survives detaching the node, so a detached node still reports its owner.
+A document node returns itself here. Not in the standard: the DOM defines
+Document.ownerDocument as null.
+
 --------------------------
 ### parentNode
-**[XmlNode](XmlNode.md), 可返回某节点的父节点**
+**[XmlNode](XmlNode.md), Returns the parent node, or null when the node is the root of its tree or is**
 
 ```JavaScript
 readonly XmlNode XmlDocument.parentNode;
 ```
 
+detached
+
+A document node always reports null; the parent of documentElement is the document
+itself.
+
 --------------------------
 ### parentElement
-**[XmlElement](XmlElement.md), 可返回某节点的父元素，如果父节点不是元素节点则返回 null**
+**[XmlElement](XmlElement.md), Returns the parent when it is an element, otherwise null**
 
 ```JavaScript
 readonly XmlElement XmlDocument.parentElement;
 ```
 
+A document, document fragment or detached node as parent yields null, so the member
+answers "is my parent an element" rather than "what is my parent"; use parentNode for
+the parent whatever its type.
+
 --------------------------
 ### childNodes
-**[XmlNodeList](XmlNodeList.md), 返回指定节点的子节点的节点列表**
+**[XmlNodeList](XmlNodeList.md), Returns the live list of the child nodes**
 
 ```JavaScript
 readonly XmlNodeList XmlDocument.childNodes;
 ```
 
+The same [XmlNodeList](XmlNodeList.md) [object](object.md) is returned on every access, and it is the structural list
+of the node itself, so later insertions and removals are visible immediately
+(childNodes.length grows and shrinks). Reading it does not take a snapshot; iterate
+with the [XmlNodeList](XmlNodeList.md) members (length, item, the index and iterator members) or
+serialize it to markup with toString().
+
 --------------------------
 ### children
-**[XmlNodeList](XmlNodeList.md), 返回指定节点的子元素节点的节点列表**
+**[XmlNodeList](XmlNodeList.md), Returns the element-only view of the child nodes**
 
 ```JavaScript
 readonly XmlNodeList XmlDocument.children;
 ```
 
+Text, CDATA, comment and processing-instruction children are filtered out, so
+children.length is the number of child elements. The view is cached and rebuilt after
+a mutation; for the live structural list of every child node use childNodes.
+
 --------------------------
 ### firstChild
-**[XmlNode](XmlNode.md), 返回节点的首个子节点**
+**[XmlNode](XmlNode.md), Returns the first child node, or null when the node has no children**
 
 ```JavaScript
 readonly XmlNode XmlDocument.firstChild;
 ```
 
+Shorthand for `childNodes[0]`; the child can be of any node type.
+
 --------------------------
 ### lastChild
-**[XmlNode](XmlNode.md), 返回节点的最后一个子节点**
+**[XmlNode](XmlNode.md), Returns the last child node, or null when the node has no children**
 
 ```JavaScript
 readonly XmlNode XmlDocument.lastChild;
 ```
 
+Shorthand for the last entry of childNodes; the child can be of any node type.
+
 --------------------------
 ### previousSibling
-**[XmlNode](XmlNode.md), 返回某节点之前紧跟的节点（处于同一树层级），如果没有此节点，那么该属性返回 null**
+**[XmlNode](XmlNode.md), Returns the sibling immediately before the node at the same tree level, or**
 
 ```JavaScript
 readonly XmlNode XmlDocument.previousSibling;
 ```
 
+null when it is the first child or the node is detached
+
 --------------------------
 ### nextSibling
-**[XmlNode](XmlNode.md), 返回某个元素之后紧跟的节点（处于同一树层级中），如果无此节点，则属性返回 null**
+**[XmlNode](XmlNode.md), Returns the sibling immediately after the node at the same tree level, or**
 
 ```JavaScript
 readonly XmlNode XmlDocument.nextSibling;
 ```
 
+null when it is the last child or the node is detached
+
 --------------------------
 ### firstElementChild
-**[XmlNode](XmlNode.md), 返回节点的首个子元素节点**
+**[XmlNode](XmlNode.md), Returns the first child element, skipping non-element children, or null when**
 
 ```JavaScript
 readonly XmlNode XmlDocument.firstElementChild;
 ```
 
+there is none
+
 --------------------------
 ### lastElementChild
-**[XmlNode](XmlNode.md), 返回节点的最后一个子元素节点**
+**[XmlNode](XmlNode.md), Returns the last child element, skipping non-element children, or null when**
 
 ```JavaScript
 readonly XmlNode XmlDocument.lastElementChild;
 ```
 
+there is none
+
 --------------------------
 ### previousElementSibling
-**[XmlNode](XmlNode.md), 返回某节点之前紧跟的元素节点（处于同一树层级），如果没有此节点，那么该属性返回 null**
+**[XmlNode](XmlNode.md), Returns the nearest preceding sibling element, or null when there is none**
 
 ```JavaScript
 readonly XmlNode XmlDocument.previousElementSibling;
 ```
 
+Non-element siblings between the node and the result are skipped; the walk happens in
+the parent's child list.
+
 --------------------------
 ### nextElementSibling
-**[XmlNode](XmlNode.md), 返回某个元素之后紧跟的元素节点（处于同一树层级中），如果无此节点，则属性返回 null**
+**[XmlNode](XmlNode.md), Returns the nearest following sibling element, or null when there is none**
 
 ```JavaScript
 readonly XmlNode XmlDocument.nextElementSibling;
 ```
 
+Non-element siblings between the node and the result are skipped; the walk happens in
+the parent's child list.
+
 --------------------------
 ### textContent
-**String, 查询和设置选定元素的文本。查询时，返回元素节点内所有文本节点的值；设置时，删除所有子节点，并用单个文本节点来替换它们。**
+**String, Reads and writes the text content of the node**
 
 ```JavaScript
 String XmlDocument.textContent;
 ```
 
+Reading returns the concatenation of the data of all descendant text nodes in document
+order (CDATA sections included); text, CDATA, comment and processing-instruction nodes
+return their own data, and document, doctype and fragment nodes return an empty string.
+Writing to an element removes all of its children and appends a single new text node
+with the given value (an empty value creates an empty text node); writing to a document
+is silently ignored. The member never joins adjacent text nodes - call normalize() when
+a canonical shape is needed.
+
 --------------------------
 ### isConnected
-**Boolean, 返回当前节点是否连接到文档中**
+**Boolean, Queries whether the node is part of a document tree**
 
 ```JavaScript
 readonly Boolean XmlDocument.isConnected;
 ```
 
-## 成员函数
+A node is connected when the root of its tree is a document, which includes the
+document node itself; a freshly created or detached node, and every node of a detached
+subtree, is not connected. This is a read-only computed property.
+
+## Methods
         
 ### load
-**通过解析一个 XML/HTML 字符串来组成该文档，不支持多语种**
+**Parses XML/HTML data into the document**
 
 ```JavaScript
-XmlDocument.load(String source);
+XmlDocument.load(Buffer | String source,
+    Object options = {});
 ```
 
-调用参数:
-* source: String, 要解析的 XML/HTML 文本，取决于文档创建时的类型
+Parameters:
+* source: [Buffer](Buffer.md) | String, the XML or HTML data to parse
+* options: Object, the parse limits, default { maxElementDepth: 1000, maxNodeCount: 1000000 }
 
---------------------------
-**通过解析一个二进制 XML/HTML 字符串来组成该文档，并根据语种自动转换**
+source may be a string (encoded as utf8) or a [Buffer](Buffer.md). In XML mode the parsed nodes are
+appended to the current document: load() does not reset it, a second document element
+is silently dropped and a failed parse leaves the partial tree in place - create a
+fresh document for a fresh parse. In HTML mode the existing tree is discarded and
+rebuilt from the input. A [Buffer](Buffer.md) in HTML mode first detects the charset from a charset
+meta tag (this is what fills inputEncoding); string input is taken as utf8. The options
+are the same parse limits as [xml.parse](../../module/ifs/xml.md#parse).
+
+options supports the following options (0, a negative value or Infinity disables the
+corresponding limit):
 
 ```JavaScript
-XmlDocument.load(Buffer source);
+// fragment: options
+({
+    "maxElementDepth": 1000, // maximum element nesting depth
+    "maxNodeCount": 1000000 // maximum number of nodes and attributes
+})
 ```
 
-调用参数:
-* source: [Buffer](Buffer.md), 要解析的 XML/HTML 文本，取决于文档创建时的类型
+Exceeding a limit throws an Error (20024); malformed XML throws the same error with the
+line and column in the message. A non-number option throws a TypeError (20004), and a
+source that is neither string nor [Buffer](Buffer.md) throws a TypeError (20005). The member returns
+nothing.
+
+```JavaScript
+const xml = require('xml');
+
+const doc = xml.parse('<a><b/></a>');
+doc.load('<c/>');
+console.log(doc.documentElement.nodeName); // a (XML mode appends; second root dropped)
+
+const page = new xml.Document('text/html');
+page.load('<p>first');
+page.load('<p>second');
+console.log(page.body.textContent); // second (HTML mode reloads)
+console.log(page.getElementsByTagName('p').length); // 1
+```
 
 --------------------------
 ### getElementsByTagName
-**返回带有指定名称的所有元素的一个节点列表**
+**Returns a snapshot list of all elements with the specified tag name**
 
 ```JavaScript
 XmlNodeList XmlDocument.getElementsByTagName(String tagName);
 ```
 
-调用参数:
-* tagName: String, 需检索的标签名。值 "*" 匹配所有的标签
+Parameters:
+* tagName: String, the tag name to match, or `*` for every element
 
-返回结果:
-* [XmlNodeList](XmlNodeList.md), 文档树中具有指定标记的 [XmlElement](XmlElement.md) 节点的 [XmlNodeList](XmlNodeList.md) 集合。返回的元素节点的顺序就是它们在源文档中出现的顺序。
+Returns:
+* [XmlNodeList](XmlNodeList.md), an [XmlNodeList](XmlNodeList.md) of the matching elements in document order
 
-该方法将返回一个 [XmlNodeList](XmlNodeList.md) 对象（可以作为只读数组处理），该对象存放文档中具有指定标签名的所有 [XmlElement](XmlElement.md) 节点，它们存放的顺序就是在源文档中出现的顺序。 [XmlNodeList](XmlNodeList.md) 对象是“活”的，即如果在文档中添加或删除了指定标签名的元素，它的内容会自动进行必要的更新。
+The search covers the whole document, documentElement included (the [XmlElement](XmlElement.md) member
+of the same name searches descendants only); `*` matches every element. In XML mode the
+name is compared case-sensitively against tagName, so an unprefixed query does not
+match `p:name`; in HTML mode tag names are upper-cased and compared
+case-insensitively. The returned [XmlNodeList](XmlNodeList.md) is a snapshot that holds strong references
+to its nodes: a later insertion or removal does not change it, query again after a
+mutation. A document without a root element returns an empty list.
 
 --------------------------
 ### getElementsByTagNameNS
-**返回带有指定命名空间和名称的所有元素的一个节点列表**
+**Returns a snapshot list of all elements with the specified namespace URI and**
 
 ```JavaScript
 XmlNodeList XmlDocument.getElementsByTagNameNS(String namespaceURI,
     String localName);
 ```
 
-调用参数:
-* namespaceURI: String, 指定检索的命名空间 URI。值 "*" 可匹配所有的标签
-* localName: String, 需检索的标签名。值 "*" 匹配所有的标签
+Parameters:
+* namespaceURI: String, the namespace URI to match, or `*`
+* localName: String, the local name to match, or `*`
 
-返回结果:
-* [XmlNodeList](XmlNodeList.md), 文档树中具有指定标记的 [XmlElement](XmlElement.md) 节点的 [XmlNodeList](XmlNodeList.md) 集合。返回的元素节点的顺序就是它们在源文档中出现的顺序。
+Returns:
+* [XmlNodeList](XmlNodeList.md), an [XmlNodeList](XmlNodeList.md) of the matching elements in document order
 
-该方法与 getElementsByTagName() 方法相似，只是它根据命名空间和名称来检索元素。
+local name
+
+Either argument may be `*`; the match uses the namespace URI and the localName, so an
+element is found through its namespace regardless of the prefix it was declared with.
+Like getElementsByTagName the result is a snapshot in document order.
 
 --------------------------
 ### getElementById
-**返回拥有指定 id 属性的元素**
+**Returns the first element whose id attribute has the specified value**
 
 ```JavaScript
 XmlElement XmlDocument.getElementById(String id);
 ```
 
-调用参数:
-* id: String, 需检索的 id
+Parameters:
+* id: String, the id value to look for
 
-返回结果:
-* [XmlElement](XmlElement.md), 节点树中具有指定 id 属性的 [XmlElement](XmlElement.md) 节点
+Returns:
+* [XmlElement](XmlElement.md), the matching [XmlElement](XmlElement.md), or null when no element has that id
 
-该方法将遍历文档的子孙节点，返回一个 [XmlElement](XmlElement.md) 节点对象，表示第一个具有指定 id 属性的文档元素。。
+The whole document is searched in document order and the first match wins; matching is
+case-sensitive, and an empty or unknown id returns null. The value is read from the
+`id` attribute in both modes. The [XmlElement](XmlElement.md) interface exposes a member of the same
+name that only searches its descendants.
 
 --------------------------
 ### getElementsByClassName
-**返回带有指定 class 名称的所有元素的一个节点列表**
+**Returns a snapshot list of all elements with the specified class name(s)**
 
 ```JavaScript
 XmlNodeList XmlDocument.getElementsByClassName(String className);
 ```
 
-调用参数:
-* className: String, 需检索的 class 名称
+Parameters:
+* className: String, one or more class tokens separated by whitespace
 
-返回结果:
-* [XmlNodeList](XmlNodeList.md), 文档树中具有指定 class 名的 [XmlElement](XmlElement.md) 节点的 [XmlNodeList](XmlNodeList.md) 集合。返回的元素节点的顺序就是它们在源文档中出现的顺序。
+Returns:
+* [XmlNodeList](XmlNodeList.md), an [XmlNodeList](XmlNodeList.md) of the matching elements in document order
 
-该方法将返回一个 [XmlNodeList](XmlNodeList.md) 对象（可以作为只读数组处理），该对象存放文档中具有指定 class 名的所有 [XmlElement](XmlElement.md) 节点，它们存放的顺序就是在源文档中出现的顺序。 [XmlNodeList](XmlNodeList.md) 对象是“活”的，即如果在文档中添加或删除了指定标签名的元素，它的内容会自动进行必要的更新。
+The value is split on whitespace and an element must carry all the tokens to match
+(intersection), so `"a b"` selects elements whose class attribute contains both a and
+b. Matching is case-sensitive in both modes and covers the whole document; the result
+is a snapshot in document order.
 
 --------------------------
 ### createElement
-**创建元素节点**
+**Creates a detached element node**
 
 ```JavaScript
 XmlElement XmlDocument.createElement(String tagName);
 ```
 
-调用参数:
-* tagName: String, 指定元素节点规定名称
+Parameters:
+* tagName: String, the name of the element
 
-返回结果:
-* [XmlElement](XmlElement.md), 返回新创建的 [XmlElement](XmlElement.md) 节点，具有指定的标签名
+Returns:
+* [XmlElement](XmlElement.md), returns the new [XmlElement](XmlElement.md)
+
+The element keeps the case of tagName in both modes; in HTML mode tag lookups remain
+case-insensitive. The node belongs to the document but has no parent until it is
+inserted, and an empty name is accepted. A non-string argument throws a TypeError
+(20005). See [XmlElement](XmlElement.md) for the operations available on the result; use createElementNS
+when the element has a namespace.
+
+```JavaScript
+const xml = require('xml');
+
+const doc = new xml.Document();
+const root = doc.createElement('root');
+root.appendChild(doc.createTextNode('value'));
+doc.appendChild(root);
+
+console.log(doc.documentElement.textContent); // value
+console.log(doc.toString()); // <root>value</root>
+```
 
 --------------------------
 ### createElementNS
-**创建带有指定命名空间的元素节点**
+**Creates a detached element node with a namespace**
 
 ```JavaScript
 XmlElement XmlDocument.createElementNS(String namespaceURI,
     String qualifiedName);
 ```
 
-调用参数:
-* namespaceURI: String, 指定元素节点命名空间 URI
-* qualifiedName: String, 指定元素节点规定名称
+Parameters:
+* namespaceURI: String, the namespace URI of the new element
+* qualifiedName: String, the qualified name of the new element
 
-返回结果:
-* [XmlElement](XmlElement.md), 返回新创建的 [XmlElement](XmlElement.md) 节点，具有指定的标签名
+Returns:
+* [XmlElement](XmlElement.md), returns the new [XmlElement](XmlElement.md)
+
+qualifiedName is split at the first colon into prefix and localName (no colon means an
+empty prefix and a localName equal to the name); namespaceURI, prefix and localName are
+stored on the element, but no xmlns attribute is added to the tree. Serialization adds
+the declaration when it is missing, so lookupPrefix on the detached element returns
+null until the subtree has been parsed with an explicit declaration. Either argument
+must be a string (TypeError 20005 otherwise).
 
 --------------------------
 ### createTextNode
-**创建文本节点**
+**Creates a detached text node**
 
 ```JavaScript
 XmlText XmlDocument.createTextNode(String data);
 ```
 
-调用参数:
-* data: String, 指定此节点的文本
+Parameters:
+* data: String, the character data of the new text node
 
-返回结果:
-* [XmlText](XmlText.md), 返回新创建的 [XmlText](XmlText.md) 节点，表示指定的 data 字符串
+Returns:
+* [XmlText](XmlText.md), returns the new [XmlText](XmlText.md)
+
+The data is stored verbatim and adjacent text nodes are not joined (call normalize()
+on the parent when a canonical shape is needed, or set textContent instead). A
+non-string argument throws a TypeError (20005).
 
 --------------------------
 ### createComment
-**创建注释节点**
+**Creates a detached comment node**
 
 ```JavaScript
 XmlComment XmlDocument.createComment(String data);
 ```
 
-调用参数:
-* data: String, 指定此节点的注释文本
+Parameters:
+* data: String, the comment text
 
-返回结果:
-* [XmlComment](XmlComment.md), 返回新创建的 [XmlComment](XmlComment.md) 节点，注释文本为指定的 data
+Returns:
+* [XmlComment](XmlComment.md), returns the new [XmlComment](XmlComment.md)
+
+The data is stored verbatim and appears inside the comment markup when serialized. A
+non-string argument throws a TypeError (20005).
 
 --------------------------
 ### createCDATASection
-**创建 [XmlCDATASection](XmlCDATASection.md) 节点**
+**Creates a detached CDATA section node**
 
 ```JavaScript
 XmlCDATASection XmlDocument.createCDATASection(String data);
 ```
 
-调用参数:
-* data: String, 指定此节点规定 CDATA 数据
+Parameters:
+* data: String, the character data of the section
 
-返回结果:
-* [XmlCDATASection](XmlCDATASection.md), 返回新创建的 [XmlCDATASection](XmlCDATASection.md) 节点，内容为指定的 data
+Returns:
+* [XmlCDATASection](XmlCDATASection.md), returns the new [XmlCDATASection](XmlCDATASection.md)
+
+Valid in both modes; the data is stored verbatim (no escaping), is not splittable and
+serializes as `<![CDATA[data]]>`. A non-string argument throws a TypeError (20005).
 
 --------------------------
 ### createProcessingInstruction
-**创建 [XmlProcessingInstruction](XmlProcessingInstruction.md) 节点**
+**Creates a detached processing-instruction node**
 
 ```JavaScript
 XmlProcessingInstruction XmlDocument.createProcessingInstruction(String target,
     String data);
 ```
 
-调用参数:
-* target: String, 指定处理指令的目标
-* data: String, 指定处理指令的内容文本
+Parameters:
+* target: String, the instruction target (the name before the data)
+* data: String, the instruction content
 
-返回结果:
-* [XmlProcessingInstruction](XmlProcessingInstruction.md), 新创建的 ProcessingInstruction 节点
+Returns:
+* [XmlProcessingInstruction](XmlProcessingInstruction.md), returns the new [XmlProcessingInstruction](XmlProcessingInstruction.md)
+
+target names the instruction and data is its content; the returned node exposes target
+and data in addition to the [XmlNode](XmlNode.md) members, and serializes as `<?target data?>`. Both
+arguments must be strings (TypeError 20005 otherwise).
 
 --------------------------
 ### createDocumentFragment
-**创建空的 [XmlDocumentFragment](XmlDocumentFragment.md) 节点**
+**Creates an empty document fragment**
 
 ```JavaScript
 XmlDocumentFragment XmlDocument.createDocumentFragment();
 ```
 
-返回结果:
-* [XmlDocumentFragment](XmlDocumentFragment.md), 新创建的 [XmlDocumentFragment](XmlDocumentFragment.md) 节点
+Returns:
+* [XmlDocumentFragment](XmlDocumentFragment.md), returns the new [XmlDocumentFragment](XmlDocumentFragment.md); it is owned by this document but stays
 
-DocumentFragment 是一个轻量级的文档对象，可以包含多个子节点。当把 DocumentFragment 插入文档时，插入的不是 DocumentFragment 本身，而是它的所有子节点。
+A fragment is a lightweight container with no parent: when it is appended, inserted or
+used in place of a child, its children are spliced into the target and the fragment is
+emptied. It reports nodeName `\#document-fragment` and has no text content of its own.
+
+```JavaScript
+const xml = require('xml');
+
+const doc = new xml.Document();
+const root = doc.createElement('ul');
+const fragment = doc.createDocumentFragment();
+fragment.appendChild(doc.createElement('li'));
+fragment.appendChild(doc.createElement('li'));
+
+root.appendChild(fragment);
+console.log(fragment.childNodes.length); // 0 (children were moved)
+console.log(root.childNodes.length); // 2
+```
 
 --------------------------
 ### importNode
-**从另一个文档导入节点到当前文档**
+**Copies a node from another document into this document**
 
 ```JavaScript
 XmlNode XmlDocument.importNode(XmlNode importedNode,
     Boolean deep = true);
 ```
 
-调用参数:
-* importedNode: [XmlNode](XmlNode.md), 要导入的节点
-* deep: Boolean, 如果为 true，则递归导入节点的整个子树；如果为 false，则只导入节点本身
+Parameters:
+* importedNode: [XmlNode](XmlNode.md), the node to copy into this document
+* deep: Boolean, whether to copy the whole subtree (the default is true)
 
-返回结果:
-* [XmlNode](XmlNode.md), 返回导入到当前文档的新节点
+Returns:
+* [XmlNode](XmlNode.md), returns the imported node, owned by this document
 
-此方法创建源节点的副本，可以将其插入当前文档。源节点保持不变。如果需要将节点从另一个文档移动到当前文档而不是复制，请使用 adoptNode 方法。
+deep defaults to true, so the whole subtree is copied; false imports only the node
+itself (an element still brings its attributes). The source stays in its document and
+is unchanged, while the copy and its subtree are owned by this document and have no
+parent. A Document node cannot be imported (Error 20024); a non-node argument throws a
+TypeError (20005). Use adoptNode to move a node instead of copying it.
+
+```JavaScript
+const xml = require('xml');
+
+const source = xml.parse('<a><b>t</b></a>');
+const target = xml.parse('<c/>');
+const imported = target.importNode(source.documentElement.firstChild, true);
+
+console.log(imported.ownerDocument === target); // true
+console.log(source.documentElement.childNodes.length); // 1 (source unchanged)
+console.log(xml.serialize(imported)); // <b>t</b>
+```
 
 --------------------------
 ### adoptNode
-**从另一个文档采用节点到当前文档**
+**Moves a node from another document into this document**
 
 ```JavaScript
 XmlNode XmlDocument.adoptNode(XmlNode adoptedNode);
 ```
 
-调用参数:
-* adoptedNode: [XmlNode](XmlNode.md), 要采用的节点
+Parameters:
+* adoptedNode: [XmlNode](XmlNode.md), the node to move into this document
 
-返回结果:
-* [XmlNode](XmlNode.md), 返回被采用的节点
+Returns:
+* [XmlNode](XmlNode.md), returns the adopted node, now owned by this document
 
-此方法将节点从另一个文档移动到当前文档。节点将从原文档中移除，其 ownerDocument 属性将更改为当前文档。与 importNode 不同，adoptNode 不会创建副本。
+The node is removed from its old parent, its ownerDocument becomes this document and
+the same [object](object.md) is returned; no copy is made. Adopting the document's own root element
+(or doctype) detaches it, but like [XmlNode.remove](XmlNode.md#remove)() this [path](../../module/ifs/path.md) does not release the
+document-level slot: documentElement (doctype) keeps reporting the detached node and a
+second element (doctype) is rejected - use removeChild first when the node must be
+replaced. A Document node cannot be adopted (Error 20024); a non-node argument throws a
+TypeError (20005). Inserting a node into another document adopts it implicitly - see
+[XmlNode](XmlNode.md).
 
 --------------------------
 ### querySelector
-**返回符合指定 CSS 选择器的元素的 [XmlNodeList](XmlNodeList.md)**
+**Returns the first element matching a CSS selector**
 
 ```JavaScript
 XmlElement XmlDocument.querySelector(String selectors);
 ```
 
-调用参数:
-* selectors: String, 指定 CSS 选择器
+Parameters:
+* selectors: String, the CSS selector to match
 
-返回结果:
-* [XmlElement](XmlElement.md), 符合指定 CSS 选择器的 [XmlElement](XmlElement.md) 节点
+Returns:
+* [XmlElement](XmlElement.md), the first matching element, or null when there is no match
 
-该方法将返回一个 [XmlNodeList](XmlNodeList.md) 对象（可以作为只读数组处理），该对象存放文档中符合指定 CSS 选择器的所有 [XmlElement](XmlElement.md) 节点，它们存放的顺序就是在源文档中出现的顺序。 [XmlNodeList](XmlNodeList.md) 对象是“活”的，即如果在文档中添加或删除了符合指定选择器的元素，它的内容会自动进行必要的更新。
+The search covers the whole document, documentElement included, and returns the first
+match in document order or null when nothing matches; a document without a root element
+also returns null. An invalid selector throws a SyntaxError (20024). The supported
+selector grammar is listed in the [XmlElement](XmlElement.md) class comment; querySelectorAll returns
+every match as a snapshot. See [XmlElement.querySelector](XmlElement.md#querySelector) for the descendant-only variant.
 
 --------------------------
 ### querySelectorAll
-**返回符合指定 CSS 选择器的所有元素的 [XmlNodeList](XmlNodeList.md)**
+**Returns a snapshot list of all elements matching a CSS selector**
 
 ```JavaScript
 XmlNodeList XmlDocument.querySelectorAll(String selectors);
 ```
 
-调用参数:
-* selectors: String, 指定 CSS 选择器
+Parameters:
+* selectors: String, the CSS selector to match
 
-返回结果:
-* [XmlNodeList](XmlNodeList.md), 符合指定 CSS 选择器的 [XmlElement](XmlElement.md) 节点的 [XmlNodeList](XmlNodeList.md) 集合。返回的元素节点的顺序就是它们在源文档中出现的顺序。
+Returns:
+* [XmlNodeList](XmlNodeList.md), an [XmlNodeList](XmlNodeList.md) of the matching elements in document order
 
-该方法将返回一个 [XmlNodeList](XmlNodeList.md) 对象（可以作为只读数组处理），该对象存放文档中符合指定 CSS 选择器的所有 [XmlElement](XmlElement.md) 节点，它们存放的顺序就是在源文档中出现的顺序。 [XmlNodeList](XmlNodeList.md) 对象是“活”的，即如果在文档中添加或删除了符合指定选择器的元素，它的内容会自动进行必要的更新。
+The search covers the whole document, documentElement included. The returned
+[XmlNodeList](XmlNodeList.md) is a snapshot in document order that holds strong references to its nodes:
+a later mutation does not change it, query again after changing the tree. A document
+without a root element returns null; an invalid selector throws a SyntaxError (20024).
 
 --------------------------
 ### hasChildNodes
-**查询是否存在子节点**
+**Queries whether the node has at least one child node**
 
 ```JavaScript
 Boolean XmlDocument.hasChildNodes();
 ```
 
-返回结果:
-* Boolean, 存在任何子节点时返回 true，否则返回 false
+Returns:
+* Boolean, returns true when the child node list is not empty, otherwise false
+
+Equivalent to `childNodes.length > 0`; text, comment, CDATA, processing-instruction
+and element children all count.
 
 --------------------------
 ### normalize
-**合并相邻的 Text 节点并删除空的 Text 节点**
+**Merges adjacent text nodes and removes empty text nodes in the whole subtree**
 
 ```JavaScript
 XmlDocument.normalize();
 ```
 
-这个方法将遍历当前节点的所有子孙节点，通过删除空的 Text 节点，已经合并所有相邻的 Text 节点来规范化文档。该方法在进行节点的插入或删除操作后，对于简化文档树的结构很有用。
+Every child list of the subtree is normalized, the root's included: runs of directly
+adjacent text nodes are merged into the first one (through appendData) and text nodes
+whose value is empty are removed. A comment, element, CDATA section or processing
+instruction between two text nodes keeps them apart, and whitespace-only text nodes are
+preserved because they are not empty. The walk is iterative, so very deep documents do
+not overflow the native stack.
+
+```JavaScript
+const xml = require('xml');
+
+const doc = xml.parse('<r>a<!--c-->b</r>');
+const root = doc.documentElement;
+root.appendChild(doc.createTextNode('X'));
+root.appendChild(doc.createTextNode(''));
+
+root.normalize();
+console.log(root.childNodes.length); // 3
+console.log(root.textContent); // abX
+```
 
 --------------------------
 ### cloneNode
-**创建指定的节点的精确拷贝**
+**Creates a detached copy of the node**
 
 ```JavaScript
 XmlNode XmlDocument.cloneNode(Boolean deep = true);
 ```
 
-调用参数:
-* deep: Boolean, 是否深度拷贝，为 true 时，被克隆的节点会克隆原节点的所有子节点
+Parameters:
+* deep: Boolean, whether to copy the subtree of the node as well; the default is a deep copy
 
-返回结果:
-* [XmlNode](XmlNode.md), 返回所复制的节点
+Returns:
+* [XmlNode](XmlNode.md), returns the copied node
 
-该方法将复制并返回调用它的节点的副本。如果传递给它的参数是 true，它还将递归复制当前节点的所有子孙节点。 否则，它只复制当前节点。返回的节点不属于文档树，它的 parentNode 属性为 null。当复制的是 Element 节点时，它的所有属性都将被复制。
+The copy keeps the ownerDocument of the source and has no parent. An element always
+carries a copy of its attributes; the deep parameter defaults to true, so
+`cloneNode()` copies the whole subtree, while the standard defaults to a shallow copy
+(pass `cloneNode(false)` for that). Cloning a document also copies its declaration
+(version, [encoding](../../module/ifs/encoding.md), standalone); cloning a document or a fragment produces a detached
+tree.
+
+```JavaScript
+const xml = require('xml');
+
+const doc = xml.parse('<r x="1"><a>t</a></r>');
+const root = doc.documentElement;
+const shallow = root.cloneNode(false);
+const deep = root.cloneNode();
+
+console.log(shallow.getAttribute('x')); // 1
+console.log(shallow.childNodes.length); // 0
+console.log(deep.childNodes.length); // 1
+console.log(deep.parentNode); // null
+```
 
 --------------------------
 ### lookupPrefix
-**返回在当前节点上匹配指定的命名空间 URI 的前缀**
+**Returns the namespace prefix bound to a namespace URI**
 
 ```JavaScript
 String XmlDocument.lookupPrefix(String namespaceURI);
 ```
 
-调用参数:
-* namespaceURI: String, 指定匹配的命名空间 URI
+Parameters:
+* namespaceURI: String, the namespace URI to match
 
-返回结果:
-* String, 返回匹配的前缀，未匹配到返回 null
+Returns:
+* String, returns the matching prefix, or null when no binding is found
+
+The search starts at the node itself for elements and at the parent for the other node
+[types](../../module/ifs/types.md) (only elements store xmlns declarations); it walks up the ancestors and then
+falls back to the built-in [xml](../../module/ifs/xml.md) and xmlns bindings. A document checks the built-in
+bindings and then its root element. Returns null when nothing matches. A node created
+with createElementNS stores the namespace fields without adding an xmlns declaration,
+so such a detached element reports null until its subtree is parsed with an explicit
+declaration (serialization adds the missing declaration).
 
 --------------------------
 ### lookupNamespaceURI
-**返回在当前节点上匹配指定的前缀的命名空间 URI**
+**Returns the namespace URI bound to a prefix**
 
 ```JavaScript
 String XmlDocument.lookupNamespaceURI(String prefix);
 ```
 
-调用参数:
-* prefix: String, 指定匹配的前缀
+Parameters:
+* prefix: String, the prefix to match
 
-返回结果:
-* String, 返回匹配的命名空间 URI，未匹配到返回 null
+Returns:
+* String, returns the matching namespace URI, or null when no binding is found
+
+The walk is the same as lookupPrefix: from the element itself (or from the parent for
+the other node [types](../../module/ifs/types.md)) up through the ancestors, with the built-in [xml](../../module/ifs/xml.md) and xmlns
+bindings resolved first. A document checks the built-in bindings and then its root
+element. Returns null when nothing matches.
 
 --------------------------
 ### insertBefore
-**在已有的子节点前插入一个新的子节点**
+**Inserts a node before an existing child of this node**
 
 ```JavaScript
 XmlNode XmlDocument.insertBefore(XmlNode newChild,
     XmlNode refChild);
 ```
 
-调用参数:
-* newChild: [XmlNode](XmlNode.md), 插入新的节点
-* refChild: [XmlNode](XmlNode.md), 在此节点前插入新节点
+Parameters:
+* newChild: [XmlNode](XmlNode.md), the node to insert
+* refChild: [XmlNode](XmlNode.md), the existing child the new node is inserted before
 
-返回结果:
-* [XmlNode](XmlNode.md), 返回新的子节点
+Returns:
+* [XmlNode](XmlNode.md), returns the inserted node
 
-如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。
+refChild must already be a child of this node, otherwise an Error (20024) is thrown.
+If newChild already has a parent it is moved here (it leaves the old tree first), a
+DocumentFragment is spliced as its children, and a node owned by another document is
+adopted (its ownerDocument changes). Inserting a node into its own descendant is
+rejected. A non-node argument, including null, throws a TypeError (20005) - the
+argument is not coerced.
 
 --------------------------
 ### insertAfter
-**在已有的子节点后插入一个新的子节点**
+**Inserts a node after an existing child of this node (fibjs extension)**
 
 ```JavaScript
 XmlNode XmlDocument.insertAfter(XmlNode newChild,
     XmlNode refChild);
 ```
 
-调用参数:
-* newChild: [XmlNode](XmlNode.md), 插入新的节点
-* refChild: [XmlNode](XmlNode.md), 在此节点后插入新节点
+Parameters:
+* newChild: [XmlNode](XmlNode.md), the node to insert
+* refChild: [XmlNode](XmlNode.md), the existing child the new node is inserted after
 
-返回结果:
-* [XmlNode](XmlNode.md), 返回新的子节点
+Returns:
+* [XmlNode](XmlNode.md), returns the inserted node
 
-如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。
+This member has no counterpart in the standard DOM (use insertBefore with the next
+sibling instead). It behaves like insertBefore, but the node is placed after refChild,
+which must already be a child of this node (Error 20024 otherwise). Moving, fragment
+splicing and cross-document adoption follow the same rules.
 
 --------------------------
 ### appendChild
-**向节点的子节点列表的末尾添加新的子节点**
+**Appends a node as the last child of this node**
 
 ```JavaScript
 XmlNode XmlDocument.appendChild(XmlNode newChild);
 ```
 
-调用参数:
-* newChild: [XmlNode](XmlNode.md), 指定添加的节点
+Parameters:
+* newChild: [XmlNode](XmlNode.md), the node to append
 
-返回结果:
-* [XmlNode](XmlNode.md), 返回这个新的子节点
+Returns:
+* [XmlNode](XmlNode.md), returns the appended node (for a DocumentFragment, the fragment itself)
 
-如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。
+If newChild already has a parent it is moved here, a DocumentFragment is spliced as its
+children (the fragment is emptied), and a node owned by another document is adopted.
+The child rules of the parent still apply: a document accepts one element, one doctype,
+processing instructions, comments and a fragment, but no text; an element accepts
+elements, text, CDATA, entity references, processing instructions, comments and
+fragments. A cycle (inserting an ancestor) or a disallowed node type throws an Error
+(20024); a non-node argument throws a TypeError (20005).
+
+```JavaScript
+const xml = require('xml');
+
+const doc = new xml.Document();
+const list = doc.createElement('list');
+doc.appendChild(list);
+
+const added = list.appendChild(doc.createElement('item'));
+console.log(added.nodeName); // item
+console.log(added.parentNode === list); // true
+```
 
 --------------------------
 ### replaceChild
-**将某个子节点替换为另一个**
+**Replaces an existing child with another node**
 
 ```JavaScript
 XmlNode XmlDocument.replaceChild(XmlNode newChild,
     XmlNode oldChild);
 ```
 
-调用参数:
-* newChild: [XmlNode](XmlNode.md), 指定新的节点
-* oldChild: [XmlNode](XmlNode.md), 指定被替换的节点
+Parameters:
+* newChild: [XmlNode](XmlNode.md), the replacement node
+* oldChild: [XmlNode](XmlNode.md), the child to be replaced
 
-返回结果:
-* [XmlNode](XmlNode.md), 如替换成功，此方法可返回被替换的节点，如替换失败，则返回 null
+Returns:
+* [XmlNode](XmlNode.md), returns the replaced (old) child node
 
-如果文档树中已经存在了 newChild，它将从文档树中删除，然后重新插入它的新位置。来自一个文档的节点（或由一个文档创建的节点）不能插入另一个文档。也就是说，newChild 的 ownerDocument 属性必须与当前节点的 ownerDocument 属性相同。
+oldChild must be a child of this node (Error 20024 otherwise); it is detached and
+returned. newChild is inserted at its position under the same rules as insertBefore,
+including fragment splicing, moving and cross-document adoption. When newChild equals
+oldChild the call is a no-op that returns the node.
 
 --------------------------
 ### removeChild
-**从子节点列表中删除某个节点**
+**Removes a child node from this node**
 
 ```JavaScript
 XmlNode XmlDocument.removeChild(XmlNode oldChild);
 ```
 
-调用参数:
-* oldChild: [XmlNode](XmlNode.md), 指定被删除的节点
+Parameters:
+* oldChild: [XmlNode](XmlNode.md), the child to remove
 
-返回结果:
-* [XmlNode](XmlNode.md), 如删除成功，此方法可返回被删除的节点，如失败，则返回 null
+Returns:
+* [XmlNode](XmlNode.md), returns the removed node
+
+oldChild must be a child of this node, otherwise an Error (20024) is thrown; the child
+is detached with its subtree intact and returned. Removing the document element from a
+document sets documentElement to null, after which another element may be appended. A
+non-node argument throws a TypeError (20005).
 
 --------------------------
 ### remove
-**从当前节点中删除自身**
+**Detaches the node from its parent and returns it**
 
 ```JavaScript
 XmlNode XmlDocument.remove();
 ```
 
-返回结果:
-* [XmlNode](XmlNode.md), 返回被删除的节点
+Returns:
+* [XmlNode](XmlNode.md), returns the detached node, or null when the node has no parent
 
-该方法将从当前节点的父节点中删除当前节点，并返回当前节点。注意：如果当前节点没有父节点，则此方法无效。
+Unlike removeChild, the node knows its parent: the call finds it and removes itself.
+When the node has no parent (it is detached, or it is a document) the call has no
+effect and returns null. For the document element this member only detaches the node:
+the document still reports it through documentElement and refuses to accept another
+element, because remove() bypasses the document-level slot release - use
+document.removeChild(root) to clear the slot as well (see [XmlDocument.documentElement](XmlDocument.md#documentElement)).
+In the standard this convenience lives on ChildNode, not on Node.
 
 --------------------------
 ### replaceWith
-**用一个或多个节点替换当前节点**
+**Replaces the node with one or more nodes**
 
 ```JavaScript
 XmlDocument.replaceWith(...nodes);
 ```
 
-调用参数:
-* nodes: ..., 要替换当前节点的一个或多个节点
+Parameters:
+* nodes: ..., one or more nodes or strings that replace the current node
 
-该方法将当前节点从其父节点中移除，并在原位置插入指定的新节点。如果当前节点没有父节点，则此方法无效。
+The new values are inserted in order before the node, which is then removed. Each
+argument may be a node or a string (a string becomes a text node created by the owner
+document); values of other [types](../../module/ifs/types.md) are ignored. When the node has no parent the call is a
+no-op. The member returns nothing; ChildNode.replaceWith in the standard follows the
+same rules.
 
 --------------------------
 ### before
-**在当前节点之前插入一个或多个节点**
+**Inserts one or more nodes before the current node**
 
 ```JavaScript
 XmlDocument.before(...nodes);
 ```
 
-调用参数:
-* nodes: ..., 要插入的一个或多个节点，可以是节点对象或字符串
+Parameters:
+* nodes: ..., one or more nodes or strings to insert before the current node
 
-该方法将指定的节点插入到当前节点之前，与当前节点处于同一父节点下。如果当前节点没有父节点，则此方法无效。
+The values are inserted under the same parent, before this node. Each argument may be a
+node or a string (converted to a text node); values of other [types](../../module/ifs/types.md) are ignored, and
+with no parent the call is a no-op. See insertBefore for the single-node form.
 
 --------------------------
 ### after
-**在当前节点之后插入一个或多个节点**
+**Inserts one or more nodes after the current node**
 
 ```JavaScript
 XmlDocument.after(...nodes);
 ```
 
-调用参数:
-* nodes: ..., 要插入的一个或多个节点，可以是节点对象或字符串
+Parameters:
+* nodes: ..., one or more nodes or strings to insert after the current node
 
-该方法将指定的节点插入到当前节点之后，与当前节点处于同一父节点下。如果当前节点没有父节点，则此方法无效。
+The values are inserted under the same parent, after this node, in argument order. Each
+argument may be a node or a string (converted to a text node); values of other [types](../../module/ifs/types.md)
+are ignored, and with no parent the call is a no-op. See insertAfter for the
+single-node form.
 
 --------------------------
 ### contains
-**检查当前节点是否包含指定的节点**
+**Checks whether this node is the given node or one of its ancestors**
 
 ```JavaScript
 Boolean XmlDocument.contains(XmlNode node);
 ```
 
-调用参数:
-* node: [XmlNode](XmlNode.md), 要检查的节点
+Parameters:
+* node: [XmlNode](XmlNode.md), the node to look for among the descendants
 
-返回结果:
-* Boolean, 如果当前节点包含指定节点则返回 true，否则返回 false
+Returns:
+* Boolean, returns true when the given node is this node or a descendant, otherwise false
+
+The node itself counts as contained, so `x.contains(x)` is true; the check is
+reference-based and does not compare structure. A cross-tree argument simply returns
+false; a non-node argument throws a TypeError (20005).
 
 --------------------------
 ### getRootNode
-**返回当前节点的根节点**
+**Returns the topmost ancestor of the node**
 
 ```JavaScript
 XmlNode XmlDocument.getRootNode();
 ```
 
-返回结果:
-* [XmlNode](XmlNode.md), 返回根节点
+Returns:
+* [XmlNode](XmlNode.md), returns the root of the tree the node belongs to
+
+The result is the document for a connected node and the node itself when it is
+detached. For a document the call returns the document, and for the document element it
+returns the document as well.
 
 --------------------------
 ### compareDocumentPosition
-**比较两个节点在文档中的位置关系**
+**Compares the position of another node against this node**
 
 ```JavaScript
 Integer XmlDocument.compareDocumentPosition(XmlNode other);
 ```
 
-调用参数:
-* other: [XmlNode](XmlNode.md), 要比较的节点
+Parameters:
+* other: [XmlNode](XmlNode.md), the node to compare against
 
-返回结果:
-* Integer, 返回位掩码表示的位置关系
+Returns:
+* Integer, returns the position bitmask
 
-返回一个位掩码，表示两个节点的位置关系：
-- DOCUMENT_POSITION_DISCONNECTED (1): 两个节点不在同一文档中
-- DOCUMENT_POSITION_PRECEDING (2): 参数节点在当前节点之前
-- DOCUMENT_POSITION_FOLLOWING (4): 参数节点在当前节点之后
-- DOCUMENT_POSITION_CONTAINS (8): 参数节点包含当前节点
-- DOCUMENT_POSITION_CONTAINED_BY (16): 当前节点包含参数节点
-- DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC (32): 位置关系由实现决定
+The result is a bitmask; [test](../../module/ifs/test.md) it with the bits below (they are not exported as
+[constants](../../module/ifs/constants.md) by the [xml](../../module/ifs/xml.md) [module](../../module/ifs/module.md)):
+- 0: the two references are the same node;
+- 4 (FOLLOWING): the other node comes after this node in document order;
+- 2 (PRECEDING): the other node comes before this node;
+- 8 (CONTAINS): the other node is an ancestor of this node;
+- 16 (CONTAINED_BY): the other node is a descendant of this node;
+- 1 (DISCONNECTED): the two nodes are not in the same tree;
+- 32 (IMPLEMENTATION_SPECIFIC): declared by the standard but never set here.
+
+An ancestor/descendant result also carries the direction bit: 10 = CONTAINS |
+PRECEDING when the other node is an ancestor, 20 = CONTAINED_BY | FOLLOWING when it is
+a descendant. Two nodes in different trees - for example a detached node - yield
+3 = DISCONNECTED | PRECEDING. An [XmlAttr](XmlAttr.md) is not an [XmlNode](XmlNode.md) and cannot be passed here
+(TypeError 20005); a non-node argument throws the same error.
+
+```JavaScript
+const xml = require('xml');
+
+const doc = xml.parse('<r><a/><b/></r>');
+const a = doc.documentElement.firstChild;
+const b = doc.documentElement.lastChild;
+
+console.log(a.compareDocumentPosition(b)); // 4 (following)
+console.log(b.compareDocumentPosition(a)); // 2 (preceding)
+console.log(a.compareDocumentPosition(doc.documentElement)); // 10 (contains)
+```
 
 --------------------------
 ### isEqualNode
-**检查两个节点是否结构相等**
+**Checks whether two nodes are structurally equal**
 
 ```JavaScript
 Boolean XmlDocument.isEqualNode(XmlNode other);
 ```
 
-调用参数:
-* other: [XmlNode](XmlNode.md), 要比较的节点
+Parameters:
+* other: [XmlNode](XmlNode.md), the node to compare with
 
-返回结果:
-* Boolean, 如果两个节点结构相等则返回 true，否则返回 false
+Returns:
+* Boolean, returns true when the two nodes are structurally equal, otherwise false
 
-两个节点结构相等意味着它们具有相同的类型、相同的属性值、相同的子节点结构等。
+Two nodes are equal when they have the same node type and node name, the same node
+value, the same attributes (an element's attributes are compared by name and value,
+independent of order) and the same child list, compared recursively; text nodes are
+compared by their character data, so whitespace and CDATA-versus-text differences are
+significant. The comparison ignores the owning document and node identity, and it does
+not see namespace declarations as attributes. A non-node argument throws a TypeError
+(20005).
 
 --------------------------
 ### isSameNode
-**检查两个节点是否是同一个节点**
+**Checks whether two references point to the same node**
 
 ```JavaScript
 Boolean XmlDocument.isSameNode(XmlNode other);
 ```
 
-调用参数:
-* other: [XmlNode](XmlNode.md), 要比较的节点
+Parameters:
+* other: [XmlNode](XmlNode.md), the node to compare with
 
-返回结果:
-* Boolean, 如果是同一节点则返回 true，否则返回 false
+Returns:
+* Boolean, returns true when both references point to the same node, otherwise false
 
-与 === 运算符作用相同，检查两个引用是否指向同一对象。
+Equivalent to the `===` operator; use isEqualNode for a structural comparison. A
+non-node argument throws a TypeError (20005).
 
 --------------------------
 ### toString
-**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
+**Returns the string form of the [object](object.md)**
 
 ```JavaScript
 String XmlDocument.toString();
 ```
 
-返回结果:
-* String, 返回对象的字符串表示
+Returns:
+* String, returns the string form of the [object](object.md)
+
+The base implementation reports an error: a native [object](object.md) has no implicit
+text form, and only the classes whose value can be written as a string
+override the member. [Buffer](Buffer.md) returns its content decoded with the given
+[encoding](../../module/ifs/encoding.md), [HttpCookie](HttpCookie.md) returns "name=value", and so on; an override commonly
+accepts optional arguments ([Buffer.toString](Buffer.md#toString) takes [encoding](../../module/ifs/encoding.md), start and
+end) that are not part of this declaration.
+
+Calling the member on a class that does not override it throws
+"<Class>: the [object](object.md) can not be converted to string.", which is the
+behavior to rely on when probing whether a value has a string form. See
+toJSON for the serialization hook.
 
 --------------------------
 ### toJSON
-**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
+**Returns the JSON representation of the [object](object.md)**
 
 ```JavaScript
 Value XmlDocument.toJSON(String key = "");
 ```
 
-调用参数:
-* key: String, 未使用
+Parameters:
+* key: String, the property name of the value being serialized
 
-返回结果:
-* Value, 返回包含可 JSON 序列化的值
+Returns:
+* Value, returns the JSON-serializable value
+
+JSON.stringify(value) calls value.toJSON(key) when the member exists and
+serializes the returned value in its place; the key argument carries the
+property name of the value inside its parent [object](object.md) (an empty string at
+the top level) and may be used to build a keyed form. The base
+implementation returns a plain [object](object.md) holding the readable properties of
+the instance, so a native [object](object.md) serializes without per-class code; a
+class with a portable shape such as [Buffer](Buffer.md) overrides it, and a JavaScript
+class may override it in the same way.
+
+The member is normally reached through JSON.stringify rather than called
+directly; calling it returns the same value JSON.stringify would
+serialize.
 

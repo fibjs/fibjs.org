@@ -1,59 +1,122 @@
-# 模块 io
-输入输出处理模块，提供流对象的创建与流间数据搬运能力
+# Module io
+The io [module](module.md) provides stream creation and data movement between streams
 
-模块的主要能力：
+Main capabilities:
 
-- **流对象**：`MemoryStream` 内存流、`BufferedStream` 缓存流、`RangeStream` 范围流；
-- **数据搬运**：`copyStream` 将流数据复制到目标流，`bridge` 双向复制流数据。
+- **[Stream](../../object/ifs/Stream.md) objects**: `MemoryStream` (in-memory read/write), `BufferedStream`
+  (buffered reader with text helpers) and `RangeStream` (a window over another
+  stream);
+- **Data movement**: `copyStream` copies a bounded number of bytes in one
+  direction, `bridge` copies both directions at once.
 
-使用方法：
+Concepts:
+
+- **Position**: every stream has a current position used by both reads and
+  writes; `SeekableStream` exposes it through tell/seek/rewind and a length
+  through size(). Reads and writes advance the position, so rewind before
+  reading the same bytes again.
+- **Buffered streams**: [BufferedStream](../../object/ifs/BufferedStream.md) reads ahead in chunks from the stream
+  it wraps, so the underlying stream has already advanced before the data is
+  consumed; never read the underlying stream directly while a [BufferedStream](../../object/ifs/BufferedStream.md)
+  is using it.
+- **Back pressure**: `write` returns false when the stream write queue is
+  full; wait for the `drain` event before writing more (see the [Stream](../../object/ifs/Stream.md) class).
+  The io helpers do not need it: copyStream and bridge keep one chunk in
+  flight per direction.
+- **Read forms**: `read(bytes)` returns up to bytes and null at the end;
+  `readAll` loops until the stream ends. Every async member also works
+  synchronously without a callback, with a trailing callback, and through the
+  `io.promises` namespace.
+
+Usage:
 
 ```JavaScript
-var io = require('io');
+const io = require('io');
 ```
 
-复制流数据示例：
+Example 1 — read and write an in-memory stream:
 
 ```JavaScript
-var io = require('io');
+const io = require('io');
 
-var src = new io.MemoryStream();
-src.write(new Buffer('hello world'));
-src.rewind();
-
-var dst = new io.MemoryStream();
-io.copyStream(src, dst);
+const stm = new io.MemoryStream();
+stm.write(Buffer.from('hello world'));
+stm.rewind();
+console.log(stm.readAll().toString()); // hello world
+console.log(stm.size()); // 11
 ```
 
-## 对象
+Example 2 — copy part of one stream into another:
+
+```JavaScript
+const io = require('io');
+
+const from = new io.MemoryStream();
+from.write(Buffer.from('0123456789'));
+from.rewind();
+
+const to = new io.MemoryStream();
+console.log(io.copyStream(from, to, 4)); // 4
+
+to.rewind();
+console.log(to.readAll().toString()); // 0123
+```
+
+Example 3 — read text lines through a buffered stream:
+
+```JavaScript
+const io = require('io');
+
+const stm = new io.MemoryStream();
+stm.write(Buffer.from('one\ntwo\n'));
+stm.rewind();
+
+const reader = new io.BufferedStream(stm);
+console.log(reader.readLines()); // ['one', 'two']
+```
+
+## Objects
         
 ### MemoryStream
-**创建一个内存流对象，参见 [MemoryStream](../../object/ifs/MemoryStream.md)**
+**Creates a memory stream, see [MemoryStream](../../object/ifs/MemoryStream.md)**
 
 ```JavaScript
 MemoryStream io.MemoryStream;
 ```
 
+The [MemoryStream](../../object/ifs/MemoryStream.md) constructor exposed as a [module](module.md) static, so
+`new [io.MemoryStream](io.md#MemoryStream)()` builds the same class that `clone()` returns. The
+stream lives in memory, supports random access and never blocks; see
+[MemoryStream](../../object/ifs/MemoryStream.md) for its members.
+
 --------------------------
 ### BufferedStream
-**创建一个缓存流读取对象，参见 [BufferedStream](../../object/ifs/BufferedStream.md)**
+**Creates a buffered stream, see [BufferedStream](../../object/ifs/BufferedStream.md)**
 
 ```JavaScript
 BufferedStream io.BufferedStream;
 ```
 
+The [BufferedStream](../../object/ifs/BufferedStream.md) constructor exposed as a [module](module.md) static; it wraps
+another stream and adds buffered text reading on top of it. See
+[BufferedStream](../../object/ifs/BufferedStream.md) for the text members and the buffering model.
+
 --------------------------
 ### RangeStream
-**创建一个 Range 查询流读取对象，参见 [RangeStream](../../object/ifs/RangeStream.md)**
+**Creates a range stream, see [RangeStream](../../object/ifs/RangeStream.md)**
 
 ```JavaScript
 RangeStream io.RangeStream;
 ```
 
-## 静态函数
+The [RangeStream](../../object/ifs/RangeStream.md) constructor exposed as a [module](module.md) static; it restricts
+another stream to a byte range. See [RangeStream](../../object/ifs/RangeStream.md) for the range forms and
+the seekable/length-limited modes.
+
+## Static Methods
         
 ### copyStream
-**复制流数据到目标流中**
+**Copies the data of a stream into a target stream**
 
 ```JavaScript
 static Long io.copyStream(Stream from,
@@ -61,28 +124,69 @@ static Long io.copyStream(Stream from,
     Long bytes = -1) async;
 ```
 
-调用参数:
-* from: [Stream](../../object/ifs/Stream.md), 源流对象
-* to: [Stream](../../object/ifs/Stream.md), 目标流对象
-* bytes: Long, 复制的字节数
+Parameters:
+* from: [Stream](../../object/ifs/Stream.md), the source stream
+* to: [Stream](../../object/ifs/Stream.md), the target stream
+* bytes: Long, the number of bytes to copy
 
-返回结果:
-* Long, 返回复制的字节数
+Returns:
+* Long, the number of bytes copied
 
-bytes 指定复制的字节数，缺省为 -1，表示复制源流中的全部数据；复制完成后返回实际复制的字节数。
+Bytes are moved from the current position of `from` to the current
+position of `to`, in chunks of up to 64 KiB, and both positions advance by
+the number of bytes copied. `bytes` limits the transfer: -1 (the default)
+copies until the source ends, 0 copies nothing and returns 0. The copy
+also stops when the source has no more data (read returns null) or when
+the target reports an error; it never closes either stream. The return
+value is the number of bytes actually written, and the call works
+synchronously, with a trailing callback and through `io.promises`.
+
+Example — copy a four-byte prefix into another stream:
+
+```JavaScript
+const io = require('io');
+
+const from = new io.MemoryStream();
+from.write(Buffer.from('0123456789'));
+from.rewind();
+
+const to = new io.MemoryStream();
+console.log(io.copyStream(from, to, 4)); // 4
+
+to.rewind();
+console.log(to.readAll().toString()); // 0123
+```
 
 --------------------------
 ### bridge
-**双向复制流数据，直到流中无数据，或者流被关闭**
+**Copies data in both directions until no data is left or a stream is closed**
 
 ```JavaScript
 static io.bridge(Stream stm1,
     Stream stm2) async;
 ```
 
-调用参数:
-* stm1: [Stream](../../object/ifs/Stream.md), 流对象一
-* stm2: [Stream](../../object/ifs/Stream.md), 流对象二
+Parameters:
+* stm1: [Stream](../../object/ifs/Stream.md), the first stream
+* stm2: [Stream](../../object/ifs/Stream.md), the second stream
 
-stm1 与 stm2 互为对方的输入与输出，任一方向的数据传输结束后整体停止。
+stm1 and stm2 are the input and output of each other: two copies run at
+the same time, stm1 to stm2 and stm2 to stm1, until one direction reaches
+the end of its input. That direction then closes the other stream, which
+ends the opposite copy as well; a write error or an externally closed
+stream stops the whole call in the same way. Use it to connect two
+endpoints of a connection pair (a client socket and its upstream, or two
+memory streams related by a protocol) so that each side sees the other's
+data.
+
+Example — forward a client socket to an upstream socket (fragment; a
+bridge needs two live bidirectional streams):
+
+```JavaScript
+// fragment: a bridge needs two live bidirectional streams
+const io = require('io');
+
+// everything the client sends goes upstream, and vice versa
+io.bridge(clientSocket, upstreamSocket);
+```
 

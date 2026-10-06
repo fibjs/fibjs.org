@@ -1,142 +1,302 @@
-# 模块 worker_threads
-worker 基础模块，提供线程间通信能力
+# Module worker_threads
+The worker_threads [module](module.md) runs JavaScript in real OS threads, one isolate per [Worker](../../object/ifs/Worker.md), and exchanges structured-clone messages with them
 
-模块的主要能力：
+The [module](module.md) complements the fiber-based concurrency of the [coroutine](coroutine.md) [module](module.md): a [Worker](../../object/ifs/Worker.md) is a separate
+JavaScript isolate on its own thread, so it can use multiple CPU cores and keep blocking native
+calls away from the main thread. Use [Worker](../../object/ifs/Worker.md) for CPU-bound or isolation-sensitive work; use
+[Fiber](../../object/ifs/Fiber.md)/[coroutine](coroutine.md) for lightweight, mostly IO-bound concurrency where objects are shared directly.
 
-- **线程对象**：`Worker` 独立线程工作对象；
-- **消息通信**：`MessagePort`、`MessageChannel` 消息通道，`receiveMessageOnPort` 同步接收消息；
-- **线程信息**：`isMainThread`、`threadId`、`parentPort`、`workerData`；
-- **兼容 API**：`markAsUncloneable`、`markAsUntransferable`、`isMarkedAsUntransferable`（提供既有生态兼容）。
+Main capabilities:
 
-引用方法：
+- **Thread class**: `Worker` creates and controls a child thread;
+- **[Message](../../object/ifs/Message.md) channels**: `MessagePort` is one end of a channel, `MessageChannel` builds a
+  connected pair, `parentPort` is the worker-side end of the implicit channel to its parent, and
+  `receiveMessageOnPort` dequeues a queued message synchronously;
+- **Context information**: `isMainThread`, `threadId` and `workerData` describe the current
+  execution context;
+- **Clone-control compatibility helpers**: `markAsUncloneable`, `markAsUntransferable` and
+  `isMarkedAsUntransferable` are accepted but have no effect.
+
+Concepts:
+
+- **[Worker](../../object/ifs/Worker.md) isolate**: every [Worker](../../object/ifs/Worker.md) gets its own V8 isolate, [global](global.md) [object](../../object/ifs/object.md) and [module](module.md) cache on its
+  own OS thread. Plain JavaScript objects are never shared, and a SharedArrayBuffer cannot be
+  put into a message or into workerData, so all communication goes through messages.
+- **workerData handoff**: `new [Worker](../../object/ifs/Worker.md)([path](path.md), { workerData })` structured-clones the value once,
+  before the thread starts; the worker reads the clone as `workerData`, and later mutations on
+  either side do not propagate.
+- **[Message](../../object/ifs/Message.md) passing and structured clone**: `postMessage` serializes the value with V8's
+  serializer and delivers a copy to the peer. Objects, arrays, Date, RegExp, Map, Set, Error,
+  typed arrays and ArrayBuffer survive the round trip; functions, classes, native handles and
+  SharedArrayBuffer do not, and throw `Error: <value> could not be cloned.` at the sender.
+- **Transferables**: the optional transfer list detaches `ArrayBuffer` entries on the sender
+  instead of copying them; entries of any other type are silently ignored.
+- **Lifecycle**: a worker emits `online` when its isolate has started, `message` for each
+  delivered message, `error` for an uncaught exception and `exit` once with the exit code;
+  `terminate()` returns a promise that resolves with that code. A live [Worker](../../object/ifs/Worker.md) keeps the [process](process.md)
+  alive until `unref()` or `terminate()`.
+- **Main thread vs worker**: in the main thread `parentPort` and `workerData` are null and
+  `threadId` is 0; inside a worker `parentPort` is the worker's end of the implicit channel and
+  `threadId` is positive.
+
+Import:
 
 ```JavaScript
-var worker_threads = require('worker_threads');
+const worker_threads = require('worker_threads');
 ```
 
-主线程中 `parentPort` 与 `workerData` 为 null；[Worker](../../object/ifs/Worker.md) 线程内通过 `parentPort` 与主线程通信。
+Example 1 — run a worker script and exchange a message:
 
-## 对象
+```JavaScript
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+const worker_threads = require('worker_threads');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-worker-'));
+const script = path.join(dir, 'echo.js');
+fs.writeFile(script,
+    'const { parentPort } = require("worker_threads");\n' +
+    'parentPort.on("message", (value) => parentPort.postMessage(value + "!"));\n');
+
+const worker = new worker_threads.Worker(script);
+worker.on('message', (reply) => {
+    console.log(reply); // hello!
+    worker.terminate().then(() => fs.rmSync(dir, {
+        recursive: true,
+        force: true
+    }));
+});
+worker.postMessage('hello');
+```
+
+Example 2 — hand a snapshot to an eval worker with workerData:
+
+```JavaScript
+const worker_threads = require('worker_threads');
+
+const settings = {
+    factor: 3,
+    values: [1, 2]
+};
+const worker = new worker_threads.Worker(
+    'const { parentPort, workerData } = require("worker_threads");\n' +
+    'parentPort.postMessage(workerData.values.map((v) => v * workerData.factor));', {
+        eval: true,
+        workerData: settings
+    });
+
+settings.values.push(99); // the worker received a clone, so this does not matter
+worker.on('message', (result) => {
+    console.log(JSON.stringify(result)); // [3,6]
+    worker.terminate();
+});
+```
+
+Example 3 — decouple two parts of one isolate with a [MessageChannel](../../object/ifs/MessageChannel.md):
+
+```JavaScript
+const {
+    MessageChannel,
+    receiveMessageOnPort
+} = require('worker_threads');
+
+const {
+    port1,
+    port2
+} = new MessageChannel();
+port1.postMessage({
+    id: 7
+});
+const received = receiveMessageOnPort(port2);
+console.log(received.message.id); // 7
+port1.close();
+port2.close();
+```
+
+Notes:
+
+- The classes are also installed as globals (`Worker`, `MessagePort`, `MessageChannel` and
+  `MessageEvent`).
+- Differences from Node.js: `worker.exitCode`, `worker.stdin`, `worker.stdout` and
+  `worker.stderr` are not provided; a transfer list only detaches ArrayBuffers and a [MessagePort](../../object/ifs/MessagePort.md)
+  cannot be transferred or used as workerData; the `markAs*` helpers are no-ops.
+- Thread affinity: by default all JavaScript of one isolate runs on one dedicated OS thread
+  (`--no-js-thread-affinity` disables this), matching the N-API contract that a napi_env belongs
+  to a single thread. An extension using a blocking threadsafe function can self-deadlock in a
+  worker, as it would block the Node.js event loop.
+
+## Objects
         
 ### Worker
-**独立线程工作对象，参见 [Worker](../../object/ifs/Worker.md)**
+**Independent thread worker [object](../../object/ifs/object.md), see [Worker](../../object/ifs/Worker.md)**
 
 ```JavaScript
 Worker worker_threads.Worker;
 ```
 
+The class is shared with the [global](global.md) `Worker`: `new Worker([path](path.md), opts)` starts a real OS
+thread with its own isolate.
+
 --------------------------
 ### MessagePort
-**消息通道的一端，参见 [MessagePort](../../object/ifs/MessagePort.md)**
+**One end of a message channel, see [MessagePort](../../object/ifs/MessagePort.md)**
 
 ```JavaScript
 MessagePort worker_threads.MessagePort;
 ```
 
+The class is shared with the [global](global.md) `MessagePort`; instances are obtained from
+`new [MessageChannel](../../object/ifs/MessageChannel.md)()` or from `parentPort` inside a worker, never by construction.
+
 --------------------------
 ### MessageChannel
-**一对相连的 [MessagePort](../../object/ifs/MessagePort.md) 对象，参见 [MessageChannel](../../object/ifs/MessageChannel.md)**
+**A pair of connected [MessagePort](../../object/ifs/MessagePort.md) objects, see [MessageChannel](../../object/ifs/MessageChannel.md)**
 
 ```JavaScript
 MessageChannel worker_threads.MessageChannel;
 ```
 
-## 静态函数
+The class is shared with the [global](global.md) `MessageChannel`; `new MessageChannel()` returns the
+linked `port1`/`port2` pair.
+
+## Static Methods
         
 ### receiveMessageOnPort
-**同步接收 [MessagePort](../../object/ifs/MessagePort.md) 上排队的下一条消息**
+**Synchronously receives the next queued message on a [MessagePort](../../object/ifs/MessagePort.md)**
 
 ```JavaScript
 static Value worker_threads.receiveMessageOnPort(MessagePort port);
 ```
 
-调用参数:
-* port: [MessagePort](../../object/ifs/MessagePort.md), 指定接收消息的 [MessagePort](../../object/ifs/MessagePort.md) 对象
+Parameters:
+* port: [MessagePort](../../object/ifs/MessagePort.md), the [MessagePort](../../object/ifs/MessagePort.md) [object](../../object/ifs/object.md) to receive messages from
 
-返回结果:
-* Value, 返回接收到的消息对象，端口为空时返回 undefined
+Returns:
+* Value, returns the received message [object](../../object/ifs/object.md), or undefined when the port is empty
 
-端口上没有排队消息时返回 undefined；有消息时返回包含 `message` 字段的对象。
+Dequeues messages in FIFO order without starting the port and without invoking its `message`
+listeners; returns `undefined` when the queue is empty. The result is an [object](../../object/ifs/object.md) with a single
+`message` field holding the deserialized value. `port` must be a [MessagePort](../../object/ifs/MessagePort.md): as in Node.js
+there is no `worker.port`, so use a channel created with `new [MessageChannel](../../object/ifs/MessageChannel.md)()` or a
+`parentPort` inside a worker. A value that is not a [MessagePort](../../object/ifs/MessagePort.md) throws `TypeError`; fibjs
+reports its native coercion error (`[20005] The argument could not be coerced to the
+specified type.`) instead of Node.js's `ERR_INVALID_ARG_TYPE`.
+
+Example — drain two messages without a listener:
+
+```JavaScript
+const {
+    MessageChannel,
+    receiveMessageOnPort
+} = require('worker_threads');
+
+const {
+    port1,
+    port2
+} = new MessageChannel();
+port1.postMessage('first');
+port1.postMessage('second');
+console.log(receiveMessageOnPort(port2).message); // first
+console.log(receiveMessageOnPort(port2).message); // second
+console.log(receiveMessageOnPort(port2) === undefined); // true
+port1.close();
+port2.close();
+```
 
 --------------------------
 ### markAsUncloneable
-**将对象标记为不可克隆。如果对象被用作 port.postMessage() 调用的消息，**
+**Marks an [object](../../object/ifs/object.md) as uncloneable, a no-op in fibjs**
 
 ```JavaScript
 static worker_threads.markAsUncloneable(Value object);
 ```
 
-调用参数:
-* object: Value, 指定要标记的对象
+Parameters:
+* object: Value, the [object](../../object/ifs/object.md) to mark
 
-   会抛出错误。对于原始值，此操作为无操作。
-
-   注意：fibjs 使用 V8 的 ValueSerializer 进行 postMessage 序列化，
-   不会检查 transfer mode 私有符号。该标记对 fibjs 的序列化
-   行为没有影响，但提供此 API 是为了兼容依赖它的包（如 undici）在
-   Web API 构造函数中调用。
+Node.js makes `postMessage` throw when a marked [object](../../object/ifs/object.md) is used as a message; fibjs
+serializes with V8's ValueSerializer, which does not honor the mark, so the call has no
+effect and never throws. It is provided because packages such as undici call it in Web API
+constructors; primitives are accepted and ignored exactly like objects.
 
 --------------------------
 ### markAsUntransferable
-**将对象标记为不可传输。如果对象出现在 port.postMessage() 调用的**
+**Marks an [object](../../object/ifs/object.md) as untransferable, a no-op in fibjs**
 
 ```JavaScript
 static worker_threads.markAsUntransferable(Value object);
 ```
 
-调用参数:
-* object: Value, 指定要标记的对象
+Parameters:
+* object: Value, the [object](../../object/ifs/object.md) to mark
 
-   传输列表中，将被忽略。
-
-   注意：在 fibjs 中为无操作，为兼容既有 API 调用而提供。
+fibjs only detaches ArrayBuffer entries of a transfer list, so the mark has nothing to
+affect. The call is accepted for compatibility with Node.js callers and returns undefined.
 
 --------------------------
 ### isMarkedAsUntransferable
-**检查对象是否被标记为不可传输。**
+**Checks whether an [object](../../object/ifs/object.md) is marked as untransferable, always false in fibjs**
 
 ```JavaScript
 static Boolean worker_threads.isMarkedAsUntransferable(Value object);
 ```
 
-调用参数:
-* object: Value, 指定要检查的对象
+Parameters:
+* object: Value, the [object](../../object/ifs/object.md) to check
 
-返回结果:
-* Boolean, 返回对象是否被标记为不可传输，fibjs 中始终为 false
+Returns:
+* Boolean, returns whether the [object](../../object/ifs/object.md) is marked as untransferable; always false in fibjs
 
-   注意：在 fibjs 中始终返回 false，为兼容既有 API 调用而提供。
+Because markAsUntransferable is a no-op, no [object](../../object/ifs/object.md) is ever marked; the function exists for
+compatibility with Node.js callers and returns false for every value, primitives included.
 
-## 静态属性
+## Static Properties
         
 ### isMainThread
-**Boolean, 查询当前 [Worker](../../object/ifs/Worker.md) 是不是主线程**
+**Boolean, Queries whether the current [Worker](../../object/ifs/Worker.md) is the main thread**
 
 ```JavaScript
 static readonly Boolean worker_threads.isMainThread;
 ```
 
+True in the main isolate and false in every [Worker](../../object/ifs/Worker.md), in both cases for the isolate that
+evaluates the expression; Node.js exposes the same boolean.
+
 --------------------------
 ### threadId
-**Integer, 查询当前执行上下文的逻辑 worker 标识**
+**Integer, Queries the logical worker identifier of the current execution context**
 
 ```JavaScript
 static readonly Integer worker_threads.threadId;
 ```
 
+Zero in the main thread; inside a [Worker](../../object/ifs/Worker.md), the positive id that is also available as
+`[Worker](../../object/ifs/Worker.md)#threadId`. It is a logical fibjs isolate id (not an OS thread id) and is not stable
+across runs; Node.js assigns small sequential ids from 1 in the same way.
+
 --------------------------
 ### parentPort
-**[MessagePort](../../object/ifs/MessagePort.md), 查询当前 [Worker](../../object/ifs/Worker.md) 的父线程**
+**[MessagePort](../../object/ifs/MessagePort.md), Queries the worker-side [MessagePort](../../object/ifs/MessagePort.md) connected to the parent thread**
 
 ```JavaScript
 static readonly MessagePort worker_threads.parentPort;
 ```
 
+Null in the main thread. Inside a [Worker](../../object/ifs/Worker.md) it returns the worker's end of the implicit channel:
+values posted to it arrive at the parent's `Worker` [object](../../object/ifs/object.md) (`worker.on('message')`), and
+values posted by the parent arrive as raw values on its `message` event. The port starts
+automatically with the first `message` listener.
+
 --------------------------
 ### workerData
-**Value, 查询父线程通过 [Worker](../../object/ifs/Worker.md) 构造函数传给该线程的的数据的克隆**
+**Value, Queries the clone of the data passed to this thread by the parent thread through the [Worker](../../object/ifs/Worker.md) constructor**
 
 ```JavaScript
 static readonly Value worker_threads.workerData;
 ```
+
+Null in the main thread and in workers created without the `workerData` option. The value is
+the structured clone made by the [Worker](../../object/ifs/Worker.md) constructor, so changing it inside the worker does
+not affect the parent.
 

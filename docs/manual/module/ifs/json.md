@@ -1,45 +1,147 @@
-# 模块 json
-json 编码与解码模块
+# Module json
+The json [module](module.md) serializes JavaScript values to and from JSON text
 
-引用方式：
+Main capabilities:
+
+- **Encoding**: `encode` turns a value into JSON text;
+- **Decoding**: `decode` parses JSON text back into a value.
+
+Concepts:
+
+- **Same model as the language built-in**: encode follows the semantics of the [global](global.md)
+  JSON.stringify: Date is written as its ISO string, [Buffer](../../object/ifs/Buffer.md) objects are written through
+  their toJSON ({"type":"[Buffer](../../object/ifs/Buffer.md)","data":[...]}), NaN and Infinity become null,
+  function-valued properties are omitted, and a BigInt or a circular structure throws a
+  TypeError. decode follows JSON.parse: the syntax is strict, duplicate [object](../../object/ifs/object.md) keys keep
+  the last value, and numbers are read as doubles.
+- **One deviation**: for undefined and for a top-level function, encode returns the text
+  "undefined" where JSON.stringify returns the value undefined; [json.decode](json.md#decode)("undefined")
+  is still a syntax error, so that text is not valid JSON.
+- **Relation to the other codecs**: unlike [base32](base32.md), [base58](base58.md), [base64](base64.md) and [hex](hex.md), which convert
+  bytes, json converts values; `encoding.encode(value, 'json')` and
+  `encoding.decode(text, 'json')` dispatch to this [module](module.md), and the [msgpack](msgpack.md) [module](module.md) is the
+  binary counterpart.
+- **Error reporting**: parse errors are SyntaxError objects with the same messages as
+  JSON.parse; encode failures are the TypeErrors raised by stringification.
+
+Import:
 
 ```JavaScript
-var encoding = require('encoding');
-var json = encoding.json;
+const json = require('json');
 ```
 
-或者
+Example 1 — round-trip a nested value:
 
 ```JavaScript
-var json = require('json');
+const json = require('json');
+
+const text = json.encode({
+    name: 'fibjs',
+    tags: ['runtime', 'js'],
+    ok: true
+});
+console.log(text); // {"name":"fibjs","tags":["runtime","js"],"ok":true}
+console.log(json.decode(text).tags[0]); // runtime
 ```
 
-## 静态函数
+Example 2 — the value-to-text mappings that differ from a plain encoder:
+
+```JavaScript
+const json = require('json');
+
+console.log(json.encode(new Date(0))); // "1970-01-01T00:00:00.000Z"
+console.log(json.encode(Buffer.from('abc'))); // {"type":"Buffer","data":[97,98,99]}
+console.log(json.encode(NaN)); // null
+console.log(json.encode(undefined)); // undefined (returned as text by fibjs)
+
+try {
+    json.decode('{name: 1}');
+} catch (e) {
+    console.log(e instanceof SyntaxError); // true
+}
+```
+
+Notes:
+
+- `decode` takes a string only; any other argument type throws a type error, and the
+  input must be one complete value with no trailing characters.
+- The [module](module.md) is also exported as `encoding.json`; there is no streaming or reviver form.
+
+## Static Methods
         
 ### encode
-**以 json 格式编码变量**
+**Encodes a variable in json format**
 
 ```JavaScript
 static String json.encode(Value data);
 ```
 
-调用参数:
-* data: Value, 要编码的变量
+Parameters:
+* data: Value, the variable to encode
 
-返回结果:
-* String, 返回编码的字符串
+Returns:
+* String, returns the encoded string
+
+     The value is serialized with the semantics of JSON.stringify. undefined and a
+     top-level function return the text "undefined" rather than the value undefined, which
+     is the fibjs deviation; a BigInt, a circular structure or an [object](../../object/ifs/object.md) whose toJSON
+     throws makes the call throw a TypeError. Date and [Buffer](../../object/ifs/Buffer.md) are converted through their
+     toJSON before the text is written, and function-valued properties are omitted.
+
+     Example — a value that survives the round-trip and one that does not:
+
+```JavaScript
+const json = require('json');
+
+const text = json.encode({
+    id: 7,
+    at: new Date(0)
+});
+console.log(text); // {"id":7,"at":"1970-01-01T00:00:00.000Z"}
+console.log(json.encode({
+    fn: function() {},
+    keep: 1
+})); // {"keep":1}
+
+try {
+    json.encode(1n);
+} catch (e) {
+    console.log(e.message); // Do not know how to serialize a BigInt
+}
+```
 
 --------------------------
 ### decode
-**以 json 方式解码字符串为一个变量**
+**Decodes a string into a variable using json**
 
 ```JavaScript
 static Value json.decode(String data);
 ```
 
-调用参数:
-* data: String, 要解码的字符串
+Parameters:
+* data: String, the string to decode
 
-返回结果:
-* Value, 返回解码的变量
+Returns:
+* Value, returns the decoded variable
+
+     The text must be one complete JSON value with no trailing characters; the parser is
+     strict and rejects the extensions accepted by some libraries, such as single quotes,
+     trailing commas or comments. Duplicate [object](../../object/ifs/object.md) keys keep the last value and numbers are
+     read as doubles, so 1e400 decodes to Infinity as with JSON.parse. A non-string
+     argument throws a type error.
+
+     Example — duplicate keys and strict syntax:
+
+```JavaScript
+const json = require('json');
+
+console.log(json.decode('{"a":1,"a":2}').a); // 2
+console.log(json.decode('  [true, null]  ')[0]); // true
+
+try {
+    json.decode('{a:1}');
+} catch (e) {
+    console.log(e instanceof SyntaxError); // true
+}
+```
 

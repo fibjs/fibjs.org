@@ -1,14 +1,147 @@
-# 对象 Redis
-Redis 数据库客户端对象
+# Object Redis
+A Redis connection: the general command surface and the typed key views
 
-用以创建和管理 Redis 数据库，创建方法：
+Redis is the [object](object.md) returned by [db.openRedis](../../module/ifs/db.md#openRedis) and the only way to reach a Redis server in
+fibjs. It speaks the RESP protocol over one TCP connection and is fiber-synchronous: every
+member blocks the calling fiber until the server reply arrives, and no command has a
+callback or promise form.
+
+Command families:
+
+- **Strings**: `set`, `setNX`, `setXX`, `mset`, `msetNX`, `append`, `setRange`, `getRange`,
+  `get`, `mget`, `getset`, `incr`, `decr`, `strlen`;
+- **Bits**: `setBit`, `getBit`, `bitcount`;
+- **Keys and expiry**: `exists`, `type`, `del`, `keys`, `expire`, `ttl`, `persist`,
+  `rename`, `renameNX`, `dump`, `restore`;
+- **Pub/Sub**: `sub`, `psub`, `unsub`, `unpsub`, `pub` and the `suberror` event;
+- **Typed views**: `getHash`, `getList`, `getSet` and `getSortedSet` return the [RedisHash](RedisHash.md),
+  [RedisList](RedisList.md), [RedisSet](RedisSet.md) and [RedisSortedSet](RedisSortedSet.md) objects bound to one key;
+- **Escape hatch**: `command` sends any command and returns its raw reply;
+- **Lifecycle**: `close`.
+
+Concepts:
+
+- **Single-threaded server model**: Redis serves commands one at a time on a single
+  thread, so every command is atomic and no two commands interleave. The flip side is that
+  a slow command blocks every other client: `keys` walks the whole keyspace, so prefer the
+  SCAN family through command() on a large production server.
+- **Replies and their [types](../../module/ifs/types.md)**: a status or bulk-string reply arrives as a [Buffer](Buffer.md), an
+  integer reply as a Number, nil as null and an array as an Array whose elements follow
+  the same rules. A server error reply throws an Error whose message is the server text
+  and whose number is 20024.
+- **Connection lifecycle**: [db.openRedis](../../module/ifs/db.md#openRedis) connects before it returns, so an unreachable
+  server throws the socket error (ECONNREFUSED with number 111, or a resolver error such
+  as getaddrinfo ENOTFOUND) rather than a database error. close releases the connection
+  and is not idempotent: a second close, and every command after it, fail with 20009.
+- **Connection strings**: with the `redis://` prefix the string is parsed as a URL and the
+  host and port are used (the port defaults to 6379); the [path](../../module/ifs/path.md), user and password are
+  accepted but not sent, so a database index cannot be selected this way. Without a known
+  prefix the whole string is the host name and the port is fixed to 6379, so use the URL
+  form to reach another port.
+- **Subscriber mode**: the first sub or psub switches the connection to pub/sub; from then
+  on the server accepts only (p)subscribe, (p)unsubscribe and the connection close, and any
+  other command fails with 20009. Use a second connection to publish or to run ordinary
+  commands while one connection listens.
+- **Argument [types](../../module/ifs/types.md)**: a parameter declared [Buffer](Buffer.md)|String is sent byte-for-byte when it is
+  a [Buffer](Buffer.md) and as its UTF-8 [encoding](../../module/ifs/encoding.md) when it is a string, so keys and values may hold
+  arbitrary binary data. The variadic and [object](object.md) forms (`command`, `mset`, `msetNX`,
+  `mget`, `del` and the like) instead convert each argument through its JavaScript string
+  form: a number is rejected with 20005 and a [Buffer](Buffer.md) is decoded as UTF-8 text, which loses
+  bytes that are not valid UTF-8.
+- **Value [types](../../module/ifs/types.md)**: a Redis key holds one type (string, list, set, zset, hash or stream), a
+  command issued against the wrong type fails with the server error, and `type` reports
+  the current one. Write commands create a missing key, and read commands report null for
+  a missing key.
+
+Obtained from:
+- `db.openRedis(connString)` — fiber-synchronous, returns the connected Redis [object](object.md);
+- `db.openRedis(connString, callback)` and `db.promises.openRedis(connString)` — the
+  callback and Promise forms of the same factory.
+
+Example 1 — a failed connection reports the socket error (no server needed):
 
 ```JavaScript
-var db = require("db");
-var test = new db.openRedis("redis-server");
+const db = require('db');
+
+try {
+    db.openRedis('redis://127.0.0.1:0');
+} catch (e) {
+    console.log(e.code, e.number); // ECONNREFUSED 111
+}
+
+try {
+    db.openRedis('redis://:0'); // a malformed URL fails before connecting
+} catch (e) {
+    console.log(e.message); // url: Invalid URL 'redis://:0'.
+}
 ```
 
-## 继承关系
+Example 2 — how connection strings are interpreted (no server needed):
+
+```JavaScript
+const db = require('db');
+
+// a bare string is the host name, not a host:port pair
+try {
+    db.openRedis('127.0.0.1:6379');
+} catch (e) {
+    console.log(e.code); // ENOTFOUND - the whole string was resolved as a host
+}
+
+// the redis:// form carries the port; the path and credentials are ignored
+try {
+    db.openRedis('redis://user:pass@127.0.0.1:0/3');
+} catch (e) {
+    console.log(e.code, e.syscall); // ECONNREFUSED connect
+}
+```
+
+Example 3 — string commands and key expiry:
+
+```JavaScript
+// requires: redis
+const db = require('db');
+const rdb = db.openRedis('redis://127.0.0.1:6379');
+
+rdb.set('greeting', 'hello');
+console.log(rdb.get('greeting').toString()); // hello
+console.log(rdb.append('greeting', ', redis')); // 12 - the value grew
+console.log(rdb.incr('counter')); // 1 - a new key starts at 0
+console.log(rdb.type('greeting')); // string
+
+rdb.expire('counter', 1000);
+console.log(rdb.ttl('counter') > 0); // true
+console.log(rdb.exists('counter')); // true
+
+rdb.del('greeting', 'counter');
+rdb.close();
+```
+
+Example 4 — publish/subscribe over two connections:
+
+```JavaScript
+// requires: redis
+const db = require('db');
+const coroutine = require('coroutine');
+
+const sub = db.openRedis('redis://127.0.0.1:6379');
+const pub = db.openRedis('redis://127.0.0.1:6379');
+const done = new coroutine.Event();
+
+sub.sub('news', (channel, message) => {
+    console.log(channel.toString(), message.toString()); // news hello
+    done.set();
+});
+
+coroutine.sleep(100); // let SUBSCRIBE reach the server
+console.log(pub.pub('news', 'hello')); // 1 - one client received it
+done.wait();
+
+sub.close();
+pub.close();
+```
+
+## Inheritance
 ```dot
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
@@ -20,731 +153,1084 @@ digraph {
 }
 ```
 
-## 成员函数
+## Methods
         
 ### command
-**redis 基础命令方法**
+**Sends an arbitrary command and returns its reply as received**
 
 ```JavaScript
 Value Redis.command(String cmd,
     ...args);
 ```
 
-调用参数:
-* cmd: String, 指定发送的命令
-* args: ..., 指定发送的参数
+Parameters:
+* cmd: String, the command name to send
+* args: ..., the command arguments, each one converted to a string
 
-返回结果:
-* Value, 返回服务器返回的结果
+Returns:
+* Value, the reply as received: a [Buffer](Buffer.md), a Number, an Array or null
+
+cmd is the command name as it is sent (`HGETALL`, `SCAN`, ...); the following arguments
+are appended to it in order. Every argument is converted through its JavaScript string
+form: pass numbers as strings (a number is rejected with error 20005), and a [Buffer](Buffer.md)
+argument is decoded as UTF-8 text, so a binary payload loses bytes that are not valid
+UTF-8 - use the typed members for binary data. The reply is the raw RESP value: a
+status or bulk string as a [Buffer](Buffer.md), an integer as a Number, nil as null and an array as
+an Array, with the same rules applied to nested elements. A server error reply throws
+an Error whose message is the server text and whose number is 20024.
+
+Use it for commands with no dedicated member, such as SCAN or SORT.
+
+Example — SCAN avoids the whole-keyspace scan performed by keys:
+
+```JavaScript
+// requires: redis
+const db = require('db');
+const rdb = db.openRedis('redis://127.0.0.1:6379');
+
+rdb.set('user:1', 'alice');
+rdb.set('user:2', 'bob');
+
+const reply = rdb.command('scan', '0');
+console.log(reply[1].length >= 2); // true - the batch holds both names
+console.log(rdb.command('get', 'user:1').toString()); // alice
+
+rdb.del('user:1', 'user:2');
+rdb.close();
+```
 
 --------------------------
 ### set
-**将字符串值 value 关联到 key，如果 key 已经持有其他值， SET 就覆写旧值，无视类型**
+**Associates value with key, discarding any previous value and type**
 
 ```JavaScript
-Redis.set(Buffer key,
-    Buffer value,
+Redis.set(Buffer | String key,
+    Buffer | String value,
     Long ttl = 0);
 ```
 
-调用参数:
-* key: [Buffer](Buffer.md), 指定要关联的 key
-* value: [Buffer](Buffer.md), 指定要关联的数据
-* ttl: Long, 以毫秒为单位为 key 设置生存时间；如果 ttl 为 0 ，那么不设置生存时间
+Parameters:
+* key: [Buffer](Buffer.md) | String, the key to associate
+* value: [Buffer](Buffer.md) | String, the value to store
+* ttl: Long, the time to live in milliseconds; 0 keeps the key forever
+
+SET key value [PX ttl]. The value is stored as a string and an existing key of any
+type is overwritten. The optional ttl is applied with PX and is in milliseconds; 0
+keeps the key persistent. The member reports no result, so read the key back to
+inspect it, and the NX/XX/GET modifiers of the server command are not exposed here -
+use setNX, setXX or command() instead.
+
+key and value are sent byte-for-byte as Buffers and as UTF-8 text as strings.
 
 --------------------------
 ### setNX
-**将 key 的值设为 value ，当且仅当 key 不存在。若给定的 key 已经存在，则 SETNX 不做任何动作。**
+**Stores value only when key does not exist**
 
 ```JavaScript
-Redis.setNX(Buffer key,
-    Buffer value,
+Redis.setNX(Buffer | String key,
+    Buffer | String value,
     Long ttl = 0);
 ```
 
-调用参数:
-* key: [Buffer](Buffer.md), 指定要关联的 key
-* value: [Buffer](Buffer.md), 指定要关联的数据
-* ttl: Long, 以毫秒为单位为 key 设置生存时间；如果 ttl 为 0 ，那么不设置生存时间
+Parameters:
+* key: [Buffer](Buffer.md) | String, the key to associate
+* value: [Buffer](Buffer.md) | String, the value to store
+* ttl: Long, the time to live in milliseconds; 0 keeps the key forever
+
+SET key value NX [PX ttl]. The command does nothing when the key already exists, and
+the member reports no result, so read the key back to know whether the write
+happened. The ttl is in milliseconds and is applied only when the value is stored.
+
+key and value are sent byte-for-byte as Buffers and as UTF-8 text as strings.
 
 --------------------------
 ### setXX
-**将 key 的值设为 value，只在键已经存在时，才对键进行设置操作。**
+**Stores value only when key already exists**
 
 ```JavaScript
-Redis.setXX(Buffer key,
-    Buffer value,
+Redis.setXX(Buffer | String key,
+    Buffer | String value,
     Long ttl = 0);
 ```
 
-调用参数:
-* key: [Buffer](Buffer.md), 指定要关联的 key
-* value: [Buffer](Buffer.md), 指定要关联的数据
-* ttl: Long, 以毫秒为单位为 key 设置生存时间；如果 ttl 为 0 ，那么不设置生存时间
+Parameters:
+* key: [Buffer](Buffer.md) | String, the key to associate
+* value: [Buffer](Buffer.md) | String, the value to store
+* ttl: Long, the time to live in milliseconds; 0 keeps the key forever
+
+SET key value XX [PX ttl]. The command does nothing when the key does not exist, and
+the member reports no result, so read the key back to know whether the write
+happened. The ttl is in milliseconds and is applied only when the value is stored.
+
+key and value are sent byte-for-byte as Buffers and as UTF-8 text as strings.
 
 --------------------------
 ### mset
-**同时设置一个或多个 key-value 对。如果某个给定 key 已经存在，那么 MSET 会用新值覆盖原来的旧值**
+**Sets several key/value pairs at once, replacing the keys**
 
 ```JavaScript
 Redis.mset(Object kvs);
 ```
 
-调用参数:
-* kvs: Object, 指定要设置的 key/value 对象
+Parameters:
+* kvs: Object, the key/value pairs to set, as property names and values
+
+MSET. The property names of kvs are the keys and the property values are the values,
+in property order. Each value is converted through its JavaScript string form, so a
+number is rejected with error 20005 and a [Buffer](Buffer.md) is decoded as UTF-8 text - pass
+strings there. MSET is atomic: either every pair is written or none is. The member
+reports no result.
+
+Example — the [object](object.md) form of mset and the array result of mget:
+
+```JavaScript
+// requires: redis
+const db = require('db');
+const rdb = db.openRedis('redis://127.0.0.1:6379');
+
+rdb.mset({
+    first: 'alice',
+    last: 'smith'
+});
+const values = rdb.mget('first', 'last');
+console.log(values[0].toString(), values[1].toString()); // alice smith
+
+rdb.del('first', 'last');
+rdb.close();
+```
 
 --------------------------
-**同时设置一个或多个 key-value 对。如果某个给定 key 已经存在，那么 MSET 会用新值覆盖原来的旧值**
+**Sets several key/value pairs at once from a flat argument list**
 
 ```JavaScript
 Redis.mset(...kvs);
 ```
 
-调用参数:
-* kvs: ..., 指定要设置的 key/value 列表
+Parameters:
+* kvs: ..., the flat key/value list to set
+
+MSET. The arguments alternate key and value: mset('a', '1', 'b', '2') is the same
+command as mset({ a: '1', b: '2' }). An odd argument count reaches the server, which
+rejects the command with an error; values follow the string conversion of the [object](object.md)
+form. The member reports no result.
 
 --------------------------
 ### msetNX
-**同时设置一个或多个 key-value 对，当且仅当所有给定 key 都不存在**
+**Sets several key/value pairs at once only when all the keys are missing**
 
 ```JavaScript
 Redis.msetNX(Object kvs);
 ```
 
-调用参数:
-* kvs: Object, 指定要设置的 key/value 对象
+Parameters:
+* kvs: Object, the key/value pairs to set, as property names and values
+
+MSETNX. The [object](object.md) form takes the property names as keys and the property values as
+values, in property order. The whole group is written only when none of the keys
+exists, so the command is all-or-nothing; values follow the string conversion of
+mset. The member reports no result, so read the keys back to know whether the write
+happened.
 
 --------------------------
-**同时设置一个或多个 key-value 对，当且仅当所有给定 key 都不存在**
+**Sets several key/value pairs from a flat list only when all the keys are missing**
 
 ```JavaScript
 Redis.msetNX(...kvs);
 ```
 
-调用参数:
-* kvs: ..., 指定要设置的 key/value 列表
+Parameters:
+* kvs: ..., the flat key/value list to set
+
+MSETNX. The arguments alternate key and value and the whole group is written only when
+none of the keys exists; an odd argument count reaches the server, which rejects the
+command with an error. The member reports no result.
 
 --------------------------
 ### append
-**如果 key 已经存在并且是一个字符串，append 命令将 value 追加到 key 原来的值的末尾。如果 key 不存在，append 就简单地将给定 key 设为 value**
+**Appends value to the string stored at key**
 
 ```JavaScript
-Integer Redis.append(Buffer key,
-    Buffer value);
+Integer Redis.append(Buffer | String key,
+    Buffer | String value);
 ```
 
-调用参数:
-* key: [Buffer](Buffer.md), 指定要追加的 key
-* value: [Buffer](Buffer.md), 指定要追加的数据
+Parameters:
+* key: [Buffer](Buffer.md) | String, the key to append to
+* value: [Buffer](Buffer.md) | String, the data to append
 
-返回结果:
-* Integer, 追加 value 之后， key 中字符串的长度
+Returns:
+* Integer, the length of the string after the append
+
+APPEND. A missing key is created and a key of another type fails with the server
+error. key and value are sent byte-for-byte as Buffers and as UTF-8 text as strings.
 
 --------------------------
 ### setRange
-**用 value 参数覆写给定 key 所储存的字符串值，从偏移量 offset 开始**
+**Overwrites the string stored at key starting at the given byte offset**
 
 ```JavaScript
-Integer Redis.setRange(Buffer key,
+Integer Redis.setRange(Buffer | String key,
     Integer offset,
-    Buffer value);
+    Buffer | String value);
 ```
 
-调用参数:
-* key: [Buffer](Buffer.md), 指定要修改的 key
-* offset: Integer, 指定修改的字节偏移
-* value: [Buffer](Buffer.md), 指定要覆盖的数据
+Parameters:
+* key: [Buffer](Buffer.md) | String, the key to modify
+* offset: Integer, the byte offset to write at
+* value: [Buffer](Buffer.md) | String, the data to write
 
-返回结果:
-* Integer, 被修改之后，字符串的长度
+Returns:
+* Integer, the length of the string after the write
+
+SETRANGE. The string is extended with zero bytes when offset lies beyond its current
+end; the returned length covers the whole string after the write. An offset at or
+past the server limit (512 MB - 1) or a key holding another type fails with the server
+error. key and value are sent byte-for-byte as Buffers.
 
 --------------------------
 ### getRange
-**返回 key 中字符串值的子字符串，字符串的截取范围由 start 和 end 两个偏移量决定(包括 start 和 end 在内)**
+**Returns a substring of the string stored at key**
 
 ```JavaScript
-Buffer Redis.getRange(Buffer key,
+Buffer Redis.getRange(Buffer | String key,
     Integer start,
     Integer end);
 ```
 
-调用参数:
-* key: [Buffer](Buffer.md), 指定要查询的 key
-* start: Integer, 指定查询的起始字节偏移
-* end: Integer, 指定查询的结束字节偏移
+Parameters:
+* key: [Buffer](Buffer.md) | String, the key to query
+* start: Integer, the first byte offset of the range
+* end: Integer, the last byte offset of the range
 
-返回结果:
-* [Buffer](Buffer.md), 截取得出的子字符串
+Returns:
+* [Buffer](Buffer.md), the extracted bytes as a [Buffer](Buffer.md)
+
+GETRANGE. Both offsets are byte offsets and both ends are included; a negative offset
+counts from the end of the string (-1 is the last byte), and offsets outside the
+string are clamped to it. A missing key, an empty range and a range whose start is
+after its end all return an empty [Buffer](Buffer.md). The result is a [Buffer](Buffer.md), so it may hold
+arbitrary bytes.
 
 --------------------------
 ### strlen
-**返回 key 所储存的字符串值的长度。当 key 储存的不是字符串值时，返回一个错误**
+**Returns the length of the string stored at key**
 
 ```JavaScript
-Integer Redis.strlen(Buffer key);
+Integer Redis.strlen(Buffer | String key);
 ```
 
-调用参数:
-* key: [Buffer](Buffer.md), 指定要计算的 key
+Parameters:
+* key: [Buffer](Buffer.md) | String, the key to count
 
-返回结果:
-* Integer, 字符串值的长度。当 key 不存在时，返回 0
+Returns:
+* Integer, the length of the stored string in bytes, 0 when key does not exist
+
+STRLEN. A missing key returns 0 and a key holding another type fails with the server
+error; the length is in bytes, not characters.
 
 --------------------------
 ### bitcount
-**计算给定字符串中，被设置为 1 的比特位的数量**
+**Counts the bits set to 1 in the string stored at key**
 
 ```JavaScript
-Integer Redis.bitcount(Buffer key,
+Integer Redis.bitcount(Buffer | String key,
     Integer start = 0,
     Integer end = -1);
 ```
 
-调用参数:
-* key: [Buffer](Buffer.md), 指定要计算的 key
-* start: Integer, 指定要计算的起始字节，可以使用负数值，-1 表示最后一个字节，而 -2 表示倒数第二个字节，以此类推
-* end: Integer, 指定要计算的结束字节，可以使用负数值，-1 表示最后一个字节，而 -2 表示倒数第二个字节，以此类推
+Parameters:
+* key: [Buffer](Buffer.md) | String, the key to count
+* start: Integer, the first byte of the range; -1 is the last byte
+* end: Integer, the last byte of the range; -1 is the last byte
 
-返回结果:
-* Integer, 被设置为 1 的位的数量
+Returns:
+* Integer, the number of bits set to 1 in the range
+
+BITCOUNT. The member always sends the start and end defaults, so the whole string is
+counted unless both are given; the offsets are byte offsets, both ends are included
+and a negative offset counts from the end of the string. A missing key returns 0.
 
 --------------------------
 ### get
-**返回 key 所关联的字符串值，如果 key 不存在那么返回特殊值 Null**
+**Returns the string stored at key**
 
 ```JavaScript
-Buffer Redis.get(Buffer key);
+Buffer Redis.get(Buffer | String key);
 ```
 
-调用参数:
-* key: [Buffer](Buffer.md), 指定要关联的 key
+Parameters:
+* key: [Buffer](Buffer.md) | String, the key to read
 
-返回结果:
-* [Buffer](Buffer.md), 当 key 不存在时，返回 Null ，否则，返回 key 的值
+Returns:
+* [Buffer](Buffer.md), the value as a [Buffer](Buffer.md), or null when key does not exist
+
+GET. A missing key returns null; a key holding another type fails with the server
+error. The value is a [Buffer](Buffer.md), so it may hold arbitrary bytes.
 
 --------------------------
 ### mget
-**返回所有(一个或多个)给定 key 的值。如果给定的 key 里面，有某个 key 不存在，那么这个 key 返回特殊值 nil 。**
+**Returns the values of the given keys, one element per key**
 
 ```JavaScript
 NArray Redis.mget(Array keys);
 ```
 
-调用参数:
-* keys: Array, 指定要查询的 key 数组
+Parameters:
+* keys: Array, the array of keys to read
 
-返回结果:
-* NArray, 一个包含所有给定 key 的值的列表
+Returns:
+* NArray, an array with one [Buffer](Buffer.md) or null per key, in the given order
+
+MGET. A missing key yields null in its position, so the result has the same length as
+the key list. The keys go through the JavaScript string conversion of a variadic
+argument: a number is rejected with error 20005 and a [Buffer](Buffer.md) is decoded as UTF-8
+text. The values are Buffers.
+
+Example — a missing key keeps its position as null:
+
+```JavaScript
+// requires: redis
+const db = require('db');
+const rdb = db.openRedis('redis://127.0.0.1:6379');
+
+rdb.set('first', 'alice');
+const values = rdb.mget('first', 'missing');
+console.log(values[0].toString(), values[1]); // alice null
+
+rdb.del('first');
+rdb.close();
+```
 
 --------------------------
-**返回所有(一个或多个)给定 key 的值。如果给定的 key 里面，有某个 key 不存在，那么这个 key 返回特殊值 nil 。**
+**Returns the values of the given keys, one element per key**
 
 ```JavaScript
 NArray Redis.mget(...keys);
 ```
 
-调用参数:
-* keys: ..., 指定要查询的 key 列表
+Parameters:
+* keys: ..., the keys to read, as a flat argument list
 
-返回结果:
-* NArray, 一个包含所有给定 key 的值的列表
+Returns:
+* NArray, an array with one [Buffer](Buffer.md) or null per key, in the given order
+
+MGET. This is the flat form of mget(Array); the two are the same command and both
+follow the string conversion described there.
 
 --------------------------
 ### getset
-**将给定 key 的值设为 value ，并返回 key 的旧值(old value)**
+**Stores value at key and returns the previous value**
 
 ```JavaScript
-Buffer Redis.getset(Buffer key,
-    Buffer value);
+Buffer Redis.getset(Buffer | String key,
+    Buffer | String value);
 ```
 
-调用参数:
-* key: [Buffer](Buffer.md), 指定要查询修改的 key
-* value: [Buffer](Buffer.md), 指定修改的数值
+Parameters:
+* key: [Buffer](Buffer.md) | String, the key to write
+* value: [Buffer](Buffer.md) | String, the value to store
 
-返回结果:
-* [Buffer](Buffer.md), 返回给定 key 的旧值
+Returns:
+* [Buffer](Buffer.md), the previous value as a [Buffer](Buffer.md), or null when key did not exist
+
+GETSET. A missing key returns null and a key of any type is overwritten. The server
+deprecated GETSET in favor of SET with the GET modifier, but the command still works.
+key and value are sent byte-for-byte as Buffers.
 
 --------------------------
 ### decr
-**将 key 所储存的值减去减量**
+**Subtracts num from the integer stored at key**
 
 ```JavaScript
-Long Redis.decr(Buffer key,
+Long Redis.decr(Buffer | String key,
     Long num = 1);
 ```
 
-调用参数:
-* key: [Buffer](Buffer.md), 指定要修改的 key
-* num: Long, 指定要减去的数值
+Parameters:
+* key: [Buffer](Buffer.md) | String, the key to modify
+* num: Long, the amount to subtract
 
-返回结果:
-* Long, 减去 num 之后，key 的值
+Returns:
+* Long, the value of key after the subtraction
+
+DECR when num is 1, DECRBY otherwise. The value is a signed 64-bit integer; a missing
+key is treated as 0, so decr('k', 5) on a new key returns -5. A value that is not an
+integer string fails with the server error. The member reports no overflow check on
+its own: the server reports the overflow error.
 
 --------------------------
 ### incr
-**将 key 所储存的值加上增量**
+**Adds num to the integer stored at key**
 
 ```JavaScript
-Long Redis.incr(Buffer key,
+Long Redis.incr(Buffer | String key,
     Long num = 1);
 ```
 
-调用参数:
-* key: [Buffer](Buffer.md), 指定要修改的 key
-* num: Long, 指定要加上的数值
+Parameters:
+* key: [Buffer](Buffer.md) | String, the key to modify
+* num: Long, the amount to add
 
-返回结果:
-* Long, 加上 num 之后，key 的值
+Returns:
+* Long, the value of key after the addition
+
+INCR when num is 1, INCRBY otherwise. The value is a signed 64-bit integer; a missing
+key is treated as 0, so incr('k') on a new key returns 1. A value that is not an
+integer string or an overflow fails with the server error.
 
 --------------------------
 ### setBit
-**对 key 所储存的字符串值，设置或清除指定偏移量上的位(bit)**
+**Sets or clears one bit of the string stored at key**
 
 ```JavaScript
-Integer Redis.setBit(Buffer key,
+Integer Redis.setBit(Buffer | String key,
     Integer offset,
     Integer value);
 ```
 
-调用参数:
-* key: [Buffer](Buffer.md), 指定要修改的 key
-* offset: Integer, 指定修改的位偏移
-* value: Integer, 指定设置或清除的参数，可以是 0 也可以是 1
+Parameters:
+* key: [Buffer](Buffer.md) | String, the key to modify
+* offset: Integer, the bit offset to modify
+* value: Integer, the bit to store, 0 or 1
 
-返回结果:
-* Integer, 指定偏移量原来储存的位
+Returns:
+* Integer, the previous bit at the offset
+
+SETBIT. value must be 0 or 1; the string is grown with zero bytes when offset lies
+beyond its end, and the server limits the offset to 2^32 - 1. A key holding another
+type fails with the server error. The previous bit is returned.
 
 --------------------------
 ### getBit
-**对 key 所储存的字符串值，获取指定偏移量上的位(bit)**
+**Returns one bit of the string stored at key**
 
 ```JavaScript
-Integer Redis.getBit(Buffer key,
+Integer Redis.getBit(Buffer | String key,
     Integer offset);
 ```
 
-调用参数:
-* key: [Buffer](Buffer.md), 指定要查询的 key
-* offset: Integer, 指定查询的位偏移
+Parameters:
+* key: [Buffer](Buffer.md) | String, the key to read
+* offset: Integer, the bit offset to read
 
-返回结果:
-* Integer, 字符串值指定偏移量上的位(bit)
+Returns:
+* Integer, the bit at the offset, 0 or 1
+
+GETBIT. A missing key and an offset beyond the end of the string both return 0.
 
 --------------------------
 ### exists
-**检查给定 key 是否存在**
+**Checks whether the given key exists**
 
 ```JavaScript
-Boolean Redis.exists(Buffer key);
+Boolean Redis.exists(Buffer | String key);
 ```
 
-调用参数:
-* key: [Buffer](Buffer.md), 指定要关联的 key
+Parameters:
+* key: [Buffer](Buffer.md) | String, the key to [test](../../module/ifs/test.md)
 
-返回结果:
-* Boolean, 若 key 存在，返回 True，否则返回 False
+Returns:
+* Boolean, true when the key exists, false otherwise
+
+EXISTS. A key of any type counts; the member checks one key per call (the server
+command accepts several), and the count is reduced to a boolean.
 
 --------------------------
 ### type
-**返回 key 所储存的值的类型**
+**Returns the type of the value stored at key**
 
 ```JavaScript
-String Redis.type(Buffer key);
+String Redis.type(Buffer | String key);
 ```
 
-调用参数:
-* key: [Buffer](Buffer.md), 指定要查询的 key
+Parameters:
+* key: [Buffer](Buffer.md) | String, the key to query
 
-返回结果:
-* String, 返回 key 所储存的值的类型，可能的值为 none(key不存在) string(字符串) list(列表) set(集合) zset(有序集) hash(哈希表)
+Returns:
+* String, the type name, `none` when key does not exist
+
+TYPE. A missing key reports `none`; the other values are `string`, `list`, `set`,
+`zset`, `hash` and `stream` (Redis 5 and later). Use it before calling a typed command
+on a key that may hold another type.
 
 --------------------------
 ### keys
-**查找所有符合给定模式 pattern 的 key**
+**Returns the keys matching a glob pattern**
 
 ```JavaScript
 NArray Redis.keys(String pattern);
 ```
 
-调用参数:
-* pattern: String, 指定查询模式
+Parameters:
+* pattern: String, the glob pattern to match
 
-返回结果:
-* NArray, 符合给定模式的 key 列表
+Returns:
+* NArray, an array of [Buffer](Buffer.md) key names
+
+KEYS. The pattern supports `*`, `?`, character classes (`[abc]`, `[^a]`, `[a-z]`) and
+the backslash escape, and it matches the whole key name. The result is an array of
+[Buffer](Buffer.md) names in unspecified order. Redis is single-threaded, so KEYS walks the whole
+keyspace while every other client waits: use `command('scan', '0')` on a large
+production database.
+
+Example — collect the keys of one namespace:
+
+```JavaScript
+// requires: redis
+const db = require('db');
+const rdb = db.openRedis('redis://127.0.0.1:6379');
+
+rdb.mset('user:1', 'alice', 'user:2', 'bob', 'session:1', 'token');
+const names = rdb.keys('user:*');
+console.log(names.length); // 2
+console.log(names[0].toString().indexOf('user:') === 0); // true
+
+rdb.del('user:1', 'user:2', 'session:1');
+rdb.close();
+```
 
 --------------------------
 ### del
-**删除给定的一个或多个 key，不存在的 key 会被忽略**
+**Deletes the given keys**
 
 ```JavaScript
 Integer Redis.del(Array keys);
 ```
 
-调用参数:
-* keys: Array, 指定要删除的 key 数组
+Parameters:
+* keys: Array, the array of keys to delete
 
-返回结果:
-* Integer, 被删除 key 的数量
+Returns:
+* Integer, the number of keys that were removed
+
+DEL. Missing keys are ignored; the number of removed keys is returned. The keys go
+through the JavaScript string conversion of a variadic argument: a number is rejected
+with error 20005 and a [Buffer](Buffer.md) is decoded as UTF-8 text.
 
 --------------------------
-**删除给定的一个或多个 key，不存在的 key 会被忽略**
+**Deletes the given keys**
 
 ```JavaScript
 Integer Redis.del(...keys);
 ```
 
-调用参数:
-* keys: ..., 指定要删除的 key 列表
+Parameters:
+* keys: ..., the keys to delete, as a flat argument list
 
-返回结果:
-* Integer, 被删除 key 的数量
+Returns:
+* Integer, the number of keys that were removed
+
+DEL. This is the flat form of del(Array); the two are the same command and both follow
+the string conversion described there.
 
 --------------------------
 ### expire
-**为给定 key 设置生存时间，当 key 过期时，它会被自动删除**
+**Sets a time to live for key, after which the key is deleted**
 
 ```JavaScript
-Boolean Redis.expire(Buffer key,
+Boolean Redis.expire(Buffer | String key,
     Long ttl);
 ```
 
-调用参数:
-* key: [Buffer](Buffer.md), 指定要设定的 key
-* ttl: Long, 以毫秒为单位为 key 设置生存时间
+Parameters:
+* key: [Buffer](Buffer.md) | String, the key to expire
+* ttl: Long, the time to live in milliseconds
 
-返回结果:
-* Boolean, 若 key 存在，返回 True，否则返回 False
+Returns:
+* Boolean, true when the key existed, false when it did not
+
+PEXPIRE. The ttl is in milliseconds; it replaces an existing time to live, and a
+non-positive value deletes the key immediately. The member returns whether the key
+existed, which is true even when the new ttl deletes it right away.
+
+Example — set, inspect and remove an expiry:
+
+```JavaScript
+// requires: redis
+const db = require('db');
+const rdb = db.openRedis('redis://127.0.0.1:6379');
+
+rdb.set('cache', 'value');
+console.log(rdb.ttl('cache')); // -1 - no expiry was set
+console.log(rdb.expire('cache', 1000)); // true
+console.log(rdb.ttl('cache') > 0); // true
+console.log(rdb.persist('cache')); // true - the expiry was removed
+console.log(rdb.ttl('cache')); // -1
+
+rdb.del('cache');
+rdb.close();
+```
 
 --------------------------
 ### ttl
-**返回给定 key 的剩余生存时间**
+**Returns the remaining time to live of key in milliseconds**
 
 ```JavaScript
-Long Redis.ttl(Buffer key);
+Long Redis.ttl(Buffer | String key);
 ```
 
-调用参数:
-* key: [Buffer](Buffer.md), 指定要查询的 key
+Parameters:
+* key: [Buffer](Buffer.md) | String, the key to query
 
-返回结果:
-* Long, 以毫秒为单位，返回 key 的剩余生存时间，当 key 不存在时，返回 -2，当 key 存在但没有设置剩余生存时间时，返回 -1
+Returns:
+* Long, the remaining time to live in milliseconds, -1 or -2 as described
+
+PTTL. The result is -2 when the key does not exist, -1 when the key exists without a
+time to live and the remaining milliseconds otherwise.
 
 --------------------------
 ### persist
-**移除给定 key 的生存时间，将这个 key 从『易失的』(带生存时间 key )转换成『持久的』(一个不带生存时间、永不过期的 key)**
+**Removes the time to live of key, making it persistent**
 
 ```JavaScript
-Boolean Redis.persist(Buffer key);
+Boolean Redis.persist(Buffer | String key);
 ```
 
-调用参数:
-* key: [Buffer](Buffer.md), 指定要设定的 key
+Parameters:
+* key: [Buffer](Buffer.md) | String, the key to persist
 
-返回结果:
-* Boolean, 若 key 存在，返回 True，否则返回 False
+Returns:
+* Boolean, true when the key was volatile and is now persistent
+
+PERSIST. The member returns true when a time to live was removed and false when the
+key does not exist or had none.
 
 --------------------------
 ### rename
-**将 key 改名为 newkey，当 key 和 newkey 相同，或者 key 不存在时，返回一个错误**
+**Renames key to newkey, the source is deleted**
 
 ```JavaScript
-Redis.rename(Buffer key,
-    Buffer newkey);
+Redis.rename(Buffer | String key,
+    Buffer | String newkey);
 ```
 
-调用参数:
-* key: [Buffer](Buffer.md), 指定要改名的 key
-* newkey: [Buffer](Buffer.md), 指定要改名的目的 key
+Parameters:
+* key: [Buffer](Buffer.md) | String, the key to rename
+* newkey: [Buffer](Buffer.md) | String, the destination key name
+
+RENAME. An existing newkey is overwritten regardless of its type, and the command
+fails with the server error when key does not exist or when key and newkey are equal.
+No result is reported.
 
 --------------------------
 ### renameNX
-**当且仅当 newkey 不存在时，将 key 改名为 newkey，当 key 不存在时，返回一个错误**
+**Renames key to newkey only when newkey does not exist**
 
 ```JavaScript
-Boolean Redis.renameNX(Buffer key,
-    Buffer newkey);
+Boolean Redis.renameNX(Buffer | String key,
+    Buffer | String newkey);
 ```
 
-调用参数:
-* key: [Buffer](Buffer.md), 指定要改名的 key
-* newkey: [Buffer](Buffer.md), 指定要改名的目的 key
+Parameters:
+* key: [Buffer](Buffer.md) | String, the key to rename
+* newkey: [Buffer](Buffer.md) | String, the destination key name
 
-返回结果:
-* Boolean, 修改成功时，返回 True，如果 newkey 已经存在，返回 False
+Returns:
+* Boolean, true when the rename happened, false when newkey already existed
+
+RENAMENX. The member returns false when newkey already exists and fails with the
+server error when key does not exist.
 
 --------------------------
 ### sub
-**订阅给定的一个频道的信息，当消息发生时自动调用 func，func 包含两个参数，依次为 channel 和 message，同一频道同一函数只会回调一次**
+**Subscribes func to a channel**
 
 ```JavaScript
-Redis.sub(Buffer channel,
-    Function func);
+Redis.sub(Buffer | String channel,
+    Function(Buffer channel, Buffer message) func);
 ```
 
-调用参数:
-* channel: [Buffer](Buffer.md), 指定订阅的频道名称
-* func: Function, 指定回调函数
+Parameters:
+* channel: [Buffer](Buffer.md) | String, the channel to subscribe to
+* func: Function([Buffer](Buffer.md) channel, [Buffer](Buffer.md) message), the callback invoked as func(channel, message)
+
+SUBSCRIBE channel. func is called with the channel name and the message, both as
+Buffers, each time a message arrives on the channel; delivery happens on the event
+loop, so the calling fiber may continue or sleep. Registering the same function again
+for the same channel adds a second listener and does not send another SUBSCRIBE, so
+the function is then called once per registration for every message.
+
+The first sub or psub switches the connection to subscriber mode: from then on other
+commands on this [object](object.md) fail with 20009 and the connection can only be closed. Use a
+second connection for pub and for ordinary commands.
 
 --------------------------
-**订阅给定的一组频道的信息，当消息发生时自动调用相应的回调函数，同一频道同一函数只会回调一次**
+**Subscribes one callback to each channel of a map**
 
 ```JavaScript
 Redis.sub(Object map);
 ```
 
-调用参数:
-* map: Object, 指定频道映射关系，对象属性名称将作为频道名称，属性的值将作为回调函数
+Parameters:
+* map: Object, the channel/callback map
+
+SUBSCRIBE with every property of map: the property names are the channels and the
+property values the callback functions. The whole map is sent as one command. A
+property value that is not a function fails with error 20004 before anything is sent.
 
 --------------------------
 ### unsub
-**退订给定的频道的全部回调**
+**Removes every callback of a channel**
 
 ```JavaScript
-Redis.unsub(Buffer channel);
+Redis.unsub(Buffer | String channel);
 ```
 
-调用参数:
-* channel: [Buffer](Buffer.md), 指定退订的频道名称
+Parameters:
+* channel: [Buffer](Buffer.md) | String, the channel to unsubscribe from
+
+UNSUBSCRIBE channel. All registrations of the channel are dropped and one UNSUBSCRIBE
+is sent even when the channel had no callback.
 
 --------------------------
-**退订给定的频道的指定回调函数**
+**Removes one callback registration of a channel**
 
 ```JavaScript
-Redis.unsub(Buffer channel,
-    Function func);
+Redis.unsub(Buffer | String channel,
+    Function(Buffer channel, Buffer message) func);
 ```
 
-调用参数:
-* channel: [Buffer](Buffer.md), 指定退订的频道名称
-* func: Function, 指定退订的回调函数
+Parameters:
+* channel: [Buffer](Buffer.md) | String, the channel to unsubscribe from
+* func: Function([Buffer](Buffer.md) channel, [Buffer](Buffer.md) message), the callback registered by sub()
+
+Removes the registration made by one sub() call. The UNSUBSCRIBE command is sent only
+when the last registration of the channel is removed, so the server keeps sending the
+channel while other callbacks remain.
 
 --------------------------
-**退订一组给定的频道的全部回调**
+**Removes every callback of several channels**
 
 ```JavaScript
 Redis.unsub(Array channels);
 ```
 
-调用参数:
-* channels: Array, 指定退订的频道数组
+Parameters:
+* channels: Array, the array of channels to unsubscribe from
+
+UNSUBSCRIBE with all the channels in one command; every registration of each channel is
+dropped.
 
 --------------------------
-**退订给定的一组频道的指定回调函数**
+**Removes the listed callbacks of several channels**
 
 ```JavaScript
 Redis.unsub(Object map);
 ```
 
-调用参数:
-* map: Object, 指定频道映射关系，对象属性名称将作为频道名称，属性的值将作为回调函数
+Parameters:
+* map: Object, the channel/callback map
+
+The property names of map are the channels and the property values the callbacks to
+remove. An UNSUBSCRIBE with the affected channels is sent when at least one
+registration was removed.
 
 --------------------------
 ### psub
-**按照模板订阅一组频道的信息，当消息发生时自动调用 func，func 包含三个参数，依次为 channel，message 和 pattern，同一模板同一函数只会回调一次**
+**Subscribes func to every channel matching a pattern**
 
 ```JavaScript
 Redis.psub(String pattern,
-    Function func);
+    Function(Buffer channel, Buffer message, Buffer pattern) func);
 ```
 
-调用参数:
-* pattern: String, 指定订阅的频道模板
-* func: Function, 指定回调函数
+Parameters:
+* pattern: String, the glob pattern of channels to subscribe to
+* func: Function([Buffer](Buffer.md) channel, [Buffer](Buffer.md) message, [Buffer](Buffer.md) pattern), the callback invoked as func(channel, message, pattern)
+
+PSUBSCRIBE pattern. The pattern uses the Redis glob syntax; func is called with the
+channel name, the message and the pattern that matched, all as Buffers. The rules of
+sub() apply: a repeated registration adds a listener without another command, and the
+first subscription switches the connection to subscriber mode.
 
 --------------------------
-**订阅给定的一组频道模板的信息，当消息发生时自动调用相应的 func，同一频道同一函数只会回调一次**
+**Subscribes one callback to each channel pattern of a map**
 
 ```JavaScript
 Redis.psub(Object map);
 ```
 
-调用参数:
-* map: Object, 指定频道映射关系，对象属性名称将作为频道模板，属性的值将作为回调函数
+Parameters:
+* map: Object, the pattern/callback map
+
+PSUBSCRIBE with every property of map: the property names are the patterns and the
+property values the callback functions, in one command. A property value that is not a
+function fails with error 20004 before anything is sent.
 
 --------------------------
 ### unpsub
-**退订给定模板的频道的全部回调**
+**Removes every callback of a pattern**
 
 ```JavaScript
 Redis.unpsub(String pattern);
 ```
 
-调用参数:
-* pattern: String, 指定退订的频道模板
+Parameters:
+* pattern: String, the pattern to unsubscribe from
+
+PUNSUBSCRIBE pattern. All registrations of the pattern are dropped and one
+PUNSUBSCRIBE is sent.
 
 --------------------------
-**退订给定模板的频道的指定回调函数**
+**Removes one callback registration of a pattern**
 
 ```JavaScript
 Redis.unpsub(String pattern,
-    Function func);
+    Function(Buffer channel, Buffer message, Buffer pattern) func);
 ```
 
-调用参数:
-* pattern: String, 指定退订的频道模板
-* func: Function, 指定退订的回调函数
+Parameters:
+* pattern: String, the pattern to unsubscribe from
+* func: Function([Buffer](Buffer.md) channel, [Buffer](Buffer.md) message, [Buffer](Buffer.md) pattern), the callback registered by psub()
+
+Removes the registration made by one psub() call; the PUNSUBSCRIBE command is sent only
+when the last registration of the pattern is removed.
 
 --------------------------
-**退订一组给定模板的频道的全部回调**
+**Removes every callback of several patterns**
 
 ```JavaScript
 Redis.unpsub(Array patterns);
 ```
 
-调用参数:
-* patterns: Array, 指定发布的频道模板数组
+Parameters:
+* patterns: Array, the array of patterns to unsubscribe from
+
+PUNSUBSCRIBE with all the patterns in one command.
 
 --------------------------
-**退订一组模板的频道的指定回调函数**
+**Removes the listed callbacks of several patterns**
 
 ```JavaScript
 Redis.unpsub(Object map);
 ```
 
-调用参数:
-* map: Object, 指定频道映射关系，对象属性名称将作为频道模板，属性的值将作为回调函数
+Parameters:
+* map: Object, the pattern/callback map
+
+The property names of map are the patterns and the property values the callbacks to
+remove. A PUNSUBSCRIBE with the affected patterns is sent when at least one
+registration was removed.
 
 --------------------------
 ### pub
-**将信息 message 发送到指定的频道 channel**
+**Publishes a message to a channel**
 
 ```JavaScript
-Integer Redis.pub(Buffer channel,
-    Buffer message);
+Integer Redis.pub(Buffer | String channel,
+    Buffer | String message);
 ```
 
-调用参数:
-* channel: [Buffer](Buffer.md), 指定发布的频道
-* message: [Buffer](Buffer.md), 指定发布的消息
+Parameters:
+* channel: [Buffer](Buffer.md) | String, the channel to publish to
+* message: [Buffer](Buffer.md) | String, the message to publish
 
-返回结果:
-* Integer, 接收此消息的客户端数量
+Returns:
+* Integer, the number of clients that received the message
+
+PUBLISH. The number of clients that received the message is returned: 0 when nobody is
+subscribed, and pattern subscribers count as receivers. Publishing happens on a
+normal connection - a connection in subscriber mode cannot publish. channel and
+message are sent byte-for-byte as Buffers.
 
 --------------------------
 ### getHash
-**获取指定 key 的 Hash 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库**
+**Returns the [RedisHash](RedisHash.md) view bound to key**
 
 ```JavaScript
-RedisHash Redis.getHash(Buffer key);
+RedisHash Redis.getHash(Buffer | String key);
 ```
 
-调用参数:
-* key: [Buffer](Buffer.md), 指定要获取的 key
+Parameters:
+* key: [Buffer](Buffer.md) | String, the key the view is bound to
 
-返回结果:
-* [RedisHash](RedisHash.md), 返回包含指定 key 的 Hash 对象
+Returns:
+* [RedisHash](RedisHash.md), the [RedisHash](RedisHash.md) view
+
+The view is a local [object](object.md): no command is sent until one of its members runs, and the
+key is captured at call time (as bytes, so a [Buffer](Buffer.md) key is used as given). The view
+maps its members to the HSET/HGET/HINCRBY family; see the [RedisHash](RedisHash.md) class for the
+details.
+
+Example — a view sends nothing until it is used:
+
+```JavaScript
+// requires: redis
+const db = require('db');
+const rdb = db.openRedis('redis://127.0.0.1:6379');
+
+const user = rdb.getHash('user:1'); // no command is sent
+user.set('name', 'alice'); // HSET user:1 name alice
+console.log(rdb.type('user:1')); // hash
+console.log(user.get('name').toString()); // alice
+
+rdb.del('user:1');
+rdb.close();
+```
 
 --------------------------
 ### getList
-**获取指定 key 的 List 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库**
+**Returns the [RedisList](RedisList.md) view bound to key**
 
 ```JavaScript
-RedisList Redis.getList(Buffer key);
+RedisList Redis.getList(Buffer | String key);
 ```
 
-调用参数:
-* key: [Buffer](Buffer.md), 指定要获取的 key
+Parameters:
+* key: [Buffer](Buffer.md) | String, the key the view is bound to
 
-返回结果:
-* [RedisList](RedisList.md), 返回包含指定 key 的 List 对象
+Returns:
+* [RedisList](RedisList.md), the [RedisList](RedisList.md) view
+
+The view is a local [object](object.md): no command is sent until one of its members runs, and the
+key is captured at call time. It maps its members to the LPUSH/RPUSH/LRANGE family;
+see the [RedisList](RedisList.md) class for the details.
 
 --------------------------
 ### getSet
-**获取指定 key 的 Set 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库**
+**Returns the [RedisSet](RedisSet.md) view bound to key**
 
 ```JavaScript
-RedisSet Redis.getSet(Buffer key);
+RedisSet Redis.getSet(Buffer | String key);
 ```
 
-调用参数:
-* key: [Buffer](Buffer.md), 指定要获取的 key
+Parameters:
+* key: [Buffer](Buffer.md) | String, the key the view is bound to
 
-返回结果:
-* [RedisSet](RedisSet.md), 返回包含指定 key 的 Set 对象
+Returns:
+* [RedisSet](RedisSet.md), the [RedisSet](RedisSet.md) view
+
+The view is a local [object](object.md): no command is sent until one of its members runs, and the
+key is captured at call time. See the [RedisSet](RedisSet.md) class for the members.
 
 --------------------------
 ### getSortedSet
-**获取指定 key 的 SortedSet 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库**
+**Returns the [RedisSortedSet](RedisSortedSet.md) view bound to key**
 
 ```JavaScript
-RedisSortedSet Redis.getSortedSet(Buffer key);
+RedisSortedSet Redis.getSortedSet(Buffer | String key);
 ```
 
-调用参数:
-* key: [Buffer](Buffer.md), 指定要获取的 key
+Parameters:
+* key: [Buffer](Buffer.md) | String, the key the view is bound to
 
-返回结果:
-* [RedisSortedSet](RedisSortedSet.md), 返回包含指定 key 的 SortedSet 对象
+Returns:
+* [RedisSortedSet](RedisSortedSet.md), the [RedisSortedSet](RedisSortedSet.md) view
+
+The view is a local [object](object.md): no command is sent until one of its members runs, and the
+key is captured at call time. See the [RedisSortedSet](RedisSortedSet.md) class for the members.
 
 --------------------------
 ### dump
-**序列化给定 key ，并返回被序列化的值，使用 restore 命令可以将这个值反序列化为 Redis 键**
+**Serializes the value stored at key**
 
 ```JavaScript
-Buffer Redis.dump(Buffer key);
+Buffer Redis.dump(Buffer | String key);
 ```
 
-调用参数:
-* key: [Buffer](Buffer.md), 指定要序列化的 key
+Parameters:
+* key: [Buffer](Buffer.md) | String, the key to serialize
 
-返回结果:
-* [Buffer](Buffer.md), 返回序列化之后的值，如果 key 不存在，那么返回 null
+Returns:
+* [Buffer](Buffer.md), the payload as a [Buffer](Buffer.md), or null when key does not exist
+
+DUMP. The result is the RDB payload as a [Buffer](Buffer.md) and may hold arbitrary bytes; a
+missing key returns null. Feed the payload to restore to rebuild the key.
 
 --------------------------
 ### restore
-**反序列化给定的序列化值，并将它和给定的 key 关联**
+**Rebuilds a key from a payload produced by dump**
 
 ```JavaScript
-Redis.restore(Buffer key,
-    Buffer data,
+Redis.restore(Buffer | String key,
+    Buffer | String data,
     Long ttl = 0);
 ```
 
-调用参数:
-* key: [Buffer](Buffer.md), 指定要反序列化的 key
-* data: [Buffer](Buffer.md), 指定要反序列化的数据
-* ttl: Long, 以毫秒为单位为 key 设置生存时间；如果 ttl 为 0 ，那么不设置生存时间
+Parameters:
+* key: [Buffer](Buffer.md) | String, the key to rebuild
+* data: [Buffer](Buffer.md) | String, the payload returned by dump
+* ttl: Long, the time to live in milliseconds; 0 keeps the key forever
+
+RESTORE key ttl data. The ttl is in milliseconds and 0 keeps the key persistent; the
+payload is sent byte-for-byte, so a [Buffer](Buffer.md) from dump round-trips unchanged. The server
+rejects the command with error 20024 when the key already exists or when the payload
+is not a valid dump. No result is reported.
 
 --------------------------
 ### close
-**关闭当前数据库连接或事务**
+**Closes the connection**
 
 ```JavaScript
 Redis.close();
 ```
 
+The socket is released and every command on the [object](object.md) afterwards fails with 20009;
+close is also the only command accepted by a connection in subscriber mode. The member
+is not idempotent: a second close reports `Redis: connection is closed.` with number
+20009.
+
 --------------------------
 ### toString
-**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
+**Returns the string form of the [object](object.md)**
 
 ```JavaScript
 String Redis.toString();
 ```
 
-返回结果:
-* String, 返回对象的字符串表示
+Returns:
+* String, returns the string form of the [object](object.md)
+
+The base implementation reports an error: a native [object](object.md) has no implicit
+text form, and only the classes whose value can be written as a string
+override the member. [Buffer](Buffer.md) returns its content decoded with the given
+[encoding](../../module/ifs/encoding.md), [HttpCookie](HttpCookie.md) returns "name=value", and so on; an override commonly
+accepts optional arguments ([Buffer.toString](Buffer.md#toString) takes [encoding](../../module/ifs/encoding.md), start and
+end) that are not part of this declaration.
+
+Calling the member on a class that does not override it throws
+"<Class>: the [object](object.md) can not be converted to string.", which is the
+behavior to rely on when probing whether a value has a string form. See
+toJSON for the serialization hook.
 
 --------------------------
 ### toJSON
-**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
+**Returns the JSON representation of the [object](object.md)**
 
 ```JavaScript
 Value Redis.toJSON(String key = "");
 ```
 
-调用参数:
-* key: String, 未使用
+Parameters:
+* key: String, the property name of the value being serialized
 
-返回结果:
-* Value, 返回包含可 JSON 序列化的值
+Returns:
+* Value, returns the JSON-serializable value
 
-## 事件
+JSON.stringify(value) calls value.toJSON(key) when the member exists and
+serializes the returned value in its place; the key argument carries the
+property name of the value inside its parent [object](object.md) (an empty string at
+the top level) and may be used to build a keyed form. The base
+implementation returns a plain [object](object.md) holding the readable properties of
+the instance, so a native [object](object.md) serializes without per-class code; a
+class with a portable shape such as [Buffer](Buffer.md) overrides it, and a JavaScript
+class may override it in the same way.
+
+The member is normally reached through JSON.stringify rather than called
+directly; calling it returns the same value JSON.stringify would
+serialize.
+
+## Events
         
 ### suberror
-**查询和设置错误处理函数，当 sub 出现错误或者网络中断时回调，当回调发生后，本对象的一切 sub 都将中止**
+**[Event](Event.md) fired when the subscriber connection fails**
 
 ```JavaScript
 event Redis.suberror();
 ```
+
+The handler is assigned through the `onsuberror` property (there is no on() method on
+this [object](object.md)) and is called with no arguments when a subscription command reports a
+server error or the network breaks. The subscriptions of the connection are dead from
+that point on: close the connection and open a new one to subscribe again.
 

@@ -1,271 +1,553 @@
-# 模块 path
-path 模块是一个核心模块，它提供了一些工具函数来处理文件和目录的路径。它不会检查路径是否存在或是否是有效路径，而是只提供了处理路径的方法
+# Module path
+The path [module](module.md) provides utilities for working with file and directory paths; it is
 
-path 模块提供的方法很多，最常用的是：
-- join()：将给定的路径片段连接在一起，并处理成标准的路径格式。
-- resolve()：将路径或路径片段的序列解析为一个绝对路径。
-- basename()：返回路径中路径的最后一部分。
-- dirname()：返回指定路径的目录名。
-- extname()：返回路径中文件的扩展名。
+platform-aware and keeps path handling out of ad-hoc string concatenation
 
-以下是这些方法的示例代码：
+Main capabilities:
+
+- **Building paths**: `join`, `resolve`, `normalize`, `fullpath` (fibjs extension);
+- **Breaking paths down**: `parse`, `format`, `basename`, `dirname`, `extname`;
+- **Comparing paths**: `relative`, `isAbsolute`, `matchesGlob`;
+- **Platform rule sets**: `posix`, `win32` and the `sep` / `delimiter` [constants](constants.md).
+
+Concepts:
+
+- **Two rule sets, one API**: these functions never touch the file system. The POSIX rule set
+  uses '/' as the separator and treats '\' as an ordinary character; the Windows rule set
+  accepts both '/' and '\', and recognises drive letters, UNC shares and device namespaces.
+  The `posix` and `win32` properties expose both rule sets on every platform, so parsing a
+  foreign path format does not depend on the host; on POSIX hosts the [module](module.md) itself applies
+  the posix rules (`path === [path.posix](path.md#posix)`), on Windows the win32 rules.
+- **join vs resolve vs fullpath**: `join` merges segments with the rule set separator and then
+  normalizes; a later absolute segment is appended as an ordinary segment (`join('a', '/b')`
+  is `'a/b'`). `resolve` works from right to left and restarts at the rightmost absolute
+  segment, returning an absolute path anchored at the working directory. `fullpath` is a
+  fibjs extension that anchors a relative path to the working directory and normalizes it,
+  without touching the file system and without resolving symbolic links.
+- **Normalization**: '.' segments are dropped, '..' cancels the previous segment where
+  possible, repeated separators collapse, and a trailing separator is preserved (except on
+  the root). Relative paths keep leading '..' segments; absolute paths are clamped at the
+  root. Normalizing an empty string returns '.'.
+- **Empty strings and roots**: `join()` and `join('')` return '.'; `resolve('')` returns the
+  working directory; `basename('/')` and `basename('')` are ''; `dirname('foo')` and
+  `dirname('')` are '.', while `dirname('/')` is '/'.
+- **Extensions and dotfiles**: `extname` returns the text from the last dot of the last
+  segment, so '.bashrc' has no extension, '.env.local' has '.local' and 'index.' has '.'.
+  `basename(path, ext)` strips `ext` as a plain suffix, which does not need to start with a
+  dot.
+- **Windows specifics**: the win32 rule set recognises drive-absolute ('C:\'),
+  drive-relative ('C:'), UNC ('\\server\share') and device ('\\?\C:\') forms;
+  `isAbsolute('C:')` is false. Glob matching compares drive letters case-insensitively and
+  paths on different drives never match. `toNamespacedPath` adds the '\\?\' prefix only
+  under the win32 rule set.
+- **sep and delimiter**: `sep` separates path segments ('/' or '\'), while `delimiter`
+  separates entries in PATH-style lists (':' or ';'). Both belong to the rule set, not to the
+  host operating system.
+
+Import:
+
+```JavaScript
+const path = require('path');
+```
+
+Example 1 — joining, resolving and comparing paths:
 
 ```JavaScript
 const path = require('path');
 
-// connect path segments using the platform-specific separator as a delimiter,
-console.log(path.join('/usr', 'local', 'bin')); // output: /usr/local/bin
+// join() concatenates segments with the platform separator
+console.log(path.join('src', 'app', '..', 'index.js')); // src/index.js
 
-// resolve a sequence of paths or path segments into an absolute path
-console.log(path.resolve('/foo/bar', './baz')); // output: /foo/bar/baz
+// resolve() builds an absolute path; the rightmost absolute segment wins
+console.log(path.resolve('/srv', 'www', '/etc')); // /etc
 
-// return the last portion of a path
-console.log(path.basename('/foo/bar/baz')); // output: baz
-
-// return the directory name of a path
-console.log(path.dirname('/foo/bar/baz')); // output: /foo/bar
-
-// return the extension of the path, from the last '.' to end of string in the last portion of the path
-console.log(path.extname('/foo/bar/baz.txt')); // output: .txt
+// relative() computes how to get from one path to another
+console.log(path.relative('/srv/www', '/srv/log/app.log')); // ../log/app.log
+console.log(path.relative('/srv/www', '/srv/www')); // ''
 ```
 
-除了上述方法，path 模块还提供了很多其他的方法，如 normalize()、delimiter、posix、win32 等等，用于处理路径的规范化、路径分隔符、路径格式的处理等等。这些方法在实际开发中也经常用到。
+Example 2 — parsing paths and extracting names:
 
-path 模块为我们处理路径提供了很多方便的工具函数，可以使我们更加方便地处理文件和目录路径，是开发中不可或缺的工具之一。
+```JavaScript
+const path = require('path');
 
-## 静态函数
+const info = path.parse('/var/log/app.tar.gz');
+console.log(info.dir, info.name, info.ext); // /var/log app.tar .gz
+
+// format() accepts the object returned by parse()
+console.log(path.format(info)); // /var/log/app.tar.gz
+
+// a leading dot starts a dotfile, not an extension
+console.log(path.extname('/home/user/.bashrc')); // ''
+
+// trailing separators are ignored when a name is extracted
+console.log(path.basename('/foo/bar/')); // bar
+console.log(path.dirname('/foo/bar/')); // /foo
+```
+
+Example 3 — one input through the three rule sets:
+
+```JavaScript
+const path = require('path');
+const posix = require('path/posix');
+const win32 = require('path/win32');
+
+const input = 'C:\\temp\\\\foo\\..';
+
+// the platform default applies the rules of the current system
+console.log(JSON.stringify(path.normalize(input))); // "C:\\temp\\\\foo\\.."
+
+// the posix rule set treats the backslash as an ordinary character
+console.log(JSON.stringify(posix.normalize(input))); // "C:\\temp\\\\foo\\.."
+
+// the win32 rule set recognises the drive and cancels foo\..
+console.log(JSON.stringify(win32.normalize(input))); // "C:\\temp"
+```
+
+Notes:
+
+- Node.js offers the same API. fibjs adds `fullpath`; `[path.win32](path.md#win32).fullpath` is implemented
+  only on Windows and throws elsewhere.
+- `toNamespacedPath` is more tolerant than Node.js: a non-string value is returned unchanged
+  and `null` becomes `undefined`.
+- `path/posix` and `path/win32` are the runtime entry points of the posix and win32 rule
+  sets, matching the Node.js subpath requires; `path_posix` / `path_win32` are only the names
+  of their manual pages.
+
+## Static Methods
         
 ### normalize
-**标准化路径，处理路径中父目录等信息**
+**Normalizes a path, resolving '.' and '..' segments and collapsing repeated separators**
 
 ```JavaScript
 static String path.normalize(String path);
 ```
 
-调用参数:
-* path: String, 给定的未处理的路径
+Parameters:
+* path: String, the path to normalize
 
-返回结果:
-* String, 返回经过处理的路径
+Returns:
+* String, the normalized path
+
+A pure string transformation: the path does not need to exist and no file system access is
+performed. Relative paths keep leading '..' segments; absolute paths are clamped at the
+root, so '/../' becomes '/'. A trailing separator is preserved ('a//b/' becomes 'a/b/'),
+except on the root. In the posix rule set a backslash is an ordinary character; in the
+win32 rule set both '/' and '\' separate segments and drive letters and UNC roots are
+preserved. An empty string becomes '.'.
+
+Example — normalize mixed segments:
+
+```JavaScript
+const path = require('path');
+
+console.log(path.normalize('a//b/../c')); // a/c
+console.log(path.normalize('/../a/b/..')); // /a
+console.log(path.normalize('')); // .
+console.log(path.normalize('..')); // ..
+```
 
 --------------------------
 ### basename
-**查询路径中的文件名称，若指定扩展名，则自动取消匹配的扩展名**
+**Returns the last portion of a path, removing a matching extension when ext is given**
 
 ```JavaScript
 static String path.basename(String path,
     String ext = "");
 ```
 
-调用参数:
-* path: String, 给定查询的路径
-* ext: String, 指定扩展名，若文件名中有符合条件的扩展名，将自动取消
+Parameters:
+* path: String, the path to query
+* ext: String, the extension to remove when the file name matches
 
-返回结果:
-* String, 返回文件名称
+Returns:
+* String, the file name
+
+Trailing separators are ignored, so basename('/foo/bar/') is 'bar' and basename('/') is ''.
+The optional ext is stripped as a plain suffix of the result, not necessarily starting with
+a dot: basename('/a/b.txt', 'txt') returns 'b.'. When ext does not match, the name is
+returned unchanged. The separator rules follow the [module](module.md) rule set: in the posix rule set a
+backslash is an ordinary character, while the win32 rule set treats it as a separator.
+Same name in Node.js.
 
 --------------------------
 ### extname
-**查询路径中的文件扩展名**
+**Returns the extension of the file in a path, from the last '.' in the last segment**
 
 ```JavaScript
 static String path.extname(String path);
 ```
 
-调用参数:
-* path: String, 给定查询的路径
+Parameters:
+* path: String, the path to query
 
-返回结果:
-* String, 返回得到的扩展名
+Returns:
+* String, the extension
+
+A leading dot starts a dotfile, not an extension: extname('.bashrc') is '', while
+extname('.env.local') is '.local'. extname('index.') is '.', and the result is '' for '..'
+and for paths that end with a separator. A dot in a parent directory name is ignored. In
+the posix rule set a backslash is an ordinary character, in the win32 rule set it
+separates segments. Same name in Node.js.
 
 --------------------------
 ### format
-**尝试将一个对象格式化为路径**
+**Formats a path [object](../../object/ifs/object.md) into a path string, the inverse of parse**
 
 ```JavaScript
 static String path.format(Object pathObject);
 ```
 
-调用参数:
-* pathObject: Object, 对象
+Parameters:
+* pathObject: Object, the path [object](../../object/ifs/object.md)
 
-返回结果:
-* String, 返回格式化后的路径
+Returns:
+* String, the formatted path
 
-pathObject 支持的参数如下：
+All fields are optional; typically either dir or root is used together with base, or with
+name and ext. Base wins over name + ext when both are present, and dir wins over root
+unless dir is empty. When dir equals root no separator is inserted between them; otherwise
+the rule set separator joins dir and base. A dir-only [object](../../object/ifs/object.md) produces a trailing separator
+('/a' becomes '/a/') and an empty [object](../../object/ifs/object.md) produces ''. Same name in Node.js.
+
+pathObject supports the following properties:
 
 ```JavaScript
-{
-    "root": "/",
-    "dir": "/a/b",
-    "base": "c.ext",
-    "ext": ".ext",
-    "name": "c"
-}
+// fragment: options
+({
+    "root": "/", // the root of the path, e.g. '/' or 'C:\\'
+    "dir": "/a/b", // the directory; wins over root when both are set
+    "base": "c.ext", // the full last segment; wins over name + ext
+    "ext": ".ext", // the extension, including the leading dot
+    "name": "c" // the name without the extension
+})
+```
+
+Example — build a path from a parsed [object](../../object/ifs/object.md) and from scratch:
+
+```JavaScript
+const path = require('path');
+
+const parts = path.parse('/srv/www/index.html');
+console.log(path.format(parts)); // /srv/www/index.html
+
+console.log(path.format({
+    dir: '/a',
+    name: 'b',
+    ext: '.txt'
+})); // /a/b.txt
+console.log(path.format({
+    root: '/',
+    name: 'b',
+    ext: '.txt'
+})); // /b.txt
+console.log(path.format({
+    dir: '/a'
+})); // /a/
+console.log(path.format({})); // ''
 ```
 
 --------------------------
 ### parse
-**解析路径为路径对象**
+**Parses a path into an [object](../../object/ifs/object.md) with root, dir, base, ext and name fields**
 
 ```JavaScript
-static NObject path.parse(String path);
+static (String root, String dir, String base, String ext, String name) path.parse(String path);
 ```
 
-调用参数:
-* path: String, 路径
+Parameters:
+* path: String, the path to parse
 
-返回结果:
-* NObject, 返回 pathObject 对象
+Returns:
+* (String root, String dir, String base, String ext, String name), the parsed path [object](../../object/ifs/object.md)
+
+The [object](../../object/ifs/object.md) always contains all five fields as strings, so format(parse(p)) rebuilds the
+path. A leading '/' sets root to '/'; a trailing separator is ignored for base; a leading
+dot starts a dotfile ('.bashrc' has base and name '.bashrc' and no extension), while
+'index.' has ext '.'. The win32 rule set additionally recognises drive letters ('C:'),
+drive-absolute paths ('C:\'), UNC shares ('\\server\share\') and '\\?\' device paths,
+accepting both separators. An empty string produces five empty fields. Same name in
+Node.js.
+
+Example — inspect a parsed path:
+
+```JavaScript
+const path = require('path');
+
+const parts = path.parse('/srv/www/index.html');
+console.log(parts.root, parts.dir, parts.base); // / /srv/www index.html
+console.log(parts.ext, parts.name); // .html index
+
+console.log(path.parse('.bashrc').ext); // ''
+```
 
 --------------------------
 ### dirname
-**查询路径中的目录路径**
+**Returns the directory name of a path, dropping the last segment**
 
 ```JavaScript
 static String path.dirname(String path);
 ```
 
-调用参数:
-* path: String, 给定查询的路径
+Parameters:
+* path: String, the path to query
 
-返回结果:
-* String, 返回得到的目录的路径
+Returns:
+* String, the directory name
+
+Trailing separators are ignored: dirname('/foo/bar/') is '/foo', dirname('/foo') is '/',
+dirname('foo') is '.', dirname('') is '.' and dirname('/') is '/'. In the win32 rule set
+the root is kept for drive-absolute paths ('C:\foo' becomes 'C:\') and UNC shares, while
+a drive-relative path keeps its drive ('c:foo' becomes 'c:'). Same name in Node.js.
 
 --------------------------
 ### fullpath
-**转换给定路径为全路径**
+**Converts a path into an absolute path anchored at the current working directory**
 
 ```JavaScript
 static String path.fullpath(String path);
 ```
 
-调用参数:
-* path: String, 给定转换的路径
+Parameters:
+* path: String, the path to convert
 
-返回结果:
-* String, 返回转换的全路径
+Returns:
+* String, the full path
+
+A fibjs extension, not part of Node.js. An absolute input is normalized; a relative input
+is prefixed with [process.cwd](process.md#cwd)() and then normalized. The function is a pure string operation
+and does not touch the file system: it does not resolve symbolic links or check existence,
+and it keeps the separators of the rule set. Unlike resolve, an empty string becomes the
+working directory with a trailing separator. Not implemented for [path.win32](path.md#win32) outside
+Windows: it throws there.
+
+Example — anchor a relative path to the working directory:
+
+```JavaScript
+const path = require('path');
+
+console.log(path.fullpath('a/../b') === path.join(process.cwd(), 'b')); // true
+console.log(path.fullpath('/a//b/../c')); // /a/c
+```
 
 --------------------------
 ### matchesGlob
-**识别给定的路径是否匹配给定的模式**
+**Checks whether a path matches a glob pattern**
 
 ```JavaScript
 static Boolean path.matchesGlob(String path,
     String pattern);
 ```
 
-调用参数:
-* path: String, 给定需要识别的路径
-* pattern: String, 指定匹配的模式
+Parameters:
+* path: String, the path to check
+* pattern: String, the glob pattern
 
-返回结果:
-* Boolean, 返回匹配结果
+Returns:
+* Boolean, true when the path matches the pattern
+
+Supports the common glob syntax: '*' (any characters except a separator), '**' (zero or
+more path segments), '?' (one character), character classes '[abc]' / '[a-z]' / '[!abc]',
+brace expansion '{a,b}' and the extglob forms '@(...)', '?(...)', '+(...)', '*(...)' and
+'!(...)'. Patterns are anchored as a whole. Dotfiles are matched only by an explicit dot:
+matchesGlob('.gitignore', '*') is false. In the posix rule set a backslash in the pattern
+escapes the next character while a backslash in the tested path is an ordinary character;
+in the win32 rule set both separators are accepted, drive letters are compared
+case-insensitively and paths on different drives never match. Node.js exposes the same
+function since v22.5.
+
+Example — select source files with a pattern:
+
+```JavaScript
+const path = require('path');
+
+// '**' matches zero or more segments; the pattern is built from two literals
+const pattern = '**' + '/*.js';
+
+console.log(path.matchesGlob('src/app.js', pattern)); // true
+console.log(path.matchesGlob('src/app.md', pattern)); // false
+console.log(path.matchesGlob('.gitignore', '*')); // false
+```
 
 --------------------------
 ### isAbsolute
-**识别给定的路径是否是绝对路径**
+**Checks whether a path is absolute under the rule set of the [module](module.md)**
 
 ```JavaScript
 static Boolean path.isAbsolute(String path);
 ```
 
-调用参数:
-* path: String, 给定需要识别的路径
+Parameters:
+* path: String, the path to check
 
-返回结果:
-* Boolean, 是绝对路径则返回 true
+Returns:
+* Boolean, true when the path is absolute
+
+The posix rule set returns true only for a path starting with '/'; the win32 rule set also
+accepts a leading '\' or '/', UNC paths such as '\\server\share' and a drive letter
+followed by a separator ('C:\' or 'C:/'), but reports false for a drive-relative path such
+as 'C:temp'. The empty string is never absolute, and the check is purely textual: the path
+does not need to exist. Same name in Node.js.
 
 --------------------------
 ### join
-**合并一系列路径成为一个单一路径**
+**Joins path segments into a single normalized path using the rule set separator**
 
 ```JavaScript
 static String path.join(...ps);
 ```
 
-调用参数:
-* ps: ..., 一个或多个相关的路径
+Parameters:
+* ps: ..., one or more paths
 
-返回结果:
-* String, 返回得到的新路径
+Returns:
+* String, the joined path
+
+Empty segments are ignored; when the result would be empty, '.' is returned. Later absolute
+segments do not reset the accumulated path the way resolve does: join('a', '/b') is 'a/b'.
+A '..' segment cancels a preceding segment when possible, but a leading '..' survives. In
+the win32 rule set a leading '//' or '\\' pair can form a UNC share and a drive letter is
+kept: join('c:', 'file') is 'c:\file'. Same name in Node.js.
+
+Example — join segments with embedded '..':
+
+```JavaScript
+const path = require('path');
+
+console.log(path.join('a', 'b', '..', 'c')); // a/c
+console.log(path.join('a', '', 'b')); // a/b
+console.log(path.join()); // .
+console.log(path.join('a', '/b')); // a/b
+```
 
 --------------------------
 ### resolve
-**合并一系列路径成为一个绝对路径**
+**Resolves path segments into an absolute path, anchored at the working directory**
 
 ```JavaScript
 static String path.resolve(...ps);
 ```
 
-调用参数:
-* ps: ..., 一个或多个相关的路径
+Parameters:
+* ps: ..., one or more paths
 
-返回结果:
-* String, 返回得到的新路径
+Returns:
+* String, the resolved path
+
+Segments are processed from right to left until an absolute one is found, so the rightmost
+absolute segment wins: resolve('/srv', 'www', '/etc') is '/etc'. The result is normalized
+and never ends with a separator. With no arguments, or with only empty segments, the
+current working directory is returned. In the win32 rule set the drive of the working
+directory is kept for relative segments, while a later drive-absolute segment replaces it.
+Same name in Node.js.
+
+Example — resolve relative, absolute and empty segments:
+
+```JavaScript
+const path = require('path');
+
+console.log(path.resolve('a', '/b', 'c')); // /b/c
+console.log(path.resolve() === process.cwd()); // true
+console.log(path.resolve(process.cwd(), 'x/../y')); // <cwd>/y
+```
 
 --------------------------
 ### relative
-**求 _from 到 to 的相对路径**
+**Returns the relative path from _from to to**
 
 ```JavaScript
 static String path.relative(String _from,
     String to);
 ```
 
-调用参数:
-* _from: String, 源路径
-* to: String, 目标路径
+Parameters:
+* _from: String, the source path
+* to: String, the target path
 
-返回结果:
-* String, 返回得到的相对路径
+Returns:
+* String, the relative path
+
+Both arguments are resolved against the working directory first, so the result does not
+depend on whether they are relative or absolute. An empty string is returned when both
+describe the same location; otherwise the result is the shortest path from the first to
+the second, using '..' segments as needed and no trailing separator. In the win32 rule set
+paths are compared case-insensitively, and a target on another drive is returned unchanged
+because no relative path can cross drives. Same name in Node.js.
+
+Example — compute relative paths:
+
+```JavaScript
+const path = require('path');
+
+console.log(path.relative('/srv/www', '/srv/log/app.log')); // ../log/app.log
+console.log(path.relative('/srv/www', '/srv/www')); // ''
+```
 
 --------------------------
 ### toNamespacedPath
-**转换成 namespace-prefixed 路径。只在 windows 有效，其他系统直接返回。**
+**Converts a path into the Windows namespace-prefixed form under the win32 rule set**
 
 ```JavaScript
 static Value path.toNamespacedPath(Value path = undefined);
 ```
 
-调用参数:
-* path: Value, 给定的路径。
+Parameters:
+* path: Value, the path to convert
 
-返回结果:
-* Value, 返回得到的新路径
+Returns:
+* Value, the converted path
 
-see: https://msdn.microsoft.com/library/windows/desktop/aa365247(v=vs.85).aspx#namespaces
+The posix rule set returns the input unchanged, as do non-string values. The win32 rule
+set resolves the path and then prefixes it: a drive path gains the '\\?\' prefix ('C:\tmp'
+becomes '\\?\C:\tmp') and a UNC path becomes '\\?\UNC\...', with forward slashes
+converted to backslashes. An existing '\\?\' prefix is not duplicated. The function is a
+pure string operation and works on every platform, although the prefix is only meaningful
+on Windows. Node.js returns null unchanged for a null argument, fibjs converts it to
+undefined.
+See https://msdn.microsoft.com/library/windows/desktop/aa365247(v=vs.85).aspx#namespaces
 
-## 静态属性
+## Static Properties
         
 ### sep
-**String, 查询当前操作系统的路径分割字符，posix 返回 '/', windows 返回  '\\'**
+**String, The path segment separator of the rule set**
 
 ```JavaScript
 static readonly String path.sep;
 ```
 
+'/' for path and [path.posix](path.md#posix), '\' for [path.win32](path.md#win32), regardless of the host system. Use it to
+build or split path strings instead of hard-coding a separator.
+
 --------------------------
 ### delimiter
-**String, 查询当前操作系统的多路径组合字符，posix 返回 ':', windows 返回  ';'**
+**String, The separator between entries of PATH-style environment lists**
 
 ```JavaScript
 static readonly String path.delimiter;
 ```
 
+':' for path and [path.posix](path.md#posix), ';' for [path.win32](path.md#win32), regardless of the host system. It is not
+a path separator; use sep between path segments.
+
 --------------------------
 ### posix
-**Object, posix 实现，参见 [path_posix](path_posix.md)**
+**Object, The posix rule set of the path [module](module.md), identical to require('path/posix')**
 
 ```JavaScript
 static readonly Object path.posix;
 ```
 
+Use it to [process](process.md) POSIX paths (forward slashes, backslash as an ordinary character) on any
+platform. On POSIX hosts path === [path.posix](path.md#posix). See the [path_posix](path_posix.md) [module](module.md) for details.
+
 --------------------------
 ### win32
-**Object, windows 实现，参见 [path_win32](path_win32.md)**
+**Object, The win32 rule set of the path [module](module.md), identical to require('path/win32')**
 
 ```JavaScript
 static readonly Object path.win32;
 ```
+
+Use it to [process](process.md) Windows paths (drive letters, UNC shares, both separators) on any
+platform. On Windows hosts path === [path.win32](path.md#win32). See the [path_win32](path_win32.md) [module](module.md) for details.
 

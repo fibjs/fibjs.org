@@ -1,7 +1,85 @@
-# 对象 object
-基础对象，所有对象均继承于此
+# Object object
+The base class of every native object and the hooks used to convert one
 
-## 继承关系
+Every class exposed by fibjs ([Buffer](Buffer.md), [Message](Message.md), [Socket](Socket.md), Server and the like)
+inherits from object, so the two members declared here are the conversion hooks
+of the whole runtime: toString for the textual form and toJSON for
+serialization. object itself has no constructor; its members are shown through
+concrete classes and every conversion described below comes from one of them.
+
+Concepts:
+- **String conversion**: toString is the hook behind explicit and implicit
+  conversions. A class whose value has a natural text form overrides it
+  ([Buffer](Buffer.md) returns its content, [HttpCookie](HttpCookie.md) returns "name=value", and so on); a
+  class without one reports "<Class>: the object can not be converted to
+  string." instead of "[object Object]", so a wrong conversion fails at the
+  point of use instead of producing a meaningless string.
+- **JSON serialization**: JSON.stringify calls toJSON(key) when the member
+  exists and serializes the value it returns in place of the object. The
+  default implementation collects the readable properties of the instance into
+  a plain object, so native objects are serializable without per-class code;
+  a class with a portable shape ([Buffer](Buffer.md)) overrides it, and a JavaScript class
+  may define its own toJSON in the same way.
+- **Implicit use**: the hooks are called by the language, not only by direct
+  calls: [console.log](../../module/ifs/console.md#log) prints the string form of a native object,
+  JSON.stringify walks toJSON through nested values, and property conversion
+  uses the same lookup.
+
+Notes:
+- object is one of the abstract base classes of the manual and has no
+  constructor; use a concrete class ([Buffer](Buffer.md), Date, [Message](Message.md), a user-defined
+  class overriding the hooks) to try the members.
+- Both members may be called with an argument by their owner class:
+  [Buffer.toString](Buffer.md#toString) accepts an [encoding](../../module/ifs/encoding.md), toJSON receives the property key. The
+  declarations here describe the base behavior only.
+
+Example 1 — the string form of concrete classes:
+
+```JavaScript
+const mq = require('mq');
+
+console.log(new Buffer('hello').toString()); // hello
+
+try {
+    new mq.Message().toString();
+} catch (e) {
+    console.log(e.message); // Message: the object can not be converted to string.
+}
+```
+
+Example 2 — the default JSON form and an override:
+
+```JavaScript
+const mq = require('mq');
+
+const msg = new mq.Message();
+msg.value = '/hello';
+console.log(JSON.parse(JSON.stringify(msg)).value); // /hello
+
+// Buffer overrides toJSON with its portable form
+console.log(JSON.stringify(new Buffer('hi'))); // {"type":"Buffer","data":[104,105]}
+```
+
+Example 3 — a user class overriding toJSON:
+
+```JavaScript
+class Point {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+    toJSON() {
+        return {
+            x: this.x,
+            y: this.y
+        };
+    }
+}
+
+console.log(JSON.stringify(new Point(1, 2))); // {"x":1,"y":2}
+```
+
+## Inheritance
 ```dot
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
@@ -13,11 +91,13 @@ digraph {
     Blob [tooltip="Blob", URL="Blob.md", label="{Blob}"];
     File [tooltip="File", URL="File.md", label="{File}"];
     Buffer [tooltip="Buffer", URL="Buffer.md", label="{Buffer}"];
+    CSSStyleDeclaration [tooltip="CSSStyleDeclaration", URL="CSSStyleDeclaration.md", label="{CSSStyleDeclaration}"];
     Cipher [tooltip="Cipher", URL="Cipher.md", label="{Cipher}"];
     ConsoleObject [tooltip="ConsoleObject", URL="ConsoleObject.md", label="{ConsoleObject}"];
     CryptoKey [tooltip="CryptoKey", URL="CryptoKey.md", label="{CryptoKey}"];
     DOMEvent [tooltip="DOMEvent", URL="DOMEvent.md", label="{DOMEvent}"];
     DOMParser [tooltip="DOMParser", URL="DOMParser.md", label="{DOMParser}"];
+    DOMStringMap [tooltip="DOMStringMap", URL="DOMStringMap.md", label="{DOMStringMap}"];
     DOMTokenList [tooltip="DOMTokenList", URL="DOMTokenList.md", label="{DOMTokenList}"];
     DbConnection [tooltip="DbConnection", URL="DbConnection.md", label="{DbConnection}"];
     MySQL [tooltip="MySQL", URL="MySQL.md", label="{MySQL}"];
@@ -39,7 +119,6 @@ digraph {
     HttpRequest [tooltip="HttpRequest", URL="HttpRequest.md", label="{HttpRequest}"];
     HttpResponse [tooltip="HttpResponse", URL="HttpResponse.md", label="{HttpResponse}"];
     WebSocketMessage [tooltip="WebSocketMessage", URL="WebSocketMessage.md", label="{WebSocketMessage}"];
-    WorkerMessage [tooltip="WorkerMessage", URL="WorkerMessage.md", label="{WorkerMessage}"];
     MessagePort [tooltip="MessagePort", URL="MessagePort.md", label="{MessagePort}"];
     RTCDataChannel [tooltip="RTCDataChannel", URL="RTCDataChannel.md", label="{RTCDataChannel}"];
     RTCPeerConnection [tooltip="RTCPeerConnection", URL="RTCPeerConnection.md", label="{RTCPeerConnection}"];
@@ -90,6 +169,7 @@ digraph {
     HttpCookie [tooltip="HttpCookie", URL="HttpCookie.md", label="{HttpCookie}"];
     HttpUploadData [tooltip="HttpUploadData", URL="HttpUploadData.md", label="{HttpUploadData}"];
     Iterator [tooltip="Iterator", URL="Iterator.md", label="{Iterator}"];
+    Dir [tooltip="Dir", URL="Dir.md", label="{Dir}"];
     KeyObject [tooltip="KeyObject", URL="KeyObject.md", label="{KeyObject}"];
     LevelDB [tooltip="LevelDB", URL="LevelDB.md", label="{LevelDB}"];
     Lock [tooltip="Lock", URL="Lock.md", label="{Lock}"];
@@ -117,6 +197,7 @@ digraph {
     Sign [tooltip="Sign", URL="Sign.md", label="{Sign}"];
     Smtp [tooltip="Smtp", URL="Smtp.md", label="{Smtp}"];
     Stat [tooltip="Stat", URL="Stat.md", label="{Stat}"];
+    Statement [tooltip="Statement", URL="Statement.md", label="{Statement}"];
     StreamReader [tooltip="StreamReader", URL="StreamReader.md", label="{StreamReader}"];
     StringDecoder [tooltip="StringDecoder", URL="StringDecoder.md", label="{StringDecoder}"];
     TextDecoder [tooltip="TextDecoder", URL="TextDecoder.md", label="{TextDecoder}"];
@@ -149,11 +230,13 @@ digraph {
     object -> Blob [dir=back];
     Blob -> File [dir=back];
     object -> Buffer [dir=back];
+    object -> CSSStyleDeclaration [dir=back];
     object -> Cipher [dir=back];
     object -> ConsoleObject [dir=back];
     object -> CryptoKey [dir=back];
     object -> DOMEvent [dir=back];
     object -> DOMParser [dir=back];
+    object -> DOMStringMap [dir=back];
     object -> DOMTokenList [dir=back];
     object -> DbConnection [dir=back];
     DbConnection -> MySQL [dir=back];
@@ -175,7 +258,6 @@ digraph {
     HttpMessage -> HttpRequest [dir=back];
     HttpMessage -> HttpResponse [dir=back];
     Message -> WebSocketMessage [dir=back];
-    Message -> WorkerMessage [dir=back];
     EventEmitter -> MessagePort [dir=back];
     EventEmitter -> RTCDataChannel [dir=back];
     EventEmitter -> RTCPeerConnection [dir=back];
@@ -226,6 +308,7 @@ digraph {
     object -> HttpCookie [dir=back];
     object -> HttpUploadData [dir=back];
     object -> Iterator [dir=back];
+    Iterator -> Dir [dir=back];
     object -> KeyObject [dir=back];
     object -> LevelDB [dir=back];
     object -> Lock [dir=back];
@@ -253,6 +336,7 @@ digraph {
     object -> Sign [dir=back];
     object -> Smtp [dir=back];
     object -> Stat [dir=back];
+    object -> Statement [dir=back];
     object -> StreamReader [dir=back];
     object -> StringDecoder [dir=back];
     object -> TextDecoder [dir=back];
@@ -281,29 +365,54 @@ digraph {
 }
 ```
 
-## 成员函数
+## Methods
         
 ### toString
-**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
+**Returns the string form of the object**
 
 ```JavaScript
 String object.toString();
 ```
 
-返回结果:
-* String, 返回对象的字符串表示
+Returns:
+* String, returns the string form of the object
+
+The base implementation reports an error: a native object has no implicit
+text form, and only the classes whose value can be written as a string
+override the member. [Buffer](Buffer.md) returns its content decoded with the given
+[encoding](../../module/ifs/encoding.md), [HttpCookie](HttpCookie.md) returns "name=value", and so on; an override commonly
+accepts optional arguments ([Buffer.toString](Buffer.md#toString) takes [encoding](../../module/ifs/encoding.md), start and
+end) that are not part of this declaration.
+
+Calling the member on a class that does not override it throws
+"<Class>: the object can not be converted to string.", which is the
+behavior to rely on when probing whether a value has a string form. See
+toJSON for the serialization hook.
 
 --------------------------
 ### toJSON
-**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
+**Returns the JSON representation of the object**
 
 ```JavaScript
 Value object.toJSON(String key = "");
 ```
 
-调用参数:
-* key: String, 未使用
+Parameters:
+* key: String, the property name of the value being serialized
 
-返回结果:
-* Value, 返回包含可 JSON 序列化的值
+Returns:
+* Value, returns the JSON-serializable value
+
+JSON.stringify(value) calls value.toJSON(key) when the member exists and
+serializes the returned value in its place; the key argument carries the
+property name of the value inside its parent object (an empty string at
+the top level) and may be used to build a keyed form. The base
+implementation returns a plain object holding the readable properties of
+the instance, so a native object serializes without per-class code; a
+class with a portable shape such as [Buffer](Buffer.md) overrides it, and a JavaScript
+class may override it in the same way.
+
+The member is normally reached through JSON.stringify rather than called
+directly; calling it returns the same value JSON.stringify would
+serialize.
 

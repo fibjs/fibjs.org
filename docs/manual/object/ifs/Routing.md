@@ -1,98 +1,134 @@
-# 对象 Routing
-消息处理器路由对象
+# Object Routing
+Matches a message against routing rules and dispatches it to the first match
 
-路由对象是 [http](../../module/ifs/http.md) 消息处理的核心对象，服务器根据路由的设定，匹配 [url](../../module/ifs/url.md) 和 method，并将 [http](../../module/ifs/http.md) 消息转发到相应的处理器，以完成不同的事务。
+Routing is the center of [http](../../module/ifs/http.md) message handling: it matches the value of a
+message (the request address by default, the host name for host rules) and
+forwards the message to the handler of the first matching rule. A plain [object](object.md)
+of patterns used as a handler is converted into a Routing, so
+`new [mq.Routing](../../module/ifs/mq.md#Routing)(map)` and a routing map [object](object.md) are the same thing.
 
-一个简单的路由，可以直接以 JSON 对象的形式提供，比如：
+Concepts:
+- **Pattern syntax**: a rule pattern is an express-style [path](../../module/ifs/path.md) when it does not
+  start with `^`: literal text matches itself, `:name` captures one [path](../../module/ifs/path.md)
+  segment (`[^/]+`), `*` matches the rest of the [path](../../module/ifs/path.md), `(...)` embeds a
+  regular expression, and `?`, `+`, `*` make the preceding part optional or
+  repeating; a pattern that starts with `^` is used as a raw regular
+  expression (case-insensitive, UCP). A trailing slash of the pattern is
+  ignored.
+- **Captures**: the captured groups are URL-decoded and stored in the params
+  array of the message; `:name` groups also appear as keys on params and as
+  the extra arguments of the handler (`(req, ...captures)`). The value is
+  replaced by the last capture when the rule hands the rest of the [path](../../module/ifs/path.md) to a
+  nested routing, by the single capture when the match has exactly one
+  top-level group, and cleared otherwise.
+- **Ordering**: a rule added later is matched first, so add the general rule
+  before the specific one when the specific one must win. append(route)
+  copies the rules of another Routing with their relative order and empties
+  the source.
+- **Method and host**: the get/post/put/del/patch/find helpers (and the method
+  argument of append) accept only the given [http](../../module/ifs/http.md) method, `"*"` accepts every
+  method and `"host"` matches the Host header instead of the address; a host
+  pattern matches the labels of the host name with `*` and ignores the port.
+- **[Handler](Handler.md) forms**: the value of a rule may be a [Handler](Handler.md) [object](object.md), an array of
+  handlers (a [Chain](Chain.md)), a function `(req, ...captures) => any` (an [http](../../module/ifs/http.md) request
+  also receives its response as the last argument), a routing map [object](object.md) or a
+  [path](../../module/ifs/path.md)/address string.
+- **No match**: [mq.invoke](../../module/ifs/mq.md#invoke) raises `Routing: unknown routing: <value>` when no
+  rule matches, so a message never continues silently.
+
+Obtained from:
+- `new [mq.Routing](../../module/ifs/mq.md#Routing)(map)` / `new [mq.Routing](../../module/ifs/mq.md#Routing)()` — the constructors below;
+- any plain [object](object.md) passed where a handler is expected is converted into a
+  Routing through the [Handler](Handler.md) constructor.
+
+Example 1 — method helpers, named captures and the wildcard:
 
 ```JavaScript
-var http = require('http');
+const mq = require('mq');
+const http = require('http');
 
-var svr = new http.Server(8080, {
-    '/': r => r.response.write('home'),
-    '/help': r => r.response.write('help')
+const app = new mq.Routing();
+app.get('/hello/:name', (req, name) => console.log('hello ' + name));
+app.post('/users/:id(\\d+)', (req, id) => console.log('user ' + id));
+app.get('/files/*', (req, path) => console.log('file ' + path));
+
+const req = new http.Request();
+req.value = '/hello/fibjs';
+mq.invoke(app, req); // hello fibjs
+
+req.value = '/users/42';
+req.method = 'POST';
+mq.invoke(app, req); // user 42
+
+req.method = 'GET';
+req.value = '/files/a/b.txt';
+mq.invoke(app, req); // file a/b.txt
+```
+
+Example 2 — an [http](../../module/ifs/http.md) server with routes, using port 0 and stop():
+
+```JavaScript
+const mq = require('mq');
+const http = require('http');
+
+const app = new mq.Routing();
+app.get('/hello/:name', (req, name) => {
+    req.response.write('hello ' + name);
+});
+app.get('/api/:id(\\d+)', (req, id) => {
+    req.response.json({
+        id: Number(id)
+    });
 });
 
+const svr = new http.Server(0, app);
 svr.start();
+
+const port = svr.socket.localPort;
+
+const hello = http.getSync('http://127.0.0.1:' + port + '/hello/fibjs');
+console.log(hello.readAll().toString()); // hello fibjs
+
+const api = http.getSync('http://127.0.0.1:' + port + '/api/42');
+console.log(JSON.stringify(api.json())); // {"id":42}
+
+svr.stop();
 ```
 
-如果需要更复杂的路由定制，可以自行创建 Routing 对象并根据需要处理路由策略：
+Example 3 — rule priority and a nested routing:
 
 ```JavaScript
-var http = require('http');
-var mq = require('mq');
+const mq = require('mq');
 
-var app = new mq.Routing();
+// the rules added later are matched first
+const app = new mq.Routing();
+app.get('/api/:name', (req, name) => console.log('param ' + name));
+app.get('/api/status', (req) => console.log('status'));
 
-app.get('/', r => r.response.write('home'));
-app.get('/help', r => r.response.write('help'));
+const msg = new mq.Message();
+msg.value = '/api/status';
+mq.invoke(app, msg); // status
 
-app.post('/help', r => r.response.write('post a help.'));
+// a routing used as a handler receives the remaining path
+const inner = new mq.Routing();
+inner.get('/run', (req) => console.log('run, remaining value ' + req.value));
 
-app.get('/home/:user', (r, user) => r.response.write('hello ' + user));
+const outer = new mq.Routing();
+outer.get('/actions', inner);
 
-app.get('/user/:id(\\d+)', (r, id) => r.response.write('get ' + id));
-
-app.get('/actions', {
-    '/run': r => r.response.write('running'),
-    '/sleep': r => r.response.write('sleeping'),
-    '(.*)': r => r.response.write('........')
-});
-
-var svr = new http.Server(8080, app);
-svr.start();
+msg.value = '/actions/run';
+mq.invoke(outer, msg); // run, remaining value /run
 ```
 
-路由对象根据设定的规则匹配消息，将消息传递给符合规则的第一个处理器。后加入的路由规则优先匹配。创建方法：
+Notes:
+- The match value is the request address, so a rule pattern normally starts
+  with `/`; a value without a leading slash (a bare [Message](Message.md)) is matched as it
+  is, which is convenient for non-[http](../../module/ifs/http.md) messages.
+- A rule whose handler is a routing prepends nothing: the pattern is matched,
+  `(.*)` is appended to it and the remaining [path](../../module/ifs/path.md) becomes the value of the
+  inner routing.
 
-```JavaScript
-var routing = new mq.Routing({
-    "^/func1(/.*)$": func1,
-    "^/func2(/.*)$": func2
-});
-```
-
-正则表达式匹配的项目修改消息的 value 属性，子项目存入消息的 params 属性。例如：
-
-```JavaScript
-var routing = new mq.Routing({
-    "^/func1(/([0-9]+)/([0-9]+)\.html)$": func1,
-});
-```
-
-匹配消息 "/func1/123/456.html" 后，value == "/123/456.html"，params == ["123", "456"];
-
-如果匹配的结果没有子项，则 value 为空，params 为空。例如：
-
-```JavaScript
-var routing = new mq.Routing({
-    "^/func1/[0-9]+/[0-9]+\.html$": func1,
-});
-```
-
-匹配消息 "/func1/123/456.html" 后，value == ""，params == [];
-
-如果匹配的结果第一级有多个子项，则 value 为空，params 为第一级子项。例如：
-
-```JavaScript
-var routing = new mq.Routing({
-    "^/func1/([0-9]+)/([0-9]+)\.html$": func1,
-});
-```
-
-匹配消息 "/func1/123/456.html" 后，value == ""，params == ["123", "456"];
-
-如果匹配的结果只有一个子项，并且无下级子项，则 value 和 params 均为此子项。例如：
-
-```JavaScript
-var routing = new mq.Routing({
-    "^/func1/([0-9]+)/[0-9]+\.html$": func1,
-});
-```
-
-匹配消息 "/func1/123/456.html" 后，value == "123"，params == ["123"];
-
-## 继承关系
+## Inheritance
 ```dot
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
@@ -106,369 +142,654 @@ digraph {
 }
 ```
 
-## 构造函数
+## Constructors
         
 ### Routing
-**创建一个消息处理器路由对象**
+**Creates a message handler routing [object](object.md)**
 
 ```JavaScript
 new Routing(Object map = {});
 ```
 
-调用参数:
-* map: Object, 初始化路由参数
+Parameters:
+* map: Object, initialization routing parameters
+
+map maps match patterns to handlers; every accepted handler form may be
+used as a value. An empty map (the default) builds a router without rules,
+to be filled with append and the method helpers. The related
+`Routing(method, map)` constructor scopes the same map to one [http](../../module/ifs/http.md) method.
+The rules of a map keep their enumeration order and are matched from the
+last to the first, like rules added one by one.
+
+Example — a map plus a rule added afterwards:
+
+```JavaScript
+const mq = require('mq');
+
+const app = new mq.Routing({
+    '/a': (req) => console.log('a')
+});
+app.get('/b', (req) => console.log('b'));
+
+const msg = new mq.Message();
+msg.value = '/a';
+mq.invoke(app, msg); // a
+
+msg.value = '/b';
+mq.invoke(app, msg); // b
+```
 
 --------------------------
-**创建一个消息处理器路由对象**
+**Creates a message handler routing [object](object.md) with a method scope**
 
 ```JavaScript
 new Routing(String method,
     Object map);
 ```
 
-调用参数:
-* method: String, 指定 [http](../../module/ifs/http.md) 请求方法，"*" 接受所有方法
-* map: Object, 初始化路由参数
+Parameters:
+* method: String, the [http](../../module/ifs/http.md) request method to accept, "*" accepts all methods
+* map: Object, initialization routing parameters
 
-## 成员函数
+Like `Routing(map)`, but every rule of the map accepts only the given [http](../../module/ifs/http.md)
+method: `"*"` accepts all methods and `"host"` matches the Host header of
+an [http](../../module/ifs/http.md) request instead of the address. The method is compared
+case-insensitively, so "get" and "GET" are the same. Use one [object](object.md) per
+method when the rules of one map need different methods, or add the rules
+with the method helpers.
+
+Example — a GET-only map:
+
+```JavaScript
+const mq = require('mq');
+const http = require('http');
+
+const app = new mq.Routing('GET', {
+    '/a': (req) => console.log('GET /a')
+});
+
+const req = new http.Request();
+req.value = '/a';
+req.method = 'GET';
+mq.invoke(app, req); // GET /a
+
+req.method = 'POST';
+try {
+    mq.invoke(app, req);
+} catch (e) {
+    console.log(e.message); // Routing: unknown routing: /a
+}
+```
+
+## Methods
         
 ### append
-**从已有路由对象中添加规则，添加后原路由将被清空**
+**Adds rules from an existing routing [object](object.md); the source routing is cleared after adding**
 
 ```JavaScript
 Routing Routing.append(Routing route);
 ```
 
-调用参数:
-* route: Routing, 已经初始化的路由对象
+Parameters:
+* route: Routing, an initialized routing [object](object.md)
 
-返回结果:
-* Routing, 返回路由对象本身
+Returns:
+* Routing, returns the routing [object](object.md) itself
+
+The rules of route are copied into this router with their relative order
+preserved and route is left empty, so appending the same [object](object.md) twice only
+transfers the rules once. As with every append form, the transferred rules
+are matched before the rules already present in this router.
+
+Example — merge a sub-router:
+
+```JavaScript
+const mq = require('mq');
+
+const first = new mq.Routing({
+    '/a': (req) => console.log('first /a')
+});
+const second = new mq.Routing({
+    '/b': (req) => console.log('second /b')
+});
+
+first.append(second);
+
+const msg = new mq.Message();
+msg.value = '/b';
+mq.invoke(first, msg); // second /b
+```
 
 --------------------------
-**添加一组路由规则**
+**Adds a group of routing rules**
 
 ```JavaScript
 Routing Routing.append(Object map);
 ```
 
-调用参数:
-* map: Object, 路由参数
+Parameters:
+* map: Object, routing parameters
 
-返回结果:
-* Routing, 返回路由对象本身
+Returns:
+* Routing, returns the routing [object](object.md) itself
+
+Every entry of map becomes a rule with the `"*"` method scope, exactly as
+if the entries were appended one by one with `append(pattern, hdlr)`; the
+entries are matched from the last to the first of the enumeration. The
+method-specific group helpers (get, post, del, put, patch, find, all) call
+this form with their method instead of `"*"`.
 
 --------------------------
-**添加一条路由规则**
+**Adds a routing rule**
 
 ```JavaScript
 Routing Routing.append(String pattern,
-    Handler hdlr);
+    Function(Message req, ...params) => Value hdlr);
 ```
 
-调用参数:
-* pattern: String, 消息匹配格式
-* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
+Parameters:
+* pattern: String, message match pattern
+* hdlr: [Handler](Handler.md) | [Handler](Handler.md)[] | Function([Message](Message.md) req, ...params) => Value | Object | String, the route handler
 
-返回结果:
-* Routing, 返回路由对象本身
+Returns:
+* Routing, returns the routing [object](object.md) itself
+
+pattern is matched against the message value with the express-style syntax
+described in the class Concepts (`:name` captures, `*`, `(...)`, `^` for a
+raw regular expression); the captures are URL-decoded into params and
+passed to the handler. hdlr may be given in any of these forms:
+- a [Handler](Handler.md) [object](object.md), invoked as it is;
+- an array of handlers, wrapped in a [Chain](Chain.md) and invoked in order;
+- a handler function `(req, ...captures) => any`, called with the routed
+  message and the captured groups (also readable as req.params); an [http](../../module/ifs/http.md)
+  request receives its response as the last argument;
+- a routing map [object](object.md), whose values are handlers in these same forms;
+- a [path](../../module/ifs/path.md)/address string.
+A handler that is itself a routing receives the remaining [path](../../module/ifs/path.md) in value.
+The new rule is matched before the rules already present.
 
 --------------------------
-**添加一条路由规则**
+**Adds a routing rule with a method scope**
 
 ```JavaScript
 Routing Routing.append(String method,
     String pattern,
-    Handler hdlr);
+    Function(Message req, ...params) => Value hdlr);
 ```
 
-调用参数:
-* method: String, 指定 [http](../../module/ifs/http.md) 请求方法，"*" 接受所有方法，"host" 指定虚拟域名
-* pattern: String, 消息匹配格式
-* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
+Parameters:
+* method: String, the [http](../../module/ifs/http.md) request method to accept; "*" accepts all methods, "host" matches virtual host names
+* pattern: String, message match pattern
+* hdlr: [Handler](Handler.md) | [Handler](Handler.md)[] | Function([Message](Message.md) req, ...params) => Value | Object | String, the route handler
 
-返回结果:
-* Routing, 返回路由对象本身
+Returns:
+* Routing, returns the routing [object](object.md) itself
+
+Like `append(pattern, hdlr)`, but the rule additionally matches the [http](../../module/ifs/http.md)
+method of the message: `"*"` accepts every method, `"host"` matches the
+Host header instead of the address, and any other value is the method name
+compared case-insensitively. A message that is not an [http](../../module/ifs/http.md) request matches
+a `"*"` rule and never matches a method- or host-scoped one.
+
+Example — one method-scoped rule and one wildcard rule:
+
+```JavaScript
+const mq = require('mq');
+const http = require('http');
+
+const app = new mq.Routing();
+app.append('PUT', '/item/:id(\\d+)', (req, id) => console.log('PUT ' + id));
+app.append('*', '/any', (req) => console.log('any method'));
+
+const req = new http.Request();
+req.value = '/item/7';
+req.method = 'PUT';
+mq.invoke(app, req); // PUT 7
+
+req.value = '/any';
+req.method = 'PATCH';
+mq.invoke(app, req); // any method
+```
 
 --------------------------
 ### host
-**添加一组 [http](../../module/ifs/http.md) 域名的路由规则**
+**Adds a group of routing rules for [http](../../module/ifs/http.md) host names**
 
 ```JavaScript
 Routing Routing.host(Object map);
 ```
 
-调用参数:
-* map: Object, 路由参数
+Parameters:
+* map: Object, routing parameters
 
-返回结果:
-* Routing, 返回路由对象本身
+Returns:
+* Routing, returns the routing [object](object.md) itself
+
+Every entry of map becomes a rule with the `"host"` method scope, so the
+patterns match the Host header of the request instead of the address; the
+port is not part of the matched text. The entries follow the same order
+and handler-form rules as `append(Object)`.
 
 --------------------------
-**添加一条接受 [http](../../module/ifs/http.md) 域名的路由规则**
+**Adds a routing rule that accepts [http](../../module/ifs/http.md) host names**
 
 ```JavaScript
 Routing Routing.host(String pattern,
-    Handler hdlr);
+    Function(Message req, ...params) => Value hdlr);
 ```
 
-调用参数:
-* pattern: String, 消息匹配格式
-* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
+Parameters:
+* pattern: String, message match pattern
+* hdlr: [Handler](Handler.md) | [Handler](Handler.md)[] | Function([Message](Message.md) req, ...params) => Value | Object | String, the route handler
 
-返回结果:
-* Routing, 返回路由对象本身
+Returns:
+* Routing, returns the routing [object](object.md) itself
+
+The pattern is matched against the Host header of the request with the
+port removed; a `*` in the pattern matches one label of the host name
+(for example `*.example.com` matches `api.example.com` but not
+`example.com`), and the captured labels are appended to params like the
+[path](../../module/ifs/path.md) captures. The remaining [path](../../module/ifs/path.md) stays in value and is passed to the
+handler unchanged.
+
+Example — virtual host dispatch:
+
+```JavaScript
+const mq = require('mq');
+const http = require('http');
+
+const app = new mq.Routing();
+app.host('*.example.com', (req, domain) => {
+    console.log('vhost: ' + domain + ' path: ' + req.value);
+});
+app.host('example.com', (req) => console.log('root vhost'));
+
+const req = new http.Request();
+req.value = '/index.html';
+req.appendHeader('host', 'api.example.com');
+mq.invoke(app, req); // vhost: api path: /index.html
+
+req.value = '/';
+req.setHeader('host', 'example.com');
+mq.invoke(app, req); // root vhost
+```
 
 --------------------------
 ### all
-**添加一组接受所有 [http](../../module/ifs/http.md) 方法路由规则**
+**Adds a group of routing rules that accept all [http](../../module/ifs/http.md) methods**
 
 ```JavaScript
 Routing Routing.all(Object map);
 ```
 
-调用参数:
-* map: Object, 路由参数
+Parameters:
+* map: Object, routing parameters
 
-返回结果:
-* Routing, 返回路由对象本身
+Returns:
+* Routing, returns the routing [object](object.md) itself
+
+Every entry of map becomes a rule with the `"*"` method scope, which is
+the same as `append(Object)`; the helper exists to make the intent
+explicit next to the method-specific group helpers.
 
 --------------------------
-**添加一条接受所有 [http](../../module/ifs/http.md) 方法路由规则**
+**Adds a routing rule that accepts all [http](../../module/ifs/http.md) methods**
 
 ```JavaScript
 Routing Routing.all(String pattern,
-    Handler hdlr);
+    Function(Message req, ...params) => Value hdlr);
 ```
 
-调用参数:
-* pattern: String, 消息匹配格式
-* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
+Parameters:
+* pattern: String, message match pattern
+* hdlr: [Handler](Handler.md) | [Handler](Handler.md)[] | Function([Message](Message.md) req, ...params) => Value | Object | String, the route handler
 
-返回结果:
-* Routing, 返回路由对象本身
+Returns:
+* Routing, returns the routing [object](object.md) itself
+
+Like `append(pattern, hdlr)` with the `"*"` method scope: the rule matches
+any [http](../../module/ifs/http.md) method (and a message that is not an [http](../../module/ifs/http.md) request), so it is
+usually the general rule that the method-specific rules of the same
+pattern must be added after.
 
 --------------------------
 ### get
-**添加一组 GET 方法路由规则**
+**Adds a group of GET method routing rules**
 
 ```JavaScript
 Routing Routing.get(Object map);
 ```
 
-调用参数:
-* map: Object, 路由参数
+Parameters:
+* map: Object, routing parameters
 
-返回结果:
-* Routing, 返回路由对象本身
+Returns:
+* Routing, returns the routing [object](object.md) itself
+
+Every entry of map becomes a rule that accepts only GET requests, the
+group form of `get(pattern, hdlr)`. Requests with another method do not
+match these rules and fall through to the other rules of the router.
 
 --------------------------
-**添加一条接受 [http](../../module/ifs/http.md) GET 方法路由规则**
+**Adds a routing rule that accepts the [http](../../module/ifs/http.md) GET method**
 
 ```JavaScript
 Routing Routing.get(String pattern,
-    Handler hdlr);
+    Function(Message req, ...params) => Value hdlr);
 ```
 
-调用参数:
-* pattern: String, 消息匹配格式
-* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
+Parameters:
+* pattern: String, message match pattern
+* hdlr: [Handler](Handler.md) | [Handler](Handler.md)[] | Function([Message](Message.md) req, ...params) => Value | Object | String, the route handler
 
-返回结果:
-* Routing, 返回路由对象本身
+Returns:
+* Routing, returns the routing [object](object.md) itself
+
+The rule matches the pattern and then the method: only a GET request (or a
+message without a method, which matches every method scope) continues to
+the handler. The captures follow `append(pattern, hdlr)`; a HEAD request
+is not matched by the rule.
 
 --------------------------
 ### post
-**添加一组接受 [http](../../module/ifs/http.md) POST 方法路由规则**
+**Adds a group of routing rules that accept the [http](../../module/ifs/http.md) POST method**
 
 ```JavaScript
 Routing Routing.post(Object map);
 ```
 
-调用参数:
-* map: Object, 路由参数
+Parameters:
+* map: Object, routing parameters
 
-返回结果:
-* Routing, 返回路由对象本身
+Returns:
+* Routing, returns the routing [object](object.md) itself
+
+Every entry of map becomes a rule that accepts only POST requests, the
+group form of `post(pattern, hdlr)`. POST rules are commonly paired with
+get rules on the same pattern to separate reading from writing.
 
 --------------------------
-**添加一条接受 [http](../../module/ifs/http.md) POST 方法路由规则**
+**Adds a routing rule that accepts the [http](../../module/ifs/http.md) POST method**
 
 ```JavaScript
 Routing Routing.post(String pattern,
-    Handler hdlr);
+    Function(Message req, ...params) => Value hdlr);
 ```
 
-调用参数:
-* pattern: String, 消息匹配格式
-* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
+Parameters:
+* pattern: String, message match pattern
+* hdlr: [Handler](Handler.md) | [Handler](Handler.md)[] | Function([Message](Message.md) req, ...params) => Value | Object | String, the route handler
 
-返回结果:
-* Routing, 返回路由对象本身
+Returns:
+* Routing, returns the routing [object](object.md) itself
+
+The rule matches the pattern and then the method: only a POST request
+continues to the handler. The captures follow `append(pattern, hdlr)`, so
+the body of the request is available to the handler through the message.
 
 --------------------------
 ### del
-**添加一组接受 [http](../../module/ifs/http.md) DELETE 方法路由规则**
+**Adds a group of routing rules that accept the [http](../../module/ifs/http.md) DELETE method**
 
 ```JavaScript
 Routing Routing.del(Object map);
 ```
 
-调用参数:
-* map: Object, 路由参数
+Parameters:
+* map: Object, routing parameters
 
-返回结果:
-* Routing, 返回路由对象本身
+Returns:
+* Routing, returns the routing [object](object.md) itself
+
+Every entry of map becomes a rule that accepts only DELETE requests, the
+group form of `del(pattern, hdlr)`.
 
 --------------------------
-**添加一条接受 [http](../../module/ifs/http.md) DELETE 方法路由规则**
+**Adds a routing rule that accepts the [http](../../module/ifs/http.md) DELETE method**
 
 ```JavaScript
 Routing Routing.del(String pattern,
-    Handler hdlr);
+    Function(Message req, ...params) => Value hdlr);
 ```
 
-调用参数:
-* pattern: String, 消息匹配格式
-* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
+Parameters:
+* pattern: String, message match pattern
+* hdlr: [Handler](Handler.md) | [Handler](Handler.md)[] | Function([Message](Message.md) req, ...params) => Value | Object | String, the route handler
 
-返回结果:
-* Routing, 返回路由对象本身
+Returns:
+* Routing, returns the routing [object](object.md) itself
+
+The rule matches the pattern and then the method: only a DELETE request
+continues to the handler. The captures follow `append(pattern, hdlr)`.
 
 --------------------------
 ### put
-**添加一组 PUT 方法路由规则**
+**Adds a group of PUT method routing rules**
 
 ```JavaScript
 Routing Routing.put(Object map);
 ```
 
-调用参数:
-* map: Object, 路由参数
+Parameters:
+* map: Object, routing parameters
 
-返回结果:
-* Routing, 返回路由对象本身
+Returns:
+* Routing, returns the routing [object](object.md) itself
+
+Every entry of map becomes a rule that accepts only PUT requests, the
+group form of `put(pattern, hdlr)`.
 
 --------------------------
-**添加一条接受 [http](../../module/ifs/http.md) PUT 方法路由规则**
+**Adds a routing rule that accepts the [http](../../module/ifs/http.md) PUT method**
 
 ```JavaScript
 Routing Routing.put(String pattern,
-    Handler hdlr);
+    Function(Message req, ...params) => Value hdlr);
 ```
 
-调用参数:
-* pattern: String, 消息匹配格式
-* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
+Parameters:
+* pattern: String, message match pattern
+* hdlr: [Handler](Handler.md) | [Handler](Handler.md)[] | Function([Message](Message.md) req, ...params) => Value | Object | String, the route handler
 
-返回结果:
-* Routing, 返回路由对象本身
+Returns:
+* Routing, returns the routing [object](object.md) itself
+
+The rule matches the pattern and then the method: only a PUT request
+continues to the handler. The captures follow `append(pattern, hdlr)`, so
+the request body can be read as the representation to store.
 
 --------------------------
 ### patch
-**添加一组 PATCH 方法路由规则**
+**Adds a group of PATCH method routing rules**
 
 ```JavaScript
 Routing Routing.patch(Object map);
 ```
 
-调用参数:
-* map: Object, 路由参数
+Parameters:
+* map: Object, routing parameters
 
-返回结果:
-* Routing, 返回路由对象本身
+Returns:
+* Routing, returns the routing [object](object.md) itself
+
+Every entry of map becomes a rule that accepts only PATCH requests, the
+group form of `patch(pattern, hdlr)`.
 
 --------------------------
-**添加一条接受 [http](../../module/ifs/http.md) PATCH 方法路由规则**
+**Adds a routing rule that accepts the [http](../../module/ifs/http.md) PATCH method**
 
 ```JavaScript
 Routing Routing.patch(String pattern,
-    Handler hdlr);
+    Function(Message req, ...params) => Value hdlr);
 ```
 
-调用参数:
-* pattern: String, 消息匹配格式
-* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
+Parameters:
+* pattern: String, message match pattern
+* hdlr: [Handler](Handler.md) | [Handler](Handler.md)[] | Function([Message](Message.md) req, ...params) => Value | Object | String, the route handler
 
-返回结果:
-* Routing, 返回路由对象本身
+Returns:
+* Routing, returns the routing [object](object.md) itself
+
+The rule matches the pattern and then the method: only a PATCH request
+continues to the handler. The captures follow `append(pattern, hdlr)`.
 
 --------------------------
 ### find
-**添加一组 FIND 方法路由规则**
+**Adds a group of FIND method routing rules**
 
 ```JavaScript
 Routing Routing.find(Object map);
 ```
 
-调用参数:
-* map: Object, 路由参数
+Parameters:
+* map: Object, routing parameters
 
-返回结果:
-* Routing, 返回路由对象本身
+Returns:
+* Routing, returns the routing [object](object.md) itself
+
+Every entry of map becomes a rule that accepts only FIND requests, the
+group form of `find(pattern, hdlr)`. FIND is a fibjs extension used by
+directory-style lookups; it is not part of the standard [http](../../module/ifs/http.md) methods.
 
 --------------------------
-**添加一条接受 [http](../../module/ifs/http.md) FIND 方法路由规则**
+**Adds a routing rule that accepts the [http](../../module/ifs/http.md) FIND method**
 
 ```JavaScript
 Routing Routing.find(String pattern,
-    Handler hdlr);
+    Function(Message req, ...params) => Value hdlr);
 ```
 
-调用参数:
-* pattern: String, 消息匹配格式
-* hdlr: [Handler](Handler.md), 内置消息处理器，处理函数，链式处理数组，路由对象，详见 [mq.Handler](../../module/ifs/mq.md#Handler)
+Parameters:
+* pattern: String, message match pattern
+* hdlr: [Handler](Handler.md) | [Handler](Handler.md)[] | Function([Message](Message.md) req, ...params) => Value | Object | String, the route handler
 
-返回结果:
-* Routing, 返回路由对象本身
+Returns:
+* Routing, returns the routing [object](object.md) itself
+
+The rule matches the pattern and then the method: only a FIND request
+continues to the handler. FIND is a fibjs extension; the captures follow
+`append(pattern, hdlr)`.
 
 --------------------------
 ### isRouting
-**查询当前处理器是否支持路由**
+**Queries whether the current handler supports routing**
 
 ```JavaScript
 Boolean Routing.isRouting();
 ```
 
-返回结果:
-* Boolean, 返回当前处理器是否支持路由
+Returns:
+* Boolean, returns whether the current handler supports routing
+
+A routing handler matches messages by itself and is used for the message
+as it is; a non-routing handler is a terminal stage of a chain or a
+function. Routing, [HttpRepeater](HttpRepeater.md) and file handlers return true, while
+JavaScript handlers and chains made only of them return false. [Chain](Chain.md)
+returns true when at least one of its elements routes; [Routing.append](Routing.md#append)
+reads the flag to decide whether the remaining [path](../../module/ifs/path.md) must be handed to the
+handler as a sub-route.
+
+Example — the flag of the concrete classes:
+
+```JavaScript
+const mq = require('mq');
+
+console.log(new mq.Routing({
+    '/a': () => {}
+}).isRouting()); // true
+console.log(new mq.Chain([() => {}]).isRouting()); // false
+
+const repeater = new mq.Handler('http://127.0.0.1:8080/');
+console.log(repeater.isRouting()); // true
+```
 
 --------------------------
 ### invoke
-**处理一个消息或对象**
+**Processes a message or [object](object.md)**
 
 ```JavaScript
 Handler Routing.invoke(object v) async;
 ```
 
-调用参数:
-* v: [object](object.md), 指定处理的消息或对象
+Parameters:
+* v: [object](object.md), the message or [object](object.md) to [process](../../module/ifs/process.md)
 
-返回结果:
-* [Handler](Handler.md), 返回下一步的处理器
+Returns:
+* [Handler](Handler.md), returns the next handler
+
+The call is a single stage of the pipeline: the handler processes v and
+the returned value is the next handler to run, or null when the message
+processing is finished. For a JavaScript handler this is the value the
+function returned (converted to a handler); for a routing it is the
+handler of the matched rule; for a chain it is the handler that should run
+next. The method is asynchronous and blocks the current fiber until the
+stage completes; [mq.invoke](../../module/ifs/mq.md#invoke) is the loop that keeps invoking the returned
+handler until null.
+
+Example — run one stage and continue with the returned handler:
+
+```JavaScript
+const mq = require('mq');
+
+const step = new mq.Handler((v) => {
+    console.log('stage: ' + v.value);
+    return new mq.Handler((v) => console.log('returned handler ran'));
+});
+
+const msg = new mq.Message();
+msg.value = 'x';
+const next = step.invoke(msg);
+console.log(next instanceof mq.Handler); // true
+next.invoke(msg);
+```
 
 --------------------------
 ### toString
-**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
+**Returns the string form of the [object](object.md)**
 
 ```JavaScript
 String Routing.toString();
 ```
 
-返回结果:
-* String, 返回对象的字符串表示
+Returns:
+* String, returns the string form of the [object](object.md)
+
+The base implementation reports an error: a native [object](object.md) has no implicit
+text form, and only the classes whose value can be written as a string
+override the member. [Buffer](Buffer.md) returns its content decoded with the given
+[encoding](../../module/ifs/encoding.md), [HttpCookie](HttpCookie.md) returns "name=value", and so on; an override commonly
+accepts optional arguments ([Buffer.toString](Buffer.md#toString) takes [encoding](../../module/ifs/encoding.md), start and
+end) that are not part of this declaration.
+
+Calling the member on a class that does not override it throws
+"<Class>: the [object](object.md) can not be converted to string.", which is the
+behavior to rely on when probing whether a value has a string form. See
+toJSON for the serialization hook.
 
 --------------------------
 ### toJSON
-**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
+**Returns the JSON representation of the [object](object.md)**
 
 ```JavaScript
 Value Routing.toJSON(String key = "");
 ```
 
-调用参数:
-* key: String, 未使用
+Parameters:
+* key: String, the property name of the value being serialized
 
-返回结果:
-* Value, 返回包含可 JSON 序列化的值
+Returns:
+* Value, returns the JSON-serializable value
+
+JSON.stringify(value) calls value.toJSON(key) when the member exists and
+serializes the returned value in its place; the key argument carries the
+property name of the value inside its parent [object](object.md) (an empty string at
+the top level) and may be used to build a keyed form. The base
+implementation returns a plain [object](object.md) holding the readable properties of
+the instance, so a native [object](object.md) serializes without per-class code; a
+class with a portable shape such as [Buffer](Buffer.md) overrides it, and a JavaScript
+class may override it in the same way.
+
+The member is normally reached through JSON.stringify rather than called
+directly; calling it returns the same value JSON.stringify would
+serialize.
 

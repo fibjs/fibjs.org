@@ -1,54 +1,106 @@
-# 模块 hex
-hex 模块是内置模块，在编码和解码二进制数据和 ASCII 字符之间提供了十六进制的实现方式。`hex` 模块提供了编码和解码两种功能
+# Module hex
+The hex [module](module.md) converts binary data to and from hexadecimal text
 
-使用编码方法，可以将任意二进制数据编码为十六进制的字符串。例如：
+Main capabilities:
+
+- **Encoding**: `encode` turns a [Buffer](../../object/ifs/Buffer.md) or a string into lower-case hexadecimal text;
+- **Decoding**: `decode` turns hexadecimal text back into a [Buffer](../../object/ifs/Buffer.md).
+
+Concepts:
+
+- **Two characters per byte**: each byte becomes exactly two characters of 0-9a-f, so the
+  text is twice as long as the input and the mapping is one-to-one. `decode` accepts upper
+  case as well.
+- **Lenient decoding**: every character outside 0-9a-f A-F is skipped wherever it
+  appears, and a trailing single nibble is dropped. The call does not report malformed
+  input for a string argument and can even return an empty [Buffer](../../object/ifs/Buffer.md). [Buffer.from](../../object/ifs/Buffer.md#from)(str,
+  'hex') accepts both cases too, but stops at the first invalid character instead of
+  skipping it, which is the behaviour to use when the text must be validated.
+- **Relation to [Buffer](../../object/ifs/Buffer.md) and [multibase](multibase.md)**: `hex.encode(data)` equals data.toString('hex');
+  the f and F codecs of the [multibase](multibase.md) [module](module.md) are this payload behind one prefix
+  character, and `encoding.encode(data, 'hex')` calls this [module](module.md).
+
+Import:
 
 ```JavaScript
-const hex = require('hex')
-
-const data = new Buffer([0x4e, 0x4f, 0x44, 0x45]) // [0x4e, 0x4f, 0x44, 0x45] => 'NODE'
-const encodedData = hex.encode(data)
-console.log(encodedData) // "4e4f4445"
+const hex = require('hex');
 ```
 
-使用解码方法，可以将十六进制的字符串解码为原来的二进制数据。例如：
+Example 1 — encode and decode four bytes:
 
 ```JavaScript
-const hex = require('hex')
+const hex = require('hex');
 
-const encodedData = '4e4f4445' // 'NODE'
-const decodedData = hex.decode(encodedData)
-console.log(decodedData) // [0x4e, 0x4f, 0x44, 0x45]
+const data = Buffer.from('NODE');
+const encoded = hex.encode(data);
+console.log(encoded); // 4e4f4445
+console.log(hex.decode(encoded).toString()); // NODE
 ```
 
-可以看到，`hex` 是非常简单的编码和解码模块，它适用于一些简单的二进制数据和字符串之间的转换需求。
+Example 2 — decoding is case-insensitive and skips separators:
 
-## 静态函数
+```JavaScript
+const hex = require('hex');
+
+console.log(hex.decode('DEADBEEF').toString('hex')); // deadbeef
+console.log(hex.decode('4e 4f-44!45').toString()); // NODE
+console.log(hex.decode('4e4f4').toString('hex')); // 4e4f, the odd nibble is dropped
+```
+
+## Static Methods
         
 ### encode
-**以 hex 方式编码数据**
+**Encodes data in hex format**
 
 ```JavaScript
-static String hex.encode(Buffer data);
+static String hex.encode(Buffer | String data);
 ```
 
-调用参数:
-* data: [Buffer](../../object/ifs/Buffer.md), 要编码的数据
+Parameters:
+* data: [Buffer](../../object/ifs/Buffer.md) | String, the data to encode
 
-返回结果:
-* String, 返回编码的字符串
+Returns:
+* String, returns the encoded string
+
+data may be a [Buffer](../../object/ifs/Buffer.md) or a string; a string is encoded as utf8. Each byte is written as
+two characters of 0-9a-f, so the result is always lower case and exactly twice as long
+as the input; this matches [Buffer.toString](../../object/ifs/Buffer.md#toString)('hex').
+
+Example — one byte and one short text:
+
+```JavaScript
+const hex = require('hex');
+
+console.log(hex.encode(Buffer.from([0xde, 0xad]))); // dead
+console.log(hex.encode('NODE')); // 4e4f4445
+```
 
 --------------------------
 ### decode
-**以 hex 方式解码字符串为二进制数据**
+**Decodes a string into binary data in hex format**
 
 ```JavaScript
 static Buffer hex.decode(String data);
 ```
 
-调用参数:
-* data: String, 要解码的字符串
+Parameters:
+* data: String, the string to decode
 
-返回结果:
-* [Buffer](../../object/ifs/Buffer.md), 返回解码的二进制数据
+Returns:
+* [Buffer](../../object/ifs/Buffer.md), returns the decoded binary data
+
+     Upper- and lower-case digits are both accepted. Characters outside 0-9a-f A-F are
+     skipped, wherever they appear, and a single trailing nibble is dropped, so the call
+     returns the bytes it can spell instead of reporting malformed input; an empty or fully
+     invalid string returns an empty [Buffer](../../object/ifs/Buffer.md).
+
+     Example — mixed separators and a trailing nibble:
+
+```JavaScript
+const hex = require('hex');
+
+console.log(hex.decode('4E4F4445').toString()); // NODE
+console.log(hex.decode('4e 4f-44!45').toString()); // NODE
+console.log(hex.decode('4e4f4').toString('hex')); // 4e4f
+```
 

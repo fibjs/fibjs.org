@@ -1,145 +1,76 @@
-# Object Iterator
-Iterator is the abstract base class of every fibjs [object](object.md) that yields values one by one
+# Object Dir
+[Iterator](Iterator.md) over the entries of one directory, read one entry at a time
 
-It defines the four hooks of the JavaScript iteration protocols (the two symbol
-members, next and return) that for...of, for await...of and spread use.
-
-Code that only consumes values rarely calls these members: a loop asks the
-[object](object.md) for an iterator, calls next() until it reports done, and calls return()
-when the loop ends early. Implementations inherit from Iterator when they must
-serve values from their own source (a directory scan, a container, a database
-cursor). The class cannot be constructed with new; obtain a working iterator from
-one of the producers below.
-
-The JavaScript [global](../../module/ifs/global.md) named Iterator is not this class: it is the V8
-iterator-helpers constructor (`Iterator.from` plus map, filter, take, drop,
-flatMap, reduce, toArray and friends on its prototype). A fibjs iterator is not
-an instance of that [global](../../module/ifs/global.md) and does not carry those helpers, but
-`Iterator.from(iterable)` wraps any iterable, including a fibjs iterator, and
-returns a helper [object](object.md). Array, Map, Set and generator iterators are V8-native:
-they are instances of the [global](../../module/ifs/global.md) and implement the same protocol without using
-this class (plans/compat-differences.md 2.261).
+A Dir hands out [DirEntry](DirEntry.md) objects instead of plain names and can stop early, so it is the
+right tool when a listing is large, must be classified as it is read, or must be interleaved
+with other work. [fs.readdir](../../module/ifs/fs.md#readdir) returns all names at once; [fs.opendir](../../module/ifs/fs.md#opendir)([path](../../module/ifs/path.md)) or [fs.Dir](../../module/ifs/fs.md#Dir)([path](../../module/ifs/path.md))
+create a Dir and both read the directory lazily.
 
 Concepts:
 
-- **The iteration result**: next() returns an [object](object.md) `{ value, done }`. While `done`
-  is false, `value` carries the next element; once the source is exhausted the
-  result is `{ done: true }` with no `value` property, and every later call keeps
-  returning it. The engine also calls `return(value)` when a loop stops early
-  (break, return, throw) so an implementation can release resources; the value
-  passed there is part of the protocol and is ignored by fibjs iterators.
-- **Laziness**: values are produced on demand. A [Dir](Dir.md) does not touch the file system
-  when it is created and scans the directory on the first next()/read(), so a
-  missing [path](../../module/ifs/path.md) (ENOENT) or a non-directory (ENOTDIR) is reported by that first
-  call; a collection iterator walks the live container; a database cursor fetches
-  rows as they are requested. Ending a cursor early with return() is what makes
-  the connection reusable.
-- **Cursors**: every call of `@iterator` or `@asyncIterator` on a container returns
-  a new iterator positioned at the first element, so independent loops and nested
-  loops do not share a position and a finished loop can be started again. A [Dir](Dir.md)
-  keeps one more cursor on the [Dir](Dir.md) [object](object.md) itself: read() and next() called directly
-  on a [Dir](Dir.md) advance the same position, which is separate from every loop's iterator.
-- **Sync and async iteration**: a fibjs iterator exposes both symbol members and
-  each of them returns the iterator itself, so the same [object](object.md) works with for...of
-  and for await...of. for await...of also accepts plain sync iterables (arrays,
-  Map, Set, generators, the HTTP collections) and awaits each element. next() is
-  an asynchronous member: it returns `{ value, done }` directly when the value is
-  available, accepts a trailing `(err, result)` callback, and returns a Promise
-  resolving to `{ value, done }` when the source is asynchronous, for example a
-  cursor obtained from a db.promises connection (plans/compat-differences.md
-  2.262).
-- **Release is explicit**: return() closes the iterator, is idempotent and keeps
-  next() reporting `{ done: true }`; it does not close the container behind the
-  iterator, so a [Dir](Dir.md)'s own read()/next() cursor keeps its position. Closing a [Dir](Dir.md)
-  itself instead makes read() return null and next() throw Object closed [20027]
-  (plans/compat-differences.md 2.263).
+- **Lazy scan**: creating a Dir does not touch the file system. The first read or iteration
+  scans the whole directory into memory and then serves entries; the scan is not repeated,
+  and errors such as ENOENT or ENOTDIR surface at that first call, not at construction.
+- **Cursors**: read() advances one cursor of the Dir; the iteration protocol (`for...of` and
+  `for await...of`) uses its own cursor per loop, so each loop starts again from the first
+  entry and does not disturb read(). A loop that runs to the end can be started again; the
+  entries are kept until close().
+- **End of iteration**: read() returns null when there are no more entries and after
+  close(); the iterator protocol reports `done`. call close() when the Dir is no longer
+  needed to drop the cached entries early (it does not release a system handle).
+- **close is idempotent**: unlike Node.js, where read() and close() on a closed Dir throw
+  ERR_DIR_CLOSED, fibjs makes close() a no-op the second time and lets read() return null
+  (plans/compat-differences.md 2.16).
 
 Obtained from:
-- `fs.opendir([path](../../module/ifs/path.md))` or `new [fs.Dir](../../module/ifs/fs.md#Dir)([path](../../module/ifs/path.md))` — the [Dir](Dir.md) [object](object.md) itself is an Iterator
-  and yields [DirEntry](DirEntry.md) elements (it is also the only producer with a directory
-  cursor of its own);
-- `keys()`, `values()` and `entries()` of [Headers](Headers.md), [URLSearchParams](URLSearchParams.md) and [FormData](FormData.md),
-  and their default `for...of` iteration — the HTTP collection containers inherit
-  the members from [HttpCollection](HttpCollection.md);
-- `keys()`, `values()` and `entries()` of an [XmlNodeList](XmlNodeList.md) (for example
-  `documentElement.childNodes`) and its default iteration — this is the XML DOM
-  [path](../../module/ifs/path.md);
-- `conn.iterate(sql, ...)` and `stmt.iterate()` — database cursors, including the
-  promise form `(await db.promises.open(...)).iterate(...)`;
-- `Iterator.from(iterable)` — not this class: the V8 helper constructor wraps any
-  iterable when the map/filter/toArray helpers are wanted.
+- `fs.opendir([path](../../module/ifs/path.md))` — the factory used in Node.js-compatible code;
+- `new [fs.Dir](../../module/ifs/fs.md#Dir)([path](../../module/ifs/path.md))` — fibjs extension; the class is exposed as `[fs.Dir](../../module/ifs/fs.md#Dir)` (there is no
+  [global](../../module/ifs/global.md) `Dir`) and is not constructible in Node.js user code.
 
-Example 1 — traverse a directory with both loop forms and stop early:
+Example 1 — read the entries one by one and stop at the end:
 
 ```JavaScript
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
 
-const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-iterator-'));
-fs.writeFileSync(path.join(dir, 'a.txt'), 'a');
-fs.writeFileSync(path.join(dir, 'b.txt'), 'b');
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-dir-'));
+fs.writeFile(path.join(dir, 'a.txt'), 'a');
+fs.mkdir(path.join(dir, 'sub'));
 
-for (const entry of fs.opendir(dir))
-    console.log('sync:', entry.name);
+const iterator = fs.opendir(dir);
+let entry;
+while ((entry = iterator.read()) !== null)
+    console.log(entry.name, entry.isDirectory() ? 'dir' : 'file');
+iterator.close();
+
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
+```
+
+Example 2 — the same directory through the two iteration forms:
+
+```JavaScript
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-dir-'));
+fs.writeFile(path.join(dir, 'a.txt'), 'a');
+
+for (const entry of new fs.Dir(dir))
+    console.log('sync', entry.name);
 
 (async () => {
     for await (const entry of new fs.Dir(dir))
-    console.log('async:', entry.name);
-
-    for (const entry of fs.opendir(dir)) {
-        console.log('first only:', entry.name);
-        break; // the engine calls return() on the loop iterator here
-    }
-
+    console.log('async', entry.name);
     fs.rmSync(dir, {
         recursive: true,
         force: true
     });
 })();
-```
-
-Example 2 — step through a collection iterator manually:
-
-```JavaScript
-const params = new URLSearchParams('a=1&b=2');
-const it = params.entries();
-
-console.log(it[Symbol.iterator]() === it); // true, an iterator is iterable too
-const first = it.next();
-console.log(first.done, first.value[0], first.value[1]); // false a 1
-const second = it.next();
-console.log(second.done, second.value[0]); // false b
-const end = it.next();
-console.log(end.done, end.value); // true undefined, the source is exhausted
-console.log(it.next().done); // true, it stays finished
-```
-
-Example 3 — early exit runs return():
-
-```JavaScript
-const params = new URLSearchParams('a=1&b=2&c=3');
-const it = params.entries();
-
-for (const pair of it) {
-    console.log(pair.join('=')); // a=1
-    break; // return() releases the iterator
-}
-
-console.log(it.next().done); // true
-console.log(it.return().done); // true, safe to call again
-
-const fs = require('fs');
-const os = require('os');
-const path = require('path');
-const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-iterator-'));
-const walker = fs.opendir(dir)[Symbol.iterator]();
-walker.return(); // Release an iterator that was never used
-console.log(walker.next().done); // true
-fs.rmSync(dir, {
-    recursive: true,
-    force: true
-});
 ```
 
 ## Inheritance
@@ -148,13 +79,29 @@ digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    Iterator [tooltip="Iterator", fillcolor="lightgray", id="me", label="{Iterator|iterator()\lasyncIterator()\l|next()\lreturn()\l}"];
-    Dir [tooltip="Dir", URL="Dir.md", label="{Dir}"];
+    Iterator [tooltip="Iterator", URL="Iterator.md", label="{Iterator|iterator()\lasyncIterator()\l|next()\lreturn()\l}"];
+    Dir [tooltip="Dir", fillcolor="lightgray", id="me", label="{Dir|new Dir()\l|path\l|read()\lclose()\l}"];
 
     object -> Iterator [dir=back];
     Iterator -> Dir [dir=back];
 }
 ```
+
+## Constructors
+        
+### Dir
+**Creates a directory iterator for a [path](../../module/ifs/path.md)**
+
+```JavaScript
+new Dir(String path);
+```
+
+Parameters:
+* path: String, the directory to iterate
+
+The directory is not read yet: the first read() or iteration scans it, and a missing
+[path](../../module/ifs/path.md) or a [path](../../module/ifs/path.md) that is not a directory (ENOENT, ENOTDIR) is reported then. In fibjs the
+class is exposed as `fs.Dir`; the same [object](object.md) is also returned by [fs.opendir](../../module/ifs/fs.md#opendir).
 
 ## Operators
         
@@ -162,11 +109,11 @@ digraph {
 **Queries the iterator of the elements of the current [object](object.md)**
 
 ```JavaScript
-Iterator Iterator.@iterator();
+Iterator Dir.@iterator();
 ```
 
 Returns:
-* Iterator, an iterator over the elements of the [object](object.md)
+* [Iterator](Iterator.md), an iterator over the elements of the [object](object.md)
 
 This is the hook the JS engine calls when for...of, spread or destructuring starts to
 traverse the [object](object.md) (`[Symbol.iterator]` in JavaScript; the IDL member is spelled
@@ -207,11 +154,11 @@ fs.rmSync(dir, {
 **Queries the asynchronous iterator of the elements of the current [object](object.md)**
 
 ```JavaScript
-Iterator Iterator.@asyncIterator();
+Iterator Dir.@asyncIterator();
 ```
 
 Returns:
-* Iterator, the asynchronous iterator of the elements of the current [object](object.md)
+* [Iterator](Iterator.md), the asynchronous iterator of the elements of the current [object](object.md)
 
 This is the hook the JS engine calls when for await...of traverses the [object](object.md)
 (`[Symbol.asyncIterator]` in JavaScript; the IDL member is spelled `@asyncIterator`). A
@@ -250,13 +197,93 @@ console.log(iterator[Symbol.asyncIterator]() === iterator); // true
 })();
 ```
 
+## Properties
+        
+### path
+**String, The directory [path](../../module/ifs/path.md) this iterator was created for**
+
+```JavaScript
+readonly String Dir.path;
+```
+
+The value as it was passed to [fs.opendir](../../module/ifs/fs.md#opendir) or the constructor, neither resolved to an
+absolute [path](../../module/ifs/path.md) nor normalized: opening '.' reports '.'.
+
 ## Methods
         
+### read
+**Reads the next directory entry**
+
+```JavaScript
+DirEntry Dir.read() async;
+```
+
+Returns:
+* [DirEntry](DirEntry.md), the next entry, or null after the last entry and after close()
+
+Returns null once all entries have been served and also after close(). The scan loads
+the whole directory on the first call; a missing [path](../../module/ifs/path.md) or a non-directory [path](../../module/ifs/path.md) is
+reported here as ENOENT/ENOTDIR. read() uses a cursor independent of the iteration
+protocol, so a `for...of` loop always starts from the first entry.
+
+Example — read one entry and observe the end of the iteration:
+
+```JavaScript
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-dir-'));
+fs.writeFile(path.join(dir, 'only.txt'), 'x');
+
+const iterator = fs.opendir(dir);
+console.log(iterator.read().name); // only.txt
+console.log(iterator.read()); // null, the iteration has ended
+iterator.close();
+
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
+```
+
+--------------------------
+### close
+**Closes the iterator and discards the cached entries**
+
+```JavaScript
+Dir.close() async;
+```
+
+Safe to call before any read and safe to call repeatedly; after close() read() returns
+null instead of throwing (Node.js throws ERR_DIR_CLOSED, see
+plans/compat-differences.md 2.16). The directory itself is not modified.
+
+Example — close twice and read after close:
+
+```JavaScript
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-dir-'));
+const iterator = fs.opendir(dir);
+iterator.close();
+iterator.close(); // idempotent
+console.log(iterator.read()); // null after close
+
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
+```
+
+--------------------------
 ### next
 **Iterates to the next element**
 
 ```JavaScript
-(Variant value, Boolean done) Iterator.next() async;
+(Variant value, Boolean done) Dir.next() async;
 ```
 
 Returns:
@@ -268,9 +295,9 @@ asynchronous, so it also accepts a trailing `(err, result)` callback and returns
 Promise resolving to the result when the value is not available immediately; an iterator
 obtained from an asynchronous API such as a db.promises cursor takes that [path](../../module/ifs/path.md), while a
 plain fiber call receives the [object](object.md) directly. Errors of the underlying source surface
-here: a [Dir](Dir.md) reports ENOENT/ENOTDIR from the first next() because the directory is scanned
-lazily, and next() on a closed [Dir](Dir.md) throws Object closed [20027]. On a [Dir](Dir.md), next() shares
-the position of read() on the [Dir](Dir.md) [object](object.md); the cursor of a loop iterator is independent.
+here: a Dir reports ENOENT/ENOTDIR from the first next() because the directory is scanned
+lazily, and next() on a closed Dir throws Object closed [20027]. On a Dir, next() shares
+the position of read() on the Dir [object](object.md); the cursor of a loop iterator is independent.
 
 Example — read a directory one entry at a time:
 
@@ -304,7 +331,7 @@ fs.rmSync(dir, {
 **Terminates iteration and releases all resources held by the iterator**
 
 ```JavaScript
-(Boolean done) Iterator.return(Value value = undefined);
+(Boolean done) Dir.return(Value value = undefined);
 ```
 
 Parameters:
@@ -322,10 +349,10 @@ would return `{ value, done: true }` (plans/compat-differences.md 4.23). After
 the call next() keeps reporting `{ done: true }`. Releasing a database cursor is
 required before other calls on the same connection can run; otherwise they fail
 with a message such as Error 20028 "A statement cursor is active on this
-connection". The container behind the iterator is not closed, so a [Dir](Dir.md)'s own
+connection". The container behind the iterator is not closed, so a Dir's own
 read()/next() position is unaffected.
 
-Example — stop an iterator at the first element and keep the [Dir](Dir.md) usable:
+Example — stop an iterator at the first element and keep the Dir usable:
 
 ```JavaScript
 const fs = require('fs');
@@ -356,7 +383,7 @@ fs.rmSync(dir, {
 **Returns the string form of the [object](object.md)**
 
 ```JavaScript
-String Iterator.toString();
+String Dir.toString();
 ```
 
 Returns:
@@ -379,7 +406,7 @@ toJSON for the serialization hook.
 **Returns the JSON representation of the [object](object.md)**
 
 ```JavaScript
-Value Iterator.toJSON(String key = "");
+Value Dir.toJSON(String key = "");
 ```
 
 Parameters:

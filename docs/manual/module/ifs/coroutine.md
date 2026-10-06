@@ -1,211 +1,542 @@
-# 模块 coroutine
-并发控制模块，提供纤程（fiber）的创建、调度、并发执行与同步原语
+# Module coroutine
+The fiber runtime: fiber creation and scheduling, parallel execution and fiber-level
 
-`coroutine` 模块基于协作式多任务模型：纤程按需主动让出 CPU（如调用 `sleep` 或等待 I/O），而非由系统抢占调度。模块提供以下能力：
+synchronization primitives
 
-- **纤程管理**：`start` 启动纤程，`current` 获取当前纤程，`fibers` 查询运行中的纤程；
-- **并发执行**：`parallel` 并行执行一组函数或处理一组数据，可限制并发数量；
-- **调度控制**：`sleep` 暂停当前纤程，让出 CPU 供其他纤程运行；
-- **同步原语**：`Lock` 锁、`Semaphore` 信号量、`Condition` 条件变量、`Event` 事件对象。
+fibjs runs JavaScript on fibers instead of a callback-based event loop. A fiber is a user-level
+lightweight thread inside one isolate: it owns a JavaScript call stack, it is scheduled by the
+runtime rather than by the operating system, and it shares the heap and the globals with every
+other fiber of that isolate. This [module](module.md) creates and controls fibers, and the rest of fibjs is
+built on them: synchronous calls such as [fs.readFile](fs.md#readFile) block only the calling fiber, while [timers](timers.md),
+I/O completions and server connections are dispatched on fibers created by the runtime.
 
-引用方式：
+Capabilities:
+
+- **[Fiber](../../object/ifs/Fiber.md) management**: `start` creates a fiber, `current` returns the running one, `fibers`
+lists the live ones and `spareFibers` tunes the cached fiber pool;
+- **Concurrent execution**: the `parallel` overloads run functions or data items on several
+fibers and collect the results, optionally limiting the number of concurrent fibers;
+- **Scheduling**: `sleep` suspends the current fiber and gives the CPU back to the other fibers;
+- **Synchronization primitives**: the `Lock`, `Semaphore`, `Condition` and `Event` classes
+coordinate fibers that share state;
+- **Isolate identity**: `vmid` returns the id of the current isolate.
+
+Concepts:
+
+- **Cooperative scheduling**: fibers are never preempted. A fiber keeps the CPU until it blocks
+— by calling `sleep`, waiting for I/O, acquiring a lock, joining another fiber or returning —
+and only then does the runtime switch to the next runnable fiber. `coroutine.start` queues the
+new fiber instead of running it, so the statements after `start` execute first and the new fiber
+starts at the next suspension point of its creator.
+- **Blocking APIs are fiber-local**: a synchronous fibjs call blocks the calling fiber only; the
+other fibers keep running, which is what makes sequential-looking I/O code correct and readable.
+See the [fs](fs.md) and [net](net.md) modules for that call style.
+- **[Fiber](../../object/ifs/Fiber.md) identity and local storage**: inside a fiber, `this` is the [Fiber](../../object/ifs/Fiber.md) [object](../../object/ifs/object.md) returned by
+`coroutine.start`, and `coroutine.current()` returns the same [object](../../object/ifs/object.md). Properties set on it are
+fiber-local storage. A new fiber does not inherit the properties of the fiber that created it.
+- **Fibers and async/await**: an `async` function runs on the fiber that calls it, and `await`
+suspends only that fiber, so blocking calls and promises can be mixed freely. Members marked
+`async` in this manual also have an `...Async` promise alias, and `coroutine.promises` mirrors
+the [module](module.md) with promise-returning members.
+- **Fibers and threads**: fibers are concurrent but not parallel — two fibers never run
+JavaScript at the same time, so they cannot race at the machine level. CPU-bound work that must
+use several cores belongs to [worker_threads](worker_threads.md), which creates a separate isolate and exchanges
+structured-clone messages; see the [Worker](../../object/ifs/Worker.md) class.
+- **Isolates**: the main [process](process.md) and every [Worker](../../object/ifs/Worker.md) form an isolate with its own fibers, its own
+`vmid` and its own fiber id sequence. A [Fiber](../../object/ifs/Fiber.md) [object](../../object/ifs/object.md) belongs to the isolate that created it and
+cannot be used from another one.
+- **Stack**: every fiber has its own fixed-size stack, much smaller than the main thread stack,
+and deep recursion inside a fiber throws `RangeError`; start a new fiber when a call chain needs
+more room.
+- **Process lifetime**: a queued or suspended fiber keeps the [process](process.md) alive, so a fiber blocked
+on a lock, a condition or an [Event](../../object/ifs/Event.md) that is never set prevents the script from exiting.
+- **Node.js comparison**: Node.js has no fibers. The closest equivalents are the event loop with
+promises (one logical thread per isolate, but every suspension point must be written as a
+callback or an `await`) and `worker_threads` (real threads with message passing). `Atomics.wait`
+blocks an OS thread, while `sleep` blocks a single fiber.
+
+Import:
+
+```JavaScript
+const coroutine = require('coroutine'); // also a global in `fibjs -e` scripts
+```
+
+Example 1 — start a fiber and wait for its result:
 
 ```JavaScript
 const coroutine = require('coroutine');
+
+const order = [];
+
+const task = coroutine.start(function(a, b) {
+    order.push('fiber: ' + (a + b));
+    order.push('fiber reads this.state: ' + this.state);
+    this.result = a + b;
+}, 100, 200);
+
+task.state = 'ready';
+order.push('main continues before the fiber starts');
+task.join();
+order.push('joined with result ' + task.result);
+
+console.log(order.join('\n'));
 ```
 
-以下是一个简单的示例代码，演示了如何使用 `coroutine` 模块：
+will output:
+```sh
+main continues before the fiber starts
+fiber: 300
+fiber reads this.state: ready
+joined with result 300
+```
+
+Example 2 — the sleeping order of two fibers:
 
 ```JavaScript
 const coroutine = require('coroutine');
 
-function foo() {
-    console.log('start foo');
-    coroutine.sleep(1000); // enter sleep mode
-    console.log('end foo');
+const log = [];
+
+function worker(name, ms) {
+    log.push(name + ' starts');
+    coroutine.sleep(ms);
+    log.push(name + ' wakes up');
 }
 
-function bar() {
-    console.log('start bar');
-    coroutine.sleep(2000);
-    console.log('end bar');
-}
+coroutine.start(worker, 'A', 60);
+coroutine.start(worker, 'B', 20);
 
-coroutine.start(foo);
-coroutine.start(bar);
+log.push('main yields for 120ms');
+coroutine.sleep(120);
+console.log(log.join('\n'));
 ```
 
-在上面的代码中，我们定义了两个函数 `foo` 和 `bar`，然后使用 `coroutine.start` 函数启动两个纤程。在每个纤程中，我们使用 `coroutine.sleep` 函数来让出 CPU，让其他纤程运行。
+will output:
+```sh
+main yields for 120ms
+A starts
+B starts
+B wakes up
+A wakes up
+```
 
-## 对象
+Example 3 — a fiber that starts and joins nested fibers:
+
+```JavaScript
+const coroutine = require('coroutine');
+
+function inner(n) {
+    const child = coroutine.start(function() {
+        coroutine.sleep(5);
+        this.value = n * 2;
+    });
+    child.join(); // the child runs while this fiber waits here
+    return child.value;
+}
+
+const outer = coroutine.start(function() {
+    console.log('inner(1):', inner(1));
+    console.log('inner(2):', inner(2));
+});
+
+outer.join();
+console.log('nested fibers finished');
+```
+
+will output:
+```sh
+inner(1): 2
+inner(2): 4
+nested fibers finished
+```
+
+Example 4 — bounded parallel execution:
+
+```JavaScript
+const coroutine = require('coroutine');
+
+let running = 0;
+let peak = 0;
+
+const squares = coroutine.parallel([1, 2, 3, 4, 5, 6], function(n) {
+    running++;
+    if (running > peak)
+        peak = running;
+    coroutine.sleep(10);
+    running--;
+    return n * n;
+}, 2);
+
+console.log('squares:', squares.join(','));
+console.log('peak concurrency:', peak);
+```
+
+will output:
+```sh
+squares: 1,4,9,16,25,36
+peak concurrency: 2
+```
+
+## Objects
         
 ### Lock
-**锁对象，参见 [Lock](../../object/ifs/Lock.md)**
+**Reference to the [Lock](../../object/ifs/Lock.md) class**
 
 ```JavaScript
 Lock coroutine.Lock;
 ```
 
+A [Lock](../../object/ifs/Lock.md) provides mutual exclusion between fibers: one fiber owns it at a time, other fibers that
+call `acquire` wait until it is released, and the same fiber may acquire it more than once. Use
+a lock around any state that several fibers read and write across a suspension point; see the
+[Lock](../../object/ifs/Lock.md) class.
+
 --------------------------
 ### Semaphore
-**信号量对象，参见 [Semaphore](../../object/ifs/Semaphore.md)**
+**Reference to the [Semaphore](../../object/ifs/Semaphore.md) class**
 
 ```JavaScript
 Semaphore coroutine.Semaphore;
 ```
 
+A [Semaphore](../../object/ifs/Semaphore.md) is a counting lock: `post` adds a permit, `wait` consumes one and waits when none
+is left, and permits may be posted by any fiber instead of only by the owner. Use it to limit
+concurrency or to hand work between fibers; see the [Semaphore](../../object/ifs/Semaphore.md) class.
+
 --------------------------
 ### Condition
-**条件变量对象，参见 [Condition](../../object/ifs/Condition.md)**
+**Reference to the [Condition](../../object/ifs/Condition.md) class**
 
 ```JavaScript
 Condition coroutine.Condition;
 ```
 
+A [Condition](../../object/ifs/Condition.md) lets fibers wait until shared state becomes true: `wait` releases its lock and
+parks the fiber, and `notify`/`notifyAll` wake the waiters after the state has been changed.
+Use it instead of polling with `sleep`; see the [Condition](../../object/ifs/Condition.md) class.
+
 --------------------------
 ### Event
-**事件对象，参见 [Event](../../object/ifs/Event.md)**
+**Reference to the [Event](../../object/ifs/Event.md) class**
 
 ```JavaScript
 Event coroutine.Event;
 ```
 
-## 静态函数
+An [Event](../../object/ifs/Event.md) is a broadcast gate: `wait` parks a fiber until `set` is called, and one `set` wakes
+every waiter at once. It carries no count and no payload, so it is the simplest way to start or
+finish a group of fibers; see the [Event](../../object/ifs/Event.md) class.
+
+## Static Methods
         
 ### start
-**启动一个纤程并返回纤程对象**
+**Starts a fiber and returns its [Fiber](../../object/ifs/Fiber.md) [object](../../object/ifs/object.md)**
 
 ```JavaScript
-static Fiber coroutine.start(Function func,
+static Fiber coroutine.start(Function(...args) func,
     ...args);
 ```
 
-调用参数:
-* func: Function, 制定纤程执行的函数
-* args: ..., 可变参数序列，此序列会在纤程内传递给函数
+Parameters:
+* func: Function(...args), the function executed by the new fiber
+* args: ..., arguments passed to the function inside the new fiber
 
-返回结果:
-* [Fiber](../../object/ifs/Fiber.md), 返回纤程对象
+Returns:
+* [Fiber](../../object/ifs/Fiber.md), the [Fiber](../../object/ifs/Fiber.md) [object](../../object/ifs/object.md) of the new fiber
 
-args 中的参数将在纤程内传递给函数。新纤程与当前纤程并发运行。
+The new fiber is queued, not executed immediately: it starts running when the current fiber
+yields — for example by calling `sleep` or `join` — or when the current script ends. The values
+in `args` are passed to `func` as they are, and inside the fiber `this` is the returned [Fiber](../../object/ifs/Fiber.md)
+[object](../../object/ifs/object.md), so properties set on that [object](../../object/ifs/object.md) before or after `start` are its fiber-local storage.
+
+An exception that escapes `func` does not propagate to the caller or to `join`: it is printed
+to stderr with the fiber stack, the fiber ends, and the rest of the [process](process.md) keeps running.
+
+Example — arguments, fiber-local state and the deferred start:
+
+```JavaScript
+const coroutine = require('coroutine');
+
+const order = [];
+
+const task = coroutine.start(function(a, b) {
+    order.push('fiber: ' + (a + b));
+    order.push('fiber reads this.state: ' + this.state);
+    this.result = a + b;
+}, 100, 200);
+
+task.state = 'ready';
+order.push('main continues before the fiber starts');
+task.join();
+order.push('joined with result ' + task.result);
+
+console.log(order.join('\n'));
+```
+
+will output:
+```sh
+main continues before the fiber starts
+fiber: 300
+fiber reads this.state: ready
+joined with result 300
+```
 
 --------------------------
 ### parallel
-**并行执行一组函数，并等待返回**
+**Runs a set of functions in parallel and returns their results**
 
 ```JavaScript
 static Array coroutine.parallel(Array funcs,
     Integer fibers = -1);
 ```
 
-调用参数:
-* funcs: Array, 并行执行的函数数组
-* fibers: Integer, 限制并发 fiber 数量，缺省为 -1，启用与 funcs 数量相同 fiber
+Parameters:
+* funcs: Array, array of functions to run in parallel
+* fibers: Integer, maximum number of concurrent fibers, one per task by default
 
-返回结果:
-* Array, 返回函数执行结果的数组
+Returns:
+* Array, array of results in the order of the input
 
-所有函数执行完毕后返回，返回数组与 funcs 顺序对应。fibers 指定并发纤程数量，缺省为 -1，启用与 funcs 数量相同的纤程。
+The four call forms of `parallel` are:
+
+- `parallel(funcs, fibers)` — an array of functions, each called without arguments;
+- `parallel(datas, func, fibers)` — `func(data)` is called once per element of the data array;
+- `parallel(func, num, fibers)` — `func(index)` is called `num` times with 0-based indexes;
+- `parallel(...funcs)` — the functions given directly as arguments.
+
+The calling fiber blocks until every task has finished, and the result array keeps the input
+order no matter in which order the tasks complete. A task that returns a value stores it in
+the array; a task that returns nothing leaves the slot `undefined`. An empty input returns an
+empty array. `fibers` limits how many tasks run at the same time; values that are not positive
+or that exceed the number of tasks mean "one fiber per task". An entry that is not a function,
+or a non-array first argument, throws `TypeError` (20004).
+
+The tasks run on fibers of the same isolate, so they are concurrent but not parallel:
+CPU-bound tasks still share the one JavaScript thread. Use [worker_threads](worker_threads.md) when several cores
+are required. The async context of the calling fiber (see [AsyncLocalStorage](../../object/ifs/AsyncLocalStorage.md)) is propagated to
+the tasks.
+
+If a task throws, its error is printed as an uncaught fiber exception, the remaining tasks
+still run to completion, and this call then throws `Error` (20020, internal error); the
+individual results are lost.
 
 --------------------------
-**并行执行一个函数处理一组数据，并等待返回**
+**Runs a function over a set of data in parallel and returns the results**
 
 ```JavaScript
 static Array coroutine.parallel(Array datas,
-    Function func,
+    Function(Value data) => Value func,
     Integer fibers = -1);
 ```
 
-调用参数:
-* datas: Array, 并行执行的数据数组
-* func: Function, 并行执行的函数
-* fibers: Integer, 限制并发 fiber 数量，缺省为 -1，启用与 datas 数量相同 fiber
+Parameters:
+* datas: Array, array of data processed in parallel
+* func: Function(Value data) => Value, the function called once per data element
+* fibers: Integer, maximum number of concurrent fibers, one per element by default
 
-返回结果:
-* Array, 返回函数执行结果的数组
+Returns:
+* Array, array of results in the order of the input
 
-datas 中的每个元素作为参数调用 func，全部完成后返回结果数组。fibers 指定并发纤程数量，缺省为 -1，启用与 datas 数量相同的纤程。
+`func` is called once per element of the data array and receives that element as its only
+argument; the results stay in the order of the input. The optional `fibers` argument limits the
+concurrency exactly like the array-of-functions form; see `parallel(funcs, fibers)` for the
+scheduling, error and concurrency rules.
 
---------------------------
-**并行执行一个函数多次，并等待返回**
+Example — results keep the input order even though the tasks finish out of order:
 
 ```JavaScript
-static Array coroutine.parallel(Function func,
+const coroutine = require('coroutine');
+
+const result = coroutine.parallel([5, 1, 4, 2], function(v) {
+    coroutine.sleep(v * 5); // the first task takes the longest
+    return v;
+});
+
+console.log('result:', result.join(','));
+```
+
+will output:
+```sh
+result: 5,1,4,2
+```
+
+--------------------------
+**Runs a function num times in parallel and returns the results**
+
+```JavaScript
+static Array coroutine.parallel(Function(Integer index) => Value func,
     Integer num,
     Integer fibers = -1);
 ```
 
-调用参数:
-* func: Function, 并行执行的函数数
-* num: Integer, 重复任务数量
-* fibers: Integer, 限制并发 fiber 数量，缺省为 -1，启用与 funcs 数量相同 fiber
+Parameters:
+* func: Function(Integer index) => Value, the function called once per index
+* num: Integer, number of tasks
+* fibers: Integer, maximum number of concurrent fibers, one per task by default
 
-返回结果:
-* Array, 返回函数执行结果的数组
+Returns:
+* Array, array of results in index order
 
-函数被执行 num 次，返回 num 个执行结果的数组。fibers 指定并发纤程数量，缺省为 -1，启用与任务数量相同的纤程。
+`func` is called `num` times and receives the task index (`0` … `num - 1`) as its only
+argument; the results stay in index order. The optional `fibers` argument limits the
+concurrency exactly like the array-of-functions form; see `parallel(funcs, fibers)` for the
+scheduling, error and concurrency rules. A `num` of 0 returns an empty array.
 
 --------------------------
-**并行执行一组函数，并等待返回**
+**Runs the given functions in parallel and returns their results**
 
 ```JavaScript
 static Array coroutine.parallel(...funcs);
 ```
 
-调用参数:
-* funcs: ..., 一组并行执行的函数
+Parameters:
+* funcs: ..., the functions to run in parallel
 
-返回结果:
-* Array, 返回函数执行结果的数组
+Returns:
+* Array, array of results in argument order
 
-每个参数视为一个待执行函数，全部执行完毕后返回结果数组。
+Each argument is a function without parameters; the call is equivalent to
+`parallel([func1, func2, ...])`, and the results stay in argument order; see
+`parallel(funcs, fibers)` for the scheduling, error and concurrency rules.
 
 --------------------------
 ### current
-**返回当前纤程**
+**Returns the [Fiber](../../object/ifs/Fiber.md) [object](../../object/ifs/object.md) of the calling fiber**
 
 ```JavaScript
 static Fiber coroutine.current();
 ```
 
-返回结果:
-* [Fiber](../../object/ifs/Fiber.md), 当前纤程对象
+Returns:
+* [Fiber](../../object/ifs/Fiber.md), the [Fiber](../../object/ifs/Fiber.md) [object](../../object/ifs/object.md) of the calling fiber
+
+Inside a fiber the returned [object](../../object/ifs/object.md) is the one that `coroutine.start` returned and that the
+fiber function receives as `this`, so it can be used directly as fiber-local storage. In the
+main script the returned [object](../../object/ifs/object.md) is the main fiber, which is also listed in `fibers`.
+
+Example — the current fiber is the same [object](../../object/ifs/object.md) as the one held by the caller:
+
+```JavaScript
+const coroutine = require('coroutine');
+
+function worker() {
+    const self = coroutine.current();
+    self.name = 'worker-1';
+    console.log('same object as this:', self === this);
+}
+
+const task = coroutine.start(worker);
+task.join();
+console.log('property visible outside:', task.name);
+```
+
+will output:
+```sh
+same object as this: true
+property visible outside: worker-1
+```
 
 --------------------------
 ### sleep
-**暂停当前纤程指定的时间**
+**Pauses the current fiber for the specified time**
 
 ```JavaScript
 static coroutine.sleep(Integer ms = 0) async;
 ```
 
-调用参数:
-* ms: Integer, 指定要暂停的时间，以毫秒为单位，缺省为 0，即有空闲立即回恢复运行
+Parameters:
+* ms: Integer, pause time in milliseconds; 0 or less only yields the CPU
 
-暂停期间让出 CPU，其他纤程得以运行。ms 缺省为 0，表示有空闲立即恢复运行。
+While the fiber is suspended the runtime runs the other fibers, and pending [timers](timers.md) keep the
+[process](process.md) alive until the sleep finishes. `ms` defaults to 0: a value that is not positive
+(`0`, a negative number or no argument at all) does not wait but simply yields the CPU for one
+scheduling round. `sleepAsync(ms)` is the promise form and does not block the calling fiber.
 
-## 静态属性
+Example — yielding with no delay and sleeping with a deadline:
+
+```JavaScript
+const coroutine = require('coroutine');
+
+let ran = false;
+coroutine.start(() => {
+    ran = true;
+});
+
+coroutine.sleep(); // no argument: yield the CPU once
+console.log('queued fiber had a chance to run:', ran);
+
+const start = Date.now();
+coroutine.sleep(30);
+console.log('slept for at least 25ms:', Date.now() - start >= 25);
+```
+
+will output:
+```sh
+queued fiber had a chance to run: true
+slept for at least 25ms: true
+```
+
+## Static Properties
         
 ### fibers
-**Array, 返回当前正在运行的全部 fiber 数组**
+**Array, Returns the live fibers of the current isolate**
 
 ```JavaScript
 static readonly Array coroutine.fibers;
 ```
 
+The result is a snapshot array that includes the calling fiber; it shrinks as fibers finish and
+grows as they are started. A fiber remains listed until its function returns or throws.
+
+Example — inspecting the live fibers:
+
+```JavaScript
+const coroutine = require('coroutine');
+
+const task = coroutine.start(function() {
+    coroutine.sleep(40);
+});
+coroutine.sleep(); // let the new fiber start
+const live = coroutine.fibers;
+
+console.log('includes the current fiber:', live.indexOf(coroutine.current()) >= 0);
+console.log('includes the new fiber:', live.some((fb) => fb.id === task.id));
+
+task.join();
+console.log('live fibers now:', coroutine.fibers.length);
+```
+
+will output:
+```sh
+includes the current fiber: true
+includes the new fiber: true
+live fibers now: 1
+```
+
 --------------------------
 ### spareFibers
-**Integer, 查询和设置空闲 [Fiber](../../object/ifs/Fiber.md) 数量，服务器抖动较大时可适度增加空闲 [Fiber](../../object/ifs/Fiber.md) 数量。缺省为 256**
+**Integer, Maximum number of idle worker fibers kept per isolate; the default is 256**
 
 ```JavaScript
 static Integer coroutine.spareFibers;
 ```
 
+The runtime caches the fibers whose jobs have finished and reuses them for the next job instead
+of creating an OS-level fiber each time. A larger pool absorbs bursts of short jobs, such as
+server request handlers, at the cost of idle stacks; a smaller pool lowers the memory watermark
+but makes new jobs allocate a fiber. The value is a [process](process.md)-wide setting (each isolate applies
+it to its own pool) and is not validated, so keep it non-negative. It is a fibjs extension
+with no Node.js equivalent.
+
 --------------------------
 ### vmid
-**Integer, 查询当前 [vm](vm.md) 编号**
+**Integer, Id of the current isolate**
 
 ```JavaScript
 static readonly Integer coroutine.vmid;
 ```
+
+The main [process](process.md) is isolate 1, and every [Worker](../../object/ifs/Worker.md) created with [worker_threads](worker_threads.md) receives the next
+number, so `vmid` distinguishes the isolates of a [process](process.md). It is typically used to derive
+per-isolate resources such as the ports or directories of a [test](test.md) run.
 

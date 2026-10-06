@@ -1,368 +1,690 @@
-# 模块 uuid
-uuid 模块提供唯一 id 的创建于操作。它可以用于生成符合各种不同要求的 UUID(Universally Unique Identifier)
+# Module uuid
+Generates and converts UUIDs (universally unique identifiers) as defined by RFC 9562 and its predecessor RFC 4122
 
-`uuid` 模块提供了多个静态函数，可以用于配置和生成不同种类的 UUID。
-以下是使用 md5 创建 uuid 的例子:
+Main capabilities:
+
+- **Time-based ids**: `v1`, `v6` and `v7` return the string form, `node` returns a v1 id in
+  binary form;
+- **Random ids**: `v4` returns the string form, `random` returns a v4 id in binary form;
+- **Name-based ids**: `v3` (MD5) and `v5` (SHA1) return the string form, `md5` and `sha1`
+  return the same ids in binary form;
+- **Snowflake ids**: `snowflake` returns a 64-bit time-ordered id and `hostID` configures
+  its host field;
+- **Conversion**: `parse`, `stringify`, `v1ToV6`, `v6ToV1`;
+- **Inspection**: `validate`, `version`;
+- **Constants**: `NIL`, `MAX`, the integer namespace selectors `DNS`, `URL`, `OID`, `X509`
+  and the namespace strings `DNS_NAMESPACE`, `URL_NAMESPACE`.
+
+Concepts:
+
+- **Versions**: v1 and v6 embed the current time as 100-nanosecond intervals since
+  1582-10-15 (the Gregorian epoch) together with a node id and a clock sequence; v6
+  arranges the timestamp so that ids generated later compare greater as strings. v4 is
+  random, and v7 starts with the Unix epoch time in milliseconds so it sorts by age as
+  well. v3 and v5 derive the id deterministically by hashing a namespace UUID with a name:
+  the same pair always produces the same UUID in every [process](process.md) and platform, and the name
+  cannot be recovered from the id. `snowflake` is a 64-bit id
+  (`msecs << 22 | hostID << 12 | sequence`), not a UUID.
+- **String and binary forms**: the string form is the canonical 36-character 8-4-4-4-12
+  layout with hyphens and lower-case hexadecimal digits; the binary form is a 16-byte
+  [Buffer](../../object/ifs/Buffer.md) (8 bytes for snowflake). `parse` and `stringify` convert between the two, and
+  `md5`/`sha1`/`node`/`random` are the binary counterparts of `v3`/`v5`/`v1`/`v4`.
+- **Namespaces**: name-based ids hash a 16-byte namespace UUID followed by the name. The
+  four RFC namespaces are exposed as the integer indexes `DNS`, `URL`, `OID` and `X509`
+  for `md5`/`sha1`, and as the strings `DNS_NAMESPACE` and `URL_NAMESPACE` for `v3`/`v5`;
+  `v3` and `v5` also accept any 16-byte [Buffer](../../object/ifs/Buffer.md) as the namespace.
+- **Uniqueness**: time-based ids combine a monotonic timestamp with a random node id and
+  a clock sequence, v4 and v7 add randomness, and `snowflake` combines a millisecond
+  timestamp with the 10-bit host id and a 12-bit sequence. None of them is suitable as a
+  secret or a password; use [crypto](crypto.md) when unpredictability is required.
+
+Import:
 
 ```JavaScript
 const uuid = require('uuid');
-const ns = uuid.DNS;
-const name = 'example.com';
-console.log(uuid.md5(ns, name));
 ```
 
-在以上例子中，首先引入了 uuid 模块，然后指定了名字空间和名称，并通过 md5 算法生成了符合要求的 UUID，并输出到控制台。
-同样，我们还可以使用 snowflake 算法生成 uuid，以下是使用 snowflake 算法创建 uuid 的例子：
+Example 1 — generate an id and round-trip it through the binary form:
 
 ```JavaScript
 const uuid = require('uuid');
-const s = uuid.snowflake();
-console.log(s);
+
+const id = uuid.v4();
+const bytes = uuid.parse(id);
+console.log(bytes.length); // 16
+console.log(uuid.stringify(bytes) === id); // true
+console.log(uuid.version(id)); // 4
 ```
 
-在以上例子中，snowflake() 方法会返回一个 [Buffer](../../object/ifs/Buffer.md) 对象，可以将其转换为字符串后输出到控制台，以获取生成的 uuid。
+Example 2 — deterministic name-based UUIDs with a fixed namespace:
 
-## 静态函数
+```JavaScript
+const uuid = require('uuid');
+
+const v3 = uuid.v3('example.com', uuid.DNS_NAMESPACE);
+const v5 = uuid.v5('example.com', uuid.DNS_NAMESPACE);
+console.log(v3); // 9073926b-929f-31c2-abc9-fad77ae3e8eb
+console.log(v5); // cfbff0d1-9375-5685-968c-48ce8b15ae17
+console.log(uuid.v5('example.com', uuid.URL_NAMESPACE) === v5); // false
+```
+
+Example 3 — validate and inspect ids in common input forms:
+
+```JavaScript
+const uuid = require('uuid');
+
+const id = uuid.v7();
+console.log(uuid.validate(id)); // true
+console.log(uuid.validate(uuid.NIL)); // true
+console.log(uuid.validate('{550e8400-e29b-41d4-a716-446655440000}')); // false
+console.log(uuid.version(id)); // 7
+```
+
+Example 4 — binary counterparts and the v1/v6 conversion:
+
+```JavaScript
+const uuid = require('uuid');
+
+// md5 is the binary form of v3 for the same namespace and name
+console.log(uuid.stringify(uuid.md5(uuid.DNS, 'example.com')));
+// 9073926b-929f-31c2-abc9-fad77ae3e8eb
+
+const v1 = uuid.v1({
+    msecs: 1600000000000,
+    nsecs: 0,
+    clockseq: 7
+});
+const v6 = uuid.v1ToV6(v1);
+console.log(uuid.version(v6)); // 6
+console.log(uuid.version(uuid.v6ToV1(v6))); // 1
+```
+
+Notes:
+
+- Every generator returns a new id. With default options `v1`/`v6` keep the timestamp
+  monotonic in a [process](process.md) and bump the clock sequence when the clock does not advance, so
+  two calls never return the same string.
+- `validate` returns false for a malformed string, while `parse`, `version`, `v3`, `v5`,
+  `v1ToV6` and `v6ToV1` throw a TypeError (20004) for invalid input.
+- The `node` option of `v1`/`v6` and the `random` option of `v4` are accepted for
+  compatibility with the npm uuid package but are not applied by this implementation.
+- The string form is accepted in upper-case hexadecimal, but every generated id and every
+  string returned by `stringify` is lower-case.
+
+## Static Methods
         
 ### parse
-**解析 uuid 字符串**
+**Parses a UUID string into its 16-byte binary form**
 
 ```JavaScript
 static Buffer uuid.parse(String uuid);
 ```
 
-调用参数:
-* uuid: String, 要解析的 uuid 字符串
+Parameters:
+* uuid: String, the uuid string to parse
 
-返回结果:
-* [Buffer](../../object/ifs/Buffer.md), 返回解析后的二进制 id
+Returns:
+* [Buffer](../../object/ifs/Buffer.md), returns the parsed 16-byte [Buffer](../../object/ifs/Buffer.md)
+
+The input must be exactly 36 characters in the canonical 8-4-4-4-12 layout with
+hyphens at the fixed positions; hexadecimal digits may be upper or lower case.
+Braces, the `urn:uuid:` prefix, compact 32-character forms and any other variant are
+rejected. The version and variant bits are not checked, so `NIL` and `MAX` parse
+successfully.
+
+Example:
+
+```JavaScript
+const uuid = require('uuid');
+
+const bytes = uuid.parse('550e8400-e29b-41d4-a716-446655440000');
+console.log(bytes.length); // 16
+console.log(bytes.toString('hex')); // 550e8400e29b41d4a716446655440000
+```
 
 --------------------------
 ### stringify
-**将二进制数组转换为 uuid 字符串**
+**Converts 16 bytes of UUID data into the canonical string form**
 
 ```JavaScript
-static String uuid.stringify(Buffer arr,
+static String uuid.stringify(Buffer | String arr,
     Integer offset = 0);
 ```
 
-调用参数:
-* arr: [Buffer](../../object/ifs/Buffer.md), 包含 uuid 二进制数据的数组或 [Buffer](../../object/ifs/Buffer.md)，长度需不少于 16 字节
-* offset: Integer, 可选，指定 uuid 数据在数组中的起始偏移，默认为 0
+Parameters:
+* arr: [Buffer](../../object/ifs/Buffer.md) | String, the [Buffer](../../object/ifs/Buffer.md) or binary string holding the uuid data; offset + 16 bytes are needed
+* offset: Integer, optional; the starting offset of the uuid data in the array, default 0
 
-返回结果:
-* String, 返回转换后的 uuid 字符串
+Returns:
+* String, returns the converted uuid string
+
+`arr` may be a [Buffer](../../object/ifs/Buffer.md) or a binary string whose encoded bytes hold the id. Exactly 16
+bytes starting at `offset` are read, so a larger buffer may contain several ids; the
+output is always lower-case with hyphens and the bytes are not otherwise validated.
+
+Example:
+
+```JavaScript
+const uuid = require('uuid');
+
+const buf = uuid.parse('01020304-0506-0708-090a-0b0c0d0e0f10');
+const padded = Buffer.concat([Buffer.alloc(4), buf]);
+console.log(uuid.stringify(padded, 4));
+// 01020304-0506-0708-090a-0b0c0d0e0f10
+console.log(uuid.stringify('0123456789abcdef'));
+// 30313233-3435-3637-3839-616263646566
+```
 
 --------------------------
 ### v1
-**使用时间戳创建 uuid**
+**Creates a version 1 UUID from the current time, a node id and a clock sequence**
 
 ```JavaScript
 static String uuid.v1(Object options = {});
 ```
 
-调用参数:
-* options: Object, 可选参数对象，支持以下属性：node（[Buffer](../../object/ifs/Buffer.md)，节点 ID）、clockseq（Integer，时钟序列）、msecs（Integer，毫秒时间戳）、nsecs（Integer，纳秒时间戳）
+Parameters:
+* options: Object, optional parameter [object](../../object/ifs/object.md); see the options block above
 
-返回结果:
-* String, 返回一个生成的 uuid 字符串
+Returns:
+* String, returns a generated uuid string
+
+The timestamp counts 100-nanosecond intervals since 1582-10-15. The node id is
+generated randomly the first time the function runs in a [process](process.md), with the multicast
+bit set; a MAC address is never read. The clock sequence starts as a random 14-bit
+value. With default options the timestamp is kept monotonic: when the clock does not
+advance, the clock sequence is incremented instead.
+
+options supports the following options:
+
+```JavaScript
+// fragment: options
+({
+    "msecs": null, // Integer, Unix epoch milliseconds; fixes the time part of the id
+    "nsecs": null, // Integer, nanoseconds added to msecs (divided by 100); needs msecs
+    "clockseq": null, // Integer, 14-bit clock sequence; the low 14 bits are used
+    "node": null // Buffer, 6-byte node id; accepted for npm compatibility, not applied
+})
+```
+
+Example:
+
+```JavaScript
+const uuid = require('uuid');
+
+const id = uuid.v1({
+    msecs: 1600000000000,
+    nsecs: 0,
+    clockseq: 7
+});
+console.log(id.length); // 36
+console.log(uuid.version(id)); // 1
+```
 
 --------------------------
 ### v3
-**使用 MD5 命名空间创建 uuid（二进制命名空间格式）**
+**Creates a version 3 UUID by hashing the namespace and name with MD5**
 
 ```JavaScript
 static String uuid.v3(String name,
-    Buffer ns);
+    Buffer | String ns);
 ```
 
-调用参数:
-* name: String, 指定名称
-* ns: [Buffer](../../object/ifs/Buffer.md), 命名空间 UUID 的二进制表示，长度需为 16 字节
+Parameters:
+* name: String, the name to use
+* ns: [Buffer](../../object/ifs/Buffer.md) | String, the namespace UUID, as a [Buffer](../../object/ifs/Buffer.md) or a canonical UUID string
 
-返回结果:
-* String, 返回一个生成的 uuid 字符串
+Returns:
+* String, returns a generated uuid string
 
---------------------------
-**使用 MD5 命名空间创建 uuid（字符串格式）**
-
-```JavaScript
-static String uuid.v3(String name,
-    String ns);
-```
-
-调用参数:
-* name: String, 指定名称
-* ns: String, 命名空间 UUID 字符串，或使用预定义命名空间
-
-返回结果:
-* String, 返回一个生成的 uuid 字符串
+`ns` may be a [Buffer](../../object/ifs/Buffer.md) of at least 16 bytes (only the first 16 are hashed) or a
+36-character namespace UUID string, such as `DNS_NAMESPACE`. The id is deterministic:
+the same namespace and name always produce the same string on every [process](process.md). The
+version and variant bits are set afterwards; `md5` returns the same id in binary
+form.
 
 --------------------------
 ### v4
-**使用随机数创建 uuid**
+**Creates a version 4 UUID from random bytes**
 
 ```JavaScript
 static String uuid.v4(Object options = {});
 ```
 
-调用参数:
-* options: Object, 可选参数对象，支持以下属性：random（[Buffer](../../object/ifs/Buffer.md)，随机数）、rng（Function，随机数生成器）
+Parameters:
+* options: Object, optional parameter [object](../../object/ifs/object.md); random is accepted but is not applied
 
-返回结果:
-* String, 返回一个生成的 uuid 字符串
+Returns:
+* String, returns a generated uuid string
+
+The bytes come from the OpenSSL random generator and the version and variant bits
+are set afterwards; the `random` option is accepted for compatibility with the npm
+uuid package but is not applied by this implementation. `random` returns the same
+kind of id in binary form.
+
+options supports the following options:
+
+```JavaScript
+// fragment: options
+({
+    "random": null // Buffer, 16 bytes; accepted for npm compatibility, not applied
+})
+```
 
 --------------------------
 ### v5
-**使用 SHA1 命名空间创建 uuid（二进制命名空间格式）**
+**Creates a version 5 UUID by hashing the namespace and name with SHA1**
 
 ```JavaScript
 static String uuid.v5(String name,
-    Buffer ns);
+    Buffer | String ns);
 ```
 
-调用参数:
-* name: String, 指定名称
-* ns: [Buffer](../../object/ifs/Buffer.md), 命名空间 UUID 的二进制表示，长度需为 16 字节
+Parameters:
+* name: String, the name to use
+* ns: [Buffer](../../object/ifs/Buffer.md) | String, the namespace UUID, as a [Buffer](../../object/ifs/Buffer.md) or a canonical UUID string
 
-返回结果:
-* String, 返回一个生成的 uuid 字符串
+Returns:
+* String, returns a generated uuid string
 
---------------------------
-**使用 SHA1 命名空间创建 uuid（字符串格式）**
+`ns` may be a [Buffer](../../object/ifs/Buffer.md) of at least 16 bytes (only the first 16 are hashed) or a
+36-character namespace UUID string; the hash is truncated to 16 bytes and the
+version and variant bits are set. Like `v3` the result is deterministic, but SHA1
+makes collisions less likely; `sha1` returns the same id in binary form.
+
+Example:
 
 ```JavaScript
-static String uuid.v5(String name,
-    String ns);
+const uuid = require('uuid');
+
+const ns = Buffer.alloc(16); // a fixed custom namespace
+const a = uuid.v5('name', ns);
+const b = uuid.v5('name', ns);
+console.log(a === b); // true
+console.log(uuid.version(a)); // 5
 ```
-
-调用参数:
-* name: String, 指定名称
-* ns: String, 命名空间 UUID 字符串，或使用预定义命名空间
-
-返回结果:
-* String, 返回一个生成的 uuid 字符串
 
 --------------------------
 ### version
-**获取 uuid 的版本号**
+**Gets the version field of a UUID string**
 
 ```JavaScript
 static Integer uuid.version(String uuid);
 ```
 
-调用参数:
-* uuid: String, 要检查的 uuid 字符串
+Parameters:
+* uuid: String, the uuid string to check
 
-返回结果:
-* Integer, 返回 uuid 的版本号（0-7），如果格式无效则返回 undefined
+Returns:
+* Integer, returns the uuid version number (0-15)
+
+Returns the 4-bit version number (0-15) read from the fixed position of the string.
+`NIL` reports 0 because all bits are zero and `MAX` reports 15 because its version
+nibble was never cleared. The variant bits are not checked, so any string in the
+canonical form is accepted; a malformed string throws a TypeError (20004) rather
+than returning undefined.
+
+Example:
+
+```JavaScript
+const uuid = require('uuid');
+
+console.log(uuid.version(uuid.v4())); // 4
+console.log(uuid.version(uuid.v7())); // 7
+console.log(uuid.version(uuid.NIL)); // 0
+```
 
 --------------------------
 ### v6
-**使用重排序时间戳创建 uuid v6**
+**Creates a version 6 UUID from the current time, a node id and a clock sequence**
 
 ```JavaScript
 static String uuid.v6(Object options = {});
 ```
 
-调用参数:
-* options: Object, 可选参数对象，支持以下属性：node（[Buffer](../../object/ifs/Buffer.md)，节点 ID）、clockseq（Integer，时钟序列）、msecs（Integer，毫秒时间戳）、nsecs（Integer，纳秒时间戳）
+Parameters:
+* options: Object, optional parameter [object](../../object/ifs/object.md); see v1 for the supported properties and defaults
 
-返回结果:
-* String, 返回一个生成的 uuid 字符串
+Returns:
+* String, returns a generated uuid string
+
+Version 6 carries the same 60-bit Gregorian timestamp, node id and clock sequence as
+version 1 in an arrangement that makes string comparison follow generation order.
+It accepts the same options as `v1`; the node id and clock sequence are generated
+randomly and independently from the ones used by `v1`. See `v1` for the option list
+and the monotonic timestamp rules.
 
 --------------------------
 ### v7
-**使用 Unix Epoch 时间戳创建 uuid v7**
+**Creates a version 7 UUID from a Unix epoch timestamp and random bits**
 
 ```JavaScript
 static String uuid.v7(Object options = {});
 ```
 
-调用参数:
-* options: Object, 可选参数对象，支持以下属性：msecs（Integer，毫秒时间戳）
+Parameters:
+* options: Object, optional parameter [object](../../object/ifs/object.md); see the options block above
 
-返回结果:
-* String, 返回一个生成的 uuid 字符串
+Returns:
+* String, returns a generated uuid string
+
+The 48 most significant bits hold the Unix epoch time in milliseconds, so an id
+created later compares greater than an earlier one; the remaining bits are random
+and the version and variant bits are set. The timestamp can be fixed through the
+`msecs` option, which makes the example below deterministic.
+
+options supports the following options:
+
+```JavaScript
+// fragment: options
+({
+    "msecs": null // Integer, Unix epoch milliseconds; defaults to the current time
+})
+```
+
+Example:
+
+```JavaScript
+const uuid = require('uuid');
+
+const early = uuid.v7({
+    msecs: 1000
+});
+const late = uuid.v7({
+    msecs: 2000
+});
+console.log(early < late); // true
+console.log(uuid.version(late)); // 7
+```
 
 --------------------------
 ### v1ToV6
-**将 uuid v1 转换为 v6**
+**Reorders the timestamp fields of a version 1 UUID into the version 6 arrangement**
 
 ```JavaScript
 static String uuid.v1ToV6(String uuid);
 ```
 
-调用参数:
-* uuid: String, v1 格式的 uuid 字符串
+Parameters:
+* uuid: String, the uuid string in v1 format
 
-返回结果:
-* String, 返回转换后的 v6 uuid 字符串
+Returns:
+* String, returns the converted v6 uuid string
+
+The node and clock sequence bytes are copied unchanged and the version nibble is
+rewritten to 6; the result is a valid v6 id in the canonical string form. The input
+must be a valid UUID string whose version field is 1, otherwise a TypeError (20004)
+is thrown. The reordering is not guaranteed to be the exact inverse of `v6ToV1`
+byte by byte, so do not rely on the two calls returning the original bytes.
+
+Example:
+
+```JavaScript
+const uuid = require('uuid');
+
+const v1 = uuid.v1({
+    msecs: 1600000000000,
+    nsecs: 0,
+    clockseq: 7
+});
+const v6 = uuid.v1ToV6(v1);
+console.log(uuid.version(v6)); // 6
+```
 
 --------------------------
 ### v6ToV1
-**将 uuid v6 转换为 v1**
+**Reorders the timestamp fields of a version 6 UUID back into the version 1 arrangement**
 
 ```JavaScript
 static String uuid.v6ToV1(String uuid);
 ```
 
-调用参数:
-* uuid: String, v6 格式的 uuid 字符串
+Parameters:
+* uuid: String, the uuid string in v6 format
 
-返回结果:
-* String, 返回转换后的 v1 uuid 字符串
+Returns:
+* String, returns the converted v1 uuid string
+
+The node and clock sequence bytes are copied unchanged and the version nibble is
+rewritten to 1. The input must be a valid UUID string whose version field is 6,
+otherwise a TypeError (20004) is thrown. See `v1ToV6`; the pair is not guaranteed to
+be an exact byte-for-byte round trip.
 
 --------------------------
 ### validate
-**验证 uuid 字符串是否符合规范**
+**Validates whether a string is in the canonical UUID form**
 
 ```JavaScript
 static Boolean uuid.validate(String uuid);
 ```
 
-调用参数:
-* uuid: String, 要验证的 uuid 字符串
+Parameters:
+* uuid: String, the uuid string to validate
 
-返回结果:
-* Boolean, 返回 true 表示符合规范，false 表示不符合规范
+Returns:
+* Boolean, returns true if it conforms to the specification, false otherwise
+
+Returns true only for exactly 36 characters in the 8-4-4-4-12 layout with legal
+hexadecimal digits; the digits may be upper or lower case, the version and variant
+bits are not checked, and compact 32-character or braced forms are rejected. Unlike
+`parse` and `version` it returns false instead of throwing for a malformed string,
+which makes it suitable for validating user input.
+
+Example:
+
+```JavaScript
+const uuid = require('uuid');
+
+console.log(uuid.validate(uuid.v4())); // true
+console.log(uuid.validate('550E8400-E29B-41D4-A716-446655440000')); // true
+console.log(uuid.validate('550e8400e29b41d4a716446655440000')); // false
+```
 
 --------------------------
 ### node
-**使用时间和主机名创建 uuid**
+**Creates a version 1 UUID in binary form**
 
 ```JavaScript
 static Buffer uuid.node();
 ```
 
-返回结果:
-* [Buffer](../../object/ifs/Buffer.md), 返回一个生成的二进制 id
+Returns:
+* [Buffer](../../object/ifs/Buffer.md), returns a generated 16-byte binary id
+
+The layout matches `v1`, including the current timestamp, a random node id with the
+multicast bit set and a random clock sequence, but the node id is generated
+independently from the one used by `v1`. The result is a 16-byte [Buffer](../../object/ifs/Buffer.md).
 
 --------------------------
 ### md5
-**使用特定命名的 md5 创建 uuid**
+**Creates a version 3 UUID in binary form with a predefined namespace**
 
 ```JavaScript
 static Buffer uuid.md5(Integer ns,
     String name);
 ```
 
-调用参数:
-* ns: Integer, 指定命名空间，可以为 [uuid.DNS](uuid.md#DNS), [uuid.URL](uuid.md#URL), [uuid.OID](uuid.md#OID), [uuid.X509](uuid.md#X509)
-* name: String, 指定名称
+Parameters:
+* ns: Integer, the namespace to use; can be [uuid.DNS](uuid.md#DNS), [uuid.URL](uuid.md#URL), [uuid.OID](uuid.md#OID), [uuid.X509](uuid.md#X509)
+* name: String, the name to use
 
-返回结果:
-* [Buffer](../../object/ifs/Buffer.md), 返回一个生成的二进制 id
+Returns:
+* [Buffer](../../object/ifs/Buffer.md), returns a generated 16-byte binary id
+
+`ns` selects one of the RFC namespaces through the `DNS`, `URL`, `OID` or `X509`
+constant and the id is deterministic. It is the binary form of
+`v3(name, <namespace string>)`, so `stringify(md5([uuid.DNS](uuid.md#DNS), name))` equals
+`v3(name, [uuid.DNS_NAMESPACE](uuid.md#DNS_NAMESPACE))`. Values outside 0-3 throw a TypeError (20004).
 
 --------------------------
 ### random
-**使用随机数创建 uuid**
+**Creates a version 4 UUID in binary form**
 
 ```JavaScript
 static Buffer uuid.random();
 ```
 
-返回结果:
-* [Buffer](../../object/ifs/Buffer.md), 返回一个生成的二进制 id
+Returns:
+* [Buffer](../../object/ifs/Buffer.md), returns a generated 16-byte binary id
+
+It is the binary counterpart of `v4`: the same OpenSSL randomness and the same
+version and variant bits, returned as a 16-byte [Buffer](../../object/ifs/Buffer.md) instead of a string.
 
 --------------------------
 ### sha1
-**使用特定命名的 sha1 创建 uuid**
+**Creates a version 5 UUID in binary form with a predefined namespace**
 
 ```JavaScript
 static Buffer uuid.sha1(Integer ns,
     String name);
 ```
 
-调用参数:
-* ns: Integer, 指定命名空间，可以为 [uuid.DNS](uuid.md#DNS), [uuid.URL](uuid.md#URL), [uuid.OID](uuid.md#OID), [uuid.X509](uuid.md#X509)
-* name: String, 指定名称
+Parameters:
+* ns: Integer, the namespace to use; can be [uuid.DNS](uuid.md#DNS), [uuid.URL](uuid.md#URL), [uuid.OID](uuid.md#OID), [uuid.X509](uuid.md#X509)
+* name: String, the name to use
 
-返回结果:
-* [Buffer](../../object/ifs/Buffer.md), 返回一个生成的二进制 id
+Returns:
+* [Buffer](../../object/ifs/Buffer.md), returns a generated 16-byte binary id
+
+`ns` selects one of the RFC namespaces through the `DNS`, `URL`, `OID` or `X509`
+constant. It is the binary form of `v5(name, <namespace string>)`, so
+`stringify(sha1([uuid.DNS](uuid.md#DNS), name))` equals `v5(name, [uuid.DNS_NAMESPACE](uuid.md#DNS_NAMESPACE))`. Values
+outside 0-3 throw a TypeError (20004).
 
 --------------------------
 ### snowflake
-**使用 Snowflake 算法创建 uuid**
+**Creates a 64-bit snowflake id in binary form**
 
 ```JavaScript
 static Buffer uuid.snowflake();
 ```
 
-返回结果:
-* [Buffer](../../object/ifs/Buffer.md), 返回一个生成的二进制 id
+Returns:
+* [Buffer](../../object/ifs/Buffer.md), returns a generated 8-byte binary id
 
-## 静态属性
+The value is `msecs << 22 | hostID << 12 | sequence`: 41 bits of Unix epoch time in
+milliseconds, the 10-bit host id and a 12-bit sequence counter that restarts every
+millisecond. When all 4096 sequence values of a millisecond are used, the call
+yields the fiber until the next millisecond instead of blocking the thread. The
+result is an 8-byte [Buffer](../../object/ifs/Buffer.md) and is not a UUID.
+
+Example:
+
+```JavaScript
+const uuid = require('uuid');
+
+const a = uuid.snowflake();
+const b = uuid.snowflake();
+console.log(a.length); // 8
+console.log(a.toString('hex') !== b.toString('hex')); // true
+```
+
+## Static Properties
         
 ### hostID
-**Integer, 查询和修改 Snowflake 算法的主机 id**
+**Integer, Queries or sets the 10-bit host id used by snowflake**
 
 ```JavaScript
 static Integer uuid.hostID;
 ```
 
-## 常量
+Defaults to 0 in a new isolate. Assignment stores the low 10 bits of the value, so
+`hostID = 1024` sets 0 and `hostID = -1` sets 1023. Give cooperating processes or
+workers distinct ids so that ids generated in the same millisecond do not collide.
+
+Example:
+
+```JavaScript
+const uuid = require('uuid');
+
+uuid.hostID = 7;
+console.log(uuid.hostID); // 7
+```
+
+## Constants
         
 ### DNS
-**md5 与 sha1 创建 uuid 时指定 name 命名为域名**
+**Namespace selector for domain names, used by md5 and sha1**
 
 ```JavaScript
 const uuid.DNS = 0;
 ```
 
+The value is 0. The matching string namespace for v3 and v5 is `DNS_NAMESPACE`.
+
 --------------------------
 ### URL
-**md5 与 sha1 创建 uuid 时指定 name 命名为 [url](url.md) 地址**
+**Namespace selector for URLs, used by md5 and sha1**
 
 ```JavaScript
 const uuid.URL = 1;
 ```
 
+The value is 1. The matching string namespace for v3 and v5 is `URL_NAMESPACE`.
+
 --------------------------
 ### OID
-**md5 与 sha1 创建 uuid 时指定 name 命名为 ISO OID**
+**Namespace selector for ISO [object](../../object/ifs/object.md) identifiers, used by md5 and sha1**
 
 ```JavaScript
 const uuid.OID = 2;
 ```
 
+The value is 2. v3 and v5 take the namespace as a [Buffer](../../object/ifs/Buffer.md) or a canonical UUID string
+instead of a selector.
+
 --------------------------
 ### X509
-**md5 与 sha1 创建 uuid 时指定 name 命名为 X.500 DN**
+**Namespace selector for X.500 distinguished names, used by md5 and sha1**
 
 ```JavaScript
 const uuid.X509 = 3;
 ```
 
+The value is 3; the X.500 namespace is the least common of the four predefined
+namespaces.
+
 --------------------------
 ### NIL
-**返回一个空的 uuid**
+**The all-zero UUID, used as an empty placeholder value**
 
 ```JavaScript
 const uuid.NIL = "00000000-0000-0000-0000-000000000000";
 ```
 
+`validate` accepts it and `parse` converts it to 16 zero bytes, but no v* generator
+produces it; its version field is 0.
+
 --------------------------
 ### MAX
-**返回一个最大 UUID 字符串**
+**The all-ones UUID, the largest value in string comparison**
 
 ```JavaScript
 const uuid.MAX = "ffffffff-ffff-ffff-ffff-ffffffffffff";
 ```
 
+Its version field is 15 and its variant bits do not follow the RFC pattern, so it is
+a boundary value rather than an id produced by a generator.
+
 --------------------------
 ### DNS_NAMESPACE
-**v3 和 v5 的 DNS 命名空间 UUID**
+**The DNS namespace UUID `6ba7b810-9dad-11d1-80b4-00c04fd430c8` for v3 and v5**
 
 ```JavaScript
 const uuid.DNS_NAMESPACE = "6ba7b810-9dad-11d1-80b4-00c04fd430c8";
 ```
 
+Equivalent to the `DNS` selector used by md5 and sha1; pass it as the ns argument of
+v3 or v5 to derive ids from domain names deterministically.
+
 --------------------------
 ### URL_NAMESPACE
-**v3 和 v5 的 URL 命名空间 UUID**
+**The URL namespace UUID `6ba7b811-9dad-11d1-80b4-00c04fd430c8` for v3 and v5**
 
 ```JavaScript
 const uuid.URL_NAMESPACE = "6ba7b811-9dad-11d1-80b4-00c04fd430c8";
 ```
+
+Equivalent to the `URL` selector used by md5 and sha1; use a custom 16-byte [Buffer](../../object/ifs/Buffer.md)
+when ids must be derived from a private namespace.
 

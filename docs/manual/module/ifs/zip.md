@@ -1,100 +1,236 @@
-# 模块 zip
-zip 模块是一个用于文件压缩和解压缩的模块。它提供了压缩、解压缩、查找和枚举 zip 文件中的文件列表等操作
+# Module zip
+The zip [module](module.md) opens, creates and inspects zip archives and mounts them as a read-only FS
 
-通过 zip 模块，我们可以将多个文件打包成一个 zip 文件，也可以对 zip 文件进行解压缩以恢复原始文件。
+mapping that is then read through the [fs](fs.md) [module](module.md) with a `$` suffix
 
-下面是一些示例：
+Main capabilities:
 
-1.压缩文件：
+- **Opening archives**: `open` opens a [path](path.md), a [Buffer](../../object/ifs/Buffer.md) or a [SeekableStream](../../object/ifs/SeekableStream.md) in "r", "w" or "a"
+  mode and returns a [ZipFile](../../object/ifs/ZipFile.md) for reading, writing and extracting entries;
+- **Probing files**: `isZipFile` checks whether a file is a zip archive without throwing;
+- **Virtual file system**: archive data registered with `fs.setZipFS` is read through a mapping
+  [path](path.md) with a `$` suffix, and `fs.clearZipFS` removes the mapping (see the [fs](fs.md) [module](module.md)).
+
+Concepts:
+
+- **Zip as a virtual file system**: `fs.setZipFS(fname, data)` parses the archive once and keeps
+  its entries in memory under the normalized [path](path.md) fname; reads of `fname + '$/' + entry` are
+  then served from that cache and do not touch a real file, so fname does not have to exist on
+  disk. The mapping is not visible to directory APIs such as `fs.readdir` or `fs.exists`.
+- **The `$` suffix**: `$` must be immediately followed by `/`. `/archive.zip$/dir/file.txt`
+  resolves to the member `dir/file.txt` of the archive mounted at `/archive.zip`; a [path](path.md)
+  without the slash after `$` or the bare `/archive.zip$/` (empty member) falls back to the
+  real file system and fails with ENOENT. The `stat`/`lstat`, `readFile` and `createReadStream`
+  functions and `openFile` with string flags are zip-aware; the integer-flags form of
+  `openFile` bypasses the mapping and reads the real file system.
+- **Lifecycle of mounted archives**: a mapping stays valid until `clearZipFS(fname)` removes one
+  mapping or `clearZipFS()` removes all of them. The data is pinned at mount time, so rewriting
+  the source file does not change what the mapping serves. A `$` [path](path.md) that was never mounted is
+  resolved lazily from the real archive file, whose entries are re-checked at most once every
+  3 seconds through its mtime.
+- **Memory and file archives**: `open` accepts a file [path](path.md), the archive bytes as a [Buffer](../../object/ifs/Buffer.md) or any
+  [SeekableStream](../../object/ifs/SeekableStream.md) (for example from `fs.openFile`); a [Buffer](../../object/ifs/Buffer.md) source is read-only — writes to it
+  fail, so writes ("w"/"a") need a [path](path.md) or a writable stream. Writes are completed by close,
+  which appends the central directory that makes the new entries visible.
+- **Entry name [encoding](encoding.md)**: codec is the character set used for entry names, default "utf8";
+  names are encoded with it when writing and decoded with it when listing, so archives with
+  legacy names must be opened with the matching codec.
+
+Import:
 
 ```JavaScript
-var zip = require('zip');
-var zipfile = zip.open('/path/to/dest.zip', 'w');
-
-zipfile.write('/path/to/src1', 'src1');
-zipfile.write('/path/to/src2', 'src2');
-zipfile.close();
+const zip = require('zip');
 ```
 
-2.解压缩文件：
+Example 1 — create an archive and read its entries back:
 
 ```JavaScript
-var zip = require('zip');
-var zipfile = zip.open('/path/to/src.zip', 'r');
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+const zip = require('zip');
 
-var filenames = zipfile.namelist();
-for (var i = 0; i < filenames.length; ++i) {
-    var filename = filenames[i];
-    var data = zipfile.read(filename);
-    console.log(filename + ': ' + data.length + ' bytes');
-}
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-zip-'));
+fs.writeFileSync(path.join(dir, 'src1.txt'), 'written to disk first');
+
+let zipfile = zip.open(path.join(dir, 'dest.zip'), 'w');
+zipfile.write(path.join(dir, 'src1.txt'), 'src1.txt'); // from a file path
+zipfile.write(Buffer.from('written from memory'), 'src2.txt'); // from a Buffer
 zipfile.close();
+
+zipfile = zip.open(path.join(dir, 'dest.zip')); // "r" by default
+console.log(zipfile.namelist().join(', ')); // src1.txt, src2.txt
+console.log(zipfile.read('src2.txt').toString()); // written from memory
+zipfile.close();
+
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
 ```
 
-## 静态函数
+Example 2 — build an archive in memory and reopen it from a [Buffer](../../object/ifs/Buffer.md):
+
+```JavaScript
+const io = require('io');
+const zip = require('zip');
+
+const ms = new io.MemoryStream();
+let zipfile = zip.open(ms, 'w');
+zipfile.write(Buffer.from('kept in memory'), 'mem.txt');
+zipfile.close(); // the archive bytes now live in the stream
+
+ms.rewind();
+zipfile = zip.open(ms.readAll()); // reopen the bytes as a Buffer source
+console.log(zipfile.namelist().join(', ')); // mem.txt
+console.log(zipfile.read('mem.txt').toString()); // kept in memory
+zipfile.close();
+ms.close();
+```
+
+Example 3 — mount an archive as a virtual file system:
+
+```JavaScript
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+const zip = require('zip');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-zip-'));
+const file = path.join(dir, 'app.zip');
+
+let zipfile = zip.open(file, 'w');
+zipfile.write(Buffer.from('{"name":"fibjs"}'), 'config/app.json');
+zipfile.close();
+
+// mount the archive under a virtual name and read it through the "$" suffix
+fs.setZipFS('app.zip', fs.readFileSync(file));
+console.log(fs.readFile('app.zip$/config/app.json', 'utf8')); // {"name":"fibjs"}
+console.log(fs.stat('app.zip$/config/app.json').size); // 16
+fs.clearZipFS('app.zip');
+
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
+```
+
+Notes:
+
+- An archive appended after other data is recognized as well, which is how a packed executable
+  can serve its embedded archive at `[process.execPath](process.md#execPath) + '$/...'`.
+- The returned [ZipFile](../../object/ifs/ZipFile.md) is only valid until `close()`; operations on a closed or wrongly opened
+  [object](../../object/ifs/object.md) throw `[ZipFile](../../object/ifs/ZipFile.md): file is closed.` (see the [ZipFile](../../object/ifs/ZipFile.md) interface for the entry API).
+
+## Static Methods
         
 ### isZipFile
-**判断文件是否是zip格式**
+**Determines whether a file is in zip format**
 
 ```JavaScript
 static Boolean zip.isZipFile(String filename) async;
 ```
 
-调用参数:
-* filename: String, 文件名
+Parameters:
+* filename: String, file name
 
-返回结果:
-* Boolean, 返回true代表文件是zip文件
+Returns:
+* Boolean, returns true if the file is a zip file
+
+The file is probed with the zip reader, so a missing file, a directory, an empty file or any
+other non-archive data simply returns false instead of throwing. Data appended after a zip
+stream is found as well, because the reader scans for the end-of-central-directory record.
+
+Example — probe a real archive and a text file:
+
+```JavaScript
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+const zip = require('zip');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-zip-'));
+
+const archive = path.join(dir, 'a.zip');
+let zipfile = zip.open(archive, 'w');
+zipfile.write(Buffer.from('data'), 'data.txt');
+zipfile.close();
+
+const text = path.join(dir, 'a.txt');
+fs.writeFileSync(text, 'not an archive');
+
+console.log(zip.isZipFile(archive)); // true
+console.log(zip.isZipFile(text)); // false
+console.log(zip.isZipFile(path.join(dir, 'missing.zip'))); // false
+
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
+```
 
 --------------------------
 ### open
-**打开一个zip文件**
+**Opens a zip file**
 
 ```JavaScript
-static ZipFile zip.open(String path,
+static ZipFile zip.open(Buffer | SeekableStream | String data,
     String mod = "r",
     String codec = "utf8") async;
 ```
 
-调用参数:
-* path: String, 文件路径
-* mod: String, 打开文件模式, "r"代表读取, "w"代表创建, "a"代表在zip文件后追加
-* codec: String, 设置 zip 文件编码方式，缺省为 "utf8"
+Parameters:
+* data: [Buffer](../../object/ifs/Buffer.md) | [SeekableStream](../../object/ifs/SeekableStream.md) | String, the zip file: a [path](path.md), a [Buffer](../../object/ifs/Buffer.md) or a [SeekableStream](../../object/ifs/SeekableStream.md)
+* mod: String, open mode, "r" for reading, "w" for creating, "a" for appending after the zip file
+* codec: String, sets the [encoding](encoding.md) of the zip file, default "utf8"
 
-返回结果:
-* [ZipFile](../../object/ifs/ZipFile.md), 返回zip文件对象
+Returns:
+* [ZipFile](../../object/ifs/ZipFile.md), returns the zip file [object](../../object/ifs/object.md)
 
---------------------------
-**打开一个zip文件**
+data may be the [path](path.md) of the archive, the archive bytes as a [Buffer](../../object/ifs/Buffer.md), or a [SeekableStream](../../object/ifs/SeekableStream.md)
+(for example the result of `fs.openFile` on a file). Reading works on all three sources;
+writing ("w"/"a") needs a [path](path.md) or a writable stream, because the bytes written to a [Buffer](../../object/ifs/Buffer.md)
+source cannot be read back.
+
+mod selects the mode: "r" reads an existing archive (the default), "w" creates or truncates
+the target, and "a"/"a+" appends new entries to an existing archive, throwing
+`[ZipFile](../../object/ifs/ZipFile.md): zip file not exists!` if the target is missing. Any other mode returns an [object](../../object/ifs/object.md)
+whose operations fail with `[ZipFile](../../object/ifs/ZipFile.md): file is closed.`; a missing file in "r" mode reports
+ENOENT.
+
+codec is the character set used to decode entry names while reading and to encode them while
+writing (default "utf8"); an unknown codec throws `[encoding](encoding.md): Unknown charset`.
+
+The returned [ZipFile](../../object/ifs/ZipFile.md) lives until `ZipFile.close()`, which also writes the central directory
+that makes the new entries visible to other readers.
+
+Example — create, append and read an archive:
 
 ```JavaScript
-static ZipFile zip.open(Buffer data,
-    String mod = "r",
-    String codec = "utf8") async;
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+const zip = require('zip');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-zip-'));
+const file = path.join(dir, 'log.zip');
+
+let zipfile = zip.open(file, 'w');
+zipfile.write(Buffer.from('first'), 'first.txt');
+zipfile.close();
+
+zipfile = zip.open(file, 'a'); // append to the existing archive
+zipfile.write(Buffer.from('second'), 'second.txt');
+zipfile.close();
+
+zipfile = zip.open(file); // "r" is the default
+console.log(zipfile.namelist().join(', ')); // first.txt, second.txt
+console.log(zipfile.read('second.txt').toString()); // second
+zipfile.close();
+
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
 ```
-
-调用参数:
-* data: [Buffer](../../object/ifs/Buffer.md), zip文件数据
-* mod: String, 打开文件模式, "r"代表读取, "w"代表创建, "a"代表在zip文件后追加
-* codec: String, 设置 zip 文件编码方式，缺省为 "utf8"
-
-返回结果:
-* [ZipFile](../../object/ifs/ZipFile.md), 返回zip文件对象
-
---------------------------
-**打开一个zip文件**
-
-```JavaScript
-static ZipFile zip.open(SeekableStream strm,
-    String mod = "r",
-    String codec = "utf8") async;
-```
-
-调用参数:
-* strm: [SeekableStream](../../object/ifs/SeekableStream.md), zip文件流
-* mod: String, 打开文件模式, "r"代表读取, "w"代表创建, "a"代表在zip文件后追加
-* codec: String, 设置 zip 文件编码方式，缺省为 "utf8"
-
-返回结果:
-* [ZipFile](../../object/ifs/ZipFile.md), 返回zip文件对象
 

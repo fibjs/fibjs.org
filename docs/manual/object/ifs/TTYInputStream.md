@@ -1,13 +1,101 @@
-# 对象 TTYInputStream
-[tty](../../module/ifs/tty.md) 读流对象, 用于对 [tty](../../module/ifs/tty.md) 进行读取, 写入
+# Object TTYInputStream
+The readable side of a terminal: reads input and switches between cooked and raw mode
 
-没有途径可以单独创建该类, 全局只有 `process.stdin` 实例
+TTYInputStream wraps a terminal descriptor. In a [process](../../module/ifs/process.md) attached to a terminal, [process.stdin](../../module/ifs/process.md#stdin) is
+an instance of this class, and any terminal descriptor or [FileHandle](FileHandle.md) can be wrapped explicitly
+with `new [tty.ReadStream](../../module/ifs/tty.md#ReadStream)(fd[, opts])`. The class extends [Stream](Stream.md), so read, readAll, close and the
+event interface behave as documented there; on top of that, isTTY and readable are always true,
+isRaw reports the mode last set through setRawMode, and `'data'` events deliver terminal input.
+
+Concepts:
+
+- **Cooked versus raw input**: in the default (cooked) mode the terminal driver buffers a line
+  until Enter, echoes it and interprets editing keys and signals (Ctrl+C sends SIGINT). Raw mode
+  disables that processing and delivers every byte immediately, which is what editors, prompts and
+  other interactive programs need; setRawMode(false) restores the default. The mode belongs to the
+  terminal device, while isRaw belongs to the stream [object](object.md) and only changes when setRawMode is
+  called on that same [object](object.md).
+- **Reading input**: subscribe to `'data'` events instead of calling read in a loop, because a
+  synchronous read waits for the terminal to produce bytes; a UTF-8 character may be split across
+  events, so use setEncoding or a decoder when that matters. A terminal keeps the [process](../../module/ifs/process.md) alive
+  while a `'data'` listener is attached.
+- **Relationship to [Stream](Stream.md)**: the underlying descriptor is the terminal device, so the stream
+  reports readable and writable true; writing sends bytes to the terminal output, which in fibjs
+  is mostly used by the child [process](../../module/ifs/process.md) interface.
+
+Obtained from:
+- `process.stdin` — when the standard input is a terminal (check process.stdin.isTTY);
+- `new [tty.ReadStream](../../module/ifs/tty.md#ReadStream)(fd[, opts])` — wrap any terminal descriptor or [FileHandle](FileHandle.md);
+- the standard input of a child started with `stdio: 'pty'`, or of a [process](../../module/ifs/process.md) attached to another
+  pseudo terminal.
+
+Example 1 — read input from a child attached to a pseudo terminal:
 
 ```JavaScript
-process.stdin.read(1)
+const child_process = require('child_process');
+const io = require('io');
+
+// The child enables raw mode and reports every chunk the parent sends it.
+const code = [
+    'process.stdin.setRawMode(true);',
+    'process.stdout.write("raw: " + process.stdin.isRaw + "\\n");',
+    'process.stdin.on("data", (chunk) => {',
+    '    process.stdout.write("got: " + chunk.toString().trim() + "\\n");',
+    '    process.exit(0);',
+    '});'
+].join('\n');
+
+const bs = child_process.spawn(process.execPath, ['-e', code], {
+    stdio: 'pty'
+});
+const reader = new io.BufferedStream(bs.stdout);
+
+console.log(reader.readLine()); // raw: true
+bs.stdin.write('ping\n');
+console.log(reader.readLine()); // got: ping
+bs.join();
 ```
 
-## 继承关系
+Example 2 — feature detection when stdin is not a terminal:
+
+```JavaScript
+// A piped stdin is a plain Stream: isTTY is undefined and setRawMode does
+// not exist, so interactive code must check first.
+if (process.stdin.isTTY) {
+    process.stdin.setRawMode(true);
+    console.log('raw mode enabled');
+    process.stdin.setRawMode(false);
+} else {
+    console.log('stdin is not a TTY; raw mode is not available');
+}
+```
+
+Example 3 — follow the raw-mode flag:
+
+```JavaScript
+const child_process = require('child_process');
+const io = require('io');
+
+// isRaw starts false, follows setRawMode and belongs to the stream object.
+const code = [
+    'process.stdout.write("before: " + process.stdin.isRaw + "\\n");',
+    'process.stdin.setRawMode(true);',
+    'process.stdout.write("after: " + process.stdin.isRaw + "\\n");',
+    'process.stdin.setRawMode(false);',
+    'process.stdout.write("restored: " + process.stdin.isRaw + "\\n");'
+].join('\n');
+
+const bs = child_process.spawn(process.execPath, ['-e', code], {
+    stdio: 'pty'
+});
+const reader = new io.BufferedStream(bs.stdout);
+console.log(reader.readLine()); // before: false
+console.log(reader.readLine()); // after: true
+console.log(reader.readLine()); // restored: false
+bs.join();
+```
+
+## Inheritance
 ```dot
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
@@ -23,54 +111,88 @@ digraph {
 }
 ```
 
-## 构造函数
+## Constructors
         
 ### TTYInputStream
-**创建一个新的 TTYInputStream 对象, 参数 fd 指定底层的文件描述符**
+**Creates a TTYInputStream wrapping a terminal descriptor**
 
 ```JavaScript
-new TTYInputStream(Integer fd,
+new TTYInputStream(Integer | FileHandle fd,
     Object opts = {});
 ```
 
-调用参数:
-* fd: Integer, 指定底层的文件描述符, 该描述符必须是一个 [tty](../../module/ifs/tty.md) 设备
-* opts: Object, 传递给 [Stream](Stream.md) 构造函数的选项对象
+Parameters:
+* fd: Integer | [FileHandle](FileHandle.md), the file descriptor; an integer descriptor or a [FileHandle](FileHandle.md) [object](object.md)
+* opts: Object, options [object](object.md), accepted for compatibility and ignored
 
---------------------------
-**创建一个新的 TTYInputStream 对象, 参数 fd 指定底层的文件对象**
+The descriptor must already be a terminal: any other descriptor (a pipe, a file, a closed
+[FileHandle](FileHandle.md)) throws `TypeError: fd N is not a TTY.` ([20004]), and a negative descriptor
+throws [20009]. A [FileHandle](FileHandle.md), a numeric string and a fractional number are accepted (the
+last two are coerced to an integer descriptor), and the direction of the descriptor is not
+checked, so a terminal descriptor opened for output can be wrapped as well.
+
+opts is accepted for interface compatibility and ignored: it is not forwarded to the [Stream](Stream.md)
+base. Node.js passes its options to [net.Socket](../../module/ifs/net.md#Socket) instead and fails only when the terminal
+cannot be initialized at all.
+
+Example — wrap descriptor 0 inside a pty child:
 
 ```JavaScript
-new TTYInputStream(FileHandle fd,
-    Object opts = {});
+const child_process = require('child_process');
+const io = require('io');
+
+const code = [
+    'const tty = require("tty");',
+    'const stm = new tty.ReadStream(0);',
+    'process.stdout.write("isTTY: " + stm.isTTY + "\\n");'
+].join('\n');
+
+const bs = child_process.spawn(process.execPath, ['-e', code], {
+    stdio: 'pty'
+});
+console.log(new io.BufferedStream(bs.stdout).readLine()); // isTTY: true
+bs.join();
 ```
 
-调用参数:
-* fd: [FileHandle](FileHandle.md), 指定底层的文件对象, 该文件对象必须是一个 [tty](../../module/ifs/tty.md) 设备
-* opts: Object, 传递给 [Stream](Stream.md) 构造函数的选项对象
-
-## 静态函数
+## Static Methods
         
 ### addAbortListener
-**监听一个 [AbortSignal](AbortSignal.md) 的 abort 事件，返回一个可释放的对象**
+**Registers a one-shot abort handler on an [AbortSignal](AbortSignal.md)**
 
 ```JavaScript
 static Object TTYInputStream.addAbortListener(EventEmitter signal,
-    Function func);
+    Function(Object ev) func);
 ```
 
-调用参数:
-* signal: [EventEmitter](EventEmitter.md), 要监听的 [AbortSignal](AbortSignal.md) 对象
-* func: Function, abort 事件的处理函数
+Parameters:
+* signal: [EventEmitter](EventEmitter.md), the [AbortSignal](AbortSignal.md) [object](object.md) to listen to
+* func: Function(Object ev), the handler for the abort event
 
-返回结果:
-* Object, 返回一个包含 `[Symbol.dispose]` 方法的 Disposable 对象
+Returns:
+* Object, returns a Disposable [object](object.md) containing a `[Symbol.dispose]` method
 
-返回的对象包含 `[Symbol.dispose]()` 方法，调用后将移除监听器。如果信号已中止，则监听器会被立即调用。
+The handler is called at most once when the signal is aborted, and it is removed from the
+signal afterwards. If the signal is already aborted the handler is invoked synchronously.
+The returned [object](object.md) has a `[Symbol.dispose]()` method that removes the handler, so it can be
+released before the abort happens.
+
+Example — abort handling with automatic cleanup:
+
+```JavaScript
+const events = require('events');
+
+const controller = new AbortController();
+const disposable = events.addAbortListener(controller.signal,
+    () => console.log('aborted'));
+
+controller.abort(); // aborted
+disposable[Symbol.dispose](); // safe to call after the listener fired
+console.log(controller.signal.listenerCount('abort')); // 0
+```
 
 --------------------------
 ### once
-**创建一个 Promise，等待指定事件触发一次后解析**
+**Creates a Promise resolved by the next occurrence of an event**
 
 ```JavaScript
 static Object TTYInputStream.once(EventEmitter emitter,
@@ -78,22 +200,44 @@ static Object TTYInputStream.once(EventEmitter emitter,
     Object options = {});
 ```
 
-调用参数:
-* emitter: [EventEmitter](EventEmitter.md), 要监听的事件触发器对象
-* ev: Value, 指定事件的名称
-* options: Object, 可选参数对象
+Parameters:
+* emitter: [EventEmitter](EventEmitter.md), the event emitter [object](object.md) to listen to
+* ev: Value, the event name to listen for
+* options: Object, optional parameter [object](object.md)
 
-返回结果:
-* Object, 返回 Promise，以事件参数数组解析
+Returns:
+* Object, returns a Promise that resolves with the array of event parameters
 
-返回一个 Promise，当目标事件触发时以事件参数数组解析。如果在此期间触发 'error' 事件（且监听的不是 'error' 事件本身），Promise 将被拒绝。
+The Promise resolves with the array of the emit arguments when the event fires; it rejects
+when `error` is emitted while waiting, unless the waited event is `error` itself, or when
+the signal option aborts. The temporary listeners are removed when the Promise settles.
 
-options 参数可包含：
-- signal: [AbortSignal](AbortSignal.md)，用于取消等待
+options supports the following option:
+
+```JavaScript
+// fragment: options
+({
+    "signal": null // AbortSignal; aborting rejects the Promise with an AbortError
+});
+```
+
+Example — awaiting the next occurrence of an event:
+
+```JavaScript
+const EventEmitter = require('events');
+
+(async () => {
+    const emitter = new EventEmitter();
+    const waiting = EventEmitter.once(emitter, 'ready');
+
+    emitter.emit('ready', 200, 'ok');
+    console.log(JSON.stringify(await waiting)); // [200,"ok"]
+})();
+```
 
 --------------------------
 ### on
-**创建一个异步迭代器，持续监听指定事件**
+**Creates an async iterator that yields event occurrences**
 
 ```JavaScript
 static Object TTYInputStream.on(EventEmitter emitter,
@@ -101,847 +245,1495 @@ static Object TTYInputStream.on(EventEmitter emitter,
     Object options = {});
 ```
 
-调用参数:
-* emitter: [EventEmitter](EventEmitter.md), 要监听的事件触发器对象
-* ev: Value, 指定事件的名称
-* options: Object, 可选参数对象
+Parameters:
+* emitter: [EventEmitter](EventEmitter.md), the event emitter [object](object.md) to listen to
+* ev: Value, the event name to listen for
+* options: Object, optional parameter [object](object.md)
 
-返回结果:
-* Object, 返回 AsyncIterator 对象
+Returns:
+* Object, returns an AsyncIterator [object](object.md)
 
-返回一个 AsyncIterator，每次事件触发时产出事件参数数组。如果触发 'error' 事件，迭代器将抛出错误。
+Each next() resolves with `{ value: [args...], done: false }` when the event fires and with
+`{ done: true }` after an event named in the `close` option fires or the signal aborts; an
+`error` event rejects the pending call. The listeners are registered when the iterator is
+created and removed when the iteration ends or the signal aborts.
 
-options 参数可包含：
-- signal: [AbortSignal](AbortSignal.md)，用于取消迭代
-- close: 字符串数组，指定结束迭代的事件名称
+options supports the following options:
 
-## 静态属性
+```JavaScript
+// fragment: options
+({
+    "signal": null, // AbortSignal; aborting rejects pending and future next() calls
+    "close": [] // event names; the first one to fire ends the iteration
+});
+```
+
+Example — iterating the occurrences of an event:
+
+```JavaScript
+const EventEmitter = require('events');
+
+(async () => {
+    const emitter = new EventEmitter();
+    const iterator = EventEmitter.on(emitter, 'data', {
+        close: ['end']
+    });
+
+    emitter.emit('data', 1);
+    emitter.emit('data', 2);
+    emitter.emit('end');
+
+    for await (const args of iterator)
+    console.log(JSON.stringify(args)); // [1] then [2]
+})();
+```
+
+## Static Properties
         
 ### defaultMaxListeners
-**Integer, 默认全局最大监听器数**
+**Integer, The [process](../../module/ifs/process.md)-wide default listener limit reported by getMaxListeners()**
 
 ```JavaScript
 static Integer TTYInputStream.defaultMaxListeners;
 ```
 
-## 成员属性
+Defaults to 10. Assigning a value changes getMaxListeners() for every emitter that never
+called setMaxListeners(); an emitter with an explicit limit keeps it. The limit is
+informational: fibjs never warns when the number of listeners exceeds it.
+
+## Properties
         
 ### isTTY
-**Boolean, 恒为 true**
+**Boolean, Always true: a TTYInputStream is only created for a terminal descriptor**
 
 ```JavaScript
 readonly Boolean TTYInputStream.isTTY;
 ```
 
+The property is fixed to true by the class; the real check happens when the stream is created.
+When stdin is a pipe or a file, [process.stdin](../../module/ifs/process.md#stdin) is a plain [Stream](Stream.md) instead and its isTTY is
+undefined, so `[process.stdin](../../module/ifs/process.md#stdin).isTTY` still tells the two situations apart. Use [tty.isatty](../../module/ifs/tty.md#isatty)(fd)
+to [test](../../module/ifs/test.md) an arbitrary descriptor.
+
 --------------------------
 ### readable
-**Boolean, 恒为 true，表示流可读**
+**Boolean, Always true: the stream is readable**
 
 ```JavaScript
 readonly Boolean TTYInputStream.readable;
 ```
 
+The property is fixed to true by the class, matching Node.js. The stream also reports writable
+true, because it wraps the terminal device itself; the inherited read, readAll and close
+members operate on that device, while interactive input is normally consumed through `'data'`
+events (see the class description).
+
 --------------------------
 ### isRaw
-**Boolean, 查询是否是处于 raw mode, 为 true 时, 表示 [tty](../../module/ifs/tty.md) 被配置为以 raw device 操作时**
+**Boolean, Whether raw mode was enabled through setRawMode on this [object](object.md)**
 
 ```JavaScript
 readonly Boolean TTYInputStream.isRaw;
 ```
 
+It starts false on every new stream [object](object.md), even when the terminal device is already in raw
+mode because another stream set it, and it follows the last setRawMode call made on the same
+[object](object.md). Node.js has the same per-[object](object.md) semantics and additionally exposes the resulting mode
+as `rawMode`.
+
 --------------------------
 ### fd
-**Integer, 查询 [Stream](Stream.md) 对应的文件描述符值, 由子类实现**
+**Integer, Queries the file descriptor value of the [Stream](Stream.md)**
 
 ```JavaScript
 readonly Integer TTYInputStream.fd;
 ```
 
+Only streams backed by an operating-system handle implement it:
+[FileStream](FileStream.md) (and the streams returned by [fs.openFile](../../module/ifs/fs.md#openFile), [fs.createReadStream](../../module/ifs/fs.md#createReadStream)
+and [fs.createWriteStream](../../module/ifs/fs.md#createWriteStream)) reports the file descriptor, [net.Socket](../../module/ifs/net.md#Socket) and
+[TLSSocket](TLSSocket.md) the socket descriptor and the [process](../../module/ifs/process.md) standard streams 0/1/2.
+Streams without a handle ([MemoryStream](MemoryStream.md), [RangeStream](RangeStream.md), [BufferedStream](BufferedStream.md)) throw
+[20009] when the property is read. Node.js exposes `fd` on file streams
+only and returns undefined elsewhere.
+
 --------------------------
 ### writable
-**Boolean, 查询流是否可写**
+**Boolean, Queries whether the stream is writable**
 
 ```JavaScript
 readonly Boolean TTYInputStream.writable;
 ```
 
+Kept for Node compatibility: this reports whether the stream has not
+ended, not whether the device accepts writes. It stays true after end()
+and close() and turns false only when the flowing read loop reaches the
+end of the stream or destroy() is called. Test the results of write()
+and end() and watch the events instead of relying on this flag.
+
 --------------------------
 ### _readableState
-**Object, 查询流的可读状态对象**
+**Object, Queries the readable state [object](object.md) of the stream**
 
 ```JavaScript
 readonly Object TTYInputStream._readableState;
 ```
 
+A minimal Node-compatible view: an [object](object.md) with one `ended` property that
+mirrors the internal ended flag, which becomes true when the flowing read
+loop finishes or the stream is destroyed. It is not a full Node
+ReadableState, and the other Node fields are absent.
+
 --------------------------
 ### _writableState
-**Object, 查询流的可写状态对象**
+**Object, Queries the writable state [object](object.md) of the stream**
 
 ```JavaScript
 readonly Object TTYInputStream._writableState;
 ```
 
-## 成员函数
+Compatibility stub: fibjs returns an empty [object](object.md) and keeps no Node
+WritableState. Use the return value of write() and the `drain` event for
+back pressure instead.
+
+## Methods
         
 ### setRawMode
-**设置 [tty](../../module/ifs/tty.md) 是否以 raw mode 工作**
+**Switches the terminal between raw and default (cooked) mode**
 
 ```JavaScript
 TTYInputStream TTYInputStream.setRawMode(Boolean isRawMode);
 ```
 
-调用参数:
-* isRawMode: Boolean, 为 true, 表示以 raw mode 工作; 否则以默认模式工作. `readStream.isRaw` 会受该方法设置
+Parameters:
+* isRawMode: Boolean, true enables raw mode; false restores the default mode
 
-返回结果:
-* TTYInputStream, 返回自身
+Returns:
+* TTYInputStream, returns itself
+
+In raw mode input is delivered byte by byte without line buffering or echo, and special
+characters such as Ctrl+C are no longer turned into signals; the default mode restores line
+editing, echo and signal handling. The argument is coerced with ToBoolean, so 0 and an empty
+string mean false and any other value means true; isRaw is set to the coerced value and the
+stream itself is returned, which allows chained calls. Node.js also accepts the string modes
+'raw' and '[io](../../module/ifs/io.md)' and tracks them in `rawMode`; fibjs supports only the boolean raw/normal pair.
+
+Example — chain the call and read the flag back in a pty child:
+
+```JavaScript
+const child_process = require('child_process');
+const io = require('io');
+
+const code = [
+    'const stm = process.stdin;',
+    'stm.setRawMode(true).setRawMode(false);',
+    'process.stdout.write("isRaw: " + stm.isRaw + "\\n");'
+].join('\n');
+
+const bs = child_process.spawn(process.execPath, ['-e', code], {
+    stdio: 'pty'
+});
+console.log(new io.BufferedStream(bs.stdout).readLine()); // isRaw: false
+bs.join();
+```
 
 --------------------------
 ### read
-**从流内读取指定大小的数据**
+**Reads data of the specified size from the stream**
 
 ```JavaScript
 Variant TTYInputStream.read(Integer bytes = -1) async;
 ```
 
-调用参数:
-* bytes: Integer, 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备
+Parameters:
+* bytes: Integer, the amount of data to read; by default one chunk sized by the device
 
-返回结果:
-* Variant, 返回从流内读取的数据。若设置了编码则返回字符串，否则返回 [Buffer](Buffer.md)。若无数据可读，或者连接中断，则返回 null
+Returns:
+* Variant, the data read from the stream; a string when an [encoding](../../module/ifs/encoding.md) is set,
+
+In pull mode (no data/readable listener and no resume) the call asks the
+device for one chunk: file and socket streams wait until `bytes` bytes are
+available or the stream ends, while [MemoryStream](MemoryStream.md) returns the bytes it holds
+(fewer than `bytes` is possible) without blocking. In flowing mode the data
+has already been read ahead, so the call returns from the internal queue:
+with `bytes` <= 0 all buffered data is merged into one [Buffer](Buffer.md), with
+`bytes` > 0 exactly `bytes` are required, otherwise null. The result is a
+[Buffer](Buffer.md), or a string when setEncoding was called; null is returned at the
+end of the stream, on a broken connection or when a flowing read cannot be
+satisfied. read(0) returns null. The call styles are `stm.read(4)`,
+`stm.read(4, (err, data) => {})` and `await stm.read(4)`.
+
+Example — read by size until the stream ends:
+
+```JavaScript
+const io = require('io');
+
+const stm = new io.MemoryStream();
+stm.write(Buffer.from('0123456789'));
+stm.rewind();
+
+console.log(stm.read(4).toString()); // 0123
+console.log(stm.read(4).toString()); // 4567
+console.log(stm.read(4).toString()); // 89: the stream ends first
+console.log(stm.read()); // null at the end of the stream
+```
 
 --------------------------
 ### readBuffer
-**从流内读取指定大小的数据，以 [Buffer](Buffer.md) 形式返回**
+**Reads data of the specified size from the stream, returned as a [Buffer](Buffer.md)**
 
 ```JavaScript
 Buffer TTYInputStream.readBuffer(Integer bytes = -1) async;
 ```
 
-调用参数:
-* bytes: Integer, 指定要读取的数据量，缺省为读取随机大小的数据块，读出的数据尺寸取决于设备
+Parameters:
+* bytes: Integer, the amount of data to read; by default one chunk sized by the device
 
-返回结果:
-* [Buffer](Buffer.md), 返回从流内读取的 [Buffer](Buffer.md) 数据，若无数据可读，或者连接中断，则返回 null
+Returns:
+* [Buffer](Buffer.md), returns the [Buffer](Buffer.md) data read from the stream; null when there is no data to read
+
+Identical to `read` except that the result is always a [Buffer](Buffer.md): setEncoding
+and the text decoder do not apply. Use it when the consumer needs binary
+data regardless of the stream [encoding](../../module/ifs/encoding.md).
 
 --------------------------
 ### readAll
-**从流内读取剩余的全部数据**
+**Reads all remaining data from the stream**
 
 ```JavaScript
 Buffer TTYInputStream.readAll() async;
 ```
 
-返回结果:
-* [Buffer](Buffer.md), 返回从流内读取的数据，若无数据可读，或者连接中断，则返回 null
+Returns:
+* [Buffer](Buffer.md), the data read from the stream; null when nothing was read or the
+
+Reads until the end of the stream and returns everything in one [Buffer](Buffer.md), or
+null when no byte could be read (an empty stream is already at its end).
+setEncoding is ignored. For a live socket the call waits until the peer
+closes the connection; in flowing mode the read loop is already consuming
+the device, so collect the `data` chunks instead.
+
+Example — read a whole stream and detect its end:
+
+```JavaScript
+const io = require('io');
+
+const stm = new io.MemoryStream();
+stm.write(Buffer.from('all at once'));
+stm.rewind();
+stm.setEncoding('utf8'); // readAll ignores the encoding
+
+const all = stm.readAll();
+console.log(Buffer.isBuffer(all), all.toString()); // true all at once
+console.log(stm.readAll()); // null: the stream is at its end
+```
 
 --------------------------
 ### setEncoding
-**设置流的编码方式。设置后 read() 将返回字符串而非 [Buffer](Buffer.md) 对象**
+**Sets the [encoding](../../module/ifs/encoding.md) of the stream; subsequent read() calls return strings**
 
 ```JavaScript
 Stream TTYInputStream.setEncoding(String encoding);
 ```
 
-调用参数:
-* encoding: String, 要使用的编码，如 'utf8'、'ascii'、'[hex](../../module/ifs/hex.md)' 等。传入 null 恢复为 [Buffer](Buffer.md) 模式
+Parameters:
+* encoding: String, the [encoding](../../module/ifs/encoding.md) to use, such as 'utf8', 'ascii', 'latin1' or 'utf16le'
 
-返回结果:
-* [Stream](Stream.md), 返回当前流对象
+Returns:
+* [Stream](Stream.md), returns the current stream [object](object.md)
+
+Installs a streaming decoder used by `read` and by the `data` event, so
+incomplete multi-byte sequences that straddle two chunks decode correctly.
+`readBuffer`, `readAll` and [StreamReader](StreamReader.md) keep returning Buffers. The
+decoder understands the text labels 'utf8', 'ascii', 'latin1' and
+'utf16le' (and their aliases); other names, including '[hex](../../module/ifs/hex.md)', '[base64](../../module/ifs/base64.md)' and
+'ucs2', are accepted here but decode to empty strings, and null or a
+non-string throws [20005]. Node.js rejects an unknown name with
+ERR_UNKNOWN_ENCODING. Returns the stream itself for chaining.
+
+Example — switch to text reads, then back to binary:
+
+```JavaScript
+const io = require('io');
+
+const stm = new io.MemoryStream();
+stm.write(Buffer.from('hello'));
+stm.rewind();
+stm.setEncoding('utf8');
+
+console.log(stm.read()); // hello: read returns a string
+stm.rewind();
+console.log(stm.readBuffer().toString()); // hello: readBuffer stays binary
+```
 
 --------------------------
 ### writeBuffer
-**将给定的二进制数据写入流**
+**Writes the given binary data to the stream**
 
 ```JavaScript
 TTYInputStream.writeBuffer(Buffer data) async;
 ```
 
-调用参数:
-* data: [Buffer](Buffer.md), 给定要写入的 [Buffer](Buffer.md) 数据
+Parameters:
+* data: [Buffer](Buffer.md), the [Buffer](Buffer.md) data to write
+
+Queues the buffer and returns undefined (unlike `write`, no back-pressure
+flag is reported); the direct call waits for the chunk to be written. The
+string overload encodes the text as utf8, with no [encoding](../../module/ifs/encoding.md) argument.
+
+--------------------------
+**Writes the given binary data to the stream; a string data is encoded as utf8**
+
+```JavaScript
+TTYInputStream.writeBuffer(String data) async;
+```
+
+Parameters:
+* data: String, the [Buffer](Buffer.md) data to write
+
+String form of `writeBuffer`: the text is encoded with utf8 and queued as
+binary data.
 
 --------------------------
 ### write
-**将给定的数据写入流**
+**Writes the given data to the stream**
 
 ```JavaScript
 Boolean TTYInputStream.write(Buffer data) async;
 ```
 
-调用参数:
-* data: [Buffer](Buffer.md), 给定要写入的数据
+Parameters:
+* data: [Buffer](Buffer.md), the data to write
 
-返回结果:
-* Boolean, 如果流希望调用代码在继续写入其他数据之前等待 'drain' 事件，则返回 true；否则返回 false
+Returns:
+* Boolean, false when the caller should wait for the 'drain' event before
+
+Queues the data and reports back pressure, mirroring Node.js: returns
+false when the queued bytes reach the write high-water mark (16384 bytes)
+and the caller should wait for the 'drain' event before writing more;
+returns true while the queue has room. Writes are queued in FIFO order and
+flushed one at a time. The direct call returns as soon as the chunk is
+queued, a trailing callback receives the flag as its second argument, and
+`await stm.write(data)` resolves to it. The [encoding](../../module/ifs/encoding.md) argument of the
+[Buffer](Buffer.md) overload is ignored.
+
+Example — stop writing when the queue is full and wait for drain:
+
+```JavaScript
+const io = require('io');
+const coroutine = require('coroutine');
+
+const stm = new io.MemoryStream();
+const full = stm.write(Buffer.alloc(16384)); // false: wait for 'drain'
+let drained = false;
+stm.on('drain', () => {
+    drained = true;
+});
+coroutine.sleep(20);
+
+console.log(full, drained, stm.write('more')); // false true true
+```
 
 --------------------------
-**将给定的数据写入流**
+**Writes the given data to the stream**
 
 ```JavaScript
 Boolean TTYInputStream.write(Buffer data,
     String encoding) async;
 ```
 
-调用参数:
-* data: [Buffer](Buffer.md), 给定要写入的数据
-* encoding: String, 指定的编码方式，因为 data 为 [Buffer](Buffer.md) 类型，此参数将被忽略
+Parameters:
+* data: [Buffer](Buffer.md), the data to write
+* encoding: String, the [encoding](../../module/ifs/encoding.md); this parameter is ignored because data is of type [Buffer](Buffer.md)
 
-返回结果:
-* Boolean, 如果流希望调用代码在继续写入其他数据之前等待 'drain' 事件，则返回 true；否则返回 false
+Returns:
+* Boolean, false when the caller should wait for the 'drain' event before
+
+[Buffer](Buffer.md) overload kept for Node compatibility: the [encoding](../../module/ifs/encoding.md) argument is
+accepted and ignored, because [Buffer](Buffer.md) data is already binary.
 
 --------------------------
-**将给定的字符串写入流**
+**Writes the given string to the stream**
 
 ```JavaScript
 Boolean TTYInputStream.write(String data,
     String encoding = "utf8") async;
 ```
 
-调用参数:
-* data: String, 给定要写入的字符串数据
-* encoding: String, 指定字符串的编码方式，缺省为 "utf8"
+Parameters:
+* data: String, the string data to write
+* encoding: String, the [encoding](../../module/ifs/encoding.md) of the string, default is "utf8"
 
-返回结果:
-* Boolean, 如果流希望调用代码在继续写入其他数据之前等待 'drain' 事件，则返回 true；否则返回 false
+Returns:
+* Boolean, false when the caller should wait for the 'drain' event before
+
+Encodes the text with the given [encoding](../../module/ifs/encoding.md) (utf8 by default) and applies the
+same queue and back-pressure rules as the [Buffer](Buffer.md) overload.
 
 --------------------------
 ### resume
-**将流切换到流动读取模式。在 fibjs 下，切换到流动读取模式是不可逆的，不能再切换回非流动读取模式。**
+**Switches the stream to flowing read mode**
 
 ```JavaScript
 Stream TTYInputStream.resume();
 ```
 
-返回结果:
-* [Stream](Stream.md), 返回当前流对象
+Returns:
+* [Stream](Stream.md), returns the current stream [object](object.md)
+
+Starts the internal read loop: chunks are emitted through the `data`
+event, or buffered and announced through `readable`. The switch is
+permanent — pause() stops delivery, but the stream never returns to pull
+mode. Registering a data/readable listener starts the loop as well, so
+resume is only needed to restart delivery after pause. Returns the stream
+itself.
 
 --------------------------
 ### pause
-**暂停流的自动读取模式。此方法仅为兼容，目前调用此方法不会有任何效果**
+**Pauses the automatic read mode of the stream**
 
 ```JavaScript
 Stream TTYInputStream.pause();
 ```
 
-返回结果:
-* [Stream](Stream.md), 返回当前流对象
+Returns:
+* [Stream](Stream.md), returns the current stream [object](object.md)
+
+Stops the flowing read loop after the current chunk: no further `data` or
+`readable` events are delivered until resume(). Data already buffered is
+kept. It has no effect in pull mode (before resume or a data/readable
+listener) and does not undo flowing mode. Returns the stream itself.
+Node.js pauses in the same way but exposes the state through isPaused().
 
 --------------------------
 ### pipe
-**将流数据管道传输到目标流。数据通过事件驱动方式从源流传输到目标流，支持背压控制**
+**Pipes stream data to the destination stream**
 
 ```JavaScript
 Value TTYInputStream.pipe(Value destination,
     Object options = {});
 ```
 
-调用参数:
-* destination: Value, 目标流对象
-* options: Object, 管道选项，可选
+Parameters:
+* destination: Value, the destination stream [object](object.md)
+* options: Object, pipe options, optional; only `end` is read (default true,
 
-返回结果:
-* Value, 返回目标流对象，支持链式调用
+Returns:
+* Value, returns the destination stream [object](object.md), supporting chained calls
+
+[Event](Event.md)-driven copy with back pressure: every `data` chunk of the source is
+written to the destination; when write() reports a full queue the source
+is paused until the destination emits `drain`. At the end of the source
+the destination is ended (unless options.end is false); a source error is
+re-emitted on the destination, and a source close that is not an end
+destroys the destination. The destination receives a `pipe` event with the
+source as its argument. Only the `end` option is read; the other Node.js
+pipe options are ignored. Returns the destination for chaining, while the
+copy itself continues in the background — wait for the destination
+`finish`/`close` before reading its result. See copyTo for a bounded
+synchronous copy.
+
+Example — pipe one stream into another:
+
+```JavaScript
+const io = require('io');
+const coroutine = require('coroutine');
+
+const src = new io.MemoryStream();
+src.write(Buffer.from('piped data'));
+src.rewind();
+
+const dst = new io.MemoryStream();
+const returned = src.pipe(dst);
+coroutine.sleep(20);
+dst.rewind();
+
+console.log(returned === dst); // true: pipe returns the destination
+console.log(dst.readAll().toString()); // piped data
+```
 
 --------------------------
 ### unpipe
-**移除所有管道目标，或仅移除指定的目标。此方法仅为兼容，目前调用此方法不会有任何效果**
+**Removes all pipe destinations, or only the specified destination**
 
 ```JavaScript
 TTYInputStream.unpipe(Stream destination = NULL);
 ```
 
-调用参数:
-* destination: [Stream](Stream.md), 要取消管道的特定可写目标
+Parameters:
+* destination: [Stream](Stream.md), the specific writable destination to unpipe
+
+Compatibility no-op in fibjs: a piped copy stops by itself when the source
+ends/errors/closes or the destination closes, and there is no way to
+detach one destination from an active pipe. The argument is accepted and
+ignored; Node.js also emits an `unpipe` event, which fibjs does not.
 
 --------------------------
 ### end
-**结束流操作，可选择性地写入最后的数据**
+**Ends the stream operation**
 
 ```JavaScript
 Integer TTYInputStream.end() async;
 ```
 
-返回结果:
-* Integer, 返回一个异步对象
+Returns:
+* Integer, returns 0 after the stream has been ended
+
+Flushes the queued writes so far and closes the write side, emitting
+`finish`; when the read side has ended as well the stream closes and emits
+`close`. The direct call returns 0 after the stream has been ended, the
+callback form receives null as its error argument, and `await stm.end()`
+resolves to the same 0. Writing after end is not meaningful, because the
+stream is being closed. The end(data) and end(data, [encoding](../../module/ifs/encoding.md)) overloads
+write one last chunk, utf8 encoded by default, before the same shutdown.
+
+Example — end a write stream and observe its events:
+
+```JavaScript
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-end-'));
+const file = path.join(dir, 'out.txt');
+
+const stm = fs.createWriteStream(file);
+const events = [];
+stm.on('finish', () => events.push('finish'));
+stm.on('close', () => events.push('close'));
+stm.end('final data');
+
+console.log(events.join(',')); // finish,close
+console.log(fs.readFile(file, 'utf8')); // final data
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
+```
 
 --------------------------
-**将给定的文件缓冲区写入流并结束流操作**
+**Writes the given file buffer to the stream and ends the stream operation**
 
 ```JavaScript
 Integer TTYInputStream.end(Buffer data) async;
 ```
 
-调用参数:
-* data: [Buffer](Buffer.md), 给定要写入的文件缓冲区数据
+Parameters:
+* data: [Buffer](Buffer.md), the file buffer data to write
 
-返回结果:
-* Integer, 返回一个异步对象
+Returns:
+* Integer, returns 0 after the stream has been ended
+
+Writes the buffer as the final chunk and then ends the stream, with the
+same events and return value as `end()`.
 
 --------------------------
-**将给定的文件缓冲区写入流并结束流操作**
+**Writes the given file buffer to the stream and ends the stream operation**
 
 ```JavaScript
 Integer TTYInputStream.end(Buffer data,
     String encoding) async;
 ```
 
-调用参数:
-* data: [Buffer](Buffer.md), 给定要写入的文件缓冲区数据
-* encoding: String, 指定的编码方式，因为 data 为 [Buffer](Buffer.md) 类型，此参数将被忽略
+Parameters:
+* data: [Buffer](Buffer.md), the file buffer data to write
+* encoding: String, the [encoding](../../module/ifs/encoding.md); this parameter is ignored because data is of type [Buffer](Buffer.md)
 
-返回结果:
-* Integer, 返回一个异步对象
+Returns:
+* Integer, returns 0 after the stream has been ended
+
+[Buffer](Buffer.md) overload kept for Node compatibility: the [encoding](../../module/ifs/encoding.md) argument is
+accepted and ignored.
 
 --------------------------
-**将给定的字符串写入流并结束流操作**
+**Writes the given string to the stream and ends the stream operation**
 
 ```JavaScript
 Integer TTYInputStream.end(String data,
     String encoding = "utf8") async;
 ```
 
-调用参数:
-* data: String, 给定要写入的字符串数据
-* encoding: String, 指定字符串的编码方式，缺省为 "utf8"
+Parameters:
+* data: String, the string data to write
+* encoding: String, the [encoding](../../module/ifs/encoding.md) of the string, default is "utf8"
 
-返回结果:
-* Integer, 返回一个异步对象
+Returns:
+* Integer, returns 0 after the stream has been ended
+
+Encodes the text with the given [encoding](../../module/ifs/encoding.md) (utf8 by default), writes it as
+the final chunk and then ends the stream.
 
 --------------------------
 ### flush
-**将文件缓冲区内容写入物理设备**
+**Writes the file buffer content to the physical device**
 
 ```JavaScript
 TTYInputStream.flush() async;
 ```
 
+Compatibility call: [MemoryStream](MemoryStream.md) and [Socket](Socket.md) return immediately, and for a
+[FileStream](FileStream.md) the implementation only checks that the handle is still open
+(the underlying fflush is disabled), so it does not force data to disk.
+Buffered transports such as the [process](../../module/ifs/process.md) standard streams wait for their
+queued writes to be handed to the device. On a file stream whose handle is
+already closed it throws [20009] with "[FileStream](FileStream.md): file is closed.".
+
 --------------------------
 ### close
-**关闭当前流对象**
+**Closes the current stream [object](object.md)**
 
 ```JavaScript
 TTYInputStream.close() async;
 ```
 
+Releases the operating-system handle or the transport. A successful call
+does not emit 'close' by itself: the event comes from the auto-close after
+the read flow ends, from destroy() or from the runtime. Reading or writing
+a stream backed by a closed handle throws [20009]; [MemoryStream](MemoryStream.md) and
+[Socket](Socket.md) tolerate a second close(), while a [FileStream](FileStream.md) rejects later
+operations.
+
 --------------------------
 ### copyTo
-**复制流数据到目标流中**
+**Copies stream data to the destination stream**
 
 ```JavaScript
 Long TTYInputStream.copyTo(Stream stm,
     Long bytes = -1) async;
 ```
 
-调用参数:
-* stm: [Stream](Stream.md), 目标流对象
-* bytes: Long, 复制的字节数
+Parameters:
+* stm: [Stream](Stream.md), the destination stream [object](object.md)
+* bytes: Long, the number of bytes to copy
 
-返回结果:
-* Long, 返回复制的字节数
+Returns:
+* Long, returns the number of bytes copied
+
+Copies at most `bytes` bytes (all remaining data by default) and returns
+the number of bytes actually copied; a count of 0 copies nothing. The copy
+runs in the current fiber and waits for the source to end when `bytes` is
+-1, which makes it a simple way to move a whole stream. The destination is
+not closed at the end (call end/close yourself), and a closed source or
+destination throws [20009]. Node.js has no direct equivalent; use pipe or
+stream.pipeline for the event-driven form.
+
+Example — copy the first four bytes into another stream:
+
+```JavaScript
+const io = require('io');
+
+const src = new io.MemoryStream();
+src.write(Buffer.from('0123456789'));
+src.rewind();
+
+const dst = new io.MemoryStream();
+console.log(src.copyTo(dst, 4)); // 4
+dst.rewind();
+console.log(dst.readAll().toString()); // 0123
+```
 
 --------------------------
 ### getReader
-**获取流的读取器，兼容 WHATWG ReadableStreamDefaultReader 接口**
+**Gets a reader for the stream, compatible with ReadableStreamDefaultReader**
 
 ```JavaScript
 StreamReader TTYInputStream.getReader();
 ```
 
-返回结果:
-* [StreamReader](StreamReader.md), 返回 [StreamReader](StreamReader.md) 对象
+Returns:
+* [StreamReader](StreamReader.md), returns a [StreamReader](StreamReader.md) [object](object.md)
+
+Returns a new [StreamReader](StreamReader.md) that pulls chunks with read(). Each call creates
+an independent reader; fibjs does not enforce the single-reader lock of
+the Web Streams API, so coordinate access yourself. Creating a reader does
+not switch the stream to flowing mode. See [StreamReader](StreamReader.md) for the reader
+lifecycle.
+
+Example — pull the chunks of a stream with a reader:
+
+```JavaScript
+const io = require('io');
+
+(async () => {
+    const stm = new io.MemoryStream();
+    stm.write(Buffer.from('chunk'));
+    stm.rewind();
+
+    const reader = stm.getReader();
+    console.log((await reader.read()).value.toString()); // chunk
+    console.log((await reader.read()).done); // true
+})();
+```
 
 --------------------------
 ### ref
-**维持 fibjs 进程不退出，在对象绑定期间阻止 fibjs 进程退出**
+**Keeps the fibjs [process](../../module/ifs/process.md) alive, preventing it from exiting while the [object](object.md) is bound**
 
 ```JavaScript
 Stream TTYInputStream.ref();
 ```
 
-返回结果:
-* [Stream](Stream.md), 返回当前对象
+Returns:
+* [Stream](Stream.md), returns the current [object](object.md)
+
+The runtime references the isolate while a stream reader is active; unref
+(or pause) allows the [process](../../module/ifs/process.md) to exit even when the stream has pending
+work. Returns the stream itself for chaining.
 
 --------------------------
 ### unref
-**允许 fibjs 进程退出，在对象绑定期间允许 fibjs 进程退出**
+**Allows the fibjs [process](../../module/ifs/process.md) to exit while the [object](object.md) is bound**
 
 ```JavaScript
 Stream TTYInputStream.unref();
 ```
 
-返回结果:
-* [Stream](Stream.md), 返回当前对象
+Returns:
+* [Stream](Stream.md), returns the current [object](object.md)
+
+Counterpart of ref: drops the [process](../../module/ifs/process.md)-liveness reference held by the
+stream. The data flow is not stopped; it just no longer prevents the
+[process](../../module/ifs/process.md) from exiting. Returns the stream itself for chaining.
 
 --------------------------
 ### destroy
-**销毁流。可选地触发 'error' 事件，并触发 'close' 事件。**
+**Destroys the stream. Optionally emits the 'error' event and emits the 'close' event.**
 
 ```JavaScript
 Stream TTYInputStream.destroy(Value err = undefined) async;
 ```
 
-调用参数:
-* err: Value, 可选的错误对象，将作为 'error' 事件触发
+Parameters:
+* err: Value, optional error [object](object.md), emitted as the 'error' event
 
-返回结果:
-* [Stream](Stream.md), 返回当前对象
+Returns:
+* [Stream](Stream.md), returns the current [object](object.md)
 
-调用后，流将不再可用。
+Marks the stream unusable, emits 'error' with the supplied value when err
+is not null/undefined, then closes the stream and emits 'close'. It is
+idempotent: destroying an already destroyed stream is a no-op. Concrete
+classes react differently afterwards — [MemoryStream](MemoryStream.md) keeps buffered data
+readable, a [FileStream](FileStream.md) rejects later operations with [20009] — so do not
+use a destroyed stream.
+
+Example — destroy with an error and watch the events:
+
+```JavaScript
+const io = require('io');
+const coroutine = require('coroutine');
+
+const stm = new io.MemoryStream();
+stm.write(Buffer.from('data'));
+stm.rewind();
+stm.on('error', (err) => console.log('error:', err.message)); // error: broken
+stm.on('close', () => console.log('closed')); // closed
+
+stm.destroy(new Error('broken'));
+coroutine.sleep(20);
+```
 
 --------------------------
 ### on
-**绑定一个事件处理函数到对象**
+**Appends an event handler to the emitter**
 
 ```JavaScript
 Object TTYInputStream.on(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to bind
+* func: Function(...args), the event handler function, called with the emit arguments
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+The listener is called with the arguments of emit() and `this` set to the emitter; the
+emitter itself is returned so registrations can be chained. The same function may be
+registered several times for one event and each copy is called. See the class documentation
+for the dispatch order.
 
 --------------------------
-**绑定一个事件处理函数到对象**
+**Appends several event handlers to the emitter**
 
 ```JavaScript
 Object TTYInputStream.on(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Every enumerable property of the map whose value is a function is registered under its
+property name. Properties are processed in order; a value that is not a function makes the
+call fail with an invalid-type error while entries processed before it stay registered.
+
+Example — registering several handlers at once:
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+emitter.on({
+    connect: () => console.log('connect'),
+    close: () => console.log('close')
+});
+
+emitter.emit('connect'); // connect
+emitter.emit('close'); // close
+```
 
 --------------------------
 ### addListener
-**绑定一个事件处理函数到对象**
+**Appends an event handler to the emitter**
 
 ```JavaScript
 Object TTYInputStream.addListener(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to bind
+* func: Function(...args), the event handler function
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Alias of on(ev, func), provided for Node.js compatibility.
 
 --------------------------
-**绑定一个事件处理函数到对象**
+**Appends several event handlers to the emitter**
 
 ```JavaScript
 Object TTYInputStream.addListener(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Alias of on(map), provided for Node.js compatibility.
 
 --------------------------
 ### addEventListener
-**绑定一个事件处理函数到对象**
+**Appends an event handler to the emitter with an options [object](object.md)**
 
 ```JavaScript
 Object TTYInputStream.addEventListener(Value ev,
-    Function func,
+    Function(...args) func,
     Object options = {});
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
-* options: Object, 指定事件处理函数的选项
+Parameters:
+* ev: Value, the event name to bind
+* func: Function(...args), the event handler function, called with the emit arguments
+* options: Object, the options of the event handler
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
 
-options 参数是一个对象，它可以包含以下属性：
-- once: 如果为 true，则事件处理函数只会触发一次，触发后会被移除
+Web-style alias of on(); the only supported option is `once`, which registers a one-shot
+handler exactly like once(). The listener receives the plain emit arguments and not an [Event](Event.md)
+[object](object.md); see the [DOMEvent](DOMEvent.md) class for the DOM-style event [object](object.md) used by [AbortSignal](AbortSignal.md) and
+fetch-style APIs.
+
+options supports the following option:
+
+```JavaScript
+// fragment: options
+({
+    "once": false // when true, the handler is removed before its single invocation
+});
+```
+
+Example — a one-shot DOM-style registration:
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+emitter.addEventListener('ping', () => console.log('ping'), {
+    once: true
+});
+
+emitter.emit('ping'); // ping
+console.log(emitter.emit('ping')); // false
+console.log(emitter.listenerCount('ping')); // 0
+```
 
 --------------------------
 ### prependListener
-**绑定一个事件处理函数到对象起始**
+**Inserts an event handler at the front of the queue**
 
 ```JavaScript
 Object TTYInputStream.prependListener(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to bind
+* func: Function(...args), the event handler function
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+The listener is called before the listeners registered with on()/addListener() the next time
+the event is emitted. When several prependListener() calls are made, the last one registered
+is called first, because every call inserts at the same position.
+
+Example — insertion at the front of the queue:
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+emitter.on('order', () => console.log('on'));
+emitter.prependListener('order', () => console.log('prepend'));
+
+emitter.emit('order'); // prepend, then on
+```
 
 --------------------------
-**绑定一个事件处理函数到对象起始**
+**Inserts several event handlers at the front of the queue**
 
 ```JavaScript
 Object TTYInputStream.prependListener(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Map form of prependListener(); every function property is inserted at the front, so the
+properties of the map are called in reverse order.
 
 --------------------------
 ### once
-**绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次**
+**Appends a one-shot event handler to the emitter**
 
 ```JavaScript
 Object TTYInputStream.once(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to bind
+* func: Function(...args), the event handler function
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+The handler is wrapped and removes itself from the queue before it is called, so it runs at
+most once. off() removes it when passed the original function, listeners() returns the
+original function, and rawListeners() returns the internal wrapper whose `_func` property
+holds the original. See Example 2 in the class documentation.
 
 --------------------------
-**绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次**
+**Appends several one-shot event handlers to the emitter**
 
 ```JavaScript
 Object TTYInputStream.once(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Map form of once(); every function property is registered as a one-shot listener under its
+property name.
 
 --------------------------
 ### prependOnceListener
-**绑定一个事件处理函数到对象起始**
+**Inserts a one-shot event handler at the front of the queue**
 
 ```JavaScript
 Object TTYInputStream.prependOnceListener(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to bind
+* func: Function(...args), the event handler function
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Combines prependListener() and once(): the handler is called first and only once, and it is
+removed before its invocation.
 
 --------------------------
-**绑定一个事件处理函数到对象起始**
+**Inserts several one-shot event handlers at the front of the queue**
 
 ```JavaScript
 Object TTYInputStream.prependOnceListener(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Map form of prependOnceListener(); every function property is inserted as a one-shot
+listener, and the properties of the map are called in reverse order.
 
 --------------------------
 ### off
-**从对象处理队列中取消指定函数**
+**Removes an event handler from the emitter**
 
 ```JavaScript
 Object TTYInputStream.off(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to unbind
+* func: Function(...args), the event handler function
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+The first matching listener is removed; when the same function was registered several times
+only one copy is removed per call, so repeat the call to remove the others. A once() wrapper
+is matched by its original function as well. Removing a listener emits the `removeListener`
+meta event after the removal.
 
 --------------------------
-**取消对象处理队列中的全部函数**
+**Removes all event handlers of one event**
 
 ```JavaScript
 Object TTYInputStream.off(Value ev);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
+Parameters:
+* ev: Value, the event name to unbind
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Every listener of the event is removed and `removeListener` is emitted once per removed
+listener. The call succeeds when the event has no listener.
+
+Example — removing every listener of one event:
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+emitter.on('data', () => console.log('first'));
+emitter.on('data', () => console.log('second'));
+
+emitter.off('data');
+console.log(emitter.emit('data')); // false
+```
 
 --------------------------
-**从对象处理队列中取消指定函数**
+**Removes several event handlers from the emitter**
 
 ```JavaScript
 Object TTYInputStream.off(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称作为事件名称，属性的值作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Every enumerable property of the map whose value is a function names an event from which
+that function is removed (one copy per event). A value that is not a function makes the call
+fail with an invalid-type error.
 
 --------------------------
 ### removeListener
-**从对象处理队列中取消指定函数**
+**Removes an event handler from the emitter**
 
 ```JavaScript
 Object TTYInputStream.removeListener(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to unbind
+* func: Function(...args), the event handler function
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Alias of off(ev, func), provided for Node.js compatibility.
 
 --------------------------
-**取消对象处理队列中的全部函数**
+**Removes all event handlers of one event**
 
 ```JavaScript
 Object TTYInputStream.removeListener(Value ev);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
+Parameters:
+* ev: Value, the event name to unbind
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Alias of off(ev), provided for Node.js compatibility.
 
 --------------------------
-**从对象处理队列中取消指定函数**
+**Removes several event handlers from the emitter**
 
 ```JavaScript
 Object TTYInputStream.removeListener(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称作为事件名称，属性的值作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Alias of off(map), provided for Node.js compatibility.
 
 --------------------------
 ### removeEventListener
-**从对象处理队列中取消指定函数**
+**Removes an event handler with an options [object](object.md)**
 
 ```JavaScript
 Object TTYInputStream.removeEventListener(Value ev,
-    Function func,
+    Function(...args) func,
     Object options = {});
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
-* options: Object, 指定事件处理函数的选项
+Parameters:
+* ev: Value, the event name to unbind
+* func: Function(...args), the event handler function
+* options: Object, the options of the event handler, ignored
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Web-style alias of off(ev, func); the options [object](object.md) is accepted and ignored, and a once()
+wrapper is matched by its original function like off().
 
 --------------------------
 ### removeAllListeners
-**从对象处理队列中取消所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。**
+**Removes all listeners of one event**
 
 ```JavaScript
 Object TTYInputStream.removeAllListeners(Value ev);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
+Parameters:
+* ev: Value, the event name to remove
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Equivalent to off(ev): every listener of the event is removed, including once() wrappers
+matched by their original function, and `removeListener` is emitted once per removal.
 
 --------------------------
-**从对象处理队列中取消所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。**
+**Removes all listeners of the given events, or of the whole emitter**
 
 ```JavaScript
 Object TTYInputStream.removeAllListeners(Array evs = []);
 ```
 
-调用参数:
-* evs: Array, 指定事件的名称
+Parameters:
+* evs: Array, the event names to remove
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+An empty array — including the no-argument call, because the parameter defaults to [] —
+clears every string-keyed event; symbol-keyed listeners are left in place, unlike Node.js
+which removes them too. A non-empty array clears each named event as
+removeAllListeners(ev) does.
+
+Example — clearing selected events and the whole emitter:
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+emitter.on('a', () => {});
+emitter.on('b', () => {});
+emitter.on('c', () => {});
+
+emitter.removeAllListeners(['a', 'b']);
+console.log(emitter.listenerCount('a'), emitter.listenerCount('c')); // 0 1
+
+emitter.removeAllListeners();
+console.log(emitter.eventNames().length); // 0
+```
 
 --------------------------
 ### setMaxListeners
-**监听器的默认限制的数量，仅用于兼容**
+**Stores a per-emitter listener limit**
 
 ```JavaScript
 TTYInputStream.setMaxListeners(Integer n);
 ```
 
-调用参数:
-* n: Integer, 指定事件的数量
+Parameters:
+* n: Integer, the number of events
+
+The value is reported by getMaxListeners() and is otherwise informational: fibjs never warns
+when the number of listeners exceeds it. This member exists for Node.js compatibility. A
+negative value throws; 0 is accepted and stored as-is, while Node.js treats 0 as unlimited.
 
 --------------------------
 ### getMaxListeners
-**获取监听器的默认限制的数量，仅用于兼容**
+**Returns the listener limit of the emitter**
 
 ```JavaScript
 Integer TTYInputStream.getMaxListeners();
 ```
 
-返回结果:
-* Integer, 返回默认限制数量
+Returns:
+* Integer, returns the default limit
+
+Returns the value set by setMaxListeners(), or the [process](../../module/ifs/process.md)-wide defaultMaxListeners (10)
+when no explicit value was set.
 
 --------------------------
 ### listeners
-**查询对象指定事件的监听器数组**
+**Returns a copy of the listener array of an event**
 
 ```JavaScript
 Array TTYInputStream.listeners(Value ev);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
+Parameters:
+* ev: Value, the event name to query
 
-返回结果:
-* Array, 返回指定事件的监听器数组
+Returns:
+* Array, returns the listener array of the specified event
+
+One-shot wrappers are unwrapped, so the result contains the functions passed to
+on()/once() and can be passed to off(); an unknown event produces an empty array.
+
+Example — once() listeners are returned unwrapped:
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+
+function onTick() {
+    console.log('tick');
+}
+
+emitter.once('tick', onTick);
+console.log(emitter.listeners('tick')[0] === onTick); // true
+console.log(emitter.rawListeners('tick')[0] === onTick); // false
+```
 
 --------------------------
 ### rawListeners
-**查询对象指定事件的监听器数组，包含 once 包装函数**
+**Returns the internal listener array of an event**
 
 ```JavaScript
 Array TTYInputStream.rawListeners(Value ev);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
+Parameters:
+* ev: Value, the event name to query
 
-返回结果:
-* Array, 返回指定事件的监听器数组
+Returns:
+* Array, returns the listener array of the specified event
+
+The array is not unwrapped: a listener registered with once() appears as the internal
+wrapper function whose `_func` property holds the original function. An unknown event
+produces an empty array.
 
 --------------------------
 ### listenerCount
-**查询对象指定事件的监听器数量**
+**Returns the number of listeners of an event**
 
 ```JavaScript
 Integer TTYInputStream.listenerCount(Value ev);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
+Parameters:
+* ev: Value, the event name to query
 
-返回结果:
-* Integer, 返回指定事件的监听器数量
+Returns:
+* Integer, returns the number of listeners of the specified event
+
+One-shot listeners count as one and an unknown event returns 0.
 
 --------------------------
-**查询对象指定事件的监听器数量**
+**Returns the number of listeners of an event on another [object](object.md)**
 
 ```JavaScript
 Integer TTYInputStream.listenerCount(Value o,
     Value ev);
 ```
 
-调用参数:
-* o: Value, 指定查询的对象
-* ev: Value, 指定事件的名称
+Parameters:
+* o: Value, the [object](object.md) to query
+* ev: Value, the event name to query
 
-返回结果:
-* Integer, 返回指定事件的监听器数量
+Returns:
+* Integer, returns the number of listeners of the specified event
+
+Counts without requiring the target to be an [EventEmitter](EventEmitter.md): any [object](object.md) with registered
+events can be queried. The call is normally written as
+`EventEmitter.listenerCount(target, 'data')`.
+
+Example — counting the listeners of another [object](object.md):
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+emitter.on('data', () => {});
+emitter.on('data', () => {});
+
+console.log(EventEmitter.listenerCount(emitter, 'data')); // 2
+```
 
 --------------------------
 ### eventNames
-**查询监听器事件名称**
+**Returns the names of the events with at least one listener**
 
 ```JavaScript
 Array TTYInputStream.eventNames();
 ```
 
-返回结果:
-* Array, 返回事件名称数组
+Returns:
+* Array, returns the array of event names
+
+Only string-keyed events are reported; symbol-keyed events are omitted and numeric event
+names are returned as numbers (Node.js also reports symbol events).
 
 --------------------------
 ### emit
-**主动触发一个事件**
+**Emits an event and returns whether a listener was called**
 
 ```JavaScript
 Boolean TTYInputStream.emit(Value ev,
     ...args);
 ```
 
-调用参数:
-* ev: Value, 事件名称
-* args: ..., 事件参数，将会传递给事件处理函数
+Parameters:
+* ev: Value, event name
+* args: ..., event parameters, which are passed to the event handler
 
-返回结果:
-* Boolean, 返回事件触发状态，有响应事件返回 true，否则返回 false
+Returns:
+* Boolean, returns whether the event had a listener to respond to it
+
+Listeners are called as described by the dispatch model in the class documentation: the
+first one runs synchronously on the current fiber, the remaining ones run in parallel
+fibers, and the call returns after all of them finish; an exception raised by a listener is
+thrown back to the caller. Emitting `error` with no listener throws instead of returning
+false: an Error argument is thrown as-is and any other value is wrapped in
+`Error("Unhandled error. (...)")`. [Event](Event.md) names are strings or symbols; `emit()` does not
+match a listener registered with a numeric name.
 
 --------------------------
 ### toString
-**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
+**Returns the string form of the [object](object.md)**
 
 ```JavaScript
 String TTYInputStream.toString();
 ```
 
-返回结果:
-* String, 返回对象的字符串表示
+Returns:
+* String, returns the string form of the [object](object.md)
+
+The base implementation reports an error: a native [object](object.md) has no implicit
+text form, and only the classes whose value can be written as a string
+override the member. [Buffer](Buffer.md) returns its content decoded with the given
+[encoding](../../module/ifs/encoding.md), [HttpCookie](HttpCookie.md) returns "name=value", and so on; an override commonly
+accepts optional arguments ([Buffer.toString](Buffer.md#toString) takes [encoding](../../module/ifs/encoding.md), start and
+end) that are not part of this declaration.
+
+Calling the member on a class that does not override it throws
+"<Class>: the [object](object.md) can not be converted to string.", which is the
+behavior to rely on when probing whether a value has a string form. See
+toJSON for the serialization hook.
 
 --------------------------
 ### toJSON
-**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
+**Returns the JSON representation of the [object](object.md)**
 
 ```JavaScript
 Value TTYInputStream.toJSON(String key = "");
 ```
 
-调用参数:
-* key: String, 未使用
+Parameters:
+* key: String, the property name of the value being serialized
 
-返回结果:
-* Value, 返回包含可 JSON 序列化的值
+Returns:
+* Value, returns the JSON-serializable value
 
-## 事件
+JSON.stringify(value) calls value.toJSON(key) when the member exists and
+serializes the returned value in its place; the key argument carries the
+property name of the value inside its parent [object](object.md) (an empty string at
+the top level) and may be used to build a keyed form. The base
+implementation returns a plain [object](object.md) holding the readable properties of
+the instance, so a native [object](object.md) serializes without per-class code; a
+class with a portable shape such as [Buffer](Buffer.md) overrides it, and a JavaScript
+class may override it in the same way.
+
+The member is normally reached through JSON.stringify rather than called
+directly; calling it returns the same value JSON.stringify would
+serialize.
+
+## Events
         
 ### data
-**查询和绑定流数据事件，相当于 on("data", func);**
+**Queries and binds the stream data event, equivalent to on("data", func);**
 
 ```JavaScript
 event TTYInputStream.data(Buffer data);
 ```
 
-调用参数:
-* data: [Buffer](Buffer.md), 读取到的数据
+Parameters:
+* data: [Buffer](Buffer.md), the data read
+
+Emitted for every chunk once the stream is in flowing mode; attaching this
+listener switches the stream to that mode. The payload is a [Buffer](Buffer.md), or a
+string when setEncoding was called (the parameter is declared as [Buffer](Buffer.md) for
+the binary case). A `readable` workflow consumes the same data through
+read() and emits no data events. Node.js has the same flowing-mode
+semantics.
 
 --------------------------
 ### close
-**查询和绑定流关闭事件，相当于 on("close", func);**
+**Queries and binds the stream close event, equivalent to on("close", func);**
 
 ```JavaScript
 event TTYInputStream.close();
 ```
 
+Emitted once after the stream has been closed: at the end of a flowing
+read (auto destroy), after destroy(), or when the runtime closes the
+stream. A plain close() call releases the handle without emitting it.
+Node.js emits close for the same destroy/autoDestroy cases.
+
 --------------------------
 ### error
-**查询和绑定流错误事件，相当于 on("error", func);**
+**Queries and binds the stream error event, equivalent to on("error", func);**
 
 ```JavaScript
 event TTYInputStream.error(Integer code);
 ```
 
-调用参数:
-* code: Integer, 错误码
+Parameters:
+* code: Integer, the error value, usually an Error [object](object.md)
+
+Emitted when a read or write fails and by destroy(err). The payload is the
+error value, usually an Error [object](object.md) with `number` and `description`; the
+declared Integer parameter name is historical (destroy(err) emits exactly
+the value it was given, even a non-Error one). Node.js also emits Error
+objects.
 

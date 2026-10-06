@@ -1,79 +1,120 @@
-# 模块 querystring
-querystring 模块提供了一些用于解析和序列化 URL 查询参数的实用函数，使用 querystring 模块可以方便地将 URL 查询参数解析为对象或字符串，也可以将对象序列化为 URL 查询参数字符串
+# Module querystring
+The querystring [module](module.md) parses and serializes URL query strings with the application/x-www-form-urlencoded rules
 
-以下是 `querystring` 模块的常用函数：
+`parse` builds an [HttpCollection](../../object/ifs/HttpCollection.md) from a query string, `stringify` serializes an [object](../../object/ifs/object.md) back
+into a query string, and `escape`/`unescape` apply the same percent-[encoding](encoding.md) to individual
+values. It is the fibjs counterpart of the Node.js `querystring` [module](module.md); both runtimes treat
+it as legacy, and [URLSearchParams](../../object/ifs/URLSearchParams.md) covers most use cases with the standard API.
 
-- `querystring.parse(str[, sep[, eq[, options]]])`: 将 URL 查询参数解析为对象
-- `querystring.stringify(obj[, sep[, eq[, options]]])`: 将对象序列化为 URL 查询参数字符串
+Concepts:
 
-其中，`str` 是要解析的 URL 查询参数字符串，`obj` 是要序列化的对象。
+- **application/x-www-form-urlencoded**: pairs are separated by `&` and names and values by
+`=`; a space is encoded as `+` and every other byte outside the unreserved set is
+percent-encoded. When decoding, `+` becomes a space, an empty segment between two
+separators is skipped and an empty name is kept.
+- **[HttpCollection](../../object/ifs/HttpCollection.md) result**: parse returns an [HttpCollection](../../object/ifs/HttpCollection.md) instead of a plain [object](../../object/ifs/object.md). The
+collection compares names case-insensitively, stores strings, keeps every value of a
+repeated name (`get` returns the first one, `all(name)`/`getAll(name)` return the array),
+and its iteration helpers (`forEach`, `keys`, `values`, `entries`) sort the keys in place.
+`toJSON()` returns the plain multi-value [object](../../object/ifs/object.md) that Node.js would have returned.
+- **Options**: `sep` and `eq` replace the default separators; the fourth argument exists for
+Node.js compatibility but no option (`maxKeys`, `decodeURIComponent`) is implemented, so
+every pair is parsed.
+- **Escaping**: escape encodes everything except the unreserved characters, with a space
+becoming `+` (Node.js writes `%20`); unescape decodes every percent escape, including the
+reserved characters that the standard decodeURI leaves alone, but keeps a literal `+` as
+it is. Malformed escapes are decoded leniently instead of being preserved as written, so
+validate untrusted input.
 
-以下示例说明如何使用 `querystring` 模块从 URL 中解析查询参数为对象：
+Import:
+
+```JavaScript
+const querystring = require('querystring');
+```
+
+Example 1 — parse a query string and read repeated values:
 
 ```JavaScript
 const querystring = require('querystring');
 
-const url = 'https://www.example.com/path/to/page?foo=bar&baz=qux';
-
-const search = new URL(url).search; // return '?foo=bar&baz=qux'
-const query = querystring.parse(search.slice(1)); // parse query string
-
-console.log(query); // output { foo: 'bar', baz: 'qux' }
+const query = querystring.parse('tag=a&tag=b&name=Hello+World');
+console.log(query.get('tag')); // a, the first value
+console.log(query.all('tag')); // [ 'a', 'b' ]
+console.log(query.get('NAME')); // Hello World, names are case-insensitive
 ```
 
-以上代码先获取了一个 URL，然后从中提取出查询参数部分，并使用 `querystring.parse()` 函数将其解析为对象，最后将对象打印出来。
-
-接下来，示例说明如何使用 `querystring` 模块将对象序列化为 URL 查询参数字符串：
+Example 2 — serialize objects and repeated values:
 
 ```JavaScript
 const querystring = require('querystring');
 
-const obj = {
-    foo: 'bar',
-    baz: 'qux'
-};
+console.log(querystring.stringify({
+    name: 'Hello World',
+    tag: ['a', 'b']
+}));
+// name=Hello+World&tag=a&tag=b
 
-const query = querystring.stringify(obj);
-
-console.log(query); // output "foo=bar&baz=qux"
+console.log(querystring.stringify({
+    a: 1,
+    b: 2
+}, ';', ':'));
+// a:1;b:2
 ```
 
-以上代码中，首先定义了一个对象，然后使用 `querystring.stringify()` 函数将其序列化为 URL 查询参数字符串，最后将字符串打印出来。
+Example 3 — escape and unescape single values:
 
-可以发现，使用 `querystring` 模块可以方便地对 URL 查询参数进行解析和序列化，减少了对字符串的繁琐处理，提高了代码的可读性和可维护性。
+```JavaScript
+const querystring = require('querystring');
 
-## 静态函数
+const escaped = querystring.escape('a b&c');
+console.log(escaped); // a+b%26c
+// unescape decodes the escapes but keeps '+' as a literal character
+console.log(querystring.unescape(escaped)); // a+b&c
+```
+
+## Static Methods
         
 ### escape
-**[url](url.md) 部件字符串安全编码**
+**Encodes a string with the urlencoded rules, writing a space as `+`**
 
 ```JavaScript
 static String querystring.escape(String str);
 ```
 
-调用参数:
-* str: String, 要编码的 [url](url.md)
+Parameters:
+* str: String, string to encode
 
-返回结果:
-* String, 返回编码的字符串
+Returns:
+* String, the encoded string
+
+Every character outside the unreserved set `A-Z a-z 0-9 - _ . ! ~ * ' ( )` is
+percent-encoded with upper-case [hex](hex.md) digits; the escape matches Node.js except that a
+space becomes `+` instead of `%20`. The result round-trips through unescape and is the
+[encoding](encoding.md) used by stringify for names and values.
 
 --------------------------
 ### unescape
-**[url](url.md) 安全字符串解码**
+**Decodes the percent escapes of a string**
 
 ```JavaScript
 static String querystring.unescape(String str);
 ```
 
-调用参数:
-* str: String, 要解码的 [url](url.md)
+Parameters:
+* str: String, string to decode
 
-返回结果:
-* String, 返回解码的字符串
+Returns:
+* String, the decoded string
+
+Every percent escape is decoded, including the escapes of reserved characters such as
+`&`, `=` and `?` that the standard decodeURI leaves untouched; a literal `+` is kept
+as it is (parse converts it to a space while splitting pairs). Malformed escapes are
+decoded leniently and may produce unexpected characters instead of being kept as
+written, so validate untrusted input.
 
 --------------------------
 ### parse
-**解析 query 字符串**
+**Parses a query string into an [HttpCollection](../../object/ifs/HttpCollection.md)**
 
 ```JavaScript
 static HttpCollection querystring.parse(String str,
@@ -82,18 +123,36 @@ static HttpCollection querystring.parse(String str,
     Object opt = {});
 ```
 
-调用参数:
-* str: String, 要解析的字符串
-* sep: String, 解析时使用的分割字符串，缺省为 &
-* eq: String, 解析时使用的赋值字符串，缺省为 =
-* opt: Object, 解析参数，暂未支持
+Parameters:
+* str: String, query string to parse
+* sep: String, separator between pairs, default `&`
+* eq: String, separator between name and value, default `=`
+* opt: Object, reserved for Node.js options; not supported and ignored
 
-返回结果:
-* [HttpCollection](../../object/ifs/HttpCollection.md), 返回解码的对象
+Returns:
+* [HttpCollection](../../object/ifs/HttpCollection.md), the parsed [HttpCollection](../../object/ifs/HttpCollection.md)
+
+The string is split with `sep`, each pair is split at the first `eq`, and both sides
+are decoded with unescape. Repeated names keep every value, `get` returns the first one
+and `all(name)`/`getAll(name)` return the full array; empty segments are skipped and an
+empty name is kept. The result compares names case-insensitively and sorts the keys in
+place when an iteration helper is used. The fourth argument is accepted for Node.js
+compatibility but is ignored.
+
+Example — read repeated values and the plain [object](../../object/ifs/object.md) form:
+
+```JavaScript
+const querystring = require('querystring');
+
+const query = querystring.parse('a=1&a=2&b=x');
+console.log(query.get('a')); // 1
+console.log(query.all('a')); // [ '1', '2' ]
+console.log(JSON.stringify(query.toJSON())); // {"a":["1","2"],"b":"x"}
+```
 
 --------------------------
 ### stringify
-**序列化一个对象为 query 字符串**
+**Serializes an [object](../../object/ifs/object.md) into a query string**
 
 ```JavaScript
 static String querystring.stringify(Object obj,
@@ -102,12 +161,31 @@ static String querystring.stringify(Object obj,
     Object opt = {});
 ```
 
-调用参数:
-* obj: Object, 要序列化的对象
-* sep: String, 序列化时使用的分割字符串，缺省为 &
-* eq: String, 序列化时使用的赋值字符串，缺省为 =
-* opt: Object, 解析参数，暂未支持
+Parameters:
+* obj: Object, [object](../../object/ifs/object.md) to serialize
+* sep: String, separator between pairs, default `&`
+* eq: String, separator between name and value, default `=`
+* opt: Object, reserved for Node.js options; not supported and ignored
 
-返回结果:
-* String, 返回序列化后的字符串
+Returns:
+* String, the serialized query string
+
+The own enumerable properties are written in their enumeration order; a value that is
+an array is written as one pair per element with the same name. Values are converted to
+strings with the usual rules, so `null` and `undefined` are written as `null` and
+`undefined` (Node.js writes empty values), a number keeps its text and a nested [object](../../object/ifs/object.md)
+becomes `[[object](../../object/ifs/object.md) Object]`. Names and values are encoded with escape, writing a space as
+`+`. The fourth argument is accepted for Node.js compatibility but is ignored.
+
+Example — arrays and custom separators:
+
+```JavaScript
+const querystring = require('querystring');
+
+console.log(querystring.stringify({
+    q: 'a b',
+    tag: [1, 2]
+}));
+// q=a+b&tag=1&tag=2
+```
 

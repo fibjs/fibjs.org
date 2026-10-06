@@ -1,16 +1,78 @@
-# 模块 os_constants_signals
-[os_constants](os_constants.md) signals 子模块，包含 POSIX 信号常量
+# Module os_constants_signals
+The signals table of [os.constants](os.md#constants): the signal numbers of the running platform
 
-引用方法：
+Reached through `require('[os](os.md)').constants.signals`. On POSIX the names and numbers match the
+host's `<signal.h>` (verified against the Linux x86-64 headers) and include the aliases
+SIGIOT = SIGABRT and SIGPOLL = SIGIO; SIGSTKFLT and SIGPWR exist only on Linux. Windows
+exposes the same names (matching Node.js) but can deliver only a few of them.
+
+Concepts:
+
+- **Numbers feed the [process](process.md) APIs**: [process.kill](process.md#kill) and [ChildProcess](../../object/ifs/ChildProcess.md)#kill accept a name or a
+  number, and this table provides the numbers. A [process](process.md) that dies from a signal reports the
+  negated number as its exit code (SIGTERM gives -15), the 'exit' event receives the signal
+  name, and join() returns the same negative value.
+- **Delivery is limited**: in fibjs only SIGINT and SIGTERM reach a JavaScript listener
+  registered with process.on; every other signal keeps the default action of the operating
+  system. Sending SIGTERM or SIGKILL to a child is still the portable way to stop it.
+- **Not the legacy numbers**: the [constants](constants.md) [module](module.md) ships a frozen BSD/macOS set (SIGUSR1 is
+  30, SIGBUS is 10) whose values name different signals on Linux; always take the number
+  from this table when it is passed to an API.
+- **Windows**: numeric signals other than 0 are POSIX-only; on Windows kill terminates the
+  [process](process.md) unconditionally instead of delivering the named signal.
+
+Import:
 
 ```JavaScript
-var signals = require('os').constants.signals
+const signals = require('os').constants.signals;
 ```
 
-## 常量
+Example 1 — stop a child [process](process.md) with SIGTERM:
+
+```JavaScript
+const child_process = require('child_process');
+const signals = require('os').constants.signals;
+
+// Start a fibjs child that lives until it is killed.
+const child = child_process.spawn(process.execPath,
+    ['-e', 'setTimeout(function () {}, 60000)'], {
+        stdio: 'ignore'
+    });
+
+child.kill(signals.SIGTERM);
+const code = child.join();
+
+// A process killed by a signal reports the negated signal number.
+console.log(code === -signals.SIGTERM, signals.SIGTERM); // true 15
+```
+
+Example 2 — the numbers and aliases of the common signals:
+
+```JavaScript
+const signals = require('os').constants.signals;
+
+console.log(signals.SIGINT, signals.SIGKILL, signals.SIGSTOP); // 2 9 19
+console.log(signals.SIGTERM, signals.SIGSEGV, signals.SIGPIPE); // 15 11 13
+console.log(signals.SIGIO === signals.SIGPOLL); // true
+console.log(signals.SIGSTKFLT, signals.SIGCHLD, signals.SIGSYS); // 16 17 31
+```
+
+Example 3 — name the signal behind an exit code:
+
+```JavaScript
+const signals = require('os').constants.signals;
+
+// A child killed by SIGTERM exits with -15 (see ChildProcess#exitCode), so the
+// wanted name is the one whose value is the negated code.
+const code = -signals.SIGTERM;
+const names = Object.keys(signals).filter((name) => signals[name] === -code);
+console.log(names.join(', ')); // SIGTERM
+```
+
+## Constants
         
 ### SIGHUP
-**挂断信号，终端关闭时发送**
+**Hangup signal, sent when the terminal is closed**
 
 ```JavaScript
 const os_constants_signals.SIGHUP = 1;
@@ -18,7 +80,7 @@ const os_constants_signals.SIGHUP = 1;
 
 --------------------------
 ### SIGINT
-**中断信号，通常由 CTRL+C 触发**
+**Interrupt signal, usually triggered by CTRL+C**
 
 ```JavaScript
 const os_constants_signals.SIGINT = 2;
@@ -26,7 +88,7 @@ const os_constants_signals.SIGINT = 2;
 
 --------------------------
 ### SIGQUIT
-**退出信号，通常由 CTRL+\ 触发**
+**Quit signal, usually triggered by CTRL+\**
 
 ```JavaScript
 const os_constants_signals.SIGQUIT = 3;
@@ -34,7 +96,7 @@ const os_constants_signals.SIGQUIT = 3;
 
 --------------------------
 ### SIGILL
-**非法指令**
+**Illegal instruction**
 
 ```JavaScript
 const os_constants_signals.SIGILL = 4;
@@ -42,7 +104,7 @@ const os_constants_signals.SIGILL = 4;
 
 --------------------------
 ### SIGTRAP
-**陷阱信号，用于调试**
+**Trap signal, used for debugging**
 
 ```JavaScript
 const os_constants_signals.SIGTRAP = 5;
@@ -50,7 +112,7 @@ const os_constants_signals.SIGTRAP = 5;
 
 --------------------------
 ### SIGABRT
-**中止信号，调用 abort() 时发送**
+**Abort signal, sent when abort() is called**
 
 ```JavaScript
 const os_constants_signals.SIGABRT = 6;
@@ -58,7 +120,7 @@ const os_constants_signals.SIGABRT = 6;
 
 --------------------------
 ### SIGIOT
-**与 SIGABRT 相同**
+**Same as SIGABRT**
 
 ```JavaScript
 const os_constants_signals.SIGIOT = 6;
@@ -66,7 +128,7 @@ const os_constants_signals.SIGIOT = 6;
 
 --------------------------
 ### SIGBUS
-**总线错误**
+**Bus error**
 
 ```JavaScript
 const os_constants_signals.SIGBUS = 7;
@@ -74,7 +136,7 @@ const os_constants_signals.SIGBUS = 7;
 
 --------------------------
 ### SIGFPE
-**浮点异常**
+**Floating-point exception**
 
 ```JavaScript
 const os_constants_signals.SIGFPE = 8;
@@ -82,7 +144,7 @@ const os_constants_signals.SIGFPE = 8;
 
 --------------------------
 ### SIGKILL
-**强制终止信号，不可捕获或忽略**
+**Kill signal, cannot be caught or ignored**
 
 ```JavaScript
 const os_constants_signals.SIGKILL = 9;
@@ -90,7 +152,7 @@ const os_constants_signals.SIGKILL = 9;
 
 --------------------------
 ### SIGUSR1
-**用户自定义信号 1**
+**User-defined signal 1**
 
 ```JavaScript
 const os_constants_signals.SIGUSR1 = 10;
@@ -98,7 +160,7 @@ const os_constants_signals.SIGUSR1 = 10;
 
 --------------------------
 ### SIGSEGV
-**段错误，访问无效内存**
+**Segmentation fault, invalid memory access**
 
 ```JavaScript
 const os_constants_signals.SIGSEGV = 11;
@@ -106,7 +168,7 @@ const os_constants_signals.SIGSEGV = 11;
 
 --------------------------
 ### SIGUSR2
-**用户自定义信号 2**
+**User-defined signal 2**
 
 ```JavaScript
 const os_constants_signals.SIGUSR2 = 12;
@@ -114,7 +176,7 @@ const os_constants_signals.SIGUSR2 = 12;
 
 --------------------------
 ### SIGPIPE
-**管道破裂，写入无读取端的管道**
+**Broken pipe, write to a pipe with no readers**
 
 ```JavaScript
 const os_constants_signals.SIGPIPE = 13;
@@ -122,7 +184,7 @@ const os_constants_signals.SIGPIPE = 13;
 
 --------------------------
 ### SIGALRM
-**定时器到期信号**
+**[Timer](../../object/ifs/Timer.md) expired signal**
 
 ```JavaScript
 const os_constants_signals.SIGALRM = 14;
@@ -130,7 +192,7 @@ const os_constants_signals.SIGALRM = 14;
 
 --------------------------
 ### SIGTERM
-**终止信号，通常由 kill 命令发送**
+**Termination signal, usually sent by the kill command**
 
 ```JavaScript
 const os_constants_signals.SIGTERM = 15;
@@ -138,7 +200,7 @@ const os_constants_signals.SIGTERM = 15;
 
 --------------------------
 ### SIGSTKFLT
-**协处理器栈错误**
+**Coprocessor stack error**
 
 ```JavaScript
 const os_constants_signals.SIGSTKFLT = 16;
@@ -146,7 +208,7 @@ const os_constants_signals.SIGSTKFLT = 16;
 
 --------------------------
 ### SIGCHLD
-**子进程停止或终止**
+**Child [process](process.md) stopped or terminated**
 
 ```JavaScript
 const os_constants_signals.SIGCHLD = 17;
@@ -154,7 +216,7 @@ const os_constants_signals.SIGCHLD = 17;
 
 --------------------------
 ### SIGCONT
-**继续运行被停止的进程**
+**Continue a stopped [process](process.md)**
 
 ```JavaScript
 const os_constants_signals.SIGCONT = 18;
@@ -162,7 +224,7 @@ const os_constants_signals.SIGCONT = 18;
 
 --------------------------
 ### SIGSTOP
-**停止进程，不可捕获或忽略**
+**Stop the [process](process.md), cannot be caught or ignored**
 
 ```JavaScript
 const os_constants_signals.SIGSTOP = 19;
@@ -170,7 +232,7 @@ const os_constants_signals.SIGSTOP = 19;
 
 --------------------------
 ### SIGTSTP
-**终端停止信号，通常由 CTRL+Z 触发**
+**Terminal stop signal, usually triggered by CTRL+Z**
 
 ```JavaScript
 const os_constants_signals.SIGTSTP = 20;
@@ -178,7 +240,7 @@ const os_constants_signals.SIGTSTP = 20;
 
 --------------------------
 ### SIGTTIN
-**后台进程读取终端**
+**Background [process](process.md) reading from the terminal**
 
 ```JavaScript
 const os_constants_signals.SIGTTIN = 21;
@@ -186,7 +248,7 @@ const os_constants_signals.SIGTTIN = 21;
 
 --------------------------
 ### SIGTTOU
-**后台进程写入终端**
+**Background [process](process.md) writing to the terminal**
 
 ```JavaScript
 const os_constants_signals.SIGTTOU = 22;
@@ -194,7 +256,7 @@ const os_constants_signals.SIGTTOU = 22;
 
 --------------------------
 ### SIGURG
-**套接字上有紧急数据**
+**Urgent data available on the socket**
 
 ```JavaScript
 const os_constants_signals.SIGURG = 23;
@@ -202,7 +264,7 @@ const os_constants_signals.SIGURG = 23;
 
 --------------------------
 ### SIGXCPU
-**CPU 时间超限**
+**CPU time limit exceeded**
 
 ```JavaScript
 const os_constants_signals.SIGXCPU = 24;
@@ -210,7 +272,7 @@ const os_constants_signals.SIGXCPU = 24;
 
 --------------------------
 ### SIGXFSZ
-**文件大小超限**
+**[File](../../object/ifs/File.md) size limit exceeded**
 
 ```JavaScript
 const os_constants_signals.SIGXFSZ = 25;
@@ -218,7 +280,7 @@ const os_constants_signals.SIGXFSZ = 25;
 
 --------------------------
 ### SIGVTALRM
-**虚拟定时器到期**
+**Virtual timer expired**
 
 ```JavaScript
 const os_constants_signals.SIGVTALRM = 26;
@@ -226,7 +288,7 @@ const os_constants_signals.SIGVTALRM = 26;
 
 --------------------------
 ### SIGPROF
-**性能剖析定时器到期**
+**Profiling timer expired**
 
 ```JavaScript
 const os_constants_signals.SIGPROF = 27;
@@ -234,7 +296,7 @@ const os_constants_signals.SIGPROF = 27;
 
 --------------------------
 ### SIGWINCH
-**终端窗口大小变化**
+**Terminal window size changed**
 
 ```JavaScript
 const os_constants_signals.SIGWINCH = 28;
@@ -242,7 +304,7 @@ const os_constants_signals.SIGWINCH = 28;
 
 --------------------------
 ### SIGIO
-**异步 I/O 就绪**
+**Asynchronous I/O is ready**
 
 ```JavaScript
 const os_constants_signals.SIGIO = 29;
@@ -250,7 +312,7 @@ const os_constants_signals.SIGIO = 29;
 
 --------------------------
 ### SIGPOLL
-**与 SIGIO 相同**
+**Same as SIGIO**
 
 ```JavaScript
 const os_constants_signals.SIGPOLL = 29;
@@ -258,7 +320,7 @@ const os_constants_signals.SIGPOLL = 29;
 
 --------------------------
 ### SIGPWR
-**电源故障**
+**Power failure**
 
 ```JavaScript
 const os_constants_signals.SIGPWR = 30;
@@ -266,7 +328,7 @@ const os_constants_signals.SIGPWR = 30;
 
 --------------------------
 ### SIGSYS
-**无效的系统调用**
+**Invalid system call**
 
 ```JavaScript
 const os_constants_signals.SIGSYS = 31;

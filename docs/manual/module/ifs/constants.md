@@ -1,16 +1,117 @@
-# 模块 constants
-常用常量定义模块
+# Module constants
+The legacy aggregate constants [module](module.md): dynamic library flags, error codes, [process](process.md)
 
-引用方法：
+priorities, signal numbers and the file system flags in one [object](../../object/ifs/object.md)
+
+The [module](module.md) predates the split of the constant surface into [os_constants](os_constants.md) and [fs_constants](fs_constants.md) and
+mirrors the historical Node.js `constants` [module](module.md). Its numbers are a frozen BSD/macOS set
+shared by every platform, so they are not the native values of the host: use
+`[os.constants](os.md#constants).errno`, `[os.constants](os.md#constants).signals`, `[os.constants](os.md#constants).priority` and
+`[os.constants](os.md#constants).dlopen` for the numbers the system APIs actually use, and [fs_constants](fs_constants.md) (or the
+[fs](fs.md) [module](module.md)) for file flags. The file open flags, seek modes, type bits, permission bits and
+copy flags carry the same portable values as [fs_constants](fs_constants.md) and are accepted by [fs.open](fs.md#open).
+
+Concepts:
+
+- **Frozen BSD numbering**: the error and signal values follow the BSD/macOS convention
+  (EAGAIN is 35, SIGUSR1 is 30, SIGBUS is 10), not the host's `<errno.h>`/`<signal.h>` (on
+  Linux EAGAIN is 11, SIGUSR1 is 10, SIGBUS is 7). A value that coincides on two systems
+  (EACCES is 13) does not make the [module](module.md) portable: compare against the [os.constants](os.md#constants) table
+  that belongs to the API that produced or consumes the number.
+- **Portable file flags**: O_RDONLY/O_WRONLY/O_RDWR are 0/1/2, O_APPEND 8, O_CREAT 512,
+  O_TRUNC 1024, O_EXCL 2048, O_NONBLOCK 4, O_SYNC 128, O_DSYNC 4194304, O_NOCTTY 131072,
+  O_DIRECTORY 1048576, O_NOFOLLOW 256 and O_SYMLINK 2097152; [fs.open](fs.md#open) translates them to the
+  flags of the host, so pass the constant rather than a native system literal.
+- **Library loading flags**: RTLD_LAZY/RTLD_NOW are 1/2, but RTLD_GLOBAL is 8 and
+  RTLD_LOCAL is 4 instead of the POSIX dlfcn values 256/0; do not pass them to
+  [process.dlopen](process.md#dlopen) (8 is RTLD_DEEPBIND on glibc) - use `[os.constants](os.md#constants).dlopen` there.
+- **Shared file objects**: the S_IF* type bits, the S_IRWX* permission bits,
+  F_OK/R_OK/W_OK/X_OK for [fs.access](fs.md#access), the UV_DIRENT_* directory entry ids and the
+  COPYFILE_* flags all match [fs_constants](fs_constants.md) and the [fs](fs.md) [module](module.md).
+
+Import:
 
 ```JavaScript
-var constants = require('constants');
+const constants = require('constants');
 ```
 
-## 常量
+Example 1 — open a file with the portable flags:
+
+```JavaScript
+const constants = require('constants');
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-constants-'));
+const file = path.join(dir, 'note.txt');
+
+// O_WRONLY | O_CREAT | O_TRUNC is built from the BSD values 1, 512 and 1024.
+const handle = fs.open(file, constants.O_WRONLY | constants.O_CREAT |
+    constants.O_TRUNC, 0o644);
+handle.write('hello constants');
+handle.close();
+
+console.log(fs.readFile(file, 'utf8')); // hello constants
+console.log(constants.O_CREAT === fs.constants.O_CREAT); // true
+
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
+```
+
+Example 2 — classify paths by the S_IF* type bits:
+
+```JavaScript
+const constants = require('constants');
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-constants-'));
+fs.writeFile(path.join(dir, 'data.bin'), 'x');
+fs.mkdir(path.join(dir, 'sub'));
+fs.symlink(path.join(dir, 'data.bin'), path.join(dir, 'link'));
+
+function kind(file) {
+    const mode = fs.lstat(file).mode;
+    if ((mode & constants.S_IFMT) === constants.S_IFLNK) return 'link';
+    if ((mode & constants.S_IFMT) === constants.S_IFDIR) return 'dir';
+    return 'file';
+}
+console.log(kind(path.join(dir, 'data.bin')), kind(path.join(dir, 'sub')),
+    kind(path.join(dir, 'link'))); // file dir link
+
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
+```
+
+Example 3 — the frozen numbers next to the platform ones:
+
+```JavaScript
+const constants = require('constants');
+const os = require('os');
+
+// The module keeps the BSD/macOS numbers on every platform.
+console.log(constants.EAGAIN, constants.EWOULDBLOCK); // 35 35
+console.log(constants.SIGUSR1, constants.SIGTERM); // 30 15
+
+// os.constants reports the numbers of the running platform.
+console.log(os.constants.errno.EAGAIN, os.constants.signals.SIGUSR1); // 11 10 on Linux
+console.log(constants.EACCES === os.constants.errno.EACCES); // true, 13 on both
+
+// Use os.constants for values that cross an API boundary.
+```
+
+The [module](module.md) is kept for compatibility only; prefer [os.constants](os.md#constants) and [fs.constants](fs.md#constants) in new code.
+
+## Constants
         
 ### RTLD_LAZY
-**动态库延迟加载**
+**Lazy loading of a dynamic library**
 
 ```JavaScript
 const constants.RTLD_LAZY = 1;
@@ -18,7 +119,7 @@ const constants.RTLD_LAZY = 1;
 
 --------------------------
 ### RTLD_NOW
-**动态库立即加载**
+**Immediate loading of a dynamic library**
 
 ```JavaScript
 const constants.RTLD_NOW = 2;
@@ -26,7 +127,7 @@ const constants.RTLD_NOW = 2;
 
 --------------------------
 ### RTLD_GLOBAL
-**动态库全局作用域加载**
+**Loading a dynamic library in the [global](global.md) scope**
 
 ```JavaScript
 const constants.RTLD_GLOBAL = 8;
@@ -34,7 +135,7 @@ const constants.RTLD_GLOBAL = 8;
 
 --------------------------
 ### RTLD_LOCAL
-**动态库局部作用域加载**
+**Loading a dynamic library in the local scope**
 
 ```JavaScript
 const constants.RTLD_LOCAL = 4;
@@ -42,7 +143,7 @@ const constants.RTLD_LOCAL = 4;
 
 --------------------------
 ### E2BIG
-**参数列表太长错误**
+**Argument list too long error**
 
 ```JavaScript
 const constants.E2BIG = 7;
@@ -50,7 +151,7 @@ const constants.E2BIG = 7;
 
 --------------------------
 ### EACCES
-**没有访问权限错误**
+**Permission denied error**
 
 ```JavaScript
 const constants.EACCES = 13;
@@ -58,7 +159,7 @@ const constants.EACCES = 13;
 
 --------------------------
 ### EADDRINUSE
-**地址已在使用错误**
+**Address already in use error**
 
 ```JavaScript
 const constants.EADDRINUSE = 48;
@@ -66,7 +167,7 @@ const constants.EADDRINUSE = 48;
 
 --------------------------
 ### EADDRNOTAVAIL
-**地址不可用错误**
+**Address not available error**
 
 ```JavaScript
 const constants.EADDRNOTAVAIL = 49;
@@ -74,7 +175,7 @@ const constants.EADDRNOTAVAIL = 49;
 
 --------------------------
 ### EAFNOSUPPORT
-**地址族不支持错误**
+**Address family not supported error**
 
 ```JavaScript
 const constants.EAFNOSUPPORT = 47;
@@ -82,7 +183,7 @@ const constants.EAFNOSUPPORT = 47;
 
 --------------------------
 ### EAGAIN
-**资源暂时不可用错误**
+**Resource temporarily unavailable error**
 
 ```JavaScript
 const constants.EAGAIN = 35;
@@ -90,7 +191,7 @@ const constants.EAGAIN = 35;
 
 --------------------------
 ### EALREADY
-**连接已在进行中错误**
+**Connection already in progress error**
 
 ```JavaScript
 const constants.EALREADY = 37;
@@ -98,7 +199,7 @@ const constants.EALREADY = 37;
 
 --------------------------
 ### EBADF
-**文件描述符错误**
+**Bad file descriptor error**
 
 ```JavaScript
 const constants.EBADF = 9;
@@ -106,7 +207,7 @@ const constants.EBADF = 9;
 
 --------------------------
 ### EBADMSG
-**错误消息错误**
+**Bad message error**
 
 ```JavaScript
 const constants.EBADMSG = 94;
@@ -114,7 +215,7 @@ const constants.EBADMSG = 94;
 
 --------------------------
 ### EBUSY
-**设备或资源忙错误**
+**Device or resource busy error**
 
 ```JavaScript
 const constants.EBUSY = 16;
@@ -122,7 +223,7 @@ const constants.EBUSY = 16;
 
 --------------------------
 ### ECANCELED
-**操作取消错误**
+**Operation canceled error**
 
 ```JavaScript
 const constants.ECANCELED = 89;
@@ -130,7 +231,7 @@ const constants.ECANCELED = 89;
 
 --------------------------
 ### ECHILD
-**没有子进程错误**
+**No child processes error**
 
 ```JavaScript
 const constants.ECHILD = 10;
@@ -138,7 +239,7 @@ const constants.ECHILD = 10;
 
 --------------------------
 ### ECONNABORTED
-**连接中止错误**
+**Connection aborted error**
 
 ```JavaScript
 const constants.ECONNABORTED = 53;
@@ -146,7 +247,7 @@ const constants.ECONNABORTED = 53;
 
 --------------------------
 ### ECONNREFUSED
-**连接被拒绝错误**
+**Connection refused error**
 
 ```JavaScript
 const constants.ECONNREFUSED = 61;
@@ -154,7 +255,7 @@ const constants.ECONNREFUSED = 61;
 
 --------------------------
 ### ECONNRESET
-**连接重置错误**
+**Connection reset error**
 
 ```JavaScript
 const constants.ECONNRESET = 54;
@@ -162,7 +263,7 @@ const constants.ECONNRESET = 54;
 
 --------------------------
 ### EDEADLK
-**资源死锁避免错误**
+**Resource deadlock avoided error**
 
 ```JavaScript
 const constants.EDEADLK = 11;
@@ -170,7 +271,7 @@ const constants.EDEADLK = 11;
 
 --------------------------
 ### EDESTADDRREQ
-**需要目标地址错误**
+**Destination address required error**
 
 ```JavaScript
 const constants.EDESTADDRREQ = 39;
@@ -178,7 +279,7 @@ const constants.EDESTADDRREQ = 39;
 
 --------------------------
 ### EDOM
-**数学参数超出域错误**
+**Numerical argument out of domain error**
 
 ```JavaScript
 const constants.EDOM = 33;
@@ -186,7 +287,7 @@ const constants.EDOM = 33;
 
 --------------------------
 ### EDQUOT
-**超出配额错误**
+**Disk quota exceeded error**
 
 ```JavaScript
 const constants.EDQUOT = 69;
@@ -194,7 +295,7 @@ const constants.EDQUOT = 69;
 
 --------------------------
 ### EEXIST
-**文件已存在错误**
+**[File](../../object/ifs/File.md) exists error**
 
 ```JavaScript
 const constants.EEXIST = 17;
@@ -202,7 +303,7 @@ const constants.EEXIST = 17;
 
 --------------------------
 ### EFAULT
-**错误地址错误**
+**Bad address error**
 
 ```JavaScript
 const constants.EFAULT = 14;
@@ -210,7 +311,7 @@ const constants.EFAULT = 14;
 
 --------------------------
 ### EFBIG
-**文件太大错误**
+**[File](../../object/ifs/File.md) too large error**
 
 ```JavaScript
 const constants.EFBIG = 27;
@@ -218,7 +319,7 @@ const constants.EFBIG = 27;
 
 --------------------------
 ### EHOSTUNREACH
-**主机不可达错误**
+**Host unreachable error**
 
 ```JavaScript
 const constants.EHOSTUNREACH = 65;
@@ -226,7 +327,7 @@ const constants.EHOSTUNREACH = 65;
 
 --------------------------
 ### EIDRM
-**标识符已移除错误**
+**Identifier removed error**
 
 ```JavaScript
 const constants.EIDRM = 90;
@@ -234,7 +335,7 @@ const constants.EIDRM = 90;
 
 --------------------------
 ### EILSEQ
-**非法字节序列错误**
+**Illegal byte sequence error**
 
 ```JavaScript
 const constants.EILSEQ = 92;
@@ -242,7 +343,7 @@ const constants.EILSEQ = 92;
 
 --------------------------
 ### EINPROGRESS
-**操作进行中错误**
+**Operation now in progress error**
 
 ```JavaScript
 const constants.EINPROGRESS = 36;
@@ -250,7 +351,7 @@ const constants.EINPROGRESS = 36;
 
 --------------------------
 ### EINTR
-**函数调用中断错误**
+**Interrupted system call error**
 
 ```JavaScript
 const constants.EINTR = 4;
@@ -258,7 +359,7 @@ const constants.EINTR = 4;
 
 --------------------------
 ### EINVAL
-**无效参数错误**
+**Invalid argument error**
 
 ```JavaScript
 const constants.EINVAL = 22;
@@ -266,7 +367,7 @@ const constants.EINVAL = 22;
 
 --------------------------
 ### EIO
-**输入/输出错误**
+**Input/output error**
 
 ```JavaScript
 const constants.EIO = 5;
@@ -274,7 +375,7 @@ const constants.EIO = 5;
 
 --------------------------
 ### EISCONN
-**套接字已连接错误**
+**[Socket](../../object/ifs/Socket.md) is connected error**
 
 ```JavaScript
 const constants.EISCONN = 56;
@@ -282,7 +383,7 @@ const constants.EISCONN = 56;
 
 --------------------------
 ### EISDIR
-**是目录错误**
+**Is a directory error**
 
 ```JavaScript
 const constants.EISDIR = 21;
@@ -290,7 +391,7 @@ const constants.EISDIR = 21;
 
 --------------------------
 ### ELOOP
-**符号链接层次过多错误**
+**Too many levels of symbolic links error**
 
 ```JavaScript
 const constants.ELOOP = 62;
@@ -298,7 +399,7 @@ const constants.ELOOP = 62;
 
 --------------------------
 ### EMFILE
-**打开文件过多错误**
+**Too many open files error**
 
 ```JavaScript
 const constants.EMFILE = 24;
@@ -306,7 +407,7 @@ const constants.EMFILE = 24;
 
 --------------------------
 ### EMLINK
-**链接过多错误**
+**Too many links error**
 
 ```JavaScript
 const constants.EMLINK = 31;
@@ -314,7 +415,7 @@ const constants.EMLINK = 31;
 
 --------------------------
 ### EMSGSIZE
-**消息太长错误**
+**[Message](../../object/ifs/Message.md) too long error**
 
 ```JavaScript
 const constants.EMSGSIZE = 40;
@@ -322,7 +423,7 @@ const constants.EMSGSIZE = 40;
 
 --------------------------
 ### EMULTIHOP
-**多跳尝试错误**
+**Multihop attempted error**
 
 ```JavaScript
 const constants.EMULTIHOP = 95;
@@ -330,7 +431,7 @@ const constants.EMULTIHOP = 95;
 
 --------------------------
 ### ENAMETOOLONG
-**文件名太长错误**
+**[File](../../object/ifs/File.md) name too long error**
 
 ```JavaScript
 const constants.ENAMETOOLONG = 63;
@@ -338,7 +439,7 @@ const constants.ENAMETOOLONG = 63;
 
 --------------------------
 ### ENETDOWN
-**网络已关闭错误**
+**Network is down error**
 
 ```JavaScript
 const constants.ENETDOWN = 50;
@@ -346,7 +447,7 @@ const constants.ENETDOWN = 50;
 
 --------------------------
 ### ENETRESET
-**网络连接重置错误**
+**Network connection reset error**
 
 ```JavaScript
 const constants.ENETRESET = 52;
@@ -354,7 +455,7 @@ const constants.ENETRESET = 52;
 
 --------------------------
 ### ENETUNREACH
-**网络不可达错误**
+**Network is unreachable error**
 
 ```JavaScript
 const constants.ENETUNREACH = 51;
@@ -362,7 +463,7 @@ const constants.ENETUNREACH = 51;
 
 --------------------------
 ### ENFILE
-**系统打开文件过多错误**
+**Too many open files in system error**
 
 ```JavaScript
 const constants.ENFILE = 23;
@@ -370,7 +471,7 @@ const constants.ENFILE = 23;
 
 --------------------------
 ### ENOBUFS
-**无缓冲区空间错误**
+**No buffer space available error**
 
 ```JavaScript
 const constants.ENOBUFS = 55;
@@ -378,7 +479,7 @@ const constants.ENOBUFS = 55;
 
 --------------------------
 ### ENODATA
-**无数据可用错误**
+**No data available error**
 
 ```JavaScript
 const constants.ENODATA = 96;
@@ -386,7 +487,7 @@ const constants.ENODATA = 96;
 
 --------------------------
 ### ENODEV
-**无此设备错误**
+**No such device error**
 
 ```JavaScript
 const constants.ENODEV = 19;
@@ -394,7 +495,7 @@ const constants.ENODEV = 19;
 
 --------------------------
 ### ENOENT
-**无此文件或目录错误**
+**No such file or directory error**
 
 ```JavaScript
 const constants.ENOENT = 2;
@@ -402,7 +503,7 @@ const constants.ENOENT = 2;
 
 --------------------------
 ### ENOEXEC
-**可执行文件格式错误**
+**Exec format error**
 
 ```JavaScript
 const constants.ENOEXEC = 8;
@@ -410,7 +511,7 @@ const constants.ENOEXEC = 8;
 
 --------------------------
 ### ENOLCK
-**无可用锁错误**
+**No locks available error**
 
 ```JavaScript
 const constants.ENOLCK = 77;
@@ -418,7 +519,7 @@ const constants.ENOLCK = 77;
 
 --------------------------
 ### ENOLINK
-**链接已断开错误**
+**Link has been severed error**
 
 ```JavaScript
 const constants.ENOLINK = 97;
@@ -426,7 +527,7 @@ const constants.ENOLINK = 97;
 
 --------------------------
 ### ENOMEM
-**内存不足错误**
+**Out of memory error**
 
 ```JavaScript
 const constants.ENOMEM = 12;
@@ -434,7 +535,7 @@ const constants.ENOMEM = 12;
 
 --------------------------
 ### ENOMSG
-**无所需类型消息错误**
+**No message of desired type error**
 
 ```JavaScript
 const constants.ENOMSG = 91;
@@ -442,7 +543,7 @@ const constants.ENOMSG = 91;
 
 --------------------------
 ### ENOPROTOOPT
-**协议不可用错误**
+**Protocol not available error**
 
 ```JavaScript
 const constants.ENOPROTOOPT = 42;
@@ -450,7 +551,7 @@ const constants.ENOPROTOOPT = 42;
 
 --------------------------
 ### ENOSPC
-**设备上无空间错误**
+**No space left on device error**
 
 ```JavaScript
 const constants.ENOSPC = 28;
@@ -458,7 +559,7 @@ const constants.ENOSPC = 28;
 
 --------------------------
 ### ENOSR
-**流资源不足错误**
+**Out of streams resources error**
 
 ```JavaScript
 const constants.ENOSR = 98;
@@ -466,7 +567,7 @@ const constants.ENOSR = 98;
 
 --------------------------
 ### ENOSTR
-**设备不是流错误**
+**Device not a stream error**
 
 ```JavaScript
 const constants.ENOSTR = 99;
@@ -474,7 +575,7 @@ const constants.ENOSTR = 99;
 
 --------------------------
 ### ENOSYS
-**功能未实现错误**
+**Function not implemented error**
 
 ```JavaScript
 const constants.ENOSYS = 78;
@@ -482,7 +583,7 @@ const constants.ENOSYS = 78;
 
 --------------------------
 ### ENOTCONN
-**套接字未连接错误**
+**[Socket](../../object/ifs/Socket.md) is not connected error**
 
 ```JavaScript
 const constants.ENOTCONN = 57;
@@ -490,7 +591,7 @@ const constants.ENOTCONN = 57;
 
 --------------------------
 ### ENOTDIR
-**不是目录错误**
+**Not a directory error**
 
 ```JavaScript
 const constants.ENOTDIR = 20;
@@ -498,7 +599,7 @@ const constants.ENOTDIR = 20;
 
 --------------------------
 ### ENOTEMPTY
-**目录不为空错误**
+**Directory not empty error**
 
 ```JavaScript
 const constants.ENOTEMPTY = 66;
@@ -506,7 +607,7 @@ const constants.ENOTEMPTY = 66;
 
 --------------------------
 ### ENOTSOCK
-**套接字操作非套接字错误**
+**[Socket](../../object/ifs/Socket.md) operation on non-socket error**
 
 ```JavaScript
 const constants.ENOTSOCK = 38;
@@ -514,7 +615,7 @@ const constants.ENOTSOCK = 38;
 
 --------------------------
 ### ENOTSUP
-**操作不支持错误**
+**Operation not supported error**
 
 ```JavaScript
 const constants.ENOTSUP = 45;
@@ -522,7 +623,7 @@ const constants.ENOTSUP = 45;
 
 --------------------------
 ### ENOTTY
-**不适当的I/O控制操作错误**
+**Inappropriate I/O control operation error**
 
 ```JavaScript
 const constants.ENOTTY = 25;
@@ -530,7 +631,7 @@ const constants.ENOTTY = 25;
 
 --------------------------
 ### ENXIO
-**无此设备或地址错误**
+**No such device or address error**
 
 ```JavaScript
 const constants.ENXIO = 6;
@@ -538,7 +639,7 @@ const constants.ENXIO = 6;
 
 --------------------------
 ### EOPNOTSUPP
-**套接字上不支持操作错误**
+**Operation not supported on socket error**
 
 ```JavaScript
 const constants.EOPNOTSUPP = 102;
@@ -546,7 +647,7 @@ const constants.EOPNOTSUPP = 102;
 
 --------------------------
 ### EOVERFLOW
-**值太大无法存储在数据类型错误**
+**Value too large for the data type error**
 
 ```JavaScript
 const constants.EOVERFLOW = 84;
@@ -554,7 +655,7 @@ const constants.EOVERFLOW = 84;
 
 --------------------------
 ### EPERM
-**操作不允许错误**
+**Operation not permitted error**
 
 ```JavaScript
 const constants.EPERM = 1;
@@ -562,7 +663,7 @@ const constants.EPERM = 1;
 
 --------------------------
 ### EPIPE
-**管道破裂错误**
+**Broken pipe error**
 
 ```JavaScript
 const constants.EPIPE = 32;
@@ -570,7 +671,7 @@ const constants.EPIPE = 32;
 
 --------------------------
 ### EPROTO
-**协议错误**
+**Protocol error**
 
 ```JavaScript
 const constants.EPROTO = 100;
@@ -578,7 +679,7 @@ const constants.EPROTO = 100;
 
 --------------------------
 ### EPROTONOSUPPORT
-**协议不支持错误**
+**Protocol not supported error**
 
 ```JavaScript
 const constants.EPROTONOSUPPORT = 43;
@@ -586,7 +687,7 @@ const constants.EPROTONOSUPPORT = 43;
 
 --------------------------
 ### EPROTOTYPE
-**协议错误类型错误**
+**Protocol wrong type error**
 
 ```JavaScript
 const constants.EPROTOTYPE = 41;
@@ -594,7 +695,7 @@ const constants.EPROTOTYPE = 41;
 
 --------------------------
 ### ERANGE
-**结果太大错误**
+**Result too large error**
 
 ```JavaScript
 const constants.ERANGE = 34;
@@ -602,7 +703,7 @@ const constants.ERANGE = 34;
 
 --------------------------
 ### EROFS
-**只读文件系统错误**
+**Read-only file system error**
 
 ```JavaScript
 const constants.EROFS = 30;
@@ -610,7 +711,7 @@ const constants.EROFS = 30;
 
 --------------------------
 ### ESPIPE
-**无效的查找错误**
+**Invalid seek error**
 
 ```JavaScript
 const constants.ESPIPE = 29;
@@ -618,7 +719,7 @@ const constants.ESPIPE = 29;
 
 --------------------------
 ### ESRCH
-**无此进程错误**
+**No such [process](process.md) error**
 
 ```JavaScript
 const constants.ESRCH = 3;
@@ -626,7 +727,7 @@ const constants.ESRCH = 3;
 
 --------------------------
 ### ESTALE
-**文件句柄过时错误**
+**Stale file handle error**
 
 ```JavaScript
 const constants.ESTALE = 70;
@@ -634,7 +735,7 @@ const constants.ESTALE = 70;
 
 --------------------------
 ### ETIME
-**定时器到期错误**
+**[Timer](../../object/ifs/Timer.md) expired error**
 
 ```JavaScript
 const constants.ETIME = 101;
@@ -642,7 +743,7 @@ const constants.ETIME = 101;
 
 --------------------------
 ### ETIMEDOUT
-**连接超时错误**
+**Connection timed out error**
 
 ```JavaScript
 const constants.ETIMEDOUT = 60;
@@ -650,7 +751,7 @@ const constants.ETIMEDOUT = 60;
 
 --------------------------
 ### ETXTBSY
-**文本文件忙错误**
+**Text file busy error**
 
 ```JavaScript
 const constants.ETXTBSY = 26;
@@ -658,7 +759,7 @@ const constants.ETXTBSY = 26;
 
 --------------------------
 ### EWOULDBLOCK
-**操作会阻塞错误**
+**Operation would block error**
 
 ```JavaScript
 const constants.EWOULDBLOCK = 35;
@@ -666,7 +767,7 @@ const constants.EWOULDBLOCK = 35;
 
 --------------------------
 ### EXDEV
-**跨设备链接错误**
+**Cross-device link error**
 
 ```JavaScript
 const constants.EXDEV = 18;
@@ -674,7 +775,7 @@ const constants.EXDEV = 18;
 
 --------------------------
 ### PRIORITY_LOW
-**低优先级**
+**Low priority**
 
 ```JavaScript
 const constants.PRIORITY_LOW = 19;
@@ -682,7 +783,7 @@ const constants.PRIORITY_LOW = 19;
 
 --------------------------
 ### PRIORITY_BELOW_NORMAL
-**低于正常优先级**
+**Below normal priority**
 
 ```JavaScript
 const constants.PRIORITY_BELOW_NORMAL = 10;
@@ -690,7 +791,7 @@ const constants.PRIORITY_BELOW_NORMAL = 10;
 
 --------------------------
 ### PRIORITY_NORMAL
-**正常优先级**
+**Normal priority**
 
 ```JavaScript
 const constants.PRIORITY_NORMAL = 0;
@@ -698,7 +799,7 @@ const constants.PRIORITY_NORMAL = 0;
 
 --------------------------
 ### PRIORITY_ABOVE_NORMAL
-**高于正常优先级**
+**Above normal priority**
 
 ```JavaScript
 const constants.PRIORITY_ABOVE_NORMAL = -7;
@@ -706,7 +807,7 @@ const constants.PRIORITY_ABOVE_NORMAL = -7;
 
 --------------------------
 ### PRIORITY_HIGH
-**高优先级**
+**High priority**
 
 ```JavaScript
 const constants.PRIORITY_HIGH = -14;
@@ -714,7 +815,7 @@ const constants.PRIORITY_HIGH = -14;
 
 --------------------------
 ### PRIORITY_HIGHEST
-**最高优先级**
+**Highest priority**
 
 ```JavaScript
 const constants.PRIORITY_HIGHEST = -20;
@@ -722,7 +823,7 @@ const constants.PRIORITY_HIGHEST = -20;
 
 --------------------------
 ### SIGHUP
-**挂起信号**
+**Hangup signal**
 
 ```JavaScript
 const constants.SIGHUP = 1;
@@ -730,7 +831,7 @@ const constants.SIGHUP = 1;
 
 --------------------------
 ### SIGINT
-**中断信号**
+**Interrupt signal**
 
 ```JavaScript
 const constants.SIGINT = 2;
@@ -738,7 +839,7 @@ const constants.SIGINT = 2;
 
 --------------------------
 ### SIGQUIT
-**退出信号**
+**Quit signal**
 
 ```JavaScript
 const constants.SIGQUIT = 3;
@@ -746,7 +847,7 @@ const constants.SIGQUIT = 3;
 
 --------------------------
 ### SIGILL
-**非法指令信号**
+**Illegal instruction signal**
 
 ```JavaScript
 const constants.SIGILL = 4;
@@ -754,7 +855,7 @@ const constants.SIGILL = 4;
 
 --------------------------
 ### SIGTRAP
-**跟踪陷阱信号**
+**Trace trap signal**
 
 ```JavaScript
 const constants.SIGTRAP = 5;
@@ -762,7 +863,7 @@ const constants.SIGTRAP = 5;
 
 --------------------------
 ### SIGABRT
-**中止信号**
+**Abort signal**
 
 ```JavaScript
 const constants.SIGABRT = 6;
@@ -770,7 +871,7 @@ const constants.SIGABRT = 6;
 
 --------------------------
 ### SIGIOT
-**IOT陷阱信号**
+**IOT trap signal**
 
 ```JavaScript
 const constants.SIGIOT = 6;
@@ -778,7 +879,7 @@ const constants.SIGIOT = 6;
 
 --------------------------
 ### SIGBUS
-**总线错误信号**
+**Bus error signal**
 
 ```JavaScript
 const constants.SIGBUS = 10;
@@ -786,7 +887,7 @@ const constants.SIGBUS = 10;
 
 --------------------------
 ### SIGFPE
-**浮点异常信号**
+**Floating point exception signal**
 
 ```JavaScript
 const constants.SIGFPE = 8;
@@ -794,7 +895,7 @@ const constants.SIGFPE = 8;
 
 --------------------------
 ### SIGKILL
-**杀死信号**
+**Kill signal**
 
 ```JavaScript
 const constants.SIGKILL = 9;
@@ -802,7 +903,7 @@ const constants.SIGKILL = 9;
 
 --------------------------
 ### SIGUSR1
-**用户定义信号1**
+**User defined signal 1**
 
 ```JavaScript
 const constants.SIGUSR1 = 30;
@@ -810,7 +911,7 @@ const constants.SIGUSR1 = 30;
 
 --------------------------
 ### SIGSEGV
-**段错误信号**
+**Segmentation fault signal**
 
 ```JavaScript
 const constants.SIGSEGV = 11;
@@ -818,7 +919,7 @@ const constants.SIGSEGV = 11;
 
 --------------------------
 ### SIGUSR2
-**用户定义信号2**
+**User defined signal 2**
 
 ```JavaScript
 const constants.SIGUSR2 = 31;
@@ -826,7 +927,7 @@ const constants.SIGUSR2 = 31;
 
 --------------------------
 ### SIGPIPE
-**管道破裂信号**
+**Broken pipe signal**
 
 ```JavaScript
 const constants.SIGPIPE = 13;
@@ -834,7 +935,7 @@ const constants.SIGPIPE = 13;
 
 --------------------------
 ### SIGALRM
-**闹钟信号**
+**Alarm clock signal**
 
 ```JavaScript
 const constants.SIGALRM = 14;
@@ -842,7 +943,7 @@ const constants.SIGALRM = 14;
 
 --------------------------
 ### SIGTERM
-**终止信号**
+**Termination signal**
 
 ```JavaScript
 const constants.SIGTERM = 15;
@@ -850,7 +951,7 @@ const constants.SIGTERM = 15;
 
 --------------------------
 ### SIGCHLD
-**子进程终止或停止信号**
+**Child [process](process.md) terminated or stopped signal**
 
 ```JavaScript
 const constants.SIGCHLD = 20;
@@ -858,7 +959,7 @@ const constants.SIGCHLD = 20;
 
 --------------------------
 ### SIGCONT
-**继续执行信号**
+**Continue execution signal**
 
 ```JavaScript
 const constants.SIGCONT = 19;
@@ -866,7 +967,7 @@ const constants.SIGCONT = 19;
 
 --------------------------
 ### SIGSTOP
-**停止执行信号**
+**Stop execution signal**
 
 ```JavaScript
 const constants.SIGSTOP = 17;
@@ -874,7 +975,7 @@ const constants.SIGSTOP = 17;
 
 --------------------------
 ### SIGTSTP
-**终端停止信号**
+**Terminal stop signal**
 
 ```JavaScript
 const constants.SIGTSTP = 18;
@@ -882,7 +983,7 @@ const constants.SIGTSTP = 18;
 
 --------------------------
 ### SIGTTIN
-**后台进程尝试读取信号**
+**Background [process](process.md) attempts to read signal**
 
 ```JavaScript
 const constants.SIGTTIN = 21;
@@ -890,7 +991,7 @@ const constants.SIGTTIN = 21;
 
 --------------------------
 ### SIGTTOU
-**后台进程尝试写入信号**
+**Background [process](process.md) attempts to write signal**
 
 ```JavaScript
 const constants.SIGTTOU = 22;
@@ -898,7 +999,7 @@ const constants.SIGTTOU = 22;
 
 --------------------------
 ### SIGURG
-**套接字紧急条件信号**
+**[Socket](../../object/ifs/Socket.md) urgent condition signal**
 
 ```JavaScript
 const constants.SIGURG = 16;
@@ -906,7 +1007,7 @@ const constants.SIGURG = 16;
 
 --------------------------
 ### SIGXCPU
-**CPU时间限制超出信号**
+**CPU time limit exceeded signal**
 
 ```JavaScript
 const constants.SIGXCPU = 24;
@@ -914,7 +1015,7 @@ const constants.SIGXCPU = 24;
 
 --------------------------
 ### SIGXFSZ
-**文件大小限制超出信号**
+**[File](../../object/ifs/File.md) size limit exceeded signal**
 
 ```JavaScript
 const constants.SIGXFSZ = 25;
@@ -922,7 +1023,7 @@ const constants.SIGXFSZ = 25;
 
 --------------------------
 ### SIGVTALRM
-**虚拟定时器到期信号**
+**Virtual timer expired signal**
 
 ```JavaScript
 const constants.SIGVTALRM = 26;
@@ -930,7 +1031,7 @@ const constants.SIGVTALRM = 26;
 
 --------------------------
 ### SIGPROF
-**分析定时器到期信号**
+**Profiling timer expired signal**
 
 ```JavaScript
 const constants.SIGPROF = 27;
@@ -938,7 +1039,7 @@ const constants.SIGPROF = 27;
 
 --------------------------
 ### SIGWINCH
-**窗口大小改变信号**
+**Window size change signal**
 
 ```JavaScript
 const constants.SIGWINCH = 28;
@@ -946,7 +1047,7 @@ const constants.SIGWINCH = 28;
 
 --------------------------
 ### SIGIO
-**I/O现在可能信号**
+**I/O now possible signal**
 
 ```JavaScript
 const constants.SIGIO = 23;
@@ -954,7 +1055,7 @@ const constants.SIGIO = 23;
 
 --------------------------
 ### SIGINFO
-**信息请求信号**
+**Information request signal**
 
 ```JavaScript
 const constants.SIGINFO = 29;
@@ -962,7 +1063,7 @@ const constants.SIGINFO = 29;
 
 --------------------------
 ### SIGSYS
-**错误的系统调用信号**
+**Bad system call signal**
 
 ```JavaScript
 const constants.SIGSYS = 12;
@@ -970,7 +1071,7 @@ const constants.SIGSYS = 12;
 
 --------------------------
 ### UV_FS_SYMLINK_DIR
-**符号链接到目录**
+**Symbolic link to a directory**
 
 ```JavaScript
 const constants.UV_FS_SYMLINK_DIR = 1;
@@ -978,7 +1079,7 @@ const constants.UV_FS_SYMLINK_DIR = 1;
 
 --------------------------
 ### UV_FS_SYMLINK_JUNCTION
-**符号链接到连接点**
+**Symbolic link to a junction point**
 
 ```JavaScript
 const constants.UV_FS_SYMLINK_JUNCTION = 2;
@@ -986,7 +1087,7 @@ const constants.UV_FS_SYMLINK_JUNCTION = 2;
 
 --------------------------
 ### O_RDONLY
-**仅打开读取**
+**Open for reading only**
 
 ```JavaScript
 const constants.O_RDONLY = 0;
@@ -994,7 +1095,7 @@ const constants.O_RDONLY = 0;
 
 --------------------------
 ### O_WRONLY
-**仅打开写入**
+**Open for writing only**
 
 ```JavaScript
 const constants.O_WRONLY = 1;
@@ -1002,7 +1103,7 @@ const constants.O_WRONLY = 1;
 
 --------------------------
 ### O_RDWR
-**打开读取和写入**
+**Open for reading and writing**
 
 ```JavaScript
 const constants.O_RDWR = 2;
@@ -1010,7 +1111,7 @@ const constants.O_RDWR = 2;
 
 --------------------------
 ### UV_DIRENT_UNKNOWN
-**未知目录项类型**
+**Unknown directory entry type**
 
 ```JavaScript
 const constants.UV_DIRENT_UNKNOWN = 0;
@@ -1018,7 +1119,7 @@ const constants.UV_DIRENT_UNKNOWN = 0;
 
 --------------------------
 ### UV_DIRENT_FILE
-**文件目录项类型**
+**[File](../../object/ifs/File.md) directory entry type**
 
 ```JavaScript
 const constants.UV_DIRENT_FILE = 1;
@@ -1026,7 +1127,7 @@ const constants.UV_DIRENT_FILE = 1;
 
 --------------------------
 ### UV_DIRENT_DIR
-**目录目录项类型**
+**Directory directory entry type**
 
 ```JavaScript
 const constants.UV_DIRENT_DIR = 2;
@@ -1034,7 +1135,7 @@ const constants.UV_DIRENT_DIR = 2;
 
 --------------------------
 ### UV_DIRENT_LINK
-**符号链接目录项类型**
+**Symbolic link directory entry type**
 
 ```JavaScript
 const constants.UV_DIRENT_LINK = 3;
@@ -1042,7 +1143,7 @@ const constants.UV_DIRENT_LINK = 3;
 
 --------------------------
 ### UV_DIRENT_FIFO
-**FIFO目录项类型**
+**FIFO directory entry type**
 
 ```JavaScript
 const constants.UV_DIRENT_FIFO = 4;
@@ -1050,7 +1151,7 @@ const constants.UV_DIRENT_FIFO = 4;
 
 --------------------------
 ### UV_DIRENT_SOCKET
-**套接字目录项类型**
+**[Socket](../../object/ifs/Socket.md) directory entry type**
 
 ```JavaScript
 const constants.UV_DIRENT_SOCKET = 5;
@@ -1058,7 +1159,7 @@ const constants.UV_DIRENT_SOCKET = 5;
 
 --------------------------
 ### UV_DIRENT_CHAR
-**字符设备目录项类型**
+**Character device directory entry type**
 
 ```JavaScript
 const constants.UV_DIRENT_CHAR = 6;
@@ -1066,7 +1167,7 @@ const constants.UV_DIRENT_CHAR = 6;
 
 --------------------------
 ### UV_DIRENT_BLOCK
-**块设备目录项类型**
+**Block device directory entry type**
 
 ```JavaScript
 const constants.UV_DIRENT_BLOCK = 7;
@@ -1074,7 +1175,7 @@ const constants.UV_DIRENT_BLOCK = 7;
 
 --------------------------
 ### S_IFMT
-**文件类型位字段的位掩码**
+**Bit mask of the file type bit field**
 
 ```JavaScript
 const constants.S_IFMT = 61440;
@@ -1082,7 +1183,7 @@ const constants.S_IFMT = 61440;
 
 --------------------------
 ### S_IFREG
-**常规文件**
+**Regular file**
 
 ```JavaScript
 const constants.S_IFREG = 32768;
@@ -1090,7 +1191,7 @@ const constants.S_IFREG = 32768;
 
 --------------------------
 ### S_IFDIR
-**目录**
+**Directory**
 
 ```JavaScript
 const constants.S_IFDIR = 16384;
@@ -1098,7 +1199,7 @@ const constants.S_IFDIR = 16384;
 
 --------------------------
 ### S_IFCHR
-**字符设备**
+**Character device**
 
 ```JavaScript
 const constants.S_IFCHR = 8192;
@@ -1106,7 +1207,7 @@ const constants.S_IFCHR = 8192;
 
 --------------------------
 ### S_IFBLK
-**块设备**
+**Block device**
 
 ```JavaScript
 const constants.S_IFBLK = 24576;
@@ -1122,7 +1223,7 @@ const constants.S_IFIFO = 4096;
 
 --------------------------
 ### S_IFLNK
-**符号链接**
+**Symbolic link**
 
 ```JavaScript
 const constants.S_IFLNK = 40960;
@@ -1130,7 +1231,7 @@ const constants.S_IFLNK = 40960;
 
 --------------------------
 ### S_IFSOCK
-**套接字**
+**[Socket](../../object/ifs/Socket.md)**
 
 ```JavaScript
 const constants.S_IFSOCK = 49152;
@@ -1138,7 +1239,7 @@ const constants.S_IFSOCK = 49152;
 
 --------------------------
 ### O_CREAT
-**如果文件不存在则创建文件**
+**Create the file if it does not exist**
 
 ```JavaScript
 const constants.O_CREAT = 512;
@@ -1146,7 +1247,7 @@ const constants.O_CREAT = 512;
 
 --------------------------
 ### O_EXCL
-**确保文件的独占创建**
+**Ensure exclusive creation of the file**
 
 ```JavaScript
 const constants.O_EXCL = 2048;
@@ -1154,7 +1255,7 @@ const constants.O_EXCL = 2048;
 
 --------------------------
 ### UV_FS_O_FILEMAP
-**文件映射标志**
+**[File](../../object/ifs/File.md) mapping flag**
 
 ```JavaScript
 const constants.UV_FS_O_FILEMAP = 0;
@@ -1162,7 +1263,7 @@ const constants.UV_FS_O_FILEMAP = 0;
 
 --------------------------
 ### O_NOCTTY
-**不分配控制终端**
+**Do not allocate a controlling terminal**
 
 ```JavaScript
 const constants.O_NOCTTY = 131072;
@@ -1170,7 +1271,7 @@ const constants.O_NOCTTY = 131072;
 
 --------------------------
 ### O_TRUNC
-**将文件截断为零长度**
+**Truncate the file to zero length**
 
 ```JavaScript
 const constants.O_TRUNC = 1024;
@@ -1178,7 +1279,7 @@ const constants.O_TRUNC = 1024;
 
 --------------------------
 ### O_APPEND
-**追加到文件末尾**
+**Append to the end of the file**
 
 ```JavaScript
 const constants.O_APPEND = 8;
@@ -1186,7 +1287,7 @@ const constants.O_APPEND = 8;
 
 --------------------------
 ### O_DIRECTORY
-**打开目录**
+**Open a directory**
 
 ```JavaScript
 const constants.O_DIRECTORY = 1048576;
@@ -1194,7 +1295,7 @@ const constants.O_DIRECTORY = 1048576;
 
 --------------------------
 ### O_NOFOLLOW
-**不跟随符号链接**
+**Do not follow symbolic links**
 
 ```JavaScript
 const constants.O_NOFOLLOW = 256;
@@ -1202,7 +1303,7 @@ const constants.O_NOFOLLOW = 256;
 
 --------------------------
 ### O_SYNC
-**同步I/O**
+**Synchronous I/O**
 
 ```JavaScript
 const constants.O_SYNC = 128;
@@ -1210,7 +1311,7 @@ const constants.O_SYNC = 128;
 
 --------------------------
 ### O_DSYNC
-**同步I/O数据完整性完成**
+**Synchronous I/O data integrity completion**
 
 ```JavaScript
 const constants.O_DSYNC = 4194304;
@@ -1218,7 +1319,7 @@ const constants.O_DSYNC = 4194304;
 
 --------------------------
 ### O_SYMLINK
-**允许打开符号链接**
+**Allow opening symbolic links**
 
 ```JavaScript
 const constants.O_SYMLINK = 2097152;
@@ -1226,7 +1327,7 @@ const constants.O_SYMLINK = 2097152;
 
 --------------------------
 ### O_NONBLOCK
-**非阻塞模式**
+**Non-blocking mode**
 
 ```JavaScript
 const constants.O_NONBLOCK = 4;
@@ -1234,7 +1335,7 @@ const constants.O_NONBLOCK = 4;
 
 --------------------------
 ### S_IRWXU
-**所有者读写执行权限**
+**Owner read, write and execute permission**
 
 ```JavaScript
 const constants.S_IRWXU = 448;
@@ -1242,7 +1343,7 @@ const constants.S_IRWXU = 448;
 
 --------------------------
 ### S_IRUSR
-**所有者读权限**
+**Owner read permission**
 
 ```JavaScript
 const constants.S_IRUSR = 256;
@@ -1250,7 +1351,7 @@ const constants.S_IRUSR = 256;
 
 --------------------------
 ### S_IWUSR
-**所有者写权限**
+**Owner write permission**
 
 ```JavaScript
 const constants.S_IWUSR = 128;
@@ -1258,7 +1359,7 @@ const constants.S_IWUSR = 128;
 
 --------------------------
 ### S_IXUSR
-**所有者执行权限**
+**Owner execute permission**
 
 ```JavaScript
 const constants.S_IXUSR = 64;
@@ -1266,7 +1367,7 @@ const constants.S_IXUSR = 64;
 
 --------------------------
 ### S_IRWXG
-**组读写执行权限**
+**Group read, write and execute permission**
 
 ```JavaScript
 const constants.S_IRWXG = 56;
@@ -1274,7 +1375,7 @@ const constants.S_IRWXG = 56;
 
 --------------------------
 ### S_IRGRP
-**组读权限**
+**Group read permission**
 
 ```JavaScript
 const constants.S_IRGRP = 32;
@@ -1282,7 +1383,7 @@ const constants.S_IRGRP = 32;
 
 --------------------------
 ### S_IWGRP
-**组写权限**
+**Group write permission**
 
 ```JavaScript
 const constants.S_IWGRP = 16;
@@ -1290,7 +1391,7 @@ const constants.S_IWGRP = 16;
 
 --------------------------
 ### S_IXGRP
-**组执行权限**
+**Group execute permission**
 
 ```JavaScript
 const constants.S_IXGRP = 8;
@@ -1298,7 +1399,7 @@ const constants.S_IXGRP = 8;
 
 --------------------------
 ### S_IRWXO
-**其他人读写执行权限**
+**Others read, write and execute permission**
 
 ```JavaScript
 const constants.S_IRWXO = 7;
@@ -1306,7 +1407,7 @@ const constants.S_IRWXO = 7;
 
 --------------------------
 ### S_IROTH
-**其他人读权限**
+**Others read permission**
 
 ```JavaScript
 const constants.S_IROTH = 4;
@@ -1314,7 +1415,7 @@ const constants.S_IROTH = 4;
 
 --------------------------
 ### S_IWOTH
-**其他人写权限**
+**Others write permission**
 
 ```JavaScript
 const constants.S_IWOTH = 2;
@@ -1322,7 +1423,7 @@ const constants.S_IWOTH = 2;
 
 --------------------------
 ### S_IXOTH
-**其他人执行权限**
+**Others execute permission**
 
 ```JavaScript
 const constants.S_IXOTH = 1;
@@ -1330,7 +1431,7 @@ const constants.S_IXOTH = 1;
 
 --------------------------
 ### F_OK
-**测试文件是否存在**
+**Test whether the file exists**
 
 ```JavaScript
 const constants.F_OK = 0;
@@ -1338,7 +1439,7 @@ const constants.F_OK = 0;
 
 --------------------------
 ### R_OK
-**测试读权限**
+**Test read permission**
 
 ```JavaScript
 const constants.R_OK = 4;
@@ -1346,7 +1447,7 @@ const constants.R_OK = 4;
 
 --------------------------
 ### W_OK
-**测试写权限**
+**Test write permission**
 
 ```JavaScript
 const constants.W_OK = 2;
@@ -1354,7 +1455,7 @@ const constants.W_OK = 2;
 
 --------------------------
 ### X_OK
-**测试执行权限**
+**Test execute permission**
 
 ```JavaScript
 const constants.X_OK = 1;
@@ -1362,7 +1463,7 @@ const constants.X_OK = 1;
 
 --------------------------
 ### UV_FS_COPYFILE_EXCL
-**独占复制文件标志**
+**Exclusive copy file flag**
 
 ```JavaScript
 const constants.UV_FS_COPYFILE_EXCL = 1;
@@ -1370,7 +1471,7 @@ const constants.UV_FS_COPYFILE_EXCL = 1;
 
 --------------------------
 ### COPYFILE_EXCL
-**独占复制文件标志**
+**Exclusive copy file flag**
 
 ```JavaScript
 const constants.COPYFILE_EXCL = 1;
@@ -1378,7 +1479,7 @@ const constants.COPYFILE_EXCL = 1;
 
 --------------------------
 ### UV_FS_COPYFILE_FICLONE
-**文件克隆复制标志**
+**[File](../../object/ifs/File.md) clone copy flag**
 
 ```JavaScript
 const constants.UV_FS_COPYFILE_FICLONE = 2;
@@ -1386,7 +1487,7 @@ const constants.UV_FS_COPYFILE_FICLONE = 2;
 
 --------------------------
 ### COPYFILE_FICLONE
-**文件克隆复制标志**
+**[File](../../object/ifs/File.md) clone copy flag**
 
 ```JavaScript
 const constants.COPYFILE_FICLONE = 2;
@@ -1394,7 +1495,7 @@ const constants.COPYFILE_FICLONE = 2;
 
 --------------------------
 ### UV_FS_COPYFILE_FICLONE_FORCE
-**文件克隆强制复制标志**
+**[File](../../object/ifs/File.md) clone force copy flag**
 
 ```JavaScript
 const constants.UV_FS_COPYFILE_FICLONE_FORCE = 4;
@@ -1402,7 +1503,7 @@ const constants.UV_FS_COPYFILE_FICLONE_FORCE = 4;
 
 --------------------------
 ### COPYFILE_FICLONE_FORCE
-**文件克隆强制复制标志**
+**[File](../../object/ifs/File.md) clone force copy flag**
 
 ```JavaScript
 const constants.COPYFILE_FICLONE_FORCE = 4;

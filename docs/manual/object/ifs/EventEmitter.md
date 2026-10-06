@@ -1,43 +1,143 @@
-# 对象 EventEmitter
-EventEmitter 是事件触发对象，它可以被用于建立观察者模式，支持事件触发的对象均继承于此
+# Object EventEmitter
+EventEmitter is the observer-pattern base class of the runtime; every class that can
 
-当一个事件被触发时，所有与该事件相关联的监听器会以异步方式被调用。它还允许我们创建具有高度可定制性和灵活性的代码。
+emit events inherits from it, directly or through [Stream](Stream.md)
 
-常用函数包括：addListener/on、once、removeListener/off、removeAllListeners 和 emit。
+Listeners are registered per event name and called when the event is emitted. The class is the
+base of streams and sockets, servers such as [TcpServer](TcpServer.md), watchers, workers, [MessagePort](MessagePort.md) and the
+[process](../../module/ifs/process.md) [object](object.md), so the same API is used to observe runtime events everywhere.
 
-下面是一个示例代码：
+Concepts:
+
+- **Registration order**: listeners of one event are stored in registration order and called in
+  that order; `prependListener` and `prependOnceListener` insert at the front of the queue.
+  `once` wraps the listener so that it removes itself before it is invoked; `listeners()` returns
+  the original function, `rawListeners()` returns the internal wrapper (whose `_func` property
+  holds the original), and `off(ev, fn)` matches either form.
+- **Dispatch model**: emitting invokes the first listener synchronously on the emitting fiber;
+  the remaining listeners each run in a separate fiber in parallel, and `emit` returns only after
+  all of them finish (Node.js calls every listener synchronously in sequence). `emit` returns
+  true when a listener was called and false when the event has none.
+- **Arguments**: there is no event [object](object.md); the arguments of `emit` are forwarded to the listener
+  as-is and `this` is the emitter. fibjs also exposes a [global](../../module/ifs/global.md) DOM-style event class (see
+  [DOMEvent](DOMEvent.md)) used by [AbortSignal](AbortSignal.md) and fetch-style APIs, which is unrelated to this convention.
+- **Meta events**: registering a listener emits `newListener` with the event name and the
+  listener before it is added; removing one emits `removeListener` after it is removed.
+- **error event**: emitting `error` with no listener throws from `emit`; an Error argument is
+  thrown as-is and any other value is wrapped in `Error("Unhandled error. (...)")`.
+- **Listener limit**: `defaultMaxListeners` (10) and `setMaxListeners`/`getMaxListeners` are kept
+  for Node.js compatibility; fibjs never warns when the limit is exceeded.
+- **Node.js surface**: `events.errorMonitor`, `events.captureRejectionSymbol`,
+  `events.getEventListeners` and the static broadcast forms of `setMaxListeners` and
+  `getMaxListeners` are not provided; the `captureRejections` option is accepted but ignored;
+  symbol events are omitted from `eventNames()` and are not removed by `removeAllListeners()`
+  without arguments.
+
+Obtained from:
+- `new EventEmitter(options = {})` — creates an emitter; the options [object](object.md) is accepted for
+  Node.js compatibility and ignored;
+- `require('events')` — the [module](../../module/ifs/module.md) itself is this class, so it doubles as the constructor:
+  `require('events').EventEmitter === require('events')`;
+- the [global](../../module/ifs/global.md) `EventTarget` alias — it points to this class, not to the WHATWG EventTarget class:
+  it has no `dispatchEvent`, and events are observed with `on`/`once` and fired with `emit`.
+
+Example 1 — subscribe, emit with arguments and read the result:
 
 ```JavaScript
-var fs = require('fs');
-var EventEmitter = require('events');
-var event = new EventEmitter();
+const EventEmitter = require('events');
 
-event.on('read_file', function(filename) {
-    fs.readFile(filename, 'utf8', function(err, data) {
-        if (err) {
-            event.emit('error', err);
-            return;
-        }
-        event.emit('show_content', data);
-    });
+const emitter = new EventEmitter();
+
+emitter.on('greet', function(name, times) {
+    console.log(`hello ${name} x${times}`); // hello world x2
+    console.log(this === emitter); // true
 });
 
-event.on('error', function(err) {
-    console.log(`Error ${err}`);
-});
-
-event.on('show_content', function(content) {
-    console.log(content);
-});
-
-event.emit('read_file', 'test.txt');
+console.log(emitter.emit('greet', 'world', 2)); // true, printed after the listener
+console.log(emitter.emit('nobody')); // false
 ```
 
-上述示例代码，当运行时，事件emitter实例event首先监听'read_file'事件，然后在事件触发时(`event.emit('read_file', 'test.txt')`)触发读取文件的操作。当读取成功后，会触发'show_content'事件，此时监听了'show_content'事件的函数就会被执行并显示文件内容。如果在读取文件过程中发生错误，则会触发'error'事件，此时操作失败的情况就得到了应对。
+Example 2 — one-shot listeners and listener bookkeeping:
 
-这种模式在应对异步操作的业务场景中具有很好的优越性。
+```JavaScript
+const EventEmitter = require('events');
 
-## 继承关系
+const emitter = new EventEmitter();
+
+function onTick() {
+    console.log('tick');
+}
+
+emitter.once('tick', onTick);
+console.log(emitter.listenerCount('tick')); // 1
+console.log(emitter.rawListeners('tick')[0]._func === onTick); // true
+
+emitter.emit('tick'); // tick
+emitter.emit('tick'); // the listener removed itself, nothing is printed
+console.log(emitter.listenerCount('tick')); // 0
+
+emitter.once('tick', onTick);
+emitter.off('tick', onTick); // off() matches the original function
+console.log(emitter.listenerCount('tick')); // 0
+```
+
+Example 3 — the error event convention and the meta events:
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+
+emitter.on('newListener', (ev) => console.log(`adding ${ev}`));
+emitter.on('removeListener', (ev) => console.log(`removing ${ev}`));
+// adding removeListener
+
+function onError(err) {
+    console.log(`handled: ${err.message}`);
+}
+
+emitter.on('error', onError);
+// adding error
+emitter.emit('error', new Error('disk full')); // handled: disk full
+
+emitter.off('error', onError);
+// removing error
+
+try {
+    emitter.emit('error', new Error('disk full'));
+} catch (err) {
+    console.log(`unhandled: ${err.message}`); // unhandled: disk full
+}
+```
+
+Example 4 — the Promise and async-iterator helpers:
+
+```JavaScript
+const EventEmitter = require('events');
+
+(async () => {
+    const emitter = new EventEmitter();
+
+    // EventEmitter.once() resolves with the array of event arguments
+    const waiting = EventEmitter.once(emitter, 'ready');
+    emitter.emit('ready', 200, 'ok');
+    console.log(JSON.stringify(await waiting)); // [200,"ok"]
+
+    // EventEmitter.on() returns an async iterator of event argument arrays
+    const iterator = EventEmitter.on(emitter, 'data', {
+        close: ['end']
+    });
+    emitter.emit('data', 1);
+    emitter.emit('end');
+    console.log(JSON.stringify((await iterator.next()).value)); // [1]
+    console.log((await iterator.next()).done); // true
+})();
+```
+
+Note: calling `EventEmitter()` without `new` does not throw; it attaches the event methods to
+the [global](../../module/ifs/global.md) [object](object.md) instead of creating an emitter, so always construct it with `new`.
+
+## Inheritance
 ```dot
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
@@ -57,7 +157,6 @@ digraph {
     HttpRequest [tooltip="HttpRequest", URL="HttpRequest.md", label="{HttpRequest}"];
     HttpResponse [tooltip="HttpResponse", URL="HttpResponse.md", label="{HttpResponse}"];
     WebSocketMessage [tooltip="WebSocketMessage", URL="WebSocketMessage.md", label="{WebSocketMessage}"];
-    WorkerMessage [tooltip="WorkerMessage", URL="WorkerMessage.md", label="{WorkerMessage}"];
     MessagePort [tooltip="MessagePort", URL="MessagePort.md", label="{MessagePort}"];
     RTCDataChannel [tooltip="RTCDataChannel", URL="RTCDataChannel.md", label="{RTCDataChannel}"];
     RTCPeerConnection [tooltip="RTCPeerConnection", URL="RTCPeerConnection.md", label="{RTCPeerConnection}"];
@@ -105,7 +204,6 @@ digraph {
     HttpMessage -> HttpRequest [dir=back];
     HttpMessage -> HttpResponse [dir=back];
     Message -> WebSocketMessage [dir=back];
-    Message -> WorkerMessage [dir=back];
     EventEmitter -> MessagePort [dir=back];
     EventEmitter -> RTCDataChannel [dir=back];
     EventEmitter -> RTCPeerConnection [dir=back];
@@ -141,48 +239,75 @@ digraph {
 }
 ```
 
-## 构造函数
+## Constructors
         
 ### EventEmitter
-**构造函数**
+**Creates an event emitter**
 
 ```JavaScript
 new EventEmitter(Object options = {});
 ```
 
-调用参数:
-* options: Object, 选项对象，支持 captureRejections 等
+Parameters:
+* options: Object, options [object](object.md), accepted for Node.js compatibility and ignored
 
-## 对象
+The options [object](object.md) exists for Node.js compatibility: Node.js reads `captureRejections` from
+it to capture rejected promises returned by listeners, while fibjs ignores the [object](object.md) and
+returns a plain emitter. Every call creates an independent listener store. Always construct
+with `new`; calling without `new` attaches the event methods to the [global](../../module/ifs/global.md) [object](object.md) instead
+(see the class documentation).
+
+## Objects
         
-**事件触发对象**
+**The EventEmitter class itself**
 
 ```JavaScript
 EventEmitter new EventEmitter;
 ```
 
-## 静态函数
+`require('events')` returns this class, so the self reference keeps Node.js-style
+`events.EventEmitter` code working: `require('events').EventEmitter === require('events')`.
+It is a constructor, not an emitter instance.
+
+## Static Methods
         
 ### addAbortListener
-**监听一个 [AbortSignal](AbortSignal.md) 的 abort 事件，返回一个可释放的对象**
+**Registers a one-shot abort handler on an [AbortSignal](AbortSignal.md)**
 
 ```JavaScript
 static Object EventEmitter.addAbortListener(EventEmitter signal,
-    Function func);
+    Function(Object ev) func);
 ```
 
-调用参数:
-* signal: EventEmitter, 要监听的 [AbortSignal](AbortSignal.md) 对象
-* func: Function, abort 事件的处理函数
+Parameters:
+* signal: EventEmitter, the [AbortSignal](AbortSignal.md) [object](object.md) to listen to
+* func: Function(Object ev), the handler for the abort event
 
-返回结果:
-* Object, 返回一个包含 `[Symbol.dispose]` 方法的 Disposable 对象
+Returns:
+* Object, returns a Disposable [object](object.md) containing a `[Symbol.dispose]` method
 
-返回的对象包含 `[Symbol.dispose]()` 方法，调用后将移除监听器。如果信号已中止，则监听器会被立即调用。
+The handler is called at most once when the signal is aborted, and it is removed from the
+signal afterwards. If the signal is already aborted the handler is invoked synchronously.
+The returned [object](object.md) has a `[Symbol.dispose]()` method that removes the handler, so it can be
+released before the abort happens.
+
+Example — abort handling with automatic cleanup:
+
+```JavaScript
+const events = require('events');
+
+const controller = new AbortController();
+const disposable = events.addAbortListener(controller.signal,
+    () => console.log('aborted'));
+
+controller.abort(); // aborted
+disposable[Symbol.dispose](); // safe to call after the listener fired
+console.log(controller.signal.listenerCount('abort')); // 0
+```
 
 --------------------------
 ### once
-**创建一个 Promise，等待指定事件触发一次后解析**
+**Creates a Promise resolved by the next occurrence of an event**
 
 ```JavaScript
 static Object EventEmitter.once(EventEmitter emitter,
@@ -190,22 +315,44 @@ static Object EventEmitter.once(EventEmitter emitter,
     Object options = {});
 ```
 
-调用参数:
-* emitter: EventEmitter, 要监听的事件触发器对象
-* ev: Value, 指定事件的名称
-* options: Object, 可选参数对象
+Parameters:
+* emitter: EventEmitter, the event emitter [object](object.md) to listen to
+* ev: Value, the event name to listen for
+* options: Object, optional parameter [object](object.md)
 
-返回结果:
-* Object, 返回 Promise，以事件参数数组解析
+Returns:
+* Object, returns a Promise that resolves with the array of event parameters
 
-返回一个 Promise，当目标事件触发时以事件参数数组解析。如果在此期间触发 'error' 事件（且监听的不是 'error' 事件本身），Promise 将被拒绝。
+The Promise resolves with the array of the emit arguments when the event fires; it rejects
+when `error` is emitted while waiting, unless the waited event is `error` itself, or when
+the signal option aborts. The temporary listeners are removed when the Promise settles.
 
-options 参数可包含：
-- signal: [AbortSignal](AbortSignal.md)，用于取消等待
+options supports the following option:
+
+```JavaScript
+// fragment: options
+({
+    "signal": null // AbortSignal; aborting rejects the Promise with an AbortError
+});
+```
+
+Example — awaiting the next occurrence of an event:
+
+```JavaScript
+const EventEmitter = require('events');
+
+(async () => {
+    const emitter = new EventEmitter();
+    const waiting = EventEmitter.once(emitter, 'ready');
+
+    emitter.emit('ready', 200, 'ok');
+    console.log(JSON.stringify(await waiting)); // [200,"ok"]
+})();
+```
 
 --------------------------
 ### on
-**创建一个异步迭代器，持续监听指定事件**
+**Creates an async iterator that yields event occurrences**
 
 ```JavaScript
 static Object EventEmitter.on(EventEmitter emitter,
@@ -213,453 +360,716 @@ static Object EventEmitter.on(EventEmitter emitter,
     Object options = {});
 ```
 
-调用参数:
-* emitter: EventEmitter, 要监听的事件触发器对象
-* ev: Value, 指定事件的名称
-* options: Object, 可选参数对象
+Parameters:
+* emitter: EventEmitter, the event emitter [object](object.md) to listen to
+* ev: Value, the event name to listen for
+* options: Object, optional parameter [object](object.md)
 
-返回结果:
-* Object, 返回 AsyncIterator 对象
+Returns:
+* Object, returns an AsyncIterator [object](object.md)
 
-返回一个 AsyncIterator，每次事件触发时产出事件参数数组。如果触发 'error' 事件，迭代器将抛出错误。
+Each next() resolves with `{ value: [args...], done: false }` when the event fires and with
+`{ done: true }` after an event named in the `close` option fires or the signal aborts; an
+`error` event rejects the pending call. The listeners are registered when the iterator is
+created and removed when the iteration ends or the signal aborts.
 
-options 参数可包含：
-- signal: [AbortSignal](AbortSignal.md)，用于取消迭代
-- close: 字符串数组，指定结束迭代的事件名称
+options supports the following options:
 
-## 静态属性
+```JavaScript
+// fragment: options
+({
+    "signal": null, // AbortSignal; aborting rejects pending and future next() calls
+    "close": [] // event names; the first one to fire ends the iteration
+});
+```
+
+Example — iterating the occurrences of an event:
+
+```JavaScript
+const EventEmitter = require('events');
+
+(async () => {
+    const emitter = new EventEmitter();
+    const iterator = EventEmitter.on(emitter, 'data', {
+        close: ['end']
+    });
+
+    emitter.emit('data', 1);
+    emitter.emit('data', 2);
+    emitter.emit('end');
+
+    for await (const args of iterator)
+    console.log(JSON.stringify(args)); // [1] then [2]
+})();
+```
+
+## Static Properties
         
 ### defaultMaxListeners
-**Integer, 默认全局最大监听器数**
+**Integer, The [process](../../module/ifs/process.md)-wide default listener limit reported by getMaxListeners()**
 
 ```JavaScript
 static Integer EventEmitter.defaultMaxListeners;
 ```
 
-## 成员函数
+Defaults to 10. Assigning a value changes getMaxListeners() for every emitter that never
+called setMaxListeners(); an emitter with an explicit limit keeps it. The limit is
+informational: fibjs never warns when the number of listeners exceeds it.
+
+## Methods
         
 ### on
-**绑定一个事件处理函数到对象**
+**Appends an event handler to the emitter**
 
 ```JavaScript
 Object EventEmitter.on(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to bind
+* func: Function(...args), the event handler function, called with the emit arguments
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+The listener is called with the arguments of emit() and `this` set to the emitter; the
+emitter itself is returned so registrations can be chained. The same function may be
+registered several times for one event and each copy is called. See the class documentation
+for the dispatch order.
 
 --------------------------
-**绑定一个事件处理函数到对象**
+**Appends several event handlers to the emitter**
 
 ```JavaScript
 Object EventEmitter.on(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Every enumerable property of the map whose value is a function is registered under its
+property name. Properties are processed in order; a value that is not a function makes the
+call fail with an invalid-type error while entries processed before it stay registered.
+
+Example — registering several handlers at once:
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+emitter.on({
+    connect: () => console.log('connect'),
+    close: () => console.log('close')
+});
+
+emitter.emit('connect'); // connect
+emitter.emit('close'); // close
+```
 
 --------------------------
 ### addListener
-**绑定一个事件处理函数到对象**
+**Appends an event handler to the emitter**
 
 ```JavaScript
 Object EventEmitter.addListener(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to bind
+* func: Function(...args), the event handler function
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Alias of on(ev, func), provided for Node.js compatibility.
 
 --------------------------
-**绑定一个事件处理函数到对象**
+**Appends several event handlers to the emitter**
 
 ```JavaScript
 Object EventEmitter.addListener(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Alias of on(map), provided for Node.js compatibility.
 
 --------------------------
 ### addEventListener
-**绑定一个事件处理函数到对象**
+**Appends an event handler to the emitter with an options [object](object.md)**
 
 ```JavaScript
 Object EventEmitter.addEventListener(Value ev,
-    Function func,
+    Function(...args) func,
     Object options = {});
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
-* options: Object, 指定事件处理函数的选项
+Parameters:
+* ev: Value, the event name to bind
+* func: Function(...args), the event handler function, called with the emit arguments
+* options: Object, the options of the event handler
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
 
-options 参数是一个对象，它可以包含以下属性：
-- once: 如果为 true，则事件处理函数只会触发一次，触发后会被移除
+Web-style alias of on(); the only supported option is `once`, which registers a one-shot
+handler exactly like once(). The listener receives the plain emit arguments and not an [Event](Event.md)
+[object](object.md); see the [DOMEvent](DOMEvent.md) class for the DOM-style event [object](object.md) used by [AbortSignal](AbortSignal.md) and
+fetch-style APIs.
+
+options supports the following option:
+
+```JavaScript
+// fragment: options
+({
+    "once": false // when true, the handler is removed before its single invocation
+});
+```
+
+Example — a one-shot DOM-style registration:
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+emitter.addEventListener('ping', () => console.log('ping'), {
+    once: true
+});
+
+emitter.emit('ping'); // ping
+console.log(emitter.emit('ping')); // false
+console.log(emitter.listenerCount('ping')); // 0
+```
 
 --------------------------
 ### prependListener
-**绑定一个事件处理函数到对象起始**
+**Inserts an event handler at the front of the queue**
 
 ```JavaScript
 Object EventEmitter.prependListener(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to bind
+* func: Function(...args), the event handler function
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+The listener is called before the listeners registered with on()/addListener() the next time
+the event is emitted. When several prependListener() calls are made, the last one registered
+is called first, because every call inserts at the same position.
+
+Example — insertion at the front of the queue:
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+emitter.on('order', () => console.log('on'));
+emitter.prependListener('order', () => console.log('prepend'));
+
+emitter.emit('order'); // prepend, then on
+```
 
 --------------------------
-**绑定一个事件处理函数到对象起始**
+**Inserts several event handlers at the front of the queue**
 
 ```JavaScript
 Object EventEmitter.prependListener(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Map form of prependListener(); every function property is inserted at the front, so the
+properties of the map are called in reverse order.
 
 --------------------------
 ### once
-**绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次**
+**Appends a one-shot event handler to the emitter**
 
 ```JavaScript
 Object EventEmitter.once(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to bind
+* func: Function(...args), the event handler function
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+The handler is wrapped and removes itself from the queue before it is called, so it runs at
+most once. off() removes it when passed the original function, listeners() returns the
+original function, and rawListeners() returns the internal wrapper whose `_func` property
+holds the original. See Example 2 in the class documentation.
 
 --------------------------
-**绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次**
+**Appends several one-shot event handlers to the emitter**
 
 ```JavaScript
 Object EventEmitter.once(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Map form of once(); every function property is registered as a one-shot listener under its
+property name.
 
 --------------------------
 ### prependOnceListener
-**绑定一个事件处理函数到对象起始**
+**Inserts a one-shot event handler at the front of the queue**
 
 ```JavaScript
 Object EventEmitter.prependOnceListener(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to bind
+* func: Function(...args), the event handler function
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Combines prependListener() and once(): the handler is called first and only once, and it is
+removed before its invocation.
 
 --------------------------
-**绑定一个事件处理函数到对象起始**
+**Inserts several one-shot event handlers at the front of the queue**
 
 ```JavaScript
 Object EventEmitter.prependOnceListener(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Map form of prependOnceListener(); every function property is inserted as a one-shot
+listener, and the properties of the map are called in reverse order.
 
 --------------------------
 ### off
-**从对象处理队列中取消指定函数**
+**Removes an event handler from the emitter**
 
 ```JavaScript
 Object EventEmitter.off(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to unbind
+* func: Function(...args), the event handler function
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+The first matching listener is removed; when the same function was registered several times
+only one copy is removed per call, so repeat the call to remove the others. A once() wrapper
+is matched by its original function as well. Removing a listener emits the `removeListener`
+meta event after the removal.
 
 --------------------------
-**取消对象处理队列中的全部函数**
+**Removes all event handlers of one event**
 
 ```JavaScript
 Object EventEmitter.off(Value ev);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
+Parameters:
+* ev: Value, the event name to unbind
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Every listener of the event is removed and `removeListener` is emitted once per removed
+listener. The call succeeds when the event has no listener.
+
+Example — removing every listener of one event:
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+emitter.on('data', () => console.log('first'));
+emitter.on('data', () => console.log('second'));
+
+emitter.off('data');
+console.log(emitter.emit('data')); // false
+```
 
 --------------------------
-**从对象处理队列中取消指定函数**
+**Removes several event handlers from the emitter**
 
 ```JavaScript
 Object EventEmitter.off(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称作为事件名称，属性的值作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Every enumerable property of the map whose value is a function names an event from which
+that function is removed (one copy per event). A value that is not a function makes the call
+fail with an invalid-type error.
 
 --------------------------
 ### removeListener
-**从对象处理队列中取消指定函数**
+**Removes an event handler from the emitter**
 
 ```JavaScript
 Object EventEmitter.removeListener(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to unbind
+* func: Function(...args), the event handler function
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Alias of off(ev, func), provided for Node.js compatibility.
 
 --------------------------
-**取消对象处理队列中的全部函数**
+**Removes all event handlers of one event**
 
 ```JavaScript
 Object EventEmitter.removeListener(Value ev);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
+Parameters:
+* ev: Value, the event name to unbind
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Alias of off(ev), provided for Node.js compatibility.
 
 --------------------------
-**从对象处理队列中取消指定函数**
+**Removes several event handlers from the emitter**
 
 ```JavaScript
 Object EventEmitter.removeListener(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称作为事件名称，属性的值作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Alias of off(map), provided for Node.js compatibility.
 
 --------------------------
 ### removeEventListener
-**从对象处理队列中取消指定函数**
+**Removes an event handler with an options [object](object.md)**
 
 ```JavaScript
 Object EventEmitter.removeEventListener(Value ev,
-    Function func,
+    Function(...args) func,
     Object options = {});
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
-* options: Object, 指定事件处理函数的选项
+Parameters:
+* ev: Value, the event name to unbind
+* func: Function(...args), the event handler function
+* options: Object, the options of the event handler, ignored
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Web-style alias of off(ev, func); the options [object](object.md) is accepted and ignored, and a once()
+wrapper is matched by its original function like off().
 
 --------------------------
 ### removeAllListeners
-**从对象处理队列中取消所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。**
+**Removes all listeners of one event**
 
 ```JavaScript
 Object EventEmitter.removeAllListeners(Value ev);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
+Parameters:
+* ev: Value, the event name to remove
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Equivalent to off(ev): every listener of the event is removed, including once() wrappers
+matched by their original function, and `removeListener` is emitted once per removal.
 
 --------------------------
-**从对象处理队列中取消所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。**
+**Removes all listeners of the given events, or of the whole emitter**
 
 ```JavaScript
 Object EventEmitter.removeAllListeners(Array evs = []);
 ```
 
-调用参数:
-* evs: Array, 指定事件的名称
+Parameters:
+* evs: Array, the event names to remove
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+An empty array — including the no-argument call, because the parameter defaults to [] —
+clears every string-keyed event; symbol-keyed listeners are left in place, unlike Node.js
+which removes them too. A non-empty array clears each named event as
+removeAllListeners(ev) does.
+
+Example — clearing selected events and the whole emitter:
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+emitter.on('a', () => {});
+emitter.on('b', () => {});
+emitter.on('c', () => {});
+
+emitter.removeAllListeners(['a', 'b']);
+console.log(emitter.listenerCount('a'), emitter.listenerCount('c')); // 0 1
+
+emitter.removeAllListeners();
+console.log(emitter.eventNames().length); // 0
+```
 
 --------------------------
 ### setMaxListeners
-**监听器的默认限制的数量，仅用于兼容**
+**Stores a per-emitter listener limit**
 
 ```JavaScript
 EventEmitter.setMaxListeners(Integer n);
 ```
 
-调用参数:
-* n: Integer, 指定事件的数量
+Parameters:
+* n: Integer, the number of events
+
+The value is reported by getMaxListeners() and is otherwise informational: fibjs never warns
+when the number of listeners exceeds it. This member exists for Node.js compatibility. A
+negative value throws; 0 is accepted and stored as-is, while Node.js treats 0 as unlimited.
 
 --------------------------
 ### getMaxListeners
-**获取监听器的默认限制的数量，仅用于兼容**
+**Returns the listener limit of the emitter**
 
 ```JavaScript
 Integer EventEmitter.getMaxListeners();
 ```
 
-返回结果:
-* Integer, 返回默认限制数量
+Returns:
+* Integer, returns the default limit
+
+Returns the value set by setMaxListeners(), or the [process](../../module/ifs/process.md)-wide defaultMaxListeners (10)
+when no explicit value was set.
 
 --------------------------
 ### listeners
-**查询对象指定事件的监听器数组**
+**Returns a copy of the listener array of an event**
 
 ```JavaScript
 Array EventEmitter.listeners(Value ev);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
+Parameters:
+* ev: Value, the event name to query
 
-返回结果:
-* Array, 返回指定事件的监听器数组
+Returns:
+* Array, returns the listener array of the specified event
+
+One-shot wrappers are unwrapped, so the result contains the functions passed to
+on()/once() and can be passed to off(); an unknown event produces an empty array.
+
+Example — once() listeners are returned unwrapped:
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+
+function onTick() {
+    console.log('tick');
+}
+
+emitter.once('tick', onTick);
+console.log(emitter.listeners('tick')[0] === onTick); // true
+console.log(emitter.rawListeners('tick')[0] === onTick); // false
+```
 
 --------------------------
 ### rawListeners
-**查询对象指定事件的监听器数组，包含 once 包装函数**
+**Returns the internal listener array of an event**
 
 ```JavaScript
 Array EventEmitter.rawListeners(Value ev);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
+Parameters:
+* ev: Value, the event name to query
 
-返回结果:
-* Array, 返回指定事件的监听器数组
+Returns:
+* Array, returns the listener array of the specified event
+
+The array is not unwrapped: a listener registered with once() appears as the internal
+wrapper function whose `_func` property holds the original function. An unknown event
+produces an empty array.
 
 --------------------------
 ### listenerCount
-**查询对象指定事件的监听器数量**
+**Returns the number of listeners of an event**
 
 ```JavaScript
 Integer EventEmitter.listenerCount(Value ev);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
+Parameters:
+* ev: Value, the event name to query
 
-返回结果:
-* Integer, 返回指定事件的监听器数量
+Returns:
+* Integer, returns the number of listeners of the specified event
+
+One-shot listeners count as one and an unknown event returns 0.
 
 --------------------------
-**查询对象指定事件的监听器数量**
+**Returns the number of listeners of an event on another [object](object.md)**
 
 ```JavaScript
 Integer EventEmitter.listenerCount(Value o,
     Value ev);
 ```
 
-调用参数:
-* o: Value, 指定查询的对象
-* ev: Value, 指定事件的名称
+Parameters:
+* o: Value, the [object](object.md) to query
+* ev: Value, the event name to query
 
-返回结果:
-* Integer, 返回指定事件的监听器数量
+Returns:
+* Integer, returns the number of listeners of the specified event
+
+Counts without requiring the target to be an EventEmitter: any [object](object.md) with registered
+events can be queried. The call is normally written as
+`EventEmitter.listenerCount(target, 'data')`.
+
+Example — counting the listeners of another [object](object.md):
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+emitter.on('data', () => {});
+emitter.on('data', () => {});
+
+console.log(EventEmitter.listenerCount(emitter, 'data')); // 2
+```
 
 --------------------------
 ### eventNames
-**查询监听器事件名称**
+**Returns the names of the events with at least one listener**
 
 ```JavaScript
 Array EventEmitter.eventNames();
 ```
 
-返回结果:
-* Array, 返回事件名称数组
+Returns:
+* Array, returns the array of event names
+
+Only string-keyed events are reported; symbol-keyed events are omitted and numeric event
+names are returned as numbers (Node.js also reports symbol events).
 
 --------------------------
 ### emit
-**主动触发一个事件**
+**Emits an event and returns whether a listener was called**
 
 ```JavaScript
 Boolean EventEmitter.emit(Value ev,
     ...args);
 ```
 
-调用参数:
-* ev: Value, 事件名称
-* args: ..., 事件参数，将会传递给事件处理函数
+Parameters:
+* ev: Value, event name
+* args: ..., event parameters, which are passed to the event handler
 
-返回结果:
-* Boolean, 返回事件触发状态，有响应事件返回 true，否则返回 false
+Returns:
+* Boolean, returns whether the event had a listener to respond to it
+
+Listeners are called as described by the dispatch model in the class documentation: the
+first one runs synchronously on the current fiber, the remaining ones run in parallel
+fibers, and the call returns after all of them finish; an exception raised by a listener is
+thrown back to the caller. Emitting `error` with no listener throws instead of returning
+false: an Error argument is thrown as-is and any other value is wrapped in
+`Error("Unhandled error. (...)")`. [Event](Event.md) names are strings or symbols; `emit()` does not
+match a listener registered with a numeric name.
 
 --------------------------
 ### toString
-**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
+**Returns the string form of the [object](object.md)**
 
 ```JavaScript
 String EventEmitter.toString();
 ```
 
-返回结果:
-* String, 返回对象的字符串表示
+Returns:
+* String, returns the string form of the [object](object.md)
+
+The base implementation reports an error: a native [object](object.md) has no implicit
+text form, and only the classes whose value can be written as a string
+override the member. [Buffer](Buffer.md) returns its content decoded with the given
+[encoding](../../module/ifs/encoding.md), [HttpCookie](HttpCookie.md) returns "name=value", and so on; an override commonly
+accepts optional arguments ([Buffer.toString](Buffer.md#toString) takes [encoding](../../module/ifs/encoding.md), start and
+end) that are not part of this declaration.
+
+Calling the member on a class that does not override it throws
+"<Class>: the [object](object.md) can not be converted to string.", which is the
+behavior to rely on when probing whether a value has a string form. See
+toJSON for the serialization hook.
 
 --------------------------
 ### toJSON
-**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
+**Returns the JSON representation of the [object](object.md)**
 
 ```JavaScript
 Value EventEmitter.toJSON(String key = "");
 ```
 
-调用参数:
-* key: String, 未使用
+Parameters:
+* key: String, the property name of the value being serialized
 
-返回结果:
-* Value, 返回包含可 JSON 序列化的值
+Returns:
+* Value, returns the JSON-serializable value
+
+JSON.stringify(value) calls value.toJSON(key) when the member exists and
+serializes the returned value in its place; the key argument carries the
+property name of the value inside its parent [object](object.md) (an empty string at
+the top level) and may be used to build a keyed form. The base
+implementation returns a plain [object](object.md) holding the readable properties of
+the instance, so a native [object](object.md) serializes without per-class code; a
+class with a portable shape such as [Buffer](Buffer.md) overrides it, and a JavaScript
+class may override it in the same way.
+
+The member is normally reached through JSON.stringify rather than called
+directly; calling it returns the same value JSON.stringify would
+serialize.
 

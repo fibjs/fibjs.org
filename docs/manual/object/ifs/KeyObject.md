@@ -1,9 +1,120 @@
-# 对象 KeyObject
-KeyObject 类来表示对称或非对称密钥，每种密钥公开不同的功能
+# Object KeyObject
+Opaque handle to symmetric or asymmetric key material
 
-[crypto.createSecretKey](../../module/ifs/crypto.md#createSecretKey) 、 [crypto.createPublicKey](../../module/ifs/crypto.md#createPublicKey) 和 [crypto.createPrivateKey](../../module/ifs/crypto.md#createPrivateKey) 方法用于创建 KeyObject 实例。 KeyObject 对象不能直接使用 new 关键字创建。
+A KeyObject bundles a parsed key with its type, so the rest of the program never has
+to touch raw key bytes: pass it to createHmac, createCipheriv, sign/verify,
+diffieHellman, [X509Certificate](X509Certificate.md) checks and the other [crypto](../../module/ifs/crypto.md) members. Secret keys
+hold one byte string; asymmetric keys hold a public key, a private key or a pair
+and expose metadata about them.
 
-## 继承关系
+Concepts:
+- **Opaque keys**: the material stays inside the [object](object.md); export() reproduces it in
+  an interchange format when it must leave the [process](../../module/ifs/process.md). Import key material once
+  and reuse the same KeyObject instead of re-parsing PEM files.
+- **Types**: `type` is 'secret', 'public' or 'private'. An asymmetric key also
+  reports `asymmetricKeyType` ('rsa', 'rsa-pss', 'dsa', 'dh', 'ec', 'sm2',
+  'ed25519', 'ed448', 'x25519', 'x448', or the fibjs Bls12381G1/G2 extensions).
+  A public key can always be derived from a private key with
+  [crypto.createPublicKey](../../module/ifs/crypto.md#createPublicKey), never the other way round.
+- **Formats**: PEM is text (string), DER is binary ([Buffer](Buffer.md)), JWK is an [object](object.md) with
+  base64url fields, and the raw form is the bare point, scalar or seed ([Buffer](Buffer.md)) for
+  EC, SM2 and the one-shot curves. Private keys can be encrypted by combining a
+  cipher and a passphrase; [crypto.createPrivateKey](../../module/ifs/crypto.md#createPrivateKey) reads them back with the same
+  passphrase.
+- **One-shot key [types](../../module/ifs/types.md)**: Ed25519/Ed448/X25519/X448 work only with the one-shot
+  [crypto.sign](../../module/ifs/crypto.md#sign), [crypto.verify](../../module/ifs/crypto.md#verify) and [crypto.diffieHellman](../../module/ifs/crypto.md#diffieHellman) APIs, not with the streaming
+  [Sign](Sign.md)/[Verify](Verify.md) classes. SM2 and the Bls12381 [types](../../module/ifs/types.md) are fibjs extensions.
+
+Obtained from:
+- `crypto.createSecretKey(key[, [encoding](../../module/ifs/encoding.md)])` — wrap raw bytes as a symmetric key;
+- `crypto.createPrivateKey(key)` — import a private key from PEM/DER/JWK data or an
+  options [object](object.md) (a KeyObject is not accepted);
+- `crypto.createPublicKey(key)` — import a public key or certificate, or derive the
+  public part of a private key or private KeyObject;
+- `crypto.generateKeyPairSync(type, options)` and `[crypto.generateKeyPair](../../module/ifs/crypto.md#generateKeyPair)(...)` —
+  produce a pair as KeyObjects unless a key [encoding](../../module/ifs/encoding.md) is requested;
+- `crypto.KeyObject` is the exposed class [object](object.md); instances cannot be created with
+  `new`.
+
+Example 1 — a secret key and its export forms:
+
+```JavaScript
+const crypto = require('crypto');
+
+const key = crypto.createSecretKey('0123456789abcdef');
+
+console.log(key.type, key.symmetricKeySize); // secret 16
+console.log(key.asymmetricKeyType); // undefined
+console.log(key.export().toString()); // 0123456789abcdef
+console.log(JSON.stringify(key.export({
+    format: 'jwk'
+})));
+// {"kty":"oct","k":"MDEyMzQ1Njc4OWFiY2RlZg"}
+```
+
+Example 2 — RSA metadata and deriving the public key:
+
+```JavaScript
+const crypto = require('crypto');
+
+const {
+    privateKey,
+    publicKey
+} =
+crypto.generateKeyPairSync('rsa', {
+    modulusLength: 1024
+});
+
+console.log(publicKey.type, publicKey.asymmetricKeyType); // public rsa
+console.log(privateKey.asymmetricKeyDetails.modulusLength); // 1024
+console.log(privateKey.asymmetricKeyDetails.publicExponent); // 65537n
+
+// The public key is always derivable from the private key, never the reverse.
+console.log(crypto.createPublicKey(privateKey).equals(publicKey)); // true
+```
+
+Example 3 — EC raw/JWK round trip and an encrypted private key:
+
+```JavaScript
+const crypto = require('crypto');
+
+const {
+    privateKey,
+    publicKey
+} =
+crypto.generateKeyPairSync('ec', {
+    namedCurve: 'prime256v1'
+});
+
+// The raw form is the bare EC point (65 bytes uncompressed) for public keys.
+console.log(publicKey.export({
+    format: 'raw'
+}).length); // 65
+
+// A JWK can be imported back into an equal key object.
+const jwk = publicKey.export({
+    format: 'jwk'
+});
+console.log(crypto.createPublicKey({
+    key: jwk,
+    format: 'jwk'
+}).equals(publicKey)); // true
+
+// Private keys can be encrypted with a cipher and a passphrase.
+const pem = privateKey.export({
+    format: 'pem',
+    type: 'pkcs8',
+    cipher: 'aes-256-cbc',
+    passphrase: 'secret'
+});
+console.log(crypto.createPrivateKey({
+    key: pem,
+    passphrase: 'secret'
+}).equals(privateKey));
+// true
+```
+
+## Inheritance
 ```dot
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
@@ -15,134 +126,256 @@ digraph {
 }
 ```
 
-## 成员属性
+## Properties
         
 ### asymmetricKeyDetails
-**Object, 有关非对称密钥的信息**
+**Object, Metadata of an asymmetric key, or undefined for [types](../../module/ifs/types.md) without any**
 
 ```JavaScript
 readonly Object KeyObject.asymmetricKeyDetails;
 ```
 
-返回结果的内容如下：
+The property exists only on asymmetric keys; for a secret key, and for key [types](../../module/ifs/types.md)
+such as Ed25519/Ed448/X25519/X448, it is undefined, while a DH key reports an
+empty [object](object.md). The fields depend on the key type:
+- RSA: `modulusLength` (bits) and `publicExponent` (a BigInt, 65537n by default);
+- RSA-PSS: additionally `hashAlgorithm`, `mgf1HashAlgorithm` and `saltLength`;
+- DSA: `modulusLength` and `divisorLength` (the size of q in bits);
+- EC and SM2: `namedCurve`, the OpenSSL curve name ('prime256v1', ...).
+Node.js reports the same fields and an empty [object](object.md) for Ed25519 where fibjs
+returns undefined; none of the values can be used to recover the key.
+
+The returned result contains the following:
 
 ```JavaScript
-{
-    modulusLength: 2048, // Key size in bits (RSA, DSA).
-    publicExponent: 65537n, // Public exponent (RSA).
-    hashAlgorithm: 'sha1', // Name of the message digest (RSA-PSS).
-    mgf1HashAlgorithm: 'sha1', // Name of the message digest used by MGF1 (RSA-PSS).
-    saltLength: 20, // Minimum salt length in bytes (RSA-PSS).
-    divisorLength: , // Size of q in bits (DSA).
-    namedCurve: '' // Curve name (EC).
-}
+// fragment: the shape of the returned object; fields depend on the key type
+({
+    modulusLength: 2048, // key size in bits (RSA, DSA)
+    publicExponent: 65537n, // public exponent as a BigInt (RSA)
+    hashAlgorithm: 'sha1', // digest name (RSA-PSS)
+    mgf1HashAlgorithm: 'sha1', // MGF1 digest name (RSA-PSS)
+    saltLength: 20, // minimum salt length in bytes (RSA-PSS)
+    divisorLength: 224, // size of q in bits (DSA)
+    namedCurve: 'prime256v1' // curve name (EC, SM2)
+})
 ```
 
 --------------------------
 ### asymmetricKeyType
-**String, 密钥的类型**
+**String, The type of an asymmetric key, or undefined for secret and unknown keys**
 
 ```JavaScript
 readonly String KeyObject.asymmetricKeyType;
 ```
 
-对于非对称密钥，此属性表示密钥的类型。支持的密钥类型有：
-- 'rsa' （OID 1.2.840.113549.1.1.1）
-- 'rsa-pss' （OID 1.2.840.113549.1.1.10）
-- 'dsa' （OID 1.2.840.10040.4.1）
-- 'ec' （OID 1.2.840.10045.2.1）
-- 'x25519' （OID 1.3.101.110）
-- 'x448' （OID 1.3.101.111）
-- 'ed25519' （OID 1.3.101.112）
-- 'ed448' （OID 1.3.101.113）
-- 'dh' （OID 1.2.840.113549.1.3.1）
+For asymmetric keys, this property indicates the type of the key. Supported key
+[types](../../module/ifs/types.md) are:
+- 'rsa' (OID 1.2.840.113549.1.1.1)
+- 'rsa-pss' (OID 1.2.840.113549.1.1.10)
+- 'dsa' (OID 1.2.840.10040.4.1)
+- 'dh' (OID 1.2.840.113549.1.3.1)
+- 'ec' (OID 1.2.840.10045.2.1)
+- 'sm2' (fibjs extension)
+- 'x25519' (OID 1.3.101.110)
+- 'x448' (OID 1.3.101.111)
+- 'ed25519' (OID 1.3.101.112)
+- 'ed448' (OID 1.3.101.113)
+- 'Bls12381G1' / 'Bls12381G2' (fibjs BLS extensions)
 
-对于无法识别的 KeyObject 类型和对称密钥，此属性为 undefined 。
+For unrecognized KeyObject [types](../../module/ifs/types.md) and symmetric keys, this property is undefined.
 
 --------------------------
 ### symmetricKeySize
-**Integer, 对于秘密密钥，此属性表示密钥的大小（以字节为单位）。对于非对称密钥，此属性为 undefined**
+**Integer, The size of a secret key in bytes, or undefined for asymmetric keys**
 
 ```JavaScript
 readonly Integer KeyObject.symmetricKeySize;
 ```
 
+Returns:
+* returns the key size in bytes
+
+Only secret keys have a byte-string length: a key built with
+`crypto.createSecretKey('0123456789abcdef')` reports 16. Asymmetric keys have no
+defined length and report undefined, as in Node.js. Read-only.
+
 --------------------------
 ### type
-**String, 密钥的类型，对于秘密（对称）密钥，此属性为 'secret'，对于公共（非对称）密钥，此属性为 'public' 或 'private'**
+**String, The kind of key: 'secret', 'public' or 'private'**
 
 ```JavaScript
 readonly String KeyObject.type;
 ```
 
-## 成员函数
+Returns:
+* returns the key type
+
+Secret keys are symmetric byte strings used by ciphers and HMAC; public and
+private keys are the two halves of an asymmetric pair, where the public half can
+be derived from the private half. Node.js uses the same three values. Read-only.
+
+## Methods
         
 ### export
-**根据给定的选项导出密钥的信息**
+**Exports the key's information according to the given options**
 
 ```JavaScript
 Value KeyObject.export(Object options = {});
 ```
 
-调用参数:
-* options: Object, 导出密钥的选项
+Parameters:
+* options: Object, the options for exporting the key
 
-返回结果:
-* Value, 返回密钥的信息
+Returns:
+* Value, returns the key's information
 
-对于对称密钥，可以使用以下编码选项：
-- format: 必须是 'buffer' （默认）或 'jwk'
+The options [object](object.md) selects the interchange format; unsupported combinations
+throw an Error.
 
-对于公钥，可以使用以下编码选项：
-- format: 必须是 'pem'、'der' 或 'jwk'、'raw'（仅限 EC/SM2/Ed25519/Ed448/X25519/X448）
-- type: format 为 'pem'、'der' 时，type 必须是 'pkcs1' （仅限 RSA）或 'spki' 之一，format 为 'raw' 时，type 必须是 'uncompressed'、'compressed' 或 'hybrid' 之一
+For symmetric keys, the following [encoding](../../module/ifs/encoding.md) options can be used:
+- format: must be 'buffer' (default, the raw bytes) or 'jwk' (an [object](object.md) such as
+  `{ kty: 'oct', k: '<base64url>' }`); 'pem' and 'der' are rejected
 
-对于私钥，可以使用以下编码选项：
-- format: 必须是 'pem'、'der' 或 'jwk'、'raw'（仅限 EC/SM2/Ed25519/Ed448/X25519/X448）
-- type: 必须是 'pkcs1' （仅限 RSA）、'pkcs8' 或 'sec1' （仅限 EC）之一
-- cipher: 如果指定，则将使用基于 PKCS#5 v2.0 密码的加密，使用给定的 cipher 和 passphrase 对私钥进行加密
-- passphrase: <字符串> | 用于加密的密码，请参阅 cipher
+For public keys, the following [encoding](../../module/ifs/encoding.md) options can be used:
+- format: must be 'pem' (default, a string), 'der' (a [Buffer](Buffer.md)), 'jwk' or 'raw'
+  (only EC/SM2/Ed25519/Ed448/X25519/X448)
+- type: when format is 'pem' or 'der', one of 'spki' (default) or 'pkcs1' (only
+  RSA); when format is 'raw', one of 'uncompressed' (default), 'compressed' or
+  'hybrid'
 
-当选择 JWK 编码格式时，所有其他编码选项都将被忽略。
+For private keys, the following [encoding](../../module/ifs/encoding.md) options can be used:
+- format: must be 'pem' (default, a string), 'der' (a [Buffer](Buffer.md)), 'jwk' or 'raw'
+  (only EC/SM2/Ed25519/Ed448/X25519/X448)
+- type: one of 'pkcs8' (default), 'pkcs1' (only RSA) or 'sec1' (only EC/SM2)
+- cipher: if specified, PKCS#5 v2.0 password-based encryption is used,
+  encrypting the private key with the given cipher and passphrase
+- passphrase: <string> | <[Buffer](Buffer.md)> the password used for encryption, required
+  when cipher is set (a cipher is also required when a passphrase is set)
 
-可以使用 cipher 和 format 选项的组合来加密 PKCS#1、SEC1 和 PKCS#8 类型密钥。 PKCS#8 type 可以与任何 format 一起使用，通过指定 cipher 来加密任何密钥算法（RSA、EC 或 DH）。当使用 PEM format 时，只能通过指定 cipher 来加密 PKCS#1 和 SEC1。为了获得最大兼容性，请使用 PKCS#8 作为加密私钥。由于 PKCS#8 定义了自己的加密机制，因此在加密 PKCS#8 密钥时不支持 PEM 级加密。有关 PKCS#8 加密的信息，请参阅 RFC 5208；有关 PKCS#1 和 SEC1 加密的信息，请参阅 RFC 1421。
+When the JWK [encoding](../../module/ifs/encoding.md) format is selected, all other [encoding](../../module/ifs/encoding.md) options are ignored.
+Combinations of the cipher and format options can encrypt PKCS#1, SEC1 and
+PKCS#8 keys. PKCS#8 can encrypt any key algorithm (RSA, EC, DH) in both PEM and
+DER form; PKCS#1 and SEC1 support encryption only when PEM is used. For maximum
+compatibility use PKCS#8 for encrypted private keys, because PKCS#8 defines its
+own encryption mechanism (RFC 5208; RFC 1421 covers PKCS#1 and SEC1). PEM
+returns a string, DER and raw return a [Buffer](Buffer.md), JWK returns an [object](object.md). fibjs
+applies the classic Node defaults (spki/pkcs8) and also accepts `export()` with
+no arguments; Node.js v25 requires an explicit type for asymmetric PEM/DER
+export.
+
+Example: three representations of the same RSA public key:
+
+```JavaScript
+const crypto = require('crypto');
+
+const {
+    publicKey
+} = crypto.generateKeyPairSync('rsa', {
+    modulusLength: 1024
+});
+
+const pem = publicKey.export({
+    format: 'pem',
+    type: 'spki'
+});
+console.log(pem.startsWith('-----BEGIN PUBLIC KEY-----')); // true
+
+const der = publicKey.export({
+    format: 'der',
+    type: 'spki'
+});
+console.log(Buffer.isBuffer(der)); // true
+
+const jwk = publicKey.export({
+    format: 'jwk'
+});
+console.log(jwk.kty, Object.keys(jwk).join(',')); // RSA e,n
+```
 
 --------------------------
 ### equals
-**比较两个 KeyObject 对象是否相等**
+**Compares whether two KeyObject objects are equal**
 
 ```JavaScript
 Boolean KeyObject.equals(KeyObject otherKey);
 ```
 
-调用参数:
-* otherKey: KeyObject, 要比较的 KeyObject 对象
+Parameters:
+* otherKey: KeyObject, the KeyObject to compare
 
-返回结果:
-* Boolean, 如果两个 KeyObject 对象相等，则返回 true，否则返回 false
+Returns:
+* Boolean, returns true if the two KeyObject objects are equal, false otherwise
+
+Two secret keys are equal when their bytes match; two asymmetric keys are equal
+when their type and key material match, so a public key equals the public key
+derived from the matching private key. The comparison is not constant time.
+Calling it with a non-KeyObject throws a TypeError, as in Node.js.
+
+Example: a public key equals the one derived from its private key:
+
+```JavaScript
+const crypto = require('crypto');
+
+const {
+    privateKey,
+    publicKey
+} =
+crypto.generateKeyPairSync('ec', {
+    namedCurve: 'prime256v1'
+});
+
+console.log(publicKey.equals(crypto.createPublicKey(privateKey))); // true
+console.log(publicKey.equals(privateKey)); // false
+console.log(crypto.createSecretKey('a').equals(crypto.createSecretKey('a'))); // true
+```
 
 --------------------------
 ### toString
-**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
+**Returns the string form of the [object](object.md)**
 
 ```JavaScript
 String KeyObject.toString();
 ```
 
-返回结果:
-* String, 返回对象的字符串表示
+Returns:
+* String, returns the string form of the [object](object.md)
+
+The base implementation reports an error: a native [object](object.md) has no implicit
+text form, and only the classes whose value can be written as a string
+override the member. [Buffer](Buffer.md) returns its content decoded with the given
+[encoding](../../module/ifs/encoding.md), [HttpCookie](HttpCookie.md) returns "name=value", and so on; an override commonly
+accepts optional arguments ([Buffer.toString](Buffer.md#toString) takes [encoding](../../module/ifs/encoding.md), start and
+end) that are not part of this declaration.
+
+Calling the member on a class that does not override it throws
+"<Class>: the [object](object.md) can not be converted to string.", which is the
+behavior to rely on when probing whether a value has a string form. See
+toJSON for the serialization hook.
 
 --------------------------
 ### toJSON
-**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
+**Returns the JSON representation of the [object](object.md)**
 
 ```JavaScript
 Value KeyObject.toJSON(String key = "");
 ```
 
-调用参数:
-* key: String, 未使用
+Parameters:
+* key: String, the property name of the value being serialized
 
-返回结果:
-* Value, 返回包含可 JSON 序列化的值
+Returns:
+* Value, returns the JSON-serializable value
+
+JSON.stringify(value) calls value.toJSON(key) when the member exists and
+serializes the returned value in its place; the key argument carries the
+property name of the value inside its parent [object](object.md) (an empty string at
+the top level) and may be used to build a keyed form. The base
+implementation returns a plain [object](object.md) holding the readable properties of
+the instance, so a native [object](object.md) serializes without per-class code; a
+class with a portable shape such as [Buffer](Buffer.md) overrides it, and a JavaScript
+class may override it in the same way.
+
+The member is normally reached through JSON.stringify rather than called
+directly; calling it returns the same value JSON.stringify would
+serialize.
 

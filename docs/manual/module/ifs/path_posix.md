@@ -1,236 +1,453 @@
-# 模块 path_posix
-文件路径处理模块
+# Module path_posix
+The posix rule set of the [path](path.md) [module](module.md): it processes POSIX paths on every platform
 
-引用方法：
+This definition is the manual page of the rule set reachable at runtime as
+`require('[path](path.md)').posix` or `require('[path](path.md)/posix')`; it is not itself a require-able [module](module.md)
+name. All functions are pure string operations and never touch the file system.
+
+Main capabilities:
+
+- **Building paths**: `join`, `resolve`, `normalize`, `fullpath` (fibjs extension);
+- **Breaking paths down**: `parse`, `format`, `basename`, `dirname`, `extname`;
+- **Comparing paths**: `relative`, `isAbsolute`, `matchesGlob`;
+- **Constants**: `sep` ('/') and `delimiter` (':').
+
+Concepts:
+
+- **POSIX rule set**: '/' separates [path](path.md) segments and a backslash is an ordinary character,
+  so 'a\\b.txt' is a single file name. A [path](path.md) starting with '/' is absolute; the root is '/'
+  and '..' is clamped there. On POSIX hosts the [path](path.md) [module](module.md) itself applies these rules
+  (`[path](path.md) === [path.posix](path.md#posix)`); on Windows use this rule set to [process](process.md) paths received from a
+  POSIX system. See the [path](path.md) [module](module.md) for the platform default and the [path_win32](path_win32.md) [module](module.md) for
+  the Windows rule set.
+- **join vs resolve vs fullpath**: join merges segments and normalizes, keeping a later
+  absolute segment as a plain segment; resolve restarts at the rightmost absolute segment and
+  anchors the result at the working directory; fullpath (fibjs extension) anchors a relative
+  [path](path.md) to the working directory and normalizes it, without touching the file system.
+- **Normalization**: '.' segments are dropped, '..' cancels the previous segment where
+  possible and repeated separators collapse; a trailing separator survives ('a//b/' becomes
+  'a/b/'), a leading '..' is kept in relative paths, and normalize('') is '.'.
+- **Extensions and dotfiles**: extname('.bashrc') is '' because a leading dot starts a
+  dotfile; extname('.env.local') is '.local' and extname('index.') is '.'. basename([path](path.md), ext)
+  strips ext as a plain suffix and ignores trailing separators.
+- **Glob matching**: matchesGlob supports '*', '**', '?', character classes, brace expansion
+  and extglob forms; a backslash in the pattern is treated as a [path](path.md) separator, while a
+  backslash in the tested [path](path.md) is an ordinary character.
+
+Import:
 
 ```JavaScript
-var path = require('path').posix;
+// path_posix is the manual-page name; the runtime entry points are:
+const posix = require('path').posix;
+const posixAgain = require('path/posix');
 ```
 
-## 静态函数
+Example 1 — the posix rule set treats backslashes as ordinary characters:
+
+```JavaScript
+const posix = require('path').posix;
+
+console.log(posix.basename('a\\b.txt')); // a\b.txt
+console.log(posix.normalize('a//b/./../c')); // a/c
+
+// dotfiles have no extension unless another dot follows
+console.log(posix.extname('.bashrc')); // ''
+console.log(posix.extname('.env.local')); // .local
+```
+
+Example 2 — building and comparing posix paths:
+
+```JavaScript
+const posix = require('path').posix;
+
+console.log(posix.join('/usr', 'local', 'bin')); // /usr/local/bin
+console.log(posix.join('a', '../b')); // b
+console.log(posix.resolve('/srv', 'www')); // /srv/www
+console.log(posix.relative('/a/b', '/a/c')); // ../c
+```
+
+Example 3 — parse and format round trip:
+
+```JavaScript
+const posix = require('path').posix;
+
+const parts = posix.parse('/etc/nginx/nginx.conf');
+console.log(parts.dir, parts.base, parts.ext); // /etc/nginx nginx.conf .conf
+
+console.log(posix.format({
+    dir: parts.dir,
+    name: 'site',
+    ext: '.conf'
+}));
+// /etc/nginx/site.conf
+```
+
+Notes:
+
+- Node.js exposes the same rule set as require('[path](path.md)').posix; fibjs also provides the
+  require('[path](path.md)/posix') subpath form and documents the rule set as the path_posix definition.
+- fibjs adds fullpath to the rule set; see the [path](path.md) [module](module.md) for the differences from Node.js.
+
+## Static Methods
         
 ### normalize
-**标准化路径，处理路径中父目录等信息**
+**Normalizes a posix [path](path.md), resolving '.' and '..' and collapsing '/' separators**
 
 ```JavaScript
 static String path_posix.normalize(String path);
 ```
 
-调用参数:
-* path: String, 给定的未处理的路径
+Parameters:
+* path: String, the [path](path.md) to normalize
 
-返回结果:
-* String, 返回经过处理的路径
+Returns:
+* String, the normalized [path](path.md)
+
+A pure string transformation over the posix rule set: '/' separates segments and a
+backslash is an ordinary character. Relative paths keep leading '..' segments; absolute
+paths are clamped at the root, so '/../' becomes '/'. A trailing separator is preserved
+('a//b/' becomes 'a/b/') and normalize('') is '.'. See the [path](path.md) [module](module.md) for the shared
+normalization rules.
+
+Example — normalize a posix [path](path.md):
+
+```JavaScript
+const posix = require('path').posix;
+
+console.log(posix.normalize('a//b/./../c')); // a/c
+console.log(posix.normalize('/usr//local/../bin/')); // /usr/bin/
+console.log(posix.normalize('')); // .
+```
 
 --------------------------
 ### basename
-**查询路径中的文件名称，若指定扩展名，则自动取消匹配的扩展名**
+**Returns the last portion of a posix [path](path.md), removing a matching extension**
 
 ```JavaScript
 static String path_posix.basename(String path,
     String ext = "");
 ```
 
-调用参数:
-* path: String, 给定查询的路径
-* ext: String, 指定扩展名，若文件名中有符合条件的扩展名，将自动取消
+Parameters:
+* path: String, the [path](path.md) to query
+* ext: String, the extension to remove when the file name matches
 
-返回结果:
-* String, 返回文件名称
+Returns:
+* String, the file name
+
+Trailing '/' separators are ignored (basename('foo/') is 'foo'), basename('/') is '' and a
+backslash is an ordinary character (basename('a\\b.txt') is 'a\\b.txt'). The optional ext
+is stripped as a plain suffix, not necessarily starting with a dot:
+basename('/a/b.txt', 'txt') is 'b.'.
 
 --------------------------
 ### extname
-**查询路径中的文件扩展名**
+**Returns the extension from the last '.' of the last posix segment**
 
 ```JavaScript
 static String path_posix.extname(String path);
 ```
 
-调用参数:
-* path: String, 给定查询的路径
+Parameters:
+* path: String, the [path](path.md) to query
 
-返回结果:
-* String, 返回得到的扩展名
+Returns:
+* String, the extension
+
+A leading dot starts a dotfile, not an extension: extname('.bashrc') is '',
+extname('.env.local') is '.local' and extname('index.') is '.'. The result is '' for '..'
+and for paths ending with '/'. A dotted parent directory is ignored, and a backslash is an
+ordinary character, so extname('a\\b.txt') is '.txt'.
 
 --------------------------
 ### format
-**尝试将一个对象格式化为路径**
+**Formats a [path](path.md) [object](../../object/ifs/object.md) into a posix [path](path.md) string, the inverse of parse**
 
 ```JavaScript
 static String path_posix.format(Object pathObject);
 ```
 
-调用参数:
-* pathObject: Object, 指定参数
+Parameters:
+* pathObject: Object, the [path](path.md) [object](../../object/ifs/object.md)
 
-返回结果:
-* String, 返回格式化后的路径
+Returns:
+* String, the formatted [path](path.md)
 
-pathObject 支持的字段如下：
+All fields are optional. Base wins over name + ext, and dir wins over root unless dir is
+empty; when dir equals root no separator is inserted. '/' is always used as the separator,
+even on Windows, and a dir-only [object](../../object/ifs/object.md) produces a trailing '/' ('some/dir' becomes
+'some/dir/'). The full field list is documented in the [path](path.md) [module](module.md).
+
+pathObject supports the following properties:
 
 ```JavaScript
-{
-    "dir": "", // Specify the directory of the path
-    "root": "", // Specify the root of the path
-    "base": "", // Specify the base name of the path, which is the combination of name and ext
-    "name": "", // Specify the name of the path
-    "ext": "", // Specify the extension of the path
-}
+// fragment: options
+({
+    "root": "/", // the root of the path, always '/' for posix
+    "dir": "some/dir", // the directory; wins over root when both are set
+    "base": "c.ext", // the full last segment; wins over name + ext
+    "ext": ".ext", // the extension, including the leading dot
+    "name": "c" // the name without the extension
+})
+```
+
+Example — build posix paths from objects:
+
+```JavaScript
+const posix = require('path').posix;
+
+console.log(posix.format({
+    dir: 'some/dir',
+    name: 'index',
+    ext: '.html'
+}));
+// some/dir/index.html
+console.log(posix.format({
+    root: '/'
+})); // /
+console.log(posix.format({
+    dir: 'some/dir'
+})); // some/dir/
 ```
 
 --------------------------
 ### parse
-**解析路径为路径对象**
+**Parses a posix [path](path.md) into an [object](../../object/ifs/object.md) with root, dir, base, ext and name fields**
 
 ```JavaScript
-static NObject path_posix.parse(String path);
+static (String root, String dir, String base, String ext, String name) path_posix.parse(String path);
 ```
 
-调用参数:
-* path: String, 路径
+Parameters:
+* path: String, the [path](path.md) to parse
 
-返回结果:
-* NObject, 返回pathObject 对象
+Returns:
+* (String root, String dir, String base, String ext, String name), the parsed [path](path.md) [object](../../object/ifs/object.md)
+
+The [object](../../object/ifs/object.md) always contains all five fields as strings and can be passed to format. root is
+'/' for absolute paths and '' otherwise; a trailing '/' is ignored for base; a leading dot
+starts a dotfile ('.bashrc' has no extension), while 'index.' has ext '.'. A backslash is
+an ordinary character. The field semantics are shared with the [path](path.md) [module](module.md).
+
+Example — inspect a parsed posix [path](path.md):
+
+```JavaScript
+const posix = require('path').posix;
+
+const parts = posix.parse('/var/log/app.tar.gz');
+console.log(parts.dir, parts.name, parts.ext); // /var/log app.tar .gz
+
+console.log(posix.parse('/a/b/').base); // b
+console.log(posix.parse('.').base); // .
+```
 
 --------------------------
 ### dirname
-**查询路径中的目录路径**
+**Returns the directory name of a posix [path](path.md), dropping the last segment**
 
 ```JavaScript
 static String path_posix.dirname(String path);
 ```
 
-调用参数:
-* path: String, 给定查询的路径
+Parameters:
+* path: String, the [path](path.md) to query
 
-返回结果:
-* String, 返回得到的目录的路径
+Returns:
+* String, the directory name
+
+Trailing '/' separators are ignored: dirname('/a/b/') is '/a', dirname('/a') is '/',
+dirname('foo') is '.' and dirname('') is '.'. dirname('/') stays '/'. A backslash is an
+ordinary character, so dirname('a\\b.txt') is '.'.
 
 --------------------------
 ### fullpath
-**转换给定路径为全路径**
+**Converts a posix [path](path.md) into an absolute [path](path.md) anchored at the working directory**
 
 ```JavaScript
 static String path_posix.fullpath(String path);
 ```
 
-调用参数:
-* path: String, 给定转换的路径
+Parameters:
+* path: String, the [path](path.md) to convert
 
-返回结果:
-* String, 返回转换的全路径
+Returns:
+* String, the full [path](path.md)
+
+A fibjs extension, not part of Node.js. An absolute input is normalized; a relative input
+is prefixed with [process.cwd](process.md#cwd)() and then normalized with the posix rule set. The function
+is a pure string operation, does not touch the file system and never checks existence.
+Unlike resolve, an empty string becomes the working directory plus a trailing separator.
+
+Example — anchor a relative [path](path.md) to the working directory:
+
+```JavaScript
+const posix = require('path').posix;
+
+console.log(posix.fullpath('a/../b') === posix.join(process.cwd(), 'b')); // true
+console.log(posix.fullpath('')); // <cwd>/ (the working directory plus a separator)
+```
 
 --------------------------
 ### matchesGlob
-**识别给定的路径是否匹配给定的模式**
+**Checks whether a [path](path.md) matches a glob pattern using the posix rule set**
 
 ```JavaScript
 static Boolean path_posix.matchesGlob(String path,
     String pattern);
 ```
 
-调用参数:
-* path: String, 给定需要识别的路径
-* pattern: String, 指定匹配的模式
+Parameters:
+* path: String, the [path](path.md) to check
+* pattern: String, the glob pattern
 
-返回结果:
-* Boolean, 返回匹配结果
+Returns:
+* Boolean, true when the [path](path.md) matches the pattern
+
+Supports '*', '**', '?', character classes, brace expansion and the extglob forms;
+patterns are anchored as a whole and dotfiles need an explicit dot. Under the posix rule
+set a backslash in the pattern is treated as a [path](path.md) separator, while a backslash in the
+tested [path](path.md) is an ordinary character: matchesGlob('a/b', 'a\\b') is true, but
+matchesGlob('a\\b', 'a/b') is false. The [path](path.md) [module](module.md) documents the full syntax.
 
 --------------------------
 ### isAbsolute
-**识别给定的路径是否是绝对路径**
+**Checks whether a posix [path](path.md) is absolute**
 
 ```JavaScript
 static Boolean path_posix.isAbsolute(String path);
 ```
 
-调用参数:
-* path: String, 给定需要识别的路径
+Parameters:
+* path: String, the [path](path.md) to check
 
-返回结果:
-* Boolean, 是绝对路径则返回 true
+Returns:
+* Boolean, true when the [path](path.md) is absolute
+
+Returns true only when the [path](path.md) starts with '/'; the check is purely textual, so the [path](path.md)
+does not need to exist. The empty string is false, and a Windows drive [path](path.md) such as
+'C:\\dir' is not absolute under the posix rule set because it does not start with '/'.
 
 --------------------------
 ### join
-**合并一系列路径成为一个单一路径**
+**Joins segments into a normalized posix [path](path.md) using '/' as the separator**
 
 ```JavaScript
 static String path_posix.join(...ps);
 ```
 
-调用参数:
-* ps: ..., 一个或多个相关的路径
+Parameters:
+* ps: ..., one or more paths
 
-返回结果:
-* String, 返回得到的新路径
+Returns:
+* String, the joined [path](path.md)
+
+Empty segments are ignored and '.' is returned when the result would be empty. A later
+absolute segment is appended as an ordinary segment: join('a', '/b') is 'a/b'. A '..'
+cancels a preceding segment where possible, but a leading '..' survives. See the [path](path.md)
+[module](module.md) for the join/resolve/fullpath comparison.
+
+Example — join posix segments:
+
+```JavaScript
+const posix = require('path').posix;
+
+console.log(posix.join('/usr', 'local', 'bin')); // /usr/local/bin
+console.log(posix.join('a', '../b')); // b
+console.log(posix.join('')); // .
+```
 
 --------------------------
 ### resolve
-**合并一系列路径成为一个绝对路径**
+**Resolves segments into an absolute posix [path](path.md), anchored at the working directory**
 
 ```JavaScript
 static String path_posix.resolve(...ps);
 ```
 
-调用参数:
-* ps: ..., 一个或多个相关的路径
+Parameters:
+* ps: ..., one or more paths
 
-返回结果:
-* String, 返回得到的新路径
+Returns:
+* String, the resolved [path](path.md)
+
+Segments are processed from right to left until an absolute one is found, so the rightmost
+absolute segment wins; the result is normalized and has no trailing separator. With no
+arguments, or with only empty segments, the working directory is returned. Paths are
+resolved with the posix rule set even when the host is Windows.
+
+Example — resolve posix segments:
+
+```JavaScript
+const posix = require('path').posix;
+
+console.log(posix.resolve('/srv', 'www')); // /srv/www
+console.log(posix.resolve('/srv', 'www', '/etc')); // /etc
+```
 
 --------------------------
 ### relative
-**求 _from 到 to 的相对路径**
+**Returns the relative posix [path](path.md) from _from to to**
 
 ```JavaScript
 static String path_posix.relative(String _from,
     String to);
 ```
 
-调用参数:
-* _from: String, 源路径
-* to: String, 目标路径
+Parameters:
+* _from: String, the source [path](path.md)
+* to: String, the target [path](path.md)
 
-返回结果:
-* String, 返回得到的相对路径
+Returns:
+* String, the relative [path](path.md)
+
+Both arguments are resolved against the working directory first, so the result does not
+depend on whether they are relative or absolute. '' is returned for the same location;
+otherwise the result uses '..' segments as needed and has no trailing separator.
 
 --------------------------
 ### toNamespacedPath
-**转换成 namespace-prefixed 路径。只在 windows 有效，其他系统直接返回。**
+**Returns the input unchanged; the namespace prefix only applies to the win32 rule set**
 
 ```JavaScript
 static Value path_posix.toNamespacedPath(Value path = undefined);
 ```
 
-调用参数:
-* path: Value, 给定的路径。
+Parameters:
+* path: Value, the [path](path.md) to convert
 
-返回结果:
-* Value, 返回得到的新路径
+Returns:
+* Value, the input value
 
-see: https://msdn.microsoft.com/library/windows/desktop/aa365247(v=vs.85).aspx#namespaces
+The posix rule set has no namespace-prefixed form, so strings and non-string values are
+returned as-is on every platform.
 
-## 静态属性
+## Static Properties
         
 ### posix
-**Object, posix 实现，参见 path_posix**
+**Object, The posix rule set itself**
 
 ```JavaScript
 static readonly Object path_posix.posix;
 ```
 
+A self reference to the [object](../../object/ifs/object.md) returned by require('[path](path.md)').posix, provided for API
+symmetry with [path_win32](path_win32.md).
+
 --------------------------
 ### win32
-**Object, windows 实现，参见 [path_win32](path_win32.md)**
+**Object, The win32 rule set of the [path](path.md) [module](module.md), see [path_win32](path_win32.md)**
 
 ```JavaScript
 static readonly Object path_posix.win32;
 ```
 
-## 常量
+Use it to [process](process.md) Windows paths (drive letters, UNC shares, both separators) from a posix
+context.
+
+## Constants
         
 ### sep
-**查询当前操作系统的路径分割字符，posix 返回 '/', windows 返回  '\\'**
+**The [path](path.md) segment separator of the posix rule set: '/'**
 
 ```JavaScript
 const path_posix.sep = "/";
@@ -238,7 +455,7 @@ const path_posix.sep = "/";
 
 --------------------------
 ### delimiter
-**查询当前操作系统的多路径组合字符，posix 返回 ':', windows 返回  ';'**
+**The PATH-list delimiter of the posix rule set: ':'**
 
 ```JavaScript
 const path_posix.delimiter = ":";

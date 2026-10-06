@@ -1,60 +1,122 @@
-# 模块 base64
-base64 编码与解码模块
+# Module base64
+The base64 [module](module.md) encodes binary data with the RFC 4648 alphabet, URL-safe or not
 
-`base64` 是一种将二进制数据编码为 ASCII 字符串的方法，使其可在网络上进行传输。`base64` 模块提供了一些对 Base64 编解码的支持。
+Main capabilities:
 
-使用 `base64` 模块，可以将字符串编码为 Base64 格式，也可以将 Base64 格式解码为字符串。例如，将字符串编码为 Base64 格式：
+- **Encoding**: `encode` turns a [Buffer](../../object/ifs/Buffer.md) or a string into base64 text, standard or
+  URL-safe;
+- **Decoding**: `decode` turns base64 text back into a [Buffer](../../object/ifs/Buffer.md).
+
+Concepts:
+
+- **Alphabet and padding**: standard base64 maps six bits to one character of
+  A-Z a-z 0-9 + / and pads the last group with "=" so that the text length is a multiple
+  of 4. With [url](url.md) = true the encoder switches to - and _ and omits the padding, which keeps
+  the text usable in URLs, query strings and file names without escaping.
+- **Decoding both forms**: `decode` accepts "+" and "-" as the same character and "/" and
+  "_" as the same character; padding is optional and characters outside the alphabet are
+  skipped instead of rejected, so the standard and URL-safe forms decode with one call and
+  a string with stray whitespace still decodes.
+- **Relation to [Buffer](../../object/ifs/Buffer.md)**: `base64.encode(data)` equals data.toString('base64') and
+  `decode` accepts everything [Buffer.from](../../object/ifs/Buffer.md#from)(str, 'base64url') accepts; the [module](module.md) is the
+  functional form for code that does not hold a [Buffer](../../object/ifs/Buffer.md) method call.
+- **Relation to [multibase](multibase.md)**: the base64, base64pad, base64url and base64urlpad codecs of
+  the [multibase](multibase.md) [module](module.md) are these payloads behind one prefix character.
+- **Not encryption**: base64 is reversible without a key, so it hides nothing and must
+  not be used to protect data.
+
+Import:
 
 ```JavaScript
-const {
-    encode
-} = require('base64');
-const str = 'hello, world';
-const encodedStr = encode(str);
-console.log(encodedStr); // ==> "aGVsbG8sIHdvcmxk"
+const base64 = require('base64');
 ```
 
-将 Base64 格式的字符串解码为字符串：
+Example 1 — encode and decode standard base64 text:
 
 ```JavaScript
-const {
-    decode
-} = require('base64');
-const encodedStr = 'aGVsbG8sIHdvcmxk';
-const str = decode(encodedStr);
-console.log(str); // ==> "hello, world"
+const base64 = require('base64');
+
+const data = Buffer.from('hello, world');
+console.log(base64.encode(data)); // aGVsbG8sIHdvcmxk
+console.log(base64.decode('aGVsbG8sIHdvcmxk').toString()); // hello, world
 ```
 
-在处理包含敏感信息的数据时，使用 Base64 编码并不能提供安全保障。因为 Base64 编码可以被轻松地破解，所以应该使用其他更安全的方法来处理这些数据。
+Example 2 — the URL-safe variant of two bytes that need "+" and "/" in standard form:
 
-## 静态函数
+```JavaScript
+const base64 = require('base64');
+
+const data = Buffer.from([0xfb, 0xff]);
+console.log(base64.encode(data)); // +/8=
+console.log(base64.encode(data, true)); // -_8
+console.log(base64.decode('-_8').toString('hex')); // fbff
+```
+
+Notes:
+
+- `decode` never reports malformed input: an empty or fully invalid string returns an
+  empty [Buffer](../../object/ifs/Buffer.md); use a stricter parser when the text must be validated.
+- Node.js exposes base64 through [Buffer](../../object/ifs/Buffer.md) encodings rather than a [module](module.md); fibjs also
+  accepts the alias `encoding.encode(data, 'base64url')` for the URL-safe form.
+
+## Static Methods
         
 ### encode
-**以 base64 方式编码数据**
+**Encodes data in base64 format**
 
 ```JavaScript
-static String base64.encode(Buffer data,
+static String base64.encode(Buffer | String data,
     Boolean url = false);
 ```
 
-调用参数:
-* data: [Buffer](../../object/ifs/Buffer.md), 要编码的数据
-* url: Boolean, 指定是否使用 [url](url.md) 安全字符编码
+Parameters:
+* data: [Buffer](../../object/ifs/Buffer.md) | String, the data to encode
+* url: Boolean, specifies whether to use [url](url.md)-safe character [encoding](encoding.md)
 
-返回结果:
-* String, 返回编码的字符串
+Returns:
+* String, returns the encoded string
+
+data may be a [Buffer](../../object/ifs/Buffer.md) or a string; a string is encoded as utf8. Without [url](url.md) the
+standard alphabet (A-Z a-z 0-9 + /) is used and the result is padded with "=" to a
+multiple of four; with [url](url.md) the URL-safe alphabet (- and _) is used and no padding is
+added.
+
+Example — the same two bytes in both forms:
+
+```JavaScript
+const base64 = require('base64');
+
+const data = Buffer.from([0xfb, 0xff]);
+console.log(base64.encode(data)); // +/8=
+console.log(base64.encode(data, true)); // -_8
+```
 
 --------------------------
 ### decode
-**以 base64 方式解码字符串为二进制数据**
+**Decodes a string into binary data in base64 format**
 
 ```JavaScript
 static Buffer base64.decode(String data);
 ```
 
-调用参数:
-* data: String, 要解码的字符串
+Parameters:
+* data: String, the string to decode
 
-返回结果:
-* [Buffer](../../object/ifs/Buffer.md), 返回解码的二进制数据
+Returns:
+* [Buffer](../../object/ifs/Buffer.md), returns the decoded binary data
+
+     The padding of the last group is optional and both alphabets are accepted in the same
+     call: "+" and "-" decode alike, as do "/" and "_". Characters outside the alphabet,
+     including whitespace, are ignored, so an empty or fully invalid string returns an
+     empty [Buffer](../../object/ifs/Buffer.md) instead of reporting the malformed input.
+
+     Example — padded, unpadded and URL-safe text:
+
+```JavaScript
+const base64 = require('base64');
+
+console.log(base64.decode('aGVsbG8=').toString()); // hello
+console.log(base64.decode('aGVsbG8').toString()); // hello
+console.log(base64.decode('-_8').toString('hex')); // fbff
+```
 

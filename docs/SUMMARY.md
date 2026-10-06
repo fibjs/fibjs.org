@@ -1,24 +1,24 @@
 # Summary
 
-## 开发指南
+## Guide
 
-* [fibjs 是什么？](guide/about.md)
-* [安装运行环境](guide/install.md)
-* [hello, world](guide/hello.md)
-* [美好生活从测试开始](guide/test.md)
-* [找出性能杀手](guide/profiler.md)
-* [同步和异步](guide/sync.md)
-* [使用 fibjs 的 ECMAScript 模块 (ESM)](guide/esm.md)
-* [在 fibjs 中使用 TypeScript](guide/ts.md)
-* [服务端模块热更新](guide/server-hot-update.md)
-* [高性能 Web 应用程序实践](guide/web.md)
-* [域名路由](guide/host-routes.md)
-* [fibjs 桌面应用开发指南](guide/gui.md)
-* [打包发布  fibjs 应用](guide/build.md)
-* [fibjs 中 X509 证书的使用](guide/x509.md)
-* [添加 native 模块](guide/contribute.md)
+* [What is fibjs?](guide/about.md)
+* [Installation](guide/install.md)
+* [Hello World](guide/hello.md)
+* [A Good Life Starts with Testing](guide/test.md)
+* [Finding the Performance Killer](guide/profiler.md)
+* [Synchronous and Asynchronous](guide/sync.md)
+* [Using ECMAScript Modules (ESM) in fibjs](guide/esm.md)
+* [Using TypeScript in fibjs](guide/ts.md)
+* [Server-side Module Hot Update](guide/server-hot-update.md)
+* [High-Performance Web Application Practices](guide/web.md)
+* [Host Routing](guide/host-routes.md)
+* [fibjs Desktop Application Development Guide](guide/gui.md)
+* [Packaging and Releasing a fibjs Application](guide/build.md)
+* [Using X509 Certificates in fibjs](guide/x509.md)
+* [Adding a Native Module](guide/contribute.md)
 
-## 基础模块
+## Modules
 
 * [assert](manual/module/ifs/assert.md)
 * [assert_strict](manual/module/ifs/assert_strict.md)
@@ -90,7 +90,7 @@
 * [zlib](manual/module/ifs/zlib.md)
 * [zlib_constants](manual/module/ifs/zlib_constants.md)
 
-## 内置对象
+## Built-in Objects
 
 * [AbortController](manual/object/ifs/AbortController.md)
 * [AbortSignal](manual/object/ifs/AbortSignal.md)
@@ -99,6 +99,7 @@
 * [Blob](manual/object/ifs/Blob.md)
 * [Buffer](manual/object/ifs/Buffer.md)
 * [BufferedStream](manual/object/ifs/BufferedStream.md)
+* [CSSStyleDeclaration](manual/object/ifs/CSSStyleDeclaration.md)
 * [Chain](manual/object/ifs/Chain.md)
 * [ChildProcess](manual/object/ifs/ChildProcess.md)
 * [Cipher](manual/object/ifs/Cipher.md)
@@ -107,12 +108,14 @@
 * [CryptoKey](manual/object/ifs/CryptoKey.md)
 * [DOMEvent](manual/object/ifs/DOMEvent.md)
 * [DOMParser](manual/object/ifs/DOMParser.md)
+* [DOMStringMap](manual/object/ifs/DOMStringMap.md)
 * [DOMTokenList](manual/object/ifs/DOMTokenList.md)
 * [DbConnection](manual/object/ifs/DbConnection.md)
 * [Deflate](manual/object/ifs/Deflate.md)
 * [DeflateRaw](manual/object/ifs/DeflateRaw.md)
 * [DgramSocket](manual/object/ifs/DgramSocket.md)
 * [Digest](manual/object/ifs/Digest.md)
+* [Dir](manual/object/ifs/Dir.md)
 * [DirEntry](manual/object/ifs/DirEntry.md)
 * [ECDH](manual/object/ifs/ECDH.md)
 * [Event](manual/object/ifs/Event.md)
@@ -186,6 +189,7 @@
 * [Smtp](manual/object/ifs/Smtp.md)
 * [Socket](manual/object/ifs/Socket.md)
 * [Stat](manual/object/ifs/Stat.md)
+* [Statement](manual/object/ifs/Statement.md)
 * [StatsWatcher](manual/object/ifs/StatsWatcher.md)
 * [Stream](manual/object/ifs/Stream.md)
 * [StreamReader](manual/object/ifs/StreamReader.md)
@@ -208,7 +212,6 @@
 * [WebSocketMessage](manual/object/ifs/WebSocketMessage.md)
 * [WebView](manual/object/ifs/WebView.md)
 * [Worker](manual/object/ifs/Worker.md)
-* [WorkerMessage](manual/object/ifs/WorkerMessage.md)
 * [X509Certificate](manual/object/ifs/X509Certificate.md)
 * [X509CertificateRequest](manual/object/ifs/X509CertificateRequest.md)
 * [XMLSerializer](manual/object/ifs/XMLSerializer.md)
@@ -229,7 +232,7 @@
 * [ZlibCodec](manual/object/ifs/ZlibCodec.md)
 * [object](manual/object/ifs/object.md)
 
-## 社区模块
+## Community Modules
 
 * [fib-session](awesome/module/fib-session.md)
 * [fib-pool](awesome/module/fib-pool.md)

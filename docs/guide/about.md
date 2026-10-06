@@ -1,16 +1,16 @@
-# 什么是 fibjs？
+# What is fibjs?
 
-fibjs 是一个专为 Web 后端开发设计的高性能应用服务器开发框架。它基于 Google V8 JavaScript 引擎，采用与传统回调不同的并发解决方案。通过使用 fiber（纤程），fibjs 在框架层面上隔离了异步调用的复杂性，大大降低了开发难度，并减少了因频繁异步处理导致的性能问题。
+fibjs is a high-performance application server development framework designed for web back-end development. It is based on Google's V8 JavaScript engine and adopts a concurrency approach different from traditional callbacks. By using fibers, fibjs isolates the complexity of asynchronous calls at the framework level, greatly reducing development difficulty and reducing performance problems caused by frequent asynchronous processing.
 
-## 为什么选择 fibjs？
+## Why Choose fibjs?
 
-### 返璞归真，简化开发
+### Back to Basics, Simplified Development
 
-JavaScript 作为一种广泛应用于浏览器端的编程语言，其异步处理机制在前端开发中得到了充分的发挥。然而，在后端开发中，异步编程往往会增加代码的复杂性，导致难以维护和调试。fibjs 通过引入 fiber 技术，将异步操作封装为同步调用，极大地简化了后端开发的流程。
+As a programming language widely used on the browser side, JavaScript's asynchronous processing mechanism is fully exploited in front-end development. In back-end development, however, asynchronous programming often increases code complexity, making code hard to maintain and debug. By introducing fiber technology, fibjs wraps asynchronous operations as synchronous calls, greatly simplifying the back-end development process.
 
-#### 异步编程的挑战
+#### The Challenge of Asynchronous Programming
 
-在传统的 JavaScript 后端开发中，异步编程是不可避免的。无论是处理数据库查询、文件读写，还是网络请求，开发者都需要面对回调地狱（callback hell）和复杂的错误处理逻辑。以下是一个典型的异步代码示例：
+In traditional JavaScript back-end development, asynchronous programming is unavoidable. Whether handling database queries, file reads and writes, or network requests, developers have to face callback hell and complex error-handling logic. The following is a typical example of asynchronous code:
 
 ```JavaScript
 conn.beginTransaction(err => {
@@ -29,11 +29,11 @@ conn.beginTransaction(err => {
 });
 ```
 
-从上面的代码可以看出，嵌套的回调函数使得代码结构复杂，难以阅读和维护。每个异步操作都需要处理错误，并在错误发生时进行回滚操作，这进一步增加了代码的复杂性。
+As the code above shows, nested callback functions make the code structure complex and hard to read and maintain. Every asynchronous operation needs error handling and a rollback when an error occurs, which further increases the code's complexity.
 
-#### fiber 技术的优势
+#### Advantages of Fiber Technology
 
-fibjs 通过引入 fiber 技术，将异步操作封装为同步调用，使得代码更加简洁和直观。fiber 是一种轻量级的线程，可以在不阻塞主线程的情况下执行异步操作。以下是使用 fibjs 的同步代码示例：
+By introducing fiber technology, fibjs wraps asynchronous operations as synchronous calls, making the code more concise and intuitive. A fiber is a lightweight thread that can perform asynchronous operations without blocking the main thread. The following is a synchronous code example using fibjs:
 
 ```JavaScript
 conn.trans(() => {
@@ -44,11 +44,11 @@ conn.trans(() => {
 console.log('success!');
 ```
 
-通过使用 fiber 技术，开发者可以像编写同步代码一样编写异步操作，避免了回调地狱的问题。代码结构更加清晰，逻辑更加直观，极大地提高了开发效率。
+By using fiber technology, developers can write asynchronous operations just like synchronous code, avoiding the problem of callback hell. The code structure is clearer and the logic more intuitive, greatly improving development efficiency.
 
-#### 更简洁的代码
+#### More Concise Code
 
-fibjs 还提供了更简洁的代码写法，使得开发者可以在一行代码中完成多个异步操作：
+fibjs also provides a more concise syntax, allowing developers to complete multiple asynchronous operations in a single line of code:
 
 ```JavaScript
 conn.trans(() => conn.execute('INSERT INTO log SET data=?',
@@ -56,11 +56,11 @@ conn.trans(() => conn.execute('INSERT INTO log SET data=?',
 console.log('success!');
 ```
 
-这种写法不仅减少了代码量，还进一步简化了逻辑，使得代码更加易读和易维护。
+This style not only reduces the amount of code but also further simplifies the logic, making the code easier to read and maintain.
 
-#### 性能优势
+#### Performance Advantages
 
-除了简化代码结构，fiber 技术还带来了显著的性能提升。以下是不同编程风格的性能测试代码：
+Besides simplifying the code structure, fiber technology also brings significant performance improvements. The following is performance test code for the different programming styles:
 
 ```JavaScript
 var count = 1000;
@@ -96,7 +96,7 @@ async function test() {
 test();
 ```
 
-在最新的 V8 引擎下，运行结果如下：
+On the latest V8 engine, the results are as follows:
 
 ```sh
 async: 0.539ms
@@ -104,11 +104,11 @@ callback: 0.221ms
 sync: 0.061ms
 ```
 
-从结果可以看出，async 函数的性能远低于同步函数，而 fibjs 的 fiber 技术则能充分发挥 V8 引擎的性能优势。
+The results show that async functions perform far worse than synchronous functions, while fibjs's fiber technology can fully leverage the performance advantages of the V8 engine.
 
-#### 灵活的编程范式
+#### Flexible Programming Paradigms
 
-fibjs 支持各种异步编程范式，并允许在同步和异步风格之间灵活切换。通过 `util.sync` 函数，fibjs 可以将回调函数或异步函数转变为同步函数，避免异步范式的传染性问题。以下是一个示例代码：
+fibjs supports various asynchronous programming paradigms and allows flexible switching between synchronous and asynchronous styles. Through the `util.sync` function, fibjs can turn callback functions or async functions into synchronous functions, avoiding the contagiousness of the asynchronous paradigm. The following is an example:
 
 ```JavaScript
 var util = require('util');
@@ -130,24 +130,24 @@ data = util.sync(async_session_get)(sid);
 data = util.sync(callback_session_get)(sid);
 ```
 
-通过这种方式，开发者可以根据具体需求选择合适的编程范式，进一步提高开发效率和代码质量。
+In this way, developers can choose the appropriate programming paradigm for their specific needs, further improving development efficiency and code quality.
 
-#### 代码维护和可读性
+#### Code Maintenance and Readability
 
-使用 fiber 技术的另一个显著优势是代码的可维护性和可读性得到了极大的提升。传统的异步代码由于嵌套的回调函数和复杂的错误处理逻辑，往往难以阅读和理解。而使用 fibjs 后，代码结构更加扁平化，逻辑更加直观，开发者可以更容易地追踪代码执行流程，发现和修复问题。
+Another notable advantage of using fiber technology is that code maintainability and readability are greatly improved. Traditional asynchronous code, with its nested callback functions and complex error-handling logic, is often hard to read and understand. With fibjs, the code structure is flatter and the logic more intuitive, so developers can more easily trace the code execution flow and find and fix problems.
 
-#### 生态系统和社区支持
+#### Ecosystem and Community Support
 
-fibjs 拥有丰富的生态系统和活跃的社区支持。开发者可以方便地找到各种插件和扩展，满足不同的开发需求。同时，社区中的其他开发者也会分享他们的经验和最佳实践，帮助新手快速上手并提高开发水平。
+fibjs has a rich ecosystem and active community support. Developers can easily find various plugins and extensions to meet different development needs. At the same time, other developers in the community share their experience and best practices, helping newcomers get started quickly and improve their skills.
 
-#### 未来展望
+#### Future Outlook
 
-随着 JavaScript 语言和 V8 引擎的不断发展，fibjs 也在不断进化和优化。未来，fibjs 将继续致力于提升性能和简化开发流程，为开发者提供更强大的工具和更优质的开发体验。
+As the JavaScript language and the V8 engine continue to evolve, fibjs is also constantly evolving and optimizing. In the future, fibjs will continue to be committed to improving performance and simplifying the development process, providing developers with more powerful tools and a better development experience.
 
-fibjs 通过引入 fiber 技术，将异步操作封装为同步调用，极大地简化了后端开发的流程。开发者可以像编写同步代码一样编写异步操作，避免了回调地狱的问题，代码结构更加清晰，逻辑更加直观，极大地提高了开发效率。同时，fiber 技术还带来了显著的性能提升，使得 fibjs 成为后端开发的理想选择。
+By introducing fiber technology, fibjs wraps asynchronous operations as synchronous calls, greatly simplifying the back-end development process. Developers can write asynchronous operations just like synchronous code, avoiding the problem of callback hell; the code structure is clearer and the logic more intuitive, greatly improving development efficiency. At the same time, fiber technology also brings significant performance improvements, making fibjs an ideal choice for back-end development.
 
-## 开始体验 fibjs
+## Getting Started with fibjs
 
-准备好开始愉快的开发体验了吗？从安装开始吧！
+Ready to start a pleasant development experience? Begin with installation!
 
-👉 【[安装运行环境](install.md)】
+👉 [Installation](install.md)

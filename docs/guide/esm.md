@@ -1,36 +1,36 @@
-# 使用 fibjs 的 ECMAScript 模块 (ESM)
+# Using ECMAScript Modules (ESM) in fibjs
 
-fibjs 是一个高性能的 JavaScript 运行时，支持 ECMAScript 模块 (ESM)。在 fibjs 中使用 ESM 可以让你更好地组织代码，并利用现代 JavaScript 的模块化特性。以下是如何在 fibjs 中使用 ESM 的介绍。
+fibjs is a high-performance JavaScript runtime that supports ECMAScript modules (ESM). Using ESM in fibjs lets you organize your code better and take advantage of the modular features of modern JavaScript. The following is an introduction to using ESM in fibjs.
 
-## 1. 什么是 ECMAScript 模块 (ESM)？
+## 1. What are ECMAScript modules (ESM)?
 
-ECMAScript 模块 (ESM) 是 JavaScript 的官方模块系统。它允许你将代码分割成独立的模块，每个模块只暴露需要的部分，并且可以从其他模块中导入需要的功能。ESM 提供了 `import` 和 `export` 语法来实现模块的导入和导出。
+ECMAScript modules (ESM) are the official module system for JavaScript. They let you split your code into independent modules, where each module exposes only the parts that are needed and can import the functionality it needs from other modules. ESM provides the `import` and `export` syntax for importing and exporting modules.
 
-在传统的 JavaScript 开发中，代码通常被写在一个或多个文件中，但这些文件之间的依赖关系并不明确，导致代码的可维护性和可读性较差。为了改善这一问题，社区开发了多种模块系统，如 CommonJS 和 AMD。然而，这些模块系统并不是 JavaScript 语言本身的一部分，而是通过工具和库来实现的。随着 JavaScript 生态系统的发展，标准化的模块系统变得越来越重要。于是，ECMAScript 模块 (ESM) 应运而生，并在 ECMAScript 2015 (ES6) 中被引入。
+In traditional JavaScript development, code was usually written in one or more files, but the dependencies between those files were not explicit, which made the code harder to maintain and read. To improve this, the community developed several module systems, such as CommonJS and AMD. However, these module systems are not part of the JavaScript language itself; they are implemented through tools and libraries. As the JavaScript ecosystem evolved, a standardized module system became increasingly important. ECMAScript modules (ESM) emerged in response and were introduced in ECMAScript 2015 (ES6).
 
-ESM 的设计目标是提供一种标准化的方式来定义模块及其依赖关系，从而提高代码的可维护性和可读性。通过使用 ESM，开发者可以更清晰地组织代码，并且可以更方便地重用代码。ESM 的核心特性包括静态结构、顶层作用域、严格模式和异步加载。
+The design goal of ESM is to provide a standardized way to define modules and their dependencies, thereby making code more maintainable and readable. By using ESM, developers can organize code more clearly and reuse code more easily. The core features of ESM include static structure, top-level scope, strict mode, and asynchronous loading.
 
-### 静态结构
+### Static structure
 
-ESM 的一个重要特性是其静态结构。与 CommonJS 模块不同，ESM 模块在编译时就能确定模块的依赖关系。这意味着在代码执行之前，JavaScript 引擎就已经知道哪些模块需要被加载。这种静态结构使得工具和优化器可以更好地分析和优化代码，从而提高性能。
+An important feature of ESM is its static structure. Unlike CommonJS modules, an ESM module's dependencies can be determined at compile time. This means that before the code executes, the JavaScript engine already knows which modules need to be loaded. This static structure allows tools and optimizers to analyze and optimize code better, thereby improving performance.
 
-### 顶层作用域
+### Top-level scope
 
-在 ESM 中，每个模块都有自己的顶层作用域。模块内部定义的变量、函数和类不会泄漏到全局作用域，也不会影响其他模块。这种作用域隔离有助于避免命名冲突，并使得模块更加独立和可重用。
+In ESM, every module has its own top-level scope. Variables, functions, and classes defined inside a module do not leak into the global scope and do not affect other modules. This scope isolation helps avoid naming conflicts and makes modules more independent and reusable.
 
-### 严格模式
+### Strict mode
 
-ESM 模块默认在严格模式下执行。严格模式是一种更严格的 JavaScript 解析和执行模式，它消除了 JavaScript 中的一些不合理和不安全的特性，从而提高代码的健壮性和安全性。例如，在严格模式下，不能使用未声明的变量，不能删除不可删除的属性，等等。通过默认启用严格模式，ESM 模块可以帮助开发者编写更健壮和安全的代码。
+ESM modules execute in strict mode by default. Strict mode is a stricter mode of JavaScript parsing and execution that eliminates some unreasonable and unsafe features of JavaScript, thereby improving the robustness and security of code. For example, in strict mode you cannot use undeclared variables, cannot delete non-deletable properties, and so on. By enabling strict mode by default, ESM modules help developers write more robust and secure code.
 
-### 异步加载
+### Asynchronous loading
 
-ESM 支持异步加载模块，这对于提高性能和用户体验非常重要。在传统的同步加载模式下，浏览器必须等待所有依赖的模块加载完成后才能执行代码，这可能导致页面加载时间过长。而在 ESM 中，模块可以异步加载，从而减少页面加载时间，提高用户体验。
+ESM supports loading modules asynchronously, which is very important for improving performance and user experience. In the traditional synchronous loading model, the browser must wait for all dependent modules to finish loading before it can execute the code, which can make page load times too long. With ESM, modules can be loaded asynchronously, which reduces page load time and improves user experience.
 
-### `import` 和 `export` 语法
+### `import` and `export` syntax
 
-ESM 提供了 `import` 和 `export` 语法来实现模块的导入和导出。`export` 语法用于定义模块的公共接口，即模块希望暴露给其他模块的部分。`import` 语法用于从其他模块中导入功能。通过这种方式，开发者可以清晰地定义模块的依赖关系，并且可以方便地重用代码。
+ESM provides the `import` and `export` syntax for importing and exporting modules. The `export` syntax defines a module's public interface, that is, the parts the module wants to expose to other modules. The `import` syntax imports functionality from other modules. In this way, developers can clearly define a module's dependencies and reuse code conveniently.
 
-例如，假设有一个模块 `math.mjs`，它导出一个函数 `add`：
+For example, suppose there is a module `math.mjs` that exports an `add` function:
 
 ```javascript
 // math.mjs
@@ -39,68 +39,68 @@ export function add(a, b) {
 }
 ```
 
-你可以在另一个模块中导入这个函数并使用它：
+You can import this function in another module and use it:
 
 ```javascript
 // main.mjs
 import { add } from './math.mjs';
-console.log(add(2, 3)); // 输出: 5
+console.log(add(2, 3)); // Output: 5
 ```
 
-ECMAScript 模块 (ESM) 是 JavaScript 的官方模块系统，它通过提供标准化的模块定义和依赖管理机制，提高了代码的可维护性和可读性。通过使用 ESM，开发者可以更好地组织代码，并利用现代 JavaScript 的模块化特性来构建复杂的应用程序。
+ECMAScript modules (ESM) are the official module system for JavaScript. By providing standardized module definitions and dependency management, they improve the maintainability and readability of code. By using ESM, developers can organize code better and use the modular features of modern JavaScript to build complex applications.
 
-## 2. 在 fibjs 中使用 ESM
+## 2. Using ESM in fibjs
 
-在 fibjs 中，你可以使用 `import` 语法来导入模块，并使用 `export` 语法来导出模块。fibjs 还支持异步导入模块，这对于动态加载模块非常有用。此外，fibjs 还支持在 CommonJS 模块中使用 `require` 语法来导入 `.mjs` 文件。通过这些特性，开发者可以在 fibjs 中充分利用 ECMAScript 模块 (ESM) 的优势来组织和管理代码。
+In fibjs, you can use the `import` syntax to import modules and the `export` syntax to export modules. fibjs also supports importing modules asynchronously, which is very useful for dynamic loading. In addition, fibjs supports using the `require` syntax in CommonJS modules to import `.mjs` files. With these features, developers can make full use of the advantages of ECMAScript modules (ESM) in fibjs to organize and manage code.
 
-### 2.1 简单导入
+### 2.1 Simple import
 
-你可以使用 `import` 语法来导入一个模块。例如，假设你有一个模块 `esm1.mjs`，它导出一个对象：
+You can use the `import` syntax to import a module. For example, suppose you have a module `esm1.mjs` that exports an object:
 
 ```javascript
 // esm1.mjs
 export const test = 4;
 ```
 
-你可以在另一个文件中导入这个模块：
+You can import this module in another file:
 
 ```javascript
 // main.js
 import { test } from './esm1.mjs';
-console.log(test); // 输出: 4
+console.log(test); // Output: 4
 ```
 
-这种方式非常直观，可以清晰地看到模块的依赖关系，并且可以方便地重用代码。通过这种方式，开发者可以更好地组织代码，提高代码的可维护性和可读性。
+This approach is very intuitive: you can clearly see the module's dependencies and reuse code conveniently. This helps developers organize code better and improves the maintainability and readability of the code.
 
-### 2.2 使用 `require` 导入 `.mjs` 文件
+### 2.2 Importing `.mjs` files with `require`
 
-在 CommonJS 模块中，fibjs 允许你使用 `require` 语法来导入 `.mjs` 文件。例如：
+In CommonJS modules, fibjs allows you to use the `require` syntax to import `.mjs` files. For example:
 
 ```javascript
 // main.js
 const m = require('./esm1.mjs');
-console.log(m.test); // 输出: 4
+console.log(m.test); // Output: 4
 ```
 
-这种方式使得在使用 ESM 时更加灵活，因为你可以在现有的 CommonJS 模块中逐步引入 ESM 模块，而不需要一次性重构所有代码。这对于大型项目的渐进式迁移非常有用。
+This makes using ESM more flexible, because you can gradually introduce ESM modules into existing CommonJS modules without refactoring all the code at once. This is very useful for incremental migration of large projects.
 
-### 2.3 异步导入
+### 2.3 Asynchronous import
 
-fibjs 支持使用 `await import` 语法来异步导入模块。这在需要动态加载模块时非常有用。例如：
+fibjs supports using the `await import` syntax to import modules asynchronously. This is very useful when you need to load modules dynamically. For example:
 
 ```javascript
 // main.js
 (async () => {
     const module = await import('./esm1.mjs');
-    console.log(module.test); // 输出: 4
+    console.log(module.test); // Output: 4
 })();
 ```
 
-异步导入模块可以提高应用程序的性能，因为它允许你在需要时才加载模块，而不是在应用程序启动时一次性加载所有模块。这对于大型应用程序尤其重要，因为它可以减少初始加载时间，提高用户体验。
+Asynchronous imports can improve application performance, because they let you load modules only when needed instead of loading all modules at once at application startup. This is especially important for large applications, because it reduces initial load time and improves user experience.
 
-### 2.4 导入 JSON 文件
+### 2.4 Importing JSON files
 
-你可以直接导入 JSON 文件，fibjs 会自动将其解析为 JavaScript 对象。例如：
+You can import JSON files directly, and fibjs will automatically parse them into JavaScript objects. For example:
 
 ```javascript
 // data.json
@@ -110,37 +110,37 @@ fibjs 支持使用 `await import` 语法来异步导入模块。这在需要动�
 
 // main.js
 import data from './data.json';
-console.log(data.test); // 输出: 500
+console.log(data.test); // Output: 500
 ```
 
-这种方式使得处理 JSON 数据变得非常简单和直观。你可以直接在代码中导入 JSON 文件，而不需要额外的解析步骤。这对于处理配置文件或静态数据非常有用。
+This makes handling JSON data very simple and intuitive. You can import JSON files directly in your code without an extra parsing step. This is very useful for configuration files or static data.
 
-### 2.5 导入内置模块
+### 2.5 Importing built-in modules
 
-fibjs 允许你使用 `import` 语法导入内置模块。例如：
+fibjs allows you to use the `import` syntax to import built-in modules. For example:
 
 ```javascript
 // main.js
 import { Buffer } from 'buffer';
-console.log(Buffer); // 输出: [Function: Buffer]
+console.log(Buffer); // Output: [Function: Buffer]
 ```
 
-这种方式使得使用内置模块变得更加方便和一致。你可以使用相同的 `import` 语法来导入内置模块和自定义模块，从而简化代码结构。
+This makes using built-in modules more convenient and consistent. You can use the same `import` syntax to import both built-in and custom modules, which simplifies your code structure.
 
-### 2.6 使用 `import.meta`
+### 2.6 Using `import.meta`
 
-`import.meta` 是一个包含当前模块元数据的对象。你可以使用 `import.meta` 获取模块的文件路径和 URL。例如：
+`import.meta` is an object containing metadata about the current module. You can use `import.meta` to get the module's file path and URL. For example:
 
 ```javascript
 // main.js
-console.log(import.meta.url); // 输出当前模块的 URL
+console.log(import.meta.url); // Output the URL of the current module
 ```
 
-这种方式使得获取模块的元数据变得非常简单和直观。你可以使用 `import.meta` 获取当前模块的相关信息，从而在代码中进行相应的处理。
+This makes getting module metadata very simple and intuitive. You can use `import.meta` to get information about the current module and handle it accordingly in your code.
 
-### 2.7 在沙箱中使用 ESM
+### 2.7 Using ESM in a sandbox
 
-fibjs 提供了 `vm.SandBox` 类，可以在沙箱中运行代码。你可以在沙箱中使用 ESM：
+fibjs provides the `vm.SandBox` class, which can run code in a sandbox. You can use ESM inside a sandbox:
 
 ```javascript
 // main.js
@@ -149,15 +149,15 @@ const sbox = new vm.SandBox();
 
 (async () => {
     const module = await sbox.import('./esm1.mjs', __dirname);
-    console.log(module.test); // 输出: 4
+    console.log(module.test); // Output: 4
 })();
 ```
 
-这种方式使得在沙箱中运行代码变得非常简单和直观。你可以使用 `vm.SandBox` 类在沙箱中运行代码，从而提高代码的安全性和隔离性。
+This makes running code in a sandbox very simple and intuitive. You can use the `vm.SandBox` class to run code in a sandbox, which improves the security and isolation of your code.
 
-### 2.8 并行导入
+### 2.8 Parallel imports
 
-fibjs 支持并行导入模块，这对于提高性能非常有用。例如：
+fibjs supports importing modules in parallel, which is very useful for improving performance. For example:
 
 ```javascript
 // main.js
@@ -165,31 +165,31 @@ const module1Promise = import('./esm1.mjs');
 const module2Promise = import('./esm2.mjs');
 
 Promise.all([module1Promise, module2Promise]).then(([module1, module2]) => {
-    console.log(module1.test); // 输出: 4
-    console.log(module2.test); // 输出: 200
+    console.log(module1.test); // Output: 4
+    console.log(module2.test); // Output: 200
 });
 ```
 
-并行导入模块可以显著提高应用程序的性能，因为它允许你同时加载多个模块，而不是一个接一个地加载。这对于大型应用程序尤其重要，因为它可以减少加载时间，提高用户体验。
+Importing modules in parallel can significantly improve application performance, because it lets you load multiple modules at the same time instead of one after another. This is especially important for large applications, because it reduces load time and improves user experience.
 
-### 2.9 使用动态导入
+### 2.9 Using dynamic imports
 
-fibjs 还支持动态导入模块，这对于需要根据条件加载模块的场景非常有用。例如：
+fibjs also supports dynamic imports, which is very useful when modules need to be loaded based on conditions. For example:
 
 ```javascript
 // main.js
 const moduleName = './esm1.mjs';
 
 import(moduleName).then((module) => {
-    console.log(module.test); // 输出: 4
+    console.log(module.test); // Output: 4
 });
 ```
 
-动态导入模块使得代码更加灵活，因为你可以根据运行时的条件来决定加载哪个模块。这对于需要根据用户输入或其他条件加载不同模块的场景非常有用。
+Dynamic imports make code more flexible, because you can decide which module to load based on runtime conditions. This is very useful when different modules need to be loaded based on user input or other conditions.
 
-### 2.10 使用命名空间导入
+### 2.10 Using namespace imports
 
-你可以使用命名空间导入语法来导入整个模块作为一个对象。例如：
+You can use namespace import syntax to import an entire module as an object. For example:
 
 ```javascript
 // esm1.mjs
@@ -200,15 +200,15 @@ export function add(a, b) {
 
 // main.js
 import * as math from './esm1.mjs';
-console.log(math.test); // 输出: 4
-console.log(math.add(2, 3)); // 输出: 5
+console.log(math.test); // Output: 4
+console.log(math.add(2, 3)); // Output: 5
 ```
 
-命名空间导入语法使得导入整个模块变得非常简单和直观。你可以将整个模块作为一个对象导入，从而方便地访问模块中的所有导出。
+Namespace import syntax makes importing an entire module very simple and intuitive. You can import the whole module as an object and conveniently access all of its exports.
 
-### 2.11 使用默认导出
+### 2.11 Using default exports
 
-你可以使用默认导出语法来导出模块的默认值。例如：
+You can use default export syntax to export a module's default value. For example:
 
 ```javascript
 // esm1.mjs
@@ -217,14 +217,14 @@ export default test;
 
 // main.js
 import test from './esm1.mjs';
-console.log(test); // 输出: 4
+console.log(test); // Output: 4
 ```
 
-默认导出语法使得导出模块的默认值变得非常简单和直观。你可以使用 `export default` 语法来导出模块的默认值，从而简化模块的导入和使用。
+Default export syntax makes exporting a module's default value very simple and intuitive. You can use the `export default` syntax to export a module's default value, which simplifies importing and using the module.
 
-### 2.12 使用具名导出
+### 2.12 Using named exports
 
-你可以使用具名导出语法来导出模块的多个值。例如：
+You can use named export syntax to export multiple values from a module. For example:
 
 ```javascript
 // esm1.mjs
@@ -235,15 +235,15 @@ export function add(a, b) {
 
 // main.js
 import { test, add } from './esm1.mjs';
-console.log(test); // 输出: 4
-console.log(add(2, 3)); // 输出: 5
+console.log(test); // Output: 4
+console.log(add(2, 3)); // Output: 5
 ```
 
-具名导出语法使得导出模块的多个值变得非常简单和直观。你可以使用 `export` 语法来导出模块的多个值，从而方便地在其他模块中使用这些值。
+Named export syntax makes exporting multiple values from a module very simple and intuitive. You can use the `export` syntax to export multiple values, so they can be conveniently used in other modules.
 
-### 2.13 使用重命名导出
+### 2.13 Using renamed exports
 
-你可以使用重命名导出语法来导出模块的值，并在导出时重命名。例如：
+You can use renamed export syntax to export a module's values under different names. For example:
 
 ```javascript
 // esm1.mjs
@@ -255,15 +255,15 @@ export { test as value, add as sum };
 
 // main.js
 import { value, sum } from './esm1.mjs';
-console.log(value); // 输出: 4
-console.log(sum(2, 3)); // 输出: 5
+console.log(value); // Output: 4
+console.log(sum(2, 3)); // Output: 5
 ```
 
-重命名导出语法使得导出模块的值变得非常灵活。你可以在导出时重命名模块的值，从而避免命名冲突，并使得代码更加清晰和易读。
+Renamed export syntax makes exporting a module's values very flexible. You can rename values when exporting them, which avoids naming conflicts and makes the code clearer and easier to read.
 
-### 2.14 使用重命名导入
+### 2.14 Using renamed imports
 
-你可以使用重命名导入语法来导入模块的值，并在导入时重命名。例如：
+You can use renamed import syntax to import a module's values under different names. For example:
 
 ```javascript
 // esm1.mjs
@@ -274,16 +274,16 @@ export function add(a, b) {
 
 // main.js
 import { test as value, add as sum } from './esm1.mjs';
-console.log(value); // 输出: 4
-console.log(sum(2, 3)); // 输出: 5
+console.log(value); // Output: 4
+console.log(sum(2, 3)); // Output: 5
 ```
 
-重命名导入语法使得导入模块的值变得非常灵活。你可以在导入时重命名模块的值，从而避免命名冲突，并使得代码更加清晰和易读。
+Renamed import syntax makes importing a module's values very flexible. You can rename values when importing them, which avoids naming conflicts and makes the code clearer and easier to read.
 
-## 结论
+## Conclusion
 
-fibjs 对 ECMAScript 模块 (ESM) 的支持使得开发者可以利用现代 JavaScript 的模块化特性来组织代码。通过使用 `import` 和 `export` 语法，开发者可以更好地管理依赖关系，并提高代码的可维护性和可读性。此外，fibjs 还支持在 CommonJS 模块中使用 `require` 语法来导入 `.mjs` 文件，使得在使用 ESM 时更加灵活。fibjs 的异步加载和并行导入特性进一步提高了应用程序的性能和用户体验。
+fibjs's support for ECMAScript modules (ESM) lets developers organize code using the modular features of modern JavaScript. By using the `import` and `export` syntax, developers can manage dependencies better and improve the maintainability and readability of code. In addition, fibjs supports using the `require` syntax in CommonJS modules to import `.mjs` files, which makes using ESM more flexible. fibjs's asynchronous loading and parallel import features further improve application performance and user experience.
 
-通过这些特性，开发者可以在 fibjs 中充分利用 ECMAScript 模块 (ESM) 的优势来组织和管理代码，从而构建更加健壮和高效的应用程序。fibjs 对 ESM 的支持使得开发者可以在服务器端和客户端之间共享代码，提高开发效率和代码质量。
+With these features, developers can make full use of the advantages of ECMAScript modules (ESM) in fibjs to organize and manage code, and thus build more robust and efficient applications. fibjs's ESM support lets developers share code between the server side and the client side, improving development efficiency and code quality.
 
-👉 【[在 fibjs 中使用 TypeScript](ts.md)】
+👉 [Using TypeScript in fibjs](ts.md)

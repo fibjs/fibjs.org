@@ -1,9 +1,88 @@
-# 对象 DirEntry
-表示目录项的信息
+# Object DirEntry
+A directory entry: the name and the type of one item inside a directory
 
-DirEntry 对象通过 [fs.glob](../../module/ifs/fs.md#glob), [fs.readdir](../../module/ifs/fs.md#readdir) 查询，不可独立创建
+A DirEntry answers "what is in this directory" without a stat call per item: the directory
+listing already reports the type of each entry, so the isXxx() predicates are free. Use it
+when files, directories and links must be told apart while listing; reach for [Stat](Stat.md) when size,
+timestamps, permissions or the target of a link are needed, because a DirEntry carries none
+of them.
 
-## 继承关系
+Concepts:
+
+- **Type from the listing**: the isXxx() predicates [test](../../module/ifs/test.md) the entry type reported by the
+  directory scan (S_IF* bits), not the result of an extra stat call. A file system that
+  reports the type as unknown makes every predicate false; on Windows only the file,
+  directory and symbolic link [types](../../module/ifs/types.md) are populated.
+- **Paths**: name is the base name of the entry; parentPath is the directory that was
+  scanned, spelled the way the scan was requested. [fs.readdir](../../module/ifs/fs.md#readdir) and [Dir](Dir.md) keep the requested
+  [path](../../module/ifs/path.md) (a relative [path](../../module/ifs/path.md) stays relative), while [fs.glob](../../module/ifs/fs.md#glob) with `withFileTypes` always reports
+  the absolute directory of each match.
+- **Links are not followed**: isSymbolicLink() is true for the link itself and false for a
+  link to a file or directory, exactly like [fs.lstat](../../module/ifs/fs.md#lstat); use [fs.stat](../../module/ifs/fs.md#stat) to describe the target.
+- **Not constructible**: the class is exposed as `fs.Dirent`; `new fs.Dirent()` throws. It
+  is a plain value [object](object.md), not a handle, so there is nothing to close.
+
+Obtained from:
+- `fs.readdir([path](../../module/ifs/path.md), { withFileTypes: true })` — the elements of the returned array;
+- `fs.glob(pattern, { withFileTypes: true })` — the elements of the returned array;
+- `[Dir](Dir.md)#read()` and iteration over a [Dir](Dir.md) obtained from `fs.opendir` or `new [fs.Dir](../../module/ifs/fs.md#Dir)([path](../../module/ifs/path.md))`.
+
+Example 1 — classify the entries of a directory without stat calls:
+
+```JavaScript
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-dirent-'));
+fs.writeFile(path.join(dir, 'notes.txt'), 'note');
+fs.mkdir(path.join(dir, 'images'));
+fs.symlink(path.join(dir, 'notes.txt'), path.join(dir, 'shortcut'));
+
+fs.readdir(dir, {
+    withFileTypes: true
+}).forEach((entry) => {
+    let kind = 'file';
+    if (entry.isDirectory()) kind = 'dir';
+    else if (entry.isSymbolicLink()) kind = 'link';
+    console.log(entry.name, kind, entry.parentPath);
+});
+
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
+```
+
+Example 2 — walk a tree with glob and never stat a match:
+
+```JavaScript
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-dirent-'));
+fs.mkdir(path.join(dir, 'src'));
+fs.writeFile(path.join(dir, 'src', 'app.js'), 'app');
+fs.writeFile(path.join(dir, 'README.md'), 'readme');
+
+fs.glob('**', {
+    cwd: dir,
+    withFileTypes: true
+}).forEach((entry) => {
+    console.log(entry.name, entry.isDirectory() ? 'dir' : 'file');
+});
+
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
+```
+
+Same [object](object.md) type as Node.js [fs.Dirent](../../module/ifs/fs.md#Dirent); Node also has the deprecated `path` property, fibjs
+provides parentPath only.
+
+## Inheritance
 ```dot
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
@@ -15,123 +94,202 @@ digraph {
 }
 ```
 
-## 成员属性
+## Properties
         
 ### name
-**String, 文件名称**
+**String, Base name of the entry**
 
 ```JavaScript
 readonly String DirEntry.name;
 ```
 
+The last [path](../../module/ifs/path.md) component, without the directory part: 'report.txt' for an entry of
+'/data/report.txt'. It is a name inside the directory, not a [path](../../module/ifs/path.md); combine it with
+parentPath to build the full [path](../../module/ifs/path.md). Same property as Node.js Dirent#name.
+
 --------------------------
 ### parentPath
-**String, 文件的父路径**
+**String, Directory that contains the entry**
 
 ```JavaScript
 readonly String DirEntry.parentPath;
 ```
 
-## 成员函数
+The directory [path](../../module/ifs/path.md) that was scanned, spelled as it was requested: [fs.readdir](../../module/ifs/fs.md#readdir)('.')
+reports '.', a relative [Dir](Dir.md) reports its relative [path](../../module/ifs/path.md), and [fs.glob](../../module/ifs/fs.md#glob) with
+`withFileTypes` reports the absolute directory of each match (even for a relative
+pattern). Node.js Dirent also exposes this property; the older Node `path` alias is not
+provided.
+
+## Methods
         
 ### isBlockDevice
-**查询 [Stat](Stat.md) 是否描述了一个 block device**
+**Queries whether the entry is a block device**
 
 ```JavaScript
 Boolean DirEntry.isBlockDevice();
 ```
 
-返回结果:
-* Boolean, 为 true 表示描述了一个 block device
+Returns:
+* Boolean, true if it describes a block device
+
+Tests the S_IFBLK type from the directory listing. Always false on Windows, where the
+listing does not report this type; no stat call is made.
 
 --------------------------
 ### isCharacterDevice
-**查询 [Stat](Stat.md) 是否描述了一个 character device**
+**Queries whether the entry is a character device**
 
 ```JavaScript
 Boolean DirEntry.isCharacterDevice();
 ```
 
-返回结果:
-* Boolean, 为 true 表示描述了一个 character device
+Returns:
+* Boolean, true if it describes a character device
+
+Tests the S_IFCHR type from the directory listing; character devices include terminals
+and serial ports. Always false on Windows.
 
 --------------------------
 ### isDirectory
-**查询文件是否是目录**
+**Queries whether the entry is a directory**
 
 ```JavaScript
 Boolean DirEntry.isDirectory();
 ```
 
-返回结果:
-* Boolean, 为 true 则是目录
+Returns:
+* Boolean, true if it is a directory
+
+Tests the S_IFDIR type from the directory listing. A symbolic link to a directory is
+reported as a link, not as a directory (see isSymbolicLink); use [fs.stat](../../module/ifs/fs.md#stat) when the target
+of a link is needed.
 
 --------------------------
 ### isFIFO
-**查询 [Stat](Stat.md) 是否描述了一个 FIFO 管道**
+**Queries whether the entry is a FIFO pipe**
 
 ```JavaScript
 Boolean DirEntry.isFIFO();
 ```
 
-返回结果:
-* Boolean, 为 true 表示描述了一个 FIFO 管道
+Returns:
+* Boolean, true if it describes a FIFO pipe
+
+Tests the S_IFIFO type from the directory listing. Always false on Windows.
 
 --------------------------
 ### isFile
-**查询文件是否是文件**
+**Queries whether the entry is a regular file**
 
 ```JavaScript
 Boolean DirEntry.isFile();
 ```
 
-返回结果:
-* Boolean, 为 true 则是文件
+Returns:
+* Boolean, true if it is a file
+
+Tests the S_IFREG type from the directory listing; directories, devices and links are
+not files. The entry is not followed, so a link to a file reports false.
 
 --------------------------
 ### isSymbolicLink
-**查询文件是否是符号链接**
+**Queries whether the entry is a symbolic link**
 
 ```JavaScript
 Boolean DirEntry.isSymbolicLink();
 ```
 
-返回结果:
-* Boolean, 为 true 则是符号链接
+Returns:
+* Boolean, true if it is a symbolic link
+
+Tests the S_IFLNK type from the directory listing; true for the link itself, matching
+lstat, and false for its target. On Windows the link type is populated for reparse
+points.
+
+Example — find the symbolic links of a directory:
+
+```JavaScript
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-link-'));
+fs.writeFile(path.join(dir, 'target.txt'), 'x');
+fs.symlink(path.join(dir, 'target.txt'), path.join(dir, 'link.txt'));
+
+const link = fs.readdir(dir, {
+        withFileTypes: true
+    })
+    .find((entry) => entry.name === 'link.txt');
+console.log(link.isSymbolicLink(), link.isFile()); // true false
+
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
+```
 
 --------------------------
 ### isSocket
-**查询文件是否是 [Socket](Socket.md)**
+**Queries whether the entry is a UNIX domain socket**
 
 ```JavaScript
 Boolean DirEntry.isSocket();
 ```
 
-返回结果:
-* Boolean, 为 true 则是 [Socket](Socket.md)
+Returns:
+* Boolean, true if it is a [Socket](Socket.md)
+
+Tests the S_IFSOCK type from the directory listing. Always false on Windows.
 
 --------------------------
 ### toString
-**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
+**Returns the string form of the [object](object.md)**
 
 ```JavaScript
 String DirEntry.toString();
 ```
 
-返回结果:
-* String, 返回对象的字符串表示
+Returns:
+* String, returns the string form of the [object](object.md)
+
+The base implementation reports an error: a native [object](object.md) has no implicit
+text form, and only the classes whose value can be written as a string
+override the member. [Buffer](Buffer.md) returns its content decoded with the given
+[encoding](../../module/ifs/encoding.md), [HttpCookie](HttpCookie.md) returns "name=value", and so on; an override commonly
+accepts optional arguments ([Buffer.toString](Buffer.md#toString) takes [encoding](../../module/ifs/encoding.md), start and
+end) that are not part of this declaration.
+
+Calling the member on a class that does not override it throws
+"<Class>: the [object](object.md) can not be converted to string.", which is the
+behavior to rely on when probing whether a value has a string form. See
+toJSON for the serialization hook.
 
 --------------------------
 ### toJSON
-**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
+**Returns the JSON representation of the [object](object.md)**
 
 ```JavaScript
 Value DirEntry.toJSON(String key = "");
 ```
 
-调用参数:
-* key: String, 未使用
+Parameters:
+* key: String, the property name of the value being serialized
 
-返回结果:
-* Value, 返回包含可 JSON 序列化的值
+Returns:
+* Value, returns the JSON-serializable value
+
+JSON.stringify(value) calls value.toJSON(key) when the member exists and
+serializes the returned value in its place; the key argument carries the
+property name of the value inside its parent [object](object.md) (an empty string at
+the top level) and may be used to build a keyed form. The base
+implementation returns a plain [object](object.md) holding the readable properties of
+the instance, so a native [object](object.md) serializes without per-class code; a
+class with a portable shape such as [Buffer](Buffer.md) overrides it, and a JavaScript
+class may override it in the same way.
+
+The member is normally reached through JSON.stringify rather than called
+directly; calling it returns the same value JSON.stringify would
+serialize.
 

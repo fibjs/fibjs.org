@@ -1,50 +1,132 @@
-# 对象 ZipFile
-ZipFile 对象是 [zip](../../module/ifs/zip.md) 格式文件压缩解压模块中的重要对象，提供了对 [zip](../../module/ifs/zip.md) 文件的读写访问
+# Object ZipFile
+The ZipFile [object](object.md) gives read and write access to the entries of a single [zip](../../module/ifs/zip.md) archive
 
-ZipFile 对象继承自[Stream](Stream.md) 对象，因此可以通过 [Stream](Stream.md) 对象一样的方式进行操作。
+A ZipFile is the handle returned by [zip.open](../../module/ifs/zip.md#open) for a [path](../../module/ifs/path.md), a [Buffer](Buffer.md) or a [SeekableStream](SeekableStream.md), and
+it is never constructed directly. One [object](object.md) has two very different roles: opened with "r"
+it is a reader that walks the stored entries, opened with "w" or "a" it is a writer that
+adds entries and publishes them when the archive is closed.
 
-常用的静态函数有：
+Concepts:
 
-- [zip.open](../../module/ifs/zip.md#open)：打开一个 [zip](../../module/ifs/zip.md) 文件或 stream
-- [zip.isZipFile](../../module/ifs/zip.md#isZipFile)：判断文件是否是 [zip](../../module/ifs/zip.md) 文件
-- [fs.setZipFS](../../module/ifs/fs.md#setZipFS)：设置 [zip](../../module/ifs/zip.md) 文件虚拟文件系统
-- [fs.clearZipFS](../../module/ifs/fs.md#clearZipFS)：清除 [zip](../../module/ifs/zip.md) 文件虚拟文件系统
+- **Reader and writer objects**: the mode passed to [zip.open](../../module/ifs/zip.md#open) decides which members work.
+  In "r" mode the reading members (namelist, infolist, getinfo, read, readAll, extract,
+  extractAll) operate on the stored entries; in "w"/"a" mode only write may be used.
+  Calling a member in the wrong direction throws `ZipFile: file is closed.`, the same
+  error as any use after close(). Opening a [path](../../module/ifs/path.md) with "a" requires the archive to exist,
+  otherwise [zip.open](../../module/ifs/zip.md#open) throws `ZipFile: [zip](../../module/ifs/zip.md) file not exists!`.
+- **Entries**: an entry is one stored item whose name uses `/` separators
+  ("dir/file.txt"); by convention a name that ends with `/` marks a directory, and write
+  stores it like any other entry. Names are encoded and decoded with the codec chosen when
+  the archive was opened (default "utf8") and are matched exactly, so an absent name
+  reports `End of file.`
+- **Metadata**: getinfo and infolist describe an entry with filename, date,
+  compress_type ("Stored", "[Deflate](Deflate.md)", "BZip2" or "Unknown"), compress_size (bytes stored
+  in the archive), file_size (bytes after decompression) and password (true when the entry
+  is encrypted).
+- **Passwords and encryption**: write creates a ZipCrypto-encrypted entry when its
+  password is not empty, and such an entry reports password == true. Reading it back needs
+  exactly that password; a plain entry must be read without one, because the reader
+  decrypts whenever a password is supplied and fails with `data error` on plain data.
+  readAll and extractAll apply the password to every entry, so they only work when all
+  entries of the archive were encrypted with the same password.
+- **Writes complete at close()**: entries are compressed with [Deflate](Deflate.md) and stamped with the
+  current local time as they are written, but only close() appends the central directory
+  that makes them visible to other readers. close() is idempotent; afterwards every member
+  throws `ZipFile: file is closed.`
+- **Extraction never overwrites**: extractAll([path](../../module/ifs/path.md)) needs [path](../../module/ifs/path.md) to exist, creates the
+  sub-directories found in the entry names and writes an entry whose target name is
+  already taken to a new name with a trailing "?" (appended until the name is free).
 
-ZipFile 对象的常用实例函数及方法有：
+Obtained from:
+- `zip.open(data, mod, codec)` — the only factory; the class has no constructor.
 
-- NArray [ZipFile.namelist](ZipFile.md#namelist)()：获取文件名列表
-- NObject [ZipFile.getinfo](ZipFile.md#getinfo)(String member)：获取文件信息
-- [Buffer](Buffer.md) [ZipFile.read](ZipFile.md#read)(String member, String password = "")：读取指定文件
-- NArray [ZipFile.readAll](ZipFile.md#readAll)(String password = "")：读取所有文件
-- void [ZipFile.extract](ZipFile.md#extract)(String member, String [path](../../module/ifs/path.md), String password = "")：解压文件到指定路径中
-- void [ZipFile.extract](ZipFile.md#extract)(String member, [SeekableStream](SeekableStream.md) strm, String password = "")：解压文件到流中
-- void [ZipFile.extractAll](ZipFile.md#extractAll)(String [path](../../module/ifs/path.md), String password = "")：解压所有文件到指定路径
-- void [ZipFile.write](ZipFile.md#write)(String filename, String inZipName, String password = "")：写入指定文件到压缩文件
-- void [ZipFile.write](ZipFile.md#write)([Buffer](Buffer.md) data, String inZipName, String password = "")：写入指定文件到压缩文件
-- void [ZipFile.write](ZipFile.md#write)([SeekableStream](SeekableStream.md) strm, String inZipName, String password = "")：写入指定文件到压缩文件
-- void [ZipFile.close](ZipFile.md#close)()：关闭打开的[zip](../../module/ifs/zip.md)文件
-
-代码实例如下：
+Import:
 
 ```JavaScript
-var zip = require('zip');
-var path = require('path');
-var fs = require('fs');
-
-var zipfile = zip.open(path.join(__dirname, 'unzip_test.zip'), 'w');
-
-// write a file
-var buf = new Buffer('test data');
-zipfile.write(buf, 'test.txt');
-
-// read a file
-buf = zipfile.read("unzip_test.js");
-console.log(buf);
-
-zipfile.close();
+const zip = require('zip');
 ```
 
-## 继承关系
+Example 1 — build an archive from a file, a [Buffer](Buffer.md) and a stream, then inspect it:
+
+```JavaScript
+const fs = require('fs');
+const io = require('io');
+const os = require('os');
+const path = require('path');
+const zip = require('zip');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-zipfile-'));
+fs.writeFileSync(path.join(dir, 'notes.txt'), 'a local file');
+
+const stream = new io.MemoryStream();
+stream.write(Buffer.from('streamed data'));
+
+let zipfile = zip.open(path.join(dir, 'bundle.zip'), 'w');
+zipfile.write(path.join(dir, 'notes.txt'), 'notes.txt'); // from a file path
+zipfile.write(Buffer.from('in memory'), 'data/memory.txt'); // from a Buffer
+zipfile.write(stream, 'data/stream.txt'); // from a stream
+zipfile.close();
+
+zipfile = zip.open(path.join(dir, 'bundle.zip'));
+console.log(zipfile.namelist().join(', '));
+// notes.txt, data/memory.txt, data/stream.txt
+console.log(zipfile.getinfo('data/memory.txt').file_size); // 9
+console.log(zipfile.read('notes.txt').toString()); // a local file
+zipfile.close();
+
+stream.close();
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
+```
+
+Example 2 — a password-protected entry, extracted with the same password:
+
+```JavaScript
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+const zip = require('zip');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-zipfile-'));
+const archive = path.join(dir, 'secret.zip');
+
+let zipfile = zip.open(archive, 'w');
+zipfile.write(Buffer.from('classified'), 'secret.txt', 'hunter2');
+zipfile.close();
+
+zipfile = zip.open(archive);
+console.log(zipfile.getinfo('secret.txt').password); // true
+console.log(zipfile.read('secret.txt', 'hunter2').toString()); // classified
+try {
+    zipfile.read('secret.txt');
+} catch (e) {
+    console.log(e.message); // data error
+}
+
+const out = path.join(dir, 'out');
+fs.mkdirSync(out);
+zipfile.extractAll(out, 'hunter2');
+zipfile.close();
+console.log(fs.readFileSync(path.join(out, 'secret.txt'), 'utf8')); // classified
+
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
+```
+
+Notes:
+
+- An archive that holds no entries is rejected by the reader, so [zip.open](../../module/ifs/zip.md#open) returns a
+  ZipFile whose members report `ZipFile: file is closed.` until it is closed. A file that
+  is not a [zip](../../module/ifs/zip.md) archive at all opens the same way: the failure surfaces on the first read
+  member, not from [zip.open](../../module/ifs/zip.md#open).
+- Data appended after the [zip](../../module/ifs/zip.md) records is found by the reader, which is how an executable
+  serves its embedded archive through `[process.execPath](../../module/ifs/process.md#execPath) + '$/...'`.
+
+## Inheritance
 ```dot
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
@@ -56,94 +138,203 @@ digraph {
 }
 ```
 
-## 成员函数
+## Methods
         
 ### namelist
-**获取文件名列表**
+**Lists the names of all entries in archive order**
 
 ```JavaScript
-NArray ZipFile.namelist() async;
+String ZipFile.namelist() async;
 ```
 
-返回结果:
-* NArray, 返回包含文件名的列表对象
+Returns:
+* String, the entry names in archive order
+
+One name per entry, exactly as stored: names keep their `/` separators and a directory
+entry ends with `/`. namelist, infolist, readAll and extractAll walk the entries in the
+same stored order. Available only on a reader ("r" mode); on a writer and after close()
+the call throws `ZipFile: file is closed.`
+
+Example — list the entries of an archive built in memory:
+
+```JavaScript
+const io = require('io');
+const zip = require('zip');
+
+const archive = new io.MemoryStream();
+let zipfile = zip.open(archive, 'w');
+zipfile.write(Buffer.from('one'), 'one.txt');
+zipfile.write(Buffer.from('two'), 'dir/two.txt');
+zipfile.close();
+
+archive.rewind();
+zipfile = zip.open(archive.readAll());
+console.log(zipfile.namelist().join(', ')); // one.txt, dir/two.txt
+zipfile.close();
+archive.close();
+```
 
 --------------------------
 ### infolist
-**获取文件信息列表**
+**Lists the metadata of all entries in archive order**
 
 ```JavaScript
-NArray ZipFile.infolist() async;
+(String filename, Date date, String compress_type, Long compress_size, Long file_size, Boolean password) ZipFile.infolist() async;
 ```
 
-返回结果:
-* NArray, 返回包含文件信息的列表对象
+Returns:
+* (String filename, Date date, String compress_type, Long compress_size, Long file_size, Boolean password), the information objects of the entries in archive order
 
-文件信息包含字段有：filename, date, compress_type, compress_size, file_size, password, data
+Returns one information [object](object.md) per entry, in the same order as namelist, with the fields
+filename, date, compress_type, compress_size, file_size and password; see getinfo for
+their meaning. Use namelist when only the names are needed and getinfo to look up a
+single entry by name.
+
+Example — report the name, compression method and uncompressed size of each entry:
+
+```JavaScript
+const io = require('io');
+const zip = require('zip');
+
+const archive = new io.MemoryStream();
+let zipfile = zip.open(archive, 'w');
+zipfile.write(Buffer.from('hello'), 'hello.txt');
+zipfile.close();
+
+archive.rewind();
+zipfile = zip.open(archive.readAll());
+zipfile.infolist().forEach((entry) => {
+    console.log(entry.filename, entry.compress_type, entry.file_size);
+});
+// hello.txt Deflate 5
+zipfile.close();
+archive.close();
+```
 
 --------------------------
 ### getinfo
-**获取文件信息**
+**Gets the metadata of one entry**
 
 ```JavaScript
-NObject ZipFile.getinfo(String member) async;
+(String filename, Date date, String compress_type, Long compress_size, Long file_size, Boolean password) ZipFile.getinfo(String member) async;
 ```
 
-调用参数:
-* member: String, 指定要获取信息的文件名
+Parameters:
+* member: String, the name of the entry inside the archive
 
-返回结果:
-* NObject, 返回文件信息对象
+Returns:
+* (String filename, Date date, String compress_type, Long compress_size, Long file_size, Boolean password), the information [object](object.md) of the entry
 
-文件信息包含字段有：filename, date, compress_type, compress_size, file_size, password, data
+The [object](object.md) carries filename (the stored name), date (the DOS timestamp of the entry),
+compress_type ("Stored", "[Deflate](Deflate.md)", "BZip2" or "Unknown"), compress_size (bytes stored
+in the archive), file_size (bytes after decompression) and password (true when the entry
+is encrypted). member is encoded with the codec of the archive and matched exactly; a
+name that is not present throws `End of file.`
+
+Example — inspect one entry, including its encryption flag:
+
+```JavaScript
+const io = require('io');
+const zip = require('zip');
+
+const archive = new io.MemoryStream();
+let zipfile = zip.open(archive, 'w');
+zipfile.write(Buffer.from('classified'), 'secret.txt', 'pw');
+zipfile.close();
+
+archive.rewind();
+zipfile = zip.open(archive.readAll());
+const info = zipfile.getinfo('secret.txt');
+console.log(info.filename, info.file_size, info.password); // secret.txt 10 true
+zipfile.close();
+archive.close();
+```
 
 --------------------------
 ### read
-**返回从压缩文件读取的数据**
+**Reads one entry and returns its uncompressed data**
 
 ```JavaScript
 Buffer ZipFile.read(String member,
     String password = "") async;
 ```
 
-调用参数:
-* member: String, 指定要读取的文件名
-* password: String, 解压密码, 默认没有密码
+Parameters:
+* member: String, the name of the entry to read
+* password: String, password of an encrypted entry, empty for a plain entry
 
-返回结果:
-* [Buffer](Buffer.md), 返回文件的所有数据
+Returns:
+* [Buffer](Buffer.md), the uncompressed data of the entry
+
+The whole entry is decompressed into a [Buffer](Buffer.md). An encrypted entry needs its password; an
+unencrypted entry must be read without one, because the reader decrypts whenever a
+password is supplied and plain data then fails with `data error`. An unknown member name
+throws `End of file.`; readAll reads every entry in one call.
+
+Example — read an entry by name:
+
+```JavaScript
+const io = require('io');
+const zip = require('zip');
+
+const archive = new io.MemoryStream();
+let zipfile = zip.open(archive, 'w');
+zipfile.write(Buffer.from('hello, zip'), 'greeting.txt');
+zipfile.close();
+
+archive.rewind();
+zipfile = zip.open(archive.readAll());
+console.log(zipfile.read('greeting.txt').toString()); // hello, zip
+zipfile.close();
+archive.close();
+```
 
 --------------------------
 ### readAll
-**解压所有文件**
+**Reads every entry of the archive at once**
 
 ```JavaScript
-NArray ZipFile.readAll(String password = "") async;
+(String filename, Date date, String compress_type, Long compress_size, Long file_size, Boolean password, Buffer data) ZipFile.readAll(String password = "") async;
 ```
 
-调用参数:
-* password: String, 解压密码, 默认没有密码
+Parameters:
+* password: String, password shared by all encrypted entries
 
-返回结果:
-* NArray, 包含所有文件数据及信息的列表
+Returns:
+* (String filename, Date date, String compress_type, Long compress_size, Long file_size, Boolean password, [Buffer](Buffer.md) data), the entries with their data in archive order
+
+Walks the entries in archive order and returns, for each one, the fields of infolist
+plus data, the uncompressed [Buffer](Buffer.md) of the entry. The password is applied to every entry,
+so it must be the one used to encrypt all of them — an entry that is plain or encrypted
+with another password fails with `data error`. Without a password the call works when no
+entry is encrypted.
+
+Example — read name and contents of every entry:
+
+```JavaScript
+const io = require('io');
+const zip = require('zip');
+
+const archive = new io.MemoryStream();
+let zipfile = zip.open(archive, 'w');
+zipfile.write(Buffer.from('one'), 'one.txt');
+zipfile.write(Buffer.from('two'), 'dir/two.txt');
+zipfile.close();
+
+archive.rewind();
+zipfile = zip.open(archive.readAll());
+zipfile.readAll().forEach((entry) => {
+    console.log(entry.filename, entry.data.toString());
+});
+// one.txt one
+// dir/two.txt two
+zipfile.close();
+archive.close();
+```
 
 --------------------------
 ### extract
-**解压指定文件**
-
-```JavaScript
-ZipFile.extract(String member,
-    String path,
-    String password = "") async;
-```
-
-调用参数:
-* member: String, 指定要解压的文件名
-* path: String, 指定要解压到的路径
-* password: String, 解压密码, 默认没有密码
-
---------------------------
-**解压指定文件到流**
+**Decompresses one entry into a stream**
 
 ```JavaScript
 ZipFile.extract(String member,
@@ -151,41 +342,140 @@ ZipFile.extract(String member,
     String password = "") async;
 ```
 
-调用参数:
-* member: String, 指定要解压的文件名
-* strm: [SeekableStream](SeekableStream.md), 指定要解压到的流
-* password: String, 解压密码, 默认没有密码
+Parameters:
+* member: String, the name of the entry to decompress
+* strm: [SeekableStream](SeekableStream.md), the stream that receives the entry data
+* password: String, password of an encrypted entry, empty for a plain entry
+
+The entry is located by name and its uncompressed bytes are written at the current
+position of strm; the stream is neither rewound nor closed. Use it to forward an entry
+into another consumer, or pass a [MemoryStream](MemoryStream.md) to obtain its data as a [Buffer](Buffer.md). Unknown
+names throw `End of file.` and the password rules of read apply.
+
+Example — decompress into a [MemoryStream](MemoryStream.md):
+
+```JavaScript
+const io = require('io');
+const zip = require('zip');
+
+const archive = new io.MemoryStream();
+let zipfile = zip.open(archive, 'w');
+zipfile.write(Buffer.from('hello, zip'), 'greeting.txt');
+zipfile.close();
+
+archive.rewind();
+zipfile = zip.open(archive.readAll());
+
+const out = new io.MemoryStream();
+zipfile.extract('greeting.txt', out);
+out.rewind();
+console.log(out.readAll().toString()); // hello, zip
+
+zipfile.close();
+out.close();
+archive.close();
+```
+
+--------------------------
+**Decompresses one entry to a file**
+
+```JavaScript
+ZipFile.extract(String member,
+    String path,
+    String password = "") async;
+```
+
+Parameters:
+* member: String, the name of the entry to decompress
+* path: String, [path](../../module/ifs/path.md) of the file to write
+* password: String, password of an encrypted entry, empty for a plain entry
+
+The target file is created or truncated ("w"), and its parent directory must already
+exist; the entry is located by name as in getinfo, so an unknown name throws
+`End of file.` and the password rules of read apply.
+
+Example — extract a single entry and read it back from disk:
+
+```JavaScript
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+const zip = require('zip');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-zipfile-'));
+const archive = path.join(dir, 'a.zip');
+
+let zipfile = zip.open(archive, 'w');
+zipfile.write(Buffer.from('extracted'), 'data.txt');
+zipfile.close();
+
+zipfile = zip.open(archive);
+zipfile.extract('data.txt', path.join(dir, 'out.txt'));
+zipfile.close();
+
+console.log(fs.readFileSync(path.join(dir, 'out.txt'), 'utf8')); // extracted
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
+```
 
 --------------------------
 ### extractAll
-**解压所有文件到指定路径**
+**Decompresses every entry below a directory**
 
 ```JavaScript
 ZipFile.extractAll(String path,
     String password = "") async;
 ```
 
-调用参数:
-* path: String, 指定要解压到的路径
-* password: String, 解压密码, 默认没有密码
+Parameters:
+* path: String, the directory that receives the entries
+* password: String, password shared by all encrypted entries
+
+The directory must exist, otherwise the call reports `ZipFile: no such file or
+directory`; the sub-directories found in the entry names are created below it. Entry
+names are normalized against [path](../../module/ifs/path.md) but are not confined to it, so a stored name that
+uses ".." can make the call write outside [path](../../module/ifs/path.md); only unpack archives you trust. An
+entry whose target file is already taken is not overwritten: a trailing "?" is appended
+to its name, and more "?" characters are appended until the name is free. The password
+is applied to every entry (see readAll).
+
+Example — unpack a small archive into an existing directory:
+
+```JavaScript
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+const zip = require('zip');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-zipfile-'));
+const archive = path.join(dir, 'app.zip');
+const out = path.join(dir, 'out');
+fs.mkdirSync(out);
+
+let zipfile = zip.open(archive, 'w');
+zipfile.write(Buffer.from('{"name":"fibjs"}'), 'config/app.json');
+zipfile.write(Buffer.from('<h1>fibjs</h1>'), 'public/index.html');
+zipfile.close();
+
+zipfile = zip.open(archive);
+zipfile.extractAll(out);
+zipfile.close();
+
+console.log(fs.readdirSync(out).sort().join(', ')); // config, public
+console.log(fs.readFileSync(path.join(out, 'config', 'app.json'), 'utf8'));
+// {"name":"fibjs"}
+
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
+```
 
 --------------------------
 ### write
-**写入指定文件到压缩文件**
-
-```JavaScript
-ZipFile.write(String filename,
-    String inZipName,
-    String password = "") async;
-```
-
-调用参数:
-* filename: String, 指定要写入的文件
-* inZipName: String, 压缩在[zip](../../module/ifs/zip.md)文件内的文件名
-* password: String, 解压密码, 默认没有密码
-
---------------------------
-**写入指定文件到压缩文件**
+**Writes a [Buffer](Buffer.md) as a new entry**
 
 ```JavaScript
 ZipFile.write(Buffer data,
@@ -193,13 +483,45 @@ ZipFile.write(Buffer data,
     String password = "") async;
 ```
 
-调用参数:
-* data: [Buffer](Buffer.md), 指定要写入的文件数据
-* inZipName: String, 压缩在[zip](../../module/ifs/zip.md)文件内的文件名
-* password: String, 解压密码, 默认没有密码
+Parameters:
+* data: [Buffer](Buffer.md), the data to write
+* inZipName: String, the name of the entry inside the archive
+* password: String, password used to encrypt the entry, empty for no encryption
+
+The data is compressed with [Deflate](Deflate.md) and stored under inZipName; a non-empty password
+encrypts the entry with ZipCrypto. Every entry is stamped with the current local time as
+its date. The archive must be open for writing ("w" or "a"), otherwise the call throws
+`ZipFile: file is closed.`, and the new entry becomes visible to readers at close().
+
+Example — write plain and encrypted entries from memory:
+
+```JavaScript
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+const zip = require('zip');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-zipfile-'));
+const archive = path.join(dir, 'a.zip');
+
+let zipfile = zip.open(archive, 'w');
+zipfile.write(Buffer.from('written from memory'), 'memory.txt');
+zipfile.write(Buffer.from('encrypted'), 'secret.txt', 'pw');
+zipfile.close();
+
+zipfile = zip.open(archive);
+console.log(zipfile.namelist().join(', ')); // memory.txt, secret.txt
+console.log(zipfile.getinfo('secret.txt').password); // true
+zipfile.close();
+
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
+```
 
 --------------------------
-**写入指定文件到压缩文件**
+**Writes a stream as a new entry**
 
 ```JavaScript
 ZipFile.write(SeekableStream strm,
@@ -207,41 +529,179 @@ ZipFile.write(SeekableStream strm,
     String password = "") async;
 ```
 
-调用参数:
-* strm: [SeekableStream](SeekableStream.md), 指定要写入文件数据流
-* inZipName: String, 压缩在[zip](../../module/ifs/zip.md)文件内的文件名
-* password: String, 解压密码, 默认没有密码
+Parameters:
+* strm: [SeekableStream](SeekableStream.md), the stream whose data is written
+* inZipName: String, the name of the entry inside the archive
+* password: String, password used to encrypt the entry, empty for no encryption
+
+The stream is rewound and copied from its first byte to its end, then compressed with
+[Deflate](Deflate.md) and stored under inZipName; the stream itself is left open. Date, password and
+open-mode rules are the same as for the [Buffer](Buffer.md) form.
+
+Example — write the contents of a [MemoryStream](MemoryStream.md):
+
+```JavaScript
+const fs = require('fs');
+const io = require('io');
+const os = require('os');
+const path = require('path');
+const zip = require('zip');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-zipfile-'));
+const archive = path.join(dir, 'a.zip');
+
+const src = new io.MemoryStream();
+src.write(Buffer.from('streamed into the archive'));
+
+let zipfile = zip.open(archive, 'w');
+zipfile.write(src, 'stream.txt');
+zipfile.close();
+
+zipfile = zip.open(archive);
+console.log(zipfile.read('stream.txt').toString()); // streamed into the archive
+zipfile.close();
+
+src.close();
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
+```
+
+--------------------------
+**Writes a local file as a new entry**
+
+```JavaScript
+ZipFile.write(String filename,
+    String inZipName,
+    String password = "") async;
+```
+
+Parameters:
+* filename: String, [path](../../module/ifs/path.md) of the file to write into the archive
+* inZipName: String, the name of the entry inside the archive
+* password: String, password used to encrypt the entry, empty for no encryption
+
+The file is opened for reading and copied under inZipName, compressed with [Deflate](Deflate.md); a
+missing source reports ENOENT. The entry date is the current local time, not the
+modification time of the file. Password and open-mode rules are the same as for the
+[Buffer](Buffer.md) form.
+
+Example — store a report under a directory name:
+
+```JavaScript
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+const zip = require('zip');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-zipfile-'));
+const archive = path.join(dir, 'a.zip');
+fs.writeFileSync(path.join(dir, 'report.txt'), 'quarterly report');
+
+let zipfile = zip.open(archive, 'w');
+zipfile.write(path.join(dir, 'report.txt'), 'docs/report.txt');
+zipfile.close();
+
+zipfile = zip.open(archive);
+console.log(zipfile.getinfo('docs/report.txt').file_size); // 16
+console.log(zipfile.read('docs/report.txt').toString()); // quarterly report
+zipfile.close();
+
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
+```
 
 --------------------------
 ### close
-**关闭打开的[zip](../../module/ifs/zip.md)文件**
+**Closes the archive and completes pending writes**
 
 ```JavaScript
 ZipFile.close() async;
 ```
 
+On a writer ("w"/"a") close() appends the central directory, which is what makes the new
+entries visible to other readers; without it the archive cannot be read back. On a
+reader it releases the underlying stream. Calling close() again is harmless, but every
+member used after it throws `ZipFile: file is closed.`
+
+Example — the second close is a no-op, further writes are rejected:
+
+```JavaScript
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+const zip = require('zip');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-zipfile-'));
+const archive = path.join(dir, 'a.zip');
+
+const zipfile = zip.open(archive, 'w');
+zipfile.write(Buffer.from('data'), 'data.txt');
+zipfile.close(); // appends the central directory
+zipfile.close(); // harmless the second time
+
+try {
+    zipfile.write(Buffer.from('more'), 'more.txt');
+} catch (e) {
+    console.log(e.message); // ZipFile: file is closed.
+}
+
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
+```
+
 --------------------------
 ### toString
-**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
+**Returns the string form of the [object](object.md)**
 
 ```JavaScript
 String ZipFile.toString();
 ```
 
-返回结果:
-* String, 返回对象的字符串表示
+Returns:
+* String, returns the string form of the [object](object.md)
+
+The base implementation reports an error: a native [object](object.md) has no implicit
+text form, and only the classes whose value can be written as a string
+override the member. [Buffer](Buffer.md) returns its content decoded with the given
+[encoding](../../module/ifs/encoding.md), [HttpCookie](HttpCookie.md) returns "name=value", and so on; an override commonly
+accepts optional arguments ([Buffer.toString](Buffer.md#toString) takes [encoding](../../module/ifs/encoding.md), start and
+end) that are not part of this declaration.
+
+Calling the member on a class that does not override it throws
+"<Class>: the [object](object.md) can not be converted to string.", which is the
+behavior to rely on when probing whether a value has a string form. See
+toJSON for the serialization hook.
 
 --------------------------
 ### toJSON
-**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
+**Returns the JSON representation of the [object](object.md)**
 
 ```JavaScript
 Value ZipFile.toJSON(String key = "");
 ```
 
-调用参数:
-* key: String, 未使用
+Parameters:
+* key: String, the property name of the value being serialized
 
-返回结果:
-* Value, 返回包含可 JSON 序列化的值
+Returns:
+* Value, returns the JSON-serializable value
+
+JSON.stringify(value) calls value.toJSON(key) when the member exists and
+serializes the returned value in its place; the key argument carries the
+property name of the value inside its parent [object](object.md) (an empty string at
+the top level) and may be used to build a keyed form. The base
+implementation returns a plain [object](object.md) holding the readable properties of
+the instance, so a native [object](object.md) serializes without per-class code; a
+class with a portable shape such as [Buffer](Buffer.md) overrides it, and a JavaScript
+class may override it in the same way.
+
+The member is normally reached through JSON.stringify rather than called
+directly; calling it returns the same value JSON.stringify would
+serialize.
 

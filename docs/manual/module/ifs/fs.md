@@ -1,256 +1,380 @@
-# 模块 fs
-fs 模块提供文件系统操作能力，包括文件与目录的读写、创建、删除、权限修改、状态查询、路径解析、文件监视等，可用于构建文件管理、日志、配置持久化等场景
+# Module fs
+The fs [module](module.md) provides file system operations: reading and writing files and directories, creating and removing them, changing permissions, querying status, resolving paths and watching files; useful for file management, logging and persisted configuration
 
-模块的主要能力：
+Main capabilities:
 
-- **路径与存在性**：`exists`、`access`、`realpath`、`readlink`、`symlink`、`link`；
-- **目录操作**：`mkdir`、`mkdtemp`、`rmdir`、`rm`、`readdir`、`glob`；
-- **文件操作**：`readFile`、`writeFile`、`appendFile`、`rename`、`copyFile`、`cp`、`truncate`、`unlink`、`chmod`、`chown`、`utimes`；
-- **文件描述符操作**：`open`、`close`、`read`、`write`、`fstat`、`fsync`、`fchmod` 等；
-- **文件流**：`openFile`、`openTextStream`、`createReadStream`、`createWriteStream`；
-- **文件监视**：`watch`、`watchFile`、`unwatchFile`；
-- **[zip](zip.md) 虚拟文件系统**：`setZipFS`、`clearZipFS`。
+- **Paths and existence**: `exists`, `access`, `realpath`, `readlink`, `symlink`, `link`;
+- **Directory operations**: `mkdir`, `mkdtemp`, `rmdir`, `rm`, `readdir`, `glob`;
+- **[File](../../object/ifs/File.md) operations**: `readFile`, `writeFile`, `appendFile`, `rename`, `copyFile`, `cp`,
+  `truncate`, `unlink`, `chmod`, `chown`, `utimes`;
+- **[File](../../object/ifs/File.md) descriptor operations**: `open`, `close`, `read`, `write`, `fstat`, `fsync`, `fchmod`
+  and more;
+- **[File](../../object/ifs/File.md) streams**: `openFile`, `openTextStream`, `createReadStream`, `createWriteStream`;
+- **[File](../../object/ifs/File.md) watching**: `watch`, `watchFile`, `unwatchFile`;
+- **[zip](zip.md) virtual file system**: `setZipFS`, `clearZipFS`.
 
-模块内函数均为同步/回调一体的 async 风格：不传回调函数时同步执行并返回结果；传入回调函数时异步执行，回调接收 `(err, result)` 参数：
+Concepts:
+
+- **Call forms**: every function works synchronously without a callback and asynchronously with a
+  trailing `(err, result)` callback. `Sync`-suffixed aliases (such as `readFileSync`) and the
+  promise-based `fs.promises` namespace are also available.
+- **[File](../../object/ifs/File.md) descriptors and position**: `open` returns a [FileHandle](../../object/ifs/FileHandle.md) wrapping a descriptor; `read`
+  and `write` take an explicit `position` and use the current file position when it is negative,
+  so one descriptor can serve both sequential and random access. readFile/writeFile/appendFile do
+  not close a descriptor; release it with `close`.
+- **flags**: the `flags` argument of the open functions accepts the strings `'r'`, `'r+'`, `'w'`,
+  `'w+'`, `'a'`, `'a+'` or a bitwise combination of the integer flags in `fs.constants`; the
+  full list is documented in the [fs_constants](fs_constants.md) [module](module.md).
+- **Symbolic links**: stat follows a link and describes its target, while lstat describes the
+  link itself (`isSymbolicLink()` is true); unlink and rm remove the link, not its target.
+- **Watching**: watch uses the platform notification service and reports the `'change'`,
+  `'changeonly'` and `'renameonly'` events; watchFile polls the status and passes
+  `(curStats, prevStats)` to the callback. The `recursive` option of watch is only stable on
+  win32/darwin; on Linux it is forwarded to the uv backend but may report events at unexpected
+  times.
+- **[zip](zip.md) VFS**: setZipFS maps [zip](zip.md) data onto a [path](path.md); entries are then read through the mapping
+  [path](path.md) with a `$` suffix, for example `/archive.zip$/dir/file.txt`.
+- **Streams**: createReadStream/createWriteStream open a file as a [SeekableStream](../../object/ifs/SeekableStream.md), and
+  createReadStream accepts an inclusive `[start, end]` range; see the [io](io.md) [module](module.md) for stream
+  positioning and back pressure.
+
+Import:
 
 ```JavaScript
-var fs = require('fs');
+const fs = require('fs');
+```
 
-// 同步方式
-var content = fs.readFile('test.txt', 'utf8');
-console.log(content);
+Example 1 — synchronous write, read and stat in a temporary directory:
 
-// 回调方式
-fs.readFile('test.txt', 'utf8', (err, content) => {
+```JavaScript
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-fs-'));
+const file = path.join(dir, 'hello.txt');
+
+fs.writeFile(file, 'hello, world!');
+console.log(fs.readFile(file, 'utf8')); // hello, world!
+console.log(fs.stat(file).size); // 13
+
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
+```
+
+Example 2 — callback and stream forms of the same operations:
+
+```JavaScript
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-fs-'));
+const file = path.join(dir, 'async.txt');
+
+fs.writeFile(file, 'written with a callback', 'utf8', (err) => {
     if (err) throw err;
-    console.log(content);
+    fs.readFile(file, 'utf8', (err, text) => {
+        if (err) throw err;
+        console.log(text);
+        // a read stream exposes the whole file through readAll()
+        console.log(fs.createReadStream(file).readAll().toString());
+        fs.rmSync(dir, {
+            recursive: true,
+            force: true
+        });
+    });
 });
 ```
 
-文件读写函数遵循以下约定：
-
-- `readFile` 缺省返回 [Buffer](../../object/ifs/Buffer.md) 对象，指定 `encoding` 后按编码解码返回字符串；
-- `writeFile` 缺省以覆盖方式写入，`appendFile` 以追加方式写入；
-- 打开文件的 `flags` 参数支持 `'r'`、`'r+'`、`'w'`、`'w+'`、`'a'`、`'a+'` 六种方式，也可使用 `fs.constants` 中的整数标志按位组合。
-
-文件监视能力由两组 API 提供：
-
-- `fs.watch(filename)` 返回 [FSWatcher](../../object/ifs/FSWatcher.md) 对象，监听文件系统事件，支持 `'change'`、`'changeonly'`、`'renameonly'` 三个事件；
-- `fs.watchFile(target)` 返回 [StatsWatcher](../../object/ifs/StatsWatcher.md) 对象，周期性检查文件状态变化，回调接收 `(curStats, prevStats)` 参数；`fs.unwatchFile(target)` 停止监视。
-
-示例：
+Example 3 — create, list and remove a directory tree:
 
 ```JavaScript
-var fs = require('fs');
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
 
-// 写入并读取文本文件
-fs.writeFile('hello.txt', 'hello, world!');
-console.log(fs.readFile('hello.txt', 'utf8'));
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-fs-'));
+fs.writeFile(path.join(dir, 'notes.txt'), 'note');
+fs.mkdir(path.join(dir, 'images'));
 
-// 创建目录并列出内容
-fs.mkdir('data', {
-    recursive: true
+fs.readdir(dir, {
+    withFileTypes: true
+}).forEach((entry) => {
+    console.log(entry.name, entry.isDirectory() ? 'dir' : 'file');
 });
-var files = fs.readdir('data');
-console.log(files);
+
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
 ```
 
-一些注意点:
+Notes:
 
-- 运行 `fs.watch(filename)` 会返回一个继承自 [EventEmitter](../../object/ifs/EventEmitter.md) 的 watcher, 它支持 'change', 'changeonly', 'renameonly' 三个事件
-- `fs.watchFile(target)` 和 `fs.unwatchFile(target)` 依然可以成对使用
-- `fs.watchFile(target)` 会返回一个继承自 [EventEmitter](../../object/ifs/EventEmitter.md) 的 [StatsWatcher](../../object/ifs/StatsWatcher.md) 对象, 调用 `fs.unwatchFile(target)` 等价于调用 `StatsWatcher.close()`.
-- 因为 uv 在 Linux 上的实现, `fs.watch` 的 `recursive` 选项仅在 win32/darwin 被稳定支持. 你依然可以尝试在 Linux 中尝试使用 `fs.watch('/[path](path.md)/to', { recursive: true }, handler)`, 但可能会发现 `handler` 被回调的时机与你预期的有差异
+- `readFile` returns a [Buffer](../../object/ifs/Buffer.md) by default and a string when an [encoding](encoding.md) is given; a descriptor
+  read with an options [object](../../object/ifs/object.md) defaults to utf8.
+- writeFile(fd) seeks to the beginning and truncates the file before writing, which differs from
+  Node.js where a descriptor write starts at the current position.
+- The Node.js `bigint` option is accepted in the options of the stat and watch functions but is
+  not implemented: the `Ns` properties of [Stat](../../object/ifs/Stat.md) are always numbers holding the nanosecond part.
+- watch returns a watcher deriving from [EventEmitter](../../object/ifs/EventEmitter.md) and watchFile returns a [StatsWatcher](../../object/ifs/StatsWatcher.md)
+  deriving from [EventEmitter](../../object/ifs/EventEmitter.md); calling `fs.unwatchFile(target)` is equivalent to calling
+  `StatsWatcher.close()`.
 
-## 对象
+## Objects
         
 ### constants
-**fs模块的常量对象，参见 [fs_constants](fs_constants.md)**
+**The [constants](constants.md) [object](../../object/ifs/object.md) of the fs [module](module.md), see [fs_constants](fs_constants.md)**
 
 ```JavaScript
 fs_constants fs.constants;
 ```
 
+It exposes the file access (F_OK, R_OK, W_OK, X_OK), copy (COPYFILE_*), open (O_*),
+file type (S_IF*) and permission (S_I*) [constants](constants.md) used across the [module](module.md); the full list
+is documented in the [fs_constants](fs_constants.md) [module](module.md).
+
 --------------------------
 ### Stats
-**[Stat](../../object/ifs/Stat.md) 类的别名，参见 [Stat](../../object/ifs/Stat.md)**
+**The alias of the [Stat](../../object/ifs/Stat.md) class, see [Stat](../../object/ifs/Stat.md)**
 
 ```JavaScript
 Stat fs.Stats;
 ```
 
-## 静态函数
+[Stat](../../object/ifs/Stat.md) objects are returned by stat/lstat/fstat; Node.js exposes the same class as [fs.Stats](fs.md#Stats),
+while readdir with `withFileTypes` returns [DirEntry](../../object/ifs/DirEntry.md) objects instead.
+
+--------------------------
+### Dirent
+**The alias of the [DirEntry](../../object/ifs/DirEntry.md) class, see [DirEntry](../../object/ifs/DirEntry.md)**
+
+```JavaScript
+DirEntry fs.Dirent;
+```
+
+A directory entry pairs a file name with its type, as returned by readdir with the
+`withFileTypes` option; Node.js exposes the same class as [fs.Dirent](fs.md#Dirent).
+
+--------------------------
+### Dir
+**The alias of the [Dir](../../object/ifs/Dir.md) class, see [Dir](../../object/ifs/Dir.md)**
+
+```JavaScript
+Dir fs.Dir;
+```
+
+The directory iterator returned by opendir; entries can be read one by one with
+read/readSync or with `for await...of`. Node.js exposes the same class as [fs.Dir](fs.md#Dir).
+
+## Static Methods
         
 ### exists
-**查询指定的文件或目录是否存在**
+**Checks whether the given file or directory exists**
 
 ```JavaScript
 static Boolean fs.exists(String path) async;
 ```
 
-调用参数:
-* path: String, 指定要查询的路径
+Parameters:
+* path: String, the [path](path.md) to check
 
-返回结果:
-* Boolean, 返回 True 表示文件或目录存在
+Returns:
+* Boolean, true when the file or directory exists
 
-路径不存在时返回 false 而非抛出异常。
+Returns false instead of throwing when the [path](path.md) does not exist.
+
+--------------------------
+**Checks whether the given file exists**
+
+```JavaScript
+static Boolean fs.exists(String path,
+    Object options) async;
+```
+
+Parameters:
+* path: String, the [path](path.md) to check
+* options: Object, the check options (ignored)
+
+Returns:
+* Boolean, true when the file exists
+
+The options parameter is kept for Node.js compatibility only and is ignored for now.
 
 --------------------------
 ### access
-**查询用户对指定的文件的权限**
+**Checks the permissions of the current user on the given file**
 
 ```JavaScript
 static fs.access(String path,
     Integer mode = 0) async;
 ```
 
-调用参数:
-* path: String, 指定要查询的路径
-* mode: Integer, 指定查询的权限，默认为文件是否存在
+Parameters:
+* path: String, the [path](path.md) to check
+* mode: Integer, the permissions to check, file existence by default
 
-mode 指定要检查的权限，取值为 [fs.constants](fs.md#constants) 中 F_OK、R_OK、W_OK、X_OK 的组合，缺省为 F_OK（检查文件是否存在）。权限检查失败时抛出异常。
+mode specifies the permissions to check, a combination of F_OK, R_OK, W_OK and X_OK from [fs.constants](fs.md#constants), F_OK (file existence) by default. A failed check throws an exception.
 
 --------------------------
 ### link
-**创建硬链接文件，Windows 不支持此方法**
+**Creates a hard link; not supported on Windows**
 
 ```JavaScript
 static fs.link(String oldPath,
     String newPath) async;
 ```
 
-调用参数:
-* oldPath: String, 源文件
-* newPath: String, 将要被创建的文件
+Parameters:
+* oldPath: String, the source file
+* newPath: String, the file to create
+
+oldPath and newPath then refer to the same file content and share one inode, so removing
+one name does not remove the other. Throws EEXIST when newPath already exists.
 
 --------------------------
 ### unlink
-**删除指定的文件**
+**Removes the given file**
 
 ```JavaScript
 static fs.unlink(String path) async;
 ```
 
-调用参数:
-* path: String, 指定要删除的路径
+Parameters:
+* path: String, the [path](path.md) to remove
 
-文件不存在时抛出异常。若路径指向目录，行为由平台决定，删除目录请使用 rmdir 或 rm。
+Throws when the file does not exist. When the [path](path.md) points to a directory the behavior is platform dependent; use rmdir or rm to remove directories.
 
 --------------------------
 ### mkdir
-**创建一个目录**
+**Creates a directory**
 
 ```JavaScript
-static fs.mkdir(String path,
-    Integer mode = 0777) async;
+static Variant fs.mkdir(String path,
+    Integer | Object | Variant mode = 0777) async;
 ```
 
-调用参数:
-* path: String, 指定要创建的目录名
-* mode: Integer, 指定文件权限，Windows 忽略此参数，默认值: 0777
+Parameters:
+* path: String, the directory to create
+* mode: Integer | Object | Variant, the file mode or the creation options
 
-mode 指定目录权限，Windows 忽略此参数；目录已存在时抛出异常，可通过 recursive 选项创建多级目录。
+Returns:
+* Variant, the [path](path.md) of the first created directory when recursive is true and a directory was actually created
 
---------------------------
-**创建一个目录**
+mode specifies the directory permissions and is ignored on Windows; an existing directory throws, unless the recursive option is used to create parent directories. A string mode is an octal number (such as '755' or '0755'), consistent with Node.js; an invalid mode throws.
 
-```JavaScript
-static fs.mkdir(String path,
-    Object opt) async;
-```
-
-调用参数:
-* path: String, 指定要创建的目录名
-* opt: Object, 指定创建参数
-
-创建参数可以包含以下值：
+The options [object](../../object/ifs/object.md) may contain:
 
 ```JavaScript
-{
+// fragment: options
+({
     recursive: false, // specify whether parent directories should be created. Default: false
     mode: 0777 // specify the file mode. Default: 0777
-}
+})
 ```
+
+When recursive is true, the [path](path.md) of the first created directory is returned, consistent with Node.js; when the directory already exists, undefined is returned.
 
 --------------------------
 ### mkdtemp
-**创建一个唯一的临时目录**
+**Creates a unique temporary directory**
 
 ```JavaScript
 static String fs.mkdtemp(String prefix) async;
 ```
 
-调用参数:
-* prefix: String, 指定临时目录名称的前缀
+Parameters:
+* prefix: String, the prefix of the temporary directory name
 
-返回结果:
-* String, 返回创建的临时目录的路径
+Returns:
+* String, the [path](path.md) of the created temporary directory
 
-临时目录创建在系统的临时目录下，目录名以 prefix 开头并附加随机后缀。
+The directory is created under the system temporary directory, its name starts with prefix and ends with a random suffix.
+
+Example — create a temporary directory and remove it afterwards:
+
+```JavaScript
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-tmp-'));
+console.log(fs.stat(dir).isDirectory()); // true
+
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
+```
 
 --------------------------
 ### rmdir
-**删除一个目录**
+**Removes a directory**
 
 ```JavaScript
 static fs.rmdir(String path,
     Object opt = {}) async;
 ```
 
-调用参数:
-* path: String, 指定要删除的目录名
-* opt: Object, 指定删除参数
+Parameters:
+* path: String, the directory to remove
+* opt: Object, the removal options
 
-删除参数可以包含以下值：
+The options may contain:
 
 ```JavaScript
-{
-    recursive: false // specify whether all subdirectories and files should be removed. Default: false
-}
+// fragment: options
+({
+    recursive: false // remove all subdirectories and files. Default: false
+})
 ```
 
 --------------------------
 ### rm
-**删除一个文件或目录**
+**Removes a file or directory**
 
 ```JavaScript
 static fs.rm(String path,
     Object opt = {}) async;
 ```
 
-调用参数:
-* path: String, 指定要删除的目录名
-* opt: Object, 指定删除参数
+Parameters:
+* path: String, the directory to remove
+* opt: Object, the removal options
 
-删除参数可以包含以下值：
+The options may contain:
 
 ```JavaScript
-{
-    recursive: false // specify whether all subdirectories and files should be removed. Default: false
-}
+// fragment: options
+({
+    recursive: false, // remove all subdirectories and files. Default: false
+    force: false // whether to ignore nonexistent paths. Default: false
+})
 ```
 
-recursive 为 false 时，文件与空目录均可被删除；recursive 为 true 时递归删除目录及其全部内容。路径不存在时抛出异常。
+When recursive is false, only files and symbolic links can be removed; removing a directory throws EISDIR. When recursive is true, the directory and all its content are removed recursively; a symbolic link is removed itself without following the target. A nonexistent [path](path.md) throws ENOENT, unless force is true, which ignores nonexistent paths.
 
 --------------------------
 ### rename
-**重新命名一个文件**
+**Renames a file**
 
 ```JavaScript
 static fs.rename(String from,
     String to) async;
 ```
 
-调用参数:
-* from: String, 指定更名的文件
-* to: String, 指定要修改的新文件名
+Parameters:
+* from: String, the file to rename
+* to: String, the new file name
 
-文件不存在或目标已存在时抛出异常。
+Throws when the file does not exist or the target already exists.
 
 --------------------------
 ### copyFile
-**将 src 拷贝到 dest。 默认情况下，如果 dest 已经存在，则覆盖它。**
+**Copies src to dest. By default dest is overwritten when it already exists.**
 
 ```JavaScript
 static fs.copyFile(String from,
@@ -258,19 +382,19 @@ static fs.copyFile(String from,
     Integer mode = 0) async;
 ```
 
-调用参数:
-* from: String, 指定要拷贝的源文件名
-* to: String, 指定要拷贝的目标文件名
-* mode: Integer, 指定拷贝操作的修饰符，缺省为 0
+Parameters:
+* from: String, the source file name
+* to: String, the target file name
+* mode: Integer, the modifiers of the copy operation, 0 by default
 
-mode 是一个可选的整数，指定拷贝操作的行为。 可以创建由两个或更多个值按位或组成的掩码（比如 [fs.constants](fs.md#constants).COPYFILE_EXCL | [fs.constants](fs.md#constants).COPYFILE_FICLONE）。
-- [fs.constants](fs.md#constants).COPYFILE_EXCL - 如果 dest 已存在，则拷贝操作将失败。
-- [fs.constants](fs.md#constants).COPYFILE_FICLONE - 拷贝操作将尝试创建写时拷贝（copy-on-write）链接。如果平台不支持写时拷贝，则使用后备的拷贝机制。
-- [fs.constants](fs.md#constants).COPYFILE_FICLONE_FORCE - 拷贝操作将尝试创建写时拷贝链接。如果平台不支持写时拷贝，则拷贝操作将失败。
+mode is an optional integer specifying the copy behavior. A mask can be built by bitwise-or of two or more values (for example [fs.constants](fs.md#constants).COPYFILE_EXCL | [fs.constants](fs.md#constants).COPYFILE_FICLONE).
+- [fs.constants](fs.md#constants).COPYFILE_EXCL - the copy fails when dest already exists.
+- [fs.constants](fs.md#constants).COPYFILE_FICLONE - the copy tries to create a copy-on-write link. When the platform does not support copy-on-write, the fallback copy mechanism is used.
+- [fs.constants](fs.md#constants).COPYFILE_FICLONE_FORCE - the copy tries to create a copy-on-write link. When the platform does not support copy-on-write, the copy fails.
 
 --------------------------
 ### cp
-**将 src 异步地复制到 dest，包括子目录和文件。**
+**Copies src to dest asynchronously, including subdirectories and files.**
 
 ```JavaScript
 static fs.cp(String src,
@@ -278,52 +402,60 @@ static fs.cp(String src,
     Object opts = {}) async;
 ```
 
-调用参数:
-* src: String, 指定要复制的源路径
-* dest: String, 指定要复制到的目标路径
-* opts: Object, 指定复制参数
+Parameters:
+* src: String, the source [path](path.md) to copy
+* dest: String, the target [path](path.md) to copy to
+* opts: Object, the copy options
 
-如果 src 是一个目录，则默认情况下不会递归复制目录，需要设置 recursive 为 true。
+When src is a directory, it is not copied recursively by default; set recursive to true for that.
 
-opts 支持的选项如下：
+opts supports the following options:
 
 ```JavaScript
-{
+// fragment: options
+({
     recursive: false, // recursively copy directories. Default: false
     force: true, // overwrite existing files or directories. Default: true
     mode: 0 // modifiers for copy operation. Default: 0
-}
+})
 ```
+
+Copying a directory with recursive set to false throws, consistent with Node.js; an existing
+destination is overwritten unless force is false.
 
 --------------------------
 ### chmod
-**设置指定文件的访问权限，Windows 不支持此方法**
+**Sets the access permissions of the given file; not supported on Windows**
 
 ```JavaScript
 static fs.chmod(String path,
-    Integer mode) async;
+    Integer | Variant mode) async;
 ```
 
-调用参数:
-* path: String, 指定操作的文件
-* mode: Integer, 指定设定的访问权限
+Parameters:
+* path: String, the file to operate on, a string is encoded as utf8
+* mode: Integer | Variant, the access permissions
+
+mode may be a number or an octal string (such as '755' or '0755'), consistent with Node.js.
 
 --------------------------
 ### lchmod
-**设置指定文件的访问权限，若文件是软连接则不改变指向文件的权限，只在macOS、BSD 系列平台上可用**
+**Sets the access permissions of the given file without changing the target of a symbolic link; available on macOS and BSD platforms only**
 
 ```JavaScript
 static fs.lchmod(String path,
-    Integer mode) async;
+    Integer | Variant mode) async;
 ```
 
-调用参数:
-* path: String, 指定操作的文件
-* mode: Integer, 指定设定的访问权限
+Parameters:
+* path: String, the file to operate on, a string is encoded as utf8
+* mode: Integer | Variant, the access permissions
+
+mode may be a number or an octal string (such as '755' or '0755'), consistent with Node.js.
 
 --------------------------
 ### chown
-**设置指定文件的拥有者，Windows 不支持此方法**
+**Sets the owner of the given file; not supported on Windows**
 
 ```JavaScript
 static fs.chown(String path,
@@ -331,14 +463,17 @@ static fs.chown(String path,
     Integer gid) async;
 ```
 
-调用参数:
-* path: String, 指定设置的文件
-* uid: Integer, 文件拥有者用户id
-* gid: Integer, 文件拥有者组id
+Parameters:
+* path: String, the file to set
+* uid: Integer, the user id of the owner
+* gid: Integer, the group id of the owner
+
+Both uid and gid are required; pass -1 to keep the current value of one of them, the same
+convention as Node.js. Changing the owner usually requires elevated privileges.
 
 --------------------------
 ### lchown
-**设置指定文件的拥有者，如果指定的文件是软连接则不会改变其指向文件的拥有者，Windows 不支持此方法**
+**Sets the owner of the given file without changing the target of a symbolic link; not supported on Windows**
 
 ```JavaScript
 static fs.lchown(String path,
@@ -346,187 +481,293 @@ static fs.lchown(String path,
     Integer gid) async;
 ```
 
-调用参数:
-* path: String, 指定设置的文件
-* uid: Integer, 文件拥有者用户id
-* gid: Integer, 文件拥有者组id
+Parameters:
+* path: String, the file to set
+* uid: Integer, the user id of the owner
+* gid: Integer, the group id of the owner
+
+Identical to chown except that when [path](path.md) is a symbolic link the link itself is modified;
+pass -1 for uid or gid to keep that value unchanged.
 
 --------------------------
 ### utimes
-**修改指定文件的访问时间和修改时间**
+**Changes the access and modification time of the given file**
 
 ```JavaScript
 static fs.utimes(String path,
-    Number atime,
-    Number mtime) async;
+    Variant atime,
+    Variant mtime) async;
 ```
 
-调用参数:
-* path: String, 指定设置的文件
-* atime: Number, 文件的最后访问时间，Unix 时间戳（秒）
-* mtime: Number, 文件的最后修改时间，Unix 时间戳（秒）
+Parameters:
+* path: String, the file to set
+* atime: Variant, the last access time: a Date [object](../../object/ifs/object.md), a Unix timestamp in seconds, or a date string
+* mtime: Variant, the last modification time: a Date [object](../../object/ifs/object.md), a Unix timestamp in seconds, or a date string
 
-时间参数为 Unix 时间戳，以秒为单位。
+The time arguments may be a Date [object](../../object/ifs/object.md), a Unix timestamp in seconds, or a date string, consistent with Node.js.
 
 --------------------------
 ### lutimes
-**修改指定软连接文件本身的访问时间和修改时间，不跟随软连接**
+**Changes the access and modification time of the symbolic link itself, without following it**
 
 ```JavaScript
 static fs.lutimes(String path,
-    Number atime,
-    Number mtime) async;
+    Variant atime,
+    Variant mtime) async;
 ```
 
-调用参数:
-* path: String, 指定设置的软连接文件
-* atime: Number, 文件的最后访问时间，Unix 时间戳（秒）
-* mtime: Number, 文件的最后修改时间，Unix 时间戳（秒）
+Parameters:
+* path: String, the symbolic link to set
+* atime: Variant, the last access time: a Date [object](../../object/ifs/object.md), a Unix timestamp in seconds, or a date string
+* mtime: Variant, the last modification time: a Date [object](../../object/ifs/object.md), a Unix timestamp in seconds, or a date string
+
+The time arguments may be a Date [object](../../object/ifs/object.md), a Unix timestamp in seconds, or a date string, consistent with Node.js.
 
 --------------------------
 ### stat
-**查询指定文件的基础信息**
+**Queries the basic information of the given file**
 
 ```JavaScript
 static Stat fs.stat(String path) async;
 ```
 
-调用参数:
-* path: String, 指定查询的文件
+Parameters:
+* path: String, the file to query
 
-返回结果:
-* [Stat](../../object/ifs/Stat.md), 返回文件的基础信息
+Returns:
+* [Stat](../../object/ifs/Stat.md), the basic information of the file, or undefined when `throwIfNoEntry` is false and
 
-路径不存在时抛出异常。
+Follows symbolic links: when [path](path.md) is a link the returned [Stat](../../object/ifs/Stat.md) [object](../../object/ifs/object.md) describes its target,
+use lstat to describe the link itself.
+
+The options overload accepts:
+
+```JavaScript
+// fragment: options
+({
+    // throw when the path does not exist; false returns undefined instead. Default: true
+    "throwIfNoEntry": true
+})
+```
+
+`throwIfNoEntry` works like Node.js and only takes effect for synchronous (no callback)
+calls; the asynchronous form always throws.
+
+Example — inspect a text file created in a temporary directory:
+
+```JavaScript
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-stat-'));
+const file = path.join(dir, 'data.txt');
+fs.writeFile(file, 'hello');
+
+const st = fs.stat(file);
+console.log(st.name, st.size, st.isFile()); // data.txt 5 true
+
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
+```
 
 --------------------------
-**查询指定文件的基础信息**
+**Queries the basic information of the given file**
 
 ```JavaScript
 static Stat fs.stat(String path,
     Object options) async;
 ```
 
-调用参数:
-* path: String, 指定查询的文件
-* options: Object, 指定查询选项
+Parameters:
+* path: String, the file to query
+* options: Object, the query options
 
-返回结果:
-* [Stat](../../object/ifs/Stat.md), 返回文件的基础信息
+Returns:
+* [Stat](../../object/ifs/Stat.md), the basic information of the file, or undefined when `throwIfNoEntry` is false and the [path](path.md) does not exist
 
-options 支持的选项如下：
-
-```JavaScript
-{
-    "bigint": false // 当为 true 时，返回的 Stat 对象中的数值类型将是 BigInt. 默认: false
-}
-```
+The options [object](../../object/ifs/object.md) (throwIfNoEntry, default true) is described on the first overload; it
+only takes effect for synchronous (no callback) calls, the asynchronous form always throws.
 
 --------------------------
 ### lstat
-**查询指定文件的基础信息, 和stat不同的是, 当[path](path.md)是一个软连接的时候，返回的将是这个软连接的信息而不是指向的文件的信息**
+**Queries the basic information of the given file; unlike stat, when [path](path.md) is a symbolic link, the information of the link itself is returned instead of its target**
 
 ```JavaScript
 static Stat fs.lstat(String path) async;
 ```
 
-调用参数:
-* path: String, 指定查询的文件
+Parameters:
+* path: String, the file to query
 
-返回结果:
-* [Stat](../../object/ifs/Stat.md), 返回文件的基础信息
+Returns:
+* [Stat](../../object/ifs/Stat.md), the basic information of the file, or undefined when `throwIfNoEntry` is false and
+
+The described entry is the link itself: isSymbolicLink() returns true and
+isFile()/isDirectory() report the link, not its target.
+
+The options overload accepts:
+
+```JavaScript
+// fragment: options
+({
+    // throw when the path does not exist; false returns undefined instead. Default: true
+    "throwIfNoEntry": true
+})
+```
+
+`throwIfNoEntry` works like Node.js and only takes effect for synchronous (no callback)
+calls; the asynchronous form always throws.
 
 --------------------------
-**查询指定文件的基础信息, 和stat不同的是, 当[path](path.md)是一个软连接的时候，返回的将是这个软连接的信息而不是指向的文件的信息**
+**Queries the basic information of the given file; unlike stat, when [path](path.md) is a symbolic link, the information of the link itself is returned instead of its target**
 
 ```JavaScript
 static Stat fs.lstat(String path,
     Object options) async;
 ```
 
-调用参数:
-* path: String, 指定查询的文件
-* options: Object, 指定查询选项
+Parameters:
+* path: String, the file to query
+* options: Object, the query options
 
-返回结果:
-* [Stat](../../object/ifs/Stat.md), 返回文件的基础信息
+Returns:
+* [Stat](../../object/ifs/Stat.md), the basic information of the file, or undefined when `throwIfNoEntry` is false and the [path](path.md) does not exist
 
-options 支持的选项如下：
-
-```JavaScript
-{
-    "bigint": false // 当为 true 时，返回的 Stat 对象中的数值类型将是 BigInt. 默认: false
-}
-```
+The options [object](../../object/ifs/object.md) (throwIfNoEntry, default true) is described on the first overload; it
+only takes effect for synchronous (no callback) calls, the asynchronous form always throws.
 
 --------------------------
 ### fstat
-**查询指定文件的基础信息**
+**Queries the basic information of the given file**
 
 ```JavaScript
-static Stat fs.fstat(FileHandle fd) async;
+static Stat fs.fstat(Integer | FileHandle fd) async;
 ```
 
-调用参数:
-* fd: [FileHandle](../../object/ifs/FileHandle.md), 文件描述符对象
+Parameters:
+* fd: Integer | [FileHandle](../../object/ifs/FileHandle.md), the file descriptor
 
-返回结果:
-* [Stat](../../object/ifs/Stat.md), 返回文件的基础信息
+Returns:
+* [Stat](../../object/ifs/Stat.md), the basic information of the file
+
+fd may be an integer descriptor or a [FileHandle](../../object/ifs/FileHandle.md) [object](../../object/ifs/object.md); both address the same open file.
+The options overload accepts an [object](../../object/ifs/object.md) for Node.js compatibility; no option is effective yet.
 
 --------------------------
-**查询指定文件的基础信息**
+**Queries the basic information of the given file**
 
 ```JavaScript
-static Stat fs.fstat(FileHandle fd,
+static Stat fs.fstat(Integer | FileHandle fd,
     Object options) async;
 ```
 
-调用参数:
-* fd: [FileHandle](../../object/ifs/FileHandle.md), 文件描述符对象
-* options: Object, 指定查询选项
+Parameters:
+* fd: Integer | [FileHandle](../../object/ifs/FileHandle.md), the file descriptor
+* options: Object, the query options
 
-返回结果:
-* [Stat](../../object/ifs/Stat.md), 返回文件的基础信息
+Returns:
+* [Stat](../../object/ifs/Stat.md), the basic information of the file
 
-options 支持的选项如下：
+options currently has no effective option and is kept for Node.js compatibility only.
 
-```JavaScript
-{
-    "bigint": false // 当为 true 时，返回的 Stat 对象中的数值类型将是 BigInt. 默认: false
-}
-```
+fd may be an integer descriptor or a [FileHandle](../../object/ifs/FileHandle.md) [object](../../object/ifs/object.md); both address the same open file.
 
 --------------------------
 ### readlink
-**读取指定的软连接文件，返回软连接指向的目标路径，Windows 不支持此方法**
+**Reads the given symbolic link and returns the target [path](path.md) it points to; not supported on Windows**
 
 ```JavaScript
-static String fs.readlink(String path) async;
+static Variant fs.readlink(String path) async;
 ```
 
-调用参数:
-* path: String, 指定读取的软连接文件
+Parameters:
+* path: String, the symbolic link to read
 
-返回结果:
-* String, 返回软连接指向的文件名
+Returns:
+* Variant, the file name the symbolic link points to
+
+The target is returned as stored in the link and may be relative or point to a nonexistent
+[path](path.md); the link itself must exist.
+
+The options overload accepts either an [encoding](encoding.md) string or:
+
+```JavaScript
+// fragment: options
+({
+    // the returned value encoding; 'buffer' returns a Buffer. Default: utf8
+    "encoding": "utf8"
+})
+```
+
+--------------------------
+**Reads the given symbolic link and returns the target [path](path.md) it points to; not supported on Windows**
+
+```JavaScript
+static Variant fs.readlink(String path,
+    Object | String options) async;
+```
+
+Parameters:
+* path: String, the symbolic link to read
+* options: Object | String, the read options or the [encoding](encoding.md) of the returned value
+
+Returns:
+* Variant, the decoded string when an [encoding](encoding.md) is given, or a [Buffer](../../object/ifs/Buffer.md) for 'buffer'
+
+The [encoding](encoding.md) is described on the first overload; it may be passed as a string or in an
+options [object](../../object/ifs/object.md), and 'buffer' returns a [Buffer](../../object/ifs/Buffer.md).
 
 --------------------------
 ### realpath
-**返回指定路径的绝对路径，如果指定路径中包含相对路径也会被展开，路径中的软连接会被解析**
+**Returns the absolute [path](path.md) of the given [path](path.md), unfolding relative segments and resolving symbolic links**
 
 ```JavaScript
-static String fs.realpath(String path) async;
+static Variant fs.realpath(String path) async;
 ```
 
-调用参数:
-* path: String, 指定读取的路径
+Parameters:
+* path: String, the [path](path.md) to read
 
-返回结果:
-* String, 返回处理后的绝对路径
+Returns:
+* Variant, the resolved absolute [path](path.md)
+
+Unfolds `.` and `..` segments and resolves every symbolic link, like Node.js; throws ENOENT
+when the [path](path.md) does not exist.
+
+The options overload accepts either an [encoding](encoding.md) string or:
+
+```JavaScript
+// fragment: options
+({
+    // the returned value encoding; 'buffer' returns a Buffer. Default: utf8
+    "encoding": "utf8"
+})
+```
+
+--------------------------
+**Returns the absolute [path](path.md) of the given [path](path.md), unfolding relative segments and resolving symbolic links**
+
+```JavaScript
+static Variant fs.realpath(String path,
+    Object | String options) async;
+```
+
+Parameters:
+* path: String, the [path](path.md) to read
+* options: Object | String, the read options or the [encoding](encoding.md) of the returned value
+
+Returns:
+* Variant, the decoded string when an [encoding](encoding.md) is given, or a [Buffer](../../object/ifs/Buffer.md) for 'buffer'
+
+The [encoding](encoding.md) is described on the first overload; it may be passed as a string or in an
+options [object](../../object/ifs/object.md), and 'buffer' returns a [Buffer](../../object/ifs/Buffer.md).
 
 --------------------------
 ### symlink
-**创建软连接文件**
+**Creates a symbolic link**
 
 ```JavaScript
 static fs.symlink(String target,
@@ -534,327 +775,407 @@ static fs.symlink(String target,
     String type = "file") async;
 ```
 
-调用参数:
-* target: String, 目标文件，可以是文件、目录、或不存在的路径
-* linkpath: String, 将被创建的软连接文件
-* type: String, 创建的软连接类型, 可选类型为'file', 'dir', 'junction', 默认为'file', 该参数只在windows上有效，当为'junction'的时候将要创建的目标路径linkpath必须为绝对路径, 而target则会被自动转化为绝对路径。
+Parameters:
+* target: String, the target, which may be a file, a directory or a nonexistent [path](path.md)
+* linkpath: String, the symbolic link to create
+* type: String, the type of the symbolic link: 'file', 'dir' or 'junction', 'file' by default; this parameter is only effective on Windows, and for 'junction' the target [path](path.md) linkpath must be absolute, while target is converted to an absolute [path](path.md) automatically.
+
+On POSIX systems the link stores target as given and type is ignored; a relative target is
+interpreted relative to the directory of linkpath. On Windows type selects 'file', 'dir' or
+'junction', and a junction target must be absolute. Throws EEXIST when linkpath exists.
 
 --------------------------
 ### truncate
-**修改文件尺寸，如果指定的长度大于源文件大小则用'\0'填充，否则多于的文件内容将丢失**
+**Changes the size of a file; when the given length is larger than the source file, it is padded with '\0', otherwise the exceeding content is lost**
 
 ```JavaScript
 static fs.truncate(String path,
     Integer len) async;
 ```
 
-调用参数:
-* path: String, 指定被修改文件的路径
-* len: Integer, 指定修改后文件的大小
+Parameters:
+* path: String, the [path](path.md) of the file to change
+* len: Integer, the new size of the file
+
+The file must exist and be writable; this is the [path](path.md)-based counterpart of ftruncate.
 
 --------------------------
 ### read
-**根据文件描述符，读取文件内容**
+**Reads the content of a file by its file descriptor**
 
 ```JavaScript
-static Integer fs.read(FileHandle fd,
+static Integer fs.read(Integer | FileHandle fd,
     Buffer buffer,
     Integer offset = 0,
     Integer length = 0,
     Integer position = -1) async;
 ```
 
-调用参数:
-* fd: [FileHandle](../../object/ifs/FileHandle.md), 文件描述符对象
-* buffer: [Buffer](../../object/ifs/Buffer.md), 读取结果写入的 [Buffer](../../object/ifs/Buffer.md) 对象
-* offset: Integer, [Buffer](../../object/ifs/Buffer.md) 写入偏移量， 默认为 0
-* length: Integer, 文件读取字节数，默认为 0
-* position: Integer, 文件读取位置，默认为当前文件位置
+Parameters:
+* fd: Integer | [FileHandle](../../object/ifs/FileHandle.md), the file descriptor
+* buffer: [Buffer](../../object/ifs/Buffer.md), the [Buffer](../../object/ifs/Buffer.md) the result is written into
+* offset: Integer, the write offset in the [Buffer](../../object/ifs/Buffer.md), 0 by default
+* length: Integer, the number of bytes to read, 0 by default
+* position: Integer, the read position, the current file position by default
 
-返回结果:
-* Integer, 实际读取的字节数
+Returns:
+* Integer, the number of bytes actually read
 
-length 缺省为 0，表示不读取数据；读取时需显式指定长度。position 缺省为 -1，表示从当前文件位置读取；指定 position 时，读取前将文件指针移动到该位置。
+length defaults to 0, which reads no data; a length must be given explicitly to read. position defaults to -1, which reads from the current file position; when position is given, the file pointer is moved there before reading.
+
+fd may be an integer descriptor or a [FileHandle](../../object/ifs/FileHandle.md) [object](../../object/ifs/object.md); position addresses that descriptor's file position.
 
 --------------------------
 ### fchmod
-**根据文件描述符，改变文件模式。只在 POSIX 系统有效。**
+**Changes the file mode by its file descriptor. Effective on POSIX systems only.**
 
 ```JavaScript
-static fs.fchmod(FileHandle fd,
+static fs.fchmod(Integer | FileHandle fd,
     Integer mode) async;
 ```
 
-调用参数:
-* fd: [FileHandle](../../object/ifs/FileHandle.md), 文件描述符对象
-* mode: Integer, 文件的模式
+Parameters:
+* fd: Integer | [FileHandle](../../object/ifs/FileHandle.md), the file descriptor
+* mode: Integer, the file mode
+
+fd may be an integer descriptor or a [FileHandle](../../object/ifs/FileHandle.md) [object](../../object/ifs/object.md); the mode is applied to the file it addresses.
 
 --------------------------
 ### fchown
-**根据文件描述符，改变所有者。只在 POSIX 系统有效。**
+**Changes the owner by the file descriptor. Effective on POSIX systems only.**
 
 ```JavaScript
-static fs.fchown(FileHandle fd,
+static fs.fchown(Integer | FileHandle fd,
     Integer uid,
     Integer gid) async;
 ```
 
-调用参数:
-* fd: [FileHandle](../../object/ifs/FileHandle.md), 文件描述符对象
-* uid: Integer, 用户id
-* gid: Integer, 组id
+Parameters:
+* fd: Integer | [FileHandle](../../object/ifs/FileHandle.md), the file descriptor
+* uid: Integer, the user id
+* gid: Integer, the group id
+
+fd may be an integer descriptor or a [FileHandle](../../object/ifs/FileHandle.md) [object](../../object/ifs/object.md); the owner is changed on the file it addresses.
 
 --------------------------
 ### futimes
-**根据文件描述符，修改文件的访问时间和修改时间**
+**Changes the access and modification time of a file by its file descriptor**
 
 ```JavaScript
-static fs.futimes(FileHandle fd,
-    Number atime,
-    Number mtime) async;
+static fs.futimes(Integer | FileHandle fd,
+    Variant atime,
+    Variant mtime) async;
 ```
 
-调用参数:
-* fd: [FileHandle](../../object/ifs/FileHandle.md), 文件描述符对象
-* atime: Number, 文件的最后访问时间，Unix 时间戳（秒）
-* mtime: Number, 文件的最后修改时间，Unix 时间戳（秒）
+Parameters:
+* fd: Integer | [FileHandle](../../object/ifs/FileHandle.md), the file descriptor
+* atime: Variant, the last access time: a Date [object](../../object/ifs/object.md), a Unix timestamp in seconds, or a date string
+* mtime: Variant, the last modification time: a Date [object](../../object/ifs/object.md), a Unix timestamp in seconds, or a date string
+
+The time arguments may be a Date [object](../../object/ifs/object.md), a Unix timestamp in seconds, or a date string, consistent with Node.js.
+
+fd may be an integer descriptor or a [FileHandle](../../object/ifs/FileHandle.md) [object](../../object/ifs/object.md); the times are applied to the file it addresses.
 
 --------------------------
 ### fdatasync
-**根据文件描述符，同步数据到磁盘**
+**Synchronizes data to disk by the file descriptor**
 
 ```JavaScript
-static fs.fdatasync(FileHandle fd) async;
+static fs.fdatasync(Integer | FileHandle fd) async;
 ```
 
-调用参数:
-* fd: [FileHandle](../../object/ifs/FileHandle.md), 文件描述符对象
+Parameters:
+* fd: Integer | [FileHandle](../../object/ifs/FileHandle.md), the file descriptor
 
-仅同步文件数据部分，不包含文件元数据，比 fsync 开销更小。
+Only the file data is synchronized, not the metadata, which costs less than fsync.
+
+fd may be an integer descriptor or a [FileHandle](../../object/ifs/FileHandle.md) [object](../../object/ifs/object.md); the data of that descriptor is flushed.
 
 --------------------------
 ### fsync
-**根据文件描述符，同步数据到磁盘**
+**Synchronizes data to disk by the file descriptor**
 
 ```JavaScript
-static fs.fsync(FileHandle fd) async;
+static fs.fsync(Integer | FileHandle fd) async;
 ```
 
-调用参数:
-* fd: [FileHandle](../../object/ifs/FileHandle.md), 文件描述符对象
+Parameters:
+* fd: Integer | [FileHandle](../../object/ifs/FileHandle.md), the file descriptor
 
-同步文件数据与元数据，确保写入内容持久化。
+Synchronizes both the file data and the metadata, making sure the written content is persisted.
+
+fd may be an integer descriptor or a [FileHandle](../../object/ifs/FileHandle.md) [object](../../object/ifs/object.md); the data and metadata of that descriptor are flushed.
+
+--------------------------
+### ftruncate
+**Changes the size of a file by its file descriptor**
+
+```JavaScript
+static fs.ftruncate(Integer | FileHandle fd,
+    Integer len = 0) async;
+```
+
+Parameters:
+* fd: Integer | [FileHandle](../../object/ifs/FileHandle.md), the file descriptor
+* len: Integer, the new size of the file, 0 by default
+
+Consistent with Node.js: a length of 0 empties the file, and negative values are treated as 0.
+
+fd may be an integer descriptor or a [FileHandle](../../object/ifs/FileHandle.md) [object](../../object/ifs/object.md); the file it addresses is resized.
+
+--------------------------
+### statfs
+**Queries the information of the file system**
+
+```JavaScript
+static (Number type, Number bsize, Number blocks, Number bfree, Number bavail, Number files, Number ffree) fs.statfs(String path) async;
+```
+
+Parameters:
+* path: String, the [path](path.md) to query
+
+Returns:
+* (Number type, Number bsize, Number blocks, Number bfree, Number bavail, Number files, Number ffree), the file system information [object](../../object/ifs/object.md)
+
+The returned [object](../../object/ifs/object.md) contains the type, bsize, blocks, bfree, bavail, files and ffree fields, consistent with Node.js.
 
 --------------------------
 ### readdir
-**读取指定目录的文件信息**
+**Reads the entries of the given directory**
 
 ```JavaScript
 static NArray fs.readdir(String path) async;
 ```
 
-调用参数:
-* path: String, 指定查询的目录
+Parameters:
+* path: String, the directory to query
 
-返回结果:
-* NArray, 返回目录的文件信息数组
+Returns:
+* NArray, the array of directory entries
 
-返回目录下的文件名数组，不含子目录内容。
+Returns an array of file names under the directory, without the content of subdirectories.
+The overload with opts can list subdirectories recursively and return [DirEntry](../../object/ifs/DirEntry.md) objects.
 
 --------------------------
-**读取指定目录的文件信息**
+### opendir
+**Opens a directory for iteration**
+
+```JavaScript
+static Dir fs.opendir(String path) async;
+```
+
+Parameters:
+* path: String, the directory to iterate
+
+Returns:
+* [Dir](../../object/ifs/Dir.md), the directory iteration [object](../../object/ifs/object.md)
+
+Returns a [Dir](../../object/ifs/Dir.md) [object](../../object/ifs/object.md); entries can be read one by one with read/readSync, or iterated with for await...of.
+
+--------------------------
+### readdir
+**Reads the entries of the given directory**
 
 ```JavaScript
 static NArray fs.readdir(String path,
-    Object opts = {}) async;
+    Object | String opts = {}) async;
 ```
 
-调用参数:
-* path: String, 指定查询的目录
-* opts: Object, 指定参数
+Parameters:
+* path: String, the directory to query
+* opts: Object | String, the options or the [encoding](encoding.md) of the returned file names
 
-返回结果:
-* NArray, 返回目录的文件信息数组
+Returns:
+* NArray, the array of directory entries
 
-参数 opts 支持的选项如下：
+The opts parameter supports the following options, or a string is used as the [encoding](encoding.md) of the file names directly:
 
 ```JavaScript
-{
-    "recursive": false, // specify whether all subdirectories should be watched or only the current directory
-    "withFileTypes": false // specify whether to return DirEntry objects. Default: false
-}
+// fragment: options
+({
+    "recursive": false, // whether the content of subdirectories is listed too. Default: false
+    "withFileTypes": false, // specify whether to return DirEntry objects. Default: false
+    // the encoding of the file names; 'buffer' returns Buffer objects. Default: utf8
+    "encoding": "utf8"
+})
 ```
 
-withFileTypes 为 true 时返回 [DirEntry](../../object/ifs/DirEntry.md) 对象数组，否则返回文件名数组。
+When withFileTypes is true an array of [DirEntry](../../object/ifs/DirEntry.md) objects is returned, otherwise an array of
+file names. A string [encoding](encoding.md) is equivalent to passing it in the options; 'buffer' returns
+an array of [Buffer](../../object/ifs/Buffer.md) objects, consistent with Node.js, but it cannot be combined with
+withFileTypes (an error is thrown, while Node.js returns Dirent objects with [Buffer](../../object/ifs/Buffer.md) names).
+With recursive set to true the entries of subdirectories are included as paths relative to
+the queried directory.
+
+Example — list a directory with names and with [types](types.md):
+
+```JavaScript
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-readdir-'));
+fs.writeFile(path.join(dir, 'a.txt'), 'a');
+fs.mkdir(path.join(dir, 'sub'));
+
+fs.readdir(dir).forEach((name) => console.log(name));
+fs.readdir(dir, {
+    withFileTypes: true
+}).forEach((entry) => {
+    console.log(entry.name, entry.isDirectory());
+});
+
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
+```
 
 --------------------------
 ### glob
-**根据文件名模式，搜索指定目录的文件列表**
+**Searches the given directory for files matching a name pattern**
 
 ```JavaScript
 static NArray fs.glob(String pattern,
     Object opts = {}) async;
 ```
 
-调用参数:
-* pattern: String, 指定文件名模式
-* opts: Object, 指定参数
+Parameters:
+* pattern: String, the file name pattern
+* opts: Object, the options
 
-返回结果:
-* NArray, 返回文件列表
+Returns:
+* NArray, the file list
 
-参数 opts 支持的选项如下：
+The opts parameter supports the following options:
 
 ```JavaScript
-{
+// fragment: options
+({
     "cwd": "", // specify a different working directory, default to current directory
     "withFileTypes": false // specify whether to return Dirent objects. Default: false
-}
+})
 ```
 
-模式支持 `*`、`?`、`**` 等通配符，返回匹配文件的绝对路径列表。
+The pattern supports the `*`, `?`, `**` and other wildcards; the absolute paths of the matching files are returned. When `cwd` is given, the matches of a relative pattern are returned relative to that directory.
 
 --------------------------
-**根据一组文件名模式，搜索指定目录的文件列表**
+**Searches the given directory for files matching a set of name patterns**
 
 ```JavaScript
 static NArray fs.glob(String patterns[],
     Object opts = {}) async;
 ```
 
-调用参数:
-* patterns[]: String, 指定一组文件名模式
-* opts: Object, 指定参数
+Parameters:
+* patterns[]: String, the file name patterns
+* opts: Object, the options
 
-返回结果:
-* NArray, 返回文件列表
+Returns:
+* NArray, the file list
 
-参数 opts 支持的选项如下：
+The opts parameter supports the following options:
 
 ```JavaScript
-{
+// fragment: options
+({
     "cwd": "", // specify a different working directory, default to current directory
     "withFileTypes": false // specify whether to return Dirent objects. Default: false
-}
+})
 ```
 
-多个模式的匹配结果合并返回，重复文件只出现一次。
+The matches of all patterns are merged; a duplicate file appears only once. When `cwd` is
+given, the matches of relative patterns are returned relative to that directory.
 
 --------------------------
 ### createReadStream
-**创建可读文件流**
+**Creates a readable file stream**
 
 ```JavaScript
 static SeekableStream fs.createReadStream(String fname,
     Object options = {}) async;
 ```
 
-调用参数:
-* fname: String, 指定文件名
-* options: Object, 读取选项
+Parameters:
+* fname: String, the file name
+* options: Object, the read options
 
-返回结果:
-* [SeekableStream](../../object/ifs/SeekableStream.md), 返回文件流对象
+Returns:
+* [SeekableStream](../../object/ifs/SeekableStream.md), the file stream [object](../../object/ifs/object.md)
 
-options 支持的选项如下：
+options supports the following options:
 
 ```JavaScript
-{
-    "flags": "r", // 文件打开方式，缺省为 "r"，只读方式
-    "start": 0, // 读取起始位置
-    "end": undefined // 读取结束位置（含），缺省为文件末尾
-}
+// fragment: options
+({
+    "flags": "r", // the open mode, "r" (read only) by default
+    "start": 0, // the start position of the read
+    "end": undefined // end position of the read (inclusive). Default: end of file
+})
 ```
 
-指定 start 或 end 时，返回的流仅覆盖 [start, end] 区间（含边界）的数据。
+When start or end is given, the returned stream only covers the [start, end] range (boundaries included); the same stream can be used for reading at explicit positions.
 
 --------------------------
 ### createWriteStream
-**打开文件，创建可写流对象**
+**Opens a file and creates a writable stream**
 
 ```JavaScript
 static SeekableStream fs.createWriteStream(String fname,
     Object options = {}) async;
 ```
 
-调用参数:
-* fname: String, 指定文件名
-* options: Object, 写入选项，支持 flags（默认 'w'）
+Parameters:
+* fname: String, the file name
+* options: Object, the write options, supporting flags ('w' by default)
 
-返回结果:
-* [SeekableStream](../../object/ifs/SeekableStream.md), 返回文件流对象
+Returns:
+* [SeekableStream](../../object/ifs/SeekableStream.md), the file stream [object](../../object/ifs/object.md)
+
+The stream writes from the beginning of the file and truncates existing content by default;
+use an 'r+' flag to write into an existing file instead. See [SeekableStream](../../object/ifs/SeekableStream.md) for the
+positioning and write methods.
+
+options supports:
+
+```JavaScript
+// fragment: options
+({
+    "flags": "w" // the open mode, "w" (create or truncate) by default
+})
+```
 
 --------------------------
 ### openFile
-**打开文件，用于读取，写入，或者同时读写**
+**Opens a file for reading, writing, or both**
 
 ```JavaScript
 static SeekableStream fs.openFile(String fname,
-    String flags = "r") async;
+    String | Integer flags = "r") async;
 ```
 
-调用参数:
-* fname: String, 指定文件名
-* flags: String, 指定文件打开方式，缺省为 "r"，只读方式
+Parameters:
+* fname: String, the file name
+* flags: String | Integer, the open mode
 
-返回结果:
-* [SeekableStream](../../object/ifs/SeekableStream.md), 返回打开的文件对象
+Returns:
+* [SeekableStream](../../object/ifs/SeekableStream.md), the opened file [object](../../object/ifs/object.md)
 
-参数 flags 支持的方式如下：
-- 'r' 只读方式，文件不存在则抛出错误。
-- 'r+' 读写方式，文件不存在则抛出错误。
-- 'w' 只写方式，文件不存在则自动创建，存在则将被清空。
-- 'w+' 读写方式，文件不存在则自动创建。
-- 'a' 只写添加方式，文件不存在则自动创建。
-- 'a+' 读写添加方式，文件不存在则自动创建。
+The flags parameter supports integer [fs.constants](fs.md#constants) flags (a combination of values such as [fs.constants](fs.md#constants).O_WRONLY | [fs.constants](fs.md#constants).O_CREAT), or one of the following strings:
+- 'r' read only; throws when the file does not exist.
+- 'r+' read and write; throws when the file does not exist.
+- 'w' write only; the file is created when missing and truncated when existing.
+- 'w+' read and write; the file is created when missing.
+- 'a' write only, appending; the file is created when missing.
+- 'a+' read and write, appending; the file is created when missing.
 
-返回的文件流支持 seek、tell、rewind 等定位操作。
+The returned file stream supports positioning operations such as seek, tell and rewind.
 
---------------------------
-**打开文件，用于读取，写入，或者同时读写，使用 [fs.constants](fs.md#constants) 整数 flags**
-
-```JavaScript
-static SeekableStream fs.openFile(String fname,
-    Integer flags) async;
-```
-
-调用参数:
-* fname: String, 指定文件名
-* flags: Integer, 整数 flags，[fs.constants](fs.md#constants) 值的组合（如 [fs.constants](fs.md#constants).O_WRONLY | [fs.constants](fs.md#constants).O_CREAT）
-
-返回结果:
-* [SeekableStream](../../object/ifs/SeekableStream.md), 返回打开的文件对象
+flags may be the integer [fs.constants](fs.md#constants) flags, or a string; "r" (read only) is the default.
 
 --------------------------
 ### open
-**打开文件描述符**
-
-```JavaScript
-static FileHandle fs.open(String fname,
-    String flags = "r",
-    Integer mode = 0666) async;
-```
-
-调用参数:
-* fname: String, 指定文件名
-* flags: String, 指定文件打开方式，缺省为 "r"，只读方式
-* mode: Integer, 当创建文件的时候，指定文件的模式，默认 0666
-
-返回结果:
-* [FileHandle](../../object/ifs/FileHandle.md), 返回打开的文件描述符
-
-参数 flags 支持的方式如下：
-- 'r' 只读方式，文件不存在则抛出错误。
-- 'r+' 读写方式，文件不存在则抛出错误。
-- 'w' 只写方式，文件不存在则自动创建，存在则将被清空。
-- 'w+' 读写方式，文件不存在则自动创建。
-- 'a' 只写添加方式，文件不存在则自动创建。
-- 'a+' 读写添加方式，文件不存在则自动创建。
-
-返回的 [FileHandle](../../object/ifs/FileHandle.md) 对象可配合 [fs.read](fs.md#read)、[fs.write](fs.md#write)、[fs.fstat](fs.md#fstat) 等描述符函数使用。
-
---------------------------
-**打开文件描述符，使用 [fs.constants](fs.md#constants) 整数 flags**
+**Opens a file descriptor, using integer [fs.constants](fs.md#constants) flags**
 
 ```JavaScript
 static FileHandle fs.open(String fname,
@@ -862,471 +1183,576 @@ static FileHandle fs.open(String fname,
     Integer mode = 0666) async;
 ```
 
-调用参数:
-* fname: String, 指定文件名
-* flags: Integer, 整数 flags，[fs.constants](fs.md#constants) 值的组合（如 [fs.constants](fs.md#constants).O_WRONLY | [fs.constants](fs.md#constants).O_CREAT）
-* mode: Integer, 当创建文件的时候，指定文件的模式，默认 0666
+Parameters:
+* fname: String, the file name
+* flags: Integer, integer flags, a combination of [fs.constants](fs.md#constants) values (such as [fs.constants](fs.md#constants).O_WRONLY | [fs.constants](fs.md#constants).O_CREAT)
+* mode: Integer, the file mode when the file is created, 0666 by default
 
-返回结果:
-* [FileHandle](../../object/ifs/FileHandle.md), 返回打开的文件描述符
+Returns:
+* [FileHandle](../../object/ifs/FileHandle.md), the opened file descriptor
+
+The same operation is available with a string-flags form taking an octal string mode and a
+string-flags form taking a numeric mode defaulting to 0666. `open` returns a [FileHandle](../../object/ifs/FileHandle.md) that
+wraps the descriptor; use read, write, fstat and close on it. Consistent with Node.js, the
+[FileHandle](../../object/ifs/FileHandle.md) is not a [Stream](../../object/ifs/Stream.md), use createReadStream/createWriteStream for streams.
+
+--------------------------
+**Opens a file**
+
+```JavaScript
+static FileHandle fs.open(String fname,
+    String flags,
+    Variant mode) async;
+```
+
+Parameters:
+* fname: String, the file name
+* flags: String, the open mode
+* mode: Variant, the file permissions, a number or an octal string
+
+Returns:
+* [FileHandle](../../object/ifs/FileHandle.md), the file handle [object](../../object/ifs/object.md)
+
+mode may be a number or an octal string (such as '600', '0600', '0o600'), consistent with Node.js; an invalid mode throws.
+
+--------------------------
+**Opens a file descriptor**
+
+```JavaScript
+static FileHandle fs.open(String fname,
+    String flags = "r",
+    Integer mode = 0666) async;
+```
+
+Parameters:
+* fname: String, the file name
+* flags: String, the open mode, "r" (read only) by default
+* mode: Integer, the file mode when the file is created, 0666 by default
+
+Returns:
+* [FileHandle](../../object/ifs/FileHandle.md), the opened file descriptor
+
+The flags parameter supports:
+- 'r' read only; throws when the file does not exist.
+- 'r+' read and write; throws when the file does not exist.
+- 'w' write only; the file is created when missing and truncated when existing.
+- 'w+' read and write; the file is created when missing.
+- 'a' write only, appending; the file is created when missing.
+- 'a+' read and write, appending; the file is created when missing.
+
+The returned [FileHandle](../../object/ifs/FileHandle.md) [object](../../object/ifs/object.md) works with the descriptor functions [fs.read](fs.md#read), [fs.write](fs.md#write), [fs.fstat](fs.md#fstat) and so on.
 
 --------------------------
 ### close
-**关闭文件描述符**
+**Closes the file descriptor**
 
 ```JavaScript
-static fs.close(FileHandle fd) async;
+static fs.close(Integer | FileHandle fd) async;
 ```
 
-调用参数:
-* fd: [FileHandle](../../object/ifs/FileHandle.md), 文件描述符对象
+Parameters:
+* fd: Integer | [FileHandle](../../object/ifs/FileHandle.md), the file descriptor
+
+fd may be an integer descriptor or a [FileHandle](../../object/ifs/FileHandle.md) [object](../../object/ifs/object.md); both close the same underlying descriptor.
 
 --------------------------
 ### openTextStream
-**打开文本文件，用于读取，写入，或者同时读写**
+**Opens a text file for reading, writing, or both**
 
 ```JavaScript
 static BufferedStream fs.openTextStream(String fname,
     String flags = "r") async;
 ```
 
-调用参数:
-* fname: String, 指定文件名
-* flags: String, 指定文件打开方式，缺省为 "r"，只读方式
+Parameters:
+* fname: String, the file name
+* flags: String, the open mode, "r" (read only) by default
 
-返回结果:
-* [BufferedStream](../../object/ifs/BufferedStream.md), 返回打开的文件对象
+Returns:
+* [BufferedStream](../../object/ifs/BufferedStream.md), the opened file [object](../../object/ifs/object.md)
 
-参数 flags 支持的方式如下：
-- 'r' 只读方式，文件不存在则抛出错误。
-- 'r+' 读写方式，文件不存在则抛出错误。
-- 'w' 只写方式，文件不存在则自动创建，存在则将被清空。
-- 'w+' 读写方式，文件不存在则自动创建。
-- 'a' 只写添加方式，文件不存在则自动创建。
-- 'a+' 读写添加方式，文件不存在则自动创建。
+The flags parameter supports:
+- 'r' read only; throws when the file does not exist.
+- 'r+' read and write; throws when the file does not exist.
+- 'w' write only; the file is created when missing and truncated when existing.
+- 'w+' read and write; the file is created when missing.
+- 'a' write only, appending; the file is created when missing.
+- 'a+' read and write, appending; the file is created when missing.
 
-返回的 [BufferedStream](../../object/ifs/BufferedStream.md) 以行为单位读写文本，可通过 EOL 属性设置行结尾标识。
+The returned [BufferedStream](../../object/ifs/BufferedStream.md) reads and writes text line by line; the line ending can be set through the EOL property.
 
 --------------------------
 ### readTextFile
-**打开文本文件，并读取内容**
+**Opens a text file and reads its content**
 
 ```JavaScript
 static String fs.readTextFile(String fname) async;
 ```
 
-调用参数:
-* fname: String, 指定文件名
+Parameters:
+* fname: String, the file name
 
-返回结果:
-* String, 返回文件文本内容
+Returns:
+* String, the text content of the file
 
-文件内容按 utf-8 解码返回。
+The content is decoded as utf-8 and returned.
 
 --------------------------
 ### readFile
-**打开文件，并读取内容**
+**Reads the whole content of a file, by its file descriptor or by its name**
 
 ```JavaScript
-static Variant fs.readFile(String fname,
-    String encoding = "") async;
+static Variant fs.readFile(FileHandle | String | Integer fname,
+    Object | String options = "") async;
 ```
 
-调用参数:
-* fname: String, 指定文件名
-* encoding: String, 指定解码方式，缺省不解码
+Parameters:
+* fname: [FileHandle](../../object/ifs/FileHandle.md) | String | Integer, the file to read
+* options: Object | String, the decoding or the read options
 
-返回结果:
-* Variant, 返回文件文本内容
+Returns:
+* Variant, the file content
 
-[encoding](encoding.md) 缺省为空，返回 [Buffer](../../object/ifs/Buffer.md) 对象；指定编码后返回解码后的字符串。
-
---------------------------
-**打开文件，并读取内容**
+options supports the following options:
 
 ```JavaScript
-static Variant fs.readFile(String fname,
-    Object options) async;
-```
-
-调用参数:
-* fname: String, 指定文件名
-* options: Object, 指定读取选项
-
-返回结果:
-* Variant, 返回文件文本内容
-
-options 支持的选项如下：
-
-```JavaScript
-{
+// fragment: options
+({
     "encoding": "utf8" // specify the encoding, default is utf8.
-}
+})
 ```
+
+Example — read the same file as a string and as a [Buffer](../../object/ifs/Buffer.md):
+
+```JavaScript
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-read-'));
+const file = path.join(dir, 'data.txt');
+fs.writeFile(file, 'plain text');
+
+console.log(fs.readFile(file, 'utf8')); // plain text
+console.log(Buffer.isBuffer(fs.readFile(file))); // true
+
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
+```
+
+An [encoding](encoding.md) string is empty by default, nothing is decoded and a [Buffer](../../object/ifs/Buffer.md) [object](../../object/ifs/object.md) is returned;
+when an [encoding](encoding.md) is given, the decoded string is returned. Consistent with Node.js: a file
+descriptor is not closed after reading, and reading starts at the current position of the
+descriptor and advances it.
+
+fname may be the file name, an integer file descriptor, or a [FileHandle](../../object/ifs/FileHandle.md) [object](../../object/ifs/object.md).
+options may be the decoding string, or the read options [object](../../object/ifs/object.md); a descriptor read with an options [object](../../object/ifs/object.md) defaults to utf8, the other forms return a [Buffer](../../object/ifs/Buffer.md) unless an [encoding](encoding.md) is given.
 
 --------------------------
 ### readLines
-**打开文件，以数组方式读取一组文本行，行结尾标识基于 EOL 属性的设置，缺省时，posix:"\n"；windows:"\r\n"**
+**Opens a file and reads a set of text lines into an array; the line ending follows the EOL property: "\n" on posix and "\r\n" on windows by default**
 
 ```JavaScript
-static Array fs.readLines(String fname,
+static String fs.readLines(String fname,
     Integer maxlines = -1);
 ```
 
-调用参数:
-* fname: String, 指定文件名
-* maxlines: Integer, 指定此次读取的最大行数，缺省读取全部文本行
+Parameters:
+* fname: String, the file name
+* maxlines: Integer, the maximum number of lines to read, all lines by default
 
-返回结果:
-* Array, 返回读取的文本行数组，若文件为空或无可读数据，返回空数组
+Returns:
+* String, the array of text lines read; an empty array when the file is empty or has no readable data
+
+Reads up to maxlines lines; a trailing line ending does not produce an extra empty entry.
 
 --------------------------
 ### write
-**根据文件描述符，向文件写入内容**
+**Writes content into a file by its file descriptor**
 
 ```JavaScript
-static Integer fs.write(FileHandle fd,
+static Integer fs.write(Integer | FileHandle fd,
     Buffer buffer,
     Integer offset = 0,
     Integer length = -1,
     Integer position = -1) async;
 ```
 
-调用参数:
-* fd: [FileHandle](../../object/ifs/FileHandle.md), 文件描述符对象
-* buffer: [Buffer](../../object/ifs/Buffer.md), 待写入的 [Buffer](../../object/ifs/Buffer.md) 对象
-* offset: Integer, [Buffer](../../object/ifs/Buffer.md) 数据读取偏移量， 默认为 0
-* length: Integer, 文件写入字节数，默认为 -1
-* position: Integer, 文件写入取位置，默认为当前文件位置
+Parameters:
+* fd: Integer | [FileHandle](../../object/ifs/FileHandle.md), the file descriptor
+* buffer: [Buffer](../../object/ifs/Buffer.md), the [Buffer](../../object/ifs/Buffer.md) [object](../../object/ifs/object.md) to write
+* offset: Integer, the read offset in the [Buffer](../../object/ifs/Buffer.md), 0 by default
+* length: Integer, the number of bytes to write, -1 by default
+* position: Integer, the write position, the current file position by default
 
-返回结果:
-* Integer, 实际写入的字节数
+Returns:
+* Integer, the number of bytes actually written
 
-length 缺省为 -1，表示写入 buffer 从 offset 起的全部剩余数据。position 缺省为 -1，表示从当前文件位置写入。
+length defaults to -1, which writes all the remaining data of buffer from offset. position defaults to -1, which writes from the current file position.
+
+fd may be an integer descriptor or a [FileHandle](../../object/ifs/FileHandle.md) [object](../../object/ifs/object.md); position addresses that descriptor's file position.
 
 --------------------------
-**根据文件描述符，向文件写入内容**
+**Writes content into a file by its file descriptor**
 
 ```JavaScript
-static Integer fs.write(FileHandle fd,
+static Integer fs.write(Integer | FileHandle fd,
     String string,
     Integer position = -1,
     String encoding = "utf8") async;
 ```
 
-调用参数:
-* fd: [FileHandle](../../object/ifs/FileHandle.md), 文件描述符对象
-* string: String, 待写入的字符串
-* position: Integer, 文件写入取位置，默认为当前文件位置
-* encoding: String, 指定解码方式，缺省解码 utf8
+Parameters:
+* fd: Integer | [FileHandle](../../object/ifs/FileHandle.md), the file descriptor
+* string: String, the string to write
+* position: Integer, the write position, the current file position by default
+* encoding: String, the decoding, utf8 by default
 
-返回结果:
-* Integer, 实际写入的字节数
+Returns:
+* Integer, the number of bytes actually written
 
-position 缺省为 -1，表示从当前文件位置写入。字符串按 [encoding](encoding.md) 编码后写入。
+position defaults to -1, which writes from the current file position. The string is encoded with [encoding](encoding.md) before writing.
+
+fd may be an integer descriptor or a [FileHandle](../../object/ifs/FileHandle.md) [object](../../object/ifs/object.md); position addresses that descriptor's file position.
 
 --------------------------
 ### writeTextFile
-**创建文本文件，并写入内容**
+**Creates a text file and writes content into it**
 
 ```JavaScript
 static Integer fs.writeTextFile(String fname,
     String txt) async;
 ```
 
-调用参数:
-* fname: String, 指定文件名
-* txt: String, 指定要写入的字符串
+Parameters:
+* fname: String, the file name
+* txt: String, the string to write
 
-返回结果:
-* Integer, 实际写入的字节数
+Returns:
+* Integer, the number of bytes actually written
 
-文件以覆盖方式打开，已存在的内容将被清空。
+The file is opened for overwriting; existing content is truncated.
 
 --------------------------
 ### writeFile
-**创建二进制文件，并写入内容**
+**Writes content into a file, by its file descriptor or by its name**
 
 ```JavaScript
-static Integer fs.writeFile(String fname,
-    Buffer data,
-    String opt = "binary") async;
+static Integer fs.writeFile(FileHandle | String | Integer fname,
+    Buffer | String data,
+    Object | String opt = "utf8") async;
 ```
 
-调用参数:
-* fname: String, 指定文件名
-* data: [Buffer](../../object/ifs/Buffer.md), 指定要写入的二进制数据
-* opt: String, 指定写入选项，将被忽略
+Parameters:
+* fname: [FileHandle](../../object/ifs/FileHandle.md) | String | Integer, the file to write
+* data: [Buffer](../../object/ifs/Buffer.md) | String, the data to write
+* opt: Object | String, the [encoding](encoding.md) of text data or the write options
 
-返回结果:
-* Integer, 实际写入的字节数
+Returns:
+* Integer, the number of bytes actually written
 
-opt 参数被忽略，文件以覆盖方式打开。
-
---------------------------
-**创建二进制文件，并写入内容**
+The file is opened for overwriting, existing content is truncated. opt is the [encoding](encoding.md) of text data, utf8 by default; an options [object](../../object/ifs/object.md) carries the write options instead:
 
 ```JavaScript
-static Integer fs.writeFile(String fname,
-    Buffer data,
-    Object options) async;
+// fragment: options
+({
+    "encoding": "utf8", // specify the encoding, default is utf8.
+    "mode": 0666, // specify the file mode. Default: 0666
+    "flag": "w" // specify the open flag. Default: w
+})
 ```
 
-调用参数:
-* fname: String, 指定文件名
-* data: [Buffer](../../object/ifs/Buffer.md), 指定要写入的二进制数据
-* options: Object, 指定写入选项，将被忽略
-
-返回结果:
-* Integer, 实际写入的字节数
-
-options 参数被忽略，文件以覆盖方式打开。
-
---------------------------
-**创建文件，并写入内容**
+Example — overwriting an existing file:
 
 ```JavaScript
-static Integer fs.writeFile(String fname,
-    String data,
-    String opt = "utf8") async;
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-write-'));
+const file = path.join(dir, 'data.txt');
+
+fs.writeFile(file, 'first');
+fs.writeFile(file, 'second'); // replaces the previous content
+console.log(fs.readFile(file, 'utf8')); // second
+
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
 ```
 
-调用参数:
-* fname: String, 指定文件名
-* data: String, 指定要写入的数据
-* opt: String, 指定写入选项
+A file descriptor ignores the options [object](../../object/ifs/object.md) and encodes text data as utf8. Unlike Node.js,
+which writes at the current position of a descriptor, the fibjs descriptor form seeks to the
+beginning and truncates the file first.
 
-返回结果:
-* Integer, 实际写入的字节数
-
-opt 指定写入文本的编码，缺省为 utf8。
-
---------------------------
-**创建文件，并写入内容**
-
-```JavaScript
-static Integer fs.writeFile(String fname,
-    String data,
-    Object options) async;
-```
-
-调用参数:
-* fname: String, 指定文件名
-* data: String, 指定要写入的数据
-* options: Object, 指定写入选项
-
-返回结果:
-* Integer, 实际写入的字节数
-
-options 支持的选项如下：
-
-```JavaScript
-{
-    "encoding": "utf8" // specify the encoding, default is utf8.
-}
-```
+fname may be the file name, an integer file descriptor, or a [FileHandle](../../object/ifs/FileHandle.md) [object](../../object/ifs/object.md).
 
 --------------------------
 ### appendFile
-**创建二进制文件，并以追加方式写入内容**
+**Appends content to a file, by its file descriptor or by its name**
 
 ```JavaScript
-static Integer fs.appendFile(String fname,
-    Buffer data) async;
+static Integer fs.appendFile(FileHandle | String | Integer fname,
+    Buffer | String data,
+    Object | String options = "") async;
 ```
 
-调用参数:
-* fname: String, 指定文件名
-* data: [Buffer](../../object/ifs/Buffer.md), 指定要写入的二进制数据
+Parameters:
+* fname: [FileHandle](../../object/ifs/FileHandle.md) | String | Integer, the file to append to
+* data: [Buffer](../../object/ifs/Buffer.md) | String, the data to write
+* options: Object | String, the [encoding](encoding.md) or the write options
 
-返回结果:
-* Integer, 实际写入的字节数
+Returns:
+* Integer, the number of bytes actually written
 
-文件不存在时自动创建。
+The file is created when it does not exist. options is the [encoding](encoding.md) of the data to append; an options [object](../../object/ifs/object.md) carries the write options instead:
+
+```JavaScript
+// fragment: options
+({
+    "encoding": "utf8", // specify the encoding of string data. Default: utf8
+    "mode": 0666, // specify the file mode. Default: 0666
+    "flag": "a" // specify the open flag. Default: a
+})
+```
+
+Consistent with Node.js, `flag` defaults to 'a' (append) and may be 'w'/'wx'/'ax' and so on. The [encoding](encoding.md) of an options [object](../../object/ifs/object.md) only validates the label, the data is appended as it is; a file descriptor ignores the options [object](../../object/ifs/object.md) and appends string data as utf8, at the current position of the descriptor rather than necessarily at the end of the file.
+
+fname may be the file name, an integer file descriptor, or a [FileHandle](../../object/ifs/FileHandle.md) [object](../../object/ifs/object.md).
 
 --------------------------
 ### setZipFS
-**设置 [zip](zip.md) 虚拟文件映射**
+**Sets a [zip](zip.md) virtual file mapping**
 
 ```JavaScript
 static fs.setZipFS(String fname,
-    Buffer data);
+    Buffer | String data);
 ```
 
-调用参数:
-* fname: String, 指定映射路径
-* data: [Buffer](../../object/ifs/Buffer.md), 指定映射的 [zip](zip.md) 文件数据
+Parameters:
+* fname: String, the mapping [path](path.md), a string is encoded as utf8
+* data: [Buffer](../../object/ifs/Buffer.md) | String, the [zip](zip.md) data to map
 
-将 [zip](zip.md) 文件数据映射到指定路径，之后对该路径的文件访问均从映射的 [zip](zip.md) 中读取。
+The [zip](zip.md) data is mapped onto the given [path](path.md); file accesses to that [path](path.md) are then read from the mapped [zip](zip.md). Entries inside the [zip](zip.md) are reached by appending `$` to the mapping [path](path.md), for example `/archive.zip$/dir/file.txt`.
+
+data may be a [Buffer](../../object/ifs/Buffer.md) holding the [zip](zip.md), or a string; a string is encoded as utf8.
 
 --------------------------
 ### clearZipFS
-**清除 [zip](zip.md) 虚拟文件映射**
+**Clears [zip](zip.md) virtual file mappings**
 
 ```JavaScript
 static fs.clearZipFS(String fname = "");
 ```
 
-调用参数:
-* fname: String, 指定映射路径，缺省清除全部缓存
+Parameters:
+* fname: String, the mapping [path](path.md), all caches are cleared by default
+
+When fname is omitted every mapping is cleared; afterwards accesses to those paths fall back
+to the real file system.
 
 --------------------------
 ### watch
-**观察一个文件, 返回对应的 watcher 对象**
+**Watches a file and returns the corresponding watcher [object](../../object/ifs/object.md)**
 
 ```JavaScript
 static FSWatcher fs.watch(String fname);
 ```
 
-调用参数:
-* fname: String, 指定要观察的文件对象
+Parameters:
+* fname: String, the file to watch
 
-返回结果:
-* [FSWatcher](../../object/ifs/FSWatcher.md), [FSWatcher](../../object/ifs/FSWatcher.md) 对象
+Returns:
+* [FSWatcher](../../object/ifs/FSWatcher.md), the [FSWatcher](../../object/ifs/FSWatcher.md) [object](../../object/ifs/object.md)
+
+Equivalent to watch(fname, {}, callback) without a callback; attach the handler with
+`watcher.on('change', ...)` or pass it to another overload.
+
+The options [object](../../object/ifs/object.md) supports:
+
+```JavaScript
+// fragment: options
+({
+    "persistent": true, // keep the process running while files are watched
+    "recursive": false, // watch subdirectories too, false by default
+    "encoding": "utf8", // file name encoding; 'buffer' passes a Buffer
+})
+```
+
+On Linux the recursive option is only stable on win32/darwin; it is forwarded to the uv
+backend but the handler may be invoked at times you do not expect. Use watchFile when the
+platform notification service is unreliable.
+
+Example — watch a directory and stop after the first change:
+
+```JavaScript
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-watch-'));
+let closed = false;
+const watcher = fs.watch(dir, (eventType, filename) => {
+    console.log(eventType, filename);
+    if (closed) return;
+    closed = true;
+    watcher.close();
+    fs.rmSync(dir, {
+        recursive: true,
+        force: true
+    });
+});
+fs.writeFile(path.join(dir, 'trigger.txt'), 'x');
+```
 
 --------------------------
-**观察一个文件, 返回对应的 watcher 对象**
+**Watches a file and returns the corresponding watcher [object](../../object/ifs/object.md)**
 
 ```JavaScript
 static FSWatcher fs.watch(String fname,
-    Function callback);
+    Function(String eventType, String | Buffer filename) callback);
 ```
 
-调用参数:
-* fname: String, 指定要观察的文件对象
-* callback: Function, `(evtType: 'change' | 'rename', filename: string) => any` 当文件对象发生变化时的处理回调
+Parameters:
+* fname: String, the file to watch
+* callback: Function(String eventType, String | [Buffer](../../object/ifs/Buffer.md) filename), `(evtType: 'change' | 'rename', filename: string) => any` the handler called when the file changes
 
-返回结果:
-* [FSWatcher](../../object/ifs/FSWatcher.md), [FSWatcher](../../object/ifs/FSWatcher.md) 对象
+Returns:
+* [FSWatcher](../../object/ifs/FSWatcher.md), the [FSWatcher](../../object/ifs/FSWatcher.md) [object](../../object/ifs/object.md)
+
+The callback receives `(eventType, filename)`, where eventType is 'change' or 'rename' and
+filename may be null when the platform does not report it; it is called for every event.
 
 --------------------------
-**观察一个文件, 返回对应的 watcher 对象**
+**Watches a file and returns the corresponding watcher [object](../../object/ifs/object.md)**
 
 ```JavaScript
 static FSWatcher fs.watch(String fname,
     Object options);
 ```
 
-调用参数:
-* fname: String, 指定要观察的文件对象
-* options: Object, 观察选项
+Parameters:
+* fname: String, the file to watch
+* options: Object, the watch options
 
-返回结果:
-* [FSWatcher](../../object/ifs/FSWatcher.md), [FSWatcher](../../object/ifs/FSWatcher.md) 对象
+Returns:
+* [FSWatcher](../../object/ifs/FSWatcher.md), the [FSWatcher](../../object/ifs/FSWatcher.md) [object](../../object/ifs/object.md)
 
-options 支持的选项如下：
-
-```JavaScript
-{
-    "persistent": true, // specify whether the process should continue to run as long as files are being watched
-    "recursive": false, // specify whether all subdirectories should be watched or only the current directory
-    "encoding": "utf8", // specify the encoding, default is utf8.
-}
-```
+The options (persistent, recursive, [encoding](encoding.md)) are described on the first overload.
 
 --------------------------
-**观察一个文件, 返回对应的 watcher 对象**
+**Watches a file and returns the corresponding watcher [object](../../object/ifs/object.md)**
 
 ```JavaScript
 static FSWatcher fs.watch(String fname,
     Object options,
-    Function callback);
+    Function(String eventType, String | Buffer filename) callback);
 ```
 
-调用参数:
-* fname: String, 指定要观察的文件对象
-* options: Object, 观察选项
-* callback: Function, `(evtType: 'change' | 'rename', filename: string) => any` 当文件对象发生变化时的处理回调
+Parameters:
+* fname: String, the file to watch
+* options: Object, the watch options
+* callback: Function(String eventType, String | [Buffer](../../object/ifs/Buffer.md) filename), `(evtType: 'change' | 'rename', filename: string) => any` the handler called when the file changes
 
-返回结果:
-* [FSWatcher](../../object/ifs/FSWatcher.md), [FSWatcher](../../object/ifs/FSWatcher.md) 对象
+Returns:
+* [FSWatcher](../../object/ifs/FSWatcher.md), the [FSWatcher](../../object/ifs/FSWatcher.md) [object](../../object/ifs/object.md)
 
-options 支持的选项如下：
+options supports the following options:
 
 ```JavaScript
-{
-    "persistent": true, // specify whether the process should continue to run as long as files are being watched
-    "recursive": false, // specify whether all subdirectories should be watched or only the current directory
-    "encoding": "utf8", // specify the encoding, default is utf8.
-}
+// fragment: options
+({
+    "persistent": true, // keep the process running while files are watched
+    "recursive": false, // watch subdirectories too, false by default
+    "encoding": "utf8", // file name encoding; 'buffer' passes a Buffer
+})
 ```
 
 --------------------------
 ### watchFile
-**观察一个文件, 返回对应的 [StatsWatcher](../../object/ifs/StatsWatcher.md) 对象**
+**Watches a file and returns the corresponding [StatsWatcher](../../object/ifs/StatsWatcher.md) [object](../../object/ifs/object.md)**
 
 ```JavaScript
 static StatsWatcher fs.watchFile(String fname,
-    Function callback);
+    Function(Stat curStats, Stat prevStats) callback);
 ```
 
-调用参数:
-* fname: String, 指定要观察的文件对象
-* callback: Function, `(curStats: Stats, prevStats: Stats) => any` 当文件对象的 stats 发生变化时的处理回调
+Parameters:
+* fname: String, the file to watch
+* callback: Function([Stat](../../object/ifs/Stat.md) curStats, [Stat](../../object/ifs/Stat.md) prevStats), `(curStats: Stats, prevStats: Stats) => any` the handler called when the stats of the file change
 
-返回结果:
-* [StatsWatcher](../../object/ifs/StatsWatcher.md), [StatsWatcher](../../object/ifs/StatsWatcher.md) 对象
+Returns:
+* [StatsWatcher](../../object/ifs/StatsWatcher.md), the [StatsWatcher](../../object/ifs/StatsWatcher.md) [object](../../object/ifs/object.md)
 
-周期性地检查文件状态，状态发生变化时调用回调，回调参数为变化前后的 [Stat](../../object/ifs/Stat.md) 对象。
+The file status is checked periodically; the callback is called when it changes, receiving the [Stat](../../object/ifs/Stat.md) objects before and after the change. Returns a [StatsWatcher](../../object/ifs/StatsWatcher.md) deriving from [EventEmitter](../../object/ifs/EventEmitter.md); [fs.unwatchFile](fs.md#unwatchFile)(fname) or [StatsWatcher.close](../../object/ifs/StatsWatcher.md#close)() stops watching.
+
+The options [object](../../object/ifs/object.md) supports:
+
+```JavaScript
+// fragment: options
+({
+    "persistent": true, // keep the process running while files are watched
+    "bigint": false, // accepted for Node.js compatibility, not implemented
+    "interval": 5007 // poll period in milliseconds. Default: 5007
+})
+```
+
+An interval smaller than 20 milliseconds falls back to the default.
 
 --------------------------
-**观察一个文件, 返回对应的 [StatsWatcher](../../object/ifs/StatsWatcher.md) 对象**
+**Watches a file and returns the corresponding [StatsWatcher](../../object/ifs/StatsWatcher.md) [object](../../object/ifs/object.md)**
 
 ```JavaScript
 static StatsWatcher fs.watchFile(String fname,
     Object options,
-    Function callback);
+    Function(Stat curStats, Stat prevStats) callback);
 ```
 
-调用参数:
-* fname: String, 指定要观察的文件对象
-* options: Object, 观察选项
-* callback: Function, `(curStats: Stats, prevStats: Stats) => any` 当文件对象的 stats 发生变化时的处理回调
+Parameters:
+* fname: String, the file to watch
+* options: Object, the watch options
+* callback: Function([Stat](../../object/ifs/Stat.md) curStats, [Stat](../../object/ifs/Stat.md) prevStats), `(curStats: Stats, prevStats: Stats) => any` the handler called when the stats of the file change
 
-返回结果:
-* [StatsWatcher](../../object/ifs/StatsWatcher.md), [StatsWatcher](../../object/ifs/StatsWatcher.md) 对象
+Returns:
+* [StatsWatcher](../../object/ifs/StatsWatcher.md), the [StatsWatcher](../../object/ifs/StatsWatcher.md) [object](../../object/ifs/object.md)
 
-options 支持的选项如下：
-
-```JavaScript
-{
-    "persistent": true, // specify whether the process should continue to run as long as files are being watched
-    "bigint": false, // specify whether the numeric values in the returned Stat objects should be bigint. Default: false
-    "interval": 100 // specify the time interval in milliseconds at which the file's stats should be polled. Default: 100
-}
-```
+The options (persistent, bigint, interval) are described on the first overload; watchFile
+uses stat polling, [fs.watch](fs.md#watch) is preferred when the platform notification service is available.
 
 --------------------------
 ### unwatchFile
-**从观察 fname 的 [StatsWatcher](../../object/ifs/StatsWatcher.md) 中移除所有观察事件的回调**
+**Removes all watch event handlers from the [StatsWatcher](../../object/ifs/StatsWatcher.md) watching fname**
 
 ```JavaScript
 static fs.unwatchFile(String fname);
 ```
 
-调用参数:
-* fname: String, 指定要观察的文件对象
+Parameters:
+* fname: String, the file to watch
 
-没有正在监视该文件时不产生任何影响。
+Has no effect when the file is not being watched.
 
 --------------------------
-**从观察 fname 的 [StatsWatcher](../../object/ifs/StatsWatcher.md) 的观察事件回调中移除 `callback` 回调**
+**Removes the `callback` handler from the watch event handlers of the [StatsWatcher](../../object/ifs/StatsWatcher.md) watching fname**
 
 ```JavaScript
 static fs.unwatchFile(String fname,
-    Function callback);
+    Function(Stat curStats, Stat prevStats) callback);
 ```
 
-调用参数:
-* fname: String, 指定要观察的文件对象
-* callback: Function, 要移除的回调
+Parameters:
+* fname: String, the file to watch
+* callback: Function([Stat](../../object/ifs/Stat.md) curStats, [Stat](../../object/ifs/Stat.md) prevStats), the handler to remove
 
-即便 callback 不再 [StatsWatcher](../../object/ifs/StatsWatcher.md) 的观察事件回调中也不会报错。
+No error is raised even when callback is not among the watch event handlers of the [StatsWatcher](../../object/ifs/StatsWatcher.md).
 
-## 常量
+## Constants
         
 ### SEEK_SET
-**seek 方式常量，移动到绝对位置**
+**Seek method constant, moves to an absolute position**
 
 ```JavaScript
 const fs.SEEK_SET = 0;
@@ -1334,7 +1760,7 @@ const fs.SEEK_SET = 0;
 
 --------------------------
 ### SEEK_CUR
-**seek 方式常量，移动到当前位置的相对位置**
+**Seek method constant, moves relative to the current position**
 
 ```JavaScript
 const fs.SEEK_CUR = 1;
@@ -1342,9 +1768,41 @@ const fs.SEEK_CUR = 1;
 
 --------------------------
 ### SEEK_END
-**seek 方式常量，移动到文件结尾的相对位置**
+**Seek method constant, moves relative to the end of the file**
 
 ```JavaScript
 const fs.SEEK_END = 2;
+```
+
+--------------------------
+### F_OK
+**[File](../../object/ifs/File.md) existence check constant, see [fs_constants](fs_constants.md)**
+
+```JavaScript
+const fs.F_OK = 0;
+```
+
+--------------------------
+### R_OK
+**Read permission check constant, see [fs_constants](fs_constants.md)**
+
+```JavaScript
+const fs.R_OK = 4;
+```
+
+--------------------------
+### W_OK
+**Write permission check constant, see [fs_constants](fs_constants.md)**
+
+```JavaScript
+const fs.W_OK = 2;
+```
+
+--------------------------
+### X_OK
+**Execute permission check constant, see [fs_constants](fs_constants.md)**
+
+```JavaScript
+const fs.X_OK = 1;
 ```
 

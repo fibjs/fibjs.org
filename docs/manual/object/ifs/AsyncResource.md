@@ -1,10 +1,43 @@
-# 对象 AsyncResource
-AsyncResource 是用于嵌入异步上下文跟踪的类。
+# Object AsyncResource
+AsyncResource captures the asynchronous context at construction time so it can be restored later; it is the building block for wrapping callback-based APIs whose callbacks must run in the context of the operation that started them
 
-扩展此类时，在构造时捕获的异步上下文会被保留，并在调用 `runInAsyncScope` 或 `bind` 时恢复。
-这对于基于回调的 API 特别有用，其中回调必须在发起操作的资源的异步上下文中运行。
+Extend this class (or use the static `bind`) when an operation outlives the context that created
+it: store the context at construction, then run the completion callback through
+`runInAsyncScope`. This is how a database query, a worker task or an HTTP handler can restore the
+[AsyncLocalStorage](AsyncLocalStorage.md) store of the request that scheduled it, even when the callback runs in a
+different fiber or after an await.
 
-示例：
+The class records a diagnostic `(asyncId, triggerAsyncId)` pair and the captured context; fibjs
+does not expose the Node.js [async_hooks](../../module/ifs/async_hooks.md) hook callbacks, so the ids are informational and
+`emitDestroy` is a no-op.
+
+Concepts:
+
+- **Resource context**: the constructor captures the async context of the creating fiber; the
+  capture is restored around `runInAsyncScope` and `bind` calls. An instance created outside any
+  [AsyncLocalStorage](AsyncLocalStorage.md) context keeps an empty context and clears the store while it runs.
+- **Propagation into user-created resources**: a manually created resource is the way to give
+  context to code that fibjs cannot instrument by itself (a third-party event source, a poll
+  loop, a queue); bind the completion [path](../../module/ifs/path.md) once, and all [AsyncLocalStorage](AsyncLocalStorage.md) instances propagate
+  with it.
+- **Node.js comparison**: `new AsyncResource(type, options)`, `runInAsyncScope`, `bind`, the
+  static `bind`, `asyncId` and `triggerAsyncId` match Node.js; `requireManualDestroy` is accepted
+  but ignored because there are no destroy hooks, and without an explicit triggerAsyncId fibjs
+  records 0 while Node.js records the current executionAsyncId.
+
+Import:
+
+```JavaScript
+const {
+    AsyncResource
+} = require('async_hooks');
+```
+
+Obtained from:
+- `new AsyncResource(type[, options])` — create a resource around your own operation;
+- `AsyncResource.bind(fn[, type[, thisArg]])` — the same capture without an explicit instance.
+
+Example 1 — a callback-based API that must restore the request context:
 
 ```JavaScript
 const {
@@ -24,18 +57,54 @@ class RequestHandler extends AsyncResource {
     }
 }
 
-als.run({
+const handler = als.run({
     requestId: '123'
 }, () => {
-    const handler = new RequestHandler((err, data) => {
-        console.log(als.getStore().requestId); // 输出: 123
-    });
-    // 稍后，在异步上下文之外：
-    handler.onComplete('ok');
+    return new RequestHandler((err, data) => console.log(als.getStore().requestId, data));
+});
+
+// the callback runs outside the run() scope but still sees the request context
+handler.onComplete('ok'); // 123 ok
+```
+
+Example 2 — bind an event callback to the context that subscribed it:
+
+```JavaScript
+const {
+    AsyncResource,
+    AsyncLocalStorage
+} = require('async_hooks');
+const als = new AsyncLocalStorage();
+
+const subscription = als.run({
+    topic: 'news'
+}, () => {
+    return {
+        onEvent: AsyncResource.bind((value) => {
+            console.log(als.getStore().topic, value); // news update
+        })
+    };
+});
+
+subscription.onEvent('update');
+```
+
+Example 3 — a resource restores its context in a later immediate:
+
+```JavaScript
+const {
+    AsyncResource,
+    AsyncLocalStorage
+} = require('async_hooks');
+const als = new AsyncLocalStorage();
+
+als.run('captured', () => {
+    const resource = new AsyncResource('Job');
+    setImmediate(() => resource.runInAsyncScope(() => console.log(als.getStore())));
 });
 ```
 
-## 继承关系
+## Inheritance
 ```dot
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
@@ -47,138 +116,243 @@ digraph {
 }
 ```
 
-## 构造函数
+## Constructors
         
 ### AsyncResource
-**创建一个新的 AsyncResource 实例**
+**Creates a new AsyncResource instance**
 
 ```JavaScript
 new AsyncResource(String type,
     Value triggerAsyncId = {});
 ```
 
-调用参数:
-* type: String, 异步资源的类型，用于诊断信息
-* triggerAsyncId: Value, 可选。数字类型的 triggerAsyncId 或包含以下属性的选项对象：
+Parameters:
+* type: String, the type of the async resource, used for diagnostics
+* triggerAsyncId: Value, optional. A numeric triggerAsyncId or an options [object](object.md) containing the
 
-## 静态函数
-        
-### bind
-**静态方法，将函数绑定到当前异步上下文**
+The constructor captures the asynchronous context of the calling fiber, so any callback run
+through `runInAsyncScope` or through the bound function sees the [AsyncLocalStorage](AsyncLocalStorage.md) stores of
+the creation point.
+
+options supports the following options:
 
 ```JavaScript
-static Function AsyncResource.bind(Function fn,
+// fragment: options
+({
+    "triggerAsyncId": 0, // id of the triggering resource, informational
+    "requireManualDestroy": false // accepted for Node.js compatibility, ignored by fibjs
+})
+```
+
+A number may be passed directly as the second argument instead of the options [object](object.md). type is
+required and must be a string; a missing or non-string type throws a TypeError.
+
+## Static Methods
+        
+### bind
+**Static method that binds a function to the current asynchronous context**
+
+```JavaScript
+static Function(...args) => Value AsyncResource.bind(Function(...args) => Value fn,
     String type = "bound-anonymous-fn",
     Value thisArg = undefined);
 ```
 
-调用参数:
-* fn: Function, 要绑定的函数
-* type: String, 可选的内部 AsyncResource 类型字符串。默认为 "bound-anonymous-fn"。
-* thisArg: Value, 可选的函数 `this` 值
+Parameters:
+* fn: Function(...args) => Value, the function to bind
+* type: String, optional internal AsyncResource type string. Default is "bound-anonymous-fn".
+* thisArg: Value, optional `this` value of the function
 
-返回结果:
-* Function, 返回绑定后的函数
+Returns:
+* Function(...args) => Value, returns the bound function
 
-创建一个内部 AsyncResource 并将函数绑定到它。
+Creates an internal AsyncResource with the given type, then binds fn to the context captured at
+this call. It is equivalent to creating a resource and calling its `bind` method, without
+keeping the instance; the returned function also exposes the internal resource through the
+`asyncResource` property.
 
-## 成员函数
+Example — capture the current context and reuse it later:
+
+```JavaScript
+const {
+    AsyncResource,
+    AsyncLocalStorage
+} = require('async_hooks');
+const als = new AsyncLocalStorage();
+
+const read = als.run('request-1', () => AsyncResource.bind(() => als.getStore()));
+als.run('request-2', () => console.log(read())); // request-1
+```
+
+## Methods
         
 ### asyncId
-**获取分配给此资源的唯一异步 ID**
+**Gets the unique async id assigned to this resource**
 
 ```JavaScript
 Number AsyncResource.asyncId();
 ```
 
-返回结果:
-* Number, 返回数字类型的异步 ID
+Returns:
+* Number, returns the numeric async id
+
+Ids come from a [process](../../module/ifs/process.md)-wide counter and are unique within the [process](../../module/ifs/process.md); the first resource
+created gets 1. In Node.js the id is the async id allocated by the async hooks subsystem, so
+the values differ, but they are used in the same informational way.
 
 --------------------------
 ### triggerAsyncId
-**获取此资源的触发异步 ID**
+**Gets the trigger async id of this resource**
 
 ```JavaScript
 Number AsyncResource.triggerAsyncId();
 ```
 
-返回结果:
-* Number, 返回数字类型的触发异步 ID
+Returns:
+* Number, returns the numeric trigger async id
+
+The value is the second constructor argument, or the triggerAsyncId option inside it. It
+records what created the resource for diagnostics; fibjs defaults to 0 when the argument is
+omitted, while Node.js defaults to the current executionAsyncId().
 
 --------------------------
 ### runInAsyncScope
-**在此资源的异步上下文中执行函数**
+**Executes a function in the asynchronous context of this resource**
 
 ```JavaScript
-Value AsyncResource.runInAsyncScope(Function fn,
+Value AsyncResource.runInAsyncScope(Function(...args) => Value fn,
     Value thisArg = undefined,
     ...args);
 ```
 
-调用参数:
-* fn: Function, 要执行的函数
-* thisArg: Value, 回调的 `this` 值。默认为 undefined。
-* args: ..., 传递给回调的额外参数
+Parameters:
+* fn: Function(...args) => Value, the function to execute
+* thisArg: Value, the `this` value of the callback. Default is undefined.
+* args: ..., additional parameters passed to the callback
 
-返回结果:
-* Value, 返回回调函数的返回值
+Returns:
+* Value, returns the return value of the callback function
 
-回调函数在构造此 AsyncResource 时激活的异步上下文中调用，
-允许 [AsyncLocalStorage](AsyncLocalStorage.md) 存储被正确恢复。
+Saves the current context, restores the context captured when this AsyncResource was
+constructed, calls fn with thisArg as `this` and the extra args, then restores the previous
+context; the return value of fn is returned. When thisArg is undefined, the function is called
+with the [global](../../module/ifs/global.md) [object](object.md) as `this`, matching the fibjs call of a plain function.
+
+If fn throws, the error propagates after the context is restored. [AsyncLocalStorage](AsyncLocalStorage.md) stores of
+the captured context are visible inside fn and in the asynchronous operations it creates.
+
+Example — call a stored callback later while restoring its original context:
+
+```JavaScript
+const {
+    AsyncResource,
+    AsyncLocalStorage
+} = require('async_hooks');
+const als = new AsyncLocalStorage();
+
+const resource = als.run({
+    id: 7
+}, () => new AsyncResource('Later'));
+console.log(als.getStore()); // undefined
+console.log(resource.runInAsyncScope(() => als.getStore().id)); // 7
+```
 
 --------------------------
 ### emitDestroy
-**将此资源标记为已销毁**
+**Marks this resource as destroyed**
 
 ```JavaScript
 AsyncResource AsyncResource.emitDestroy();
 ```
 
-返回结果:
-* AsyncResource, 返回此 AsyncResource 的引用
+Returns:
+* AsyncResource, returns a reference to this AsyncResource
 
-在 fibjs 中这是一个空操作，为兼容既有 API 调用而保留。
+In fibjs this is a no-op kept for Node.js compatibility: fibjs does not run [async_hooks](../../module/ifs/async_hooks.md)
+destroy hooks, and calling it more than once does not raise an error. It returns the resource
+itself so calls can be chained.
 
 --------------------------
 ### bind
-**绑定一个函数使其在此资源的异步作用域内运行**
+**Binds a function to run within the asynchronous scope of this resource**
 
 ```JavaScript
-Function AsyncResource.bind(Function fn,
+Function(...args) => Value AsyncResource.bind(Function(...args) => Value fn,
     Value thisArg = undefined);
 ```
 
-调用参数:
-* fn: Function, 要绑定的函数
-* thisArg: Value, 可选的函数 `this` 值
+Parameters:
+* fn: Function(...args) => Value, the function to bind
+* thisArg: Value, optional `this` value of the function
 
-返回结果:
-* Function, 返回绑定后的函数
+Returns:
+* Function(...args) => Value, returns the bound function
 
-返回的函数将有一个 `asyncResource` 属性引用此 AsyncResource 实例。
+Returns a new function that restores the context of this resource (captured at construction),
+calls fn (with thisArg as `this` when given, otherwise the `this` of the bound call) and
+returns its result. The bound function carries an `asyncResource` property referencing this
+instance, which is a fibjs extension.
+
+Example — bind a completion callback and call it outside the context:
+
+```JavaScript
+const {
+    AsyncResource
+} = require('async_hooks');
+
+const resource = new AsyncResource('Task');
+const done = resource.bind((value) => value * 2, null);
+console.log(done(21)); // 42
+console.log(done.asyncResource === resource); // true
+```
 
 --------------------------
 ### toString
-**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
+**Returns the string form of the [object](object.md)**
 
 ```JavaScript
 String AsyncResource.toString();
 ```
 
-返回结果:
-* String, 返回对象的字符串表示
+Returns:
+* String, returns the string form of the [object](object.md)
+
+The base implementation reports an error: a native [object](object.md) has no implicit
+text form, and only the classes whose value can be written as a string
+override the member. [Buffer](Buffer.md) returns its content decoded with the given
+[encoding](../../module/ifs/encoding.md), [HttpCookie](HttpCookie.md) returns "name=value", and so on; an override commonly
+accepts optional arguments ([Buffer.toString](Buffer.md#toString) takes [encoding](../../module/ifs/encoding.md), start and
+end) that are not part of this declaration.
+
+Calling the member on a class that does not override it throws
+"<Class>: the [object](object.md) can not be converted to string.", which is the
+behavior to rely on when probing whether a value has a string form. See
+toJSON for the serialization hook.
 
 --------------------------
 ### toJSON
-**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
+**Returns the JSON representation of the [object](object.md)**
 
 ```JavaScript
 Value AsyncResource.toJSON(String key = "");
 ```
 
-调用参数:
-* key: String, 未使用
+Parameters:
+* key: String, the property name of the value being serialized
 
-返回结果:
-* Value, 返回包含可 JSON 序列化的值
+Returns:
+* Value, returns the JSON-serializable value
+
+JSON.stringify(value) calls value.toJSON(key) when the member exists and
+serializes the returned value in its place; the key argument carries the
+property name of the value inside its parent [object](object.md) (an empty string at
+the top level) and may be used to build a keyed form. The base
+implementation returns a plain [object](object.md) holding the readable properties of
+the instance, so a native [object](object.md) serializes without per-class code; a
+class with a portable shape such as [Buffer](Buffer.md) overrides it, and a JavaScript
+class may override it in the same way.
+
+The member is normally reached through JSON.stringify rather than called
+directly; calling it returns the same value JSON.stringify would
+serialize.
 

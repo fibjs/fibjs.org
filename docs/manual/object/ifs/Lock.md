@@ -1,36 +1,103 @@
-# 对象 Lock
-Lock 是一个内建对象，它可以用来控制纤程并发访问, 可以通过一个纤程获取锁，来阻止其他纤程同时获取。Lock 可以通过 [coroutine.Lock](../../module/ifs/coroutine.md#Lock)() 函数创建
+# Object Lock
+A reentrant mutual-exclusion lock between fibers
 
-常见情况是，在一个多线程的场景中，当多个线程都想修改同一份数据时，就会出现数据不一致。比如，两个线程都想修改同一份数据中的同一个值，在控制不当的情况下，可能会产生结果的不一致。这时使用 Lock 对象，就可以实现对同一份数据的互斥访问。
+A Lock is owned by one fiber at a time. `acquire` takes ownership and suspends the
+other fibers that ask for it until the owner calls `release`; a fiber that already
+owns the lock may acquire it again, and it must then release it as many times as it
+acquired. Locks protect state that is shared between fibers, the role a mutex plays in
+a threaded program.
 
-下面是一个简单的例子，使用 Lock 实现两个纤程交替执行，并且共享变量 v 的值不为 300。
+Concepts:
+
+- **What a lock protects**: JavaScript statements are never interleaved, but a fiber
+can be suspended between two of them — at `sleep`, at I/O, at `join`, at `wait` and at
+`acquire` itself. Any read-modify-write sequence that contains such a suspension point
+can race with another fiber, so it must be wrapped in acquire/release.
+- **Blocking**: `acquire()` suspends the calling fiber until the lock is free, and
+`acquire(false)` returns false immediately when the lock is taken by another fiber
+instead of waiting. The `blocking` argument defaults to true.
+- **Reentrancy**: the same fiber may acquire the lock several times; only the matching
+number of `release` calls frees it. From the owning fiber `acquire(false)` therefore
+returns true even while other fibers are waiting.
+- **Ownership**: `release` must be called by the owning fiber. Ownership is verified
+only in debug builds, so in a release build releasing a lock you do not own silently
+corrupts its state instead of throwing; keep acquire/release balanced, preferably with
+`try`/`finally`.
+- **Diagnostics**: `count()` reports how many fibers are blocked in acquire — not the
+recursion depth — so it is safe for monitoring but must not be used for
+synchronization.
+- **Scope**: a lock orders the fibers of one isolate only; code running in another
+[Worker](Worker.md) is not affected (use [worker_threads](../../module/ifs/worker_threads.md) messages or `Atomics` for that).
+- **Related primitives**: use the [Semaphore](Semaphore.md) class when permits have to be counted, for
+example to limit concurrency; use the [Condition](Condition.md) class to wait for a state change
+instead of polling; the [Event](Event.md) class is a one-shot broadcast gate and provides no
+mutual exclusion.
+- **Node.js**: Node.js has no fiber-level lock. The closest concepts are `Atomics` in
+workers and the browser Web Locks API, neither of which is available in fibjs on the
+same objects.
+
+Obtained from:
+- `new [coroutine.Lock](../../module/ifs/coroutine.md#Lock)()` — creates a lock owned by no fiber.
+
+Example 1 — a critical section makes the counter update atomic:
 
 ```JavaScript
-var coroutine = require("coroutine")
+const coroutine = require('coroutine');
 
-var l = new coroutine.Lock()
-var v = 100
+const lock = new coroutine.Lock();
+let value = 0;
 
-function f() {
-    l.acquire()
-    v = 200
-    coroutine.sleep(1)
-    v = 300
-    l.release()
+function bump() {
+    lock.acquire();
+    const current = value;
+    coroutine.sleep(1); // a suspension point inside the critical section
+    value = current + 1;
+    lock.release();
 }
-coroutine.start(f)
 
-coroutine.sleep(1)
+const fibers = [];
+for (let i = 0; i < 4; i++)
+    fibers.push(coroutine.start(bump));
 
-l.acquire()
-assert.notEqual(300, v)
-assert.equal(200, v)
-l.release()
+fibers.forEach((f) => f.join());
+console.log('value:', value);
 ```
 
-首先创建了一个Lock对象，并进入纤程 f，获取锁后修改变量 v，然后释放锁。在主线程中，先等待纤程 f 完成……当纤程 f 释放了 Lock 后，主线程开始获取 Lock，确保变量 v 的值被改为 300。
+will output:
+```sh
+value: 4
+```
 
-## 继承关系
+Example 2 — a blocked waiter and the waiter count:
+
+```JavaScript
+const coroutine = require('coroutine');
+
+const lock = new coroutine.Lock();
+lock.acquire();
+
+const child = coroutine.start(function() {
+    lock.acquire(); // blocks until the main fiber releases
+    console.log('child acquired');
+    lock.release();
+});
+
+coroutine.sleep(5);
+console.log('waiters:', lock.count());
+
+lock.release();
+child.join();
+console.log('child done');
+```
+
+will output:
+```sh
+waiters: 1
+child acquired
+child done
+```
+
+## Inheritance
 ```dot
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
@@ -48,79 +115,141 @@ digraph {
 }
 ```
 
-## 构造函数
+## Constructors
         
 ### Lock
-**构造函数**
+**Creates a lock owned by no fiber**
 
 ```JavaScript
 new Lock();
 ```
 
-## 成员函数
+The lock starts free, is reentrant for the fiber that acquires it and holds no name or options.
+
+## Methods
         
 ### acquire
-**获取锁的拥有权**
+**Acquires the lock**
 
 ```JavaScript
 Boolean Lock.acquire(Boolean blocking = true) async;
 ```
 
-调用参数:
-* blocking: Boolean, 指定是否等待，为 true 时等待，缺省为真
+Parameters:
+* blocking: Boolean, true to wait for the lock, false to return immediately
 
-返回结果:
-* Boolean, 返回是否成功获取锁，为 true 表示成功获取
+Returns:
+* Boolean, true when the lock was acquired, false only with `blocking` false
 
-acquire 方法用于获取锁的拥有权，当锁处于可获取状态时，此方法立即返回 true。
+When the lock is free the call returns true at once. When another fiber owns it and
+`blocking` is true (the default), the calling fiber is suspended until that fiber
+releases the lock, and the call then returns true; when `blocking` is false the call
+returns false immediately without waiting. The owner may acquire the lock again, so
+`acquire(false)` from the owning fiber returns true even if other fibers are waiting.
+The argument is coerced to boolean, and `acquireAsync()` is the promise form that does
+not block the calling fiber.
 
-当锁不可获取，且 blocking 为 true，则当前纤程进入休眠，当其他纤程释放锁后，此方法返回 true。
+Example — the same fiber may re-enter the lock:
 
-当锁不可获取，且 blocking 为 false，则方法返回 false。
+```JavaScript
+const coroutine = require('coroutine');
+
+const lock = new coroutine.Lock();
+
+console.log('first acquire:', lock.acquire());
+console.log('acquire again in the same fiber:', lock.acquire());
+lock.release();
+console.log('after one release, acquire(false):', lock.acquire(false));
+lock.release();
+lock.release();
+
+console.log('fibers waiting:', lock.count());
+```
+
+will output:
+```sh
+first acquire: true
+acquire again in the same fiber: true
+after one release, acquire(false): true
+fibers waiting: 0
+```
 
 --------------------------
 ### release
-**释放锁的拥有权**
+**Releases the lock**
 
 ```JavaScript
 Lock.release();
 ```
 
-此方法将释放对锁的拥有权，如果当前纤程未拥有锁，此方法将抛出错误。
+Removes one level of ownership from the calling fiber; the lock becomes free for other
+fibers when the last level is released, and one of the waiting fibers is resumed.
+Releasing a lock that the calling fiber does not own is a programming error: debug
+builds abort on the assertion, while release builds silently corrupt the lock state,
+so keep the calls balanced with `try`/`finally`. The call returns undefined.
 
 --------------------------
 ### count
-**查询当前等待任务数**
+**Number of fibers blocked in acquire**
 
 ```JavaScript
 Integer Lock.count();
 ```
 
-返回结果:
-* Integer, 返回任务数
+Returns:
+* Integer, number of fibers waiting for the lock
+
+The value covers the waits on this lock only: the owning fiber and fibers that used
+`acquire(false)` are not counted, and the recursion depth of the owner is not
+reported. Use it for diagnostics and monitoring, never as a synchronization condition.
 
 --------------------------
 ### toString
-**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
+**Returns the string form of the [object](object.md)**
 
 ```JavaScript
 String Lock.toString();
 ```
 
-返回结果:
-* String, 返回对象的字符串表示
+Returns:
+* String, returns the string form of the [object](object.md)
+
+The base implementation reports an error: a native [object](object.md) has no implicit
+text form, and only the classes whose value can be written as a string
+override the member. [Buffer](Buffer.md) returns its content decoded with the given
+[encoding](../../module/ifs/encoding.md), [HttpCookie](HttpCookie.md) returns "name=value", and so on; an override commonly
+accepts optional arguments ([Buffer.toString](Buffer.md#toString) takes [encoding](../../module/ifs/encoding.md), start and
+end) that are not part of this declaration.
+
+Calling the member on a class that does not override it throws
+"<Class>: the [object](object.md) can not be converted to string.", which is the
+behavior to rely on when probing whether a value has a string form. See
+toJSON for the serialization hook.
 
 --------------------------
 ### toJSON
-**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
+**Returns the JSON representation of the [object](object.md)**
 
 ```JavaScript
 Value Lock.toJSON(String key = "");
 ```
 
-调用参数:
-* key: String, 未使用
+Parameters:
+* key: String, the property name of the value being serialized
 
-返回结果:
-* Value, 返回包含可 JSON 序列化的值
+Returns:
+* Value, returns the JSON-serializable value
+
+JSON.stringify(value) calls value.toJSON(key) when the member exists and
+serializes the returned value in its place; the key argument carries the
+property name of the value inside its parent [object](object.md) (an empty string at
+the top level) and may be used to build a keyed form. The base
+implementation returns a plain [object](object.md) holding the readable properties of
+the instance, so a native [object](object.md) serializes without per-class code; a
+class with a portable shape such as [Buffer](Buffer.md) overrides it, and a JavaScript
+class may override it in the same way.
+
+The member is normally reached through JSON.stringify rather than called
+directly; calling it returns the same value JSON.stringify would
+serialize.
 

@@ -1,35 +1,93 @@
-# 对象 FormData
-FormData 是用于管理 HTTP 表单数据（multipart/form-data）的容器类，继承自 [HttpCollection](HttpCollection.md)。
+# Object FormData
+An ordered collection of form field names and values, inheriting from [HttpCollection](HttpCollection.md)
 
-FormData 提供了标准的 Web FormData API，支持多种方式初始化和操作表单字段，适用于 HTTP 文件上传、表单数据构建等场景。
+FormData implements the Web FormData API and is the value type behind form submission: the
+entries are strings or [File](File.md) objects, keep their insertion order and may repeat a name. The
+body helpers of fibjs use it directly - [http.Request](../../module/ifs/http.md#Request)#form parses a request body into one,
+[HttpMessage](HttpMessage.md)#formData does the same on any message and FormData#encode produces the wire
+representation of the collection.
 
-主要特性：
-1. 支持通过空构造、对象、已有 FormData 实例进行初始化。
-2. 支持 append、set 等方法添加和修改字段，支持文件（[Blob](Blob.md)）和文件名参数。
-3. 兼容 Web 标准 FormData 行为，允许同名字段多值、文件上传等。
+A value appended as a [Blob](Blob.md) or [File](File.md) is stored as a [File](File.md): a plain [Blob](Blob.md) becomes a [File](File.md) named
+"blob" with the current time as lastModified, a [File](File.md) keeps its name, type and lastModified.
+Every other value is converted to a string. This is the WHATWG conversion and is why file
+entries survive a round trip through encode() and parse.
 
-常见用法示例：
+Concepts:
+
+- **Fields and files**: get() returns a [File](File.md) for a file entry and a string otherwise;
+  multiple values of a name are read with getAll()/all() or the iteration helpers. Names are
+  compared case-sensitively and an empty name is allowed, both like the Web standard.
+- **Ordering**: entries keep insertion order. set() removes every old value of the name and
+  appends the new one, so the name moves to the end; append() never touches existing values.
+- **Wire formats**: encode() writes application/x-www-form-urlencoded by default and
+  multipart/form-data on request; the urlencoded form rejects file entries while the
+  multipart form generates a random boundary unless the type string carries one. The
+  parsing constructors accept the matching forms, so encode() plus a constructor is a lossless
+  round trip for names, values and file metadata.
+- **Not in the standard**: encode() is a fibjs extension (the Web FormData API has no
+  serializer), as are the string and multipart constructors; Node.js only accepts the empty
+  constructor and an iterable of pairs.
+
+Obtained from:
+- `new FormData()` — an empty collection;
+- `new FormData(init)` — fields from a urlencoded string, an [object](object.md) or another FormData;
+- `new FormData(init, boundary)` — a multipart [Buffer](Buffer.md) or [Blob](Blob.md);
+- `[http.Request](../../module/ifs/http.md#Request)#form` / `[HttpMessage](HttpMessage.md)#formData` — the parsed body of a message;
+- `FormData#encode` — the wire representation as a [Blob](Blob.md).
+
+Example 1 — build a form and read the entries back:
 
 ```JavaScript
-// Create empty form data
 const form = new FormData();
+form.append('name', 'lion');
+form.append('tag', 'a');
+form.append('tag', 'b');
+form.append('avatar', new Blob(['png'], {
+    type: 'image/png'
+}), 'avatar.png');
 
-// Initialize with object
-const form = new FormData({
-    foo: 'bar',
-    file: blob
-});
-
-// Append fields
-form.append('name', 'value');
-form.append('file', blob, 'filename.txt');
-
-// Overwrite fields
-form.set('name', 'newValue');
-form.set('file', blob2, 'file2.txt');
+console.log(form.get('name')); // lion
+console.log(form.getAll('tag')); // [ 'a', 'b' ]
+const file = form.get('avatar');
+console.log(file instanceof File); // true
+console.log(file.name, file.type, file.size); // avatar.png image/png 3
 ```
 
-## 继承关系
+Example 2 — encode as urlencoded text and parse it with [URLSearchParams](URLSearchParams.md):
+
+```JavaScript
+const form = new FormData();
+form.append('name', 'John Doe');
+form.append('city', '北京');
+
+const body = form.encode(); // application/x-www-form-urlencoded
+console.log(body.type); // application/x-www-form-urlencoded
+console.log(body.textSync());
+// name=John%20Doe&city=%E5%8C%97%E4%BA%AC
+
+const parsed = new URLSearchParams(body.textSync());
+console.log(parsed.get('name'), parsed.get('city')); // John Doe 北京
+```
+
+Example 3 — multipart round trip with a file:
+
+```JavaScript
+const form = new FormData();
+form.append('note', 'hi');
+form.append('doc', new File(['data'], 'd.txt', {
+    type: 'text/plain'
+}));
+
+const body = form.encode('multipart/form-data');
+console.log(body.type.startsWith('multipart/form-data; boundary=')); // true
+
+const copy = new FormData(body, ''); // the boundary comes from the Blob type
+console.log(copy.get('note')); // hi
+console.log(copy.get('doc').name); // d.txt
+console.log(copy.get('doc').textSync()); // data
+```
+
+## Inheritance
 ```dot
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
@@ -43,445 +101,693 @@ digraph {
 }
 ```
 
-## 构造函数
+## Constructors
         
 ### FormData
-**FormData 构造函数，创建一个新的空 HTTP 表单数据容器**
+**Creates an empty FormData collection**
 
 ```JavaScript
 new FormData();
 ```
 
-创建一个空的 FormData 实例，用于后续动态添加表单字段。
+No entries are stored; fields are added later with append()/set() or by parsing a body
+through the other constructors.
 
 --------------------------
-**FormData 构造函数，使用给定的 form 数据字符串初始化表单数据容器**
-
-```JavaScript
-new FormData(String init);
-```
-
-调用参数:
-* init: String, 初始化用的 form 数据字符串，如 "name=value&key=val"
-
---------------------------
-**FormData 构造函数，通过传入一个 [Buffer](Buffer.md)，初始化表单数据。适用于从已有的 multipart/form-data 数据中创建 FormData 实例**
+**Creates a FormData by parsing a multipart/form-data [Buffer](Buffer.md)**
 
 ```JavaScript
 new FormData(Buffer init,
     String boundary);
 ```
 
-调用参数:
-* init: [Buffer](Buffer.md), 初始化用的 multipart/form-data 二进制数据
-* boundary: String, 指定 multipart/form-data 的边界字符串，用于解析数据，格式为：multipart/form-data; boundary=${boundary}
+Parameters:
+* init: [Buffer](Buffer.md), the multipart/form-data binary data to parse
+* boundary: String, the boundary string used to parse the data
+
+init must contain a complete multipart body and boundary is the boundary string, either
+the bare value or a Content-Type style string such as "multipart/form-data; boundary=x"
+(the boundary parameter is extracted; a value of 1-70 RFC 2046 characters is accepted).
+Text fields become strings and parts with a filename become [File](File.md) objects. Parsing is
+tolerant: a missing or malformed boundary, or data that does not start with the first
+delimiter, yields an empty collection instead of throwing.
 
 --------------------------
-**FormData 构造函数，通过传入一个 [Blob](Blob.md)，初始化表单数据。适用于从 [FormData.encode](FormData.md#encode)() 结果或其他 multipart/form-data [Blob](Blob.md) 中创建 FormData 实例**
+**Creates a FormData by parsing the bytes of a [Blob](Blob.md)**
 
 ```JavaScript
 new FormData(Blob init,
     String boundary = "");
 ```
 
-调用参数:
-* init: [Blob](Blob.md), 初始化用的 [Blob](Blob.md) 对象，通常来自 [FormData.encode](FormData.md#encode)() 的结果
-* boundary: String, 可选的边界字符串，如果不指定则从 [Blob](Blob.md) 的 type 属性中自动解析（如 "multipart/form-data; boundary=xxx"）
+Parameters:
+* init: [Blob](Blob.md), the [Blob](Blob.md) holding the multipart/form-data bytes
+* boundary: String, optional boundary, default read from the [Blob](Blob.md) type
+
+The [Blob](Blob.md) content is parsed like the [Buffer](Buffer.md) form. When boundary is empty the boundary is
+read from the [Blob](Blob.md) type, which is how the result of encode('multipart/form-data') is
+parsed back without copying the boundary by hand; a [Blob](Blob.md) whose type carries no usable
+boundary yields an empty collection.
 
 --------------------------
-**FormData 构造函数，使用给定的对象初始化 HTTP 表单数据容器**
+**Creates a FormData from fields, another FormData or a urlencoded string**
 
 ```JavaScript
-new FormData(Object init);
+new FormData(Object | FormData | String init);
 ```
 
-调用参数:
-* init: Object, 初始化用的字段对象，键为字段名，值为字段值（字符串、[Blob](Blob.md) 或数组）
+Parameters:
+* init: Object | FormData | String, the fields: an [object](object.md), another FormData or a urlencoded string
 
-通过传入一个对象，批量初始化表单字段。对象的键为字段名，值为字段值（可为字符串、[Blob](Blob.md) 或数组）。
+The three accepted forms behave differently:
+- an [object](object.md) appends every own enumerable property in enumeration order; an array value
+  appends one entry per element and any other value appends one entry, converted exactly
+  like the value argument of append();
+- another FormData copies every entry into a new independent collection;
+- a string is parsed as application/x-www-form-urlencoded text ("a=1&b=2"): `+` decodes
+  to a space, percent escapes are decoded, empty segments are skipped and repeated names
+  keep every value. A leading `?` is NOT stripped, so "?a=1" stores the field "?a"
+  (unlike the [URLSearchParams](URLSearchParams.md) constructor).
+The string and [object](object.md) forms are fibjs extensions; the Web standard accepts only a form
+element and Node.js only an iterable of pairs. A value that matches no form (a number,
+null) throws TypeError 20005.
 
---------------------------
-**FormData 构造函数，使用给定的 HTTP 表单数据容器初始化 HTTP 表单数据容器**
+Example — initialize from a urlencoded string:
 
 ```JavaScript
-new FormData(FormData init);
+const form = new FormData('name=lion&tag=a&tag=b');
+
+console.log(form.get('name')); // lion
+console.log(form.getAll('tag')); // [ 'a', 'b' ]
+console.log(form.get('missing')); // null
 ```
 
-调用参数:
-* init: FormData, 初始化用的 HTTP 表单数据容器
-
-通过传入另一个 FormData 实例，复制其所有字段。
-
-## 操作符
+## Operators
         
 ### @iterator
-**查询当前对象元素的迭代器**
+**Returns the default iterator over [name, value] pairs, an alias of entries**
 
 ```JavaScript
 Iterator FormData.@iterator();
 ```
 
-返回结果:
-* [Iterator](Iterator.md), 返回当前对象元素的迭代器
+Returns:
+* [Iterator](Iterator.md), an iterator with every [name, value] pair
 
-## 成员函数
+The member is what `for ... of` and the spread syntax use on a collection; it yields
+one [name, value] pair per stored entry, so a repeated name appears once per value.
+Containers that sort on iteration sort first.
+
+## Methods
         
 ### append
-**添加一个键值数据，添加数据并不修改已存在的键值的数据**
+**Appends every entry of an [[object](object.md)](object.md)**
 
 ```JavaScript
 FormData.append(Object map);
 ```
 
-调用参数:
-* map: Object, 指定要添加的键值数据字典
+Parameters:
+* map: Object, [[object](object.md)](object.md) whose properties are appended
+
+The own enumerable properties are visited in enumeration order; a property whose value
+is an array appends every element in order, any other value appends a single entry,
+and existing entries are not modified. Values are converted according to the container
+([[Headers](Headers.md)](Headers.md) and [[URLSearchParams](URLSearchParams.md)](URLSearchParams.md) store strings).
+
+Example — append a group of headers:
+
+```JavaScript
+const http = require('http');
+
+const headers = new http.Headers();
+headers.append({
+    'Accept-Encoding': 'gzip',
+    'Set-Cookie': ['a=1', 'b=2']
+});
+console.log(headers.all('set-cookie')); // [ 'a=1', 'b=2' ]
+```
 
 --------------------------
-**添加一个键值的一组数据，添加数据并不修改已存在的键值的数据**
+**Appends one value, or every element of an array, for a name**
 
 ```JavaScript
 FormData.append(String name,
-    Array values);
+    Array | Variant value);
 ```
 
-调用参数:
-* name: String, 指定要添加的键值
-* values: Array, 指定要添加的一组数据
+Parameters:
+* name: String, name to append
+* value: Array | Variant, value, or array of values, to append
+
+An array appends every element in order, any other value appends a single entry, and
+existing entries are not modified. An empty name is rejected by [[Headers](Headers.md)](Headers.md) with error
+20004 and accepted by [[URLSearchParams](URLSearchParams.md)](URLSearchParams.md) and [FormData](FormData.md).
+
+Example — append two values of one name:
+
+```JavaScript
+const http = require('http');
+
+const headers = new http.Headers();
+headers.append('X-Tag', ['a', 'b']);
+console.log(headers.all('x-tag')); // [ 'a', 'b' ]
+```
 
 --------------------------
-**添加一组数据，添加数据并不修改已存在的键值的数据**
+**Appends an array of [name, value] entries**
 
 ```JavaScript
 FormData.append(Array entries);
 ```
 
-调用参数:
-* entries: Array, 指定要添加的一组数据，格式为 [[<key>, <value>]]
+Parameters:
+* entries: Array, array of [name, value] pairs to append
 
---------------------------
-**添加一个键值数据，添加数据并不修改已存在的键值的数据**
+Every element of the argument must be an array of exactly two elements; a different
+shape fails with a bad variable type error (20003). Elements are appended in order and
+existing entries are not modified.
+
+Example — append pairs through [[URLSearchParams](URLSearchParams.md)](URLSearchParams.md):
 
 ```JavaScript
-FormData.append(String name,
-    Variant value);
+const params = new URLSearchParams();
+params.append([
+    ['a', '1'],
+    ['b', '2']
+]);
+console.log(params.toString()); // a=1&b=2
 ```
 
-调用参数:
-* name: String, 指定要添加的键值
-* value: Variant, 指定要添加的数据
-
 --------------------------
-**添加一个键值数据，添加数据并不修改已存在的键值的数据**
+**Appends a [Blob](Blob.md) or [File](File.md) value under a name, keeping existing values**
 
 ```JavaScript
 FormData.append(String name,
     Blob value);
 ```
 
-调用参数:
-* name: String, 指定要添加的字段名
-* value: [Blob](Blob.md), 指定要添加的 [Blob](Blob.md)
+Parameters:
+* name: String, the field name
+* value: [Blob](Blob.md), the [Blob](Blob.md) or [File](File.md) to append
 
-向表单中追加一个字段。如果同名字段已存在，则不会覆盖，允许同名多值。
+A [Blob](Blob.md) is stored as a [File](File.md) named "blob" with the given bytes and type and the current
+time as lastModified; a [File](File.md) is stored as it is, keeping its name and lastModified. The
+entry is added at the end and existing values of the name are untouched, so a name may
+hold several values. The name may be any string, including the empty string.
+
+Example — append a [Blob](Blob.md) and inspect the [File](File.md) entry:
+
+```JavaScript
+const form = new FormData();
+form.append('doc', new Blob(['abc'], {
+    type: 'text/plain'
+}));
+
+const file = form.get('doc');
+console.log(file instanceof File); // true
+console.log(file.name, file.type, file.size); // blob text/plain 3
+```
 
 --------------------------
-**添加一个键值数据，添加数据并不修改已存在的键值的数据**
+**Appends a [Blob](Blob.md) or [File](File.md) value under a name with an explicit file name**
 
 ```JavaScript
 FormData.append(String name,
-    Blob value,
+    Variant value,
     String filename);
 ```
 
-调用参数:
-* name: String, 指定要添加的字段名
-* value: [Blob](Blob.md), 指定要添加的 [Blob](Blob.md)
-* filename: String, 指定要添加的文件名
+Parameters:
+* name: String, the field name
+* value: Variant, the [Blob](Blob.md) or [File](File.md) to append
+* filename: String, the file name of the stored [File](File.md)
 
-向表单中追加一个字段。如果同名字段已存在，则不会覆盖，允许同名多值。
+The value must be a [Blob](Blob.md) or a [File](File.md); any other value throws `TypeError [20024] Failed to
+execute 'append' on 'FormData': parameter 2 is not of type '[Blob](Blob.md)'.` The entry is stored
+as a [File](File.md) with the given filename (it may be empty), the bytes and type of the value and
+the current time as lastModified. Use this form when the upload needs a specific name.
 
 --------------------------
 ### set
-**设定一个键值数据，设定数据将修改键值所对应的第一个数值，并清除相同键值的其余数据**
+**Sets every entry of an [[object](object.md)](object.md), replacing the existing values of each name**
 
 ```JavaScript
 FormData.set(Object map);
 ```
 
-调用参数:
-* map: Object, 指定要设定的键值数据字典
+Parameters:
+* map: Object, [[object](object.md)](object.md) whose properties are set
+
+The own enumerable properties are visited in enumeration order; a property whose value
+is an array sets every element in order, any other value sets a single entry. Every
+existing value of a name is removed before its new values are appended.
+
+Example — replace a group of headers:
+
+```JavaScript
+const http = require('http');
+
+const headers = new http.Headers({
+    Accept: 'text/html',
+    'X-Tag': 'old'
+});
+headers.set({
+    Accept: 'application/json',
+    'X-Tag': ['a', 'b']
+});
+console.log(headers.all('accept')); // [ 'application/json' ]
+console.log(headers.all('x-tag')); // [ 'a', 'b' ]
+```
 
 --------------------------
-**设定一个键值的一组数据，设定数据将修改键值所对应的数值，并清除相同键值的其余数据**
+**Sets one value, or every element of an array, for a name**
 
 ```JavaScript
 FormData.set(String name,
-    Array values);
+    Array | Variant value);
 ```
 
-调用参数:
-* name: String, 指定要设定的键值
-* values: Array, 指定要设定的一组数据
+Parameters:
+* name: String, name to set
+* value: Array | Variant, value, or array of values, to set
+
+Every existing value of the name is removed first, then an array appends every element
+in order or another value appends a single entry; a name that already existed therefore
+moves to the end of the insertion order. An empty name is rejected by [[Headers](Headers.md)](Headers.md) with
+error 20004 and accepted by [[URLSearchParams](URLSearchParams.md)](URLSearchParams.md) and [FormData](FormData.md).
 
 --------------------------
-**设定一个键值数据，设定数据将修改键值所对应的第一个数值，并清除相同键值的其余数据**
-
-```JavaScript
-FormData.set(String name,
-    Variant value);
-```
-
-调用参数:
-* name: String, 指定要设定的键值
-* value: Variant, 指定要设定的数据
-
---------------------------
-**设定一个键值数据，设定数据将修改键值所对应的第一个数值，并清除相同键值的其余数据**
+**Sets a [Blob](Blob.md) or [File](File.md) value, replacing every existing value of the name**
 
 ```JavaScript
 FormData.set(String name,
     Blob value);
 ```
 
-调用参数:
-* name: String, 指定要设定的字段名
-* value: [Blob](Blob.md), 指定要设定的 [Blob](Blob.md)
+Parameters:
+* name: String, the field name
+* value: [Blob](Blob.md), the [Blob](Blob.md) or [File](File.md) to set
 
-设置表单字段。如果同名字段已存在，则只保留第一个并覆盖，移除其余同名字段。
+All entries of name are removed and one entry is appended, so the name moves to the end
+of the insertion order. A plain [Blob](Blob.md) is stored as a [File](File.md) named "blob" and a [File](File.md) keeps
+its metadata, exactly like the [Blob](Blob.md) form of append().
 
 --------------------------
-**设定一个键值数据，设定数据将修改键值所对应的第一个数值，并清除相同键值的其余数据**
+**Sets a [Blob](Blob.md) or [File](File.md) value with an explicit file name, replacing the old values**
 
 ```JavaScript
 FormData.set(String name,
-    Blob value,
+    Variant value,
     String filename);
 ```
 
-调用参数:
-* name: String, 指定要设定的字段名
-* value: [Blob](Blob.md), 指定要设定的 [Blob](Blob.md)
-* filename: String, 指定要设定的文件名
+Parameters:
+* name: String, the field name
+* value: Variant, the [Blob](Blob.md) or [File](File.md) to set
+* filename: String, the file name of the stored [File](File.md)
 
-设置表单字段。如果同名字段已存在，则只保留第一个并覆盖，移除其余同名字段。
+Like the filename form of append() but destructive: every existing value of name is
+removed first, then one [File](File.md) with the given filename is appended. A value that is not a
+[Blob](Blob.md) or [File](File.md) throws `TypeError [20024] Failed to execute 'set' on 'FormData': parameter 2
+is not of type '[Blob](Blob.md)'.`
 
 --------------------------
 ### encode
-**将当前表单数据编码为 [Buffer](Buffer.md) 对象**
+**Encodes the collection into a [Blob](Blob.md)**
 
 ```JavaScript
 Blob FormData.encode(String type = "application/x-www-form-urlencoded");
 ```
 
-调用参数:
-* type: String, 指定编码的 content-type，支持 "multipart/form-data" 和 "application/x-www-form-urlencoded"（及其别名），默认为 "application/x-www-form-urlencoded"
+Parameters:
+* type: String, the content type to encode with, default "application/x-www-form-urlencoded"
 
-返回结果:
-* [Blob](Blob.md), 返回编码后的 [Blob](Blob.md) 对象，包含正确的 content-type
+Returns:
+* [Blob](Blob.md), the encoded body as a [Blob](Blob.md) whose type is the content type used
 
-根据指定的 content-type 对表单数据进行编码，支持多种编码格式：
+The type argument selects the wire format; matching is case-insensitive and aliases are
+accepted:
+- "application/x-www-form-urlencoded" (the default, also "urlencoded",
+  "form-urlencoded", "www-form-urlencoded") serializes the entries as name=value&...
+  with percent escapes. A [File](File.md) entry makes the call fail with `[20024] FormData encode:
+  field '<name>' contains non-string value ([File](File.md)/[Blob](Blob.md)), use multipart/form-data [encoding](../../module/ifs/encoding.md)
+  instead`. Spaces are encoded as %20, not as `+` like the WHATWG urlencoded serializer.
+- "multipart/form-data" writes a complete multipart body and generates a random boundary
+  when the type string carries none; the type of the returned [Blob](Blob.md) contains the boundary
+  actually used ("multipart/form-data; boundary=...").
+Any other type, including an empty string, throws `[20024] FormData encode: unsupported
+content type: <type>`. The returned [Blob](Blob.md) holds the whole body; send it, write it to a
+stream or parse it back with `new FormData(blob, '')`.
 
-编码规则：
-1. 当 type 为 "multipart/form-data" 且指定 boundary 时：
-   使用指定的 boundary 进行 multipart/form-data 格式编码
+Example — inspect the generated multipart body:
 
-2. 当 type 为 "multipart/form-data" 且未指定 boundary 时：
-   自动生成一个随机 boundary 进行 multipart/form-data 格式编码
+```JavaScript
+const form = new FormData();
+form.append('note', 'hi');
+form.append('doc', new Blob(['data'], {
+    type: 'text/plain'
+}), 'd.txt');
 
-3. 当 type 为 "application/x-www-form-urlencoded" 时：
-   使用 URL 编码格式对表单数据进行编码（name=value&name2=value2）
-   支持的别名："urlencoded"、"form-urlencoded"、"www-form-urlencoded"
-   注意：如果表单包含 [File](File.md)/[Blob](Blob.md) 对象，将抛出错误并指明具体字段名
-
-4. 其他值或不支持的格式：
-   抛出错误异常
+const body = form.encode('multipart/form-data; boundary=Fixed123');
+console.log(body.type); // multipart/form-data; boundary=Fixed123
+const text = body.textSync();
+console.log(text.startsWith('--Fixed123\r\n')); // true
+console.log(text.includes('filename="d.txt"')); // true
+console.log(text.endsWith('--Fixed123--\r\n')); // true
+```
 
 --------------------------
 ### clear
-**清除容器数据**
+**Removes every entry from the container**
 
 ```JavaScript
 FormData.clear();
 ```
 
+The container becomes empty and the iteration helpers yield nothing afterwards. The
+method is available on every concrete container.
+
 --------------------------
 ### has
-**检查容器内是否存在指定键值的数据**
+**Checks whether a name is present**
 
 ```JavaScript
 Boolean FormData.has(String name);
 ```
 
-调用参数:
-* name: String, 指定要检查的键值
+Parameters:
+* name: String, name to check
 
-返回结果:
-* Boolean, 返回键值是否存在
+Returns:
+* Boolean, true when the name exists
+
+The comparison follows the case rules of the concrete container; [Headers](Headers.md) rejects an
+empty name with error 20004 while [URLSearchParams](URLSearchParams.md) and FormData accept it.
+
+Example — check a header through its case-insensitive name:
+
+```JavaScript
+const http = require('http');
+
+const headers = new http.Headers({
+    'Content-Type': 'text/plain'
+});
+console.log(headers.has('content-type')); // true
+```
 
 --------------------------
 ### first
-**查询指定键值的第一个值**
+**Queries the first value of a name**
 
 ```JavaScript
 Variant FormData.first(String name);
 ```
 
-调用参数:
-* name: String, 指定要查询的键值
+Parameters:
+* name: String, name to query
 
-返回结果:
-* Variant, 返回键值所对应的值，若不存在，则返回 undefined
+Returns:
+* Variant, the first value, or null when the name does not exist
+
+Values are returned in insertion order, so the first appended value wins. The result
+is null when the name does not exist. [Headers](Headers.md) rejects an empty name with error 20004,
+while [URLSearchParams](URLSearchParams.md) and FormData accept it.
+
+Example — read the first value of a repeated header:
+
+```JavaScript
+const http = require('http');
+
+const headers = new http.Headers();
+headers.append('X-Tag', 'a');
+headers.append('x-tag', 'b');
+console.log(headers.first('X-TAG')); // a
+console.log(headers.first('missing')); // null
+```
 
 --------------------------
 ### get
-**查询指定键值的第一个值，等同于 first**
+**Queries the first value of a name, an alias of first**
 
 ```JavaScript
 Variant FormData.get(String name);
 ```
 
-调用参数:
-* name: String, 指定要查询的键值
+Parameters:
+* name: String, name to query
 
-返回结果:
-* Variant, 返回键值所对应的值，若不存在，则返回 undefined
+Returns:
+* Variant, the value of the name, or null when it does not exist
+
+[Headers](Headers.md) overrides this member with a different semantic: its get joins every value of
+the name with `, ` as required by the Fetch API, while first still returns only the
+first raw value. The other containers return the same value as first.
 
 --------------------------
 ### all
-**查询指定键值的全部值**
+**Queries all values of a name, or the whole container as an [object](object.md)**
 
 ```JavaScript
 NObject FormData.all(String name = "");
 ```
 
-调用参数:
-* name: String, 指定要查询的键值，传递空字符串返回全部键值的结果
+Parameters:
+* name: String, name to query; an empty string returns the whole container
 
-返回结果:
-* NObject, 返回键值所对应全部值的数组，若数据不存在，则返回 null
+Returns:
+* NObject, an array of values, or an [object](object.md) with every entry when the name is empty
+
+Called with a non-empty name, the method returns an array with every value of that
+name in insertion order and an empty array when the name is missing. Called with an
+empty string or without an argument, it returns a plain [object](object.md) with every entry, where
+a name that has several values becomes an array. [URLSearchParams](URLSearchParams.md) and FormData, which
+accept an empty name, return the whole container in that case; use getAll('') to read
+the values of the empty name.
+
+Example — collect every value of a name:
+
+```JavaScript
+const params = new URLSearchParams('tag=a&tag=b&tag=c');
+console.log(params.all('tag')); // [ 'a', 'b', 'c' ]
+console.log(params.all('missing')); // []
+```
 
 --------------------------
 ### getAll
-**查询指定键值的全部值**
+**Queries all values of a name as an array**
 
 ```JavaScript
 NArray FormData.getAll(String name);
 ```
 
-调用参数:
-* name: String, 指定要查询的键值
+Parameters:
+* name: String, name to query
 
-返回结果:
-* NArray, 返回键值所对应全部值的数组，若数据不存在，则返回 null
+Returns:
+* NArray, an array with every value of the name
+
+Always returns an array, empty when the name is missing and including for the empty
+name, so it is the value-oriented counterpart of all. Values keep the insertion order
+of the container.
 
 --------------------------
 ### remove
-**删除指定键值的全部值**
+**Removes every value of a name**
 
 ```JavaScript
 FormData.remove(String name);
 ```
 
-调用参数:
-* name: String, 指定要删除的键值
+Parameters:
+* name: String, name to remove
+
+The name is looked up with the case rules of the container and removing a name that
+does not exist is not an error. delete is an alias: the two differ only in that
+`delete container[name]` can be used as an operator (its return value is not reliable,
+see the operator member).
 
 --------------------------
 ### delete
-**删除指定键值的全部值**
+**Removes every value of a name, an alias of remove**
 
 ```JavaScript
 FormData.delete(String name);
 ```
 
-调用参数:
-* name: String, 指定要删除的键值
+Parameters:
+* name: String, name to remove
+
+See remove. The `delete container[name]` operator removes the same entries, but its
+result is always true in the current implementation, so [test](../../module/ifs/test.md) the removal with has
+instead of relying on the return value.
 
 --------------------------
 ### sort
-**按照键值排序容器内的内容**
+**Sorts the entries by name in place**
 
 ```JavaScript
 FormData.sort();
 ```
 
+The sort is stable and compares names byte by byte, so upper-case letters sort before
+lower-case ones. Sorting changes the order seen by every later operation, including
+all() and toJSON(). The iteration helpers of [Headers](Headers.md) and of the collection returned by
+[querystring.parse](../../module/ifs/querystring.md#parse) call sort automatically; [URLSearchParams](URLSearchParams.md) and FormData never sort
+implicitly.
+
 --------------------------
 ### forEach
-**遍历容器内的内容**
+**Visits every entry in order**
 
 ```JavaScript
-FormData.forEach(Function callback);
+FormData.forEach(Function(Value value, String key, Object obj) callback);
 ```
 
-调用参数:
-* callback: Function, 指定遍历时调用的函数，函数参数为 (value, key, [object](object.md))
+Parameters:
+* callback: Function(Value value, String key, Object obj), function called with (value, name, collection)
 
---------------------------
-**遍历容器内的内容**
+The callback receives (value, name, collection); returning from the callback does not
+stop the iteration. Containers that sort on iteration ([Headers](Headers.md) and the [querystring](../../module/ifs/querystring.md)
+collection) sort before the first callback, so the names are visited in sorted order.
+
+Example — list every header:
 
 ```JavaScript
-FormData.forEach(Function callback,
+const http = require('http');
+
+const headers = new http.Headers({
+    'B-Header': '1',
+    'A-Header': '2'
+});
+headers.forEach((value, name) => console.log(name, value));
+// a-header 2, then b-header 1 (names are lower-cased and sorted)
+```
+
+--------------------------
+**Visits every entry in order with an explicit this value**
+
+```JavaScript
+FormData.forEach(Function(Value value, String key, Object obj) callback,
     Value thisArg);
 ```
 
-调用参数:
-* callback: Function, 指定遍历时调用的函数，函数参数为 (value, key, [object](object.md))
-* thisArg: Value, 指定回调函数的 this 对象
+Parameters:
+* callback: Function(Value value, String key, Object obj), function called with (value, name, thisArg)
+* thisArg: Value, value used as `this` inside the callback
+
+Identical to forEach except that the callback runs with thisArg as `this` and receives
+thisArg as its third argument instead of the collection.
 
 --------------------------
 ### keys
-**查询容器内的键值**
+**Returns an iterator over the names**
 
 ```JavaScript
 Iterator FormData.keys();
 ```
 
-返回结果:
-* [Iterator](Iterator.md), 返回包含所有键值的迭代器
+Returns:
+* [Iterator](Iterator.md), an iterator with every name
+
+Repeated names appear once per entry; containers that sort on iteration sort first.
+The iterator implements the standard iterator protocol, so it can be used in a
+`for ... of` loop or queried with next().
+
+Example — iterate names:
+
+```JavaScript
+const http = require('http');
+
+const headers = new http.Headers({
+    B: '1',
+    A: '2'
+});
+for (const name of headers.keys())
+    console.log(name); // a, then b (Headers sorts on iteration)
+```
 
 --------------------------
 ### values
-**查询容器内的数值**
+**Returns an iterator over the values**
 
 ```JavaScript
 Iterator FormData.values();
 ```
 
-返回结果:
-* [Iterator](Iterator.md), 返回包含所有数值的迭代器
+Returns:
+* [Iterator](Iterator.md), an iterator with every value
+
+Values are visited in the same order as the names of keys(), one value per entry.
 
 --------------------------
 ### entries
-**查询容器内的键值和数值**
+**Returns an iterator over [name, value] pairs**
 
 ```JavaScript
 Iterator FormData.entries();
 ```
 
-返回结果:
-* [Iterator](Iterator.md), 返回包含所有键值和数值的迭代器
+Returns:
+* [Iterator](Iterator.md), an iterator with every [name, value] pair
+
+This is also the iterator used by `for ... of` and by spread on the container; a name
+with several values appears once per value.
+
+Example — turn query parameters into pairs:
+
+```JavaScript
+const params = new URLSearchParams('a=1&a=2');
+console.log(JSON.stringify([...params])); // [["a","1"],["a","2"]]
+```
 
 --------------------------
 ### toString
-**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
+**Returns the string form of the [object](object.md)**
 
 ```JavaScript
 String FormData.toString();
 ```
 
-返回结果:
-* String, 返回对象的字符串表示
+Returns:
+* String, returns the string form of the [object](object.md)
+
+The base implementation reports an error: a native [object](object.md) has no implicit
+text form, and only the classes whose value can be written as a string
+override the member. [Buffer](Buffer.md) returns its content decoded with the given
+[encoding](../../module/ifs/encoding.md), [HttpCookie](HttpCookie.md) returns "name=value", and so on; an override commonly
+accepts optional arguments ([Buffer.toString](Buffer.md#toString) takes [encoding](../../module/ifs/encoding.md), start and
+end) that are not part of this declaration.
+
+Calling the member on a class that does not override it throws
+"<Class>: the [object](object.md) can not be converted to string.", which is the
+behavior to rely on when probing whether a value has a string form. See
+toJSON for the serialization hook.
 
 --------------------------
 ### toJSON
-**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
+**Returns the JSON representation of the [object](object.md)**
 
 ```JavaScript
 Value FormData.toJSON(String key = "");
 ```
 
-调用参数:
-* key: String, 未使用
+Parameters:
+* key: String, the property name of the value being serialized
 
-返回结果:
-* Value, 返回包含可 JSON 序列化的值
+Returns:
+* Value, returns the JSON-serializable value
+
+JSON.stringify(value) calls value.toJSON(key) when the member exists and
+serializes the returned value in its place; the key argument carries the
+property name of the value inside its parent [object](object.md) (an empty string at
+the top level) and may be used to build a keyed form. The base
+implementation returns a plain [object](object.md) holding the readable properties of
+the instance, so a native [object](object.md) serializes without per-class code; a
+class with a portable shape such as [Buffer](Buffer.md) overrides it, and a JavaScript
+class may override it in the same way.
+
+The member is normally reached through JSON.stringify rather than called
+directly; calling it returns the same value JSON.stringify would
+serialize.
 

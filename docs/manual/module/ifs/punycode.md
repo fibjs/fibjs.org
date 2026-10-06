@@ -1,68 +1,143 @@
-# 模块 punycode
-punycode 国际化域名转换模块
+# Module punycode
+The punycode [module](module.md) converts internationalized domain names between Unicode and the ASCII-compatible Punycode [encoding](encoding.md) of RFC 3492
 
-Punycode 是由 RFC 3492 定义的主要用于国际化域名的字符编码方案。因为 URL 中主机名限制只能是 ASCII 字符，包括非 ASCII 字符的主机名必须使用 punycode 算法转化为ASCII。
+`encode`/`decode` convert one label with the raw Bootstring algorithm, while
+`toASCII`/`toUnicode` convert a whole domain name and add or remove the `xn--` prefix (the ACE
+prefix) only on labels that contain non-ASCII characters.
 
-使用方法：
+Concepts:
+
+- **Punycode** is the RFC 3492 [encoding](encoding.md) for Bootstring: it represents non-ASCII Unicode code
+points with ASCII letters, digits and hyphens so that they fit into DNS labels, which are
+limited to ASCII characters.
+- **IDN and the ACE prefix**: an internationalized domain name is stored in DNS as an
+ASCII-compatible [encoding](encoding.md) (ACE) label that starts with `xn--`; for example `bücher.example`
+becomes `xn--bcher-kva.example`. toASCII and toUnicode handle the prefix per label and
+leave labels that are already ASCII unchanged, while encode/decode work on the raw encoded
+label and never touch the prefix.
+- **Deprecation**: Node.js marks its bundled `punycode` [module](module.md) as deprecated (DEP0040) and
+recommends userland packages or `url.domainToASCII`; the fibjs [module](module.md) is not deprecated,
+but [url.domainToASCII](url.md#domainToASCII) and [url.domainToUnicode](url.md#domainToUnicode) are the preferred entry points for IDN
+handling because they apply the full UTS #46 mapping.
+- The conversion accepts code points beyond the Basic Multilingual Plane; malformed input is
+decoded leniently instead of being rejected, so validate the result before using it in
+security-sensitive contexts.
+
+Import:
 
 ```JavaScript
-var punycode = require('punycode');
+const punycode = require('punycode');
 ```
 
-## 静态函数
+Example 1 — encode and decode a single label:
+
+```JavaScript
+const punycode = require('punycode');
+
+const encoded = punycode.encode('mañana');
+console.log(encoded); // maana-pta
+console.log(punycode.decode(encoded)); // mañana
+console.log(punycode.encode('abc')); // abc-
+```
+
+Example 2 — convert an internationalized domain name:
+
+```JavaScript
+const punycode = require('punycode');
+
+const ascii = punycode.toASCII('mañana.com');
+console.log(ascii); // xn--maana-pta.com
+console.log(punycode.toUnicode(ascii)); // mañana.com
+
+// labels that are already ASCII are not modified
+console.log(punycode.toASCII('example.com')); // example.com
+```
+
+## Static Methods
         
 ### encode
-**将一个 Unicode 字符串转化为等价的只含有 ASCII 字符的 Punycode 字符串**
+**Encodes a Unicode string into a raw Punycode label**
 
 ```JavaScript
 static String punycode.encode(String domain);
 ```
 
-调用参数:
-* domain: String, 给定Unicode 字符串
+Parameters:
+* domain: String, Unicode string to encode
 
-返回结果:
-* String, 返回编码后的只含有 ASCII 字符的 Punycode 字符串
+Returns:
+* String, the raw Punycode [encoding](encoding.md) of the string
+
+The whole argument is encoded as one label and no `xn--` prefix is added; the result is
+the Bootstring form used inside an ACE label, not a complete domain name, so encode
+each label separately or use toASCII for a domain name. An ASCII-only string still gets
+the trailing delimiter, for example `abc` becomes `abc-`. Prefer toASCII for host names
+because encode does not apply the IDNA mapping.
+
+Example — round-trip one label:
+
+```JavaScript
+const punycode = require('punycode');
+
+const label = punycode.encode('中文');
+console.log(punycode.decode(label) === '中文'); // true
+```
 
 --------------------------
 ### decode
-**将一个 Punycode 字符串转化为等价的 Unicode 字符串**
+**Decodes a raw Punycode label back into Unicode**
 
 ```JavaScript
 static String punycode.decode(String domain);
 ```
 
-调用参数:
-* domain: String, 给定Unicode 字符串
+Parameters:
+* domain: String, raw Punycode label to decode
 
-返回结果:
-* String, 返回解码后的 Unicode 字符串
+Returns:
+* String, the decoded Unicode string
+
+The argument is the encoded part of a label without the `xn--` prefix, as produced by
+encode; use toUnicode for a complete domain name. Input that contains no encoded part
+decodes to an empty string instead of raising an error.
 
 --------------------------
 ### toASCII
-**转换一个代表了一个域名的Unicode字符串为一个只含有 ASCII 字符的字符串。只有代表了域名的部分的非 ASCII 字符串会被转换。也就是说，如果你调用了一个已经被转换为ASCII的字符串，也是没有问题的。**
+**Converts the labels of a domain name to the ASCII-compatible [encoding](encoding.md) (ACE)**
 
 ```JavaScript
 static String punycode.toASCII(String domain);
 ```
 
-调用参数:
-* domain: String, 给定Unicode 字符串
+Parameters:
+* domain: String, domain name to convert, possibly containing Unicode characters
 
-返回结果:
-* String, 返回编码后的 ASCII 字符串
+Returns:
+* String, the ASCII (ACE) form of the domain name
+
+Each label is encoded only when it contains non-ASCII characters, so labels that are
+already ASCII are copied unchanged, and encoded labels receive the `xn--` prefix. The
+conversion applies the UTS #46 mapping through the URL parser and normalizes the case,
+for example `BÜCHER.com` becomes `xn--bcher-kva.com` (Node.js keeps the original case).
+Malformed or unsupported input is returned unchanged instead of raising an error, so
+validate the result.
 
 --------------------------
 ### toUnicode
-**转换一个代表了一个域名的Punycode字符串为一个Unicode字符串。只有代表了域名的部分的Punycode字符串会被转换。也就是说，如果你调用了一个已经被转换为Unicode的字符串，也是没有问题的。**
+**Converts the ACE labels of a domain name back to Unicode**
 
 ```JavaScript
 static String punycode.toUnicode(String domain);
 ```
 
-调用参数:
-* domain: String, 给定 ASCII 字符串
+Parameters:
+* domain: String, ASCII (ACE) domain name to convert
 
-返回结果:
-* String, 返回解码后的 Unicode 字符串
+Returns:
+* String, the Unicode form of the domain name
+
+Only labels that carry the `xn--` prefix are converted; all other labels are copied
+unchanged, so the function can be applied to a domain that is already Unicode. The
+prefix [test](test.md) is case-sensitive in fibjs: an upper-case `XN--` label is left as is,
+while Node.js decodes it.
 

@@ -1,36 +1,85 @@
-# 对象 Blob
-Blob 对象用于表示不可变的原始数据块，兼容 Web 标准 Blob API。
+# Object Blob
+An immutable container of raw bytes, the Web Blob API of fibjs
 
-Blob 可用于存储二进制数据、文本、图片等，常用于文件上传、数据处理等场景。Blob 支持多种数据类型的拼接、切片和读取，广泛应用于 Web、HTTP、文件系统等模块。
+Blob holds a fixed byte sequence plus a MIME type. The bytes are concatenated and copied at
+construction time, so a Blob never changes afterwards and can be passed around, sliced and
+re-read at will. It is the binary value type of the Web surface of fibjs: the body helpers of
+[Message](Message.md) return one, [FormData](FormData.md) stores file entries as [File](File.md) (a Blob subclass) and
+[FormData](FormData.md)#encode produces one.
 
-主要特性：
-1. 支持通过数组和选项对象灵活构造，数据类型可为字符串、ArrayBuffer、TypedArray、Blob 等。
-2. 支持 type、size 等只读属性，便于获取数据类型和大小。
-3. 支持 slice 方法高效切片，支持类型转换。
-4. 支持异步读取为文本或二进制。
+[File](File.md) in fibjs is a Blob with a name and a modification time: [File](File.md) extends Blob, every [File](File.md) is
+accepted wherever a Blob is expected, and slice() of a [File](File.md) returns a plain Blob. Use Blob for
+anonymous binary data and [File](File.md) when a file name matters (uploads, downloads, [FormData](FormData.md)).
 
-常见用法示例：
+Concepts:
+
+- **Blob parts**: the constructor takes an array of parts - strings (utf8), Buffers,
+  TypedArrays, ArrayBuffers and other Blobs; a value of any other type falls back to its DOM
+  string form, so null becomes "null". The parts are concatenated in order.
+- **MIME type**: the `type` option is lowercased and exposed by the read-only type property.
+  fibjs keeps the value as given; the Web standard resets a type containing characters
+  outside U+0020-U+007E to an empty string (plans/compat-differences.md).
+- **Reading**: text() decodes the bytes as utf8 and arrayBuffer() copies them into an
+  ArrayBuffer, both as promises; the fibjs calling forms textSync()/textAsync() and
+  arrayBufferSync()/arrayBufferAsync() are generated from the promise declarations.
+- **Slicing**: slice() copies a byte range into a new Blob and never returns a [File](File.md). Indices
+  follow the [Buffer](Buffer.md) conventions: a negative value counts from the end, an index past the end
+  clamps, and a start beyond end yields an empty Blob.
+- **Not in the standard**: Blob.stream() and Blob.bytes() are not implemented; use
+  arrayBuffer() and read the bytes from it.
+
+Obtained from:
+- `new Blob(blobParts[, options])` — the parts form;
+- `new Blob(blobData[, options])` — one [Buffer](Buffer.md) or string (utf8);
+- `Blob#slice` — the sliced copy;
+- `[Message](Message.md)#blob` (`[http.Request](../../module/ifs/http.md#Request)#blob`, `[http.Response](../../module/ifs/http.md#Response)#blob`, `[mq.Message](../../module/ifs/mq.md#Message)#blob`) — the body;
+- `[FormData](FormData.md)#encode` — the encoded body;
+- `File` — a Blob with metadata, since File extends Blob.
+
+Example 1 — build a Blob from mixed parts and read it:
 
 ```JavaScript
-// Create empty Blob
-const blob = new Blob();
-
-// Create Blob containing string and binary
-const blob = new Blob(["hello", new Uint8Array([1, 2, 3])], {
-    type: "text/plain"
+const blob = new Blob(['hello ', new Uint8Array([119, 111, 114, 108, 100])], {
+    type: 'TEXT/Plain'
 });
 
-// Slice
-const part = blob.slice(0, 5);
-
-// Read text content
-blob.text().then(txt => console.log(txt));
-
-// Read binary content
-blob.arrayBuffer().then(buf => ...);
+console.log(blob.type, blob.size); // text/plain 11
+(async () => {
+    console.log(await blob.text()); // hello world
+})();
 ```
 
-## 继承关系
+Example 2 — slice a byte range and keep or replace the type:
+
+```JavaScript
+const source = new Blob(['hello world'], {
+    type: 'text/plain'
+});
+const part = source.slice(6); // to the end
+const tail = source.slice(-5, 10); // negative start counts from the end
+const typed = source.slice(0, 5, 'text/css');
+
+console.log(part.size, tail.size, typed.size); // 5 4 5
+console.log(typed.type); // text/css
+console.log(tail.textSync()); // worl
+```
+
+Example 3 — a binary round trip through arrayBuffer:
+
+```JavaScript
+const source = new Blob([new Uint8Array([1, 2, 3])], {
+    type: 'application/octet-stream'
+});
+
+(async () => {
+    const buffer = await source.arrayBuffer();
+    const copy = new Blob([buffer]);
+    console.log(buffer.byteLength, copy.size); // 3 3
+    console.log(new Uint8Array(buffer).join(',')); // 1,2,3
+})();
+```
+
+## Inheritance
 ```dot
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
@@ -44,57 +93,104 @@ digraph {
 }
 ```
 
-## 构造函数
+## Constructors
         
 ### Blob
-**Blob 对象构造函数**
+**Creates a Blob from an array of parts**
 
 ```JavaScript
 new Blob(Array blobParts = [],
     Object options = {});
 ```
 
-调用参数:
-* blobParts: Array, 初始化数据数组，可以包含字符串、ArrayBuffer、TypedArray、Blob 等
-* options: Object, 选项对象，包含 type（MIME 类型）和 endings（换行符处理方式）属性
+Parameters:
+* blobParts: Array, the initial parts: strings, Buffers, TypedArrays, ArrayBuffers or Blobs
+* options: Object, optional parameter [object](object.md)
 
-创建一个新的 Blob 实例，可指定数据内容和类型。
+The parts are concatenated in order into one buffer: strings contribute their utf8 bytes,
+[Buffer](Buffer.md), TypedArray and ArrayBuffer parts contribute their bytes, and a Blob part
+contributes its bytes. Any other value falls back to its DOM string form, so null becomes
+"null" and a plain [object](object.md) becomes "[[object](object.md) Object]". The array itself is required: a
+missing, null or undefined argument is accepted as an empty Blob, but a non-array value
+such as a number or a Set throws TypeError 20005 (the Web BlobPart sequence accepts any
+iterable, fibjs requires an array).
 
---------------------------
-**Blob 对象构造函数**
+options supports the following properties:
 
 ```JavaScript
-new Blob(Buffer blobData,
+// fragment: options
+({
+    "type": "", // the MIME type, lowercased; default an empty string
+    "endings": "transparent" // accepted and ignored: line endings are never converted
+})
+```
+
+Example — the DOM string fallback of a non-binary part:
+
+```JavaScript
+const blob = new Blob(['a', null, new Uint8Array([98])]);
+
+console.log(blob.size); // 6 ('a' + 'null' + 'b')
+console.log(blob.textSync()); // anullb
+```
+
+--------------------------
+**Creates a Blob from one [Buffer](Buffer.md) or string**
+
+```JavaScript
+new Blob(Buffer | String blobData,
     Object options = {});
 ```
 
-调用参数:
-* blobData: [Buffer](Buffer.md), 初始化的二进制数据，可以是 [Buffer](Buffer.md) 或其他二进制数据类型
-* options: Object, 选项对象，包含 type（MIME 类型）和 endings（换行符处理方式）属性
+Parameters:
+* blobData: [Buffer](Buffer.md) | String, the initial binary data
+* options: Object, optional parameter [object](object.md)
 
-创建一个新的 Blob 实例，可指定数据内容和类型。
+blobData is the whole content: a [Buffer](Buffer.md) is used as it is and a string is encoded as utf8.
+The options [object](object.md) is the same as in the parts form, so only `type` has an effect. Use
+this form when the bytes are already available, for example from [fs.readFile](../../module/ifs/fs.md#readFile) or a [Buffer](Buffer.md)
+built by hand.
 
-## 成员属性
+Example — wrap a [Buffer](Buffer.md) in a typed Blob:
+
+```JavaScript
+const blob = new Blob(Buffer.from('abc'), {
+    type: 'X/Plain'
+});
+
+console.log(blob.size, blob.type); // 3 x/plain
+console.log(blob.textSync()); // abc
+```
+
+## Properties
         
 ### type
-**String, Blob 对象类型，返回 Blob 的 MIME 类型（如 "text/plain"、"image/png" 等），只读属性。**
+**String, The MIME type of the Blob, read-only**
 
 ```JavaScript
 readonly String Blob.type;
 ```
 
+The lowercased `type` option given to the constructor, or an empty string when the option
+is missing or not a string. fibjs keeps the value as given (apart from the lower case
+form); the Web standard resets a type containing characters outside U+0020-U+007E to an
+empty string.
+
 --------------------------
 ### size
-**Integer, Blob 对象的大小，返回 Blob 数据的字节数，只读属性。**
+**Integer, The byte length of the Blob, read-only**
 
 ```JavaScript
 readonly Integer Blob.size;
 ```
 
-## 成员函数
+The total size of the concatenated parts; 0 for an empty Blob. It is a plain number and
+is recomputed from the stored buffer, so it is constant for the lifetime of the Blob.
+
+## Methods
         
 ### slice
-**返回指定范围的 Blob 切片**
+**Returns a new Blob with a copy of a byte range**
 
 ```JavaScript
 Blob Blob.slice(Integer start = 0,
@@ -102,64 +198,131 @@ Blob Blob.slice(Integer start = 0,
     String contentType = "");
 ```
 
-调用参数:
-* start: Integer, 起始位置（字节，默认为 0）
-* end: Integer, 结束位置（字节，默认为 -1，表示到末尾）
-* contentType: String, 新 Blob 的 MIME 类型（可选）
+Parameters:
+* start: Integer, the start byte index, default 0; a negative value counts from the end
+* end: Integer, the end byte index (exclusive), default -1 meaning the end of the Blob
+* contentType: String, the MIME type of the new Blob, default keeps the type of the source
 
-返回结果:
-* Blob, 返回新的 Blob 对象
+Returns:
+* Blob, the new Blob with the copied range
 
-创建一个新的 Blob，包含原始数据的指定区间内容。
+The bytes of the range are copied; the source Blob is untouched. start and end are byte
+indices that follow the [Buffer](Buffer.md) conventions: a negative value counts from the end, an
+index past the end clamps to the size, and start beyond end yields an empty Blob. One
+fibjs detail: the default end value -1 always means the end of the Blob, so slice(x, -1)
+behaves like slice(x) even when -1 is passed explicitly, while any other negative value
+counts from the end (the Web standard counts -1 from the end as well). The optional
+contentType replaces the type of the result; when it is omitted (or empty) the type of
+the source Blob is kept. slice() always returns a plain Blob, even when the source is a
+[File](File.md), so [File](File.md)#slice drops name and lastModified.
+
+Example — extract a range and retype it:
+
+```JavaScript
+const source = new Blob(['abcdef'], {
+    type: 'text/plain'
+});
+const part = source.slice(2, 5, 'text/css');
+
+console.log(part.size, part.type); // 3 text/css
+console.log(part.textSync()); // cde
+console.log(source.size); // 6
+```
 
 --------------------------
 ### text
-**以文本形式读取 Blob 内容**
+**Reads the whole Blob as text**
 
 ```JavaScript
 String Blob.text() promise;
 ```
 
-返回结果:
-* String, 返回包含文本内容的 Promise
+Returns:
+* String, a Promise that resolves to the text content
 
-异步读取 Blob 数据为字符串，返回 Promise。
+The bytes are decoded as utf8 and returned as a string; decoding never throws and an
+invalid byte sequence becomes the replacement character U+FFFD. The declared calling
+form returns a Promise<String>; the generated textSync()/textAsync() aliases are
+available too. The stored bytes are read without consuming them, so the method can be
+called any number of times.
+
+Example — read a Blob synchronously and asynchronously:
+
+```JavaScript
+const blob = new Blob(['héllo'], {
+    type: 'text/plain'
+});
+
+console.log(blob.textSync()); // héllo
+(async () => {
+    console.log(await blob.text()); // héllo
+})();
+```
 
 --------------------------
 ### arrayBuffer
-**以 ArrayBuffer 形式读取 Blob 内容**
+**Reads the whole Blob as an ArrayBuffer**
 
 ```JavaScript
 ArrayBuffer Blob.arrayBuffer() promise;
 ```
 
-返回结果:
-* ArrayBuffer, 返回包含二进制数据的 Promise
+Returns:
+* ArrayBuffer, a Promise that resolves to an ArrayBuffer with the Blob bytes
 
-异步读取 Blob 数据为 ArrayBuffer，返回 Promise。
+The bytes are copied into a new ArrayBuffer, so the result does not share memory with the
+Blob and stays valid after the Blob is collected. An empty Blob yields a zero-length
+ArrayBuffer. The declared calling form returns a Promise<ArrayBuffer>; the generated
+arrayBufferSync()/arrayBufferAsync() aliases are available too. The MDN members
+Blob.bytes() (a Uint8Array view) and Blob.stream() do not exist in fibjs.
 
 --------------------------
 ### toString
-**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
+**Returns the string form of the [object](object.md)**
 
 ```JavaScript
 String Blob.toString();
 ```
 
-返回结果:
-* String, 返回对象的字符串表示
+Returns:
+* String, returns the string form of the [object](object.md)
+
+The base implementation reports an error: a native [object](object.md) has no implicit
+text form, and only the classes whose value can be written as a string
+override the member. [Buffer](Buffer.md) returns its content decoded with the given
+[encoding](../../module/ifs/encoding.md), [HttpCookie](HttpCookie.md) returns "name=value", and so on; an override commonly
+accepts optional arguments ([Buffer.toString](Buffer.md#toString) takes [encoding](../../module/ifs/encoding.md), start and
+end) that are not part of this declaration.
+
+Calling the member on a class that does not override it throws
+"<Class>: the [object](object.md) can not be converted to string.", which is the
+behavior to rely on when probing whether a value has a string form. See
+toJSON for the serialization hook.
 
 --------------------------
 ### toJSON
-**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
+**Returns the JSON representation of the [object](object.md)**
 
 ```JavaScript
 Value Blob.toJSON(String key = "");
 ```
 
-调用参数:
-* key: String, 未使用
+Parameters:
+* key: String, the property name of the value being serialized
 
-返回结果:
-* Value, 返回包含可 JSON 序列化的值
+Returns:
+* Value, returns the JSON-serializable value
+
+JSON.stringify(value) calls value.toJSON(key) when the member exists and
+serializes the returned value in its place; the key argument carries the
+property name of the value inside its parent [object](object.md) (an empty string at
+the top level) and may be used to build a keyed form. The base
+implementation returns a plain [object](object.md) holding the readable properties of
+the instance, so a native [object](object.md) serializes without per-class code; a
+class with a portable shape such as [Buffer](Buffer.md) overrides it, and a JavaScript
+class may override it in the same way.
+
+The member is normally reached through JSON.stringify rather than called
+directly; calling it returns the same value JSON.stringify would
+serialize.
 

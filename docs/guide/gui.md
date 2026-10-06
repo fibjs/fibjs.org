@@ -1,41 +1,41 @@
-# fibjs 桌面应用开发指南
+# fibjs Desktop Application Development Guide
 
-## 简介
+## Introduction
 
-fibjs 是一个高效的 JavaScript 运行时，专为高性能服务器和桌面应用开发而设计。它基于 V8 引擎，提供了丰富的内置模块和强大的异步编程能力，使开发者能够轻松构建高效、稳定的应用程序。fibjs 的设计理念是简化开发流程，提高开发效率，同时保持高性能和低资源消耗。
+fibjs is a high-performance JavaScript runtime designed for high-performance servers and desktop application development. Built on the V8 engine, it provides a rich set of built-in modules and powerful asynchronous programming capabilities, enabling developers to easily build efficient and stable applications. The design philosophy of fibjs is to simplify the development process and improve development efficiency while maintaining high performance and low resource consumption.
 
-在桌面应用开发方面，fibjs 提供了一个名为 `gui` 的模块，允许开发者使用 JavaScript 直接创建和操作桌面窗口。这使得开发者可以利用现有的 JavaScript 知识和工具链，快速构建跨平台的桌面应用程序。`gui` 模块支持创建 WebView 窗口、与 WebView 内的 JavaScript 进行通讯、处理各种窗口事件、创建菜单和状态图标等功能。
+For desktop application development, fibjs provides a module named `gui` that allows developers to create and operate desktop windows directly with JavaScript. This lets developers use their existing JavaScript knowledge and toolchain to quickly build cross-platform desktop applications. The `gui` module supports creating WebView windows, communicating with the JavaScript inside a WebView, handling various window events, and creating menus and status icons.
 
-WebView 是 fibjs 中的一个核心组件，它是一个嵌入浏览器的窗口组件，允许开发者加载和显示网页内容。通过 WebView，开发者可以将现有的 Web 应用程序嵌入到桌面应用中，或者使用 HTML、CSS 和 JavaScript 构建新的用户界面。WebView 支持与宿主程序进行通讯，这意味着开发者可以在 WebView 内部的 JavaScript 和 fibjs 的 JavaScript 之间传递消息，实现复杂的交互功能。
+WebView is a core component in fibjs. It is a window component with an embedded browser that allows developers to load and display web content. With WebView, developers can embed existing web applications into desktop applications, or build new user interfaces with HTML, CSS, and JavaScript. WebView supports communication with the host program, which means developers can pass messages between the JavaScript inside the WebView and the JavaScript in fibjs to implement complex interactions.
 
-除了 WebView，fibjs 还提供了丰富的窗口事件处理功能。开发者可以监听窗口的加载、移动、尺寸改变、获得焦点、失去焦点、关闭等事件，并在这些事件发生时执行相应的处理逻辑。这使得开发者可以精细控制窗口的行为和用户体验。
+In addition to WebView, fibjs also provides rich window event handling capabilities. Developers can listen for events such as window loading, moving, resizing, gaining focus, losing focus, and closing, and execute the corresponding logic when these events occur. This gives developers fine-grained control over window behavior and user experience.
 
-在菜单和状态图标方面，fibjs 提供了灵活的 API，允许开发者创建和管理应用程序的菜单和状态图标。菜单项支持多种类型，包括普通项、复选框、子菜单和分隔符，开发者可以根据需要自由组合这些菜单项。状态图标则可以显示在系统托盘中，支持设置图标、标题、提示信息和菜单。
+For menus and status icons, fibjs provides flexible APIs that allow developers to create and manage application menus and status icons. Menu items support multiple types, including normal items, checkboxes, submenus, and separators, and developers can freely combine them as needed. Status icons can be displayed in the system tray and support setting the icon, title, tooltip, and menu.
 
-fibjs 是一个功能强大且易于使用的 JavaScript 运行时，特别适合用于开发高性能的服务器和桌面应用。它的 `gui` 模块提供了丰富的桌面应用开发功能，使开发者能够快速构建跨平台的桌面应用程序。通过 fibjs，开发者可以充分利用 JavaScript 的灵活性和高效性，构建出功能丰富、性能优越的桌面应用。如果您对桌面应用开发感兴趣，fibjs 将是一个值得尝试的工具。
+fibjs is a powerful and easy-to-use JavaScript runtime, especially well suited for developing high-performance servers and desktop applications. Its `gui` module provides rich desktop application development features, enabling developers to quickly build cross-platform desktop applications. With fibjs, developers can take full advantage of the flexibility and efficiency of JavaScript to build feature-rich, high-performance desktop applications. If you are interested in desktop application development, fibjs is a tool worth trying.
 
-## 环境配置
+## Environment Configuration
 
-在开始开发之前，请确保已安装 `fibjs`。
+Before you start developing, make sure `fibjs` is installed.
 
-## 创建 WebView 窗口
+## Creating a WebView Window
 
-在 fibjs 中，`WebView` 是一个嵌入浏览器的窗口组件。通过 `gui` 模块，我们可以轻松地创建一个 WebView 窗口并加载指定的 URL。以下是详细的步骤和示例代码。
+In fibjs, `WebView` is a window component with an embedded browser. Through the `gui` module, we can easily create a WebView window and load a specified URL. The following sections describe the detailed steps with example code.
 
-### 基本用法
+### Basic Usage
 
-首先，我们需要引入 `gui` 模块。然后，我们可以使用 `gui.open` 方法来创建一个 WebView 窗口并加载指定的 URL。以下是一个简单的示例：
+First, we need to require the `gui` module. Then we can use the `gui.open` method to create a WebView window and load the specified URL. Here is a simple example:
 
 ```javascript
 var gui = require('gui');
 var webview = gui.open('https://fibjs.org/index.html');
 ```
 
-在这个示例中，我们创建了一个 WebView 窗口，并将其加载到 `https://fibjs.org/index.html`。这个窗口将显示指定的网页内容。
+In this example, we create a WebView window and load `https://fibjs.org/index.html` into it. This window displays the content of the specified web page.
 
-### 高级用法
+### Advanced Usage
 
-`gui.open` 方法不仅可以接受一个 URL 参数，还可以接受一个可选的配置对象。这个配置对象允许我们自定义窗口的各种属性，例如大小、位置、是否可见等。以下是一个更复杂的示例：
+The `gui.open` method not only accepts a URL argument but also accepts an optional configuration object. This configuration object lets us customize various window attributes, such as size, position, and visibility. Here is a more complex example:
 
 ```javascript
 var gui = require('gui');
@@ -53,42 +53,42 @@ var options = {
 var webview = gui.open('https://fibjs.org/index.html', options);
 ```
 
-在这个示例中，我们创建了一个 WebView 窗口，并将其加载到 `https://fibjs.org/index.html`。同时，我们还指定了一些窗口属性，例如图标、位置、大小、是否可见、是否可调整大小、是否全屏以及是否启用开发者工具。
+In this example, we create a WebView window and load `https://fibjs.org/index.html` into it. We also specify several window attributes, such as the icon, position, size, visibility, resizability, fullscreen mode, and whether developer tools are enabled.
 
-### 配置选项
+### Configuration Options
 
-以下是 `gui.open` 方法支持的所有配置选项：
+The following are all the configuration options supported by the `gui.open` method:
 
-- `icon`: 指定窗口的图标（不支持 gtk4）
-- `left`: 指定窗口的左侧位置（不支持 gtk4）
-- `top`: 指定窗口的顶部位置（不支持 gtk4）
-- `width`: 指定窗口的宽度
-- `height`: 指定窗口的高度
-- `visible`: 指定窗口是否可见，默认值为 `true`
-- `hideOnClose`: 指定窗口关闭时是否隐藏，默认值为 `false`
-- `minWidth`: 指定窗口的最小宽度，默认值为 `0`
-- `minHeight`: 指定窗口的最小高度，默认值为 `0`
-- `maxWidth`: 指定窗口的最大宽度，默认值为无限制
-- `maxHeight`: 指定窗口的最大高度，默认值为无限制
-- `frame`: 指定窗口是否有边框，默认值为 `true`
-- `caption`: 指定窗口是否有标题栏，默认值为 `true`
-- `resizable`: 指定窗口是否可调整大小，默认值为 `true`
-- `menu`: 指定窗口的菜单，可以是一个 `Menu` 对象或一个菜单项数组，默认值为 `null`
-- `maximize`: 指定窗口是否最大化，默认值为 `false`
-- `fullscreen`: 指定窗口是否全屏，默认值为 `false`
-- `devtools`: 指定是否启用 WebView 的开发者工具，默认值为 `false`
-- `app`: 指定 WebView 内用于 API 调用的对象，是一个包含一组方法和子对象的对象，默认值为 undefined
+- `icon`: specifies the icon of the window (not supported on gtk4)
+- `left`: specifies the left position of the window (not supported on gtk4)
+- `top`: specifies the top position of the window (not supported on gtk4)
+- `width`: specifies the width of the window
+- `height`: specifies the height of the window
+- `visible`: specifies whether the window is visible; the default is `true`
+- `hideOnClose`: specifies whether to hide the window on close; the default is `false`
+- `minWidth`: specifies the minimum width of the window; the default is `0`
+- `minHeight`: specifies the minimum height of the window; the default is `0`
+- `maxWidth`: specifies the maximum width of the window; the default is unlimited
+- `maxHeight`: specifies the maximum height of the window; the default is unlimited
+- `frame`: specifies whether the window has a border; the default is `true`
+- `caption`: specifies whether the window has a title bar; the default is `true`
+- `resizable`: specifies whether the window is resizable; the default is `true`
+- `menu`: specifies the menu of the window; it can be a `Menu` object or an array of menu items; the default is `null`
+- `maximize`: specifies whether the window is maximized; the default is `false`
+- `fullscreen`: specifies whether the window is fullscreen; the default is `false`
+- `devtools`: specifies whether to enable the WebView developer tools; the default is `false`
+- `app`: specifies the object used for API calls inside the WebView; it is an object containing a set of methods and sub-objects; the default is undefined
 
-### 自动居中
+### Automatic Centering
 
-当我们设置了 `width` 和 `height`，但没有设置 `left` 或 `top` 时，窗口将自动居中显示。这对于希望窗口在屏幕中央显示的情况非常有用。
+When we set `width` and `height` but do not set `left` or `top`, the window is automatically centered. This is useful when you want the window to appear in the center of the screen.
 
 
-## 与 WebView 通讯
+## Communicating with the WebView
 
-由于 WebView 内的 JavaScript 程序与 fibjs 并不在同一个引擎内，所以如果需要与宿主程序进行通讯，需要通过消息进行。WebView 用于通讯的对象是 `window`，支持方法 `postMessage` 和 `message` 事件。
+Because the JavaScript running inside the WebView is not in the same engine as fibjs, communication with the host program must be done through messages. The object used for communication in the WebView is `window`, which supports the `postMessage` method and the `message` event.
 
-### 示例代码
+### Example Code
 
 ```javascript
 // index.js
@@ -100,7 +100,7 @@ webview.addEventListener("message", function (msg) { console.log(msg); });
 webview.postMessage("hello from fibjs");
 ```
 
-在 `index.html` 中：
+In `index.html`:
 
 ```html
 <script>
@@ -110,11 +110,11 @@ webview.postMessage("hello from fibjs");
 </script>
 ```
 
-#### app API 接口
+#### app API Interface
 
-WebView 支持更方便的 app API 接口。WebView 内用于 API 调用的对象是 `window.app`，可以在创建 WebView 时通过 `app` 参数指定 API 接口，API 接口的方法可以在 WebView 内通过 `await window.app...` 调用。
+WebView supports a more convenient app API interface. The object used for API calls inside the WebView is `window.app`. You can specify the API interface with the `app` argument when creating the WebView, and the methods of the API interface can be called inside the WebView through `await window.app...`.
 
-以下是一个简单的调用示例代码：
+The following is a simple example:
 ```javascript
 const gui = require('gui');
 const coroutine = require('coroutine');
@@ -145,9 +145,9 @@ win.eval(`
 })();
 ```
 
-#### 关闭窗口
+#### Closing the Window
 
-如果需要在 WebView 内关闭窗口，可以调用 `window.close`。需要注意，在 macOS 下的全屏窗口会因为 macOS 的机制而阻止关闭。
+To close the window from inside the WebView, call `window.close`. Note that on macOS, a fullscreen window will be prevented from closing due to macOS mechanisms.
 
 ```html
 <script lang="JavaScript">
@@ -157,23 +157,23 @@ win.eval(`
 </script>
 ```
 
-#### 实现拖动窗口
+#### Implementing Window Dragging
 
-在某些应用中，需要在 WebView 内实现拖动窗口的功能，可以通过以下代码实现：
+In some applications, you need to implement window dragging inside the WebView, which can be done with the following code:
 
 ```html
 <script>
     document.getElementById('dragRegion').addEventListener('mousedown', function (event) {
-        if (event.button === 0) { // 检查是否按下了左键
+        if (event.button === 0) { // check whether the left button was pressed
             window.drag();
         }
     });
 </script>
 ```
 
-## 窗口事件处理
+## Window Event Handling
 
-WebView 支持多种事件处理，包括窗口加载、移动、尺寸改变、获得焦点、失去焦点、关闭等事件。可以通过以下代码绑定事件处理函数：
+WebView supports handling many kinds of events, including window loading, moving, resizing, gaining focus, losing focus, and closing. You can bind event handlers with the following code:
 
 ```javascript
 webview.onloading = function(evt) {
@@ -209,77 +209,77 @@ webview.onmessage = function(evt) {
 };
 ```
 
-## 窗口操作
+## Window Operations
 
-WebView 提供了多种窗口操作方法，包括加载 URL、加载文件、设置 HTML 内容、刷新页面、前进后退、执行 JavaScript 代码等。
+WebView provides several window operation methods, including loading a URL, loading a file, setting HTML content, refreshing the page, navigating back and forward, and executing JavaScript code.
 
-### 加载 URL
+### Loading a URL
 
 ```javascript
 webview.loadUrl("https://fibjs.org");
 ```
 
-### 加载文件
+### Loading a File
 
 ```javascript
 webview.loadFile("path/to/file.html");
 ```
 
-### 设置 HTML 内容
+### Setting HTML Content
 
 ```javascript
 webview.setHtml("<html><body><h1>Hello, fibjs!</h1></body></html>");
 ```
 
-### 刷新页面
+### Refreshing the Page
 
 ```javascript
 webview.reload();
 ```
 
-### 前进后退
+### Navigating Back and Forward
 
 ```javascript
 webview.goBack();
 webview.goForward();
 ```
 
-### 执行 JavaScript 代码
+### Executing JavaScript Code
 
 ```javascript
 webview.eval("alert('Hello from fibjs');");
 ```
-## 创建菜单
+## Creating Menus
 
-在 fibjs 中，可以使用 `gui.createMenu` 方法创建一个菜单对象。菜单项支持以下类型：
+In fibjs, you can use the `gui.createMenu` method to create a menu object. Menu items support the following types:
 
 - normal
     - type: "normal"
-    - label: 必需
-    - tooltip, icon, enabled: 可选
-    - 不能有 submenu 或 checked
+    - label: required
+    - tooltip, icon, enabled: optional
+    - cannot have submenu or checked
 - checkbox
     - type: "checkbox"
-    - label: 必需
-    - checked: 可选
-    - tooltip, icon, enabled: 可选
-    - 不能有 submenu
+    - label: required
+    - checked: optional
+    - tooltip, icon, enabled: optional
+    - cannot have submenu
 - submenu
     - type: "submenu"
-    - label, submenu: 必需
-    - tooltip, icon, enabled: 可选
-    - 不能有 checked
+    - label, submenu: required
+    - tooltip, icon, enabled: optional
+    - cannot have checked
 - separator
     - type: "separator"
-    - 不能有 label、submenu、checked、icon 或 tooltip
+    - cannot have label, submenu, checked, icon, or tooltip
 
-如果菜单项未指定 type，则根据其它属性自动判断类型。识别策略如下：
-- 如果存在 submenu 属性，则将 type 设置为 "submenu"。
-- 如果存在 checked 属性，则将 type 设置为 "checkbox"。
-- 如果传入的对象为空，则将 type 设置为 "separator"。
-- 如果以上条件都不满足，则将 type 设置为 "normal"。
+If a menu item does not specify a type, the type is determined automatically from its other properties. The rules are as follows:
+- If a submenu property is present, type is set to "submenu".
+- If a checked property is present, type is set to "checkbox".
+- If the object passed in is empty, type is set to "separator".
+- If none of the above conditions is met, type is set to "normal".
 
-### 示例代码
+### Example Code
 
 ```javascript
 var gui = require('gui');
@@ -287,42 +287,42 @@ var gui = require('gui');
 var menu = gui.createMenu([
     { type: "normal", label: "Item 1", onclick: function() { 
         console.log("Item 1 clicked"); 
-        this.label = "Item 1 (clicked)"; // 修改标签
+        this.label = "Item 1 (clicked)"; // modify the label
     } },
     { type: "checkbox", label: "Item 2", checked: true, onclick: function() { 
         console.log("Item 2 clicked"); 
-        // checked 属性会自动切换，无需手动修改
+        // the checked property toggles automatically, no manual modification is needed
     } },
     { type: "submenu", label: "Submenu", submenu: [
         { type: "normal", label: "Subitem 1", onclick: function() { 
             console.log("Subitem 1 clicked"); 
-            this.enabled = false; // 禁用菜单项
+            this.enabled = false; // disable the menu item
         } },
         { type: "separator" },
         { type: "normal", label: "Subitem 2", onclick: function() { 
             console.log("Subitem 2 clicked"); 
-            this.tooltip = "This is Subitem 2"; // 修改提示信息
+            this.tooltip = "This is Subitem 2"; // modify the tooltip
         } }
     ]},
     { type: "separator" },
     { type: "normal", label: "Item 3", onclick: function() { 
         console.log("Item 3 clicked"); 
-        this.icon = "new-icon.png"; // 修改图标
+        this.icon = "new-icon.png"; // modify the icon
     } }
 ]);
 ```
 
-在这个示例中，我们展示了如何在 `onclick` 事件处理函数中通过 `this` 修改菜单项的属性。修改后，菜单将会被同步更新：
+In this example, we show how to modify menu item properties through `this` inside an `onclick` event handler. After the modification, the menu is updated synchronously:
 
-- 修改 `label` 属性。
-- 切换 `checked` 状态（`checked` 属性会自动切换，无需手动修改）。
-- 禁用菜单项。
-- 修改 `tooltip` 提示信息。
-- 修改 `icon` 图标。
+- Modify the `label` property.
+- Toggle the `checked` state (the `checked` property toggles automatically, so no manual modification is needed).
+- Disable a menu item.
+- Modify the `tooltip` text.
+- Modify the `icon`.
 
-### 动态操作菜单项
+### Manipulating Menu Items Dynamically
 
-我们还可以动态地添加、插入和移除菜单项。以下是一些示例代码：
+We can also dynamically add, insert, and remove menu items. Here are some example code snippets:
 
 ```javascript
 var gui = require('gui');
@@ -333,25 +333,25 @@ var menu = gui.createMenu([
     { label: "Help", submenu: [] }
 ]);
 
-// 添加菜单项
+// add a menu item
 menu.append({ label: "New", onclick: function() { console.log(this.label + " clicked"); } });
 
-// 插入菜单项
+// insert a menu item
 menu.insert(1, { label: "Open", onclick: function() { console.log(this.label + " clicked"); } });
 
-// 移除菜单项
+// remove a menu item
 menu.remove(2);
 ```
 
-在这个示例中，我们首先创建了一个包含三个子菜单的菜单对象。然后，我们使用 `menu.append` 方法添加了一个新的菜单项，使用 `menu.insert` 方法在指定位置插入了一个菜单项，最后使用 `menu.remove` 方法移除了一个菜单项。
+In this example, we first create a menu object containing three submenus. Then we use the `menu.append` method to add a new menu item, the `menu.insert` method to insert a menu item at a specified position, and finally the `menu.remove` method to remove a menu item.
 
-需要注意，添加和删除菜单项仅在菜单对象绑定到 `window` 或者 `tray` 之前有效。
+Note that adding and removing menu items is only effective before the menu object is bound to a `window` or a `tray`.
 
-通过这些方法，我们可以灵活地操作菜单项，满足不同的需求。希望通过以上的介绍，您能更好地理解和使用 `gui.createMenu` 方法来创建和管理菜单。
+With these methods, we can manipulate menu items flexibly to meet different requirements. We hope this introduction helps you better understand and use the `gui.createMenu` method to create and manage menus.
 
-## 创建状态图标
+## Creating a Status Icon
 
-在 fibjs 中，可以使用 `gui.createTray` 方法创建一个状态图标对象。支持以下参数：
+In fibjs, you can use the `gui.createTray` method to create a status icon object. The following parameters are supported:
 
 ```javascript
 {
@@ -362,7 +362,7 @@ menu.remove(2);
 }
 ```
 
-### 示例代码
+### Example Code
 
 ```javascript
 var gui = require('gui');
@@ -378,9 +378,9 @@ var tray = gui.createTray({
 });
 ```
 
-## 综合示例
+## Complete Example
 
-以下是一个完整的示例代码，展示了如何创建一个 WebView 窗口、加载 URL、与 WebView 通讯、处理窗口事件、创建菜单和状态图标：
+The following is a complete example that shows how to create a WebView window, load a URL, communicate with the WebView, handle window events, and create menus and a status icon:
 
 ```javascript
 const gui = require("gui");
@@ -459,33 +459,33 @@ const tray = gui.createTray({
 });
 ```
 
-### 创建托盘图标和菜单
+### Creating the Tray Icon and Menu
 
-首先，代码通过 `gui.createTray` 方法创建了一个托盘图标，并为其设置了一个菜单。托盘图标的 `icon` 属性指定了图标文件的路径，`menu` 属性则定义了托盘图标的右键菜单。
+First, the code creates a tray icon with the `gui.createTray` method and assigns a menu to it. The `icon` property of the tray icon specifies the path to the icon file, and the `menu` property defines the context menu of the tray icon.
 
-### 菜单项 "github"
+### The "github" Menu Item
 
-菜单项 "github" 的 `onclick` 事件处理函数用于打开一个新的窗口，加载 GitHub 的 URL。如果窗口已经存在，则激活该窗口；否则，创建一个新的窗口。窗口的 `onclose` 事件处理函数在窗口关闭时删除对应的窗口对象，`onmove` 事件处理函数在窗口移动时输出窗口的新位置。
+The `onclick` handler of the "github" menu item opens a new window and loads the GitHub URL. If the window already exists, it activates that window; otherwise, it creates a new window. The window's `onclose` handler deletes the corresponding window object when the window closes, and the `onmove` handler logs the window's new position when the window moves.
 
-### 菜单项 "frame"
+### The "frame" Menu Item
 
-菜单项 "frame" 的 `onclick` 事件处理函数用于打开一个本地 HTML 文件。如果窗口已经存在，则显示并激活该窗口；否则，创建一个新的窗口。窗口的 `hideOnClose` 属性设置为 `true`，表示窗口关闭时不会销毁，而是隐藏起来。
+The `onclick` handler of the "frame" menu item opens a local HTML file. If the window already exists, it shows and activates that window; otherwise, it creates a new window. The window's `hideOnClose` property is set to `true`, which means the window is hidden instead of destroyed when it is closed.
 
-### 菜单项 "alert"
+### The "alert" Menu Item
 
-菜单项 "alert" 的 `onclick` 事件处理函数用于显示一个警告框，内容为 "Hello World"。
+The `onclick` handler of the "alert" menu item displays an alert box with the message "Hello World".
 
-### 菜单项 "confirm"
+### The "confirm" Menu Item
 
-菜单项 "confirm" 的 `onclick` 事件处理函数用于显示一个确认框，询问用户是否要退出，并在控制台输出用户的选择。
+The `onclick` handler of the "confirm" menu item displays a confirmation box asking the user whether to exit, and logs the user's choice to the console.
 
-### 菜单项 "Exit"
+### The "Exit" Menu Item
 
-菜单项 "Exit" 的 `onclick` 事件处理函数用于关闭托盘图标和所有打开的窗口。
+The `onclick` handler of the "Exit" menu item closes the tray icon and all open windows.
 
 ## `hideOnClose`
 
-在上述示例代码中，`hideOnClose` 是一个布尔值属性，用于控制窗口关闭时的行为。如果设置为 `true`，窗口在关闭时不会真正销毁，而是隐藏起来。可以通过调用 `show()` 方法重新显示窗口。
+In the example above, `hideOnClose` is a boolean property that controls the behavior when the window is closed. If it is set to `true`, the window is not actually destroyed on close; instead, it is hidden. You can show the window again by calling the `show()` method.
 
 ```javascript
 wins.fibjs = gui.open({
@@ -496,38 +496,38 @@ wins.fibjs = gui.open({
     minHeight: 200,
     maxWidth: 800,
     caption: false,
-    hideOnClose: true // 窗口关闭时隐藏而不是销毁
+    hideOnClose: true // hide instead of destroy when the window is closed
 });
 ```
 
-### 详细解释
+### Detailed Explanation
 
-在上述示例代码中，`hideOnClose` 属性被设置为 `true`，这意味着当用户关闭窗口时，窗口不会被销毁，而是被隐藏。这样做的好处是，当用户再次需要该窗口时，可以快速重新显示，而不需要重新创建窗口及其内容。
+In the example above, the `hideOnClose` property is set to `true`, which means that when the user closes the window, the window is hidden rather than destroyed. The benefit is that when the user needs the window again, it can be shown again quickly without recreating the window and its content.
 
-### 使用场景
+### Use Cases
 
-1. **提高性能**：
-   - **避免重复创建**：在某些应用中，窗口的创建和销毁可能涉及大量的资源加载和初始化工作。如果频繁地创建和销毁窗口，会导致性能下降。通过隐藏窗口而不是销毁，可以避免这些开销。
-   - **快速响应**：隐藏窗口后，重新显示窗口的速度会比重新创建窗口快得多，从而提高用户体验。
+1. **Improved performance**:
+   - **Avoid repeated creation**: In some applications, creating and destroying windows may involve a large amount of resource loading and initialization work. Frequently creating and destroying windows degrades performance. Hiding a window instead of destroying it avoids this overhead.
+   - **Fast response**: Once a window is hidden, showing it again is much faster than recreating it, which improves the user experience.
 
-2. **保持状态**：
-   - **保存用户数据**：隐藏窗口时，窗口内的状态和数据会被保留。当用户重新打开窗口时，可以继续之前的操作，而不需要重新加载数据或重新设置状态。
-   - **多任务处理**：在多窗口应用中，用户可能会在不同窗口之间切换。隐藏窗口可以让用户在需要时快速切换回之前的任务，而不需要重新启动任务。
+2. **Preserving state**:
+   - **Preserve user data**: When a window is hidden, its state and data are retained. When the user reopens the window, they can continue from where they left off without reloading data or resetting state.
+   - **Multitasking**: In multi-window applications, users may switch between different windows. Hiding a window lets users quickly switch back to their previous task when needed without restarting it.
 
-3. **用户体验**：
-   - **系统托盘应用**：对于一些系统托盘应用，用户可能希望关闭窗口后，应用仍然在后台运行，并且可以通过系统托盘图标重新打开窗口。此时，使用 `hideOnClose` 可以实现这种需求。
-   - **临时隐藏**：有些应用可能需要临时隐藏窗口，而不是完全退出。例如，用户可能需要暂时隐藏窗口以专注于其他任务，然后再重新打开窗口继续使用。
+3. **User experience**:
+   - **System tray applications**: For some system tray applications, users may want the application to keep running in the background after the window is closed, and to be able to reopen the window from the tray icon. `hideOnClose` meets this requirement.
+   - **Temporary hiding**: Some applications may need to hide the window temporarily rather than exit completely. For example, users may want to hide the window for a while to focus on other tasks, and then reopen it to continue using it.
 
-### 具体示例
+### Concrete Example
 
-假设我们有一个聊天应用，当用户关闭聊天窗口时，我们希望窗口被隐藏，而不是销毁。这样，当用户再次打开聊天窗口时，可以立即看到之前的聊天记录和状态。
+Suppose we have a chat application. When the user closes the chat window, we want the window to be hidden rather than destroyed. That way, when the user opens the chat window again, the previous chat history and state are immediately visible.
 
 ```javascript
 const chatWindow = gui.open({
     file: path.join(__dirname, "chat.html"),
     width: 600,
     height: 400,
-    hideOnClose: true // 窗口关闭时隐藏而不是销毁
+    hideOnClose: true // hide instead of destroy when the window is closed
 });
 
 const tray = gui.createTray({
@@ -551,19 +551,19 @@ const tray = gui.createTray({
 });
 ```
 
-通过以上示例，我们可以看到 `hideOnClose` 属性在提高性能、保持状态和改善用户体验方面的价值。它使得应用在处理窗口关闭事件时更加灵活和高效。
+From the examples above, we can see the value of the `hideOnClose` property in improving performance, preserving state, and enhancing the user experience. It makes applications more flexible and efficient when handling window close events.
 
-## 使用 WebView 进行网页自动处理
+## Using WebView for Web Automation
 
-WebView 不仅可以用来显示网页，还可以用于网页自动处理任务。通过合理使用 WebView 的 `visible` 属性，我们可以在后台打开 WebView，并缓存起来复用，以加快访问速度和节省系统资源。
+WebView can be used not only to display web pages but also for web automation tasks. By making proper use of the WebView `visible` property, we can open WebViews in the background and cache them for reuse, which speeds up access and saves system resources.
 
-### WebView 的 `visible` 属性
+### The WebView `visible` Property
 
-WebView 的 `visible` 属性用于控制 WebView 窗口的可见性。当 `visible` 设置为 `false` 时，WebView 窗口将被隐藏，但仍然在后台运行。这意味着我们可以在后台加载网页、执行 JavaScript 代码、处理网页事件等，而不需要显示 WebView 窗口。
+The WebView `visible` property controls the visibility of the WebView window. When `visible` is set to `false`, the WebView window is hidden but still runs in the background. This means we can load pages, execute JavaScript code, and handle page events in the background without displaying the WebView window.
 
-### 背景加载和缓存 WebView
+### Background Loading and Caching WebViews
 
-在进行网页自动处理时，我们可以在后台加载 WebView，并将其缓存起来，以便在需要时快速复用。这种方法可以显著提高访问速度，并减少系统资源的消耗。以下是一个示例代码，展示了如何在后台加载 WebView，并缓存起来复用：
+When performing web automation, we can load WebViews in the background and cache them so that they can be reused quickly when needed. This approach can significantly improve access speed and reduce the consumption of system resources. The following example shows how to load a WebView in the background and cache it for reuse:
 
 ```javascript
 const gui = require('gui');
@@ -611,49 +611,49 @@ function performTask(url, task) {
     };
 }
 
-// 示例任务：在网页中执行 JavaScript 代码
+// example task: execute JavaScript code in the page
 function exampleTask(webview) {
     webview.eval("console.log('Hello from fibjs');");
 }
 
-// 使用示例
+// usage example
 performTask('https://example.com', exampleTask);
 ```
 
-### 详细解释
+### Detailed Explanation
 
-1. **创建 WebView**：
-   - `createWebView` 函数用于创建一个新的 WebView，并设置其 `visible` 属性为 `false`，使其在后台运行。
-   - 在 WebView 的 `onloading`、`onload` 和 `onclose` 事件中，我们可以添加相应的处理逻辑。
+1. **Creating a WebView**:
+   - The `createWebView` function creates a new WebView and sets its `visible` property to `false`, so that it runs in the background.
+   - In the WebView's `onloading`, `onload`, and `onclose` events, we can add the corresponding handling logic.
 
-2. **获取 WebView**：
-   - `getWebView` 函数用于从池中获取一个空闲的 WebView。如果池中没有空闲的 WebView，则创建一个新的 WebView。
+2. **Getting a WebView**:
+   - The `getWebView` function gets an idle WebView from the pool. If there is no idle WebView in the pool, it creates a new one.
 
-3. **释放 WebView**：
-   - `releaseWebView` 函数用于将使用完的 WebView 放回池中，以便下次复用。
+3. **Releasing a WebView**:
+   - The `releaseWebView` function puts a used WebView back into the pool for reuse.
 
-4. **执行任务**：
-   - `performTask` 函数用于在指定的 URL 上执行任务。它首先获取一个空闲的 WebView，然后在 `onload` 事件中执行任务，并在任务完成后释放 WebView。
-   - 示例任务 `exampleTask` 在网页中执行了一段 JavaScript 代码。
+4. **Running Tasks**:
+   - The `performTask` function runs a task on the specified URL. It first gets an idle WebView, then runs the task in the `onload` event, and releases the WebView when the task is complete.
+   - The example task `exampleTask` executes a piece of JavaScript code in the page.
 
-### 优化访问速度和节省系统资源
+### Optimizing Access Speed and Saving System Resources
 
-通过在后台加载和缓存 WebView，我们可以显著提高访问速度，并减少系统资源的消耗。这种方法特别适用于需要频繁访问多个网页的场景，例如网页抓取、自动化测试等。
+By loading and caching WebViews in the background, we can significantly improve access speed and reduce the consumption of system resources. This approach is especially suitable for scenarios that require frequent access to multiple web pages, such as web scraping and automated testing.
 
-### 实际应用场景
+### Real-World Use Cases
 
-1. **网页抓取**：
-   - 在进行网页抓取时，我们可以在后台加载多个 WebView，并缓存起来复用。这样可以避免重复加载相同的网页，提高抓取效率。
+1. **Web scraping**:
+   - When scraping web pages, we can load multiple WebViews in the background and cache them for reuse. This avoids repeatedly loading the same pages and improves scraping efficiency.
 
-2. **自动化测试**：
-   - 在进行自动化测试时，我们可以在后台加载测试网页，并在不同的测试用例中复用相同的 WebView。这样可以减少测试时间，并提高测试效率。
+2. **Automated testing**:
+   - When running automated tests, we can load test pages in the background and reuse the same WebView across different test cases. This reduces test time and improves test efficiency.
 
-3. **数据处理**：
-   - 在进行数据处理时，我们可以在后台加载数据源网页，并在不同的数据处理任务中复用相同的 WebView。这样可以减少数据加载时间，并提高数据处理效率。
+3. **Data processing**:
+   - When processing data, we can load data source pages in the background and reuse the same WebView across different data processing tasks. This reduces data loading time and improves data processing efficiency.
 
-### 代码示例：网页抓取
+### Code Example: Web Scraping
 
-以下是一个网页抓取的示例代码，展示了如何在后台加载和缓存 WebView，并进行网页抓取：
+The following is an example of web scraping that shows how to load and cache WebViews in the background and perform web scraping:
 
 ```javascript
 const gui = require('gui');
@@ -701,42 +701,42 @@ function scrapePage(url, callback) {
     };
 }
 
-// 使用示例
+// usage example
 scrapePage('https://example.com', function(html) {
     console.log(html);
 });
 ```
 
-### 详细解释
+### Detailed Explanation
 
-1. **创建 WebView**：
-   - `createWebView` 函数用于创建一个新的 WebView，并设置其 `visible` 属性为 `false`，使其在后台运行。
-   - 在 WebView 的 `onloading`、`onload` 和 `onclose` 事件中，我们可以添加相应的处理逻辑。
+1. **Creating a WebView**:
+   - The `createWebView` function creates a new WebView and sets its `visible` property to `false`, so that it runs in the background.
+   - In the WebView's `onloading`, `onload`, and `onclose` events, we can add the corresponding handling logic.
 
-2. **获取 WebView**：
-   - `getWebView` 函数用于从池中获取一个空闲的 WebView。如果池中没有空闲的 WebView，则创建一个新的 WebView。
+2. **Getting a WebView**:
+   - The `getWebView` function gets an idle WebView from the pool. If there is no idle WebView in the pool, it creates a new one.
 
-3. **释放 WebView**：
-   - `releaseWebView` 函数用于将使用完的 WebView 放回池中，以便下次复用。
+3. **Releasing a WebView**:
+   - The `releaseWebView` function puts a used WebView back into the pool for reuse.
 
-4. **网页抓取**：
-   - `scrapePage` 函数用于抓取指定 URL 的网页内容。它首先获取一个空闲的 WebView，然后在 `onload` 事件中执行抓取任务，并在任务完成后释放 WebView。
-   - 在抓取任务中，我们使用 `eval` 方法执行 JavaScript 代码，获取网页的 HTML 内容，并通过回调函数返回抓取结果。
+4. **Web Scraping**:
+   - The `scrapePage` function scrapes the content of the page at the specified URL. It first gets an idle WebView, then runs the scraping task in the `onload` event, and releases the WebView when the task is complete.
+   - In the scraping task, we use the `eval` method to execute JavaScript code, obtain the HTML content of the page, and return the scraping result through a callback function.
 
-### 优化建议
+### Optimization Recommendations
 
-1. **缓存管理**：
-   - 在实际应用中，我们需要管理 WebView 缓存，以避免缓存过多的 WebView 占用系统资源。可以设置缓存大小限制，并在缓存超出限制时清理旧的 WebView。
+1. **Cache management**:
+   - In real applications, we need to manage the WebView cache to prevent too many cached WebViews from consuming system resources. You can set a cache size limit and clean up old WebViews when the cache exceeds the limit.
 
-2. **错误处理**：
-   - 在进行网页抓取时，我们需要处理可能出现的错误，例如网页加载失败、JavaScript 执行错误等。可以在 WebView 的 `onerror` 事件中添加错误处理逻辑。
+2. **Error handling**:
+   - When scraping web pages, we need to handle possible errors, such as page load failures and JavaScript execution errors. You can add error handling logic in the WebView's `onerror` event.
 
-3. **并发控制**：
-   - 在进行大规模网页抓取时，我们需要控制并发数量，以避免过多的并发请求导致系统资源耗尽。可以使用协程或其他并发控制机制，限制同时进行的抓取任务数量。
+3. **Concurrency control**:
+   - When scraping web pages at scale, we need to control the level of concurrency to avoid exhausting system resources with too many concurrent requests. You can use coroutines or other concurrency control mechanisms to limit the number of simultaneous scraping tasks.
 
-### 代码示例：并发控制
+### Code Example: Concurrency Control
 
-以下是一个带有并发控制的网页抓取示例代码，展示了如何控制并发数量：
+The following is a web scraping example with concurrency control that shows how to limit the number of concurrent tasks:
 
 ```javascript
 const gui = require('gui');
@@ -799,23 +799,23 @@ function scrapePage(url, callback) {
     };
 }
 
-// 使用示例
+// usage example
 scrapePage('https://example.com', function(html) {
     console.log(html);
 });
 ```
 
-### 详细解释
+### Detailed Explanation
 
-1. **并发控制**：
-   - `maxConcurrentTasks` 变量用于设置最大并发任务数量。
-   - `currentTasks` 变量用于记录当前正在进行的任务数量。
-   - `taskQueue` 数组用于存储等待执行的任务。
+1. **Concurrency control**:
+   - The `maxConcurrentTasks` variable sets the maximum number of concurrent tasks.
+   - The `currentTasks` variable tracks the number of tasks currently in progress.
+   - The `taskQueue` array stores tasks waiting to be executed.
 
-2. **任务队列**：
-   - 在 `scrapePage` 函数中，如果当前任务数量达到最大并发任务数量，则将任务添加到任务队列中。
-   - 在任务完成后，从任务队列中取出下一个任务并执行。
+2. **Task queue**:
+   - In the `scrapePage` function, if the number of current tasks reaches the maximum number of concurrent tasks, the task is added to the task queue.
+   - When a task completes, the next task is taken from the task queue and executed.
 
-通过以上方法，我们可以在进行网页自动处理时，合理使用 WebView 的 `visible` 属性，优化访问速度和节省系统资源。同时，通过缓存管理、错误处理和并发控制，可以进一步提高网页自动处理的效率和稳定性。
+With the methods above, we can make proper use of the WebView `visible` property during web automation to optimize access speed and save system resources. At the same time, cache management, error handling, and concurrency control further improve the efficiency and stability of web automation.
 
-👉 【[打包发布  fibjs 应用](build.md)】
+👉 [Packaging and Releasing a fibjs Application](build.md)

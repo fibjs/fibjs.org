@@ -1,16 +1,162 @@
-# 对象 DgramSocket
-[dgram.Socket](../../module/ifs/dgram.md#Socket) 对象是一个封装了数据包函数功能的 [EventEmitter](EventEmitter.md)。
+# Object DgramSocket
+A UDP datagram socket: an [EventEmitter](EventEmitter.md) endpoint that binds a local port, sends one datagram at a time to a destination, and delivers every received datagram through the 'message' event
 
-DgramSocket 实例是由 [dgram.createSocket](../../module/ifs/dgram.md#createSocket)() 创建的。创建 [dgram.Socket](../../module/ifs/dgram.md#Socket) 实例不需要使用 new 关键字。
+DgramSocket is the concrete socket behind [dgram.createSocket](../../module/ifs/dgram.md#createSocket). It plays two roles:
+- **receiver**: bind to a local port (or let the first send bind automatically) and handle every
+  datagram in the 'message' event;
+- **sender**: send one datagram at a time with the synchronous, callback or promise form of send.
 
-创建方法：
+DgramSocket inherits on/once/off/emit and the listener bookkeeping of [EventEmitter](EventEmitter.md) and adds the
+UDP operations: bind, send, address, close, the buffer-size and multicast accessors and the
+ref/unref pair. See the [dgram](../../module/ifs/dgram.md) [module](../../module/ifs/module.md) for the UDP model, the size limits and the
+broadcast/multicast rules.
+
+Concepts:
+
+- **[Message](Message.md) boundaries**: each send produces exactly one 'message' event and the payload is never
+  split or merged; delivery, ordering and duplication are not guaranteed.
+- **Binding**: the socket is created unbound; bind assigns the local address and emits
+  'listening' during the call, so the synchronous form returns after the event has been handled
+  (Node.js emits it on a later tick). send on an unbound socket binds it first to a random port
+  on 0.0.0.0 or ::.
+- **Call forms**: bind and send follow the asynchronous conventions of the [module](../../module/ifs/module.md) — without a
+  callback they block the calling fiber and return the result, with a trailing callback they run
+  asynchronously, and the Sync/Async aliases exist as well. Receiving is event-only: datagrams
+  arrive at the 'message' event, whose handler runs in its own fiber and may block or call the
+  socket without stalling the sender.
+- **Remote information**: a message handler receives the payload and an [object](object.md) with the sender
+  address, family, port and payload size.
+- **Lifetime**: close releases the handle and emits 'close'; the address and buffer-size getters
+  then fail with EBADF, so do not reuse the socket. A bound socket keeps the [process](../../module/ifs/process.md) alive until
+  close or unref; ref restores the keep-alive.
+- **Node.js differences**: create instances with [dgram.createSocket](../../module/ifs/dgram.md#createSocket) only (new [dgram.Socket](../../module/ifs/dgram.md#Socket)() is
+  not constructible); there is no recv method; bind(opts) reads only the required port and
+  address keys; errors are thrown rather than emitted through 'error'; and there are no
+  setTTL/setMulticastLoopback/setMulticastInterface, source-specific membership or connect
+  methods.
+
+Obtained from:
+- `dgram.createSocket('udp4' | 'udp6' | options[, callback])` — the only creation [path](../../module/ifs/path.md).
+
+Example 1 — a request/response round trip with an explicit local port:
 
 ```JavaScript
-var dgram = require('dgram');
-var sock = dgram.createSocket('udp4');
+const dgram = require('dgram');
+const coroutine = require('coroutine');
+
+const server = dgram.createSocket('udp4');
+server.bind(0, '127.0.0.1');
+server.on('message', (msg, rinfo) => {
+    console.log(rinfo.address, rinfo.size); // 127.0.0.1 4
+    server.send('pong', rinfo.port, rinfo.address);
+});
+
+const client = dgram.createSocket('udp4');
+let reply = null;
+client.on('message', (msg) => {
+    reply = msg.toString();
+});
+client.send('ping', server.address().port, '127.0.0.1');
+
+let waited = 0;
+while (reply === null && waited < 1000) {
+    coroutine.sleep(10);
+    waited += 10;
+}
+console.log(reply); // pong
+
+client.close();
+server.close();
 ```
 
-## 继承关系
+Example 2 — the options form, address() and the socket buffer sizes:
+
+```JavaScript
+const dgram = require('dgram');
+
+const socket = dgram.createSocket({
+    type: 'udp4',
+    reuseAddr: true,
+    recvBufferSize: 65536,
+    sendBufferSize: 65536
+});
+socket.bind({
+    port: 0,
+    address: '127.0.0.1'
+});
+
+const info = socket.address();
+console.log(info.family, info.address, info.port > 0); // IPv4 127.0.0.1 true
+console.log(socket.getRecvBufferSize() > 0, socket.getSendBufferSize() > 0); // true true
+
+socket.close();
+```
+
+Example 3 — an event-driven receiver handling several datagrams:
+
+```JavaScript
+const dgram = require('dgram');
+const coroutine = require('coroutine');
+
+const received = [];
+const socket = dgram.createSocket('udp4', (msg) => {
+    received.push(msg.toString());
+});
+socket.bind(0, '127.0.0.1');
+
+const sender = dgram.createSocket('udp4');
+sender.send('one', socket.address().port, '127.0.0.1');
+sender.send('two', socket.address().port, '127.0.0.1');
+sender.send('three', socket.address().port, '127.0.0.1');
+
+let waited = 0;
+while (received.length < 3 && waited < 1000) {
+    coroutine.sleep(10);
+    waited += 10;
+}
+console.log(received.length, received.indexOf('one') >= 0); // 3 true
+
+sender.close();
+socket.close();
+```
+
+Example 4 — joining a multicast group (needs a multicast-capable interface):
+
+```JavaScript
+// requires: network
+const dgram = require('dgram');
+const coroutine = require('coroutine');
+
+const group = '225.0.0.100';
+const port = 41234;
+
+let got = null;
+const member = dgram.createSocket({
+    type: 'udp4',
+    reuseAddr: true
+});
+member.bind(port);
+member.addMembership(group);
+member.setMulticastTTL(1);
+member.on('message', (msg) => {
+    got = msg.toString();
+});
+
+const sender = dgram.createSocket('udp4');
+sender.send('multicast', port, group);
+
+let waited = 0;
+while (got === null && waited < 1000) {
+    coroutine.sleep(10);
+    waited += 10;
+}
+console.log(got); // multicast
+
+sender.close();
+member.close();
+```
+
+## Inheritance
 ```dot
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
@@ -24,28 +170,45 @@ digraph {
 }
 ```
 
-## 静态函数
+## Static Methods
         
 ### addAbortListener
-**监听一个 [AbortSignal](AbortSignal.md) 的 abort 事件，返回一个可释放的对象**
+**Registers a one-shot abort handler on an [AbortSignal](AbortSignal.md)**
 
 ```JavaScript
 static Object DgramSocket.addAbortListener(EventEmitter signal,
-    Function func);
+    Function(Object ev) func);
 ```
 
-调用参数:
-* signal: [EventEmitter](EventEmitter.md), 要监听的 [AbortSignal](AbortSignal.md) 对象
-* func: Function, abort 事件的处理函数
+Parameters:
+* signal: [EventEmitter](EventEmitter.md), the [AbortSignal](AbortSignal.md) [object](object.md) to listen to
+* func: Function(Object ev), the handler for the abort event
 
-返回结果:
-* Object, 返回一个包含 `[Symbol.dispose]` 方法的 Disposable 对象
+Returns:
+* Object, returns a Disposable [object](object.md) containing a `[Symbol.dispose]` method
 
-返回的对象包含 `[Symbol.dispose]()` 方法，调用后将移除监听器。如果信号已中止，则监听器会被立即调用。
+The handler is called at most once when the signal is aborted, and it is removed from the
+signal afterwards. If the signal is already aborted the handler is invoked synchronously.
+The returned [object](object.md) has a `[Symbol.dispose]()` method that removes the handler, so it can be
+released before the abort happens.
+
+Example — abort handling with automatic cleanup:
+
+```JavaScript
+const events = require('events');
+
+const controller = new AbortController();
+const disposable = events.addAbortListener(controller.signal,
+    () => console.log('aborted'));
+
+controller.abort(); // aborted
+disposable[Symbol.dispose](); // safe to call after the listener fired
+console.log(controller.signal.listenerCount('abort')); // 0
+```
 
 --------------------------
 ### once
-**创建一个 Promise，等待指定事件触发一次后解析**
+**Creates a Promise resolved by the next occurrence of an event**
 
 ```JavaScript
 static Object DgramSocket.once(EventEmitter emitter,
@@ -53,22 +216,44 @@ static Object DgramSocket.once(EventEmitter emitter,
     Object options = {});
 ```
 
-调用参数:
-* emitter: [EventEmitter](EventEmitter.md), 要监听的事件触发器对象
-* ev: Value, 指定事件的名称
-* options: Object, 可选参数对象
+Parameters:
+* emitter: [EventEmitter](EventEmitter.md), the event emitter [object](object.md) to listen to
+* ev: Value, the event name to listen for
+* options: Object, optional parameter [object](object.md)
 
-返回结果:
-* Object, 返回 Promise，以事件参数数组解析
+Returns:
+* Object, returns a Promise that resolves with the array of event parameters
 
-返回一个 Promise，当目标事件触发时以事件参数数组解析。如果在此期间触发 'error' 事件（且监听的不是 'error' 事件本身），Promise 将被拒绝。
+The Promise resolves with the array of the emit arguments when the event fires; it rejects
+when `error` is emitted while waiting, unless the waited event is `error` itself, or when
+the signal option aborts. The temporary listeners are removed when the Promise settles.
 
-options 参数可包含：
-- signal: [AbortSignal](AbortSignal.md)，用于取消等待
+options supports the following option:
+
+```JavaScript
+// fragment: options
+({
+    "signal": null // AbortSignal; aborting rejects the Promise with an AbortError
+});
+```
+
+Example — awaiting the next occurrence of an event:
+
+```JavaScript
+const EventEmitter = require('events');
+
+(async () => {
+    const emitter = new EventEmitter();
+    const waiting = EventEmitter.once(emitter, 'ready');
+
+    emitter.emit('ready', 200, 'ok');
+    console.log(JSON.stringify(await waiting)); // [200,"ok"]
+})();
+```
 
 --------------------------
 ### on
-**创建一个异步迭代器，持续监听指定事件**
+**Creates an async iterator that yields event occurrences**
 
 ```JavaScript
 static Object DgramSocket.on(EventEmitter emitter,
@@ -76,696 +261,1170 @@ static Object DgramSocket.on(EventEmitter emitter,
     Object options = {});
 ```
 
-调用参数:
-* emitter: [EventEmitter](EventEmitter.md), 要监听的事件触发器对象
-* ev: Value, 指定事件的名称
-* options: Object, 可选参数对象
+Parameters:
+* emitter: [EventEmitter](EventEmitter.md), the event emitter [object](object.md) to listen to
+* ev: Value, the event name to listen for
+* options: Object, optional parameter [object](object.md)
 
-返回结果:
-* Object, 返回 AsyncIterator 对象
+Returns:
+* Object, returns an AsyncIterator [object](object.md)
 
-返回一个 AsyncIterator，每次事件触发时产出事件参数数组。如果触发 'error' 事件，迭代器将抛出错误。
+Each next() resolves with `{ value: [args...], done: false }` when the event fires and with
+`{ done: true }` after an event named in the `close` option fires or the signal aborts; an
+`error` event rejects the pending call. The listeners are registered when the iterator is
+created and removed when the iteration ends or the signal aborts.
 
-options 参数可包含：
-- signal: [AbortSignal](AbortSignal.md)，用于取消迭代
-- close: 字符串数组，指定结束迭代的事件名称
+options supports the following options:
 
-## 静态属性
+```JavaScript
+// fragment: options
+({
+    "signal": null, // AbortSignal; aborting rejects pending and future next() calls
+    "close": [] // event names; the first one to fire ends the iteration
+});
+```
+
+Example — iterating the occurrences of an event:
+
+```JavaScript
+const EventEmitter = require('events');
+
+(async () => {
+    const emitter = new EventEmitter();
+    const iterator = EventEmitter.on(emitter, 'data', {
+        close: ['end']
+    });
+
+    emitter.emit('data', 1);
+    emitter.emit('data', 2);
+    emitter.emit('end');
+
+    for await (const args of iterator)
+    console.log(JSON.stringify(args)); // [1] then [2]
+})();
+```
+
+## Static Properties
         
 ### defaultMaxListeners
-**Integer, 默认全局最大监听器数**
+**Integer, The [process](../../module/ifs/process.md)-wide default listener limit reported by getMaxListeners()**
 
 ```JavaScript
 static Integer DgramSocket.defaultMaxListeners;
 ```
 
-## 成员函数
+Defaults to 10. Assigning a value changes getMaxListeners() for every emitter that never
+called setMaxListeners(); an emitter with an explicit limit keeps it. The limit is
+informational: fibjs never warns when the number of listeners exceeds it.
+
+## Methods
         
 ### bind
-**该方法会令 [dgram.Socket](../../module/ifs/dgram.md#Socket) 在指定的 `port` 和 `addr` 上监听数据包信息。绑定完成时会触发一个 `listening` 事件。**
+**Binds the socket to a local port and address and starts delivering received datagrams to the 'message' event**
 
 ```JavaScript
 DgramSocket.bind(Integer port = 0,
     String addr = "") async;
 ```
 
-调用参数:
-* port: Integer, 指定绑定端口，若 `port` 未指定或为 0，操作系统会尝试绑定一个随机的端口
-* addr: String, 指定绑定地址，若 address 未指定，操作系统会尝试在所有地址上监听。
+Parameters:
+* port: Integer, the local port, 0 to let the operating system choose
+* addr: String, the local address, empty to bind every local address
+
+port defaults to 0, which asks the operating system for a free port (read it back with
+address); addr defaults to "", which binds every local address (0.0.0.0 for udp4, :: for
+udp6). The recvBufferSize and sendBufferSize options passed to createSocket are applied
+here. The same operation is also available as bind(opts) with an options [object](object.md).
+
+The 'listening' event is emitted during bind — in the synchronous form it has already been
+handled when the call returns — while Node.js emits it on a later tick. Binding a socket
+that is already bound throws error 20009, and binding a port in use throws EADDRINUSE.
+Node.js additionally accepts exclusive/fd options; fibjs does not.
+
+Example — bind to an ephemeral port and report the assigned address:
+
+```JavaScript
+const dgram = require('dgram');
+
+const socket = dgram.createSocket('udp4');
+let info = null;
+socket.on('listening', () => {
+    info = socket.address();
+});
+
+socket.bind(0, '127.0.0.1');
+console.log(info.family, info.address, info.port > 0); // IPv4 127.0.0.1 true
+
+socket.close();
+```
 
 --------------------------
-**该方法会令 [dgram.Socket](../../module/ifs/dgram.md#Socket) 在 `opts` 指定的 `port` 和 `address` 上监听数据包信息。绑定完成时会触发一个 `listening` 事件。**
+**Binds the socket with an options [object](object.md); both `port` and `address` are required**
 
 ```JavaScript
 DgramSocket.bind(Object opts) async;
 ```
 
-调用参数:
-* opts: Object, 指定绑定参数
+Parameters:
+* opts: Object, the binding options
+
+The options [object](object.md) accepts:
+
+```JavaScript
+// fragment: options
+({
+    port: 0, // the local port, 0 to let the operating system choose
+    address: "127.0.0.1" // the local address to bind; required even when port is 0
+})
+```
+
+Unlike Node.js, exclusive, fd and the remaining bind options are not read, and a missing
+key throws error 20002. The 'listening' event and the error behavior are the same as in the
+port/address form above.
 
 --------------------------
 ### send
-**在 socket 上发送一个数据包**
+**Sends one datagram to the given destination and returns the number of bytes sent**
 
 ```JavaScript
-Integer DgramSocket.send(Buffer msg,
+Integer DgramSocket.send(Buffer | String msg,
     Integer port,
     String address = "") async;
 ```
 
-调用参数:
-* msg: [Buffer](Buffer.md), 指定发送的数据
-* port: Integer, 指定发送的目的端口
-* address: String, 指定发送的目的地址
+Parameters:
+* msg: [Buffer](Buffer.md) | String, the datagram payload
+* port: Integer, the destination port
+* address: String, the destination address or host name, empty for the loopback address
 
-返回结果:
-* Integer, 返回发送尺寸
+Returns:
+* Integer, the number of bytes sent
 
---------------------------
-**在 socket 上发送一个数据包**
+msg may be a [Buffer](Buffer.md) or a string, which is encoded as utf8; the whole payload becomes one
+datagram. address defaults to the loopback address of the socket family (127.0.0.1 for
+udp4, ::1 for udp6), unlike Node.js which requires it; a host name is accepted and resolved
+through the system resolver, which throws ENOTFOUND or EAI_AGAIN for unknown names.
+
+An unbound socket is bound automatically first (emitting 'listening') to a random port on
+every local address. A payload larger than 65507 bytes for udp4 (65527 for udp6) throws
+EMSGSIZE, and sending to a broadcast address without setBroadcast(true) throws EACCES. The
+trailing callback form receives (err, bytes); sendSync/sendAsync and the promises namespace
+are generated as well.
+
+The byte-range form send(msg, offset, length, port, address) sends the slice
+[offset, offset + length) of the utf8-encoded payload and throws error 20004 for a negative
+offset or a non-positive length.
+
+Example — send the last word of a larger payload:
 
 ```JavaScript
-Integer DgramSocket.send(Buffer msg,
+const dgram = require('dgram');
+const coroutine = require('coroutine');
+
+const server = dgram.createSocket('udp4');
+let got = null;
+server.on('message', (msg) => {
+    got = msg.toString();
+});
+server.bind(0, '127.0.0.1');
+
+const client = dgram.createSocket('udp4');
+const sent = client.send('hello world', 6, 5, server.address().port, '127.0.0.1');
+
+let waited = 0;
+while (got === null && waited < 1000) {
+    coroutine.sleep(10);
+    waited += 10;
+}
+console.log(sent, got); // 5 world
+
+client.close();
+server.close();
+```
+
+--------------------------
+**Sends a byte range of the payload as one datagram**
+
+```JavaScript
+Integer DgramSocket.send(Buffer | String msg,
     Integer offset,
     Integer length,
     Integer port,
     String address = "") async;
 ```
 
-调用参数:
-* msg: [Buffer](Buffer.md), 指定发送的数据
-* offset: Integer, 从指定偏移开始发送
-* length: Integer, 之发送指定长度
-* port: Integer, 指定发送的目的端口
-* address: String, 指定发送的目的地址
+Parameters:
+* msg: [Buffer](Buffer.md) | String, the datagram payload
+* offset: Integer, the first byte to send
+* length: Integer, the number of bytes to send
+* port: Integer, the destination port
+* address: String, the destination address or host name, empty for the loopback address
 
-返回结果:
-* Integer, 返回发送尺寸
+Returns:
+* Integer, the number of bytes sent
+
+offset and length are byte counts; a string msg is encoded as utf8 before slicing. offset
+must be non-negative and length positive, otherwise error 20004 is thrown. The destination
+and the error behavior are the same as in the three-argument form above.
 
 --------------------------
 ### address
-**返回一个包含 socket 地址信息的对象。对于 UDP socket，该对象将包含 address、family 和 port 属性。**
+**Returns the local address the socket is bound to, as an [object](object.md) with the family, address and port**
 
 ```JavaScript
-NObject DgramSocket.address();
+(String family, String address, Integer port) DgramSocket.address();
 ```
 
-返回结果:
-* NObject, 返回对象绑定地址
+Returns:
+* (String family, String address, Integer port), the bound address information
+
+family is 'IPv4' or 'IPv6'. A bound socket is required: before bind (and after close) the
+underlying handle is not available and the call throws EBADF, comparable to the
+ERR_SOCKET_DGRAM_NOT_RUNNING error of Node.js. A socket bound implicitly by send can be
+queried too.
 
 --------------------------
 ### close
-**关闭当前 socket**
+**Closes the socket and releases the underlying handle**
 
 ```JavaScript
 DgramSocket.close();
 ```
 
+The 'close' event is emitted when the handle has been released; no further 'message' events
+are delivered. A second close throws error 20009 ('[dgram](../../module/ifs/dgram.md): socket is already closing.'),
+whereas Node.js throws ERR_SOCKET_DGRAM_NOT_RUNNING. Do not use the socket after close:
+address and the buffer-size getters fail with EBADF. The close(Function() callback)
+overload is equivalent to close() with a listener on the 'close' event.
+
 --------------------------
-**关闭当前 socket**
+**Closes the socket and calls back when the handle has been released**
 
 ```JavaScript
-DgramSocket.close(Function callback);
+DgramSocket.close(Function() callback);
 ```
 
-调用参数:
-* callback: Function, 关闭完成后的回调函数，它相当于为 `close` 事件添加了一个监听器
+Parameters:
+* callback: Function(), the function called on the 'close' event
+
+The callback is registered as a 'close' listener, so it runs asynchronously after the close
+completes; it receives no arguments and errors are not reported to it.
+
+Example — wait for the close callback:
+
+```JavaScript
+const dgram = require('dgram');
+const coroutine = require('coroutine');
+
+const socket = dgram.createSocket('udp4');
+socket.bind(0, '127.0.0.1');
+
+socket.close(() => {
+    console.log('closed'); // closed
+});
+coroutine.sleep(50);
+```
 
 --------------------------
 ### getRecvBufferSize
-**查询 socket 接收缓冲区大小**
+**Returns the operating-system receive buffer size of the socket in bytes**
 
 ```JavaScript
 Integer DgramSocket.getRecvBufferSize();
 ```
 
-返回结果:
-* Integer, 返回查询结果
+Returns:
+* Integer, the receive buffer size in bytes
+
+The value is the real size reported by the operating system and may differ from the size
+passed to setRecvBufferSize or to the recvBufferSize option (Linux, for example, may round
+or double the request). The socket must be bound, otherwise the call throws EBADF.
 
 --------------------------
 ### getSendBufferSize
-**查询 socket 发送缓冲区大小**
+**Returns the operating-system send buffer size of the socket in bytes**
 
 ```JavaScript
 Integer DgramSocket.getSendBufferSize();
 ```
 
-返回结果:
-* Integer, 返回查询结果
+Returns:
+* Integer, the send buffer size in bytes
+
+The value is the real size reported by the operating system and may differ from the size
+passed to setSendBufferSize or to the sendBufferSize option. The socket must be bound,
+otherwise the call throws EBADF.
 
 --------------------------
 ### addMembership
-**使用 IP_ADD_MEMBERSHIP 套接字选项加入给定 multicastAddress 和 multicastInterface 处的多播组。如果未指定 multicastInterface 参数，操作系统将选择一个接口并向其添加成员资格。要向每个可用接口添加成员资格，请多次调用 addMembership ，每个接口调用一次。**
+**Joins a multicast group on the given interface (IP_ADD_MEMBERSHIP)**
 
 ```JavaScript
 DgramSocket.addMembership(String multicastAddress,
     String multicastInterface = "");
 ```
 
-调用参数:
-* multicastAddress: String, 指定要加入的多播组地址
-* multicastInterface: String, 指定要加入的多播组接口
+Parameters:
+* multicastAddress: String, the multicast group address to join
+* multicastInterface: String, the local interface address, empty to let the system choose
+
+The socket must be bound before joining. multicastInterface selects the local interface by
+its address; when it is empty the operating system picks one, and addMembership can be
+called once per interface to join on several of them. Membership is released by
+dropMembership or automatically when the socket is closed or the [process](../../module/ifs/process.md) exits, so most
+programs never call dropMembership explicitly. An invalid address throws EINVAL. Node.js
+additionally offers source-specific membership and interface/TTL helpers, fibjs does not.
+
+Example — join a group and receive a datagram sent to it (needs a multicast-capable
+interface):
+
+```JavaScript
+// requires: network
+const dgram = require('dgram');
+const coroutine = require('coroutine');
+
+const group = '225.0.0.100';
+const port = 41234;
+
+let got = null;
+const member = dgram.createSocket({
+    type: 'udp4',
+    reuseAddr: true
+});
+member.bind(port);
+member.addMembership(group);
+member.setMulticastTTL(1);
+member.on('message', (msg) => {
+    got = msg.toString();
+});
+
+const sender = dgram.createSocket('udp4');
+sender.send('multicast', port, group);
+
+let waited = 0;
+while (got === null && waited < 1000) {
+    coroutine.sleep(10);
+    waited += 10;
+}
+console.log(got); // multicast
+
+sender.close();
+member.close();
+```
 
 --------------------------
 ### dropMembership
-**使用 IP_DROP_MEMBERSHIP 套接字选项在 multicastAddress 处留下多播组。当套接字关闭或进程终止时，内核会自动调用此方法，因此大多数应用程序永远没有理由调用此方法。**
+**Leaves the multicast group joined with addMembership (IP_DROP_MEMBERSHIP)**
 
 ```JavaScript
 DgramSocket.dropMembership(String multicastAddress,
     String multicastInterface = "");
 ```
 
-调用参数:
-* multicastAddress: String, 指定要删除的多播组地址
-* multicastInterface: String, 指定要删除的多播组接口
+Parameters:
+* multicastAddress: String, the multicast group address to leave
+* multicastInterface: String, the local interface address, empty for the system choice
+
+multicastInterface must match the interface used when the group was joined on one specific
+interface. Closing the socket or terminating the [process](../../module/ifs/process.md) removes all memberships, so
+calling this is rarely necessary. An invalid address throws EINVAL.
 
 --------------------------
 ### setMulticastTTL
-**设置 IP_MULTICAST_TTL 套接字选项**
+**Sets the hop limit of outgoing multicast datagrams (IP_MULTICAST_TTL)**
 
 ```JavaScript
 DgramSocket.setMulticastTTL(Integer ttl);
 ```
 
-调用参数:
-* ttl: Integer, 指定要设置的 ttl，ttl 参数可以介于 0 和 255 之间。大多数系统上的默认值为 1。
+Parameters:
+* ttl: Integer, the multicast hop limit, 0 to 255
+
+ttl is 0 to 255 and defaults to 1, so a multicast datagram stays on the local network; a
+value outside the range throws EINVAL. The option affects multicast destinations only, not
+the unicast time-to-live, and Node.js exposes the same setter.
 
 --------------------------
 ### setRecvBufferSize
-**设置 socket 接收缓冲区大小**
+**Sets the operating-system receive buffer size in bytes**
 
 ```JavaScript
 DgramSocket.setRecvBufferSize(Integer size);
 ```
 
-调用参数:
-* size: Integer, 指定要设置的尺寸
+Parameters:
+* size: Integer, the requested receive buffer size in bytes
+
+The requested size is a hint: the operating system may round or clamp it, so read the
+effective value back with getRecvBufferSize. Passing recvBufferSize to createSocket applies
+the same setting while binding.
 
 --------------------------
 ### setSendBufferSize
-**设置 socket 发送缓冲区大小**
+**Sets the operating-system send buffer size in bytes**
 
 ```JavaScript
 DgramSocket.setSendBufferSize(Integer size);
 ```
 
-调用参数:
-* size: Integer, 指定要设置的尺寸
+Parameters:
+* size: Integer, the requested send buffer size in bytes
+
+The requested size is a hint: the operating system may round or clamp it, so read the
+effective value back with getSendBufferSize. Passing sendBufferSize to createSocket applies
+the same setting while binding.
 
 --------------------------
 ### setBroadcast
-**设置或清除 SO_BROADCAST socket 选项**
+**Enables or disables sending to the broadcast address (SO_BROADCAST)**
 
 ```JavaScript
 DgramSocket.setBroadcast(Boolean flag);
 ```
 
-调用参数:
-* flag: Boolean, 当设置为 true, UDP包会被发送到一个本地接口的广播地址
+Parameters:
+* flag: Boolean, true to allow broadcast sends
+
+Broadcast is disabled by default, and a send to an address such as 255.255.255.255 then
+throws EACCES; call setBroadcast(true) first. When the host has no route for the broadcast
+address the send fails with EHOSTUNREACH or ENETUNREACH instead. Receiving broadcast
+traffic needs no option, and Node.js exposes the same setter.
 
 --------------------------
 ### ref
-**维持 fibjs 进程不退出，在对象绑定期间阻止 fibjs 进程退出**
+**Keeps the fibjs [process](../../module/ifs/process.md) alive while the socket is bound (the default)**
 
 ```JavaScript
 DgramSocket DgramSocket.ref();
 ```
 
-返回结果:
-* DgramSocket, 返回当前对象
+Returns:
+* DgramSocket, the socket itself
+
+A bound socket holds a reference that prevents the [process](../../module/ifs/process.md) from exiting; ref restores that
+reference after unref. Node.js has the same pair.
 
 --------------------------
 ### unref
-**允许 fibjs 进程退出，在对象绑定期间允许 fibjs 进程退出**
+**Allows the fibjs [process](../../module/ifs/process.md) to exit while the socket is bound**
 
 ```JavaScript
 DgramSocket DgramSocket.unref();
 ```
 
-返回结果:
-* DgramSocket, 返回当前对象
+Returns:
+* DgramSocket, the socket itself
+
+unref removes the keep-alive reference, so a program whose only remaining work is receiving
+datagrams can exit; processing continues while other references keep the loop alive.
+Node.js has the same method.
 
 --------------------------
 ### on
-**绑定一个事件处理函数到对象**
+**Appends an event handler to the emitter**
 
 ```JavaScript
 Object DgramSocket.on(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to bind
+* func: Function(...args), the event handler function, called with the emit arguments
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+The listener is called with the arguments of emit() and `this` set to the emitter; the
+emitter itself is returned so registrations can be chained. The same function may be
+registered several times for one event and each copy is called. See the class documentation
+for the dispatch order.
 
 --------------------------
-**绑定一个事件处理函数到对象**
+**Appends several event handlers to the emitter**
 
 ```JavaScript
 Object DgramSocket.on(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Every enumerable property of the map whose value is a function is registered under its
+property name. Properties are processed in order; a value that is not a function makes the
+call fail with an invalid-type error while entries processed before it stay registered.
+
+Example — registering several handlers at once:
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+emitter.on({
+    connect: () => console.log('connect'),
+    close: () => console.log('close')
+});
+
+emitter.emit('connect'); // connect
+emitter.emit('close'); // close
+```
 
 --------------------------
 ### addListener
-**绑定一个事件处理函数到对象**
+**Appends an event handler to the emitter**
 
 ```JavaScript
 Object DgramSocket.addListener(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to bind
+* func: Function(...args), the event handler function
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Alias of on(ev, func), provided for Node.js compatibility.
 
 --------------------------
-**绑定一个事件处理函数到对象**
+**Appends several event handlers to the emitter**
 
 ```JavaScript
 Object DgramSocket.addListener(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Alias of on(map), provided for Node.js compatibility.
 
 --------------------------
 ### addEventListener
-**绑定一个事件处理函数到对象**
+**Appends an event handler to the emitter with an options [object](object.md)**
 
 ```JavaScript
 Object DgramSocket.addEventListener(Value ev,
-    Function func,
+    Function(...args) func,
     Object options = {});
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
-* options: Object, 指定事件处理函数的选项
+Parameters:
+* ev: Value, the event name to bind
+* func: Function(...args), the event handler function, called with the emit arguments
+* options: Object, the options of the event handler
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
 
-options 参数是一个对象，它可以包含以下属性：
-- once: 如果为 true，则事件处理函数只会触发一次，触发后会被移除
+Web-style alias of on(); the only supported option is `once`, which registers a one-shot
+handler exactly like once(). The listener receives the plain emit arguments and not an [Event](Event.md)
+[object](object.md); see the [DOMEvent](DOMEvent.md) class for the DOM-style event [object](object.md) used by [AbortSignal](AbortSignal.md) and
+fetch-style APIs.
+
+options supports the following option:
+
+```JavaScript
+// fragment: options
+({
+    "once": false // when true, the handler is removed before its single invocation
+});
+```
+
+Example — a one-shot DOM-style registration:
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+emitter.addEventListener('ping', () => console.log('ping'), {
+    once: true
+});
+
+emitter.emit('ping'); // ping
+console.log(emitter.emit('ping')); // false
+console.log(emitter.listenerCount('ping')); // 0
+```
 
 --------------------------
 ### prependListener
-**绑定一个事件处理函数到对象起始**
+**Inserts an event handler at the front of the queue**
 
 ```JavaScript
 Object DgramSocket.prependListener(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to bind
+* func: Function(...args), the event handler function
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+The listener is called before the listeners registered with on()/addListener() the next time
+the event is emitted. When several prependListener() calls are made, the last one registered
+is called first, because every call inserts at the same position.
+
+Example — insertion at the front of the queue:
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+emitter.on('order', () => console.log('on'));
+emitter.prependListener('order', () => console.log('prepend'));
+
+emitter.emit('order'); // prepend, then on
+```
 
 --------------------------
-**绑定一个事件处理函数到对象起始**
+**Inserts several event handlers at the front of the queue**
 
 ```JavaScript
 Object DgramSocket.prependListener(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Map form of prependListener(); every function property is inserted at the front, so the
+properties of the map are called in reverse order.
 
 --------------------------
 ### once
-**绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次**
+**Appends a one-shot event handler to the emitter**
 
 ```JavaScript
 Object DgramSocket.once(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to bind
+* func: Function(...args), the event handler function
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+The handler is wrapped and removes itself from the queue before it is called, so it runs at
+most once. off() removes it when passed the original function, listeners() returns the
+original function, and rawListeners() returns the internal wrapper whose `_func` property
+holds the original. See Example 2 in the class documentation.
 
 --------------------------
-**绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次**
+**Appends several one-shot event handlers to the emitter**
 
 ```JavaScript
 Object DgramSocket.once(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Map form of once(); every function property is registered as a one-shot listener under its
+property name.
 
 --------------------------
 ### prependOnceListener
-**绑定一个事件处理函数到对象起始**
+**Inserts a one-shot event handler at the front of the queue**
 
 ```JavaScript
 Object DgramSocket.prependOnceListener(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to bind
+* func: Function(...args), the event handler function
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Combines prependListener() and once(): the handler is called first and only once, and it is
+removed before its invocation.
 
 --------------------------
-**绑定一个事件处理函数到对象起始**
+**Inserts several one-shot event handlers at the front of the queue**
 
 ```JavaScript
 Object DgramSocket.prependOnceListener(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Map form of prependOnceListener(); every function property is inserted as a one-shot
+listener, and the properties of the map are called in reverse order.
 
 --------------------------
 ### off
-**从对象处理队列中取消指定函数**
+**Removes an event handler from the emitter**
 
 ```JavaScript
 Object DgramSocket.off(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to unbind
+* func: Function(...args), the event handler function
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+The first matching listener is removed; when the same function was registered several times
+only one copy is removed per call, so repeat the call to remove the others. A once() wrapper
+is matched by its original function as well. Removing a listener emits the `removeListener`
+meta event after the removal.
 
 --------------------------
-**取消对象处理队列中的全部函数**
+**Removes all event handlers of one event**
 
 ```JavaScript
 Object DgramSocket.off(Value ev);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
+Parameters:
+* ev: Value, the event name to unbind
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Every listener of the event is removed and `removeListener` is emitted once per removed
+listener. The call succeeds when the event has no listener.
+
+Example — removing every listener of one event:
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+emitter.on('data', () => console.log('first'));
+emitter.on('data', () => console.log('second'));
+
+emitter.off('data');
+console.log(emitter.emit('data')); // false
+```
 
 --------------------------
-**从对象处理队列中取消指定函数**
+**Removes several event handlers from the emitter**
 
 ```JavaScript
 Object DgramSocket.off(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称作为事件名称，属性的值作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Every enumerable property of the map whose value is a function names an event from which
+that function is removed (one copy per event). A value that is not a function makes the call
+fail with an invalid-type error.
 
 --------------------------
 ### removeListener
-**从对象处理队列中取消指定函数**
+**Removes an event handler from the emitter**
 
 ```JavaScript
 Object DgramSocket.removeListener(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to unbind
+* func: Function(...args), the event handler function
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Alias of off(ev, func), provided for Node.js compatibility.
 
 --------------------------
-**取消对象处理队列中的全部函数**
+**Removes all event handlers of one event**
 
 ```JavaScript
 Object DgramSocket.removeListener(Value ev);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
+Parameters:
+* ev: Value, the event name to unbind
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Alias of off(ev), provided for Node.js compatibility.
 
 --------------------------
-**从对象处理队列中取消指定函数**
+**Removes several event handlers from the emitter**
 
 ```JavaScript
 Object DgramSocket.removeListener(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称作为事件名称，属性的值作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Alias of off(map), provided for Node.js compatibility.
 
 --------------------------
 ### removeEventListener
-**从对象处理队列中取消指定函数**
+**Removes an event handler with an options [object](object.md)**
 
 ```JavaScript
 Object DgramSocket.removeEventListener(Value ev,
-    Function func,
+    Function(...args) func,
     Object options = {});
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
-* options: Object, 指定事件处理函数的选项
+Parameters:
+* ev: Value, the event name to unbind
+* func: Function(...args), the event handler function
+* options: Object, the options of the event handler, ignored
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Web-style alias of off(ev, func); the options [object](object.md) is accepted and ignored, and a once()
+wrapper is matched by its original function like off().
 
 --------------------------
 ### removeAllListeners
-**从对象处理队列中取消所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。**
+**Removes all listeners of one event**
 
 ```JavaScript
 Object DgramSocket.removeAllListeners(Value ev);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
+Parameters:
+* ev: Value, the event name to remove
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Equivalent to off(ev): every listener of the event is removed, including once() wrappers
+matched by their original function, and `removeListener` is emitted once per removal.
 
 --------------------------
-**从对象处理队列中取消所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。**
+**Removes all listeners of the given events, or of the whole emitter**
 
 ```JavaScript
 Object DgramSocket.removeAllListeners(Array evs = []);
 ```
 
-调用参数:
-* evs: Array, 指定事件的名称
+Parameters:
+* evs: Array, the event names to remove
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+An empty array — including the no-argument call, because the parameter defaults to [] —
+clears every string-keyed event; symbol-keyed listeners are left in place, unlike Node.js
+which removes them too. A non-empty array clears each named event as
+removeAllListeners(ev) does.
+
+Example — clearing selected events and the whole emitter:
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+emitter.on('a', () => {});
+emitter.on('b', () => {});
+emitter.on('c', () => {});
+
+emitter.removeAllListeners(['a', 'b']);
+console.log(emitter.listenerCount('a'), emitter.listenerCount('c')); // 0 1
+
+emitter.removeAllListeners();
+console.log(emitter.eventNames().length); // 0
+```
 
 --------------------------
 ### setMaxListeners
-**监听器的默认限制的数量，仅用于兼容**
+**Stores a per-emitter listener limit**
 
 ```JavaScript
 DgramSocket.setMaxListeners(Integer n);
 ```
 
-调用参数:
-* n: Integer, 指定事件的数量
+Parameters:
+* n: Integer, the number of events
+
+The value is reported by getMaxListeners() and is otherwise informational: fibjs never warns
+when the number of listeners exceeds it. This member exists for Node.js compatibility. A
+negative value throws; 0 is accepted and stored as-is, while Node.js treats 0 as unlimited.
 
 --------------------------
 ### getMaxListeners
-**获取监听器的默认限制的数量，仅用于兼容**
+**Returns the listener limit of the emitter**
 
 ```JavaScript
 Integer DgramSocket.getMaxListeners();
 ```
 
-返回结果:
-* Integer, 返回默认限制数量
+Returns:
+* Integer, returns the default limit
+
+Returns the value set by setMaxListeners(), or the [process](../../module/ifs/process.md)-wide defaultMaxListeners (10)
+when no explicit value was set.
 
 --------------------------
 ### listeners
-**查询对象指定事件的监听器数组**
+**Returns a copy of the listener array of an event**
 
 ```JavaScript
 Array DgramSocket.listeners(Value ev);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
+Parameters:
+* ev: Value, the event name to query
 
-返回结果:
-* Array, 返回指定事件的监听器数组
+Returns:
+* Array, returns the listener array of the specified event
+
+One-shot wrappers are unwrapped, so the result contains the functions passed to
+on()/once() and can be passed to off(); an unknown event produces an empty array.
+
+Example — once() listeners are returned unwrapped:
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+
+function onTick() {
+    console.log('tick');
+}
+
+emitter.once('tick', onTick);
+console.log(emitter.listeners('tick')[0] === onTick); // true
+console.log(emitter.rawListeners('tick')[0] === onTick); // false
+```
 
 --------------------------
 ### rawListeners
-**查询对象指定事件的监听器数组，包含 once 包装函数**
+**Returns the internal listener array of an event**
 
 ```JavaScript
 Array DgramSocket.rawListeners(Value ev);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
+Parameters:
+* ev: Value, the event name to query
 
-返回结果:
-* Array, 返回指定事件的监听器数组
+Returns:
+* Array, returns the listener array of the specified event
+
+The array is not unwrapped: a listener registered with once() appears as the internal
+wrapper function whose `_func` property holds the original function. An unknown event
+produces an empty array.
 
 --------------------------
 ### listenerCount
-**查询对象指定事件的监听器数量**
+**Returns the number of listeners of an event**
 
 ```JavaScript
 Integer DgramSocket.listenerCount(Value ev);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
+Parameters:
+* ev: Value, the event name to query
 
-返回结果:
-* Integer, 返回指定事件的监听器数量
+Returns:
+* Integer, returns the number of listeners of the specified event
+
+One-shot listeners count as one and an unknown event returns 0.
 
 --------------------------
-**查询对象指定事件的监听器数量**
+**Returns the number of listeners of an event on another [object](object.md)**
 
 ```JavaScript
 Integer DgramSocket.listenerCount(Value o,
     Value ev);
 ```
 
-调用参数:
-* o: Value, 指定查询的对象
-* ev: Value, 指定事件的名称
+Parameters:
+* o: Value, the [object](object.md) to query
+* ev: Value, the event name to query
 
-返回结果:
-* Integer, 返回指定事件的监听器数量
+Returns:
+* Integer, returns the number of listeners of the specified event
+
+Counts without requiring the target to be an [EventEmitter](EventEmitter.md): any [object](object.md) with registered
+events can be queried. The call is normally written as
+`EventEmitter.listenerCount(target, 'data')`.
+
+Example — counting the listeners of another [object](object.md):
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+emitter.on('data', () => {});
+emitter.on('data', () => {});
+
+console.log(EventEmitter.listenerCount(emitter, 'data')); // 2
+```
 
 --------------------------
 ### eventNames
-**查询监听器事件名称**
+**Returns the names of the events with at least one listener**
 
 ```JavaScript
 Array DgramSocket.eventNames();
 ```
 
-返回结果:
-* Array, 返回事件名称数组
+Returns:
+* Array, returns the array of event names
+
+Only string-keyed events are reported; symbol-keyed events are omitted and numeric event
+names are returned as numbers (Node.js also reports symbol events).
 
 --------------------------
 ### emit
-**主动触发一个事件**
+**Emits an event and returns whether a listener was called**
 
 ```JavaScript
 Boolean DgramSocket.emit(Value ev,
     ...args);
 ```
 
-调用参数:
-* ev: Value, 事件名称
-* args: ..., 事件参数，将会传递给事件处理函数
+Parameters:
+* ev: Value, event name
+* args: ..., event parameters, which are passed to the event handler
 
-返回结果:
-* Boolean, 返回事件触发状态，有响应事件返回 true，否则返回 false
+Returns:
+* Boolean, returns whether the event had a listener to respond to it
+
+Listeners are called as described by the dispatch model in the class documentation: the
+first one runs synchronously on the current fiber, the remaining ones run in parallel
+fibers, and the call returns after all of them finish; an exception raised by a listener is
+thrown back to the caller. Emitting `error` with no listener throws instead of returning
+false: an Error argument is thrown as-is and any other value is wrapped in
+`Error("Unhandled error. (...)")`. [Event](Event.md) names are strings or symbols; `emit()` does not
+match a listener registered with a numeric name.
 
 --------------------------
 ### toString
-**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
+**Returns the string form of the [object](object.md)**
 
 ```JavaScript
 String DgramSocket.toString();
 ```
 
-返回结果:
-* String, 返回对象的字符串表示
+Returns:
+* String, returns the string form of the [object](object.md)
+
+The base implementation reports an error: a native [object](object.md) has no implicit
+text form, and only the classes whose value can be written as a string
+override the member. [Buffer](Buffer.md) returns its content decoded with the given
+[encoding](../../module/ifs/encoding.md), [HttpCookie](HttpCookie.md) returns "name=value", and so on; an override commonly
+accepts optional arguments ([Buffer.toString](Buffer.md#toString) takes [encoding](../../module/ifs/encoding.md), start and
+end) that are not part of this declaration.
+
+Calling the member on a class that does not override it throws
+"<Class>: the [object](object.md) can not be converted to string.", which is the
+behavior to rely on when probing whether a value has a string form. See
+toJSON for the serialization hook.
 
 --------------------------
 ### toJSON
-**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
+**Returns the JSON representation of the [object](object.md)**
 
 ```JavaScript
 Value DgramSocket.toJSON(String key = "");
 ```
 
-调用参数:
-* key: String, 未使用
+Parameters:
+* key: String, the property name of the value being serialized
 
-返回结果:
-* Value, 返回包含可 JSON 序列化的值
+Returns:
+* Value, returns the JSON-serializable value
 
-## 事件
+JSON.stringify(value) calls value.toJSON(key) when the member exists and
+serializes the returned value in its place; the key argument carries the
+property name of the value inside its parent [object](object.md) (an empty string at
+the top level) and may be used to build a keyed form. The base
+implementation returns a plain [object](object.md) holding the readable properties of
+the instance, so a native [object](object.md) serializes without per-class code; a
+class with a portable shape such as [Buffer](Buffer.md) overrides it, and a JavaScript
+class may override it in the same way.
+
+The member is normally reached through JSON.stringify rather than called
+directly; calling it returns the same value JSON.stringify would
+serialize.
+
+## Events
         
 ### close
-**`close` 事件将在使用 `close()` 关闭一个 `socket` 之后触发。该事件一旦触发，这个 `socket` 上将不会触发新的 `message` 事件**
+**Emitted after the socket has been closed; no 'message' event follows it**
 
 ```JavaScript
 event DgramSocket.close();
 ```
 
+The event carries no arguments and is delivered asynchronously after close; the underlying
+handle is released, so address and the buffer-size getters fail with EBADF afterwards.
+
 --------------------------
 ### error
-**当有任何错误发生时，`error` 事件将被触发**
+**[EventEmitter](EventEmitter.md) error event; the current implementation throws instead of emitting it**
 
 ```JavaScript
 event DgramSocket.error();
 ```
 
+bind and send report failures by throwing (or through the callback), so DgramSocket itself
+never emits 'error'. As in Node.js, emitting 'error' without a listener throws.
+
 --------------------------
 ### listening
-**当一个 `socket` 开始监听数据包信息时，`listening` 事件将被触发。该事件会在创建 UDP socket 之后被立即触发**
+**Emitted when bind completes and the socket can receive datagrams**
 
 ```JavaScript
 event DgramSocket.listening();
 ```
 
+The event is emitted during bind, so in the synchronous form it has already been delivered
+when bind returns; binding implicitly inside send emits it too. Node.js emits 'listening' on
+a later tick.
+
 --------------------------
 ### message
-**当有新的数据包被 `socket` 接收时，`message` 事件会被触发。`msg` 和 `rinfo` 会作为参数传递到该事件的处理函数中。**
+**Emitted for every received datagram**
 
 ```JavaScript
 event DgramSocket.message(Buffer msg,
     NObject rinfo);
 ```
 
-调用参数:
-* msg: [Buffer](Buffer.md), 接收到的数据包
-* rinfo: NObject, 包含接收数据包的远程信息的对象。该对象包含 `address`、`port` 和 `family` 属性，分别表示远程地址、端口和协议族。
+Parameters:
+* msg: [Buffer](Buffer.md), the received datagram
+* rinfo: NObject, the remote information of the sender
+
+msg is a [Buffer](Buffer.md) with exactly the bytes of one datagram. rinfo is an [object](object.md) with `address`
+(the sender address), `family` ('IPv4' or 'IPv6'), `port` (the sender port) and `size` (the
+payload length in bytes). The handler runs in its own fiber, so it may block or send without
+stalling other sockets.
 

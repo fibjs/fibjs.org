@@ -1,15 +1,77 @@
-# 对象 RedisHash
-[Redis](Redis.md) 数据库客户端 Hash 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库
+# Object RedisHash
+A view of one [Redis](Redis.md) hash key: field and value operations without repeating the key
 
-用以操作 [Redis](Redis.md) 的 Hash 对象，创建方法：
+RedisHash is the [object](object.md) returned by [Redis](Redis.md)#getHash. It captures the key name once and
+exposes the hash command family, where every member maps to one H* command: set is HSET,
+setNX is HSETNX, mset is HMSET, get is HGET, mget is HMGET, incr is HINCRBY, getAll is
+HGETALL, keys is HKEYS, len is HLEN, exists is HEXISTS and del is HDEL. Obtaining the view
+sends nothing to the server: the binding is resolved when its members run.
+
+Concepts:
+
+- **A view, not a copy**: the [object](object.md) stores the key only. A hash created after the view
+  was obtained is visible through it, and a missing key is not an error - the members
+  report the empty result (get returns null, len returns 0, keys returns an empty array)
+  until the key exists again.
+- **Field and value [types](../../module/ifs/types.md)**: fields and values are declared [Buffer](Buffer.md)|String and a [Buffer](Buffer.md) is
+  sent byte-for-byte, so non-UTF-8 data round-trips through set/get. The variadic
+  mset/mget/del forms instead convert each argument through its JavaScript string form:
+  a number is rejected with error 20005 and a [Buffer](Buffer.md) is decoded as UTF-8 text.
+- **Creating and counting**: set, setNX and mset create the key when it is missing, get
+  returns null for a missing field, and incr starts from 0 for a missing field. len counts
+  the fields and exists tests one of them.
+- **Type conflicts**: a member called on a key that holds another type fails with the
+  server error (number 20024).
+
+Obtained from:
+- `rdb.getHash(key)` — the only factory, where rdb is the [Redis](Redis.md) [object](object.md) returned by
+  [db.openRedis](../../module/ifs/db.md#openRedis). The key is captured at call time and may be a [Buffer](Buffer.md).
+
+Example 1 — store, read and count fields:
 
 ```JavaScript
-var db = require("db");
-var rdb = new db.openRedis("redis-server");
-var hash = rdb.getHash("test");
+// requires: redis
+const db = require('db');
+const rdb = db.openRedis('redis://127.0.0.1:6379');
+const hash = rdb.getHash('user:1');
+
+hash.set('name', 'alice');
+hash.set('age', '30');
+console.log(hash.get('name').toString()); // alice
+console.log(hash.len()); // 2
+console.log(hash.exists('age')); // true
+console.log(hash.exists('mail')); // false
+console.log(hash.get('mail')); // null
+
+rdb.del('user:1');
+rdb.close();
 ```
 
-## 继承关系
+Example 2 — several fields at once, then an increment:
+
+```JavaScript
+// requires: redis
+const db = require('db');
+const rdb = db.openRedis('redis://127.0.0.1:6379');
+const hash = rdb.getHash('scores');
+
+hash.mset({
+    math: '90',
+    art: '80'
+});
+hash.mset('physics', '70', 'chemistry', '60');
+console.log(hash.len()); // 4
+console.log(hash.keys().length); // 4 - HKEYS returns the field names unpaired
+console.log(hash.incr('math', 5)); // 95
+
+const values = hash.mget('math', 'missing');
+console.log(values[0].toString(), values[1]); // 95 null
+
+rdb.del('scores');
+rdb.close();
+```
+
+## Inheritance
 ```dot
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
@@ -21,207 +83,333 @@ digraph {
 }
 ```
 
-## 成员函数
+## Methods
         
 ### set
-**将哈希表中的域 field 的值设为 value，如果域 field 已经存在于哈希表中，旧值将被覆盖**
+**Stores value in field, replacing the previous value**
 
 ```JavaScript
-RedisHash.set(Buffer field,
-    Buffer value);
+RedisHash.set(Buffer | String field,
+    Buffer | String value);
 ```
 
-调用参数:
-* field: [Buffer](Buffer.md), 指定要修改的 field
-* value: [Buffer](Buffer.md), 指定要修改的数据
+Parameters:
+* field: [Buffer](Buffer.md) | String, the field to write
+* value: [Buffer](Buffer.md) | String, the value to store
+
+HSET. The key is created when it is missing and the previous value of the field is
+discarded. field and value are sent byte-for-byte as Buffers and as UTF-8 text as
+strings. The member reports no result.
 
 --------------------------
 ### setNX
-**将哈希表中的域 field 的值设置为 value ，当且仅当域 field 不存在。若域 field 已经存在，该操作无效**
+**Stores value in field only when the field is missing**
 
 ```JavaScript
-RedisHash.setNX(Buffer field,
-    Buffer value);
+RedisHash.setNX(Buffer | String field,
+    Buffer | String value);
 ```
 
-调用参数:
-* field: [Buffer](Buffer.md), 指定要修改的 field
-* value: [Buffer](Buffer.md), 指定要修改的数据
+Parameters:
+* field: [Buffer](Buffer.md) | String, the field to write
+* value: [Buffer](Buffer.md) | String, the value to store
+
+HSETNX. The command does nothing when the field already exists, and the member reports
+no result, so read the field back to know whether the write happened.
 
 --------------------------
 ### mset
-**同时将多个 field-value (域-值)对设置到哈希表中，此命令会覆盖哈希表中已存在的域**
+**Stores several field/value pairs at once, replacing the fields**
 
 ```JavaScript
 RedisHash.mset(Object kvs);
 ```
 
-调用参数:
-* kvs: Object, 指定要设置的 field/value 对象
+Parameters:
+* kvs: Object, the field/value pairs to write, as property names and values
+
+HMSET. The property names of kvs are the fields and the property values are the
+values, in property order; the command is atomic. Each value is converted through its
+JavaScript string form, so a number is rejected with error 20005 and a [Buffer](Buffer.md) is
+decoded as UTF-8 text. The member reports no result.
 
 --------------------------
-**同时将多个 field-value (域-值)对设置到哈希表中，此命令会覆盖哈希表中已存在的域**
+**Stores several field/value pairs at once from a flat argument list**
 
 ```JavaScript
 RedisHash.mset(...kvs);
 ```
 
-调用参数:
-* kvs: ..., 指定要设置的 field/value 列表
+Parameters:
+* kvs: ..., the flat field/value list to write
+
+HMSET. The arguments alternate field and value: mset('a', '1', 'b', '2') is the same
+command as mset({ a: '1', b: '2' }); an odd argument count reaches the server, which
+rejects the command. Values follow the string conversion of the [object](object.md) form. The
+member reports no result.
+
+Example — two fields, then read them back:
+
+```JavaScript
+// requires: redis
+const db = require('db');
+const rdb = db.openRedis('redis://127.0.0.1:6379');
+const hash = rdb.getHash('user:1');
+
+hash.mset('name', 'alice', 'mail', 'alice@example.com');
+const values = hash.mget('name', 'mail');
+console.log(values[0].toString(), values[1].toString()); // alice alice@example.com
+
+rdb.del('user:1');
+rdb.close();
+```
 
 --------------------------
 ### get
-**返回哈希表中给定域 field 的值**
+**Returns the value stored in field**
 
 ```JavaScript
-Buffer RedisHash.get(Buffer field);
+Buffer RedisHash.get(Buffer | String field);
 ```
 
-调用参数:
-* field: [Buffer](Buffer.md), 指定要查询的 field
+Parameters:
+* field: [Buffer](Buffer.md) | String, the field to read
 
-返回结果:
-* [Buffer](Buffer.md), 给定域的值，当给定域不存在或是给定 key 不存在时，返回 null
+Returns:
+* [Buffer](Buffer.md), the value as a [Buffer](Buffer.md), or null when the field or the key does not exist
+
+HGET. A missing field or a missing key returns null; the value is a [Buffer](Buffer.md).
 
 --------------------------
 ### mget
-**返回哈希表中，一个或多个给定域的值**
+**Returns the values of the given fields, one element per field**
 
 ```JavaScript
 NArray RedisHash.mget(Array fields);
 ```
 
-调用参数:
-* fields: Array, 指定要查询的域数组
+Parameters:
+* fields: Array, the array of fields to read
 
-返回结果:
-* NArray, 一个包含所有给定域的值的列表
+Returns:
+* NArray, an array with one [Buffer](Buffer.md) or null per field, in the given order
+
+HMGET. A missing field yields null in its position, so the result has the same length
+as the field list. The fields go through the JavaScript string conversion of a
+variadic argument: a number is rejected with error 20005 and a [Buffer](Buffer.md) is decoded as
+UTF-8 text. The values are Buffers.
 
 --------------------------
-**返回哈希表中，一个或多个给定域的值**
+**Returns the values of the given fields, one element per field**
 
 ```JavaScript
 NArray RedisHash.mget(...fields);
 ```
 
-调用参数:
-* fields: ..., 指定要查询的域列表
+Parameters:
+* fields: ..., the fields to read, as a flat argument list
 
-返回结果:
-* NArray, 一个包含所有给定域的值的列表
+Returns:
+* NArray, an array with one [Buffer](Buffer.md) or null per field, in the given order
+
+HMGET. This is the flat form of mget(Array); the two are the same command and both
+follow the string conversion described there.
 
 --------------------------
 ### incr
-**将域所储存的值加上增量**
+**Adds num to the integer stored in field**
 
 ```JavaScript
-Long RedisHash.incr(Buffer field,
+Long RedisHash.incr(Buffer | String field,
     Long num = 1);
 ```
 
-调用参数:
-* field: [Buffer](Buffer.md), 指定要修改的域
-* num: Long, 指定要加上的数值
+Parameters:
+* field: [Buffer](Buffer.md) | String, the field to modify
+* num: Long, the amount to add
 
-返回结果:
-* Long, 加上 num 之后，域的值
+Returns:
+* Long, the value of the field after the addition
+
+HINCRBY. The value is a signed 64-bit integer; a missing field starts at 0 and a
+missing key is created, so incr('views') on a new hash returns 1. A value that is not
+an integer string or an overflow fails with the server error.
+
+Example — a counter field in an existing hash:
+
+```JavaScript
+// requires: redis
+const db = require('db');
+const rdb = db.openRedis('redis://127.0.0.1:6379');
+const hash = rdb.getHash('metrics');
+
+console.log(hash.incr('views')); // 1 - a missing field starts at 0
+console.log(hash.incr('views', 9)); // 10
+
+rdb.del('metrics');
+rdb.close();
+```
 
 --------------------------
 ### getAll
-**返回哈希表中，所有的域和值**
+**Returns every field and value of the hash**
 
 ```JavaScript
 NArray RedisHash.getAll();
 ```
 
-返回结果:
-* NArray, 返回一个包含哈希表中所有域的列表
+Returns:
+* NArray, a flat array of alternating field and value Buffers
+
+HGETALL. The result is one flat array that alternates field and value:
+[field1, value1, field2, value2, ...], with both as Buffers. The order is chosen by
+the server and is not the insertion order; a missing key returns an empty array.
+
+Example — the flat pair layout:
+
+```JavaScript
+// requires: redis
+const db = require('db');
+const rdb = db.openRedis('redis://127.0.0.1:6379');
+const hash = rdb.getHash('user:1');
+
+hash.mset({
+    name: 'alice',
+    age: '30'
+});
+const pairs = hash.getAll();
+console.log(pairs.length); // 4 - two fields, two values
+console.log(pairs[0].toString(), pairs[1].toString()); // name alice
+
+rdb.del('user:1');
+rdb.close();
+```
 
 --------------------------
 ### keys
-**返回哈希表中的所有域**
+**Returns every field name of the hash**
 
 ```JavaScript
 NArray RedisHash.keys();
 ```
 
-返回结果:
-* NArray, 返回值里，紧跟每个域名(field name)之后是域的值(value)，所以返回值的长度是哈希表大小的两倍
+Returns:
+* NArray, an array of the field names as Buffers
+
+HKEYS. Unlike getAll, the field names are returned alone: the result has one element
+per field, with no values interleaved. The order is chosen by the server and a missing
+key returns an empty array.
 
 --------------------------
 ### len
-**返回哈希表中域的数量**
+**Returns the number of fields in the hash**
 
 ```JavaScript
 Integer RedisHash.len();
 ```
 
-返回结果:
-* Integer, 返回哈希表中域的数量
+Returns:
+* Integer, the number of fields
+
+HLEN. A missing key returns 0.
 
 --------------------------
 ### exists
-**查看哈希表中，给定域 field 是否存在**
+**Checks whether the hash contains the given field**
 
 ```JavaScript
-Boolean RedisHash.exists(Buffer field);
+Boolean RedisHash.exists(Buffer | String field);
 ```
 
-调用参数:
-* field: [Buffer](Buffer.md), 指定要查询的 field
+Parameters:
+* field: [Buffer](Buffer.md) | String, the field to [test](../../module/ifs/test.md)
 
-返回结果:
-* Boolean, 如果哈希表含有给定域，返回 true，如果哈希表不含有给定域，或 key 不存在，返回 false
+Returns:
+* Boolean, true when the field exists
+
+HEXISTS. A missing key returns false.
 
 --------------------------
 ### del
-**删除哈希表中的一个或多个指定域，不存在的域将被忽略**
+**Removes the given fields from the hash**
 
 ```JavaScript
 Integer RedisHash.del(Array fields);
 ```
 
-调用参数:
-* fields: Array, 指定要删除的域数组
+Parameters:
+* fields: Array, the array of fields to remove
 
-返回结果:
-* Integer, 被删除域的数量
+Returns:
+* Integer, the number of fields that were removed
+
+HDEL. Missing fields are ignored and the number of removed fields is returned. The
+fields go through the JavaScript string conversion of a variadic argument: a number is
+rejected with error 20005 and a [Buffer](Buffer.md) is decoded as UTF-8 text.
 
 --------------------------
-**删除哈希表中的一个或多个指定域，不存在的域将被忽略**
+**Removes the given fields from the hash**
 
 ```JavaScript
 Integer RedisHash.del(...fields);
 ```
 
-调用参数:
-* fields: ..., 指定要删除的域列表
+Parameters:
+* fields: ..., the fields to remove, as a flat argument list
 
-返回结果:
-* Integer, 被删除域的数量
+Returns:
+* Integer, the number of fields that were removed
+
+HDEL. This is the flat form of del(Array); the two are the same command and both
+follow the string conversion described there.
 
 --------------------------
 ### toString
-**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
+**Returns the string form of the [object](object.md)**
 
 ```JavaScript
 String RedisHash.toString();
 ```
 
-返回结果:
-* String, 返回对象的字符串表示
+Returns:
+* String, returns the string form of the [object](object.md)
+
+The base implementation reports an error: a native [object](object.md) has no implicit
+text form, and only the classes whose value can be written as a string
+override the member. [Buffer](Buffer.md) returns its content decoded with the given
+[encoding](../../module/ifs/encoding.md), [HttpCookie](HttpCookie.md) returns "name=value", and so on; an override commonly
+accepts optional arguments ([Buffer.toString](Buffer.md#toString) takes [encoding](../../module/ifs/encoding.md), start and
+end) that are not part of this declaration.
+
+Calling the member on a class that does not override it throws
+"<Class>: the [object](object.md) can not be converted to string.", which is the
+behavior to rely on when probing whether a value has a string form. See
+toJSON for the serialization hook.
 
 --------------------------
 ### toJSON
-**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
+**Returns the JSON representation of the [object](object.md)**
 
 ```JavaScript
 Value RedisHash.toJSON(String key = "");
 ```
 
-调用参数:
-* key: String, 未使用
+Parameters:
+* key: String, the property name of the value being serialized
 
-返回结果:
-* Value, 返回包含可 JSON 序列化的值
+Returns:
+* Value, returns the JSON-serializable value
+
+JSON.stringify(value) calls value.toJSON(key) when the member exists and
+serializes the returned value in its place; the key argument carries the
+property name of the value inside its parent [object](object.md) (an empty string at
+the top level) and may be used to build a keyed form. The base
+implementation returns a plain [object](object.md) holding the readable properties of
+the instance, so a native [object](object.md) serializes without per-class code; a
+class with a portable shape such as [Buffer](Buffer.md) overrides it, and a JavaScript
+class may override it in the same way.
+
+The member is normally reached through JSON.stringify rather than called
+directly; calling it returns the same value JSON.stringify would
+serialize.
 

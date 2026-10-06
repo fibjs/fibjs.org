@@ -1,10 +1,10 @@
-# 服务端模块热更新
+# Server-side Module Hot Update
 
-`fibjs` 的 http server 是常驻内存的独立服务器程序，这意味着有版本更新的时候往往需要重启服务程序。
+The `fibjs` http server is a standalone server program that resides in memory, which means it often needs to be restarted when there is a version update.
 
-假设有以下服务程序:
+Assume we have the following server programs:
 - `web.js` http handler
-- `app.js` 应用入口
+- `app.js` application entry point
 
 ```javascript
 // web.js
@@ -27,9 +27,9 @@ var svr = new http.Server(8080, webServer);
 svr.start();
 ```
 
-在 `app.js` 直接引用 `web.js`， 当每次更新应用的时候，都必须重启 `app.js`，有没有办法可以在更新代码的同时，让 `app.js` 自动加载最新的 `web.js` 呢？
+Since `app.js` directly requires `web.js`, every time the application is updated, `app.js` must be restarted. Is there a way to let `app.js` automatically load the latest `web.js` while the code is updated?
 
-我们可以通过 fibjs 的原生 [SandBox](../manual/object/ifs/SandBox.md) 模块来实现平滑的热更新。对 `app.js` 做一些更改:
+We can achieve smooth hot updates with the native [SandBox](../manual/object/ifs/SandBox.md) module in fibjs. Make some changes to `app.js`:
 
 ```javascript
 // app.js
@@ -57,6 +57,6 @@ var svr = new http.Server(8080, new_web());
 svr.start();
 ```
 
-`app.js` 中启动了一个循环，每隔 1s 重新 `require` 一次 `web.js` 中的内容生成安全的模块，用于为 `svr` 重新挂载 `handler`。当 `web.js`中的内容需要更新的时候，只需替换该文件，即可实现服务端程序的平滑更新。
+In `app.js`, a loop is started that re-requires the contents of `web.js` every 1 second to create a sandboxed module, which is used to remount the `handler` for `svr`. When the contents of `web.js` need to be updated, you only need to replace that file to achieve a smooth update of the server program.
 
-👉 【[高性能 Web 应用程序实践](web.md)】
+👉 [High-Performance Web Application Practices](web.md)

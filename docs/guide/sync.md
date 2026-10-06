@@ -1,37 +1,37 @@
-# 同步和异步
+# Synchronous and Asynchronous
 
-随着 Web 应用的不断发展，JavaScript 作为一种广泛使用的编程语言，也在不断地发展和演变。Web 前端开发中，JavaScript 主要被用于浏览器的 UI 处理，UI 开发是典型的单线程事件驱动模式，因此 JavaScript 也形成了以异步处理为主要编程范式。但是在大规模复杂的应用中，异步编程带来的问题和复杂性也越来越明显。
+As web applications continue to evolve, JavaScript, as a widely used programming language, keeps developing and changing as well. In web front-end development, JavaScript is mainly used for UI processing in the browser. UI development is a typical single-threaded, event-driven model, so asynchronous processing has become JavaScript's primary programming paradigm. However, in large-scale, complex applications, the problems and complexity caused by asynchronous programming have become increasingly obvious.
 
-Node.js 的出现为 JavaScript 带来了一种全新的异步编程范式：事件循环和回调函数。这种编程范式具有高效、简洁的特点，适用于高并发、I/O 密集型的场景。然而，这种编程范式也带来了它自己的问题和复杂性，尤其是在大规模复杂的应用中，程序员需要处理很多回调函数嵌套的问题，并且需要处理异步调用顺序的问题，增加了程序的复杂性和难度。
+The arrival of Node.js brought a brand-new asynchronous programming paradigm to JavaScript: the event loop and callback functions. This paradigm is efficient and concise, and it suits high-concurrency, I/O-intensive scenarios. However, it also brings its own problems and complexity. Especially in large-scale, complex applications, programmers have to deal with many nested callback functions and with the ordering of asynchronous calls, which increases the complexity and difficulty of the program.
 
-为了解决这些问题和难点，fibjs 应运而生。fibjs 是一个主要为 web 后端开发而设计的应用服务器开发框架，它建立在 Google v8 JavaScript 引擎基础上，并且选择了和传统的 callback 不同的并发解决方案。fibjs 利用 fiber 在框架层隔离了异步调用带来的业务复杂性，极大降低了开发难度，并减少因为用户空间频繁异步处理带来的性能问题。同时，与传统的异步编程范式相比，它的同步编程范式更加可读性强、逻辑简单、易于维护的优势。
+To solve these problems and difficulties, fibjs came into being. fibjs is an application server development framework designed mainly for web back-end development. It is built on the Google v8 JavaScript engine and chose a concurrency solution different from traditional callbacks. fibjs uses fibers to isolate the business complexity caused by asynchronous calls at the framework level, greatly reducing development difficulty and mitigating the performance problems caused by frequent asynchronous processing in user space. At the same time, compared with the traditional asynchronous programming paradigm, its synchronous programming paradigm is more readable, has simpler logic, and is easier to maintain.
 
-## fiber 简介
-fibjs 是一个基于 v8 引擎的高性能的 JavaScript 服务器框架，主要面向 Web 后端开发。始于 2009 年，目前已经拥有了很高的稳定性和生产力，在国内外有着广泛的应用案例。
+## Introduction to fiber
+fibjs is a high-performance JavaScript server framework built on the v8 engine, aimed mainly at web back-end development. It started in 2009 and has since achieved high stability and productivity, with a wide range of application cases both at home and abroad.
 
-在 fibjs 中，fiber 被用来解决业务逻辑和 I/O 处理之间的问题。fiber 与传统的线程、协程、进程等概念不同，它是一种用户级的轻量级线程，可以看作是一种协作式多任务处理机制。fiber 可以在不同的上下文中执行业务逻辑和 I/O 操作，内部通过预分配和循环利用来管理资源，相比于传统的线程和进程，它具有更轻量级、更灵活、更高效的特点。
+In fibjs, fibers are used to bridge business logic and I/O processing. A fiber differs from traditional threads, coroutines, processes, and similar concepts. It is a user-level lightweight thread and can be seen as a cooperative multitasking mechanism. Fibers can execute business logic and I/O operations in different contexts, and internally they manage resources through pre-allocation and recycling. Compared with traditional threads and processes, fibers are more lightweight, more flexible, and more efficient.
 
-与其它线程库（如 pthread、WinThread、Boost.Thread 等）相比，fiber 有以下优势：
+Compared with other thread libraries (such as pthread, WinThread, Boost.Thread, and so on), fibers have the following advantages:
 
-- **协作式调度**：fiber 是协作式调度，不需要内核或操作系统抢占式调度，减少了频繁地上下文切换，加快了程序的运行速度，同时避免了线程之间的竞争条件和死锁问题。
-- **轻量级**：每个 fiber 只需消耗一个较小的栈空间，在多并发应用中可以创建大量的 fiber，不会导致占用过多内存的问题。
-- **高效性**：fiber 是基于 JavaScript 语言本身的特性实现，并且充分利用了 v8 引擎的优越性能，速度比传统的线程库更快。
+- **Cooperative scheduling**: Fibers use cooperative scheduling and do not require preemptive scheduling by the kernel or operating system, which reduces frequent context switches and speeds up program execution, while avoiding race conditions and deadlocks between threads.
+- **Lightweight**: Each fiber consumes only a small amount of stack space, so large numbers of fibers can be created in highly concurrent applications without using too much memory.
+- **High efficiency**: Fibers are implemented based on features of the JavaScript language itself and make full use of the superior performance of the v8 engine, so they are faster than traditional thread libraries.
 
-通过使用 fiber，fibjs 可以将业务逻辑和 I/O 处理分离，从而将异步调用封装成同步调用的形式，使得编写和维护代码更加简单和易读，同时可以充分发挥 JavaScript 语言的优点。
+By using fibers, fibjs can separate business logic from I/O processing and wrap asynchronous calls in the form of synchronous calls, making code easier to write and maintain while fully leveraging the strengths of the JavaScript language.
 
-## fibjs 中的同步编程
-在异步编程中，由于回调函数的嵌套有可能导致代码的可读性变差，容易产生回调地狱的问题，增加代码的难度和调试的成本。而同步编程范式更符合人类的思维模式，使得代码结构更加清晰、易读、易维护，可以极大地提高开发效率和代码质量。
+## Synchronous programming in fibjs
+In asynchronous programming, nested callback functions can make code less readable, easily leading to the callback hell problem and increasing the difficulty of the code and the cost of debugging. The synchronous programming paradigm, by contrast, is closer to how humans think, making code structure clearer and easier to read and maintain, and it can greatly improve development efficiency and code quality.
 
-在 fibjs 中，同步编程是一种十分流行和常用的编程范式，它使得代码的结构和逻辑更加直观，易于理解和维护。一些同步编程的函数和模块在 fibjs 中得到了高度支持，例如 util.sync、fs.readSync 等。
+In fibjs, synchronous programming is a very popular and commonly used paradigm. It makes the structure and logic of code more intuitive and easier to understand and maintain. Some synchronous functions and modules are highly supported in fibjs, such as util.sync and fs.readSync.
 
-在 fibjs 中，可以直接以同步方式调用内置对象的异步函数：
+In fibjs, you can call the asynchronous functions of built-in objects directly in synchronous style:
 ```JavaScript
 const fs = require("fs");
 
 const data = fs.readFile("/path/to/file");
 console.log(data);
 ```
-也可以把异步函数通过 util.sync 和 try…catch 包装一下，可以让 fiber 获得异步调用的返回值，从而实现同步的效果，例如：
+You can also wrap an asynchronous function with util.sync and try…catch so that the fiber receives the return value of the asynchronous call, thereby achieving a synchronous effect. For example:
 ```JavaScript
 // load module
 const coroutine = require("coroutine");
@@ -45,10 +45,10 @@ const readFile = util.sync(fs.readFile);
 const data = readFile("myfile.txt");
 console.log(data);
 ```
-在上面的例子中，我们定义了一个名为 readFile 的函数，利用 util.sync 将异步的 fs.readFile 函数封装成了同步函数，这个函数可以通过同步调用的方式直接返回数据。这种同步调用方式和传统的 JavaScript 编程范式类似，不同的是，在 fibjs 中不会阻塞线程，而是通过 fiber 实现异步效果。
+In the example above, we defined a function named readFile that uses util.sync to wrap the asynchronous fs.readFile function into a synchronous function, which returns data directly when called in synchronous style. This synchronous call style is similar to the traditional JavaScript programming paradigm; the difference is that in fibjs it does not block the thread but achieves the asynchronous effect through fibers.
 
-### util.sync 的原理
-util.sync 是内核的一个高效的包裹函数，下面的 JavaScript 代码可以实现类似的功能：
+### How util.sync works
+util.sync is an efficient wrapper function in the kernel. The following JavaScript code can achieve similar functionality:
 ```JavaScript
 const coroutine = require("coroutine");
 
@@ -74,15 +74,15 @@ function sync(func) {
   }
 }
 ```
-这段代码定义了一个用于将异步回调函数转换为同步调用函数的工具函数 sync。它接收一个函数 func，并返回一个新的函数 _wrap。这个新函数实现了将原函数转换为同步调用的功能。在 _wrap 函数中，首先创建了一个新的 Event 对象 ev，用于线程调度和等待异步回调结果。之后使用 apply 方法将指定参数和一个新的回调函数作为参数，调用原函数 func。在调用的过程中，发生了异步回调，新的回调函数将返回的结果存储到变量 e 和 r 中，并唤醒 Event 对象。最后根据变量 e 来决定是否抛出异常，或者返回变量 r。这个函数实现了将异步回调函数转换为同步调用的一个解决方案，能够提高函数的可读性和可维护性。
+This code defines a utility function named sync for converting an asynchronous callback function into a synchronous call function. It takes a function func and returns a new function _wrap. The new function implements the conversion of the original function into a synchronous call. In _wrap, a new Event object ev is first created for thread scheduling and for waiting on the result of the asynchronous callback. Then the apply method is used to call the original function func with the specified arguments plus a new callback function. During the call, an asynchronous callback occurs: the new callback stores the returned result in the variables e and r and wakes up the Event object. Finally, the variable e determines whether an exception is thrown, or the variable r is returned. This function is a solution for converting asynchronous callback functions into synchronous calls, and it can improve the readability and maintainability of functions.
 
-## fibjs 中的异步编程
-在 fibjs 中，大多数异步方法（包括 I/O 和网络请求方法等）都可以同时支持同步和异步调用，这使得开发者可以随时根据自己的编程需求来选择使用哪种方式。
+## Asynchronous programming in fibjs
+In fibjs, most asynchronous methods (including I/O and network request methods) support both synchronous and asynchronous calls, which means developers can choose whichever style they need at any time.
 
-以 fs.readFile() 为例，我们可以通过两种方式来使用该方法：
+Taking fs.readFile() as an example, we can use the method in two ways:
 
-### 异步方式
-通过传递一个回调函数来处理读取文件的结果，例如：
+### Asynchronous approach
+Pass a callback function to handle the result of reading the file. For example:
 ```JavaScript
 const fs = require("fs");
 
@@ -91,26 +91,26 @@ fs.readFile("/path/to/file", (err, data) => {
   console.log(data);
 });
 ```
-这种方式适用于需要在读取文件完成后执行某些操作的情况。
+This approach suits cases where you need to perform some action after the file has been read.
 
-### 同步方式
-通过不传递回调函数来获得文件的内容，例如：
+### Synchronous approach
+Omit the callback function to get the contents of the file directly. For example:
 ```JavaScript
 const fs = require("fs");
 
 const data = fs.readFile("/path/to/file");
 console.log(data);
 ```
-在此示例中，我们通过读取文件的返回值 data 来获取文件的内容，不需要在等待文件读取完成的回调函数执行完毕后才能继续执行操作。这种方式适用于需要在读取文件完成前执行某些操作的情况。
+In this example, we get the file contents from the return value data of the read call, and we do not have to wait for a callback to finish after the file is read before continuing. This approach suits cases where you need to perform other actions before the file read completes.
 
-可以看到，这种同时支持同步和异步调用的特点，使得开发者可以根据自己的需求和开发场景选择使用不同的方式。在某些情况下，同步方式的代码可读性更高，更易于维护和调试；而在某些情况下，异步方式可以更好地提高代码的响应速度和性能。
+As you can see, the ability to support both synchronous and asynchronous calls lets developers choose different styles according to their needs and development scenarios. In some cases, synchronous code is more readable and easier to maintain and debug; in others, the asynchronous style can better improve the responsiveness and performance of the code.
 
-然而，在使用同步方式的时候也需要注意，在一些场景下，这种方式可能会阻塞当前 fiber。因此，我们需要根据实际需求来选择合适的编程方式。
+However, when using the synchronous approach, you should also note that in some scenarios it may block the current fiber. Therefore, we need to choose the appropriate programming style based on actual requirements.
 
-## 使用 async/await 进行异步编程
-fibjs 还内置支持 async/await 的异步编程方式，使得异步代码的编写更加简洁和易读。以下是两种使用 async/await 的方式：
+## Asynchronous programming with async/await
+fibjs also has built-in support for async/await, which makes asynchronous code more concise and easier to read. Here are two ways to use async/await:
 
-### 使用 fs.readFileAsync
+### Using fs.readFileAsync
 ```JavaScript
 const fs = require("fs");
 
@@ -125,9 +125,9 @@ async function readFileAsync() {
 
 readFileAsync();
 ```
-这种方式通过 async/await 语法，使得异步代码看起来像同步代码一样，极大地提高了代码的可读性和可维护性。
+This approach uses async/await syntax to make asynchronous code look like synchronous code, greatly improving the readability and maintainability of the code.
 
-### 使用 fs.promises.readFile
+### Using fs.promises.readFile
 ```JavaScript
 const fs = require("fs").promises;
 
@@ -142,13 +142,13 @@ async function readFileWithPromises() {
 
 readFileWithPromises();
 ```
-这种方式使用了 fs.promises 模块，同样通过 async/await 语法来处理异步操作，使得代码更加简洁和易读。
+This approach uses the fs.promises module and likewise handles asynchronous operations with async/await syntax, making the code more concise and easier to read.
 
-通过以上示例可以看出，fibjs 提供了多种异步编程方式，开发者可以根据自己的需求和开发场景选择最合适的方式来编写代码。
+As the examples above show, fibjs provides several asynchronous programming styles, and developers can choose the most suitable one for their needs and development scenarios.
 
-## 结论
-在本文中，我们介绍了 fibjs 的同步编程风格和异步编程解决方案以及它们的优点和应用场景。我们提到，fibjs 能够通过利用 fiber 隔离业务逻辑和异步处理带来的性能问题，降低操作复杂度和提高代码开发效率。同时，我们也强调了 fibjs 在 I/O 处理和内存管理等方面的优势，这为开发、测试和维护带来了极大的便利。
+## Conclusion
+In this article, we introduced fibjs's synchronous programming style and its asynchronous programming solutions, along with their advantages and use cases. We mentioned that fibjs can use fibers to isolate the performance problems caused by business logic and asynchronous processing, reducing operational complexity and improving development efficiency. We also highlighted fibjs's advantages in I/O processing and memory management, which make development, testing, and maintenance much easier.
 
-最后，我们鼓励读者深入探索 fibjs，以及参与到 fibjs 的贡献和社区活动中。我们相信，fibjs 会继续以它强大的性能和易用性不断地吸引开源社区的关注和支持。
+Finally, we encourage readers to explore fibjs in depth and to take part in contributing to fibjs and in its community activities. We believe that fibjs will continue to attract the attention and support of the open source community with its powerful performance and ease of use.
 
-👉 【[使用 fibjs 的 ECMAScript 模块 (ESM)](esm.md)】
+👉 [Using ECMAScript Modules (ESM) in fibjs](esm.md)

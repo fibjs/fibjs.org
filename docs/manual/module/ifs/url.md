@@ -1,163 +1,216 @@
-# 模块 url
-URL 处理模块，提供 URL 解析、格式化、文件路径转换和国际化域名处理等功能
+# Module url
+The url [module](module.md) parses, formats and resolves URLs; it provides the WHATWG URL and [URLSearchParams](../../object/ifs/URLSearchParams.md) classes together with the legacy [UrlObject](../../object/ifs/UrlObject.md) API, file [path](path.md) conversion and internationalized domain name conversion
 
-url 模块实现了完整的 URL 处理功能，兼容 WHATWG URL 标准与传统 URL API。
-它提供了 URL 对象、[URLSearchParams](../../object/ifs/URLSearchParams.md) 对象以及各种实用的 URL 操作函数。
+The WHATWG classes are aliases of the [global](global.md) `URL` and `URLSearchParams`, and the legacy
+functions (parse, format and resolve) are kept for Node.js compatibility.
 
-## 主要功能
+Concepts:
 
-- **URL 解析和格式化**: 支持解析和格式化各种 URL 格式
-- **文件 URL 处理**: 提供文件路径与 file:// URL 之间的转换
-- **国际化域名**: 支持 ASCII 和 Unicode 域名之间的转换
-- **查询参数处理**: 集成 [URLSearchParams](../../object/ifs/URLSearchParams.md) 提供强大的查询参数操作
-- **相对路径解析**: 支持相对 URL 的解析和合并
+- **Two APIs**: `URL` implements the WHATWG URL standard and is the recommended API;
+`parse` returns the legacy [UrlObject](../../object/ifs/UrlObject.md) with the fields protocol, slashes, auth, host, port,
+hostname, hash, search, query, pathname, [path](path.md) and href. Node.js deprecates the legacy
+functions (DEP0169) because their parsing is not standardized.
+- **Encoding rules**: the WHATWG parser percent-encodes characters that are invalid in the
+current component and normalizes the host (lower case, internationalized names to ASCII);
+the query serializer writes a space as `+`. The legacy formatter applies the same
+[encoding](encoding.md) to component values, encodes user names and passwords, and leaves an already
+encoded string unchanged.
+- **Relative resolution**: a relative reference is resolved against a base URL with the
+standard algorithm; resolve and `new URL(relative, base)` share that behavior.
+- **Query parameters**: `URL#searchParams` is a live [URLSearchParams](../../object/ifs/URLSearchParams.md) view and changing it
+rewrites the URL; `url.parse(str, true)` returns a legacy [object](../../object/ifs/object.md) whose query is a
+[URLSearchParams](../../object/ifs/URLSearchParams.md) instead of the raw string.
+- **[File](../../object/ifs/File.md) URLs**: pathToFileURL and fileURLToPath convert between platform paths and
+`file:` URLs, percent-[encoding](encoding.md) or decoding the [path](path.md) and rejecting a non-empty host on
+POSIX.
+- **Internationalized domain names**: domainToASCII and domainToUnicode convert a domain
+between Unicode and the ACE (`xn--`) form with the UTS #46 mapping; `URL` applies the
+same conversion to hosts automatically.
 
-## 基本用法
-
-### 1. 创建和操作 URL 对象
+Import:
 
 ```JavaScript
-const {
-    URL,
-    URLSearchParams
-} = require('url');
-
-// Create URL object
-const myURL = new URL('https://example.com:8080/path?key=value#hash');
-
-// Access URL parts
-console.log(myURL.protocol); // 'https:'
-console.log(myURL.hostname); // 'example.com'
-console.log(myURL.port); // '8080'
-console.log(myURL.pathname); // '/path'
-console.log(myURL.search); // '?key=value'
-console.log(myURL.hash); // '#hash'
-
-// Modify URL
-myURL.pathname = '/new-path';
-myURL.searchParams.set('new-key', 'new-value');
-console.log(myURL.href); // 'https://example.com:8080/new-path?key=value&new-key=new-value#hash'
+const url = require('url'); // URL and URLSearchParams are also global
 ```
 
-### 2. 传统 API 兼容
+Example 1 — parse and modify a URL with the WHATWG API:
 
 ```JavaScript
 const url = require('url');
 
-// Parse URL string
-const parsed = url.parse('https://example.com/path?key=value#hash');
-console.log(parsed.hostname); // 'example.com'
+const myURL = new url.URL('https://example.com:8080/path?key=value#hash');
+console.log(myURL.protocol, myURL.hostname, myURL.port); // https: example.com 8080
+console.log(myURL.pathname, myURL.search, myURL.hash); // /path ?key=value #hash
 
-// Format URL object
+myURL.pathname = '/new-path';
+myURL.searchParams.set('q', 'a b');
+console.log(myURL.href); // https://example.com:8080/new-path?key=value&q=a+b
+```
+
+Example 2 — the legacy parse/format/resolve API:
+
+```JavaScript
+const url = require('url');
+
+const parsed = url.parse('https://user:pass@example.com:8080/p/a?q=1#frag');
+console.log(parsed.hostname, parsed.port, parsed.path); // example.com 8080 /p/a?q=1
+
 const formatted = url.format({
     protocol: 'https:',
     hostname: 'example.com',
-    pathname: '/path'
+    pathname: '/p'
 });
-console.log(formatted); // 'https://example.com/path'
+console.log(formatted); // https://example.com/p
 
-// Resolve relative URL
-const resolved = url.resolve('https://example.com/foo/', '../bar');
-console.log(resolved); // 'https://example.com/bar'
+console.log(url.resolve('https://example.com/foo/', '../bar'));
+// https://example.com/bar
 ```
 
-### 3. 文件 URL 处理
+Example 3 — convert between file paths and file URLs:
 
 ```JavaScript
 const url = require('url');
 
-// Convert path to file URL
-const fileURL = url.pathToFileURL('/path/to/file.txt');
-console.log(fileURL.href); // 'file:///path/to/file.txt'
-
-// Convert file URL to path
-const filePath = url.fileURLToPath('file:///path/to/file.txt');
-console.log(filePath); // '/path/to/file.txt'
+const fileURL = url.pathToFileURL('/tmp/fibjs url test.txt');
+console.log(fileURL.href); // file:///tmp/fibjs%20url%20test.txt
+console.log(url.fileURLToPath(fileURL)); // /tmp/fibjs url test.txt
 ```
 
-### 4. 国际化域名处理
+Example 4 — convert internationalized domain names:
 
 ```JavaScript
 const url = require('url');
 
-// Convert Unicode domain to ASCII
-const ascii = url.domainToASCII('测试.com');
-console.log(ascii); // 'xn--0zwm56d.com'
-
-// Convert ASCII domain to Unicode
-const unicode = url.domainToUnicode('xn--0zwm56d.com');
-console.log(unicode); // '测试.com'
+console.log(url.domainToASCII('mañana.com')); // xn--maana-pta.com
+console.log(url.domainToUnicode('xn--maana-pta.com')); // mañana.com
+console.log(url.domainToASCII('example.com')); // example.com, unchanged
 ```
 
-## 对象
+## Objects
         
 ### URL
-**创建 URL 对象，参见 [UrlObject](../../object/ifs/UrlObject.md)**
+**The WHATWG URL class, re-exported from the [global](global.md) scope**
 
 ```JavaScript
 UrlObject url.URL;
 ```
 
-返回结果:
-* 新的 [UrlObject](../../object/ifs/UrlObject.md) 实例
+Returns:
+* a new [UrlObject](../../object/ifs/UrlObject.md) instance
+
+`url.URL` is the same class as the [global](global.md) `URL`; `new url.URL(...)` produces a
+[UrlObject](../../object/ifs/UrlObject.md) with the standard properties and methods, including the live `searchParams`
+view. Prefer this class over parse/format for new code.
+
+Example — the alias and the resulting class:
+
+```JavaScript
+const url = require('url');
+
+console.log(url.URL === URL); // true
+console.log(new url.URL('https://example.com/a').constructor.name); // UrlObject
+```
 
 --------------------------
 ### URLSearchParams
-**创建 [URLSearchParams](../../object/ifs/URLSearchParams.md) 对象，参见 [URLSearchParams](../../object/ifs/URLSearchParams.md)**
+**The WHATWG [URLSearchParams](../../object/ifs/URLSearchParams.md) class, re-exported from the [global](global.md) scope**
 
 ```JavaScript
 URLSearchParams url.URLSearchParams;
 ```
 
-返回结果:
-* 新的 [URLSearchParams](../../object/ifs/URLSearchParams.md) 实例
+Returns:
+* a new [URLSearchParams](../../object/ifs/URLSearchParams.md) instance
 
-## 静态函数
+`url.URLSearchParams` is the same class as the [global](global.md) `[URLSearchParams](../../object/ifs/URLSearchParams.md)` and derives
+from [HttpCollection](../../object/ifs/HttpCollection.md); see [URLSearchParams](../../object/ifs/URLSearchParams.md) for the query parameter container.
+
+## Static Methods
         
 ### format
-**将 URL 字符串格式化为标准的 URL 字符串**
-
-```JavaScript
-static String url.format(String href);
-```
-
-调用参数:
-* href: String, URL 字符串
-
-返回结果:
-* String, 格式化后的 URL 字符串
-
---------------------------
-**使用 URL 组件对象构造 URL 字符串**
+**Constructs a URL string from a URL components [object](../../object/ifs/object.md), a [UrlObject](../../object/ifs/UrlObject.md) or a URL string**
 
 ```JavaScript
 static String url.format(Object args);
 ```
 
-调用参数:
-* args: Object, URL 组件对象，支持的字段有：protocol, slashes, username, password, hostname, port, pathname, query, hash
+Parameters:
+* args: Object, URL components [object](../../object/ifs/object.md) to format
 
-返回结果:
-* String, 构造的 URL 字符串
+Returns:
+* String, the constructed URL string
 
---------------------------
-**格式化 URL 对象为字符串，支持格式化选项**
+The overloads share this name and differ in the accepted input; this first entry
+documents the differences so they stay visible in `fibjs --man`:
+
+- format(args) builds a URL from a components [object](../../object/ifs/object.md). Accepted fields are protocol,
+  slashes, auth, username, password, host, hostname, port, pathname, [path](path.md), query
+  (string, array of pairs or plain [object](../../object/ifs/object.md)), search and hash. When hostname is present
+  but protocol is missing, `[http](http.md):` is assumed, so [http.request](http.md#request)-style options can be
+  formatted directly; user names and passwords are percent-encoded.
+- format(urlObject, options) serializes a [UrlObject](../../object/ifs/UrlObject.md), a URL string or a components
+  [object](../../object/ifs/object.md); `options` is accepted for Node.js compatibility (fragment, unicode, auth)
+  but is currently ignored and the full href is returned.
+- format(href) parses href with the WHATWG parser and returns the normalized href; a
+  relative string is normalized as an absolute [path](path.md) (`not a url` becomes
+  `/not%20a%20url`) while an invalid absolute URL throws a type error.
+
+Prefer `new URL(...).href` for new code; this function is the legacy formatter.
+
+Example — format a components [object](../../object/ifs/object.md):
 
 ```JavaScript
-static String url.format(UrlObject urlObject,
+const url = require('url');
+
+console.log(url.format({
+    protocol: 'https:',
+    hostname: 'example.com',
+    pathname: '/p',
+    query: {
+        a: 1
+    }
+})); // https://example.com/p?a=1
+```
+
+--------------------------
+**Formats a [UrlObject](../../object/ifs/UrlObject.md), a URL string or a URL components [object](../../object/ifs/object.md) into a string**
+
+```JavaScript
+static String url.format(UrlObject | String | Object urlObject,
     Object options = {});
 ```
 
-调用参数:
-* urlObject: [UrlObject](../../object/ifs/UrlObject.md), 要格式化的 URL 对象
-* options: Object, 格式化选项，支持的字段有：fragment（是否包含片段）, unicode（是否使用 Unicode 显示域名）, auth（是否包含认证信息）
+Parameters:
+* urlObject: [UrlObject](../../object/ifs/UrlObject.md) | String | Object, URL to format
+* options: Object, Node.js formatting options; accepted but currently ignored
 
-返回结果:
-* String, 格式化后的 URL 字符串
+Returns:
+* String, the formatted URL string
+
+See the first format overload for the differences between the call forms. urlObject
+may be a [UrlObject](../../object/ifs/UrlObject.md), a URL string (parsed first) or a components [object](../../object/ifs/object.md) (the same
+fields the [UrlObject](../../object/ifs/UrlObject.md) constructor accepts).
+
+--------------------------
+**Parses a URL string with the WHATWG parser and returns the normalized href**
+
+```JavaScript
+static String url.format(String href);
+```
+
+Parameters:
+* href: String, URL string to normalize
+
+Returns:
+* String, the normalized URL string
+
+An absolute URL is normalized component by component; a string without a scheme is
+treated as a relative reference and normalized as an absolute [path](path.md). An invalid
+absolute URL throws a type error (20024).
 
 --------------------------
 ### parse
-**解析 URL 字符串为 URL 对象（传统 API）**
+**Parses a URL string into a legacy [UrlObject](../../object/ifs/UrlObject.md)**
 
 ```JavaScript
 static UrlObject url.parse(String url,
@@ -165,102 +218,182 @@ static UrlObject url.parse(String url,
     Boolean slashesDenoteHost = false);
 ```
 
-调用参数:
-* url: String, 要解析的 URL 字符串
-* parseQueryString: Boolean, 是否将查询字符串解析为对象，默认为 false
-* slashesDenoteHost: Boolean, 是否将 '//' 后到下一个 '/' 前的字符串解析为主机，默认为 false
+Parameters:
+* url: String, URL string to parse
+* parseQueryString: Boolean, parse the query into a [URLSearchParams](../../object/ifs/URLSearchParams.md), default false
+* slashesDenoteHost: Boolean, accepted for Node.js compatibility; ignored by fibjs
 
-返回结果:
-* [UrlObject](../../object/ifs/UrlObject.md), 解析后的 [UrlObject](../../object/ifs/UrlObject.md) 对象
+Returns:
+* [UrlObject](../../object/ifs/UrlObject.md), the parsed [UrlObject](../../object/ifs/UrlObject.md)
+
+The returned [object](../../object/ifs/object.md) follows the Node.js legacy API with the fields protocol, slashes,
+auth, host, port, hostname, hash, search, query, pathname, [path](path.md) and href. By default
+query is the raw query text without the leading `?`; with parseQueryString it is a
+[URLSearchParams](../../object/ifs/URLSearchParams.md) built from the query. The slashesDenoteHost argument is accepted for
+compatibility but ignored, so a protocol-relative reference such as `//host/[path](path.md)` is
+parsed with `host` as the host. Invalid percent-[encoding](encoding.md) throws `url: URI malformed`
+and an unparsable URL throws `url: Invalid URL '<input>'.` (20024). Node.js returns a
+plain [object](../../object/ifs/object.md) when parseQueryString is true and deprecates the function (DEP0169).
+
+Example — legacy parse with and without query parsing:
+
+```JavaScript
+const url = require('url');
+
+const parsed = url.parse('https://example.com/a?x=1&x=2#top');
+console.log(parsed.hostname, parsed.query, parsed.hash); // example.com x=1&x=2 #top
+
+const withQuery = url.parse('https://example.com/a?x=1&x=2', true);
+console.log(withQuery.query.getAll('x')); // [ '1', '2' ]
+```
 
 --------------------------
 ### resolve
-**解析相对 URL 并合并为绝对 URL**
+**Resolves a relative reference against a base URL**
 
 ```JavaScript
 static String url.resolve(String _from,
     String to);
 ```
 
-调用参数:
-* _from: String, 基础 URL 字符串
-* to: String, 要解析的相对 URL 字符串
+Parameters:
+* _from: String, base URL string
+* to: String, relative URL string to resolve
 
-返回结果:
-* String, 合并后的绝对 URL 字符串
+Returns:
+* String, the resolved absolute URL string
+
+The two arguments are `from` (the base URL) and `to` (the reference); the result is
+normalized with the WHATWG algorithm. An empty base resolves the reference on its own,
+so a rooted [path](path.md) stays a [path](path.md) and a relative [path](path.md) is returned as a relative [path](path.md). An
+unparsable input throws `url: Invalid URL '<input>'.` (20024). Node.js deprecates this
+function (DEP0169).
+
+Example — resolve against a file base:
+
+```JavaScript
+const url = require('url');
+
+console.log(url.resolve('https://example.com/a/b', '../c')); // https://example.com/c
+console.log(url.resolve('', '/a/b')); // /a/b
+```
 
 --------------------------
 ### fileURLToPath
-**将文件 URL 对象转换为平台相关的文件路径**
+**Converts a file URL into a platform-specific file [path](path.md)**
 
 ```JavaScript
-static String url.fileURLToPath(UrlObject url,
+static String url.fileURLToPath(UrlObject | String | Object url,
     Object options = {});
 ```
 
-调用参数:
-* url: [UrlObject](../../object/ifs/UrlObject.md), 文件 URL 对象（必须是 file: 协议）
-* options: Object, 转换选项，支持 windows 字段指定是否强制使用 Windows 路径格式
+Parameters:
+* url: [UrlObject](../../object/ifs/UrlObject.md) | String | Object, file URL to convert
+* options: Object, conversion options; the windows field forces the Windows [path](path.md) format
 
-返回结果:
-* String, 转换后的文件路径字符串
+Returns:
+* String, the platform-specific file [path](path.md)
 
---------------------------
-**将文件 URL 字符串转换为平台相关的文件路径**
+url may be a [UrlObject](../../object/ifs/UrlObject.md), a URL string or a components [object](../../object/ifs/object.md) (the same fields the
+[UrlObject](../../object/ifs/UrlObject.md) constructor accepts). The scheme must be `file:`; the [path](path.md) is
+percent-decoded and, on Windows, a drive letter or UNC host is handled. A non-empty
+host on POSIX throws. The `windows` option forces the Windows or POSIX [path](path.md) format.
+Errors carry a code: ERR_INVALID_URL_SCHEME for a non-file URL,
+ERR_INVALID_FILE_URL_HOST for a host on POSIX and ERR_INVALID_FILE_URL_PATH for an
+invalid [path](path.md) such as one containing an encoded slash.
+
+Example — round-trip a [path](path.md) that contains spaces:
 
 ```JavaScript
-static String url.fileURLToPath(String url,
-    Object options = {});
+const url = require('url');
+
+const href = url.pathToFileURL('/tmp/a b.txt').href;
+console.log(href); // file:///tmp/a%20b.txt
+console.log(url.fileURLToPath(href)); // /tmp/a b.txt
 ```
-
-调用参数:
-* url: String, 文件 URL 字符串（必须是 file: 协议）
-* options: Object, 转换选项，支持 windows 字段指定是否强制使用 Windows 路径格式
-
-返回结果:
-* String, 转换后的文件路径字符串
 
 --------------------------
 ### pathToFileURL
-**将文件路径转换为文件 URL 对象**
+**Converts a file [path](path.md) into a file URL [object](../../object/ifs/object.md)**
 
 ```JavaScript
 static UrlObject url.pathToFileURL(String path,
     Object options = {});
 ```
 
-调用参数:
-* path: String, 要转换的文件路径
-* options: Object, 转换选项，支持 windows 字段指定路径是否为 Windows 格式
+Parameters:
+* path: String, file [path](path.md) to convert
+* options: Object, conversion options; the windows field forces Windows [path](path.md) handling
 
-返回结果:
-* [UrlObject](../../object/ifs/UrlObject.md), 转换后的文件 URL 对象
+Returns:
+* [UrlObject](../../object/ifs/UrlObject.md), the converted file URL [object](../../object/ifs/object.md)
+
+The [path](path.md) is resolved to an absolute [path](path.md) and percent-encoded with the [path](path.md) rules; a
+trailing [path](path.md) separator is preserved as a trailing slash, which marks the URL as a
+directory for the consumer. On Windows the `windows` option forces Windows handling
+and a UNC [path](path.md) becomes the URL host. The result is a [UrlObject](../../object/ifs/UrlObject.md), so read its href for
+the string form.
+
+Example — build a URL and read its href:
+
+```JavaScript
+const url = require('url');
+
+const fileURL = url.pathToFileURL('/tmp/a b.txt');
+console.log(fileURL.href); // file:///tmp/a%20b.txt
+```
 
 --------------------------
 ### domainToASCII
-**将国际化域名转换为 ASCII 编码（Punycode）**
+**Converts an internationalized domain name to its ASCII (ACE) form**
 
 ```JavaScript
 static String url.domainToASCII(String domain);
 ```
 
-调用参数:
-* domain: String, 要转换的域名（可包含 Unicode 字符）
+Parameters:
+* domain: String, domain name to convert, possibly containing Unicode characters
 
-返回结果:
-* String, ASCII 编码的域名
+Returns:
+* String, the ASCII (ACE) form of the domain name
+
+The conversion applies the UTS #46 mapping of the URL parser and adds the `xn--`
+prefix to non-ASCII labels; an ASCII name is returned unchanged. Unsupported input is
+returned unchanged instead of raising an error, while Node.js returns an empty string
+for a domain that fails the conversion. Use [punycode.toASCII](punycode.md#toASCII) for the raw RFC 3492
+conversion of a single label.
+
+Example — convert a Unicode domain:
+
+```JavaScript
+const url = require('url');
+
+console.log(url.domainToASCII('mañana.com')); // xn--maana-pta.com
+```
 
 --------------------------
 ### domainToUnicode
-**将 ASCII 编码的域名转换为 Unicode 显示格式**
+**Converts an ASCII (ACE) domain name to its Unicode display form**
 
 ```JavaScript
 static String url.domainToUnicode(String domain);
 ```
 
-调用参数:
-* domain: String, 要转换的 ASCII 域名
+Parameters:
+* domain: String, ASCII domain name to convert
 
-返回结果:
-* String, Unicode 格式的域名
+Returns:
+* String, the domain name in Unicode form
+
+Only labels that carry the `xn--` prefix are converted; all other labels are copied
+unchanged. The prefix [test](test.md) is case-sensitive: an upper-case `XN--` label is returned
+as is, while Node.js converts it. Invalid encoded labels are returned unchanged.
+
+Example — convert an ACE domain:
+
+```JavaScript
+const url = require('url');
+
+console.log(url.domainToUnicode('xn--maana-pta.com')); // mañana.com
+```
 

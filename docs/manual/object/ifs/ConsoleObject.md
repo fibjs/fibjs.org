@@ -1,550 +1,596 @@
-# 对象 ConsoleObject
-日志对象，用于记录日志信息
+# Object ConsoleObject
+Console-like logger bound to a pair of writable objects
 
-`Logger` 对象用于记录各种等级的日志信息。它是一个强大的工具，可以帮助开发者在开发和调试过程中记录和追踪应用程序的行为。通过记录日志信息，开发者可以更容易地发现和解决问题，提高代码的可靠性和可维护性。
+A ConsoleObject writes log records to two writable objects: the stdout [object](object.md)
+receives INFO and PRINT records, the stderr [object](object.md) receives WARN, ERROR, CRIT,
+ALERT and `trace` records. The class is exposed as `console.Console` (there is no
+[global](../../module/ifs/global.md) `ConsoleObject`) and is also the type returned by `util.debuglog` and
+`util.debug`, which binds the same methods to the [process](../../module/ifs/process.md)-wide logging system
+with a section prefix instead of explicit streams.
 
-在软件开发过程中，日志记录是一个非常重要的环节。通过记录日志，开发者可以了解应用程序的运行状态、捕获异常和错误、分析性能瓶颈等。日志信息通常分为不同的等级，例如调试信息、普通信息、警告信息、错误信息和关键错误信息等。不同等级的日志信息可以帮助开发者更好地分类和管理日志数据。
+Concepts:
 
-`Logger` 对象提供了多种方法来记录不同等级的日志信息。可以通过 `util.debuglog` 模块创建
+- **Per-instance streams and [timers](../../module/ifs/timers.md)**: the streams are captured when the [object](object.md)
+  is created; `time`, `timeElapse` and `timeEnd` keep their [timers](../../module/ifs/timers.md) per instance,
+  so they are independent of the [console](../../module/ifs/console.md) [module](../../module/ifs/module.md) [timers](../../module/ifs/timers.md) and of other instances.
+- **Writable objects**: a stream is anything with a `write(text)` method, not
+  necessarily an [io](../../module/ifs/io.md) stream. The formatted record and a trailing newline are
+  passed to write() synchronously and its return value is ignored.
+- **Filtering**: the [global](../../module/ifs/global.md) `console.loglevel` applies to every instance. For a
+  debug logger the section must additionally be listed in NODE_DEBUG for INFO
+  and DEBUG records; WARN and above are written even when the section is
+  disabled, while Node.js drops every level of a disabled debug logger.
+- **Node.js differences**: there is no `print`, `assert`, `count`, `countReset`,
+  `timeLog`, `group`, `groupEnd` or `dirxml` on this [object](object.md); `operator(...)`
+  makes the [object](object.md) callable as a debug logger, which Node.js provides for
+  [util.debuglog](../../module/ifs/util.md#debuglog) but not for [console.Console](../../module/ifs/console.md#Console).
 
-`Logger` 对象。例如：
+Obtained from:
+
+- `new [console.Console](../../module/ifs/console.md#Console)()` — writes through the [global](../../module/ifs/global.md) logging devices, prefixed
+  with `"<pid>: "`;
+- `new [console.Console](../../module/ifs/console.md#Console)(out)` — one writable [object](object.md) for both streams;
+- `new [console.Console](../../module/ifs/console.md#Console)(out, err)` — separate stdout and stderr objects;
+- `new [console.Console](../../module/ifs/console.md#Console)({ "stdout": out, "stderr": err })` — options form, `out`
+  is required and `err` defaults to it;
+- `util.debuglog(section)` / `[util.debug](../../module/ifs/util.md#debug)(section)` — conditional debug logger
+  selected by the NODE_DEBUG environment variable.
+
+Example 1 — capture stdout and stderr separately:
 
 ```JavaScript
-var logger = util.debuglog('example');
+const io = require('io');
+const out = new io.MemoryStream();
+const err = new io.MemoryStream();
+const c = new console.Console(out, err);
+
+c.log('to stdout');
+c.error('to stderr');
+
+out.rewind();
+err.rewind();
+console.log(out.readAll().toString().trim()); // to stdout
+console.log(err.readAll().toString().trim()); // to stderr
 ```
 
-`Logger` 对象提供了以下主要功能：
-
-- **记录普通日志信息**：用于输出非错误性提示信息。
-- **记录调试日志信息**：用于输出调试信息，帮助开发者在开发过程中追踪代码执行情况。
-- **记录警告日志信息**：用于输出提示性调试信息，通常表示可能需要注意的问题。
-- **记录错误日志信息**：用于输出错误信息，表示程序运行过程中出现了问题。
-- **记录关键错误日志信息**：用于输出关键错误信息，表示程序运行过程中出现了严重问题。
-- **记录警报错误日志信息**：用于输出最高级别的错误信息，表示程序运行过程中出现了非常严重的问题。
-- **输出当前调用堆栈**：通过日志输出当前调用堆栈，帮助开发者了解代码的执行路径。
-- **用 JSON 格式输出对象**：以 JSON 格式输出对象，支持多种格式控制选项。
-
-以下是一些使用 `Logger` 对象的示例：
+Example 2 — options form with a plain writable [object](object.md):
 
 ```JavaScript
-// Create Logger object
-var logger = util.debuglog('example');
-
-// Log general log information
-logger('This is a log message');
-logger.log('This is a log message with format: %s', 'example');
-
-// Log debug log information
-logger.debug('This is a debug message');
-
-// Log warning log information
-logger.warn('This is a warning message');
-logger.warning('This is a warning message');
-
-// Log error log information
-logger.error('This is an error message');
-
-// Log critical error log information
-logger.crit('This is a critical message');
-logger.critical('This is a critical message');
-
-// Log alert error log information
-logger.alert('This is an alert message');
-
-// Output current call stack
-logger.trace('This is a trace message');
-
-// Output object in JSON format
-logger.dir({
-    key: 'value'
-}, {
-    colors: true,
-    depth: 1
+let captured = '';
+const c = new console.Console({
+    stdout: {
+        write: (text) => {
+            captured += text;
+        }
+    }
 });
+c.log('custom sink');
+console.log(JSON.stringify(captured)); // "custom sink\n"
 ```
 
-通过这些方法，您可以方便地记录和管理应用程序中的日志信息。日志记录不仅可以帮助开发者在开发和调试过程中发现和解决问题，还可以在应用程序的生产环境中提供重要的运行时信息，帮助运维人员监控和维护系统的稳定性和性能。
+Example 3 — sample a per-instance timer:
 
-## 继承关系
+```JavaScript
+const io = require('io');
+const out = new io.MemoryStream();
+const c = new console.Console(out, out);
+
+c.time('work');
+let sum = 0;
+for (let i = 0; i < 100000; i++) sum += i;
+c.timeEnd('work');
+
+out.rewind();
+console.log(out.readAll().toString().startsWith('work: ')); // true
+```
+
+## Inheritance
 ```dot
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    ConsoleObject [tooltip="ConsoleObject", fillcolor="lightgray", id="me", label="{ConsoleObject|new ConsoleObject()\l|section\lenabled\l|Function()\llog()\ldebug()\linfo()\lnotice()\lwarn()\lwarning()\lerror()\lcrit()\lcritical()\lalert()\ltrace()\ldir()\ltable()\ltime()\ltimeElapse()\ltimeEnd()\l}"];
+    ConsoleObject [tooltip="ConsoleObject", fillcolor="lightgray", id="me", label="{ConsoleObject|new ConsoleObject()\l|section\lenabled\l|operator()\llog()\ldebug()\linfo()\lnotice()\lwarn()\lwarning()\lerror()\lcrit()\lcritical()\lalert()\ltrace()\ldir()\ltable()\ltime()\ltimeElapse()\ltimeEnd()\l}"];
 
     object -> ConsoleObject [dir=back];
 }
 ```
 
-## 构造函数
+## Constructors
         
 ### ConsoleObject
-**ConsoleObject 构造函数，创建新的 ConsoleObject 对象**
+**Creates a logger that writes through the [global](../../module/ifs/global.md) logging devices**
 
 ```JavaScript
 new ConsoleObject();
 ```
 
+The instance has no stream of its own: every record goes to the devices
+configured with [console.add](../../module/ifs/console.md#add)/use (the built-in [console](../../module/ifs/console.md) device by default) and
+is prefixed with `"<pid>: "`. Use the two-argument form to write to explicit
+streams instead.
+
 --------------------------
-**ConsoleObject 构造函数，创建新的 ConsoleObject 对象**
+**Creates a logger bound to writable objects**
 
 ```JavaScript
 new ConsoleObject(Value out,
     Value err = undefined);
 ```
 
-调用参数:
-* out: Value, 指定输出的可写流，默认为 [process.stdout](../../module/ifs/process.md#stdout)
-* err: Value, 指定错误输出的可写流，默认为 stdout
+Parameters:
+* out: Value, writable [object](object.md) for INFO and PRINT records, or an options [object](object.md)
+* err: Value, writable [object](object.md) for WARN and above; defaults to out
 
-## 成员属性
+`out` must be a writable [object](object.md), that is any [object](object.md) with a `write()` method
+such as an [io](../../module/ifs/io.md) stream; when `err` is omitted, null or undefined it defaults
+to `out`, otherwise it must be writable too. When the single argument is an
+[object](object.md) without a `write()` method it is read as an options [object](object.md) with
+`stdout` and `stderr` properties, where `stdout` is required and `stderr`
+defaults to `out`. Invalid arguments throw Error 20024, for example
+"ConsoleObject: stdout must have a write() method." or "ConsoleObject:
+options.stdout is required.". Each record is the formatted text plus a
+newline, written synchronously; the [global](../../module/ifs/global.md) logging system is not used.
+
+Example:
+
+```JavaScript
+const io = require('io');
+const out = new io.MemoryStream();
+const c = new console.Console({
+    stdout: out
+});
+
+c.log('captured');
+
+out.rewind();
+console.log(JSON.stringify(out.readAll().toString())); // "captured\n"
+```
+
+## Properties
         
 ### section
-**String, 查询当前日志对象的 section 名称**
+**String, Section name of a debug logger; empty for a stream [console](../../module/ifs/console.md)**
 
 ```JavaScript
 readonly String ConsoleObject.section;
 ```
 
+Set when the [object](object.md) comes from `util.debuglog(section)` or
+`util.debug(section)` and empty for a [console.Console](../../module/ifs/console.md#Console) instance created with
+streams. Together with the [process](../../module/ifs/process.md) id it forms the record prefix
+(`SECTION pid: `), shown in upper case, that the debug logger adds when it
+writes to the [global](../../module/ifs/global.md) devices.
+
+Example:
+
+```JavaScript
+const util = require('util');
+const log = util.debuglog('myapp');
+console.log(log.section); // myapp
+```
+
 --------------------------
 ### enabled
-**Boolean, 查询当前日志对象是否启用**
+**Boolean, Whether a debug logger is enabled by the NODE_DEBUG environment variable**
 
 ```JavaScript
 readonly Boolean ConsoleObject.enabled;
 ```
 
-## 成员函数
+A section is enabled when it appears, case-insensitively, as a
+comma-separated entry of NODE_DEBUG; the value is re-checked for every
+record and is always true for a stream [console](../../module/ifs/console.md) with an empty section. When
+the section is disabled INFO and DEBUG records are dropped while WARN and
+above are still written; Node.js drops every level of a disabled debug
+logger.
+
+Example:
+
+```JavaScript
+const util = require('util');
+console.log(util.debuglog('myapp').enabled); // false unless NODE_DEBUG=myapp
+```
+
+## Methods
         
-### Function
-**记录普通日志信息，与 info 等同**
+### operator
+**Callable form of this [object](object.md); logs at DEBUG level like debug**
 
 ```JavaScript
-ConsoleObject.Function(String fmt,
-    ...args);
+ConsoleObject.operator(...args);
 ```
 
-调用参数:
-* fmt: String, 格式化字符串
-* args: ..., 可选参数列表
+Parameters:
+* args: ..., optional argument list
 
-记录一般等级的日志信息。通常用于输出非错误性提示信息。
+Calling the [object](object.md) itself, `logger('message')` or `logger('%s', value)`, is
+equivalent to `debug(...)`: the record is written at DEBUG(7) and filtered
+by the [global](../../module/ifs/global.md) loglevel. `util.debuglog(section)` returns such a callable
+logger, which is how Node.js code normally uses it.
 
---------------------------
-**记录普通日志信息，与 info 等同**
+Example:
 
 ```JavaScript
-ConsoleObject.Function(...args);
+const io = require('io');
+const out = new io.MemoryStream();
+const c = new console.Console(out, out);
+
+c('called as a function');
+
+out.rewind();
+console.log(out.readAll().toString().trim()); // called as a function
 ```
-
-调用参数:
-* args: ..., 可选参数列表
-
-记录一般等级的日志信息。通常用于输出非错误性提示信息。
 
 --------------------------
 ### log
-**记录普通日志信息，与 info 等同**
-
-```JavaScript
-ConsoleObject.log(String fmt,
-    ...args);
-```
-
-调用参数:
-* fmt: String, 格式化字符串
-* args: ..., 可选参数列表
-
-记录一般等级的日志信息。通常用于输出非错误性提示信息。
-
---------------------------
-**记录普通日志信息，与 info 等同**
+**Writes an INFO record to the stdout [object](object.md)**
 
 ```JavaScript
 ConsoleObject.log(...args);
 ```
 
-调用参数:
-* args: ..., 可选参数列表
+Parameters:
+* args: ..., optional argument list
 
-记录一般等级的日志信息。通常用于输出非错误性提示信息。
+The record is the formatted text plus a newline, written synchronously to
+the stdout [object](object.md) given to the constructor; the [global](../../module/ifs/global.md) [console.loglevel](../../module/ifs/console.md#loglevel) can
+filter it. A leading string argument is a printf-like template where only
+`%s`, `%d`, `%j` and `%%` are substituted; other specifiers stay literal and
+their values are appended at the end. Level INFO(6).
+
+Example:
+
+```JavaScript
+const io = require('io');
+const out = new io.MemoryStream();
+const c = new console.Console(out, out);
+
+c.log('value = %d', 42);
+
+out.rewind();
+console.log(JSON.stringify(out.readAll().toString())); // "value = 42\n"
+```
 
 --------------------------
 ### debug
-**记录调试日志信息**
-
-```JavaScript
-ConsoleObject.debug(String fmt,
-    ...args);
-```
-
-调用参数:
-* fmt: String, 格式化字符串
-* args: ..., 可选参数列表
-
-记录调试日志信息。通常用于输出调试信息。不重要。
-
---------------------------
-**记录调试日志信息**
+**Writes a DEBUG record to the stdout [object](object.md)**
 
 ```JavaScript
 ConsoleObject.debug(...args);
 ```
 
-调用参数:
-* args: ..., 可选参数列表
+Parameters:
+* args: ..., optional argument list
 
-记录调试日志信息。通常用于输出调试信息。不重要。
+The lowest standard level, useful when [console.loglevel](../../module/ifs/console.md#loglevel) is raised to DEBUG
+to trace execution; a disabled debug logger drops this level. The record
+goes to the stdout [object](object.md) and accepts the same printf-like template as
+`log`. Level DEBUG(7).
 
 --------------------------
 ### info
-**记录普通日志信息，与 log 等同**
-
-```JavaScript
-ConsoleObject.info(String fmt,
-    ...args);
-```
-
-调用参数:
-* fmt: String, 格式化字符串
-* args: ..., 可选参数列表
-
-记录一般等级的日志信息。通常用于输出非错误性提示信息。
-
---------------------------
-**记录普通日志信息，与 log 等同**
+**Writes an INFO record to the stdout [object](object.md), same as log**
 
 ```JavaScript
 ConsoleObject.info(...args);
 ```
 
-调用参数:
-* args: ..., 可选参数列表
+Parameters:
+* args: ..., optional argument list
 
-记录一般等级的日志信息。通常用于输出非错误性提示信息。
+Identical to `log`; the name follows the Node.js [console](../../module/ifs/console.md) surface. Level
+INFO(6).
 
 --------------------------
 ### notice
-**记录警告日志信息**
-
-```JavaScript
-ConsoleObject.notice(String fmt,
-    ...args);
-```
-
-调用参数:
-* fmt: String, 格式化字符串
-* args: ..., 可选参数列表
-
-记录警告日志信息。通常用于输出提示性调试信息。一般重要。
-
---------------------------
-**记录警告日志信息**
+**Writes a NOTICE record to the stdout [object](object.md)**
 
 ```JavaScript
 ConsoleObject.notice(...args);
 ```
 
-调用参数:
-* args: ..., 可选参数列表
+Parameters:
+* args: ..., optional argument list
 
-记录警告日志信息。通常用于输出提示性调试信息。一般重要。
+Records a normal but significant message; less severe than WARN and more
+important than INFO. Level NOTICE(5); this is a fibjs extension, Node.js has
+no [console.notice](../../module/ifs/console.md#notice).
 
 --------------------------
 ### warn
-**记录警告日志信息，与 warning 等同**
-
-```JavaScript
-ConsoleObject.warn(String fmt,
-    ...args);
-```
-
-调用参数:
-* fmt: String, 格式化字符串
-* args: ..., 可选参数列表
-
-记录警告日志信息。通常用于输出警告性调试信息。重要。
-
---------------------------
-**记录警告日志信息，与 warning 等同**
+**Writes a WARN record to the stderr [object](object.md)**
 
 ```JavaScript
 ConsoleObject.warn(...args);
 ```
 
-调用参数:
-* args: ..., 可选参数列表
+Parameters:
+* args: ..., optional argument list
 
-记录警告日志信息。通常用于输出警告性调试信息。重要。
+Warning messages go to the stderr writable [object](object.md) because WARN(4) is one of
+the error levels; for a debug logger the section prefix is added. Accepts
+the printf-like template of `log`. Node.js [console.warn](../../module/ifs/console.md#warn) also writes to
+stderr.
+
+Example:
+
+```JavaScript
+const io = require('io');
+const out = new io.MemoryStream();
+const err = new io.MemoryStream();
+const c = new console.Console(out, err);
+
+c.warn('disk %d%% full', 91);
+
+err.rewind();
+console.log(err.readAll().toString().trim()); // disk 91% full
+```
 
 --------------------------
 ### warning
-**记录警告日志信息**
-
-```JavaScript
-ConsoleObject.warning(String fmt,
-    ...args);
-```
-
-调用参数:
-* fmt: String, 格式化字符串
-* args: ..., 可选参数列表
-
-记录警告日志信息。通常用于输出警告性调试信息。重要。
-
---------------------------
-**记录警告日志信息**
+**Writes a WARN record to the stderr [object](object.md), same as warn**
 
 ```JavaScript
 ConsoleObject.warning(...args);
 ```
 
-调用参数:
-* args: ..., 可选参数列表
+Parameters:
+* args: ..., optional argument list
 
-记录警告日志信息。通常用于输出警告性调试信息。重要。
+Identical to `warn`; kept as a separate name for code that reads better
+with the long form. Node.js has no [console.warning](../../module/ifs/console.md#warning).
 
 --------------------------
 ### error
-**记录错误日志信息**
-
-```JavaScript
-ConsoleObject.error(String fmt,
-    ...args);
-```
-
-调用参数:
-* fmt: String, 格式化字符串
-* args: ..., 可选参数列表
-
-记录用于错误日志信息。通常用于输出错误信息。非常重要。系统的出错信息也会以此等级记录。
-
---------------------------
-**记录错误日志信息**
+**Writes an ERROR record to the stderr [object](object.md)**
 
 ```JavaScript
 ConsoleObject.error(...args);
 ```
 
-调用参数:
-* args: ..., 可选参数列表
+Parameters:
+* args: ..., optional argument list
 
-记录用于错误日志信息。通常用于输出错误信息。非常重要。系统的出错信息也会以此等级记录。
+Records an error and writes it to the stderr [object](object.md); for a debug logger the
+section prefix is added. Level ERROR(3). Node.js [console.error](../../module/ifs/console.md#error) also writes
+to stderr.
 
 --------------------------
 ### crit
-**记录关键错误日志信息，与 critical 等同**
-
-```JavaScript
-ConsoleObject.crit(String fmt,
-    ...args);
-```
-
-调用参数:
-* fmt: String, 格式化字符串
-* args: ..., 可选参数列表
-
-记录用于关键错误日志信息。通常用于输出关键错误信息。非常重要。
-
---------------------------
-**记录关键错误日志信息，与 critical 等同**
+**Writes a CRIT record to the stderr [object](object.md), same as critical**
 
 ```JavaScript
 ConsoleObject.crit(...args);
 ```
 
-调用参数:
-* args: ..., 可选参数列表
+Parameters:
+* args: ..., optional argument list
 
-记录用于关键错误日志信息。通常用于输出关键错误信息。非常重要。
+Records a critical condition and writes it to the stderr [object](object.md). Level
+CRIT(2), below ERROR in number and therefore more severe.
 
 --------------------------
 ### critical
-**记录关键错误日志信息**
-
-```JavaScript
-ConsoleObject.critical(String fmt,
-    ...args);
-```
-
-调用参数:
-* fmt: String, 格式化字符串
-* args: ..., 可选参数列表
-
-记录用于关键错误日志信息。通常用于输出关键错误信息。非常重要。
-
---------------------------
-**记录关键错误日志信息**
+**Writes a CRIT record to the stderr [object](object.md)**
 
 ```JavaScript
 ConsoleObject.critical(...args);
 ```
 
-调用参数:
-* args: ..., 可选参数列表
+Parameters:
+* args: ..., optional argument list
 
-记录用于关键错误日志信息。通常用于输出关键错误信息。非常重要。
+Records a critical condition and writes it to the stderr [object](object.md); identical
+to `crit`. Level CRIT(2); Node.js has no [console.critical](../../module/ifs/console.md#critical).
 
 --------------------------
 ### alert
-**记录警报错误日志信息**
-
-```JavaScript
-ConsoleObject.alert(String fmt,
-    ...args);
-```
-
-调用参数:
-* fmt: String, 格式化字符串
-* args: ..., 可选参数列表
-
-记录用于警报错误日志信息。通常用于输出警报错误信息。非常重要。为最高级别信息。
-
---------------------------
-**记录警报错误日志信息**
+**Writes an ALERT record to the stderr [object](object.md)**
 
 ```JavaScript
 ConsoleObject.alert(...args);
 ```
 
-调用参数:
-* args: ..., 可选参数列表
+Parameters:
+* args: ..., optional argument list
 
-记录用于警报错误日志信息。通常用于输出警报错误信息。非常重要。为最高级别信息。
+Records the most severe condition at ALERT(1); it is the highest severity
+level, meant for conditions that need immediate action. Node.js has no
+[console.alert](../../module/ifs/console.md#alert).
 
 --------------------------
 ### trace
-**输出当前调用堆栈**
-
-```JavaScript
-ConsoleObject.trace(String fmt,
-    ...args);
-```
-
-调用参数:
-* fmt: String, 格式化字符串
-* args: ..., 可选参数列表
-
-通过日志输出当前调用堆栈。
-
---------------------------
-**输出当前调用堆栈**
+**Writes a call stack at WARN level to the stderr [object](object.md)**
 
 ```JavaScript
 ConsoleObject.trace(...args);
 ```
 
-调用参数:
-* args: ..., 可选参数列表
+Parameters:
+* args: ..., optional argument list
 
-通过日志输出当前调用堆栈。
+Formats the optional arguments like `log`, prefixes the text with `Trace: `
+and appends the current call stack, then writes the whole record to the
+stderr [object](object.md) at WARN(4) level.
 
 --------------------------
 ### dir
-**用 JSON 格式输出对象**
+**Renders a value with [util.inspect](../../module/ifs/util.md#inspect) and writes it to the stdout [object](object.md)**
 
 ```JavaScript
 ConsoleObject.dir(Value obj,
     Object options = {});
 ```
 
-调用参数:
-* obj: Value, 指定需要处理的对象
-* options: Object, 指定格式控制选项
+Parameters:
+* obj: Value, specifies the [object](object.md) to [process](../../module/ifs/process.md)
+* options: Object, specifies the format control options
 
-支持以下参数:
+Like [console.dir](../../module/ifs/console.md#dir), but the record goes to this instance's stdout [object](object.md)
+instead of the [global](../../module/ifs/global.md) devices. options are the [util.inspect](../../module/ifs/util.md#inspect) options
+(`colors`, `depth`, `table`, `fields`, `encode_string`, `maxArrayLength`,
+`maxStringLength`); see [console.dir](../../module/ifs/console.md#dir) for the defaults.
+
+Example:
 
 ```JavaScript
-{
-    "colors": false, // specify if output should be colorized, defaults to false
-    "depth": 2, // specify the max depth of the output, defaults to 2
-    "table": false, // specify if output should be a table, defaults to false
-    "encode_string": true, // specify if string should be encoded, defaults to true
-    "maxArrayLength": 100, // specify max number of array elements to show, set to 0 or negative to show no elements, defaults to 100
-    "maxStringLength": 10000, // specify max string length to output, set to 0 or negative to show no strings, defaults to 10000
-    "fields": [], // specify the fields to be displayed, defaults to all
-}
+const io = require('io');
+const out = new io.MemoryStream();
+const c = new console.Console(out, out);
+
+c.dir({
+    a: 1
+}, {
+    colors: false
+});
+
+out.rewind();
+console.log(out.readAll().toString().includes('"a": 1')); // true
 ```
 
 --------------------------
 ### table
-**用 JSON 格式输出对象**
+**Renders records as a text table on the stdout [object](object.md)**
 
 ```JavaScript
 ConsoleObject.table(Value obj);
 ```
 
-调用参数:
-* obj: Value, 给定要显示的对象
+Parameters:
+* obj: Value, the [object](object.md) to display
+
+An [object](object.md) is rendered as an `(index)`/`Values` table of its properties, an
+array of primitives as an `(index)`/`Values` table and an array of records
+with one column per key; a key missing from a record leaves an empty cell.
+The table goes to the stdout [object](object.md) instead of the [global](../../module/ifs/global.md) devices.
+
+Example:
+
+```JavaScript
+const io = require('io');
+const out = new io.MemoryStream();
+const c = new console.Console(out, out);
+
+c.table([{
+    name: 'alpha',
+    size: 12
+}]);
+
+out.rewind();
+console.log(out.readAll().toString().includes('alpha')); // true
+```
 
 --------------------------
-**用 JSON 格式输出对象**
+**Renders records as a text table with selected columns**
 
 ```JavaScript
 ConsoleObject.table(Value obj,
     Array fields);
 ```
 
-调用参数:
-* obj: Value, 给定要显示的对象
-* fields: Array, 给定要显示的字段
+Parameters:
+* obj: Value, the [object](object.md) to display
+* fields: Array, the fields to display
+
+Same as `table(Value obj)`, but only the columns listed in `fields` are
+shown, in that order; the `(index)` column is always kept and a missing
+field leaves its cell empty.
 
 --------------------------
 ### time
-**启动一个计时器**
+**Starts or restarts a timer under a label, scoped to this instance**
 
 ```JavaScript
 ConsoleObject.time(String label = "time");
 ```
 
-调用参数:
-* label: String, 标题，缺省为空字符串。
+Parameters:
+* label: String, the timer label, defaults to "time"
+
+Timers are stored per ConsoleObject, so they are independent of the [timers](../../module/ifs/timers.md) of
+the [console](../../module/ifs/console.md) [module](../../module/ifs/module.md) and of other instances. Starting an existing label
+silently restarts it; the default label is `"time"` and the measurements are
+printed by timeElapse/timeEnd as `label: <elapsed>ms` at INFO level.
 
 --------------------------
 ### timeElapse
-**输出指定计时器当前计时值**
+**Prints the value of an instance timer without stopping it**
 
 ```JavaScript
 ConsoleObject.timeElapse(String label = "time");
 ```
 
-调用参数:
-* label: String, 标题，缺省为空字符串。
+Parameters:
+* label: String, the timer label, defaults to "time"
+
+Outputs `label: <elapsed>ms` at INFO level to the stdout [object](object.md); the timer
+keeps running, so it can be sampled repeatedly before timeEnd. A label that
+was never started is treated as zero and prints a huge value instead of
+throwing.
 
 --------------------------
 ### timeEnd
-**结束指定计时器，并输出最后计时值**
+**Stops an instance timer and writes its final value**
 
 ```JavaScript
 ConsoleObject.timeEnd(String label = "time");
 ```
 
-调用参数:
-* label: String, 标题，缺省为空字符串。
+Parameters:
+* label: String, the timer label, defaults to "time"
+
+Outputs `label: <elapsed>ms` at INFO level to the stdout [object](object.md) and removes
+the timer from the instance. An unknown label measures from zero and prints
+a huge value without warning.
 
 --------------------------
 ### toString
-**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
+**Returns the string form of the [object](object.md)**
 
 ```JavaScript
 String ConsoleObject.toString();
 ```
 
-返回结果:
-* String, 返回对象的字符串表示
+Returns:
+* String, returns the string form of the [object](object.md)
+
+The base implementation reports an error: a native [object](object.md) has no implicit
+text form, and only the classes whose value can be written as a string
+override the member. [Buffer](Buffer.md) returns its content decoded with the given
+[encoding](../../module/ifs/encoding.md), [HttpCookie](HttpCookie.md) returns "name=value", and so on; an override commonly
+accepts optional arguments ([Buffer.toString](Buffer.md#toString) takes [encoding](../../module/ifs/encoding.md), start and
+end) that are not part of this declaration.
+
+Calling the member on a class that does not override it throws
+"<Class>: the [object](object.md) can not be converted to string.", which is the
+behavior to rely on when probing whether a value has a string form. See
+toJSON for the serialization hook.
 
 --------------------------
 ### toJSON
-**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
+**Returns the JSON representation of the [object](object.md)**
 
 ```JavaScript
 Value ConsoleObject.toJSON(String key = "");
 ```
 
-调用参数:
-* key: String, 未使用
+Parameters:
+* key: String, the property name of the value being serialized
 
-返回结果:
-* Value, 返回包含可 JSON 序列化的值
+Returns:
+* Value, returns the JSON-serializable value
+
+JSON.stringify(value) calls value.toJSON(key) when the member exists and
+serializes the returned value in its place; the key argument carries the
+property name of the value inside its parent [object](object.md) (an empty string at
+the top level) and may be used to build a keyed form. The base
+implementation returns a plain [object](object.md) holding the readable properties of
+the instance, so a native [object](object.md) serializes without per-class code; a
+class with a portable shape such as [Buffer](Buffer.md) overrides it, and a JavaScript
+class may override it in the same way.
+
+The member is normally reached through JSON.stringify rather than called
+directly; calling it returns the same value JSON.stringify would
+serialize.
 

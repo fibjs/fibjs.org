@@ -1,165 +1,387 @@
-# 模块 db
-数据库访问模块
+# Module db
+The db [module](module.md) opens and manages database connections: it is the single entry
 
-基础模块。可用于创建和操作数据库资源，引用方式：
+point for the SQL engines ([SQLite](../../object/ifs/SQLite.md), [MySQL](../../object/ifs/MySQL.md), PostgreSQL, MSSQL, DaMeng and generic ODBC)
+plus the [Redis](../../object/ifs/Redis.md) and [LevelDB](../../object/ifs/LevelDB.md) key-value stores
+
+Main capabilities:
+
+- **Generic SQL entry**: `open` dispatches on the protocol prefix of the connection
+  string and returns the engine-specific connection [object](../../object/ifs/object.md);
+- **Per-engine SQL entries**: `openSQLite`, `openMySQL`, `openPSQL`, `openMSSQL`,
+  `openDM` and `openOdbc`;
+- **Key-value stores**: `openRedis` ([Redis](../../object/ifs/Redis.md) server) and `openLevelDB` (embedded
+  directory database);
+- **Shared connection API**: every SQL connection derives from [DbConnection](../../object/ifs/DbConnection.md) and offers
+  `execute`, `format`, `prepare`, the streaming `iterate` and the transaction methods
+  `begin` / `commit` / `rollback` / `trans`; see the [DbConnection](../../object/ifs/DbConnection.md) class for the model.
+
+Concepts:
+
+- **Connection strings**: `proto://user:password@host:port/database`. `open` accepts
+  the prefixes `sqlite:`, `mysql:`, `odbc:`, `mssql:`, `psql:` and `dm:`; a string
+  without a known prefix fails with error number 20004. [SQLite](../../object/ifs/SQLite.md) takes a file [path](path.md) and
+  creates the file when it is missing; the server engines take host, port and database
+  name from the URL. `redis://` and `leveldb:` are not accepted by `open` and have
+  dedicated methods.
+- **Quoting and parameters**: SQL text uses `?` placeholders. `execute(sql, ...args)`
+  and `format` substitute escaped values into the string (`format` returns the SQL
+  without running it), while `prepare` returns a [Statement](../../object/ifs/Statement.md) whose engine binds the
+  values when it executes. Prefer binding for values that come from outside the
+  program: it avoids quoting mistakes and SQL injection.
+- **Result shapes**: a query returns an array of row objects keyed by column name; an
+  INSERT/UPDATE/DELETE result is an array-like whose `affected` property holds the row
+  count and `insertId` the generated key (mssql has no `insertId`). A string with
+  several statements returns an array of result sets.
+- **Transactions**: `begin`/`commit`/`rollback` without an argument start, commit and
+  roll back the current transaction; with a `point` name they work on a savepoint.
+  `trans(func)` runs func inside a transaction, commits when it returns a value other
+  than false and rolls back when it returns false or throws.
+- **Call forms**: every entry is fiber-synchronous in this [module](module.md); the `...Async`
+  aliases return a Promise, the `...Sync` aliases are explicit synchronous forms, and
+  `db.promises` mirrors the [module](module.md) for promise-based code.
+
+Import:
 
 ```JavaScript
-var db = require('db');
-var conn = db.open('rng://user:pass@host:port/dbname');
+const db = require('db');
 ```
 
-通过指定数据库引擎，可以建立不同的数据库链接。fibjs 内置两个 sql 引擎：sqlite 和 mysql，同时还支持通过 ODBC/unixODBC 连接更多数据库，基于 ODBC/unixODBC，fibjs 构建了与 mssql 和 PostgreSQL 的驱动。
-为了使用 ODBC/unixODBC，需要安装对应的驱动，在 posix 下使用 mssql 需要安装 freetds，使用 PostgreSQL 需要安装 psqlodbc。
-正常情况下驱动安装成功即可直接使用，无需进一步配置。
+Example 1 — open a [SQLite](../../object/ifs/SQLite.md) database and round-trip a row:
 
-## 静态函数
+```JavaScript
+const db = require('db');
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-db-'));
+const conn = db.openSQLite(path.join(dir, 'demo.db'));
+
+conn.execute('CREATE TABLE user (id INTEGER PRIMARY KEY, name TEXT)');
+const inserted = conn.execute('INSERT INTO user (name) VALUES (?)', 'alice');
+console.log(inserted.affected); // 1
+console.log(inserted.insertId); // 1
+console.log(conn.execute('SELECT * FROM user')[0].name); // alice
+
+conn.close();
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
+```
+
+Example 2 — bind parameters with a prepared statement:
+
+```JavaScript
+const db = require('db');
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-db-'));
+const conn = db.openSQLite(path.join(dir, 'bind.db'));
+
+conn.execute('CREATE TABLE account (name TEXT, balance REAL)');
+const insert = conn.prepare('INSERT INTO account (name, balance) VALUES (?, ?)');
+insert.run('alice', 10.5);
+insert.run('bob', 20);
+
+const select = conn.prepare('SELECT balance FROM account WHERE name = ?');
+console.log(select.get('bob').balance); // 20
+console.log(select.all().length); // 2
+console.log(select.get('nobody')); // undefined
+
+conn.close();
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
+```
+
+Example 3 — commit and roll back transactions:
+
+```JavaScript
+const db = require('db');
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-db-'));
+const conn = db.openSQLite(path.join(dir, 'tx.db'));
+
+conn.execute('CREATE TABLE log (msg TEXT)');
+const committed = conn.trans((c) => {
+    c.execute('INSERT INTO log (msg) VALUES (?)', 'kept');
+    return true;
+});
+const rolledBack = conn.trans((c) => {
+    c.execute('INSERT INTO log (msg) VALUES (?)', 'discarded');
+    return false; // false rolls the transaction back
+});
+console.log(committed, rolledBack); // true false
+console.log(conn.execute('SELECT * FROM log').length); // 1
+
+conn.close();
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
+```
+
+Notes:
+
+- Use the per-engine methods when the connection string has no protocol prefix
+  ([SQLite](../../object/ifs/SQLite.md) paths, [Redis](../../object/ifs/Redis.md) host names, [LevelDB](../../object/ifs/LevelDB.md) directories) or when the engine must be
+  fixed regardless of the string.
+- [SQLite](../../object/ifs/SQLite.md) connections always enable WAL journaling and set `synchronous=normal` and
+  `temp_store=memory`; the busy timeout starts at 5000 ms and is adjustable through
+  [SQLite.timeout](../../object/ifs/SQLite.md#timeout).
+- [MySQL](../../object/ifs/MySQL.md) and the ODBC-based engines need a reachable server and the matching client
+  driver; see the per-engine methods for the driver defaults and overrides.
+
+## Static Methods
         
 ### open
-**打开一个数据库，此方法为通用入口，根据提供的 connString 不同调用不同的引擎**
+**Opens an SQL database; dispatches to the engine selected by the protocol**
 
 ```JavaScript
-static object db.open(String connString) async;
+static DbConnection db.open(String connString) async;
 ```
 
-调用参数:
-* connString: String, 数据库描述，如：mysql://user:pass@host/db
+Parameters:
+* connString: String, the database description, such as: mysql://user:pass@host/db
 
-返回结果:
-* [object](../../object/ifs/object.md), 返回数据库连接对象
+Returns:
+* [DbConnection](../../object/ifs/DbConnection.md), returns the database connection [object](../../object/ifs/object.md)
+
+prefix of connString
+
+Accepted prefixes: `sqlite:`, `mysql:`, `odbc:`, `mssql:`, `psql:` and `dm:`. The
+returned [object](../../object/ifs/object.md) is the engine-specific subclass of [DbConnection](../../object/ifs/DbConnection.md) ([SQLite](../../object/ifs/SQLite.md), [MySQL](../../object/ifs/MySQL.md) or
+the ODBC-based mssql/psql/dm/odbc [object](../../object/ifs/object.md)); only the shared [DbConnection](../../object/ifs/DbConnection.md) API is
+guaranteed, use `type` to branch on the engine. `redis://` and `leveldb:` strings
+are rejected here: call openRedis / openLevelDB instead. A string without a known
+prefix fails with error number 20004; a failed connection reports the driver error
+with number 20024.
+
+Example — select the engine with the protocol prefix:
+
+```JavaScript
+const db = require('db');
+const conn = db.open('sqlite::memory:');
+conn.execute('CREATE TABLE t (v TEXT)');
+conn.execute('INSERT INTO t VALUES (?)', 'x');
+console.log(conn.type); // SQLite
+console.log(conn.execute('SELECT * FROM t')[0].v); // x
+conn.close();
+```
 
 --------------------------
 ### openMySQL
-**打开一个 mysql 数据库**
+**Opens a mysql database**
 
 ```JavaScript
 static MySQL db.openMySQL(String connString) async;
 ```
 
-调用参数:
-* connString: String, 数据库描述，如：mysql://user:pass@host/db
+Parameters:
+* connString: String, the database description, such as: mysql://user:pass@host/db
 
-返回结果:
-* [MySQL](../../object/ifs/MySQL.md), 返回数据库连接对象
+Returns:
+* [MySQL](../../object/ifs/MySQL.md), returns the database connection [object](../../object/ifs/object.md)
+
+Only `mysql://user:password@host:port/database` strings are accepted; a different
+prefix fails with error number 20004. The user and password are URI-decoded, the
+database name is the URL [path](path.md) (may be empty) and the port defaults to 3306. The
+character set is fixed to utf8mb4 and query-string options are not read, so
+credentials must be part of the URL. A server that cannot be reached reports error
+number 20024 ("Failed to connect to server"). Use close() to end the session.
+
+Example — connect and run a statement (needs a [MySQL](../../object/ifs/MySQL.md) server):
+
+```JavaScript
+// requires: mysql
+const db = require('db');
+const conn = db.openMySQL('mysql://root:password@127.0.0.1:3306/test');
+
+conn.execute('CREATE TABLE IF NOT EXISTS user (' +
+    'id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(64))');
+const inserted = conn.execute('INSERT INTO user (name) VALUES (?)', 'alice');
+console.log(inserted.affected, inserted.insertId); // 1 1
+
+const rows = conn.execute('SELECT name FROM user WHERE id = ?', inserted.insertId);
+console.log(rows[0].name); // alice
+
+conn.execute('DROP TABLE user');
+conn.close();
+```
 
 --------------------------
 ### openSQLite
-**打开一个 sqlite 数据库**
+**Opens a sqlite database**
 
 ```JavaScript
 static SQLite db.openSQLite(String connString) async;
 ```
 
-调用参数:
-* connString: String, 数据库描述，如：sqlite:test.db 或者 test.db
+Parameters:
+* connString: String, the database description, such as: sqlite:test.db or test.db
 
-返回结果:
-* [SQLite](../../object/ifs/SQLite.md), 返回数据库连接对象
+Returns:
+* [SQLite](../../object/ifs/SQLite.md), returns the database connection [object](../../object/ifs/object.md)
+
+Accepts `sqlite:[path](path.md)`, `sqlite://[path](path.md)` and a bare file [path](path.md); the file is opened
+READWRITE|CREATE, so it is created when missing. `:memory:` opens a private
+in-memory database and an empty string opens a temporary on-disk database; both
+lose their data when the connection is closed. Every connection enables WAL
+journaling, `synchronous=normal` and `temp_store=memory`, and waits up to 5000 ms
+for a busy file (see [SQLite.timeout](../../object/ifs/SQLite.md#timeout)). Failures such as a missing parent directory
+report error number 20024 with the [SQLite](../../object/ifs/SQLite.md) message.
+
+Example — create a database file in a temporary directory:
+
+```JavaScript
+const db = require('db');
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-sqlite-'));
+const conn = db.openSQLite(path.join(dir, 'notes.db'));
+
+conn.execute('CREATE TABLE note (body TEXT)');
+conn.execute('INSERT INTO note (body) VALUES (?)', 'hello');
+console.log(conn.fileName.endsWith('notes.db')); // true
+
+conn.close();
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
+```
 
 --------------------------
 ### openOdbc
-**打开一个 sqlite 数据库**
+**Opens a generic ODBC database**
 
 ```JavaScript
 static DbConnection db.openOdbc(String connString) async;
 ```
 
-调用参数:
-* connString: String, 数据库描述，如：odbc://user:pass@host/db?driver=PostgreSQL%20ANSI
+Parameters:
+* connString: String, the database description, such as: odbc://user:pass@host/db?driver=PostgreSQL%20ANSI
 
-返回结果:
-* [DbConnection](../../object/ifs/DbConnection.md), 返回数据库连接对象
+Returns:
+* [DbConnection](../../object/ifs/DbConnection.md), returns the database connection [object](../../object/ifs/object.md)
+
+Only `odbc://` strings are accepted; the driver name is required and is read from
+the `Driver` (or `driver`) query-string parameter: `odbc://user:pass@host/db?driver=MyDriver`.
+Without it the call fails with error number 20024 ("odbc: no driver specified.").
+The URL is translated into an ODBC connection string with the Driver, Server,
+optional Port and Database, Uid and Pwd attributes; other ODBC attributes cannot be
+set from the URL. The returned [object](../../object/ifs/object.md) reports type `"odbc"`; install the driver
+through the system ODBC configuration (unixODBC on posix).
 
 --------------------------
 ### openMSSQL
-**打开一个 mssql 数据库**
+**Opens an mssql database**
 
 ```JavaScript
 static DbConnection db.openMSSQL(String connString) async;
 ```
 
-调用参数:
-* connString: String, 数据库描述，如：mssql://user:pass@host/db
+Parameters:
+* connString: String, the database description, such as: mssql://user:pass@host/db
 
-返回结果:
-* [DbConnection](../../object/ifs/DbConnection.md), 返回数据库连接对象
+Returns:
+* [DbConnection](../../object/ifs/DbConnection.md), returns the database connection [object](../../object/ifs/object.md)
 
-为了建立与 mssql 的连接，在 posix 下必须安装 freetds 的 odbc 驱动，也可以通过指定驱动来使用微软的 mssql 驱动，指定驱动的方式，是在 [url](url.md) 后增加 ?driver=msodbcsql17[.so/.dylib] 的选项。
+Only `mssql://` strings are accepted; the port defaults to 1433 and the driver to
+`libtdsodbc.so` on posix (freetds must be installed) or "SQL Server" on Windows.
+Append `?driver=msodbcsql17` (or another name/[path](path.md)) to use a different driver. The
+returned [object](../../object/ifs/object.md) reports type `"mssql"`; note that mssql does not provide `insertId`
+in execution results. Connection failures report error number 20024 with the
+driver diagnostics.
 
 --------------------------
 ### openDM
-**打开一个达梦数据库**
+**Opens a DaMeng database**
 
 ```JavaScript
 static DbConnection db.openDM(String connString) async;
 ```
 
-调用参数:
-* connString: String, 数据库描述，如：dm://user:pass@host/db
+Parameters:
+* connString: String, the database description, such as: dm://user:pass@host/db
 
-返回结果:
-* [DbConnection](../../object/ifs/DbConnection.md), 返回数据库连接对象
+Returns:
+* [DbConnection](../../object/ifs/DbConnection.md), returns the database connection [object](../../object/ifs/object.md)
 
-为了建立与达梦数据库的连接，必须安装达梦数据库的 odbc 驱动。
-在 Linux 下，从达梦数据库安装目录中获取 ODBC 驱动文件，将其拷贝到系统库路径下，并配置 unixODBC。
+Only `dm://` strings are accepted; the port defaults to 5236 and the driver to
+`libdodbc.so` on posix or "DM8 ODBC DRIVER" on Windows. On Linux the ODBC driver
+file must be copied from the DaMeng installation into the system library [path](path.md) and
+configured in unixODBC. The connection is established with
+`Server=host:port` (falling back to separate Server/Port attributes) and
+TrustServerCertificate enabled. The returned [object](../../object/ifs/object.md) reports type `"dm"`.
 
 --------------------------
 ### openPSQL
-**打开一个 PostgresSQL 数据库**
+**Opens a PostgresSQL database**
 
 ```JavaScript
 static DbConnection db.openPSQL(String connString) async;
 ```
 
-调用参数:
-* connString: String, 数据库描述，如：psql://user:pass@host/db
+Parameters:
+* connString: String, the database description, such as: psql://user:pass@host/db
 
-返回结果:
-* [DbConnection](../../object/ifs/DbConnection.md), 返回数据库连接对象
+Returns:
+* [DbConnection](../../object/ifs/DbConnection.md), returns the database connection [object](../../object/ifs/object.md)
 
- 为了建立与 PostgresSQL 的连接，必须安装 PostgresSQL 的 odbc 驱动。
- 在 ubuntu 下，使用以下命令安装 PostgresSQL 的 odbc 驱动：
-```bash
- apt install unixodbc unixodbc-dev odbc-postgresql
-```
- 在 mac 下，使用以下命令安装 PostgresSQL 的 odbc 驱动：
-```bash
- brew install unixodbc psqlodbc
-```
- 同时，你需要将 brew 安装的 odbc 驱动的路径添加到环境变量中。通常是 /usr/local/lib 或者 /opt/homebrew/lib。你可以使用 find 来查找 libodbc.dylib 所在的路径：
-```bash
-find /usr/local/ -name libodbc.dylib
-find /opt/homebrew/ -name libodbc.dylib
-```
- 编辑 ~/.zshrc，添加以下内容：
-```bash
- export DYLD_LIBRARY_PATH=/opt/homebrew/lib:$DYLD_LIBRARY_PATH
-```
+Only `psql://` strings are accepted; the port defaults to 5432 and the driver to
+`psqlodbcw.so` (on macOS the Homebrew psqlodbc [path](path.md) is resolved automatically when
+no driver is given). Append `?Driver=<name>` to use another driver, for example a
+Unicode build. The ODBC driver of PostgreSQL must be installed: on ubuntu with
+`apt install unixodbc unixodbc-dev odbc-postgresql`, on macOS with
+`brew install unixodbc psqlodbc`; the returned [object](../../object/ifs/object.md) reports type `"psql"`.
 
 --------------------------
 ### openLevelDB
-**打开一个 leveldb 数据库**
+**Opens a leveldb database**
 
 ```JavaScript
 static LevelDB db.openLevelDB(String connString) async;
 ```
 
-调用参数:
-* connString: String, 数据库描述，如：level:test.db 或者 test.db
+Parameters:
+* connString: String, the database description, such as: level:test.db or test.db
 
-返回结果:
-* [LevelDB](../../object/ifs/LevelDB.md), 返回数据库对象
+Returns:
+* [LevelDB](../../object/ifs/LevelDB.md), returns the database [object](../../object/ifs/object.md)
+
+Accepts `leveldb:[path](path.md)` and a bare directory [path](path.md); the directory is created when
+missing. The returned [LevelDB](../../object/ifs/LevelDB.md) [object](../../object/ifs/object.md) is not a [DbConnection](../../object/ifs/DbConnection.md): it exposes the key-value
+API (get/set/remove/between/...) instead of SQL, and `open()` does not accept
+`leveldb:` strings. Only one [process](process.md) may open a directory at a time.
 
 --------------------------
 ### openRedis
-**打开一个 [Redis](../../object/ifs/Redis.md) 数据库**
+**Opens a [Redis](../../object/ifs/Redis.md) database**
 
 ```JavaScript
 static Redis db.openRedis(String connString) async;
 ```
 
-调用参数:
-* connString: String, 数据库描述，如：redis://server:port 或者 "server"
+Parameters:
+* connString: String, the database description, such as: redis://server:port or "server"
 
-返回结果:
-* [Redis](../../object/ifs/Redis.md), 返回数据库连接对象
+Returns:
+* [Redis](../../object/ifs/Redis.md), returns the database connection [object](../../object/ifs/object.md)
+
+Accepts `redis://host:port` or a bare host name; the port defaults to 6379. The
+returned [Redis](../../object/ifs/Redis.md) client is not a [DbConnection](../../object/ifs/DbConnection.md): it exposes the [Redis](../../object/ifs/Redis.md) commands
+(`command`, `get`/`set`, lists, sets, hashes, ...). A refused or unreachable server
+reports the socket error (for example error number 111, ECONNREFUSED) instead of a
+database error number.
 

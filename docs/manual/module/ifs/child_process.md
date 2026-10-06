@@ -1,59 +1,149 @@
-# 模块 child_process
-子进程管理模块
+# Module child_process
+The child_process [module](module.md) runs external programs and JavaScript modules in child processes; it provides streaming, buffered and synchronous call forms
 
-引用方式：
+Main capabilities:
+
+- **Streaming**: `spawn` starts a [process](process.md) immediately and exposes its stdio pipes through a
+  [ChildProcess](../../object/ifs/ChildProcess.md); `spawnSync` is the blocking variant with a complete result [object](../../object/ifs/object.md);
+- **Buffered execution**: `exec` runs a command in the platform shell and `execFile` runs a file
+  directly; both return `{ stdout, stderr, exitCode }` synchronously or a [ChildProcess](../../object/ifs/ChildProcess.md) in the
+  callback form;
+- **Convenience**: `execSync` and `execFileSync` return stdout and throw on a non-zero exit;
+  `run` executes a command and returns only its exit code (fibjs extension);
+- **Modules and IPC**: `fork` runs a JavaScript [module](module.md) in a new fibjs [process](process.md) with a message
+  channel;
+- **Shell helpers**: `sh` runs shell commands as a template tag and `ssh` returns a template
+  function that executes commands on a remote host (fibjs extensions).
+
+Concepts:
+
+- **Call forms**: `exec`, `execFile` and `run` run synchronously when the last argument is not a
+  function and asynchronously when a trailing callback is passed. The asynchronous form returns
+  a [ChildProcess](../../object/ifs/ChildProcess.md) and the callback receives `(err, stdout, stderr, exitCode)` (`run` receives
+  `(err, exitCode)`). `spawn` has no callback overload and always returns a [ChildProcess](../../object/ifs/ChildProcess.md)
+  immediately; `fork` and the `*Sync` functions are synchronous.
+- **spawn vs exec vs execFile**: `spawn` passes the program and the argv array to the operating
+  system without a shell; `exec` passes one string to the platform shell (`/bin/sh -c` on POSIX,
+  `cmd.exe /d /s /c` on Windows), so pipes, redirection and quoting are interpreted by the
+  shell; `execFile` starts a file with an explicit argv array and no shell.
+- **stdio**: `options.stdio` configures the child descriptors. It may be the string `'pipe'`,
+  `'ignore'`, `'inherit'` or `'pty'`, or an array with one entry per descriptor: `'pipe'`,
+  `'ignore'`, `'inherit'`, `'ipc'`, a positive integer naming a parent descriptor, or
+  null/undefined for the default. Descriptors 0, 1 and 2 become [ChildProcess](../../object/ifs/ChildProcess.md) stdin, stdout and
+  stderr; extra pipe descriptors appear in the [ChildProcess](../../object/ifs/ChildProcess.md) stdio array. `'pty'` allocates a
+  pseudo terminal (stdin and stdout only) with the initial `cols`/`rows` size.
+- **Environment and lifetime**: `options.cwd` sets the working directory, `options.env` adds
+  environment entries, `options.uid`/`gid` set the POSIX identity, `options.detached` starts the
+  child as a [process](process.md) group leader, and `windowsHide`/`windowsVerbatimArguments` apply on
+  Windows. `options.timeout` kills the child with `killSignal` (SIGTERM by default) after the
+  given milliseconds and `options.signal` ([AbortSignal](../../object/ifs/AbortSignal.md)) kills it on abort. Children are not
+  killed when the parent exits, and a running child keeps the fibjs [process](process.md) alive until it is
+  unref'd; kill children explicitly and always join or observe them.
+- **Exit codes and errors**: a non-zero exit is normal data for exec, execFile, run and
+  spawnSync (`exitCode`/`status`); execSync and execFileSync throw an Error carrying
+  Node-compatible `status`, `stdout`, `stderr` and `output` fields. A child killed by a signal
+  reports the negative signal number (-15 for SIGTERM, -9 for SIGKILL). Spawn failures throw
+  (spawn/exec/execFile/fork) or set `error` (spawnSync) with `code`/`errno`/`syscall`/`path`.
+- **Node.js differences**: fibjs adds `run`, `sh`, `ssh`, the `input` option (write to the
+  child's stdin), the `encoding` option accepting `'buffer'`, the four-argument callback with
+  exitCode and pty stdio. It has no `options.shell` (only exec uses a shell) and no
+  `options.maxBuffer`; `spawn` throws on failure instead of emitting an 'error' event, and a
+  signal death is reported as a negative exit code instead of Node's `signalCode`.
+
+Import:
 
 ```JavaScript
-var child_process = require("child_process");
-var child = child_process.spawn("ls");
+const child_process = require('child_process');
 ```
 
-在创建子进程时，options.stdio 选项用于配置在父进程和子进程之间建立的管道。 默认情况下，子进程的 stdin、 stdout 和 stderr 会被重定向到 [ChildProcess](../../object/ifs/ChildProcess.md) 对象上相应的 stdin、stdout 和 stderr 流。 这相当于将 options.stdio 设置为 ['pipe', 'pipe', 'pipe']。
-
-为方便起见， options.stdio 可以是以下字符串之一：
-
-- 'pipe'：相当于 ['pipe', 'pipe', 'pipe']（默认值）。
-- 'ignore'：相当于 ['ignore', 'ignore', 'ignore']。
-- 'inherit'：相当于 ['inherit', 'inherit', 'inherit'] 或 [0, 1, 2]。
-- 'pty'：相当于 ['pty', 'pty', 'pty']。
-
-否则， options.stdio 的值需是数组（其中每个索引对应于子进程中的文件描述符）。 文件描述符 0、1 和 2 分别对应于 stdin、stdout 和 stderr。 其他的文件描述符可以被指定用于在父进程和子进程之间创建其他的管道。 值可以是以下之一：
-
-1. 'pipe'：在子进程和父进程之间创建管道。 管道的父端作为 child_process 对象上的 stdio[fd] 属性暴露给父进程。 为文件描述符 0、1 和 2 创建的管道也可分别作为 stdin、stdout 和 stderr 使用。
-2. 'ignore'：指示 fibjs 忽略子进程中的文件描述符。 虽然 fibjs 将会始终为其衍生的进程打开文件描述符 0、1 和 2，但将文件描述符设置为 'ignore' 可以使 fibjs 打开 /dev/null 并将其附加到子进程的文件描述符。
-3. 'inherit'：将相应的 stdio 流传给父进程或从父进程传入。在前三个位置中，这分别相当于 [process.stdin](process.md#stdin)、 [process.stdout](process.md#stdout) 和 [process.stderr](process.md#stderr)。 在任何其他位置中，则相当于 'ignore'。
-4. 'pty'：在子进程将在虚拟终端中执行。此时只有 stdin 和 stdout 有效。
-5. 正整数：整数值会被解释为当前在父进程中打开的文件描述符。 它与子进程共享，类似于共享 <[Stream](../../object/ifs/Stream.md)> 对象的方式。 在 Windows 上不支持传入 socket。
-6. null 或 undefined：使用默认值。 对于 stdio 的文件描述符 0、1 和 2（换句话说，stdin、stdout 和 stderr），将会创建管道。 对于文件描述符 3 及更大的值，则默认为 'ignore'。
+Example 1 — run a command and capture its output with exec:
 
 ```JavaScript
-const {
-    spawn
-} = require('child_process');
+const child_process = require('child_process');
 
-// child process uses parent's stdio
-spawn('prg', [], {
-    stdio: 'inherit'
+// synchronous form: returns { stdout, stderr, exitCode }
+const command = `"${process.execPath}" -e "console.log('exec')"`;
+const ret = child_process.exec(command);
+console.log(ret.stdout.trim(), ret.exitCode); // exec 0
+
+// callback form: returns a ChildProcess
+const child = child_process.exec(command, (err, stdout, stderr, exitCode) => {
+    console.log(stdout.trim(), exitCode); // exec 0
 });
+child.join();
+```
 
-// child process uses parent's stderr
-spawn('prg', [], {
-    stdio: ['pipe', 'pipe', process.stderr]
+Example 2 — stream data through a spawned [process](process.md):
+
+```JavaScript
+const child_process = require('child_process');
+
+const child = child_process.spawn(process.execPath, ['-e', 'process.stdin.pipe(process.stdout)']);
+child.stdin.write('ping\n');
+child.stdin.close();
+
+console.log(child.stdout.readAll().toString().trim()); // ping
+console.log(child.join()); // 0
+```
+
+Example 3 — handle exit codes and spawn errors:
+
+```JavaScript
+const child_process = require('child_process');
+
+// a non-zero exit is reported through exitCode, not thrown
+const ret = child_process.execFile(process.execPath, ['-e', 'process.exit(3)']);
+console.log(ret.exitCode); // 3
+
+// a spawn failure throws a Node-compatible error
+try {
+    child_process.spawn('definitely-not-a-command');
+} catch (err) {
+    console.log(err.code, err.syscall); // ENOENT spawn definitely-not-a-command
+}
+
+// the sync helpers throw on a non-zero exit
+try {
+    child_process.execSync(`"${process.execPath}" -e "process.exit(4)"`);
+} catch (err) {
+    console.log(err.status); // 4
+}
+```
+
+Example 4 — run a [module](module.md) file with fork:
+
+```JavaScript
+const child_process = require('child_process');
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-fork-'));
+fs.writeFile(path.join(dir, 'child.js'), 'console.log("child", process.argv[2]);');
+
+const child = child_process.fork(path.join(dir, 'child.js'), ['arg1'], {
+    silent: true
+});
+console.log(child.stdout.readAll().toString().trim()); // child arg1
+console.log(child.join()); // 0
+
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
 });
 ```
 
-需要注意以下几点:
-- `child_process.exec(command, args)` 在 windows 上不会自动将 cmd.exe 作为 command 参数的执行环境;
-- child_process.[spawn|exec|execFile|run] 是同步/回调一体的 async 风格函数:
-  - 如果最后一个参数不是函数, 则是同步的
-  - 如果传递了函数作为最后一个参数, 则是异步的;
-- child_process.[exec|execFile] 的返回结果是一个对象, 该对象包含 stdout、stderr 等字段;
-- `child_process.run` 为 fibjs 特有 API
+Notes:
 
-## 静态函数
+- The callback forms run on a separate fiber; the synchronous forms block the calling fiber.
+- `sh` removes the trailing newline of the command output.
+- On Windows an executable without a [path](path.md) is resolved by the operating system; prefer exec for
+  shell built-ins and commands that need quoting.
+
+## Static Methods
         
 ### spawn
-**用给定的命令发布一个子进程**
+**Spawns a child [process](process.md) with the given command and argument list**
 
 ```JavaScript
 static ChildProcess child_process.spawn(String command,
@@ -61,105 +151,127 @@ static ChildProcess child_process.spawn(String command,
     Object options = {});
 ```
 
-调用参数:
-* command: String, 指定要运行的命令
-* args: Array, 指定字符串参数列表
-* options: Object, 指定创建参数
+Parameters:
+* command: String, specifies the command to run
+* args: Array, specifies the list of string arguments
+* options: Object, specifies the creation options
 
-返回结果:
-* [ChildProcess](../../object/ifs/ChildProcess.md), 返回子进程对象
+Returns:
+* [ChildProcess](../../object/ifs/ChildProcess.md), returns the child [process](process.md) [object](../../object/ifs/object.md)
 
-options 支持的内容如下：
+Starts the program without a shell and returns immediately with a [ChildProcess](../../object/ifs/ChildProcess.md); stdio is
+configured by options.stdio (see the [module](module.md) concepts). The command and every element of args
+are converted to their string form. A failure to start throws a Node-compatible Error with
+code, errno, syscall, [path](path.md) and args fields.
+
+options supports the following options:
 
 ```JavaScript
-{
-    "cwd": "", // working directory of the child process, default to current directory
-    "stdio": Array | String, // configure the pipes that are established between the parent and child process
-    "env": {}, // key-value pairs of environment variables to add to the child's environment
-    "detached": false, // child process will be a leader of a new process group, default to false
-    "uid": 0, // configure the user identity of the process
-    "gid": 0, // configure the group identity of the process
-    "windowsVerbatimArguments": false, // do not execute any quote or escape processing on Windows. Ignored on Unix. When specified, the command line string is passed directly to the underlying operating system shell without any processing whatsoever. This is set to true automatically when the shell option is specified and is CMD.
-    "windowsHide": false, // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
-    "timeout": 0, // the maximum amount of time (in milliseconds) the process is allowed to run. If timeout > 0, the process will be killed with killSignal after timeout milliseconds. Default: 0 (no timeout)
-    "killSignal": "SIGTERM", // the signal to use when the spawned process is killed by timeout or abort signal. Default: 'SIGTERM'
-    "cols": 80, // specify the initial number of columns for the PTY (only for stdio: 'pty')
-    "rows": 24 // specify the initial number of rows for the PTY (only for stdio: 'pty')
-}
+// fragment: options
+({
+    "cwd": "", // working directory of the child process
+    "stdio": "pipe", // pipe/ignore/inherit/pty or an array with one entry per descriptor
+    "env": {}, // environment variables added to the child's environment
+    "detached": false, // child process will be a leader of a new process group
+    "uid": 0, // POSIX user identity of the child
+    "gid": 0, // POSIX group identity of the child
+    "windowsVerbatimArguments": false, // Windows: pass the command line without quoting
+    "windowsHide": false, // Windows: hide the console window
+    "timeout": 0, // kill the child with killSignal after this many milliseconds
+    "killSignal": "SIGTERM", // signal used by timeout and signal abort
+    "signal": null, // AbortSignal that kills the child when aborted
+    "cols": 80, // pty only: initial number of terminal columns
+    "rows": 24 // pty only: initial number of terminal rows
+})
+```
+
+Example:
+
+```JavaScript
+const child_process = require('child_process');
+
+const child = child_process.spawn(process.execPath, ['-e', 'console.log("hi")']);
+console.log(child.stdout.readAll().toString().trim()); // hi
+console.log(child.join()); // 0
 ```
 
 --------------------------
-**用给定的命令发布一个子进程**
+**Spawns a child [process](process.md) with the given command and no arguments**
 
 ```JavaScript
 static ChildProcess child_process.spawn(String command,
     Object options = {});
 ```
 
-调用参数:
-* command: String, 指定要运行的命令
-* options: Object, 指定创建参数
+Parameters:
+* command: String, specifies the command to run
+* options: Object, specifies the creation options
 
-返回结果:
-* [ChildProcess](../../object/ifs/ChildProcess.md), 返回子进程对象
+Returns:
+* [ChildProcess](../../object/ifs/ChildProcess.md), returns the child [process](process.md) [object](../../object/ifs/object.md)
 
-options 支持的内容如下：
-
-```JavaScript
-{
-    "cwd": "", // working directory of the child process, default to current directory
-    "stdio": Array | String, // configure the pipes that are established between the parent and child process
-    "env": {}, // key-value pairs of environment variables to add to the child's environment
-    "detached": false, // child process will be a leader of a new process group, default to false
-    "uid": 0, // configure the user identity of the process
-    "gid": 0, // configure the group identity of the process
-    "windowsVerbatimArguments": false, // do not execute any quote or escape processing on Windows. Ignored on Unix. When specified, the command line string is passed directly to the underlying operating system shell without any processing whatsoever. This is set to true automatically when the shell option is specified and is CMD.
-    "windowsHide": false, // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
-    "timeout": 0, // the maximum amount of time (in milliseconds) the process is allowed to run. If timeout > 0, the process will be killed with killSignal after timeout milliseconds. Default: 0 (no timeout)
-    "killSignal": "SIGTERM", // the signal to use when the spawned process is killed by timeout or abort signal. Default: 'SIGTERM'
-    "cols": 80, // specify the initial number of columns for the PTY (only for stdio: 'pty')
-    "rows": 24 // specify the initial number of rows for the PTY (only for stdio: 'pty')
-}
-```
+Equivalent to spawn(command, [], options): the program is started without a shell and the
+call returns a [ChildProcess](../../object/ifs/ChildProcess.md) immediately. All creation options of the argv overload apply,
+including stdio configuration, cwd, env, timeout and killSignal.
 
 --------------------------
 ### exec
-**在 shell 中执行一个命令并缓冲输出，当以回调方式执行时，函数将返回子进程对象**
+**Executes a command in the platform shell and buffers the output**
 
 ```JavaScript
 static (Variant stdout, Variant stderr, Integer exitCode) child_process.exec(String command,
     Object options = {}) async;
 ```
 
-调用参数:
-* command: String, 指定要运行的命令
-* options: Object, 指定创建参数
+Parameters:
+* command: String, specifies the command to run
+* options: Object, specifies the creation options
 
-返回结果:
-* (Variant stdout, Variant stderr, Integer exitCode), 返回子进程的 stdio 输出内容
+Returns:
+* (Variant stdout, Variant stderr, Integer exitCode), returns the stdio output of the child [process](process.md)
 
-options 支持的内容如下：
+The command string is interpreted by the shell (`/bin/sh -c` on POSIX, `cmd.exe /d /s /c` on
+Windows), so pipes, redirection and quoting are available. Without a callback the function
+blocks the current fiber and returns an [object](../../object/ifs/object.md) with stdout, stderr and exitCode; stdout and
+stderr are strings decoded with options.encoding (utf8 by default) and null when empty. A
+non-zero exit is not an error. With a callback the function returns a [ChildProcess](../../object/ifs/ChildProcess.md) and the
+callback receives (err, stdout, stderr, exitCode); a failure to start throws.
+
+options supports the following options:
 
 ```JavaScript
-{
-    "cwd": "", // working directory of the child process, default to current directory
-    "env": {}, // key-value pairs of environment variables to add to the child's environment
-    "encoding": "utf8", // specify the character encoding used to decode the stdout and stderr output
-    "detached": false, // child process will be a leader of a new process group, default to false
-    "uid": 0, // configure the user identity of the process
-    "gid": 0, // con
-    "windowsVerbatimArguments": false, // do not execute any quote or escape processing on Windows. Ignored on Unix. When specified, the command line string is passed directly to the underlying operating system shell without any processing whatsoever. This is set to true automatically when the shell option is specified and is CMD.
-    "windowsHide": false, // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
-    "cols": 80, // specify the initial number of columns for the PTY (only for stdio: 'pty')
-    "rows": 24, // specify the initial number of rows for the PTY (only for stdio: 'pty')
-    "timeout": 0, // the maximum amount of time (in milliseconds) the process is allowed to run, default to no limit
-    "killSignal": "SIGTERM" // the signal to be used when the spawned process will be killed by timeout, default to "SIGTERM"
-}
+// fragment: options
+({
+    "cwd": "", // working directory of the child process
+    "env": {}, // environment variables added to the child's environment
+    "encoding": "utf8", // decode stdout/stderr with this encoding; 'buffer' keeps Buffers
+    "input": null, // string or Buffer written to the child's stdin
+    "detached": false, // child process will be a leader of a new process group
+    "uid": 0, // POSIX user identity of the child
+    "gid": 0, // POSIX group identity of the child
+    "windowsVerbatimArguments": false, // Windows: pass the command line without quoting
+    "windowsHide": false, // Windows: hide the console window
+    "timeout": 0, // kill the child with killSignal after this many milliseconds
+    "killSignal": "SIGTERM", // signal used by timeout and signal abort
+    "signal": null // AbortSignal that kills the child when aborted
+})
+```
+
+Example:
+
+```JavaScript
+const child_process = require('child_process');
+
+const command = `"${process.execPath}" -e "process.stdin.pipe(process.stdout)"`;
+const ret = child_process.exec(command, {
+    input: 'hi\n'
+});
+console.log(JSON.stringify(ret.stdout)); // "hi\n"
 ```
 
 --------------------------
 ### execFile
-**直接执行所指定的文件并缓冲输出，当以回调方式执行时，函数将返回子进程对象**
+**Directly executes a file with the given arguments and buffers the output**
 
 ```JavaScript
 static (Variant stdout, Variant stderr, Integer exitCode) child_process.execFile(String command,
@@ -167,70 +279,71 @@ static (Variant stdout, Variant stderr, Integer exitCode) child_process.execFile
     Object options = {}) async;
 ```
 
-调用参数:
-* command: String, 指定要运行的命令
-* args: Array, 指定字符串参数列表
-* options: Object, 指定创建参数
+Parameters:
+* command: String, specifies the command to run
+* args: Array, specifies the list of string arguments
+* options: Object, specifies the creation options
 
-返回结果:
-* (Variant stdout, Variant stderr, Integer exitCode), 返回子进程的 stdio 输出内容
+Returns:
+* (Variant stdout, Variant stderr, Integer exitCode), returns the stdio output of the child [process](process.md)
 
-options 支持的内容如下：
+The program is started without a shell, so args is passed to it verbatim. The call forms are
+the same as exec: without a callback the function blocks and returns stdout, stderr and
+exitCode (decoded with options.encoding, utf8 by default, null when empty); with a callback
+it returns a [ChildProcess](../../object/ifs/ChildProcess.md) and the callback receives (err, stdout, stderr, exitCode). A
+failure to start throws a Node-compatible Error.
+
+options supports the following options:
 
 ```JavaScript
-{
-    "cwd": "", // working directory of the child process, default to current directory
-    "env": {}, // key-value pairs of environment variables to add to the child's environment
-    "encoding": "utf8", // specify the character encoding used to decode the stdout and stderr output
-    "detached": false, // child process will be a leader of a new process group, default to false
-    "uid": 0, // configure the user identity of the process
-    "gid": 0, // con
-    "windowsVerbatimArguments": false, // do not execute any quote or escape processing on Windows. Ignored on Unix. When specified, the command line string is passed directly to the underlying operating system shell without any processing whatsoever. This is set to true automatically when the shell option is specified and is CMD.
-    "windowsHide": false, // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
-    "cols": 80, // specify the initial number of columns for the PTY (only for stdio: 'pty')
-    "rows": 24, // specify the initial number of rows for the PTY (only for stdio: 'pty')
-    "timeout": 0, // the maximum amount of time (in milliseconds) the process is allowed to run, default to no limit
-    "killSignal": "SIGTERM" // the signal to be used when the spawned process will be killed by timeout, default to "SIGTERM"
-}
+// fragment: options
+({
+    "cwd": "", // working directory of the child process
+    "env": {}, // environment variables added to the child's environment
+    "encoding": "utf8", // decode stdout/stderr with this encoding; 'buffer' keeps Buffers
+    "input": null, // string or Buffer written to the child's stdin
+    "detached": false, // child process will be a leader of a new process group
+    "uid": 0, // POSIX user identity of the child
+    "gid": 0, // POSIX group identity of the child
+    "windowsVerbatimArguments": false, // Windows: pass the command line without quoting
+    "windowsHide": false, // Windows: hide the console window
+    "timeout": 0, // kill the child with killSignal after this many milliseconds
+    "killSignal": "SIGTERM", // signal used by timeout and signal abort
+    "signal": null // AbortSignal that kills the child when aborted
+})
+```
+
+Example:
+
+```JavaScript
+const child_process = require('child_process');
+
+const ret = child_process.execFile(process.execPath, ['-e', 'console.log("ef")']);
+console.log(ret.stdout.trim()); // ef
 ```
 
 --------------------------
-**直接执行所指定的文件并缓冲输出，当以回调方式执行时，函数将返回子进程对象**
+**Directly executes a file with no arguments and buffers the output**
 
 ```JavaScript
 static (Variant stdout, Variant stderr, Integer exitCode) child_process.execFile(String command,
     Object options = {}) async;
 ```
 
-调用参数:
-* command: String, 指定要运行的命令
-* options: Object, 指定创建参数
+Parameters:
+* command: String, specifies the command to run
+* options: Object, specifies the creation options
 
-返回结果:
-* (Variant stdout, Variant stderr, Integer exitCode), 返回子进程的 stdio 输出内容
+Returns:
+* (Variant stdout, Variant stderr, Integer exitCode), returns the stdio output of the child [process](process.md)
 
-options 支持的内容如下：
-
-```JavaScript
-{
-    "cwd": "", // working directory of the child process, default to current directory
-    "env": {}, // key-value pairs of environment variables to add to the child's environment
-    "encoding": "utf8", // specify the character encoding used to decode the stdout and stderr output
-    "detached": false, // child process will be a leader of a new process group, default to false
-    "uid": 0, // configure the user identity of the process
-    "gid": 0, // con
-    "windowsVerbatimArguments": false, // do not execute any quote or escape processing on Windows. Ignored on Unix. When specified, the command line string is passed directly to the underlying operating system shell without any processing whatsoever. This is set to true automatically when the shell option is specified and is CMD.
-    "windowsHide": false, // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
-    "cols": 80, // specify the initial number of columns for the PTY (only for stdio: 'pty')
-    "rows": 24, // specify the initial number of rows for the PTY (only for stdio: 'pty')
-    "timeout": 0, // the maximum amount of time (in milliseconds) the process is allowed to run, default to no limit
-    "killSignal": "SIGTERM" // the signal to be used when the spawned process will be killed by timeout, default to "SIGTERM"
-}
-```
+Equivalent to execFile(command, [], options); see the argv overload for the call forms, the
+returned stdout/stderr/exitCode [object](../../object/ifs/object.md) and the Node-compatible error thrown on a spawn
+failure. The options are those of execFile, including [encoding](encoding.md) and input.
 
 --------------------------
 ### spawnSync
-**用给定的命令发布一个子进程**
+**Synchronously spawns a child [process](process.md) and returns its complete result**
 
 ```JavaScript
 static (Integer pid, NArray output, Variant stdout, Variant stderr, Integer status, Variant signal, Variant error) child_process.spawnSync(String command,
@@ -238,105 +351,90 @@ static (Integer pid, NArray output, Variant stdout, Variant stderr, Integer stat
     Object options = {});
 ```
 
-调用参数:
-* command: String, 指定要运行的命令
-* args: Array, 指定字符串参数列表
-* options: Object, 指定创建参数
+Parameters:
+* command: String, specifies the command to run
+* args: Array, specifies the list of string arguments
+* options: Object, specifies the creation options
 
-返回结果:
-* (Integer pid, NArray output, Variant stdout, Variant stderr, Integer status, Variant signal, Variant error), 返回子进程运行结果
+Returns:
+* (Integer pid, NArray output, Variant stdout, Variant stderr, Integer status, Variant signal, Variant error), returns the child [process](process.md) result
 
-options 支持的内容如下：
+Blocks the current fiber until the child exits while buffering stdout and stderr in memory.
+It never throws for a non-zero exit or a failed spawn: the returned [object](../../object/ifs/object.md) contains pid,
+output (an array of three entries: [null, stdout, stderr]), stdout, stderr, status, signal
+and error. stdout/stderr are Buffers unless options.encoding decodes them and are null for
+descriptors that are not piped; signal is null on a normal exit and carries the signal name
+when the child was killed by a signal. When the [process](process.md) cannot be started, pid is 0, status
+is 0, the streams are null and error holds a Node-compatible error [object](../../object/ifs/object.md) with
+code/errno/syscall/[path](path.md).
+
+options supports the following options:
 
 ```JavaScript
-{
-    "cwd": "", // working directory of the child process, default to current directory
-    "stdio": Array | String, // configure the pipes that are established between the parent and child process
-    "env": {}, // key-value pairs of environment variables to add to the child's environment
-    "detached": false, // child process will be a leader of a new process group, default to false
-    "uid": 0, // configure the user identity of the process
-    "gid": 0, // configure the group identity of the process
-    "windowsVerbatimArguments": false, // do not execute any quote or escape processing on Windows. Ignored on Unix. When specified, the command line string is passed directly to the underlying operating system shell without any processing whatsoever. This is set to true automatically when the shell option is specified and is CMD.
-    "windowsHide": false, // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
-    "cols": 80, // specify the initial number of columns for the PTY (only for stdio: 'pty')
-    "rows": 24, // specify the initial number of rows for the PTY (only for stdio: 'pty')
-    "timeout": 0, // the maximum amount of time (in milliseconds) the process is allowed to run, default to no limit
-    "killSignal": "SIGTERM" // the signal to be used when the spawned process will be killed by timeout, default to "SIGTERM"
-}
+// fragment: options
+({
+    "cwd": "", // working directory of the child process
+    "stdio": "pipe", // pipe/ignore/inherit/pty or an array with one entry per descriptor
+    "input": null, // string or Buffer written to the child's stdin
+    "env": {}, // environment variables added to the child's environment
+    "encoding": "buffer", // decode stdout/stderr with this encoding; 'buffer' keeps Buffers
+    "detached": false, // child process will be a leader of a new process group
+    "uid": 0, // POSIX user identity of the child
+    "gid": 0, // POSIX group identity of the child
+    "windowsVerbatimArguments": false, // Windows: pass the command line without quoting
+    "windowsHide": false, // Windows: hide the console window
+    "timeout": 0, // kill the child with killSignal after this many milliseconds
+    "killSignal": "SIGTERM", // signal used by timeout and signal abort
+    "signal": null, // AbortSignal that kills the child when aborted
+    "cols": 80, // pty only: initial number of terminal columns
+    "rows": 24 // pty only: initial number of terminal rows
+})
 ```
 
 --------------------------
-**用给定的命令发布一个子进程**
+**Synchronously spawns a child [process](process.md) with the given command and no arguments**
 
 ```JavaScript
 static (Integer pid, NArray output, Variant stdout, Variant stderr, Integer status, Variant signal, Variant error) child_process.spawnSync(String command,
     Object options = {});
 ```
 
-调用参数:
-* command: String, 指定要运行的命令
-* options: Object, 指定创建参数
+Parameters:
+* command: String, specifies the command to run
+* options: Object, specifies the creation options
 
-返回结果:
-* (Integer pid, NArray output, Variant stdout, Variant stderr, Integer status, Variant signal, Variant error), 返回子进程运行结果
+Returns:
+* (Integer pid, NArray output, Variant stdout, Variant stderr, Integer status, Variant signal, Variant error), returns the child [process](process.md) result
 
-options 支持的内容如下：
-
-```JavaScript
-{
-    "cwd": "", // working directory of the child process, default to current directory
-    "stdio": Array | String, // configure the pipes that are established between the parent and child process
-    "env": {}, // key-value pairs of environment variables to add to the child's environment
-    "detached": false, // child process will be a leader of a new process group, default to false
-    "uid": 0, // configure the user identity of the process
-    "gid": 0, // con
-    "windowsVerbatimArguments": false, // do not execute any quote or escape processing on Windows. Ignored on Unix. When specified, the command line string is passed directly to the underlying operating system shell without any processing whatsoever. This is set to true automatically when the shell option is specified and is CMD.
-    "windowsHide": false, // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
-    "cols": 80, // specify the initial number of columns for the PTY (only for stdio: 'pty')
-    "rows": 24, // specify the initial number of rows for the PTY (only for stdio: 'pty')
-    "timeout": 0, // the maximum amount of time (in milliseconds) the process is allowed to run, default to no limit
-    "killSignal": "SIGTERM" // the signal to be used when the spawned process will be killed by timeout, default to "SIGTERM"
-}
-```
+Equivalent to spawnSync(command, [], options); see the argv overload for the returned
+result [object](../../object/ifs/object.md), the buffered streams and the error field. All creation options apply, in
+particular stdio, input and [encoding](encoding.md).
 
 --------------------------
 ### execSync
-**在 shell 中同步执行一个命令并缓冲输出**
+**Synchronously executes a command in a shell and returns its stdout**
 
 ```JavaScript
 static Variant child_process.execSync(String command,
     Object options = {});
 ```
 
-调用参数:
-* command: String, 指定要运行的命令
-* options: Object, 指定创建参数
+Parameters:
+* command: String, specifies the command to run
+* options: Object, specifies the creation options
 
-返回结果:
-* Variant, 返回子进程的 stdout 输出内容，缺省为 [Buffer](../../object/ifs/Buffer.md)；options.encoding 指定编码时返回字符串
+Returns:
+* Variant, returns the stdout output of the child [process](process.md), a [Buffer](../../object/ifs/Buffer.md) by default; returns a string when options.encoding specifies an [encoding](encoding.md)
 
-options 支持的内容如下：
-
-```JavaScript
-{
-    "cwd": "", // working directory of the child process, default to current directory
-    "env": {}, // key-value pairs of environment variables to add to the child's environment
-    "encoding": "utf8", // specify the character encoding used to decode the stdout and stderr output
-    "detached": false, // child process will be a leader of a new process group, default to false
-    "uid": 0, // configure the user identity of the process
-    "gid": 0, // configure the group identity of the process
-    "windowsVerbatimArguments": false, // do not execute any quote or escape processing on Windows. Ignored on Unix. When specified, the command line string is passed directly to the underlying operating system shell without any processing whatsoever. This is set to true automatically when the shell option is specified and is CMD.
-    "windowsHide": false, // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
-    "cols": 80, // specify the initial number of columns for the PTY (only for stdio: 'pty')
-    "rows": 24, // specify the initial number of rows for the PTY (only for stdio: 'pty')
-    "timeout": 0, // the maximum amount of time (in milliseconds) the process is allowed to run, default to no limit
-    "killSignal": "SIGTERM" // the signal to be used when the spawned process will be killed by timeout, default to "SIGTERM"
-}
-```
+The command string is interpreted by the platform shell like exec. stdout is returned as a
+[Buffer](../../object/ifs/Buffer.md) by default, or as a string when options.encoding is given; an empty output is null.
+When the exit code is not 0 the function throws an Error with Node-compatible status,
+stdout, stderr and output fields instead of returning. The options are those of exec,
+including input and [encoding](encoding.md).
 
 --------------------------
 ### execFileSync
-**直接同步执行所指定的文件并缓冲输出**
+**Directly synchronously executes a file and returns its stdout**
 
 ```JavaScript
 static Variant child_process.execFileSync(String command,
@@ -344,70 +442,41 @@ static Variant child_process.execFileSync(String command,
     Object options = {});
 ```
 
-调用参数:
-* command: String, 指定要运行的命令
-* args: Array, 指定字符串参数列表
-* options: Object, 指定创建参数
+Parameters:
+* command: String, specifies the command to run
+* args: Array, specifies the list of string arguments
+* options: Object, specifies the creation options
 
-返回结果:
-* Variant, 返回子进程的 stdout 输出内容，缺省为 [Buffer](../../object/ifs/Buffer.md)；options.encoding 指定编码时返回字符串
+Returns:
+* Variant, returns the stdout output of the child [process](process.md), a [Buffer](../../object/ifs/Buffer.md) by default; returns a string when options.encoding specifies an [encoding](encoding.md)
 
-options 支持的内容如下：
-
-```JavaScript
-{
-    "cwd": "", // working directory of the child process, default to current directory
-    "env": {}, // key-value pairs of environment variables to add to the child's environment
-    "encoding": "utf8", // specify the character encoding used to decode the stdout and stderr output
-    "detached": false, // child process will be a leader of a new process group, default to false
-    "uid": 0, // configure the user identity of the process
-    "gid": 0, // configure the group identity of the process
-    "windowsVerbatimArguments": false, // do not execute any quote or escape processing on Windows. Ignored on Unix. When specified, the command line string is passed directly to the underlying operating system shell without any processing whatsoever. This is set to true automatically when the shell option is specified and is CMD.
-    "windowsHide": false, // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
-    "cols": 80, // specify the initial number of columns for the PTY (only for stdio: 'pty')
-    "rows": 24, // specify the initial number of rows for the PTY (only for stdio: 'pty')
-    "timeout": 0, // the maximum amount of time (in milliseconds) the process is allowed to run, default to no limit
-    "killSignal": "SIGTERM" // the signal to be used when the spawned process will be killed by timeout, default to "SIGTERM"
-}
-```
+The program is started without a shell and args is passed verbatim, like execFile. The
+return value and the thrown error match execSync: stdout as a [Buffer](../../object/ifs/Buffer.md) by default or a string
+with options.encoding, and an Error with status/stdout/stderr/output fields on a non-zero
+exit. The options are those of execFile, including input and [encoding](encoding.md).
 
 --------------------------
-**直接同步执行所指定的文件并缓冲输出**
+**Directly synchronously executes a file with no arguments and returns its stdout**
 
 ```JavaScript
 static Variant child_process.execFileSync(String command,
     Object options = {});
 ```
 
-调用参数:
-* command: String, 指定要运行的命令
-* options: Object, 指定创建参数
+Parameters:
+* command: String, specifies the command to run
+* options: Object, specifies the creation options
 
-返回结果:
-* Variant, 返回子进程的 stdout 输出内容，缺省为 [Buffer](../../object/ifs/Buffer.md)；options.encoding 指定编码时返回字符串
+Returns:
+* Variant, returns the stdout output of the child [process](process.md), a [Buffer](../../object/ifs/Buffer.md) by default; returns a string when options.encoding specifies an [encoding](encoding.md)
 
-options 支持的内容如下：
-
-```JavaScript
-{
-    "cwd": "", // working directory of the child process, default to current directory
-    "env": {}, // key-value pairs of environment variables to add to the child's environment
-    "encoding": "utf8", // specify the character encoding used to decode the stdout and stderr output
-    "detached": false, // child process will be a leader of a new process group, default to false
-    "uid": 0, // configure the user identity of the process
-    "gid": 0, // configure the group identity of the process
-    "windowsVerbatimArguments": false, // do not execute any quote or escape processing on Windows. Ignored on Unix. When specified, the command line string is passed directly to the underlying operating system shell without any processing whatsoever. This is set to true automatically when the shell option is specified and is CMD.
-    "windowsHide": false, // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
-    "cols": 80, // specify the initial number of columns for the PTY (only for stdio: 'pty')
-    "rows": 24, // specify the initial number of rows for the PTY (only for stdio: 'pty')
-    "timeout": 0, // the maximum amount of time (in milliseconds) the process is allowed to run, default to no limit
-    "killSignal": "SIGTERM" // the signal to be used when the spawned process will be killed by timeout, default to "SIGTERM"
-}
-```
+Equivalent to execFileSync(command, [], options); see the argv overload for the return
+value and the error behavior on a non-zero exit. The options are those of execFile,
+including input and [encoding](encoding.md).
 
 --------------------------
 ### fork
-**在子进程中执行一个模块**
+**Executes a [module](module.md) in a child [process](process.md)**
 
 ```JavaScript
 static ChildProcess child_process.fork(String module,
@@ -415,66 +484,85 @@ static ChildProcess child_process.fork(String module,
     Object options = {});
 ```
 
-调用参数:
-* module: String, 指定要运行的命令
-* args: Array, 指定字符串参数列表
-* options: Object, 指定创建参数
+Parameters:
+* module: String, specifies the [module](module.md) to run
+* args: Array, specifies the list of string arguments
+* options: Object, specifies the creation options
 
-返回结果:
-* [ChildProcess](../../object/ifs/ChildProcess.md), 返回子进程对象
+Returns:
+* [ChildProcess](../../object/ifs/ChildProcess.md), returns the child [process](process.md) [object](../../object/ifs/object.md)
 
-options 支持的内容如下：
+The child is started with [process.execPath](process.md#execPath), the [module](module.md) [path](path.md) as its first argument and the
+elements of args after it, so the [module](module.md) is resolved by the child against options.cwd (pass
+an absolute [path](path.md) unless cwd is set). fork always creates an IPC message channel; by default
+the child inherits the parent's stdio, while `silent: true` pipes stdin, stdout and stderr so
+they can be read through the [ChildProcess](../../object/ifs/ChildProcess.md) streams. The options are those of spawn plus
+silent; [ChildProcess](../../object/ifs/ChildProcess.md) send, message, connected and disconnect operate the channel.
+
+options supports:
 
 ```JavaScript
-{
-    "cwd": "", // working directory of the child process, default to current directory
-    "stdio": Array | String, // configure the pipes that are established between the parent and child process
-    "env": {}, // key-value pairs of environment variables to add to the child's environment
-    "detached": false, // child process will be a leader of a new process group, default to false
-    "uid": 0, // configure the user identity of the process
-    "gid": 0, // con
-    "windowsVerbatimArguments": false, // do not execute any quote or escape processing on Windows. Ignored on Unix. When specified, the command line string is passed directly to the underlying operating system shell without any processing whatsoever. This is set to true automatically when the shell option is specified and is CMD.
-    "windowsHide": false, // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
-    "cols": 80, // specify the initial number of columns for the PTY (only for stdio: 'pty')
-    "rows": 24 // specify the initial number of rows for the PTY (only for stdio: 'pty')
-}
+// fragment: options
+({
+    "cwd": "", // working directory of the child process
+    "stdio": "inherit", // overrides silent when provided
+    "silent": false, // true pipes stdin/stdout/stderr instead of inheriting them
+    "env": {}, // environment variables added to the child's environment
+    "detached": false, // child process will be a leader of a new process group
+    "uid": 0, // POSIX user identity of the child
+    "gid": 0, // POSIX group identity of the child
+    "windowsVerbatimArguments": false, // Windows: pass the command line without quoting
+    "windowsHide": false, // Windows: hide the console window
+    "cols": 80, // pty only: initial number of terminal columns
+    "rows": 24 // pty only: initial number of terminal rows
+})
+```
+
+Example:
+
+```JavaScript
+const child_process = require('child_process');
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-fork-'));
+fs.writeFile(path.join(dir, 'child.js'), 'console.log("child", process.argv[2]);');
+
+const child = child_process.fork(path.join(dir, 'child.js'), ['arg1'], {
+    silent: true
+});
+console.log(child.stdout.readAll().toString().trim()); // child arg1
+console.log(child.join()); // 0
+
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
 ```
 
 --------------------------
-**在子进程中执行一个模块**
+**Executes a [module](module.md) in a child [process](process.md) with no arguments**
 
 ```JavaScript
 static ChildProcess child_process.fork(String module,
     Object options = {});
 ```
 
-调用参数:
-* module: String, 指定要运行的命令
-* options: Object, 指定创建参数
+Parameters:
+* module: String, specifies the [module](module.md) to run
+* options: Object, specifies the creation options
 
-返回结果:
-* [ChildProcess](../../object/ifs/ChildProcess.md), 返回子进程对象
+Returns:
+* [ChildProcess](../../object/ifs/ChildProcess.md), returns the child [process](process.md) [object](../../object/ifs/object.md)
 
-options 支持的内容如下：
-
-```JavaScript
-{
-    "cwd": "", // working directory of the child process, default to current directory
-    "stdio": Array | String, // configure the pipes that are established between the parent and child process
-    "env": {}, // key-value pairs of environment variables to add to the child's environment
-    "detached": false, // child process will be a leader of a new process group, default to false
-    "uid": 0, // configure the user identity of the process
-    "gid": 0, // con
-    "windowsVerbatimArguments": false, // do not execute any quote or escape processing on Windows. Ignored on Unix. When specified, the command line string is passed directly to the underlying operating system shell without any processing whatsoever. This is set to true automatically when the shell option is specified and is CMD.
-    "windowsHide": false, // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
-    "cols": 80, // specify the initial number of columns for the PTY (only for stdio: 'pty')
-    "rows": 24 // specify the initial number of rows for the PTY (only for stdio: 'pty')
-}
-```
+Equivalent to fork([module](module.md), [], options); see the argv overload for the [module](module.md) resolution,
+the IPC channel and the silent/stdio behavior. The [module](module.md) [path](path.md) is resolved by the child
+against options.cwd, so pass an absolute [path](path.md) unless cwd points at the [module](module.md) directory.
 
 --------------------------
 ### run
-**直接执行所指定的文件并返回 exitCode，当以回调方式执行时，函数将返回子进程对象**
+**Directly executes a file and returns its exit code**
 
 ```JavaScript
 static Integer child_process.run(String command,
@@ -482,173 +570,110 @@ static Integer child_process.run(String command,
     Object options = {}) async;
 ```
 
-调用参数:
-* command: String, 指定要运行的命令
-* args: Array, 指定字符串参数列表
-* options: Object, 指定创建参数
+Parameters:
+* command: String, specifies the command to run
+* args: Array, specifies the list of string arguments
+* options: Object, specifies the creation options
 
-返回结果:
-* Integer, 返回子进程的 exitCode
+Returns:
+* Integer, returns the exitCode of the child [process](process.md)
 
-options 支持的内容如下：
-
-```JavaScript
-{
-    "cwd": "", // working directory of the child process, default to current directory
-    "env": {}, // key-value pairs of environment variables to add to the child's environment
-    "detached": false, // child process will be a leader of a new process group, default to false
-    "uid": 0, // configure the user identity of the process
-    "gid": 0, // con
-    "windowsVerbatimArguments": false, // do not execute any quote or escape processing on Windows. Ignored on Unix. When specified, the command line string is passed directly to the underlying operating system shell without any processing whatsoever. This is set to true automatically when the shell option is specified and is CMD.
-    "windowsHide": false, // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
-    "cols": 80, // specify the initial number of columns for the PTY (only for stdio: 'pty')
-    "rows": 24 // specify the initial number of rows for the PTY (only for stdio: 'pty')
-}
-```
+fibjs extension. The child inherits the parent's stdio (the stdio option is forced to
+'inherit'), so its output is written to the current terminal instead of being returned; use
+exec or execFile to capture output. Without a callback the function blocks the current fiber
+and returns the exit code (0-255, or the negative signal number for a signal death); with a
+callback it returns a [ChildProcess](../../object/ifs/ChildProcess.md) and the callback receives (err, exitCode). The options
+are those of execFile.
 
 --------------------------
-**直接执行所指定的文件并返回 exitCode，当以回调方式执行时，函数将返回子进程对象**
+**Directly executes a file with no arguments and returns its exit code**
 
 ```JavaScript
 static Integer child_process.run(String command,
     Object options = {}) async;
 ```
 
-调用参数:
-* command: String, 指定要运行的命令
-* options: Object, 指定创建参数
+Parameters:
+* command: String, specifies the command to run
+* options: Object, specifies the creation options
 
-返回结果:
-* Integer, 返回子进程的 exitCode
+Returns:
+* Integer, returns the exitCode of the child [process](process.md)
 
-options 支持的内容如下：
-
-```JavaScript
-{
-    "cwd": "", // working directory of the child process, default to current directory
-    "env": {}, // key-value pairs of environment variables to add to the child's environment
-    "detached": false, // child process will be a leader of a new process group, default to false
-    "uid": 0, // configure the user identity of the process
-    "gid": 0, // con
-    "windowsVerbatimArguments": false, // do not execute any quote or escape processing on Windows. Ignored on Unix. When specified, the command line string is passed directly to the underlying operating system shell without any processing whatsoever. This is set to true automatically when the shell option is specified and is CMD.
-    "windowsHide": false, // hide the subprocess console window that would normally be created on Windows systems. This option has no effect on non-Windows systems.
-    "cols": 80, // specify the initial number of columns for the PTY (only for stdio: 'pty')
-    "rows": 24 // specify the initial number of rows for the PTY (only for stdio: 'pty')
-}
-```
+Equivalent to run(command, [], options); see the argv overload for the callback form, the
+forced inherit stdio and the return value. Use it when only the exit status matters and the
+output should go to the terminal.
 
 --------------------------
 ### sh
-**用字符串模版语法在 shell 中执行一个命令并缓冲输出**
+**Executes a shell command as a template tag and returns its stdout**
 
 ```JavaScript
 static String child_process.sh(Array strings,
     ...args) async;
 ```
 
-调用参数:
-* strings: Array, 指定要运行的命令
-* args: ..., 指定字符串参数列表
+Parameters:
+* strings: Array, specifies the command to run
+* args: ..., specifies the list of string arguments
 
-返回结果:
-* String, 返回子进程的 stdio 输出内容
+Returns:
+* String, returns the stdio output of the child [process](process.md)
 
-sh 是对 exec 方法的再次封装，用于快速执行 shell 命令，支持字符串模版语法，例如：
+`sh` is a template tag: the interpolated values are inserted into the command string (arrays
+are joined with spaces, other values use their string form) and the command is executed
+through the shell like exec. The returned stdout is decoded as utf8 and the trailing newline
+is removed, so the result can be embedded in the next command. A failing command throws an
+Error whose message is the shell error. fibjs extension for short synchronous commands.
 
-```JavaScript
-const $ = require("child_process").sh;
-var ret = $`ls -l`;
-console.log(ret);
-```
-
-因为 sh 是个模版函数，所以可以很方便地在命令中使用模版，例如：
+Example:
 
 ```JavaScript
-const $ = require("child_process").sh;
-var ret = $`ls -l ${__dirname}`;
-console.log(ret);
-```
+const child_process = require('child_process');
+const $ = child_process.sh;
 
-你也可以很方便地在命令中引入数组，例如：
-
-```JavaScript
-const $ = require("child_process").sh;
-const words = [
-    "hello",
-    "world"
-]
-var ret = $`echo ${words}`;
-console.log(ret);
-```
-
-sh 会自动删除命令返回的最后一个换行，以方便在下一次命令中使用，例如：
-
-```JavaScript
-const $ = require("child_process").sh;
-var world = $`echo world`;
-var ret = $`echo hello ${world}`;
-console.log(ret);
+const word = 'world';
+console.log($`echo hello ${word}`); // hello world
 ```
 
 --------------------------
 ### ssh
-**创建一个 ssh 执行函数**
+**Creates an ssh execution function**
 
 ```JavaScript
-static Function child_process.ssh(String host,
+static Function(...args) => Value child_process.ssh(String host,
     Object options = {});
 ```
 
-调用参数:
-* host: String, 指定远程主机地址
-* options: Object, 指定 ssh 连接参数
+Parameters:
+* host: String, specifies the remote host address
+* options: Object, specifies the ssh connection parameters
 
-返回结果:
-* Function, 返回子进程对象
+Returns:
+* Function(...args) => Value, returns a template function that executes the command and returns its stdout
 
-options 支持的内容如下：
+ Returns a template function that runs a command on a remote host through the ssh executable
+ using execFile, with the same template syntax as sh, for example `ssh('user@host')` followed
+ by a tagged template with `ls -l`. Arrays are joined with spaces and the trailing newline is
+ removed, like sh. An ssh binary and a reachable host are required; fibjs extension.
+
+ options supports:
 
 ```JavaScript
-{
+// fragment: options
+({
     "user": "", // ssh user
-    "port": 22, // ssh port
-}
+    "port": 22 // ssh port
+})
 ```
 
-ssh 是对 execFile 方法的再次封装，用于快速执行 ssh shell 命令，支持字符串模版语法，例如：
+Example:
 
 ```JavaScript
-const $ = require("child_process").ssh('remote');
-var ret = $`ls -l`;
-console.log(ret);
-```
+// fragment: requires a reachable ssh host
+const child_process = require('child_process');
+const $ = child_process.ssh('user@host');
 
-因为 sh 是个模版函数，所以可以很方便地在命令中使用模版，例如：
-
-```JavaScript
-const $ = require("child_process").ssh('remote');
-var ret = $`ls -l ${__dirname}`;
-console.log(ret);
-```
-
-你也可以很方便地在命令中引入数组，例如：
-
-```JavaScript
-const $ = require("child_process").ssh('remote');
-const words = [
-    "hello",
-    "world"
-]
-var ret = $`echo ${words}`;
-console.log(ret);
-```
-
-sh 会自动删除命令返回的最后一个换行，以方便在下一次命令中使用，例如：
-
-```JavaScript
-const $ = require("child_process").ssh('remote');
-var world = $`echo world`;
-var ret = $`echo hello ${world}`;
-console.log(ret);
+console.log($`uname -a`);
 ```
 

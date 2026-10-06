@@ -1,303 +1,439 @@
-# 模块 os
-`os` 模块是核心模块之一，用于运行的操作系统函数。它提供了与操作系统交互的实用程序功能，包括文件地址、文件路径、网络接口、主机名、操作系统类型等
+# Module os
+The os [module](module.md) reports the operating system the [process](process.md) runs on: platform and kernel identity, CPU and memory resources, user and network information, plus fibjs time helpers
 
-### 常用方法
+Main capabilities:
 
-`os` 模块中提供的方法很多，以下是几个比较常用的方法：
+- **Identity**: `platform`, `arch`, `type`, `release`, `hostname`, `endianness`, `EOL`,
+  `timezone`;
+- **Resources**: `cpus`, `cpuNumbers`, `loadavg`, `totalmem`, `freemem`;
+- **Paths and user**: `homedir`, `tmpdir`, `userInfo`;
+- **Network**: `networkInterfaces`;
+- **Time helpers**: `time`, `dateAdd`;
+- **System integration**: `constants` and `Service`.
 
-#### [os.hostname](os.md#hostname)()
+Concepts:
 
-获取当前计算机的主机名。
+- **Portable versus platform-dependent values**: `platform` returns 'linux', 'darwin',
+  'win32', 'freebsd', 'android' or 'ios'; `arch` returns 'x64', 'ia32', 'arm', 'arm64',
+  'mips', 'mips64', 'ppc64', 'riscv64' or 'loong64'. `type` and `release` come from the
+  kernel (Linux, Darwin, Windows_NT, FreeBSD), so their text is not portable, while
+  `endianness` ('LE'/'BE') and `EOL` ('\n'/'\r\n') are. `loadavg` is all zeros on
+  Windows. Branch on `platform`/`arch`, never on the text of `type`/`release`.
+- **CPU and load shapes**: `cpus` returns one [object](../../object/ifs/object.md) per logical CPU, re-read on every
+  call, with `model`, `speed` in MHz and `times` (`user`, `nice`, `sys`, `idle`, `irq`)
+  in milliseconds since boot. `cpuNumbers` is the same count, cached after the first
+  call, and is a fibjs extension; Node.js has `os.availableParallelism` and
+  `os.cpus().length` for that. `loadavg` is the 1, 5 and 15 minute run-queue average,
+  where a value of 1.0 means one runnable task on average.
+- **Memory units**: `totalmem` and `freemem` are bytes of physical memory, and `freemem`
+  is the memory the operating system reports as available, so on Linux it includes
+  reclaimable cache and can be much larger than the truly unused pages.
+- **Network interface shape**: `networkInterfaces` maps an interface name to an array of
+  address records: `address`, `netmask`, `family` ('IPv4' or 'IPv6'), `mac` (lowercase
+  [hex](hex.md), all zeros for the loopback interface), `internal` and, on IPv6 records,
+  `scopeid`. The Node.js-only `cidr` field is not provided.
+- **User information and encodings**: `userInfo` returns `uid`, `gid`, `username`,
+  `homedir` and `shell`; on Windows uid/gid are -1 and shell is null, and on systems
+  without a passwd entry the call throws. `options.encoding` selects the text [encoding](encoding.md) of
+  the string fields, with 'buffer' returning [Buffer](../../object/ifs/Buffer.md) values and any other supported
+  [encoding](encoding.md) (such as '[base64](base64.md)') [encoding](encoding.md) the strings, matching Node.js.
+- **fibjs extensions**: `time`, `dateAdd`, `timezone`, `cpuNumbers` and `Service` are not
+  part of the Node.js os [module](module.md). `time` parses a date string and `dateAdd` shifts a date
+  by a calendar part with month-end clamping: 2000-01-31 plus one month is 2000-02-29.
+  `timezone` is the local UTC offset in hundredths of an hour (UTC+8 is 800), unlike
+  Date#getTimezoneOffset, which counts minutes west of UTC.
+- **Node.js gaps**: `os.availableParallelism`, `os.machine`, `os.version`, `os.devNull`
+  and `os.getPriority`/`setPriority` do not exist; use `cpus().length` when a parallelism
+  hint is needed.
 
-示例代码：
-
-```JavaScript
-const os = require('os');
-const hostname = os.hostname();
-console.log(hostname);
-```
-
-返回结果类似如下：
-```sh
-localhost
-```
-
-#### [os.type](os.md#type)()
-
-获取当前操作系统的名称。
-
-示例代码：
-
-```JavaScript
-const os = require('os');
-const type = os.type();
-console.log(type);
-```
-
-返回结果类似如下：
-```sh
-Windows_NT
-```
-
-#### [os.release](os.md#release)()
-
-获取当前操作系统的版本。
-
-示例代码：
-
-```JavaScript
-const os = require('os');
-const release = os.release();
-console.log(release);
-```
-
-返回结果类似如下：
-```sh
-10.0.18362
-```
-
-#### [os.arch](os.md#arch)()
-
-获取操作系统的处理器架构。
-
-示例代码：
+Import:
 
 ```JavaScript
 const os = require('os');
-const arch = os.arch();
-console.log(arch);
 ```
 
-返回结果类似如下：
-```sh
-x64
-```
-
-#### [os.cpus](os.md#cpus)()
-
-获取 CPU 的信息。
-
-示例代码：
+Example 1 — report the platform and CPU identity:
 
 ```JavaScript
 const os = require('os');
-const cpus = os.cpus();
-console.log(cpus);
+
+console.log(os.platform(), os.arch(), os.type(), os.release());
+console.log(os.endianness(), JSON.stringify(os.EOL), os.cpuNumbers());
+console.log(os.hostname());
 ```
 
-返回结果类似如下：
-```sh
-[
-{ model: 'Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz', speed: 2592, times: { user: 2400298, nice: 0, sys: 9684894, idle: 91516801, irq: 0 } },
-{ model: 'Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz', speed: 2592, times: { user: 464927, nice: 0, sys: 1454926, idle: 95119061, irq: 0 } },
-{ model: 'Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz', speed: 2592, times: { user: 232077, nice: 0, sys: 898942, idle: 95482112, irq: 0 } },
-{ model: 'Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz', speed: 2592, times: { user: 950448, nice: 0, sys: 1875169, idle: 93117788, irq: 0 } }
-]
+Example 2 — inspect memory and load:
+
+```JavaScript
+const os = require('os');
+
+const mib = (bytes) => Math.round(bytes / 1024 / 1024);
+console.log('total', mib(os.totalmem()), 'MiB, free', mib(os.freemem()), 'MiB');
+console.log('load', os.loadavg().map((v) => v.toFixed(2)).join(' '));
+
+const cpu = os.cpus()[0];
+console.log(cpu.model, cpu.speed, 'MHz', Object.keys(cpu.times).join(','));
 ```
 
-## 对象
+Example 3 — summarize the effective user and the network interfaces:
+
+```JavaScript
+const os = require('os');
+
+const user = os.userInfo();
+console.log(user.username, user.uid, user.gid, user.homedir, user.shell);
+console.log(os.tmpdir());
+
+const interfaces = os.networkInterfaces();
+Object.keys(interfaces).forEach((name) => {
+    const addresses = interfaces[name].map((i) => i.family + ' ' + i.address);
+    console.log(name, addresses.join(', '));
+});
+```
+
+Example 4 — parse and shift dates with the fibjs time helpers:
+
+```JavaScript
+const os = require('os');
+
+const start = os.time('2000-1-31T10:10:10');
+const february = os.dateAdd(start, 1, 'month'); // 2000 is a leap year
+console.log(february.getFullYear(), february.getMonth() + 1, february.getDate());
+// 2000 2 29
+
+console.log(isNaN(os.time('2000-1-32').getTime())); // true
+```
+
+Notes:
+
+- Every function is read-only and reflects the machine at call time, except `cpuNumbers`
+  (cached) and `platform`/`arch` (fixed at build time); nothing here changes the system.
+- `os.arch()` matches `process.arch` and `os.platform()` matches `process.platform`.
+- `networkInterfaces`, `cpus` and `userInfo` can return empty results or throw on systems
+  without the corresponding kernel interface (containers, iOS).
+
+## Objects
         
 ### Service
-**[Service](../../object/ifs/Service.md) 构造函数，参见 [Service](../../object/ifs/Service.md)**
+**Reference to the [Service](../../object/ifs/Service.md) class for system service management**
 
 ```JavaScript
 Service os.Service;
 ```
 
+The property holds the [Service](../../object/ifs/Service.md) constructor itself, so `new [os.Service](os.md#Service)(name, worker)`
+creates a service that can be installed and controlled by the platform service
+manager; see the [Service](../../object/ifs/Service.md) class. This is a fibjs extension; Node.js has no service
+API.
+
 --------------------------
 ### constants
-**os 模块的常量对象，参见 [os_constants](os_constants.md)**
+**The [constants](constants.md) [object](../../object/ifs/object.md) of the os [module](module.md), see [os_constants](os_constants.md)**
 
 ```JavaScript
 os_constants os.constants;
 ```
 
-## 静态函数
+It groups the platform [constants](constants.md) used by the low-level APIs: `errno` (error codes),
+`signals` (signal numbers), `priority` ([process](process.md) priorities) and `dlopen` (library
+loading flags), plus libuv's `UV_UDP_REUSEADDR`. The sub-objects mirror Node.js, while
+their entries follow the platform and the bundled libuv.
+
+## Static Methods
         
 ### hostname
-**查询当前运行环境主机名**
+**Queries the hostname of the current runtime environment**
 
 ```JavaScript
 static String os.hostname();
 ```
 
-返回结果:
-* String, 返回主机名
+Returns:
+* String, returns the hostname
+
+The value comes from the operating system and is not fully qualified on most systems.
+The Node.js method is identical.
 
 --------------------------
 ### endianness
-**查询当前 CPU 的字节顺序**
+**Queries the byte order of the current CPU**
 
 ```JavaScript
 static String os.endianness();
 ```
 
-返回结果:
-* String, 返回字节顺序
+Returns:
+* String, returns the byte order
+
+The result is 'LE' for little-endian architectures (x64, arm64) or 'BE' for
+big-endian ones, matching Node.js; it describes the build target, not the memory of a
+particular buffer.
 
 --------------------------
 ### type
-**查询当前运行环境操作系统名称**
+**Queries the operating system name of the current runtime environment**
 
 ```JavaScript
 static String os.type();
 ```
 
-返回结果:
-* String, 返回系统名称
+Returns:
+* String, returns the system name
+
+The string is the kernel name from uname: 'Linux', 'Darwin', 'Windows_NT' or
+'FreeBSD'. Use `platform` when a lowercase switchable name is needed, because the
+text of `type` is platform specific.
 
 --------------------------
 ### release
-**查询当前运行环境操作系统版本**
+**Queries the operating system version of the current runtime environment**
 
 ```JavaScript
 static String os.release();
 ```
 
-返回结果:
-* String, 返回版本信息
+Returns:
+* String, returns the version information
+
+The value is the kernel release (for example '5.15.0-139-generic' on Linux) or the
+Windows version, and its format varies by system; use it for display and diagnostics,
+never to parse a version number.
 
 --------------------------
 ### homedir
-**查询当前用户目录**
+**Queries the home directory of the current user**
 
 ```JavaScript
 static String os.homedir();
 ```
 
-返回结果:
-* String, 返回目录字符串
+Returns:
+* String, returns the directory string
+
+The value follows $HOME on POSIX and USERPROFILE on Windows, falling back to the
+passwd entry; on iOS it is the application documents directory. The string does not
+end with a [path](path.md) separator, matching Node.js.
 
 --------------------------
 ### arch
-**查询当前 cpu 环境**
+**Queries the CPU architecture of the runtime environment**
 
 ```JavaScript
 static String os.arch();
 ```
 
-返回结果:
-* String, 返回 cpu 类型，可能的结果为 'amd64', 'arm', 'arm64', 'ia32'
+Returns:
+* String, returns the CPU architecture name
+
+This is the build target of the running binary and matches `process.arch`; see the
+[module](module.md) Concepts for the possible values ('x64', 'ia32', 'arm', 'arm64', 'mips',
+'mips64', 'ppc64', 'riscv64', 'loong64').
 
 --------------------------
 ### loadavg
-**查询运行环境 1分钟，5分钟，15分钟平均负载**
+**Queries the 1-minute, 5-minute and 15-minute average load of the runtime environment**
 
 ```JavaScript
-static Array os.loadavg();
+static Number os.loadavg();
 ```
 
-返回结果:
-* Array, 返回包含三个负载数据的数组
+Returns:
+* Number, returns an array containing three load values
+
+The result is an array of three numbers describing the run queue of the whole system,
+not just this [process](process.md); on Windows the implementation returns [0, 0, 0] because the
+kernel does not provide the value.
 
 --------------------------
 ### totalmem
-**查询运行环境总内存，以字节为单位**
+**Queries the total memory of the runtime environment, in bytes**
 
 ```JavaScript
 static Long os.totalmem();
 ```
 
-返回结果:
-* Long, 返回内存数据
+Returns:
+* Long, returns the memory value
+
+The value is the physical memory installed in the machine, not a limit of the current
+container or cgroup, matching Node.js; see `freemem` for the available part and
+[process.memoryUsage](process.md#memoryUsage) for this [process](process.md).
 
 --------------------------
 ### freemem
-**查询运行环境可用内存，以字节为单位**
+**Queries the available memory of the runtime environment, in bytes**
 
 ```JavaScript
 static Long os.freemem();
 ```
 
-返回结果:
-* Long, 返回内存数据
+Returns:
+* Long, returns the memory value
+
+The value is what the operating system reports as free (on Linux the MemAvailable
+estimate), so it includes reclaimable cache; Node.js reports the same value.
 
 --------------------------
 ### cpus
-**查询当前运行环境 cpu 个数和参数**
+**Queries the number and parameters of CPUs in the current runtime environment**
 
 ```JavaScript
 static Array os.cpus();
 ```
 
-返回结果:
-* Array, 返回包含 cpu 参数的数组，每一项对应一个 cpu
+Returns:
+* Array, returns an array containing cpu parameters, each item corresponding to one cpu
+
+One [object](../../object/ifs/object.md) per logical CPU is returned on every call, each with `model`, `speed` in
+MHz and `times`; the times are absolute counters in milliseconds since boot (`user`,
+`nice`, `sys`, `idle`, `irq`), so sample the array twice to compute a usage ratio. The
+shape matches Node.js [os.cpus](os.md#cpus)().
+
+Example — summarize the first logical CPU:
+
+```JavaScript
+const os = require('os');
+
+const cpu = os.cpus()[0];
+console.log(cpu.model, cpu.speed, 'MHz');
+console.log(cpu.times.user, cpu.times.idle); // milliseconds since boot
+```
 
 --------------------------
 ### cpuNumbers
-**查询当前运行环境 cpu 个数**
+**Queries the number of CPUs in the current runtime environment**
 
 ```JavaScript
 static Integer os.cpuNumbers();
 ```
 
-返回结果:
-* Integer, 返回 cpu 个数
+Returns:
+* Integer, returns the number of CPUs
+
+The number of logical CPUs is counted once and then cached for the lifetime of the
+[process](process.md). This is a fibjs extension; Node.js code uses [os.cpus](os.md#cpus)().length or
+os.availableParallelism() instead.
 
 --------------------------
 ### tmpdir
-**查询当前运行环境临时文件目录**
+**Queries the temporary file directory of the current runtime environment**
 
 ```JavaScript
 static String os.tmpdir();
 ```
 
-返回结果:
-* String, 返回临时文件目录
+Returns:
+* String, returns the temporary file directory
+
+The directory is resolved from the environment on every call: TMPDIR, TMP, TEMP or
+TEMPDIR, then the platform fallback (/tmp on POSIX, GetTempPath on Windows); the
+returned [path](path.md) does not end with a separator. The directory is suitable for
+[fs.mkdtemp](fs.md#mkdtemp).
 
 --------------------------
 ### userInfo
-**返回当前有效执行用户信息**
+**Returns information about the currently effective user**
 
 ```JavaScript
 static Object os.userInfo(Object options = {});
 ```
 
-调用参数:
-* options: Object, 用于解释结果字符串的字符编码
+Parameters:
+* options: Object, character [encoding](encoding.md) used to interpret the result strings; 'buffer' returns Buffers
 
-返回结果:
-* Object, 当前有效执行用户信息
+Returns:
+* Object, information about the currently effective user
+
+The [object](../../object/ifs/object.md) has `uid` and `gid` numbers plus `username`, `homedir` and `shell`
+strings; on Windows uid/gid are -1 and shell is null, and on systems without a passwd
+entry the call throws. `encoding` selects the text encoding of the string fields:
+'buffer' returns [Buffer](../../object/ifs/Buffer.md) values and any other supported [encoding](encoding.md) (such as '[base64](base64.md)')
+encodes them, as in Node.js.
+
+Example — print the effective user:
+
+```JavaScript
+const os = require('os');
+
+const user = os.userInfo();
+console.log(user.username, user.uid, user.gid);
+console.log(user.homedir, user.shell); // shell is null on Windows
+```
 
 --------------------------
 ### networkInterfaces
-**查询当前运行环境网络信息**
+**Queries the network information of the current runtime environment**
 
 ```JavaScript
 static Object os.networkInterfaces();
 ```
 
-返回结果:
-* Object, 返回网卡信息
+Returns:
+* Object, returns the network interface information
+
+The result maps every interface name to its address records; see the [module](module.md) Concepts
+for the fields. Interfaces with several addresses (IPv4 and IPv6, or several aliases)
+contribute one record each, grouped in the order the kernel reports them. The
+Node.js-only `cidr` field is not provided.
+
+Example — list the addresses of every interface:
+
+```JavaScript
+const os = require('os');
+
+const interfaces = os.networkInterfaces();
+Object.keys(interfaces).forEach((name) => {
+    interfaces[name].forEach((i) => console.log(name, i.family, i.address, i.internal));
+});
+```
 
 --------------------------
 ### platform
-**查询当前平台名称**
+**Queries the current platform name**
 
 ```JavaScript
 static String os.platform();
 ```
 
-返回结果:
-* String, 返回平台名称，可能的结果为 'darwin', 'freebsd', 'linux', 或 'win32'
+Returns:
+* String, returns the platform name
+
+Possible results are 'linux', 'win32', 'darwin', 'freebsd', 'android' and 'ios'; the
+value is fixed at build time and matches `process.platform`. Node.js uses the same
+names for these platforms.
 
 --------------------------
 ### time
-**解析时间字符串或查询运行环境当前时间**
+**Parses a time string or queries the current time of the runtime environment**
 
 ```JavaScript
 static Date os.time(String tmString = "");
 ```
 
-调用参数:
-* tmString: String, 时间字符串，缺省则查询当前时间
+Parameters:
+* tmString: String, time string; if omitted, queries the current time
 
-返回结果:
-* Date, 返回 javascript Date 对象
+Returns:
+* Date, returns a javascript Date [object](../../object/ifs/object.md)
+
+Without an argument the current time is returned; otherwise tmString is parsed with
+the fibjs date parser, which accepts the same forms as the Date constructor (`1998-4-14`,
+`4/14/1998 1:12:12.123 pm`, `Tue Apr 14 1998 09:46:05 GMT+0800` and so on). An
+unparsable value yields a Date whose getTime() is NaN instead of throwing. This is a
+fibjs extension.
+
+Example — parse a date string and detect an invalid one:
+
+```JavaScript
+const os = require('os');
+
+console.log(os.time('1998-4-14').getFullYear()); // 1998
+console.log(isNaN(os.time('2000-1-32').getTime())); // true, invalid date
+```
 
 --------------------------
 ### dateAdd
-**时间计算函数，根据 part 指定计算时间**
+**Time calculation function; calculates the time according to part**
 
 ```JavaScript
 static Date os.dateAdd(Date d,
@@ -305,28 +441,52 @@ static Date os.dateAdd(Date d,
     String part);
 ```
 
-调用参数:
-* d: Date, 指定用于计算 Date 对象
-* num: Integer, 指定运算的数值
-* part: String, 指定运算的时间部位，接收值为："year", "month", "day", "hour", "minute", "second"
+Parameters:
+* d: Date, specifies the Date [object](../../object/ifs/object.md) used for the calculation
+* num: Integer, specifies the value of the operation
+* part: String, specifies the time part of the operation; accepted values are: "year", "month", "day", "hour", "minute", "second"
 
-返回结果:
-* Date, 返回 javascript Date 对象
+Returns:
+* Date, returns a javascript Date [object](../../object/ifs/object.md)
 
-## 静态属性
+The date is shifted by num units of part; the accepted parts are 'year', 'month',
+'day', 'hour', 'minute' and 'second', and any other value throws Error 20004
+("Invalid date part: ..."). A month or day shift clamps to the end of the target
+month (2000-01-31 plus one month is 2000-02-29, 2000-02-29 plus one month is
+2000-03-31), so the result is always a valid date. This is a fibjs extension.
+
+Example — add calendar parts and let month ends clamp:
+
+```JavaScript
+const os = require('os');
+
+const jan31 = os.time('2000-1-31T10:10:10');
+const february = os.dateAdd(jan31, 1, 'month'); // 2000 is a leap year
+console.log(february.getFullYear(), february.getMonth() + 1, february.getDate());
+// 2000 2 29
+```
+
+## Static Properties
         
 ### timezone
-**Integer, 查询运行环境当前时区**
+**Integer, Queries the current time zone of the runtime environment**
 
 ```JavaScript
 static readonly Integer os.timezone;
 ```
 
+The value is the local offset from UTC in hundredths of an hour: UTC+8 reports 800
+and UTC-5 reports -500. It is a fibjs extension: Node.js exposes nothing similar on
+os, and Date#getTimezoneOffset reports minutes west of UTC instead (-480 for UTC+8).
+
 --------------------------
 ### EOL
-**String, 查询当前运行环境行结尾标识，posix:\"\\n\"；windows:\"\\r\\n\"**
+**String, Queries the line ending of the current runtime environment, posix:'\n'; windows:'\r\n'**
 
 ```JavaScript
 static readonly String os.EOL;
 ```
+
+The value is '\n' on POSIX systems and '\r\n' on Windows, matching Node.js; use it for
+text files and protocols that require the platform separator.
 

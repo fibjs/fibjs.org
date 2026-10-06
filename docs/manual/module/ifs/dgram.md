@@ -1,124 +1,246 @@
-# 模块 dgram
-dgram 基础模块之一，主要用于实现 UDP 数据包 socket 的封装。
+# Module dgram
+The dgram [module](module.md) provides UDP datagram sockets: create a socket, bind it to a local port, send datagrams to a destination and receive each datagram as one message; useful for discovery and telemetry protocols, broadcast and multicast delivery and any service where message boundaries matter
 
-使用步骤：
+Main capabilities:
 
-1. 首先，通过下面的语句引入 dgram 模块。
-```
-var dgram = require('dgram');
+- **[Socket](../../object/ifs/Socket.md) creation**: `createSocket` creates a `DgramSocket` of the `udp4` or `udp6` family from
+  a family string or an options [object](../../object/ifs/object.md); `Socket` is the class alias used for type checks;
+- **Datagram transfer**: `send` transmits one buffer or string as one datagram, and every
+  received datagram is delivered to the `'message'` event;
+- **Local endpoint**: `bind` assigns the local port and address, `address` reads them back and
+  `close` releases the handle;
+- **Broadcast and multicast**: `setBroadcast`, `addMembership`, `dropMembership` and
+  `setMulticastTTL` control the corresponding socket options;
+- **[Socket](../../object/ifs/Socket.md) buffers**: `getRecvBufferSize`/`setRecvBufferSize` and
+  `getSendBufferSize`/`setSendBufferSize` read and write the operating-system buffers;
+- **Lifetime**: `ref` and `unref` control whether a bound socket keeps the [process](process.md) alive.
+
+Concepts:
+
+- **Datagrams vs streams**: UDP keeps message boundaries — one send produces exactly one
+  'message' event and the payload is never split or merged — but it is unreliable: datagrams
+  may be lost, duplicated or reordered, and there is no connection, retransmission or flow
+  control. Use [net](net.md), [tls](tls.md) or [http](http.md) when a reliable byte stream is needed.
+- **Size limits**: one udp4 datagram carries at most 65507 bytes of payload (65527 for udp6) and
+  a larger payload throws EMSGSIZE. A datagram larger than the [path](path.md) MTU (about 1472 payload
+  bytes on Ethernet) is fragmented by IP, and losing one fragment loses the whole datagram.
+- **Binding**: sockets are created unbound. `bind` assigns the local address and emits
+  'listening'; the first `send` of an unbound socket binds it automatically to a random port on
+  every local address, which is fine for clients but means a server must bind explicitly so that
+  peers can be told the port in advance.
+- **[Fiber](../../object/ifs/Fiber.md) and event duality**: bind and send follow the fibjs asynchronous conventions —
+  without a callback they block the calling fiber and return the result, with a trailing
+  callback they run asynchronously, and the Sync/Async aliases and the promises namespace exist
+  as well. Receiving is event-only (there is no blocking recv): datagrams arrive at the
+  'message' event, whose handler runs in its own fiber.
+- **Broadcast and multicast**: receiving broadcast traffic needs no option, but sending to a
+  broadcast address requires `setBroadcast(true)`; multicast requires joining a group with
+  `addMembership`, and `setMulticastTTL` limits how far multicast datagrams travel.
+- **Node.js differences**: `dgram.Socket` is a class reference and is not constructible —
+  create instances with `createSocket` only; `send` accepts a missing address (defaulting to
+  loopback) and has no AddressInfo destination form; there is no `socket.connect`, no `setTTL`,
+  `setMulticastLoopback` or `setMulticastInterface` and no source-specific multicast methods;
+  accepting a family string directly in `createSocket` is a fibjs extension.
+
+Import:
+
+```JavaScript
+const dgram = require('dgram');
 ```
 
-2. 创建 UDP 数据包 socket 实例。
-```
-var sock = dgram.createSocket('udp4');
-```
+Example 1 — a local round trip on an OS-assigned port:
 
-3. 为 UDP 数据包 socket 注册数据接收事件消息回调函数。
-```
-sock.on('message', function (msg, rinfo) {
-// process received message
+```JavaScript
+const dgram = require('dgram');
+const coroutine = require('coroutine');
+
+const server = dgram.createSocket('udp4');
+server.bind(0, '127.0.0.1');
+server.on('message', (msg, rinfo) => {
+    server.send(msg, rinfo.port, rinfo.address); // echo the datagram back
 });
+
+const client = dgram.createSocket('udp4');
+let reply = null;
+client.on('message', (msg) => {
+    reply = msg.toString();
+});
+const bytes = client.send('ping', server.address().port, '127.0.0.1');
+
+let waited = 0;
+while (reply === null && waited < 1000) {
+    coroutine.sleep(10);
+    waited += 10;
+}
+console.log(bytes, reply); // 4 ping
+
+client.close();
+server.close();
 ```
 
-4. 发送 UDP 数据包消息到指定目标地址。
-```
-var msg = ...; // message to send
-var port = ...; // destination port
-var host = ...; // destination host
-var bytes = sock.send(msg, 0, msg.length, port, host);
-console.log('UDP message sent to ' + host + ':' + port);
+Example 2 — the event-driven form with a message handler installed at creation:
+
+```JavaScript
+const dgram = require('dgram');
+const coroutine = require('coroutine');
+
+const server = dgram.createSocket('udp4', (msg, rinfo) => {
+    server.send(msg.toString().toUpperCase(), rinfo.port, rinfo.address);
+});
+server.bind(0, '127.0.0.1');
+
+const client = dgram.createSocket('udp4');
+let reply = null;
+client.on('message', (msg) => {
+    reply = msg.toString();
+});
+client.send('hello', server.address().port, '127.0.0.1');
+
+let waited = 0;
+while (reply === null && waited < 1000) {
+    coroutine.sleep(10);
+    waited += 10;
+}
+console.log(reply); // HELLO
+
+client.close();
+server.close();
 ```
 
-## 对象
+Example 3 — unknown socket [types](types.md) and an already used port fail with an error:
+
+```JavaScript
+const dgram = require('dgram');
+
+try {
+    dgram.createSocket('udp5');
+} catch (err) {
+    console.log(err.message); // dgram: unknown socket type: 'udp5'.
+}
+
+const first = dgram.createSocket('udp4');
+first.bind(0, '127.0.0.1');
+
+const second = dgram.createSocket('udp4');
+try {
+    second.bind(first.address().port, '127.0.0.1');
+} catch (err) {
+    console.log(err.code); // EADDRINUSE
+}
+
+second.close();
+first.close();
+```
+
+## Objects
         
 ### Socket
-**[dgram.Socket](dgram.md#Socket) 对象是一个封装了数据包函数功能的 [EventEmitter](../../object/ifs/EventEmitter.md)。参见 [DgramSocket](../../object/ifs/DgramSocket.md)**
+**The alias of the [DgramSocket](../../object/ifs/DgramSocket.md) class, see [DgramSocket](../../object/ifs/DgramSocket.md)**
 
 ```JavaScript
 DgramSocket dgram.Socket;
 ```
 
-[dgram.Socket](dgram.md#Socket) 实例是由 [dgram.createSocket](dgram.md#createSocket)() 创建的。创建 [dgram.Socket](dgram.md#Socket) 实例不需要使用 new 关键字。
+It is a class reference, useful for `instanceof` checks; unlike Node.js it is not a
+constructor, so a socket is always created with createSocket.
 
-## 静态函数
+## Static Methods
         
 ### createSocket
-**创建一个 [dgram.Socket](dgram.md#Socket) 对象**
+**Creates a UDP socket of the given family**
 
 ```JavaScript
-static DgramSocket dgram.createSocket(Object opts);
+static DgramSocket dgram.createSocket(Object | String opts);
 ```
 
-调用参数:
-* opts: Object, 
+Parameters:
+* opts: Object | String, the family string or the options [object](../../object/ifs/object.md)
 
-返回结果:
-* [DgramSocket](../../object/ifs/DgramSocket.md), 返回创建的 [Socket](../../object/ifs/Socket.md) 对象
+Returns:
+* [DgramSocket](../../object/ifs/DgramSocket.md), the created socket
 
-opts 允许的选项是:
+opts is either the family string 'udp4' or 'udp6', or an options [object](../../object/ifs/object.md). The options [object](../../object/ifs/object.md)
+accepts:
 
 ```JavaScript
-{
-    "type": "udp4" | "udp6", // socket type
-    "reuseAddr": true | false, // reuse address, default is false
-    "ipv6Only": true | false, // only accept IPv6 packets, default is false
-    "recvBufferSize": 1024, // specify the size of the receive buffer
-    "sendBufferSize": 1024 // specify the size of the send buffer
+// fragment: options
+({
+    type: 'udp4', // 'udp4' or 'udp6'; required
+    reuseAddr: false, // let several sockets share the address and port; default false
+    ipv6Only: false, // for udp6, disable the dual-stack IPv4 mapping; default false
+    recvBufferSize: 0, // receive buffer hint in bytes, applied on bind; default 0 = system
+    sendBufferSize: 0 // send buffer hint in bytes, applied on bind; default 0 = system
+})
+```
+
+The socket is created unbound; call bind, or let the first send bind it. Passing a callback
+as the second argument is equivalent to adding a listener for the 'message' event, see the
+createSocket(opts, callback) overload. An unknown family throws an error with number 20004
+and the message `dgram: unknown socket type: '<value>'.`.
+
+Example — create with options, bind and print the assigned address:
+
+```JavaScript
+const dgram = require('dgram');
+
+const socket = dgram.createSocket({
+    type: 'udp4',
+    reuseAddr: true,
+    recvBufferSize: 65536,
+    sendBufferSize: 65536
+});
+socket.bind(0, '127.0.0.1');
+
+console.log(socket.address().address); // 127.0.0.1
+console.log(socket.getRecvBufferSize() > 0, socket.getSendBufferSize() > 0); // true true
+
+socket.close();
+```
+
+--------------------------
+**Creates a UDP socket and registers a handler for the 'message' event**
+
+```JavaScript
+static DgramSocket dgram.createSocket(Object | String opts,
+    Function(Buffer msg, Object rinfo) callback);
+```
+
+Parameters:
+* opts: Object | String, the family string or the options [object](../../object/ifs/object.md)
+* callback: Function([Buffer](../../object/ifs/Buffer.md) msg, Object rinfo), the function called with (msg, rinfo) for every received datagram
+
+Returns:
+* [DgramSocket](../../object/ifs/DgramSocket.md), the created socket
+
+Equivalent to createSocket(opts) followed by `socket.on('message', callback)`: the callback
+receives the payload [Buffer](../../object/ifs/Buffer.md) and the remote-info [object](../../object/ifs/object.md), and this is the receive-only server
+form used when no other event needs a listener. The callback is installed before the socket
+is bound, so no datagram can be missed. The opts argument accepts the same family string and
+options [object](../../object/ifs/object.md) as the overload above.
+
+Example — the callback receives every datagram:
+
+```JavaScript
+const dgram = require('dgram');
+const coroutine = require('coroutine');
+
+let payload = null;
+const socket = dgram.createSocket('udp4', (msg, rinfo) => {
+    payload = msg.toString() + '@' + rinfo.address;
+});
+socket.bind(0, '127.0.0.1');
+
+const peer = dgram.createSocket('udp4');
+peer.send('ping', socket.address().port, '127.0.0.1');
+
+let waited = 0;
+while (payload === null && waited < 1000) {
+    coroutine.sleep(10);
+    waited += 10;
 }
+console.log(payload); // ping@127.0.0.1
+
+peer.close();
+socket.close();
 ```
-
---------------------------
-**创建一个 [dgram.Socket](dgram.md#Socket) 对象**
-
-```JavaScript
-static DgramSocket dgram.createSocket(Object opts,
-    Function callback);
-```
-
-调用参数:
-* opts: Object, 
-* callback: Function, 为 'message' 事件添加一个监听器。
-
-返回结果:
-* [DgramSocket](../../object/ifs/DgramSocket.md), 返回创建的 [Socket](../../object/ifs/Socket.md) 对象
-
-opts 允许的选项是:
-
-```JavaScript
-{
-    "type": "udp4" | "udp6", // socket type
-    "reuseAddr": true | false, // reuse address, default is false
-    "ipv6Only": true | false, // only accept IPv6 packets, default is false
-    "recvBufferSize": 1024, // specify the size of the receive buffer
-    "sendBufferSize": 1024 // specify the size of the send buffer
-}
-```
-
---------------------------
-**创建一个 [dgram.Socket](dgram.md#Socket) 对象**
-
-```JavaScript
-static DgramSocket dgram.createSocket(String type);
-```
-
-调用参数:
-* type: String, 套接字族，'udp4' 或 'udp6'。
-
-返回结果:
-* [DgramSocket](../../object/ifs/DgramSocket.md), 返回创建的 [Socket](../../object/ifs/Socket.md) 对象
-
---------------------------
-**创建一个 [dgram.Socket](dgram.md#Socket) 对象**
-
-```JavaScript
-static DgramSocket dgram.createSocket(String type,
-    Function callback);
-```
-
-调用参数:
-* type: String, 套接字族，'udp4' 或 'udp6'。
-* callback: Function, 为 'message' 事件添加一个监听器。
-
-返回结果:
-* [DgramSocket](../../object/ifs/DgramSocket.md), 返回创建的 [Socket](../../object/ifs/Socket.md) 对象
 

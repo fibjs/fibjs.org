@@ -1,233 +1,436 @@
-# 模块 rtc
-WebRTC 网络实时通信模块
+# Module rtc
+The rtc [module](module.md) establishes WebRTC peer connections: it negotiates a session between two endpoints through the signaling channel of the application and then carries text or binary data over data channels without a central relay, which suits file transfer, chat and bidirectional streams between browsers or between fibjs processes
 
-`rtc` 模块是一个用于实现 WebRTC 网络实时通信的模块。它提供了一系列功能和接口，帮助开发者创建和管理 WebRTC 连接，发送和接收实时数据。该模块包含以下主要组件：
+Main capabilities:
 
-1. **[RTCPeerConnection](../../object/ifs/RTCPeerConnection.md)**：核心对象，用于创建和管理 WebRTC 连接，处理连接状态，发送和接收媒体数据。
-2. **[RTCSessionDescription](../../object/ifs/RTCSessionDescription.md)**：会话描述对象，用于描述 WebRTC 连接的媒体格式和其他属性。
-3. **[RTCIceCandidate](../../object/ifs/RTCIceCandidate.md)**：ICE 候选参数对象，用于 NAT 穿透和连接建立。
-4. **[RTCDataChannel](../../object/ifs/RTCDataChannel.md)**：数据通道接口，用于在 WebRTC 连接中传输任意类型的数据。
+- **Peer connections**: `RTCPeerConnection` creates offers and answers, applies local and remote
+  descriptions and reports the connection states;
+- **Data channels**: `RTCPeerConnection.createDataChannel()` and the `datachannel` event return
+  `RTCDataChannel` objects that carry `String` or `Buffer` messages;
+- **Signaling objects**: `RTCSessionDescription` and `RTCIceCandidate` hold the two [object](../../object/ifs/object.md) [types](types.md)
+  exchanged during signaling;
+- **Incoming handshakes**: `listen()` binds the local mux port that accepts WebRTC handshakes
+  from peers whose connection is not established yet, and `stopListen()` releases it;
+- **Servers and tuning**: `startServer()` runs an embedded STUN/TURN server, `setSctpSettings()`
+  tunes the [global](global.md) SCTP parameters and `loglevel` controls the library log.
 
-此外，`rtc` 模块还提供了全局 SCTP 参数设置、侦听服务绑定和解除绑定等功能，确保开发者能够灵活地配置和管理 WebRTC 连接。通过这些接口和方法，开发者可以轻松实现实时音视频通信、文件传输、文本聊天等功能。
+Concepts:
 
-### 示例
+- **Signaling is application work**: this [module](module.md) produces and consumes session descriptions and
+  ICE candidates but never transports them. The peers exchange them through whatever channel the
+  application provides (HTTP, [WebSocket](../../object/ifs/WebSocket.md), a shared file, or directly when both peers live in one
+  [process](process.md), as in the examples below).
+- **Offer and answer**: the initiating side creates a data channel first (or otherwise has
+  something to negotiate), `createOffer()` resolves with the local description,
+  `setLocalDescription()` applies it and `setRemoteDescription()` applies the peer's answer. On
+  the answering side applying the remote offer is enough for the library to generate the answer,
+  which `createAnswer()` then resolves with. A connection with nothing to negotiate never
+  produces a description.
+- **ICE, STUN and TURN**: ICE gathers candidate transport addresses and checks connectivity on
+  each candidate pair. STUN discovers the address a NAT presents to the outside, and TURN relays
+  the traffic when no direct [path](path.md) exists. When `iceServers` is omitted the constructor
+  configures the public server `stun:stun.l.google.com:19302`; pass `iceServers: []` to stay
+  completely local.
+- **Host candidates**: two peers on the same host, whether in one [process](process.md) or in two, connect
+  through host candidates only; they need no external service and no network beyond a usable
+  local interface.
+- **Data channels**: a data channel is an SCTP stream over the DTLS transport. It is ordered and
+  reliable by default; `ordered`, `maxPacketLifeTime` and `maxRetransmits` trade ordering or
+  retransmission for latency, while `negotiated` and `id` let both sides create the same channel
+  without in-band negotiation.
+- **States**: `connectionState` runs `new` to `connecting` to `connected` (or `failed` /
+  `disconnected`) and ends in `closed`; `iceConnectionState` follows the connectivity checks,
+  `iceGatheringState` reports candidate gathering and `signalingState` reports the offer/answer
+  phase. Data channels open after the transport is connected, and `close()` releases the
+  connection together with its channels.
 
-以下是如何使用 `rtc` 模块创建一个简单的 WebRTC 连接的示例：
+Import:
+
+```JavaScript
+const rtc = require('rtc');
+```
+
+Example 1 — two peers in one [process](process.md) exchange a text message:
+
+```JavaScript
+const rtc = require('rtc');
+const coroutine = require('coroutine');
+
+const pc1 = new rtc.RTCPeerConnection({
+    iceServers: []
+});
+const pc2 = new rtc.RTCPeerConnection({
+    iceServers: []
+});
+const toPc1 = [];
+const toPc2 = [];
+pc1.onicecandidate = (ev) => {
+    if (ev.candidate) toPc2.push(ev.candidate);
+};
+pc2.onicecandidate = (ev) => {
+    if (ev.candidate) toPc1.push(ev.candidate);
+};
+
+const dc1 = pc1.createDataChannel('chat');
+pc2.ondatachannel = (ev) => {
+    const dc2 = ev.channel;
+    dc2.onmessage = (mev) => dc2.send('echo: ' + mev.data);
+};
+
+let reply = null;
+dc1.onopen = () => dc1.send('hello');
+dc1.onmessage = (ev) => {
+    reply = ev.data;
+};
+
+pc1.createOffer()
+    .then((offer) => pc1.setLocalDescription(offer).then(() => pc2.setRemoteDescription(offer)))
+    .then(() => pc2.createAnswer())
+    .then((answer) => pc2.setLocalDescription(answer).then(() => pc1.setRemoteDescription(answer)))
+    .then(() => {
+        const deadline = Date.now() + 8000;
+        while (reply === null && Date.now() < deadline) {
+            while (toPc1.length) pc1.addIceCandidate(toPc1.shift());
+            while (toPc2.length) pc2.addIceCandidate(toPc2.shift());
+            coroutine.sleep(10);
+        }
+        pc1.close();
+        pc2.close();
+        if (reply !== 'echo: hello') {
+            console.error('the peers did not exchange a message');
+            process.exit(1);
+        }
+        console.log(reply); // echo: hello
+    })
+    .catch((err) => {
+        console.error(err.message);
+        process.exit(1);
+    });
+```
+
+Example 2 — the same loop carries binary data:
+
+```JavaScript
+const rtc = require('rtc');
+const coroutine = require('coroutine');
+
+const pc1 = new rtc.RTCPeerConnection({
+    iceServers: []
+});
+const pc2 = new rtc.RTCPeerConnection({
+    iceServers: []
+});
+const toPc1 = [];
+const toPc2 = [];
+pc1.onicecandidate = (ev) => {
+    if (ev.candidate) toPc2.push(ev.candidate);
+};
+pc2.onicecandidate = (ev) => {
+    if (ev.candidate) toPc1.push(ev.candidate);
+};
+
+const dc1 = pc1.createDataChannel('binary');
+pc2.ondatachannel = (ev) => {
+    const dc2 = ev.channel;
+    dc2.onmessage = (mev) => {
+        console.log('peer received a Buffer:', Buffer.isBuffer(mev.data));
+        dc2.send(Buffer.from(mev.data.toString().toUpperCase()));
+    };
+};
+
+let reply = null;
+dc1.onopen = () => dc1.send(Buffer.from('ping'));
+dc1.onmessage = (ev) => {
+    reply = ev.data;
+};
+
+pc1.createOffer()
+    .then((offer) => pc1.setLocalDescription(offer).then(() => pc2.setRemoteDescription(offer)))
+    .then(() => pc2.createAnswer())
+    .then((answer) => pc2.setLocalDescription(answer).then(() => pc1.setRemoteDescription(answer)))
+    .then(() => {
+        const deadline = Date.now() + 8000;
+        while (reply === null && Date.now() < deadline) {
+            while (toPc1.length) pc1.addIceCandidate(toPc1.shift());
+            while (toPc2.length) pc2.addIceCandidate(toPc2.shift());
+            coroutine.sleep(10);
+        }
+        pc1.close();
+        pc2.close();
+        if (!Buffer.isBuffer(reply) || reply.toString() !== 'PING') {
+            console.error('the peers did not exchange a Buffer');
+            process.exit(1);
+        }
+        console.log('reply:', reply.toString()); // reply: PING
+    })
+    .catch((err) => {
+        console.error(err.message);
+        process.exit(1);
+    });
+```
+
+Example 3 — bind and release the incoming-handshake listener:
 
 ```JavaScript
 const rtc = require('rtc');
 
-// Create RTCPeerConnection object
-var pc = new rtc.RTCPeerConnection({
-    iceServers: [{
-        urls: 'stun:stun.l.google.com:19302'
-    }]
+rtc.listen(0, (binding) => {
+    console.log('incoming peer', binding.remote_ufrag);
 });
-
-// Create data channel
-var dataChannel = pc.createDataChannel('myDataChannel');
-
-// Set local description
-pc.setLocalDescription(new rtc.RTCSessionDescription({
-    type: 'offer',
-    sdp: 'v=0...'
-})).then(() => {
-    console.log('Local description set');
-});
-
-// Set remote description
-pc.setRemoteDescription(new rtc.RTCSessionDescription({
-    type: 'answer',
-    sdp: 'v=0...'
-})).then(() => {
-    console.log('Remote description set');
-});
-
-// Add ICE candidate
-pc.addIceCandidate(new rtc.RTCIceCandidate({
-    candidate: 'candidate:842163049 1 udp 1677729535 192.168.1.2 3478 typ srflx raddr 0.0.0.0 rport 0 generation 0 ufrag abc network-id 1',
-    sdpMid: '0'
-})).then(() => {
-    console.log('ICE candidate added');
-});
-
-// Listen for connection state changes
-pc.onconnectionstatechange = function(event) {
-    console.log('Connection state change: ', pc.connectionState);
-};
-
-// Listen for data channel events
-pc.ondatachannel = function(event) {
-    var receiveChannel = event.channel;
-    receiveChannel.onmessage = function(event) {
-        console.log('Received message: ', event.data);
-    };
-};
-
-// Listen for ICE candidate events
-pc.onicecandidate = function(event) {
-    if (event.candidate) {
-        console.log('New ICE candidate: ', event.candidate);
-    }
-};
-
-// Listen for ICE connection state changes
-pc.oniceconnectionstatechange = function(event) {
-    console.log('ICE connection state change: ', pc.iceConnectionState);
-};
-
-// Listen for signaling state changes
-pc.onsignalingstatechange = function(event) {
-    console.log('Signaling state change: ', pc.signalingState);
-};
-
-// Listen for media track events
-pc.ontrack = function(event) {
-    console.log('New track: ', event.track);
-};
+console.log('listening');
+rtc.stopListen(0);
+console.log('released');
 ```
 
-通过上述示例代码，开发者可以创建一个基本的 WebRTC 连接，并处理连接状态、数据通道、ICE 候选项等事件。
+Notes:
 
-## 对象
+- `RTCDataChannel` is not a member of the [module](module.md): obtain it from
+  `RTCPeerConnection.createDataChannel()` or from the `datachannel` event.
+- `listen()` can be called only once per [process](process.md), only from the main isolate and only before the
+  first [RTCPeerConnection](../../object/ifs/RTCPeerConnection.md) is created; it holds the [process](process.md) alive until the matching
+  `stopListen()` call.
+- A connection with a remote description holds the [process](process.md) alive until `close()` is called; on a
+  connection with nothing to negotiate, `createOffer()` never resolves and also holds the
+  [process](process.md).
+- `startServer()` has no matching stop API: the server lives as long as the [process](process.md).
+
+## Objects
         
 ### RTCPeerConnection
-**WebRTC 连接对象，参见 [RTCPeerConnection](../../object/ifs/RTCPeerConnection.md)**
+**The WebRTC connection class, see [RTCPeerConnection](../../object/ifs/RTCPeerConnection.md)**
 
 ```JavaScript
 RTCPeerConnection rtc.RTCPeerConnection;
 ```
 
+`new [rtc.RTCPeerConnection](rtc.md#RTCPeerConnection)(options)` creates a peer connection; it is the entry point of a
+session and the source of data channels, session descriptions and ICE candidates.
+
 --------------------------
 ### RTCSessionDescription
-**WebRTC 会话描述对象，参见 [RTCSessionDescription](../../object/ifs/RTCSessionDescription.md)**
+**The WebRTC session description class, see [RTCSessionDescription](../../object/ifs/RTCSessionDescription.md)**
 
 ```JavaScript
 RTCSessionDescription rtc.RTCSessionDescription;
 ```
 
+Wraps one of the two objects exchanged during signaling; `RTCPeerConnection` methods also
+accept a plain [object](../../object/ifs/object.md) with the same `type` and `sdp` fields instead of an instance.
+
 --------------------------
 ### RTCIceCandidate
-**WebRTC ICE 候选参数对象，参见 [RTCIceCandidate](../../object/ifs/RTCIceCandidate.md)**
+**The WebRTC ICE candidate class, see [RTCIceCandidate](../../object/ifs/RTCIceCandidate.md)**
 
 ```JavaScript
 RTCIceCandidate rtc.RTCIceCandidate;
 ```
 
-## 静态函数
+Wraps one of the two objects exchanged during signaling; `RTCPeerConnection.addIceCandidate`
+also accepts a plain [object](../../object/ifs/object.md) with the same `candidate` and `sdpMid` fields instead of an
+instance.
+
+## Static Methods
         
 ### listen
-**在指定地址和端口上绑定一个 WebRTC 侦听服务**
+**binds a WebRTC listening service on the specified address and port**
 
 ```JavaScript
 static rtc.listen(String bind_address,
     Integer local_port,
-    Function cb);
+    Function(Object info) cb);
 ```
 
-调用参数:
-* bind_address: String, 绑定地址
-* local_port: Integer, 本地端口
-* cb: Function, 回调函数
+Parameters:
+* bind_address: String, binding address, empty to listen on all interfaces
+* local_port: Integer, local port, 0 to let the system choose one
+* cb: Function(Object info), callback invoked with the handshake metadata of an incoming peer
 
-bind 方法用于在指定地址和端口上绑定一个 WebRTC 侦听服务，用于响应未握手的 WebRTC 连接请求。
+A WebRTC session normally starts with a signaling exchange between two peers; `listen` binds
+the local UDP mux that receives WebRTC handshakes so that a peer whose connection is not
+established yet can be adopted before its transport is complete. The callback is invoked
+with an [object](../../object/ifs/object.md) carrying `local_ufrag`, `remote_ufrag`, `address` and `port`; the application
+then creates an [RTCPeerConnection](../../object/ifs/RTCPeerConnection.md) configured with the reported remote ufrag (see the
+`iceUfrag`/`icePwd` options) and answers the incoming session with a remote description of
+its own.
+
+The call binds the [process](process.md)-wide mux: it can be made only once, only before the first
+[RTCPeerConnection](../../object/ifs/RTCPeerConnection.md) is created and only from the main isolate. It holds the [process](process.md) alive
+until the matching `stopListen` call, so a program that listens must release the listener
+before it can exit. An empty bind_address listens on all interfaces and port 0 lets the
+system choose the port.
+
+Example — bind an ephemeral port and release it again:
+
+```JavaScript
+const rtc = require('rtc');
+
+rtc.listen(0, (binding) => {
+    console.log('incoming peer', binding.remote_ufrag);
+});
+console.log('listening');
+rtc.stopListen(0);
+console.log('released');
+```
+
+Throws 20024 when a PeerConnection was already created, when the mux is already bound, or
+when the address or port cannot be used.
 
 --------------------------
-**在指定端口上绑定一个 WebRTC 侦听服务**
+**binds a WebRTC listening service on the specified port**
 
 ```JavaScript
 static rtc.listen(Integer local_port,
-    Function cb);
+    Function(Object info) cb);
 ```
 
-调用参数:
-* local_port: Integer, 本地端口
-* cb: Function, 回调函数
+Parameters:
+* local_port: Integer, local port
+* cb: Function(Object info), callback invoked with the handshake metadata of an incoming peer
 
-bind 方法用于在指定端口上绑定一个 WebRTC 侦听服务，用于响应未握手的 WebRTC 连接请求。
+Equivalent to the three-argument overload with an empty bind address; see the first overload
+for the full description, the callback fields and the limitations.
 
 --------------------------
 ### stopListen
-**解除 WebRTC 侦听服务绑定**
+**unbinds the WebRTC listening service and releases its hold on the [process](process.md)**
 
 ```JavaScript
 static rtc.stopListen(String bind_address,
     Integer local_port);
 ```
 
-调用参数:
-* bind_address: String, 绑定地址
-* local_port: Integer, 本地端口
+Parameters:
+* bind_address: String, binding address used by the listen call
+* local_port: Integer, local port used by the listen call
+
+Releases the listener created by `listen` and the [process](process.md) hold it installed; the call must
+use the same address and port as the matching `listen` call. Stopping a listener that was
+never bound is a silent no-op.
+
+The underlying mux is [process](process.md)-wide and its native teardown ignores the address and port, so
+only one listener exists at a time: a `stopListen` call made with a different port stops the
+listener while leaving the hold of the original `listen` call behind, and the [process](process.md) then
+cannot exit. Always release the listener with the exact address and port it was bound with.
 
 --------------------------
-**解除 WebRTC 侦听服务绑定**
+**unbinds the WebRTC listening service and releases its hold on the [process](process.md)**
 
 ```JavaScript
 static rtc.stopListen(Integer local_port);
 ```
 
-调用参数:
-* local_port: Integer, 本地端口
+Parameters:
+* local_port: Integer, local port used by the listen call
+
+Equivalent to the two-argument overload with an empty bind address; see the first overload
+for the exact port matching rule.
 
 --------------------------
 ### startServer
-**启动一个 STUN/TURN 服务器**
+**starts the embedded STUN/TURN server**
 
 ```JavaScript
 static rtc.startServer(Object config);
 ```
 
-调用参数:
-* config: Object, 服务器配置
+Parameters:
+* config: Object, server configuration
 
-startServer 方法用于启动一个 STUN/TURN 服务器，用于 NAT 穿透和连接建立。config 参数是一个对象，包含以下字段：
-   - `credentials` - 服务器凭证，包含 { `username`: `password`} 的键值对
-   - `maxAllocations` - 最大分配数
-   - `maxPeers` - 最大对等数
-   - `bindAddress` - 绑定地址
-   - `port` - 端口
-   - `relayPortRangeBegin` - TURN 服务器端口范围开始
-   - `relayPortRangeEnd` - TURN 服务器端口范围结束
+Starts a STUN/TURN server that other peers can use for NAT traversal; the call returns as
+soon as the server is created. There is no API to stop it: the server runs until the [process](process.md)
+exits. The config [object](../../object/ifs/object.md) accepts the following fields, all optional:
+   - `credentials` - [object](../../object/ifs/object.md) of `username`: `password` pairs accepted by TURN, empty by default
+   - `maxAllocations` - maximum number of TURN allocations, 0 for the library default
+   - `maxPeers` - maximum number of peers, 0 for the library default
+   - `bindAddress` - local address to bind, any by default
+   - `port` - listening port, 3478 by default
+   - `relayPortRangeBegin` - first port of the TURN relay range, 0 by default
+   - `relayPortRangeEnd` - last port of the TURN relay range, 0 by default
+
+Example — run a local STUN/TURN server until the [process](process.md) is stopped:
+
+```JavaScript
+// requires: long-running
+const rtc = require('rtc');
+
+rtc.startServer({
+    port: 0,
+    bindAddress: '127.0.0.1',
+    maxPeers: 16
+});
+console.log('server started');
+setTimeout(() => {}, 30000); // keep the process and the server alive
+```
 
 --------------------------
 ### setSctpSettings
-**@! @brief 设置 WebRTC 全局 SCTP 参数**
+**sets the WebRTC [global](global.md) SCTP parameters**
 
 ```JavaScript
 static rtc.setSctpSettings(Object settings);
 ```
 
-调用参数:
-* settings: Object, SCTP 参数
+Parameters:
+* settings: Object, SCTP parameters
 
-setSctpSettings 方法用于设置 WebRTC 全局 SCTP 参数，新设置的参数会立即生效。已经存在的连接不受影响。支持以下参数：
-   - `recvBufferSize` - 接收缓冲区大小，以字节为单位（默认值: 1MiB）
-   - `sendBufferSize` - 发送缓冲区大小，以字节为单位（默认值: 1MiB）
-   - `maxChunksOnQueue` - 队列中最大数据块数量（默认值: 10K）
-   - `initialCongestionWindow` - 初始拥塞窗口大小，以 MTU（最大传输单元）为单位（默认值: 10 MTUs）
-   - `maxBurst` - 最大突发传输量，以 MTU 为单位（默认值: 10 MTUs）
-   - `congestionControlModule` - 拥塞控制模块，0: RFC2581（默认），1: HSTCP，2: H-TCP，3: RTCC
-   - `delayedSackTimeMs` - 延迟确认时间，以毫秒为单位（默认值: 20ms）
-   - `minRetransmitTimeoutMs` - 最小重传超时时间，以毫秒为单位（默认值: 200ms）
-   - `maxRetransmitTimeoutMs` - 最大重传超时时间，以毫秒为单位（默认值: 10s）
-   - `initialRetransmitTimeoutMs` - 初始重传超时时间，以毫秒为单位（默认值: 1s）
-   - `maxRetransmitAttempts` - 最大重传尝试次数（默认值: 5）
-   - `heartbeatIntervalMs` - 心跳间隔时间，以毫秒为单位（默认值: 10s）
+Applies the [process](process.md)-wide SCTP parameters of the underlying library. The settings take effect
+immediately for new connections and do not change connections that already exist. Every
+field is optional; a field with a wrong type throws 20005, while values are passed through
+without range validation. The following fields are supported:
+   - `recvBufferSize` - receive buffer size in bytes, 1MiB by default
+   - `sendBufferSize` - send buffer size in bytes, 1MiB by default
+   - `maxChunksOnQueue` - maximum number of chunks in the queue, 10K by default
+   - `initialCongestionWindow` - initial congestion window in MTU, 10 by default
+   - `maxBurst` - maximum burst size in MTU, 10 by default
+   - `congestionControlModule` - congestion control [module](module.md): 0 RFC2581 (default), 1 HSTCP,
+     2 H-TCP, 3 RTCC
+   - `delayedSackTimeMs` - delayed acknowledgement time in milliseconds, 20 by default
+   - `minRetransmitTimeoutMs` - minimum retransmit timeout in milliseconds, 200 by default
+   - `maxRetransmitTimeoutMs` - maximum retransmit timeout in milliseconds, 10000 by default
+   - `initialRetransmitTimeoutMs` - initial retransmit timeout in milliseconds, 1000 by
+     default
+   - `maxRetransmitAttempts` - maximum number of retransmit attempts, 5 by default
+   - `heartbeatIntervalMs` - heartbeat interval in milliseconds, 10000 by default
 
-## 静态属性
+Example — enlarge the receive buffer for new connections:
+
+```JavaScript
+const rtc = require('rtc');
+
+rtc.setSctpSettings({
+    recvBufferSize: 2 * 1024 * 1024,
+    maxRetransmitAttempts: 3
+});
+console.log('SCTP settings applied');
+```
+
+## Static Properties
         
 ### loglevel
-**String, 查询和设置 WebRTC 日志级别**
+**String, queries and sets the WebRTC log level**
 
 ```JavaScript
 static String rtc.loglevel;
 ```
 
-loglevel 属性用于查询和设置 WebRTC 日志级别，新设置的级别会立即生效。支持以下级别：
-   - `none` - 不输出日志
-   - `error` - 输出错误日志
-   - `warning` - 输出警告日志
-   - `info` - 输出信息日志
-   - `debug` - 输出调试日志
-   - `verbose` - 输出详细日志
+Gets or sets the log level of the underlying WebRTC library; the new level takes effect
+immediately. The following levels are accepted: `none` (the default, no output), `error`,
+`warning`, `info`, `debug`, `verbose` and `fatal`. An unknown value throws 20024 and leaves
+the previous level unchanged.
+
+Example — raise the level, then reject an unknown value:
+
+```JavaScript
+const rtc = require('rtc');
+
+console.log('before:', rtc.loglevel); // before: none
+rtc.loglevel = 'debug';
+console.log('after:', rtc.loglevel); // after: debug
+try {
+    rtc.loglevel = 'quiet';
+} catch (err) {
+    console.log('rejected:', err.message); // rejected: Invalid log level: 'quiet'.
+}
+console.log('unchanged:', rtc.loglevel); // unchanged: debug
+```
 

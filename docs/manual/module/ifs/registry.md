@@ -1,98 +1,235 @@
-# 模块 registry
-registry 模块是一个操作 Windows 注册表（Registry）的模块。它提供了访问注册表的方法和常量，可以读取、修改、删除、添加等操作。registry 模块提供的操作方式和 Windows 应用程序使用的方式类似，但却是在 FibJS 中提供了能力。常量有常见的 Root、 数据类型等常量，还有一些用于不同操作的返回值的常量
+# Module registry
+The registry [module](module.md) accesses the Windows Registry: it reads, writes, enumerates and deletes keys and values; the [module](module.md) exists only in Windows builds
 
-`registry` 模块是一个用于操作 Windows 注册表（Registry）的模块。注册表是一个分层数据库，用于存储系统和应用程序的配置信息。Windows 操作系统和许多应用程序都依赖注册表来存储和检索配置信息。
+Main capabilities:
 
-Windows 注册表包含多个根键（Root Key），每个根键下包含多个子键（Sub Key）和键值（Value）。常见的根键包括：
+- **Roots and value [types](types.md)**: `CLASSES_ROOT`, `CURRENT_USER`, `LOCAL_MACHINE`, `USERS`,
+  `CURRENT_CONFIG`, `SZ`, `EXPAND_SZ`, `DWORD`, `QWORD`;
+- **Reading**: `get` returns a string, number, string array or [Buffer](../../object/ifs/Buffer.md) according to the
+  stored registry value type;
+- **Writing**: `set` writes numbers, strings, string arrays and binary data, and creates
+  a missing key automatically;
+- **Checking and deleting**: `has` tests whether a value exists and `del` removes values
+  and keys;
+- **Enumerating**: `listSubKey` and `listValue` list the direct children of a key.
 
-- `HKEY_CLASSES_ROOT`：存储文件类型和关联的应用程序信息。
-- `HKEY_CURRENT_USER`：存储当前用户的配置信息。
-- `HKEY_LOCAL_MACHINE`：存储计算机上所有用户的配置信息。
-- `HKEY_USERS`：存储所有用户的配置信息。
-- `HKEY_CURRENT_CONFIG`：存储当前硬件配置的信息。
+Concepts:
 
-注册表中的数据类型包括字符串（SZ）、扩展字符串（EXPAND_SZ）、32 位数值（DWORD）、64 位数值（QWORD）等。
+- **Hives**: the registry is a hierarchical database of configuration data organized in
+  hives, each identified by a root key such as `HKEY_LOCAL_MACHINE` (settings for all
+  users) or `HKEY_CURRENT_USER` (settings of the current user). The [module](module.md) exposes hives
+  as the root [constants](constants.md); their numeric values are internal indices rather than Win32
+  handles, so always pass the [constants](constants.md).
+- **Keys and values**: a hive contains a tree of keys (like directories); each key stores
+  named values (like files) that carry the data, and may also store one unnamed value
+  called the default value. Components of a key [path](path.md) are separated with `\`, for example
+  `Software\Microsoft\Windows\CurrentVersion`.
+- **Value [types](types.md)**: `SZ` and `EXPAND_SZ` are strings (`EXPAND_SZ` is not expanded on
+  read), `DWORD` is a 32-bit number, `QWORD` is a 64-bit number returned as a JavaScript
+  number whose precision is limited to 2^53-1, and string arrays and binary buffers are
+  written and read by the corresponding `set` and `get` overloads.
+- **Value paths**: in the two-argument `get`, `has` and `del` forms and in the `set`
+  forms without a `name` argument, the last component of the [path](path.md) is the value name and
+  the preceding components are the key [path](path.md), for example
+  `get(root, 'Software\\MyApp\\Name')` reads the value `Name` under the key
+  `Software\MyApp`; a trailing `\` addresses the default value. The forms that take a
+  separate `name` receive the key [path](path.md) and the value name independently.
+- **32/64-bit views**: keys are opened with the default access rights and without a
+  `KEY_WOW64_32KEY` or `KEY_WOW64_64KEY` flag, so a 32-bit [process](process.md) works on the redirected
+  WOW64 view and a 64-bit [process](process.md) on the native view; the [module](module.md) cannot select the view.
+- **Errors**: a missing key or value makes `get`, `listSubKey`, `listValue` and `del`
+  throw the mapped Win32 error while `has` reports false; `set` creates the key and any
+  missing intermediate keys, and invalid arguments such as an unknown root throw.
 
-`registry` 模块提供了一系列函数，用于读取、修改、删除和添加注册表项。常用的函数包括：
+Platform: the [module](module.md) is registered only by Windows builds. On other platforms
+`require('registry')` throws `Cannot find [module](module.md) 'registry'` (verified with the Linux
+release build), so guard the require or the call site when the code must also run
+elsewhere; the [test](test.md) suite keeps registry tests behind a `[process.platform](process.md#platform) == 'win32'`
+guard.
 
-- `get(root, key[, flags])`：获取指定注册表项的值。
-- `set(root, key, value[, type])`：设置指定注册表项的值。
-- `del(root, key)`：删除指定注册表项。
-
-以下是一个使用 `registry` 模块的示例代码，展示了如何验证某个注册表项是否存在，如果不存在则写入该项，并读取其值：
+Import:
 
 ```JavaScript
-var registry = require('registry');
-
-// Specify key name
-var key = "Software\\Fibjs\\Test\\KeyName";
-
-// Check if registry key exists
-if (!registry.get(registry.CLASSES_ROOT, key)) {
-    // If not exists, write to registry
-    registry.set(registry.CLASSES_ROOT, key, "test_value");
-}
-
-// Read registry key value
-var value = registry.get(registry.CLASSES_ROOT, key);
-console.log(value);
+// requires: windows
+// the require itself fails on other platforms
+const registry = require('registry');
 ```
 
-该程序首先检查注册表项 `Software\Fibjs\Test\KeyName` 是否存在，如果不存在，则将其值设置为 `test_value`。最后，读取该注册表项的值并输出到控制台。
-
-`registry` 模块提供了一个方便的接口，用于在 FibJS 中操作 Windows 注册表。通过该模块，可以轻松地读取、修改、添加和删除注册表中的信息，从而实现对系统和应用程序配置的管理。
-
-## 静态函数
-        
-### listSubKey
-**返回指定键值下的所有子健**
+Example 1 — write and read back named values of different [types](types.md):
 
 ```JavaScript
-static NArray registry.listSubKey(Integer root,
+// requires: windows
+const registry = require('registry');
+
+const key = 'Software\\Fibjs\\Docs\\Demo';
+
+registry.set(registry.CURRENT_USER, key, 'Greeting', 'hello');
+registry.set(registry.CURRENT_USER, key, 'Answer', 42);
+registry.set(registry.CURRENT_USER, key, 'Big', 1234567890, registry.QWORD);
+registry.set(registry.CURRENT_USER, key, 'Tags', ['alpha', 'beta']);
+registry.set(registry.CURRENT_USER, key, 'Raw', Buffer.from([1, 2, 3]));
+
+console.log(registry.get(registry.CURRENT_USER, key, 'Greeting')); // hello
+console.log(registry.get(registry.CURRENT_USER, key, 'Tags').join(',')); // alpha,beta
+console.log(registry.get(registry.CURRENT_USER, key, 'Raw').length); // 3
+
+// remove the key again, it has no subkeys
+registry.del(registry.CURRENT_USER, key);
+```
+
+Example 2 — enumerate a key and read a value by its full value [path](path.md):
+
+```JavaScript
+// requires: windows
+const registry = require('registry');
+
+const key = 'Software\\Microsoft\\Windows\\CurrentVersion';
+
+// direct subkeys and value names of the key
+console.log(registry.listSubKey(registry.LOCAL_MACHINE, key));
+console.log(registry.listValue(registry.LOCAL_MACHINE, key));
+
+// the last path component is the value name
+console.log(registry.get(registry.LOCAL_MACHINE, key + '\\ProgramFilesDir'));
+
+// has() reports a missing value instead of throwing
+console.log(registry.has(registry.LOCAL_MACHINE, key + '\\NoSuchValue')); // false
+```
+
+Example 3 — address the default value and delete values and keys:
+
+```JavaScript
+// requires: windows
+const registry = require('registry');
+
+const key = 'Software\\Fibjs\\Docs\\Defaults';
+
+// a trailing backslash addresses the unnamed (default) value
+registry.set(registry.CURRENT_USER, key + '\\', 'default data');
+console.log(registry.get(registry.CURRENT_USER, key + '\\')); // default data
+console.log(registry.listValue(registry.CURRENT_USER, key)); // [ '' ]
+
+registry.set(registry.CURRENT_USER, key, 'Temp', 'to be removed');
+registry.del(registry.CURRENT_USER, key, 'Temp');
+console.log(registry.has(registry.CURRENT_USER, key, 'Temp')); // false
+registry.del(registry.CURRENT_USER, key);
+```
+
+Notes:
+
+- `set` writes through the default value when the value name is empty and gives a newly
+  created key a permissive DACL; `listSubKey` and `listValue` return names rather than
+  full paths, and the enumeration order is not sorted.
+- `del` deletes a value with the given name first and falls back to deleting a subkey
+  with that name, so a key that still has subkeys cannot be removed.
+- `get` throws for registry [types](types.md) outside the supported set (for example `REG_LINK`), and
+  `has` only tests values: a missing key and an existing key without the requested value
+  both report false.
+
+## Static Methods
+        
+### listSubKey
+**Returns the names of the direct subkeys of a key**
+
+```JavaScript
+static String registry.listSubKey(Integer root,
     String key);
 ```
 
-调用参数:
-* root: Integer, 指定注册表根
-* key: String, 指定键值
+Parameters:
+* root: Integer, the registry root to use, one of the root [constants](constants.md)
+* key: String, the full key [path](path.md) whose subkeys are listed
 
-返回结果:
-* NArray, 返回该键值下所有子健
+Returns:
+* String, the subkey names; an empty array when the key has no subkeys
+
+The key [path](path.md) is opened for reading and only the immediate children are returned; names
+are relative to the key, full paths are not included, and the enumeration order
+follows the registry rather than being sorted. A missing key throws the mapped Win32
+error and an unknown root throws an invalid argument error.
 
 --------------------------
 ### listValue
-**返回指定键值下的所有数据的健**
+**Returns the names of the values stored directly in a key**
 
 ```JavaScript
-static NArray registry.listValue(Integer root,
+static String registry.listValue(Integer root,
     String key);
 ```
 
-调用参数:
-* root: Integer, 指定注册表根
-* key: String, 指定键值
+Parameters:
+* root: Integer, the registry root to use, one of the root [constants](constants.md)
+* key: String, the full key [path](path.md) whose value names are listed
 
-返回结果:
-* NArray, 返回该键值下所有数据的健
+Returns:
+* String, the value names, an empty string for the default value; an empty array when none
+
+Only the value names are returned, not their data; the default (unnamed) value is
+reported as an empty string. Like listSubKey, the key is opened for reading, the
+enumeration order is not sorted and a missing key throws.
+
+Example — list the value names of a key, including the default value:
+
+```JavaScript
+// requires: windows
+const registry = require('registry');
+
+const key = 'Software\\Fibjs\\Docs\\ListDemo';
+registry.set(registry.CURRENT_USER, key + '\\', 'default');
+registry.set(registry.CURRENT_USER, key, 'Named', 'value');
+
+// the default value is listed as an empty string
+console.log(registry.listValue(registry.CURRENT_USER, key).sort()); // [ '', 'Named' ]
+
+registry.del(registry.CURRENT_USER, key, 'Named');
+registry.del(registry.CURRENT_USER, key);
+```
 
 --------------------------
 ### get
-**查询指定键值的数值**
+**Reads a value from the registry**
 
 ```JavaScript
 static Value registry.get(Integer root,
     String key);
 ```
 
-调用参数:
-* root: Integer, 指定注册表根
-* key: String, 指定键值
+Parameters:
+* root: Integer, the registry root to use, one of the root [constants](constants.md)
+* key: String, the value [path](path.md): key [path](path.md) plus value name
 
-返回结果:
-* Value, 返回指定键值的数值
+Returns:
+* Value, the value data, typed according to the registry type
+
+In this two-argument form the last component of key is the value name and the preceding
+components are the key [path](path.md), so get(root, 'Software\\MyApp\\Name') reads the value Name
+under the key Software\MyApp; a trailing backslash addresses the default value of the
+key. The three-argument form receives the value name separately.
+
+The JavaScript result follows the registry type: SZ and EXPAND_SZ become a string
+(EXPAND_SZ is not expanded), DWORD and QWORD a number (QWORD precision is limited to
+2^53-1), REG_MULTI_SZ an array of strings and REG_BINARY or REG_NONE a [Buffer](../../object/ifs/Buffer.md); other
+registry [types](types.md) throw. A missing key or value throws the mapped Win32 error.
+
+Example — write and read back a string through a value [path](path.md):
+
+```JavaScript
+// requires: windows
+const registry = require('registry');
+
+const key = 'Software\\Fibjs\\Docs\\ReadDemo';
+
+// set() creates the key and the value ReadDemo under Software\Fibjs\Docs
+registry.set(registry.CURRENT_USER, key, 'value path form');
+
+// the last component of the path is the value name
+console.log(registry.get(registry.CURRENT_USER, key)); // value path form
+
+registry.del(registry.CURRENT_USER, key);
+```
 
 --------------------------
-**查询指定键值的数值**
+**Reads a named value from the registry**
 
 ```JavaScript
 static Value registry.get(Integer root,
@@ -100,17 +237,21 @@ static Value registry.get(Integer root,
     String name);
 ```
 
-调用参数:
-* root: Integer, 指定注册表根
-* key: String, 指定键值
-* name: String, 指定数值名称
+Parameters:
+* root: Integer, the registry root to use, one of the root [constants](constants.md)
+* key: String, the full key [path](path.md)
+* name: String, the value name; an empty string addresses the default value
 
-返回结果:
-* Value, 返回指定键值的数值
+Returns:
+* Value, the value data, typed according to the registry type
+
+The key [path](path.md) and the value name are given separately; an empty name addresses the
+default value of the key. The value data is converted by registry type exactly as in
+the two-argument form.
 
 --------------------------
 ### set
-**设置指定键值为数字**
+**Writes a number to a registry value**
 
 ```JavaScript
 static registry.set(Integer root,
@@ -119,14 +260,56 @@ static registry.set(Integer root,
     Integer type = DWORD);
 ```
 
-调用参数:
-* root: Integer, 指定注册表根
-* key: String, 指定键值
-* value: Number, 指定数字
-* type: Integer, 指定类型，允许的类型为 DWORD 和 QWORD，缺省为 DWORD
+Parameters:
+* root: Integer, the registry root to use, one of the root [constants](constants.md)
+* key: String, the value [path](path.md): key [path](path.md) plus value name
+* value: Number, the number to write
+* type: Integer, the registry value type, DWORD by default, QWORD for 64-bit data
+
+type must be DWORD (the default) or QWORD; any other type throws an invalid argument
+error. The number is truncated to an integer and a DWORD keeps its low 32 bits. This
+form takes the value name from the last component of key; the overloads below receive
+it separately. The key and any missing intermediate keys are created automatically.
 
 --------------------------
-**设置指定键值为字符串**
+**Writes an array of strings to a registry value as REG_MULTI_SZ**
+
+```JavaScript
+static registry.set(Integer root,
+    String key,
+    String values[]);
+```
+
+Parameters:
+* root: Integer, the registry root to use, one of the root [constants](constants.md)
+* key: String, the value [path](path.md): key [path](path.md) plus value name
+* values[]: String, the strings to write
+
+The elements are stored null-separated; as in the Win32 multi-string format an empty
+element terminates the list, so embedded empty strings are not preserved when the
+value is read back. The value name is the last component of key and the key is created
+when missing.
+
+--------------------------
+**Writes binary data to a registry value as REG_BINARY**
+
+```JavaScript
+static registry.set(Integer root,
+    String key,
+    Buffer value);
+```
+
+Parameters:
+* root: Integer, the registry root to use, one of the root [constants](constants.md)
+* key: String, the value [path](path.md): key [path](path.md) plus value name
+* value: [Buffer](../../object/ifs/Buffer.md), the bytes to write
+
+The [Buffer](../../object/ifs/Buffer.md) bytes are stored as they are, which is the way to persist arbitrary data;
+an empty [Buffer](../../object/ifs/Buffer.md) is allowed. The value name is the last component of key and the key is
+created when missing.
+
+--------------------------
+**Writes a string to a registry value**
 
 ```JavaScript
 static registry.set(Integer root,
@@ -135,42 +318,19 @@ static registry.set(Integer root,
     Integer type = SZ);
 ```
 
-调用参数:
-* root: Integer, 指定注册表根
-* key: String, 指定键值
-* value: String, 指定字符串
-* type: Integer, 指定类型，允许的类型为 SZ 和 EXPAND_SZ，缺省为 SZ
+Parameters:
+* root: Integer, the registry root to use, one of the root [constants](constants.md)
+* key: String, the value [path](path.md): key [path](path.md) plus value name
+* value: String, the string to write
+* type: Integer, the registry value type, SZ by default, EXPAND_SZ for an expandable string
+
+type must be SZ (the default) or EXPAND_SZ; any other type throws an invalid argument
+error. EXPAND_SZ stores environment references such as %SystemRoot% unexpanded, exactly
+as get returns them. The value name is the last component of key and the key is created
+when missing.
 
 --------------------------
-**设置指定键值为多字符串**
-
-```JavaScript
-static registry.set(Integer root,
-    String key,
-    String values[]);
-```
-
-调用参数:
-* root: Integer, 指定注册表根
-* key: String, 指定键值
-* values[]: String, 指定多字符串数组
-
---------------------------
-**设置指定键值为二进制**
-
-```JavaScript
-static registry.set(Integer root,
-    String key,
-    Buffer value);
-```
-
-调用参数:
-* root: Integer, 指定注册表根
-* key: String, 指定键值
-* value: [Buffer](../../object/ifs/Buffer.md), 指定二进制数据
-
---------------------------
-**设置指定键值为数字**
+**Writes a number to a named registry value**
 
 ```JavaScript
 static registry.set(Integer root,
@@ -180,15 +340,58 @@ static registry.set(Integer root,
     Integer type = DWORD);
 ```
 
-调用参数:
-* root: Integer, 指定注册表根
-* key: String, 指定键值
-* name: String, 指定数值名称
-* value: Number, 指定数字
-* type: Integer, 指定类型，允许的类型为 DWORD 和 QWORD，缺省为 DWORD
+Parameters:
+* root: Integer, the registry root to use, one of the root [constants](constants.md)
+* key: String, the full key [path](path.md)
+* name: String, the value name; an empty string addresses the default value
+* value: Number, the number to write
+* type: Integer, the registry value type, DWORD by default, QWORD for 64-bit data
+
+key is a key [path](path.md) and name is the value name; an empty name addresses the default value.
+type must be DWORD (the default) or QWORD, otherwise an invalid argument error is
+thrown. The key and any missing intermediate keys are created automatically.
 
 --------------------------
-**设置指定键值为字符串**
+**Writes an array of strings to a named registry value as REG_MULTI_SZ**
+
+```JavaScript
+static registry.set(Integer root,
+    String key,
+    String name,
+    String values[]);
+```
+
+Parameters:
+* root: Integer, the registry root to use, one of the root [constants](constants.md)
+* key: String, the full key [path](path.md)
+* name: String, the value name; an empty string addresses the default value
+* values[]: String, the strings to write
+
+Elements are stored null-separated and an empty element terminates the list when read
+back. name may be empty to address the default value and the key is created when
+missing.
+
+--------------------------
+**Writes binary data to a named registry value as REG_BINARY**
+
+```JavaScript
+static registry.set(Integer root,
+    String key,
+    String name,
+    Buffer value);
+```
+
+Parameters:
+* root: Integer, the registry root to use, one of the root [constants](constants.md)
+* key: String, the full key [path](path.md)
+* name: String, the value name; an empty string addresses the default value
+* value: [Buffer](../../object/ifs/Buffer.md), the bytes to write
+
+The [Buffer](../../object/ifs/Buffer.md) bytes are stored as they are; an empty [Buffer](../../object/ifs/Buffer.md) is allowed. name may be empty
+to address the default value and the key is created when missing.
+
+--------------------------
+**Writes a string to a named registry value**
 
 ```JavaScript
 static registry.set(Integer root,
@@ -198,63 +401,40 @@ static registry.set(Integer root,
     Integer type = SZ);
 ```
 
-调用参数:
-* root: Integer, 指定注册表根
-* key: String, 指定键值
-* name: String, 指定数值名称
-* value: String, 指定字符串
-* type: Integer, 指定类型，允许的类型为 SZ 和 EXPAND_SZ，缺省为 SZ
+Parameters:
+* root: Integer, the registry root to use, one of the root [constants](constants.md)
+* key: String, the full key [path](path.md)
+* name: String, the value name; an empty string addresses the default value
+* value: String, the string to write
+* type: Integer, the registry value type, SZ by default, EXPAND_SZ for an expandable string
 
---------------------------
-**设置指定键值为多字符串**
-
-```JavaScript
-static registry.set(Integer root,
-    String key,
-    String name,
-    String values[]);
-```
-
-调用参数:
-* root: Integer, 指定注册表根
-* key: String, 指定键值
-* name: String, 指定数值名称
-* values[]: String, 指定多字符串数组
-
---------------------------
-**设置指定键值为二进制**
-
-```JavaScript
-static registry.set(Integer root,
-    String key,
-    String name,
-    Buffer value);
-```
-
-调用参数:
-* root: Integer, 指定注册表根
-* key: String, 指定键值
-* name: String, 指定数值名称
-* value: [Buffer](../../object/ifs/Buffer.md), 指定二进制数据
+type must be SZ (the default) or EXPAND_SZ, otherwise an invalid argument error is
+thrown; EXPAND_SZ is stored unexpanded. name may be empty to address the default value
+and the key is created when missing.
 
 --------------------------
 ### has
-**检查指定键值是否存在**
+**Tests whether a value exists**
 
 ```JavaScript
 static Boolean registry.has(Integer root,
     String key);
 ```
 
-调用参数:
-* root: Integer, 指定注册表根
-* key: String, 指定键值
+Parameters:
+* root: Integer, the registry root to use, one of the root [constants](constants.md)
+* key: String, the value [path](path.md): key [path](path.md) plus value name
 
-返回结果:
-* Boolean, 返回键值是否存在
+Returns:
+* Boolean, true when the value exists, the default value counts as a value
+
+In this two-argument form the last component of key is the value name and the preceding
+components are the key [path](path.md). A missing key, a missing value and a key without that
+value all report false instead of throwing; only invalid arguments such as an unknown
+root throw. The three-argument form receives the value name separately.
 
 --------------------------
-**检查指定键值是否存在**
+**Tests whether a named value exists**
 
 ```JavaScript
 static Boolean registry.has(Integer root,
@@ -262,29 +442,38 @@ static Boolean registry.has(Integer root,
     String name);
 ```
 
-调用参数:
-* root: Integer, 指定注册表根
-* key: String, 指定键值
-* name: String, 指定数值名称
+Parameters:
+* root: Integer, the registry root to use, one of the root [constants](constants.md)
+* key: String, the full key [path](path.md)
+* name: String, the value name; an empty string tests the default value
 
-返回结果:
-* Boolean, 返回键值是否存在
+Returns:
+* Boolean, true when the value exists
+
+key is the key [path](path.md) and name is the value name; an empty name tests the default value.
+A missing key and a missing value both report false, so has cannot distinguish them.
+Only invalid arguments throw.
 
 --------------------------
 ### del
-**删除指定键值的数值**
+**Deletes a value, or a subkey when no such value exists**
 
 ```JavaScript
 static registry.del(Integer root,
     String key);
 ```
 
-调用参数:
-* root: Integer, 指定注册表根
-* key: String, 指定键值
+Parameters:
+* root: Integer, the registry root to use, one of the root [constants](constants.md)
+* key: String, the value [path](path.md), or the key [path](path.md) when a subkey is deleted
+
+In this two-argument form the last component of key is the name to delete: del removes
+a value with that name under the preceding key [path](path.md), and when no such value exists it
+removes a subkey with that name instead. A key that still has subkeys cannot be
+removed, and a missing target throws the mapped Win32 error. Write access is required.
 
 --------------------------
-**删除指定键值的数值**
+**Deletes a named value, or a subkey when no such value exists**
 
 ```JavaScript
 static registry.del(Integer root,
@@ -292,15 +481,19 @@ static registry.del(Integer root,
     String name);
 ```
 
-调用参数:
-* root: Integer, 指定注册表根
-* key: String, 指定键值
-* name: String, 指定数值名称
+Parameters:
+* root: Integer, the registry root to use, one of the root [constants](constants.md)
+* key: String, the full key [path](path.md)
+* name: String, the value or subkey name to delete
 
-## 常量
+key is the key [path](path.md) and name is first deleted as a value of that key; when no value
+with the name exists, a subkey with that name is deleted instead, exactly like the
+two-argument form. An empty name addresses the default value; a missing target throws.
+
+## Constants
         
 ### CLASSES_ROOT
-**注册表根，存储Windows可识别的文件类型的详细列表，以及相关联的程序**
+**Registry root for file type and association data (HKEY_CLASSES_ROOT)**
 
 ```JavaScript
 const registry.CLASSES_ROOT = 0;
@@ -308,7 +501,7 @@ const registry.CLASSES_ROOT = 0;
 
 --------------------------
 ### CURRENT_USER
-**注册表根，存储当前用户设置的信息**
+**Registry root for the current user settings (HKEY_CURRENT_USER)**
 
 ```JavaScript
 const registry.CURRENT_USER = 1;
@@ -316,7 +509,7 @@ const registry.CURRENT_USER = 1;
 
 --------------------------
 ### LOCAL_MACHINE
-**注册表根，包括安装在计算机上的硬件和软件的信息**
+**Registry root for all-user settings (HKEY_LOCAL_MACHINE)**
 
 ```JavaScript
 const registry.LOCAL_MACHINE = 2;
@@ -324,7 +517,7 @@ const registry.LOCAL_MACHINE = 2;
 
 --------------------------
 ### USERS
-**注册表根，包含使用计算机的用户的信息**
+**Registry root for loaded user profiles (HKEY_USERS)**
 
 ```JavaScript
 const registry.USERS = 3;
@@ -332,7 +525,7 @@ const registry.USERS = 3;
 
 --------------------------
 ### CURRENT_CONFIG
-**注册表根，这个分支包含计算机当前的硬件配置信息**
+**Registry root for the current hardware profile (HKEY_CURRENT_CONFIG)**
 
 ```JavaScript
 const registry.CURRENT_CONFIG = 5;
@@ -340,7 +533,7 @@ const registry.CURRENT_CONFIG = 5;
 
 --------------------------
 ### SZ
-**注册表数据类型，字符串**
+**Registry value type, null-terminated string (REG_SZ)**
 
 ```JavaScript
 const registry.SZ = 1;
@@ -348,7 +541,7 @@ const registry.SZ = 1;
 
 --------------------------
 ### EXPAND_SZ
-**注册表数据类型，扩展字符串**
+**Registry value type, expandable string, not expanded on read (REG_EXPAND_SZ)**
 
 ```JavaScript
 const registry.EXPAND_SZ = 2;
@@ -356,7 +549,7 @@ const registry.EXPAND_SZ = 2;
 
 --------------------------
 ### DWORD
-**注册表数据类型，32 位数值**
+**Registry value type, 32-bit number (REG_DWORD)**
 
 ```JavaScript
 const registry.DWORD = 4;
@@ -364,7 +557,7 @@ const registry.DWORD = 4;
 
 --------------------------
 ### QWORD
-**注册表数据类型，64 位数值**
+**Registry value type, 64-bit number (REG_QWORD)**
 
 ```JavaScript
 const registry.QWORD = 11;

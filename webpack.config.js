@@ -154,22 +154,22 @@ function build_docs() {
         groups: {
             "guide": {
                 etitle: 'Guide',
-                title: '开发指南',
+                title: 'Guide',
                 path: "guide"
             },
             "module": {
-                etitle: 'Module',
-                title: '基础模块',
+                etitle: 'Modules',
+                title: 'Modules',
                 path: "manual/module"
             },
             "object": {
-                etitle: 'Object',
-                title: '内置对象',
+                etitle: 'Built-in Objects',
+                title: 'Built-in Objects',
                 path: "manual/object"
             },
             "awesome": {
-                etitle: 'Awesome',
-                title: '社区模块',
+                etitle: 'Community Modules',
+                title: 'Community Modules',
                 path: "awesome"
             }
         }
@@ -247,8 +247,9 @@ function build_docs() {
         return render_md(fs.readFileSync(p).toString(), p);
     }
 
-    // 根目录总 SUMMARY.md 按 "## 分组标题" 分区，提取各分组导航
-    //（首行 # Summary 为 GitBook 书标题，不参与分组；分组标题为 H2+）
+    // The master SUMMARY.md is split into sections by "## group title"; each section
+    // becomes one navigation group (the leading # Summary is the GitBook book title
+    // and is not a group; group titles are H2+)
     var masterSummary = fs.readFileSync(path.join(config.from, 'SUMMARY.md')).toString();
     var sections = {};
     var cur = null;

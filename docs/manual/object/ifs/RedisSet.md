@@ -1,15 +1,100 @@
-# 对象 RedisSet
-[Redis](Redis.md) 数据库客户端 Set 对象，此对象为包含指定 key 的客户端，只有调用其方法才会操作数据库
+# Object RedisSet
+A view of one [Redis](Redis.md) set key: member operations without repeating the key
 
-用以操作 [Redis](Redis.md) 的 Set 对象，创建方法：
+RedisSet is the [object](object.md) returned by [Redis](Redis.md)#getSet. It captures the key name once and
+exposes the set command family, where every member maps to one command: add is SADD,
+remove is SREM, len is SCARD, exists is SISMEMBER, members is SMEMBERS, pop is SPOP and
+randMember is SRANDMEMBER. Obtaining the view sends nothing to the server: the binding is
+resolved when its members run.
+
+Concepts:
+
+- **A view, not a copy**: the [object](object.md) stores the key only and sends no command until one
+  of its members runs. A key created after the view was obtained is visible through it,
+  and a missing key is not an error - the members report the empty result (len returns 0,
+  members returns an empty array, exists returns false, pop returns null) until the key
+  exists again.
+- **Member bytes**: exists takes a [Buffer](Buffer.md)|String and sends every byte of a [Buffer](Buffer.md) as
+  given, while the array and variadic forms of add and remove convert each element
+  through its JavaScript string form - a number is rejected with error 20005 and a [Buffer](Buffer.md)
+  is rendered as UTF-8 text (bytes that are not valid UTF-8 become U+FFFD). Binary
+  members therefore do not round-trip through add and remove.
+- **Set semantics**: a set holds unique members in no defined order; add ignores members
+  that are already present and returns the number of new ones, remove returns the number
+  actually removed and ignores missing members.
+- **Random members**: pop removes and returns one random member, while randMember reads
+  without removing. The count form caps a positive count at the set size, repeats members
+  for a negative count and returns an empty array for a missing key.
+- **Type conflicts**: a member called on a key that holds another type fails with the
+  server error (number 20024).
+
+Obtained from:
+- `rdb.getSet(key)` — the only factory, where rdb is the [Redis](Redis.md) [object](object.md) returned by
+  [db.openRedis](../../module/ifs/db.md#openRedis). The key is captured at call time and may be a [Buffer](Buffer.md).
+
+Example 1 — add, count and [test](../../module/ifs/test.md) members:
 
 ```JavaScript
-var db = require("db");
-var rdb = new db.openRedis("redis-server");
-var set = rdb.getSet("test");
+// requires: redis
+const db = require('db');
+const rdb = db.openRedis('redis://127.0.0.1:6379');
+const set = rdb.getSet('tags');
+
+console.log(set.add('red', 'green', 'blue')); // 3 - SADD
+console.log(set.add('blue')); // 0 - the member is already present
+console.log(set.add(['blue', 'black'])); // 1 - the array form is SADD too
+console.log(set.len()); // 4
+console.log(set.exists('green')); // true
+console.log(set.exists('grey')); // false
+
+rdb.del('tags');
+rdb.close();
 ```
 
-## 继承关系
+Example 2 — read the members and remove some:
+
+```JavaScript
+// requires: redis
+const db = require('db');
+const rdb = db.openRedis('redis://127.0.0.1:6379');
+const set = rdb.getSet('tags');
+
+set.add('red', 'green', 'blue');
+const all = set.members().map((member) => member.toString()).sort();
+console.log(all.join(',')); // blue,green,red - SMEMBERS order is not defined
+
+console.log(set.remove('red', 'grey')); // 1 - grey is not a member
+console.log(set.len()); // 2
+
+rdb.del('tags');
+rdb.close();
+```
+
+Example 3 — random members and a missing key:
+
+```JavaScript
+// requires: redis
+const db = require('db');
+const rdb = db.openRedis('redis://127.0.0.1:6379');
+const set = rdb.getSet('tags');
+
+console.log(set.len()); // 0 - the view itself sends nothing, a missing key is empty
+console.log(set.members().length); // 0
+console.log(set.exists('red')); // false
+console.log(set.pop()); // null
+
+const seed = rdb.getSet('seed');
+seed.add('a', 'b', 'c');
+console.log(seed.randMember(2).length); // 2 - up to two distinct members
+console.log(seed.randMember(-5).length); // 5 - repeats are allowed
+console.log(seed.pop().toString().length); // 1 - SPOP removes what it returns
+console.log(seed.len()); // 2
+
+rdb.del('seed');
+rdb.close();
+```
+
+## Inheritance
 ```dot
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
@@ -21,154 +106,254 @@ digraph {
 }
 ```
 
-## 成员函数
+## Methods
         
 ### add
-**将一个或多个 member 元素加入到集合 key 当中，已经存在于集合的 member 元素将被忽略**
+**Adds one or more members to the set key; members already present are ignored**
 
 ```JavaScript
 Integer RedisSet.add(Array members);
 ```
 
-调用参数:
-* members: Array, 指定要添加的元素数组
+Parameters:
+* members: Array, the array of members to add
 
-返回结果:
-* Integer, 被添加到集合中的新元素的数量，不包括被忽略的元素
+Returns:
+* Integer, the number of new members added, existing members excluded
+
+SADD. This is the array form: every element of members is sent as one member and the
+element count is unlimited. A missing key is created. Each element goes through its
+JavaScript string form - a number is rejected with error 20005 and a [Buffer](Buffer.md) is
+rendered as UTF-8 text - so exists is the way to [test](../../module/ifs/test.md) binary members.
 
 --------------------------
-**同时将多个 field-value (域-值)对设置到哈希表中，此命令会覆盖哈希表中已存在的域**
+**Adds one or more members to the set key; members already present are ignored**
 
 ```JavaScript
 Integer RedisSet.add(...members);
 ```
 
-调用参数:
-* members: ..., 指定要添加的元素列表
+Parameters:
+* members: ..., the members to add, as a flat argument list
 
-返回结果:
-* Integer, 被添加到集合中的新元素的数量，不包括被忽略的元素
+Returns:
+* Integer, the number of new members added, existing members excluded
+
+SADD. This is the flat form of add(Array): add('a', 'b') is the same command as
+add(['a', 'b']), and the arguments follow the same string conversion.
 
 --------------------------
 ### remove
-**移除集合中的一个或多个 member 元素**
+**Removes one or more members from the set**
 
 ```JavaScript
 Integer RedisSet.remove(Array members);
 ```
 
-调用参数:
-* members: Array, 指定要移除的元素数组
+Parameters:
+* members: Array, the array of members to remove
 
-返回结果:
-* Integer, 被成功移除的元素的数量，不包括被忽略的元素
+Returns:
+* Integer, the number of members removed
+
+SREM. This is the array form; missing members are ignored, and the key is deleted
+when its last member goes. Each element goes through the string conversion of add, so
+a number is rejected with error 20005 and a [Buffer](Buffer.md) is rendered as UTF-8 text. A
+missing key removes nothing and is not an error.
 
 --------------------------
-**移除集合中的一个或多个 member 元素**
+**Removes one or more members from the set**
 
 ```JavaScript
 Integer RedisSet.remove(...members);
 ```
 
-调用参数:
-* members: ..., 指定要移除的元素列表
+Parameters:
+* members: ..., the members to remove, as a flat argument list
 
-返回结果:
-* Integer, 被成功移除的元素的数量，不包括被忽略的元素
+Returns:
+* Integer, the number of members removed
+
+SREM. This is the flat form of remove(Array); the two are the same command and both
+follow the string conversion described there.
 
 --------------------------
 ### len
-**返回集合中元素的数量**
+**Returns the number of members in the set**
 
 ```JavaScript
 Integer RedisSet.len();
 ```
 
-返回结果:
-* Integer, 返回集合的长度
+Returns:
+* Integer, the number of members
+
+SCARD. A missing key counts as an empty set and returns 0.
 
 --------------------------
 ### exists
-**判断 member 元素是否集合的成员**
+**Tests whether member is present in the set**
 
 ```JavaScript
-Boolean RedisSet.exists(Buffer member);
+Boolean RedisSet.exists(Buffer | String member);
 ```
 
-调用参数:
-* member: [Buffer](Buffer.md), 指定检查的 member
+Parameters:
+* member: [Buffer](Buffer.md) | String, the member to [test](../../module/ifs/test.md)
 
-返回结果:
-* Boolean, 如果 member 元素是集合的成员，返回 true
+Returns:
+* Boolean, true when the member is present
+
+SISMEMBER. member is a [Buffer](Buffer.md)|String union: a [Buffer](Buffer.md) is sent byte-for-byte, so it can
+[test](../../module/ifs/test.md) a binary member that add and remove could not write. A missing key returns false
+and is not an error.
+
+Example — byte-exact membership:
+
+```JavaScript
+// requires: redis
+const db = require('db');
+const rdb = db.openRedis('redis://127.0.0.1:6379');
+const set = rdb.getSet('tags');
+
+set.add('red');
+console.log(set.exists('red')); // true
+console.log(set.exists(Buffer.from('red'))); // true - the same member
+console.log(set.exists('blue')); // false
+
+rdb.del('tags');
+rdb.close();
+```
 
 --------------------------
 ### members
-**返回集合中的所有成员**
+**Returns every member of the set**
 
 ```JavaScript
 NArray RedisSet.members();
 ```
 
-返回结果:
-* NArray, 集合中所有成员的列表
+Returns:
+* NArray, the members as an array of Buffers
+
+SMEMBERS. The result is an array of Buffers in no defined order: the server returns
+the members in its internal hash table order, so sort the array when the order
+matters. A missing key returns an empty array.
 
 --------------------------
 ### pop
-**移除并返回集合中的一个随机元素**
+**Removes and returns one random member**
 
 ```JavaScript
 Buffer RedisSet.pop();
 ```
 
-返回结果:
-* [Buffer](Buffer.md), 被移除的随机元素。当集合是空集时，返回 null
+Returns:
+* [Buffer](Buffer.md), the removed member as a [Buffer](Buffer.md), or null when the key is missing
+
+SPOP. The member is removed by the command, so a second call never returns it again;
+the key is deleted when its last member goes. A missing key returns null, and the
+result is a [Buffer](Buffer.md).
 
 --------------------------
 ### randMember
-**从集合中获取随机的一个元素**
+**Returns one random member without removing it**
 
 ```JavaScript
 Value RedisSet.randMember();
 ```
 
-返回结果:
-* Value, 返回一个元素；如果集合为空，返回 null
+Returns:
+* Value, one member as a [Buffer](Buffer.md); guard the empty case, see above
+
+SRANDMEMBER. The member stays in the set, and repeated calls may return any member.
+The result is a [Buffer](Buffer.md). When the key is missing the current implementation crashes
+the [process](../../module/ifs/process.md) instead of returning null (defect: the nil reply is dereferenced), so
+[test](../../module/ifs/test.md) len() first or use the count form, which returns an empty array.
 
 --------------------------
-**从集合中获取随机的若干元素**
+**Returns several random members without removing them**
 
 ```JavaScript
 Value RedisSet.randMember(Integer count);
 ```
 
-调用参数:
-* count: Integer, 指定返回的元素个数。正数，返回一个包含 count 个元素的数组；负数，返回一个数组，数组中的元素可能会重复出现多次，而数组的长度为 count 的绝对值
+Parameters:
+* count: Integer, the number of members to return; a negative count allows repeats
 
-返回结果:
-* Value, 返回一个列表；如果集合为空，返回空列表
+Returns:
+* Value, the members as an array of Buffers, empty when the key is missing
+
+SRANDMEMBER with a count. A positive count returns at most count distinct members
+(fewer when the set is smaller); a negative count returns exactly |count| members and
+may repeat them; 0 returns an empty array. A missing key returns an empty array, and
+the members are not removed. The result is an array of Buffers.
+
+Example — distinct and repeated draws:
+
+```JavaScript
+// requires: redis
+const db = require('db');
+const rdb = db.openRedis('redis://127.0.0.1:6379');
+const set = rdb.getSet('tags');
+
+set.add('a', 'b', 'c');
+console.log(set.randMember(2).length); // 2 - distinct members
+console.log(set.randMember(9).length); // 3 - capped at the set size
+console.log(set.randMember(-4).length); // 4 - repeats are allowed
+console.log(set.randMember(0).length); // 0
+
+rdb.del('tags');
+rdb.close();
+```
 
 --------------------------
 ### toString
-**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
+**Returns the string form of the [object](object.md)**
 
 ```JavaScript
 String RedisSet.toString();
 ```
 
-返回结果:
-* String, 返回对象的字符串表示
+Returns:
+* String, returns the string form of the [object](object.md)
+
+The base implementation reports an error: a native [object](object.md) has no implicit
+text form, and only the classes whose value can be written as a string
+override the member. [Buffer](Buffer.md) returns its content decoded with the given
+[encoding](../../module/ifs/encoding.md), [HttpCookie](HttpCookie.md) returns "name=value", and so on; an override commonly
+accepts optional arguments ([Buffer.toString](Buffer.md#toString) takes [encoding](../../module/ifs/encoding.md), start and
+end) that are not part of this declaration.
+
+Calling the member on a class that does not override it throws
+"<Class>: the [object](object.md) can not be converted to string.", which is the
+behavior to rely on when probing whether a value has a string form. See
+toJSON for the serialization hook.
 
 --------------------------
 ### toJSON
-**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
+**Returns the JSON representation of the [object](object.md)**
 
 ```JavaScript
 Value RedisSet.toJSON(String key = "");
 ```
 
-调用参数:
-* key: String, 未使用
+Parameters:
+* key: String, the property name of the value being serialized
 
-返回结果:
-* Value, 返回包含可 JSON 序列化的值
+Returns:
+* Value, returns the JSON-serializable value
+
+JSON.stringify(value) calls value.toJSON(key) when the member exists and
+serializes the returned value in its place; the key argument carries the
+property name of the value inside its parent [object](object.md) (an empty string at
+the top level) and may be used to build a keyed form. The base
+implementation returns a plain [object](object.md) holding the readable properties of
+the instance, so a native [object](object.md) serializes without per-class code; a
+class with a portable shape such as [Buffer](Buffer.md) overrides it, and a JavaScript
+class may override it in the same way.
+
+The member is normally reached through JSON.stringify rather than called
+directly; calling it returns the same value JSON.stringify would
+serialize.
 

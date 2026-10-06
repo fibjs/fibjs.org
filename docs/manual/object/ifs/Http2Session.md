@@ -1,9 +1,190 @@
-# 对象 Http2Session
-Http2Session 表示活动的 HTTP/2 会话，管理连接和所有流
+# Object Http2Session
+an HTTP/2 session: a TLS connection shared by many concurrent streams with its settings and lifecycle
 
-Http2Session 实例不应由用户直接构造。服务端在接收到新的 HTTP/2 连接时创建。客户端使用 [http2.connect](../../module/ifs/http2.md#connect)() 创建会话。
+Http2Session represents a connection that has completed the HTTP/2 handshake
+(SETTINGS exchange). It multiplexes independent [Http2Stream](Http2Stream.md) objects and owns the
+connection-level state: local and remote settings, flow-control windows, PING and
+GOAWAY. Instances are created by fibjs, never by `new Http2Session()`.
 
-## 继承关系
+Concepts:
+
+- **Settings exchange**: each peer sends a SETTINGS frame with its limits (header table
+  size, push, max concurrent streams, initial window size, max frame size, max header
+  list size); `localSettings`/`remoteSettings` report the effective values of each side.
+  Until the exchange completes the returned values can still be the protocol defaults.
+- **Flow control**: streams and the connection have independent receive windows; fibjs
+  enlarges them automatically while data is consumed, so applications rarely manage
+  windows or WINDOW_UPDATE frames explicitly.
+- **Lifecycle**: `close()` is graceful - it sends GOAWAY(NO_ERROR), lets pending data
+  finish and closes the connection; `destroy()` is immediate - it aborts the transport
+  and kills every stream (a blocked read returns null). Both are idempotent. `closed`
+  becomes true on close(), on a sent/received GOAWAY or when the transport ends;
+  `destroyed` is true after destroy() or a transport failure.
+- **Request dispatch**: on a server session, `stream` is emitted for every request with
+  the request headers; on a client session, use `request()` to create streams. In
+  Node.js this event is emitted on the server [object](object.md) instead.
+- **Node.js differences**: there is no `session.close` event and the declared `goaway`
+  and `error` events are not dispatched by the current implementation - check `closed`
+  instead; `ping()` returns 0 and takes no callback (the round-trip time is not
+  measured); `request()` supports only the `endStream` option; there is no settings
+  callback, no `type`/`originSet`/`connecting` properties and no server push API.
+
+Obtained from:
+- `http2.connect(authority, options)` — the client session of a new connection;
+- the `session` event of [Http2Server](Http2Server.md) — the server session of an accepted connection.
+
+Example 1 — a client session: properties, one request, and close:
+
+```JavaScript
+const http2 = require('http2');
+const tls = require('tls');
+const crypto = require('crypto');
+
+const caKey = crypto.generateKeyPair('rsa', {
+    modulusLength: 2048
+});
+const srvKey = crypto.generateKeyPair('rsa', {
+    modulusLength: 2048
+});
+const ca = crypto.createCertificateRequest({
+    key: caKey.privateKey,
+    subject: {
+        CN: 'fibjs.org'
+    }
+}).issue({
+    key: caKey.privateKey,
+    ca: true,
+    issuer: {
+        CN: 'fibjs.org'
+    }
+});
+const crt = crypto.createCertificateRequest({
+    key: srvKey.privateKey,
+    subject: {
+        CN: 'localhost'
+    }
+}).issue({
+    key: caKey.privateKey,
+    issuer: {
+        CN: 'fibjs.org'
+    }
+});
+const ctx = tls.createSecureContext({
+    key: srvKey.privateKey.export(),
+    cert: crt.pem,
+    requestCert: false,
+    alpnProtocols: ['h2']
+}, true);
+
+const server = new http2.Server(ctx, 0, function() {});
+server.on('session', (session) => {
+    session.on('stream', (stream, headers) => {
+        stream.respond({
+            ':status': 200,
+            'content-type': 'text/plain'
+        });
+        stream.write('session demo');
+        stream.close();
+    });
+});
+server.start();
+
+const session = http2.connect('https://localhost:' + server.socket.localPort, {
+    rejectUnauthorized: false,
+    rejectUnverified: false
+});
+console.log(session.closed, session.destroyed); // false false
+console.log(session.alpnProtocol); // h2
+
+const stream = session.request({
+    ':method': 'GET',
+    ':path': '/'
+});
+console.log(stream.read().toString()); // session demo
+
+session.close();
+console.log(session.closed); // true
+server.stop();
+```
+
+Example 2 — a server session serves two requests over one connection:
+
+```JavaScript
+const http2 = require('http2');
+const tls = require('tls');
+const crypto = require('crypto');
+
+const caKey = crypto.generateKeyPair('rsa', {
+    modulusLength: 2048
+});
+const srvKey = crypto.generateKeyPair('rsa', {
+    modulusLength: 2048
+});
+const ca = crypto.createCertificateRequest({
+    key: caKey.privateKey,
+    subject: {
+        CN: 'fibjs.org'
+    }
+}).issue({
+    key: caKey.privateKey,
+    ca: true,
+    issuer: {
+        CN: 'fibjs.org'
+    }
+});
+const crt = crypto.createCertificateRequest({
+    key: srvKey.privateKey,
+    subject: {
+        CN: 'localhost'
+    }
+}).issue({
+    key: caKey.privateKey,
+    issuer: {
+        CN: 'fibjs.org'
+    }
+});
+const ctx = tls.createSecureContext({
+    key: srvKey.privateKey.export(),
+    cert: crt.pem,
+    requestCert: false,
+    alpnProtocols: ['h2']
+}, true);
+
+let connections = 0;
+const server = new http2.Server(ctx, 0, function() {});
+server.on('session', (session) => {
+    connections += 1;
+    session.on('stream', (stream, headers) => {
+        stream.respond({
+            ':status': 200
+        });
+        stream.write('request ' + headers[':path']);
+        stream.close();
+    });
+});
+server.start();
+
+const session = http2.connect('https://localhost:' + server.socket.localPort, {
+    rejectUnauthorized: false,
+    rejectUnverified: false
+});
+const one = session.request({
+    ':method': 'GET',
+    ':path': '/one'
+});
+const two = session.request({
+    ':method': 'GET',
+    ':path': '/two'
+});
+console.log(one.read().toString()); // request /one
+console.log(two.read().toString()); // request /two
+console.log('connections:', connections); // connections: 1
+
+session.close();
+server.stop();
+```
+
+## Inheritance
 ```dot
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
@@ -17,28 +198,45 @@ digraph {
 }
 ```
 
-## 静态函数
+## Static Methods
         
 ### addAbortListener
-**监听一个 [AbortSignal](AbortSignal.md) 的 abort 事件，返回一个可释放的对象**
+**Registers a one-shot abort handler on an [AbortSignal](AbortSignal.md)**
 
 ```JavaScript
 static Object Http2Session.addAbortListener(EventEmitter signal,
-    Function func);
+    Function(Object ev) func);
 ```
 
-调用参数:
-* signal: [EventEmitter](EventEmitter.md), 要监听的 [AbortSignal](AbortSignal.md) 对象
-* func: Function, abort 事件的处理函数
+Parameters:
+* signal: [EventEmitter](EventEmitter.md), the [AbortSignal](AbortSignal.md) [object](object.md) to listen to
+* func: Function(Object ev), the handler for the abort event
 
-返回结果:
-* Object, 返回一个包含 `[Symbol.dispose]` 方法的 Disposable 对象
+Returns:
+* Object, returns a Disposable [object](object.md) containing a `[Symbol.dispose]` method
 
-返回的对象包含 `[Symbol.dispose]()` 方法，调用后将移除监听器。如果信号已中止，则监听器会被立即调用。
+The handler is called at most once when the signal is aborted, and it is removed from the
+signal afterwards. If the signal is already aborted the handler is invoked synchronously.
+The returned [object](object.md) has a `[Symbol.dispose]()` method that removes the handler, so it can be
+released before the abort happens.
+
+Example — abort handling with automatic cleanup:
+
+```JavaScript
+const events = require('events');
+
+const controller = new AbortController();
+const disposable = events.addAbortListener(controller.signal,
+    () => console.log('aborted'));
+
+controller.abort(); // aborted
+disposable[Symbol.dispose](); // safe to call after the listener fired
+console.log(controller.signal.listenerCount('abort')); // 0
+```
 
 --------------------------
 ### once
-**创建一个 Promise，等待指定事件触发一次后解析**
+**Creates a Promise resolved by the next occurrence of an event**
 
 ```JavaScript
 static Object Http2Session.once(EventEmitter emitter,
@@ -46,22 +244,44 @@ static Object Http2Session.once(EventEmitter emitter,
     Object options = {});
 ```
 
-调用参数:
-* emitter: [EventEmitter](EventEmitter.md), 要监听的事件触发器对象
-* ev: Value, 指定事件的名称
-* options: Object, 可选参数对象
+Parameters:
+* emitter: [EventEmitter](EventEmitter.md), the event emitter [object](object.md) to listen to
+* ev: Value, the event name to listen for
+* options: Object, optional parameter [object](object.md)
 
-返回结果:
-* Object, 返回 Promise，以事件参数数组解析
+Returns:
+* Object, returns a Promise that resolves with the array of event parameters
 
-返回一个 Promise，当目标事件触发时以事件参数数组解析。如果在此期间触发 'error' 事件（且监听的不是 'error' 事件本身），Promise 将被拒绝。
+The Promise resolves with the array of the emit arguments when the event fires; it rejects
+when `error` is emitted while waiting, unless the waited event is `error` itself, or when
+the signal option aborts. The temporary listeners are removed when the Promise settles.
 
-options 参数可包含：
-- signal: [AbortSignal](AbortSignal.md)，用于取消等待
+options supports the following option:
+
+```JavaScript
+// fragment: options
+({
+    "signal": null // AbortSignal; aborting rejects the Promise with an AbortError
+});
+```
+
+Example — awaiting the next occurrence of an event:
+
+```JavaScript
+const EventEmitter = require('events');
+
+(async () => {
+    const emitter = new EventEmitter();
+    const waiting = EventEmitter.once(emitter, 'ready');
+
+    emitter.emit('ready', 200, 'ok');
+    console.log(JSON.stringify(await waiting)); // [200,"ok"]
+})();
+```
 
 --------------------------
 ### on
-**创建一个异步迭代器，持续监听指定事件**
+**Creates an async iterator that yields event occurrences**
 
 ```JavaScript
 static Object Http2Session.on(EventEmitter emitter,
@@ -69,602 +289,1169 @@ static Object Http2Session.on(EventEmitter emitter,
     Object options = {});
 ```
 
-调用参数:
-* emitter: [EventEmitter](EventEmitter.md), 要监听的事件触发器对象
-* ev: Value, 指定事件的名称
-* options: Object, 可选参数对象
+Parameters:
+* emitter: [EventEmitter](EventEmitter.md), the event emitter [object](object.md) to listen to
+* ev: Value, the event name to listen for
+* options: Object, optional parameter [object](object.md)
 
-返回结果:
-* Object, 返回 AsyncIterator 对象
+Returns:
+* Object, returns an AsyncIterator [object](object.md)
 
-返回一个 AsyncIterator，每次事件触发时产出事件参数数组。如果触发 'error' 事件，迭代器将抛出错误。
+Each next() resolves with `{ value: [args...], done: false }` when the event fires and with
+`{ done: true }` after an event named in the `close` option fires or the signal aborts; an
+`error` event rejects the pending call. The listeners are registered when the iterator is
+created and removed when the iteration ends or the signal aborts.
 
-options 参数可包含：
-- signal: [AbortSignal](AbortSignal.md)，用于取消迭代
-- close: 字符串数组，指定结束迭代的事件名称
+options supports the following options:
 
-## 静态属性
+```JavaScript
+// fragment: options
+({
+    "signal": null, // AbortSignal; aborting rejects pending and future next() calls
+    "close": [] // event names; the first one to fire ends the iteration
+});
+```
+
+Example — iterating the occurrences of an event:
+
+```JavaScript
+const EventEmitter = require('events');
+
+(async () => {
+    const emitter = new EventEmitter();
+    const iterator = EventEmitter.on(emitter, 'data', {
+        close: ['end']
+    });
+
+    emitter.emit('data', 1);
+    emitter.emit('data', 2);
+    emitter.emit('end');
+
+    for await (const args of iterator)
+    console.log(JSON.stringify(args)); // [1] then [2]
+})();
+```
+
+## Static Properties
         
 ### defaultMaxListeners
-**Integer, 默认全局最大监听器数**
+**Integer, The [process](../../module/ifs/process.md)-wide default listener limit reported by getMaxListeners()**
 
 ```JavaScript
 static Integer Http2Session.defaultMaxListeners;
 ```
 
-## 成员属性
+Defaults to 10. Assigning a value changes getMaxListeners() for every emitter that never
+called setMaxListeners(); an emitter with an explicit limit keeps it. The limit is
+informational: fibjs never warns when the number of listeners exceeds it.
+
+## Properties
         
 ### remoteSettings
-**Object, 查询此会话的远端设置**
+**(Number headerTableSize, Boolean enablePush, Number maxConcurrentStreams, Number initialWindowSize, Number maxFrameSize, Number maxHeaderListSize), queries the effective settings advertised by the remote peer**
 
 ```JavaScript
-readonly Object Http2Session.remoteSettings;
+readonly(Number headerTableSize, Boolean enablePush, Number maxConcurrentStreams, Number initialWindowSize, Number maxFrameSize, Number maxHeaderListSize) Http2Session.remoteSettings;
 ```
+
+Returns a new [object](object.md) with headerTableSize, enablePush, maxConcurrentStreams,
+initialWindowSize, maxFrameSize and maxHeaderListSize. The values describe the
+limits the peer asked this session to respect. Before the peer's SETTINGS frame has
+been processed they can still be protocol defaults (maxConcurrentStreams
+4294967295, initialWindowSize 65535, maxFrameSize 16384); after a round trip they
+reflect the exchange. Throws when the session is destroyed.
 
 --------------------------
 ### localSettings
-**Object, 查询此会话的本地设置**
+**(Number headerTableSize, Boolean enablePush, Number maxConcurrentStreams, Number initialWindowSize, Number maxFrameSize, Number maxHeaderListSize), queries the settings this session advertises to the peer**
 
 ```JavaScript
-readonly Object Http2Session.localSettings;
+readonly(Number headerTableSize, Boolean enablePush, Number maxConcurrentStreams, Number initialWindowSize, Number maxFrameSize, Number maxHeaderListSize) Http2Session.localSettings;
 ```
+
+Returns a new [object](object.md) with headerTableSize, enablePush, maxConcurrentStreams,
+initialWindowSize, maxFrameSize and maxHeaderListSize. A new session advertises
+maxConcurrentStreams 100 and initialWindowSize 1 MiB in its initial SETTINGS frame;
+the values become visible here after the peer acknowledges them, and settings()
+updates them. Throws when the session is destroyed.
 
 --------------------------
 ### destroyed
-**Boolean, 查询会话是否已销毁**
+**Boolean, queries whether the session has been destroyed**
 
 ```JavaScript
 readonly Boolean Http2Session.destroyed;
 ```
 
+True after destroy() or a transport failure; a destroyed session is also closed and
+every stream on it is destroyed. Reads on such streams return null (or throw when
+they were reset) and new requests are refused.
+
 --------------------------
 ### closed
-**Boolean, 查询会话是否已关闭**
+**Boolean, queries whether the session is closed**
 
 ```JavaScript
 readonly Boolean Http2Session.closed;
 ```
 
+True after close(), after a GOAWAY frame has been sent or received, or when the
+transport ended; `destroyed` implies `closed`. A closed session accepts no new
+request() calls; streams that are still open can keep receiving data until the peer
+finishes them.
+
 --------------------------
 ### alpnProtocol
-**String, 查询此会话协商的 ALPN 协议**
+**String, queries the ALPN protocol negotiated by the underlying TLS connection**
 
 ```JavaScript
 readonly String Http2Session.alpnProtocol;
 ```
 
+Returns 'h2' when the TLS handshake negotiated HTTP/2 (the normal case) and
+undefined when no ALPN protocol was agreed, for example when the server
+[SecureContext](SecureContext.md) has no `alpnProtocols`. fibjs creates HTTP/2 sessions over TLS only,
+so this is 'h2' or undefined, never 'h2c'.
+
 --------------------------
 ### socket
-**[Stream](Stream.md), 查询此会话的底层 [TLSSocket](TLSSocket.md)**
+**[Stream](Stream.md), queries the underlying transport of the session**
 
 ```JavaScript
 readonly Stream Http2Session.socket;
 ```
 
-## 成员函数
+Returns the [TLSSocket](TLSSocket.md) of the connection (a [Stream](Stream.md)), stable for the life of the
+session. The socket can be used to inspect the peer or to abort() the connection,
+which closes the session and all its streams (the session then reports `closed`).
+
+## Methods
         
 ### request
-**发起新的 HTTP/2 流以发送请求（仅客户端）**
+**creates a new stream and sends a request (client session only)**
 
 ```JavaScript
 Http2Stream Http2Session.request(Object headers,
     Object options = {});
 ```
 
-调用参数:
-* headers: Object, 包含请求头的对象，必须包含 :method 和 :[path](../../module/ifs/path.md) 伪头部
-* options: Object, 可选的流创建选项
+Parameters:
+* headers: Object, an [object](object.md) containing the request headers; missing pseudo-headers are filled in
+* options: Object, optional stream creation options; only endStream is used
 
-返回结果:
-* [Http2Stream](Http2Stream.md), 返回新请求的 [Http2Stream](Http2Stream.md) 对象
+Returns:
+* [Http2Stream](Http2Stream.md), returns the [Http2Stream](Http2Stream.md) of the new request
+
+headers is a plain [object](object.md) with the request headers. The pseudo-headers `:method`
+(default GET), `:[path](../../module/ifs/path.md)` (default /), `:scheme` (default https) and `:authority`
+(default the connect target) are filled in when missing and sent before the regular
+headers.
+
+options supports the following options:
+
+```JavaScript
+// fragment: options object
+({
+    "endStream": true // send the request headers with END_STREAM (no body);
+    // default true for GET/HEAD, false for other methods
+})
+```
+
+With `endStream` true the returned stream has no request body to write; with false
+the body must be sent with write()/end(), but closing a client stream closes the
+whole stream in the current implementation, so the response can no longer be read.
+Use [HttpClient](HttpClient.md) for requests with a body. Throws when called on a server session or
+on a closed/destroyed session.
+
+Example — a request with custom headers:
+
+```JavaScript
+const http2 = require('http2');
+const tls = require('tls');
+const crypto = require('crypto');
+
+const caKey = crypto.generateKeyPair('rsa', {
+    modulusLength: 2048
+});
+const srvKey = crypto.generateKeyPair('rsa', {
+    modulusLength: 2048
+});
+const ca = crypto.createCertificateRequest({
+    key: caKey.privateKey,
+    subject: {
+        CN: 'fibjs.org'
+    }
+}).issue({
+    key: caKey.privateKey,
+    ca: true,
+    issuer: {
+        CN: 'fibjs.org'
+    }
+});
+const crt = crypto.createCertificateRequest({
+    key: srvKey.privateKey,
+    subject: {
+        CN: 'localhost'
+    }
+}).issue({
+    key: caKey.privateKey,
+    issuer: {
+        CN: 'fibjs.org'
+    }
+});
+const ctx = tls.createSecureContext({
+    key: srvKey.privateKey.export(),
+    cert: crt.pem,
+    requestCert: false,
+    alpnProtocols: ['h2']
+}, true);
+
+const server = new http2.Server(ctx, 0, function() {});
+server.on('session', (session) => {
+    session.on('stream', (stream, headers) => {
+        stream.respond({
+            ':status': 200,
+            'content-type': 'text/plain'
+        });
+        stream.write(headers['x-token'] + ' ' + headers[':path']);
+        stream.close();
+    });
+});
+server.start();
+
+const session = http2.connect('https://localhost:' + server.socket.localPort, {
+    rejectUnauthorized: false,
+    rejectUnverified: false
+});
+const stream = session.request({
+    ':method': 'GET',
+    ':path': '/headers',
+    'x-token': 'abc'
+});
+console.log(stream.read().toString()); // abc /headers
+console.log(stream.headers[':status']); // 200
+
+session.close();
+server.stop();
+```
 
 --------------------------
 ### goaway
-**向远端发送 GOAWAY 帧并优雅关闭会话**
+**sends a GOAWAY frame to the peer**
 
 ```JavaScript
 Http2Session.goaway(Integer code = 0,
     Integer lastStreamId = 0);
 ```
 
-调用参数:
-* code: Integer, HTTP/2 错误码，默认为 NGHTTP2_NO_ERROR (0)
-* lastStreamId: Integer, 本地处理的最后一个流 ID，默认为 0
+Parameters:
+* code: Integer, HTTP/2 error code, default is NGHTTP2_NO_ERROR (0)
+* lastStreamId: Integer, the last locally processed stream ID, default is 0
+
+code is an HTTP/2 error code (0 = NGHTTP2_NO_ERROR; see [http2_constants](../../module/ifs/http2_constants.md)) and
+lastStreamId the last stream this side will [process](../../module/ifs/process.md) (0 = none). The frame is queued
+and flushed; the session is not closed locally by this call (`closed` stays false
+until close(), destroy() or the transport ends, and a received GOAWAY also sets
+`closed`). The declared `goaway` event is not dispatched by the current
+implementation; poll `closed` instead. Throws when the session is destroyed.
 
 --------------------------
 ### ping
-**向远端发送 PING 帧**
+**sends a PING frame to the peer**
 
 ```JavaScript
 Integer Http2Session.ping() async;
 ```
 
-返回结果:
-* Integer, 返回往返时间（毫秒）
+Returns:
+* Integer, returns 0; the round-trip time is not measured currently
+
+The PING is submitted and written, and the call returns 0; it does not wait for the
+PING ACK and the current implementation does not measure the round-trip time (the
+Node.js `ping(callback)` reports the RTT through the callback instead). Throws when
+the session is destroyed; a broken transport fails with EPIPE.
 
 --------------------------
 ### settings
-**更新此会话的本地设置**
+**updates the settings this session advertises to the peer**
 
 ```JavaScript
 Http2Session.settings(Object settings);
 ```
 
-调用参数:
-* settings: Object, 包含要更新的设置的对象
+Parameters:
+* settings: Object, an [object](object.md) containing the settings to update
+
+settings may contain headerTableSize, enablePush, maxConcurrentStreams,
+initialWindowSize, maxFrameSize and maxHeaderListSize; unknown keys are ignored. A
+SETTINGS frame with the given values is submitted and flushed asynchronously, and
+the peer applies them after acknowledging the frame. Throws when the session is
+destroyed.
+
+Example — tune the session and ping the peer:
+
+```JavaScript
+const http2 = require('http2');
+const tls = require('tls');
+const crypto = require('crypto');
+
+const caKey = crypto.generateKeyPair('rsa', {
+    modulusLength: 2048
+});
+const srvKey = crypto.generateKeyPair('rsa', {
+    modulusLength: 2048
+});
+const ca = crypto.createCertificateRequest({
+    key: caKey.privateKey,
+    subject: {
+        CN: 'fibjs.org'
+    }
+}).issue({
+    key: caKey.privateKey,
+    ca: true,
+    issuer: {
+        CN: 'fibjs.org'
+    }
+});
+const crt = crypto.createCertificateRequest({
+    key: srvKey.privateKey,
+    subject: {
+        CN: 'localhost'
+    }
+}).issue({
+    key: caKey.privateKey,
+    issuer: {
+        CN: 'fibjs.org'
+    }
+});
+const ctx = tls.createSecureContext({
+    key: srvKey.privateKey.export(),
+    cert: crt.pem,
+    requestCert: false,
+    alpnProtocols: ['h2']
+}, true);
+
+const server = new http2.Server(ctx, 0, function() {});
+server.on('session', (session) => {
+    session.on('stream', (stream, headers) => {
+        stream.respond({
+            ':status': 200
+        });
+        stream.write('ok');
+        stream.close();
+    });
+});
+server.start();
+
+const session = http2.connect('https://localhost:' + server.socket.localPort, {
+    rejectUnauthorized: false,
+    rejectUnverified: false
+});
+session.settings({
+    maxConcurrentStreams: 50,
+    initialWindowSize: 1 << 20
+});
+const stream = session.request({
+    ':method': 'GET',
+    ':path': '/'
+});
+console.log(stream.read().toString()); // ok
+console.log(session.ping()); // 0
+
+session.close();
+server.stop();
+```
 
 --------------------------
 ### close
-**优雅关闭会话，允许现有流完成**
+**gracefully closes the session**
 
 ```JavaScript
 Http2Session.close() async;
 ```
 
+Sends GOAWAY(NO_ERROR, 0), stops creating new streams, closes the transport and sets
+`closed`. Streams that are still open finish (their reads return null, or throw when
+they were reset); a broken transport is ignored. Calling close() on an already
+closed session is a no-op; the method can be awaited.
+
+See Example 1 of Http2Session for the full client lifecycle.
+
 --------------------------
 ### destroy
-**立即销毁会话，中止所有流**
+**immediately destroys the session and all its streams**
 
 ```JavaScript
 Http2Session.destroy();
 ```
 
+Aborts the underlying transport, destroys every [Http2Stream](Http2Stream.md) (a blocked read()
+returns null) and sets both `destroyed` and `closed`. Unlike close(), no GOAWAY is
+sent and no pending data is flushed. Calling it again is a no-op.
+
+Example — destroy a session with a request in flight:
+
+```JavaScript
+const http2 = require('http2');
+const tls = require('tls');
+const crypto = require('crypto');
+
+const caKey = crypto.generateKeyPair('rsa', {
+    modulusLength: 2048
+});
+const srvKey = crypto.generateKeyPair('rsa', {
+    modulusLength: 2048
+});
+const ca = crypto.createCertificateRequest({
+    key: caKey.privateKey,
+    subject: {
+        CN: 'fibjs.org'
+    }
+}).issue({
+    key: caKey.privateKey,
+    ca: true,
+    issuer: {
+        CN: 'fibjs.org'
+    }
+});
+const crt = crypto.createCertificateRequest({
+    key: srvKey.privateKey,
+    subject: {
+        CN: 'localhost'
+    }
+}).issue({
+    key: caKey.privateKey,
+    issuer: {
+        CN: 'fibjs.org'
+    }
+});
+const ctx = tls.createSecureContext({
+    key: srvKey.privateKey.export(),
+    cert: crt.pem,
+    requestCert: false,
+    alpnProtocols: ['h2']
+}, true);
+
+const server = new http2.Server(ctx, 0, function() {});
+server.on('session', (session) => {
+    // the request is deliberately left unanswered
+});
+server.start();
+
+const session = http2.connect('https://localhost:' + server.socket.localPort, {
+    rejectUnauthorized: false,
+    rejectUnverified: false
+});
+const stream = session.request({
+    ':method': 'GET',
+    ':path': '/never'
+});
+session.destroy();
+console.log(stream.read()); // null
+console.log(stream.destroyed, session.destroyed); // true true
+
+server.stop();
+```
+
 --------------------------
 ### on
-**绑定一个事件处理函数到对象**
+**Appends an event handler to the emitter**
 
 ```JavaScript
 Object Http2Session.on(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to bind
+* func: Function(...args), the event handler function, called with the emit arguments
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+The listener is called with the arguments of emit() and `this` set to the emitter; the
+emitter itself is returned so registrations can be chained. The same function may be
+registered several times for one event and each copy is called. See the class documentation
+for the dispatch order.
 
 --------------------------
-**绑定一个事件处理函数到对象**
+**Appends several event handlers to the emitter**
 
 ```JavaScript
 Object Http2Session.on(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Every enumerable property of the map whose value is a function is registered under its
+property name. Properties are processed in order; a value that is not a function makes the
+call fail with an invalid-type error while entries processed before it stay registered.
+
+Example — registering several handlers at once:
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+emitter.on({
+    connect: () => console.log('connect'),
+    close: () => console.log('close')
+});
+
+emitter.emit('connect'); // connect
+emitter.emit('close'); // close
+```
 
 --------------------------
 ### addListener
-**绑定一个事件处理函数到对象**
+**Appends an event handler to the emitter**
 
 ```JavaScript
 Object Http2Session.addListener(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to bind
+* func: Function(...args), the event handler function
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Alias of on(ev, func), provided for Node.js compatibility.
 
 --------------------------
-**绑定一个事件处理函数到对象**
+**Appends several event handlers to the emitter**
 
 ```JavaScript
 Object Http2Session.addListener(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Alias of on(map), provided for Node.js compatibility.
 
 --------------------------
 ### addEventListener
-**绑定一个事件处理函数到对象**
+**Appends an event handler to the emitter with an options [object](object.md)**
 
 ```JavaScript
 Object Http2Session.addEventListener(Value ev,
-    Function func,
+    Function(...args) func,
     Object options = {});
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
-* options: Object, 指定事件处理函数的选项
+Parameters:
+* ev: Value, the event name to bind
+* func: Function(...args), the event handler function, called with the emit arguments
+* options: Object, the options of the event handler
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
 
-options 参数是一个对象，它可以包含以下属性：
-- once: 如果为 true，则事件处理函数只会触发一次，触发后会被移除
+Web-style alias of on(); the only supported option is `once`, which registers a one-shot
+handler exactly like once(). The listener receives the plain emit arguments and not an [Event](Event.md)
+[object](object.md); see the [DOMEvent](DOMEvent.md) class for the DOM-style event [object](object.md) used by [AbortSignal](AbortSignal.md) and
+fetch-style APIs.
+
+options supports the following option:
+
+```JavaScript
+// fragment: options
+({
+    "once": false // when true, the handler is removed before its single invocation
+});
+```
+
+Example — a one-shot DOM-style registration:
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+emitter.addEventListener('ping', () => console.log('ping'), {
+    once: true
+});
+
+emitter.emit('ping'); // ping
+console.log(emitter.emit('ping')); // false
+console.log(emitter.listenerCount('ping')); // 0
+```
 
 --------------------------
 ### prependListener
-**绑定一个事件处理函数到对象起始**
+**Inserts an event handler at the front of the queue**
 
 ```JavaScript
 Object Http2Session.prependListener(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to bind
+* func: Function(...args), the event handler function
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+The listener is called before the listeners registered with on()/addListener() the next time
+the event is emitted. When several prependListener() calls are made, the last one registered
+is called first, because every call inserts at the same position.
+
+Example — insertion at the front of the queue:
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+emitter.on('order', () => console.log('on'));
+emitter.prependListener('order', () => console.log('prepend'));
+
+emitter.emit('order'); // prepend, then on
+```
 
 --------------------------
-**绑定一个事件处理函数到对象起始**
+**Inserts several event handlers at the front of the queue**
 
 ```JavaScript
 Object Http2Session.prependListener(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Map form of prependListener(); every function property is inserted at the front, so the
+properties of the map are called in reverse order.
 
 --------------------------
 ### once
-**绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次**
+**Appends a one-shot event handler to the emitter**
 
 ```JavaScript
 Object Http2Session.once(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to bind
+* func: Function(...args), the event handler function
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+The handler is wrapped and removes itself from the queue before it is called, so it runs at
+most once. off() removes it when passed the original function, listeners() returns the
+original function, and rawListeners() returns the internal wrapper whose `_func` property
+holds the original. See Example 2 in the class documentation.
 
 --------------------------
-**绑定一个一次性事件处理函数到对象，一次性处理函数只会触发一次**
+**Appends several one-shot event handlers to the emitter**
 
 ```JavaScript
 Object Http2Session.once(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Map form of once(); every function property is registered as a one-shot listener under its
+property name.
 
 --------------------------
 ### prependOnceListener
-**绑定一个事件处理函数到对象起始**
+**Inserts a one-shot event handler at the front of the queue**
 
 ```JavaScript
 Object Http2Session.prependOnceListener(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to bind
+* func: Function(...args), the event handler function
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Combines prependListener() and once(): the handler is called first and only once, and it is
+removed before its invocation.
 
 --------------------------
-**绑定一个事件处理函数到对象起始**
+**Inserts several one-shot event handlers at the front of the queue**
 
 ```JavaScript
 Object Http2Session.prependOnceListener(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称将作为事件名称，属性的值将作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Map form of prependOnceListener(); every function property is inserted as a one-shot
+listener, and the properties of the map are called in reverse order.
 
 --------------------------
 ### off
-**从对象处理队列中取消指定函数**
+**Removes an event handler from the emitter**
 
 ```JavaScript
 Object Http2Session.off(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to unbind
+* func: Function(...args), the event handler function
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+The first matching listener is removed; when the same function was registered several times
+only one copy is removed per call, so repeat the call to remove the others. A once() wrapper
+is matched by its original function as well. Removing a listener emits the `removeListener`
+meta event after the removal.
 
 --------------------------
-**取消对象处理队列中的全部函数**
+**Removes all event handlers of one event**
 
 ```JavaScript
 Object Http2Session.off(Value ev);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
+Parameters:
+* ev: Value, the event name to unbind
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Every listener of the event is removed and `removeListener` is emitted once per removed
+listener. The call succeeds when the event has no listener.
+
+Example — removing every listener of one event:
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+emitter.on('data', () => console.log('first'));
+emitter.on('data', () => console.log('second'));
+
+emitter.off('data');
+console.log(emitter.emit('data')); // false
+```
 
 --------------------------
-**从对象处理队列中取消指定函数**
+**Removes several event handlers from the emitter**
 
 ```JavaScript
 Object Http2Session.off(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称作为事件名称，属性的值作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Every enumerable property of the map whose value is a function names an event from which
+that function is removed (one copy per event). A value that is not a function makes the call
+fail with an invalid-type error.
 
 --------------------------
 ### removeListener
-**从对象处理队列中取消指定函数**
+**Removes an event handler from the emitter**
 
 ```JavaScript
 Object Http2Session.removeListener(Value ev,
-    Function func);
+    Function(...args) func);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
+Parameters:
+* ev: Value, the event name to unbind
+* func: Function(...args), the event handler function
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Alias of off(ev, func), provided for Node.js compatibility.
 
 --------------------------
-**取消对象处理队列中的全部函数**
+**Removes all event handlers of one event**
 
 ```JavaScript
 Object Http2Session.removeListener(Value ev);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
+Parameters:
+* ev: Value, the event name to unbind
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Alias of off(ev), provided for Node.js compatibility.
 
 --------------------------
-**从对象处理队列中取消指定函数**
+**Removes several event handlers from the emitter**
 
 ```JavaScript
 Object Http2Session.removeListener(Object map);
 ```
 
-调用参数:
-* map: Object, 指定事件映射关系，对象属性名称作为事件名称，属性的值作为事件处理函数
+Parameters:
+* map: Object, the event mapping; [object](object.md) property names are used as event names
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Alias of off(map), provided for Node.js compatibility.
 
 --------------------------
 ### removeEventListener
-**从对象处理队列中取消指定函数**
+**Removes an event handler with an options [object](object.md)**
 
 ```JavaScript
 Object Http2Session.removeEventListener(Value ev,
-    Function func,
+    Function(...args) func,
     Object options = {});
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
-* func: Function, 指定事件处理函数
-* options: Object, 指定事件处理函数的选项
+Parameters:
+* ev: Value, the event name to unbind
+* func: Function(...args), the event handler function
+* options: Object, the options of the event handler, ignored
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Web-style alias of off(ev, func); the options [object](object.md) is accepted and ignored, and a once()
+wrapper is matched by its original function like off().
 
 --------------------------
 ### removeAllListeners
-**从对象处理队列中取消所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。**
+**Removes all listeners of one event**
 
 ```JavaScript
 Object Http2Session.removeAllListeners(Value ev);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
+Parameters:
+* ev: Value, the event name to remove
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+Equivalent to off(ev): every listener of the event is removed, including once() wrappers
+matched by their original function, and `removeListener` is emitted once per removal.
 
 --------------------------
-**从对象处理队列中取消所有事件的所有监听器， 如果指定事件，则移除指定事件的所有监听器。**
+**Removes all listeners of the given events, or of the whole emitter**
 
 ```JavaScript
 Object Http2Session.removeAllListeners(Array evs = []);
 ```
 
-调用参数:
-* evs: Array, 指定事件的名称
+Parameters:
+* evs: Array, the event names to remove
 
-返回结果:
-* Object, 返回事件对象本身，便于链式调用
+Returns:
+* Object, returns the event [object](object.md) itself for chaining
+
+An empty array — including the no-argument call, because the parameter defaults to [] —
+clears every string-keyed event; symbol-keyed listeners are left in place, unlike Node.js
+which removes them too. A non-empty array clears each named event as
+removeAllListeners(ev) does.
+
+Example — clearing selected events and the whole emitter:
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+emitter.on('a', () => {});
+emitter.on('b', () => {});
+emitter.on('c', () => {});
+
+emitter.removeAllListeners(['a', 'b']);
+console.log(emitter.listenerCount('a'), emitter.listenerCount('c')); // 0 1
+
+emitter.removeAllListeners();
+console.log(emitter.eventNames().length); // 0
+```
 
 --------------------------
 ### setMaxListeners
-**监听器的默认限制的数量，仅用于兼容**
+**Stores a per-emitter listener limit**
 
 ```JavaScript
 Http2Session.setMaxListeners(Integer n);
 ```
 
-调用参数:
-* n: Integer, 指定事件的数量
+Parameters:
+* n: Integer, the number of events
+
+The value is reported by getMaxListeners() and is otherwise informational: fibjs never warns
+when the number of listeners exceeds it. This member exists for Node.js compatibility. A
+negative value throws; 0 is accepted and stored as-is, while Node.js treats 0 as unlimited.
 
 --------------------------
 ### getMaxListeners
-**获取监听器的默认限制的数量，仅用于兼容**
+**Returns the listener limit of the emitter**
 
 ```JavaScript
 Integer Http2Session.getMaxListeners();
 ```
 
-返回结果:
-* Integer, 返回默认限制数量
+Returns:
+* Integer, returns the default limit
+
+Returns the value set by setMaxListeners(), or the [process](../../module/ifs/process.md)-wide defaultMaxListeners (10)
+when no explicit value was set.
 
 --------------------------
 ### listeners
-**查询对象指定事件的监听器数组**
+**Returns a copy of the listener array of an event**
 
 ```JavaScript
 Array Http2Session.listeners(Value ev);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
+Parameters:
+* ev: Value, the event name to query
 
-返回结果:
-* Array, 返回指定事件的监听器数组
+Returns:
+* Array, returns the listener array of the specified event
+
+One-shot wrappers are unwrapped, so the result contains the functions passed to
+on()/once() and can be passed to off(); an unknown event produces an empty array.
+
+Example — once() listeners are returned unwrapped:
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+
+function onTick() {
+    console.log('tick');
+}
+
+emitter.once('tick', onTick);
+console.log(emitter.listeners('tick')[0] === onTick); // true
+console.log(emitter.rawListeners('tick')[0] === onTick); // false
+```
 
 --------------------------
 ### rawListeners
-**查询对象指定事件的监听器数组，包含 once 包装函数**
+**Returns the internal listener array of an event**
 
 ```JavaScript
 Array Http2Session.rawListeners(Value ev);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
+Parameters:
+* ev: Value, the event name to query
 
-返回结果:
-* Array, 返回指定事件的监听器数组
+Returns:
+* Array, returns the listener array of the specified event
+
+The array is not unwrapped: a listener registered with once() appears as the internal
+wrapper function whose `_func` property holds the original function. An unknown event
+produces an empty array.
 
 --------------------------
 ### listenerCount
-**查询对象指定事件的监听器数量**
+**Returns the number of listeners of an event**
 
 ```JavaScript
 Integer Http2Session.listenerCount(Value ev);
 ```
 
-调用参数:
-* ev: Value, 指定事件的名称
+Parameters:
+* ev: Value, the event name to query
 
-返回结果:
-* Integer, 返回指定事件的监听器数量
+Returns:
+* Integer, returns the number of listeners of the specified event
+
+One-shot listeners count as one and an unknown event returns 0.
 
 --------------------------
-**查询对象指定事件的监听器数量**
+**Returns the number of listeners of an event on another [object](object.md)**
 
 ```JavaScript
 Integer Http2Session.listenerCount(Value o,
     Value ev);
 ```
 
-调用参数:
-* o: Value, 指定查询的对象
-* ev: Value, 指定事件的名称
+Parameters:
+* o: Value, the [object](object.md) to query
+* ev: Value, the event name to query
 
-返回结果:
-* Integer, 返回指定事件的监听器数量
+Returns:
+* Integer, returns the number of listeners of the specified event
+
+Counts without requiring the target to be an [EventEmitter](EventEmitter.md): any [object](object.md) with registered
+events can be queried. The call is normally written as
+`EventEmitter.listenerCount(target, 'data')`.
+
+Example — counting the listeners of another [object](object.md):
+
+```JavaScript
+const EventEmitter = require('events');
+
+const emitter = new EventEmitter();
+emitter.on('data', () => {});
+emitter.on('data', () => {});
+
+console.log(EventEmitter.listenerCount(emitter, 'data')); // 2
+```
 
 --------------------------
 ### eventNames
-**查询监听器事件名称**
+**Returns the names of the events with at least one listener**
 
 ```JavaScript
 Array Http2Session.eventNames();
 ```
 
-返回结果:
-* Array, 返回事件名称数组
+Returns:
+* Array, returns the array of event names
+
+Only string-keyed events are reported; symbol-keyed events are omitted and numeric event
+names are returned as numbers (Node.js also reports symbol events).
 
 --------------------------
 ### emit
-**主动触发一个事件**
+**Emits an event and returns whether a listener was called**
 
 ```JavaScript
 Boolean Http2Session.emit(Value ev,
     ...args);
 ```
 
-调用参数:
-* ev: Value, 事件名称
-* args: ..., 事件参数，将会传递给事件处理函数
+Parameters:
+* ev: Value, event name
+* args: ..., event parameters, which are passed to the event handler
 
-返回结果:
-* Boolean, 返回事件触发状态，有响应事件返回 true，否则返回 false
+Returns:
+* Boolean, returns whether the event had a listener to respond to it
+
+Listeners are called as described by the dispatch model in the class documentation: the
+first one runs synchronously on the current fiber, the remaining ones run in parallel
+fibers, and the call returns after all of them finish; an exception raised by a listener is
+thrown back to the caller. Emitting `error` with no listener throws instead of returning
+false: an Error argument is thrown as-is and any other value is wrapped in
+`Error("Unhandled error. (...)")`. [Event](Event.md) names are strings or symbols; `emit()` does not
+match a listener registered with a numeric name.
 
 --------------------------
 ### toString
-**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
+**Returns the string form of the [object](object.md)**
 
 ```JavaScript
 String Http2Session.toString();
 ```
 
-返回结果:
-* String, 返回对象的字符串表示
+Returns:
+* String, returns the string form of the [object](object.md)
+
+The base implementation reports an error: a native [object](object.md) has no implicit
+text form, and only the classes whose value can be written as a string
+override the member. [Buffer](Buffer.md) returns its content decoded with the given
+[encoding](../../module/ifs/encoding.md), [HttpCookie](HttpCookie.md) returns "name=value", and so on; an override commonly
+accepts optional arguments ([Buffer.toString](Buffer.md#toString) takes [encoding](../../module/ifs/encoding.md), start and
+end) that are not part of this declaration.
+
+Calling the member on a class that does not override it throws
+"<Class>: the [object](object.md) can not be converted to string.", which is the
+behavior to rely on when probing whether a value has a string form. See
+toJSON for the serialization hook.
 
 --------------------------
 ### toJSON
-**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
+**Returns the JSON representation of the [object](object.md)**
 
 ```JavaScript
 Value Http2Session.toJSON(String key = "");
 ```
 
-调用参数:
-* key: String, 未使用
+Parameters:
+* key: String, the property name of the value being serialized
 
-返回结果:
-* Value, 返回包含可 JSON 序列化的值
+Returns:
+* Value, returns the JSON-serializable value
 
-## 事件
+JSON.stringify(value) calls value.toJSON(key) when the member exists and
+serializes the returned value in its place; the key argument carries the
+property name of the value inside its parent [object](object.md) (an empty string at
+the top level) and may be used to build a keyed form. The base
+implementation returns a plain [object](object.md) holding the readable properties of
+the instance, so a native [object](object.md) serializes without per-class code; a
+class with a portable shape such as [Buffer](Buffer.md) overrides it, and a JavaScript
+class may override it in the same way.
+
+The member is normally reached through JSON.stringify rather than called
+directly; calling it returns the same value JSON.stringify would
+serialize.
+
+## Events
         
 ### stream
-**当创建新流时触发（服务端）**
+**emitted for every request on a server session**
 
 ```JavaScript
 event Http2Session.stream(Http2Stream stream,
     Object headers);
 ```
 
-调用参数:
-* stream: [Http2Stream](Http2Stream.md), 新创建的 [Http2Stream](Http2Stream.md)
-* headers: Object, 请求头对象
+Parameters:
+* stream: [Http2Stream](Http2Stream.md), the newly created [Http2Stream](Http2Stream.md)
+* headers: Object, request headers [object](object.md)
+
+The listener receives the newly created [Http2Stream](Http2Stream.md) and the request headers [object](object.md)
+(`:method`, `:[path](../../module/ifs/path.md)`, ...). Register the listener synchronously inside the server
+`session` event: the server emits `session` before it starts reading, and a stream
+that arrives before registration would not be delivered. Client sessions do not emit
+this event; use request() there.
 
 --------------------------
 ### goaway
-**当会话收到 GOAWAY 帧时触发**
+**emitted when the session receives a GOAWAY frame**
 
 ```JavaScript
 event Http2Session.goaway();
 ```
 
+Note: the current implementation records a received GOAWAY in `closed` but does not
+dispatch this event; listen on it only for forward compatibility and poll `closed`
+instead.
+
 --------------------------
 ### error
-**当会话发生错误时触发**
+**emitted when an error occurs on the session**
 
 ```JavaScript
 event Http2Session.error(Object err);
 ```
 
-调用参数:
-* err: Object, 错误对象
+Parameters:
+* err: Object, error [object](object.md)
+
+Note: the current implementation does not dispatch this event; transport failures
+surface on the affected streams (read() throws or returns null) and on `closed`.
 

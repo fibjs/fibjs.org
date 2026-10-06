@@ -1,56 +1,186 @@
-# 模块 dns
-dns 域名查询模块
+# Module dns
+The dns [module](module.md) resolves host names to IP addresses: query the first address of a name or all of its addresses, restricted to an address family when needed; useful for connection targets, service discovery and address checks
 
-基础模块，提供主机名的地址查询能力：
+Main capabilities:
 
-- `resolve`：查询主机名的全部地址，返回 ip 字符串数组；
-- `lookup`：查询主机名的地址，支持指定地址族与返回全部结果。
+- **Single-address lookup**: `lookup` resolves a name (or an IP literal) to one address and can
+  restrict the result to IPv4 or IPv6;
+- **All-address lookup**: the `all` option of `lookup` returns every address as an
+  `{address, family}` [object](../../object/ifs/object.md);
+- **Address list**: `resolve` returns every address of a name as an array of strings.
 
-引用方式：
+Concepts:
+
+- **Resolver**: both functions use the system resolver (`getaddrinfo`: the hosts file, NSS and
+  the configured DNS servers), like the Node.js `dns.lookup`; unlike the Node.js `[dns.resolve](dns.md#resolve)*`
+  family no DNS record query is issued (c-ares is not used), so there is no resolver-level
+  control, no record [types](types.md) and no TTL. The address order is decided by the system and may
+  change between calls; pass `family` when a specific family is required.
+- **Address families**: `family` accepts 0 (any), 4, 6, 'IPv4' or 'IPv6'; with `all` every
+  entry carries the numeric family 4 or 6. An IP literal is returned unchanged and never causes
+  DNS traffic, and names such as `localhost` come from the hosts file.
+- **Record [types](types.md)**: MX, TXT, SRV, CNAME, NS, SOA, PTR and other records are not queried and TTL
+  values are not exposed; the result only contains addresses. The operating system may cache
+  answers internally.
+- **Errors and timeouts**: there is no timeout option; a failed resolution throws an error with
+  `code` (`ENOTFOUND` when the name does not resolve, `EAI_AGAIN` for a temporary failure),
+  `errno`, `syscall` (`getaddrinfo`) and `hostname`; `resolve` reports `EAI_NONAME` with a
+  shorter payload. An unsupported `family` is a TypeError before the lookup starts.
+- **Call forms**: without a callback the functions block the calling fiber and return the
+  value; a trailing callback receives `(err, result)`, and the `*Sync`/`*Async` aliases and the
+  `dns.promises` namespace (`require('dns/promises')`) return the same values. The Node.js
+  callback of `lookup` is `(err, address, family)`, the fibjs callback only `(err, result)`.
+
+Import:
 
 ```JavaScript
-var dns = require('dns');
+const dns = require('dns');
 ```
 
-## 静态函数
+Example 1 — local names and literals, with the family fixed for determinism:
+
+```JavaScript
+const dns = require('dns');
+
+console.log(dns.lookup('localhost', {
+    family: 4
+})); // 127.0.0.1
+console.log(dns.lookup('127.0.0.1')); // 127.0.0.1
+console.log(dns.lookup('::1', {
+    family: 6
+})); // ::1
+console.log(JSON.stringify(dns.lookup('127.0.0.1', {
+    all: true
+})));
+// [{"address":"127.0.0.1","family":4}]
+```
+
+Example 2 — the callback and promise forms, and a failed lookup:
+
+```JavaScript
+const dns = require('dns');
+
+dns.lookup('127.0.0.1', {
+    family: 4
+}, (err, address) => {
+    if (err) throw err;
+    console.log(address); // 127.0.0.1
+});
+
+dns.promises.lookup('::1').then((address) => {
+    console.log(address); // ::1
+});
+
+try {
+    dns.lookup('999.999.999.999');
+} catch (err) {
+    console.log(err.code, err.syscall); // ENOTFOUND getaddrinfo
+}
+```
+
+Example 3 — resolve returns the whole address list of a name:
+
+```JavaScript
+const dns = require('dns');
+
+console.log(JSON.stringify(dns.resolve('127.0.0.1'))); // ["127.0.0.1"]
+console.log(dns.resolve('localhost').length > 0); // true
+```
+
+## Static Methods
         
 ### resolve
-**查询给定的主机名的地址**
+**Resolves a host name to all of its addresses**
 
 ```JavaScript
-static NArray dns.resolve(String name) async;
+static String dns.resolve(String name) async;
 ```
 
-调用参数:
-* name: String, 指定主机名
+Parameters:
+* name: String, the host name or IP literal to resolve
 
-返回结果:
-* NArray, 返回查询的 ip 字符串数组
+Returns:
+* String, the addresses of the name
+
+Returns every address the system resolver finds for name as strings, IPv4 and IPv6 mixed
+and in a system-dependent order; an IP literal is returned unchanged. The name can also be
+resolved with a trailing callback or through `dns.promises`. On failure the error carries
+`code` (EAI_NONAME when the name does not resolve) and `number`, but no `syscall` or
+`hostname`.
+
+Unlike the Node.js `dns.resolve`, there is no record-type argument and no c-ares query: the
+result is the complete address list of the name, comparable to `lookup` with `all: true`.
+
+Example — the address list of a numeric literal is stable:
+
+```JavaScript
+const dns = require('dns');
+
+console.log(JSON.stringify(dns.resolve('127.0.0.1'))); // ["127.0.0.1"]
+console.log(JSON.stringify(dns.resolve('::1'))); // ["::1"]
+
+try {
+    dns.resolve('999.999.999.999');
+} catch (err) {
+    console.log(err.code); // EAI_NONAME
+}
+```
 
 --------------------------
 ### lookup
-**查询给定的主机名的地址**
+**Resolves a host name to its first address, or to every address when the all option is set**
 
 ```JavaScript
 static Variant dns.lookup(String name,
     Object options = {}) async;
 ```
 
-调用参数:
-* name: String, 指定主机名
-* options: Object, 查询选项
+Parameters:
+* name: String, the host name or IP literal to resolve
+* options: Object, the query options
 
-返回结果:
-* Variant, 返回查询的 ip 字符串
+Returns:
+* Variant, the first address, or all addresses as objects when all is true
 
-options 支持的选项如下：
+By default the first address the system resolver returns is delivered as a string; with
+`all` the result is an array of `{address, family}` objects whose family is 4 or 6. The
+`family` option restricts the result (0 any, 4, 6, 'IPv4', 'IPv6'); any other value throws
+a TypeError with the message `Invalid family: <value>`. An IP literal is returned without a
+DNS query.
+
+A failed lookup throws an error with `code` (ENOTFOUND when the name does not resolve,
+EAI_AGAIN for a temporary failure), `errno`, `syscall` ('getaddrinfo'), `hostname` and an
+`args` [object](../../object/ifs/object.md) with the stringified hostname, family and all values. Compared with Node.js,
+the trailing callback receives only `(err, result)` (no separate family argument), and the
+hints/order/verbatim options are not supported.
+
+The options [object](../../object/ifs/object.md) accepts:
 
 ```JavaScript
-{
-    "family": 0, // 指定地址族：0 为任意，4 为 IPv4，6 为 IPv6，也可使用 "IPv4"/"IPv6"。默认: 0
-    "all": false // 为 true 时返回全部地址的对象数组，否则返回第一个地址的字符串。默认: false
-}
+// fragment: options
+({
+    family: 0, // 0 any, 4 IPv4, 6 IPv6, 'IPv4' or 'IPv6'; default 0
+    all: false // true returns [{ address, family }], not one string; default false
+})
 ```
 
-all 为 true 时返回的数组元素包含 `address`（ip 字符串）与 `family`（地址族编号）字段。
+Example — one address, all addresses and an invalid family:
+
+```JavaScript
+const dns = require('dns');
+
+console.log(dns.lookup('127.0.0.1')); // 127.0.0.1
+console.log(JSON.stringify(dns.lookup('127.0.0.1', {
+    all: true
+})));
+// [{"address":"127.0.0.1","family":4}]
+
+try {
+    dns.lookup('localhost', {
+        family: 5
+    });
+} catch (err) {
+    console.log(err.message); // Invalid family: 5
+}
+```
 

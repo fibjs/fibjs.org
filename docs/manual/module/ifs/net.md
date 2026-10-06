@@ -1,177 +1,309 @@
-# 模块 net
-net 模块提供网络基础能力，包括建立 TCP 连接、域名解析、IP 地址检测、创建 TCP 服务器等，是 [http](http.md)、[tls](tls.md)、smtp 等网络模块的基础
+# Module net
+The net [module](module.md) provides TCP networking: connecting to TCP servers and unix sockets, resolving host names, detecting IP addresses and creating TCP servers; it is the foundation of the network modules ([http](http.md), [tls](tls.md), smtp, [dgram](dgram.md))
 
-模块的主要能力：
+Main capabilities:
 
-- **连接**：`connect` 以多种形式建立 TCP 连接，支持 `tcp://`、`ssl://`、`unix:`、`pipe://` 协议；
-- **解析**：`resolve`、`ip`、`ipv6` 查询主机名的地址；
-- **服务器**：`createServer` 创建 TCP 服务器；
-- **检测**：`isIP`、`isIPv4`、`isIPv6` 检测 IP 地址格式；
-- **对象别名**：`Socket`、`Smtp`、`TcpServer`、`Url`。
+- **Connections**: `connect` establishes a TCP connection from a port/host pair, an options [object](../../object/ifs/object.md), a URL
+  string or a unix socket [path](path.md) and returns the connected `Socket` (or a [TLSSocket](../../object/ifs/TLSSocket.md) for an `ssl://`
+  URL); `Socket` offers the same connection logic when an explicit socket [object](../../object/ifs/object.md) is needed;
+- **Servers**: `createServer` creates a `TcpServer` whose listener is invoked once per accepted
+  connection; the accepted objects are `Socket` instances;
+- **Name resolution**: `resolve`, `ip` and `ipv6` query the addresses of a host name through the
+  system resolver, and `info` describes the local network interfaces;
+- **IP detection**: `isIP`, `isIPv4` and `isIPv6` classify address literals without any lookup;
+- **Engine control**: `backend` reports the asynchronous engine in use and `use_uv_socket` switches
+  the sockets created afterwards between the platform engine and libuv;
+- **Node.js compatibility**: `getDefaultAutoSelectFamily`, `setDefaultAutoSelectFamily` and the
+  attempt-timeout pair exist so that Node.js style consumers can load unmodified, but they only
+  store values;
+- **Aliases**: `Socket`, `TcpServer`, `Smtp` and `Url` expose the classes of the [module](module.md).
 
-引用方式：
+Concepts:
+
+- **Fibers**: an `async` method yields the calling fiber and returns its result directly, so network
+  code reads sequentially: `const socket = [net.connect](net.md#connect)(80, 'example.com')` blocks this fiber until
+  the connection is ready and throws on failure. A [TcpServer](../../object/ifs/TcpServer.md) handler runs in its own fiber per
+  connection, so it may read and write in a loop.
+- **Blocking and listener forms**: `connect` without a listener waits for the connection and throws
+  an Error carrying `code`, `errno` and `syscall` on failure. With a `connectListener` it returns
+  immediately and reports the outcome through the `'connect'` event or an `'error'` event whose
+  argument is an event [object](../../object/ifs/object.md) carrying `errno`/`code`, `syscall`, `hostname` and `args` instead of
+  an Error instance.
+- **[Stream](../../object/ifs/Stream.md) framing**: TCP is a byte stream without message boundaries. `read(n)` waits for exactly
+  n bytes or returns null at the end of file, `recv(n)` returns the bytes that have arrived (at
+  most n) or null at the end of file, and `send`/`write` queue the whole buffer. A protocol must
+  frame its messages (length prefix, delimiter or fixed size) instead of assuming one call per
+  message.
+- **Timeouts**: the `timeout` property of a [Socket](../../object/ifs/Socket.md) is a per-operation limit in milliseconds; 0 (the
+  default) means no limit. An expired operation throws error number 20021 and leaves the socket
+  open, so a later operation with another timeout can continue. A [TcpServer](../../object/ifs/TcpServer.md) copies its timeout to
+  every accepted connection.
+- **Close and half-close**: when the peer closes its side, reads return null and the `'end'` event
+  is emitted; with the default auto-destroy the local write side is then finished and the socket
+  closed too. `abort()` only cancels the pending operations (error 20022) and keeps the socket
+  usable, while `close()` closes both directions and cannot be undone. There is no API to shut down
+  a single direction explicitly.
+- **Back-pressure**: writes queue in the socket buffer; when the peer does not read and the buffer
+  is full, `send`/`write` waits and eventually fails with the timeout error if one is configured.
+  `write` (inherited from [Stream](../../object/ifs/Stream.md)) reports success with a boolean, `send` ([Socket](../../object/ifs/Socket.md)) reports the
+  number of bytes queued.
+- **DNS resolution**: the host name is resolved as part of the connection (there is no separate
+  lookup step and no `lookup` option); `resolve`, `ip` and `ipv6` expose the resolver directly and
+  always return a single address.
+- **Unix sockets and pipes**: a [path](path.md) connection is available through `new [net.Socket](net.md#Socket)([net.AF_UNIX](net.md#AF_UNIX))`,
+  the `unix:/[path](path.md)` URL form and the `pipe://./name` Windows form; `AF_UNIX` and `AF_PIPE` have the
+  same value.
+- **Node.js differences**: there is no `net.Server` class and no `net.createConnection` alias, use
+  `TcpServer` and `connect`; a URL string must carry a scheme (`tcp://host:port`, `ssl://host:port`,
+  `unix:/[path](path.md)`, `pipe://...`) and a bare [path](path.md) throws a TypeError on the [module](module.md) entry while
+  `Socket.connect([path](path.md))` accepts it; the options [object](../../object/ifs/object.md) of connect only reads `host`, `port` and
+  `timeout` (Node.js supports many more keys); and the auto-select-family accessors only store
+  values, connect never performs family autodetection.
+
+Import:
 
 ```JavaScript
-var net = require('net');
+const net = require('net');
 ```
 
-建立 TCP 连接示例：
+Example 1 — an echo server on an ephemeral port and a synchronous client:
 
 ```JavaScript
-var net = require('net');
+const net = require('net');
 
-// 指定端口与主机
-var sock = net.connect(80, 'example.com');
-sock.send('GET / HTTP/1.0\r\n\r\n');
-console.log(sock.recv());
-sock.close();
+const server = net.createServer((conn) => {
+    const data = conn.recv(); // wait for the request
+    conn.send(data); // echo it back
+    conn.close();
+});
 
-// 使用 URL 形式，支持 tcp:// 与 ssl:// 协议
-var ssl = net.connect('ssl://example.com:443');
+server.listen(0, '127.0.0.1');
+const port = server.address().port;
+
+const client = net.connect(port, '127.0.0.1');
+client.send('ping');
+console.log(client.recv().toString()); // ping
+
+client.close();
+server.stop();
 ```
 
-## 对象
+Example 2 — the listener form reports a refused connection as an event, the blocking form throws:
+
+```JavaScript
+const net = require('net');
+
+// nothing listens on port 1: the listener form returns immediately and delivers
+// the failure to 'error' instead of throwing
+const socket = net.connect(1, '127.0.0.1', () => {
+    console.log('connected');
+});
+socket.on('error', (ev) => {
+    console.log(ev.syscall, ev.hostname); // connect 127.0.0.1
+});
+```
+
+Example 3 — address detection and lookup helpers that do not need a server:
+
+```JavaScript
+const net = require('net');
+
+console.log(net.isIP('127.0.0.1')); // 4
+console.log(net.isIP('::1')); // 6
+console.log(net.isIP('example.com')); // 0
+console.log(net.isIPv4('127.0.0.1'), net.isIPv6('::1')); // true true
+
+// a numeric literal is resolved by the system resolver without DNS traffic
+console.log(net.resolve('127.0.0.1')); // 127.0.0.1
+console.log(net.backend()); // the async engine name, 'EPoll' on Linux
+```
+
+Notes:
+
+- All examples run against the local machine; the URL forms of connect are the only entry point
+  that accepts `ssl://` (handled by the [tls](tls.md) [module](module.md)) and Windows pipe paths.
+- The [module](module.md) keeps [process](process.md)-wide state (`use_uv_socket`, the auto-select-family values); tests that
+  toggle `use_uv_socket` should restore it and only rely on sockets created afterwards.
+
+## Objects
         
 ### Socket
-**创建一个 [Socket](../../object/ifs/Socket.md) 对象，参见 [Socket](../../object/ifs/Socket.md)**
+**The [Socket](../../object/ifs/Socket.md) class entry point, creates TCP and unix socket objects, see [Socket](../../object/ifs/Socket.md)**
 
 ```JavaScript
 Socket net.Socket;
 ```
 
+The same class as the [global](global.md) [net.Socket](net.md#Socket) and the Node.js [net.Socket](net.md#Socket); [net.connect](net.md#connect)(...) is the
+connected-instance factory and the accepted sockets of a [TcpServer](../../object/ifs/TcpServer.md) are Sockets too.
+
 --------------------------
 ### Smtp
-**创建一个 [Smtp](../../object/ifs/Smtp.md) 对象，参见 [Smtp](../../object/ifs/Smtp.md)**
+**The [Smtp](../../object/ifs/Smtp.md) class entry point, creates SMTP client objects, see [Smtp](../../object/ifs/Smtp.md)**
 
 ```JavaScript
 Smtp net.Smtp;
 ```
 
+SMTP is an application protocol on top of a TCP/TLS connection; [net.openSmtp](net.md#openSmtp)([url](url.md), timeout) is
+the connected-instance factory. Node.js has no built-in SMTP client.
+
 --------------------------
 ### TcpServer
-**创建一个 [TcpServer](../../object/ifs/TcpServer.md) 对象，参见 [TcpServer](../../object/ifs/TcpServer.md)**
+**The [TcpServer](../../object/ifs/TcpServer.md) class entry point, creates a TCP server, see [TcpServer](../../object/ifs/TcpServer.md)**
 
 ```JavaScript
 TcpServer net.TcpServer;
 ```
 
+The fibjs counterpart of the Node.js net.Server; [net.createServer](net.md#createServer)(...) is the factory form and
+a [TcpServer](../../object/ifs/TcpServer.md) may also be created with new [net.TcpServer](net.md#TcpServer)(...).
+
 --------------------------
 ### Url
-**创建一个 [UrlObject](../../object/ifs/UrlObject.md) 对象，参见 [UrlObject](../../object/ifs/UrlObject.md)**
+**The alias of the [UrlObject](../../object/ifs/UrlObject.md) class, see [UrlObject](../../object/ifs/UrlObject.md)**
 
 ```JavaScript
 UrlObject net.Url;
 ```
 
-## 静态函数
+The URL parser used by the URL forms of connect. Node.js has no equivalent under net; its URL
+helpers live in the [url](url.md) [module](module.md).
+
+## Static Methods
         
 ### info
-**查询当前运行环境网络信息**
+**Queries the network information of the current runtime environment**
 
 ```JavaScript
 static Object net.info();
 ```
 
-返回结果:
-* Object, 返回网卡信息
+Returns:
+* Object, returns the network interface information
+
+The result has one property per interface name holding an array of address entries with the
+same shape as [os.networkInterfaces](os.md#networkInterfaces)(): address, family ('IPv4' or 'IPv6'), mac, internal and
+netmask. The call is synchronous and does not perform any lookup; Node.js exposes the same
+data through [os.networkInterfaces](os.md#networkInterfaces)().
 
 --------------------------
 ### resolve
-**查询给定的主机名的地址**
+**Queries the address of the given host name**
 
 ```JavaScript
 static String net.resolve(String name,
     Integer family = AF_INET) async;
 ```
 
-调用参数:
-* name: String, 指定主机名
-* family: Integer, 指定查询返回类型，缺省为 AF_INET
+Parameters:
+* name: String, specifies the host name
+* family: Integer, specifies the type returned by the query, default is AF_INET
 
-返回结果:
-* String, 返回查询的 ip 字符串
+Returns:
+* String, returns the queried ip string
 
-family 指定返回的地址族，取值为 AF_INET 或 AF_INET6，其他取值抛出异常。
+The lookup goes through the system resolver (getaddrinfo) and returns the first address that
+matches the requested family, so a name with both A and AAAA records returns its IPv4 address
+by default. The result is always a single address; there is no all/hints equivalent of the
+Node.js [dns](dns.md) [module](module.md). family must be [net.AF_INET](net.md#AF_INET) (default) or [net.AF_INET6](net.md#AF_INET6), any other value
+throws a TypeError. A name that cannot be resolved fails with an Error carrying syscall
+'getaddrinfo' and a resolver code such as ENOTFOUND, which distinguishes a missing host from a
+local resolver failure. The call yields the current fiber while the resolver works.
 
 --------------------------
 ### ip
-**快速查询的主机地址，等效于 resolve(name)**
+**Quickly queries the host IPv4 address, equivalent to resolve(name)**
 
 ```JavaScript
 static String net.ip(String name) async;
 ```
 
-调用参数:
-* name: String, 指定主机名
+Parameters:
+* name: String, specifies the host name
 
-返回结果:
-* String, 返回查询的 ip 字符串
+Returns:
+* String, returns the queried ip string
+
+A convenience wrapper of resolve(name, AF_INET); see resolve for the resolver behavior and the
+error shapes. Node.js has no equivalent directly under net, its lookup lives in the [dns](dns.md) [module](module.md).
 
 --------------------------
 ### ipv6
-**快速查询的主机 ipv6 地址，等效于 resolve(name, [net.AF_INET6](net.md#AF_INET6))**
+**Quickly queries the host IPv6 address, equivalent to resolve(name, [net.AF_INET6](net.md#AF_INET6))**
 
 ```JavaScript
 static String net.ipv6(String name) async;
 ```
 
-调用参数:
-* name: String, 指定主机名
+Parameters:
+* name: String, specifies the host name
 
-返回结果:
-* String, 返回查询的 ipv6 字符串
+Returns:
+* String, returns the queried ipv6 string
+
+A convenience wrapper of resolve(name, AF_INET6). It fails when the name has no IPv6 address,
+which is common on hosts without IPv6 connectivity, so prefer ip() unless the IPv6 address is
+required.
 
 --------------------------
 ### connect
-**创建一个 [Socket](../../object/ifs/Socket.md) 对象并建立连接**
+**Creates a [Socket](../../object/ifs/Socket.md) [object](../../object/ifs/object.md) and establishes a connection**
 
 ```JavaScript
 static Stream net.connect(Object options) async;
 ```
 
-调用参数:
-* options: Object, 指定连接选项对象
+Parameters:
+* options: Object, specifies the connection options [object](../../object/ifs/object.md)
 
-返回结果:
-* [Stream](../../object/ifs/Stream.md), 返回连接成功的 [Socket](../../object/ifs/Socket.md) 对象
+Returns:
+* [Stream](../../object/ifs/Stream.md), returns the connected [Socket](../../object/ifs/Socket.md) [object](../../object/ifs/object.md)
 
-options 参数可以包含以下属性：
- - port: 指定对方端口
- - host: 指定对方地址或主机名
- - timeout: 指定超时时间，单位是毫秒，默认为 0
-
---------------------------
-**建立一个连接，并在连接建立后触发 connect 事件**
+This is the blocking form: the fiber waits until the connection is established and the method
+returns the connected [Socket](../../object/ifs/Socket.md), or throws. options supports:
 
 ```JavaScript
-static Stream net.connect(Object options,
-    Function connectListener) async;
+// fragment: options
+({
+    "port": 80, // the remote port, required
+    "host": "localhost", // the remote address or host name
+    "timeout": 0 // the connect timeout in milliseconds, 0 disables the fibjs timer
+})
 ```
 
-调用参数:
-* options: Object, 指定连接选项对象，可以包含以下属性：
-* connectListener: Function, 指定 once 的 connect 事件监听器
-
-返回结果:
-* [Stream](../../object/ifs/Stream.md), 返回连接的 [Socket](../../object/ifs/Socket.md) 对象
+With timeout 0 the operating system connect timeout applies, which can be minutes on an
+unroutable address, so pass an explicit value when the peer may be unreachable. Node.js option
+keys such as [path](path.md), family, localAddress, localPort, lookup, signal, keepAlive or noDelay are
+not read; to connect to a unix socket use the [path](path.md) form of [Socket.connect](../../object/ifs/Socket.md#connect) or a unix:/ URL
+through the [module](module.md) entry. A refused or unreachable peer throws an Error with syscall 'connect'
+and a code such as ECONNREFUSED; an expired fibjs timer throws error number 20021.
 
 --------------------------
-**创建一个 [Socket](../../object/ifs/Socket.md) 或 SslSocket 对象并建立连接**
+**Establishes a connection and triggers the connect event after the connection is established**
 
 ```JavaScript
-static Stream net.connect(String url,
-    Integer timeout = 0) async;
+static Stream net.connect(Object | String | Integer options,
+    Function(Object ev) connectListener) async;
 ```
 
-调用参数:
-* url: String, 指定连接的协议，可以是：tcp://host:port 或者 ssl://host:port，也可以是：unix:/usr/local/proc1 或者 pipe://./pipe/proc1，连接 pipe 时需要用 `/` 替换 `\`
-* timeout: Integer, 指定超时时间，单位是毫秒，默认为 0
+Parameters:
+* options: Object | String | Integer, the connection target
+* connectListener: Function(Object ev), specifies the once connect event listener
 
-返回结果:
-* [Stream](../../object/ifs/Stream.md), 返回连接成功的 [Socket](../../object/ifs/Socket.md) 或者 SslSocket 对象
+Returns:
+* [Stream](../../object/ifs/Stream.md), returns the connected [Socket](../../object/ifs/Socket.md) [object](../../object/ifs/object.md)
+
+The non-blocking arity-2 form. `options` may be the options [object](../../object/ifs/object.md) above, the remote port (the
+host defaults to localhost) or the unix socket [path](path.md). The method returns the [Socket](../../object/ifs/Socket.md) immediately
+and the connection continues in the background; connectListener is registered as a once
+'connect' listener whose `this` is the socket. A failure is delivered to the 'error' event as
+an event [object](../../object/ifs/object.md) carrying errno/code, syscall, hostname and args, not as an Error, and no
+exception is thrown; this differs from the blocking form, which throws. See the [Socket](../../object/ifs/Socket.md) class
+for the events of a connected socket.
 
 --------------------------
-**创建一个 [Socket](../../object/ifs/Socket.md) 对象并建立连接**
+**Creates a [Socket](../../object/ifs/Socket.md) [object](../../object/ifs/object.md) and establishes a TCP connection**
 
 ```JavaScript
 static Stream net.connect(Integer port,
@@ -179,208 +311,329 @@ static Stream net.connect(Integer port,
     Integer timeout = 0) async;
 ```
 
-调用参数:
-* port: Integer, 指定对方端口
-* host: String, 指定对方地址或主机名，缺省为 localhost
-* timeout: Integer, 指定超时时间，单位是毫秒，默认为 0
+Parameters:
+* port: Integer, specifies the remote port
+* host: String, specifies the remote address or host name, default is localhost
+* timeout: Integer, specifies the timeout in milliseconds, default is 0
 
-返回结果:
-* [Stream](../../object/ifs/Stream.md), 返回连接成功的 [Socket](../../object/ifs/Socket.md) 对象
+Returns:
+* [Stream](../../object/ifs/Stream.md), returns the connected [Socket](../../object/ifs/Socket.md) [object](../../object/ifs/object.md)
+
+The blocking port/host/timeout form. host may be an IPv4 or IPv6 literal or a name resolved as
+part of the connection, and timeout is the connect timeout in milliseconds (0 leaves the
+operating system default). The returned [Socket](../../object/ifs/Socket.md) is already connected and ready for send/recv;
+see the options overload for the error behavior and the Node.js differences of the resolution
+step. Equivalent to `new [net.Socket](net.md#Socket)().connect(port, host, timeout)`.
 
 --------------------------
-**建立一个连接，并在连接建立后触发 connect 事件**
+**Creates a [Socket](../../object/ifs/Socket.md) or SslSocket [object](../../object/ifs/object.md) and establishes a connection**
 
 ```JavaScript
-static Stream net.connect(Integer port,
-    Function connectListener) async;
+static Stream net.connect(String url,
+    Integer timeout = 0) async;
 ```
 
-调用参数:
-* port: Integer, 指定对方端口
-* connectListener: Function, 指定 once 的 connect 事件监听器
+Parameters:
+* url: String, specifies the connection protocol, which can be: tcp://host:port or ssl://host:port, or unix:/usr/local/proc1 or pipe://./pipe/proc1; when connecting to a pipe, replace `\` with `/`
+* timeout: Integer, specifies the timeout in milliseconds, default is 0
 
-返回结果:
-* [Stream](../../object/ifs/Stream.md), 返回连接的 [Socket](../../object/ifs/Socket.md) 对象
+Returns:
+* [Stream](../../object/ifs/Stream.md), returns the connected [Socket](../../object/ifs/Socket.md) or SslSocket [object](../../object/ifs/object.md)
+
+The URL form accepts these schemes:
+- `tcp://host:port` connects a plain [Socket](../../object/ifs/Socket.md);
+- `ssl://host:port` is handled by the [tls](tls.md) [module](module.md) and returns a [TLSSocket](../../object/ifs/TLSSocket.md);
+- `unix:/[path](path.md)` (or `unix:[path](path.md)`) connects a unix socket and `pipe://./name` a Windows named pipe.
+An unknown scheme and a tcp:// URL without a port throw a TypeError. A bare [path](path.md) is not a URL
+here: [net.connect](net.md#connect)('/tmp/app.sock') throws, use 'unix:/tmp/app.sock' or
+new [net.Socket](net.md#Socket)().connect('/tmp/app.sock') instead.
 
 --------------------------
-**建立一个连接，并在连接建立后触发 connect 事件**
+**Establishes a connection and triggers the connect event after the connection is established**
 
 ```JavaScript
 static Stream net.connect(Integer port,
     String host,
-    Function connectListener) async;
+    Function(Object ev) connectListener) async;
 ```
 
-调用参数:
-* port: Integer, 指定对方端口
-* host: String, 指定对方地址或主机名，缺省为 localhost
-* connectListener: Function, 指定 once 的 connect 事件监听器
+Parameters:
+* port: Integer, specifies the remote port
+* host: String, specifies the remote address or host name, default is localhost
+* connectListener: Function(Object ev), specifies the once connect event listener
 
-返回结果:
-* [Stream](../../object/ifs/Stream.md), 返回连接的 [Socket](../../object/ifs/Socket.md) 对象
+Returns:
+* [Stream](../../object/ifs/Stream.md), returns the connected [Socket](../../object/ifs/Socket.md) [object](../../object/ifs/object.md)
+
+The non-blocking port/host form: equivalent to connect(port, host, 0, connectListener), so no
+fibjs connect timer is armed and the result arrives through 'connect'/'error'.
 
 --------------------------
-**建立一个连接，并在连接建立后触发 connect 事件**
+**Establishes a connection and triggers the connect event after the connection is established**
 
 ```JavaScript
 static Stream net.connect(Integer port,
     String host,
     Integer timeout,
-    Function connectListener) async;
+    Function(Object ev) connectListener) async;
 ```
 
-调用参数:
-* port: Integer, 指定对方端口
-* host: String, 指定对方地址或主机名，缺省为 localhost
-* timeout: Integer, 指定超时时间，单位是毫秒，默认为 0
-* connectListener: Function, 指定 once 的 connect 事件监听器
+Parameters:
+* port: Integer, specifies the remote port
+* host: String, specifies the remote address or host name, default is localhost
+* timeout: Integer, specifies the timeout in milliseconds, default is 0
+* connectListener: Function(Object ev), specifies the once connect event listener
 
-返回结果:
-* [Stream](../../object/ifs/Stream.md), 返回连接的 [Socket](../../object/ifs/Socket.md) 对象
+Returns:
+* [Stream](../../object/ifs/Stream.md), returns the connected [Socket](../../object/ifs/Socket.md) [object](../../object/ifs/object.md)
 
---------------------------
-**建立一个连接，并在连接建立后触发 connect 事件**
-
-```JavaScript
-static Stream net.connect(String path,
-    Function connectListener) async;
-```
-
-调用参数:
-* path: String, 指定 unix socket 或 Windows pipe 路径
-* connectListener: Function, 指定 once 的 connect 事件监听器
-
-返回结果:
-* [Stream](../../object/ifs/Stream.md), 返回连接的 [Socket](../../object/ifs/Socket.md) 对象
+The non-blocking port/host/timeout form; timeout bounds the connection attempt and an expired
+attempt is delivered to 'error' as the event [object](../../object/ifs/object.md) rather than thrown.
 
 --------------------------
-**建立一个连接，并在连接建立后触发 connect 事件**
+**Establishes a connection and triggers the connect event after the connection is established**
 
 ```JavaScript
 static Stream net.connect(String path,
     Integer timeout,
-    Function connectListener) async;
+    Function(Object ev) connectListener) async;
 ```
 
-调用参数:
-* path: String, 指定 unix socket 或 Windows pipe 路径
-* timeout: Integer, 指定超时时间，单位是毫秒，默认为 0
-* connectListener: Function, 指定 once 的 connect 事件监听器
+Parameters:
+* path: String, specifies the unix socket or Windows pipe [path](path.md)
+* timeout: Integer, specifies the timeout in milliseconds, default is 0
+* connectListener: Function(Object ev), specifies the once connect event listener
 
-返回结果:
-* [Stream](../../object/ifs/Stream.md), 返回连接的 [Socket](../../object/ifs/Socket.md) 对象
+Returns:
+* [Stream](../../object/ifs/Stream.md), returns the connected [Socket](../../object/ifs/Socket.md) [object](../../object/ifs/object.md)
+
+The non-blocking unix socket / Windows pipe form: [path](path.md) is taken literally (no scheme), timeout
+bounds the attempt and the result arrives through 'connect'/'error'.
 
 --------------------------
 ### openSmtp
-**创建一个 [Smtp](../../object/ifs/Smtp.md) 对象并建立连接，参见 [Smtp](../../object/ifs/Smtp.md)**
+**Creates a [Smtp](../../object/ifs/Smtp.md) [object](../../object/ifs/object.md) and establishes a connection, see [Smtp](../../object/ifs/Smtp.md)**
 
 ```JavaScript
 static Smtp net.openSmtp(String url,
     Integer timeout = 0) async;
 ```
 
-调用参数:
-* url: String, 指定连接的协议，可以是：tcp://host:port 或者 ssl://host:port
-* timeout: Integer, 指定超时时间，单位是毫秒，默认为 0
+Parameters:
+* url: String, specifies the connection protocol, which can be: tcp://host:port or ssl://host:port
+* timeout: Integer, specifies the timeout in milliseconds, default is 0
 
-返回结果:
-* [Smtp](../../object/ifs/Smtp.md), 返回连接成功的 [Smtp](../../object/ifs/Smtp.md) 对象
+Returns:
+* [Smtp](../../object/ifs/Smtp.md), returns the connected [Smtp](../../object/ifs/Smtp.md) [object](../../object/ifs/object.md)
+
+Blocking: the fiber waits for the SMTP greeting and the method returns an [Smtp](../../object/ifs/Smtp.md) ready for the
+protocol commands (see [Smtp](../../object/ifs/Smtp.md)). Connection failures are the same as connect, and an smtp:// [url](url.md)
+is not accepted, pass tcp:// or ssl:// explicitly.
 
 --------------------------
 ### createServer
-**创建一个 TCP 服务器**
+**Creates a TCP server**
 
 ```JavaScript
 static TcpServer net.createServer(Object options,
-    Handler listener);
+    Function(Socket socket) => Value listener);
 ```
 
-调用参数:
-* options: Object, 服务器选项对象，可以包含以下属性：
-* listener: [Handler](../../object/ifs/Handler.md), 连接处理函数
+Parameters:
+* options: Object, the server options [object](../../object/ifs/object.md), which can contain the following properties:
+* listener: [Handler](../../object/ifs/Handler.md) | [Handler](../../object/ifs/Handler.md)[] | Function([Socket](../../object/ifs/Socket.md) socket) => Value | Object | String, the connection handler
 
-返回结果:
-* [TcpServer](../../object/ifs/TcpServer.md), 返回 [TcpServer](../../object/ifs/TcpServer.md) 对象
+Returns:
+* [TcpServer](../../object/ifs/TcpServer.md), returns the [TcpServer](../../object/ifs/TcpServer.md) [object](../../object/ifs/object.md)
 
---------------------------
-**创建一个 TCP 服务器**
+options supports two bind properties:
 
 ```JavaScript
-static TcpServer net.createServer(Handler listener);
+// fragment: options
+({
+    "address": "", // the listening address, defaults to all addresses
+    "port": 0 // the listening port; without it nothing is bound and listen() is required
+})
 ```
 
-调用参数:
-* listener: [Handler](../../object/ifs/Handler.md), 连接处理函数
+With both properties the server binds address:port immediately and start() begins accepting;
+with address only it binds that address with an OS-assigned port (or a unix [path](path.md) when the
+address is not an IP literal); with neither it only stores the handler and listen() must be
+called. These are bind options, not the socket options of Node.js [net.createServer](net.md#createServer), and Node.js
+always requires listen().
 
-返回结果:
-* [TcpServer](../../object/ifs/TcpServer.md), 返回未绑定端口的 [TcpServer](../../object/ifs/TcpServer.md) 对象，需调用 listen() 启动
+listener may be given in any of these forms:
+- a [Handler](../../object/ifs/Handler.md) [object](../../object/ifs/object.md), invoked as it is;
+- an array of handlers, wrapped in a [Chain](../../object/ifs/Chain.md) and invoked in order;
+- a handler function `(socket) => any`, called with each accepted connection;
+- a routing map [object](../../object/ifs/object.md), whose keys are match patterns and whose values are handlers in these
+  same forms (see [mq.Routing](mq.md#Routing)); it matches messages, so a raw connection cannot be routed;
+- a [path](path.md)/address string: a directory or an `http(s)://` address, converted through the [Handler](../../object/ifs/Handler.md)
+  constructor.
+
+--------------------------
+**Creates a TCP server**
+
+```JavaScript
+static TcpServer net.createServer(Function(Socket socket) => Value listener);
+```
+
+Parameters:
+* listener: [Handler](../../object/ifs/Handler.md) | [Handler](../../object/ifs/Handler.md)[] | Function([Socket](../../object/ifs/Socket.md) socket) => Value | Object | String, the connection handler
+
+Returns:
+* [TcpServer](../../object/ifs/TcpServer.md), returns a [TcpServer](../../object/ifs/TcpServer.md) [object](../../object/ifs/object.md) not bound to a port; listen() must be called to start it
+
+The deferred form: only the handler is stored, no address is bound. Call listen(port[, addr[,
+backlog]]) or start() after a bind before clients can connect. See the options overload for the
+accepted listener forms and the handler model.
 
 --------------------------
 ### backend
-**查询当前系统异步网络引擎**
+**Queries the asynchronous network engine of the current system**
 
 ```JavaScript
 static String net.backend();
 ```
 
-返回结果:
-* String, 返回网络引擎名称
+Returns:
+* String, returns the network engine name
+
+The name is platform specific: 'IOCP' on win32, 'KQueue' on darwin/freebsd and 'EPoll' on
+linux/android. It reports the platform engine; sockets created while use_uv_socket is true use
+libuv instead. Node.js always uses libuv and has no equivalent accessor.
 
 --------------------------
 ### isIP
-**检测输入是否是 IP 地址**
+**Detects whether the input is an IP address**
 
 ```JavaScript
-static Integer net.isIP(String ip = "");
+static Integer net.isIP(Value ip = undefined);
 ```
 
-调用参数:
-* ip: String, 指定要检测的字符串
+Parameters:
+* ip: Value, the value to detect; a non-string value is not an IP address
 
-返回结果:
-* Integer, 非合法的 IP 地址，返回 0, 如果是 IPv4 则返回 4，如果是 IPv6 则返回 6
+Returns:
+* Integer, returns 0 for an invalid IP address, 4 for IPv4 and 6 for IPv6
+
+IPv4 must be dot-decimal without leading zeroes ('127.000.000.001' returns 0). IPv6 accepts
+compressed and IPv4-mapped forms ('::ffff:127.0.0.1' returns 6). A value that is not a string
+is converted with toString first, so an [object](../../object/ifs/object.md) whose toString yields an address is classified
+exactly like the Node.js behavior. No lookup is performed, a host name returns 0.
 
 --------------------------
 ### isIPv4
-**检测输入是否是 IPv4 地址**
+**Detects whether the input is an IPv4 address**
 
 ```JavaScript
-static Boolean net.isIPv4(String ip = "");
+static Boolean net.isIPv4(Value ip = undefined);
 ```
 
-调用参数:
-* ip: String, 指定要检测的字符串
+Parameters:
+* ip: Value, the value to detect; a non-string value is not an IP address
 
-返回结果:
-* Boolean, 如果是 IPv4 则返回 true.否则返回 false
+Returns:
+* Boolean, returns true if it is IPv4, otherwise returns false
+
+Equivalent to `isIP(ip) == 4`; the accepted syntax is dot-decimal without leading zeroes. Any
+failure to convert the value (for example null or a number) returns false instead of throwing.
 
 --------------------------
 ### isIPv6
-**检测输入是否是 IPv6 地址**
+**Detects whether the input is an IPv6 address**
 
 ```JavaScript
-static Boolean net.isIPv6(String ip = "");
+static Boolean net.isIPv6(Value ip = undefined);
 ```
 
-调用参数:
-* ip: String, 指定要检测的字符串
+Parameters:
+* ip: Value, the value to detect; a non-string value is not an IP address
 
-返回结果:
-* Boolean, 如果是 IPv6 则返回 true.否则返回 false
+Returns:
+* Boolean, returns true if it is IPv6, otherwise returns false
 
-## 静态属性
+Equivalent to `isIP(ip) == 6`; it accepts compressed forms and IPv4-mapped addresses. Any
+failure to convert the value returns false instead of throwing.
+
+--------------------------
+### getDefaultAutoSelectFamily
+**Queries whether [net.connect](net.md#connect) enables automatic address family selection by default, compatible with Node.js >= 18.13**
+
+```JavaScript
+static Boolean net.getDefaultAutoSelectFamily();
+```
+
+Returns:
+* Boolean, returns the current default value, default is true
+
+Compatibility accessor: fibjs stores the value so Node.js consumers that read it at [module](module.md) load
+(for example playwright-core) work unmodified, but connect never performs family
+autodetection. The companion timeout is getDefaultAutoSelectFamilyAttemptTimeout.
+
+--------------------------
+### setDefaultAutoSelectFamily
+**Sets whether [net.connect](net.md#connect) enables automatic address family selection by default, compatible with Node.js >= 18.13**
+
+```JavaScript
+static net.setDefaultAutoSelectFamily(Boolean enabled);
+```
+
+Parameters:
+* enabled: Boolean, specifies the default value, which must be a boolean
+
+Stores the value only; it does not change the behavior of connect, which always uses the family
+implied by the host name or the address family of the [Socket](../../object/ifs/Socket.md). The setter returns nothing.
+
+--------------------------
+### getDefaultAutoSelectFamilyAttemptTimeout
+**Queries the default automatic address family selection timeout, compatible with Node.js >= 18.13**
+
+```JavaScript
+static Integer net.getDefaultAutoSelectFamilyAttemptTimeout();
+```
+
+Returns:
+* Integer, returns the current default timeout in milliseconds, default is 250
+
+Compatibility accessor for Node.js consumers; see setDefaultAutoSelectFamily. It is only stored
+and is never used by connect.
+
+--------------------------
+### setDefaultAutoSelectFamilyAttemptTimeout
+**Sets the default automatic address family selection timeout, compatible with Node.js >= 18.13**
+
+```JavaScript
+static net.setDefaultAutoSelectFamilyAttemptTimeout(Integer milliseconds);
+```
+
+Parameters:
+* milliseconds: Integer, specifies the default timeout in milliseconds, which must be an integer greater than or equal to 10
+
+Values below 10 are rejected with an out-of-range error whose message is
+"setDefaultAutoSelectFamilyAttemptTimeout: milliseconds must be >= 10, got N.", matching the
+Node.js validation. Like the family switch, the value is only stored and never used by connect.
+
+## Static Properties
         
 ### use_uv_socket
-**Boolean, 查询和设置 socket 后端是否使用 uv，缺省为 false**
+**Boolean, Queries and sets whether sockets created afterwards use the libuv backend instead of the platform engine; the default is false**
 
 ```JavaScript
 static Boolean net.use_uv_socket;
 ```
 
-## 常量
+The flag is [process](process.md)-wide and is read when a [Socket](../../object/ifs/Socket.md) [object](../../object/ifs/object.md) is created, so it only affects later
+sockets and existing sockets keep the engine they were created with. Setting it to true routes
+sockets through libuv (a single loop, the backend Node.js uses); leaving it false uses the
+platform engine reported by backend(). The backends differ in a few edge cases, for example a
+read on a socket closed by another fiber reports EBADF/EPERM on the platform engine but
+CALL_E_CLOSED_SOCKET on the libuv backend, and some timeouts use different error numbers.
+
+## Constants
         
 ### AF_UNIX
-**地址集常量，指定 unix socket**
+**Address family constant that selects a unix socket or Windows named pipe; it has the same value as AF_PIPE**
 
 ```JavaScript
 const net.AF_UNIX = 1;
@@ -388,7 +641,7 @@ const net.AF_UNIX = 1;
 
 --------------------------
 ### AF_PIPE
-**地址集常量，指定 Windows pipe**
+**Address family constant that selects a Windows named pipe; it has the same value as AF_UNIX and is only meaningful on Windows**
 
 ```JavaScript
 const net.AF_PIPE = 1;
@@ -396,7 +649,7 @@ const net.AF_PIPE = 1;
 
 --------------------------
 ### AF_INET
-**地址集常量，指定 ipv4**
+**Address family constant that selects IPv4; it is the default of new [net.Socket](net.md#Socket)()**
 
 ```JavaScript
 const net.AF_INET = 2;
@@ -404,7 +657,7 @@ const net.AF_INET = 2;
 
 --------------------------
 ### AF_INET6
-**地址集常量，指定 ipv6**
+**Address family constant that selects IPv6**
 
 ```JavaScript
 const net.AF_INET6 = 10;

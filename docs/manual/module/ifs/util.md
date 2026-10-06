@@ -1,10 +1,51 @@
-# 模块 util
-util 模块提供了对数据类型的判断、对象属性的复制、模版字符串的解析、事件处理等实用的工具函数
+# Module util
+Utility helpers for formatting, inspecting, type checks, async wrappers and collections
 
-下面是具体的介绍和示例：
+The [module](module.md) groups several families of helpers:
 
-1. 判断数据类型 - `util.is[type]`
-该模块内提供了诸如 `isDate`、`isRegExp`、`isError` 等判断传入参数数据类型的方法，例如：
+- Formatting and inspection: `format`, `formatWithOptions`, `inspect`, `styleText`,
+`getStringWidth`, `stripVTControlCharacters`
+- Async wrappers: `sync`, `promisify`, `callbackify`
+- Type and value checks: the `is*` family, `isEmpty`, `isDeepEqual`,
+`isDeepStrictEqual` and the `types` [object](../../object/ifs/object.md)
+- Objects and arrays: `clone`, `deepFreeze`, `extend`/`_extend`, `pick`, `omit`, `has`,
+`keys`, `values`, `first`, `last`, `unique`, `union`, `intersection`, `flatten`,
+`without`, `difference`, `each`, `map`, `reduce`
+- Diagnostics and loading: `debuglog`/`debug`, `deprecate`, `buildInfo`, `compile`,
+`parseArgs`, `parseEnv`, `stripTypeScript`, `inherits`
+- Re-exports: `TextDecoder`, `TextEncoder`, `types`, `colors`
+
+Concepts:
+- Formatting: `format` converts only `%s`, `%d`, `%j` and `%%`. Other specifiers
+(`%i`, `%f`, `%o`, `%O`, `%c`) are kept literally and their argument is appended at
+the end as an extra value. `%s` uses String(), `%d` truncates the string form with
+atoi(), and `%j` renders through the inspection formatter below.
+- Inspection: values are rendered with a JSON-like formatter; the defaults are depth
+2, 100 array items and 10000 string characters. `depth: null` means unlimited, and
+a negative `maxArrayLength`/`maxStringLength` shortens the output. Pass
+`{ "table": true, "fields": [...] }` to render an array of records as a table.
+`colors` defaults to true and emits ANSI codes when the terminal supports color.
+- Async contract: fibjs APIs are synchronous-first and most also take a trailing
+error-first callback. `sync` blocks the current fiber until a callback or promise
+completes, `promisify` returns a promise-returning function and `callbackify`
+returns a callback-taking function. Wrapping the same function twice returns the
+same wrapper, and the three wrappers recognize each other's results.
+- Deep equality: `isDeepEqual` is loose, `isDeepStrictEqual` is strict; dates and
+regular expressions are compared by content and fibjs native objects through their
+own `equals`. NaN compares unequal, 0 and -0 compare equal and prototypes are not
+part of the comparison.
+- Node.js differences: `parseArgs` is a command-line tokenizer rather than Node's
+option parser; `sync`, `compile`, `buildInfo`, `getStringWidth`, `isEmpty`, `clone`,
+`deepFreeze` and the collection helpers are fibjs extensions; `deprecate` is a
+no-op and `promisify.custom` is not supported.
+
+Import:
+
+```JavaScript
+const util = require('util');
+```
+
+Example 1 — quick type checks:
 
 ```JavaScript
 var util = require('util');
@@ -12,8 +53,7 @@ console.log(util.isDate(new Date()));
 console.log(util.isRegExp(/some regexp/));
 ```
 
-2. 对象属性复制 - `util.inherits()`
-该方法可以选择将一个构造函数继承自另一个，从而实现原型继承。
+Example 2 — prototype inheritance with inherits():
 
 ```JavaScript
 var util = require('util');
@@ -21,11 +61,11 @@ var util = require('util');
 function Animal() {
     this.name = 'Animal';
     this.sleep = function() {
-        console.log(this.name + '正在睡觉！');
+        console.log(this.name + ' is sleeping!');
     }
 }
 Animal.prototype.eat = function(food) {
-    console.log(this.name + '正在吃：' + food);
+    console.log(this.name + ' is eating: ' + food);
 };
 
 function Cat() {
@@ -34,1200 +74,1609 @@ function Cat() {
 util.inherits(Cat, Animal);
 ```
 
-使用 `Cat` 这个构造函数继承了 `Animal` 的实例属性和原型属性，打印 `Cat` 的实例的属性和方法
+Example 3 — inspecting nested values with inspect options:
 
 ```JavaScript
-var cat = new Cat();
-console.log(cat.name);
-console.log(cat.eat('fish'));
-console.log(cat.sleep());
+var util = require('util');
+
+const nested = {
+    a: {
+        b: {
+            c: 1
+        }
+    }
+};
+console.log(util.inspect(nested, {
+    colors: false
+}));
+console.log(util.inspect(nested, {
+    colors: false,
+    depth: null
+}));
+console.log(util.inspect([1, 2, 3], {
+    colors: false,
+    maxArrayLength: 1
+}));
 ```
 
-3. [util.format](util.md#format)() 格式化输出模版
+Example 4 — printf-style templates and trailing values:
 
 ```JavaScript
 const util = require('util');
-const str1 = util.format('%s:%s', 'foo');
-const str2 = util.format('%s:%s', 'foo', 'bar', 'baz');
-console.log(str1) // => 'foo:%s'
-console.log(str2) // => 'foo:bar baz'
+
+console.log(util.format('%s:%s', 'foo')); // foo:%s
+console.log(util.format('%s:%s', 'foo', 'bar')); // foo:bar
+console.log(util.format('%s:%s', 'foo', 'bar', 1)); // foo:bar 1
+console.log(util.format('%d', '42.9')); // 42 (atoi truncation)
+console.log(util.format('%j', {
+    a: 1
+})); // {"a":1}
+console.log(util.format('%o', {
+    a: 1
+})); // %o {"a":1}
 ```
 
-以上是 `util` 模块的一些常用方法，常常可以用于简化实际开发过程。
+Notes:
+- The [module](module.md) examples above cover the type checks, inheritance, inspection and
+formatting paths; the async wrappers have runnable examples on their members.
+- `parseArgs` tokenizes a command line string; it is not Node.js's option parser.
+- `util.types` and `util.colors` are exposed through this [module](module.md) only, not as
+top-level `require('[types](types.md)')` / `require('[colors](colors.md)')`.
 
-## 对象
+## Objects
         
 ### TextDecoder
-**[TextDecoder](../../object/ifs/TextDecoder.md) 解码对象，参见 [TextDecoder](../../object/ifs/TextDecoder.md) 对象。**
+**The WHATWG [TextDecoder](../../object/ifs/TextDecoder.md) class, re-exported for convenience**
 
 ```JavaScript
 TextDecoder util.TextDecoder;
 ```
 
+Same [object](../../object/ifs/object.md) as the [global](global.md) `TextDecoder`; see the TextDecoder interface for the
+constructor options (`fatal`, `ignoreBOM`) and the supported encodings.
+
 --------------------------
 ### TextEncoder
-**[TextEncoder](../../object/ifs/TextEncoder.md) 编码对象，参见 [TextEncoder](../../object/ifs/TextEncoder.md) 对象。**
+**The WHATWG [TextEncoder](../../object/ifs/TextEncoder.md) class, re-exported for convenience**
 
 ```JavaScript
 TextEncoder util.TextEncoder;
 ```
 
+Same [object](../../object/ifs/object.md) as the [global](global.md) `TextEncoder`; it only encodes UTF-8 and exposes
+`encoding` and `encodeInto` in addition to `encode`.
+
 --------------------------
 ### types
-**[types](types.md) 模块提供了对数据类型判断的工具函数。**
+**Utility functions for built-in type checking, exposed as `util.types`**
 
 ```JavaScript
 types util.types;
 ```
 
+The same functions are also available directly as `util.is*` members. Unlike
+Node.js, the [module](module.md) is not requirable by the name `types`; use `util.types`.
+
 --------------------------
 ### colors
-**[colors](colors.md) 模块提供了一组颜色常量，用于设置控制台输出颜色。**
+**Color [constants](constants.md) and capability information for [console](console.md) output**
 
 ```JavaScript
 colors util.colors;
 ```
 
-## 静态函数
+Exposed as `util.colors`; `hasColors` reports whether the terminal supports
+ANSI [colors](colors.md), and every color constant is an empty string when it does not.
+See the [colors](colors.md) [module](module.md) for the full list.
+
+## Static Methods
         
 ### format
-**按照指定的格式格式化变量**
-
-```JavaScript
-static String util.format(String fmt,
-    ...args);
-```
-
-调用参数:
-* fmt: String, 格式化字符串
-* args: ..., 可选参数列表
-
-返回结果:
-* String, 返回格式化后的字符串
-
---------------------------
-**格式格式化变量**
+**Formats values with a printf-style template and returns the string**
 
 ```JavaScript
 static String util.format(...args);
 ```
 
-调用参数:
-* args: ..., 可选参数列表
+Parameters:
+* args: ..., optional parameter list
 
-返回结果:
-* String, 返回格式化后的字符串
+Returns:
+* String, returns the formatted string
+
+When the first argument is a string it is used as the format template; a
+non-string first argument makes every argument part of a space-separated
+concatenation. Only `%s`, `%d`, `%j` and `%%` are converted; any other
+specifier is kept literally and its value is appended at the end instead.
+`%s` applies String() (a Symbol argument throws TypeError), `%d` truncates
+the string form through atoi() and `%j` renders with the inspection
+formatter below, so circular values produce their inspection form and BigInt
+is accepted. A specifier without an argument is left in place.
+
+See the util [module](module.md) for the formatting and inspection concepts.
+
+Example:
+
+```JavaScript
+var util = require('util');
+
+console.log(util.format('%s:%s', 'foo')); // foo:%s
+console.log(util.format('%s:%s', 'foo', 'bar', 'baz')); // foo:bar baz
+console.log(util.format('%d', '42.9')); // 42
+console.log(util.format('%o', {
+    a: 1
+})); // %o {"a":1}
+```
 
 --------------------------
 ### formatWithOptions
-**按照指定格式和 inspect 选项格式化变量**
+**Formats values like format, using the given options for rendered values**
 
 ```JavaScript
 static String util.formatWithOptions(Object options,
-    String fmt,
+    Value fmt,
     ...args);
 ```
 
-调用参数:
-* options: Object, 非字符串值使用的 inspect 选项
-* fmt: String, 格式化字符串
-* args: ..., 可选参数列表
+Parameters:
+* options: Object, inspect options used for non-string values
+* fmt: Value, the format string; any other value is formatted as-is
+* args: ..., optional parameter list
 
-返回结果:
-* String, 返回格式化后的字符串
+Returns:
+* String, returns the formatted string
+
+`fmt` is the template when it is a string and takes part in the plain
+concatenation otherwise. Non-string extra values are rendered by inspect with
+`options`, which accepts the inspect options (`colors`, `depth`,
+`maxArrayLength`, `maxStringLength`).
 
 --------------------------
 ### inherits
-**从一个构造函数 constructor 继承原型函数到另一个。构造函数的原型将被设置为一个新的从超类（superConstructor）创建的对象。**
+**Sets up prototype inheritance between two constructors (legacy helper)**
 
 ```JavaScript
 static util.inherits(Value constructor,
     Value superConstructor);
 ```
 
-调用参数:
-* constructor: Value, 初始的构造函数
-* superConstructor: Value, 被继承的超类
+Parameters:
+* constructor: Value, the initial constructor
+* superConstructor: Value, the inherited superclass
+
+Sets `constructor.prototype` to an [object](../../object/ifs/object.md) created from
+`superConstructor.prototype` and stores the superclass in
+`constructor.super_`. Throws a TypeError (20004) when either argument is not
+an [object](../../object/ifs/object.md) or the superclass has no prototype. Prefer the `class`/`extends`
+syntax in new code; this helper matches the Node.js legacy API.
+
+Example:
+
+```JavaScript
+var util = require('util');
+
+function Animal(name) {
+    this.name = name;
+}
+Animal.prototype.eat = function(food) {
+    console.log(this.name + ' is eating ' + food);
+};
+
+function Cat() {
+    Animal.call(this, 'cat');
+}
+util.inherits(Cat, Animal);
+
+var cat = new Cat();
+console.log(cat instanceof Animal); // true
+console.log(Cat.super_ === Animal); // true
+```
 
 --------------------------
 ### parseEnv
-**解析 dotenv 文件原始文本并返回键值对象**
+**Parses the raw text of a dotenv file into a null-prototype [object](../../object/ifs/object.md)**
 
 ```JavaScript
 static Object util.parseEnv(String content);
 ```
 
-调用参数:
-* content: String, dotenv 文件的原始内容
+Parameters:
+* content: String, raw content of the dotenv file
 
-返回结果:
-* Object, 返回解析后的键值对象
+Returns:
+* Object, returns the parsed key-value [object](../../object/ifs/object.md)
+
+Supports `KEY=value`, `export KEY=value`, empty values, single, double and
+backtick quoting, `\n` escapes inside double quotes and multi-line single
+quoted values. A `#` outside quotes starts a comment, duplicate keys keep the
+last value, `\r` is dropped and lines without `=` are skipped.
+
+Example:
+
+```JavaScript
+var util = require('util');
+
+const env = util.parseEnv('A=1\nB="two words"\nC=3 # comment\nA=4');
+console.log(env.A); // 4
+console.log(env.B); // two words
+console.log(env.C); // 3
+console.log(Object.getPrototypeOf(env) === null); // true
+```
 
 --------------------------
 ### inspect
-**函数返回 obj 的字符串表示，主要用于调试。 附加的 options 可用于改变格式化字符串的某些方面。**
+**Returns a debug representation of a value controlled by options**
 
 ```JavaScript
 static String util.inspect(Value obj,
     Object options = {});
 ```
 
-调用参数:
-* obj: Value, 指定需要处理的对象
-* options: Object, 指定格式控制选项
+Parameters:
+* obj: Value, the [object](../../object/ifs/object.md) to [process](process.md)
+* options: Object, the format control options to use
 
-返回结果:
-* String, 返回格式化后的字符串
+Returns:
+* String, returns the formatted string
 
-支持以下参数:
+Options:
 
 ```JavaScript
-{
-    "colors": false, // specify if output should be colorized, defaults to false
-    "depth": 2, // specify the max depth of the output, defaults to 2
-    "table": false, // specify if output should be a table, defaults to false
-    "encode_string": true, // specify if string should be encoded, defaults to true
-    "maxArrayLength": 100, // specify max number of array elements to show, set to 0 or negative to show no elements, defaults to 100
-    "maxStringLength": 10000, // specify max string length to output, set to 0 or negative to show no strings, defaults to 10000
-    "fields": [], // specify the fields to be displayed, defaults to all
-}
+// fragment: options
+({
+    "colors": true, // ANSI color when the terminal supports it, defaults to true
+    "depth": 2, // max nesting depth, null means unlimited, defaults to 2
+    "table": false, // render an array of records as a table, defaults to false
+    "encode_string": true, // encode strings instead of showing them raw
+    "maxArrayLength": 100, // max array items, negative hides items, 100 by default
+    "maxStringLength": 10000, // max string chars, negative keeps the tail
+    "fields": [] // table columns to display, empty means all
+})
+```
+
+Strings are shown double quoted, buffers as `<[Buffer](../../object/ifs/Buffer.md) ..>`, typed arrays as
+`[Uint8Array]`, maps and sets with their markers, functions as
+`[Function name]` and errors as their stack plus own properties; repeated
+objects become `[Circular]`. Unknown options are ignored. Note that `colors`
+defaults to true here while Node.js defaults to false.
+
+Example:
+
+```JavaScript
+var util = require('util');
+
+const nested = {
+    a: {
+        b: {
+            c: 1
+        }
+    }
+};
+console.log(util.inspect(nested, {
+    colors: false
+}));
+console.log(util.inspect(nested, {
+    colors: false,
+    depth: null
+}));
+console.log(util.inspect([1, 2, 3], {
+    colors: false,
+    maxArrayLength: 1
+}));
 ```
 
 --------------------------
 ### styleText
-**为文本应用 ANSI 颜色/样式格式化**
+**Applies ANSI color and style codes to text**
 
 ```JavaScript
 static String util.styleText(String format[],
     String text);
 ```
 
-调用参数:
-* format[]: String, 格式名称数组
-* text: String, 要格式化的文本
+Parameters:
+* format[]: String, array of format names
+* text: String, the text to format
 
-返回结果:
-* String, 返回格式化后的字符串
+Returns:
+* String, returns the formatted string
 
-当不支持颜色输出时（如非 TTY 环境、设置了 NO_COLOR），原样返回文本。
+`format` is either a single name or an array of names; array entries are
+applied left to right, so the first name becomes the outermost wrapper. When
+the terminal does not support [colors](colors.md) (non-TTY with NO_COLOR, or no TTY at
+all) the text is returned unchanged. Unknown names are ignored, unlike
+Node.js which throws for them.
 
-支持的格式：bold、italic、underline、strikethrough、hidden、
-black、red、green、yellow、blue、magenta、cyan、white、
-bgBlack、bgRed、bgGreen、bgYellow、bgBlue、bgMagenta、bgCyan、bgWhite、
-gray/grey、blackBright、redBright、greenBright、yellowBright、blueBright、
-magentaBright、cyanBright、whiteBright
+Supported formats: bold, italic, underline, strikethrough, hidden,
+black, red, green, yellow, blue, magenta, cyan, white,
+bgBlack, bgRed, bgGreen, bgYellow, bgBlue, bgMagenta, bgCyan, bgWhite,
+gray/grey, blackBright, redBright, greenBright, yellowBright, blueBright,
+magentaBright, cyanBright, whiteBright
+
+Example:
+
+```JavaScript
+var util = require('util');
+
+const styled = util.styleText(['bold', 'green'], 'ok');
+console.log(util.stripVTControlCharacters(styled)); // ok
+```
 
 --------------------------
-**为文本应用 ANSI 颜色/样式格式化**
+**Applies a single ANSI color or style to text**
 
 ```JavaScript
 static String util.styleText(String format,
     String text);
 ```
 
-调用参数:
-* format: String, 格式名称
-* text: String, 要格式化的文本
+Parameters:
+* format: String, format name
+* text: String, the text to format
 
-返回结果:
-* String, 返回格式化后的字符串
+Returns:
+* String, returns the formatted string
+
+Single-name form of the array overload; see `styleText(String format[], ...)`
+for the supported names and the color capability rules.
 
 --------------------------
 ### debuglog
-**创建一个 [ConsoleObject](../../object/ifs/ConsoleObject.md) 对象，根据环境变量 NODE_DEBUG 有条件地输出调试信息**
+**Creates a [ConsoleObject](../../object/ifs/ConsoleObject.md) that conditionally logs debug information**
 
 ```JavaScript
 static ConsoleObject util.debuglog(String section);
 ```
 
-调用参数:
-* section: String, 指定的调试区域
+Parameters:
+* section: String, the debug section to use
 
-返回结果:
-* [ConsoleObject](../../object/ifs/ConsoleObject.md), 返回一个 [ConsoleObject](../../object/ifs/ConsoleObject.md) 对象
+Returns:
+* [ConsoleObject](../../object/ifs/ConsoleObject.md), returns a [ConsoleObject](../../object/ifs/ConsoleObject.md) [object](../../object/ifs/object.md)
+
+The returned [ConsoleObject](../../object/ifs/ConsoleObject.md) writes to stderr only when `NODE_DEBUG` contains
+the section name, prefixing each line with `SECTION pid:`. Matching is
+case-insensitive and `NODE_DEBUG` is a comma separated list; wildcards are
+not supported (Node.js accepts `foo*`). `enabled` reports the current state
+and follows later changes of the environment variable.
 
 --------------------------
-**创建一个 [ConsoleObject](../../object/ifs/ConsoleObject.md) 对象，根据环境变量 NODE_DEBUG 有条件地输出调试信息**
+**Creates a [ConsoleObject](../../object/ifs/ConsoleObject.md) that conditionally logs debug information**
 
 ```JavaScript
 static ConsoleObject util.debuglog(String section,
-    Function fn);
+    Function(ConsoleObject log) fn);
 ```
 
-调用参数:
-* section: String, 指定的调试区域
-* fn: Function, 第一次调用日志函数时调用的回调，其函数参数是一个更优化的日志函数
+Parameters:
+* section: String, the debug section to use
+* fn: Function([ConsoleObject](../../object/ifs/ConsoleObject.md) log), callback invoked on the first log call with an optimized log function
 
-返回结果:
-* [ConsoleObject](../../object/ifs/ConsoleObject.md), 返回一个 [ConsoleObject](../../object/ifs/ConsoleObject.md) 对象
+Returns:
+* [ConsoleObject](../../object/ifs/ConsoleObject.md), returns a [ConsoleObject](../../object/ifs/ConsoleObject.md) [object](../../object/ifs/object.md)
+
+Same as `debuglog(String section)`; `fn` is called on the first logging
+call with a log function. When the section is disabled, `fn` receives a
+stubbed logger whose methods are all no-ops.
 
 --------------------------
 ### debug
-**创建一个 [ConsoleObject](../../object/ifs/ConsoleObject.md) 对象，根据环境变量 NODE_DEBUG 有条件地输出调试信息。是 debuglog 的别名**
+**Alias of debuglog: creates a conditional debug logger**
 
 ```JavaScript
 static ConsoleObject util.debug(String section);
 ```
 
-调用参数:
-* section: String, 指定的调试区域
+Parameters:
+* section: String, the debug section to use
 
-返回结果:
-* [ConsoleObject](../../object/ifs/ConsoleObject.md), 返回一个 [ConsoleObject](../../object/ifs/ConsoleObject.md) 对象
+Returns:
+* [ConsoleObject](../../object/ifs/ConsoleObject.md), returns a [ConsoleObject](../../object/ifs/ConsoleObject.md) [object](../../object/ifs/object.md)
+
+Alias of `debuglog(String section)`; see it for the `NODE_DEBUG` matching
+rules and the line prefix.
 
 --------------------------
-**创建一个 [ConsoleObject](../../object/ifs/ConsoleObject.md) 对象，根据环境变量 NODE_DEBUG 有条件地输出调试信息。是 debuglog 的别名**
+**Alias of debuglog: creates a conditional debug logger**
 
 ```JavaScript
 static ConsoleObject util.debug(String section,
-    Function fn);
+    Function(ConsoleObject log) fn);
 ```
 
-调用参数:
-* section: String, 指定的调试区域
-* fn: Function, 第一次调用日志函数时调用的回调，其函数参数是一个更优化的日志函数
+Parameters:
+* section: String, the debug section to use
+* fn: Function([ConsoleObject](../../object/ifs/ConsoleObject.md) log), callback invoked on the first log call with an optimized log function
 
-返回结果:
-* [ConsoleObject](../../object/ifs/ConsoleObject.md), 返回一个 [ConsoleObject](../../object/ifs/ConsoleObject.md) 对象
+Returns:
+* [ConsoleObject](../../object/ifs/ConsoleObject.md), returns a [ConsoleObject](../../object/ifs/ConsoleObject.md) [object](../../object/ifs/object.md)
+
+Alias of `debuglog(String section, Function([ConsoleObject](../../object/ifs/ConsoleObject.md) log) fn)`; see it
+for the first-call callback behavior.
 
 --------------------------
 ### deprecate
-**封装给定的函数，本函数仅为兼容，并不输出警告**
+**Returns the function unchanged; kept for Node.js API compatibility**
 
 ```JavaScript
-static Function util.deprecate(Function fn,
+static Function(...args) => Value util.deprecate(Function(...args) => Value fn,
     String msg,
     String code = "");
 ```
 
-调用参数:
-* fn: Function, 给定需要封装的函数
-* msg: String, 给定警告消息
-* code: String, 给定警告编号
+Parameters:
+* fn: Function(...args) => Value, the function to wrap
+* msg: String, the warning message
+* code: String, the warning code
 
-返回结果:
-* Function, 如果封装结果
+Returns:
+* Function(...args) => Value, returns the wrapped result
+
+The current implementation is a no-op wrapper: the returned value is the
+same function, calling it never emits a deprecation warning and `msg` and
+`code` are ignored. Do not rely on it for deprecation reporting.
 
 --------------------------
 ### isEmpty
-**检测给定的变量是否不包含任何值(没有可枚举的属性)**
+**Checks whether the given variable contains no value (no enumerable properties)**
 
 ```JavaScript
 static Boolean util.isEmpty(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要检测的变量
+Parameters:
+* v: Value, the variable to check
 
-返回结果:
-* Boolean, 如果为空则返回 True
+Returns:
+* Boolean, returns True if empty
+
+True for null, undefined, empty strings, empty arrays, objects without own
+property names, and primitive numbers or booleans. Node.js has no equivalent
+helper.
 
 --------------------------
 ### isArray
-**检测给定的变量是否是数组**
+**Checks whether the given variable is an array**
 
 ```JavaScript
 static Boolean util.isArray(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要检测的变量
+Parameters:
+* v: Value, the variable to check
 
-返回结果:
-* Boolean, 如果是数组则返回 True
+Returns:
+* Boolean, returns True if it is an array
+
+Equivalent to Array.isArray(); typed arrays and array-like objects are not
+arrays.
 
 --------------------------
 ### isBoolean
-**检测给定的变量是否是 Boolean**
+**Checks whether the given variable is a Boolean**
 
 ```JavaScript
 static Boolean util.isBoolean(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要检测的变量
+Parameters:
+* v: Value, the variable to check
 
-返回结果:
-* Boolean, 如果是 Boolean 则返回 True
+Returns:
+* Boolean, returns True if it is a Boolean
+
+True for primitive booleans and for Boolean wrapper objects created with
+new Boolean(); wrapper objects count as booleans here.
 
 --------------------------
 ### isNull
-**检测给定的变量是否是 Null**
+**Checks whether the given variable is Null**
 
 ```JavaScript
 static Boolean util.isNull(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要检测的变量
+Parameters:
+* v: Value, the variable to check
 
-返回结果:
-* Boolean, 如果是 Null 则返回 True
+Returns:
+* Boolean, returns True if it is Null
+
+True only for null; use isNullOrUndefined to cover both null and undefined.
 
 --------------------------
 ### isNullOrUndefined
-**检测给定的变量是否是 Null 或者 Undefined**
+**Checks whether the given variable is Null or Undefined**
 
 ```JavaScript
 static Boolean util.isNullOrUndefined(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要检测的变量
+Parameters:
+* v: Value, the variable to check
 
-返回结果:
-* Boolean, 如果是 Null 或者 Undefined 则返回 True
+Returns:
+* Boolean, returns True if it is Null or Undefined
+
+True for null and undefined; shorthand for the common guard.
 
 --------------------------
 ### isNumber
-**检测给定的变量是否是数字**
+**Checks whether the given variable is a number**
 
 ```JavaScript
 static Boolean util.isNumber(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要检测的变量
+Parameters:
+* v: Value, the variable to check
 
-返回结果:
-* Boolean, 如果是数字则返回 True
+Returns:
+* Boolean, returns True if it is a number
+
+True for primitive numbers and Number wrapper objects; NaN and Infinity are
+numbers.
 
 --------------------------
 ### isBigInt
-**检测给定的变量是否是 BigInt**
+**Checks whether the given variable is a BigInt**
 
 ```JavaScript
 static Boolean util.isBigInt(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要检测的变量
+Parameters:
+* v: Value, the variable to check
 
-返回结果:
-* Boolean, 如果是数字则返回 True
+Returns:
+* Boolean, returns True if it is a BigInt
+
+True for BigInt primitives and BigInt wrapper objects.
 
 --------------------------
 ### isString
-**检测给定的变量是否是字符串**
+**Checks whether the given variable is a string**
 
 ```JavaScript
 static Boolean util.isString(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要检测的变量
+Parameters:
+* v: Value, the variable to check
 
-返回结果:
-* Boolean, 如果是字符串则返回 True
+Returns:
+* Boolean, returns True if it is a string
+
+True for string primitives and String wrapper objects.
 
 --------------------------
 ### isUndefined
-**检测给定的变量是否是 Undefined**
+**Checks whether the given variable is Undefined**
 
 ```JavaScript
 static Boolean util.isUndefined(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要检测的变量
+Parameters:
+* v: Value, the variable to check
 
-返回结果:
-* Boolean, 如果是 Undefined 则返回 True
+Returns:
+* Boolean, returns True if it is Undefined
+
+True only for undefined.
 
 --------------------------
 ### isRegExp
-**检测给定的变量是否是正则对象**
+**Checks whether the given variable is a regular expression [object](../../object/ifs/object.md)**
 
 ```JavaScript
 static Boolean util.isRegExp(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要检测的变量
+Parameters:
+* v: Value, the variable to check
 
-返回结果:
-* Boolean, 如果是正则对象则返回 True
+Returns:
+* Boolean, returns True if it is a regular expression [object](../../object/ifs/object.md)
+
+True for RegExp objects, including ones created in another context.
 
 --------------------------
 ### isObject
-**检测给定的变量是否是对象**
+**Checks whether the given variable is an [object](../../object/ifs/object.md)**
 
 ```JavaScript
 static Boolean util.isObject(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要检测的变量
+Parameters:
+* v: Value, the variable to check
 
-返回结果:
-* Boolean, 如果是对象则返回 True
+Returns:
+* Boolean, returns True if it is an [object](../../object/ifs/object.md)
+
+True for every non-primitive value, functions included; null and undefined
+are not objects.
 
 --------------------------
 ### isDate
-**检测给定的变量是否是日期对象**
+**Checks whether the given variable is a date [object](../../object/ifs/object.md)**
 
 ```JavaScript
 static Boolean util.isDate(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要检测的变量
+Parameters:
+* v: Value, the variable to check
 
-返回结果:
-* Boolean, 如果是日期对象则返回 True
+Returns:
+* Boolean, returns True if it is a date [object](../../object/ifs/object.md)
+
+True for Date instances, including invalid dates.
 
 --------------------------
 ### isNativeError
-**检测给定的变量是否是错误对象**
+**Checks whether the given variable is an error [object](../../object/ifs/object.md)**
 
 ```JavaScript
 static Boolean util.isNativeError(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要检测的变量
+Parameters:
+* v: Value, the variable to check
 
-返回结果:
-* Boolean, 如果是错误对象则返回 True
+Returns:
+* Boolean, returns True if it is an error [object](../../object/ifs/object.md)
+
+True for Error and its built-in subclasses as created by the engine; a plain
+[object](../../object/ifs/object.md) whose prototype chain includes Error.prototype is not matched.
 
 --------------------------
 ### isPrimitive
-**检测给定的变量是否是原始类型**
+**Checks whether the given variable is a primitive type**
 
 ```JavaScript
 static Boolean util.isPrimitive(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要检测的变量
+Parameters:
+* v: Value, the variable to check
 
-返回结果:
-* Boolean, 如果是原始类型则返回 True
+Returns:
+* Boolean, returns True if it is a primitive type
+
+True for null, undefined, booleans, numbers, bigints, strings and symbols;
+functions and all other objects are false.
 
 --------------------------
 ### isSymbol
-**检测给定的变量是否是Symbol类型**
+**Checks whether the given variable is a Symbol type**
 
 ```JavaScript
 static Boolean util.isSymbol(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要检测的变量
+Parameters:
+* v: Value, the variable to check
 
-返回结果:
-* Boolean, 如果是Symbol类型则返回 True
+Returns:
+* Boolean, returns True if it is a Symbol type
+
+True for primitive symbols; wrapper objects created with Object(Symbol()) are
+not matched.
 
 --------------------------
 ### isDataView
-**检测给定的变量是否是 DataView 类型**
+**Checks whether the given variable is a DataView type**
 
 ```JavaScript
 static Boolean util.isDataView(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要检测的变量
+Parameters:
+* v: Value, the variable to check
 
-返回结果:
-* Boolean, 如果是 DataView 类型则返回 True
+Returns:
+* Boolean, returns True if it is a DataView type
+
+True for DataView instances; typed arrays are buffer views but not
+DataViews.
 
 --------------------------
 ### isExternal
-**检测给定的变量是否是 External 类型**
+**Checks whether the given variable is an External type**
 
 ```JavaScript
 static Boolean util.isExternal(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要检测的变量
+Parameters:
+* v: Value, the variable to check
 
-返回结果:
-* Boolean, 如果是 External 类型则返回 True
+Returns:
+* Boolean, returns True if it is an External type
+
+True only for V8 native External values, which JavaScript code cannot
+create; typically false.
 
 --------------------------
 ### isMap
-**检测给定的变量是否是 Map 类型**
+**Checks whether the given variable is a Map type**
 
 ```JavaScript
 static Boolean util.isMap(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要检测的变量
+Parameters:
+* v: Value, the variable to check
 
-返回结果:
-* Boolean, 如果是 Map 类型则返回 True
+Returns:
+* Boolean, returns True if it is a Map type
+
+True for Map instances, including subclasses.
 
 --------------------------
 ### isMapIterator
-**检测给定的变量是否是 MapIterator 类型**
+**Checks whether the given variable is a MapIterator type**
 
 ```JavaScript
 static Boolean util.isMapIterator(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要检测的变量
+Parameters:
+* v: Value, the variable to check
 
-返回结果:
-* Boolean, 如果是 MapIterator 类型则返回 True
+Returns:
+* Boolean, returns True if it is a MapIterator type
+
+True for iterators returned by Map keys(), values() and entries().
 
 --------------------------
 ### isPromise
-**检测给定的变量是否是 Promise 类型**
+**Checks whether the given variable is a Promise type**
 
 ```JavaScript
 static Boolean util.isPromise(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要检测的变量
+Parameters:
+* v: Value, the variable to check
 
-返回结果:
-* Boolean, 如果是 Promise 类型则返回 True
+Returns:
+* Boolean, returns True if it is a Promise type
+
+True for native Promise instances, including values returned by async
+functions.
 
 --------------------------
 ### isAsyncFunction
-**检测给定的变量是否是 AsyncFunction 类型**
+**Checks whether the given variable is an AsyncFunction type**
 
 ```JavaScript
 static Boolean util.isAsyncFunction(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要检测的变量
+Parameters:
+* v: Value, the variable to check
 
-返回结果:
-* Boolean, 如果是 AsyncFunction 类型则返回 True
+Returns:
+* Boolean, returns True if it is an AsyncFunction type
+
+True for async function declarations, expressions, arrow functions and
+methods.
 
 --------------------------
 ### isSet
-**检测给定的变量是否是 Set 类型**
+**Checks whether the given variable is a Set type**
 
 ```JavaScript
 static Boolean util.isSet(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要检测的变量
+Parameters:
+* v: Value, the variable to check
 
-返回结果:
-* Boolean, 如果是 Set 类型则返回 True
+Returns:
+* Boolean, returns True if it is a Set type
+
+True for Set instances, including subclasses.
 
 --------------------------
 ### isSetIterator
-**检测给定的变量是否是 SetIterator 类型**
+**Checks whether the given variable is a SetIterator type**
 
 ```JavaScript
 static Boolean util.isSetIterator(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要检测的变量
+Parameters:
+* v: Value, the variable to check
 
-返回结果:
-* Boolean, 如果是 SetIterator 类型则返回 True
+Returns:
+* Boolean, returns True if it is a SetIterator type
+
+True for iterators returned by Set keys(), values() and entries().
 
 --------------------------
 ### isTypedArray
-**检测给定的变量是否是 TypedArray 类型**
+**Checks whether the given variable is a TypedArray type**
 
 ```JavaScript
 static Boolean util.isTypedArray(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要检测的变量
+Parameters:
+* v: Value, the variable to check
 
-返回结果:
-* Boolean, 如果是 TypedArray 类型则返回 True
+Returns:
+* Boolean, returns True if it is a TypedArray type
+
+True for every typed array kind (Uint8Array, Int32Array, Float64Array, ...);
+ArrayBuffer and DataView are not typed arrays.
 
 --------------------------
 ### isUint8Array
-**检测给定的变量是否是 Uint8Array 类型**
+**Checks whether the given variable is a Uint8Array type**
 
 ```JavaScript
 static Boolean util.isUint8Array(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要检测的变量
+Parameters:
+* v: Value, the variable to check
 
-返回结果:
-* Boolean, 如果是 Uint8Array 类型则返回 True
+Returns:
+* Boolean, returns True if it is a Uint8Array type
+
+True for Uint8Array instances; fibjs [Buffer](../../object/ifs/Buffer.md) values match because [Buffer](../../object/ifs/Buffer.md)
+derives from Uint8Array.
 
 --------------------------
 ### isFunction
-**检测给定的变量是否是函数对象**
+**Checks whether the given variable is a function [object](../../object/ifs/object.md)**
 
 ```JavaScript
 static Boolean util.isFunction(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要检测的变量
+Parameters:
+* v: Value, the variable to check
 
-返回结果:
-* Boolean, 如果是函数对象则返回 True
+Returns:
+* Boolean, returns True if it is a function [object](../../object/ifs/object.md)
+
+True for functions and classes, including async and generator functions.
 
 --------------------------
 ### isBuffer
-**检测给定的变量是否是函数 [Buffer](../../object/ifs/Buffer.md) 对象**
+**Checks whether the given variable is a [Buffer](../../object/ifs/Buffer.md) [object](../../object/ifs/object.md)**
 
 ```JavaScript
 static Boolean util.isBuffer(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要检测的变量
+Parameters:
+* v: Value, the variable to check
 
-返回结果:
-* Boolean, 如果是函数 [Buffer](../../object/ifs/Buffer.md) 对象则返回 True
+Returns:
+* Boolean, returns True if it is a [Buffer](../../object/ifs/Buffer.md) [object](../../object/ifs/object.md)
+
+True only for fibjs [Buffer](../../object/ifs/Buffer.md) values; Node.js has no [util.types](util.md#types).isBuffer and
+uses [Buffer.isBuffer](../../object/ifs/Buffer.md#isBuffer) instead.
 
 --------------------------
 ### isFloat16Array
-**检测给定的变量是否是 Float16Array 类型**
+**Checks whether the given variable is a Float16Array type**
 
 ```JavaScript
 static Boolean util.isFloat16Array(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要检测的变量
+Parameters:
+* v: Value, the variable to check
 
-返回结果:
-* Boolean, 如果是 Float16Array 类型则返回 True
+Returns:
+* Boolean, returns True if it is a Float16Array type
+
+True for Float16Array instances.
 
 --------------------------
 ### isAnyArrayBuffer
-**检测给定的变量是否是 ArrayBuffer 或 SharedArrayBuffer 类型**
+**Checks whether the given variable is an ArrayBuffer or SharedArrayBuffer type**
 
 ```JavaScript
 static Boolean util.isAnyArrayBuffer(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要检测的变量
+Parameters:
+* v: Value, the variable to check
 
-返回结果:
-* Boolean, 如果是 ArrayBuffer 或 SharedArrayBuffer 类型则返回 True
+Returns:
+* Boolean, returns True if it is an ArrayBuffer or SharedArrayBuffer type
+
+True for both ArrayBuffer and SharedArrayBuffer.
 
 --------------------------
 ### isSharedArrayBuffer
-**检测给定的变量是否是 SharedArrayBuffer 类型**
+**Checks whether the given variable is a SharedArrayBuffer type**
 
 ```JavaScript
 static Boolean util.isSharedArrayBuffer(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要检测的变量
+Parameters:
+* v: Value, the variable to check
 
-返回结果:
-* Boolean, 如果是 SharedArrayBuffer 类型则返回 True
+Returns:
+* Boolean, returns True if it is a SharedArrayBuffer type
+
+True only for SharedArrayBuffer; a plain ArrayBuffer is matched by
+isAnyArrayBuffer.
 
 --------------------------
 ### isArgumentsObject
-**检测给定的变量是否是 arguments 对象**
+**Checks whether the given variable is an arguments [object](../../object/ifs/object.md)**
 
 ```JavaScript
 static Boolean util.isArgumentsObject(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要检测的变量
+Parameters:
+* v: Value, the variable to check
 
-返回结果:
-* Boolean, 如果是 arguments 对象则返回 True
+Returns:
+* Boolean, returns True if it is an arguments [object](../../object/ifs/object.md)
+
+True for the arguments [object](../../object/ifs/object.md) of a non-arrow function; arrays are not
+matched.
 
 --------------------------
 ### isBoxedPrimitive
-**检测给定的变量是否是装箱的原始类型对象（如 new Boolean()、new String() 等）**
+**Checks whether the given variable is a boxed primitive [object](../../object/ifs/object.md)**
 
 ```JavaScript
 static Boolean util.isBoxedPrimitive(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要检测的变量
+Parameters:
+* v: Value, the variable to check
 
-返回结果:
-* Boolean, 如果是装箱的原始类型对象则返回 True
+Returns:
+* Boolean, returns True if it is a boxed primitive [object](../../object/ifs/object.md)
+
+True for Boolean, Number, String, Symbol and BigInt wrapper objects created
+with new or Object().
 
 --------------------------
 ### isGeneratorFunction
-**检测给定的变量是否是 GeneratorFunction 类型**
+**Checks whether the given variable is a GeneratorFunction type**
 
 ```JavaScript
 static Boolean util.isGeneratorFunction(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要检测的变量
+Parameters:
+* v: Value, the variable to check
 
-返回结果:
-* Boolean, 如果是 GeneratorFunction 类型则返回 True
+Returns:
+* Boolean, returns True if it is a GeneratorFunction type
+
+True for generator function declarations, expressions and methods.
 
 --------------------------
 ### isGeneratorObject
-**检测给定的变量是否是 Generator 对象**
+**Checks whether the given variable is a Generator [object](../../object/ifs/object.md)**
 
 ```JavaScript
 static Boolean util.isGeneratorObject(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要检测的变量
+Parameters:
+* v: Value, the variable to check
 
-返回结果:
-* Boolean, 如果是 Generator 对象则返回 True
+Returns:
+* Boolean, returns True if it is a Generator [object](../../object/ifs/object.md)
+
+True for the iterator returned when a generator function is called.
 
 --------------------------
 ### isProxy
-**检测给定的变量是否是 Proxy 实例**
+**Checks whether the given variable is a Proxy instance**
 
 ```JavaScript
 static Boolean util.isProxy(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要检测的变量
+Parameters:
+* v: Value, the variable to check
 
-返回结果:
-* Boolean, 如果是 Proxy 实例则返回 True
+Returns:
+* Boolean, returns True if it is a Proxy instance
+
+True for Proxy instances; the underlying target is not a proxy.
 
 --------------------------
 ### isModuleNamespaceObject
-**检测给定的变量是否是 Module Namespace 对象**
+**Checks whether the given variable is a Module Namespace [object](../../object/ifs/object.md)**
 
 ```JavaScript
 static Boolean util.isModuleNamespaceObject(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要检测的变量
+Parameters:
+* v: Value, the variable to check
 
-返回结果:
-* Boolean, 如果是 Module Namespace 对象则返回 True
+Returns:
+* Boolean, returns True if it is a Module Namespace [object](../../object/ifs/object.md)
+
+True for ES [module](module.md) namespace objects obtained with `import * as ns`; plain
+objects are not namespaces.
 
 --------------------------
 ### isCryptoKey
-**检测给定的变量是否是 [CryptoKey](../../object/ifs/CryptoKey.md) 类型**
+**Checks whether the given variable is a [CryptoKey](../../object/ifs/CryptoKey.md) type**
 
 ```JavaScript
 static Boolean util.isCryptoKey(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要检测的变量
+Parameters:
+* v: Value, the variable to check
 
-返回结果:
-* Boolean, 如果是 [CryptoKey](../../object/ifs/CryptoKey.md) 类型则返回 True
+Returns:
+* Boolean, returns True if it is a [CryptoKey](../../object/ifs/CryptoKey.md) type
+
+True for [CryptoKey](../../object/ifs/CryptoKey.md) objects produced by the [crypto](crypto.md) [module](module.md).
 
 --------------------------
 ### isKeyObject
-**检测给定的变量是否是 [KeyObject](../../object/ifs/KeyObject.md) 类型**
+**Checks whether the given variable is a [KeyObject](../../object/ifs/KeyObject.md) type**
 
 ```JavaScript
 static Boolean util.isKeyObject(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要检测的变量
+Parameters:
+* v: Value, the variable to check
 
-返回结果:
-* Boolean, 如果是 [KeyObject](../../object/ifs/KeyObject.md) 类型则返回 True
+Returns:
+* Boolean, returns True if it is a [KeyObject](../../object/ifs/KeyObject.md) type
+
+True for [KeyObject](../../object/ifs/KeyObject.md) instances produced by the [crypto](crypto.md) [module](module.md).
 
 --------------------------
 ### isDeepEqual
-**测试数值深度等于预期值**
+**Tests whether a value is deeply equal to the expected value**
 
 ```JavaScript
 static Boolean util.isDeepEqual(Value actual,
     Value expected);
 ```
 
-调用参数:
-* actual: Value, 要测试的数值
-* expected: Value, 预期的数值
+Parameters:
+* actual: Value, the value to [test](test.md)
+* expected: Value, the expected value
 
-返回结果:
-* Boolean, 如果深度相等则返回 True
+Returns:
+* Boolean, returns True if deeply equal
+
+Deep equality with component-wise loose comparison: dates and regular
+expressions are compared by content, fibjs native objects through their own
+equals, and other values with JavaScript `==` semantics (for example '1'
+equals 1). NaN never equals NaN. This is a fibjs extension; Node.js only
+provides isDeepStrictEqual.
 
 --------------------------
 ### isDeepStrictEqual
-**测试数值严格深度等于预期值**
+**Tests whether a value is strictly deeply equal to the expected value**
 
 ```JavaScript
 static Boolean util.isDeepStrictEqual(Value actual,
     Value expected);
 ```
 
-调用参数:
-* actual: Value, 要测试的数值
-* expected: Value, 预期的数值
+Parameters:
+* actual: Value, the value to [test](test.md)
+* expected: Value, the expected value
 
-返回结果:
-* Boolean, 如果严格深度相等则返回 True
+Returns:
+* Boolean, returns True if strictly deeply equal
+
+Deep equality with component-wise strict comparison. Dates and regular
+expressions are compared by content, fibjs native objects through their own
+equals, and functions are equal only when identical. Unlike Node.js, NaN is
+not equal to NaN, 0 equals -0 and constructors are not part of the
+comparison.
+
+Example:
+
+```JavaScript
+var util = require('util');
+
+console.log(util.isDeepStrictEqual([1, [2, 3]], [1, [2, 3]])); // true
+console.log(util.isDeepStrictEqual('1', 1)); // false
+console.log(util.isDeepStrictEqual(NaN, NaN)); // false
+```
 
 --------------------------
 ### has
-**查询指定对象是否包含给定的键**
+**Queries whether the specified [object](../../object/ifs/object.md) contains the given key**
 
 ```JavaScript
 static Boolean util.has(Value v,
     String key);
 ```
 
-调用参数:
-* v: Value, 给定需要查询的对象
-* key: String, 指定需要查询的键
+Parameters:
+* v: Value, the [object](../../object/ifs/object.md) to query
+* key: String, the key to query
 
-返回结果:
-* Boolean, 返回对象的全部键数组
+Returns:
+* Boolean, returns True if the [object](../../object/ifs/object.md) has the own property
+
+Checks own properties only (Object.prototype.hasOwnProperty semantics),
+including non-enumerable ones; null and undefined return false while other
+non-objects throw TypeError 20004. A shadowed hasOwnProperty does not affect
+the check. Node.js has no [util.has](util.md#has).
 
 --------------------------
 ### keys
-**查询指定对象的全部键数组**
+**Queries the array of all keys of the specified [object](../../object/ifs/object.md)**
 
 ```JavaScript
 static Array util.keys(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要查询的对象
+Parameters:
+* v: Value, the [object](../../object/ifs/object.md) to query
 
-返回结果:
-* Array, 返回对象的全部键数组
+Returns:
+* Array, returns the array of enumerable property names
+
+Returns the enumerable property names, own and inherited, with array indices
+converted to strings; non-objects return an empty array. Node.js has no
+[util.keys](util.md#keys) (Object.keys covers own properties only).
 
 --------------------------
 ### values
-**查询指定对象的全部值数组**
+**Queries the array of all values of the specified [object](../../object/ifs/object.md)**
 
 ```JavaScript
 static Array util.values(Value v);
 ```
 
-调用参数:
-* v: Value, 给定需要查询的对象
+Parameters:
+* v: Value, the [object](../../object/ifs/object.md) to query
 
-返回结果:
-* Array, 返回对象的全部值数组
+Returns:
+* Array, returns the array of enumerable property values
+
+Returns the values of the enumerable properties reported by `keys`, own and
+inherited; non-objects return an empty array.
 
 --------------------------
 ### clone
-**克隆给定变量，如果是对象或数组，则复制内容到新对象**
+**Clones the given variable; objects and arrays are copied to a new one**
 
 ```JavaScript
 static Value util.clone(Value v);
 ```
 
-调用参数:
-* v: Value, 给定要克隆的变量
+Parameters:
+* v: Value, the variable to clone
 
-返回结果:
-* Value, 返回克隆结果
+Returns:
+* Value, returns the clone result
+
+Shallow copy: the result is a new [object](../../object/ifs/object.md) or array whose top-level properties
+reference the same values, so nested objects are shared. Date, RegExp and
+wrapper objects are recreated, functions and arguments objects are returned
+as-is, and fibjs native objects ([Buffer](../../object/ifs/Buffer.md), Map, ...) are returned unchanged.
+Node.js has no [util.clone](util.md#clone); structuredClone is a [global](global.md) instead.
+
+Example:
+
+```JavaScript
+var util = require('util');
+
+const source = {
+    list: [1, 2],
+    nested: {
+        a: 1
+    }
+};
+const copy = util.clone(source);
+copy.list.push(3);
+console.log(source.list); // [ 1, 2, 3 ] (the nested array is shared)
+console.log(util.clone(source).nested === source.nested); // true
+```
 
 --------------------------
 ### deepFreeze
-**深度冻结一个对象，被冻结后的对象及其包含的对象都将不允许修改**
+**Deeply freezes an [object](../../object/ifs/object.md) and everything it contains**
 
 ```JavaScript
 static util.deepFreeze(Value v);
 ```
 
-调用参数:
-* v: Value, 指定要冻结的对象
+Parameters:
+* v: Value, the [object](../../object/ifs/object.md) to freeze
+
+Recursively freezes the [object](../../object/ifs/object.md), every array it contains and every value
+reachable through enumerable properties. Returns undefined. Throws a
+TypeError when a value cannot be frozen, for example a [Buffer](../../object/ifs/Buffer.md).
 
 --------------------------
 ### extend
-**将一个或者多个对象的键值扩展到指定对象**
+**Extends the specified [object](../../object/ifs/object.md) with the key-values of one or more objects**
 
 ```JavaScript
 static Value util.extend(Value v,
     ...objs);
 ```
 
-调用参数:
-* v: Value, 指定要扩展的对象
-* objs: ..., 指定一个或者多个用于扩展的对象
+Parameters:
+* v: Value, the [object](../../object/ifs/object.md) to extend
+* objs: ..., one or more objects used for extension
 
-返回结果:
-* Value, 返回扩展的结果
+Returns:
+* Value, returns the extension result
+
+Copies the enumerable properties (own and inherited) of each source into the
+first argument and returns it, with later sources winning. null and
+undefined sources are skipped, a null/undefined target is returned
+unchanged, and other non-objects throw TypeError 20004. `_extend` is the
+Node.js-compatible alias.
 
 --------------------------
 ### _extend
-**将一个或者多个对象的键值扩展到指定对象，是 extend 的别名**
+**Extends an [object](../../object/ifs/object.md) with the key-values of one or more objects (alias)**
 
 ```JavaScript
 static Value util._extend(Value v,
     ...objs);
 ```
 
-调用参数:
-* v: Value, 指定要扩展的对象
-* objs: ..., 指定一个或者多个用于扩展的对象
+Parameters:
+* v: Value, the [object](../../object/ifs/object.md) to extend
+* objs: ..., one or more objects used for extension
 
-返回结果:
-* Value, 返回扩展的结果
+Returns:
+* Value, returns the extension result
+
+Alias of extend, matching the deprecated Node.js [util._extend](util.md#_extend).
 
 --------------------------
 ### pick
-**返回一个[object](../../object/ifs/object.md)副本，只过滤出指定键的属性值**
+**Returns a copy of an [object](../../object/ifs/object.md) containing only the property values of the specified keys**
 
 ```JavaScript
 static Object util.pick(Value v,
     ...objs);
 ```
 
-调用参数:
-* v: Value, 指定要过滤的对象
-* objs: ..., 指定一个或者多个用于选择的键
+Parameters:
+* v: Value, the [object](../../object/ifs/object.md) to filter
+* objs: ..., one or more keys to select
 
-返回结果:
-* Object, 返回过滤的结果
+Returns:
+* Object, returns the filter result
+
+Copies the listed properties from the [object](../../object/ifs/object.md); each argument is a key or an
+array of keys (arrays are expanded one level). Inherited enumerable
+properties are included and missing keys are skipped. A null/undefined
+target yields an empty [object](../../object/ifs/object.md); other non-objects throw TypeError 20004.
 
 --------------------------
 ### omit
-**返回一个[object](../../object/ifs/object.md)副本，只过排除指定键的属性值**
+**Returns a copy of an [object](../../object/ifs/object.md) excluding the property values of the specified keys**
 
 ```JavaScript
 static Object util.omit(Value v,
     ...keys);
 ```
 
-调用参数:
-* v: Value, 指定要过滤的对象
-* keys: ..., 指定一个或者多个用于排除的键
+Parameters:
+* v: Value, the [object](../../object/ifs/object.md) to filter
+* keys: ..., one or more keys to exclude
 
-返回结果:
-* Object, 返回排除的结果
+Returns:
+* Object, returns the filtered result
+
+Copies every enumerable property except the listed ones; each argument is a
+key or an array of keys, and keys are converted to strings, so
+omit(['a', 'b'], 0) removes index 0. A null/undefined target yields an empty
+[object](../../object/ifs/object.md).
 
 --------------------------
 ### first
-**获取数组的第一个元素**
+**Gets the first element of an array**
 
 ```JavaScript
 static Value util.first(Value v);
 ```
 
-调用参数:
-* v: Value, 给定要获取的数组
+Parameters:
+* v: Value, the array to get from
 
-返回结果:
-* Value, 返回获取的元素
+Returns:
+* Value, returns the element
+
+Returns the first element of an array, or undefined for an empty array or a
+null/undefined argument; a non-array throws TypeError 20004. The overload
+with `n` returns a new array with up to `n` leading elements instead.
 
 --------------------------
-**获取数组的开始多个元素**
+**Gets several elements from the beginning of an array**
 
 ```JavaScript
 static Value util.first(Value v,
     Integer n);
 ```
 
-调用参数:
-* v: Value, 给定要获取的数组
-* n: Integer, 指定要获取的元素个数
+Parameters:
+* v: Value, the array to get from
+* n: Integer, the number of elements to get
 
-返回结果:
-* Value, 返回获取的元素数组
+Returns:
+* Value, returns the array of elements
+
+Array form of first: returns up to `n` leading elements, clamped to the
+length; n <= 0 or a null/undefined argument yields an empty array.
 
 --------------------------
 ### last
-**获取数组的第后一个元素**
+**Gets the last element of an array**
 
 ```JavaScript
 static Value util.last(Value v);
 ```
 
-调用参数:
-* v: Value, 给定要获取的数组
+Parameters:
+* v: Value, the array to get from
 
-返回结果:
-* Value, 返回获取的元素
+Returns:
+* Value, returns the element
+
+Returns the last element of an array, or undefined for an empty array or a
+null/undefined argument; a non-array throws TypeError 20004. The overload
+with `n` returns a new array with up to `n` trailing elements instead.
 
 --------------------------
-**获取数组的结尾多个元素**
+**Gets several elements from the end of an array**
 
 ```JavaScript
 static Value util.last(Value v,
     Integer n);
 ```
 
-调用参数:
-* v: Value, 给定要获取的数组
-* n: Integer, 指定要获取的元素个数
+Parameters:
+* v: Value, the array to get from
+* n: Integer, the number of elements to get
 
-返回结果:
-* Value, 返回获取的元素数组
+Returns:
+* Value, returns the array of elements
+
+Array form of last: returns up to `n` trailing elements in original order,
+clamped to the length; n <= 0 or a null/undefined argument yields an empty
+array.
 
 --------------------------
 ### unique
-**获取数组的元素去重后的副本**
+**Gets a copy of an array with duplicate elements removed**
 
 ```JavaScript
 static Array util.unique(Value v,
     Boolean sorted = false);
 ```
 
-调用参数:
-* v: Value, 给定要去重的数组
-* sorted: Boolean, 指定数组是否排序，如果指定数组排序，将使用快速算法
+Parameters:
+* v: Value, the array to deduplicate
+* sorted: Boolean, whether the array is sorted; if the array is sorted, a faster algorithm is used
 
-返回结果:
-* Array, 返回去重元素后的数组
+Returns:
+* Array, returns the array with duplicate elements removed
+
+Returns a new array keeping the first occurrence of each value, compared
+with strict equality. With sorted = true a single backward scan is used,
+which assumes equal values are adjacent and only removes adjacent
+duplicates. Non-arrays throw TypeError 20004.
 
 --------------------------
 ### union
-**将一个或者多个数组的值合并成一个值唯一的数组**
+**Merges the values of one or more arrays into an array of unique values**
 
 ```JavaScript
 static Array util.union(...arrs);
 ```
 
-调用参数:
-* arrs: ..., 指定一个或者多个用于合并的数组
+Parameters:
+* arrs: ..., one or more arrays to merge
 
-返回结果:
-* Array, 返回合并的结果
+Returns:
+* Array, returns the merge result
+
+Concatenates the arrays and removes duplicates with strict equality,
+keeping the first occurrence; every argument must be an array (TypeError
+20004 otherwise) and no argument produces an empty array.
 
 --------------------------
 ### intersection
-**返回一个包含 arr 数组中排除一个或者多个数组元素的交集**
+**Returns the values present in every given array**
 
 ```JavaScript
 static Array util.intersection(...arrs);
 ```
 
-调用参数:
-* arrs: ..., 指定一个或者多个用于计算交集的数组
+Parameters:
+* arrs: ..., one or more arrays used to compute the intersection
 
-返回结果:
-* Array, 返回计算交集的结果
+Returns:
+* Array, returns the computed intersection
+
+Returns the values of the first array that also appear in every remaining
+array, compared with strict equality; duplicates in the first array are
+removed and empty arguments yield an empty array. Non-array arguments throw
+TypeError 20004.
 
 --------------------------
 ### flatten
-**将一个嵌套多层的数组(嵌套可以是任何层数)转换为只有一层的数组。 如果你传递 shallow 参数，数组将只减少一维的嵌套。**
+**Flattens a nested array into a single-level array; shallow stops at one level**
 
 ```JavaScript
 static Array util.flatten(Value arr,
     Boolean shallow = false);
 ```
 
-调用参数:
-* arr: Value, 指定需要转换的数组
-* shallow: Boolean, 指定是否只减少一维的嵌套，缺省为 false
+Parameters:
+* arr: Value, the array to convert
+* shallow: Boolean, whether to flatten only one level, default is false
 
-返回结果:
-* Array, 返回转换的结果
+Returns:
+* Array, returns the conversion result
+
+Flattens nested arrays (and array-like objects) into a single-level array at
+any depth; shallow = true flattens one level only. Circular references
+throw error 20024 ("util: circular reference [object](../../object/ifs/object.md).") and non-objects throw
+TypeError 20004.
 
 --------------------------
 ### without
-**返回一个包含 arr 数组中排除一个或者多个元素后的数组**
+**Returns a copy of the array with one or more elements excluded**
 
 ```JavaScript
 static Array util.without(Value arr,
     ...els);
 ```
 
-调用参数:
-* arr: Value, 指定需要排除的数组
-* els: ..., 指定一个或者多个用于排除的元素
+Parameters:
+* arr: Value, the array to exclude from
+* els: ..., one or more elements to exclude
 
-返回结果:
-* Array, 返回排除的结果
+Returns:
+* Array, returns the exclusion result
+
+Returns a copy of an array-like value without the listed elements, compared
+with strict equality; non-objects without a length throw TypeError 20004.
 
 --------------------------
 ### difference
-**返回一个包含 arr 数组中排除 without 数组元素之后的数组**
+**Returns a copy of the array with the elements of the without arrays excluded**
 
 ```JavaScript
 static Array util.difference(Array list,
     ...arrs);
 ```
 
-调用参数:
-* list: Array, 指定需要排除的数组
-* arrs: ..., 指定用于排除的一个或者多个数组
+Parameters:
+* list: Array, the array to exclude from
+* arrs: ..., one or more arrays to exclude
 
-返回结果:
-* Array, 返回排除的结果
+Returns:
+* Array, returns the exclusion result
+
+Returns the values of the first array that do not appear in any of the other
+arrays, compared with strict equality; non-array arguments throw TypeError
+20004.
 
 --------------------------
 ### each
-**遍历 list 中的所有元素，按顺序用遍历输出每个元素。如果传递了 context 参数，则把 iterator 绑定到 context 对象上。每次调用 iterator 都会传递三个参数：(element, index, list)**
+**Iterates over the elements of list in order, calling iterator for each**
 
 ```JavaScript
 static Value util.each(Value list,
-    Function iterator,
+    Function(Value element, Value index, Value list) iterator,
     Value context = undefined);
 ```
 
-调用参数:
-* list: Value, 指定需要遍历的列表或对象
-* iterator: Function, 指定用于遍历的回调函数
-* context: Value, 指定调用 iterator 时绑定的 context 对象
+Parameters:
+* list: Value, the list or [object](../../object/ifs/object.md) to iterate
+* iterator: Function(Value element, Value index, Value list), the callback function used for iteration
+* context: Value, the context [object](../../object/ifs/object.md) to bind when calling iterator
 
-返回结果:
-* Value, 返回 list 本身
+Returns:
+* Value, returns list itself
+
+Iterates an array by index or another [object](../../object/ifs/object.md) by property keys, calling
+iterator(element, indexOrKey, list) with `context` bound to this. Returns
+list itself; a non-[object](../../object/ifs/object.md) list is returned unchanged without iterating.
 
 --------------------------
 ### map
-**通过变换函数（iterator迭代器）把 list 中的每个值映射到一个新的数组中。如果传递了 context 参数，则把 iterator 绑定到 context 对象上。每次调用 iterator 都会传递三个参数：(element, index, list)**
+**Maps each value in list to a new array through the transform function**
 
 ```JavaScript
 static Array util.map(Value list,
-    Function iterator,
+    Function(Value element, Value index, Value list) => Value iterator,
     Value context = undefined);
 ```
 
-调用参数:
-* list: Value, 指定需要变换的列表或对象
-* iterator: Function, 指定用于变换的回调函数
-* context: Value, 指定调用 iterator 时绑定的 context 对象
+Parameters:
+* list: Value, the list or [object](../../object/ifs/object.md) to transform
+* iterator: Function(Value element, Value index, Value list) => Value, the callback function used for transformation
+* context: Value, the context [object](../../object/ifs/object.md) to bind when calling iterator
 
-返回结果:
-* Array, 返回变换的结果
+Returns:
+* Array, returns the transformation result
+
+Maps an array by index or another [object](../../object/ifs/object.md) by property keys through
+iterator(element, indexOrKey, list), returning a new array of the results; a
+non-[object](../../object/ifs/object.md) list yields an empty array.
 
 --------------------------
 ### reduce
-**把 list中 元素归结为一个单独的数值。如果传递了 context 参数，则把 iterator 绑定到 context 对象上。每次调用 iterator 都会传递三个参数：(memo, element, index, list)**
+**Reduces the elements in list to a single value**
 
 ```JavaScript
 static Value util.reduce(Value list,
-    Function iterator,
+    Function(Value memo, Value element, Value index, Value list) => Value iterator,
     Value memo,
     Value context = undefined);
 ```
 
-调用参数:
-* list: Value, 指定需要归结的列表或对象
-* iterator: Function, 指定用于归结的回调函数
-* memo: Value, 指定归结的初始值
-* context: Value, 指定调用 iterator 时绑定的 context 对象
+Parameters:
+* list: Value, the list or [object](../../object/ifs/object.md) to reduce
+* iterator: Function(Value memo, Value element, Value index, Value list) => Value, the callback function used for reduction
+* memo: Value, the initial value of the reduction
+* context: Value, the context [object](../../object/ifs/object.md) to bind when calling iterator
 
-返回结果:
-* Value, 返回归结的结果
+Returns:
+* Value, returns the reduction result
+
+Folds an array or [object](../../object/ifs/object.md) using iterator(memo, element, indexOrKey, list) and
+returns the final memo; `memo` is required and is also returned unchanged
+for a non-[object](../../object/ifs/object.md) list.
 
 --------------------------
 ### parseArgs
-**解析命令行字符串返回参数列表**
+**Splits a command line string into an argument array**
 
 ```JavaScript
 static NArray util.parseArgs(String command);
 ```
 
-调用参数:
-* command: String, 指定要解析的命令行字符串
+Parameters:
+* command: String, the command line string to parse
 
-返回结果:
-* NArray, 返回解析出的参数列表
+Returns:
+* NArray, returns the parsed parameter list
+
+Honours double quotes and backslash escapes, and splits on whitespace. This
+is a tokenizer, not Node.js's `parseArgs({ options })` parser: it does not
+understand options, defaults or positionals.
+
+Example:
+
+```JavaScript
+var util = require('util');
+
+console.log(util.parseArgs('-a b "c d" e\\ f'));
+// [ '-a', 'b', 'c d', 'e f' ]
+```
 
 --------------------------
 ### compile
-**编译脚本为二进制代码**
+**Compiles a script into binary code**
 
 ```JavaScript
 static Buffer util.compile(String srcname,
@@ -1235,212 +1684,209 @@ static Buffer util.compile(String srcname,
     Integer mode = 0);
 ```
 
-调用参数:
-* srcname: String, 指定要添加的脚本名称
-* script: String, 指定要编译的脚本代码
-* mode: Integer, 编译模式，0: [module](module.md), 1: script, 2: worker，缺省为 0
+Parameters:
+* srcname: String, the name of the script to add
+* script: String, the script code to compile
+* mode: Integer, compilation mode, 0: [module](module.md), 1: script, 2: worker, default is 0
 
-返回结果:
-* [Buffer](../../object/ifs/Buffer.md), 返回编译出的二进制代码
+Returns:
+* [Buffer](../../object/ifs/Buffer.md), returns the compiled binary code
 
-[util.compile](util.md#compile) 可以将脚本编译为 [v8](v8.md) 内部运行数据块(非机器执行代码)。编译以后的代码，保存为 *.jsc 后，可以由 run 和 require 直接加载执行。
+Compiles a script into a gzipped V8 code cache (not machine-executable code)
+that can be saved as a .jsc file and loaded by run or require. Mode 0 wraps
+the code as a [module](module.md), mode 1 as a script and mode 2 as a worker; a leading
+shebang is neutralised. Syntax errors throw SyntaxError, and compiled code
+cannot be recovered as source, so programs relying on Function.toString
+break. Node.js has no [util.compile](util.md#compile); this is a fibjs extension.
 
-由于编译之后，目标代码将不能逆向获取源代码，依赖于 Function.toString 的程序将不能正常运行。
+Example:
+
+```JavaScript
+var util = require('util');
+var fs = require('fs');
+var path = require('path');
+var os = require('os');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'util-compile-'));
+const file = path.join(dir, 'demo.jsc');
+fs.writeFile(file, util.compile('demo', 'module.exports = 40 + 2;'));
+console.log(require(file)); // 42
+fs.unlink(file);
+fs.rmdir(dir);
+```
 
 --------------------------
 ### sync
-**包裹 callback 或 async 函数为同步调用**
+**Wraps a callback or async function for synchronous invocation**
 
 ```JavaScript
-static Function util.sync(Function func,
+static Function(...args) => Value util.sync(Function(...args) => Value func,
     Boolean async_func = false);
 ```
 
-调用参数:
-* func: Function, 给定需要包裹的函数
-* async_func: Boolean, 指定以 async 函数方式处理 func，为 false 则自动判断
+Parameters:
+* func: Function(...args) => Value, the function to wrap
+* async_func: Boolean, whether to treat func as an async function; if false it is
 
-返回结果:
-* Function, 返回同步运行的函数
+Returns:
+* Function(...args) => Value, returns a function that runs synchronously
 
-[util.sync](util.md#sync) 将 callback 函数或者 async 函数处理为 sync 函数，以方便调用。
+`func` is called with a trailing error-first callback, or is awaited when it
+is an async function (or `async_func` is true). The wrapper blocks the
+current fiber until the callback fires or the promise settles, then returns
+the result; a callback error or promise rejection is thrown in the caller.
+Wrapping the same function returns the same wrapper, shared with promisify
+and callbackify of that function.
 
-callback 示例如下：
+Example:
 
 ```JavaScript
-// callback
 var util = require('util');
 
 function cb_test(a, b, cb) {
-    setTimeout(() => {
-        cb(null, a + b);
-    }, 100);
+    setTimeout(() => cb(null, a + b), 10);
 }
-
-var fn_sync = util.sync(cb_test);
-console.log(fn_sync(100, 200));
-```
-
-async 示例如下：
-
-```JavaScript
-// async/await
-var util = require('util');
+console.log(util.sync(cb_test)(100, 200)); // 300
 
 async function async_test(a, b) {
     return a + b;
 }
+console.log(util.sync(async_test)(100, 200)); // 300
 
-var fn_sync = util.sync(async_test);
-console.log(fn_sync(100, 200));
-```
-
-对于未标记为 async 的返回 promise 的函数，可以手动指定 sync 模式：
-
-```JavaScript
-// async/await
-var util = require('util');
-
-function async_test(a, b) {
-    return new Promise(function(resolve, reject) {
-        resolve(a + b);
-    });
+function promise_test(a, b) {
+    return Promise.resolve(a + b);
 }
-
-var fn_sync = util.sync(async_test, true);
-console.log(fn_sync(100, 200));
+console.log(util.sync(promise_test, true)(100, 200)); // 300
 ```
 
 --------------------------
 ### promisify
-**包裹 callback 函数为 async 调用**
+**Wraps a callback function for promise-based invocation**
 
 ```JavaScript
-static Function util.promisify(Function func);
+static Function(...args) => Promise util.promisify(Function(...args) => Value func);
 ```
 
-调用参数:
-* func: Function, 给定需要包裹的函数
+Parameters:
+* func: Function(...args) => Value, the function to wrap
 
-返回结果:
-* Function, 返回 async 函数
+Returns:
+* Function(...args) => Promise, returns an async function
 
-[util.promisify](util.md#promisify) 将 callback 函数处理为 async 函数，以方便调用。
+`func` must take an error-first callback as its last argument; the returned
+function resolves with the callback's second argument and rejects with its
+first. An invocation without a value resolves with undefined. Wrapped
+functions are cached and shared with sync and callbackify. Node.js's
+`promisify.custom` symbol is not supported.
 
-callback 示例如下：
+Example:
 
 ```JavaScript
-// callback
 var util = require('util');
 
 function cb_test(a, b, cb) {
-    setTimeout(() => {
-        cb(null, a + b);
-    }, 100);
+    setTimeout(() => cb(null, a + b), 10);
 }
 
-var fn_sync = util.promisify(cb_test);
-console.log(async fn_sync(100, 200));
+util.promisify(cb_test)(100, 200).then(result => {
+    console.log(result); // 300
+});
 ```
 
 --------------------------
 ### callbackify
-**包裹 async 函数为 callback 调用**
+**Wraps an async function for callback-based invocation**
 
 ```JavaScript
-static Function util.callbackify(Function func);
+static Function(...args) util.callbackify(Function(...args) => Value func);
 ```
 
-调用参数:
-* func: Function, 给定需要包裹的函数
+Parameters:
+* func: Function(...args) => Value, the function to wrap
 
-返回结果:
-* Function, 返回 callback 函数
+Returns:
+* Function(...args), returns a callback function
 
-[util.callbackify](util.md#callbackify) 将 async 函数处理为 callback 函数，以方便调用。
+The returned function calls back with (null, value) when the promise
+resolves and (reason, null) when it rejects. A function that returns a
+non-promise value does not invoke the callback at all, and a rejection with
+a falsy reason is passed through as-is (Node.js wraps it in an Error with a
+`reason` field). Wrapped functions are cached and shared with sync and
+promisify.
 
-async 示例如下：
+Example:
 
 ```JavaScript
-// async
 var util = require('util');
 
 async function async_test(a, b) {
     return a + b;
 }
 
-var fn_callback = util.callbackify(async_test);
-
-fn_callback(100, 200, (err, result) => {
-    console.log(result);
+util.callbackify(async_test)(100, 200, (err, result) => {
+    console.log(result); // 300
 });
 ```
 
 --------------------------
 ### buildInfo
-**查询当前引擎及各组件版本信息**
+**Returns build and component version information for the engine**
 
 ```JavaScript
 static Object util.buildInfo();
 ```
 
-返回结果:
-* Object, 返回组件版本对象
+Returns:
+* Object, returns the component version [object](../../object/ifs/object.md)
+
+The result carries `fibjs`, `node` (the embedded Node API version),
+`platform`, `arch`, the compiler key (`clang`, `gcc` or `msvc`), `date`,
+`modules` and a `vender` [object](../../object/ifs/object.md) with the versions of the bundled libraries
+(`v8`, `uv`, `openssl`, `sqlite`, `zlib`, ...). `builtins` lists the
+registered [module](module.md) names. This is a fibjs extension; Node.js exposes
+`process.versions` instead.
+
+Example:
 
 ```JavaScript
-{
-    "fibjs": "0.25.0",
-    "clang": "9.1",
-    "date": "Jun 12 2018 07:22:40",
-    "vender": {
-        "ev": "4.24",
-        "expat": "2.2.5",
-        "gd": "2.2.4",
-        "jpeg": "8.3",
-        "leveldb": "1.17",
-        "mongo": "0.7",
-        "pcre": "8.21",
-        "png": "1.5.4",
-        "mbedtls": "2.6.1",
-        "snappy": "1.1.2",
-        "sqlite": "3.23.0",
-        "tiff": "3.9.5",
-        "uuid": "1.6.2",
-        "v8": "6.7.288.20",
-        "v8-snapshot": true,
-        "zlib": "1.2.7",
-        "zmq": "3.1"
-    }
-}
+var util = require('util');
+
+const info = util.buildInfo();
+console.log(info.vender.v8.length > 0); // true
+console.log(info.builtins.includes('fs')); // true
 ```
 
 --------------------------
 ### stripTypeScript
-**将 TypeScript 代码转换为 JavaScript，移除所有类型注解**
+**Converts TypeScript code to JavaScript, removing all type annotations**
 
 ```JavaScript
 static String util.stripTypeScript(String code);
 ```
 
-调用参数:
-* code: String, TypeScript 源代码
+Parameters:
+* code: String, TypeScript source code
 
-返回结果:
-* String, 返回转换后的 JavaScript 代码
+Returns:
+* String, returns the converted JavaScript code
 
-该方法使用 strip-only 模式，将 TypeScript 的类型语法替换为空格，保持源代码的行列位置不变。
-这对于需要调试或生成 source map 的场景非常有用。
+This method uses strip-only mode, replacing TypeScript type syntax with
+spaces while keeping the line and column positions of the source code
+unchanged; this keeps debugging and source maps working.
 
-注意：strip-only 模式不支持以下语法：
-- enum（需要转换为 IIFE）
-- const enum（需要内联展开）
-- namespace（需要转换为 IIFE）
-- 构造函数参数属性（如 constructor(public x: string)）
-- import = require() 语法
-- export = 语法
-- 尖括号类型断言（如 <T>expr，请使用 as 语法）
+Notes: strip-only mode does not support the following syntax:
+- enum (must be converted to an IIFE)
+- const enum (must be inlined)
+- namespace (must be converted to an IIFE)
+- constructor parameter properties (such as constructor(public x: string))
+- import = require() syntax
+- export = syntax
+- angle bracket type assertions (such as <T>expr, use the as syntax instead)
 
-示例：
+Invalid TypeScript is not validated: the stripper returns the mangled text
+instead of throwing.
+
+Example:
 
 ```JavaScript
 var util = require('util');
@@ -1451,32 +1897,57 @@ console.log(js); // 'const x         = "hello";'
 
 --------------------------
 ### getStringWidth
-**获取字符串的可视宽度，考虑全角字符、emoji 和 ANSI 转义序列**
+**Gets the visual width of a string in terminal columns**
 
 ```JavaScript
 static Integer util.getStringWidth(String str);
 ```
 
-调用参数:
-* str: String, 要计算宽度的字符串
+Parameters:
+* str: String, the string whose width is to be calculated
 
-返回结果:
-* Integer, 返回字符串的可视宽度
+Returns:
+* Integer, returns the visual width of the string
 
-东亚宽度属性为 Fullwidth (F) 或 Wide (W) 的字符计为 2，大多数其他字符计为 1。
-控制字符和组合标记计为 0。ANSI 转义序列将被跳过。
+Characters with East Asian Width Fullwidth (F) or Wide (W) count as 2 and
+most other characters as 1. Emoji with emoji presentation count as 2.
+Control characters and combining marks count as 0; ANSI escape sequences
+are skipped.
+
+Example:
+
+```JavaScript
+var util = require('util');
+
+console.log(util.getStringWidth('hello')); // 5
+console.log(util.getStringWidth('\u4f60\u597d')); // 4
+console.log(util.getStringWidth('\u001b[31mred\u001b[0m')); // 3
+```
 
 --------------------------
 ### stripVTControlCharacters
-**从字符串中移除 ANSI 转义序列（VT 控制字符）**
+**Removes ANSI escape sequences (VT control characters) from a string**
 
 ```JavaScript
 static String util.stripVTControlCharacters(String str);
 ```
 
-调用参数:
-* str: String, 要处理的字符串
+Parameters:
+* str: String, the string to [process](process.md)
 
-返回结果:
-* String, 返回移除 ANSI 转义序列后的字符串
+Returns:
+* String, returns the string with ANSI escape sequences removed
+
+Removes CSI sequences ([colors](colors.md), cursor movement), OSC sequences terminated by
+BEL or ST, and two-byte ESC sequences; other characters are copied
+unchanged. Node.js exposes the same function.
+
+Example:
+
+```JavaScript
+var util = require('util');
+
+console.log(util.stripVTControlCharacters('\u001b[31mred\u001b[0m')); // red
+console.log(util.stripVTControlCharacters('\u001b]0;title\u0007body')); // body
+```
 

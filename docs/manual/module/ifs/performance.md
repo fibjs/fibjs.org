@@ -1,55 +1,292 @@
-# 模块 performance
-performance 基础性能监控模块
+# Module performance
+Provides the performance timeline API: a monotonic clock plus named marks and measures for measuring and instrumenting application timings
 
-引用方法：
+Main capabilities:
+
+- **Clock**: `now` reads the monotonic high-resolution clock;
+- **Marks**: `mark` records a named timestamp and `clearMarks` removes them;
+- **Measures**: `measure` computes a duration; `clearMeasures` is a Node.js compatibility no-op;
+- **Timeline queries**: `getEntries`, `getEntriesByType` and `getEntriesByName` read the marks;
+- **Observation**: `PerformanceObserver` receives marks and measures as they are recorded;
+- **Resource timing**: `markResourceTiming` is a compatibility stub that records nothing.
+
+The [module](module.md) is available as `require('[perf_hooks](perf_hooks.md)').performance` and as the [global](global.md) `performance`;
+both names refer to the same [object](../../object/ifs/object.md).
+
+Concepts:
+
+- **Monotonic clock**: `now()` returns the milliseconds elapsed since the fibjs runtime started,
+  as a floating-point number with sub-millisecond resolution. It never goes backwards and has no
+  relation to the wall clock (use Date for calendar time); only a difference between two readings
+  is meaningful. Node.js additionally provides `timeOrigin`, `toJSON`, `nodeTiming` and
+  `eventLoopUtilization`, none of which exist here.
+- **Entry [types](types.md)**: only `mark` and `measure` entries are ever produced; there is no navigation,
+  resource, paint or user-timing buffer, and an observer registered for another type never fires.
+- **Marks**: a mark is a named timestamp that can carry an arbitrary `detail` and whose
+  `startTime` can be overridden. Marks are keyed by name, so marking the same name again replaces
+  the previous entry (Node.js keeps both).
+- **Measures**: a measure is a computed duration derived from two mark names, from explicit
+  numbers, or from `start` plus `duration`. Measures are **not stored** in the timeline:
+  `getEntries`/`getEntriesByType`/`getEntriesByName` only ever return marks and `clearMeasures`
+  does nothing; a measure reaches the program exclusively through a [PerformanceObserver](../../object/ifs/PerformanceObserver.md). Node.js
+  retains measures and can query them.
+- **Observers vs polling**: `getEntries*` is a snapshot of the marks recorded so far, while an
+  observer is notified about new entries. Records are queued synchronously, so `takeRecords()`
+  can drain them before the callback runs; the callback itself runs when the current fiber yields.
+- **Profiling**: this [module](module.md) only records user-defined marks and measures. For CPU profiling use
+  the `--prof` family of CLI options; for heap inspection use the [v8](v8.md) [module](module.md).
+
+Import:
 
 ```JavaScript
-var performance = require('perf_hooks').performance;
+const {
+    performance,
+    PerformanceObserver
+} = require('perf_hooks');
+// the same objects are available as the globals `performance` and `PerformanceObserver`
 ```
 
-## 静态函数
+Example 1 — time a synchronous section with marks:
+
+```JavaScript
+const {
+    performance
+} = require('perf_hooks');
+
+performance.clearMarks();
+performance.mark('section-start');
+let sum = 0;
+for (let i = 0; i < 100000; i++)
+    sum += i;
+performance.mark('section-end', {
+    detail: sum
+});
+performance.measure('section', 'section-start', 'section-end');
+
+const entry = performance.getEntriesByName('section-end')[0];
+console.log(entry.entryType, entry.duration, entry.detail); // mark 0 4999950000
+console.log(performance.getEntriesByType('measure').length); // 0, measures are not stored
+```
+
+Example 2 — compute a measure from explicit timestamps and observe it:
+
+```JavaScript
+const {
+    performance,
+    PerformanceObserver
+} = require('perf_hooks');
+
+performance.clearMarks();
+const observer = new PerformanceObserver(() => {});
+observer.observe({
+    entryTypes: ['measure']
+});
+
+performance.measure('startup', {
+    start: 0,
+    duration: 12.5,
+    detail: {
+        phase: 'boot'
+    }
+});
+
+const measure = observer.takeRecords()[0];
+console.log(measure.name, measure.entryType); // startup measure
+console.log(measure.startTime, measure.duration); // 0 12.5
+console.log(measure.detail.phase); // boot
+observer.disconnect();
+```
+
+Example 3 — receive entries in the observer callback:
+
+```JavaScript
+const {
+    performance,
+    PerformanceObserver
+} = require('perf_hooks');
+
+(async () => {
+    performance.clearMarks();
+    let names = [];
+    const observer = new PerformanceObserver((list) => {
+        names = list.getEntries().map((entry) => entry.name);
+    });
+    observer.observe({
+        entryTypes: ['mark', 'measure']
+    });
+
+    performance.mark('request-start');
+    performance.measure('request', 'request-start', 'request-start');
+
+    // the callback runs when the current fiber yields
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    console.log(names.join(', ')); // request-start, request
+    observer.disconnect();
+})();
+```
+
+Notes:
+
+- The timeline is per isolate: marks recorded inside a worker are not visible to the main isolate.
+- getEntries returns the marks in an unspecified order; sort the array when a stable order is
+  needed.
+- A missing mark in measure fails with Error [20024] and messages such as
+  "startMark 'x' not found"; Node.js throws a DOMException instead.
+
+## Static Methods
         
 ### clearMarks
-**清除所有性能标记**
+**Clears all marks, or a single named mark**
 
 ```JavaScript
 static performance.clearMarks(String name = "");
 ```
 
-调用参数:
-* name: String, 标记名称，如果为空则清除所有标记
+Parameters:
+* name: String, the mark name; if empty, clears all marks
+
+Clears the mark timeline; the same names can be marked again afterwards, and clearing a name
+that does not exist is a no-op. Measures already delivered to observers are unaffected, but a
+measure that references a cleared mark can no longer be created.
 
 --------------------------
 ### clearMeasures
-**清除所有性能测量**
+**Compatibility no-op kept for Node.js API parity**
 
 ```JavaScript
 static performance.clearMeasures(String name = "");
 ```
 
-调用参数:
-* name: String, 测量名称，如果为空则清除所有测量
+Parameters:
+* name: String, the measure name; ignored
+
+fibjs does not retain measures in the timeline, so there is nothing to remove and the call
+always returns undefined. It exists so code written for Node.js, where the member clears
+named or anonymous measures, keeps working; observer delivery is not affected.
 
 --------------------------
 ### mark
-**创建一个性能标记**
+**Records a named timestamp in the performance timeline**
 
 ```JavaScript
 static performance.mark(String name,
     Object options = {});
 ```
 
-调用参数:
-* name: String, 标记名称
-* options: Object, 附加选项
+Parameters:
+* name: String, the mark name
+* options: Object, the additional options
 
-options 为一个对象，包含以下属性：
- - detail: 附加信息
- - startTime: 开始时间，如果为空则使用当前时间
+options supports the following options:
+
+```JavaScript
+// fragment: options
+({
+    "startTime": 0, // the timestamp to record in ms; defaults to performance.now()
+    "detail": null // any value attached to the mark; defaults to undefined
+});
+```
+
+Marking a name that already exists replaces the previous entry, so the timeline holds at most
+one mark per name. The mark is observable through getEntries/getEntriesByType/getEntriesByName
+and is delivered to observers registered for the `mark` entry type. `startTime` must be a
+number: a string or boolean fails with TypeError [20005], while null is treated as absent.
+
+Example — mark a phase with a custom offset and detail:
+
+```JavaScript
+const {
+    performance
+} = require('perf_hooks');
+
+performance.clearMarks();
+performance.mark('cache-warm', {
+    startTime: 42.5,
+    detail: {
+        entries: 3
+    }
+});
+
+const mark = performance.getEntriesByName('cache-warm')[0];
+console.log(mark.entryType, mark.startTime, mark.duration); // mark 42.5 0
+console.log(mark.detail.entries); // 3
+```
 
 --------------------------
 ### measure
-**创建一个性能测量**
+**Creates a measure from options, or between two mark names**
+
+```JavaScript
+static performance.measure(String name,
+    Object options = {});
+```
+
+Parameters:
+* name: String, the measure name
+* options: Object, the additional options, or the start mark name in the string overload
+
+options supports the following options:
+
+```JavaScript
+// fragment: options
+({
+    "start": 0, // a mark name or a timestamp in ms; defaults to 0
+    "end": null, // a mark name or a timestamp in ms; defaults to performance.now()
+    "duration": null, // the duration in ms; when given, end must be omitted
+    "detail": null // any value attached to the measure; defaults to undefined
+});
+```
+
+The second overload, measure(name, startMark, endMark), takes mark names directly: an empty
+startMark means timestamp 0 and an empty endMark means the current time. Both overloads
+compute duration as end - start; a negative duration is accepted (Node.js rejects an
+explicitly negative `duration` option and keeps end < start as negative). A string start or
+end that names a missing mark fails with Error [20024] and "startMark 'x' not found" or
+"endMark 'x' not found"; `duration` together with `end` fails with "end must not be specified
+when duration is specified"; a start or end that is neither string nor number fails with
+"start must be a string or number" or "end must be a string or number". Combining a
+mark-name `start` with `duration` is a known deviation: the end is computed before the mark
+is resolved, so the recorded duration is `duration - mark.startTime`; use `end` with a mark
+name, or a numeric `start`, instead.
+
+Measures are not stored in the timeline: they are delivered only to [PerformanceObserver](../../object/ifs/PerformanceObserver.md)
+instances registered for `measure` and never appear in getEntries/getEntriesByType/
+getEntriesByName.
+
+Example — measure a span between two marks with an explicit detail:
+
+```JavaScript
+const {
+    performance,
+    PerformanceObserver
+} = require('perf_hooks');
+
+performance.clearMarks();
+performance.mark('begin', {
+    startTime: 10
+});
+performance.mark('end', {
+    startTime: 15
+});
+const observer = new PerformanceObserver(() => {});
+observer.observe({
+    type: 'measure'
+});
+
+performance.measure('slice', {
+    start: 'begin',
+    end: 'end',
+    detail: 'fast'
+});
+
+const measure = observer.takeRecords()[0];
+console.log(measure.name, measure.startTime, measure.duration); // slice 10 5
+console.log(measure.detail); // fast
+observer.disconnect();
+```
+
+--------------------------
+**Creates a measure between two mark names**
 
 ```JavaScript
 static performance.measure(String name,
@@ -57,73 +294,113 @@ static performance.measure(String name,
     String endMark = "");
 ```
 
-调用参数:
-* name: String, 测量名称
-* startMark: String, 开始标记名称，如果为空则使用进程起始时间
-* endMark: String, 结束标记名称，如果为空则使用当前时间
+Parameters:
+* name: String, the measure name
+* startMark: String, the start mark name; if empty, uses timestamp 0
+* endMark: String, the end mark name; if empty, uses the current time
 
---------------------------
-**创建一个性能测量**
-
-```JavaScript
-static performance.measure(String name,
-    Object options = {});
-```
-
-调用参数:
-* name: String, 测量名称
-* options: Object, 附加选项
-
-options 为一个对象，包含以下属性：
- - detail: 附加信息
- - duration: 持续时间
- - end: 如果为 Number 类型，则表示结束时间，如果是 String 类型，则表示结束标记名称
- - start: 如果为 Number 类型，则表示开始时间，如果是 String 类型，则表示开始标记名称
+Calls measure(name, startMark, endMark) with mark names: both marks must exist in the timeline
+or the call fails with Error [20024]. An empty startMark is interpreted as timestamp 0 and an
+empty endMark as the current time, mirroring the first overload; see the options overload for
+the full duration rules and error messages.
 
 --------------------------
 ### getEntries
-**获取所有性能记录**
+**Returns a snapshot of the marks in the timeline**
 
 ```JavaScript
-static NArray performance.getEntries();
+static PerformanceEntry performance.getEntries();
 ```
 
-返回结果:
-* NArray, 返回所有性能记录
+Returns:
+* [PerformanceEntry](../../object/ifs/PerformanceEntry.md), returns all performance entries
+
+The result is a new array with one [PerformanceMark](../../object/ifs/PerformanceMark.md) per name; measures are never included, so
+only clearing the marks empties it. The underlying collection is unordered: sort the array
+when a stable order is needed. The entries are the same objects that observers receive.
+
+Example — list the current marks in a stable order:
+
+```JavaScript
+const {
+    performance
+} = require('perf_hooks');
+
+performance.clearMarks();
+performance.mark('a');
+performance.mark('b');
+console.log(performance.getEntries().map((entry) => entry.name).sort().join(', ')); // a, b
+```
 
 --------------------------
 ### getEntriesByType
-**获取所有性能记录**
+**Returns the marks matching an entry type**
 
 ```JavaScript
-static NArray performance.getEntriesByType(String type);
+static PerformanceEntry performance.getEntriesByType(String type);
 ```
 
-调用参数:
-* type: String, 记录类型
+Parameters:
+* type: String, the entry type
 
-返回结果:
-* NArray, 返回所有性能记录
+Returns:
+* [PerformanceEntry](../../object/ifs/PerformanceEntry.md), returns all performance entries
+
+The only type that can match is `mark`, because measures are not retained: `measure` or any
+unknown type returns an empty array without raising an error.
+
+Example — `mark` matches while `measure` is always empty:
+
+```JavaScript
+const {
+    performance
+} = require('perf_hooks');
+
+performance.clearMarks();
+performance.mark('tick');
+console.log(performance.getEntriesByType('mark').length); // 1
+console.log(performance.getEntriesByType('measure').length); // 0
+```
 
 --------------------------
 ### getEntriesByName
-**获取所有性能记录**
+**Returns the marks matching a name and an optional entry type**
 
 ```JavaScript
-static NArray performance.getEntriesByName(String name,
+static PerformanceEntry performance.getEntriesByName(String name,
     String type = "");
 ```
 
-调用参数:
-* name: String, 记录名称
-* type: String, 记录类型
+Parameters:
+* name: String, the entry name
+* type: String, the entry type
 
-返回结果:
-* NArray, 返回所有性能记录
+Returns:
+* [PerformanceEntry](../../object/ifs/PerformanceEntry.md), returns all performance entries
+
+Filters the timeline by name; when type is given it must match too. Mark names are unique in
+the timeline, so the result holds at most one entry.
+
+Example — look a mark up by name, with and without a type filter:
+
+```JavaScript
+const {
+    performance
+} = require('perf_hooks');
+
+performance.clearMarks();
+performance.mark('load', {
+    startTime: 3
+});
+
+console.log(performance.getEntriesByName('load').length); // 1
+console.log(performance.getEntriesByName('load', 'mark').length); // 1
+console.log(performance.getEntriesByName('load', 'measure').length); // 0
+```
 
 --------------------------
 ### markResourceTiming
-**标记资源时间（兼容性空实现）**
+**Compatibility stub of the Node.js resource timing hook**
 
 ```JavaScript
 static performance.markResourceTiming(Value timingInfo,
@@ -135,23 +412,57 @@ static performance.markResourceTiming(Value timingInfo,
     Integer responseStatus);
 ```
 
-调用参数:
-* timingInfo: Value, 时间信息对象
-* requestedUrl: String, 请求的 URL
-* initiatorType: String, 发起者类型
-* global: Value, 全局对象
-* cacheState: String, 缓存状态
-* bodyInfo: Value, 请求体信息
-* responseStatus: Integer, 响应状态码
+Parameters:
+* timingInfo: Value, the timing information [object](../../object/ifs/object.md)
+* requestedUrl: String, the requested URL
+* initiatorType: String, the initiator type
+* global: Value, the [global](global.md) [object](../../object/ifs/object.md)
+* cacheState: String, the cache state
+* bodyInfo: Value, the request body information
+* responseStatus: Integer, the response status code
+
+Accepts the Node.js markResourceTiming(timingInfo, requestedUrl, initiatorType, [global](global.md),
+cacheState, bodyInfo, responseStatus) call and does nothing: no resource entry is created and
+observers registered for `resource` never fire. The arguments are still type-checked, so all
+seven must be supplied.
+
+Example — the call is accepted and records nothing:
+
+```JavaScript
+const {
+    performance
+} = require('perf_hooks');
+
+const before = performance.getEntries().length;
+performance.markResourceTiming({}, 'https://example.com/', 'fetch', global, 'local', {}, 200);
+console.log(performance.getEntries().length - before); // 0
+```
 
 --------------------------
 ### now
-**查询当前进程时间**
+**Reads the monotonic high-resolution clock**
 
 ```JavaScript
 static Number performance.now();
 ```
 
-返回结果:
-* Number, 返回当前进程时间
+Returns:
+* Number, returns the current [process](process.md) time
+
+Returns the milliseconds elapsed since the fibjs runtime started as a floating-point number
+with sub-millisecond resolution. The reading is monotonic and unrelated to the wall clock: use
+Date for calendar time and compare two readings to measure a duration. The first reading of a
+[process](process.md) is a small positive number, not an epoch timestamp.
+
+Example — measure an interval between two readings:
+
+```JavaScript
+const {
+    performance
+} = require('perf_hooks');
+
+const start = performance.now();
+const end = performance.now();
+console.log(typeof start, end >= start); // number true
+```
 

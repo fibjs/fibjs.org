@@ -1,69 +1,180 @@
-# 对象 FileHandle
-文件句柄对象
+# Object FileHandle
+An open file descriptor: reads, writes and inspects one open file by position
+
+A FileHandle keeps a native descriptor open between calls, so one handle can alternate
+between reading and writing, use random access, or stay open for a long time. Reach for it
+when one operation is not enough: [fs.readFile](../../module/ifs/fs.md#readFile)/[fs.writeFile](../../module/ifs/fs.md#writeFile) open, transfer and close the file
+in a single call, while [fs.open](../../module/ifs/fs.md#open) returns a handle that lives until close(). A handle can also
+be passed to the descriptor functions of the [fs](../../module/ifs/fs.md) [module](../../module/ifs/module.md) (fstat, fchmod, futimes, read, write
+and so on).
+
+Concepts:
+
+- **Descriptor and position**: the handle owns one descriptor with one file position.
+  read/write without a position continue at the current position; an explicit position
+  (greater than -1) seeks the descriptor first, so a positioned call also moves the position
+  for the next sequential call. In Node.js a positioned call leaves the position untouched
+  (plans/compat-differences.md 2.14).
+- **Lifetime**: the descriptor stays open until close() is called, even when the handle
+  becomes unreachable, so an unclosed handle keeps a file busy. No other member closes it.
+  After close() the fd property is -1 and the members report an invalid handle; closing an
+  already closed handle throws in fibjs while Node.js resolves (2.16).
+- **Call forms**: every member marked async works synchronously (the fiber blocks), with a
+  trailing callback, or through fs.promises.open. read and write return a result [object](object.md) with
+  bytesRead/bytesWritten and buffer in all three forms.
+- **writeFile replaces, appendFile does not seek**: writeFile seeks to 0 and truncates before
+  writing, appendFile writes at the current position; open with the 'a' flag when appendFile
+  must always append. Node.js writeFile writes in place instead (2.15).
+
+Obtained from:
+- `fs.open([path](../../module/ifs/path.md)[, flags[, mode]])` — synchronous/callback entry point, flags default to 'r';
+- `fs.promises.open([path](../../module/ifs/path.md)[, flags[, mode]])` — promise entry point;
+- `new FileHandle(fd)` — the IDL constructor wraps an existing descriptor, but the class is
+  not exposed as a JavaScript [global](../../module/ifs/global.md) in fibjs, so user code obtains handles from the open
+  functions.
+
+Example 1 — write and read one file through a handle with explicit positions:
 
 ```JavaScript
-var fd = fs.open('test.txt');
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-handle-'));
+const file = path.join(dir, 'data.txt');
+
+const handle = fs.open(file, 'w+');
+handle.write(Buffer.from('hello world'), 0, -1, 0);
+const read = handle.read(Buffer.alloc(5), 0, 5, 6);
+console.log(read.bytesRead, read.buffer.toString()); // 5 world
+
+handle.close();
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
 ```
 
-## 继承关系
+Example 2 — replace, append and inspect the file through the same handle:
+
+```JavaScript
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-handle-'));
+const file = path.join(dir, 'log.txt');
+
+const handle = fs.open(file, 'a+');
+console.log(handle.writeFile('first')); // 5, the content is replaced and truncated
+handle.appendFile(' second'); // the 'a' flag appends at the end
+console.log(handle.readFile('utf8')); // first second
+console.log(handle.stat().size); // 12
+
+handle.close();
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
+```
+
+Example 3 — the promise form closes the descriptor through await:
+
+```JavaScript
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-handle-'));
+const file = path.join(dir, 'async.txt');
+
+(async () => {
+    const handle = await fs.promises.open(file, 'w+');
+    await handle.writeFile('async data');
+    console.log(await handle.readFile('utf8')); // async data
+    await handle.close();
+    fs.rmSync(dir, {
+        recursive: true,
+        force: true
+    });
+})();
+```
+
+## Inheritance
 ```dot
 digraph {
     node [fontname="Helvetica,sans-Serif", fontsize=10, shape="record", style="filled", fillcolor="white"];
 
     object [tooltip="object", URL="object.md", label="{object|toString()\ltoJSON()\l}"];
-    FileHandle [tooltip="FileHandle", fillcolor="lightgray", id="me", label="{FileHandle|new FileHandle()\l|fd\l|chmod()\lstat()\lread()\lwrite()\lreadFile()\lwriteFile()\lclose()\l}"];
+    FileHandle [tooltip="FileHandle", fillcolor="lightgray", id="me", label="{FileHandle|new FileHandle()\l|fd\l|chmod()\lstat()\lread()\lwrite()\lreadFile()\lwriteFile()\lutimes()\lchown()\lsync()\ldatasync()\ltruncate()\lappendFile()\lclose()\l}"];
 
     object -> FileHandle [dir=back];
 }
 ```
 
-## 构造函数
+## Constructors
         
 ### FileHandle
-**FileHandle 构造函数，从文件描述符创建文件句柄**
+**Wraps an existing file descriptor in a FileHandle**
 
 ```JavaScript
 new FileHandle(Integer fd);
 ```
 
-调用参数:
-* fd: Integer, 文件描述符数值
+Parameters:
+* fd: Integer, the file descriptor value
 
-## 成员属性
+The descriptor is used as it is and is owned by the returned handle: close() closes it
+and every other member reports an invalid handle afterwards. fibjs does not expose the
+class as a JavaScript [global](../../module/ifs/global.md) (`typeof FileHandle` is 'undefined'), so in practice handles
+are obtained from [fs.open](../../module/ifs/fs.md#open) and fs.promises.open.
+
+## Properties
         
 ### fd
-**Integer, 查询当前文件描述符**
+**Integer, [File](File.md) descriptor number of the open handle**
 
 ```JavaScript
 readonly Integer FileHandle.fd;
 ```
 
-## 成员函数
+A positive integer while the handle is open and -1 after close(). The number can be
+passed to the descriptor functions of the [fs](../../module/ifs/fs.md) [module](../../module/ifs/module.md) ([fs.fstat](../../module/ifs/fs.md#fstat), [fs.read](../../module/ifs/fs.md#read), [fs.write](../../module/ifs/fs.md#write),
+[fs.fsync](../../module/ifs/fs.md#fsync), [fs.close](../../module/ifs/fs.md#close) and others), which accept an integer or a FileHandle alike.
+
+## Methods
         
 ### chmod
-**查询当前文件的访问权限，Windows 不支持此方法**
+**Changes the permission bits of the open file (fchmod); effective on POSIX systems**
 
 ```JavaScript
 FileHandle.chmod(Integer mode) async;
 ```
 
-调用参数:
-* mode: Integer, 指定设定的访问权限
+Parameters:
+* mode: Integer, the access permission to set
+
+Applies mode to the file the descriptor addresses, without a [path](../../module/ifs/path.md) lookup; on Windows only
+the write bit is meaningful. Same name and purpose as Node.js filehandle.chmod.
 
 --------------------------
 ### stat
-**查询当前文件的基础信息**
+**Reads the status of the open file (fstat)**
 
 ```JavaScript
 Stat FileHandle.stat() async;
 ```
 
-返回结果:
-* [Stat](Stat.md), 返回文件的基础信息
+Returns:
+* [Stat](Stat.md), returns the basic information of the file
+
+The returned [Stat](Stat.md) describes the file the descriptor addresses and is not bound to a [path](../../module/ifs/path.md),
+so its name property is an empty string (unlike [fs.stat](../../module/ifs/fs.md#stat)). Node.js calls this
+filehandle.stat().
 
 --------------------------
 ### read
-**根据文件描述符，读取文件内容**
+**Reads bytes from the file into a [Buffer](Buffer.md), optionally at a given position**
 
 ```JavaScript
 (Integer bytesRead, Buffer buffer) FileHandle.read(Buffer buffer,
@@ -72,218 +183,434 @@ Stat FileHandle.stat() async;
     Integer position = -1) async;
 ```
 
-调用参数:
-* buffer: [Buffer](Buffer.md), 读取结果写入的 [Buffer](Buffer.md) 对象
-* offset: Integer, [Buffer](Buffer.md) 写入偏移量， 默认为 0
-* length: Integer, 文件读取字节数，默认为 0
-* position: Integer, 文件读取位置，默认为当前文件位置
+Parameters:
+* buffer: [Buffer](Buffer.md), the [Buffer](Buffer.md) [object](object.md) to write the read result into
+* offset: Integer, the [Buffer](Buffer.md) write offset, default is 0
+* length: Integer, the number of bytes to read from the file, default is 0
+* position: Integer, the file read position, default is the current file position
 
-返回结果:
-* (Integer bytesRead, [Buffer](Buffer.md) buffer), 返回包含 bytesRead 和 buffer 属性的对象
+Returns:
+* (Integer bytesRead, [Buffer](Buffer.md) buffer), returns an [object](object.md) containing the bytesRead and buffer properties
+
+Bytes are read into buffer starting at buffer[offset]; at most length bytes are read and
+a short read only happens at the end of the file. The default length 0 reads nothing and
+returns bytesRead 0; the options form below instead defaults to buffer.length - offset.
+position greater than -1 seeks the descriptor before reading (so the position is left
+after the data), the default -1 reads from the current position. The result [object](object.md) holds
+bytesRead, the number of bytes actually read, and buffer, the same [Buffer](Buffer.md).
+
+The options form read(options) takes the properties below; its buffer is allocated with
+16384 bytes when missing and offset/length/position have the same meaning. In Node.js
+the result shape and the default buffer are the same, but an explicit position does not
+move the current position (plans/compat-differences.md 2.14).
+
+options supports the following properties:
+
+```JavaScript
+// fragment: options
+({
+    "buffer": Buffer.alloc(16384), // the destination; allocated when not provided
+    "offset": 0, // the write offset inside the buffer, default 0
+    "length": 0, // bytes to read; default buffer.length - offset in this form
+    "position": -1 // the file position to read from, default the current position
+})
+```
+
+Throws RangeError when offset is negative or length is larger than buffer.length -
+offset; an invalid or closed handle reports a bad file descriptor error instead.
+
+Example — read a middle slice and then continue sequentially:
+
+```JavaScript
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-read-'));
+const file = path.join(dir, 'read.txt');
+fs.writeFile(file, '0123456789');
+
+const handle = fs.open(file, 'r');
+const first = handle.read(Buffer.alloc(3), 0, 3, 0);
+const next = handle.read(Buffer.alloc(2), 0, 2);
+console.log(first.buffer.toString(), next.buffer.toString()); // 012 34
+
+handle.close();
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
+```
 
 --------------------------
-**根据文件描述符，读取文件内容**
+**Reads bytes from the file with all parameters in one options [object](object.md)**
 
 ```JavaScript
 (Integer bytesRead, Buffer buffer) FileHandle.read(Object options) async;
 ```
 
-调用参数:
-* options: Object, 指定读取选项
+Parameters:
+* options: Object, the read options
 
-返回结果:
-* (Integer bytesRead, [Buffer](Buffer.md) buffer), 返回包含 bytesRead 和 buffer 属性的对象
+Returns:
+* (Integer bytesRead, [Buffer](Buffer.md) buffer), returns an [object](object.md) containing the bytesRead and buffer properties
 
-options 支持以下属性：
-
-```JavaScript
-{
-    "buffer": Buffer.alloc(16384), // 读取结果写入的 Buffer 对象，未提供时自动分配
-    "offset": 0, // Buffer 写入偏移量，默认为 0
-    "length": 0, // 读取字节数，默认为 buffer.length - offset
-    "position": -1 // 文件读取位置，默认为当前文件位置
-}
-```
+Equivalent to read(buffer, offset, length, position) with the properties of options
+filling the parameters; see the first form for the result shape, the defaults (a
+16384-byte buffer when buffer is missing) and the position rules.
 
 --------------------------
 ### write
-**根据文件描述符，向文件写入内容**
+**Writes bytes from a [Buffer](Buffer.md), optionally at a given position**
 
 ```JavaScript
-Integer FileHandle.write(Buffer buffer,
+(Integer bytesWritten, Buffer buffer) FileHandle.write(Buffer buffer,
     Integer offset = 0,
     Integer length = -1,
     Integer position = -1) async;
 ```
 
-调用参数:
-* buffer: [Buffer](Buffer.md), 待写入的 [Buffer](Buffer.md) 对象
-* offset: Integer, [Buffer](Buffer.md) 数据读取偏移量， 默认为 0
-* length: Integer, 文件写入字节数，默认为 -1
-* position: Integer, 文件写入取位置，默认为当前文件位置
+Parameters:
+* buffer: [Buffer](Buffer.md), the [Buffer](Buffer.md) [object](object.md) to write
+* offset: Integer, the [Buffer](Buffer.md) data read offset, default is 0
+* length: Integer, the number of bytes to write to the file, default is -1
+* position: Integer, the file write position, default is the current file position
 
-返回结果:
-* Integer, 实际写入的字节数
+Returns:
+* (Integer bytesWritten, [Buffer](Buffer.md) buffer), returns an [object](object.md) containing the bytesWritten and buffer properties
 
---------------------------
-**根据文件描述符，向文件写入内容**
+Writes length bytes starting at buffer[offset]. The default length -1 means "up to the
+end of the buffer" and the default offset 0 starts at the beginning, so the defaults are
+usable as a plain write. A position greater than -1 seeks the descriptor first, and the
+write also leaves the position after the data (Node.js keeps it, see
+plans/compat-differences.md 2.14); the default -1 writes at the current position. The
+result [object](object.md) holds bytesWritten and buffer.
+
+The string form write(string, position, [encoding](../../module/ifs/encoding.md)) encodes the string first and then
+writes the resulting bytes with the same position rules.
+
+Example — overwrite a range in the middle of a file:
 
 ```JavaScript
-Integer FileHandle.write(String string,
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-write-'));
+const file = path.join(dir, 'write.txt');
+fs.writeFile(file, '0123456789');
+
+const handle = fs.open(file, 'r+');
+const result = handle.write(Buffer.from('AB'), 0, 2, 4);
+console.log(result.bytesWritten); // 2
+console.log(handle.readFile('utf8')); // 0123AB6789
+
+handle.close();
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
+```
+
+--------------------------
+**Writes a string, [encoding](../../module/ifs/encoding.md) it and optionally seeking first**
+
+```JavaScript
+(Integer bytesWritten, Buffer buffer) FileHandle.write(String string,
     Integer position = -1,
     String encoding = "utf8") async;
 ```
 
-调用参数:
-* string: String, 待写入的字符串
-* position: Integer, 文件写入取位置，默认为当前文件位置
-* encoding: String, 指定解码方式，缺省解码 utf8
+Parameters:
+* string: String, the string to write
+* position: Integer, the file write position, default is the current file position
+* encoding: String, the decoding method, utf8 by default
 
-返回结果:
-* Integer, 实际写入的字节数
+Returns:
+* (Integer bytesWritten, [Buffer](Buffer.md) buffer), returns an [object](object.md) containing the bytesWritten and buffer properties
+
+The string is encoded with [encoding](../../module/ifs/encoding.md) (utf8 by default) and the bytes are written with
+the same position rules and result shape as the [Buffer](Buffer.md) form.
 
 --------------------------
 ### readFile
-**读取文件的全部内容**
+**Reads the whole file from the beginning and leaves the handle open**
 
 ```JavaScript
-Variant FileHandle.readFile(String encoding = "") async;
+Variant FileHandle.readFile(Object | String options = "") async;
 ```
 
-调用参数:
-* encoding: String, 指定解码方式，缺省不解码
+Parameters:
+* options: Object | String, the decoding method or the read options
 
-返回结果:
-* Variant, 返回文件内容
+Returns:
+* Variant, returns the file content
 
---------------------------
-**读取文件的全部内容**
+Seeks to position 0, reads to the end of the file and leaves the position at the end;
+the handle stays open. options is either an [encoding](../../module/ifs/encoding.md) or an [object](object.md) with an `[encoding](../../module/ifs/encoding.md)`
+property: an empty [encoding](../../module/ifs/encoding.md) (the default) returns a [Buffer](Buffer.md) and any other value decodes
+the bytes into a string. Unlike the [fs.readFile](../../module/ifs/fs.md#readFile) descriptor form, the options [object](object.md) of
+this method does not default to utf8: readFile({}) still returns a [Buffer](Buffer.md).
+
+options supports the following options:
 
 ```JavaScript
-Variant FileHandle.readFile(Object options) async;
+// fragment: options
+({
+    "encoding": "utf8" // the encoding to use; empty (the default) returns a Buffer
+})
 ```
 
-调用参数:
-* options: Object, 指定读取选项
-
-返回结果:
-* Variant, 返回文件内容
-
-options 支持以下选项：
+Example — the same content as a [Buffer](Buffer.md) and as a string:
 
 ```JavaScript
-{
-    "encoding": "utf8" // 指定编码，默认为 utf8。
-}
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-readfile-'));
+const file = path.join(dir, 'data.txt');
+fs.writeFile(file, 'hello');
+
+const handle = fs.open(file, 'r');
+console.log(Buffer.isBuffer(handle.readFile())); // true
+console.log(handle.readFile({
+    encoding: 'utf8'
+})); // hello
+
+handle.close();
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
 ```
 
 --------------------------
 ### writeFile
-**将数据写入文件，替换其内容**
+**Replaces the content of the file and returns the number of bytes written**
 
 ```JavaScript
-Integer FileHandle.writeFile(Buffer data,
-    String opt = "binary") async;
+Integer FileHandle.writeFile(Buffer | String data,
+    Object | String opt = "utf8") async;
 ```
 
-调用参数:
-* data: [Buffer](Buffer.md), 待写入的数据
-* opt: String, 指定写入选项，将被忽略
+Parameters:
+* data: [Buffer](Buffer.md) | String, the data to write
+* opt: Object | String, the [encoding](../../module/ifs/encoding.md) or the write options
 
-返回结果:
-* Integer, 实际写入的字节数
+Returns:
+* Integer, the number of bytes actually written
+
+Seeks to position 0, writes the data and truncates the file at the end of the written
+content, so the previous content is gone; the handle stays open and the position is left
+after the data. opt is the [encoding](../../module/ifs/encoding.md) of string data (utf8 by default) or an options
+[object](object.md) with an [encoding](../../module/ifs/encoding.md) property; the [encoding](../../module/ifs/encoding.md) of a [Buffer](Buffer.md) is only validated, the bytes
+are written as they are.
+
+Node.js filehandle.writeFile writes in place at the current position and returns
+undefined, and the descriptor form of [fs.writeFile](../../module/ifs/fs.md#writeFile) does the same truncating rewrite
+(plans/compat-differences.md 2.15 and 2.7).
+
+options supports the following options:
+
+```JavaScript
+// fragment: options
+({
+    "encoding": "utf8" // the encoding of string data, default utf8
+})
+```
+
+Example — replace a long file with short content:
+
+```JavaScript
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-writefile-'));
+const file = path.join(dir, 'data.txt');
+fs.writeFile(file, 'a much longer content');
+
+const handle = fs.open(file, 'r+');
+console.log(handle.writeFile('short')); // 5
+console.log(handle.readFile('utf8')); // short
+console.log(handle.stat().size); // 5
+
+handle.close();
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
+```
 
 --------------------------
-**将数据写入文件，替换其内容**
+### utimes
+**Sets the access and modification times of the open file (futimes)**
 
 ```JavaScript
-Integer FileHandle.writeFile(String data,
-    String opt = "utf8") async;
+FileHandle.utimes(Variant atime,
+    Variant mtime) async;
 ```
 
-调用参数:
-* data: String, 待写入的数据
-* opt: String, 指定写入选项
+Parameters:
+* atime: Variant, the last access time of the file
+* mtime: Variant, the last modification time of the file
 
-返回结果:
-* Integer, 实际写入的字节数
+Accepts a Date, a number of seconds since the Unix epoch or a numeric string, the same
+forms as [fs.utimes](../../module/ifs/fs.md#utimes); both times must be given.
 
 --------------------------
-**将数据写入文件，替换其内容**
+### chown
+**Changes the owner of the open file (fchown); effective on POSIX systems only**
 
 ```JavaScript
-Integer FileHandle.writeFile(Buffer data,
-    Object options) async;
+FileHandle.chown(Integer uid,
+    Integer gid) async;
 ```
 
-调用参数:
-* data: [Buffer](Buffer.md), 待写入的数据
-* options: Object, 指定写入选项
+Parameters:
+* uid: Integer, the file owner user id
+* gid: Integer, the file owner group id
 
-返回结果:
-* Integer, 实际写入的字节数
-
-options 支持以下选项：
-
-```JavaScript
-{
-    "encoding": "utf8" // 指定编码，默认为 utf8。
-}
-```
+Both ids are numeric POSIX user and group ids; there is no name lookup and no change of
+the group list. Node.js calls this filehandle.chown().
 
 --------------------------
-**将数据写入文件，替换其内容**
+### sync
+**Flushes file data and metadata to the storage device (fsync)**
 
 ```JavaScript
-Integer FileHandle.writeFile(String data,
-    Object options) async;
+FileHandle.sync() async;
 ```
 
-调用参数:
-* data: String, 待写入的数据
-* options: Object, 指定写入选项
+Ensures that everything written through the descriptor survives a crash; a more
+expensive operation than datasync where the platform distinguishes the two.
 
-返回结果:
-* Integer, 实际写入的字节数
-
-options 支持以下选项：
+--------------------------
+### datasync
+**Flushes file data to the storage device (fdatasync)**
 
 ```JavaScript
-{
-    "encoding": "utf8" // 指定编码，默认为 utf8。
-}
+FileHandle.datasync() async;
+```
+
+Skips the metadata that is not needed to read the data back and is therefore often
+cheaper than sync. Same name as Node.js filehandle.datasync.
+
+--------------------------
+### truncate
+**Truncates the file to the given length (ftruncate)**
+
+```JavaScript
+FileHandle.truncate(Integer len = 0) async;
+```
+
+Parameters:
+* len: Integer, the file size to set, default is 0
+
+A negative length is treated as 0 and the default 0 empties the file; extending a file
+fills the new range with zero bytes on POSIX systems. The file position is not changed.
+
+--------------------------
+### appendFile
+**Writes data at the current position without seeking to the end**
+
+```JavaScript
+Integer FileHandle.appendFile(Buffer | String data) async;
+```
+
+Parameters:
+* data: [Buffer](Buffer.md) | String, the data to write
+
+Returns:
+* Integer, the number of bytes actually written
+
+The bytes are written where the descriptor currently points; open the handle with the
+'a' or 'a+' flag to make the operating system append at the end of the file regardless
+of the position. A string is encoded as utf8 and the number of bytes written is
+returned; the handle stays open.
+
+Example — append through a handle opened with the append flag:
+
+```JavaScript
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+
+const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'fibjs-append-'));
+const file = path.join(dir, 'log.txt');
+fs.writeFile(file, 'line 1');
+
+const handle = fs.open(file, 'a+');
+handle.appendFile('\nline 2');
+console.log(handle.readFile('utf8')); // line 1\nline 2
+
+handle.close();
+fs.rmSync(dir, {
+    recursive: true,
+    force: true
+});
 ```
 
 --------------------------
 ### close
-**关闭当前文件句柄**
+**Releases the descriptor and closes the file**
 
 ```JavaScript
 FileHandle.close() async;
 ```
 
+After close() the handle reports fd -1 and every other member fails with an invalid
+handle error; the file data itself is unaffected. A second close() throws a bad file
+descriptor error in fibjs, while Node.js resolves it (plans/compat-differences.md 2.16).
+
 --------------------------
 ### toString
-**返回对象的字符串表示，一般返回 "[Native Object]"，对象可以根据自己的特性重新实现**
+**Returns the string form of the [object](object.md)**
 
 ```JavaScript
 String FileHandle.toString();
 ```
 
-返回结果:
-* String, 返回对象的字符串表示
+Returns:
+* String, returns the string form of the [object](object.md)
+
+The base implementation reports an error: a native [object](object.md) has no implicit
+text form, and only the classes whose value can be written as a string
+override the member. [Buffer](Buffer.md) returns its content decoded with the given
+[encoding](../../module/ifs/encoding.md), [HttpCookie](HttpCookie.md) returns "name=value", and so on; an override commonly
+accepts optional arguments ([Buffer.toString](Buffer.md#toString) takes [encoding](../../module/ifs/encoding.md), start and
+end) that are not part of this declaration.
+
+Calling the member on a class that does not override it throws
+"<Class>: the [object](object.md) can not be converted to string.", which is the
+behavior to rely on when probing whether a value has a string form. See
+toJSON for the serialization hook.
 
 --------------------------
 ### toJSON
-**返回对象的 JSON 格式表示，一般返回对象定义的可读属性集合**
+**Returns the JSON representation of the [object](object.md)**
 
 ```JavaScript
 Value FileHandle.toJSON(String key = "");
 ```
 
-调用参数:
-* key: String, 未使用
+Parameters:
+* key: String, the property name of the value being serialized
 
-返回结果:
-* Value, 返回包含可 JSON 序列化的值
+Returns:
+* Value, returns the JSON-serializable value
+
+JSON.stringify(value) calls value.toJSON(key) when the member exists and
+serializes the returned value in its place; the key argument carries the
+property name of the value inside its parent [object](object.md) (an empty string at
+the top level) and may be used to build a keyed form. The base
+implementation returns a plain [object](object.md) holding the readable properties of
+the instance, so a native [object](object.md) serializes without per-class code; a
+class with a portable shape such as [Buffer](Buffer.md) overrides it, and a JavaScript
+class may override it in the same way.
+
+The member is normally reached through JSON.stringify rather than called
+directly; calling it returns the same value JSON.stringify would
+serialize.
 

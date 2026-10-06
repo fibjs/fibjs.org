@@ -1,767 +1,818 @@
-# 模块 console
-控制台访问对象
+# Module console
+Console access: leveled logging, output devices, terminal control and input
 
-console 模块是一个核心模块，它提供了类似于浏览器中 console 对象的功能，可以将信息输出到控制台，方便调试和输出信息。
+`console` is available both as a [global](global.md) and as a [module](module.md); `require('console')`
+returns the same [object](../../object/ifs/object.md) as the [global](global.md) `console`, so either form can be used.
 
-模块的主要能力：
+Capability groups:
 
-- **分级日志**：`log`、`debug`、`info`、`notice`、`warn`、`error`、`crit`、`alert` 按严重程度分级输出，通过 `loglevel` 过滤；`trace` 输出调用堆栈；
-- **输出设备管理**：`add`/`use` 将输出发送到 console、syslog、event、nslog、file 等设备，`reset` 恢复默认；
-- **格式化输出**：`dir` 以 JSON 格式输出对象，`table` 以表格输出，`print` 输出不记日志且不换行；
-- **交互**：`readLine` 读取用户输入，`getpass` 读取密码，`moveTo`/`hideCursor`/`showCursor`/`clear` 控制光标与屏幕；
-- **计时**：`time`/`timeElapse`/`timeEnd` 计时代码执行时间。
+- **Leveled logging**: `log`, `info`, `debug`, `notice`, `warn`, `warning`,
+  `error`, `crit`, `critical`, `alert` and `trace` write a message at a severity
+  level;
+- **Output devices**: `add`/`use` register up to 10 devices (console, syslog,
+  event, nslog, file) and `reset` restores the built-in console output;
+- **Formatted output**: `dir` renders a value with [util.inspect](util.md#inspect), `table` renders
+  a text table and `print` writes raw text without a newline;
+- **Terminal control**: `moveTo`, `hideCursor`, `showCursor` and `clear`;
+- **Interaction**: `readLine` reads a line, `getpass` reads it without echo;
+- **Timing**: `time`, `timeElapse` and `timeEnd` measure elapsed milliseconds;
+- **Assertions**: `assert` is the assert [module](module.md) and throws on a falsy value.
 
-console 模块中最常用的方法是 log()，该方法可以将任何 JavaScript 值打印到控制台，并自动添加换行符。除了 log() 方法外，还有 info()、warn()、error() 方法，分别用于输出信息、警告和错误，它们的功能和 log() 方法基本相同，只是在控制台中显示的样式不同。
+Concepts:
 
-console 模块还提供了 dir() 方法，用于将一个对象的属性和方法以可读性更强的形式输出到控制台，方便调试复杂的对象。另外，还有 time() 和 timeEnd() 方法，用于在控制台中计时代码执行的时间，并输出时间差。
+- **Severity levels**: the [constants](constants.md) FATAL(0), ALERT(1), CRIT(2), ERROR(3),
+  WARN(4), NOTICE(5), INFO(6) and DEBUG(7) are the record levels; PRINT(9) is
+  the raw-output level and NOTSET(10) accepts everything. A record is written
+  when its level is less than or equal to `loglevel`, which is NOTSET by
+  default. Levels 0-4 (FATAL to WARN) are the error levels: the built-in
+  console writes them to stderr, while every other level including PRINT goes
+  to stdout.
+- **Formatting**: when the first argument of a logging call is a string it is a
+  printf-like template. Only `%s` (String()), `%d` (integer through atoi()), `%j`
+  (inspection formatter) and `%%` are substituted; `%i`, `%f`, `%o`, `%O` and
+  `%c` are not supported and are printed literally while their value is appended
+  at the end, space separated with the remaining values. A specifier without an
+  argument stays in the text. See the [util](util.md) [module](module.md) for the format, inspect and
+  styleText concepts.
+- **Output devices**: while no device is registered the built-in console device
+  is used; add/use replace it with up to 10 registered devices, each with an
+  optional whitelist of levels. Device management is [process](process.md)-wide and is not
+  available in worker threads (Error 20009). The console device writes
+  synchronously, while the file, syslog and event devices queue records and
+  write them asynchronously.
+- **Input**: readLine/getpass flush pending device records and then suspend the
+  calling fiber until a line is read; readLineSync is an alias of the same
+  function, readLineAsync takes a callback and `console.promises.readLine`
+  returns a promise. See the readLine member for the terminal details.
+- **Node.js differences**: `console.assert` is the [assert](assert.md) [module](module.md) and throws
+  instead of logging "Assertion failed"; count, countReset, timeLog, group,
+  groupEnd, groupCollapsed, profile and context do not exist; the default timer
+  label is `time` instead of Node's `default`, and timeEnd on an unknown label
+  measures from zero instead of warning. `print` and `loglevel` are fibjs
+  extensions.
 
-除了以上常用的方法，console 模块还提供了一些其他的方法，如 [assert](assert.md)()、notice()、trace() 等，可以在不同的情况下方便地进行调试和信息输出。
+Import:
 
-console 模块是一个非常实用的模块，可以在开发过程中提高调试效率，方便快捷地输出各种信息。
+```JavaScript
+const con = require('console'); // the module returns the global console itself
+```
 
-## 对象
+Example 1 — capture stdout and stderr of a Console [object](../../object/ifs/object.md) in memory:
+
+```JavaScript
+const io = require('io');
+const out = new io.MemoryStream();
+const err = new io.MemoryStream();
+const c = new console.Console(out, err);
+
+c.log('memory is %d bytes', 1024);
+c.warn('low disk space');
+
+out.rewind();
+err.rewind();
+console.log(out.readAll().toString().trim()); // memory is 1024 bytes
+console.log(err.readAll().toString().trim()); // low disk space
+```
+
+Example 2 — filter records with the [global](global.md) loglevel:
+
+```JavaScript
+const io = require('io');
+const out = new io.MemoryStream();
+const c = new console.Console(out, out);
+
+const previous = console.loglevel;
+console.loglevel = console.ERROR;
+c.log('filtered out'); // INFO(6) is above ERROR(3)
+c.error('written'); // ERROR(3) passes
+console.loglevel = previous;
+
+out.rewind();
+console.log(JSON.stringify(out.readAll().toString())); // "written\n"
+```
+
+Example 3 — time a loop and print a table:
+
+```JavaScript
+console.time('loop');
+let total = 0;
+for (let i = 0; i < 100000; i++) total += i;
+console.timeEnd('loop'); // loop: <elapsed>ms
+console.log(total); // 4999950000
+
+console.table([{
+        name: 'alpha',
+        size: 12
+    },
+    {
+        name: 'beta',
+        size: 34
+    }
+], ['name']);
+```
+
+Notes:
+
+- `width` and `height` query the terminal and throw when the output is
+  redirected, for example Error 25 "inappropriate ioctl for device" on Linux.
+- `moveTo`, `hideCursor`, `showCursor` and `clear` write terminal escape
+  sequences at PRINT level on POSIX and use the Win32 console API on Windows;
+  `clear` resets the terminal (ESC c) rather than only clearing the screen.
+- The file device appends a `YYYYMMDDHHmmss` stamp to the file name unless the
+  [path](path.md) contains a `%s` marker; see `add` for the device configuration.
+
+## Objects
         
 ### assert
-**断言测试，如果测试值为假，则报错**
+**The [assert](assert.md) [module](module.md), which throws on a falsy value**
 
 ```JavaScript
 assert console.assert;
 ```
 
+`console.assert` is the [assert](assert.md) [module](module.md) itself: `console.assert ===
+require('[assert](assert.md)')` is true. Calling it with a falsy first argument throws an
+AssertionError whose message is the second argument, while a truthy value
+returns undefined. Node.js instead logs `Assertion failed: <message>` and
+never throws, so code ported from Node.js must not rely on that behavior.
+Use `assert.ok`, `assert.equal` and friends for richer checks.
+
+Example:
+
+```JavaScript
+try {
+    console.assert(1 === 2, 'one is not two');
+} catch (e) {
+    console.log('caught:', e.message); // caught: one is not two
+}
+```
+
 --------------------------
 ### Console
-**Console 构造函数，用于创建输出到指定流的新 Console 实例**
+**The [ConsoleObject](../../object/ifs/ConsoleObject.md) constructor, exposed as [console.Console](console.md#Console)**
 
 ```JavaScript
 ConsoleObject console.Console;
 ```
 
-## 静态函数
+`console.Console` is the [ConsoleObject](../../object/ifs/ConsoleObject.md) class; `new console.Console(...)`
+creates a logger writing to explicit streams, while [ConsoleObject](../../object/ifs/ConsoleObject.md) is not
+available as a [global](global.md) name. See [ConsoleObject](../../object/ifs/ConsoleObject.md) for the construction forms and
+the stream behavior.
+
+Example:
+
+```JavaScript
+const io = require('io');
+const out = new io.MemoryStream();
+const c = new console.Console(out, out);
+
+c.log('captured');
+
+out.rewind();
+console.log(out.readAll().toString().trim()); // captured
+```
+
+## Static Methods
         
 ### add
-**添加 console 输出系统，支持的设备为 console, syslog, event，最多可以添加 10 个输出**
+**Registers an output device by name**
 
 ```JavaScript
 static console.add(String type);
 ```
 
-调用参数:
-* type: String, 输出设备
+Parameters:
+* type: String, device name: "console", "syslog", "event" or "nslog"
 
-通过配置 console，可以将程序输出和系统错误发往不同设备，用于运行环境信息收集。
+Registers one of the supported devices and stops using the built-in console
+fallback; up to 10 devices can be registered and adding an 11th throws Error
+20024 ("console: Too many items."). `use` is the historical name of the same
+operation and `reset` removes every registered device.
 
-type 为配置，为设备名称字符串：
+The supported names are `"console"` on every platform, `"syslog"` on POSIX,
+`"event"` on Windows and `"nslog"` on Darwin; any other name throws Error
+20024 ("console: Unknown log type."). Device management is [process](process.md)-wide and
+is not available in worker threads (Error 20009).
 
-```JavaScript
-console.add("console");
-```
-
-syslog 仅在 posix 平台有效：
-
-```JavaScript
-console.add("syslog");
-```
-
-event 仅在 windows 平台有效：
+Example:
 
 ```JavaScript
-console.add("event");
-```
-
---------------------------
-**添加 console 输出系统，支持的设备为 console, syslog, event, nslog 和 file，最多可以添加 10 个输出**
-
-```JavaScript
-static console.add(Object cfg);
-```
-
-调用参数:
-* cfg: Object, 输出配置
-
-通过配置 console，可以将程序输出和系统错误发往不同设备，用于运行环境信息收集。
-
-cfg 可以为一个设备配置对象：
-
-```JavaScript
-console.add({
-    type: "console",
-    levels: [console.INFO, console.ERROR] // optional, default is all levels
-});
-```
-
-syslog 仅在 posix 平台有效：
-
-```JavaScript
-console.add({
-    type: "syslog",
-    levels: [console.INFO, console.ERROR]
-});
-```
-
-event 仅在 windows 平台有效：
-
-```JavaScript
-console.add({
-    type: "event",
-    levels: [console.INFO, console.ERROR]
-});
-```
-
-nslog 仅在 Darwin 平台有效：
-
-```JavaScript
-console.add({
-    type: "nslog",
-    levels: [console.INFO, console.ERROR]
-});
-```
-
-file 日志：
-
-```JavaScript
-console.add({
-    type: "file",
-    levels: [console.INFO, console.ERROR],
-    path: "path/to/file_%s.log", // Specify the log output file, you can use %s to specify the date insertion position, if not specified, it will be added to the end
-    split: "30m", // Optional values are "day", "hour", "minute", "####k", "####m", "####g", default is "1m"
-    count: 10 // option, selectable from 2 to 128, default is 128
-});
+console.add('console');
+console.log('written through the registered console device');
+console.reset();
 ```
 
 --------------------------
-**批量添加 console 输出系统，支持的设备为 console, syslog, event 和 file，最多可以添加 10 个输出**
+**Registers output devices from a configuration [object](../../object/ifs/object.md) or an array of them**
 
 ```JavaScript
-static console.add(Array cfg);
+static console.add(Object | Array cfg);
 ```
 
-调用参数:
-* cfg: Array, 输出配置数组
+Parameters:
+* cfg: Object | Array, device configuration [object](../../object/ifs/object.md) or array of them
 
-通过配置 console，可以将程序输出和系统错误发往不同设备，用于运行环境信息收集。
+cfg is a device configuration [object](../../object/ifs/object.md), or an array whose elements are
+registered in order. Each element is a device name string or an [object](../../object/ifs/object.md):
+
+- `type` (String): device name, required, one of the names accepted by
+  `add(String)`; a missing type throws Error 20024 ("console: Missing log
+  type.");
+- `levels` (Array): whitelist of severity levels recorded by this device.
+  Only the listed numbers are written (PRINT is always accepted) and the
+  default is all levels; an entry outside 0..NOTSET throws Error 20024
+  ("console: too many logger.").
+- [File](../../object/ifs/File.md) device only:
+  - `path` (String): target file, required; a missing path throws Error
+    20024 ("console: Missing [path](path.md)."). A `%s` marker in the name is replaced
+    by a `YYYYMMDDHHmmss` stamp, otherwise the stamp is appended to the
+    file name;
+  - `split`: `"day"`, `"hour"`, `"minute"` or a size threshold such as
+    `"30m"`, `"10k"` or `"1g"`; giving `count` without `split` throws Error
+    20024 ("console: Missing split mode.");
+  - `count` (Integer): rotated files to keep, 2 to 128, 128 by default; a
+    value outside the range throws Error 20024 ("console: Count must
+    between 2 to 128.").
+
+The example records only ERROR records to the console device:
 
 ```JavaScript
-console.add(["console", {
-    type: "syslog",
-    levels: [console.INFO, console.ERROR]
-}]);
+console.add({
+    type: 'console',
+    levels: [console.ERROR]
+});
+console.error('recorded');
+console.reset();
 ```
+
+The file device writes timestamped lines asynchronously, so queued records
+may be lost if the program calls `reset` immediately; see the console [module](module.md)
+for the device model.
 
 --------------------------
 ### use
-**添加 console 输出系统，支持的设备为 console, syslog, event，最多可以添加 10 个输出**
+**Registers an output device by name; historical alias of add**
 
 ```JavaScript
 static console.use(String type);
 ```
 
-调用参数:
-* type: String, 输出设备
+Parameters:
+* type: String, device name: "console", "syslog", "event" or "nslog"
 
-通过配置 console，可以将程序输出和系统错误发往不同设备，用于运行环境信息收集。
+Behaves exactly like `add(String type)`, including the supported device
+names, the 10-device limit and the Error 20024 failures. `use` and `add` are
+separate function objects with identical behavior, kept for compatibility
+with older fibjs code.
 
-type 为配置，为设备名称字符串：
-
-```JavaScript
-console.use("console");
-```
-
-syslog 仅在 posix 平台有效：
+Example:
 
 ```JavaScript
-console.use("syslog");
-```
-
-event 仅在 windows 平台有效：
-
-```JavaScript
-console.use("event");
+console.use('console');
+console.log('written through the registered console device');
+console.reset();
 ```
 
 --------------------------
-**添加 console 输出系统，支持的设备为 console, syslog, event, nslog 和 file，最多可以添加 10 个输出**
+**Registers output devices from a configuration [object](../../object/ifs/object.md) or array; alias of add**
 
 ```JavaScript
-static console.use(Object cfg);
+static console.use(Object | Array cfg);
 ```
 
-调用参数:
-* cfg: Object, 输出配置
+Parameters:
+* cfg: Object | Array, device configuration [object](../../object/ifs/object.md) or array of them
 
-通过配置 console，可以将程序输出和系统错误发往不同设备，用于运行环境信息收集。
+Behaves exactly like `add(Object|Array cfg)`, including the file device
+configuration (`path`, `split`, `count`), the per-device `levels` whitelist
+and the Error 20024 validation failures; see `add` for the full option list.
 
-cfg 可以为一个设备配置对象：
+Example:
 
 ```JavaScript
 console.use({
-    type: "console",
-    levels: [console.INFO, console.ERROR] // optional, default is all levels
+    type: 'console',
+    levels: [console.ERROR]
 });
-```
-
-syslog 仅在 posix 平台有效：
-
-```JavaScript
-console.use({
-    type: "syslog",
-    levels: [console.INFO, console.ERROR]
-});
-```
-
-event 仅在 windows 平台有效：
-
-```JavaScript
-console.use({
-    type: "event",
-    levels: [console.INFO, console.ERROR]
-});
-```
-
-nslog 仅在 Darwin 平台有效：
-
-```JavaScript
-console.use({
-    type: "nslog",
-    levels: [console.INFO, console.ERROR]
-});
-```
-
-file 日志：
-
-```JavaScript
-console.use({
-    type: "file",
-    levels: [console.INFO, console.ERROR],
-    path: "path/to/file_%s.log", // Specify the log output file, you can use %s to specify the date insertion position, if not specified, it will be added to the end
-    split: "30m", // Optional values are "day", "hour", "minute", "####k", "####m", "####g", default is "1m"
-    count: 10 // option, selectable from 2 to 128, default is 128
-});
-```
-
---------------------------
-**批量添加 console 输出系统，支持的设备为 console, syslog, event 和 file，最多可以添加 10 个输出**
-
-```JavaScript
-static console.use(Array cfg);
-```
-
-调用参数:
-* cfg: Array, 输出配置数组
-
-通过配置 console，可以将程序输出和系统错误发往不同设备，用于运行环境信息收集。
-
-```JavaScript
-console.use(["console", {
-    type: "syslog",
-    levels: [console.INFO, console.ERROR]
-}]);
+console.error('recorded');
+console.reset();
 ```
 
 --------------------------
 ### reset
-**初始化到缺省设置，只在 console 输出信息**
+**Removes every registered device and restores the built-in console output**
 
 ```JavaScript
 static console.reset();
 ```
 
+Stops the devices previously registered with add/use and deletes them;
+records still queued on an asynchronous device (file, syslog, event) may be
+dropped, so a caller that needs them must let the device write first. Device
+management is [process](process.md)-wide and is not available in worker threads (Error
+20009).
+
 --------------------------
 ### log
-**记录普通日志信息，与 info 等同**
-
-```JavaScript
-static console.log(String fmt,
-    ...args);
-```
-
-调用参数:
-* fmt: String, 格式化字符串
-* args: ..., 可选参数列表
-
-记录一般等级的日志信息。通常用于输出非错误性提示信息。
-
---------------------------
-**记录普通日志信息，与 info 等同**
+**Writes a record at INFO level**
 
 ```JavaScript
 static console.log(...args);
 ```
 
-调用参数:
-* args: ..., 可选参数列表
+Parameters:
+* args: ..., optional argument list
 
-记录一般等级的日志信息。通常用于输出非错误性提示信息。
+Records a general message and writes it to stdout, because INFO(6) is above
+the WARN error threshold. A leading string argument is a printf-like
+template: only `%s`, `%d`, `%j` and `%%` are substituted, other specifiers
+stay literal and their values are appended at the end, space separated;
+objects are rendered by the inspection formatter. The [global](global.md) `loglevel`
+filters the record. Level INFO(6), same as `info`.
+
+Example:
+
+```JavaScript
+console.log('%s has %d items', 'cart', 3); // cart has 3 items
+console.log('value:', 42); // value: 42
+```
 
 --------------------------
 ### debug
-**记录调试日志信息**
-
-```JavaScript
-static console.debug(String fmt,
-    ...args);
-```
-
-调用参数:
-* fmt: String, 格式化字符串
-* args: ..., 可选参数列表
-
-记录调试日志信息。通常用于输出调试信息。不重要。
-
---------------------------
-**记录调试日志信息**
+**Writes a record at DEBUG level**
 
 ```JavaScript
 static console.debug(...args);
 ```
 
-调用参数:
-* args: ..., 可选参数列表
+Parameters:
+* args: ..., optional argument list
 
-记录调试日志信息。通常用于输出调试信息。不重要。
+The lowest standard level, useful when `loglevel` is raised to DEBUG to trace
+execution. The record goes to stdout and accepts the same printf-like
+template as `log`. Level DEBUG(7). Node.js treats [console.debug](console.md#debug) as an alias
+of [console.log](console.md#log), while fibjs keeps a separate level that can be filtered.
 
 --------------------------
 ### info
-**记录普通日志信息，与 log 等同**
-
-```JavaScript
-static console.info(String fmt,
-    ...args);
-```
-
-调用参数:
-* fmt: String, 格式化字符串
-* args: ..., 可选参数列表
-
-记录一般等级的日志信息。通常用于输出非错误性提示信息。
-
---------------------------
-**记录普通日志信息，与 log 等同**
+**Writes a record at INFO level, same as log**
 
 ```JavaScript
 static console.info(...args);
 ```
 
-调用参数:
-* args: ..., 可选参数列表
+Parameters:
+* args: ..., optional argument list
 
-记录一般等级的日志信息。通常用于输出非错误性提示信息。
+Records a general message and writes it to stdout. Identical to `log`; the
+name follows the Node.js console surface. Level INFO(6).
 
 --------------------------
 ### notice
-**记录警告日志信息**
-
-```JavaScript
-static console.notice(String fmt,
-    ...args);
-```
-
-调用参数:
-* fmt: String, 格式化字符串
-* args: ..., 可选参数列表
-
-记录警告日志信息。通常用于输出提示性调试信息。一般重要。
-
---------------------------
-**记录警告日志信息**
+**Writes a record at NOTICE level**
 
 ```JavaScript
 static console.notice(...args);
 ```
 
-调用参数:
-* args: ..., 可选参数列表
+Parameters:
+* args: ..., optional argument list
 
-记录警告日志信息。通常用于输出提示性调试信息。一般重要。
+Records a normal but significant message; less severe than WARN and more
+important than INFO. Written to stdout and filtered by `loglevel`. Level
+NOTICE(5); this is a fibjs extension, Node.js has no [console.notice](console.md#notice).
 
 --------------------------
 ### warn
-**记录警告日志信息，与 warning 等同**
-
-```JavaScript
-static console.warn(String fmt,
-    ...args);
-```
-
-调用参数:
-* fmt: String, 格式化字符串
-* args: ..., 可选参数列表
-
-记录警告日志信息。通常用于输出警告性调试信息。重要。
-
---------------------------
-**记录警告日志信息，与 warning 等同**
+**Writes a record at WARN level**
 
 ```JavaScript
 static console.warn(...args);
 ```
 
-调用参数:
-* args: ..., 可选参数列表
+Parameters:
+* args: ..., optional argument list
 
-记录警告日志信息。通常用于输出警告性调试信息。重要。
+Records a warning and writes it to stderr, because WARN(4) is one of the
+error levels. Level WARN(4); Node.js [console.warn](console.md#warn) also writes to stderr.
 
 --------------------------
 ### warning
-**记录警告日志信息**
-
-```JavaScript
-static console.warning(String fmt,
-    ...args);
-```
-
-调用参数:
-* fmt: String, 格式化字符串
-* args: ..., 可选参数列表
-
-记录警告日志信息。通常用于输出警告性调试信息。重要。
-
---------------------------
-**记录警告日志信息**
+**Writes a record at WARN level, same as warn**
 
 ```JavaScript
 static console.warning(...args);
 ```
 
-调用参数:
-* args: ..., 可选参数列表
+Parameters:
+* args: ..., optional argument list
 
-记录警告日志信息。通常用于输出警告性调试信息。重要。
+Records a warning and writes it to stderr. Identical to `warn`, kept as a
+separate name for code that reads better with the long form; Node.js has no
+[console.warning](console.md#warning).
 
 --------------------------
 ### error
-**记录错误日志信息**
-
-```JavaScript
-static console.error(String fmt,
-    ...args);
-```
-
-调用参数:
-* fmt: String, 格式化字符串
-* args: ..., 可选参数列表
-
-记录用于错误日志信息。通常用于输出错误信息。非常重要。系统的出错信息也会以此等级记录。
-
---------------------------
-**记录错误日志信息**
+**Writes a record at ERROR level**
 
 ```JavaScript
 static console.error(...args);
 ```
 
-调用参数:
-* args: ..., 可选参数列表
+Parameters:
+* args: ..., optional argument list
 
-记录用于错误日志信息。通常用于输出错误信息。非常重要。系统的出错信息也会以此等级记录。
+Records an error and writes it to stderr. fibjs reports its own runtime
+errors through the same level, so system error messages may appear among the
+application ones. Level ERROR(3).
 
 --------------------------
 ### crit
-**记录关键错误日志信息，与 critical 等同**
-
-```JavaScript
-static console.crit(String fmt,
-    ...args);
-```
-
-调用参数:
-* fmt: String, 格式化字符串
-* args: ..., 可选参数列表
-
-记录用于关键错误日志信息。通常用于输出关键错误信息。非常重要。
-
---------------------------
-**记录关键错误日志信息，与 critical 等同**
+**Writes a record at CRIT level, same as critical**
 
 ```JavaScript
 static console.crit(...args);
 ```
 
-调用参数:
-* args: ..., 可选参数列表
+Parameters:
+* args: ..., optional argument list
 
-记录用于关键错误日志信息。通常用于输出关键错误信息。非常重要。
+Records a critical condition and writes it to stderr. Level CRIT(2), below
+ERROR in number and therefore more severe.
 
 --------------------------
 ### critical
-**记录关键错误日志信息**
-
-```JavaScript
-static console.critical(String fmt,
-    ...args);
-```
-
-调用参数:
-* fmt: String, 格式化字符串
-* args: ..., 可选参数列表
-
-记录用于关键错误日志信息。通常用于输出关键错误信息。非常重要。
-
---------------------------
-**记录关键错误日志信息**
+**Writes a record at CRIT level**
 
 ```JavaScript
 static console.critical(...args);
 ```
 
-调用参数:
-* args: ..., 可选参数列表
+Parameters:
+* args: ..., optional argument list
 
-记录用于关键错误日志信息。通常用于输出关键错误信息。非常重要。
+Records a critical condition and writes it to stderr; identical to `crit`.
+Level CRIT(2); Node.js has no [console.critical](console.md#critical).
 
 --------------------------
 ### alert
-**记录警报错误日志信息**
-
-```JavaScript
-static console.alert(String fmt,
-    ...args);
-```
-
-调用参数:
-* fmt: String, 格式化字符串
-* args: ..., 可选参数列表
-
-记录用于警报错误日志信息。通常用于输出警报错误信息。非常重要。为最高级别信息。
-
---------------------------
-**记录警报错误日志信息**
+**Writes a record at ALERT level**
 
 ```JavaScript
 static console.alert(...args);
 ```
 
-调用参数:
-* args: ..., 可选参数列表
+Parameters:
+* args: ..., optional argument list
 
-记录用于警报错误日志信息。通常用于输出警报错误信息。非常重要。为最高级别信息。
+Records the most severe condition at ALERT(1) and writes it to stderr; it is
+the highest severity level, meant for conditions that need immediate action.
+Node.js has no [console.alert](console.md#alert).
 
 --------------------------
 ### trace
-**输出当前调用堆栈**
-
-```JavaScript
-static console.trace(String fmt,
-    ...args);
-```
-
-调用参数:
-* fmt: String, 格式化字符串
-* args: ..., 可选参数列表
-
-通过日志输出当前调用堆栈。
-
---------------------------
-**输出当前调用堆栈**
+**Writes a call stack at WARN level**
 
 ```JavaScript
 static console.trace(...args);
 ```
 
-调用参数:
-* args: ..., 可选参数列表
+Parameters:
+* args: ..., optional argument list
 
-通过日志输出当前调用堆栈。
+Formats the optional arguments like `log`, prefixes the text with `Trace: `
+and appends the current call stack, then writes the whole record to stderr at
+WARN(4) level through the logging system.
+
+Example:
+
+```JavaScript
+function inner() {
+    console.trace('at inner');
+}
+inner(); // Trace: at inner, followed by the stack frames
+```
 
 --------------------------
 ### dir
-**用 JSON 格式输出对象**
+**Renders a value with [util.inspect](util.md#inspect) and writes it at INFO level**
 
 ```JavaScript
 static console.dir(Value obj,
     Object options = {});
 ```
 
-调用参数:
-* obj: Value, 指定需要处理的对象
-* options: Object, 指定格式控制选项
+Parameters:
+* obj: Value, specifies the [object](../../object/ifs/object.md) to [process](process.md)
+* options: Object, specifies the format control options
 
-支持以下参数:
+The value is rendered by [util.inspect](util.md#inspect) and written as a single record to
+stdout; options are the inspect options: `colors` (default true, ANSI is
+emitted when the terminal supports color), `depth` (default 2, null means
+unlimited), `table` (render an array of records as a table), `fields`,
+`encode_string`, `maxArrayLength` (default 100) and `maxStringLength`
+(default 10000). Unknown options are ignored. Node.js [console.dir](console.md#dir) uses its
+own renderer, while fibjs delegates to [util.inspect](util.md#inspect), so keys and strings are
+quoted and the layout follows it.
+
+Example:
 
 ```JavaScript
-{
-    "colors": false, // Specify whether to color the output, default is false
-    "depth": 2, // Specify the maximum depth of output, default is 2
-    "table": false, // Specify whether to output in table format, default is false
-    "encode_string": true, // Specify whether to encode strings, default is true
-    "maxArrayLength": 100, // Specify the maximum number of array elements to display, set to 0 or negative to not display elements, default is 100
-    "maxStringLength": 10000, // Specify the maximum length of output strings, set to 0 or negative to not display strings, default is 10000
-    "fields": [], // Specify the fields to display, default is all
-}
+console.dir([{
+    a: 1
+}, {
+    a: 2
+}], {
+    colors: false,
+    table: true
+});
 ```
 
 --------------------------
 ### table
-**用 JSON 格式输出对象**
+**Renders records as a text table at INFO level**
 
 ```JavaScript
 static console.table(Value obj);
 ```
 
-调用参数:
-* obj: Value, 给定要显示的对象
+Parameters:
+* obj: Value, the [object](../../object/ifs/object.md) to display
+
+An [object](../../object/ifs/object.md) is rendered as an `(index)`/`Values` table of its properties, an
+array of primitives as an `(index)`/`Values` table and an array of records
+with one column per record key; a key missing from a record leaves an empty
+cell. The table is written to stdout and filtered by `loglevel`; a
+[ConsoleObject](../../object/ifs/ConsoleObject.md) instance writes the same table to its own stdout [object](../../object/ifs/object.md).
+
+Example:
+
+```JavaScript
+console.table([{
+    name: 'alpha',
+    size: 12
+}]);
+```
 
 --------------------------
-**用 JSON 格式输出对象**
+**Renders records as a text table with selected columns**
 
 ```JavaScript
 static console.table(Value obj,
     Array fields);
 ```
 
-调用参数:
-* obj: Value, 给定要显示的对象
-* fields: Array, 给定要显示的字段
+Parameters:
+* obj: Value, the [object](../../object/ifs/object.md) to display
+* fields: Array, the fields to display
+
+Same as `table(Value obj)`, but only the columns listed in `fields` are
+shown, in that order; the `(index)` column is always kept and a missing
+field leaves its cell empty.
 
 --------------------------
 ### print
-**向控制台输出格式化文本，输出内容不会记入日志系统，输出文本后不会自动换行，可连续输出**
-
-```JavaScript
-static console.print(String fmt,
-    ...args);
-```
-
-调用参数:
-* fmt: String, 格式化字符串
-* args: ..., 可选参数列表
-
---------------------------
-**向控制台输出格式化文本，输出内容不会记入日志系统，输出文本后不会自动换行，可连续输出**
+**Writes raw text without a newline and without logging metadata**
 
 ```JavaScript
 static console.print(...args);
 ```
 
-调用参数:
-* args: ..., 可选参数列表
+Parameters:
+* args: ..., optional argument list
+
+Values are formatted like `log`, but the result is written at PRINT(9): a
+newline is never appended and the file, syslog and event devices do not
+record it. A `loglevel` below 9 suppresses the output. Consecutive calls join
+on the same line; finish the line with `log()` or a literal newline.
+
+Example:
+
+```JavaScript
+console.print('building');
+console.print('...');
+console.log(); // end the line
+```
 
 --------------------------
 ### moveTo
-**移动控制台光标到指定位置**
+**Moves the terminal cursor to a 1-based position**
 
 ```JavaScript
 static console.moveTo(Integer row,
     Integer column);
 ```
 
-调用参数:
-* row: Integer, 指定新光标的行坐标
-* column: Integer, 指定新光标的列坐标
+Parameters:
+* row: Integer, the new cursor row, starting at 1
+* column: Integer, the new cursor column, starting at 1
+
+Writes the ANSI sequence ESC[row;colH on POSIX and uses the Win32 console
+API on Windows. `row` and `column` must be at least 1, otherwise Error 20004
+("Invalid argument.") is thrown. The sequence is written at PRINT level, so
+it is suppressed together with print when `loglevel` is below 9.
 
 --------------------------
 ### hideCursor
-**隐藏控制台光标**
+**Hides the terminal cursor**
 
 ```JavaScript
 static console.hideCursor();
 ```
 
+Writes the ANSI sequence ESC[?25l on POSIX and hides the console cursor on
+Windows; the sequence is written at PRINT level and is suppressed when
+`loglevel` is below 9. Use it before updating a status line in place and
+restore it with showCursor.
+
 --------------------------
 ### showCursor
-**显示控制台光标**
+**Shows the terminal cursor again**
 
 ```JavaScript
 static console.showCursor();
 ```
 
+Writes the ANSI sequence ESC[?25h on POSIX and restores the console cursor
+on Windows; the counterpart of hideCursor, written at PRINT level.
+
 --------------------------
 ### clear
-**清除控制台**
+**Clears the terminal**
 
 ```JavaScript
 static console.clear();
 ```
 
+On POSIX this writes the ESC c reset sequence, which clears the screen and
+resets the terminal state; on Windows it fills the console screen buffer
+with spaces. It is written at PRINT level, so a `loglevel` below 9
+suppresses it as well.
+
 --------------------------
 ### readLine
-**从控制台读取用户输入**
+**Reads a line from the standard input, printing an optional prompt**
 
 ```JavaScript
 static String console.readLine(String msg = "") async;
 ```
 
-调用参数:
-* msg: String, 提示信息
+Parameters:
+* msg: String, prompt message
 
-返回结果:
-* String, 返回用户输入的信息
+Returns:
+* String, returns the line entered by the user, without the newline
+
+On a terminal the prompt is printed and the line is read with line editing
+and history enabled; when the standard input is redirected, the prompt is
+written to the standard input stream and at most 1023 bytes are read, with
+the trailing newline stripped. Pending device records are flushed before
+reading. The call is asynchronous: without a callback the current fiber is
+suspended until the line arrives; `readLineSync` is an alias of the same
+function, `readLineAsync` takes a callback and `console.promises.readLine`
+returns a promise. A read failure throws the underlying system error.
 
 --------------------------
 ### getpass
-**从控制台读取用户输入的密码**
+**Reads a password from the standard input without echoing it**
 
 ```JavaScript
 static String console.getpass(String msg = "") async;
 ```
 
-调用参数:
-* msg: String, 提示信息
+Parameters:
+* msg: String, prompt message
 
-返回结果:
-* String, 返回用户输入的密码
+Returns:
+* String, returns the password entered by the user
+
+Like readLine, but on a terminal the typed characters are not echoed and no
+history entry is added; when the input is redirected the two functions
+behave the same. Pending device records are flushed before reading, and the
+returned line has no trailing newline.
 
 --------------------------
 ### time
-**启动一个计时器**
+**Starts or restarts a timer under a label**
 
 ```JavaScript
 static console.time(String label = "time");
 ```
 
-调用参数:
-* label: String, 标题，缺省为空字符串。
+Parameters:
+* label: String, the timer label, defaults to "time"
+
+Stores the current time under `label` in a [process](process.md)-wide map shared by all
+isolates; starting an existing label silently restarts it and no warning is
+printed, unlike Node.js which warns about duplicates. The default label is
+`"time"` while Node.js uses `"default"`. `timeElapse` samples the timer and
+`timeEnd` stops it; both print `label: <elapsed>ms` at INFO level.
+
+Example:
+
+```JavaScript
+console.time('work');
+let sum = 0;
+for (let i = 0; i < 100000; i++) sum += i;
+console.timeEnd('work'); // work: <elapsed>ms
+```
 
 --------------------------
 ### timeElapse
-**输出指定计时器当前计时值**
+**Prints the value of a timer without stopping it**
 
 ```JavaScript
 static console.timeElapse(String label = "time");
 ```
 
-调用参数:
-* label: String, 标题，缺省为空字符串。
+Parameters:
+* label: String, the timer label, defaults to "time"
+
+Outputs `label: <elapsed>ms` at INFO level on stdout, with up to 10
+significant digits; the timer keeps running, so it can be sampled repeatedly
+before timeEnd. A label that was never started is treated as zero, so the
+printed value is huge instead of an error or warning (Node.js has no such
+member).
+
+Example:
+
+```JavaScript
+console.time('phase');
+console.timeElapse('phase'); // phase: <elapsed>ms
+console.timeEnd('phase'); // phase: <elapsed>ms
+```
 
 --------------------------
 ### timeEnd
-**结束指定计时器，并输出最后计时值**
+**Stops a timer and prints its final value**
 
 ```JavaScript
 static console.timeEnd(String label = "time");
 ```
 
-调用参数:
-* label: String, 标题，缺省为空字符串。
+Parameters:
+* label: String, the timer label, defaults to "time"
 
-## 静态属性
+Outputs `label: <elapsed>ms` at INFO level on stdout and removes the label,
+so `time` can start it again afterwards. Stopping a label that was never
+started measures from zero and prints a huge value; no warning is emitted,
+while Node.js warns about the missing label.
+
+Example:
+
+```JavaScript
+console.time('load');
+let data = 0;
+for (let i = 0; i < 1000; i++) data += i;
+console.timeEnd('load'); // load: <elapsed>ms
+```
+
+## Static Properties
         
 ### loglevel
-**Integer, 输出级别，用以过滤输出信息，缺省为 NOTSET，全部输出。信息过滤之后才会输出给 add 设定的各个设备。**
+**Integer, Global severity threshold shared by all devices and Console objects**
 
 ```JavaScript
 static Integer console.loglevel;
 ```
 
+A record is written only when its level is less than or equal to `loglevel`;
+the initial value is NOTSET(10), which accepts everything. The filter is
+applied before the record reaches any device, in addition to the per-device
+`levels` whitelist configured through add/use, so a device cannot restore a
+record that was filtered here. Assigning a non-number throws Error 20005.
+See the console [module](module.md) for the severity model.
+
 --------------------------
 ### width
-**Integer, 查询终端每行字符数**
+**Integer, Width of the console terminal in character cells**
 
 ```JavaScript
 static readonly Integer console.width;
 ```
 
+Queried from the terminal attached to the [process](process.md) (ioctl TIOCGWINSZ on
+POSIX, the console screen buffer on Windows); accessing it throws when the
+output is not a terminal, for example Error 25 "inappropriate ioctl for
+device" when the [process](process.md) is piped. Useful to wrap or truncate output.
+
 --------------------------
 ### height
-**Integer, 查询终端行数**
+**Integer, Height of the console terminal in character rows**
 
 ```JavaScript
 static readonly Integer console.height;
 ```
 
-## 常量
+Queried together with `width` from the terminal attached to the [process](process.md) and
+throwing under the same conditions; use both to lay out a full-screen
+console interface.
+
+## Constants
         
 ### FATAL
-**loglevel 级别常量，致命错误，最严重级别**
+**loglevel constant, fatal error, the most severe level**
 
 ```JavaScript
 const console.FATAL = 0;
@@ -769,7 +820,7 @@ const console.FATAL = 0;
 
 --------------------------
 ### ALERT
-**loglevel 级别常量，警报级别**
+**loglevel constant, alert level**
 
 ```JavaScript
 const console.ALERT = 1;
@@ -777,7 +828,7 @@ const console.ALERT = 1;
 
 --------------------------
 ### CRIT
-**loglevel 级别常量，严重错误级别**
+**loglevel constant, critical error level**
 
 ```JavaScript
 const console.CRIT = 2;
@@ -785,7 +836,7 @@ const console.CRIT = 2;
 
 --------------------------
 ### ERROR
-**loglevel 级别常量，错误级别**
+**loglevel constant, error level**
 
 ```JavaScript
 const console.ERROR = 3;
@@ -793,7 +844,7 @@ const console.ERROR = 3;
 
 --------------------------
 ### WARN
-**loglevel 级别常量，警告级别**
+**loglevel constant, warning level**
 
 ```JavaScript
 const console.WARN = 4;
@@ -801,7 +852,7 @@ const console.WARN = 4;
 
 --------------------------
 ### NOTICE
-**loglevel 级别常量，提示级别**
+**loglevel constant, notice level**
 
 ```JavaScript
 const console.NOTICE = 5;
@@ -809,7 +860,7 @@ const console.NOTICE = 5;
 
 --------------------------
 ### INFO
-**loglevel 级别常量，信息级别**
+**loglevel constant, info level**
 
 ```JavaScript
 const console.INFO = 6;
@@ -817,7 +868,7 @@ const console.INFO = 6;
 
 --------------------------
 ### DEBUG
-**loglevel 级别常量，调试级别**
+**loglevel constant, debug level**
 
 ```JavaScript
 const console.DEBUG = 7;
@@ -825,7 +876,7 @@ const console.DEBUG = 7;
 
 --------------------------
 ### PRINT
-**loglevel 仅用于输出，信息输出后不换行，file 和 syslog 不保存此级别信息**
+**loglevel for raw output; no newline, not recorded by the file/syslog/event devices**
 
 ```JavaScript
 const console.PRINT = 9;
@@ -833,7 +884,7 @@ const console.PRINT = 9;
 
 --------------------------
 ### NOTSET
-**loglevel 级别常量，全部输出，缺省级别**
+**loglevel constant, output everything, the default level**
 
 ```JavaScript
 const console.NOTSET = 10;
